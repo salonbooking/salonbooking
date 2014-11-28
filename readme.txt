@@ -1,0 +1,4 @@
+- Installazione
+
+- Shortcode
+[saloon]
