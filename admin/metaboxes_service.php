@@ -34,13 +34,31 @@ final class SLN_Service_Post_Meta_Boxes {
 			<br />
 			<input type="text" class="widefat" name="sln-service-unit" id="sln-service-unit" value="<?php echo esc_attr( sln_get_service_unit( $object->ID ) ); ?>" />
 		</p>
-
-
-		<?php do_action( 'sln_service_details_meta_box', $object, $box );
+		<p>
+			<label for="sln-service-secondary"><?php _e( 'Secondary', 'sln' ); ?>
+			<input type="checkbox" name="sln-service-secondary" id="sln-service-secondary" value="1" <?php echo sln_get_service_secondary( $object->ID ) ? 'checked="checked"' : ''?> />
+                        </label>
+		</p>
+<strong>Not Available At</strong>
+<?php
+$timestamp = strtotime('next Sunday');
+$days = array();
+for ($i = 0; $i < 7; $i++) {
+ $days[] = strftime('%A', $timestamp);
+ $timestamp = strtotime('+1 day', $timestamp);
+}
+?>
+<?php foreach($days as $k => $day){ ?>
+<p>            <label><input type="checkbox" name="sln-service-notav-<?php echo $k?>" value="1" <?php echo sln_get_service_notav($object->ID, $k)? 'checked="checked"' : '' ?>/><?php echo substr($day, 0,3)?></label>
+<?php } ?></p>
+<?php foreach(array('from' => __('From','sln'), 'to' => __('To','sln')) as $k => $v){ ?>
+        <p><label><?php echo $v ?><br/> <input type="text" name="sln-service-notav-<?php echo $k ?>" value="<?php echo sln_get_service_notav_time($object->ID,$k)?>" /> </label></p>
+<?php } ?>
+	
+<?php do_action( 'sln_service_details_meta_box', $object, $box );
 	}
 
 	public static function save_post( $post_id, $post ) {
-
 		/* Verify the nonce. */
 		if ( !isset( $_POST['sln_service_details_meta_nonce'] ) || !wp_verify_nonce( $_POST['sln_service_details_meta_nonce'], plugin_basename( __FILE__ ) ) )
 			return;
@@ -58,9 +76,14 @@ final class SLN_Service_Post_Meta_Boxes {
 
 		$meta = array(
 			'_sln_service_price' => floatval( strip_tags( $_POST['sln-service-price'] ) ),
-			'_sln_service_unit' => floatval( strip_tags( $_POST['sln-service-unit'] ) )
+			'_sln_service_unit' => floatval( strip_tags( $_POST['sln-service-unit'] ) ),
+			'_sln_service_notav_from' => sln_filter( strip_tags( $_POST['sln-service-notav-from'] ), 'time' ),
+			'_sln_service_notav_to' => sln_filter( strip_tags( $_POST['sln-service-notav-to'] ) , 'time'),
+			'_sln_service_secondary' => sln_filter($_POST['sln-service-secondary'], 'bool')
 		);
-
+                for($i = 0; $i<7; $i++){
+			$meta['_sln_service_notav_'.$i] = sln_filter($_POST['sln-service-notav-'.$i], 'bool');
+                }
 		foreach ( $meta as $meta_key => $new_meta_value ) {
 
 			/* Get the meta value of the custom field key. */
