@@ -5,11 +5,17 @@ Description: Just another plugin.
 Version: 1.0.0
 */
 
-define( 'SLN_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-define( 'SLN_PLUGIN_DIR', untrailingslashit( dirname( __FILE__ ) ) );
-define( 'SLN_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) ) );
-define( 'SLN_VERSION', '1.0.0' );
-require_once SLN_PLUGIN_DIR . '/settings.php';
+define('SLN_PLUGIN_BASENAME', plugin_basename(__FILE__));
+define('SLN_PLUGIN_DIR', untrailingslashit(dirname(__FILE__)));
+define('SLN_PLUGIN_URL', untrailingslashit(plugins_url('', __FILE__)));
+define('SLN_VERSION', '1.0.0');
 
-add_action('init', 'sln_action_init');
-register_activation_hook( __FILE__, 'sln_install' );
+spl_autoload_register(
+    function ($className) {
+        if (strpos($className, 'SLN_') === 0) {
+            include_once(SLN_PLUGIN_DIR . "/lib/" . str_replace("_", "/", $className).'.php');
+        }
+    }
+);
+
+SLN_Plugin::getInstance();
