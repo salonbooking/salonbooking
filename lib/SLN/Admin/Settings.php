@@ -8,10 +8,11 @@ class SLN_Admin_Settings
     protected $settings;
     public $settings_page = '';
     private $tabs = array(
-        'homepage' => 'Home',
-        'general'  => 'General',
-        'booking'  => 'Booking Rules',
-        'payments' => 'Payments'
+        'homepage'      => 'Home',
+        'general'       => 'General',
+        'booking'       => 'Booking Rules',
+        'payments'      => 'Payments',
+        'documentation' => 'Documentation'
     );
 
     public function __construct(SLN_Plugin $plugin)
@@ -36,7 +37,7 @@ class SLN_Admin_Settings
             'saloon',
             __('Saloon Settings', 'sln'),
             __('Settings', 'sln'),
-            apply_filters('saloon_settings_capability', 'manage_options'),
+            apply_filters('saloonviews/settings/capability', 'manage_options'),
             self::PAGE,
             array($this, 'settings_page')
         );
@@ -112,9 +113,14 @@ class SLN_Admin_Settings
     <?php
     }
 
+    public function showTab($tab)
+    {
+        include $this->plugin->getViewFile('settings/tab_' . $tab);
+    }
+
     public function showTabHomepage()
     {
-        include dirname(__FILE__) . '/_settings_homepage.php';
+        include SLN_PLUGIN_BASENAME . '/views/settings/homepage.php';
     }
 
     public function processTabHomepage()
@@ -132,7 +138,7 @@ class SLN_Admin_Settings
 
     public function showTabGeneral()
     {
-        include dirname(__FILE__) . '/_settings_general.php';
+        include SLN_PLUGIN_URL . '/views/settings/general.php';
     }
 
     public function processTabGeneral()
@@ -159,7 +165,7 @@ class SLN_Admin_Settings
 
     public function showTabBooking()
     {
-        include dirname(__FILE__) . '/_settings_booking.php';
+        include SLN_PLUGIN_URL . '/views/settings/booking.php';
     }
 
     public function processTabBooking()
@@ -186,7 +192,7 @@ class SLN_Admin_Settings
 
     public function showTabPayments()
     {
-        include dirname(__FILE__) . '/_settings_payments.php';
+        include SLN_PLUGIN_URL . '/views/settings/payments.php';
     }
 
     public function processTabPayments()
@@ -232,11 +238,7 @@ class SLN_Admin_Settings
             <?php $this->showTabsBar(); ?>
             <form method="post" action="<?php admin_url('admin.php?page=' . self::PAGE); ?>">
                 <?php
-                $method = "showTab" . ucwords($current);
-                if (!method_exists($this, $method)) {
-                    throw new \Exception('method not found ' . $method);
-                }
-                $this->$method();
+                $this->showTab($current);
                 wp_nonce_field(self::PAGE . $current);
                 if ($current != 'homepage') {
                     submit_button(esc_attr__('Update Settings', 'sln'), 'primary');

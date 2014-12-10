@@ -30,6 +30,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             array(
                 'booking_status' => __('Status', 'sln'),
                 'booking_date'   => __('Booking Date', 'sln'),
+                'booking_price'   => __('Booking Price', 'sln'),
                 'date'           => __('Created At', 'sln')
             )
         );
@@ -45,6 +46,9 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 $date = get_post_meta($post_id, '_sln_booking_date', true) . ' '
                     . get_post_meta($post_id, '_sln_booking_time', true);
                 echo date_i18n(__('M j, Y @ G:i', 'restaurant'), strtotime($date));
+                break;
+            case 'booking_price' :
+                echo number_format(get_post_meta($post_id, '_sln_booking_amount', true), 2);
                 break;
         }
     }

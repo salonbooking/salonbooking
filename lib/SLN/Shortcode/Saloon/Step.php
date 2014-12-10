@@ -10,17 +10,39 @@ abstract class SLN_Shortcode_Saloon_Step
     {
         $this->plugin = $plugin;
         $this->attrs  = $attrs;
-        $this->step = $step;
+        $this->step   = $step;
     }
 
-    abstract public function execute();
+    public function isValid()
+    {
+        return ($_POST['submit_' . $this->getStep()] && $this->dispatchForm());
+    }
 
-    protected function getStep(){
+    public function render()
+    {
+        return $this->getPlugin()->loadView('shortcode/saloon_' . $this->getStep(), $this->getViewData());
+    }
+
+    protected function getViewData()
+    {
+        $step = $this->getStep();
+
+        return array(
+            'formAction' => add_query_arg(array('sln_step_page' => $step)),
+            'submitName' => 'submit_' . $step
+        );
+    }
+
+    protected function getStep()
+    {
         return $this->step;
     }
 
     /** @return SLN_Plugin */
-    protected function getPlugin(){
+    protected function getPlugin()
+    {
         return $this->plugin;
     }
+
+    abstract protected function dispatchForm();
 }

@@ -106,27 +106,28 @@ class SLN_Plugin
                 ->save();
         }
         if (!$this->getSettings()->getNoticesDisabled()) {
-            ?>
-            <div id="sln-setting-error" class="updated settings-error">
-                <h3>Saloon booking plugin has been activated</h3>
-
-                <p>A new <strong>"Saloon"</strong> section has been created into the left sidebar<br/>
-                    There you can find <strong>"Services", "Bookings", "Settings"</strong> sections<br/>
-                    We have also created "services" and "bookings" for demo purpose. Feel free to delete them<br/>
-                    Go to "Saloon > Settings" section in order to set your own saloon booking system</p>
-
-                <p>
-                    <strong><a class="dismiss-notice"
-                               href="<?php echo add_query_arg(array('sln-dismiss' => 'dismiss_admin_notices')) ?>">
-                            Dismiss this notice</a></strong>
-                </p>
-            </div>
-        <?php
+            $dismissUrl = add_query_arg(array('sln-dismiss' => 'dismiss_admin_notices'));
+            echo $this->loadView('admin_notices', compact('dismissUrl'));
         }
     }
 
     public function getTextDomain()
     {
         return self::TEXT_DOMAIN;
+    }
+
+    public function getViewFile($view)
+    {
+        return SLN_PLUGIN_DIR . '/views/' . $view . '.php';
+    }
+
+    public function loadView($view, $data)
+    {
+        ob_start();
+        extract($data);
+        $plugin = $this;
+        include $this->getViewFile($view);
+
+        return ob_get_clean();
     }
 }

@@ -26,7 +26,8 @@ class SLN_Shortcode_Saloon
         add_shortcode(
             'saloon',
             function ($attrs) use ($plugin) {
-                $obj = new self($plugin, $attrs);
+                $obj = new SLN_Shortcode_Saloon($plugin, $attrs);
+
                 return $obj->execute();
             }
         );
@@ -35,11 +36,7 @@ class SLN_Shortcode_Saloon
 
     public function execute()
     {
-        ob_start();
-        $this->dispatchStep($this->getCurrentStep());
-        $ret = ob_get_clean();
-
-        return $ret;
+        return $this->dispatchStep($this->getCurrentStep());
     }
 
     private function dispatchStep($curr)
@@ -48,14 +45,24 @@ class SLN_Shortcode_Saloon
         foreach ($this->steps as $step) {
             if ($curr == $step || $found) {
                 $found = true;
-                $class = __CLASS__ . '_' . ucwords($step).'Step';
-                $obj = new $class($this->plugin, $this->attrs,$step);
-                if(!$obj->execute()){
-                    return;
+                $class = __CLASS__ . '_' . ucwords($step) . 'Step';
+                $obj   = new $class($this->plugin, $this->attrs, $step);
+                if ($obj instanceof SLN_Shortcode_Saloon_Step) {
+                    if (!$obj->isValid()) {
+                        return $this->render($obj->render());
+                    }
+                } else {
+                    throw new Exception('bad object ' . $class);
                 }
             }
         }
     }
+
+    protected function render($content)
+    {
+        return '<div id="sln-saloon">' . $content . '</div>';
+    }
+
 
     private function getCurrentStep()
     {
