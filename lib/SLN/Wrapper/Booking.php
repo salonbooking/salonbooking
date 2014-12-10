@@ -42,18 +42,39 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     function getTime()
     {
         $post_id = $this->getId();
+
         return apply_filters('sln_booking_time', new \DateTime(get_post_meta($post_id, '_sln_booking_time', true)));
     }
 
     function getDate()
     {
         $post_id = $this->getId();
+
         return apply_filters('sln_booking_date', new \DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
     }
 
     function getDuration()
     {
         $post_id = $this->getId();
+
         return apply_filters('sln_booking_date', new \DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
+    }
+
+    function hasService(SLN_Wrapper_Service $service)
+    {
+        return in_array($service->getId(), $this->getServicesIds());
+    }
+
+    function getServicesIds()
+    {
+        $post_id = $this->getId();
+        $ret     = apply_filters('sln_booking_services', get_post_meta($post_id, '_sln_booking_services', true));
+        return empty($ret) ? array() : $ret;
+    }
+
+    function getStatus(){
+        $post_id = $this->getId();
+        $ret     = apply_filters('sln_booking_status', get_post_meta($post_id, '_sln_booking_status', true));
+        return empty($ret) ? SLN_Enum_BookingStatus::PENDING : $ret;
     }
 }

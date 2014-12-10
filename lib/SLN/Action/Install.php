@@ -12,7 +12,7 @@ class SLN_Action_Install
                 foreach ($post['post']['meta'] as $k => $v) {
                     update_post_meta($id, $k, $v);
                 }
-                $ids[$label] = $post;
+                $ids[$label] = $id;
             }
         }
         if (true) {//!get_option('saloon_settings')) {
@@ -34,7 +34,6 @@ class SLN_Action_Install
                 'title'     => $title
             )
         );
-
         return $query->found_posts > 0;
     }
 }

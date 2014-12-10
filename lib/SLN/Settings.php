@@ -15,6 +15,27 @@ class SLN_Settings
         return isset($this->settings[$k]) ? $this->settings[$k] : null;
     }
 
+    public function set($key, $val)
+    {
+        if (empty($val)) {
+            unset($this->settings[$key]);
+        } else {
+            $this->settings[$key] = $val;
+        }
+    }
+
+    public function save()
+    {
+        update_option(self::KEY, $this->settings);
+
+        return $this;
+    }
+
+    public function clear()
+    {
+        delete_option(self::KEY, $this->settings);
+    }
+
     public function getCurrency()
     {
         return empty($this->settings['pay_currency']) ? 'USD' : $this->settings['pay_currency'];
@@ -28,5 +49,27 @@ class SLN_Settings
     public function getInterval()
     {
         return isset($this->settings['interval']) ? $this->settings['interval'] : 15;
+    }
+
+    public function getNoticesDisabled()
+    {
+        return isset($this->settings['notices_disabled']) ? $this->settings['notices_disabled'] : false;
+    }
+
+    public function setNoticesDisabled($val)
+    {
+        $this->settings['notices_disabled'] = $val;
+
+        return $this;
+    }
+
+    public function isPaypalTest()
+    {
+        return $this->settings['pay_paypal_test'] ? true : false;
+    }
+
+    public function getPaypalEmail()
+    {
+        return $this->settings['pay_paypal_email'];
     }
 }

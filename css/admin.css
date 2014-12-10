@@ -1,0 +1,35 @@
+.sln_meta_field {
+    display: block;
+}
+
+.sln-col-x4 {
+    float: left;
+    width: 25%;
+}
+
+.sln-col-x2 {
+    float: left;
+    width: 50%;
+}
+
+.sln-col-x4 input[type="text"],
+.sln-col-x4 select {
+    width: 100px;
+}
+
+.sln-date select {
+    width: auto
+}
+
+.sln-clear {
+    display: block;
+    clear: both;
+    height: 1px;
+    width: 100%;
+}
+
+#sln-availabilities div.item{
+    border: 1px solid #dfdfdf;
+    padding: 10px;
+    margin: 2px;
+}

@@ -25,9 +25,8 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_service_duration', get_post_meta($post_id, '_sln_service_duration', true));
-        $ret     = !empty($ret) ? floatval($ret) : '';
-
-        return $ret;
+        $ret     = SLN_Func::filter($ret, 'time');
+        return new \DateTime('1970-01-01 '.$ret);
     }
 
 
@@ -73,5 +72,13 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         $ret     = SLN_Func::filter($ret, 'time');
 
         return new \DateTime('1970-01-01 '.$ret);
+    }
+
+    public function getName(){
+        return $this->object->post_title;
+    }
+
+    public function getContent(){
+        return $this->object->post_excerpt;
     }
 }

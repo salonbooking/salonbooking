@@ -22,7 +22,7 @@ return array(
         'available_to'        => '18:00',
         'pay_currency'        => 'USD',
         'pay_paypal_email'    => 'test@test.com',
-        'pay_paypal_api_key'  => 'TEST',
+        'pay_paypal_test'    => true,
         'confirmation'        => true,
         'pay_enabled'         => true,
         'pay_cash'            => true
@@ -31,7 +31,7 @@ return array(
         array(
             'post' => array(
                 'post_title'   => 'Manicure',
-                'post_content' => 'manicure',
+                'post_excerpt' => 'manicure',
                 'post_status'  => 'publish',
                 'post_type'    => 'sln_service'
             ),
@@ -43,7 +43,7 @@ return array(
         array(
             'post' => array(
                 'post_title'   => 'Nails styling',
-                'post_content' => 'nails styling',
+                'post_excerpt' => 'nails styling',
                 'post_status'  => 'publish',
                 'post_type'    => 'sln_service',
             ),
@@ -59,7 +59,7 @@ return array(
         array(
             'post' => array(
                 'post_title'   => 'Massage',
-                'post_content' => 'massage',
+                'post_excerpt' => 'massage',
                 'post_status'  => 'publish',
                 'post_type'    => 'sln_service',
             ),
@@ -75,7 +75,7 @@ return array(
         'booking' => array(
             'post' => array(
                 'post_title'   => 'Booking',
-                'post_content' => '[saloon]',
+                'post_content' => '[saloon/]',
                 'post_status'  => 'publish',
                 'post_type'    => 'page',
                 'comment_status' => 'closed',
@@ -86,7 +86,7 @@ return array(
         'thankyou' => array(
             'post' => array(
                 'post_title'   => 'Thank you for booking',
-                'post_content' => '[saloon]',
+                'post_excerpt' => 'thank you',
                 'post_status'  => 'publish',
                 'post_type'    => 'page',
                 'comment_status' => 'closed',

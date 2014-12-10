@@ -21,7 +21,7 @@ class SLN_Form
         $maxItems = isset($settings['maxItems']) ?
             $settings['maxItems'] : 1440;
         do {
-            $items[] = date("H:i", $curr) . "\n";
+            $items[] = date("H:i", $curr);
             $curr    = strtotime('+' . $interval . ' minutes', $curr);
             $maxItems--;
         } while (date("H:i", $curr) != $start && $maxItems > 0);
@@ -36,7 +36,7 @@ class SLN_Form
         echo "<span class=\"sln-date\">";
         self::fieldNumeric($name . '[day]', $value->format('d'), array('min' => 1, 'max' => 31));
         self::fieldSelect($name . '[month]', SLN_Func::getMonths(), $value->format('m'), null, true);
-        self::fieldSelect($name . '[year]', SLN_Func::getYears(), $value->format('y'));
+        self::fieldSelect($name . '[year]', SLN_Func::getYears(), $value->format('Y'));
         echo "</span>";
     }
 
@@ -55,12 +55,15 @@ class SLN_Form
 
     static public function fieldSelect($name, $items, $value, $settings = array(), $map = false)
     {
+        if (isset($settings['map'])) {
+            $map = $settings['map'];
+        }
         ?>
         <select name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" <?php echo self::attrs($settings) ?>>
             <?php
             foreach ($items as $key => $label) {
                 $key      = $map ? $key : $label;
-                $selected = $key == $value ? '"selected="selected"' : '';
+                $selected = $key == $value ? 'selected="selected"' : '';
                 ?>
                 <option value="<?php echo esc_attr($key) ?>" <?php echo $selected ?>><?php echo $label ?></option>
             <?php

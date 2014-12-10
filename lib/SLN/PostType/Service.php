@@ -2,10 +2,59 @@
 
 class SLN_PostType_Service extends SLN_PostType_Abstract
 {
-    function init()
+
+    public function enter_title_here($title, $post)
     {
 
-        $args = array(
+        if ($this->getPostType() === $post->post_type) {
+            $title = __('Enter service name', 'sln');
+        }
+
+        return $title;
+    }
+
+    public function updated_messages($messages)
+    {
+        global $post, $post_ID;
+
+        $messages[$this->getPostType()] = array(
+            0  => '', // Unused. Messages start at index 1.
+            1  => sprintf(
+                __('Service updated.', 'sln')
+            ),
+            2  => '',
+            3  => '',
+            4  => __('Service updated.', 'sln'),
+            5  => isset($_GET['revision']) ? sprintf(
+                __('Service restored to revision from %s', 'sln'),
+                wp_post_revision_title((int)$_GET['revision'], false)
+            ) : false,
+            6  => sprintf(
+                __('Service published.', 'sln')
+            ),
+            7  => __('Service saved.', 'sln'),
+            8  => sprintf(
+                __('Service submitted.', 'sln')
+            ),
+            9  => sprintf(
+                __(
+                    'Service scheduled for: <strong>%1$s</strong>. ',
+                    'sln'
+                ),
+                date_i18n(__('M j, Y @ G:i', 'restaurant'), strtotime($post->post_date))
+            ),
+            10 => sprintf(
+                __('Service draft updated.', 'sln')
+            ),
+        );
+
+
+        return $messages;
+    }
+
+    protected function getPostTypeArgs()
+    {
+        return array(
             'public'              => true,
             'publicly_queryable'  => true,
             'exclude_from_search' => true,
@@ -34,60 +83,5 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
                 'archive_title'      => __('Services Archive', 'sln'),
             )
         );
-        register_post_type('sln_service', $args);
-    }
-
-    function enter_title_here($title, $post)
-    {
-
-        if ('sln_service' === $post->post_type) {
-            $title = __('Enter service name', 'sln');
-        }
-
-        return $title;
-    }
-
-    function updated_messages($messages)
-    {
-        global $post, $post_ID;
-
-        $messages['sln_service'] = array(
-            0  => '', // Unused. Messages start at index 1.
-            1  => sprintf(
-                __('Service updated. <a href="%s">View service</a>', 'sln'),
-                esc_url(get_permalink($post_ID))
-            ),
-            2  => '',
-            3  => '',
-            4  => __('Service updated.', 'sln'),
-            5  => isset($_GET['revision']) ? sprintf(
-                __('Service restored to revision from %s', 'sln'),
-                wp_post_revision_title((int)$_GET['revision'], false)
-            ) : false,
-            6  => sprintf(
-                __('Service published. <a href="%s">View service</a>', 'sln'),
-                esc_url(get_permalink($post_ID))
-            ),
-            7  => __('Service saved.', 'sln'),
-            8  => sprintf(
-                __('Service submitted. <a target="_blank" href="%s">Preview service</a>', 'sln'),
-                esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))
-            ),
-            9  => sprintf(
-                __(
-                    'Service scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview service</a>',
-                    'sln'
-                ),
-                date_i18n(__('M j, Y @ G:i', 'restaurant'), strtotime($post->post_date)),
-                esc_url(get_permalink($post_ID))
-            ),
-            10 => sprintf(
-                __('Service draft updated. <a target="_blank" href="%s">Preview service</a>', 'sln'),
-                esc_url(add_query_arg('preview', 'true', get_permalink($post_ID)))
-            ),
-        );
-
-
-        return $messages;
     }
 }

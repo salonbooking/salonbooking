@@ -2,16 +2,29 @@
 
 abstract class SLN_PostType_Abstract
 {
-    public function __construct()
+    private $postType;
+    private $plugin;
+
+    public function __construct($plugin, $postType)
     {
+        $this->plugin   = $plugin;
+        $this->postType = $postType;
         add_action('init', array($this, 'init'));
-        add_filter('post_updated_messages', array($this, 'post_updated_messages'));
-        add_filter('enter_title_here', 'enter_title_here', 10, 2);
+        add_filter('post_updated_messages', array($this, 'updated_messages'));
+        add_filter('enter_title_here', array($this,'enter_title_here'), 10, 2);
     }
 
-    abstract public function init();
+    public function init()
+    {
+        register_post_type($this->getPostType(), $this->getPostTypeArgs());
+    }
 
+    abstract protected function getPostTypeArgs();
     abstract public function enter_title_here($title, $post);
-
     abstract public function updated_messages($messages);
+
+    public function getPostType()
+    {
+        return $this->postType;
+    }
 }

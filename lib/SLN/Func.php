@@ -48,13 +48,14 @@ class SLN_Func
         }
         if ($filter == 'int') {
             return intval($filter);
+        } elseif ($filter == 'money') {
+            return number_format(floatval(str_replace(',', '.', $val)), 2);
         } elseif ($filter == 'float') {
             return floatval(str_replace(',', '.', $val));
         } elseif ($filter == 'time') {
             if ($val instanceof \DateTime) {
                 $val = $val->format('H:i');
             }
-
             if (empty($val)) {
                 return null;
             }
@@ -64,11 +65,48 @@ class SLN_Func
 
             return date('H:i', strtotime('1970-01-01 ' . $val));
         } elseif ($filter == 'date') {
+            if (is_array($val)) {
+                $val = $val['year'] . '-' . $val['month'] . '-' . $val['day'];
+            }
             return date('Y-m-d', strtotime($val));
         } elseif ($filter == 'bool') {
             return $val ? true : false;
+        } elseif ($filter == 'set') {
+            $ret = array();
+            if (!is_array($val)) {
+                return $ret;
+            }
+            foreach ($val as $k => $v) {
+                if ($v) {
+                    $ret[] = $k;
+                }
+            }
+
+            return $ret;
         } else {
             return $val;
         }
     }
+
+    static function addUrlParam($url, $k, $v)
+    {
+        return $url . (strpos($url, '?') === false ? '?' : '&') . http_build_query(array($k => $v));
+    }
+
+    static function currPageUrl()
+    {
+        $pageURL = 'http';
+        if ($_SERVER["HTTPS"] == "on") {
+            $pageURL .= "s";
+        }
+        $pageURL .= "://";
+        if ($_SERVER["SERVER_PORT"] != "80") {
+            $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+        } else {
+            $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+        }
+
+        return $pageURL;
+    }
+
 }
