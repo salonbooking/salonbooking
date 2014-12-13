@@ -32,7 +32,7 @@ class SLN_Func
             $min = date('Y') - 1;
         }
         if (!isset($max)) {
-            $max = $min + 1;
+            $max = $min + 2;
         }
         for ($i = $min; $i <= $max; $i++) {
             $ret[$i] = $i;

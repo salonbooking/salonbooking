@@ -28,8 +28,10 @@ abstract class SLN_Shortcode_Saloon_Step
         $step = $this->getStep();
 
         return array(
-            'formAction' => add_query_arg(array('sln_step_page' => $step)),
-            'submitName' => 'submit_' . $step
+            'formAction'     => add_query_arg(array('sln_step_page' => $step)),
+            'formAction'     => add_query_arg(array('sln_step_page' => $step)),
+            'submitName'     => 'submit_' . $step,
+            'step'           => $this
         );
     }
 

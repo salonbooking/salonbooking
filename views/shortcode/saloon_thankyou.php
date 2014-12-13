@@ -6,6 +6,3 @@
  */
 ?>
 <h1>Thank you</h1>
-<form method="post" action="<?php echo $formAction ?>">
-    <input type="submit" name="<?php echo $submitName ?>" value="Next"/>
-</form>

@@ -50,6 +50,7 @@ class SLN_Plugin
             wp_enqueue_style('saloon', SLN_PLUGIN_URL . '/css/admin.css', array(), SLN_VERSION, 'all');
         } else {
             wp_enqueue_style('saloon', SLN_PLUGIN_URL . '/css/saloon.css', array(), SLN_VERSION, 'all');
+            wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
             wp_enqueue_script('saloon', SLN_PLUGIN_URL . '/js/saloon.js', array('jquery'), '20140711', true);
         }
         SLN_Shortcode_Saloon::init($this);
@@ -74,6 +75,11 @@ class SLN_Plugin
     public function createBooking($booking)
     {
         return new SLN_Wrapper_Booking($booking);
+    }
+
+    public function getBookingBuilder()
+    {
+        return new SLN_Wrapper_Booking_Builder($this);
     }
 
     /**

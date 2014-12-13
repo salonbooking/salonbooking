@@ -90,7 +90,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                     'Booking scheduled for: <strong>%1$s</strong>.',
                     'sln'
                 ),
-                date_i18n(__('M j, Y @ G:i', 'restaurant'), strtotime($post->post_date))
+                date_i18n(__('M j, Y @ G:i', 'sln'), strtotime($post->post_date))
             ),
             10 => sprintf(
                 __('Booking draft updated.', 'sln')

@@ -33,10 +33,14 @@ class SLN_Form
         if (!($value instanceof \DateTime)) {
             $value = new \Datetime($value);
         }
+        $y     = $value->format('Y');
+        $currY = date('Y');
+        $m     = $value->format('m');
+        $d     = $value->format('d');
         echo "<span class=\"sln-date\">";
-        self::fieldNumeric($name . '[day]', $value->format('d'), array('min' => 1, 'max' => 31));
-        self::fieldSelect($name . '[month]', SLN_Func::getMonths(), $value->format('m'), null, true);
-        self::fieldSelect($name . '[year]', SLN_Func::getYears(), $value->format('Y'));
+        self::fieldNumeric($name . '[day]', $d, array('min' => 1, 'max' => 31));
+        self::fieldSelect($name . '[month]', SLN_Func::getMonths(), $m, null, true);
+        self::fieldSelect($name . '[year]', SLN_Func::getYears($y < $currY ? $y : $currY - 1), $y);
         echo "</span>";
     }
 
@@ -81,15 +85,30 @@ class SLN_Form
     <?php
     }
 
-    static public function fieldText($name, $value = false)
+    static public function fieldText($name, $value = false, $settings = array())
     {
+        if (!isset($settings['required'])) {
+            $settings['required'] = false;
+        }
         ?>
-        <input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>"
-               value="<?php echo esc_attr($value) ?>"/>
+        <input type="text" class="form-control" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>"
+               value="<?php echo esc_attr($value) ?>" <?php echo self::attrs($settings) ?>/>
     <?php
     }
 
-    static private function makeID($val)
+    static public function fieldTextarea($name, $value = false, $settings = array())
+    {
+        if (!isset($settings['required'])) {
+            $settings['required'] = false;
+        }
+        ?>
+        <textarea class="form-control" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>">
+        <?php echo esc_attr($value) ?>" <?php echo self::attrs($settings) ?>
+        </textarea>
+    <?php
+    }
+
+    static public function makeID($val)
     {
         return str_replace('[', '_', str_replace(']', '', $val));
     }
@@ -97,9 +116,13 @@ class SLN_Form
     static private function attrs($settings)
     {
         if (is_array($settings)) {
-            return (string)isset($settings['attrs']) ? $settings['attrs'] : '';
+            $ret = (isset($settings['required']) && $settings['required']) ?
+                'required="required" ' : '';
+            $ret .= (string)isset($settings['attrs']) ? $settings['attrs'] : '';
+            return $ret;
         } elseif (is_string($settings)) {
-            return $settings;
+            return  $settings;
         }
+
     }
 }

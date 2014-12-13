@@ -2,6 +2,9 @@
 
 class SLN_Shortcode_Saloon
 {
+    const STEP_KEY = 'sln_step_page';
+    const STEP_DEFAULT = 'date';
+
     private $plugin;
     private $attrs;
 
@@ -60,12 +63,12 @@ class SLN_Shortcode_Saloon
 
     protected function render($content)
     {
-        return '<div id="sln-saloon">' . $content . '</div>';
+        return $this->plugin->loadView('shortcode/saloon', compact('content'));
     }
 
 
     private function getCurrentStep()
     {
-        return isset($_GET['sln_step_page']) ? $_GET['sln_step_page'] : 'date';
+        return isset($_GET[self::STEP_KEY]) ? $_GET[self::STEP_KEY] : self::STEP_DEFAULT;
     }
 }
