@@ -102,4 +102,12 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         return $this->object->post_title;
     }
+
+    function getNote()
+    {
+        $post_id = $this->getId();
+
+        return apply_filters('sln_booking_note', get_post_meta($post_id, '_sln_booking_note', true));
+    }
+
 }
