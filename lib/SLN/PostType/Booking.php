@@ -5,7 +5,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
     public function init()
     {
         parent::init();
-        add_filter('wp_insert_post_data', array($this, 'insert_post_data'), '99', 2);
+//        add_filter('wp_insert_post_data', array($this, 'insert_post_data'), '99', 2);
 
         if (is_admin()) {
             add_action('manage_' . $this->getPostType() . '_posts_custom_column', array($this, 'manage_column'), 10, 2);
@@ -13,42 +13,46 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
         }
     }
 
-    public function insert_post_data($data, $postarr)
-    {
-        if ($data['post_type'] == $this->getPostType()) {
-            $data['post_title'] = 'Booking #' . $postarr['ID'];
-        }
-
-        return $data;
-    }
+//    public function insert_post_data($data, $postarr)
+//    {
+//        if ($data['post_type'] == $this->getPostType()) {
+//            $data['post_title'] = 'Booking #' . $postarr['ID'];
+//        }
+//
+//        return $data;
+//    }
 
     public function manage_columns($columns)
     {
-
-        return array_merge(
-            $columns,
-            array(
-                'booking_status' => __('Status', 'sln'),
-                'booking_date'   => __('Booking Date', 'sln'),
-                'booking_price'   => __('Booking Price', 'sln'),
-                'date'           => __('Created At', 'sln')
-            )
+        return array(
+            'cb'             => $columns['cb'],
+            'ID'             => '#',
+            'title'          => $columns['title'],
+            'date'           => $columns['date'],
+            'booking_status' => __('Status', 'sln'),
+            'booking_date'   => __('Booking Date', 'sln'),
+            'booking_price'  => __('Booking Price', 'sln'),
+            'date'           => __('Created At', 'sln')
         );
     }
 
     public function manage_column($column, $post_id)
     {
         switch ($column) {
+            case 'ID' :
+                echo $post_id;
+                break;
             case 'booking_status' :
                 echo SLN_Enum_BookingStatus::getLabel(get_post_meta($post_id, '_sln_booking_status', true));
                 break;
             case 'booking_date':
-                $date = get_post_meta($post_id, '_sln_booking_date', true) . ' '
-                    . get_post_meta($post_id, '_sln_booking_time', true);
-                echo date_i18n(__('M j, Y @ G:i', 'restaurant'), strtotime($date));
+                echo $this->getPlugin()->format()->datetime(
+                    get_post_meta($post_id, '_sln_booking_date', true)
+                    . ' ' . get_post_meta($post_id, '_sln_booking_time', true)
+                );
                 break;
             case 'booking_price' :
-                echo number_format(get_post_meta($post_id, '_sln_booking_amount', true), 2);
+                echo $this->getPlugin()->format()->money(get_post_meta($post_id, '_sln_booking_amount', true));
                 break;
         }
     }

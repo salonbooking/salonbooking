@@ -33,15 +33,41 @@ class SLN_Form
         if (!($value instanceof \DateTime)) {
             $value = new \Datetime($value);
         }
-        $y     = $value->format('Y');
-        $currY = date('Y');
-        $m     = $value->format('m');
-        $d     = $value->format('d');
         echo "<span class=\"sln-date\">";
-        self::fieldNumeric($name . '[day]', $d, array('min' => 1, 'max' => 31));
-        self::fieldSelect($name . '[month]', SLN_Func::getMonths(), $m, null, true);
-        self::fieldSelect($name . '[year]', SLN_Func::getYears($y < $currY ? $y : $currY - 1), $y);
+        self::fieldDay($name . '[day]', $value, $settings);
+        self::fieldMonth($name . '[month]', $value, $settings);
+        self::fieldYear($name . '[day]', $value, $settings);
         echo "</span>";
+    }
+
+    static public function fieldDay($name, $value, $settings = array())
+    {
+        if ($value instanceof \DateTime) {
+            $value = $value->format('d');
+        }
+        self::fieldNumeric($name, $value, array_merge($settings, array('min' => 1, 'max' => 31)));
+    }
+
+    static public function fieldMonth($name, $value, $settings = array())
+    {
+        if ($value instanceof \DateTime) {
+            $value = $value->format('m');
+        }
+        self::fieldSelect($name, SLN_Func::getMonths(), $value, $settings, true);
+    }
+
+    static public function fieldYear($name, $value, $settings = array())
+    {
+        if ($value instanceof \DateTime) {
+            $value = $value->format('Y');
+        }
+        $currY = date('Y');
+        self::fieldSelect(
+            $name,
+            SLN_Func::getYears($value < $currY ? $value : $currY - 1),
+            $value,
+            $settings
+        );
     }
 
     static public function fieldNumeric($name, $value = null, $settings = array())
@@ -62,6 +88,7 @@ class SLN_Form
         if (isset($settings['map'])) {
             $map = $settings['map'];
         }
+        $settings['attrs']['class'] = "form-control";
         ?>
         <select name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" <?php echo self::attrs($settings) ?>>
             <?php
@@ -90,8 +117,9 @@ class SLN_Form
         if (!isset($settings['required'])) {
             $settings['required'] = false;
         }
+        $settings['attrs']['class'] = "form-control";
         ?>
-        <input type="text" class="form-control" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>"
+        <input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>"
                value="<?php echo esc_attr($value) ?>" <?php echo self::attrs($settings) ?>/>
     <?php
     }
@@ -101,10 +129,9 @@ class SLN_Form
         if (!isset($settings['required'])) {
             $settings['required'] = false;
         }
+        $settings['attrs']['class'] = "form-control";
         ?>
-        <textarea class="form-control" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>">
-        <?php echo esc_attr($value) ?>" <?php echo self::attrs($settings) ?>
-        </textarea>
+        <textarea name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" <?php echo self::attrs($settings) ?>><?php echo esc_attr($value) ?></textarea>
     <?php
     }
 
@@ -118,10 +145,17 @@ class SLN_Form
         if (is_array($settings)) {
             $ret = (isset($settings['required']) && $settings['required']) ?
                 'required="required" ' : '';
-            $ret .= (string)isset($settings['attrs']) ? $settings['attrs'] : '';
+            if (is_array($settings['attrs'])) {
+                foreach ($settings['attrs'] as $k => $v) {
+                    $ret .= " $k=\"$v\"";
+                }
+            } else {
+                $ret .= (string)isset($settings['attrs']) ? $settings['attrs'] : '';
+            }
+
             return $ret;
         } elseif (is_string($settings)) {
-            return  $settings;
+            return $settings;
         }
 
     }

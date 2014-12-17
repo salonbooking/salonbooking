@@ -9,6 +9,7 @@ class SLN_Plugin
     private static $instance;
     private $settings;
     private $services;
+    private $formatter;
 
     public static function getInstance()
     {
@@ -30,6 +31,7 @@ class SLN_Plugin
     private function init()
     {
         add_action('init', array($this, 'action_init'));
+        add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         register_activation_hook(__FILE__, array('SLN_Action_Install', 'execute'));
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
         new SLN_PostType_Booking($this, self::POST_TYPE_BOOKING);
@@ -46,16 +48,16 @@ class SLN_Plugin
     public function action_init()
     {
         load_plugin_textdomain(self::TEXT_DOMAIN, false, '/saloon/languages');
-        if (is_admin()) {
-            wp_enqueue_script('saloon', SLN_PLUGIN_URL . '/js/admin.js', array('jquery'), '20140711', true);
-            wp_enqueue_style('saloon', SLN_PLUGIN_URL . '/css/admin.css', array(), SLN_VERSION, 'all');
-        } else {
-            wp_enqueue_style('saloon', SLN_PLUGIN_URL . '/css/saloon.css', array(), SLN_VERSION, 'all');
-            wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
-            wp_enqueue_script('saloon', SLN_PLUGIN_URL . '/js/saloon.js', array('jquery'), '20140711', true);
-        }
+        wp_enqueue_style('saloon', SLN_PLUGIN_URL . '/css/saloon.css', array(), SLN_VERSION, 'all');
+        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
+        wp_enqueue_script('saloon', SLN_PLUGIN_URL . '/js/saloon.js', array('jquery'), '20140711', true);
         SLN_Shortcode_Saloon::init($this);
+    }
 
+    public function admin_enqueue_scripts()
+    {
+        wp_enqueue_script('saloon-admin-js', SLN_PLUGIN_URL . '/js/admin.js', array('jquery'), '20140711', true);
+        wp_enqueue_style('saloon-admin-css', SLN_PLUGIN_URL . '/css/admin.css', array(), SLN_VERSION, 'all');
     }
 
     /** @return SLN_Settings */
@@ -138,5 +140,17 @@ class SLN_Plugin
         include $this->getViewFile($view);
 
         return ob_get_clean();
+    }
+
+    /**
+     * @return SLN_Formatter
+     */
+    public function format()
+    {
+        if (!isset($this->formatter)) {
+            $this->formatter = new SLN_Formatter($this);
+        }
+
+        return $this->formatter;
     }
 }

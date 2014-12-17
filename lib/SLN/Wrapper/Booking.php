@@ -78,5 +78,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return empty($ret) ? SLN_Enum_BookingStatus::PENDING : $ret;
     }
 
-
+    function getTitle(){
+        return $this->object->post_title;
+    }
 }

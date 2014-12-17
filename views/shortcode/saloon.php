@@ -13,11 +13,16 @@ $labels = array(
 );
 ?>
 <div id="sln-saloon">
-    <ul class="saloon-bar list-inline">
+    <div>
+    <h1>Make a booking <i class="glyphicon glyphicon-calendar"></i></h1>
+    <ul class="saloon-bar nav nav-pills nav-justified thumbnail">
         <?php $i = 0;
         foreach ($saloon->getSteps() as $step) : $i++; ?>
-            <li><?php echo $i ?>. <?php echo $labels[$step] ?></li>
+            <li <?php echo $step == $saloon->getCurrentStep() ? 'class="active"' : ''?>>
+                <?php echo $i ?>. <?php echo $labels[$step] ?>
+            </li>
         <?php endforeach ?>
     </ul>
     <?php echo $content ?>
+    </div>
 </div>

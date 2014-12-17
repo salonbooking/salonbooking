@@ -7,27 +7,10 @@
  */
 $bb = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
+$services = $step->getServices();
 ?>
 <h1>Something more?</h1>
 <form id="saloon-step-secondary" method="post" action="<?php echo $formAction ?>" role="form">
-    <?php foreach($step->getServices() as $service) : ?>
-        <label>
-            <?php SLN_Form::fieldCheckbox(
-                'sln[services][' . $service->getId() . ']',
-                $bb->hasService($service)
-            ) ?>
-            <strong><?php echo $service->getName(); ?></strong>
-            <?php echo $service->getDuration()->format('H:i') ?>
-            <?php echo $service->getPrice() ? (number_format($service->getPrice(),2) . $currencySymbol) : 'free' ?>
-            <br/>
-            <?php echo $service->getContent() ?>
-        </label><br/>
-    <?php endforeach ?>
-    <div class="services-total">
-        <span id="services-total"></span>
-    </div>
-    <button type="submit" class="btn btn-success" name="<?php echo $submitName ?>" value="next">
-        Next
-    </button>
-    <a class="btn btn-danger" href="<?php echo $backUrl ?> ">Back</a>
+    <?php include "_services.php"; ?>
+    <?php include "_form_actions.php" ?>
 </form>

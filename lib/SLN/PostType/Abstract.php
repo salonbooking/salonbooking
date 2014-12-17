@@ -5,7 +5,7 @@ abstract class SLN_PostType_Abstract
     private $postType;
     private $plugin;
 
-    public function __construct($plugin, $postType)
+    public function __construct(SLN_Plugin $plugin, $postType)
     {
         $this->plugin   = $plugin;
         $this->postType = $postType;
@@ -26,5 +26,12 @@ abstract class SLN_PostType_Abstract
     public function getPostType()
     {
         return $this->postType;
+    }
+
+    /**
+     * @return SLN_Plugin
+     */
+    protected function getPlugin(){
+        return $this->plugin;
     }
 }

@@ -1,3 +1,90 @@
-.saloon-step-services{
+#sln-saloon .saloon-step-services {
     border: 2px solid red;
+}
+
+#sln-saloon .service-checkbox input {
+    min-width: 16px !important;
+    min-height: 16px !important;
+}
+
+#sln-saloon .service-description,
+#sln-saloon .service-duration{
+    font-size: 12px;
+    display: block;
+    clear: both;
+}
+
+/** box gradient **/
+#sln-saloon {
+    background: rgb(252, 255, 244); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(252, 255, 244, 1) 0%, rgba(223, 229, 215, 1) 40%, rgba(179, 190, 173, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(252, 255, 244, 1)), color-stop(40%, rgba(223, 229, 215, 1)), color-stop(100%, rgba(179, 190, 173, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(252, 255, 244, 1) 0%, rgba(223, 229, 215, 1) 40%, rgba(179, 190, 173, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(252, 255, 244, 1) 0%, rgba(223, 229, 215, 1) 40%, rgba(179, 190, 173, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(252, 255, 244, 1) 0%, rgba(223, 229, 215, 1) 40%, rgba(179, 190, 173, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(252, 255, 244, 1) 0%, rgba(223, 229, 215, 1) 40%, rgba(179, 190, 173, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfff4', endColorstr='#b3bead', GradientType=0); /* IE6-9 */
+}
+
+#sln-saloon {
+    border: 1px solid #ddd;
+    padding: 0;
+}
+#sln-saloon > div{
+    border: 1px solid #fff;
+    padding: 10px;
+}
+#sln-saloon h1 {
+    text-align: center;
+}
+
+#sln-saloon .form-actions{
+    margin-top: 10px;
+}
+#sln-saloon .form-actions a,
+#sln-saloon .form-actions a:hover,
+#sln-saloon .form-actions button
+{
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#sln-saloon .row-total{
+    font-weight: bold;
+}
+.saloon-bar {
+    margin: 0;
+    font-size: 10px;
+}
+.saloon-bar li{
+    background-color: #f0f0f0;
+    text-transform: uppercase;
+    border-radius: 3px;
+    text-align: center;
+}
+.saloon-bar li.active{
+    background-color: #ccc;
+    text-transform: uppercase;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.sln-step-num{
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    float: right;
+    margin-right: -20px;
+    color: #999
+}
+.sln-step-num > span {
+    color: #333;
+}
+.sln-separator {
+    height: 1px;
+    border-top: 1px dashed #666;
+    margin: 20px auto;
+    width: 80%;
+    clear: both;
 }

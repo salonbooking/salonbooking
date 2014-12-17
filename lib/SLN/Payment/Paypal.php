@@ -59,18 +59,18 @@ class SLN_Payment_Paypal
     }
 
 
-    public function getUrl($amount, $title)
+    public function getUrl($id, $amount, $title)
     {
         $settings = $this->plugin->getSettings();
-        echo $this->getBaseUrl($this->plugin->isPaypalTest()) . "?"
+        return $this->getBaseUrl($this->plugin->getSettings()->isPaypalTest()) . "?"
             . http_build_query(
                 array(
-                    'notify_url'    => SLN_Func::addUrlParam(SLN_Func::currPageUrl(), 'op', 'notify'),
-                    'return'        => SLN_Func::addUrlParam(SLN_Func::currPageUrl(), 'op', 'success'),
-                    'cancel_return' => SLN_Func::addUrlParam(SLN_Func::currPageUrl(), 'op', 'cancel'),
+                    'notify_url'    => SLN_Func::addUrlParam(SLN_Func::currPageUrl(), 'op', 'notify-' . $id),
+                    'return'        => SLN_Func::addUrlParam(SLN_Func::currPageUrl(), 'op', 'success-' . $id),
+                    'cancel_return' => SLN_Func::addUrlParam(SLN_Func::currPageUrl(), 'op', 'cancel-' . $id),
                     'cmd'           => '_xclick',
                     'business'      => $settings->getPaypalEmail(),
-                    'currency_code' => $settings->getPaypalCurrency(),
+                    'currency_code' => $settings->getCurrency(),
                     'amount'        => $amount,
                     'item_name'     => $title
                 )

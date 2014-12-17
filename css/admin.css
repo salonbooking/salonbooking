@@ -28,8 +28,34 @@
     width: 100%;
 }
 
-#sln-availabilities div.item{
+#sln-availabilities div.item {
     border: 1px solid #dfdfdf;
     padding: 10px;
     margin: 2px;
+}
+
+.sln-tab {
+    border: 1px solid #ccc;
+    border-top-width: 0;
+    background: #f1f1f1;
+    padding: 30px;
+}
+
+.sln-tab .form-group label input {
+    display: inline-block;
+    margin-top: -3px
+}
+
+.sln-separator {
+    height: 1px;
+    border-top: 1px dashed #666;
+    margin: 20px auto;
+    width: 80%;
+    clear: both;
+}
+.sln-separator-vertical {
+    height: 30px;
+    width: 1px;
+    border-left: 1px dashed #666;
+    margin: 0 auto;
 }

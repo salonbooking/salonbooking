@@ -8,24 +8,40 @@
 $bb             = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
 ?>
-<h1>Summary</h1>
+<h2><?php _e('Summary', 'sln') ?></h2>
 <form method="post" action="<?php echo $formAction ?>" role="form">
-    Dear <?php $bb->get('firstname') . ' ' . $bb->get('lastname'); ?><br/>
-    You have booked:
-    <ul>
-        <?php foreach ($bb->getServices() as $service): ?>
-            <li>
-                <?php echo $service->getName() ?> -
-                <?php echo $service->getPrice() ? (number_format($service->getPrice(),2) . $currencySymbol) : 'free' ?>
-            </li>
-        <?php endforeach ?>
-    </ul>
-    <h2>Total: <?php echo number_format($service->getPrice(), 2) . $currencySymbol ?></h2>
-    <em>for <?php echo date_i18n(__('M j, Y @ G:i', 'sln'), strtotime($bb->getDate() . ' ' . $bb->getTime())); ?></em>
+    <?php _e('Dear', 'sln') ?> <?php echo esc_attr($bb->get('firstname')) . ' ' . esc_attr($bb->get('lastname')); ?>
+    <br/>
+    <?php _e('You have booked:', 'sln') ?>
+    <?php foreach ($bb->getServices() as $service): ?>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
+                <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
+                    <strong class="service-name"><?php echo $service->getName(); ?></strong>
+                    <span class="service-description"><?php echo $service->getContent() ?></span>
+                    <span class="service-duration">Duration: <?php echo $service->getDuration()->format('H:i') ?></span>
+                </label>
+            </div>
+            <div class="col-md-3">
+                <?php echo $plugin->format()->money($service->getPrice()) ?>
+            </div>
+        </div>
+    <?php endforeach ?>
+
+    <h2><?php _e('Total:', 'sln') ?> <?php echo $plugin->format()->money(
+            $plugin->getBookingBuilder()->getTotal()
+        ) ?></h2>
+    <em>for <?php echo $plugin->format()->datetime($bb->getDateTime()); ?></em>
+
     <div class="form-group">
-        <label>Do you have a message for us?</label>
-        <?php SLN_Form::fieldTextarea('sln[note]', $bb->get('note')); ?>
+        <label><?php _e('Do you have a message for us?', 'sln') ?></label>
+        <?php SLN_Form::fieldTextarea(
+            'sln[note]',
+            $bb->get('note'),
+            array('attrs' => array('placeholder' => __('Leave a message', 'sln')))
+        ); ?>
     </div>
-    <button type="submit" class="btn btn-success" name="<?php echo $submitName ?>" value="next">End</button>
-    <a class="btn btn-danger" href="<?php echo $backUrl ?> ">Back</a>
+    <?php $nextLabel = __('Finalize', 'sln');
+    include "_form_actions.php" ?>
 </form>

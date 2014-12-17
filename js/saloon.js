@@ -1,13 +1,34 @@
-$(function () {
-    if ($('#saloon-step-services').length || $('#saloon-step-services').length) {
-        $('.service-items input[type="checkbox"]').click(function () {
-            var tot = 0;
-            $('.service-items input[type="checkbox"]').each(function () {
-                if ($(this).is(':checked')) {
-                    tot += $(this).data('price');
-                }
-            });
-            $('#services-total').text(tot);
-        });
+Number.prototype.formatMoney = function (c, d, t) {
+    var n = this,
+        c = isNaN(c = Math.abs(c)) ? 2 : c,
+        d = d == undefined ? "." : d,
+        t = t == undefined ? "," : t,
+        s = n < 0 ? "-" : "",
+        i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+        j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+};
+
+jQuery(function ($) {
+    if ($('#saloon-step-services').length || $('#saloon-step-secondary').length) {
+        sln_serviceTotal($);
     }
 });
+
+function sln_serviceTotal($) {
+    var $checkboxes = $('.sln-service-list input[type="checkbox"]');
+    var $totalbox = $('#services-total');
+    function evalTot(){
+        var tot = 0;
+        $checkboxes.each(function () {
+            if ($(this).is(':checked')) {
+                tot += $(this).data('price');
+            }
+        });
+        $totalbox.text(tot.formatMoney(2) + $totalbox.data('symbol'));
+    }
+    $checkboxes.click(function () {
+        evalTot();
+    });
+    evalTot();
+}

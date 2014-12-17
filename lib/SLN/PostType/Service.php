@@ -2,6 +2,43 @@
 
 class SLN_PostType_Service extends SLN_PostType_Abstract
 {
+    public function init()
+    {
+        parent::init();
+
+        if (is_admin()) {
+            add_action('manage_' . $this->getPostType() . '_posts_custom_column', array($this, 'manage_column'), 10, 2);
+            add_filter('manage_' . $this->getPostType() . '_posts_columns', array($this, 'manage_columns'));
+        }
+    }
+
+    public function manage_columns($columns)
+    {
+
+        return array_merge(
+            $columns,
+            array(
+                'service_duration' => __('Duration', 'sln'),
+                'service_price'    => __('Price', 'sln')
+            )
+        );
+    }
+
+    public function manage_column($column, $post_id)
+    {
+        switch ($column) {
+            case 'booking_status' :
+                echo SLN_Enum_BookingStatus::getLabel(get_post_meta($post_id, '_sln_booking_status', true));
+                break;
+            case 'service_duration':
+                $time = SLN_Func::filter(get_post_meta($post_id, '_sln_service_duration', true), 'time');
+                echo $time ? $time : '-';
+                break;
+            case 'service_price' :
+                echo $this->getPlugin()->format()->money(get_post_meta($post_id, '_sln_service_price', true));
+                break;
+        }
+    }
 
     public function enter_title_here($title, $post)
     {

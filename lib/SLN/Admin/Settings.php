@@ -47,17 +47,16 @@ class SLN_Admin_Settings
     function row_input_checkbox($key, $label, $settings = array())
     {
         ?>
-        <tr valign="top">
-            <th scope="row"><label for="saloon_settings[<?php echo $key ?>]"><?php echo $label ?></label></th>
-            <td>
-                <?php
-                SLN_Form::fieldCheckbox(
-                    "saloon_settings[{$key}]",
-                    $this->getOpt($key)
-                )
-                ?>
-            </td>
-        </tr>
+        <div class="form-group">
+            <label for="saloon_settings[<?php echo $key ?>]"><?php echo $label ?></label></th>
+            <?php
+            SLN_Form::fieldCheckbox(
+                "saloon_settings[{$key}]",
+                $this->getOpt($key)
+            )
+            ?>
+            <?php if (isset($settings['help'])) ?><p class="help-block"><?php echo $settings['help'] ?></p>
+        </div>
     <?php
     }
 
@@ -69,47 +68,43 @@ class SLN_Admin_Settings
     function row_input_text($key, $label, $settings = array())
     {
         ?>
-        <tr valign="top">
-            <th scope="row"><label for="saloon_settings[<?php echo $key ?>]"><?php echo $label ?></label></th>
-            <td>
-                <?php echo SLN_Form::fieldText("saloon_settings[$key]", $this->getOpt($key)) ?>
-                <?php if (isset($settings['help'])) ?><br/><em><?php echo $settings['help'] ?></em>
-            </td>
-        </tr>
+        <div class="form-group">
+            <label for="saloon_settings[<?php echo $key ?>]"><?php echo $label ?></label></th>
+            <?php echo SLN_Form::fieldText("saloon_settings[$key]", $this->getOpt($key)) ?>
+            <?php if (isset($settings['help'])) ?><p class="help-block"><?php echo $settings['help'] ?></p>
+        </div>
     <?php
     }
 
     function row_input_textarea($key, $label, $settings = array())
     {
+        if (!isset($settings['textarea'])) {
+            $settings['textarea'] = array();
+        }
         ?>
-        <tr valign="top">
-            <th scope="row"><label for="saloon_settings[<?php echo $key ?>]"><?php echo $label ?></label></th>
-            <td>
-                <textarea
-                    name="saloon_settings[<?php echo $key ?>]"><?php echo $this->getOpt($key) ?></textarea>
-            </td>
-        </tr>
+        <div class="form-group">
+            <label for="saloon_settings[<?php echo $key ?>]"><?php echo $label ?></label></th>
+            <?php SLN_Form::fieldTextarea("saloon_settings[$key]", $this->getOpt($key), $settings['textarea']); ?>
+            <?php if (isset($settings['help'])) ?><p class="help-block"><?php echo $settings['help'] ?></p>
+        </div>
     <?php
     }
 
     function row_input_page($key, $label, $settings = array())
     {
         ?>
-        <tr valign="top">
-            <th scope="row"><label for="<?php echo $key ?>"><?php echo $label ?></label></th>
-            <td>
-                <?php
-                wp_dropdown_pages(
-                    array(
-                        'name'             => 'saloon_settings[' . $key . ']',
-                        'selected'         => $this->getOpt($key) ? $this->getOpt($key) : null,
-                        'show_option_none' => 'Nessuna'
-                    )
+        <div class="form-group">
+            <label for="<?php echo $key ?>"><?php echo $label ?></label>
+            <?php
+            wp_dropdown_pages(
+                array(
+                    'name'             => 'saloon_settings[' . $key . ']',
+                    'selected'         => $this->getOpt($key) ? $this->getOpt($key) : null,
+                    'show_option_none' => 'Nessuna'
                 )
-                ?>       </td>
-        </tr>
-
-
+            )
+            ?>
+        </div>
     <?php
     }
 
@@ -251,7 +246,7 @@ class SLN_Admin_Settings
 
     private function showTabsBar()
     {
-        echo '<h2 class="nav-tab-wrapper">';
+        echo '<h2 class="nav-tab-wrapper"><i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;&nbsp;&nbsp;';
         $page    = self::PAGE;
         $current = $this->getCurrentTab();
         foreach ($this->tabs as $tab => $name) {
@@ -277,6 +272,4 @@ class SLN_Admin_Settings
     {
         return isset($_GET['tab']) ? $_GET['tab'] : 'homepage';
     }
-
-
 }

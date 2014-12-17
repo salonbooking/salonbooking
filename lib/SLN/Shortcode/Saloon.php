@@ -9,6 +9,7 @@ class SLN_Shortcode_Saloon
     private $attrs;
 
     private $steps;
+    private $currentStep;
 
 
     function __construct(SLN_Plugin $plugin, $attrs)
@@ -41,8 +42,10 @@ class SLN_Shortcode_Saloon
         foreach ($this->getSteps() as $step) {
             if ($curr == $step || $found) {
                 $found = true;
+
+                $this->currentStep = $step;
                 $class = __CLASS__ . '_' . ucwords($step) . 'Step';
-                $obj   = new $class($this->plugin, $this->attrs, $step);
+                $obj   = new $class($this->plugin, $this, $step);
                 if ($obj instanceof SLN_Shortcode_Saloon_Step) {
                     if (!$obj->isValid()) {
                         return $this->render($obj->render());
@@ -57,13 +60,31 @@ class SLN_Shortcode_Saloon
     protected function render($content)
     {
         $saloon = $this;
+
         return $this->plugin->loadView('shortcode/saloon', compact('content', 'saloon'));
     }
 
 
-    private function getCurrentStep()
+    public function getCurrentStep()
     {
-        return isset($_GET[self::STEP_KEY]) ? $_GET[self::STEP_KEY] : self::STEP_DEFAULT;
+        if (!isset($this->currentStep)) {
+            $this->currentStep = isset($_GET[self::STEP_KEY]) ? $_GET[self::STEP_KEY] : self::STEP_DEFAULT;
+        }
+
+        return $this->currentStep;
+    }
+
+    public function getPrevStep()
+    {
+        $curr = $this->getCurrentStep();
+        $prev = null;
+        foreach ($this->getSteps() as $step) {
+            if ($curr == $step) {
+                return $prev;
+            } else {
+                $prev = $step;
+            }
+        }
     }
 
     private function needSecondary()
@@ -73,6 +94,10 @@ class SLN_Shortcode_Saloon
                 return true;
             }
         }
+    }
+    private function needPayment()
+    {
+        return true;
     }
 
     public function getSteps()
@@ -88,6 +113,9 @@ class SLN_Shortcode_Saloon
             );
             if (!$this->needSecondary()) {
                 unset($this->steps[array_search('secondary', $this->steps)]);
+            }
+            if (!$this->needPayment()) {
+                unset($this->steps[array_search('thankyou', $this->steps)]);
             }
         }
 

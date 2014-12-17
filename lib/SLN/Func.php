@@ -34,7 +34,8 @@ class SLN_Func
         if (!isset($max)) {
             $max = $min + 2;
         }
-        for ($i = $min; $i <= $max; $i++) {
+        $ret = array();
+        for ($i = $min; $i <= $max || count($ret) > 10; $i++) {
             $ret[$i] = $i;
         }
 

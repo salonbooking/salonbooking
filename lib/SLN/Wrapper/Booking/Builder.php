@@ -4,6 +4,7 @@ class SLN_Wrapper_Booking_Builder
 {
     protected $plugin;
     protected $data;
+    protected $lastId;
 
     public function __construct(SLN_Plugin $plugin)
     {
@@ -12,24 +13,49 @@ class SLN_Wrapper_Booking_Builder
         }
         $this->plugin = $plugin;
         $this->data   = isset($_SESSION[__CLASS__]) ? $_SESSION[__CLASS__] : $this->getEmptyValue();
+        $this->lastId = isset($_SESSION[__CLASS__ . 'last_id']) ? $_SESSION[__CLASS__ . 'last_id'] : null;
     }
 
     public function save()
     {
-        $_SESSION[__CLASS__] = $this->data;
+        $_SESSION[__CLASS__]             = $this->data;
+        $_SESSION[__CLASS__ . 'last_id'] = $this->lastId;
     }
 
-    public function clear()
+    public function clear($id = null)
     {
-        $_SESSION[__CLASS__] = $this->getEmptyValue();
+        unset($_SESSION[__CLASS__]);
+        $this->lastId        = $id;
+        $this->save();
+    }
+
+    /**
+     * @return $this
+     */
+    public function removeLastId()
+    {
+        unset($_SESSION[__CLASS__ . 'last_id']);
+        $this->lastId                    = null;
+
+        return $this;
+    }
+
+    public function getLastBooking()
+    {
+        if ($this->lastId) {
+            return $this->plugin->createBooking(get_post($this->lastId));
+        }
     }
 
     protected function getEmptyValue()
     {
+        $d = new \DateTime('tomorrow');
+
         return array(
-            'date'     => new \DateTime(),
-            'time'     => new \DateTime(),
-            'services' => array()
+            'date'     => $d->format('Y-m-d'),
+            'time'     => $d->format('H') . ':00',
+            'services' => array(),
+            'status'   => SLN_Enum_BookingStatus::PENDING
         );
     }
 
@@ -55,6 +81,11 @@ class SLN_Wrapper_Booking_Builder
     public function getTime()
     {
         return $this->data['time'];
+    }
+
+    public function getDateTime()
+    {
+        return $this->getDate() . ' ' . $this->getTime();
     }
 
     public function setDate($date)
@@ -96,10 +127,9 @@ class SLN_Wrapper_Booking_Builder
         $ret = array();
         foreach ($this->plugin->getServices() as $service) {
             if (in_array($service->getId(), $ids)) {
-                $ret[] = $service;
+                $ret[$service->getId()] = $service;
             }
         }
-
         return $ret;
     }
 
@@ -107,9 +137,27 @@ class SLN_Wrapper_Booking_Builder
     {
         $ret = 0;
         foreach ($this->getServices() as $s) {
-            $ret += $s->getPrice();
+            $ret = $ret + SLN_Func::filter($s->getPrice(),'float');
         }
-
         return $ret;
     }
+
+    public function create()
+    {
+        $datetime = $this->plugin->format()->datetime($this->getDateTime());
+        $name     = $this->get('firstname') . ' ' . $this->get('lastname');
+
+        $id                   = wp_insert_post(
+            array(
+                'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
+                'post_title' => $name . ' @ ' . $datetime
+            )
+        );
+        $this->data['amount'] = $this->getTotal();
+        foreach ($this->data as $k => $v) {
+            add_post_meta($id, '_' . SLN_Plugin::POST_TYPE_BOOKING . '_' . $k, $v, true);
+        }
+        $this->clear($id);
+    }
+
 }

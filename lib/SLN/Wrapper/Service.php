@@ -6,8 +6,7 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_service_price', get_post_meta($post_id, '_sln_service_price', true));
-        $ret     = !empty($ret) ? floatval($ret) : '';
-
+        $ret     = empty($ret) ? 0 : floatval($ret);
         return $ret;
     }
 
@@ -16,7 +15,7 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_service_unit', get_post_meta($post_id, '_sln_service_unit', true));
-        $ret     = !empty($ret) ? floatval($ret) : '';
+        $ret     = !empty($ret) ? 0 : floatval($ret);
 
         return $ret;
     }

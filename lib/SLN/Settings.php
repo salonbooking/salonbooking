@@ -72,4 +72,8 @@ class SLN_Settings
     {
         return $this->settings['pay_paypal_email'];
     }
+
+    public function getThankyouPageId(){
+        return $this->settings['thankyou'];
+    }
 }

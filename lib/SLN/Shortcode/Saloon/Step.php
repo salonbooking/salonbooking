@@ -5,17 +5,18 @@ abstract class SLN_Shortcode_Saloon_Step
     private $plugin;
     private $attrs;
     private $step;
+    private $shortcode;
 
-    function __construct(SLN_Plugin $plugin, $attrs, $step)
+    function __construct(SLN_Plugin $plugin, SLN_Shortcode_Saloon $shortcode, $step)
     {
-        $this->plugin = $plugin;
-        $this->attrs  = $attrs;
-        $this->step   = $step;
+        $this->plugin    = $plugin;
+        $this->shortcode = $shortcode;
+        $this->step      = $step;
     }
 
     public function isValid()
     {
-        return ($_POST['submit_' . $this->getStep()] && $this->dispatchForm());
+        return ($_POST['submit_' . $this->getStep()] || $_GET['submit_' . $this->getStep()]) && $this->dispatchForm();
     }
 
     public function render()
@@ -28,10 +29,10 @@ abstract class SLN_Shortcode_Saloon_Step
         $step = $this->getStep();
 
         return array(
-            'formAction'     => add_query_arg(array('sln_step_page' => $step)),
-            'formAction'     => add_query_arg(array('sln_step_page' => $step)),
-            'submitName'     => 'submit_' . $step,
-            'step'           => $this
+            'formAction' => add_query_arg(array('sln_step_page' => $this->shortcode->getCurrentStep())),
+            'backUrl'    => add_query_arg(array('sln_step_page' => $this->shortcode->getPrevStep())),
+            'submitName' => 'submit_' . $step,
+            'step'       => $this,
         );
     }
 
@@ -46,5 +47,12 @@ abstract class SLN_Shortcode_Saloon_Step
         return $this->plugin;
     }
 
+    public function getShortcode()
+    {
+        return $this->shortcode;
+    }
+
     abstract protected function dispatchForm();
+
+
 }
