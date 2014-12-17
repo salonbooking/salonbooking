@@ -34,4 +34,8 @@ class SLN_Shortcode_Saloon_SecondaryStep extends SLN_Shortcode_Saloon_Step
 
         return $this->services;
     }
+
+    public function getTotal(){
+
+    }
 }

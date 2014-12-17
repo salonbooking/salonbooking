@@ -77,11 +77,11 @@ class SLN_Form
     <?php
     }
 
-    static public function fieldCheckbox($name, $value = false)
+    static public function fieldCheckbox($name, $value = false, $settings = array())
     {
         ?>
         <input type="checkbox" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>"
-               value="1"  <?php echo $value ? 'checked="checked"' : '' ?>/>
+               value="1"  <?php echo $value ? 'checked="checked"' : '' ?> <?php echo self::attrs($settings) ?>/>
     <?php
     }
 

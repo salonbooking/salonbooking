@@ -8,6 +8,7 @@ class SLN_Plugin
 
     private static $instance;
     private $settings;
+    private $services;
 
     public static function getInstance()
     {
@@ -87,21 +88,23 @@ class SLN_Plugin
      */
     public function getServices()
     {
-        $query = new WP_Query(
-            array(
-                'post_type' => self::POST_TYPE_SERVICE,
-                'nopaging'  => true
-            )
-        );
-        $ret   = array();
-        foreach ($query->get_posts() as $p) {
-            $ret[] = $this->createService($p);
+        if (!isset($this->services)) {
+            $query = new WP_Query(
+                array(
+                    'post_type' => self::POST_TYPE_SERVICE,
+                    'nopaging'  => true
+                )
+            );
+            $ret   = array();
+            foreach ($query->get_posts() as $p) {
+                $ret[] = $this->createService($p);
+            }
+            wp_reset_query();
+            wp_reset_postdata();
+            $this->services = $ret;
         }
-        wp_reset_query();
-        wp_reset_postdata();
 
-
-        return $ret;
+        return $this->services;
     }
 
     public function admin_notices()

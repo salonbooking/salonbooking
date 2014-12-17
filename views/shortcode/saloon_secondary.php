@@ -9,7 +9,7 @@ $bb = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
 ?>
 <h1>Something more?</h1>
-<form method="post" action="<?php echo $formAction ?>" role="form">
+<form id="saloon-step-secondary" method="post" action="<?php echo $formAction ?>" role="form">
     <?php foreach($step->getServices() as $service) : ?>
         <label>
             <?php SLN_Form::fieldCheckbox(
@@ -23,7 +23,11 @@ $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
             <?php echo $service->getContent() ?>
         </label><br/>
     <?php endforeach ?>
-    <button type="submit" class="btn btn-success" name="<?php echo $submitName ?>" value="next">Next</button>
-
+    <div class="services-total">
+        <span id="services-total"></span>
+    </div>
+    <button type="submit" class="btn btn-success" name="<?php echo $submitName ?>" value="next">
+        Next
+    </button>
     <a class="btn btn-danger" href="<?php echo $backUrl ?> ">Back</a>
 </form>

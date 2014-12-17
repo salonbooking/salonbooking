@@ -8,14 +8,7 @@ class SLN_Shortcode_Saloon
     private $plugin;
     private $attrs;
 
-    private $steps = array(
-        'date',
-        'services',
-        'secondary',
-        'details',
-        'summary',
-        'thankyou'
-    );
+    private $steps;
 
 
     function __construct(SLN_Plugin $plugin, $attrs)
@@ -45,7 +38,7 @@ class SLN_Shortcode_Saloon
     private function dispatchStep($curr)
     {
         $found = false;
-        foreach ($this->steps as $step) {
+        foreach ($this->getSteps() as $step) {
             if ($curr == $step || $found) {
                 $found = true;
                 $class = __CLASS__ . '_' . ucwords($step) . 'Step';
@@ -63,12 +56,41 @@ class SLN_Shortcode_Saloon
 
     protected function render($content)
     {
-        return $this->plugin->loadView('shortcode/saloon', compact('content'));
+        $saloon = $this;
+        return $this->plugin->loadView('shortcode/saloon', compact('content', 'saloon'));
     }
 
 
     private function getCurrentStep()
     {
         return isset($_GET[self::STEP_KEY]) ? $_GET[self::STEP_KEY] : self::STEP_DEFAULT;
+    }
+
+    private function needSecondary()
+    {
+        foreach ($this->plugin->getServices() as $service) {
+            if ($service->isSecondary()) {
+                return true;
+            }
+        }
+    }
+
+    public function getSteps()
+    {
+        if (!isset($this->steps)) {
+            $this->steps = array(
+                'date',
+                'services',
+                'secondary',
+                'details',
+                'summary',
+                'thankyou'
+            );
+            if (!$this->needSecondary()) {
+                unset($this->steps[array_search('secondary', $this->steps)]);
+            }
+        }
+
+        return $this->steps;
     }
 }

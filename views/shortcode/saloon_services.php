@@ -5,25 +5,32 @@
  * @var string                            $submitName
  * @var SLN_Shortcode_Saloon_ServicesStep $step
  */
-$bb = $plugin->getBookingBuilder();
+$bb             = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
 ?>
 <h1>What do you need?</h1>
-<form method="post" action="<?php echo $formAction ?>">
-    <?php foreach($step->getServices() as $service) : ?>
-    <label>
-        <?php SLN_Form::fieldCheckbox(
-            'sln[services][' . $service->getId() . ']',
-            $bb->hasService($service)
-        ) ?>
-        <strong><?php echo $service->getName(); ?></strong>
-        <?php echo $service->getDuration()->format('H:i') ?>
-        <?php echo $service->getPrice() ? (number_format($service->getPrice(),2) . $currencySymbol) : 'free' ?>
-        <br/>
-        <?php echo $service->getContent() ?>
-    </label><br/>
+<form id="saloon-step-services" method="post" action="<?php echo $formAction ?>">
+    <?php foreach ($step->getServices() as $service) : ?>
+        <label>
+            <?php SLN_Form::fieldCheckbox(
+                'sln[services][' . $service->getId() . ']',
+                $bb->hasService($service),
+                array('attrs' => array('data-price' => $service->getPrice()))
+            ) ?>
+            <strong><?php echo $service->getName(); ?></strong>
+            <?php echo $service->getDuration()->format('H:i') ?>
+            <?php echo $service->getPrice() ? (number_format($service->getPrice(), 2) . $currencySymbol) : 'free' ?>
+            <br/>
+            <?php echo $service->getContent() ?>
+        </label><br/>
     <?php endforeach ?>
-    <button type="submit" class="btn btn-success" name="<?php echo $submitName ?>" value="next">Next</button>
-
-    <a class="btn btn-danger" href="<?php echo $backUrl ?> ">Back</a>
+    <div class="services-total">
+        <span id="services-total"></span>
+    </div>
+    <div class="form-actions wide">
+        <button type="submit" class="btn btn-success pull-right" name="<?php echo $submitName ?>" value="next">
+            Next
+        </button>
+        <a class="btn btn-danger" href="<?php echo $backUrl ?> ">Back</a>
+    </div>
 </form>

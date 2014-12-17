@@ -77,4 +77,6 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $ret     = apply_filters('sln_booking_status', get_post_meta($post_id, '_sln_booking_status', true));
         return empty($ret) ? SLN_Enum_BookingStatus::PENDING : $ret;
     }
+
+
 }
