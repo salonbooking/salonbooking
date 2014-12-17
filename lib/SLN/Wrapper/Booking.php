@@ -107,7 +107,20 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
 
-        return apply_filters('sln_booking_note', get_post_meta($post_id, '_sln_booking_note', true));
+        return apply_filters(
+            'sln_booking_note',
+            get_post_meta($post_id, '_sln_booking_note', true)
+        );
+    }
+
+    function getTransactionId()
+    {
+        $post_id = $this->getId();
+
+        return apply_filters(
+            'sln_booking_transaction_id',
+            get_post_meta($post_id, '_sln_booking_transaction_id', true)
+        );
     }
 
 }

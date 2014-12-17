@@ -120,5 +120,11 @@ $helper->showNonce($postType);
         );
         ?>
     </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="">Transaction</label>
+            <p><?php echo $booking->getTransactionId() ? $booking->getTransactionId() : __('n.a.','sln') ?></p>
+        </div>
+    </div>
 </div>
 <div class="sln-clear"></div>

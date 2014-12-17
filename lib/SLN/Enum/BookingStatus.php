@@ -9,11 +9,11 @@ class SLN_Enum_BookingStatus
     const CANCELED = 'canceled';
 
     private static $labels = array(
-        self::ERROR    => 'ERROR',
-        self::PENDING  => 'Pending',
-        self::PAID     => 'Paid',
-        self::PAID     => 'Pay later',
-        self::CANCELED => 'Canceled'
+        self::ERROR     => 'ERROR',
+        self::PENDING   => 'Pending',
+        self::PAID      => 'Paid',
+        self::PAY_LATER => 'Pay later',
+        self::CANCELED  => 'Canceled'
     );
 
     public static function toArray()
