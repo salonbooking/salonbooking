@@ -11,13 +11,18 @@ class SLN_Shortcode_Saloon_ThankyouStep extends SLN_Shortcode_Saloon_Step
             $url = $ppl->getUrl($booking->getId(), $booking->getAmount(), $booking->getTitle());
             wp_redirect($url);
         } elseif ($_GET['mode'] == 'later') {
-            $id = $this->getPlugin()->getSettings()->getThankyouPageId();
-            if ($id) {
-                wp_redirect(get_permalink($id));
-            }
+            $bb->getLastBooking()->setStatus(SLN_Enum_BookingStatus::PAY_LATER);
+            $this->goToThankyou();
         }
 
         return true;
+    }
+
+    public function goToThankyou(){
+        $id = $this->getPlugin()->getSettings()->getThankyouPageId();
+        if ($id) {
+            wp_redirect(get_permalink($id));
+        }
     }
 
     public function getViewData()

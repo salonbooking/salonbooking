@@ -66,12 +66,12 @@ class SLN_Metabox_Helper
     <?php
     }
 
-    public static function showFieldText($field, $label, $val, $class)
+    public static function showFieldText($field, $label, $val)
     {
         ?>
-        <div class="sln_meta_field <?php echo $class ?>">
-            <label for="<?php echo $field ?>"><?php echo $label ?>
-                <?php SLN_Form::fieldText($field, $val); ?>
+        <div class="form-group sln_meta_field">
+            <label for="<?php echo $field ?>"><?php echo $label ?></label>
+            <?php SLN_Form::fieldText($field, $val); ?>
         </div>
     <?php
     }

@@ -6,7 +6,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_amount', get_post_meta($post_id, '_sln_booking_amount', true));
-        $ret     = !empty($ret) ? floatval($ret) : '';
+        $ret     = number_format(!empty($ret) ? ($ret) : 0, 2);
 
         return $ret;
     }
@@ -69,16 +69,37 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_services', get_post_meta($post_id, '_sln_booking_services', true));
+
         return empty($ret) ? array() : $ret;
     }
 
-    function getStatus(){
+    function getStatus()
+    {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_status', get_post_meta($post_id, '_sln_booking_status', true));
+
         return empty($ret) ? SLN_Enum_BookingStatus::PENDING : $ret;
     }
 
-    function getTitle(){
+    function hasStatus($status)
+    {
+        return $this->getStatus() == $status;
+    }
+
+    /**
+     * @param $status
+     * @return $this
+     */
+    function setStatus($status)
+    {
+        $post_id = $this->getId();
+        update_post_meta($post_id, '_sln_booking_status', $status);
+
+        return $this;
+    }
+
+    function getTitle()
+    {
         return $this->object->post_title;
     }
 }

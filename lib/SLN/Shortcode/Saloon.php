@@ -42,18 +42,28 @@ class SLN_Shortcode_Saloon
         foreach ($this->getSteps() as $step) {
             if ($curr == $step || $found) {
                 $found = true;
-
                 $this->currentStep = $step;
-                $class = __CLASS__ . '_' . ucwords($step) . 'Step';
-                $obj   = new $class($this->plugin, $this, $step);
-                if ($obj instanceof SLN_Shortcode_Saloon_Step) {
-                    if (!$obj->isValid()) {
-                        return $this->render($obj->render());
-                    }
-                } else {
-                    throw new Exception('bad object ' . $class);
+                $obj               = $this->getStepObject($step);
+                if (!$obj->isValid()) {
+                    return $this->render($obj->render());
                 }
             }
+        }
+    }
+
+    /**
+     * @param $step
+     * @return SLN_Shortcode_Saloon_Step
+     * @throws Exception
+     */
+    private function getStepObject($step)
+    {
+        $class = __CLASS__ . '_' . ucwords($step) . 'Step';
+        $obj   = new $class($this->plugin, $this, $step);
+        if ($obj instanceof SLN_Shortcode_Saloon_Step) {
+            return $obj;
+        } else {
+            throw new Exception('bad object ' . $class);
         }
     }
 
@@ -95,6 +105,7 @@ class SLN_Shortcode_Saloon
             }
         }
     }
+
     private function needPayment()
     {
         return true;

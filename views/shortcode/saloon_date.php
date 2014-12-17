@@ -5,9 +5,7 @@
  * @var string                    $submitName
  * @var SLN_Shortcode_Saloon_Step $step
  */
-$bb = $plugin->getBookingBuilder();
-include __DIR__ . 'functions.php';
-
+$bb   = $plugin->getBookingBuilder();
 $date = $bb->getDate();
 if (!($date instanceof \DateTime)) {
     $date = new \Datetime('+1 day');

@@ -40,6 +40,9 @@ class SLN_Wrapper_Booking_Builder
         return $this;
     }
 
+    /**
+     * @return SLN_Wrapper_Booking
+     */
     public function getLastBooking()
     {
         if ($this->lastId) {
