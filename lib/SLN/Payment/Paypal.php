@@ -62,13 +62,13 @@ class SLN_Payment_Paypal
     public function getUrl($id, $amount, $title)
     {
         $settings = $this->plugin->getSettings();
-
+        $url      = SLN_Func::currPageUrl();
         return $this->getBaseUrl($this->plugin->getSettings()->isPaypalTest()) . "?"
         . http_build_query(
             array(
-                'notify_url'    => SLN_Func::addUrlParam(SLN_Func::currPageUrl(), 'op', 'notify-' . $id),
-                'return'        => SLN_Func::addUrlParam(SLN_Func::currPageUrl(), 'op', 'success-' . $id),
-                'cancel_return' => SLN_Func::addUrlParam(SLN_Func::currPageUrl(), 'op', 'cancel-' . $id),
+                'notify_url'    => add_query_arg('op', 'notify-' . $id, $url),
+                'return'        => add_query_arg('op', 'success-' . $id, $url),
+                'cancel_return' => add_query_arg('op', 'cancel-' . $id, $url),
                 'cmd'           => '_xclick',
                 'business'      => $settings->getPaypalEmail(),
                 'currency_code' => $settings->getCurrency(),

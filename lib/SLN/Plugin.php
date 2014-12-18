@@ -72,11 +72,19 @@ class SLN_Plugin
 
     public function createService($service)
     {
+        if (is_int($service)) {
+            $service = get_post($service);
+        }
+
         return new SLN_Wrapper_Service($service);
     }
 
     public function createBooking($booking)
     {
+        if (is_int($booking)) {
+            $booking = get_post($booking);
+        }
+
         return new SLN_Wrapper_Booking($booking);
     }
 

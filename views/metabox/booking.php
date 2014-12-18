@@ -89,6 +89,7 @@ $helper->showNonce($postType);
         </div>
     <?php endforeach ?>
 </div>
+<div class="sln-separator"></div>
 <div class="row">
     <div class="col-md-12">
         <div class="form-group sln_meta_field ">
@@ -100,6 +101,7 @@ $helper->showNonce($postType);
         </div>
     </div>
 </div>
+<div class="sln-separator"></div>
 <div class="row">
     <div class="col-md-3">
         <div class="form-group sln_meta_field ">

@@ -24,8 +24,8 @@ class SLN_Wrapper_Booking_Builder
 
     public function clear($id = null)
     {
-        unset($_SESSION[__CLASS__]);
-        $this->lastId        = $id;
+        $this->data   = $this->getEmptyValue();
+        $this->lastId = $id;
         $this->save();
     }
 
@@ -35,7 +35,7 @@ class SLN_Wrapper_Booking_Builder
     public function removeLastId()
     {
         unset($_SESSION[__CLASS__ . 'last_id']);
-        $this->lastId                    = null;
+        $this->lastId = null;
 
         return $this;
     }
@@ -133,6 +133,7 @@ class SLN_Wrapper_Booking_Builder
                 $ret[$service->getId()] = $service;
             }
         }
+
         return $ret;
     }
 
@@ -140,8 +141,9 @@ class SLN_Wrapper_Booking_Builder
     {
         $ret = 0;
         foreach ($this->getServices() as $s) {
-            $ret = $ret + SLN_Func::filter($s->getPrice(),'float');
+            $ret = $ret + SLN_Func::filter($s->getPrice(), 'float');
         }
+
         return $ret;
     }
 
