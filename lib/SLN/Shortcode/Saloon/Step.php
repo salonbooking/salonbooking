@@ -6,6 +6,7 @@ abstract class SLN_Shortcode_Saloon_Step
     private $attrs;
     private $step;
     private $shortcode;
+    private $errors = array();
 
     function __construct(SLN_Plugin $plugin, SLN_Shortcode_Saloon $shortcode, $step)
     {
@@ -33,6 +34,7 @@ abstract class SLN_Shortcode_Saloon_Step
             'backUrl'    => add_query_arg(array('sln_step_page' => $this->shortcode->getPrevStep())),
             'submitName' => 'submit_' . $step,
             'step'       => $this,
+            'errors'     => $this->errors
         );
     }
 
@@ -54,5 +56,8 @@ abstract class SLN_Shortcode_Saloon_Step
 
     abstract protected function dispatchForm();
 
-
+    protected function addError($err)
+    {
+        $this->errors[] = $err;
+    }
 }

@@ -2,8 +2,6 @@
 
 class SLN_Shortcode_Saloon_DateStep extends SLN_Shortcode_Saloon_Step
 {
-    private $errors;
-
     protected function dispatchForm()
     {
         $bb     = $this->getPlugin()->getBookingBuilder();
@@ -17,6 +15,7 @@ class SLN_Shortcode_Saloon_DateStep extends SLN_Shortcode_Saloon_Step
 
         if ($this->checkDateTime($date, $time)) {
             $bb->save();
+
             return true;
         }
     }
@@ -24,23 +23,10 @@ class SLN_Shortcode_Saloon_DateStep extends SLN_Shortcode_Saloon_Step
     protected function checkDateTime($date, $time)
     {
         if (strtotime($date) <= strtotime('today')) {
-            $this->errors[] = __('The date is too old');
-
+            $this->addError(__('The date is too old', 'sln'));
             return false;
         }
 
         return true;
-    }
-
-    public function getViewData()
-    {
-        $ret = parent::getViewData();
-
-        return array_merge(
-            $ret,
-            array(
-                'errors' => $this->errors
-            )
-        );
     }
 }

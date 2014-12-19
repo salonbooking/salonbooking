@@ -11,6 +11,7 @@ $services = $step->getServices();
 ?>
 <h2>What do you need?</h2>
 <form id="saloon-step-services" method="post" action="<?php echo $formAction ?>" role="form">
+    <?php include '_errors.php' ?>
     <?php include "_services.php"; ?>
     <?php include "_form_actions.php" ?>
 </form>
