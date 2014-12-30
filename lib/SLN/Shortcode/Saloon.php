@@ -44,6 +44,12 @@ class SLN_Shortcode_Saloon
                 $found = true;
                 $this->currentStep = $step;
                 $obj               = $this->getStepObject($step);
+                if($_GET['ajax']){
+                    ob_end_clean();
+                    $obj->doAjax($_GET['ajax']);
+                    ob_flush();
+                    exit();
+                }
                 if (!$obj->isValid()) {
                     return $this->render($obj->render());
                 }

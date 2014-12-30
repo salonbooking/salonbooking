@@ -73,7 +73,18 @@ class SLN_Settings
         return $this->settings['pay_paypal_email'];
     }
 
-    public function getThankyouPageId(){
+    public function getThankyouPageId()
+    {
         return $this->settings['thankyou'];
+    }
+
+    public function isDisabled()
+    {
+        return $this->get('disabled') ? true : false;
+    }
+
+    public function getDisabledMessage()
+    {
+        return nl2br(htmlentities($this->get('disabled_message')));
     }
 }

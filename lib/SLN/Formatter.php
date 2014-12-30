@@ -28,4 +28,21 @@ class SLN_Formatter
 
         return date_i18n(__('M j, Y @ G:i', 'sln'), strtotime($val));
     }
+
+    public function date($val)
+    {
+        if ($val instanceof \DateTime) {
+            $val = $val->format('Y-m-d H:i');
+        }
+        $val = strtotime($val);
+
+        return date_i18n(__('M j, Y', 'sln'), strtotime($val));
+    }
+
+    public function time($val)
+    {
+        if ($val instanceof \DateTime) {
+            return $val->format('H:i');
+        }
+    }
 }

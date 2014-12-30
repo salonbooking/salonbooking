@@ -7,40 +7,47 @@
  */
 $bb             = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
+$datetime       = new DateTime($bb->getDateTime());
 ?>
-<h2><?php _e('Summary', 'sln') ?></h2>
-<form method="post" action="<?php echo $formAction ?>" role="form">
-    <?php _e('Dear', 'sln') ?> <?php echo esc_attr($bb->get('firstname')) . ' ' . esc_attr($bb->get('lastname')); ?>
-    <br/>
-    <?php _e('You have booked:', 'sln') ?>
-    <?php foreach ($bb->getServices() as $service): ?>
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-8">
-                <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
-                    <strong class="service-name"><?php echo $service->getName(); ?></strong>
-                    <span class="service-description"><?php echo $service->getContent() ?></span>
-                    <span class="service-duration">Duration: <?php echo $service->getDuration()->format('H:i') ?></span>
-                </label>
-            </div>
-            <div class="col-md-3">
-                <?php echo $plugin->format()->money($service->getPrice()) ?>
-            </div>
+<h2><?php _e('Booking summary', 'sln') ?></h2>
+<form method="post" action="<?php echo $formAction ?>" role="form"  id="saloon-step-summary">
+    <p class="dear"><?php _e('Dear', 'sln') ?>
+        <strong><?php echo esc_attr($bb->get('firstname')) . ' ' . esc_attr($bb->get('lastname')); ?></strong>
+        <br/>
+        <?php _e('Here the details of your booking:', 'sln') ?>
+    </p>
+
+    <div class="row summ-row">
+        <div class="col-md-5"><span class="label"><?php _e('Date and time booked', 'sln') ?></span></div>
+        <div class="col-md-7"><p class="date"><strong><?php echo $plugin->format()->date($datetime); ?></strong><br/>
+            <span class="time"><?php echo $plugin->format()->time($datetime) ?></span></p>
         </div>
-    <?php endforeach ?>
-
-    <h2><?php _e('Total:', 'sln') ?> <?php echo $plugin->format()->money(
-            $plugin->getBookingBuilder()->getTotal()
-        ) ?></h2>
-    <em>for <?php echo $plugin->format()->datetime($bb->getDateTime()); ?></em>
-
+    </div>
+    <div class="row summ-row">
+        <div class="col-md-5"><span class="label"><?php _e('Services booked', 'sln') ?></span></div>
+        <div class="col-md-7">
+            <ul class="list-unstyled">
+                <?php foreach ($bb->getServices() as $service): ?>
+                    <li> <span class="service-label"><?php echo $service->getName(); ?>
+                    <span class="service-price"><?php echo $plugin->format()->money($service->getPrice()) ?></li>
+                <?php endforeach ?>
+                <li><span class="total-label"><?php _e('Total amount', 'sln') ?></span>
+                <span class="total-price"><?php echo $plugin->format()->money(
+                        $plugin->getBookingBuilder()->getTotal()
+                    ) ?></span></li>
+            </ul>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
     <div class="form-group">
-        <label><?php _e('Do you have a message for us?', 'sln') ?></label>
+        <label><?php _e('Do you have any message for us?', 'sln') ?></label>
         <?php SLN_Form::fieldTextarea(
             'sln[note]',
             $bb->get('note'),
             array('attrs' => array('placeholder' => __('Leave a message', 'sln')))
         ); ?>
+    </div>
     </div>
     <?php $nextLabel = __('Finalize', 'sln');
     include "_form_actions.php" ?>

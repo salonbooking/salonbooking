@@ -6,34 +6,36 @@
 if (!isset($nextLabel)) {
     $nextLabel = __('Go next', 'sln');
 }
+$i       = 0;
+$count   = count($steps);
+$saloon  = $step->getShortcode();
+$steps   = $saloon->getSteps();
+$current = $saloon->getCurrentStep();
+$count   = count($steps);
+foreach ($steps as $step) {
+    $i++;
+    if ($current == $step) {
+        $currentNum = $i;
+    }
+}
 ?>
-<div class="sln-separator"></div>
-<div class="form-actions row">
-    <div class="col-md-2">
-        <?php $i = 0;
-        $count   = count($steps);
-        $saloon = $step->getShortcode();
-        $steps = $saloon->getSteps();
-        $current = $saloon->getCurrentStep();
-        $count = count($steps);
-        foreach ($steps as $step) {
-            $i++;
-            if ($current == $step) {
-                echo "<span class=\"sln-step-num\"><span>$i</span>/" . $count . '</span>';
-            }
-        }
-        ?>
-    </div>
-    <div class="col-md-5">
-        <?php if ($backUrl) : ?>
-            <a class="btn btn-danger btn-block" href="<?php echo $backUrl ?> ">
-                <i class="glyphicon glyphicon-chevron-left"></i> Back
+<div id="sln-notifications"></div>
+<div class="form-actions row aligncenter">
+    <div class="col-md-6">
+        <?php if ($backUrl && $currentNum > 1) : ?>
+            <a class="btn btn-default pull-right" href="<?php echo $backUrl ?> ">
+                <i class="glyphicon glyphicon-chevron-left"></i> <?php _e('Back', 'sln') ?>
             </a>
         <?php endif ?>
     </div>
-    <div class="col-md-5">
-        <button type="submit" class="btn btn-success btn-block" name="<?php echo $submitName ?>" value="next">
-            <?php echo $nextLabel ?> <i class="glyphicon glyphicon-chevron-right"></i>
-        </button>
+    <div class="col-md-6">
+        <div>
+            <button id="sln-step-submit" type="submit" class="btn btn-danger btn-confirm" name="<?php echo $submitName ?>" value="next">
+                <?php echo $nextLabel ?> <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+            <?php if ($currentNum > 1): ?>
+                <span class="sln-step-num"><?php echo sprintf(__('step %s of %s', 'sln'), $currentNum, $count) ?></span>
+            <?php endif ?>
+        </div>
     </div>
 </div>

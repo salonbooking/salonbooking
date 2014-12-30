@@ -26,14 +26,13 @@
                     <span class="service-duration">Duration: <?php echo $service->getDuration()->format('H:i') ?></span>
                 </label>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 service-price">
                 <?php echo $plugin->format()->money($service->getPrice()) ?>
             </div>
         </div>
     <?php endforeach ?>
-    <div class="sln-separator"></div>
     <div class="row row-total">
-        <div class="col-md-9 text-right">sub-total:</div>
+        <div class="col-md-9 services-total-label"><?php _e('Subtotal')?></div>
         <div class="col-md-3 services-total">
         <span id="services-total" data-symbol="<?php echo $plugin->getSettings()->getCurrencySymbol() ?>">
             <?php echo $plugin->format()->money(0, false) ?>

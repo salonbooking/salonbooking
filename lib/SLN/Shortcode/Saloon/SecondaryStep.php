@@ -15,6 +15,7 @@ class SLN_Shortcode_Saloon_SecondaryStep extends SLN_Shortcode_Saloon_Step
             }
         }
         $bb->save();
+
         return true;
     }
 
@@ -35,7 +36,15 @@ class SLN_Shortcode_Saloon_SecondaryStep extends SLN_Shortcode_Saloon_Step
         return $this->services;
     }
 
-    public function getTotal(){
+    public function getTotal()
+    {
 
+    }
+
+    public function isValid()
+    {
+        $tmp = $this->getServices();
+
+        return (!empty($tmp)) && parent::isValid();
     }
 }

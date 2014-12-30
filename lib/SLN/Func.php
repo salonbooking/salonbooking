@@ -110,4 +110,26 @@ class SLN_Func
         return $pageURL;
     }
 
+    public static function getIntervalItems(){
+        return array(
+            ''      => 'Always',
+            'PT30M' => 'half hour',
+            'PT1H'  => '1 hour',
+            'PT2H'  => '2 hours',
+            'PT3H'  => '3 hours',
+            'PT4H'  => '4 hours',
+            'PT8H'  => '8 hours',
+            'PT16H' => '16 hours',
+            'P1D'   => '1 day',
+            'P2D'   => '2 days',
+            'P3D'   => '3 days',
+            'P4D'   => '4 days',
+            'P1W'   => '1 week',
+            'P2W'   => '2 weeks',
+            'P3W'   => '3 weeks',
+            'P1M'   => '1 month',
+            'P2M'   => '2 months',
+            'P3M'   => '3 months'
+        );
+    }
 }

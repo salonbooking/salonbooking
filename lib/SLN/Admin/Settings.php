@@ -173,7 +173,15 @@ class SLN_Admin_Settings
         foreach (array(
                      'confirmation',
                      'thankyou',
-                     'availabilities'
+                     'availabilities',
+                     'disabled',
+                     'disabled_message',
+                     'confirmation',
+                     'parallels_day',
+                     'parallels_hour',
+                     'hours_before_from',
+                     'hours_before_to',
+                     'interval'
                  ) as $k) {
             $this->settings->set($k, $_POST['saloon_settings'][$k]);
         }
@@ -194,7 +202,6 @@ class SLN_Admin_Settings
     {
         foreach (array(
                      'pay_currency',
-                     'pay_paypal_email',
                      'pay_paypal_email',
                      'pay_paypal_test',
                      'pay_cash',
