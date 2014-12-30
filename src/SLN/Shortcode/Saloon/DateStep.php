@@ -2,7 +2,6 @@
 
 class SLN_Shortcode_Saloon_DateStep extends SLN_Shortcode_Saloon_Step
 {
-    private $availabilityHelper;
 
     protected function dispatchForm()
     {
@@ -22,15 +21,6 @@ class SLN_Shortcode_Saloon_DateStep extends SLN_Shortcode_Saloon_Step
         }
     }
 
-    public function getAvailabilityHelper()
-    {
-        if (!isset($this->availabilityHelper)) {
-            $this->availabilityHelper = new SLN_Helper_Availability($this->getPlugin()->getSettings());
-        }
-
-        return $this->availabilityHelper;
-    }
-
     public function doAjaxValidate()
     {
         $this->checkDateTime($_POST['sln']['date'], $_POST['sln']['time']);
@@ -46,7 +36,7 @@ class SLN_Shortcode_Saloon_DateStep extends SLN_Shortcode_Saloon_Step
         $date  = new DateTime(
             SLN_Func::filter($date, 'date') . ' ' . SLN_Func::filter($time, 'time')
         );
-        $ah    = $this->getAvailabilityHelper();
+        $ah    = $this->getPlugin()->getAvailabilityHelper();
         $range = $ah->getHoursBeforeDateTime();
         if ($date < $range->from) {
             $txt = $this->getPlugin()->format()->datetime($range->from);

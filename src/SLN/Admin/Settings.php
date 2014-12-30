@@ -232,7 +232,7 @@ class SLN_Admin_Settings
             }
         }
         ?>
-        <div class="wrap">
+        <div class="wrap sln-bootstrap">
             <?php screen_icon(); ?>
             <h2><?php _e('Saloon Settings', 'sln'); ?></h2>
 

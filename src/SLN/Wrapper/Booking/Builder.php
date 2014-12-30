@@ -88,7 +88,7 @@ class SLN_Wrapper_Booking_Builder
 
     public function getDateTime()
     {
-        return $this->getDate() . ' ' . $this->getTime();
+        return new DateTime($this->getDate() . ' ' . $this->getTime());
     }
 
     public function setDate($date)

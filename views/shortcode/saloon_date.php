@@ -7,9 +7,9 @@
  */
 $bb          = $plugin->getBookingBuilder();
 $date        = $bb->getDate();
-$hoursBefore = $step->getAvailabilityHelper()->getHoursBeforeString();
+$hoursBefore = $plugin->getAvailabilityHelper()->getHoursBeforeString();
 if (!($date instanceof \DateTime)) {
-    $date = $step->getAvailabilityHelper()->getHoursBeforeDateTime()->from;
+    $date = $plugin->getAvailabilityHelper()->getHoursBeforeDateTime()->from;
 }else{
     $date = new DateTime($date.' '.$bb->getTime());
 }

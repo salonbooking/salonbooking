@@ -7,7 +7,7 @@
  */
 $bb             = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
-$datetime       = new DateTime($bb->getDateTime());
+$datetime       = $bb->getDateTime();
 ?>
 <h2><?php _e('Booking summary', 'sln') ?></h2>
 <form method="post" action="<?php echo $formAction ?>" role="form"  id="saloon-step-summary">

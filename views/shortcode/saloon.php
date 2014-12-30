@@ -12,7 +12,7 @@
 //    'thankyou'  => __('thankyou', 'sln'),
 //);
 ?>
-<div id="sln-saloon">
+<div id="sln-saloon" class="sln-bootstrap">
     <div>
         <h1>Make a booking
             <svg class="icocal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"

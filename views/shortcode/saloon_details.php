@@ -16,29 +16,6 @@ $values = array(
 );
 
 ?>
-<h2><?php _e('Checkout as a guest', 'sln') ?>
-    <em><?php _e('An account will be automatically created', 'sln') ?></em>
-</h2>
-
-<form method="post" action="<?php echo $formAction ?>" role="form">
-    <div class="row">
-        <?php foreach (array(
-                           'firstname' => __('Firstname', 'sln'),
-                           'lastname'  => __('Lastname', 'sln'),
-                           'email'     => __('E-mail', 'sln'),
-                           'phone'     => __('Phone', 'sln')
-                       ) as $field => $label): ?>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
-                    <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true)) ?>
-                </div>
-            </div>
-        <?php endforeach ?>
-    </div>
-    <?php include "_form_actions.php" ?>
-</form>
-
 <?php if (!is_user_logged_in()): ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <h2><?php _e('Returning customer?', 'sln') ?><em><?php _e('Please, log-in.', 'sln') ?></em></h2>
@@ -57,11 +34,36 @@ $values = array(
                     <input name="login_password" type="password" class="form-control login-field"/>
                 </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-success btn-block" name="<?php echo $submitName ?>" value="next">
+                    <button type="submit" class="btn btn-success btn-block" name="<?php echo $submitName ?>"
+                            value="next">
                         Login <i class="glyphicon glyphicon-user"></i>
                     </button>
                 </div>
             </div>
         </div>
     </form>
+
+    <h2><?php _e('Checkout as a guest', 'sln') ?>
+        <em><?php _e('An account will be automatically created', 'sln') ?></em>
+    </h2>
+
+    <form method="post" action="<?php echo $formAction ?>" role="form">
+        <div class="row">
+            <?php foreach (array(
+                               'firstname' => __('Firstname', 'sln'),
+                               'lastname'  => __('Lastname', 'sln'),
+                               'email'     => __('E-mail', 'sln'),
+                               'phone'     => __('Phone', 'sln')
+                           ) as $field => $label): ?>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
+                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true)) ?>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+        <?php include "_form_actions.php" ?>
+    </form>
 <?php endif ?>
+

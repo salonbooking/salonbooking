@@ -1,0 +1,207 @@
+@import "bootstrap.less";
+
+@color-bg: #f8f8f8;
+@color-high: #004662;
+@color-mid: #666;
+@color-low: #999;
+@bg-high: #eee;
+
+#sln-saloon {
+  background: @color-bg;
+  border: 1px solid #ddd;
+  padding: 0;
+  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+  p li, a div {
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+  }
+  > div {
+    border: 1px solid #fff;
+    padding: 30px 40px;
+  }
+  .sln-service-list {
+    label {
+      padding-top: 10px;
+      width: 100%;
+    }
+    .service-name {
+      color: @color-high;
+      font-size: 20px;
+      font-weight: normal;
+      display: block !important;
+      border-bottom: 1px dashed #ccc;
+      margin-top: -10px;
+    }
+    .saloon-step-services {
+      border: 2px solid red;
+    }
+    .service-description,
+    .service-duration {
+      color: @color-mid;
+      font-size: 14px;
+      display: block;
+      clear: both;
+    }
+    .service-price {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+  }
+  .service-checkbox input {
+    min-width: 16px !important;
+    min-height: 16px !important;
+  }
+  h1 {
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 21px;
+    .icocal {
+      margin-left: 30px;
+      margin-top: 0px;
+      position: absolute;
+      display: inline-block;
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: normal;
+    em {
+      display: block;
+      clear: both;
+      color: @color-low;
+      font-size: 14px;
+      font-style: normal;
+    }
+  }
+
+  .row-total {
+    border-top: 7px solid @bg-high;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .saloon-bar {
+    margin: 0;
+    font-size: 10px;
+  }
+
+  .saloon-bar li {
+    background-color: #f0f0f0;
+    text-transform: uppercase;
+    border-radius: 3px;
+    text-align: center;
+  }
+
+  .saloon-bar li.active {
+    background-color: #ccc;
+    text-transform: uppercase;
+    border-radius: 3px;
+    text-align: center;
+  }
+
+  .form-group {
+    label {
+      color: @color-mid;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    .form-control {
+      color: @color-high;
+      font-size: 20px;
+      padding: 3px;
+    }
+  }
+  .form-actions {
+    margin-top: 10px;
+    > div > div {
+      float: left;
+    }
+    a,
+    a:hover,
+    button {
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .sln-step-num {
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      color: @color-low;
+    }
+  }
+
+  #saloon-step-summary {
+    p.dear {
+      color: @color-mid;
+    }
+    div.summ-row {
+      background: @bg-high;
+      margin-bottom: 3px;
+      > div {
+        display: table;
+        table-layout: fixed;
+      }
+      span.label {
+        font-size: 12px;
+        color: @color-mid;
+        display: block;
+        margin-top: 40px;
+      }
+      p.date {
+        font-size: 18px;
+        color: @color-high;
+        line-height: 20px;
+        margin: 30px 5px;
+      }
+      ul{margin: 0}
+      li{
+        width: 100%;
+        clear: both;
+        padding: 5px;
+      }
+      .service-label{color: @color-high; font-size: 14px}
+      .service-price, .total-price{
+        display: block; float: right;
+        font-weight: bold;
+        color: black;
+      }
+      .total-label, .total-amount{font-size: 14px; font-weight: bold; color: black}
+    }
+  }
+
+  .tycol{
+    background: @bg-high;
+    color: @color-mid;
+    padding: 15px;
+    height: 120px;
+    border-left: 4px solid @color-bg;
+    text-align: center;
+    span.num{
+      font-size: 26px;
+      color: black;
+      padding: 20px;
+      font-weight: bold;
+    }
+    i{
+      font-size: 48px;
+      color: green;
+    }
+  }
+  p.ty{
+    color: @color-mid;
+    font-size: 12px;
+    margin-bottom:5px;
+  }
+  #saloon-step-thankyou .form-actions a{
+    font-size: 14px;
+    text-transform: none;
+  }
+  .aligncenter{
+    text-align: center;
+  }
+}

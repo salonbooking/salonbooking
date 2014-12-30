@@ -6,7 +6,6 @@
  * @var SLN_Shortcode_Saloon_ServicesStep $step
  */
 $bb = $plugin->getBookingBuilder();
-$currencySymbol = $plugin->getSettings()->getCurrencySymbol();
 $services = $step->getServices();
 ?>
 <h1>Something more?</h1>

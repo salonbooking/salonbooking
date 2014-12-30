@@ -10,6 +10,8 @@ class SLN_Plugin
     private $settings;
     private $services;
     private $formatter;
+    private $availabilityHelper;
+
 
     public static function getInstance()
     {
@@ -49,7 +51,7 @@ class SLN_Plugin
     {
         load_plugin_textdomain(self::TEXT_DOMAIN, false, '/saloon/languages');
         wp_enqueue_style('saloon', SLN_PLUGIN_URL . '/css/saloon.css', array(), SLN_VERSION, 'all');
-        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
+//        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
         wp_enqueue_script('saloon', SLN_PLUGIN_URL . '/js/saloon.js', array('jquery'), '20140711', true);
         SLN_Shortcode_Saloon::init($this);
     }
@@ -161,4 +163,14 @@ class SLN_Plugin
 
         return $this->formatter;
     }
+
+    public function getAvailabilityHelper()
+    {
+        if (!isset($this->availabilityHelper)) {
+            $this->availabilityHelper = new SLN_Helper_Availability($this->getSettings());
+        }
+
+        return $this->availabilityHelper;
+    }
+
 }

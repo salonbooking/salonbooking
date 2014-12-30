@@ -7,15 +7,16 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         $post_id = $this->getId();
         $ret     = apply_filters('sln_service_price', get_post_meta($post_id, '_sln_service_price', true));
         $ret     = empty($ret) ? 0 : floatval($ret);
+
         return $ret;
     }
 
 
-    function getUnit()
+    function getUnitPerHour()
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_service_unit', get_post_meta($post_id, '_sln_service_unit', true));
-        $ret     = !empty($ret) ? 0 : floatval($ret);
+        $ret     = !empty($ret) ? 0 : intval($ret);
 
         return $ret;
     }
@@ -25,7 +26,8 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         $post_id = $this->getId();
         $ret     = apply_filters('sln_service_duration', get_post_meta($post_id, '_sln_service_duration', true));
         $ret     = SLN_Func::filter($ret, 'time');
-        return new \DateTime('1970-01-01 '.$ret);
+
+        return new \DateTime('1970-01-01 ' . $ret);
     }
 
 
@@ -61,6 +63,24 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         return $this->getNotAvailableTime('to');
     }
 
+    function isNotAvailableOnDate(\DateTime $date)
+    {
+        $key = array_search(strftime('%A', $date->getTimestamp()), SLN_Func::getDays());
+        if ($this->getNotAvailableOn($key)) {
+            return true;
+        }
+        $time = new \DateTime('1970-01-01 ' . $date->format('H:i'));
+        if ($this->getNotAvailableFrom()
+            && $this->getNotAvailableFrom() > $time
+            && $this->getNotAvailableTo()
+            && $this->getNotAvailableTo() < $time
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+
     function getNotAvailableTime($key)
     {
         $post_id = $this->getId();
@@ -70,14 +90,36 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         );
         $ret     = SLN_Func::filter($ret, 'time');
 
-        return new \DateTime('1970-01-01 '.$ret);
+        return new \DateTime('1970-01-01 ' . $ret);
     }
 
-    public function getName(){
+    public function getNotAvailableString()
+    {
+        foreach (SLN_Func::getDays() as $k => $day) {
+            if ($this->getNotAvailableOn($k)) {
+                $ret[] = substr($day, 0, 3);
+            }
+        }
+        $ret  = $ret ? __('on ', 'sln') . implode(', ', $ret) : '';
+        $from = $this->getNotAvailableFrom()->format('H:i');
+        $to   = $this->getNotAvailableTo()->format('H:i');
+        if ($from != '00:00') {
+            $ret .= __(' from ', 'sln') . $from;
+        }
+        if ($to != '00:00') {
+            $ret .= __(' to ', 'sln') . $to;
+        }
+
+        return $ret;
+    }
+
+    public function getName()
+    {
         return $this->object->post_title;
     }
 
-    public function getContent(){
+    public function getContent()
+    {
         return $this->object->post_excerpt;
     }
 }
