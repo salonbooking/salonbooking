@@ -59,12 +59,12 @@ class SLN_Helper_Availability
         $now->setTime($now->format('H'), $minutes);
         $now2 = clone $now;
         if ($ret->from) {
-            $ret->from = $now->add(new DateInterval($ret->from));
+            $ret->from = $now->modify($ret->from));
         } else {
-            $ret->from = $now->add(new DateInterval('PT30M'));
+            $ret->from = $now->modify('+30 minutes');
         }
         if ($ret->to) {
-            $ret->to = $now2->add(new DateInterval($ret->to));
+            $ret->to = $now2->modify($ret->to);
         }
 
         return $ret;

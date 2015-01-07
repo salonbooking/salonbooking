@@ -17,7 +17,7 @@ abstract class SLN_Shortcode_Salon_Step
 
     public function isValid()
     {
-        return ($_POST['submit_' . $this->getStep()] || $_GET['submit_' . $this->getStep()]) && $this->dispatchForm();
+        return (isset($_POST['submit_' . $this->getStep()]) || isset($_GET['submit_' . $this->getStep()])) && $this->dispatchForm();
     }
 
     public function render()

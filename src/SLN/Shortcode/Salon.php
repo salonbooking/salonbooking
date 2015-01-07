@@ -20,16 +20,13 @@ class SLN_Shortcode_Salon
 
     public static function init(SLN_Plugin $plugin)
     {
-        add_shortcode(
-            'salon',
-            function ($attrs) use ($plugin) {
-                $obj = new SLN_Shortcode_Salon($plugin, $attrs);
-
-                return $obj->execute();
-            }
-        );
+        add_shortcode('salon', array('SLN_Shortcode_Salon', 'create'));
     }
 
+    public static function create($attrs){
+       $obj = new SLN_Shortcode_Salon(SLN_Plugin::getInstance(), $attrs);
+       return $obj->execute();
+    }
 
     public function execute()
     {
@@ -44,7 +41,7 @@ class SLN_Shortcode_Salon
                 $found = true;
                 $this->currentStep = $step;
                 $obj               = $this->getStepObject($step);
-                if($_GET['ajax']){
+                if(isset($_GET['ajax'])){
                     ob_end_clean();
                     $obj->doAjax($_GET['ajax']);
                     ob_flush();

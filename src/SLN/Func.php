@@ -113,6 +113,26 @@ class SLN_Func
     public static function getIntervalItems(){
         return array(
             ''      => 'Always',
+            '+30 minutes' => 'half hour',
+            '+1 hour'  => '1 hour',
+            '+2 hours'  => '2 hours',
+            '+3 hours'  => '3 hours',
+            '+4 hours'  => '4 hours',
+            '+8 hours'  => '8 hours',
+            '+16 hours' => '16 hours',
+            '+1 day'   => '1 day',
+            '+2 days'   => '2 days',
+            '+3 days'   => '3 days',
+            '+4 days'   => '4 days',
+            '+1 week'   => '1 week',
+            '+2 weeks'   => '2 weeks',
+            '+3 weeks'   => '3 weeks',
+            '+1 month'   => '1 month',
+            '+2 months'   => '2 months',
+            '+3 months'   => '3 months'
+        );
+        return array(
+            ''      => 'Always',
             'PT30M' => 'half hour',
             'PT1H'  => '1 hour',
             'PT2H'  => '2 hours',
