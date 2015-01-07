@@ -15,7 +15,7 @@ class SLN_Action_Install
                 $ids[$label] = $id;
             }
         }
-        if (true) {//!get_option('saloon_settings')) {
+        if (true) {//!get_option('salon_settings')) {
             if ($ids['thankyou']) {
                 $data['settings']['thankyou'] = $ids['thankyou'];
             }

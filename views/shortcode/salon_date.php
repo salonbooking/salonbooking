@@ -3,7 +3,7 @@
  * @var SLN_Plugin                    $plugin
  * @var string                        $formAction
  * @var string                        $submitName
- * @var SLN_Shortcode_Saloon_DateStep $step
+ * @var SLN_Shortcode_Salon_DateStep $step
  */
 $bb          = $plugin->getBookingBuilder();
 $date        = $bb->getDate();
@@ -35,7 +35,7 @@ else:
             <em><?php echo sprintf(__('you can book up to %s before', 'sln'), $hoursBefore->to) ?></em>
         <?php endif ?>
     </h2>
-    <form method="post" action="<?php echo $formAction ?>" id="saloon-step-date">
+    <form method="post" action="<?php echo $formAction ?>" id="salon-step-date">
         <?php include '_errors.php' ?>
         <div class="row">
             <div class="col-md-6">

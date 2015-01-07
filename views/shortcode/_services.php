@@ -3,7 +3,7 @@
  * @var SLN_Plugin                        $plugin
  * @var string                            $formAction
  * @var string                            $submitName
- * @var SLN_Shortcode_Saloon_ServicesStep $step
+ * @var SLN_Shortcode_Salon_ServicesStep $step
  * @var SLN_Wrapper_Service[]             $services
  */
 

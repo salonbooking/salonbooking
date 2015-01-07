@@ -61,7 +61,7 @@ class SLN_Helper_Availability
         if ($ret->from) {
             $ret->from = $now->add(new DateInterval($ret->from));
         } else {
-            $ret->from = $now;
+            $ret->from = $now->add(new DateInterval('PT30M'));
         }
         if ($ret->to) {
             $ret->to = $now2->add(new DateInterval($ret->to));

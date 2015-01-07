@@ -1,6 +1,6 @@
 <?php
 
-class SLN_Shortcode_Saloon_ServicesStep extends SLN_Shortcode_Saloon_Step
+class SLN_Shortcode_Salon_ServicesStep extends SLN_Shortcode_Salon_Step
 {
     private $services;
 

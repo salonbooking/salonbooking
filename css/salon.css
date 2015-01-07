@@ -2223,25 +2223,25 @@ input[type="button"].btn-block {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-#sln-saloon {
+#sln-salon {
   background: #f8f8f8;
   border: 1px solid #ddd;
   padding: 0;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
 }
-#sln-saloon p li,
-#sln-saloon a div {
+#sln-salon p li,
+#sln-salon a div {
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
 }
-#sln-saloon > div {
+#sln-salon > div {
   border: 1px solid #fff;
   padding: 30px 40px;
 }
-#sln-saloon .sln-service-list label {
+#sln-salon .sln-service-list label {
   padding-top: 10px;
   width: 100%;
 }
-#sln-saloon .sln-service-list .service-name {
+#sln-salon .sln-service-list .service-name {
   color: #004662;
   font-size: 20px;
   font-weight: normal;
@@ -2249,148 +2249,148 @@ input[type="button"].btn-block {
   border-bottom: 1px dashed #ccc;
   margin-top: -10px;
 }
-#sln-saloon .sln-service-list .saloon-step-services {
+#sln-salon .sln-service-list .salon-step-services {
   border: 2px solid red;
 }
-#sln-saloon .sln-service-list .service-description,
-#sln-saloon .sln-service-list .service-duration {
+#sln-salon .sln-service-list .service-description,
+#sln-salon .sln-service-list .service-duration {
   color: #666666;
   font-size: 14px;
   display: block;
   clear: both;
 }
-#sln-saloon .sln-service-list .service-price {
+#sln-salon .sln-service-list .service-price {
   font-size: 16px;
   font-weight: bold;
 }
-#sln-saloon .service-checkbox input {
+#sln-salon .service-checkbox input {
   min-width: 16px !important;
   min-height: 16px !important;
 }
-#sln-saloon h1 {
+#sln-salon h1 {
   color: #333;
   text-align: center;
   text-transform: uppercase;
   font-size: 21px;
 }
-#sln-saloon h1 .icocal {
+#sln-salon h1 .icocal {
   margin-left: 30px;
   margin-top: 0px;
   position: absolute;
   display: inline-block;
 }
-#sln-saloon h2 {
+#sln-salon h2 {
   font-size: 24px;
   font-weight: normal;
 }
-#sln-saloon h2 em {
+#sln-salon h2 em {
   display: block;
   clear: both;
   color: #999999;
   font-size: 14px;
   font-style: normal;
 }
-#sln-saloon .row-total {
+#sln-salon .row-total {
   border-top: 7px solid #eeeeee;
   font-weight: bold;
   font-size: 18px;
 }
-#sln-saloon .saloon-bar {
+#sln-salon .salon-bar {
   margin: 0;
   font-size: 10px;
 }
-#sln-saloon .saloon-bar li {
+#sln-salon .salon-bar li {
   background-color: #f0f0f0;
   text-transform: uppercase;
   border-radius: 3px;
   text-align: center;
 }
-#sln-saloon .saloon-bar li.active {
+#sln-salon .salon-bar li.active {
   background-color: #ccc;
   text-transform: uppercase;
   border-radius: 3px;
   text-align: center;
 }
-#sln-saloon .form-group label {
+#sln-salon .form-group label {
   color: #666666;
   font-size: 15px;
   margin-bottom: 5px;
 }
-#sln-saloon .form-group .form-control {
+#sln-salon .form-group .form-control {
   color: #004662;
   font-size: 20px;
   padding: 3px;
 }
-#sln-saloon .form-actions {
+#sln-salon .form-actions {
   margin-top: 10px;
 }
-#sln-saloon .form-actions > div > div {
+#sln-salon .form-actions > div > div {
   float: left;
 }
-#sln-saloon .form-actions a,
-#sln-saloon .form-actions a:hover,
-#sln-saloon .form-actions button {
+#sln-salon .form-actions a,
+#sln-salon .form-actions a:hover,
+#sln-salon .form-actions button {
   font-size: 16px;
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
 }
-#sln-saloon .form-actions .sln-step-num {
+#sln-salon .form-actions .sln-step-num {
   display: block;
   text-align: center;
   font-size: 14px;
   font-weight: bold;
   color: #999999;
 }
-#sln-saloon #saloon-step-summary p.dear {
+#sln-salon #salon-step-summary p.dear {
   color: #666666;
 }
-#sln-saloon #saloon-step-summary div.summ-row {
+#sln-salon #salon-step-summary div.summ-row {
   background: #eeeeee;
   margin-bottom: 3px;
 }
-#sln-saloon #saloon-step-summary div.summ-row > div {
+#sln-salon #salon-step-summary div.summ-row > div {
   display: table;
   table-layout: fixed;
 }
-#sln-saloon #saloon-step-summary div.summ-row span.label {
+#sln-salon #salon-step-summary div.summ-row span.label {
   font-size: 12px;
   color: #666666;
   display: block;
   margin-top: 40px;
 }
-#sln-saloon #saloon-step-summary div.summ-row p.date {
+#sln-salon #salon-step-summary div.summ-row p.date {
   font-size: 18px;
   color: #004662;
   line-height: 20px;
   margin: 30px 5px;
 }
-#sln-saloon #saloon-step-summary div.summ-row ul {
+#sln-salon #salon-step-summary div.summ-row ul {
   margin: 0;
 }
-#sln-saloon #saloon-step-summary div.summ-row li {
+#sln-salon #salon-step-summary div.summ-row li {
   width: 100%;
   clear: both;
   padding: 5px;
 }
-#sln-saloon #saloon-step-summary div.summ-row .service-label {
+#sln-salon #salon-step-summary div.summ-row .service-label {
   color: #004662;
   font-size: 14px;
 }
-#sln-saloon #saloon-step-summary div.summ-row .service-price,
-#sln-saloon #saloon-step-summary div.summ-row .total-price {
+#sln-salon #salon-step-summary div.summ-row .service-price,
+#sln-salon #salon-step-summary div.summ-row .total-price {
   display: block;
   float: right;
   font-weight: bold;
   color: black;
 }
-#sln-saloon #saloon-step-summary div.summ-row .total-label,
-#sln-saloon #saloon-step-summary div.summ-row .total-amount {
+#sln-salon #salon-step-summary div.summ-row .total-label,
+#sln-salon #salon-step-summary div.summ-row .total-amount {
   font-size: 14px;
   font-weight: bold;
   color: #000000;
 }
-#sln-saloon .tycol {
+#sln-salon .tycol {
   background: #eeeeee;
   color: #666666;
   padding: 15px;
@@ -2398,25 +2398,25 @@ input[type="button"].btn-block {
   border-left: 4px solid #f8f8f8;
   text-align: center;
 }
-#sln-saloon .tycol span.num {
+#sln-salon .tycol span.num {
   font-size: 26px;
   color: black;
   padding: 20px;
   font-weight: bold;
 }
-#sln-saloon .tycol i {
+#sln-salon .tycol i {
   font-size: 48px;
   color: green;
 }
-#sln-saloon p.ty {
+#sln-salon p.ty {
   color: #666666;
   font-size: 12px;
   margin-bottom: 5px;
 }
-#sln-saloon #saloon-step-thankyou .form-actions a {
+#sln-salon #salon-step-thankyou .form-actions a {
   font-size: 14px;
   text-transform: none;
 }
-#sln-saloon .aligncenter {
+#sln-salon .aligncenter {
   text-align: center;
 }

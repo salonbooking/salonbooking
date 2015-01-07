@@ -5,10 +5,10 @@ return array(
         'gen_email'           => '',
         'gen_phone'           => '00391122334455',
         'gen_address'         => 'Main Street 123',
-        'gen_timetable'       => '',
+        'gen_timetable'       => 'Tue/Sat 9:00-13:00 15:00-20:00',
         'soc_facebook'        => 'http://www.facebook.com',
         'soc_twitter'         => 'http://www.twitter.com',
-        'soc_google'          => 'www.google.it',
+        'soc_google'          => 'http://www.google.it',
         'booking'             => true,
         'thankyou'            => true,
         'available_0'         => false,
@@ -75,7 +75,7 @@ return array(
         'booking' => array(
             'post' => array(
                 'post_title'   => 'Booking',
-                'post_content' => '[saloon/]',
+                'post_content' => '[salon/]',
                 'post_status'  => 'publish',
                 'post_type'    => 'page',
                 'comment_status' => 'closed',

@@ -1,6 +1,6 @@
 <?php
 
-class SLN_Shortcode_Saloon_DateStep extends SLN_Shortcode_Saloon_Step
+class SLN_Shortcode_Salon_DateStep extends SLN_Shortcode_Salon_Step
 {
 
     protected function dispatchForm()

@@ -1,5 +1,5 @@
 {
-    "name": "wordpress-plugin-saloon",
+    "name": "wordpress-plugin-salon",
     "private": "true",
     "dependencies": {
         "bootstrap": "3.2.*"

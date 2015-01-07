@@ -2,7 +2,7 @@
 
 class SLN_Settings
 {
-    const KEY = 'saloon_settings';
+    const KEY = 'salon_settings';
     private $settings;
 
     public function __construct()

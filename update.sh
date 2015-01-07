@@ -1,2 +1,2 @@
 lessc less/admin.less > css/admin.css
-lessc less/saloon.less > css/saloon.css
+lessc less/salon.less > css/salon.css

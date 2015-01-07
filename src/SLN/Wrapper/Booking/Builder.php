@@ -155,7 +155,7 @@ class SLN_Wrapper_Booking_Builder
         $id                   = wp_insert_post(
             array(
                 'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
-                'post_title' => $name . ' @ ' . $datetime,
+                'post_title' => $name . ' - ' . $datetime,
                 'post_status' => 'publish'
             )
         );

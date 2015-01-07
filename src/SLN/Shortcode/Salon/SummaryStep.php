@@ -1,6 +1,6 @@
 <?php
 
-class SLN_Shortcode_Saloon_SummaryStep extends SLN_Shortcode_Saloon_Step
+class SLN_Shortcode_Salon_SummaryStep extends SLN_Shortcode_Salon_Step
 {
     protected function dispatchForm()
     {
@@ -9,6 +9,10 @@ class SLN_Shortcode_Saloon_SummaryStep extends SLN_Shortcode_Saloon_Step
         if (!$bb->getLastBooking()) {
             $bb->set('note', SLN_Func::filter($values['note']));
             $bb->create();
+            $this->getPlugin()->sendMail(
+                'mail/summary', 
+                array('booking' => $bb->getLastBooking())
+            );
         }
 
         return true;

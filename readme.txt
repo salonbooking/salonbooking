@@ -1,4 +1,4 @@
 - Installazione
 
 - Shortcode
-[saloon]
+[salon]

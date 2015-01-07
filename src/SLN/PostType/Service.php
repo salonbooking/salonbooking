@@ -95,7 +95,7 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
             'public'              => true,
             'publicly_queryable'  => true,
             'exclude_from_search' => true,
-            'show_in_menu'        => 'saloon',
+            'show_in_menu'        => 'salon',
             'rewrite'             => false,
             'supports'            => array(
                 'title',
@@ -106,8 +106,8 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
             'labels'              => array(
                 'name'               => __('Services', 'sln'),
                 'singular_name'      => __('Service', 'sln'),
-                'menu_name'          => __('Saloon', 'sln'),
-                'name_admin_bar'     => __('Saloon Service', 'sln'),
+                'menu_name'          => __('Salon', 'sln'),
+                'name_admin_bar'     => __('Salon Service', 'sln'),
                 'all_items'          => __('Services', 'sln'),
                 'add_new'            => __('Add Service', 'sln'),
                 'add_new_item'       => __('Add New Service', 'sln'),

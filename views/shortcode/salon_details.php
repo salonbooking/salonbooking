@@ -3,7 +3,7 @@
  * @var SLN_Plugin                $plugin
  * @var string                    $formAction
  * @var string                    $submitName
- * @var SLN_Shortcode_Saloon_Step $step
+ * @var SLN_Shortcode_Salon_Step $step
  */
 $bb = $plugin->getBookingBuilder();
 global $current_user;
@@ -46,6 +46,29 @@ $values = array(
     <h2><?php _e('Checkout as a guest', 'sln') ?>
         <em><?php _e('An account will be automatically created', 'sln') ?></em>
     </h2>
+
+    <form method="post" action="<?php echo $formAction ?>" role="form">
+        <div class="row">
+            <?php foreach (array(
+                               'firstname' => __('Firstname', 'sln'),
+                               'lastname'  => __('Lastname', 'sln'),
+                               'email'     => __('E-mail', 'sln'),
+                               'phone'     => __('Phone', 'sln'),
+                               'password'  => __('Password', 'sln'),
+                               'password_confirm' => _('Confirm your password', 'sln')
+                           ) as $field => $label): ?>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
+                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true)) ?>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+        <?php include "_form_actions.php" ?>
+    </form>
+<?php else: ?>
+    <h2><?php _e('Checkout', 'sln') ?></h2>
 
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <div class="row">

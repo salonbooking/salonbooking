@@ -1,6 +1,6 @@
 <?php
 
-class SLN_Shortcode_Saloon_ThankyouStep extends SLN_Shortcode_Saloon_Step
+class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
 {
     private $op;
 
@@ -19,6 +19,7 @@ class SLN_Shortcode_Saloon_ThankyouStep extends SLN_Shortcode_Saloon_Step
                 $ppl = new SLN_Payment_Paypal($this->getPlugin());
                 if ($ppl->reverseCheckIpn() && $ppl->isCompleted($booking->getAmount())) {
                     $booking->setStatus(SLN_Enum_BookingStatus::PAY_LATER);
+                    $this->getPlugin()->sendMail('mail/payment_confirmed',compact('booking'));
                 }
             }
         } elseif ($_GET['mode'] == 'paypal') {

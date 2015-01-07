@@ -49,17 +49,17 @@ class SLN_Plugin
 
     public function action_init()
     {
-        load_plugin_textdomain(self::TEXT_DOMAIN, false, '/saloon/languages');
-        wp_enqueue_style('saloon', SLN_PLUGIN_URL . '/css/saloon.css', array(), SLN_VERSION, 'all');
+        load_plugin_textdomain(self::TEXT_DOMAIN, false, '/salon/languages');
+        wp_enqueue_style('salon', SLN_PLUGIN_URL . '/css/salon.css', array(), SLN_VERSION, 'all');
 //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
-        wp_enqueue_script('saloon', SLN_PLUGIN_URL . '/js/saloon.js', array('jquery'), '20140711', true);
-        SLN_Shortcode_Saloon::init($this);
+        wp_enqueue_script('salon', SLN_PLUGIN_URL . '/js/salon.js', array('jquery'), '20140711', true);
+        SLN_Shortcode_Salon::init($this);
     }
 
     public function admin_enqueue_scripts()
     {
-        wp_enqueue_script('saloon-admin-js', SLN_PLUGIN_URL . '/js/admin.js', array('jquery'), '20140711', true);
-        wp_enqueue_style('saloon-admin-css', SLN_PLUGIN_URL . '/css/admin.css', array(), SLN_VERSION, 'all');
+        wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL . '/js/admin.js', array('jquery'), '20140711', true);
+        wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL . '/css/admin.css', array(), SLN_VERSION, 'all');
     }
 
     /** @return SLN_Settings */
@@ -150,6 +150,14 @@ class SLN_Plugin
         include $this->getViewFile($view);
 
         return ob_get_clean();
+    }
+    public function sendMail($view, $data){
+        $data['data'] = $settings = new ArrayObject($data);
+        $content = $this->loadView($view, $data);
+        function sln_html_content_type(){return 'text/html';}
+        add_filter( 'wp_mail_content_type', 'sln_html_content_type' );
+        wp_mail( $settings['to'], $settings['subject'], $content);
+        remove_filter( 'wp_mail_content_type', 'sln_html_content_type' );
     }
 
     /**

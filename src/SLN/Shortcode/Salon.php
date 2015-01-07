@@ -1,6 +1,6 @@
 <?php
 
-class SLN_Shortcode_Saloon
+class SLN_Shortcode_Salon
 {
     const STEP_KEY = 'sln_step_page';
     const STEP_DEFAULT = 'date';
@@ -21,9 +21,9 @@ class SLN_Shortcode_Saloon
     public static function init(SLN_Plugin $plugin)
     {
         add_shortcode(
-            'saloon',
+            'salon',
             function ($attrs) use ($plugin) {
-                $obj = new SLN_Shortcode_Saloon($plugin, $attrs);
+                $obj = new SLN_Shortcode_Salon($plugin, $attrs);
 
                 return $obj->execute();
             }
@@ -59,14 +59,14 @@ class SLN_Shortcode_Saloon
 
     /**
      * @param $step
-     * @return SLN_Shortcode_Saloon_Step
+     * @return SLN_Shortcode_Salon_Step
      * @throws Exception
      */
     private function getStepObject($step)
     {
         $class = __CLASS__ . '_' . ucwords($step) . 'Step';
         $obj   = new $class($this->plugin, $this, $step);
-        if ($obj instanceof SLN_Shortcode_Saloon_Step) {
+        if ($obj instanceof SLN_Shortcode_Salon_Step) {
             return $obj;
         } else {
             throw new Exception('bad object ' . $class);
@@ -75,9 +75,9 @@ class SLN_Shortcode_Saloon
 
     protected function render($content)
     {
-        $saloon = $this;
+        $salon = $this;
 
-        return $this->plugin->loadView('shortcode/saloon', compact('content', 'saloon'));
+        return $this->plugin->loadView('shortcode/salon', compact('content', 'salon'));
     }
 
 

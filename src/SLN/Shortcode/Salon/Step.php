@@ -1,6 +1,6 @@
 <?php
 
-abstract class SLN_Shortcode_Saloon_Step
+abstract class SLN_Shortcode_Salon_Step
 {
     private $plugin;
     private $attrs;
@@ -8,7 +8,7 @@ abstract class SLN_Shortcode_Saloon_Step
     private $shortcode;
     private $errors = array();
 
-    function __construct(SLN_Plugin $plugin, SLN_Shortcode_Saloon $shortcode, $step)
+    function __construct(SLN_Plugin $plugin, SLN_Shortcode_Salon $shortcode, $step)
     {
         $this->plugin    = $plugin;
         $this->shortcode = $shortcode;
@@ -22,7 +22,7 @@ abstract class SLN_Shortcode_Saloon_Step
 
     public function render()
     {
-        return $this->getPlugin()->loadView('shortcode/saloon_' . $this->getStep(), $this->getViewData());
+        return $this->getPlugin()->loadView('shortcode/salon_' . $this->getStep(), $this->getViewData());
     }
 
     protected function getViewData()

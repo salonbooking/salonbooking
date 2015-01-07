@@ -37,11 +37,11 @@ function sln_availability_row($prefix, $row)
     <div class="row form-inline">
         <div class="col-md-5">
             <div class="form-group">
-                <label for="saloon_settings[parallels]">
+                <label for="salon_settings[parallels]">
                     <?php _e('How many people you can serve at the same hour?', 'sln') ?>
                 </label>
                 <?php echo SLN_Form::fieldNumeric(
-                    "saloon_settings[parallels_hour]",
+                    "salon_settings[parallels_hour]",
                     $this->getOpt('parallels_hour'),
                     array('min' => 0, 'max' => 20)
                 ) ?>
@@ -51,11 +51,11 @@ function sln_availability_row($prefix, $row)
                     ) ?></p>
             </div>
             <div class="form-group">
-                <label for="saloon_settings[parallels]">
+                <label for="salon_settings[parallels]">
                     <?php _e('How many people you can serve at the same day?', 'sln') ?>
                 </label>
                 <?php echo SLN_Form::fieldNumeric(
-                    "saloon_settings[parallels_day]",
+                    "salon_settings[parallels_day]",
                     $this->getOpt('parallels_day'),
                     array('min' => 0, 'max' => 100)
                 ) ?>
@@ -76,7 +76,7 @@ function sln_availability_row($prefix, $row)
                     <label for="<?php echo SLN_Form::makeID($field) ?> ">
                         <?php _e('by', 'sln') ?>
                     </label>
-                    <?php $field = "saloon_settings[hours_before_from]"; ?>
+                    <?php $field = "salon_settings[hours_before_from]"; ?>
                     <?php echo SLN_Form::fieldSelect(
                         $field,
                         SLN_Func::getIntervalItems(),
@@ -85,7 +85,7 @@ function sln_availability_row($prefix, $row)
                         true
                     ) ?>
                 </div>
-                <?php $field = "saloon_settings[hours_before_to]"; ?>
+                <?php $field = "salon_settings[hours_before_to]"; ?>
                 <div class="form-group">
                     <label for="<?php echo SLN_Form::makeID($field) ?> ">
                         <?php _e('up to', 'sln') ?>
@@ -104,7 +104,7 @@ function sln_availability_row($prefix, $row)
                     </label>
                 </div>
             </div>
-            <?php $field = "saloon_settings[interval]"; ?>
+            <?php $field = "salon_settings[interval]"; ?>
             <div class="row">
                 <label for="<?php echo SLN_Form::makeID($field) ?> ">
                     <?php _e('Define the interval in minutes between time definition', 'sln') ?>
@@ -133,7 +133,7 @@ function sln_availability_row($prefix, $row)
                     <div class="item">
                         <div class="row form-inline">
                             <div class="col-md-10">
-                                <?php sln_availability_row("saloon_settings[availabilities][$k]", $row); ?>
+                                <?php sln_availability_row("salon_settings[availabilities][$k]", $row); ?>
                             </div>
                             <div class="col-md-2">
                                 <button class="btn btn-block btn-danger" data-collection="remove">
@@ -154,7 +154,7 @@ function sln_availability_row($prefix, $row)
             <div data-collection="prototype" data-count="<?php echo count($availabilities) ?>">
                 <div class="row form-inline">
                     <div class="col-md-10">
-                        <?php sln_availability_row("saloon_settings[availabilities][__new__]", $row); ?>
+                        <?php sln_availability_row("salon_settings[availabilities][__new__]", $row); ?>
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-block btn-danger" data-collection="remove">
@@ -170,7 +170,7 @@ function sln_availability_row($prefix, $row)
                     <div class="form-group">
                         <label><?php _e('Disable online booking', 'sln') ?>
                             <?php SLN_Form::fieldCheckbox(
-                                "saloon_settings[disabled]",
+                                "salon_settings[disabled]",
                                 $this->getOpt('disabled_message')
                             ) ?>
                         </label>
@@ -184,12 +184,12 @@ function sln_availability_row($prefix, $row)
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="<?php echo SLN_form::makeID("saloon_settings[disabled_message]") ?>"><?php _e(
+                        <label for="<?php echo SLN_form::makeID("salon_settings[disabled_message]") ?>"><?php _e(
                                 'Message on disabled booking',
                                 'sln'
                             ) ?></label>
                         <?php SLN_Form::fieldTextarea(
-                            "saloon_settings[disabled_message]",
+                            "salon_settings[disabled_message]",
                             $this->getOpt('disabled_message'),
                             array(
                                 'attrs' => array(

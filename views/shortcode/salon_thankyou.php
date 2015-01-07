@@ -6,7 +6,7 @@
  */
 
 ?>
-<div id="saloon-step-thankyou">
+<div id="salon-step-thankyou">
     <h2><?php _e('Booking Confirmation', 'sln') ?></h2>
     <?php if (isset($paypalOp) && $paypalOp == 'cancel'): ?>
         <div class="alert alert-danger">
@@ -32,12 +32,20 @@
         </p>
     <?php endif ?>
     <div class="row form-actions aligncenter">
+        <?php if($plugin->getSettings()->get('pay_enabled') && $plugin->getSettings()->getPaypalEmail()) : ?>
         <a href="<?php echo $paypalUrl ?>" class="btn btn-primary">
             <?php _e('Pay with Paypal', 'sln') ?>
         </a>
+        <?php $ppl = true; endif; ?>
+        <?php if($ppl && $plugin->getSettings()->get('pay_cash')): ?>
         <?php _e('Or', 'sln') ?>
         <a href="<?php echo $laterUrl ?>" class="btn btn-success">
             <?php _e('I\'ll pay later', 'sln') ?>
         </a>
+        <?php elseif(!$ppl) : ?>
+        <a href="<?php echo $laterUrl ?>" class="btn btn-success">
+            <?php _e('Confirm', 'sln') ?>
+        </a>
+        <?php endif ?>
     </div>
 </div>

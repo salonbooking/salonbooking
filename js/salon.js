@@ -10,10 +10,10 @@ Number.prototype.formatMoney = function (c, d, t) {
 };
 
 jQuery(function ($) {
-    if ($('#saloon-step-services').length || $('#saloon-step-secondary').length) {
+    if ($('#salon-step-services').length || $('#salon-step-secondary').length) {
         sln_serviceTotal($);
     }
-    if ($('#saloon-step-date').length) {
+    if ($('#salon-step-date').length) {
         sln_stepDate($);
     }
 });
@@ -44,7 +44,7 @@ function sln_stepDate($) {
                     $('#sln-notifications').html('');
                     isValid = true;
                     if (autosubmit)
-                        $('#saloon-step-date').submit();
+                        $('#salon-step-date').submit();
                 }
             }
         });
@@ -53,7 +53,7 @@ function sln_stepDate($) {
     $('#sln_date_day, #sln_date_month, #sln_date_hour, #sln_time').change(function () {
         validate(this);
     });
-    $('#saloon-step-date').submit(function () {
+    $('#salon-step-date').submit(function () {
         if (!isValid) {
             validate(this, true);
             return false;

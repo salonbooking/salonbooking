@@ -3,14 +3,14 @@
  * @var SLN_Plugin                $plugin
  * @var string                    $formAction
  * @var string                    $submitName
- * @var SLN_Shortcode_Saloon_Step $step
+ * @var SLN_Shortcode_Salon_Step $step
  */
 $bb             = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
 $datetime       = $bb->getDateTime();
 ?>
 <h2><?php _e('Booking summary', 'sln') ?></h2>
-<form method="post" action="<?php echo $formAction ?>" role="form"  id="saloon-step-summary">
+<form method="post" action="<?php echo $formAction ?>" role="form"  id="salon-step-summary">
     <p class="dear"><?php _e('Dear', 'sln') ?>
         <strong><?php echo esc_attr($bb->get('firstname')) . ' ' . esc_attr($bb->get('lastname')); ?></strong>
         <br/>

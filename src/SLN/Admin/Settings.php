@@ -2,7 +2,7 @@
 
 class SLN_Admin_Settings
 {
-    const PAGE = 'saloon-settings';
+    const PAGE = 'salon-settings';
 
     protected $plugin;
     protected $settings;
@@ -25,19 +25,19 @@ class SLN_Admin_Settings
     public function admin_menu()
     {
         add_menu_page(
-            __('Saloon', 'sln'),
-            __('Saloon', 'sln'),
+            __('Salon', 'sln'),
+            __('Salon', 'sln'),
             'manage_options',
-            'saloon',
+            'salon',
             array($this, 'settings_page'),
             null,
             2
         );
         $this->settings_page = add_submenu_page(
-            'saloon',
-            __('Saloon Settings', 'sln'),
+            'salon',
+            __('Salon Settings', 'sln'),
             __('Settings', 'sln'),
-            apply_filters('saloonviews/settings/capability', 'manage_options'),
+            apply_filters('salonviews/settings/capability', 'manage_options'),
             self::PAGE,
             array($this, 'settings_page')
         );
@@ -48,10 +48,10 @@ class SLN_Admin_Settings
     {
         ?>
         <div class="form-group">
-            <label for="saloon_settings[<?php echo $key ?>]"><?php echo $label ?></label></th>
+            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
             <?php
             SLN_Form::fieldCheckbox(
-                "saloon_settings[{$key}]",
+                "salon_settings[{$key}]",
                 $this->getOpt($key)
             )
             ?>
@@ -69,8 +69,8 @@ class SLN_Admin_Settings
     {
         ?>
         <div class="form-group">
-            <label for="saloon_settings[<?php echo $key ?>]"><?php echo $label ?></label></th>
-            <?php echo SLN_Form::fieldText("saloon_settings[$key]", $this->getOpt($key)) ?>
+            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
+            <?php echo SLN_Form::fieldText("salon_settings[$key]", $this->getOpt($key)) ?>
             <?php if (isset($settings['help'])) ?><p class="help-block"><?php echo $settings['help'] ?></p>
         </div>
     <?php
@@ -83,8 +83,8 @@ class SLN_Admin_Settings
         }
         ?>
         <div class="form-group">
-            <label for="saloon_settings[<?php echo $key ?>]"><?php echo $label ?></label></th>
-            <?php SLN_Form::fieldTextarea("saloon_settings[$key]", $this->getOpt($key), $settings['textarea']); ?>
+            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
+            <?php SLN_Form::fieldTextarea("salon_settings[$key]", $this->getOpt($key), $settings['textarea']); ?>
             <?php if (isset($settings['help'])) ?><p class="help-block"><?php echo $settings['help'] ?></p>
         </div>
     <?php
@@ -98,7 +98,7 @@ class SLN_Admin_Settings
             <?php
             wp_dropdown_pages(
                 array(
-                    'name'             => 'saloon_settings[' . $key . ']',
+                    'name'             => 'salon_settings[' . $key . ']',
                     'selected'         => $this->getOpt($key) ? $this->getOpt($key) : null,
                     'show_option_none' => 'Nessuna'
                 )
@@ -148,7 +148,7 @@ class SLN_Admin_Settings
                      'soc_twitter',
                      'soc_google'
                  ) as $k) {
-            $this->settings->set($k, $_POST['saloon_settings'][$k]);
+            $this->settings->set($k, $_POST['salon_settings'][$k]);
         }
         $this->settings->save();
         $this->showAlert(
@@ -166,10 +166,10 @@ class SLN_Admin_Settings
     public function processTabBooking()
     {
         $tmp = array();
-        foreach ($_POST['saloon_settings']['availabilities'] as $row) {
+        foreach ($_POST['salon_settings']['availabilities'] as $row) {
             $tmp[] = $row;
         }
-        $_POST['saloon_settings']['availabilities'] = $tmp;
+        $_POST['salon_settings']['availabilities'] = $tmp;
         foreach (array(
                      'confirmation',
                      'thankyou',
@@ -183,7 +183,7 @@ class SLN_Admin_Settings
                      'hours_before_to',
                      'interval'
                  ) as $k) {
-            $this->settings->set($k, $_POST['saloon_settings'][$k]);
+            $this->settings->set($k, $_POST['salon_settings'][$k]);
         }
         $this->settings->save();
         $this->showAlert(
@@ -207,7 +207,7 @@ class SLN_Admin_Settings
                      'pay_cash',
                      'pay_enabled'
                  ) as $k) {
-            $this->settings->set($k, $_POST['saloon_settings'][$k]);
+            $this->settings->set($k, $_POST['salon_settings'][$k]);
         }
         $this->settings->save();
         $this->showAlert(
@@ -234,7 +234,7 @@ class SLN_Admin_Settings
         ?>
         <div class="wrap sln-bootstrap">
             <?php screen_icon(); ?>
-            <h2><?php _e('Saloon Settings', 'sln'); ?></h2>
+            <h2><?php _e('Salon Settings', 'sln'); ?></h2>
 
             <?php settings_errors(); ?>
             <?php $this->showTabsBar(); ?>

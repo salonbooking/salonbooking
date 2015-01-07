@@ -1,7 +1,7 @@
 <?php
 /**
  * @var string               $content
- * @var SLN_Shortcode_Saloon $saloon
+ * @var SLN_Shortcode_Salon $salon
  */
 //$labels = array(
 //    'date'      => __('date', 'sln'),
@@ -12,7 +12,7 @@
 //    'thankyou'  => __('thankyou', 'sln'),
 //);
 ?>
-<div id="sln-saloon" class="sln-bootstrap">
+<div id="sln-salon" class="sln-bootstrap">
     <div>
         <h1>Make a booking
             <svg class="icocal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"
@@ -24,10 +24,10 @@
         </h1>
         <?php
         /*
-            <ul class="saloon-bar nav nav-pills nav-justified thumbnail">
+            <ul class="salon-bar nav nav-pills nav-justified thumbnail">
                 <?php $i = 0;
-                foreach ($saloon->getSteps() as $step) : $i++; ?>
-                    <li <?php echo $step == $saloon->getCurrentStep() ? 'class="active"' : ''?>>
+                foreach ($salon->getSteps() as $step) : $i++; ?>
+                    <li <?php echo $step == $salon->getCurrentStep() ? 'class="active"' : ''?>>
                         <?php echo $i ?>. <?php echo $labels[$step] ?>
                     </li>
                 <?php endforeach ?>

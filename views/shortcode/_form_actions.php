@@ -1,6 +1,6 @@
 <?php
 /**
- * @var SLN_Shortcode_Saloon_Step $step
+ * @var SLN_Shortcode_Salon_Step $step
  */
 
 if (!isset($nextLabel)) {
@@ -8,9 +8,9 @@ if (!isset($nextLabel)) {
 }
 $i       = 0;
 $count   = count($steps);
-$saloon  = $step->getShortcode();
-$steps   = $saloon->getSteps();
-$current = $saloon->getCurrentStep();
+$salon  = $step->getShortcode();
+$steps   = $salon->getSteps();
+$current = $salon->getCurrentStep();
 $count   = count($steps);
 foreach ($steps as $step) {
     $i++;
