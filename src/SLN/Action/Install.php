@@ -2,7 +2,7 @@
 
 class SLN_Action_Install
 {
-    public static function execute()
+    public static function execute($force = false)
     {
         $data = require SLN_PLUGIN_DIR . '/_install_data.php';
         $ids  = array();
@@ -15,7 +15,7 @@ class SLN_Action_Install
                 $ids[$label] = $id;
             }
         }
-        if (true) {//!get_option('salon_settings')) {
+        if (!get_option('salon_settings')) {
             if ($ids['thankyou']) {
                 $data['settings']['thankyou'] = $ids['thankyou'];
             }
@@ -28,12 +28,6 @@ class SLN_Action_Install
 
     private static function checkPost($title, $post_type)
     {
-        $query = new WP_Query(
-            array(
-                'post_type' => $post_type,
-                'title'     => $title
-            )
-        );
-        return $query->found_posts > 0;
+        return get_page_by_title($title, null, $post_type) ? true : false;
     }
 }

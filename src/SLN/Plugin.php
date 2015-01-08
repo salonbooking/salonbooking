@@ -34,7 +34,7 @@ class SLN_Plugin
     {
         add_action('init', array($this, 'action_init'));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
-        register_activation_hook(__FILE__, array('SLN_Action_Install', 'execute'));
+        register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
         new SLN_PostType_Booking($this, self::POST_TYPE_BOOKING);
     }

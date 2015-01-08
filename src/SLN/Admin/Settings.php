@@ -122,7 +122,7 @@ class SLN_Admin_Settings
     {
         if ($_POST['reset-settings'] == 'reset') {
             $this->settings->clear();
-            SLN_Action_Install::execute();
+            SLN_Action_Install::execute(true);
             $this->showAlert(
                 'success',
                 __('remember to customize your settings', 'sln'),
