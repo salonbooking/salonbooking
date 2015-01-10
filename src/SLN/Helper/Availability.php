@@ -2,31 +2,16 @@
 
 class SLN_Helper_Availability
 {
+    const MAX_DAYS = 365;
+
     private $settings;
-    private $availabilities;
     private $date;
-    private $bookings;
-    private $servicesHourCount;
+    /** @var  SLN_Helper_AvailabilityDayBookings */
+    private $dayBookings;
 
     public function __construct(SLN_Settings $settings)
     {
         $this->settings = $settings;
-    }
-
-    public function __toString()
-    {
-        $ret = '';
-
-        return (string)$ret;
-    }
-
-    public function getAvailabilities()
-    {
-        if (!isset($this->availabilities)) {
-            foreach ($this->settings->get('availabilities') as $item) {
-                $this->availabilities = new SLN_Helper_AvailabilityItem($item);
-            }
-        }
     }
 
     public function getHoursBefore()
@@ -70,6 +55,37 @@ class SLN_Helper_Availability
         return $ret;
     }
 
+    public function getDays()
+    {
+        $interval = $this->getHoursBeforeDateTime();
+        $from     = isset($interval->from) ? $interval->from : new DateTime();
+        $count    = isset($interval->to) ? SLN_Func::countDaysBetweenDatetimes($from, $interval->to) : self::MAX_DAYS;
+        $ret      = array();
+        $avItems  = $this->getItems();
+        while ($count > 0) {
+            $date  = $from->format('Y-m-d');
+            $from = $from->modify('+1 days');
+            $count--;
+            if ($avItems->isValidDate($date)) {
+                $ret[] = $date;
+            }
+        }
+
+        return $ret;
+    }
+
+    public function getTimes($date)
+    {
+        $ret      = array();
+        $avItems  = $this->getItems();
+        foreach(SLN_Func::getMinutesIntervals() as $time){
+            if ($avItems->isValidTime($date, $time)) {
+                $ret[] = $time;
+            }
+        }
+        return $ret;
+    }
+
     private function minutes(DateTime $date)
     {
         $interval = $this->settings->getInterval();
@@ -82,86 +98,29 @@ class SLN_Helper_Availability
     public function setDate(DateTime $date)
     {
         $this->date = $date;
-        $this->buildBookings();
+        $this->bookings = new SLN_Helper_AvailabilityDayBookings($date);
 
         return $this;
     }
 
-    private function buildBookings()
-    {
-        $args           = array(
-            'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
-            'nopaging'   => true,
-            'meta_query' => array(
-                array(
-                    'key'     => '_sln_booking_date',
-                    'value'   => $this->date->format('Y-m-d'),
-                    'compare' => '=',
-                )
-            )
-        );
-        $query          = new WP_Query($args);
-        $this->bookings = array();
-        foreach ($query->get_posts() as $p) {
-            $this->bookings[] = SLN_Plugin::getInstance()->createBooking($p);
-        }
-        wp_reset_query();
-        wp_reset_postdata();
-    }
-
     /**
-     * @return SLN_Wrapper_Booking[]
+     * @return SLN_Helper_AvailabilityDayBookings
      */
-    public function getBookings()
+    public function getDayBookings()
     {
-        return $this->bookings;
+        return $this->dayBookings;
     }
 
     public function getBookingsDayCount()
     {
-        return count($this->bookings);
+        return $this->getDayBookings()->countBookingsByDay();
     }
 
     public function getBookingsHourCount()
     {
-        return count($this->getBookingsHour());
+        return $this->getDayBookings()->countBookingsByHour();
     }
 
-    /**
-     * @return SLN_Wrapper_Booking[]
-     */
-    public function getBookingsHour()
-    {
-        $hour = $this->date->format('H');
-        $ret  = array();
-        foreach ($this->getBookings() as $b) {
-            $t = explode(':', $b->getTime());
-            if ($t == $hour) {
-                $ret[] = $b;
-            }
-        }
-
-        return $ret;
-    }
-
-    public function getServicesHourCount()
-    {
-        if (!$this->servicesHourCount) {
-            $ret = array();
-            foreach ($this->getBookingsHour() as $b) {
-                foreach ($b->getServicesIds() as $id) {
-                    if (isset($ret[$id])) {
-                        $ret[$id]++;
-                    } else {
-                        $ret[$id] = 1;
-                    }
-                }
-            }
-            $this->servicesHourCount = $ret;
-        }
-
-        return $this->servicesHourCount;
-    }
 
     public function validateService(SLN_Wrapper_Service $service)
     {
@@ -170,7 +129,7 @@ class SLN_Helper_Availability
                 __('this service is not available ', 'sln') . $service->getNotAvailableString()
             );
         }
-        $ids = $this->getServicesHourCount();
+        $ids = $this->getDayBookings()->countServicesByHour();;
         if (
             $service->getUnitPerHour() > 0
             && isset($ids[$service->getId()])
@@ -180,5 +139,17 @@ class SLN_Helper_Availability
                 __('this service is full in this hour', 'sln') . $service->getNotAvailableString()
             );
         }
+    }
+
+    /**
+     * @return SLN_Helper_AvailabilityItems
+     */
+    public function getItems()
+    {
+        if (!isset($this->items)) {
+            $this->items = new SLN_Helper_AvailabilityItems($this->settings->get('availabilities'));
+        }
+
+        return $this->items;
     }
 }

@@ -7,11 +7,18 @@ class SLN_Func
         $timestamp = strtotime('next Sunday');
         $ret       = array();
         for ($i = 1; $i <= 7; $i++) {
-            $ret[$i]   = strftime('%A', $timestamp);
+            $ret[$i]   = date_i18n('l', $timestamp);
             $timestamp = strtotime('+1 day', $timestamp);
         }
 
         return $ret;
+    }
+
+    public static function countDaysBetweenDatetimes(\DateTime $from, \DateTime $to)
+    {
+        $datediff = abs($from->getTimestamp() - $to->getTimestamp());
+
+        return floor($datediff / (60 * 60 * 24));
     }
 
     public static function getMonths()
@@ -19,7 +26,7 @@ class SLN_Func
         $timestamp = strtotime("1970-01-01");
         $ret       = array();
         for ($i = 1; $i <= 12; $i++) {
-            $ret[$i]   = strftime('%B', $timestamp);
+            $ret[$i]   = date_i18n('F',$timestamp);
             $timestamp = strtotime('+1 month', $timestamp);
         }
 
@@ -69,6 +76,7 @@ class SLN_Func
             if (is_array($val)) {
                 $val = $val['year'] . '-' . $val['month'] . '-' . $val['day'];
             }
+
             return date('Y-m-d', strtotime($val));
         } elseif ($filter == 'bool') {
             return $val ? true : false;
@@ -110,27 +118,29 @@ class SLN_Func
         return $pageURL;
     }
 
-    public static function getIntervalItems(){
+    public static function getIntervalItems()
+    {
         return array(
-            ''      => 'Always',
+            ''            => 'Always',
             '+30 minutes' => 'half hour',
-            '+1 hour'  => '1 hour',
-            '+2 hours'  => '2 hours',
-            '+3 hours'  => '3 hours',
-            '+4 hours'  => '4 hours',
-            '+8 hours'  => '8 hours',
-            '+16 hours' => '16 hours',
-            '+1 day'   => '1 day',
-            '+2 days'   => '2 days',
-            '+3 days'   => '3 days',
-            '+4 days'   => '4 days',
-            '+1 week'   => '1 week',
-            '+2 weeks'   => '2 weeks',
-            '+3 weeks'   => '3 weeks',
-            '+1 month'   => '1 month',
+            '+1 hour'     => '1 hour',
+            '+2 hours'    => '2 hours',
+            '+3 hours'    => '3 hours',
+            '+4 hours'    => '4 hours',
+            '+8 hours'    => '8 hours',
+            '+16 hours'   => '16 hours',
+            '+1 day'      => '1 day',
+            '+2 days'     => '2 days',
+            '+3 days'     => '3 days',
+            '+4 days'     => '4 days',
+            '+1 week'     => '1 week',
+            '+2 weeks'    => '2 weeks',
+            '+3 weeks'    => '3 weeks',
+            '+1 month'    => '1 month',
             '+2 months'   => '2 months',
             '+3 months'   => '3 months'
         );
+
         return array(
             ''      => 'Always',
             'PT30M' => 'half hour',
@@ -151,5 +161,25 @@ class SLN_Func
             'P2M'   => '2 months',
             'P3M'   => '3 months'
         );
+    }
+
+    public static function getMinutesIntervals($interval = null, $maxItems = null)
+    {
+        $start = "00:00";
+
+        $curr     = strtotime($start);
+        $interval = isset($interval) ?
+            $interval :
+            SLN_Plugin::getInstance()->getSettings()->getInterval();
+        $maxItems = isset($maxItems) ?
+            $maxItems : 1440;
+        $items = array();
+        do {
+            $items[] = date("H:i", $curr);
+            $curr    = strtotime('+' . $interval . ' minutes', $curr);
+            $maxItems--;
+        } while (date("H:i", $curr) != $start && $maxItems > 0);
+
+        return $items;
     }
 }

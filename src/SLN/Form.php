@@ -12,19 +12,14 @@ class SLN_Form
         if ($value instanceof \DateTime) {
             $value = $value->format('H:i');
         }
-        $start = "00:00";
+        if ($settings['items']) {
+            $items = $settings['items'];
+        } else {
+            $interval = isset($settings['interval']) ? $settings['interval'] : null;
+            $maxItems = isset($settings['maxItems']) ? $settings['maxItems'] : null;
+            $items    = SLN_Func::getMinutesIntervals($interval, $maxItems);
+        }
 
-        $curr     = strtotime($start);
-        $interval = isset($settings['interval']) ?
-            $settings['interval'] :
-            SLN_Plugin::getInstance()->getSettings()->getInterval();
-        $maxItems = isset($settings['maxItems']) ?
-            $settings['maxItems'] : 1440;
-        do {
-            $items[] = date("H:i", $curr);
-            $curr    = strtotime('+' . $interval . ' minutes', $curr);
-            $maxItems--;
-        } while (date("H:i", $curr) != $start && $maxItems > 0);
         self::fieldSelect($name, $items, $value, $settings);
     }
 
@@ -45,7 +40,16 @@ class SLN_Form
         if ($value instanceof \DateTime) {
             $value = $value->format('d');
         }
-        self::fieldNumeric($name, $value, array_merge($settings, array('min' => 1, 'max' => 31)));
+        self::fieldNumeric(
+            $name,
+            $value,
+            array_merge(
+                $settings,
+                isset($settings['days']) ?
+                    array('items' => $settings['days'])
+                    : array('min' => 1, 'max' => 31)
+            )
+        );
     }
 
     static public function fieldMonth($name, $value, $settings = array())
@@ -53,7 +57,13 @@ class SLN_Form
         if ($value instanceof \DateTime) {
             $value = $value->format('m');
         }
-        self::fieldSelect($name, SLN_Func::getMonths(), $value, $settings, true);
+        self::fieldSelect(
+            $name,
+            isset($settings['months']) ? $settings['months'] : SLN_Func::getMonths(),
+            $value,
+            $settings,
+            true
+        );
     }
 
     static public function fieldYear($name, $value, $settings = array())
@@ -64,7 +74,7 @@ class SLN_Form
         $currY = date('Y');
         self::fieldSelect(
             $name,
-            SLN_Func::getYears($value < $currY ? $value : $currY - 1),
+            isset($settings['years']) ? $settings['years'] : SLN_Func::getYears($value < $currY ? $value : $currY - 1),
             $value,
             $settings
         );
@@ -72,13 +82,17 @@ class SLN_Form
 
     static public function fieldNumeric($name, $value = null, $settings = array())
     {
-        $min      = isset($settings['min']) ? $settings['min'] : 1;
-        $max      = isset($settings['max']) ? $settings['max'] : 20;
-        $interval = isset($settings['inverval']) ? $settings['interval'] : 1;
-        $items    = array();
+        if ($settings['items']) {
+            $items = $settings['items'];
+        } else {
+            $min      = isset($settings['min']) ? $settings['min'] : 1;
+            $max      = isset($settings['max']) ? $settings['max'] : 20;
+            $interval = isset($settings['inverval']) ? $settings['interval'] : 1;
+            $items    = array();
 
-        for ($i = $min; $i <= $max; $i = $i + $interval) {
-            $items[] = $i;
+            for ($i = $min; $i <= $max; $i = $i + $interval) {
+                $items[] = $i;
+            }
         }
         self::fieldSelect($name, $items, $value, $settings);
     }
@@ -131,7 +145,9 @@ class SLN_Form
         }
         $settings['attrs']['class'] = "form-control";
         ?>
-        <textarea name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" <?php echo self::attrs($settings) ?>><?php echo esc_attr($value) ?></textarea>
+        <textarea name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" <?php echo self::attrs(
+            $settings
+        ) ?>><?php echo esc_attr($value) ?></textarea>
     <?php
     }
 

@@ -1,18 +1,26 @@
 <?php
 /**
- * @var SLN_Plugin                    $plugin
- * @var string                        $formAction
- * @var string                        $submitName
+ * @var SLN_Plugin                   $plugin
+ * @var string                       $formAction
+ * @var string                       $submitName
  * @var SLN_Shortcode_Salon_DateStep $step
  */
-$bb          = $plugin->getBookingBuilder();
-$date        = $bb->getDate();
-$hoursBefore = $plugin->getAvailabilityHelper()->getHoursBeforeString();
-if (!($date instanceof \DateTime)) {
-    $date = $plugin->getAvailabilityHelper()->getHoursBeforeDateTime()->from;
-}else{
-    $date = new DateTime($date.' '.$bb->getTime());
+function salon_date_hoursbefore($hoursBefore)
+{
+    if ($hoursBefore->from && $hoursBefore->to) : ?>
+        <em><?php echo sprintf(
+                __('you can book by %s up to %s before', 'sln'),
+                $hoursBefore->from,
+                $hoursBefore->to
+            ) ?></em>
+    <?php elseif ($hoursBefore->from): ?>
+        <em><?php echo sprintf(__('you can book by %s before', 'sln'), $hoursBefore->from) ?></em>
+    <?php
+    elseif ($hoursBefore->to) : ?>
+        <em><?php echo sprintf(__('you can book up to %s before', 'sln'), $hoursBefore->to) ?></em>
+    <?php endif;
 }
+
 if ($plugin->getSettings()->isDisabled()):
     ?>
     <div class="alert alert-danger">
@@ -20,20 +28,12 @@ if ($plugin->getSettings()->isDisabled()):
     </div>
 <?php
 else:
+    $bb        = $plugin->getBookingBuilder();
+    $intervals = $plugin->getIntervals($bb->getDateTime());
+    $date      = $intervals->getSuggestedDate();
     ?>
     <h2><?php _e('When do you want to come?', 'sln') ?>
-        <?php if ($hoursBefore->from && $hoursBefore->to) : ?>
-            <em><?php echo sprintf(
-                    __('you can book by %s up to %s before', 'sln'),
-                    $hoursBefore->from,
-                    $hoursBefore->to
-                ) ?></em>
-        <?php elseif ($hoursBefore->from): ?>
-            <em><?php echo sprintf(__('you can book by %s before', 'sln'), $hoursBefore->from) ?></em>
-        <?php
-        elseif ($hoursBefore->to) : ?>
-            <em><?php echo sprintf(__('you can book up to %s before', 'sln'), $hoursBefore->to) ?></em>
-        <?php endif ?>
+        <?php salon_date_hoursbefore($plugin->getAvailabilityHelper()->getHoursBeforeString()) ?>
     </h2>
     <form method="post" action="<?php echo $formAction ?>" id="salon-step-date">
         <?php include '_errors.php' ?>
@@ -44,7 +44,7 @@ else:
                             'select a day',
                             'sln'
                         ) ?></label>
-                    <?php SLN_Form::fieldDay('sln[date][day]', $date) ?>
+                    <?php SLN_Form::fieldDay('sln[date][day]', $date, array('days' => $intervals->getDays())) ?>
                 </div>
             </div>
             <div class="col-md-6">
@@ -53,7 +53,7 @@ else:
                             'select a month',
                             'sln'
                         ) ?></label>
-                    <?php SLN_Form::fieldMonth('sln[date][month]', $date) ?>
+                    <?php SLN_Form::fieldMonth('sln[date][month]', $date, array('months' => $intervals->getMonths())) ?>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@ else:
                             'select a year',
                             'sln'
                         ) ?></label>
-                    <?php SLN_Form::fieldYear('sln[date][year]', $date) ?>
+                    <?php SLN_Form::fieldYear('sln[date][year]', $date, array('years' => $intervals->getYears())) ?>
                 </div>
             </div>
             <div class="col-md-6">
@@ -73,7 +73,7 @@ else:
                             'select an hour',
                             'sln'
                         ) ?></label>
-                    <?php SLN_Form::fieldTime('sln[time]', $date) ?>
+                    <?php SLN_Form::fieldTime('sln[time]', $date, array('items' => $intervals->getTimes())) ?>
                 </div>
             </div>
         </div>

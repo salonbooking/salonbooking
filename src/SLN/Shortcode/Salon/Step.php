@@ -64,19 +64,4 @@ abstract class SLN_Shortcode_Salon_Step
         return $this->errors;
     }
 
-    public function doAjax($method)
-    {
-        $method = 'doAjax' . ucwords($method);
-        if (method_exists($this, $method)) {
-            $ret = $this->$method();
-            if (is_array($ret)) {
-                header('Content-Type: application/json');
-                echo json_encode($ret);
-            } elseif (is_string($ret)) {
-                echo $ret;
-            }
-        } else {
-            throw new Exception("ajax method not found '$method'");
-        }
-    }
 }

@@ -11,6 +11,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             add_action('manage_' . $this->getPostType() . '_posts_custom_column', array($this, 'manage_column'), 10, 2);
             add_filter('manage_' . $this->getPostType() . '_posts_columns', array($this, 'manage_columns'));
         }
+        $this->registerPostStatus();
     }
 
 //    public function insert_post_data($data, $postarr)
@@ -143,5 +144,18 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 'archive_title'      => __('Booking Archive', 'sln'),
             )
         );
+    }
+
+    private function registerPostStatus(){
+        foreach(SLN_Enum_BookingStatus::toArray() as $k => $v){
+            register_post_status( $k, array(
+                'label'                     => $v,
+                'public'                    => true,
+                'exclude_from_search'       => false,
+                'show_in_admin_all_list'    => true,
+                'show_in_admin_status_list' => true,
+                'label_count'               => $v.' <span class="count">(%s)</span>'
+            ) );
+        }
     }
 }

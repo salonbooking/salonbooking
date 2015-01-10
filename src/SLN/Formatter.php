@@ -24,9 +24,8 @@ class SLN_Formatter
         if ($val instanceof \DateTime) {
             $val = $val->format('Y-m-d H:i:s');
         }
-        $val = strtotime($val);
 
-        return date_i18n(__('M j, Y @ G:i', 'sln'), strtotime($val));
+        return date_i18n(__('l M j, Y @ G:i', 'sln'), strtotime($val));
     }
 
     public function date($val)
