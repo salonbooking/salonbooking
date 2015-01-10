@@ -27,7 +27,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
     {
         $plugin = $this->plugin;
         $date   = $this->getDateTime();
-        $this->addError($plugin->format()->datetime($date));
+//        $this->addError($plugin->format()->datetime($date));
         $ah    = $plugin->getAvailabilityHelper();
         $range = $ah->getHoursBeforeDateTime();
         if ($date < $range->from) {
@@ -38,7 +38,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
             $this->addError(sprintf(__('the date is too far, the maximum allowed is %s', 'sln'), $txt));
         } elseif (!$ah->getItems()->isValidDatetime($date)) {
             $txt = $plugin->format()->datetime($date);
-            $this->addError(sprintf(__('we are not available at %s, please choose a different day', 'sln'), $txt));
+            $this->addError(sprintf(__('we are not available at %s', 'sln'), $txt));
         } else {
             $ah->setDate($date);
             $countDay  = $plugin->getSettings()->get('parallels_day');
@@ -66,25 +66,29 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $this->errors[] = $err;
     }
 
-    protected function getErrors()
+    public function getErrors()
     {
         return $this->errors;
     }
 
     /**
      * @param mixed $date
+     * @return $this
      */
     public function setDate($date)
     {
         $this->date = $date;
+        return $this;
     }
 
     /**
      * @param mixed $time
+     * @return $this
      */
     public function setTime($time)
     {
         $this->time = $time;
+        return $this;
     }
 
     protected function getDateTime()

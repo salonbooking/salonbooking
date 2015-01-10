@@ -14,11 +14,11 @@ class SLN_Shortcode_Salon_DateStep extends SLN_Shortcode_Salon_Step
             ->setDate($date)
             ->setTime($time);
         $obj    = new SLN_Action_Ajax_CheckDate($this->getPlugin());
-        $errors = $obj
+        $obj
             ->setDate($date)
             ->setTime($time)
             ->execute();
-        foreach ($errors as $err) {
+        foreach ($obj->getErrors() as $err) {
             $this->addError($err);
         }
         if (!$this->getErrors()) {

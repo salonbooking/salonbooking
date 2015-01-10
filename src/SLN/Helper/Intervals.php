@@ -24,11 +24,18 @@ class SLN_Helper_Intervals
         $times             = $ah->getTimes($date);
         while (empty($times)) {
             $date->modify('+1 days');
-            $times = $this->availabilityHelper->getTimes($date);
+            $times = $ah->getTimes($date);
         }
-        $this->times         = $times;
+        $this->times   = $times;
+        $suggestedTime = $date->format('H:i');
+        $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
+        while (!isset($times[$suggestedTime])) {
+            $date         = $date->modify("+$i minutes");
+            $suggestedTime = $date->format('H:i');
+        }
         $this->suggestedDate = $date;
         $this->bindDates($ah->getDays());
+
     }
 
     public function bindInitialDate($date)
@@ -46,12 +53,15 @@ class SLN_Helper_Intervals
         $this->years  = array();
         $this->months = array();
         $this->days   = array();
-        $check        = $this->suggestedDate->format('Y-m');
+        $checkDay     = $this->suggestedDate->format('Y-m-');
+        $checkMonth   = $this->suggestedDate->format('Y-');
         foreach ($dates as $date) {
             list($year, $month, $day) = explode('-', $date);
-            $this->years[intval($year)]   = true;
-            $this->months[intval($month)] = true;
-            if (strpos($date, $check) === 0) {
+            $this->years[$year] = true;
+            if (strpos($date, $checkMonth) === 0) {
+                $this->months[$month] = true;
+            }
+            if (strpos($date, $checkDay) === 0) {
                 $this->days[$day] = true;
             }
         }
@@ -61,7 +71,7 @@ class SLN_Helper_Intervals
 
         $months = SLN_Func::getMonths();
         foreach ($this->months as $k => $v) {
-            $this->months[$k] = $months[$k];
+            $this->months[$k] = $months[intval($k)];
         }
         foreach ($this->days as $k => $v) {
             $this->days[$k] = $k;
@@ -74,11 +84,14 @@ class SLN_Helper_Intervals
     public function toArray()
     {
         return array(
-            'years'         => $this->getYears(),
-            'months'        => $this->getMonths(),
-            'days'          => $this->getDays(),
-            'initialDate'   => $this->initialDate,
-            'suggestedDate' => $this->suggestedDate,
+            'years'          => $this->getYears(),
+            'months'         => $this->getMonths(),
+            'days'           => $this->getDays(),
+            'times'          => $this->getTimes(),
+            'suggestedDay'   => $this->suggestedDate->format('d'),
+            'suggestedMonth' => $this->suggestedDate->format('m'),
+            'suggestedYear'  => $this->suggestedDate->format('Y'),
+            'suggestedTime'  => $this->suggestedDate->format('H:i'),
         );
     }
 

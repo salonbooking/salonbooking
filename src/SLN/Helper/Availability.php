@@ -80,7 +80,7 @@ class SLN_Helper_Availability
         $avItems  = $this->getItems();
         foreach(SLN_Func::getMinutesIntervals() as $time){
             if ($avItems->isValidTime($date, $time)) {
-                $ret[] = $time;
+                $ret[$time] = $time;
             }
         }
         return $ret;
@@ -98,7 +98,7 @@ class SLN_Helper_Availability
     public function setDate(DateTime $date)
     {
         $this->date = $date;
-        $this->bookings = new SLN_Helper_AvailabilityDayBookings($date);
+        $this->dayBookings = new SLN_Helper_AvailabilityDayBookings($date);
 
         return $this;
     }

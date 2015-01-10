@@ -3,7 +3,7 @@
 class SLN_Helper_AvailabilityItem
 {
     private $data;
-    private $times;
+    private $times = array();
 
     function __construct($data)
     {
@@ -11,14 +11,18 @@ class SLN_Helper_AvailabilityItem
         if ($data['from'][0] != '00:00') {
             $this->times[] = array(
                 strtotime($data['from'][0]),
-                strtotime($data['from'][1]),
+                strtotime($data['to'][0]),
             );
         }
-        if ($data['to'][0] != '00:00') {
+        if ($data['from'][1] != '00:00') {
             $this->times[] = array(
-                strtotime($data['to'][0]),
+                strtotime($data['from'][1]),
                 strtotime($data['to'][1]),
             );
+        }
+        if (empty($this->times)) {
+            echo $this;
+            $this->times[] = array(strtotime('00:00'), strtotime('23:59'));
         }
     }
 
@@ -37,6 +41,7 @@ class SLN_Helper_AvailabilityItem
         if (!$this->isValidDate($date)) {
             return false;
         }
+
         return $this->checkTime($time);
     }
 
@@ -53,5 +58,20 @@ class SLN_Helper_AvailabilityItem
         }
 
         return false;
+    }
+
+    public function __toString()
+    {
+        $days = SLN_Func::getDays();
+        $ret  = array();
+        foreach ($this->data['days'] as $d => $v) {
+            $ret[] = $days[$d];
+        }
+        $ret = implode('-', $ret);
+        foreach ($this->times as $t) {
+            $ret .= sprintf(' %s/%s', $t[0], $t[1]);
+        }
+
+        return $ret;
     }
 }

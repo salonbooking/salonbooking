@@ -54,7 +54,7 @@ class SLN_Helper_AvailabilityDayBookings
             $hour = $this->date->format('H');
         }
         $ret = array();
-        foreach ($this->getBookings() as $b) {
+        foreach ($this->bookings as $b) {
             $t = explode(':', $b->getTime());
             if ($t[0] == $hour) {
                 $ret[] = $b;

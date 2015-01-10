@@ -35,7 +35,6 @@ function sln_stepDate($) {
             success: function (data) {
                 if (!data.success) {
                     var alertBox = $('<div class="alert alert-danger"></div>');
-                    console.log(data);
                     $(data.errors).each(function () {
                         alertBox.append('<p>').html(this);
                     });
@@ -47,14 +46,31 @@ function sln_stepDate($) {
                     $('#sln-notifications').html('');
                     isValid = true;
                     if (autosubmit)
-                        $('#salon-step-date').submit();
+                        $('#sln-step-submit').click();
                 }
+                bindIntervals(data.intervals);
             }
         });
     }
 
-    $('#sln_date_day, #sln_date_month, #sln_date_hour, #sln_time').change(function () {
-        validate(this);
+    function bindIntervals(intervals){
+        putOptions($('#sln_date_day'), intervals.days, intervals.suggestedDay);
+        putOptions($('#sln_date_month'), intervals.months, intervals.suggestedMonth);
+        putOptions($('#sln_date_year'), intervals.years, intervals.suggestedYear);
+        putOptions($('#sln_time'), intervals.times, intervals.suggestedTime);
+    }
+
+    function putOptions(selectElem, newOptions, value){
+        selectElem.empty(); // remove old options
+        $.each(newOptions, function(key, value) {
+            selectElem.append($("<option></option>")
+                .attr("value", key).text(value));
+        });
+        selectElem.val(value);
+    }
+
+    $('#sln_date_day, #sln_date_month, #sln_date_year, #sln_time').change(function () {
+        validate(this,false);
     });
     $('#salon-step-date').submit(function () {
         if (!isValid) {
