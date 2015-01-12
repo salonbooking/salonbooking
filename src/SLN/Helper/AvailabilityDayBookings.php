@@ -55,7 +55,11 @@ class SLN_Helper_AvailabilityDayBookings
         }
         $ret = array();
         foreach ($this->bookings as $b) {
-            $t = explode(':', $b->getTime());
+            $t = $b->getTime();
+            if($t instanceof \DateTime)
+                    $t = $t->format('H');
+            else
+	            $t = explode(':', $b->getTime());
             if ($t[0] == $hour) {
                 $ret[] = $b;
             }

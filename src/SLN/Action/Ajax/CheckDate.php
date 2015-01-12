@@ -4,7 +4,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
 {
     private $date;
     private $time;
-    private $errors;
+    private $errors = array();
 
     public function execute()
     {
