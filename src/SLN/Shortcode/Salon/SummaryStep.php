@@ -13,6 +13,10 @@ class SLN_Shortcode_Salon_SummaryStep extends SLN_Shortcode_Salon_Step
                 'mail/summary', 
                 array('booking' => $bb->getLastBooking())
             );
+            $this->getPlugin()->sendMail(
+                'mail/summary_admin', 
+                array('booking' => $bb->getLastBooking())
+            );
         }
 
         return true;

@@ -16,3 +16,4 @@ function sln_autoload($className) {
 }
 spl_autoload_register('sln_autoload');
 SLN_Plugin::getInstance();
+ob_start();

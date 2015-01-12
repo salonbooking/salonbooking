@@ -133,7 +133,7 @@ class SLN_Form
         }
         $settings['attrs']['class'] = "form-control";
         ?>
-        <input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>"
+        <input type="<?php echo isset($settings['type']) ? $settings['type'] : 'text'?>" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>"
                value="<?php echo esc_attr($value) ?>" <?php echo self::attrs($settings) ?>/>
     <?php
     }

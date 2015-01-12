@@ -52,6 +52,9 @@ class SLN_Plugin
 
     public function action_init()
     {
+        if(!session_id()) {
+            session_start();
+        }
         load_plugin_textdomain(self::TEXT_DOMAIN, false, '/salon/languages');
         wp_enqueue_style('salon', SLN_PLUGIN_URL . '/css/salon.css', array(), SLN_VERSION, 'all');
 //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
@@ -166,7 +169,11 @@ class SLN_Plugin
     public function sendMail($view, $data){
         $data['data'] = $settings = new ArrayObject($data);
         $content = $this->loadView($view, $data);
-        function sln_html_content_type(){return 'text/html';}
+        if(!function_exists('sln_html_content_type')){
+            function sln_html_content_type(){
+                return 'text/html';
+            }
+        }
         add_filter( 'wp_mail_content_type', 'sln_html_content_type' );
         wp_mail( $settings['to'], $settings['subject'], $content);
         remove_filter( 'wp_mail_content_type', 'sln_html_content_type' );

@@ -3,7 +3,7 @@
  * @var SLN_Plugin                $plugin
  * @var SLN_Wrapper_Booking       $booking
  */
-$data['to'] = $booking->getEmail();
+$data['to'] = get_option('admin_email');
 $data['subject'] = 'New booking summary for '.$plugin->format()->date($booking->getDate()). ' - '.$plugin->format()->time($booking->getTime());
 include dirname(_FILE__).'_header.php';
 ?>

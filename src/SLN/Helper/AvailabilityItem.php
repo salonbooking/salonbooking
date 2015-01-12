@@ -21,7 +21,6 @@ class SLN_Helper_AvailabilityItem
             );
         }
         if (empty($this->times)) {
-            echo $this;
             $this->times[] = array(strtotime('00:00'), strtotime('23:59'));
         }
     }

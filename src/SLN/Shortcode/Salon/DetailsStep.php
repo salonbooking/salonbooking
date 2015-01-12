@@ -19,6 +19,22 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
             }
         } else {
             $values = $_POST['sln'];
+            if(!is_user_logged_in()){
+                if(email_exists($values['email']))
+                    $this->addError(__('E-mail exists', 'sln'));
+                if($values['password'] != $values['password_confirm']){
+                    $this->addError(__('Passwords are different', 'sln'));
+                }
+                if($this->getErrors())
+                    return false;
+                $errors = wp_create_user($values['email'], $values['password'], $values['email']);
+                if ( is_wp_error($errors) ) {
+                    $this->addError($errors->get_error_message());
+                    die('b');
+                }
+                if(!$this->dispatchAuth($values['email'], $values['password']))
+                    die('a');
+            }
         }
         $this->bindValues($values);
 
@@ -38,9 +54,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
 
             return false;
         }
-        if (!is_wp_error($user)) {
-            return true;
-        }
+        return true;
     }
 
     public function isValid()

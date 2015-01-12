@@ -14,12 +14,12 @@ $values = array(
     'email'     => $current_user->user_email,
     'phone'     => get_user_meta($current_user->ID, '_sln_phone', true)
 );
-
 ?>
+    <?php include '_errors.php' ?>
+ 
 <?php if (!is_user_logged_in()): ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <h2><?php _e('Returning customer?', 'sln') ?><em><?php _e('Please, log-in.', 'sln') ?></em></h2>
-
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -55,12 +55,18 @@ $values = array(
                                'email'     => __('E-mail', 'sln'),
                                'phone'     => __('Phone', 'sln'),
                                'password'  => __('Password', 'sln'),
-                               'password_confirm' => _('Confirm your password', 'sln')
+                               'password_confirm' => __('Confirm your password', 'sln')
                            ) as $field => $label): ?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
-                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true)) ?>
+                        <?php 
+                            if(strpos($field, 'password') === 0){
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'password'));
+                            }else{
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true));
+                            }
+                        ?>
                     </div>
                 </div>
             <?php endforeach ?>
