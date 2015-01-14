@@ -16,7 +16,6 @@ class SLN_Shortcode_Salon_ServicesStep extends SLN_Shortcode_Salon_Step
             }
         }
         $bb->save();
-
         if (empty($values['services'])) {
             $this->addError(__('You must choose at least one service', 'sln'));
             return false;

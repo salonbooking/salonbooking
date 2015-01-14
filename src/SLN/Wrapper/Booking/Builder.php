@@ -118,7 +118,8 @@ class SLN_Wrapper_Booking_Builder
     public function removeService(SLN_Wrapper_Service $service)
     {
         $k = array_search($service->getId(), $this->data['services']);
-        unset($this->data['services'][$k]);
+        if($k !== false)
+            unset($this->data['services'][$k]);
     }
 
     /**
