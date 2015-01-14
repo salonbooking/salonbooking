@@ -8,7 +8,8 @@ class SLN_Helper_Availability
     private $date;
     /** @var  SLN_Helper_AvailabilityDayBookings */
     private $dayBookings;
-
+    /** @var  SLN_Helper_HoursBefore */
+    private $hoursBefore;
     public function __construct(SLN_Settings $settings)
     {
         $this->settings = $settings;
@@ -21,7 +22,12 @@ class SLN_Helper_Availability
 
         return (object)compact('from', 'to');
     }
-
+    public function getHoursBeforeHelper(){
+        if(!isset($this->hoursBefore)){
+            $this->hoursBefore = new SLN_Helper_HoursBefore($this->settings);
+        }
+        return $this->hoursBefore;
+    }
     public function getHoursBeforeString()
     {
         $txt = SLN_Func::getIntervalItems();
@@ -57,9 +63,9 @@ class SLN_Helper_Availability
 
     public function getDays()
     {
-        $interval = $this->getHoursBeforeDateTime();
-        $from     = isset($interval->from) ? $interval->from : new DateTime();
-        $count    = isset($interval->to) ? SLN_Func::countDaysBetweenDatetimes($from, $interval->to) : self::MAX_DAYS;
+        $interval = $this->getHoursBeforeHelper();
+        $from     = isset($interval->from) ? $interval->getFromDate() : new DateTime();
+        $count    = isset($interval->to) ? SLN_Func::countDaysBetweenDatetimes($from, $interval->getToDate()) : self::MAX_DAYS;
         $ret      = array();
         $avItems  = $this->getItems();
         while ($count > 0) {
@@ -78,8 +84,9 @@ class SLN_Helper_Availability
     {
         $ret      = array();
         $avItems  = $this->getItems();
+        $hb = $this->getHoursBeforeHelper();
         foreach(SLN_Func::getMinutesIntervals() as $time){
-            if ($avItems->isValidTime($date, $time)) {
+            if ($avItems->isValidTime($date, $time) && $hb->check(new DateTime($date->format('Y-m-d').' '.$time))) {
                 $ret[$time] = $time;
             }
         }

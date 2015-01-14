@@ -29,12 +29,14 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $date   = $this->getDateTime();
 //        $this->addError($plugin->format()->datetime($date));
         $ah    = $plugin->getAvailabilityHelper();
-        $range = $ah->getHoursBeforeDateTime();
-        if ($date < $range->from) {
-            $txt = $plugin->format()->datetime($range->from);
+        $hb = $ah->getHoursBeforeHelper();
+        $from = $hb->getFromDate();
+        $to = $hb->getToDate();
+        if (!$hb->isValidFrom($date)) {
+            $txt = $plugin->format()->datetime($from);
             $this->addError(sprintf(__('the date is too old, the minimum allowed is %s', 'sln'), $txt));
-        } elseif ($range->to && $date > $range->to) {
-            $txt = $plugin->format()->datetime($range->to);
+        } elseif (!$hb->isValidTo($date)) {
+            $txt = $plugin->format()->datetime($to);
             $this->addError(sprintf(__('the date is too far, the maximum allowed is %s', 'sln'), $txt));
         } elseif (!$ah->getItems()->isValidDatetime($date)) {
             $txt = $plugin->format()->datetime($date);

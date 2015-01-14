@@ -40,7 +40,7 @@ class SLN_Helper_Intervals
 
     public function bindInitialDate($date)
     {
-        $from = $this->availabilityHelper->getHoursBeforeDateTime()->from;
+        $from = $this->availabilityHelper->getHoursBeforeHelper()->getFromDate();
         if ($date < $from) {
             $date = $from;
         }
