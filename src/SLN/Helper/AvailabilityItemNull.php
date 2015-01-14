@@ -2,7 +2,7 @@
 
 class SLN_Helper_AvailabilityItemNull extends SLN_Helper_AvailabilityItem
 {
-    public function isValidDay($date)
+    public function isValidDate($date)
     {
         return true;
     }

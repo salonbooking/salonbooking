@@ -44,7 +44,6 @@ class SLN_Helper_Intervals
         if ($date < $from) {
             $date = $from;
         }
-
         return $date;
     }
 

@@ -43,16 +43,14 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
             $this->addError(sprintf(__('we are not available at %s', 'sln'), $txt));
         } else {
             $ah->setDate($date);
-            $countDay  = $plugin->getSettings()->get('parallels_day');
-            $countHour = $plugin->getSettings()->get('parallels_hour');
-            if ($countDay && $ah->getBookingsDayCount() >= $countDay) {
+            if (!$ah->isValidDate($date)) {
                 $this->addError(
                     __(
                         'you can\'t book in this day because there aren\'t free places, please choose a different day',
                         'sln'
                     )
                 );
-            } elseif ($countHour && $ah->getBookingsHourCount() >= $countHour) {
+            } elseif (!$ah->isValidTime($date)) {
                 $this->addError(
                     __(
                         'you can\'t book in this hour because there aren\'t free places, please choose a different hour',
