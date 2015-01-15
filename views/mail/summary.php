@@ -26,5 +26,5 @@ include dirname(__FILE__).'/_header.php';
 <p><strong>Please wait the confirmation</strong></p>
 <?php endif ?>
 <?php
-include dirname(__FILE__).'_footer.php';
+include dirname(__FILE__).'/_footer.php';
 ?>

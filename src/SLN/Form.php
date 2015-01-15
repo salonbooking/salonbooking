@@ -31,7 +31,7 @@ class SLN_Form
         echo "<span class=\"sln-date\">";
         self::fieldDay($name . '[day]', $value, $settings);
         self::fieldMonth($name . '[month]', $value, $settings);
-        self::fieldYear($name . '[day]', $value, $settings);
+        self::fieldYear($name . '[year]', $value, $settings);
         echo "</span>";
     }
 

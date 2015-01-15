@@ -58,13 +58,14 @@ class SLN_Helper_AvailabilityDayBookings
             $t = $b->getTime();
             if($t instanceof \DateTime)
                     $t = $t->format('H');
-            else
+            else{
 	            $t = explode(':', $b->getTime());
-            if ($t[0] == $hour) {
+                    $t = $t[0];
+            }
+            if ($t == $hour) {
                 $ret[] = $b;
             }
         }
-
         return $ret;
     }
 
