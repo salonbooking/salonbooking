@@ -7,11 +7,17 @@ class SLN_Func
         $timestamp = strtotime('next Sunday');
         $ret       = array();
         for ($i = 1; $i <= 7; $i++) {
-            $ret[$i]   = date_i18n('l', $timestamp);
+            $ret[$i]   = self::getDateDayName($timestamp);
             $timestamp = strtotime('+1 day', $timestamp);
         }
 
         return $ret;
+    }
+
+    public static function getDateDayName($day){
+        if($day instanceof DateTime)
+            $day = $day->getTimestamp();
+        return date_i18n('l',$day);
     }
 
     public static function countDaysBetweenDatetimes(\DateTime $from, \DateTime $to)

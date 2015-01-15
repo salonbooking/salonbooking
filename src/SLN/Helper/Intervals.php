@@ -86,7 +86,7 @@ class SLN_Helper_Intervals
             $this->months[$k] = $months[intval($k)];
         }
         foreach ($this->days as $k => $v) {
-            $this->days[$k] = $k;
+            $this->days[$k] = $k; //. date_i18n(' l',strtotime($checkDay.$k));
         }
         ksort($this->years);
         ksort($this->months);
