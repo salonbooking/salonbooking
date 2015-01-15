@@ -9,13 +9,13 @@ class SLN_Action_Install
         foreach ($data['posts'] as $label => $post) {
             if (!self::checkPost($post['post']['post_title'], $post['post']['post_type'])) {
                 $id = wp_insert_post($post['post']);
-                foreach ($post['post']['meta'] as $k => $v) {
-                    update_post_meta($id, $k, $v);
+                if(isset($post['meta'])) foreach ($post['meta'] as $k => $v) {
+                    add_post_meta($id, $k, $v);
                 }
                 $ids[$label] = $id;
             }
         }
-        if (!get_option('salon_settings')) {
+        if (!get_option(SLN_Settings::KEY)) {
             if ($ids['thankyou']) {
                 $data['settings']['thankyou'] = $ids['thankyou'];
             }

@@ -20,6 +20,9 @@ class SLN_Form
             $items    = SLN_Func::getMinutesIntervals($interval, $maxItems);
         }
 
+        if((!empty($value)) && (!in_array($value, $items))){
+            $items[$value] = $value;
+        }
         self::fieldSelect($name, $items, $value, $settings);
     }
 
