@@ -1,6 +1,10 @@
 <?php
 return array(
     'settings' => array(
+        'hours_before_from' => '1 day',
+        'hours_before_to'  => '1 month',
+        'interval'         => 60
+        'disabled_message' => 'Booking is not available at the moment, please contact us at ' . get_option('admin_email')
         'gen_name'         => '',
         'gen_email'        => '',
         'gen_phone'        => '00391122334455',
@@ -19,15 +23,15 @@ return array(
                 5 => 1,
                 6 => 1
             ),
-            "from" => array("09:00", "16:00"),
-            "to"   => array("13:00", "20:00")
+            "from" => array("08:00", "13:00"),
+            "to"   => array("15:30", "20:30")
         ),
         'pay_currency'     => 'USD',
         'pay_paypal_email' => 'test@test.com',
         'pay_paypal_test'  => true,
-        'confirmation'     => true,
-        'pay_enabled'      => true,
-        'pay_cash'         => true
+//        'confirmation'     => true,
+//        'pay_enabled'      => true,
+//        'pay_cash'         => true
     ),
     'posts'    => array(
         array(
