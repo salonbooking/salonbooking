@@ -58,7 +58,6 @@ class SLN_Wrapper_Booking_Builder
             'date'     => $d->format('Y-m-d'),
             'time'     => $d->format('H') . ':00',
             'services' => array(),
-            'status'   => SLN_Enum_BookingStatus::PENDING
         );
     }
 
@@ -150,14 +149,19 @@ class SLN_Wrapper_Booking_Builder
 
     public function create()
     {
+        $settings = $this->plugin->getSettings();
         $datetime = $this->plugin->format()->datetime($this->getDateTime());
         $name     = $this->get('firstname') . ' ' . $this->get('lastname');
-
-        $id                   = wp_insert_post(
+        $status   =  $settings->get('confirmation') ?
+            SLN_Enum_BookingStatus::PENDING
+            : ($settings->get('pay_enabled') ? 
+               SLN_Enum_BookingStatus::PENDING
+               : SLN_Enum_BookingStatus::PAY_LATER ); 
+        $id       = wp_insert_post(
             array(
                 'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
                 'post_title' => $name . ' - ' . $datetime,
-                'post_status' => 'publish'
+                'post_status' => $status
             )
         );
         $this->data['amount'] = $this->getTotal();

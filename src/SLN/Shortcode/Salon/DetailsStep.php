@@ -48,10 +48,10 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
                 add_user_meta($errors, '_sln_phone', $values['phone']);
                 if ( is_wp_error($errors) ) {
                     $this->addError($errors->get_error_message());
-                    die('b');
                 }
+                wp_new_user_notification($errors, $values['password']);
                 if(!$this->dispatchAuth($values['email'], $values['password']))
-                    die('a');
+                    return false;
             }
         }
         $this->bindValues($values);

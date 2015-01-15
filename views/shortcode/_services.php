@@ -13,7 +13,7 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
 <div class="sln-service-list">
     <?php foreach ($services as $service) : ?>
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-xs-1 col-lg-1">
             <span class="service-checkbox">
             <?php
             $errors   = $ah->validateService($service);
@@ -30,7 +30,7 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
             ) ?>
             </span>
             </div>
-            <div class="col-md-8">
+            <div class="col-lg-8 col-xs-7">
                 <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                     <strong class="service-name"><?php echo $service->getName(); ?></strong>
                     <span class="service-description"><?php echo $service->getContent() ?></span>
@@ -41,7 +41,7 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
                     <?php endif ?>
                 </label>
             </div>
-            <div class="col-md-3 service-price">
+            <div class="col-lg-3 col-xs-4 service-price">
                 <?php echo $plugin->format()->money($service->getPrice()) ?>
             </div>
         </div>
@@ -56,8 +56,8 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
 
     <?php endforeach ?>
     <div class="row row-total">
-        <div class="col-md-9 services-total-label"><?php _e('Subtotal') ?></div>
-        <div class="col-md-3 services-total">
+        <div class="col-lg-9 col-xs-8 services-total-label"><?php _e('Subtotal') ?></div>
+        <div class="col-lg-3 col-xs-4 services-total">
         <span id="services-total" data-symbol="<?php echo $plugin->getSettings()->getCurrencySymbol() ?>">
             <?php echo $plugin->format()->money(0, false) ?>
         </span>

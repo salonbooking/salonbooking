@@ -4,24 +4,40 @@
  * @var string     $formAction
  * @var string     $submitName
  */
-
+$confirmation = $plugin->getSettings()->get('confirmation'); 
 ?>
 <div id="salon-step-thankyou">
-    <h2><?php _e('Booking Confirmation', 'sln') ?></h2>
+    <?php if($confirmation) : ?>
+        <h2><?php _e('Booking status', 'sln') ?></h2>
+    <?php else : ?> 
+        <h2><?php _e('Booking Confirmation', 'sln') ?></h2>
+    <?php endif ?>
+
     <?php if (isset($paypalOp) && $paypalOp == 'cancel'): ?>
+
         <div class="alert alert-danger">
             <p><?php _e('The payment on paypal is failed, please try again.', 'sln') ?></p>
         </div>
 
     <?php else: ?>
         <div class="row">
-            <div class="col-md-6 tycol"><?php _e('Booking confirmed', 'sln') ?><br/>
-                            <i class="glyphicon glyphicon-ok-circle"></i>
+            <div class="col-md-6 tycol"><?php echo $confirmation ? __('Booking is pending', 'sln') : __('Booking confirmed', 'sln') ?><br/>
+                <?php if($confirmation): ?> 
+                    <i class="c glyphicon glyphicon-time"></i>
+                <?php else : ?>
+                    <i class="glyphicon glyphicon-ok-circle"></i>
+                <?php endif ?>
             </div>
             <div class="col-md-6 tycol"><?php _e('Booking number', 'sln') ?>
-                <span class="num"><?php echo $plugin->getBookingBuilder()->getLastBooking()->getId() ?></span>
+                <br/><span class="num"><?php echo $plugin->getBookingBuilder()->getLastBooking()->getId() ?></span>
             </div>
         </div>
+<?php if($confirmation) : ?>
+        <p class="ty"><strong><?php _e('You will receive a confirmation of your booking by email.','sln' )?></strong></p>
+        <p class="ty"><?php _e('If you don\'t receive any news from us or you need to change your reservation please call the ', 'sln') ?>
+            <?php echo $plugin->getSettings()->get('phone') ?></p>
+        <p class="aligncenter"><a href="<?php echo home_url() ?>" class="btn btn-primary">Back to home</a></p>
+<?php else : ?> 
         <p class="ty"><?php _e('If you need to change your reservation please call the ', 'sln') ?>
             <?php echo $plugin->getSettings()->get('phone') ?></p>
         <p class="ty">
@@ -30,7 +46,6 @@
                 'sln'
             ) ?>
         </p>
-    <?php endif ?>
     <div class="row form-actions aligncenter">
         <?php if($plugin->getSettings()->get('pay_enabled') && $plugin->getSettings()->getPaypalEmail()) : ?>
         <a href="<?php echo $paypalUrl ?>" class="btn btn-primary">
@@ -48,4 +63,6 @@
         </a>
         <?php endif ?>
     </div>
+<?php endif ?>
+    <?php endif ?>
 </div>

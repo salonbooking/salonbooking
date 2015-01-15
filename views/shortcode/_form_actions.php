@@ -21,14 +21,14 @@ foreach ($steps as $step) {
 ?>
 <div id="sln-notifications"></div>
 <div class="form-actions row aligncenter">
-    <div class="col-md-6">
+    <div class="col-xs-6">
         <?php if ($backUrl && $currentNum > 1) : ?>
             <a class="btn btn-default pull-right" href="<?php echo $backUrl ?> ">
                 <i class="glyphicon glyphicon-chevron-left"></i> <?php _e('Back', 'sln') ?>
             </a>
         <?php endif ?>
     </div>
-    <div class="col-md-6">
+    <div class="col-xs-6">
         <div>
             <button id="sln-step-submit" type="submit" class="btn btn-danger btn-confirm" name="<?php echo $submitName ?>" value="next">
                 <?php echo $nextLabel ?> <i class="glyphicon glyphicon-chevron-right"></i>

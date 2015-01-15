@@ -19,12 +19,22 @@ class SLN_Helper_Intervals
 
     public function setDatetime(DateTime $date)
     {
-        $this->initialDate = $date;
+        $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
         $times             = $ah->getTimes($date);
-        while (empty($times)) {
+        $i = 0;
+        while (empty($times) && $i < 100) {
             $date->modify('+1 days');
             $times = $ah->getTimes($date);
+            $i++;
+        }
+        if(empty($times)){
+            $date->modify('-99 days');
+            while (empty($times) && $i > 0) {
+                $date->modify('-1 days');
+                $times = $ah->getTimes($date);
+                $i--;
+            }
         }
         $this->times   = $times;
         $suggestedTime = $date->format('H:i');
@@ -35,7 +45,10 @@ class SLN_Helper_Intervals
         }
         $this->suggestedDate = $date;
         $this->bindDates($ah->getDays());
-
+        ksort($this->times);
+        ksort($this->years);
+        ksort($this->days);
+        ksort($this->months);
     }
 
     public function bindInitialDate($date)

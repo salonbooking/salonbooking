@@ -68,7 +68,7 @@ return array(
             'meta' => array(
                 '_sln_service_price'      => 29.99,
                 '_sln_service_unit'       => 2,
-                '_sln_service_duration'   => '00:30',
+                '_sln_service_duration'   => '01:00',
                 '_sln_service_secondary'  => true,
                 '_sln_service_notav_from' => '11',
                 '_sln_service_notav_to'   => '15'

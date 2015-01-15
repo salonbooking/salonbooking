@@ -119,7 +119,7 @@ function sln_availability_row($prefix, $row)
         <div class="sln-separator"></div>
         <?php
         $key            = 'available';
-        $label          = __('Online booking not available on', 'sln');
+        $label          = __('Online booking available on', 'sln');
         $availabilities = $this->getOpt('availabilities');
         ?>
         <div class="form-group">
@@ -171,7 +171,7 @@ function sln_availability_row($prefix, $row)
                         <label><?php _e('Disable online booking', 'sln') ?>
                             <?php SLN_Form::fieldCheckbox(
                                 "salon_settings[disabled]",
-                                $this->getOpt('disabled_message')
+                                $this->getOpt('disabled')
                             ) ?>
                         </label>
 

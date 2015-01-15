@@ -8,6 +8,7 @@
 $bb             = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
 $datetime       = $bb->getDateTime();
+$confirmation = $plugin->getSettings()->get('confirmation'); 
 ?>
 <h2><?php _e('Booking summary', 'sln') ?></h2>
 <form method="post" action="<?php echo $formAction ?>" role="form"  id="salon-step-summary">

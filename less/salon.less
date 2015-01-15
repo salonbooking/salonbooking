@@ -6,6 +6,10 @@
 @color-low: #999;
 @bg-high: #eee;
 
+@icon-color-green: green;
+@icon-color-yellow: #FF9D03;
+
+
 #sln-salon {
   background: @color-bg;
   border: 1px solid #ddd;
@@ -189,7 +193,8 @@
     }
     i{
       font-size: 48px;
-      color: green;
+      color: @icon-color-green;
+      &.c { color: @icon-color-yellow !important }
     }
   }
   p.ty{
@@ -204,5 +209,6 @@
   .aligncenter{
     text-align: center;
   }
-  .btn-primary, btn-success{ color: white }
+  .btn-primary, .btn-success{ color: white !important }
+  ul { list-style-type: none;}
 }

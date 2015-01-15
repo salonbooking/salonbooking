@@ -5,7 +5,7 @@
  */
 $data['to'] = $booking->getEmail();
 $data['subject'] = 'New booking summary for '.$plugin->format()->date($booking->getDate()). ' - '.$plugin->format()->time($booking->getTime());
-include dirname(_FILE__).'_header.php';
+include dirname(__FILE__).'/_header.php';
 ?>
 <p ><?php _e('Dear', 'sln') ?>
     <strong><?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?></strong>
@@ -19,9 +19,12 @@ include dirname(_FILE__).'_header.php';
         <li><?php echo $service->getName(); ?>
                 - <?php echo $plugin->format()->money($service->getPrice()) ?></li>
     <?php endif; endforeach ?>
-    <li><?php _e('Total amount', 'sln') ?> - <?php echo $plugin->format()->money($plugin->getBookingBuilder()->getTotal()) ?></li>
+    <li><?php _e('Total amount', 'sln') ?> - <?php echo $plugin->format()->money($booking->getAmount()) ?></li>
 </ul>
 <p>Note: <?php echo esc_attr($booking->getNote())?></p>
+<?php if ($plugin->settings->get('confirmation')) : ?>
+<p><strong>Please wait the confirmation</strong></p>
+<?php endif ?>
 <?php
-include dirname(_FILE__).'_footer.php';
+include dirname(__FILE__).'_footer.php';
 ?>

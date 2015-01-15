@@ -22,9 +22,10 @@ function salon_date_hoursbefore($hoursBefore)
 }
 
 if ($plugin->getSettings()->isDisabled()):
+    $message =  $plugin->getSettings()->getDisabledMessage(); 
     ?>
     <div class="alert alert-danger">
-        <p><?php echo $plugin->getSettings()->getDisabledMessage() ?></p>
+        <p><?php echo empty($message) ? __('Booking is disabled', 'sln') : $message ?></p>
     </div>
 <?php
 else:
