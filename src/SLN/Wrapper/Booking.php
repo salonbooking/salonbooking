@@ -75,10 +75,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
     function getStatus()
     {
-        $post_id = $this->getId();
-        $ret     = apply_filters('sln_booking_status', get_post_meta($post_id, '_sln_booking_status', true));
-
-        return empty($ret) ? SLN_Enum_BookingStatus::PENDING : $ret;
+        return $this->object->post_status;
     }
 
     function hasStatus($status)
@@ -93,7 +90,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     function setStatus($status)
     {
         $post_id = $this->getId();
-        update_post_meta($post_id, '_sln_booking_status', $status);
+        wp_transition_post_status( $status, $this->object->post_status, $this->object->ID );
 
         return $this;
     }
