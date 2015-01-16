@@ -17,7 +17,7 @@ class SLN_Func
     public static function getDateDayName($day){
         if($day instanceof DateTime)
             $day = $day->getTimestamp();
-        return strftime('%A',$day);
+        return date_i18n('l',$day);
     }
 
     public static function countDaysBetweenDatetimes(\DateTime $from, \DateTime $to)

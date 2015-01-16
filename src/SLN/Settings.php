@@ -8,7 +8,6 @@ class SLN_Settings
     public function __construct()
     {
         $this->settings = get_option(self::KEY);
-var_dump($this->settings['availabilities']);
     }
 
     public function get($k)

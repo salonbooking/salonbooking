@@ -34,11 +34,11 @@ $confirmation = $plugin->getSettings()->get('confirmation');
         </div>
 <?php if($confirmation) : ?>
         <p class="ty"><strong><?php _e('You will receive a confirmation of your booking by email.','sln' )?></strong></p>
-        <p class="ty"><?php _e('If you don\'t receive any news from us or you need to change your reservation please call the ', 'sln') ?>
-            <?php echo $plugin->getSettings()->get('phone') ?></p>
+        <p class="ty"><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an email to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
+            <?php echo $plugin->getSettings()->get('gen_phone') ?></p>
         <p class="aligncenter"><a href="<?php echo home_url() ?>" class="btn btn-primary">Back to home</a></p>
 <?php else : ?> 
-        <p class="ty"><?php _e('If you need to change your reservation please call the ', 'sln') ?>
+        <p class="ty"><?php echo sprintf(__('If you need to change your reservation please call the %s or send an email to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
             <?php echo $plugin->getSettings()->get('phone') ?></p>
         <p class="ty">
             <?php _e(

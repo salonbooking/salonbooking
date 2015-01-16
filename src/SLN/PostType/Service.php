@@ -9,6 +9,8 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
         if (is_admin()) {
             add_action('manage_' . $this->getPostType() . '_posts_custom_column', array($this, 'manage_column'), 10, 2);
             add_filter('manage_' . $this->getPostType() . '_posts_columns', array($this, 'manage_columns'));
+            add_action( 'admin_head-post-new.php', array($this,'posttype_admin_css' ) );
+            add_action( 'admin_head-post.php', array($this, 'posttype_admin_css' ) );
         }
     }
 
@@ -121,4 +123,19 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
             )
         );
     }
+
+    function posttype_admin_css() {
+        global $post_type;
+        if($post_type == SLN_Plugin::POST_TYPE_SERVICE){
+            ?>
+            <style type="text/css">
+                #post-preview, #view-post-btn,#misc-publishing-actions #visibility,
+                #major-publishing-actions,
+                #titlediv, #edit-slug-box,
+                #post-body-content{display: none;}
+            </style>
+            <?php
+        }
+    }
+
 }
