@@ -1,5 +1,9 @@
 <div class="sln-tab" id="sln-tab-general">
     <div class="row">
-        <button type="submit" class="btn btn-warning" name="reset-settings" value="reset">Reset settings</button>
+        <p><?php _e('Use this function to restore all the original settings. All your actual settings will be lost. This operation can\'t be undone.', 'sln'); ?></p>
+        <br/> 
+        <button type="submit" class="btn btn-warning" name="reset-settings" value="reset"
+        onClick="return confirm('Do you really want to reset?');"
+        >Reset settings</button>
     </div>
 </div>

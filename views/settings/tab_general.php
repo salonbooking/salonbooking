@@ -51,13 +51,13 @@
         <div class="col-md-6">
             <?php $this->row_input_textarea(
                 'gen_timetable',
-                __('Timetable infos', 'sln'),
+                __('Bookings notes', 'sln'),
                 array(
-                    'help'     => 'Leaving this empty the timetable will be generated from the booking availability',
+                    'help'     => 'Use this field to provide your customers important infos about terms and conditions of their reservation.',
                     'textarea' => array(
                         'attrs' => array(
                             'rows'        => 3,
-                            'placeholder' => "for example\r\ntue-fri 9:00-13:00 15:00-19:00\r\nsat 9:00-21:00"
+                            'placeholder' => "In case of delay we will take your seat for 15 minutes, then your booking will be lost"
                         )
                     )
                 )

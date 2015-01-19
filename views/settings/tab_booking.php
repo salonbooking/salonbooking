@@ -35,21 +35,22 @@ function sln_availability_row($prefix, $row)
 ?>
 <div class="sln-tab" id="sln-tab-booking">
     <div class="row form-inline">
-        <div class="col-md-5">
+        <div class="col-md-6">
             <div class="form-group">
                 <label for="salon_settings[parallels]">
-                    <?php _e('How many people you can serve at the same hour?', 'sln') ?>
+                    <?php _e('How many people you can attend during a single time session?', 'sln') ?>
                 </label>
                 <?php echo SLN_Form::fieldNumeric(
                     "salon_settings[parallels_hour]",
                     $this->getOpt('parallels_hour'),
-                    array('min' => 0, 'max' => 20)
+                    array('min' => 1, 'max' => 20)
                 ) ?>
                 <p class="help-block"><?php _e(
-                        'Set this option carefully because will affect the number of bookings you can accept for the same <strong>hour</strong>.<br/>Leave 0 to disable this limit',
+                        'Set this option carefully because will affect the number of bookings you can accept for the same <strong>time session</strong>.',
                         'sln'
                     ) ?></p>
             </div>
+<?php /*
             <div class="form-group">
                 <label for="salon_settings[parallels]">
                     <?php _e('How many people you can serve at the same day?', 'sln') ?>
@@ -64,18 +65,16 @@ function sln_availability_row($prefix, $row)
                         'sln'
                     ) ?></p>
             </div>
+*/?>
         </div>
-        <div class="col-md-6 offset-md-1">
-            <div class="row">
+        <div class="col-md-6"></div>
+            <div class="clearfix"></div>
+            <div class="sln-separator"></div>
+
+        <div class="col-md-7">
                 <div class="form-group">
-                    <label>
-                        <?php _e('How long before you can book?', 'sln') ?>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label for="<?php echo SLN_Form::makeID($field) ?> ">
-                        <?php _e('by', 'sln') ?>
-                    </label>
+                    <strong>
+                        <?php _e('Bookings are allowed from', 'sln') ?>
                     <?php $field = "salon_settings[hours_before_from]"; ?>
                     <?php echo SLN_Form::fieldSelect(
                         $field,
@@ -84,12 +83,10 @@ function sln_availability_row($prefix, $row)
                         array(),
                         true
                     ) ?>
-                </div>
-                <?php $field = "salon_settings[hours_before_to]"; ?>
-                <div class="form-group">
-                    <label for="<?php echo SLN_Form::makeID($field) ?> ">
-                        <?php _e('up to', 'sln') ?>
-                    </label>
+
+                        <?php _e('To a maximum of', 'sln') ?>
+
+                    <?php $field = "salon_settings[hours_before_to]"; ?>
                     <?php echo SLN_Form::fieldSelect(
                         $field,
                         SLN_Func::getIntervalItems(),
@@ -97,13 +94,12 @@ function sln_availability_row($prefix, $row)
                         array(),
                         true
                     ) ?>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <?php _e('before', 'sln') ?>.
-                    </label>
-                </div>
+ 
+                        <?php _e('in advance', 'sln') ?>
+                   </strong>
             </div>
+        </div>
+        <div class="col-md-5">
             <?php $field = "salon_settings[interval]"; ?>
             <div class="row">
                 <label for="<?php echo SLN_Form::makeID($field) ?> ">
@@ -116,6 +112,8 @@ function sln_availability_row($prefix, $row)
                 ) ?>
             </div>
         </div>
+<br/>
+            <div class="clearfix"></div>
         <div class="sln-separator"></div>
         <?php
         $key            = 'available';
