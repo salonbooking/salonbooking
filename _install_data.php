@@ -9,7 +9,7 @@ return array(
         'gen_email'        => '',
         'gen_phone'        => '00391122334455',
         'gen_address'      => 'Main Street 123',
-        'gen_timetable'    => 'Tue/Sat 9:00-13:00 15:00-20:00',
+        'gen_timetable'    => 'In case of delay we\'ll keep your "seat" for 15 minutes, after that you\'ll loose your priority.',
         'soc_facebook'     => 'http://www.facebook.com',
         'soc_twitter'      => 'http://www.twitter.com',
         'soc_google'       => 'http://www.google.it',
