@@ -31,13 +31,12 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
     {
         return array(
             'cb'             => $columns['cb'],
-            'ID'             => '#',
-            'title'          => $columns['title'],
-            'date'           => $columns['date'],
+            'ID'             => __('Booking ID'),
+            'author'         => __('User name', 'sln'),
+            'date'           => __('Submitted', 'sln'),
             'booking_status' => __('Status', 'sln'),
             'booking_date'   => __('Booking Date', 'sln'),
             'booking_price'  => __('Booking Price', 'sln'),
-            'date'           => __('Created At', 'sln')
         );
     }
 
