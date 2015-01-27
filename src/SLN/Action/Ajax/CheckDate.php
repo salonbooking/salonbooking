@@ -28,10 +28,10 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $plugin = $this->plugin;
         $date   = $this->getDateTime();
 //        $this->addError($plugin->format()->datetime($date));
-        $ah    = $plugin->getAvailabilityHelper();
-        $hb = $ah->getHoursBeforeHelper();
+        $ah   = $plugin->getAvailabilityHelper();
+        $hb   = $ah->getHoursBeforeHelper();
         $from = $hb->getFromDate();
-        $to = $hb->getToDate();
+        $to   = $hb->getToDate();
         if (!$hb->isValidFrom($date)) {
             $txt = $plugin->format()->datetime($from);
             $this->addError(sprintf(__('the date is too old, the minimum allowed is %s', 'sln'), $txt));
@@ -78,6 +78,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
     public function setDate($date)
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -88,6 +89,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
     public function setTime($time)
     {
         $this->time = $time;
+
         return $this;
     }
 

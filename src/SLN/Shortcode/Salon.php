@@ -23,9 +23,11 @@ class SLN_Shortcode_Salon
         add_shortcode('salon', array('SLN_Shortcode_Salon', 'create'));
     }
 
-    public static function create($attrs){
-       $obj = new SLN_Shortcode_Salon(SLN_Plugin::getInstance(), $attrs);
-       return $obj->execute();
+    public static function create($attrs)
+    {
+        $obj = new SLN_Shortcode_Salon(SLN_Plugin::getInstance(), $attrs);
+
+        return $obj->execute();
     }
 
     public function execute()
@@ -38,7 +40,7 @@ class SLN_Shortcode_Salon
         $found = false;
         foreach ($this->getSteps() as $step) {
             if ($curr == $step || $found) {
-                $found = true;
+                $found             = true;
                 $this->currentStep = $step;
                 $obj               = $this->getStepObject($step);
                 if (!$obj->isValid()) {

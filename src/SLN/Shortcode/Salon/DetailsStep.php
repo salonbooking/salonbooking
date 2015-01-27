@@ -19,39 +19,49 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
             }
         } else {
             $values = $_POST['sln'];
-            if(!is_user_logged_in()){
-                if(empty($values['firstname']))
-                    $this->addError(__('firstname can\'t be empty','sln'));
-                if(empty($values['lastname']))
-                    $this->addError(__('lastname can\'t be empty','sln'));
-                if(empty($values['email']))
-                    $this->addError(__('email can\'t be empty','sln'));
-                if(empty($values['phone']))
-                    $this->addError(__('phone can\'t be empty','sln'));
-                if(!filter_var($values['email'], FILTER_VALIDATE_EMAIL))
-                    $this->addError(__('email is not valid','sln'));
+            if (!is_user_logged_in()) {
+                if (empty($values['firstname'])) {
+                    $this->addError(__('firstname can\'t be empty', 'sln'));
+                }
+                if (empty($values['lastname'])) {
+                    $this->addError(__('lastname can\'t be empty', 'sln'));
+                }
+                if (empty($values['email'])) {
+                    $this->addError(__('email can\'t be empty', 'sln'));
+                }
+                if (empty($values['phone'])) {
+                    $this->addError(__('phone can\'t be empty', 'sln'));
+                }
+                if (!filter_var($values['email'], FILTER_VALIDATE_EMAIL)) {
+                    $this->addError(__('email is not valid', 'sln'));
+                }
 
 
-
-                if($this->getErrors())
+                if ($this->getErrors()) {
                     return false;
+                }
 
-                if(email_exists($values['email']))
+                if (email_exists($values['email'])) {
                     $this->addError(__('E-mail exists', 'sln'));
-                if($values['password'] != $values['password_confirm']){
+                }
+                if ($values['password'] != $values['password_confirm']) {
                     $this->addError(__('Passwords are different', 'sln'));
                 }
-                if($this->getErrors())
+                if ($this->getErrors()) {
                     return false;
+                }
                 $errors = wp_create_user($values['email'], $values['password'], $values['email']);
-                wp_update_user( array( 'ID' => $errors, 'first_name' => $values['firstname'], 'last_name' => $values['lastname'] ) );
+                wp_update_user(
+                    array('ID' => $errors, 'first_name' => $values['firstname'], 'last_name' => $values['lastname'])
+                );
                 add_user_meta($errors, '_sln_phone', $values['phone']);
-                if ( is_wp_error($errors) ) {
+                if (is_wp_error($errors)) {
                     $this->addError($errors->get_error_message());
                 }
                 wp_new_user_notification($errors, $values['password']);
-                if(!$this->dispatchAuth($values['email'], $values['password']))
+                if (!$this->dispatchAuth($values['email'], $values['password'])) {
                     return false;
+                }
             }
         }
         $this->bindValues($values);
@@ -72,6 +82,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
 
             return false;
         }
+
         return true;
     }
 

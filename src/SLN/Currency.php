@@ -39,7 +39,7 @@ class SLN_Currency
     {
         $ret = array();
         foreach (array_keys(self::$currencies) as $k) {
-            $ret[$k] = $k.' ('.self::getSymbol($k).')';
+            $ret[$k] = $k . ' (' . self::getSymbol($k) . ')';
         }
 
         return $ret;

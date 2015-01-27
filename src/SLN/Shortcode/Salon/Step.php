@@ -17,7 +17,8 @@ abstract class SLN_Shortcode_Salon_Step
 
     public function isValid()
     {
-        return (isset($_POST['submit_' . $this->getStep()]) || isset($_GET['submit_' . $this->getStep()])) && $this->dispatchForm();
+        return (isset($_POST['submit_' . $this->getStep()]) || isset($_GET['submit_' . $this->getStep(
+                )])) && $this->dispatchForm();
     }
 
     public function render()
@@ -60,7 +61,9 @@ abstract class SLN_Shortcode_Salon_Step
     {
         $this->errors[] = $err;
     }
-    protected function getErrors(){
+
+    protected function getErrors()
+    {
         return $this->errors;
     }
 

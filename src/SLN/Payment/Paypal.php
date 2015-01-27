@@ -63,6 +63,7 @@ class SLN_Payment_Paypal
     {
         $settings = $this->plugin->getSettings();
         $url      = SLN_Func::currPageUrl();
+
         return $this->getBaseUrl($this->plugin->getSettings()->isPaypalTest()) . "?"
         . http_build_query(
             array(

@@ -30,7 +30,7 @@ class SLN_Admin_Settings
             'manage_options',
             'salon',
             array($this, 'settings_page'),
-            SLN_PLUGIN_URL.'/img/admin_icon.png',
+            SLN_PLUGIN_URL . '/img/admin_icon.png',
             100
         );
         $this->settings_page = add_submenu_page(
@@ -253,7 +253,7 @@ class SLN_Admin_Settings
 
     private function showTabsBar()
     {
-        echo '<h2 class="nav-tab-wrapper"><img src="'.SLN_PLUGIN_URL.'/img/settings_icon.png'.'"/>&nbsp;&nbsp;&nbsp;&nbsp;';
+        echo '<h2 class="nav-tab-wrapper"><img src="' . SLN_PLUGIN_URL . '/img/settings_icon.png' . '"/>&nbsp;&nbsp;&nbsp;&nbsp;';
         $page    = self::PAGE;
         $current = $this->getCurrentTab();
         foreach ($this->tabs as $tab => $name) {

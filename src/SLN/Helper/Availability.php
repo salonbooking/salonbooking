@@ -10,6 +10,7 @@ class SLN_Helper_Availability
     private $dayBookings;
     /** @var  SLN_Helper_HoursBefore */
     private $hoursBefore;
+
     public function __construct(SLN_Settings $settings)
     {
         $this->settings = $settings;
@@ -22,12 +23,16 @@ class SLN_Helper_Availability
 
         return (object)compact('from', 'to');
     }
-    public function getHoursBeforeHelper(){
-        if(!isset($this->hoursBefore)){
+
+    public function getHoursBeforeHelper()
+    {
+        if (!isset($this->hoursBefore)) {
             $this->hoursBefore = new SLN_Helper_HoursBefore($this->settings);
         }
+
         return $this->hoursBefore;
     }
+
     public function getHoursBeforeString()
     {
         $txt = SLN_Func::getIntervalItems();
@@ -69,7 +74,7 @@ class SLN_Helper_Availability
         $ret      = array();
         $avItems  = $this->getItems();
         while ($count > 0) {
-            $date  = $from->format('Y-m-d');
+            $date = $from->format('Y-m-d');
             $count--;
             if ($avItems->isValidDate($date) && $this->isValidDate($from)) {
                 $ret[] = $date;
@@ -82,18 +87,19 @@ class SLN_Helper_Availability
 
     public function getTimes($date)
     {
-        $ret      = array();
-        $avItems  = $this->getItems();
-        $hb = $this->getHoursBeforeHelper();
-        foreach(SLN_Func::getMinutesIntervals() as $time){
-            $d = new DateTime($date->format('Y-m-d').' '.$time);
+        $ret     = array();
+        $avItems = $this->getItems();
+        $hb      = $this->getHoursBeforeHelper();
+        foreach (SLN_Func::getMinutesIntervals() as $time) {
+            $d = new DateTime($date->format('Y-m-d') . ' ' . $time);
             if ($avItems->isValidTime($date, $time)
-                 && $hb->check($d)
-                 && $this->isValidTime($d)  
+                && $hb->check($d)
+                && $this->isValidTime($d)
             ) {
                 $ret[$time] = $time;
             }
         }
+
         return $ret;
     }
 
@@ -108,11 +114,12 @@ class SLN_Helper_Availability
 
     public function setDate(DateTime $date)
     {
-        if(empty($this->date) || $this->date->format('Ymd') != $date->format('Ymd')){
+        if (empty($this->date) || $this->date->format('Ymd') != $date->format('Ymd')) {
             $this->dayBookings = new SLN_Helper_AvailabilityDayBookings($date);
         }
 
         $this->date = $date;
+
         return $this;
     }
 
@@ -166,15 +173,21 @@ class SLN_Helper_Availability
         return $this->items;
     }
 
-    public function isValidDate($date){
-            $this->setDate($date);
-            $countDay  = $this->settings->get('parallels_day'); 
-            return !($countDay && $this->getBookingsDayCount() >= $countDay);
+    public function isValidDate($date)
+    {
+        $this->setDate($date);
+        $countDay = $this->settings->get('parallels_day');
+
+        return !($countDay && $this->getBookingsDayCount() >= $countDay);
     }
-    public function isValidTime($date){
-            if(!$this->isValidDate($date))
-                return false;
-            $countHour = $this->settings->get('parallels_hour');
-            return !($countHour && $this->getBookingsHourCount($date->format('H')) >= $countHour);
+
+    public function isValidTime($date)
+    {
+        if (!$this->isValidDate($date)) {
+            return false;
+        }
+        $countHour = $this->settings->get('parallels_hour');
+
+        return !($countHour && $this->getBookingsHourCount($date->format('H')) >= $countHour);
     }
 }

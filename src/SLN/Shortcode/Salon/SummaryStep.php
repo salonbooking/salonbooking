@@ -10,11 +10,11 @@ class SLN_Shortcode_Salon_SummaryStep extends SLN_Shortcode_Salon_Step
             $bb->set('note', SLN_Func::filter($values['note']));
             $bb->create();
             $this->getPlugin()->sendMail(
-                'mail/summary', 
+                'mail/summary',
                 array('booking' => $bb->getLastBooking())
             );
             $this->getPlugin()->sendMail(
-                'mail/summary_admin', 
+                'mail/summary_admin',
                 array('booking' => $bb->getLastBooking())
             );
         }

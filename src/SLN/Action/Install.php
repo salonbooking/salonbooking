@@ -9,8 +9,10 @@ class SLN_Action_Install
         foreach ($data['posts'] as $label => $post) {
             if (!self::checkPost($post['post']['post_title'], $post['post']['post_type'])) {
                 $id = wp_insert_post($post['post']);
-                if(isset($post['meta'])) foreach ($post['meta'] as $k => $v) {
-                    add_post_meta($id, $k, $v);
+                if (isset($post['meta'])) {
+                    foreach ($post['meta'] as $k => $v) {
+                        add_post_meta($id, $k, $v);
+                    }
                 }
                 $ids[$label] = $id;
             }

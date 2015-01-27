@@ -65,13 +65,14 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
 
     function isNotAvailableOnDate(\DateTime $date)
     {
-        $key = array_search(SLN_Func::getDateDayName($date), SLN_Func::getDays());
-        $notAvailableDay = $this->getNotAvailableOn($key);
-        $time = new \DateTime('1970-01-01 ' . $date->format('H:i'));
+        $key              = array_search(SLN_Func::getDateDayName($date), SLN_Func::getDays());
+        $notAvailableDay  = $this->getNotAvailableOn($key);
+        $time             = new \DateTime('1970-01-01 ' . $date->format('H:i'));
         $notAvailableTime = $this->getNotAvailableFrom()
             && $this->getNotAvailableFrom() <= $time
             && $this->getNotAvailableTo()
             && $this->getNotAvailableTo() >= $time;
+
         return $notAvailableDay && $notAvailableTime;
     }
 

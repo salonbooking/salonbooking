@@ -13,7 +13,7 @@ class SLN_Shortcode_Salon_DateStep extends SLN_Shortcode_Salon_Step
             ->removeLastID()
             ->setDate($date)
             ->setTime($time);
-        $obj    = new SLN_Action_Ajax_CheckDate($this->getPlugin());
+        $obj = new SLN_Action_Ajax_CheckDate($this->getPlugin());
         $obj
             ->setDate($date)
             ->setTime($time)

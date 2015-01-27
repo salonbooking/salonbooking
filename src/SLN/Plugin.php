@@ -46,27 +46,27 @@ class SLN_Plugin
         new SLN_Admin_Settings($this);
         add_action('admin_notices', array($this, 'admin_notices'));
         //http://codex.wordpress.org/AJAX_in_Plugins
-        add_action( 'wp_ajax_salon', array( $this, 'ajax' ) );
-        add_action( 'wp_ajax_nopriv_salon', array( $this, 'ajax' ) );
+        add_action('wp_ajax_salon', array($this, 'ajax'));
+        add_action('wp_ajax_nopriv_salon', array($this, 'ajax'));
     }
 
     public function action_init()
     {
-        if(!session_id()) {
+        if (!session_id()) {
             session_start();
         }
         load_plugin_textdomain(self::TEXT_DOMAIN, false, '/salon/languages');
         wp_enqueue_style('salon', SLN_PLUGIN_URL . '/css/salon.css', array(), SLN_VERSION, 'all');
 //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
         wp_enqueue_script('salon', SLN_PLUGIN_URL . '/js/salon.js', array('jquery'), '20140711', true);
-        wp_localize_script( 
-             'salon',
-             'salon',
-             array( 
-                 'ajax_url'      => admin_url( 'admin-ajax.php' ),
-                 'ajax_nonce'   => wp_create_nonce( 'ajax_post_validation' ),
-                 'loading'    => 'http://i.stack.imgur.com/drgpu.gif'
-            ) 
+        wp_localize_script(
+            'salon',
+            'salon',
+            array(
+                'ajax_url'   => admin_url('admin-ajax.php'),
+                'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
+                'loading'    => 'http://i.stack.imgur.com/drgpu.gif'
+            )
         );
         SLN_Shortcode_Salon::init($this);
     }
@@ -166,17 +166,20 @@ class SLN_Plugin
 
         return ob_get_clean();
     }
-    public function sendMail($view, $data){
+
+    public function sendMail($view, $data)
+    {
         $data['data'] = $settings = new ArrayObject($data);
-        $content = $this->loadView($view, $data);
-        if(!function_exists('sln_html_content_type')){
-            function sln_html_content_type(){
+        $content      = $this->loadView($view, $data);
+        if (!function_exists('sln_html_content_type')) {
+            function sln_html_content_type()
+            {
                 return 'text/html';
             }
         }
-        add_filter( 'wp_mail_content_type', 'sln_html_content_type' );
-        wp_mail( $settings['to'], $settings['subject'], $content);
-        remove_filter( 'wp_mail_content_type', 'sln_html_content_type' );
+        add_filter('wp_mail_content_type', 'sln_html_content_type');
+        wp_mail($settings['to'], $settings['subject'], $content);
+        remove_filter('wp_mail_content_type', 'sln_html_content_type');
     }
 
     /**
@@ -204,17 +207,20 @@ class SLN_Plugin
      * @param Datetime $datetime
      * @return \SLN_Helper_Intervals
      */
-    public function getIntervals(Datetime $datetime){
+    public function getIntervals(Datetime $datetime)
+    {
         $obj = new SLN_Helper_Intervals($this->getAvailabilityHelper());
         $obj->setDatetime($datetime);
+
         return $obj;
     }
 
-    public function ajax(){
-        check_ajax_referer( 'ajax_post_validation', 'security' );
-        $method = $_POST['method'];
-        $className = 'SLN_Action_Ajax_'.ucwords($method);
-        if(class_exists($className)){
+    public function ajax()
+    {
+        check_ajax_referer('ajax_post_validation', 'security');
+        $method    = $_POST['method'];
+        $className = 'SLN_Action_Ajax_' . ucwords($method);
+        if (class_exists($className)) {
             /** @var SLN_Action_Ajax_Abstract $obj */
             $obj = new $className($this);
             $ret = $obj->execute();
@@ -225,7 +231,7 @@ class SLN_Plugin
                 echo $ret;
             }
             exit();
-        }else {
+        } else {
             throw new Exception("ajax method not found '$method'");
         }
     }

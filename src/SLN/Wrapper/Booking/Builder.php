@@ -117,8 +117,9 @@ class SLN_Wrapper_Booking_Builder
     public function removeService(SLN_Wrapper_Service $service)
     {
         $k = array_search($service->getId(), $this->data['services']);
-        if($k !== false)
+        if ($k !== false) {
             unset($this->data['services'][$k]);
+        }
     }
 
     /**
@@ -149,18 +150,18 @@ class SLN_Wrapper_Booking_Builder
 
     public function create()
     {
-        $settings = $this->plugin->getSettings();
-        $datetime = $this->plugin->format()->datetime($this->getDateTime());
-        $name     = $this->get('firstname') . ' ' . $this->get('lastname');
-        $status   =  $settings->get('confirmation') ?
+        $settings             = $this->plugin->getSettings();
+        $datetime             = $this->plugin->format()->datetime($this->getDateTime());
+        $name                 = $this->get('firstname') . ' ' . $this->get('lastname');
+        $status               = $settings->get('confirmation') ?
             SLN_Enum_BookingStatus::PENDING
-            : ($settings->get('pay_enabled') ? 
-               SLN_Enum_BookingStatus::PENDING
-               : SLN_Enum_BookingStatus::PAY_LATER ); 
-        $id       = wp_insert_post(
+            : ($settings->get('pay_enabled') ?
+                SLN_Enum_BookingStatus::PENDING
+                : SLN_Enum_BookingStatus::PAY_LATER);
+        $id                   = wp_insert_post(
             array(
-                'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
-                'post_title' => $name . ' - ' . $datetime,
+                'post_type'   => SLN_Plugin::POST_TYPE_BOOKING,
+                'post_title'  => $name . ' - ' . $datetime,
                 'post_status' => $status
             )
         );

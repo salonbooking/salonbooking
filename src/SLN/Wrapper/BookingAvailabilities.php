@@ -26,7 +26,8 @@ class SLN_Wrapper_Availabilities
         return $ret;
     }
 
-    public function toStrings(){
+    public function toStrings()
+    {
 
     }
 }

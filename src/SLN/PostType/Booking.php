@@ -11,9 +11,9 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             add_action('manage_' . $this->getPostType() . '_posts_custom_column', array($this, 'manage_column'), 10, 2);
             add_filter('manage_' . $this->getPostType() . '_posts_columns', array($this, 'manage_columns'));
             add_action('admin_footer-post.php', array($this, 'bulkAdminFooter'));
-            add_filter( 'display_post_states', array($this,'bulkPostStates') );
-            add_action( 'admin_head-post-new.php', array($this,'posttype_admin_css' ) );
-            add_action( 'admin_head-post.php', array($this, 'posttype_admin_css' ) );
+            add_filter('display_post_states', array($this, 'bulkPostStates'));
+            add_action('admin_head-post-new.php', array($this, 'posttype_admin_css'));
+            add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
         }
         $this->registerPostStatus();
     }
@@ -149,75 +149,89 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
         );
     }
 
-    private function registerPostStatus(){
-        foreach(SLN_Enum_BookingStatus::toArray() as $k => $v){
-            register_post_status( $k, array(
-                'label'                     => $v,
-                'public'                    => true,
-                'exclude_from_search'       => false,
-                'show_in_admin_all_list'    => true,
-                'show_in_admin_status_list' => true,
-                'label_count'               => _n_noop($v.' <span class="count">(%s)</span>',$v.' <span class="count">(%s)</span>')
-            ) );
+    private function registerPostStatus()
+    {
+        foreach (SLN_Enum_BookingStatus::toArray() as $k => $v) {
+            register_post_status(
+                $k,
+                array(
+                    'label'                     => $v,
+                    'public'                    => true,
+                    'exclude_from_search'       => false,
+                    'show_in_admin_all_list'    => true,
+                    'show_in_admin_status_list' => true,
+                    'label_count'               => _n_noop(
+                        $v . ' <span class="count">(%s)</span>',
+                        $v . ' <span class="count">(%s)</span>'
+                    )
+                )
+            );
         }
     }
 
-    public function bulkAdminFooter(){
+    public function bulkAdminFooter()
+    {
         global $post;
-        if($post->post_type == SLN_Plugin::POST_TYPE_BOOKING){
+        if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
 
-?>
-<script type="text/javascript">
-      jQuery(document).ready(function($){
-            $('#save-post').attr('value', '<?php echo __('Save Booking','sln') ?>');
-            $('#submitdiv h3 span').text('<?php echo __('Booking','sln') ?>');
-<?php
+            ?>
+            <script type="text/javascript">
+                jQuery(document).ready(function ($) {
+                    $('#save-post').attr('value', '<?php echo __('Save Booking','sln') ?>');
+                    $('#submitdiv h3 span').text('<?php echo __('Booking','sln') ?>');
+                    <?php
 
-        foreach(SLN_Enum_BookingStatus::toArray() as $k => $v){
-            $complete = '';
-            $label = '';
-            if($post->post_status == $k){
-               $complete = ' selected=\"selected\"';
-               $label = '<span id=\"post-status-display\">'.$v.'</span>';
-            }
-?>
-           $("select#post_status").append("<option value=\"<?php echo $k?>\" <?php echo $complete?>><?php echo $v ?></option>");
-           $(".misc-pub-section label").append("<?php echo $label?>");
-<?php 
-      }
-?>
-      });
-</script>
-<?php
-      }
+                            foreach(SLN_Enum_BookingStatus::toArray() as $k => $v){
+                                $complete = '';
+                                $label = '';
+                                if($post->post_status == $k){
+                                   $complete = ' selected=\"selected\"';
+                                   $label = '<span id=\"post-status-display\">'.$v.'</span>';
+                                }
+                    ?>
+                    $("select#post_status").append("<option value=\"<?php echo $k?>\" <?php echo $complete?>><?php echo $v ?></option>");
+                    $(".misc-pub-section label").append("<?php echo $label?>");
+                    <?php
+                          }
+                    ?>
+                });
+            </script>
+        <?php
+        }
     }
 
-    public function bulkPostStates(){
+    public function bulkPostStates()
+    {
         global $post;
-        $arg = get_query_var( 'post_status' );
-        if($post->post_type == SLN_Plugin::POST_TYPE_BOOKING){
-        foreach(SLN_Enum_BookingStatus::toArray() as $k => $v){
- 
-        if($arg != $k){
-            if($post->post_status == $k){
-               return array($v);
+        $arg = get_query_var('post_status');
+        if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
+            foreach (SLN_Enum_BookingStatus::toArray() as $k => $v) {
+
+                if ($arg != $k) {
+                    if ($post->post_status == $k) {
+                        return array($v);
+                    }
+                }
+
             }
         }
 
-        }
-        } 
         return $states;
     }
-    function posttype_admin_css() {
+
+    function posttype_admin_css()
+    {
         global $post_type;
-        if($post_type == SLN_Plugin::POST_TYPE_BOOKING){
+        if ($post_type == SLN_Plugin::POST_TYPE_BOOKING) {
             ?>
             <style type="text/css">
-                #post-preview, #view-post-btn,#misc-publishing-actions #visibility,
+                #post-preview, #view-post-btn, #misc-publishing-actions #visibility,
                 #major-publishing-actions,
-                #post-body-content{display: none;}
+                #post-body-content {
+                    display: none;
+                }
             </style>
-            <?php
+        <?php
         }
     }
 }

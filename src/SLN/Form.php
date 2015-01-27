@@ -20,7 +20,7 @@ class SLN_Form
             $items    = SLN_Func::getMinutesIntervals($interval, $maxItems);
         }
 
-        if((!empty($value)) && (!in_array($value, $items))){
+        if ((!empty($value)) && (!in_array($value, $items))) {
             $items[$value] = $value;
         }
         self::fieldSelect($name, $items, $value, $settings);
@@ -136,7 +136,8 @@ class SLN_Form
         }
         $settings['attrs']['class'] = "form-control";
         ?>
-        <input type="<?php echo isset($settings['type']) ? $settings['type'] : 'text'?>" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>"
+        <input type="<?php echo isset($settings['type']) ? $settings['type'] : 'text' ?>" name="<?php echo $name ?>"
+               id="<?php echo self::makeID($name) ?>"
                value="<?php echo esc_attr($value) ?>" <?php echo self::attrs($settings) ?>/>
     <?php
     }

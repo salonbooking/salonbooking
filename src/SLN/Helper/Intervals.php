@@ -22,13 +22,13 @@ class SLN_Helper_Intervals
         $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
         $times             = $ah->getTimes($date);
-        $i = 0;
+        $i                 = 0;
         while (empty($times) && $i < 100) {
             $date->modify('+1 days');
             $times = $ah->getTimes($date);
             $i++;
         }
-        if(empty($times)){
+        if (empty($times)) {
             $date->modify('-99 days');
             while (empty($times) && $i > 0) {
                 $date->modify('-1 days');
@@ -40,7 +40,7 @@ class SLN_Helper_Intervals
         $suggestedTime = $date->format('H:i');
         $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
         while (!isset($times[$suggestedTime])) {
-            $date         = $date->modify("+$i minutes");
+            $date          = $date->modify("+$i minutes");
             $suggestedTime = $date->format('H:i');
         }
         $this->suggestedDate = $date;
@@ -57,6 +57,7 @@ class SLN_Helper_Intervals
         if ($date < $from) {
             $date = $from;
         }
+
         return $date;
     }
 

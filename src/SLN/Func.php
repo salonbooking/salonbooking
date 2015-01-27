@@ -14,10 +14,13 @@ class SLN_Func
         return $ret;
     }
 
-    public static function getDateDayName($day){
-        if($day instanceof DateTime)
+    public static function getDateDayName($day)
+    {
+        if ($day instanceof DateTime) {
             $day = $day->getTimestamp();
-        return date_i18n('l',$day);
+        }
+
+        return date_i18n('l', $day);
     }
 
     public static function countDaysBetweenDatetimes(\DateTime $from, \DateTime $to)
@@ -32,7 +35,7 @@ class SLN_Func
         $timestamp = strtotime("1970-01-01");
         $ret       = array();
         for ($i = 1; $i <= 12; $i++) {
-            $ret[$i]   = date_i18n('F',$timestamp);
+            $ret[$i]   = date_i18n('F', $timestamp);
             $timestamp = strtotime('+1 month', $timestamp);
         }
 
@@ -179,7 +182,7 @@ class SLN_Func
             SLN_Plugin::getInstance()->getSettings()->getInterval();
         $maxItems = isset($maxItems) ?
             $maxItems : 1440;
-        $items = array();
+        $items    = array();
         do {
             $items[] = date("H:i", $curr);
             $curr    = strtotime('+' . $interval . ' minutes', $curr);
