@@ -597,7 +597,7 @@
 				}
                                 var ymdm = (prevMonth.getMonth()+1);
                                 var ymd = prevMonth.getFullYear()+'-'+(parseInt(ymdm) < 10 ? '0' : '')+ymdm+'-'+ prevMonth.getDate();
-				html.push('<td data-ymd="'+ymd+ '"class="day ' + clsName + '">' + prevMonth.getUTCDate() + '</td>');
+				html.push('<td data-ymd="'+ymd+ '" class="day ' + clsName + '">' + prevMonth.getUTCDate() + '</td>');
 				if (prevMonth.getUTCDay() == this.weekEnd) {
 					html.push('</tr>');
 				}
@@ -626,13 +626,15 @@
 					}
 					meridianOld = meridian;
 					txt = (i % 12 ? i % 12 : 12);
-					html.push('<span data-ymd="'+txt+'" class="hour' + clsName + ' hour_' + (i < 12 ? 'am' : 'pm') + '">' + txt + '</span>');
+                                        var ymd = i < 10 ? '0'+txt : txt;
+ 					html.push('<span data-ymd="'+ymd+'" class="hour' + clsName + ' hour_' + (i < 12 ? 'am' : 'pm') + '">' + txt + '</span>');
 					if (i == 23) {
 						html.push('</fieldset>');
 					}
 				} else {
 					txt = i + ':00';
-					html.push('<span data-ymd="'+txt+'" class="hour' + clsName + '">' + txt + '</span>');
+                                        var ymd = i < 10 ? '0'+txt : txt;
+					html.push('<span data-ymd="'+ymd+'" class="hour' + clsName + '">' + txt + '</span>');
 				}
 			}
 			this.picker.find('.datetimepicker-hours td').html(html.join(''));
@@ -658,14 +660,17 @@
 					meridianOld = meridian;
 					txt = (hours % 12 ? hours % 12 : 12);
 					//html.push('<span class="minute'+clsName+' minute_'+(hours<12?'am':'pm')+'">'+txt+'</span>');
-					html.push('<span class="minute' + clsName + '">' + txt + ':' + (i < 10 ? '0' + i : i) + '</span>');
+					//
+                                        var ymd = i < 10 ? '0'+txt : txt;
+					html.push('<span data-ymd="'+ymd+ '" class="minute' + clsName + '">' + txt + ':' + (i < 10 ? '0' + i : i) + '</span>');
 					if (i == 59) {
 						html.push('</fieldset>');
 					}
 				} else {
 					txt = i + ':00';
+                                        var ymd = i < 10 ? '0'+txt : txt;
 					//html.push('<span class="hour'+clsName+'">'+txt+'</span>');
-					html.push('<span class="minute' + clsName + '">' + hours + ':' + (i < 10 ? '0' + i : i) + '</span>');
+					html.push('<span data-ymd="'+ymd+ '" class="minute' + clsName + '">' + hours + ':' + (i < 10 ? '0' + i : i) + '</span>');
 				}
 			}
 			this.picker.find('.datetimepicker-minutes td').html(html.join(''));

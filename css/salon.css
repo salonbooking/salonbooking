@@ -3323,10 +3323,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 #sln-salon ul {
   list-style-type: none;
 }
-.sln_timepicker .timepicker {
+.timepicker {
   overflow: hidden;
 }
-.sln_timepicker .timepicker .datetimepicker-hours,
-.sln_timepicker .timepicker .datetimepicker-minutes > table {
+.timepicker .datetimepicker-hours,
+.timepicker .datetimepicker-minutes > table {
   margin-top: -40px;
+}
+.timepicker .datetimepicker {
+  margin-top: 50px;
 }

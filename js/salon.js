@@ -20,6 +20,21 @@ jQuery(function ($) {
 
 function sln_stepDate($) {
     var isValid;
+    var items = $('#salon-step-date').data('intervals');
+        var func = function(){
+        $('[data-ymd]').addClass('disabled');
+        $.each(items.dates, function(key, value) {
+           $('[data-ymd="'+value+'"]').removeClass('disabled');
+        });
+        $.each(items.times, function(key, value) {
+           console.log(value);
+           $('[data-ymd="'+value+'"]').removeClass('disabled');
+        });
+ 
+            return true; 
+        }
+        func();
+        $('body').on('sln_date',func);
 
     function validate(obj, autosubmit) {
         var form = $(obj).closest('form');
@@ -57,23 +72,13 @@ function sln_stepDate($) {
 //        putOptions($('#sln_date_day'), intervals.days, intervals.suggestedDay);
 //        putOptions($('#sln_date_month'), intervals.months, intervals.suggestedMonth);
 //        putOptions($('#sln_date_year'), intervals.years, intervals.suggestedYear);
-console.log($('[data-ymd]'));
-        putOptions($('#sln_date'), intervals.dates, intervals.suggestedDate);
-        putOptions($('#sln_time'), intervals.times, intervals.suggestedTime);
+        items = intervals;
+        func();
+        putOptions($('#sln_date'), intervals.suggestedDate);
+        putOptions($('#sln_time'), intervals.suggestedTime);
     }
 
-    function putOptions(selectElem, newOptions, value){
-        function up(){
-        $.each(newOptions, function(key, value) {
-           $('[data-ymd]').addClass('disabled');
-           $('[data-ymd="'+value+'"]').removeClass('disabled');
-        }); 
-        }
-        selectElem
-          .unbind('show').on('show','up')
-          .unbind('changeMonth').on('changeMonth','up')
-          .unbind('changeYear').on('changeYear','up')
-          .unbind('changeDate').on('changeDate','up');
+    function putOptions(selectElem, value){
         selectElem.val(value);
     }
 
@@ -87,7 +92,10 @@ console.log($('[data-ymd]'));
         }else{
             return true;
         }
-    })
+    });
+
+    initDatepickers($);
+    initTimepickers($);
 }
 
 function sln_serviceTotal($) {
@@ -110,8 +118,7 @@ function sln_serviceTotal($) {
     evalTot();
 }
 
-jQuery(function ($) {
-    function initDatepickers() {
+    function initDatepickers($) {
         $('.sln_datepicker input').each(function () {
             if ($(this).hasClass('started')) {
                 return;
@@ -125,11 +132,15 @@ jQuery(function ($) {
                     minView:2,
                     maxView:4,
                     todayBtn: true
-                });
+                })
+                 .on('show',function(){$('body').trigger('sln_date');})
+                 .on('changeMonth',function(){$('body').trigger('sln_date');})
+                 .on('changeYear',function(){$('body').trigger('sln_date');})
+		;
             }
         });
     }
-    function initTimepickers() {
+    function initTimepickers($) {
         $('.sln_timepicker input').each(function () {
             if ($(this).hasClass('started')) {
                 return;
@@ -143,14 +154,12 @@ jQuery(function ($) {
                     minView: 0,
                     maxView: 1,
                     startView: 1,
-                }).data('datetimepicker').picker;
+                })
+                 .on('show',function(){$('body').trigger('sln_date');})
+                 .on('changeMonth',function(){$('body').trigger('sln_date');})
+                 .on('changeYear',function(){$('body').trigger('sln_date');})
+                 .data('datetimepicker').picker;
                picker.addClass('timepicker');
             }
         });
     }
-
-    initDatepickers();
-    initTimepickers();
-});
- 
-
