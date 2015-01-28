@@ -133,7 +133,9 @@ function sln_serviceTotal($) {
                     maxView:4,
                     todayBtn: true
                 })
-                 .on('fill',function(){$('body').trigger('sln_date');})
+                 .on('show',function(){$('body').trigger('sln_date');})
+                 .on('changeMonth',function(){$('body').trigger('sln_date');})
+                 .on('changeYear',function(){$('body').trigger('sln_date');})
 		;
             }
         });
@@ -153,7 +155,9 @@ function sln_serviceTotal($) {
                     maxView: 1,
                     startView: 1,
                 })
-                 .on('fill',function(){$('body').trigger('sln_date');})
+                 .on('show',function(){$('body').trigger('sln_date');})
+                 .on('changeMonth',function(){$('body').trigger('sln_date');})
+                 .on('changeYear',function(){$('body').trigger('sln_date');})
                  .data('datetimepicker').picker;
                picker.addClass('timepicker');
             }
