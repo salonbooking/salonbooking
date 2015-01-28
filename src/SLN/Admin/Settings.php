@@ -39,7 +39,7 @@ class SLN_Admin_Settings
             __('Settings', 'sln'),
             apply_filters('salonviews/settings/capability', 'manage_options'),
             self::PAGE,
-            array($this, 'settings_page')
+            array($this, 'show')
         );
     }
 
@@ -217,7 +217,7 @@ class SLN_Admin_Settings
         );
     }
 
-    public function settings_page()
+    public function show()
     {
         $current = $this->getCurrentTab();
         if ($_POST) {
