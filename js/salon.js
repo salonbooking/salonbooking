@@ -69,7 +69,7 @@ function sln_stepDate($) {
         selectElem.val(value);
     }
 
-    $('#sln_date_day, #sln_date_month, #sln_date_year, #sln_time').change(function () {
+    $('#sln_date, #sln_time').change(function () {
         validate(this,false);
     });
     $('#salon-step-date').submit(function () {
@@ -101,3 +101,48 @@ function sln_serviceTotal($) {
     });
     evalTot();
 }
+
+jQuery(function ($) {
+    function initDatepickers() {
+        $('.sln_datepicker input').each(function () {
+            if ($(this).hasClass('started')) {
+                return;
+            } else {
+                $(this)
+                    .addClass('started')
+                    .datetimepicker({
+                    format: $(this).data('format'),
+                    minuteStep: 60,
+                    autoclose: true,
+                    minView:2,
+                    maxView:4,
+                    todayBtn: true
+                });
+            }
+        });
+    }
+    function initTimepickers() {
+        $('.sln_timepicker input').each(function () {
+            if ($(this).hasClass('started')) {
+                return;
+            } else {
+                 var picker = $(this)
+                    .addClass('started')
+                    .datetimepicker({
+                    format: $(this).data('format'),
+                    minuteStep: 60,
+                    autoclose: true,
+                    minView: 0,
+                    maxView: 1,
+                    startView: 1,
+                }).data('datetimepicker').picker;
+               picker.addClass('timepicker');
+            }
+        });
+    }
+
+    initDatepickers();
+    initTimepickers();
+});
+ 
+

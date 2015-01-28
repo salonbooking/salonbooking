@@ -56,7 +56,7 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
 
     <?php endforeach ?>
     <div class="row row-total">
-        <div class="col-lg-9 col-xs-8 services-total-label"><?php _e('Subtotal') ?></div>
+        <div class="col-lg-9 col-xs-8 services-total-label"><?php _e('Subtotal', 'sln') ?></div>
         <div class="col-lg-3 col-xs-4 services-total">
         <span id="services-total" data-symbol="<?php echo $plugin->getSettings()->getCurrencySymbol() ?>">
             <?php echo $plugin->format()->money(0, false) ?>

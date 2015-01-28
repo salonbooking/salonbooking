@@ -38,6 +38,18 @@ class SLN_Form
         echo "</span>";
     }
 
+    static public function fieldJSDate($name, $value = null, $settings = array()){
+        ?><span class="sln-jsdate">
+        <div class="sln_datepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" required="required" data-format="d M yyyy" class="form-control" value="<?php echo $value->format('d M Y') ?>"></div>
+        </span><?php
+    }
+
+    static public function fieldJSTime($name, $value, $settings){ 
+        ?><span class="sln-jstime">
+        <div class="sln_timepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" required="required" data-format="hh:ii" class="form-control" value="<?php echo $value->format('H:i') ?>"></div>
+        </span><?php
+    }
+
     static public function fieldDay($name, $value, $settings = array())
     {
         if ($value instanceof \DateTime) {

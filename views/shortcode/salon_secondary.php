@@ -8,7 +8,7 @@
 $bb = $plugin->getBookingBuilder();
 $services = $step->getServices();
 ?>
-<h1>Something more?</h1>
+<h1><?php _e('Something more?','sln')?></h1>
 <form id="salon-step-secondary" method="post" action="<?php echo $formAction ?>" role="form">
     <?php include "_services.php"; ?>
     <?php include "_form_actions.php" ?>
