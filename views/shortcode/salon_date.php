@@ -36,7 +36,12 @@ else:
     <h2><?php _e('When do you want to come?', 'sln') ?>
         <?php salon_date_hoursbefore($plugin->getAvailabilityHelper()->getHoursBeforeString()) ?>
     </h2>
-    <form method="post" action="<?php echo $formAction ?>" id="salon-step-date">
+    <form method="post" action="<?php echo $formAction ?>" id="salon-step-date" 
+          data-days="<?php echo esc_attr(json_encode($intervals->getDays()));?>" 
+          data-months="<?php echo esc_attr(json_encode($intervals->getMonths()));?>"
+          data-years="<?php echo esc_attr(json_encode($intervals->getYears()));?>"
+          data-times="<?php echo esc_attr(json_encode($intervals->getTimes()));?>"
+          data-dates="<?php echo esc_attr(json_encode($intervals->getDates()));?>">
         <?php include '_errors.php' ?>
         <div class="row">
             <div class="col-md-12">
@@ -45,7 +50,7 @@ else:
                             'select a day',
                             'sln'
                         ) ?></label>
-                    <?php SLN_Form::fieldJSDate('sln[date]', $date, array('days' => $intervals->getDays())) ?>
+                    <?php SLN_Form::fieldJSDate('sln[date]', $date) ?>
                 </div>
             </div>
         </div>
@@ -56,7 +61,7 @@ else:
                             'select an hour',
                             'sln'
                         ) ?></label>
-                    <?php SLN_Form::fieldJSTime('sln[time]', $date, array('items' => $intervals->getTimes())) ?>
+                    <?php SLN_Form::fieldJSTime('sln[time]', $date) ?>
                 </div>
             </div>
         </div>

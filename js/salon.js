@@ -54,18 +54,26 @@ function sln_stepDate($) {
     }
 
     function bindIntervals(intervals){
-        putOptions($('#sln_date_day'), intervals.days, intervals.suggestedDay);
-        putOptions($('#sln_date_month'), intervals.months, intervals.suggestedMonth);
-        putOptions($('#sln_date_year'), intervals.years, intervals.suggestedYear);
+//        putOptions($('#sln_date_day'), intervals.days, intervals.suggestedDay);
+//        putOptions($('#sln_date_month'), intervals.months, intervals.suggestedMonth);
+//        putOptions($('#sln_date_year'), intervals.years, intervals.suggestedYear);
+console.log($('[data-ymd]'));
+        putOptions($('#sln_date'), intervals.dates, intervals.suggestedDate);
         putOptions($('#sln_time'), intervals.times, intervals.suggestedTime);
     }
 
     function putOptions(selectElem, newOptions, value){
-        selectElem.empty(); // remove old options
+        function up(){
         $.each(newOptions, function(key, value) {
-            selectElem.append($("<option></option>")
-                .attr("value", key).text(value));
-        });
+           $('[data-ymd]').addClass('disabled');
+           $('[data-ymd="'+value+'"]').removeClass('disabled');
+        }); 
+        }
+        selectElem
+          .unbind('show').on('show','up')
+          .unbind('changeMonth').on('changeMonth','up')
+          .unbind('changeYear').on('changeYear','up')
+          .unbind('changeDate').on('changeDate','up');
         selectElem.val(value);
     }
 
@@ -130,7 +138,7 @@ jQuery(function ($) {
                     .addClass('started')
                     .datetimepicker({
                     format: $(this).data('format'),
-                    minuteStep: 60,
+                    minuteStep: $(this).data('interval'),
                     autoclose: true,
                     minView: 0,
                     maxView: 1,

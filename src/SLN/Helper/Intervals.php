@@ -11,10 +11,12 @@ class SLN_Helper_Intervals
     protected $years;
     protected $months;
     protected $days;
+    protected $dates;
 
     public function __construct(SLN_Helper_Availability $availabilityHelper)
     {
         $this->availabilityHelper = $availabilityHelper;
+        
     }
 
     public function setDatetime(DateTime $date)
@@ -77,6 +79,7 @@ class SLN_Helper_Intervals
             if (strpos($date, $checkDay) === 0) {
                 $this->days[$day] = true;
             }
+            $this->dates[] = $date;
         }
         foreach ($this->years as $k => $v) {
             $this->years[$k] = $k;
@@ -101,9 +104,11 @@ class SLN_Helper_Intervals
             'months'         => $this->getMonths(),
             'days'           => $this->getDays(),
             'times'          => $this->getTimes(),
+            'dates'          => $this->getDates(),
             'suggestedDay'   => $this->suggestedDate->format('d'),
             'suggestedMonth' => $this->suggestedDate->format('m'),
             'suggestedYear'  => $this->suggestedDate->format('Y'),
+            'suggestedDate' => $this->suggestedDate->format('d M Y'),
             'suggestedTime'  => $this->suggestedDate->format('H:i'),
         );
     }
@@ -154,5 +159,8 @@ class SLN_Helper_Intervals
     public function getDays()
     {
         return $this->days;
+    }
+    public function getDates(){
+        return $this->dates;
     }
 }

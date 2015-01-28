@@ -45,8 +45,9 @@ class SLN_Form
     }
 
     static public function fieldJSTime($name, $value, $settings){ 
+            $interval = isset($settings['interval']) ? $settings['interval'] : 60;
         ?><span class="sln-jstime">
-        <div class="sln_timepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" required="required" data-format="hh:ii" class="form-control" value="<?php echo $value->format('H:i') ?>"></div>
+        <div class="sln_timepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" required="required" data-format="hh:ii" class="form-control" value="<?php echo $value->format('H:i') ?>" data-interval="<?php echo $interval ?>"></div>
         </span><?php
     }
 
