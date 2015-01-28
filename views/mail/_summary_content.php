@@ -102,13 +102,14 @@
                                             <?php _e('Services','sln') ?></td>
                                     </tr>
                                     <?php foreach ($plugin->getServices() as $service) : ?>
-                                        <? if ($booking->hasService($service): ?>
+                                        <?php if ($booking->hasService($service)): ?>
                                         <tr>
                                             <td height="20" align="left" valign="top"
                                                 style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $service->getName(
                                                 ); ?></td>
                                         </tr>
-                                    <?php endif; endforeach ?>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
                                     <tr>
                                         <td align="left" valign="top">&nbsp;</td>
                                     </tr>
@@ -149,15 +150,14 @@
                             </td>
                         </tr>
                     </table>
-                    <
-                    /td>
+                    </td>
             </tr>
             <tr>
                 <td height="25" align="left" valign="top">&nbsp;</td>
             </tr>
             <tr>
-                <td align="center" valign="top"><
-                    table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
+                <td align="center" valign="top">
+                    <table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
                 <td width="242" align="left" valign="middle"
                     tyle="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;">
@@ -169,8 +169,7 @@
                 </td>
             </tr>
         </table>
-        <
-        /td>
+        </td>
 </tr>
 <tr>
     <td height="25" align="left" valign="top">&nbsp;</td>
@@ -239,7 +238,7 @@
 </tr>
 </table>
 <?php if($forAdmin): ?>
-<p><?php _e('Notes', 'sln'): <?php echo esc_attr($booking->getNote())?></p>
+<p><?php _e('Notes', 'sln')?>: <?php echo esc_attr($booking->getNote())?></p>
 <?php if ($plugin->settings->get('confirmation')) : ?>
     <p><strong><?php _e('Please confirm or reject this booking from administration', 'sln') ?></strong></p>
 <?php endif ?>
