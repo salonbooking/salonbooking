@@ -23,17 +23,17 @@ class SLN_Helper_HoursBefore
         if ($this->to) {
             $this->toString = $txt[$this->to];
         }
-        $now     = new DateTime;
+        $this->fromDate = $now = new DateTime;
         $minutes = $this->minutes($now);
         $now->setTime($now->format('H'), $minutes);
-        $now2 = clone $now;
+        $this->toDate = $now2 = clone $now;
         if ($this->from) {
-            $this->fromDate = $now->modify($this->from);
+            $now->modify($this->from);
         } else {
-            $this->fromDate = $now->modify('+30 minutes');
+            $now->modify('+30 minutes');
         }
         if ($this->to) {
-            $this->toDate = $now2->modify($this->to);
+            $now2->modify($this->to);
         } else {
             $this->toDate = new DateTime('+1 year');
         }

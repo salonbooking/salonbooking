@@ -42,7 +42,7 @@ class SLN_Helper_Intervals
         $suggestedTime = $date->format('H:i');
         $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
         while (!isset($times[$suggestedTime])) {
-            $date          = $date->modify("+$i minutes");
+            $date->modify("+$i minutes");
             $suggestedTime = $date->format('H:i');
         }
         $this->suggestedDate = $date;

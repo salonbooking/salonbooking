@@ -1,5 +1,3 @@
 <div class="wrap sln-bootstrap">
-
-calendar
-calendari
+<h1><?php _e('Calendar','sln')?></h1>
 </div>
