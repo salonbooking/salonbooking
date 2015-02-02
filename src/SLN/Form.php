@@ -9,7 +9,7 @@ class SLN_Form
 
     static public function fieldTime($name, $value = null, $settings = array())
     {
-        if ($value instanceof \DateTime) {
+        if ($value instanceof DateTime) {
             $value = $value->format('H:i');
         }
         if ($settings['items']) {
@@ -28,8 +28,8 @@ class SLN_Form
 
     static public function fieldDate($name, $value = null, $settings = array())
     {
-        if (!($value instanceof \DateTime)) {
-            $value = new \Datetime($value);
+        if (!($value instanceof DateTime)) {
+            $value = new DateTime($value);
         }
         echo "<span class=\"sln-date\">";
         self::fieldDay($name . '[day]', $value, $settings);
@@ -53,7 +53,7 @@ class SLN_Form
 
     static public function fieldDay($name, $value, $settings = array())
     {
-        if ($value instanceof \DateTime) {
+        if ($value instanceof DateTime) {
             $value = $value->format('d');
         }
         self::fieldNumeric(
@@ -70,7 +70,7 @@ class SLN_Form
 
     static public function fieldMonth($name, $value, $settings = array())
     {
-        if ($value instanceof \DateTime) {
+        if ($value instanceof DateTime) {
             $value = $value->format('m');
         }
         self::fieldSelect(
@@ -84,7 +84,7 @@ class SLN_Form
 
     static public function fieldYear($name, $value, $settings = array())
     {
-        if ($value instanceof \DateTime) {
+        if ($value instanceof DateTime) {
             $value = $value->format('Y');
         }
         $currY = date('Y');

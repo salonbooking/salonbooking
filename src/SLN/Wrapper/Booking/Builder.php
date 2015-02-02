@@ -52,7 +52,7 @@ class SLN_Wrapper_Booking_Builder
 
     protected function getEmptyValue()
     {
-        $d = new \DateTime('tomorrow');
+        $d = new DateTime('tomorrow');
 
         return array(
             'date'     => $d->format('Y-m-d'),

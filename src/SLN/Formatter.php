@@ -21,7 +21,7 @@ class SLN_Formatter
 
     public function datetime($val)
     {
-        if ($val instanceof \DateTime) {
+        if ($val instanceof DateTime) {
             $val = $val->format('Y-m-d H:i:s');
         }
 
@@ -30,7 +30,7 @@ class SLN_Formatter
 
     public function date($val)
     {
-        if ($val instanceof \DateTime) {
+        if ($val instanceof DateTime) {
             $val = $val->format('Y-m-d H:i');
         } else {
             $val = strtotime($val);
@@ -41,7 +41,7 @@ class SLN_Formatter
 
     public function time($val)
     {
-        if ($val instanceof \DateTime) {
+        if ($val instanceof DateTime) {
             return $val->format('H:i');
         }
     }

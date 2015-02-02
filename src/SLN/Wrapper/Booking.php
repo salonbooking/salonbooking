@@ -43,21 +43,21 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
 
-        return apply_filters('sln_booking_time', new \DateTime(get_post_meta($post_id, '_sln_booking_time', true)));
+        return apply_filters('sln_booking_time', new DateTime(get_post_meta($post_id, '_sln_booking_time', true)));
     }
 
     function getDate()
     {
         $post_id = $this->getId();
 
-        return apply_filters('sln_booking_date', new \DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
+        return apply_filters('sln_booking_date', new DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
     }
 
     function getDuration()
     {
         $post_id = $this->getId();
 
-        return apply_filters('sln_booking_date', new \DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
+        return apply_filters('sln_booking_date', new DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
     }
 
     function hasService(SLN_Wrapper_Service $service)

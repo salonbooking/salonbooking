@@ -23,7 +23,7 @@ class SLN_Func
         return date_i18n('l', $day);
     }
 
-    public static function countDaysBetweenDatetimes(\DateTime $from, \DateTime $to)
+    public static function countDaysBetweenDatetimes(DateTime $from, DateTime $to)
     {
         $datediff = abs($from->getTimestamp() - $to->getTimestamp());
 
@@ -70,7 +70,7 @@ class SLN_Func
         } elseif ($filter == 'float') {
             return floatval(str_replace(',', '.', $val));
         } elseif ($filter == 'time') {
-            if ($val instanceof \DateTime) {
+            if ($val instanceof DateTime) {
                 $val = $val->format('H:i');
             }
             if (empty($val)) {
