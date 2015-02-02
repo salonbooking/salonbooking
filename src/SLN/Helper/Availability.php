@@ -50,17 +50,17 @@ class SLN_Helper_Availability
     public function getHoursBeforeDateTime()
     {
         $ret     = $this->getHoursBefore();
-        $now     = new DateTime();
+        $ret->from = $now     = new DateTime();
         $minutes = $this->minutes($now);
         $now->setTime($now->format('H'), $minutes);
-        $now2 = clone $now;
+        $ret->to = $now2 = clone $now;
         if ($ret->from) {
-            $ret->from = $now->modify($ret->from);
+            $now->modify($ret->from);
         } else {
-            $ret->from = $now->modify('+30 minutes');
+            $now->modify('+30 minutes');
         }
         if ($ret->to) {
-            $ret->to = $now2->modify($ret->to);
+            $now2->modify($ret->to);
         }
 
         return $ret;
@@ -79,7 +79,7 @@ class SLN_Helper_Availability
             if ($avItems->isValidDate($date) && $this->isValidDate($from)) {
                 $ret[] = $date;
             }
-            $from = $from->modify('+1 days');
+            $from->modify('+1 days');
         }
 
         return $ret;

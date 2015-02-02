@@ -44,7 +44,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
     {
         switch ($column) {
             case 'ID' :
-                echo $post_id;
+                echo edit_post_link($post_id, '<p>', '</p>');
                 break;
             case 'booking_status' :
                 echo SLN_Enum_BookingStatus::getLabel(get_post_status($post_id));

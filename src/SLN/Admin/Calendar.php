@@ -29,7 +29,7 @@ class SLN_Admin_Calendar
 
     public function show()
     {
-        echo $this->getPlugin()->loadView(
+        echo $this->plugin->loadView(
             'admin/calendar',
             array(
 'x' => 'x'
