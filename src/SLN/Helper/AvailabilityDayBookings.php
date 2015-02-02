@@ -56,7 +56,7 @@ class SLN_Helper_AvailabilityDayBookings
         $ret = array();
         foreach ($this->bookings as $b) {
             $t = $b->getTime();
-            if ($t instanceof \DateTime) {
+            if ($t instanceof DateTime) {
                 $t = $t->format('H');
             } else {
                 $t = explode(':', $b->getTime());

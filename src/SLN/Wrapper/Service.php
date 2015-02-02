@@ -27,7 +27,7 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         $ret     = apply_filters('sln_service_duration', get_post_meta($post_id, '_sln_service_duration', true));
         $ret     = SLN_Func::filter($ret, 'time');
 
-        return new \DateTime('1970-01-01 ' . $ret);
+        return new DateTime('1970-01-01 ' . $ret);
     }
 
 
@@ -63,11 +63,11 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         return $this->getNotAvailableTime('to');
     }
 
-    function isNotAvailableOnDate(\DateTime $date)
+    function isNotAvailableOnDate(DateTime $date)
     {
         $key              = array_search(SLN_Func::getDateDayName($date), SLN_Func::getDays());
         $notAvailableDay  = $this->getNotAvailableOn($key);
-        $time             = new \DateTime('1970-01-01 ' . $date->format('H:i'));
+        $time             = new DateTime('1970-01-01 ' . $date->format('H:i'));
         $notAvailableTime = $this->getNotAvailableFrom()
             && $this->getNotAvailableFrom() <= $time
             && $this->getNotAvailableTo()
@@ -85,7 +85,7 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         );
         $ret     = SLN_Func::filter($ret, 'time');
 
-        return new \DateTime('1970-01-01 ' . $ret);
+        return new DateTime('1970-01-01 ' . $ret);
     }
 
     public function getNotAvailableString()
