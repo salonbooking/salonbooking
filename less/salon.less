@@ -21,6 +21,7 @@
 @phone:      ~"only screen and (max-width: 767px)";
 @tablet:      ~"only screen and (min-width: 768px)";
 @tablet-max-port:      ~"only screen and (min-width: 768px) and (max-width: 1200px)";
+@tablet-port:      ~"only screen and (min-width: 768px) and (max-width: 1023px)";
 @desktop:     ~"only screen and (min-width: 992px)";
 @desktop-xl:  ~"only screen and (min-width: 1200px)";
 
@@ -389,17 +390,23 @@
       font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
       color: @color-high;
       font-size: 1.3em;
-    }
-    &:after {
-      content: "";
-      display: block;
-      width: 22%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      background-color: #fff;
-      border-left: 2px solid @color-bg;
+      background-image: url(../img/select-icons.png);
+      background-repeat: no-repeat;
+      background-position: right 0;
+      background-size: 18%;
+      @media @phone {
+        background-size: 30%;
+      }
+      @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        background-size: 20%;
+      }
+      @media only screen and (min-width: 1024px) {
+        background-size: 23%;
+      }
+      @media only screen and (min-width: 1200px) {
+        background-size: 18%;
+      }
+      &#sln_time {background-position: right bottom;}
     }
   }
 

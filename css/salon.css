@@ -3508,18 +3508,38 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   color: #076b9d;
   font-size: 1.3em;
+  background-image: url(../img/select-icons.png);
+  background-repeat: no-repeat;
+  background-position: right 0;
+  background-size: 18%;
 }
-#sln-salon .sln_datepicker:after,
-#sln-salon .sln_timepicker:after {
-  content: "";
-  display: block;
-  width: 22%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #fff;
-  border-left: 2px solid #f8f8f8;
+@media only screen and (max-width: 767px) {
+  #sln-salon .sln_datepicker .form-control,
+  #sln-salon .sln_timepicker .form-control {
+    background-size: 30%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #sln-salon .sln_datepicker .form-control,
+  #sln-salon .sln_timepicker .form-control {
+    background-size: 20%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  #sln-salon .sln_datepicker .form-control,
+  #sln-salon .sln_timepicker .form-control {
+    background-size: 23%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  #sln-salon .sln_datepicker .form-control,
+  #sln-salon .sln_timepicker .form-control {
+    background-size: 18%;
+  }
+}
+#sln-salon .sln_datepicker .form-control#sln_time,
+#sln-salon .sln_timepicker .form-control#sln_time {
+  background-position: right bottom;
 }
 #sln-salon .form-actions.row.aligncenter .col-xs-6:nth-child(2) {
   width: 40%;
