@@ -171,8 +171,7 @@
 					.toggleClass('glyphicon-arrow-left glyphicon-arrow-right');
 			} else {
 				this.picker.find('.prev i, .next i')
-					//.toggleClass('icon-arrow-left icon-arrow-right');
-					.toggleClass('glyphicon-arrow-left glyphicon-arrow-right');
+					.toggleClass('icon-arrow-left icon-arrow-right');
 			}
 			;
 
@@ -597,7 +596,7 @@
 					clsName += ' disabled';
 				}
                                 var ymdm = (prevMonth.getMonth()+1);
-                                var ymd = prevMonth.getFullYear()+'-'+(parseInt(ymdm) < 10 ? '0' : '')+ymdm+'-'+ (parseInt(prevMonth.getDate()) < 10 ? '0' : '')+prevMonth.getDate();
+                                var ymd = prevMonth.getFullYear()+'-'+(parseInt(ymdm) < 10 ? '0' : '')+ymdm+'-'+ prevMonth.getDate();
 				html.push('<td data-ymd="'+ymd+ '" class="day ' + clsName + '">' + prevMonth.getUTCDate() + '</td>');
 				if (prevMonth.getUTCDay() == this.weekEnd) {
 					html.push('</tr>');
@@ -669,7 +668,7 @@
 					}
 				} else {
 					txt = i + ':00';
-                                        var ymd = hours+':'+( i < 10 ? '0'+i : i);
+                                        var ymd = i < 10 ? '0'+txt : txt;
 					//html.push('<span class="hour'+clsName+'">'+txt+'</span>');
 					html.push('<span data-ymd="'+ymd+ '" class="minute' + clsName + '">' + hours + ':' + (i < 10 ? '0' + i : i) + '</span>');
 				}
@@ -709,7 +708,6 @@
 			}
 			yearCont.html(html);
 			this.place();
-                        this.element.trigger({type: 'fill'});
 		},
 
 		updateNavArrows: function () {
@@ -1615,7 +1613,6 @@
 
 			return viewMode;
 		},
-
 		headTemplate:     '<thead>' +
 							  '<tr>' +
 							  '<th class="prev"><i class="icon-arrow-left"/></th>' +
@@ -1625,9 +1622,9 @@
 			'</thead>',
 		headTemplateV3:   '<thead>' +
 							  '<tr>' +
-							  '<th class="prev"><i class="glyphicon glyphicon-arrow-left"></i> </th>' +
+							  '<th class="prev"><i class="icon icon-arrow-left"></i> </th>' +
 							  '<th colspan="5" class="switch"></th>' +
-							  '<th class="next"><i class="glyphicon glyphicon-arrow-right"></i> </th>' +
+							  '<th class="next"><i class="icon icon-arrow-right"></i> </th>' +
 							  '</tr>' +
 			'</thead>',
 		contTemplate:     '<tbody><tr><td colspan="7"></td></tr></tbody>',
