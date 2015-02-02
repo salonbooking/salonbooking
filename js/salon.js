@@ -16,6 +16,7 @@ jQuery(function ($) {
     if ($('#salon-step-date').length) {
         sln_stepDate($);
     }
+    alert("pollo");
 });
 
 function sln_stepDate($) {
