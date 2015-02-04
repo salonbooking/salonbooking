@@ -3116,6 +3116,72 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   width: 14px;
   height: 14px;
 }
+.datetimepicker {
+  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+.datetimepicker td,
+.datetimepicker th,
+.datetimepicker table tr td span {
+  border-radius: 0;
+}
+.datetimepicker table tr td.today,
+.datetimepicker table tr td.today:hover,
+.datetimepicker table tr td.today.disabled,
+.datetimepicker table tr td.today.disabled:hover,
+.datetimepicker table tr td.active,
+.datetimepicker table tr td.active:hover,
+.datetimepicker table tr td.active.disabled,
+.datetimepicker table tr td.active.disabled:hover,
+.datetimepicker table tr td span.active,
+.datetimepicker table tr td span.active:hover,
+.datetimepicker table tr td span.active.disabled,
+.datetimepicker table tr td span.active.disabled:hover {
+  background-image: none;
+  border: none;
+  text-shadow: none;
+}
+.datetimepicker table tr td.active:hover,
+.datetimepicker table tr td.active:hover:hover,
+.datetimepicker table tr td.active.disabled:hover,
+.datetimepicker table tr td.active.disabled:hover:hover,
+.datetimepicker table tr td.active:active,
+.datetimepicker table tr td.active:hover:active,
+.datetimepicker table tr td.active.disabled:active,
+.datetimepicker table tr td.active.disabled:hover:active,
+.datetimepicker table tr td.active.active,
+.datetimepicker table tr td.active:hover.active,
+.datetimepicker table tr td.active.disabled.active,
+.datetimepicker table tr td.active.disabled:hover.active,
+.datetimepicker table tr td.active.disabled,
+.datetimepicker table tr td.active:hover.disabled,
+.datetimepicker table tr td.active.disabled.disabled,
+.datetimepicker table tr td.active.disabled:hover.disabled,
+.datetimepicker table tr td.active[disabled],
+.datetimepicker table tr td.active:hover[disabled],
+.datetimepicker table tr td.active.disabled[disabled],
+.datetimepicker table tr td.active.disabled:hover[disabled],
+.datetimepicker table tr td span.active:hover,
+.datetimepicker table tr td span.active:hover:hover,
+.datetimepicker table tr td span.active.disabled:hover,
+.datetimepicker table tr td span.active.disabled:hover:hover,
+.datetimepicker table tr td span.active:active,
+.datetimepicker table tr td span.active:hover:active,
+.datetimepicker table tr td span.active.disabled:active,
+.datetimepicker table tr td span.active.disabled:hover:active,
+.datetimepicker table tr td span.active.active,
+.datetimepicker table tr td span.active:hover.active,
+.datetimepicker table tr td span.active.disabled.active,
+.datetimepicker table tr td span.active.disabled:hover.active,
+.datetimepicker table tr td span.active.disabled,
+.datetimepicker table tr td span.active:hover.disabled,
+.datetimepicker table tr td span.active.disabled.disabled,
+.datetimepicker table tr td span.active.disabled:hover.disabled,
+.datetimepicker table tr td span.active[disabled],
+.datetimepicker table tr td span.active:hover[disabled],
+.datetimepicker table tr td span.active.disabled[disabled],
+.datetimepicker table tr td span.active.disabled:hover[disabled] {
+  background-color: #076b9d;
+}
 #sln-salon {
   background: #f8f8f8;
   border: 1px solid #ddd;
@@ -3129,7 +3195,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 #sln-salon > div {
   border: 1px solid #fff;
-  padding: 30px 40px;
+  padding: 1.6em 2em;
 }
 @media only screen and (max-width: 767px) {
   #sln-salon > div {
@@ -3139,6 +3205,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 #sln-salon .sln-service-list label {
   padding-top: 10px;
   width: 100%;
+  font-weight: normal;
 }
 #sln-salon .sln-service-list .service-name {
   color: #076b9d;
@@ -3185,6 +3252,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   text-align: center;
   text-transform: uppercase;
   font-size: 1.1em;
+  margin: 1em 0 2em 0;
 }
 @media only screen and (max-width: 767px) {
   #sln-salon h1 {
@@ -3209,6 +3277,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 #sln-salon h2 {
   font-size: 1.3em;
   font-weight: normal;
+  margin: 1em 0 2em 0;
+  text-transform: none;
 }
 #sln-salon h2 em {
   display: block;
@@ -3227,15 +3297,31 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-weight: bold;
   font-size: 1.2em;
   padding-top: 1.4em;
+  margin: 2em 0;
 }
 @media only screen and (max-width: 767px) {
   #sln-salon .row-total {
     margin: 0 -0.8em;
+    padding-top: 1em;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  #sln-salon .sln-service-list .row.row-total .col-xs-4,
+  #sln-salon .sln-service-list .row.row-total .col-xs-8 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #sln-salon .sln-service-list .row.row-total .col-xs-4 {
+    width: 8%;
+  }
+  #sln-salon .sln-service-list .row.row-total .col-xs-8 {
+    width: 80%;
+    padding-left: 5%;
   }
 }
 @media only screen and (max-width: 767px) {
   #sln-salon .sln-service-list .row.row-total {
-    margin-bottom: 1.6em;
+    margin: 1.6em 0;
   }
 }
 #sln-salon .salon-bar {
@@ -3254,10 +3340,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-radius: 3px;
   text-align: center;
 }
+#sln-salon .form-group {
+  margin-bottom: 2em;
+}
 #sln-salon .form-group label {
   color: #666666;
   font-size: 1em;
-  margin-bottom: 0.25em;
+  margin-bottom: 0.5em;
+  font-weight: normal;
 }
 #sln-salon .form-group .form-control {
   color: #076b9d;
@@ -3271,7 +3361,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   box-shadow: none;
 }
 #sln-salon .form-actions {
-  margin-top: 60px;
+  margin-top: 2em;
 }
 @media only screen and (max-width: 767px) {
   #sln-salon .form-actions {
@@ -3333,6 +3423,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 #sln-salon #salon-step-summary div.summ-row ul {
   margin: 0;
+  padding: 0;
 }
 #sln-salon #salon-step-summary div.summ-row li {
   width: 100%;
@@ -3383,6 +3474,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 #sln-salon .tycol i.c {
   color: #ff9d03 !important;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #sln-salon .tycol {
+    border-left: none;
+    border-bottom: 0.6em solid #f8f8f8;
+  }
 }
 @media only screen and (max-width: 767px) {
   #sln-salon .tycol {
@@ -3472,7 +3569,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media only screen and (max-width: 767px) {
   #sln-salon {
     font: normal 14px/1.4 Helvetica Neue, Arial, Helvetica, sans-serif;
+    margin: 2em 1em;
   }
+}
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  #sln-salon {
+    margin: 2em;
+  }
+}
+#sln-salon .row {
+  margin-left: 0;
+  margin-right: 0;
 }
 @media only screen and (max-width: 767px) {
   #sln-salon .row {
@@ -3533,6 +3640,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 #sln-salon .sln_datepicker .form-control#sln_time,
 #sln-salon .sln_timepicker .form-control#sln_time {
   background-image: url(../img/select-icons-time.png);
+}
+@media only screen and (min-width: 768px) {
+  #sln-salon .col-md-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #sln-salon .col-md-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 #sln-salon .form-actions.row.aligncenter .col-xs-6:nth-child(2) {
   width: 40%;
@@ -3646,8 +3765,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 #sln-salon #salon-step-summary div.summ-row .col-md-7 {
   float: right;
 }
+#sln-salon #salon-step-summary div.summ-row .col-md-5,
+#sln-salon #salon-step-summary div.summ-row .col-md-7 {
+  padding-left: 2em;
+  padding-right: 2em;
+}
 #sln-salon #salon-step-summary div.summ-row span.label {
   margin-top: 0;
+}
+@media only screen and (min-width: 768px) {
+  #sln-salon #salon-step-summary div.summ-row .col-md-7 {
+    width: 58.333333333333336%;
+  }
 }
 @media only screen and (max-width: 767px) {
   #sln-salon #salon-step-summary div.summ-row {
@@ -3660,8 +3789,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     width: 100%;
     position: relative;
     top: auto;
-    padding-left: .8em;
-    padding-right: .8em;
+    padding-left: 1em;
+    padding-right: 1em;
   }
   #sln-salon #salon-step-summary div.summ-row span.label {
     display: block;
@@ -3684,6 +3813,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   #sln-salon #salon-step-summary div.row:not(.summ-row):not(.aligncenter) {
     margin: 1em 0;
   }
+}
+#sln-salon #salon-step-thankyou .row {
+  margin-left: -0.5em;
+  margin-right: -0.5em;
 }
 #sln-salon #salon-step-thankyou .row:nth-child(2) {
   margin-bottom: 1em;

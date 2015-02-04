@@ -26,6 +26,71 @@
 @desktop-xl:  ~"only screen and (min-width: 1200px)";
 
 
+.datetimepicker {
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+    td, th, table tr td span {border-radius: 0;}
+  }
+
+.datetimepicker table tr td.today,
+.datetimepicker table tr td.today:hover,
+.datetimepicker table tr td.today.disabled,
+.datetimepicker table tr td.today.disabled:hover,
+.datetimepicker table tr td.active,
+.datetimepicker table tr td.active:hover,
+.datetimepicker table tr td.active.disabled,
+.datetimepicker table tr td.active.disabled:hover,
+.datetimepicker table tr td span.active,
+.datetimepicker table tr td span.active:hover,
+.datetimepicker table tr td span.active.disabled,
+.datetimepicker table tr td span.active.disabled:hover {
+  background-image: none;
+  border: none;
+  text-shadow: none;
+}
+
+.datetimepicker table tr td.active:hover,
+.datetimepicker table tr td.active:hover:hover,
+.datetimepicker table tr td.active.disabled:hover,
+.datetimepicker table tr td.active.disabled:hover:hover,
+.datetimepicker table tr td.active:active,
+.datetimepicker table tr td.active:hover:active,
+.datetimepicker table tr td.active.disabled:active,
+.datetimepicker table tr td.active.disabled:hover:active,
+.datetimepicker table tr td.active.active,
+.datetimepicker table tr td.active:hover.active,
+.datetimepicker table tr td.active.disabled.active,
+.datetimepicker table tr td.active.disabled:hover.active,
+.datetimepicker table tr td.active.disabled,
+.datetimepicker table tr td.active:hover.disabled,
+.datetimepicker table tr td.active.disabled.disabled,
+.datetimepicker table tr td.active.disabled:hover.disabled,
+.datetimepicker table tr td.active[disabled],
+.datetimepicker table tr td.active:hover[disabled],
+.datetimepicker table tr td.active.disabled[disabled],
+.datetimepicker table tr td.active.disabled:hover[disabled],
+.datetimepicker table tr td span.active:hover,
+.datetimepicker table tr td span.active:hover:hover,
+.datetimepicker table tr td span.active.disabled:hover,
+.datetimepicker table tr td span.active.disabled:hover:hover,
+.datetimepicker table tr td span.active:active,
+.datetimepicker table tr td span.active:hover:active,
+.datetimepicker table tr td span.active.disabled:active,
+.datetimepicker table tr td span.active.disabled:hover:active,
+.datetimepicker table tr td span.active.active,
+.datetimepicker table tr td span.active:hover.active,
+.datetimepicker table tr td span.active.disabled.active,
+.datetimepicker table tr td span.active.disabled:hover.active,
+.datetimepicker table tr td span.active.disabled,
+.datetimepicker table tr td span.active:hover.disabled,
+.datetimepicker table tr td span.active.disabled.disabled,
+.datetimepicker table tr td span.active.disabled:hover.disabled,
+.datetimepicker table tr td span.active[disabled],
+.datetimepicker table tr td span.active:hover[disabled],
+.datetimepicker table tr td span.active.disabled[disabled],
+.datetimepicker table tr td span.active.disabled:hover[disabled] {
+    background-color: @color-high;
+}
+
 
 #sln-salon {
   background: @color-bg;
@@ -37,7 +102,7 @@
   }
   > div {
     border: 1px solid #fff;
-    padding: 30px 40px;
+    padding: 1.6em 2em;
     @media @phone {
       padding: 1em .8em;
     }
@@ -46,6 +111,7 @@
     label {
       padding-top: 10px;
       width: 100%;
+      font-weight: normal;
     }
     .service-name {
       color: @color-high;
@@ -89,6 +155,7 @@
     text-align: center;
     text-transform: uppercase;
     font-size: 1.1em;
+    margin: 1em 0 2em 0;
     @media @phone {
       position: relative;
       margin-top: 2em;
@@ -111,6 +178,8 @@
   h2 {
     font-size: 1.3em;
     font-weight: normal;
+    margin: 1em 0 2em 0;
+    text-transform: none;
     em {
       display: block;
       clear: both;
@@ -128,14 +197,29 @@
     font-weight: bold;
     font-size: 1.2em;
     padding-top: 1.4em;
+    margin: 2em 0;
     @media @phone {
       margin: 0 -.8em;
+      padding-top: 1em;
     }
   }
 
   .sln-service-list .row.row-total {
+    @media @tablet-max-port {
+      .col-xs-4, .col-xs-8 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .col-xs-4 {
+        width: 8%;
+      }
+      .col-xs-8 {
+        width: 80%;
+        padding-left: 5%;
+      }
+    }
     @media @phone {
-      margin-bottom: 1.6em;
+      margin: 1.6em 0;
     }
   }
 
@@ -159,10 +243,12 @@
   }
 
   .form-group {
+    margin-bottom: 2em;
     label {
       color: @color-mid;
       font-size: 1em;
-      margin-bottom: 0.25em;
+      margin-bottom: 0.5em;
+      font-weight: normal;
     }
     .form-control {
       color: @color-high;
@@ -178,7 +264,7 @@
     }
   }
   .form-actions {
-    margin-top: 60px;
+    margin-top: 2em;
     @media @phone {
       margin-top: 0;
     }
@@ -232,7 +318,10 @@
         line-height: 1.2em;
         margin: 1.8em .3em;
       }
-      ul{margin: 0}
+      ul{
+        margin: 0;
+        padding: 0;
+      }
       li{
         width: 100%;
         clear: both;
@@ -274,11 +363,15 @@
       margin-top: .6em;
       &.c { color: @icon-color-yellow !important }
     }
-
+    @media @tablet-port {
+      border-left: none;
+      border-bottom: .6em solid @color-bg;
+    }
     @media @phone {
       border-left: none;
       border-bottom: .6em solid @color-bg;
     }
+
   }
   p.ty{
     color: @color-mid;
@@ -363,8 +456,14 @@
   font: normal 18px/1.4 Helvetica Neue, Arial, Helvetica, sans-serif;
   @media @phone {
     font: normal 14px/1.4 Helvetica Neue, Arial, Helvetica, sans-serif;
+    margin: 2em 1em;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+    margin: 2em;
   }
   .row {
+    margin-left: 0;
+    margin-right: 0;
     @media @phone {
       margin-left: 0;
       margin-right: 0;
@@ -404,6 +503,17 @@
       &#sln_date {background-image: url(../img/select-icons-date.png);}
       &#sln_time {background-image: url(../img/select-icons-time.png);}
     }
+  }
+
+  .col-md-12 {
+      @media @tablet {
+        padding-left: 0;
+        padding-right: 0;
+      } 
+      @media @phone {
+        padding-left: 0;
+        padding-right: 0;
+      }    
   }
 
   .form-actions.row.aligncenter {
@@ -490,8 +600,20 @@
   #salon-step-summary div.summ-row {
     position: relative;
     .col-md-5 {.vertical-centering;}
-    .col-md-7 {float: right;}
+    .col-md-7 {
+      float: right;
+    }
+    .col-md-5, .col-md-7 {
+        padding-left: 2em;
+        padding-right: 2em;
+      }
     span.label {margin-top: 0;}
+
+    @media @tablet {
+      .col-md-7 {
+        width: 58.333333333333336%;
+      }
+    }
 
     @media @phone {
       margin-right: -.81em;
@@ -501,8 +623,8 @@
         width: 100%;
         position: relative;
         top: auto;
-        padding-left: .8em;
-        padding-right: .8em;
+        padding-left: 1em;
+        padding-right: 1em;
       }
       span.label {
         display: block;
@@ -525,6 +647,10 @@
    }
 
   #salon-step-thankyou {
+    .row {
+      margin-left: -.5em;
+      margin-right: -.5em;
+    }
     .row:nth-child(2) {margin-bottom: 1em;}
   }
 
@@ -565,7 +691,6 @@
       .col-xs-4.service-price {
         width: 20%;
       }
-
     }
   }
 
