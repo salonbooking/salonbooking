@@ -3578,14 +3578,20 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 #sln-salon .row {
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: -1em;
+  margin-right: -1em;
 }
 @media only screen and (max-width: 767px) {
   #sln-salon .row {
     margin-left: 0;
     margin-right: 0;
   }
+}
+#sln-salon #salon-step-date .row,
+#sln-salon #salon-step-services .row,
+#sln-salon #salon-step-secondary .row {
+  margin-left: 0;
+  margin-right: 0;
 }
 #sln-salon a {
   color: #d51e26;
@@ -3684,6 +3690,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 #sln-salon .alert {
   border-radius: 0;
 }
+#sln-salon #salon-step-summary p.dear {
+  margin-bottom: 1.4em;
+}
 #sln-salon .btn {
   padding: 1em 2em;
   border-radius: 0;
@@ -3751,6 +3760,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 #sln-salon a,
 #sln-salon button {
   font-weight: normal;
+}
+#sln-salon .btn.btn-success.btn-block {
+  margin-bottom: 4em;
 }
 #sln-salon #salon-step-summary div.summ-row {
   position: relative;

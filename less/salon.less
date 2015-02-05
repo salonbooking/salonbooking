@@ -462,12 +462,18 @@
     margin: 2em;
   }
   .row {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: -1em;
+    margin-right: -1em;
     @media @phone {
       margin-left: 0;
       margin-right: 0;
     }
+  }
+  #salon-step-date .row,
+  #salon-step-services .row,
+  #salon-step-secondary .row {
+    margin-left: 0;
+    margin-right: 0;
   }
   a {
     color: @ca-red;
@@ -544,6 +550,9 @@
   }
 
   .alert {border-radius: 0;}
+  #salon-step-summary p.dear {
+    margin-bottom: 1.4em;
+  }
 // BUTTONS
 
 .btn {
@@ -594,6 +603,10 @@
   }
   
   a, button {font-weight: normal;}
+
+  .btn.btn-success.btn-block {
+    margin-bottom: 4em;
+  }
 
 // BUTTONS END
 
