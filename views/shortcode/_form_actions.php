@@ -7,9 +7,9 @@ if (!isset($nextLabel)) {
     $nextLabel = __('Go next', 'sln');
 }
 $i       = 0;
+$steps   = $salon->getSteps();
 $count   = count($steps);
 $salon  = $step->getShortcode();
-$steps   = $salon->getSteps();
 $current = $salon->getCurrentStep();
 $count   = count($steps);
 foreach ($steps as $step) {

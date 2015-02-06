@@ -223,7 +223,7 @@ class SLN_Admin_Settings
         if ($_POST) {
             $method = "processTab" . ucwords($current);
             if (!method_exists($this, $method)) {
-                throw new \Exception('method not found ' . $method);
+                throw new Exception('method not found ' . $method);
             }
             if (!wp_verify_nonce($_POST[self::PAGE . $current])) {
                 $this->$method();
