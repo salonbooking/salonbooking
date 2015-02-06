@@ -2864,6 +2864,48 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .salon_page_salon-settings.wp-core-ui .sln-tab .button-primary {
   margin: 0 0 0 -1em;
 }
+h2.nav-tab-wrapper img {
+  margin-right: 10px;
+}
+@media only screen and (max-width: 567px) {
+  h2.nav-tab-wrapper {
+    padding-right: 0;
+    padding-left: 0;
+    padding-top: 10px;
+    position: relative;
+  }
+  h2.nav-tab-wrapper img {
+    margin-bottom: 10px;
+    position: absolute;
+    right: 0;
+    top: -25px;
+  }
+  h2.nav-tab-wrapper .nav-tab {
+    display: block;
+    margin-right: 0;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 10px;
+  }
+}
+@media only screen and (min-width: 568px) {
+  h2.nav-tab-wrapper {
+    padding-right: 0;
+    padding-left: 0;
+    padding-top: 10px;
+    position: relative;
+  }
+  h2.nav-tab-wrapper img {
+    margin-bottom: 0;
+  }
+  h2.nav-tab-wrapper .nav-tab {
+    display: inline-block;
+    margin-right: 0;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 10px;
+  }
+}
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .sln-tab #sln-availabilities .items .item .btn.btn-block.btn-danger {
     width: 25%;

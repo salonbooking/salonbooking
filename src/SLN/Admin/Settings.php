@@ -253,7 +253,7 @@ class SLN_Admin_Settings
 
     private function showTabsBar()
     {
-        echo '<h2 class="nav-tab-wrapper"><img src="' . SLN_PLUGIN_URL . '/img/settings_icon.png' . '"/>&nbsp;&nbsp;&nbsp;&nbsp;';
+        echo '<h2 class="nav-tab-wrapper"><img src="' . SLN_PLUGIN_URL . '/img/settings_icon.png' . '"/>';
         $page    = self::PAGE;
         $current = $this->getCurrentTab();
         foreach ($this->tabs as $tab => $name) {

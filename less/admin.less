@@ -126,6 +126,55 @@
 }
 .salon_page_salon-settings.wp-core-ui .sln-tab .button-primary  {margin: 0 0 0 -1em;}
 
+// TABS
+h2.nav-tab-wrapper {
+    img {
+        margin-right: 10px;
+    }
+    @media only screen and (max-width: 567px) {
+        // TABS SU SMARTPHONE IN PORT.
+        padding-right: 0;
+        padding-left: 0;
+        padding-top: 10px;
+        position: relative;
+        img {
+            margin-bottom: 10px;
+            position: absolute;
+            right: 0;
+            top: -25px;
+        }
+        .nav-tab {
+            display: block;
+            margin-right: 0;
+            font-size: 12px;
+            line-height: 12px;
+            padding: 10px;
+        }
+        // TABS SU SMARTPHONE IN PORT. END
+    }
+
+    @media only screen and (min-width: 568px) {
+        // TABS SU SMARTPHONE IN PORT.
+        padding-right: 0;
+        padding-left: 0;
+        padding-top: 10px;
+        position: relative;
+        img {
+            margin-bottom: 0;
+        }
+        .nav-tab {
+            display: inline-block;
+            margin-right: 0;
+            font-size: 12px;
+            line-height: 12px;
+            padding: 10px;
+        }
+        // TABS SU SMARTPHONE IN PORT. END
+    }
+
+}
+// TABS END
+
 
 @media @tablet-port {
     .sln-tab {
@@ -151,4 +200,7 @@
     #sln-tab-payments .row {padding-bottom: 1.4em;}
     #sln-tab-payments .row > div {padding-bottom: 1.4em;}
     #sln-tab-payments .row .form-group {margin-bottom: 0;}
+
+   
 }
+
