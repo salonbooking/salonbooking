@@ -6,6 +6,7 @@ function sln_availability_row($prefix, $row)
 {
     ?>
     <div class="col-md-12">
+        <div class="first-row">
         <?php foreach (SLN_Func::getDays() as $k => $day) : ?>
             <div class="form-group">
                 <label>
@@ -16,7 +17,8 @@ function sln_availability_row($prefix, $row)
                     <?php echo substr($day, 0, 3) ?></label>
             </div>
         <?php endforeach ?>
-        <div class="pull-right">
+        </div>
+        <div class="second-row">
             <?php foreach (array(0, 1) as $i) : ?>
                 <?php foreach (array('from' => __('From', 'sln'), 'to' => __('To', 'sln')) as $k => $v) : ?>
                     <div class="form-group">
@@ -71,7 +73,8 @@ function sln_availability_row($prefix, $row)
             <div class="clearfix"></div>
             <div class="sln-separator"></div>
 
-        <div class="col-md-7">
+    <div class="row settings-allowed">
+        <div class="col-md-5">
                 <div class="form-group">
                     <strong>
                         <?php _e('Bookings are allowed from', 'sln') ?>
@@ -83,6 +86,15 @@ function sln_availability_row($prefix, $row)
                         array(),
                         true
                     ) ?>
+                   </strong>
+            <!-- form-group END -->
+            </div>
+        <!-- col end END -->
+        </div>
+    
+        <div class="col-md-5">
+                <div class="form-group">
+                    <strong>
 
                         <?php _e('To a maximum of', 'sln') ?>
 
@@ -97,11 +109,16 @@ function sln_availability_row($prefix, $row)
  
                         <?php _e('in advance', 'sln') ?>
                    </strong>
+                   </strong>
+            <!-- form-group END -->
             </div>
+        <!-- col end END -->
         </div>
-        <div class="col-md-5">
+    <!-- row end END -->
+    </div>
+    <div class="row setting-interval">
+        <div class="col-md-8">
             <?php $field = "salon_settings[interval]"; ?>
-            <div class="row">
                 <label for="<?php echo SLN_Form::makeID($field) ?> ">
                     <?php _e('Define the interval in minutes between time definition', 'sln') ?>
                 </label>
@@ -110,9 +127,8 @@ function sln_availability_row($prefix, $row)
                     array('5', '10', '15', '30', '60'),
                     $this->getOpt('interval') ? $this->getOpt('interval') : 15
                 ) ?>
-            </div>
         </div>
-<br/>
+    </div>
             <div class="clearfix"></div>
         <div class="sln-separator"></div>
         <?php
@@ -130,7 +146,7 @@ function sln_availability_row($prefix, $row)
                 <?php foreach ($availabilities as $k => $row): ?>
                     <div class="item">
                         <div class="row form-inline">
-                            <div class="col-md-10">
+                            <div class="col-md-10 checkbox-group">
                                 <?php sln_availability_row("salon_settings[availabilities][$k]", $row); ?>
                             </div>
                             <div class="col-md-2">
@@ -163,7 +179,7 @@ function sln_availability_row($prefix, $row)
             </div>
             <div class="clearfix"></div>
             <div class="sln-separator"></div>
-            <div class="row">
+            <div class="row settings-disable">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label><?php _e('Disable online booking', 'sln') ?>
@@ -204,7 +220,7 @@ function sln_availability_row($prefix, $row)
         </div>
         <div class="clearfix"></div>
         <div class="sln-separator"></div>
-        <div class="row">
+        <div class="row settings-confirmation">
             <div class="col-md-6">
                 <?php $this->row_input_checkbox(
                     'confirmation',

@@ -1,6 +1,6 @@
 <div class="sln-tab" id="sln-tab-general">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3 col-sm-4">
             <?php
             $this->row_input_text(
                 'gen_name',
@@ -14,7 +14,7 @@
             );
             ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3 col-sm-4">
             <?php
             $this->row_input_text(
                 'gen_email',
@@ -28,13 +28,13 @@
             );
             ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3 col-sm-4">
             <?php $this->row_input_text('gen_phone', __('Phone', 'sln')); ?>
         </div>
     </div>
     <div class="sln-separator"></div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <?php $this->row_input_textarea(
                 'gen_address',
                 __('Address', 'sln'),
@@ -66,14 +66,14 @@
     </div>
     <div class="sln-separator"></div>
     <div class="row">
-        <h3>Social</h3>
-        <div class="col-md-4">
+        <div class="col-md-10"><h3>Social</h3></div>
+        <div class="col-md-3 col-sm-4">
             <?php $this->row_input_text('soc_facebook', __('Facebook', 'sln')); ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3 col-sm-4">
             <?php $this->row_input_text('soc_twitter', __('Twitter', 'sln')); ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3 col-sm-4">
             <?php $this->row_input_text('soc_google', __('Google+', 'sln')); ?>
         </div>
     </div>

@@ -1,5 +1,14 @@
 @import "bootstrap.less";
 
+//
+@phone:      ~"only screen and (max-width: 767px)";
+@tablet:      ~"only screen and (min-width: 768px)";
+@tablet-max-port:      ~"only screen and (min-width: 768px) and (max-width: 1200px)";
+@tablet-port:      ~"only screen and (min-width: 768px) and (max-width: 1023px)";
+@desktop:     ~"only screen and (min-width: 992px)";
+@desktop-xl:  ~"only screen and (min-width: 1200px)";
+//
+
 .sln_meta_field {
     display: block;
 }
@@ -34,8 +43,112 @@
 
 .sln-separator {
     height: 1px;
-    border-top: 1px dashed #666;
-    margin: 20px auto;
-    width: 80%;
+    border-top: 1px solid #ddd;
+    margin: 2em auto;
+    width: 100%;
     clear: both;
+}
+
+//
+.sln-tab {
+    #sln-availabilities .items .item {
+        padding: 1.4em;
+        margin: 1em 0;
+        .col-md-12 {
+            padding-left: 0;
+            @media @phone {
+                padding-right: 0;
+            }
+        }
+        .first-row {
+            margin-bottom: 1.4em;
+            .form-group {
+                padding-right: 2em;
+                @media @tablet-port {
+                    padding-right: 1em;
+                }
+            } 
+        }
+    }
+
+    .setting-interval {margin-top: 1.4em;}
+    input[type="radio"], input[type="checkbox"] {
+        margin: 0 .5em;
+    }
+
+    .settings-allowed {
+        @media @tablet-port {
+            .col-md-5:nth-child(1) {margin-bottom: 1.4em;}
+        }
+        @media @phone {
+            .col-md-5:nth-child(1) {margin-bottom: 1.4em;}
+            select {margin: .2em 0;}
+        }
+    }
+
+    .settings-disable, .settings-confirmation {
+        @media @tablet-port {
+            .col-md-6:nth-child(1) {margin-bottom: 1.4em;}
+        }
+    }
+}
+
+.salon_page_salon-settings.wp-core-ui .button-primary {
+    color: #ffffff;
+    background: #428bca;
+    border-color: #428bca;
+
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: .6em 2.6em;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    box-shadow: none;
+    height: auto;
+
+    &:hover {
+        background: #3071a9;
+        border-color: #285e8e;
+    }
+}
+.salon_page_salon-settings.wp-core-ui .sln-tab .button-primary  {margin: 0 0 0 -1em;}
+
+
+@media @tablet-port {
+    .sln-tab {
+           #sln-availabilities .items .item .btn.btn-block.btn-danger {
+            width: 25%;
+            float: right;
+            margin-top: 1em;
+           }
+           #sln-availabilities .col-md-2.pull-right {width: 29%; margin-top: 1em;}
+    }
+}
+@media @phone {
+    .sln-tab {
+           #sln-availabilities .items .item .btn.btn-block.btn-danger {margin-top: 2em;}
+           #sln-availabilities .col-md-2.pull-right {width: 100%; margin-top: 1em;}
+           .row:nth-child(1) .col-md-6:nth-child(1) {
+                padding-left: 0; 
+                padding-right: 0;
+                .form-group, p {margin-bottom: 0;}
+            }
+    }
+
+    #sln-tab-payments .row {padding-bottom: 1.4em;}
+    #sln-tab-payments .row > div {padding-bottom: 1.4em;}
+    #sln-tab-payments .row .form-group {margin-bottom: 0;}
 }
