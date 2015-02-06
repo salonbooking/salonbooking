@@ -2943,3 +2943,28 @@ h2.nav-tab-wrapper img {
     margin-bottom: 0;
   }
 }
+#sln_service-details {
+  padding-bottom: 2em;
+}
+#sln_service-details em {
+  color: #ccc;
+}
+#sln_service-details h3:nth-child(3) {
+  padding-left: 0;
+}
+#sln_service-details #_sln_service_secondary {
+  display: block;
+}
+#sln_service-details input[type="radio"],
+#sln_service-details input[type="checkbox"] {
+  margin: 0 .5em;
+}
+#sln_service-details .services-notavailable {
+  margin: 0 0 1em -0.5em;
+}
+#sln_service-details .services-notavailable label {
+  margin-right: 2em;
+}
+#sln_service-details .services-notavailable-h label {
+  margin-right: 2em;
+}

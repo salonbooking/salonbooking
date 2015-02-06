@@ -2,27 +2,27 @@
 $helper->showNonce($postType);
 ?>
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-1 col-sm-3">
         <div class="form-group">
             <label><?php _e('Price', 'sln') . ' (' . $settings->getCurrencySymbol() . ')' ?></label>
             <?php SLN_Form::fieldText($helper->getFieldName($postType, 'price'), $service->getPrice()); ?>
         </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 col-sm-3">
         <div class="form-group">
 
             <label><?php _e('Unit per hour', 'sln'); ?></label>
             <?php SLN_Form::fieldNumeric($helper->getFieldName($postType, 'unit'), $service->getUnitPerHour()); ?>
         </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 col-sm-3">
         <div class="form-group">
 
             <label><?php _e('Duration', 'sln'); ?></label>
             <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'duration'), $service->getDuration()); ?>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-8">
         <div class="form-group">
             <label><?php _e('Secondary', 'sln'); ?></label>
             <?php SLN_Form::fieldCheckbox($helper->getFieldName($postType, 'secondary'), $service->isSecondary()) ?>
@@ -36,7 +36,7 @@ $helper->showNonce($postType);
 $days = SLN_Func::getDays();
 ?>
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-10 services-notavailable">
         <?php foreach ($days as $k => $day) { ?>
             <label>
                 <?php SLN_Form::fieldCheckbox(
@@ -47,7 +47,7 @@ $days = SLN_Func::getDays();
             </label>
         <?php } ?>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5  services-notavailable-h">
         <label>
             <?php echo __('From', 'sln') ?>
             <?php SLN_Form::fieldTime(
