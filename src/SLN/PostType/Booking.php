@@ -32,7 +32,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
         return array(
             'cb'             => $columns['cb'],
             'ID'             => __('Booking ID'),
-            'author'         => __('User name', 'sln'),
+            'myauthor'         => __('User name', 'sln'),
             'date'           => __('Submitted', 'sln'),
             'booking_status' => __('Status', 'sln'),
             'booking_date'   => __('Booking Date', 'sln'),
@@ -44,7 +44,11 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
     {
         switch ($column) {
             case 'ID' :
-                echo edit_post_link($post_id, '<p>', '</p>');
+                echo edit_post_link($post_id, '<p>', '</p>', $post_id);
+                break;
+            case 'myauthor':
+                $obj = new SLN_Wrapper_Booking($post_id);
+                echo edit_post_link($obj->getDisplayName(), null,null, $post_id);
                 break;
             case 'booking_status' :
                 echo SLN_Enum_BookingStatus::getLabel(get_post_status($post_id));

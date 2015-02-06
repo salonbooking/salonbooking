@@ -24,7 +24,9 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
         return apply_filters('sln_booking_lastname', get_post_meta($post_id, '_sln_booking_lastname', true));
     }
-
+    function getDisplayName(){
+        return $this->getFirstname().' '.$this->getLastname();
+    }
     function getEmail()
     {
         $post_id = $this->getId();

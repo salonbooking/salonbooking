@@ -32,7 +32,7 @@ class SLN_Helper_AvailabilityItem
         }
         $dayOfTheWeek = date("w", strtotime($date)) + 1;
 
-        return $this->data['days'][$dayOfTheWeek] ? true : false;
+        return isset($this->data['days'][$dayOfTheWeek]) ? true : false;
     }
 
     public function isValidTime($date, $time)
