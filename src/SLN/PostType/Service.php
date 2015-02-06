@@ -130,15 +130,14 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
         if ($post_type == SLN_Plugin::POST_TYPE_SERVICE) {
             ?>
             <style type="text/css">
-                #post-preview, #view-post-btn, #misc-publishing-actions #visibility,
+                #post-preview, #view-post-btn,
                 #major-publishing-actions,
-                #titlediv, #edit-slug-box,
-                #post-body-content {
+                #edit-slug-box
+                {
                     display: none;
                 }
             </style>
         <?php
         }
     }
-
 }

@@ -4,9 +4,9 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
 {
     protected function dispatchForm()
     {
+        global $current_user;
         if ($_POST['login_name']) {
             $ret = $this->dispatchAuth($_POST['login_name'], $_POST['login_password']);
-            global $current_user;
             get_currentuserinfo();
             $values = array(
                 'firstname' => $current_user->user_firstname,
@@ -62,6 +62,11 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
                 if (!$this->dispatchAuth($values['email'], $values['password'])) {
                     return false;
                 }
+            }else{
+                wp_update_user(
+                    array('ID' => $current_user->ID, 'first_name' => $values['firstname'], 'last_name' => $values['lastname'])
+                );
+                update_user_meta($errors, '_sln_phone', $values['phone']);
             }
         }
         $this->bindValues($values);
