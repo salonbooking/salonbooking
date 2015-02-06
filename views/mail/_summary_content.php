@@ -2,7 +2,7 @@
     <td height="105" align="center" valign="middle" bgcolor="#f2f2f2" style="border-bottom:2px solid #fff;">
         <table width="191" border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
-                <td width="55" align="left" valign="top"><a href="#"><img src="images/img1.png" width="40" height="41"
+                <td width="55" align="left" valign="top"><a href="#"><img src="<?php echo SLN_PLUGIN_URL ?>/img/summary.png" width="40" height="41"
                                                                           alt="img1" border="0" align="left"></a></td>
                 <td align="left" valign="top">
                     <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
