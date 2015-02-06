@@ -67,6 +67,13 @@
                 @media @tablet-port {
                     padding-right: 1em;
                 }
+                @media @phone {
+                    display: block;
+                    width: 50%;
+                    float: left;
+                    margin: 0 0 2em 0em;
+                    &:last-child {float: none;}
+                }
             } 
         }
     }
@@ -213,7 +220,7 @@ h2.nav-tab-wrapper {
 #sln_service-details {
     padding-bottom: 2em;
 
-    em {color: #ccc;}
+    em {color: #aaa;}s
     h3:nth-child(3) {padding-left: 0;}
 
     #_sln_service_secondary {display: block;}
@@ -222,10 +229,24 @@ h2.nav-tab-wrapper {
         margin: 0 .5em;
     }
 
+    #_sln_service_secondary {
+        @media @phone {margin: 0 .5em -.6em 0;}
+    }
+
     .services-notavailable {
         margin: 0 0 1em -.5em;
+        @media @phone {margin: 0 0 2em -.5em;}
+        @media @tablet {margin: 0 0 2em -.5em;}
         label {
             margin-right: 2em;
+            @media only screen and (min-width: 951px) and (max-width: 1279px) {margin-right: 1em;}
+            @media @phone {
+                display: block;
+                width: 50%;
+                float: left;
+                margin: 0 0 2em 0em;
+                &:last-child {float: none;}
+            }
         }
     }
 
@@ -235,3 +256,33 @@ h2.nav-tab-wrapper {
         }
     }
 }
+
+.post-type-sln_service {
+    textarea#excerpt {min-height: 150px;}
+}
+
+// /// SERVICES END
+
+
+
+// /// /// /// /// /// /// /// //
+// /// BOOKING
+// /// /// /// /// /// /// /// //
+
+#sln_booking-details {
+    .sln_meta_field {
+        .row div{
+            content:"";
+            display: block;
+            width: 95%;
+            height: 1px;
+            //background-color: #f9f9f9;
+            border-top: 1px dotted #eee;
+            margin: 10px;
+        }
+    }
+
+}
+
+// /// BOOKING END
+

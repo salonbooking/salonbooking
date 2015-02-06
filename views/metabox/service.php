@@ -36,7 +36,7 @@ $helper->showNonce($postType);
 $days = SLN_Func::getDays();
 ?>
 <div class="row">
-    <div class="col-md-10 services-notavailable">
+    <div class="col-md-12 services-notavailable">
         <?php foreach ($days as $k => $day) { ?>
             <label>
                 <?php SLN_Form::fieldCheckbox(

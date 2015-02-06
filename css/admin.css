@@ -2807,6 +2807,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding-right: 1em;
   }
 }
+@media only screen and (max-width: 767px) {
+  .sln-tab #sln-availabilities .items .item .first-row .form-group {
+    display: block;
+    width: 50%;
+    float: left;
+    margin: 0 0 2em 0em;
+  }
+  .sln-tab #sln-availabilities .items .item .first-row .form-group:last-child {
+    float: none;
+  }
+}
 .sln-tab .setting-interval {
   margin-top: 1.4em;
 }
@@ -2947,9 +2958,9 @@ h2.nav-tab-wrapper img {
   padding-bottom: 2em;
 }
 #sln_service-details em {
-  color: #ccc;
+  color: #aaa;
 }
-#sln_service-details h3:nth-child(3) {
+#sln_service-details s h3:nth-child(3) {
   padding-left: 0;
 }
 #sln_service-details #_sln_service_secondary {
@@ -2959,12 +2970,54 @@ h2.nav-tab-wrapper img {
 #sln_service-details input[type="checkbox"] {
   margin: 0 .5em;
 }
+@media only screen and (max-width: 767px) {
+  #sln_service-details #_sln_service_secondary {
+    margin: 0 0.5em -0.6em 0;
+  }
+}
 #sln_service-details .services-notavailable {
   margin: 0 0 1em -0.5em;
+}
+@media only screen and (max-width: 767px) {
+  #sln_service-details .services-notavailable {
+    margin: 0 0 2em -0.5em;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #sln_service-details .services-notavailable {
+    margin: 0 0 2em -0.5em;
+  }
 }
 #sln_service-details .services-notavailable label {
   margin-right: 2em;
 }
+@media only screen and (min-width: 951px) and (max-width: 1279px) {
+  #sln_service-details .services-notavailable label {
+    margin-right: 1em;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #sln_service-details .services-notavailable label {
+    display: block;
+    width: 50%;
+    float: left;
+    margin: 0 0 2em 0em;
+  }
+  #sln_service-details .services-notavailable label:last-child {
+    float: none;
+  }
+}
 #sln_service-details .services-notavailable-h label {
   margin-right: 2em;
+}
+.post-type-sln_service textarea#excerpt {
+  min-height: 150px;
+}
+#sln_booking-details .sln_meta_field .row div {
+  content: "";
+  display: block;
+  width: 95%;
+  height: 1px;
+  border-top: 1px dotted #eee;
+  margin: 10px;
 }
