@@ -3182,6 +3182,15 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .datetimepicker table tr td span.active.disabled:hover[disabled] {
   background-color: #076b9d;
 }
+.datetimepicker table tr td.day:not(.disabled),
+.datetimepicker table tr td span.hour:not(.disabled):not(.active) {
+  color: #33CC33;
+}
+.datetimepicker table tr td.day:not(.disabled):hover,
+.datetimepicker table tr td span.hour:not(.disabled):not(.active):hover {
+  color: #fff;
+  background-color: #33CC33;
+}
 #sln-salon {
   background: #f8f8f8;
   border: 1px solid #ddd;
