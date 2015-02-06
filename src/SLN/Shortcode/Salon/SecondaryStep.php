@@ -8,7 +8,7 @@ class SLN_Shortcode_Salon_SecondaryStep extends SLN_Shortcode_Salon_Step
         $bb     = $this->getPlugin()->getBookingBuilder();
         $values = $_POST['sln'];
         foreach ($this->getServices() as $service) {
-            if ($values['services'][$service->getId()]) {
+            if (isset($values['services'][$service->getId()])) {
                 $bb->addService($service);
             } else {
                 $bb->removeService($service);

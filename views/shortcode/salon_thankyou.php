@@ -32,6 +32,7 @@ $confirmation = $plugin->getSettings()->get('confirmation');
                 <br/><span class="num"><?php echo $plugin->getBookingBuilder()->getLastBooking()->getId() ?></span>
             </div>
         </div>
+<?php $ppl = false; ?>
 <?php if($confirmation) : ?>
         <p class="ty"><strong><?php _e('You will receive a confirmation of your booking by email.','sln' )?></strong></p>
         <p class="ty"><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an email to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>

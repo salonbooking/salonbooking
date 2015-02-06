@@ -17,4 +17,8 @@ jQuery(function ($) {
         bindRemove();
         return false;
     });
+    $('#booking-accept, #booking-refuse').click(function(){
+       $('#post_status').val($(this).data('status')); 
+       $('#save-post').click();
+    });
 });
