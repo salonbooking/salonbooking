@@ -5,7 +5,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
     protected function dispatchForm()
     {
         global $current_user;
-        if ($_POST['login_name']) {
+        if (isset($_POST['login_name'])) {
             $ret = $this->dispatchAuth($_POST['login_name'], $_POST['login_password']);
             get_currentuserinfo();
             $values = array(

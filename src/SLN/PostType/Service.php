@@ -131,7 +131,6 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
             ?>
             <style type="text/css">
                 #post-preview, #view-post-btn,
-                #major-publishing-actions,
                 #edit-slug-box
                 {
                     display: none;

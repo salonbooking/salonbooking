@@ -10,7 +10,7 @@ include dirname(__FILE__).'/_header.php';
 <p ><?php _e('Dear', 'sln') ?>
     <strong><?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?></strong>
     <br/>
-    <?php _e('Payment for your booking is confirmed', 'sln') ?>
+    <?php _e('Your booking is canceled', 'sln') ?>
 </p>
 <?php
 include dirname(__FILE__).'/_footer.php';

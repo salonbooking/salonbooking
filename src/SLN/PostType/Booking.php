@@ -171,6 +171,17 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 )
             );
         }
+        add_action( 'transition_post_status', array($this,'transitionPostStatus'), 10, 3 );
+    }
+    public function transitionPostStatus($new_status, $old_status, $post){
+        if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
+            $booking = $this->getPlugin()->createBooking($post);
+            if($new_status == SLN_Enum_BookingStatus::CONFIRMED){
+                $this->getPlugin()->sendMail('mail/status_confirmed', compact('booking'));
+            }elseif($new_status == SLN_Enum_BookingStatus::CANCELED){
+                $this->getPlugin()->sendMail('mail/status_canceled', compact('booking'));
+            }
+        }
     }
 
     public function bulkAdminFooter()
