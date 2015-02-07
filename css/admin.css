@@ -3013,6 +3013,11 @@ h2.nav-tab-wrapper img {
 .post-type-sln_service textarea#excerpt {
   min-height: 150px;
 }
+#sln_booking-details * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 #sln_booking-details .row.form-inline {
   margin-top: 1em;
 }
@@ -3063,8 +3068,39 @@ h2.nav-tab-wrapper img {
   font-size: 1.1em;
   margin-bottom: .4em;
 }
+#sln_booking-details .sln_booking-acceptrefuse {
+  padding-bottom: 1em;
+  margin: 1em 0 1.5em 0;
+  border-bottom: 1px solid #ddd;
+}
+#sln_booking-details .sln_booking-acceptrefuse .btn {
+  width: 100%;
+  font-size: 18px;
+  margin-top: -5px;
+  margin-right: 0;
+  margin-left: 0;
+  padding: 6px 0;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #sln_booking-details .sln_booking-acceptrefuse .btn {
+    padding: 12px 0;
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #sln_booking-details .sln_booking-acceptrefuse .btn {
+    width: 100%;
+    margin-top: .6em;
+  }
+}
 @media only screen and (min-width: 768px) {
   .show--phone {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .hide--phone {
     display: none !important;
     visibility: hidden !important;
   }

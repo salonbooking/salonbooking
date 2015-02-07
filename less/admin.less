@@ -270,6 +270,11 @@ h2.nav-tab-wrapper {
 // /// /// /// /// /// /// /// //
 
 #sln_booking-details {
+    * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    }
     .row.form-inline {
         margin-top: 1em;
         @media only screen and (min-width: 1024px) and (max-width: 1279px) {
@@ -316,10 +321,39 @@ h2.nav-tab-wrapper {
             margin-bottom: .4em;
         }
     }
+
+    .sln_booking-acceptrefuse {
+            padding-bottom: 1em;
+            margin: 1em 0 1.5em 0;
+            border-bottom: 1px solid #ddd;
+        .btn {
+            width: 100%;
+            font-size: 18px;
+            margin-top: -5px;
+            margin-right: 0;
+            margin-left: 0;
+            padding: 6px 0;
+            @media @tablet-port {
+                padding: 12px 0;
+                font-size: 20px;
+            }
+            @media @phone {
+                width: 100%;
+                margin-top: .6em;
+            }
+        }
+    }
 }
 
 .show--phone {
     @media @tablet {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+.hide--phone {
+    @media @phone {
         display: none !important;
         visibility: hidden !important;
     }

@@ -5,12 +5,18 @@
 $helper->showNonce($postType);
 ?>
 <?php if ($booking->getStatus() == SLN_Enum_BookingStatus::PENDING){ ?>
-<h2><?php _e('This booking waits for confirmation','sln')?>&nbsp;
-<button id="booking-refuse" class="btn btn-success" data-status="<?php echo SLN_Enum_BookingStatus::CONFIRMED ?>">
-<?php _e('Accept', 'sln') ?></button>
-&nbsp;<?php _e('or','sln')?>&nbsp;
-<button id="booking-accept" class="btn btn-danger" data-status="<?php echo SLN_Enum_BookingStatus::CANCELED ?>">
-<?php _e('Refuse') ?></button></h2>
+<div class="sln_booking-acceptrefuse">
+    <div class="row"><div class="col-md-12"><h2><?php _e('This booking waits for confirmation!','sln')?></h2></div></div>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+           <button id="booking-refuse" class="btn btn-success" data-status="<?php echo SLN_Enum_BookingStatus::CONFIRMED ?>">
+            <?php _e('Accept', 'sln') ?></button>
+        </div>
+        <div class="col-md-3 col-sm-6"> <button id="booking-accept" class="btn btn-danger" data-status="<?php echo SLN_Enum_BookingStatus::CANCELED ?>">
+            <?php _e('Refuse') ?></button>
+        </div>
+    </div>
+</div>
 <?php } ?>
 <div class="sln-bootstrap">
     <div class="row">
