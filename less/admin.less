@@ -270,18 +270,59 @@ h2.nav-tab-wrapper {
 // /// /// /// /// /// /// /// //
 
 #sln_booking-details {
+    .row.form-inline {
+        margin-top: 1em;
+        @media only screen and (min-width: 1024px) and (max-width: 1279px) {
+            .col-md-6 {width: 100%;}
+            .col-md-6:nth-child(2) {margin-top: 1em;}
+        }
+
+        @media @phone {
+            select {margin-bottom: 1em;}
+        }
+
+    }
     .sln_meta_field {
-        .row div{
+        .row:before {
             content:"";
             display: block;
             width: 95%;
             height: 1px;
             //background-color: #f9f9f9;
             border-top: 1px dotted #eee;
-            margin: 10px;
+            margin: 15px 18px;
+        }
+    }
+    textarea#_sln_booking_note {min-height: 150px;margin-right: 18px;}
+
+    .sln_booking-service-price {
+        font-size: 1.1em; font-weight: bold;
+        @media @phone {
+            margin-top: .4em;
         }
     }
 
+    .sln_booking-service-info {
+        @media @phone {
+            label {padding-right: 1em;}
+        }
+    }
+
+    label {
+        font-weight: normal;
+        strong {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: .4em;
+        }
+    }
+}
+
+.show--phone {
+    @media @tablet {
+        display: none !important;
+        visibility: hidden !important;
+    }
 }
 
 // /// BOOKING END
