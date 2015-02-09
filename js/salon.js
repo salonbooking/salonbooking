@@ -16,6 +16,14 @@ jQuery(function ($) {
     if ($('#salon-step-date').length) {
         sln_stepDate($);
     }
+
+    // CHECKBOXES
+    $('#sln-salon input:checkbox').each(function () {
+        $(this).click(function() {
+            $(this).parent().toggleClass("is-checked");
+        })
+    });
+    // CHECKBOXES
 });
 
 function sln_stepDate($) {

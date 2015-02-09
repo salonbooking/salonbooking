@@ -118,10 +118,18 @@
     }
   }
   .sln-service-list {
+    // evito che al click per spuntare la checkbox venga evidenziato il testo come selezionato
+    ::selection {
+      background: transparent;
+    }
+    ::-moz-selection {
+      background: transparent;
+    }
     label {
       padding-top: 10px;
       width: 100%;
       font-weight: normal;
+      cursor: pointer;
     }
     .service-name {
       color: @color-high;
@@ -728,6 +736,49 @@
       margin-top: 1em;
     }
   }
+
+  // CHECKBOXES
+  .service-checkbox {
+    display: block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    position: relative;
+    
+    background-image: url(../img/checkboxes-bkg.png);
+    background-size: auto 100%;
+    background-position: 0 0;
+
+    .trans-generic(50ms);
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background-image: url(../img/checkboxes-bkg.png);
+      background-position: -50px 0;
+      opacity: 0;
+      -webkit-transition: opacity 0.5s;
+      -moz-transition:    opacity 0.5s;
+      -o-transition:      opacity 0.5s;
+      pointer-events: none;
+    }
+
+    &:hover:after {opacity: 1;}
+
+    &.is-checked:after {background-position: -100px 0;opacity: 1;pointer-events: none;}
+
+    input {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      margin: 0;
+      opacity: 0;
+    }
+  }
+
+  // CHECKBOXES
+
 
 }
 

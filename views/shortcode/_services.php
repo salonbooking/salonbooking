@@ -14,7 +14,7 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
     <?php foreach ($services as $service) : ?>
         <div class="row">
             <div class="col-xs-1 col-lg-1">
-            <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'checked' : '' ?>">
+            <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
             <?php
             $errors   = $ah->validateService($service);
             $settings = array('attrs' => array('data-price' => $service->getPrice()));
