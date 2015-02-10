@@ -40,7 +40,7 @@ function sln_availability_row($prefix, $row)
         <div class="col-md-6">
             <div class="form-group">
                 <label for="salon_settings[parallels]">
-                    <?php _e('How many people you can attend during a single time session?', 'sln') ?>
+                    <?php _e('How many people you can attend during a single time/session?', 'sln') ?>
                 </label>
                 <?php echo SLN_Form::fieldNumeric(
                     "salon_settings[parallels_hour]",
@@ -48,7 +48,7 @@ function sln_availability_row($prefix, $row)
                     array('min' => 1, 'max' => 20)
                 ) ?>
                 <p class="help-block"><?php _e(
-                        'Set this option carefully because will affect the number of bookings you can accept for the same <strong>time session</strong>.',
+                        'Set this option carefully because it will affect the number of bookings you can accept for the same <strong>time/session</strong>.',
                         'sln'
                     ) ?></p>
             </div>
@@ -96,7 +96,7 @@ function sln_availability_row($prefix, $row)
                 <div class="form-group">
                     <strong>
 
-                        <?php _e('To a maximum of', 'sln') ?>
+                        <?php _e('to a maximum of', 'sln') ?>
 
                     <?php $field = "salon_settings[hours_before_to]"; ?>
                     <?php echo SLN_Form::fieldSelect(
@@ -120,7 +120,7 @@ function sln_availability_row($prefix, $row)
         <div class="col-md-8">
             <?php $field = "salon_settings[interval]"; ?>
                 <label for="<?php echo SLN_Form::makeID($field) ?> ">
-                    <?php _e('Define the interval in minutes between time definition', 'sln') ?>
+                    <?php _e('Define your time-session average duration', 'sln') ?>
                 </label>
                 <?php echo SLN_Form::fieldSelect(
                     $field,
@@ -133,13 +133,13 @@ function sln_availability_row($prefix, $row)
         <div class="sln-separator"></div>
         <?php
         $key            = 'available';
-        $label          = __('Online booking available on', 'sln');
+        $label          = __('Online bookings available on:', 'sln');
         $availabilities = $this->getOpt('availabilities');
         ?>
         <div class="form-group">
             <label><?php echo $label ?></label>
 
-            <p class="help-block">Leave blank if you want booking available everydays at every hour</p>
+            <p class="help-block"><?php _e('The following rules, should represent your real timetable. <br />Leave blank if you want bookings available everydays at every hour', 'sln') ?></p>
         </div>
         <div id="sln-availabilities">
             <div class="items">
@@ -191,7 +191,7 @@ function sln_availability_row($prefix, $row)
 
                         <p class="help-block">
                             <?php _e(
-                                'If checked the booking user will see a message with the reason of disabled booking.',
+                                'If checked the online booking form will be disabled and your users will see a message.',
                                 'sln'
                             ) ?></p>
                     </div>
@@ -224,12 +224,13 @@ function sln_availability_row($prefix, $row)
             <div class="col-md-6">
                 <?php $this->row_input_checkbox(
                     'confirmation',
-                    __('Bookings Confirmation', 'sln'),
-                    array('help' => __('Select this if you want to confirm every single booking'))
+                    __('Bookings confirmation', 'sln'),
+                    array('help' => __('Select this option if you want to confirm every single booking.'))
                 ); ?>
             </div>
             <div class="col-md-6">
                 <?php $this->row_input_page('thankyou', __('Thank you page', 'sln')); ?>
+                <p><?php _e('Select a page where to redirect your users after booking completition.', 'sln') ?></p>
             </div>
         </div>
     </div>
