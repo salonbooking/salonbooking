@@ -68,6 +68,17 @@ function sln_availability_row($prefix, $row)
                     ) ?></p>
             </div>
 */?>
+
+            <?php $field = "salon_settings[interval]"; ?>
+                <label for="<?php echo SLN_Form::makeID($field) ?> ">
+                    <?php _e('Define your time-session average duration', 'sln') ?>
+                </label>
+                <?php echo SLN_Form::fieldSelect(
+                    $field,
+                    array('5', '10', '15', '30', '60'),
+                    $this->getOpt('interval') ? $this->getOpt('interval') : 15
+                ) ?>
+
         </div>
         <div class="col-md-6"></div>
             <div class="clearfix"></div>
@@ -118,15 +129,7 @@ function sln_availability_row($prefix, $row)
     </div>
     <div class="row setting-interval">
         <div class="col-md-8">
-            <?php $field = "salon_settings[interval]"; ?>
-                <label for="<?php echo SLN_Form::makeID($field) ?> ">
-                    <?php _e('Define your time-session average duration', 'sln') ?>
-                </label>
-                <?php echo SLN_Form::fieldSelect(
-                    $field,
-                    array('5', '10', '15', '30', '60'),
-                    $this->getOpt('interval') ? $this->getOpt('interval') : 15
-                ) ?>
+
         </div>
     </div>
             <div class="clearfix"></div>
