@@ -4,7 +4,7 @@
             <?php
             $this->row_input_text(
                 'gen_name',
-                __('Name', 'sln'),
+                __('Your salon name', 'sln'),
                 array(
                     'help' => sprintf(
                         __('Leaving this empty the default site name <strong>(%s)</strong> will be used', 'sln'),
@@ -18,7 +18,7 @@
             <?php
             $this->row_input_text(
                 'gen_email',
-                __('E-Mail', 'sln'),
+                __('Salon contact e-mail', 'sln'),
                 array(
                     'help' => sprintf(
                         __('Leaving this empty the default site email <strong>(%s)</strong> will be used', 'sln'),
@@ -29,7 +29,7 @@
             ?>
         </div>
         <div class="col-md-3 col-sm-4">
-            <?php $this->row_input_text('gen_phone', __('Phone', 'sln')); ?>
+            <?php $this->row_input_text('gen_phone', __('Salon telephone number', 'sln')); ?>
         </div>
     </div>
     <div class="sln-separator"></div>
@@ -37,7 +37,7 @@
         <div class="col-md-3">
             <?php $this->row_input_textarea(
                 'gen_address',
-                __('Address', 'sln'),
+                __('Salon address', 'sln'),
                 array(
                     'textarea' => array(
                         'attrs' => array(
@@ -57,7 +57,7 @@
                     'textarea' => array(
                         'attrs' => array(
                             'rows'        => 3,
-                            'placeholder' => "In case of delay we will take your seat for 15 minutes, then your booking will be lost"
+                            'placeholder' => "e.g. In case of delay we will take your seat for 15 minutes, then your booking priority will be lost"
                         )
                     )
                 )
