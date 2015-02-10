@@ -47,10 +47,7 @@ function sln_availability_row($prefix, $row)
                     $this->getOpt('parallels_hour'),
                     array('min' => 1, 'max' => 20)
                 ) ?>
-                <p class="help-block"><?php _e(
-                        'Set this option carefully because it will affect the number of bookings you can accept for the same <strong>time/session</strong>.',
-                        'sln'
-                    ) ?></p>
+                
             </div>
 <?php /*
             <div class="form-group">
@@ -78,6 +75,11 @@ function sln_availability_row($prefix, $row)
                     array('5', '10', '15', '30', '60'),
                     $this->getOpt('interval') ? $this->getOpt('interval') : 15
                 ) ?>
+                
+                <p class="help-block"><?php _e(
+                        'Set these options carefully because it will affect the number of bookings you can accept for the same <strong>time/session</strong>.',
+                        'sln'
+                    ) ?></p>
 
         </div>
         <div class="col-md-6"></div>
