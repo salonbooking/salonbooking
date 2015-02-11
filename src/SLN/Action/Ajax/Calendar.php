@@ -29,7 +29,7 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
         return array(
 	"id" => $booking->getId(),
 	"title" => $this->getTitle($booking),
-	"url" => get_edit_post_link($post_id),
+	"url" => get_edit_post_link($booking->getId()),
 	"class" => "event-".SLN_Enum_BookingStatus::getColor($booking->getStatus()),
 	"start" => $booking->getStartsAt()->format('U') * 1000,
 	"end" => $booking->getEndsAt()->format('U') * 1000
@@ -82,8 +82,8 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
         return $criteria;
     }
     public function getTitle($booking){
-        $ret = $booking->getStartsAt()->format('d/m/Y h:i').' '
-            .$booking->getDisplayName()
+        $ret = //$booking->getStartsAt()->format('d/m/Y h:i').' '.
+            $booking->getDisplayName()
             .' ('.implode(', ',$booking->getServices()).')';
         return $ret;  
     }
