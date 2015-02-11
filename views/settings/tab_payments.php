@@ -11,6 +11,8 @@
   </div>
 
     <div class="clearfix"></div>
+            <div class="sln-separator"></div>
+
     <div class="row">
         <div class="col-md-4 col-sm-6">
             <?php $this->row_input_text('pay_paypal_email', __('Set your PayPal email address', 'sln')); ?>
@@ -23,6 +25,8 @@
                 ) ?>
         </div>
     </div>
+    <div class="clearfix"></div>
+            <div class="sln-separator"></div>
     <div class="row">
         <div class="col-md-4 col-sm-6">
             <div class="form-group">

@@ -2944,15 +2944,6 @@ h2.nav-tab-wrapper img {
   .sln-tab .row:nth-child(1) .col-md-6:nth-child(1) p {
     margin-bottom: 0;
   }
-  #sln-tab-payments .row {
-    padding-bottom: 1.4em;
-  }
-  #sln-tab-payments .row > div {
-    padding-bottom: 1.4em;
-  }
-  #sln-tab-payments .row .form-group {
-    margin-bottom: 0;
-  }
 }
 #sln_service-details {
   padding-bottom: 2em;
