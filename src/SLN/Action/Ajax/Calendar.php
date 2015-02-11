@@ -32,7 +32,8 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
 	"url" => get_edit_post_link($booking->getId()),
 	"class" => "event-".SLN_Enum_BookingStatus::getColor($booking->getStatus()),
 	"start" => $booking->getStartsAt()->format('U') * 1000,
-	"end" => $booking->getEndsAt()->format('U') * 1000
+	"end" => $booking->getEndsAt()->format('U') * 1000,
+        "event_html" => $this->getEventHtml($booking)
 	);
     }
 
@@ -46,7 +47,7 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
         $query = new WP_Query($args);
         $ret   = array();
         foreach ($query->get_posts() as $p) {
-            $ret[] = SLN_Plugin::getInstance()->createBooking($p);
+            $ret[] = $this->plugin->createBooking($p);
         }
         wp_reset_query();
         wp_reset_postdata();
@@ -81,10 +82,11 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
         }
         return $criteria;
     }
-    public function getTitle($booking){
-        $ret = //$booking->getStartsAt()->format('d/m/Y h:i').' '.
-            $booking->getDisplayName()
-            .' ('.implode(', ',$booking->getServices()).')';
-        return $ret;  
+
+    private function getTitle($booking){
+        return $this->plugin->loadView('admin/_calendar_title', compact('booking'));
+    }
+    private function getEventHtml($booking){
+        return $this->plugin->loadView('admin/_calendar_event', compact('booking'));
     }
 }

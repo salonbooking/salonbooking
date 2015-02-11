@@ -14,7 +14,7 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl){
 
 			$.each(events, function(key, val) {
 				$(document.createElement('li'))
-					.html('<a href="' + val.url + '">' + val.title + '</a>')
+					.html(val.event_html)
 					.appendTo(list);
 			});
 		},

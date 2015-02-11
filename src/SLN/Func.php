@@ -192,7 +192,11 @@ class SLN_Func
         return $items;
     }
     public static function getMinutesFromDuration($duration){
+        if(is_string($duration)){
         $tmp = explode($duration,':');
         return ($tmp[0]*60) + $tmp[1];
+        }else{
+            return 0;
+        }
     }
 }
