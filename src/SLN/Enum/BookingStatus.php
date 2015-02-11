@@ -11,6 +11,15 @@ class SLN_Enum_BookingStatus
 
     private static $labels;
 
+    private static $colors = array(
+            self::ERROR     => 'default',
+            self::PENDING   => 'warning',
+            self::PAID      => 'success',
+            self::PAY_LATER => 'info',
+            self::CANCELED  => 'danger',
+            self::CONFIRMED => 'success'
+    );
+
     public static function toArray()
     {
         return self::$labels;
@@ -20,6 +29,11 @@ class SLN_Enum_BookingStatus
     {
         return isset(self::$labels[$key]) ? self::$labels[$key] : self::$labels[self::ERROR];
     }
+    public static function getColor($key)
+    {
+        return isset(self::$colors[$key]) ? self::$colors[$key] : self::$colors[self::ERROR];
+    }
+
 
     public static function init()
     {

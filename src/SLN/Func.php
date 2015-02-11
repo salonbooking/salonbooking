@@ -191,4 +191,8 @@ class SLN_Func
 
         return $items;
     }
+    public static function getMinutesFromDuration($duration){
+        $tmp = explode($duration,':');
+        return ($tmp[0]*60) + $tmp[1];
+    }
 }

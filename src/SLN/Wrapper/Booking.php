@@ -74,6 +74,13 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
         return empty($ret) ? array() : $ret;
     }
+    function getServices(){
+        $ret = array();
+        foreach($this->getServicesIds() as $id){
+            $ret[] = new SLN_Wrapper_Service($id);
+        }
+        return $ret;
+    }
 
     function getStatus()
     {
@@ -121,5 +128,14 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
             get_post_meta($post_id, '_sln_booking_transaction_id', true)
         );
     }
-
+    function getStartsAt(){
+        return new DateTime($this->getDate()->format('Y-m-d').' '.$this->getTime()->format('H:i'));
+    }
+    function getEndsAt(){
+        $start = $this->getStartsAt();
+        $minutes = SLN_Func::getMinutesFromDuration($this->getDuration());
+        if($minutes == 0) $minutes = 60;
+        $start->modify('+'.$minutes.' minutes');
+        return $start;
+    }
 }

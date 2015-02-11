@@ -49,6 +49,8 @@ class SLN_Plugin
         //http://codex.wordpress.org/AJAX_in_Plugins
         add_action('wp_ajax_salon', array($this, 'ajax'));
         add_action('wp_ajax_nopriv_salon', array($this, 'ajax'));
+        add_action('wp_ajax_saloncalendar', array($this, 'ajax'));
+
     }
 
     public function action_init()
@@ -220,7 +222,7 @@ class SLN_Plugin
     public function ajax()
     {
         check_ajax_referer('ajax_post_validation', 'security');
-        $method    = $_POST['method'];
+        $method    = $_REQUEST['method'];
         $className = 'SLN_Action_Ajax_' . ucwords($method);
         if (class_exists($className)) {
             /** @var SLN_Action_Ajax_Abstract $obj */

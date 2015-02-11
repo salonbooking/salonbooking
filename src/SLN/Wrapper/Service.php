@@ -117,4 +117,8 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
     {
         return $this->object->post_excerpt;
     }
+
+    public function __toString(){
+        return $this->getName();
+    }
 }
