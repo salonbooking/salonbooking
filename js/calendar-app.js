@@ -1,8 +1,8 @@
-function initSalonCalendar($, ajaxUrl, ajaxDay, pluginUrl){
+function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl){
 	var options = {
 		events_source: ajaxUrl,
 		view: 'month',
-		tmpl_path: pluginUrl+'/js/tmpls/',
+		tmpl_path: templatesUrl,
 		tmpl_cache: false,
 		day: ajaxDay,
 		onAfterEventsLoad: function(events) {

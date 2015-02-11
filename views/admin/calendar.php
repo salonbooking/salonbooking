@@ -12,7 +12,7 @@ jQuery(function($){
         salon.ajax_url+"?&action=salon&method=calendar&security="+salon.ajax_nonce,
 //        '<?php echo SLN_PLUGIN_URL ?>/js/events.json.php',
         '<?php echo $today->format('Y-m-d') ?>',
-        '<?php echo SLN_PLUGIN_URL ?>'
+        '<?php echo SLN_PLUGIN_URL ?>/views/js/calendar/'
     );
 });
 </script>
