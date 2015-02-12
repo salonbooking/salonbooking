@@ -4,7 +4,7 @@
  * @var SLN_Wrapper_Booking       $booking
  */
 $data['to'] = $booking->getEmail();
-$data['subject'] = 'Your for booking #'.$booking->getId().' has been confirmed;
+$data['subject'] = 'Your booking #'.$booking->getId().' has been confirmed';
 include dirname(__FILE__).'/_header.php';
 ?>
 <p ><?php _e('Dear', 'sln') ?>
