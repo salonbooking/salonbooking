@@ -43,7 +43,7 @@ jQuery(function($){
         <div class="clearfix"></div>
         <div id="calendar"></div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 sln-calendar-sidebar">
         <h3>Bookings</h3>
         <ul id="eventlist" class="nav nav-list"></ul>
         <div class="legend">
@@ -54,6 +54,7 @@ jQuery(function($){
 <li><span class="pull-left event event-info"></span><?php echo SLN_Enum_BookingStatus::getLabel(SLN_Enum_BookingStatus::PAY_LATER) ?></li>
 <li><span class="pull-left event event-danger"></span><?php echo SLN_Enum_BookingStatus::getLabel(SLN_Enum_BookingStatus::CANCELED) ?></li>
 </ul>
+<div class="clearfix"></div>
         </div>
     </div>
 </div>

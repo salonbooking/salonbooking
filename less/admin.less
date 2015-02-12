@@ -1,13 +1,7 @@
 @import "bootstrap.less";
+@import "settings-mixins.less";
 
-//
-@phone:      ~"only screen and (max-width: 767px)";
-@tablet:      ~"only screen and (min-width: 768px)";
-@tablet-max-port:      ~"only screen and (min-width: 768px) and (max-width: 1200px)";
-@tablet-port:      ~"only screen and (min-width: 768px) and (max-width: 1023px)";
-@desktop:     ~"only screen and (min-width: 992px)";
-@desktop-xl:  ~"only screen and (min-width: 1200px)";
-//
+
 
 .sln_meta_field {
     display: block;
@@ -102,8 +96,8 @@
 
 .salon_page_salon-settings.wp-core-ui .button-primary {
     color: #ffffff;
-    background: #428bca;
-    border-color: #428bca;
+    background: @ca-blue;
+    border-color: @ca-blue;
 
     display: inline-block;
     margin-bottom: 0;
