@@ -1,8 +1,11 @@
 <?php
 /*
-Plugin Name: Salon
-Description: Just another plugin.
+Plugin Name: Salon Booking Wordpress Plugin
+Description: Let your customers book you services through your website. Perfect for hairdressing salons, barber shops and beauty centers.
 Version: 1.0.0
+Plugin URI: http://salon.wordpresschef.it/
+Author: Wordpress Chef / Plugins 
+Author URI: http://plugins.wordpresschef.it/
 */
 
 define('SLN_PLUGIN_BASENAME', plugin_basename(__FILE__));
