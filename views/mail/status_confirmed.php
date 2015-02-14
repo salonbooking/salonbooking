@@ -3,15 +3,13 @@
  * @var SLN_Plugin                $plugin
  * @var SLN_Wrapper_Booking       $booking
  */
-$data['to'] = $booking->getEmail();
-$data['subject'] = 'Payment confirmed for booking #'.$booking->getId();
+if(!isset($data['to'])){
+    $data['to'] = $booking->getEmail();
+}
+$data['subject'] = __('Booking confirmed','sln')
+    . ' ' . $plugin->format()->date($booking->getDate())
+    . ' - ' . $plugin->format()->time($booking->getTime());
 include dirname(__FILE__).'/_header.php';
-?>
-<p ><?php _e('Dear', 'sln') ?>
-    <strong><?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?></strong>
-    <br/>
-    <?php _e('Your booking is confirmed', 'sln') ?>
-</p>
-<?php
+include dirname(__FILE__).'/_summary_content.php';
 include dirname(__FILE__).'/_footer.php';
 ?>

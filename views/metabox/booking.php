@@ -13,11 +13,14 @@ $helper->showNonce($postType);
             <?php _e('Accept', 'sln') ?></button>
         </div>
         <div class="col-md-3 col-sm-6"> <button id="booking-accept" class="btn btn-danger" data-status="<?php echo SLN_Enum_BookingStatus::CANCELED ?>">
-            <?php _e('Refuse') ?></button>
+            <?php _e('Refuse', 'sln') ?></button>
         </div>
     </div>
 </div>
 <?php } ?>
+<div class="sln-bootstrap">
+Reinvia email a <input type="text" class"form-control" name="emailto"/><button class="btn btn-success" type="submit" name="emailto_submit" value="submit">Invia</button>
+</div>
 <div class="sln-bootstrap">
     <div class="row">
         <div class="col-md-3 col-sm-6">
