@@ -79,7 +79,12 @@ function tpl_summary_details($booking, $plugin){
                 <td align="left" valign="top"
                     style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;">
                     <?php _e('Dear', 'sln') ?>
+                    
+                    <?php if($forAdmin): ?>
+                    <?php _e('Administrator','sln') ?>
+                <?php else: ?>
                     <?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?>,
+                <?php endif; ?>    
                 </td>
             </tr>
             <tr>
@@ -88,7 +93,18 @@ function tpl_summary_details($booking, $plugin){
             <tr>
                 <td align="left" valign="top"
                     style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;">
+                    
+                    <?php if($forAdmin): ?>
+
+                    <?php _e('this is an email notification of a new booking at', 'sln') ?>
+                     
+                     <?php else: ?>
+
+
                     <?php _e('this is an email confirmation of your booking at', 'sln') ?>
+
+                    <?php endif; ?>
+
                     <b style="color:#666666;">
                         <?php echo $plugin->settings->get('gen_name') ?
                             $plugin->settings->get('gen_name') : get_bloginfo('name') ?>.</b><br>
