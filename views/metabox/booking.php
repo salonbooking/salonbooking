@@ -19,7 +19,7 @@ $helper->showNonce($postType);
 </div>
 <?php } ?>
 <div class="sln-bootstrap">
-Reinvia email a <input type="text" class"form-control" name="emailto"/><button class="btn btn-success" type="submit" name="emailto_submit" value="submit">Invia</button>
+<?php _e('Re-send email notification to ','sln') ?> <input type="text" class"form-control" name="emailto"/><button class="btn btn-success" type="submit" name="emailto_submit" value="submit">Invia</button>
 </div>
 <div class="sln-separator"></div>
 <div class="sln-bootstrap">
