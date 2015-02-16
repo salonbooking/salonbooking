@@ -316,19 +316,39 @@ h2.nav-tab-wrapper {
         }
     }
 
-    .sln_booking-acceptrefuse {
-            padding-bottom: 1em;
-            margin: 1em 0 1.5em 0;
-            border-bottom: 1px solid #ddd;
+    .sln_booking-topbuttons {
+        padding-bottom: 1em;
+        margin: 1em 0 1.5em 0;
+        border-bottom: 1px solid #ddd;
+        .row {
+            padding: 1em 0;
+        }
+        .sln_accept-refuse {
+            border-left: 1px solid #ddd; 
+            @media @desktop-xl {padding-left: 9.75%;}
+            @media @phone {
+                border-left: none;
+                border-top: 1px solid #ddd;
+                margin-top: 1em;
+                padding-top: 1em;
+                .row {padding-top: 0;}
+            }
+        }
+
+        h2 {
+            margin-bottom: 0;
+            margin-top: 0;
+            font-size: 1.3em;
+        }
         .btn {
             width: 100%;
             font-size: 18px;
-            margin-top: -5px;
+            margin-top: -2px;
             margin-right: 0;
             margin-left: 0;
             padding: 6px 0;
             @media @tablet-port {
-                padding: 12px 0;
+                padding: 5px 0;
                 font-size: 20px;
             }
             @media @phone {

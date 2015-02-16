@@ -4,38 +4,41 @@
  */
 $helper->showNonce($postType);
 ?>
-<?php if ($booking->getStatus() == SLN_Enum_BookingStatus::PENDING){ ?>
-<div class="sln_booking-acceptrefuse">
-    <div class="row"><div class="col-md-12"><h2><?php _e('This booking waits for confirmation!','sln')?></h2></div></div>
+
+<div class="sln-bootstrap">
+
+<div class="sln_booking-topbuttons">
     <div class="row">
-        <div class="col-md-3 col-sm-6">
-           <button id="booking-refuse" class="btn btn-success" data-status="<?php echo SLN_Enum_BookingStatus::CONFIRMED ?>">
-            <?php _e('Accept', 'sln') ?></button>
+        <div class="col-lg-5 col-md-6 col-sm-6">
+            <h2><?php _e('Re-send email notification to ','sln') ?></h2>
+            <div class="row">
+            <div class="col-lg-7 col-md-8 col-sm-8"><input type="text" class="form-control" name="emailto"/></div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <button class="btn btn-success" type="submit" name="emailto_submit" value="submit">Invia</button>
+
+            </div>
+            </div>
         </div>
-        <div class="col-md-3 col-sm-6"> <button id="booking-accept" class="btn btn-danger" data-status="<?php echo SLN_Enum_BookingStatus::CANCELED ?>">
-            <?php _e('Refuse', 'sln') ?></button>
+
+        <?php if ($booking->getStatus() == SLN_Enum_BookingStatus::PENDING){ ?>
+        <div class="col-lg-5 col-md-5 col-sm-6 sln_accept-refuse">
+            <h2><?php _e('This booking waits for confirmation!','sln')?></h2>
+            <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+               <button id="booking-refuse" class="btn btn-success" data-status="<?php echo SLN_Enum_BookingStatus::CONFIRMED ?>">
+                <?php _e('Accept', 'sln') ?></button>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6"> <button id="booking-accept" class="btn btn-danger" data-status="<?php echo SLN_Enum_BookingStatus::CANCELED ?>">
+                <?php _e('Refuse', 'sln') ?></button>
+            </div>
+            </div>
         </div>
+        <?php } ?>
     </div>
+    
 </div>
-<?php } ?>
-<div class="sln-bootstrap">
-<div class="row">
-<div class="col-md-3 col-sm-6">
-<?php _e('Re-send email notification to ','sln') ?> <input type="text" class="form-control" name="emailto"/>
-</div>
-<div class="col-md-3 col-sm-6">
 
-<button class="btn btn-success" type="submit" name="emailto_submit" value="submit">Invia</button>
 
-</div>
-<div class="col-md-3 col-sm-6">
-</div>
-<div class="col-md-3 col-sm-6">
-</div>
-</div>
-</div>
-<div class="sln-separator"></div>
-<div class="sln-bootstrap">
     <div class="row">
         <div class="col-md-3 col-sm-6">
             <?php

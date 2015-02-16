@@ -3492,27 +3492,54 @@ h2.nav-tab-wrapper img {
   font-size: 1.1em;
   margin-bottom: .4em;
 }
-#sln_booking-details .sln_booking-acceptrefuse {
+#sln_booking-details .sln_booking-topbuttons {
   padding-bottom: 1em;
   margin: 1em 0 1.5em 0;
   border-bottom: 1px solid #ddd;
 }
-#sln_booking-details .sln_booking-acceptrefuse .btn {
+#sln_booking-details .sln_booking-topbuttons .row {
+  padding: 1em 0;
+}
+#sln_booking-details .sln_booking-topbuttons .sln_accept-refuse {
+  border-left: 1px solid #ddd;
+}
+@media only screen and (min-width: 1200px) {
+  #sln_booking-details .sln_booking-topbuttons .sln_accept-refuse {
+    padding-left: 9.75%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #sln_booking-details .sln_booking-topbuttons .sln_accept-refuse {
+    border-left: none;
+    border-top: 1px solid #ddd;
+    margin-top: 1em;
+    padding-top: 1em;
+  }
+  #sln_booking-details .sln_booking-topbuttons .sln_accept-refuse .row {
+    padding-top: 0;
+  }
+}
+#sln_booking-details .sln_booking-topbuttons h2 {
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 1.3em;
+}
+#sln_booking-details .sln_booking-topbuttons .btn {
   width: 100%;
   font-size: 18px;
-  margin-top: -5px;
+  margin-top: -2px;
   margin-right: 0;
   margin-left: 0;
   padding: 6px 0;
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  #sln_booking-details .sln_booking-acceptrefuse .btn {
-    padding: 12px 0;
+  #sln_booking-details .sln_booking-topbuttons .btn {
+    padding: 5px 0;
     font-size: 20px;
   }
 }
 @media only screen and (max-width: 767px) {
-  #sln_booking-details .sln_booking-acceptrefuse .btn {
+  #sln_booking-details .sln_booking-topbuttons .btn {
     width: 100%;
     margin-top: .6em;
   }
