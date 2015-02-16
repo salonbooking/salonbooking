@@ -94,26 +94,49 @@ function tpl_summary_details($booking, $plugin){
                 <td align="left" valign="top"
                     style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;">
                     
-                    <?php if($forAdmin): ?>
+                    
 
-                    <?php _e('this is an email notification of a new booking at', 'sln') ?>
-                     
-                     <?php else: ?>
-
-
-                    <?php _e('this is an email confirmation of your booking at', 'sln') ?>
-
-                    <?php endif; ?>
-
-                    <b style="color:#666666;">
-                        <?php echo $plugin->settings->get('gen_name') ?
-                            $plugin->settings->get('gen_name') : get_bloginfo('name') ?>.</b><br>
+                
 <?php if ($plugin->settings->get('confirmation') && $booking->hasStatus(SLN_Enum_BookingStatus::PENDING) ) : ?>
-<strong><?php _e('Please wait our confirmation') ?></strong></p>
+
+	<?php if($forAdmin): ?>
+
+     <a href="<?php echo admin_url() ?>/post.php?post=<?php echo $booking->getId() ?>&action=edit">
+         <?php _e('You need to approve this booking request. Click here.', 'sln') ?>
+     </a>
+
+ 	
+                     
+	<?php else: ?>
+
+<?php _e('your booking is pending, please wait our confirmation.','sln') ?></p>
+
+	<?php endif ?>
+
+<?php else: ?> 
+
+	<?php if($forAdmin): ?>
+
+	<?php _e('this is an email notification of a new booking', 'sln') ?>
+	
+	<?php else: ?> 
+
+<?php _e('this is an email confirmation of your booking at', 'sln') ?>
+
+<b style="color:#666666;">
+                        <?php echo $plugin->settings->get('gen_name') ?
+                            $plugin->settings->get('gen_name') : get_bloginfo('name') ?>.</b><br></p>
+
+
+<?php endif ?>
+
 <?php endif ?>
 
 
-                    <?php _e('Please take note of the following booking details.', 'sln') ?></td>
+
+
+                    <p><?php _e('Please take note of the following booking details.', 'sln') ?></p>
+                </td>
             </tr>
             <tr>
                 <td align="left" valign="top">&nbsp;</td>
