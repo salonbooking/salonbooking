@@ -13,14 +13,20 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
             $this->op = $op[0];
             if ($this->op == 'success') {
                 $this->goToThankyou();
-            } elseif ($this->op == 'ipn') {
+            } elseif ($this->op == 'notify') {
                 $booking = $this->getPlugin()->createBooking($op[1]);
                 update_post_meta($booking->getId(), '_sln_paypal_ipn_' . uniqid(), $_POST);
                 $ppl = new SLN_Payment_Paypal($this->getPlugin());
+                ob_end_clean();
                 if ($ppl->reverseCheckIpn() && $ppl->isCompleted($booking->getAmount())) {
-                    $booking->setStatus(SLN_Enum_BookingStatus::PAY_LATER);
+                    update_post_meta($booking->getId(), '_sln_booking_transaction_id', $ppl->getTransactionId());
+                    $booking->setStatus(SLN_Enum_BookingStatus::PAID);
                     $this->getPlugin()->sendMail('mail/payment_confirmed', compact('booking'));
+                    echo('ipn success');
+                }else{
+                    echo('ipn_failed');
                 }
+                die();
             }
         } elseif ($_GET['mode'] == 'paypal') {
             $ppl = new SLN_Payment_Paypal($this->getPlugin());

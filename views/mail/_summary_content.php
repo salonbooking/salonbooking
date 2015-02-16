@@ -104,7 +104,7 @@ function tpl_summary_details($booking, $plugin){
             </tr>
             <tr>
                 <td align="left" valign="top" bgcolor="#ffffff">
-                    <?php tpl_details($booking, $plugin) ?>
+                    <?php tpl_summary_details($booking, $plugin) ?>
                 </td>
             </tr>
             <tr>

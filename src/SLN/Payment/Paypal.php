@@ -35,20 +35,21 @@ class SLN_Payment_Paypal
             }
             $req .= "&$key=$value";
         }
+        $isTest = $this->plugin->getSettings()->isPaypalTest();
+        
 
-
-        $ch = curl_init(PPL_URL);
+        $ch = curl_init($this->getBaseUrl());
         curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $isTest ? 0 : 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $isTest ? 0 : 2);
         curl_setopt($ch, CURLOPT_FORBID_REUSE, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Connection: Close'));
 
         if (!($res = curl_exec($ch))) {
-            // error_log("Got " . curl_error($ch) . " when processing IPN data");
+            error_log("Got " . curl_error($ch) . " when processing IPN data");
             curl_close($ch);
             exit;
         }
@@ -64,7 +65,7 @@ class SLN_Payment_Paypal
         $settings = $this->plugin->getSettings();
         $url      = SLN_Func::currPageUrl();
 
-        return $this->getBaseUrl($this->plugin->getSettings()->isPaypalTest()) . "?"
+        return $this->getBaseUrl() . "?"
         . http_build_query(
             array(
                 'notify_url'    => add_query_arg('op', 'notify-' . $id, $url),
@@ -79,8 +80,9 @@ class SLN_Payment_Paypal
         );
     }
 
-    private function getBaseUrl($isTest)
+    private function getBaseUrl()
     {
+        $isTest = $this->plugin->getSettings()->isPaypalTest();
         return $isTest ?
             self::TEST_URL : self::PROD_URL;
     }
@@ -88,5 +90,8 @@ class SLN_Payment_Paypal
     function isCompleted($amount)
     {
         return floatval($_POST['mc_gross']) == floatval($amount) && $_POST['payment_status'] == 'Completed';
+    }
+    function getTransactionId(){
+        return $_POST['txn_id'];
     }
 }
