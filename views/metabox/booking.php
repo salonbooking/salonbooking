@@ -21,6 +21,7 @@ $helper->showNonce($postType);
 <div class="sln-bootstrap">
 Reinvia email a <input type="text" class"form-control" name="emailto"/><button class="btn btn-success" type="submit" name="emailto_submit" value="submit">Invia</button>
 </div>
+<div class="sln-separator"></div>
 <div class="sln-bootstrap">
     <div class="row">
         <div class="col-md-3 col-sm-6">
