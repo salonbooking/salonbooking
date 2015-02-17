@@ -24,11 +24,11 @@ $helper->showNonce($postType);
         <div class="col-lg-5 col-md-5 col-sm-6 sln_accept-refuse">
             <h2><?php _e('This booking waits for confirmation!','sln')?></h2>
             <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-5 col-md-6 col-sm-6">
                <button id="booking-refuse" class="btn btn-success" data-status="<?php echo SLN_Enum_BookingStatus::CONFIRMED ?>">
                 <?php _e('Accept', 'sln') ?></button>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6"> <button id="booking-accept" class="btn btn-danger" data-status="<?php echo SLN_Enum_BookingStatus::CANCELED ?>">
+            <div class="col-lg-5 col-md-6 col-sm-6"> <button id="booking-accept" class="btn btn-danger" data-status="<?php echo SLN_Enum_BookingStatus::CANCELED ?>">
                 <?php _e('Refuse', 'sln') ?></button>
             </div>
             </div>
