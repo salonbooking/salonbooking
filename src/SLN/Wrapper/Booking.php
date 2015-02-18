@@ -98,9 +98,10 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
      */
     function setStatus($status)
     {
-        $post_id = $this->getId();
-        wp_transition_post_status($status, $this->object->post_status, $this->object->ID);
-
+        $post = array();
+        $post['ID'] = $this->getId();
+        $post['post_status'] = $status;
+        wp_update_post( $post );
         return $this;
     }
 

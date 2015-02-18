@@ -12,6 +12,10 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
             $op       = explode('-', $_GET['op']);
             $this->op = $op[0];
             if ($this->op == 'success') {
+                if($this->getPlugin()->getSettings()->isPaypalTest()){
+                    update_post_meta($booking->getId(), '_sln_booking_transaction_id', 'test');
+                    $booking->setStatus(SLN_Enum_BookingStatus::PAID);
+                }
                 $this->goToThankyou();
             } elseif ($this->op == 'notify') {
                 $booking = $this->getPlugin()->createBooking($op[1]);
@@ -21,7 +25,6 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
                 if ($ppl->reverseCheckIpn() && $ppl->isCompleted($booking->getAmount())) {
                     update_post_meta($booking->getId(), '_sln_booking_transaction_id', $ppl->getTransactionId());
                     $booking->setStatus(SLN_Enum_BookingStatus::PAID);
-                    $this->getPlugin()->sendMail('mail/payment_confirmed', compact('booking'));
                     echo('ipn success');
                 }else{
                     echo('ipn_failed');

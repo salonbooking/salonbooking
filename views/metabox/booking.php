@@ -20,7 +20,7 @@ $helper->showNonce($postType);
             </div>
         </div>
 
-        <?php if ($booking->getStatus() == SLN_Enum_BookingStatus::PENDING){ ?>
+        <?php if (($plugin->getSettings()->get('confirmation') && $booking->getStatus() == SLN_Enum_BookingStatus::PENDING){ ?>
         <div class="col-lg-5 col-md-5 col-sm-6 sln_accept-refuse">
             <h2><?php _e('This booking waits for confirmation!','sln')?></h2>
             <div class="row">
