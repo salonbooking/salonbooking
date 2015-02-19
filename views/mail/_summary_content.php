@@ -222,7 +222,7 @@ function tpl_summary_details($booking, $plugin){
                 <td height="24" align="left" valign="top"
                     style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;">
  
-<p><?php _e('Admin notes', 'sln')?>: <?php echo esc_attr($booking->getNote())?></p>
+<p><?php _e('Customer message:', 'sln')?>: <?php echo esc_attr($booking->getNote())?></p>
 <?php if ($plugin->settings->get('confirmation') && $booking->hasStatus(SLN_Enum_BookingStatus::PENDING)) : ?>
     <p><strong><?php _e('Please confirm or reject this booking from administration', 'sln') ?></strong></p>
 <?php endif ?>
