@@ -181,7 +181,16 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             }elseif($new_status == SLN_Enum_BookingStatus::CANCELED && $old_status != $new_status){
                 $this->getPlugin()->sendMail('mail/status_canceled', compact('booking'));
             }elseif($new_status == SLN_Enum_BookingStatus::PAID && $old_status != $new_status){
-                $this->getPlugin()->sendMail('mail/payment_confirmed', compact('booking'));
+                //$this->getPlugin()->sendMail('mail/payment_confirmed', compact('booking'));
+                $this->getPlugin()->sendMail(
+                    'mail/summary',
+                    array('booking' => $bb->getLastBooking())
+                );
+                $this->getPlugin()->sendMail(
+                    'mail/summary_admin',
+                    array('booking' => $bb->getLastBooking())
+                );
+
             }
         }
     }
