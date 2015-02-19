@@ -184,11 +184,11 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 //$this->getPlugin()->sendMail('mail/payment_confirmed', compact('booking'));
                 $this->getPlugin()->sendMail(
                     'mail/summary',
-                    array('booking' => $bb->getLastBooking())
+                    array('booking' => compact('booking'))
                 );
                 $this->getPlugin()->sendMail(
                     'mail/summary_admin',
-                    array('booking' => $bb->getLastBooking())
+                    array('booking' => compact('booking'))
                 );
 
             }
