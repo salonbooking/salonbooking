@@ -102,7 +102,9 @@ function tpl_summary_details($booking, $plugin){
 	<?php if($forAdmin): ?>
 
      <a  style="text-decoration:none;" href="<?php echo admin_url() ?>/post.php?post=<?php echo $booking->getId() ?>&action=edit">
-         <?php _e('Click here to approve this booking request.', 'sln') ?>
+         <?php _e('Click here to approve ', 'sln') ?>
+         <?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?>
+         <?php _e('booking request.', 'sln') ?>
      </a>
 
  	
