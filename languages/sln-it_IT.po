@@ -3,25 +3,26 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Salon Booking Italian Translation\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-22 04:05-0500\n"
-"PO-Revision-Date: 2015-01-22 17:29+0100\n"
-"Last-Translator: dimitri <dimitri@studiograssi.eu>\n"
-"Language-Team: Wordpress Chef <contact@wordpresschef.it>\n"
+"POT-Creation-Date: 2015-02-19 11:24+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
-"Language: Italian\n"
 
 #: views/settings/tab_booking.php:21 views/metabox/service.php:52
+#: views/metabox/service.php:52 views/settings/tab_booking.php:23
 msgid "From"
 msgstr "Da"
 
 #: views/settings/tab_booking.php:21 views/metabox/service.php:59
+#: views/metabox/service.php:59 views/settings/tab_booking.php:23
 msgid "To"
 msgstr "Al"
 
@@ -39,7 +40,7 @@ msgstr ""
 "Spunta questa opzione se vuoi confermare ogni singola prenotazione prima di "
 "accettarla."
 
-#: views/settings/tab_booking.php:216
+#: views/settings/tab_booking.php:216 views/settings/tab_booking.php:237
 msgid "Thank you page"
 msgstr "Pagina di ringraziamento"
 
@@ -47,7 +48,7 @@ msgstr "Pagina di ringraziamento"
 msgid "Name"
 msgstr "Nome"
 
-#: views/settings/tab_general.php:10
+#: views/settings/tab_general.php:10 views/settings/tab_general.php:10
 #, php-format
 msgid ""
 "Leaving this empty the default site name <strong>(%s)</strong> will be used"
@@ -59,7 +60,7 @@ msgstr ""
 msgid "E-Mail"
 msgstr "E-mail"
 
-#: views/settings/tab_general.php:24
+#: views/settings/tab_general.php:24 views/settings/tab_general.php:24
 #, php-format
 msgid ""
 "Leaving this empty the default site email <strong>(%s)</strong> will be used"
@@ -69,6 +70,8 @@ msgstr ""
 
 #: views/settings/tab_general.php:32 views/metabox/booking.php:40
 #: views/shortcode/salon_details.php:56 views/shortcode/salon_details.php:85
+#: views/metabox/booking.php:74 views/shortcode/salon_details.php:56
+#: views/shortcode/salon_details.php:85
 msgid "Phone"
 msgstr "Telefono"
 
@@ -76,23 +79,23 @@ msgstr "Telefono"
 msgid "Address"
 msgstr "Indirizzo"
 
-#: views/settings/tab_general.php:54
+#: views/settings/tab_general.php:54 views/settings/tab_general.php:54
 msgid "Bookings notes"
 msgstr "Note sulla prenotazione"
 
-#: views/settings/tab_general.php:71
+#: views/settings/tab_general.php:71 views/settings/tab_general.php:71
 msgid "Facebook"
 msgstr "Facebook"
 
-#: views/settings/tab_general.php:74
+#: views/settings/tab_general.php:74 views/settings/tab_general.php:74
 msgid "Twitter"
 msgstr "Twitter"
 
-#: views/settings/tab_general.php:77
+#: views/settings/tab_general.php:77 views/settings/tab_general.php:77
 msgid "Google+"
 msgstr "Google+"
 
-#: views/settings/tab_payments.php:4
+#: views/settings/tab_payments.php:4 views/settings/tab_payments.php:4
 msgid "Enable online payments"
 msgstr "Attiva i pagamenti online"
 
@@ -100,46 +103,50 @@ msgstr "Attiva i pagamenti online"
 msgid "Enable \"pay later\" option"
 msgstr "Attiva l'opzione \"Pagherò dopo\""
 
-#: views/settings/tab_payments.php:14
+#: views/settings/tab_payments.php:14 views/settings/tab_payments.php:18
 msgid "Set your PayPal email address"
 msgstr "Imposta l'indirizzo email del tuo account PayPal"
 
-#: views/settings/tab_payments.php:27
+#: views/settings/tab_payments.php:27 views/settings/tab_payments.php:33
 msgid "Enable paypal sandbox"
 msgstr "Attiva il Sandbox di PayPal"
 
 #: views/metabox/booking.php:13 views/shortcode/salon_details.php:53
-#: views/shortcode/salon_details.php:82
+#: views/shortcode/salon_details.php:82 views/metabox/booking.php:47
+#: views/shortcode/salon_details.php:53 views/shortcode/salon_details.php:82
 msgid "Firstname"
 msgstr "Nome"
 
 #: views/metabox/booking.php:22 views/shortcode/salon_details.php:54
-#: views/shortcode/salon_details.php:83
+#: views/shortcode/salon_details.php:83 views/metabox/booking.php:56
+#: views/shortcode/salon_details.php:54 views/shortcode/salon_details.php:83
 msgid "Lastname"
 msgstr "Cognome"
 
 #: views/metabox/booking.php:31 views/shortcode/salon_details.php:55
-#: views/shortcode/salon_details.php:84
+#: views/shortcode/salon_details.php:84 views/metabox/booking.php:65
+#: views/shortcode/salon_details.php:55 views/shortcode/salon_details.php:84
 msgid "E-mail"
 msgstr "E-mail"
 
-#: views/metabox/booking.php:123
+#: views/metabox/booking.php:123 views/metabox/booking.php:158
 msgid "Amount"
 msgstr "Importo"
 
-#: views/metabox/booking.php:132
+#: views/metabox/booking.php:132 views/metabox/booking.php:167
 msgid "n.a."
 msgstr "n.a."
 
-#: views/shortcode/salon_thankyou.php:24
+#: views/shortcode/salon_thankyou.php:24 views/shortcode/salon_thankyou.php:24
 msgid "Booking is pending"
 msgstr "Prenotazione in sospeso"
 
+#: views/shortcode/salon_thankyou.php:24 views/mail/status_confirmed.php:9
 #: views/shortcode/salon_thankyou.php:24
 msgid "Booking confirmed"
 msgstr "Prenotazione confermata"
 
-#: views/shortcode/salon_thankyou.php:37
+#: views/shortcode/salon_thankyou.php:37 views/shortcode/salon_thankyou.php:38
 #, php-format
 msgid ""
 "If you don't receive any news from us or you need to change your reservation "
@@ -148,7 +155,7 @@ msgstr ""
 "Se non ricevi alcuna nostra comunicazione o hai necessità di cambiare la tua "
 "prenotazione ti preghiamo di telefonare allo %s oppure inviaci una email a %s"
 
-#: views/shortcode/salon_thankyou.php:41
+#: views/shortcode/salon_thankyou.php:41 views/shortcode/salon_thankyou.php:42
 #, php-format
 msgid ""
 "If you need to change your reservation please call the %s or send an email "
@@ -157,423 +164,484 @@ msgstr ""
 "Se hai la necessità di cambiare la tua prenotazione per favore chiama lo %s "
 "oppure inviaci una email a %s"
 
-#: views/shortcode/_form_actions.php:7
+#: views/shortcode/_form_actions.php:7 views/shortcode/_form_actions.php:7
 msgid "Go next"
 msgstr "Avanti"
 
-#: views/shortcode/_form_actions.php:37
+#: views/shortcode/_form_actions.php:37 views/shortcode/_form_actions.php:37
 #, php-format
 msgid "step %s of %s"
 msgstr ""
 
-#: views/shortcode/salon_details.php:57
+#: views/shortcode/salon_details.php:57 views/shortcode/salon_details.php:57
 msgid "Password"
 msgstr ""
 
-#: views/shortcode/salon_details.php:58
+#: views/shortcode/salon_details.php:58 views/shortcode/salon_details.php:58
 msgid "Confirm your password"
 msgstr "Ripeti la password"
 
-#: views/shortcode/salon_summary.php:49
+#: views/shortcode/salon_summary.php:49 views/shortcode/salon_summary.php:49
 msgid "Leave a message"
 msgstr "Inviaci un messaggio"
 
-#: views/shortcode/salon_summary.php:53
+#: views/shortcode/salon_summary.php:53 views/shortcode/salon_summary.php:53
 msgid "Finalize"
 msgstr "Completa"
 
-#: views/shortcode/salon_date.php:12
+#: views/shortcode/salon_date.php:12 views/shortcode/salon_date.php:12
 #, php-format
 msgid "you can book by %s up to %s before"
 msgstr "puoi prenotare da un minimo di %s ad un massimo di %s in anticipo"
 
-#: views/shortcode/salon_date.php:17
+#: views/shortcode/salon_date.php:17 views/shortcode/salon_date.php:17
 #, php-format
 msgid "you can book by %s before"
 msgstr "puoi prenotare da un minimo di %s in anticipo"
 
-#: views/shortcode/salon_date.php:20
+#: views/shortcode/salon_date.php:20 views/shortcode/salon_date.php:20
 #, php-format
 msgid "you can book up to %s before"
 msgstr "puoi prenotare fino ad un massimo di %s in anticipo"
 
-#: views/shortcode/salon_date.php:28
+#: views/shortcode/salon_date.php:28 views/shortcode/salon_date.php:28
 msgid "Booking is disabled"
 msgstr "Disabilita le prenotazioni online"
 
-#: src/SLN/Wrapper/Service.php:97
+#: src/SLN/Wrapper/Service.php:97 src/SLN/Wrapper/Service.php:98
 msgid "on "
 msgstr "il"
 
-#: src/SLN/Wrapper/Service.php:101
+#: src/SLN/Wrapper/Service.php:101 src/SLN/Wrapper/Service.php:102
 msgid " from "
 msgstr "dalle"
 
-#: src/SLN/Wrapper/Service.php:104
+#: src/SLN/Wrapper/Service.php:104 src/SLN/Wrapper/Service.php:105
 msgid " to "
 msgstr "alle"
 
-#: src/SLN/Metabox/Booking.php:10
+#: src/SLN/Metabox/Booking.php:10 src/SLN/Metabox/Booking.php:10
 msgid "Booking Details"
 msgstr "Dettagli della prenotazione"
 
-#: src/SLN/Metabox/Service.php:10
+#: src/SLN/Metabox/Service.php:10 src/SLN/Metabox/Service.php:10
 msgid "Service Details"
 msgstr "Dettagli del servizio"
 
-#: src/SLN/Metabox/Service.php:19
+#: src/SLN/Metabox/Service.php:19 src/SLN/Metabox/Service.php:19
 msgid "Service description"
 msgstr "Descrizione del servizio"
 
-#: src/SLN/Action/Ajax/CheckDate.php:37
+#: src/SLN/Action/Ajax/CheckDate.php:37 src/SLN/Action/Ajax/CheckDate.php:37
 #, php-format
 msgid "the date is too old, the minimum allowed is %s"
 msgstr ""
 
-#: src/SLN/Action/Ajax/CheckDate.php:40
+#: src/SLN/Action/Ajax/CheckDate.php:40 src/SLN/Action/Ajax/CheckDate.php:40
 #, php-format
 msgid "the date is too far, the maximum allowed is %s"
 msgstr ""
 
-#: src/SLN/Action/Ajax/CheckDate.php:43
+#: src/SLN/Action/Ajax/CheckDate.php:43 src/SLN/Action/Ajax/CheckDate.php:43
 #, php-format
 msgid "we are not available at %s"
 msgstr "non siamo disponibili alle %s"
 
-#: src/SLN/Action/Ajax/CheckDate.php:49
+#: src/SLN/Action/Ajax/CheckDate.php:49 src/SLN/Action/Ajax/CheckDate.php:49
 msgid ""
 "you can't book in this day because there aren't free places, please choose a "
 "different day"
 msgstr ""
 
-#: src/SLN/Action/Ajax/CheckDate.php:56
+#: src/SLN/Action/Ajax/CheckDate.php:56 src/SLN/Action/Ajax/CheckDate.php:56
 msgid ""
 "you can't book in this hour because there aren't free places, please choose "
 "a different hour"
 msgstr ""
 
 #: src/SLN/Shortcode/Salon/ServicesStep.php:20
+#: src/SLN/Shortcode/Salon/ServicesStep.php:20
 msgid "You must choose at least one service"
 msgstr "Per favore seleziona almeno un servizio"
 
+#: src/SLN/Shortcode/Salon/DetailsStep.php:24
 #: src/SLN/Shortcode/Salon/DetailsStep.php:24
 msgid "firstname can't be empty"
 msgstr "il campo \"Nome\" non può essere vuoto"
 
 #: src/SLN/Shortcode/Salon/DetailsStep.php:26
+#: src/SLN/Shortcode/Salon/DetailsStep.php:27
 msgid "lastname can't be empty"
 msgstr "Il campo \"Cognome\" non può essere vuoto"
 
 #: src/SLN/Shortcode/Salon/DetailsStep.php:28
+#: src/SLN/Shortcode/Salon/DetailsStep.php:30
 msgid "email can't be empty"
 msgstr "Il campo \"E-mail\" non può essere vuoto"
 
 #: src/SLN/Shortcode/Salon/DetailsStep.php:30
+#: src/SLN/Shortcode/Salon/DetailsStep.php:33
 msgid "phone can't be empty"
 msgstr "Il campo \"Telefono\" non può essere vuoto"
 
 #: src/SLN/Shortcode/Salon/DetailsStep.php:32
+#: src/SLN/Shortcode/Salon/DetailsStep.php:36
 msgid "email is not valid"
 msgstr "L'indirizzo e-mail non è valido"
 
 #: src/SLN/Shortcode/Salon/DetailsStep.php:40
+#: src/SLN/Shortcode/Salon/DetailsStep.php:45
 msgid "E-mail exists"
 msgstr "Questo indirizzo email già esiste"
 
 #: src/SLN/Shortcode/Salon/DetailsStep.php:42
+#: src/SLN/Shortcode/Salon/DetailsStep.php:48
 msgid "Passwords are different"
 msgstr "Le password non coincidono"
 
-#: src/SLN/Helper/Availability.php:142
+#: src/SLN/Helper/Availability.php:142 src/SLN/Helper/Availability.php:149
 msgid "this service is not available "
 msgstr "Questo servizio non è disponibile"
 
-#: src/SLN/Helper/Availability.php:152
+#: src/SLN/Helper/Availability.php:152 src/SLN/Helper/Availability.php:159
 msgid "this service is full in this hour"
 msgstr "Questo servizio è al completo in questo orario"
 
-#: src/SLN/PostType/Booking.php:34
+#: src/SLN/PostType/Booking.php:34 src/SLN/PostType/Booking.php:34
 msgid "Booking ID"
 msgstr "Booking ID"
 
-#: src/SLN/PostType/Booking.php:35
+#: src/SLN/PostType/Booking.php:35 src/SLN/PostType/Booking.php:35
 msgid "User name"
 msgstr "Nome utente"
 
-#: src/SLN/PostType/Booking.php:36
+#: src/SLN/PostType/Booking.php:36 src/SLN/PostType/Booking.php:36
 msgid "Submitted"
 msgstr "Inviata"
 
-#: src/SLN/PostType/Booking.php:37
+#: src/SLN/PostType/Booking.php:37 src/SLN/PostType/Booking.php:37
 msgid "Status"
 msgstr "Status"
 
-#: src/SLN/PostType/Booking.php:38
+#: src/SLN/PostType/Booking.php:38 src/SLN/PostType/Booking.php:38
 msgid "Booking Date"
 msgstr "Data della prenotazione"
 
-#: src/SLN/PostType/Booking.php:39
+#: src/SLN/PostType/Booking.php:39 src/SLN/PostType/Booking.php:39
 msgid "Booking Price"
 msgstr "Importo della prenotazione"
 
-#: src/SLN/PostType/Booking.php:67
+#: src/SLN/PostType/Booking.php:67 src/SLN/PostType/Booking.php:71
 msgid "Enter booking name"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:80 src/SLN/PostType/Booking.php:84
+#: src/SLN/PostType/Booking.php:84 src/SLN/PostType/Booking.php:88
 msgid "Booking updated."
 msgstr "Prenotazione aggiornata"
 
-#: src/SLN/PostType/Booking.php:86
+#: src/SLN/PostType/Booking.php:86 src/SLN/PostType/Booking.php:90
 #, php-format
 msgid "Booking restored to revision from %s"
 msgstr ""
 
-#: src/SLN/PostType/Booking.php:90
+#: src/SLN/PostType/Booking.php:90 src/SLN/PostType/Booking.php:94
 msgid "Booking published."
 msgstr "Prenotazione inserita"
 
-#: src/SLN/PostType/Booking.php:92
+#: src/SLN/PostType/Booking.php:92 src/SLN/PostType/Booking.php:96
 msgid "Booking saved."
 msgstr "Prenotazione aggiornata"
 
-#: src/SLN/PostType/Booking.php:94
+#: src/SLN/PostType/Booking.php:94 src/SLN/PostType/Booking.php:98
 msgid "Booking submitted."
 msgstr "Prenotazione inserita"
 
-#: src/SLN/PostType/Booking.php:98
+#: src/SLN/PostType/Booking.php:98 src/SLN/PostType/Booking.php:102
 #, php-format
 msgid "Booking scheduled for: <strong>%1$s</strong>."
 msgstr "Prenotazione fissata per il: <strong>%1$s</strong>."
 
 #: src/SLN/PostType/Booking.php:101 src/SLN/PostType/Service.php:83
+#: src/SLN/PostType/Service.php:83 src/SLN/PostType/Booking.php:105
 msgid "M j, Y @ G:i"
 msgstr ""
 
-#: src/SLN/PostType/Booking.php:104
+#: src/SLN/PostType/Booking.php:104 src/SLN/PostType/Booking.php:108
 msgid "Booking draft updated."
 msgstr "Bozza di prenotazione aggiornata"
 
-#: src/SLN/PostType/Booking.php:115
+#: src/SLN/PostType/Booking.php:115 src/SLN/PostType/Booking.php:119
 msgid "This is where bookings are stored."
 msgstr "Qui vengono archiviate le prenotazioni"
 
 #: src/SLN/PostType/Booking.php:134 src/SLN/PostType/Booking.php:138
+#: src/SLN/PostType/Booking.php:138 src/SLN/PostType/Booking.php:142
 msgid "Bookings"
 msgstr "Prenotazioni"
 
 #: src/SLN/PostType/Booking.php:135 src/SLN/PostType/Booking.php:173
+#: src/SLN/PostType/Booking.php:139 src/SLN/PostType/Booking.php:207
 msgid "Booking"
 msgstr "Prenotazioni"
 
 #: src/SLN/PostType/Booking.php:136 src/SLN/PostType/Service.php:111
 #: src/SLN/Admin/Settings.php:28 src/SLN/Admin/Settings.php:29
+#: src/SLN/Admin/Settings.php:28 src/SLN/Admin/Settings.php:29
+#: src/SLN/PostType/Service.php:111 src/SLN/PostType/Booking.php:140
 msgid "Salon"
 msgstr ""
 
-#: src/SLN/PostType/Booking.php:137
+#: src/SLN/PostType/Booking.php:137 src/SLN/PostType/Booking.php:141
 msgid "Salon Booking"
 msgstr ""
 
-#: src/SLN/PostType/Booking.php:139
+#: src/SLN/PostType/Booking.php:139 src/SLN/PostType/Booking.php:143
 msgid "Add Booking"
 msgstr "Aggiungi una prenotazione"
 
-#: src/SLN/PostType/Booking.php:140
+#: src/SLN/PostType/Booking.php:140 src/SLN/PostType/Booking.php:144
 msgid "Add New Booking"
 msgstr "Aggiungi nuova prenotazione"
 
-#: src/SLN/PostType/Booking.php:141
+#: src/SLN/PostType/Booking.php:141 src/SLN/PostType/Booking.php:145
 msgid "Edit Booking"
 msgstr "Modifica prenotazione"
 
-#: src/SLN/PostType/Booking.php:142
+#: src/SLN/PostType/Booking.php:142 src/SLN/PostType/Booking.php:146
 msgid "New Booking"
 msgstr ""
 
-#: src/SLN/PostType/Booking.php:143
+#: src/SLN/PostType/Booking.php:143 src/SLN/PostType/Booking.php:147
 msgid "View Booking"
 msgstr "Vedi la prenotazione"
 
-#: src/SLN/PostType/Booking.php:144
+#: src/SLN/PostType/Booking.php:144 src/SLN/PostType/Booking.php:148
 msgid "Search Bookings"
 msgstr "Cerca le prenotazioni"
 
-#: src/SLN/PostType/Booking.php:145
+#: src/SLN/PostType/Booking.php:145 src/SLN/PostType/Booking.php:149
 msgid "No bookings found"
 msgstr "Non sono state trovate prenotazioni"
 
-#: src/SLN/PostType/Booking.php:146
+#: src/SLN/PostType/Booking.php:146 src/SLN/PostType/Booking.php:150
 msgid "No bookings found in trash"
 msgstr ""
 
-#: src/SLN/PostType/Booking.php:147
+#: src/SLN/PostType/Booking.php:147 src/SLN/PostType/Booking.php:151
 msgid "Booking Archive"
 msgstr "Archivio prenotazioni"
 
-#: src/SLN/PostType/Booking.php:172
+#: src/SLN/PostType/Booking.php:172 src/SLN/PostType/Booking.php:206
 msgid "Save Booking"
 msgstr "Salva prenotazione"
 
-#: src/SLN/PostType/Service.php:23
+#: src/SLN/PostType/Service.php:23 src/SLN/PostType/Service.php:23
 msgid "Duration"
 msgstr "Durata"
 
-#: src/SLN/PostType/Service.php:24
+#: src/SLN/PostType/Service.php:24 src/SLN/PostType/Service.php:24
 msgid "Price"
 msgstr "Prezzo"
 
-#: src/SLN/PostType/Service.php:49
+#: src/SLN/PostType/Service.php:49 src/SLN/PostType/Service.php:49
 msgid "Enter service name"
 msgstr "Scrivi il nome del servizio"
 
 #: src/SLN/PostType/Service.php:62 src/SLN/PostType/Service.php:66
+#: src/SLN/PostType/Service.php:62 src/SLN/PostType/Service.php:66
 msgid "Service updated."
 msgstr "Servizio aggiornato"
 
-#: src/SLN/PostType/Service.php:68
+#: src/SLN/PostType/Service.php:68 src/SLN/PostType/Service.php:68
 #, php-format
 msgid "Service restored to revision from %s"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:72
+#: src/SLN/PostType/Service.php:72 src/SLN/PostType/Service.php:72
 msgid "Service published."
 msgstr "Servizio pubblicato"
 
-#: src/SLN/PostType/Service.php:74
+#: src/SLN/PostType/Service.php:74 src/SLN/PostType/Service.php:74
 msgid "Service saved."
 msgstr "Servizio salvato"
 
-#: src/SLN/PostType/Service.php:76
+#: src/SLN/PostType/Service.php:76 src/SLN/PostType/Service.php:76
 msgid "Service submitted."
 msgstr "Servizio inviato"
 
-#: src/SLN/PostType/Service.php:80
+#: src/SLN/PostType/Service.php:80 src/SLN/PostType/Service.php:80
 #, php-format
 msgid "Service scheduled for: <strong>%1$s</strong>. "
 msgstr "Servizio programmato per: <strong>%1$s</strong>."
 
-#: src/SLN/PostType/Service.php:86
+#: src/SLN/PostType/Service.php:86 src/SLN/PostType/Service.php:86
 msgid "Service draft updated."
 msgstr ""
 
 #: src/SLN/PostType/Service.php:109 src/SLN/PostType/Service.php:113
+#: src/SLN/PostType/Service.php:109 src/SLN/PostType/Service.php:113
 msgid "Services"
 msgstr "Servizi"
 
-#: src/SLN/PostType/Service.php:110
+#: src/SLN/PostType/Service.php:110 src/SLN/PostType/Service.php:110
 msgid "Service"
 msgstr "Servizio"
 
-#: src/SLN/PostType/Service.php:112
+#: src/SLN/PostType/Service.php:112 src/SLN/PostType/Service.php:112
 msgid "Salon Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:114
+#: src/SLN/PostType/Service.php:114 src/SLN/PostType/Service.php:114
 msgid "Add Service"
 msgstr "Aggiungi servizio"
 
-#: src/SLN/PostType/Service.php:115
+#: src/SLN/PostType/Service.php:115 src/SLN/PostType/Service.php:115
 msgid "Add New Service"
 msgstr "Aggiungi nuovo servizio"
 
-#: src/SLN/PostType/Service.php:116
+#: src/SLN/PostType/Service.php:116 src/SLN/PostType/Service.php:116
 msgid "Edit Service"
 msgstr "Modifica il servizio"
 
-#: src/SLN/PostType/Service.php:117
+#: src/SLN/PostType/Service.php:117 src/SLN/PostType/Service.php:117
 msgid "New Service"
 msgstr "Nuovo servizio"
 
-#: src/SLN/PostType/Service.php:118
+#: src/SLN/PostType/Service.php:118 src/SLN/PostType/Service.php:118
 msgid "View Service"
 msgstr "Visualizza il servizio"
 
-#: src/SLN/PostType/Service.php:119
+#: src/SLN/PostType/Service.php:119 src/SLN/PostType/Service.php:119
 msgid "Search Services"
 msgstr "Cerca i servizi"
 
-#: src/SLN/PostType/Service.php:120
+#: src/SLN/PostType/Service.php:120 src/SLN/PostType/Service.php:120
 msgid "No services found"
 msgstr "non sono stati trovati servizi"
 
-#: src/SLN/PostType/Service.php:121
+#: src/SLN/PostType/Service.php:121 src/SLN/PostType/Service.php:121
 msgid "No services found in trash"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:122
+#: src/SLN/PostType/Service.php:122 src/SLN/PostType/Service.php:122
 msgid "Services Archive"
 msgstr ""
 
-#: src/SLN/Enum/BookingStatus.php:25
+#: src/SLN/Enum/BookingStatus.php:25 src/SLN/Enum/BookingStatus.php:41
 msgid "ERROR"
 msgstr ""
 
-#: src/SLN/Enum/BookingStatus.php:26
+#: src/SLN/Enum/BookingStatus.php:26 src/SLN/Enum/BookingStatus.php:42
 msgid "Pending"
 msgstr "In sospeso"
 
-#: src/SLN/Enum/BookingStatus.php:27
+#: src/SLN/Enum/BookingStatus.php:27 src/SLN/Enum/BookingStatus.php:43
 msgid "Paid"
 msgstr "Pagato"
 
-#: src/SLN/Enum/BookingStatus.php:28
+#: src/SLN/Enum/BookingStatus.php:28 src/SLN/Enum/BookingStatus.php:44
 msgid "Pay later"
 msgstr "Pago dopo"
 
-#: src/SLN/Enum/BookingStatus.php:29
+#: src/SLN/Enum/BookingStatus.php:29 src/SLN/Enum/BookingStatus.php:45
 msgid "Canceled"
 msgstr "Cancellato"
 
-#: src/SLN/Enum/BookingStatus.php:30
+#: src/SLN/Enum/BookingStatus.php:30 src/SLN/Enum/BookingStatus.php:46
 msgid "Confirmed"
 msgstr "Confermato"
 
-#: src/SLN/Formatter.php:28
+#: src/SLN/Formatter.php:28 src/SLN/Formatter.php:28
 msgid "l M j, Y @ G:i"
 msgstr ""
 
-#: src/SLN/Formatter.php:38
+#: src/SLN/Formatter.php:38 src/SLN/Formatter.php:39
 msgid "M j, Y"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:38
+#: src/SLN/Admin/Settings.php:38 src/SLN/Admin/Settings.php:38
 msgid "Salon Settings"
 msgstr "Impostazioni Salon"
 
-#: src/SLN/Admin/Settings.php:39
+#: src/SLN/Admin/Settings.php:39 src/SLN/Admin/Settings.php:39
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: src/SLN/Admin/Settings.php:128
+#: src/SLN/Admin/Settings.php:128 src/SLN/Admin/Settings.php:128
 msgid "remember to customize your settings"
 msgstr "ricordati di personalizzare le impostazioni del tuo Salon"
 
-#: src/SLN/Admin/Settings.php:129
+#: src/SLN/Admin/Settings.php:129 src/SLN/Admin/Settings.php:129
 msgid "Reset completed with success"
 msgstr "Reset completato con successo"
 
-#: src/SLN/Admin/Settings.php:156
+#: src/SLN/Admin/Settings.php:156 src/SLN/Admin/Settings.php:156
 msgid "general settings are updated"
 msgstr "Le impostazioni generali sono state aggiornate"
 
 #: src/SLN/Admin/Settings.php:157 src/SLN/Admin/Settings.php:192
-#: src/SLN/Admin/Settings.php:216
+#: src/SLN/Admin/Settings.php:216 src/SLN/Admin/Settings.php:157
+#: src/SLN/Admin/Settings.php:192 src/SLN/Admin/Settings.php:216
 msgid "Update completed with success"
 msgstr "Aggiornamento completato con successo"
 
-#: src/SLN/Admin/Settings.php:191
+#: src/SLN/Admin/Settings.php:191 src/SLN/Admin/Settings.php:191
 msgid "booking settings are updated"
 msgstr "Le impostazioni della prenotazione sono state aggiornate"
 
-#: src/SLN/Admin/Settings.php:215
+#: src/SLN/Admin/Settings.php:215 src/SLN/Admin/Settings.php:215
 msgid "payments settings are updated"
 msgstr "Le impostazioni sui pagamenti sono state aggiornate"
 
-#: src/SLN/Admin/Settings.php:231
+#: src/SLN/Admin/Settings.php:231 src/SLN/Admin/Settings.php:231
 msgid "try again"
 msgstr "riprova"
 
-#: src/SLN/Admin/Settings.php:231
+#: src/SLN/Admin/Settings.php:231 src/SLN/Admin/Settings.php:231
 msgid "Page verification failed"
 msgstr "Verifica della pagina fallita"
+
+#: src/SLN/Admin/Calendar.php:21
+msgid "Salon Calendar"
+msgstr ""
+
+#: src/SLN/Admin/Calendar.php:22
+msgid "Calendar"
+msgstr ""
+
+#: views/mail/status_canceled.php:9
+msgid "Booking Canceled"
+msgstr ""
+
+#: views/settings/tab_booking.php:141
+msgid "Online bookings available on:"
+msgstr ""
+
+#: views/settings/tab_booking.php:232
+msgid "Bookings confirmation"
+msgstr ""
+
+#: views/settings/tab_booking.php:233
+msgid "Select this option if you want to confirm every single booking."
+msgstr ""
+
+#: views/settings/tab_general.php:7
+msgid "Your salon name"
+msgstr ""
+
+#: views/settings/tab_general.php:21
+msgid "Salon contact e-mail"
+msgstr ""
+
+#: views/settings/tab_general.php:32
+msgid "Salon telephone number"
+msgstr ""
+
+#: views/settings/tab_general.php:40
+msgid "Salon address"
+msgstr ""
+
+#: views/settings/tab_payments.php:8
+msgid "Enable \"Pay later\" option"
+msgstr ""
