@@ -3387,6 +3387,20 @@ h2.nav-tab-wrapper img {
 #sln_service-details s h3:nth-child(3) {
   padding-left: 0;
 }
+#sln_service-details .sln-service-price-time input[type='text'] {
+  padding: 3px 10px;
+  height: auto;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #sln_service-details .sln-service-price-time input[type='text'] {
+    height: 34px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  #sln_service-details .sln-service-price-time .col-xs-6:nth-child(4) {
+    width: 100%;
+  }
+}
 #sln_service-details #_sln_service_secondary {
   display: block;
 }
@@ -3417,7 +3431,7 @@ h2.nav-tab-wrapper img {
 }
 @media only screen and (min-width: 951px) and (max-width: 1279px) {
   #sln_service-details .services-notavailable label {
-    margin-right: 1em;
+    margin-right: .5em;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -3433,6 +3447,12 @@ h2.nav-tab-wrapper img {
 }
 #sln_service-details .services-notavailable-h label {
   margin-right: 2em;
+}
+@media only screen and (max-width: 767px) {
+  #sln_service-details .services-notavailable-h label {
+    width: 100%;
+    margin-bottom: 1em;
+  }
 }
 .post-type-sln_service textarea#excerpt {
   min-height: 150px;

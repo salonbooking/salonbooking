@@ -1,28 +1,28 @@
 <?php
 $helper->showNonce($postType);
 ?>
-<div class="row">
-    <div class="col-md-1 col-sm-3">
+<div class="row sln-service-price-time">
+    <div class="col-xs-6 col-md-2 col-sm-2 col-lg-1">
         <div class="form-group">
             <label><?php _e('Price', 'sln') . ' (' . $settings->getCurrencySymbol() . ')' ?></label>
             <?php SLN_Form::fieldText($helper->getFieldName($postType, 'price'), $service->getPrice()); ?>
         </div>
     </div>
-    <div class="col-md-2 col-sm-3">
+    <div class="col-xs-6 col-md-3 col-sm-2 col-lg-2">
         <div class="form-group">
 
             <label><?php _e('Unit per hour', 'sln'); ?></label>
             <?php SLN_Form::fieldNumeric($helper->getFieldName($postType, 'unit'), $service->getUnitPerHour()); ?>
         </div>
     </div>
-    <div class="col-md-2 col-sm-3">
+    <div class="col-xs-6 col-md-3 col-sm-2 col-lg-2">
         <div class="form-group">
 
             <label><?php _e('Duration', 'sln'); ?></label>
             <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'duration'), $service->getDuration()); ?>
         </div>
     </div>
-    <div class="col-md-4 col-sm-8">
+    <div class="col-xs-6 col-md-4 col-sm-6 col-lg-4">
         <div class="form-group">
             <label><?php _e('Secondary', 'sln'); ?></label>
             <?php SLN_Form::fieldCheckbox($helper->getFieldName($postType, 'secondary'), $service->isSecondary()) ?>
@@ -47,7 +47,7 @@ $days = SLN_Func::getDays();
             </label>
         <?php } ?>
     </div>
-    <div class="col-md-5  services-notavailable-h">
+    <div class="col-xs-6 col-md-3 col-lg-2 col-sm-3  services-notavailable-h">
         <label>
             <?php echo __('From', 'sln') ?>
             <?php SLN_Form::fieldTime(
@@ -55,6 +55,8 @@ $days = SLN_Func::getDays();
                 $service->getNotAvailableFrom()
             ) ?>
         </label>
+    </div>
+    <div class="col-xs-6 col-md-3 col-lg-2 col-sm-3  services-notavailable-h">
         <label>
             <?php echo __('To', 'sln') ?>
             <?php SLN_Form::fieldTime(
