@@ -9,15 +9,15 @@ function salon_date_hoursbefore($hoursBefore)
 {
     if ($hoursBefore->from && $hoursBefore->to) : ?>
         <em><?php echo sprintf(
-                __('you can book by %s up to %s before', 'sln'),
+                __('you can book from %s up to %s in advance', 'sln'),
                 $hoursBefore->from,
                 $hoursBefore->to
             ) ?></em>
     <?php elseif ($hoursBefore->from): ?>
-        <em><?php echo sprintf(__('you can book by %s before', 'sln'), $hoursBefore->from) ?></em>
+        <em><?php echo sprintf(__('you can book %s in advance', 'sln'), $hoursBefore->from) ?></em>
     <?php
     elseif ($hoursBefore->to) : ?>
-        <em><?php echo sprintf(__('you can book up to %s before', 'sln'), $hoursBefore->to) ?></em>
+        <em><?php echo sprintf(__('you can book up to %s in advance', 'sln'), $hoursBefore->to) ?></em>
     <?php endif;
 }
 
