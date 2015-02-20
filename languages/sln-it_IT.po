@@ -1026,11 +1026,11 @@ msgstr ""
 
 #: views/shortcode/salon_date.php:46 views/shortcode/salon_date.php:46
 msgid "select a day"
-msgstr ""
+msgstr "scegli un giorno"
 
 #: views/shortcode/salon_date.php:57 views/shortcode/salon_date.php:57
 msgid "select an hour"
-msgstr ""
+msgstr "scegli un'ora"
 
 #: views/shortcode/salon_thankyou.php:11 views/shortcode/salon_thankyou.php:11
 msgid "Booking status"
