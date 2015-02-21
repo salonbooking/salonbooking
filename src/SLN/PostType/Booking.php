@@ -173,24 +173,19 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
         }
         add_action( 'transition_post_status', array($this,'transitionPostStatus'), 10, 3 );
     }
+
     public function transitionPostStatus($new_status, $old_status, $post){
         if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
-            $booking = $this->getPlugin()->createBooking($post);
+            $p = $this->getPlugin();
+            $booking = $p->createBooking($post);
             if($new_status == SLN_Enum_BookingStatus::CONFIRMED && $old_status != $new_status){
-                $this->getPlugin()->sendMail('mail/status_confirmed', compact('booking'));
+                $p->sendMail('mail/status_confirmed', compact('booking'));
             }elseif($new_status == SLN_Enum_BookingStatus::CANCELED && $old_status != $new_status){
-                $this->getPlugin()->sendMail('mail/status_canceled', compact('booking'));
+                $p->sendMail('mail/status_canceled', compact('booking'));
             }elseif($new_status == SLN_Enum_BookingStatus::PAID && $old_status != $new_status){
                 //$this->getPlugin()->sendMail('mail/payment_confirmed', compact('booking'));
-                $this->getPlugin()->sendMail(
-                    'mail/summary',
-                    array('booking' => compact('booking'))
-                );
-                $this->getPlugin()->sendMail(
-                    'mail/summary_admin',
-                    array('booking' => compact('booking'))
-                );
-
+                $p->sendMail('mail/summary', compact('booking'));
+                $p->sendMail('mail/summary_admin', compact('booking'));
             }
         }
     }
