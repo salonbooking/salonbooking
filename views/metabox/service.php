@@ -2,7 +2,7 @@
 $helper->showNonce($postType);
 ?>
 <div class="row sln-service-price-time">
-    <div class="col-xs-6 col-md-2 col-sm-2 col-lg-1">
+    <div class="col-xs-6 col-md-2 col-sm-2 col-lg-2">
         <div class="form-group">
             <label><?php _e('Price', 'sln') . ' (' . $settings->getCurrencySymbol() . ')' ?></label>
             <?php SLN_Form::fieldText($helper->getFieldName($postType, 'price'), $service->getPrice()); ?>
@@ -22,7 +22,7 @@ $helper->showNonce($postType);
             <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'duration'), $service->getDuration()); ?>
         </div>
     </div>
-    <div class="col-xs-6 col-md-4 col-sm-6 col-lg-4">
+    <div class="col-xs-6 col-md-4 col-sm-6 col-lg-6">
         <div class="form-group">
             <label><?php _e('Secondary', 'sln'); ?></label>
             <?php SLN_Form::fieldCheckbox($helper->getFieldName($postType, 'secondary'), $service->isSecondary()) ?>
