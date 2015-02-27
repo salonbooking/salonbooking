@@ -58,7 +58,7 @@ class SLN_Plugin
         if (!session_id()) {
             session_start();
         }
-        load_plugin_textdomain(self::TEXT_DOMAIN, false, '/salon/languages');
+        load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME).'/languages');
         wp_enqueue_style('salon', SLN_PLUGIN_URL . '/css/salon.css', array(), SLN_VERSION, 'all');
    //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
         wp_enqueue_script('smalot-datepicker', SLN_PLUGIN_URL . '/js/bootstrap-datetimepicker.js', array('jquery'), '20140711', true);
