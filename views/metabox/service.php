@@ -31,7 +31,7 @@ $helper->showNonce($postType);
     </div>
     <div class="sln-clear"></div>
 </div>
-<h3>Not Available At</h3>
+<h3><?php _e('Not Available At','sln'); ?></h3>
 <?php
 $days = SLN_Func::getDays();
 ?>
