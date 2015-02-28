@@ -26,7 +26,7 @@ $helper->showNonce($postType);
         <div class="form-group">
             <label><?php _e('Secondary', 'sln'); ?></label>
             <?php SLN_Form::fieldCheckbox($helper->getFieldName($postType, 'secondary'), $service->isSecondary()) ?>
-            <br/><em>Select this if you want this service considered as secondary level service</em>
+            <br/><em><?php _e('Select this if you want this service considered as secondary level service','sln'); ?></em>
         </div>
     </div>
     <div class="sln-clear"></div>
