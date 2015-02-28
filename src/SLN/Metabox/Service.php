@@ -32,7 +32,7 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
         </label>
         <textarea rows="1" cols="40" name="excerpt"
                   id="excerpt"><?php echo $post->post_excerpt; // textarea_escaped ?></textarea>
-        <p><?php _e('something different', 'sln'); ?></p>
+        <p><?php _e('A very short description of this service. It is optional', 'sln'); ?></p>
     <?php
     }
 
