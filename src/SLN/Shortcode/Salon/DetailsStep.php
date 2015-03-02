@@ -38,6 +38,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
 
 
                 if ($this->getErrors()) {
+                    $this->bindValues($values);
                     return false;
                 }
 
@@ -48,6 +49,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
                     $this->addError(__('Passwords are different', 'sln'));
                 }
                 if ($this->getErrors()) {
+                    $this->bindValues($values);
                     return false;
                 }
                 $errors = wp_create_user($values['email'], $values['password'], $values['email']);
@@ -60,6 +62,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
                 }
                 wp_new_user_notification($errors, $values['password']);
                 if (!$this->dispatchAuth($values['email'], $values['password'])) {
+                    $this->bindValues($values);
                     return false;
                 }
             }else{

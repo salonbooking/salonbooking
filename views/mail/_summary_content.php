@@ -97,7 +97,7 @@ function tpl_summary_details($booking, $plugin){
                     
 
                 
-<?php if ($plugin->settings->get('confirmation') && $booking->hasStatus(SLN_Enum_BookingStatus::PENDING) ) : ?>
+<?php if ($plugin->getSettings()->get('confirmation') && $booking->hasStatus(SLN_Enum_BookingStatus::PENDING) ) : ?>
 
 	<?php if($forAdmin): ?>
 
@@ -126,8 +126,8 @@ function tpl_summary_details($booking, $plugin){
 <?php _e('this is an email confirmation of your booking at', 'sln') ?>
 
 <b style="color:#666666;">
-                        <?php echo $plugin->settings->get('gen_name') ?
-                            $plugin->settings->get('gen_name') : get_bloginfo('name') ?>.</b><br></p>
+                        <?php echo $plugin->getSettings()->get('gen_name') ?
+                            $plugin->getSettings()->get('gen_name') : get_bloginfo('name') ?>.</b><br></p>
 
 
 <?php endif ?>
@@ -155,7 +155,7 @@ function tpl_summary_details($booking, $plugin){
         <td align="center" valign="top"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
           <tbody><tr>
             <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;">Our address</td>
-            <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $plugin->settings->get('gen_address') ?></td>
+            <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $plugin->getSettings()->get('gen_address') ?></td>
           </tr>
         </tbody></table></td>
       </tr>
@@ -174,8 +174,8 @@ function tpl_summary_details($booking, $plugin){
               </tr>
               <tr>
                 <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:normal;">
-                    <?php $m = $plugin->settings->get('gen_mail') ?
-                                    $plugin->settings->get('gen_mail') : get_bloginfo('admin_email');?>
+                    <?php $m = $plugin->getSettings()->get('gen_mail') ?
+                                    $plugin->getSettings()->get('gen_mail') : get_bloginfo('admin_email');?>
                                 <a href="mailto:<?php echo $m ?>"
                                    style="color:#666666; text-decoration:none;"><?php echo $m ?></a></td>
               </tr>
@@ -207,7 +207,7 @@ function tpl_summary_details($booking, $plugin){
             <tr>
                 <td align="left" valign="top"
                     style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:normal;">
-                    <?php echo $plugin->settings->get('gen_timetable') ?>
+                    <?php echo $plugin->getSettings()->get('gen_timetable') ?>
                 </td>
             </tr>
             <tr>
@@ -225,7 +225,7 @@ function tpl_summary_details($booking, $plugin){
                     style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;">
  
 <p><?php _e('Customer message:', 'sln')?>: <?php echo esc_attr($booking->getNote())?></p>
-<?php if ($plugin->settings->get('confirmation') && $booking->hasStatus(SLN_Enum_BookingStatus::PENDING)) : ?>
+<?php if ($plugin->getSettings()->get('confirmation') && $booking->hasStatus(SLN_Enum_BookingStatus::PENDING)) : ?>
     <p><strong><?php _e('Please confirm or reject this booking from administration', 'sln') ?></strong></p>
 <?php endif ?>
 <a href="<?php echo admin_url() ?>/post.php?post=<?php echo $booking->getId() ?>&action=edit">

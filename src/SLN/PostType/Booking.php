@@ -185,7 +185,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             }elseif($new_status == SLN_Enum_BookingStatus::PAID && $old_status != $new_status){
                 $p->sendMail('mail/summary', compact('booking'));
                 $p->sendMail('mail/summary_admin', compact('booking'));
-            }elseif($new_status == SLN_Enum_BookingStatus::LATER && $old_status != $new_status){
+            }elseif($new_status == SLN_Enum_BookingStatus::PAY_LATER && $old_status != $new_status){
                 $p->sendMail('mail/summary', compact('booking'));
                 $p->sendMail('mail/summary_admin', compact('booking'));
             }
