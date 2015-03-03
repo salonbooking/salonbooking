@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-19 18:39+0100\n"
+"POT-Creation-Date: 2015-03-03 10:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,8 +23,8 @@ msgid "From"
 msgstr ""
 
 #: views/settings/tab_booking.php:21 views/metabox/service.php:59
-#: views/settings/tab_booking.php:23 views/metabox/service.php:59
-#: views/settings/tab_booking.php:23
+#: views/settings/tab_booking.php:23 views/metabox/service.php:61
+#: views/metabox/service.php:61 views/settings/tab_booking.php:23
 msgid "To"
 msgstr ""
 
@@ -193,17 +193,17 @@ msgstr ""
 msgid "Finalize"
 msgstr ""
 
-#: views/shortcode/salon_date.php:12 views/shortcode/salon_date.php:12
+#: views/shortcode/salon_date.php:12
 #, php-format
 msgid "you can book by %s up to %s before"
 msgstr ""
 
-#: views/shortcode/salon_date.php:17 views/shortcode/salon_date.php:17
+#: views/shortcode/salon_date.php:17
 #, php-format
 msgid "you can book by %s before"
 msgstr ""
 
-#: views/shortcode/salon_date.php:20 views/shortcode/salon_date.php:20
+#: views/shortcode/salon_date.php:20
 #, php-format
 msgid "you can book up to %s before"
 msgstr ""
@@ -302,13 +302,15 @@ msgstr ""
 
 #: src/SLN/Shortcode/Salon/DetailsStep.php:40
 #: src/SLN/Shortcode/Salon/DetailsStep.php:45
-#: src/SLN/Shortcode/Salon/DetailsStep.php:45
+#: src/SLN/Shortcode/Salon/DetailsStep.php:46
+#: src/SLN/Shortcode/Salon/DetailsStep.php:46
 msgid "E-mail exists"
 msgstr ""
 
 #: src/SLN/Shortcode/Salon/DetailsStep.php:42
 #: src/SLN/Shortcode/Salon/DetailsStep.php:48
-#: src/SLN/Shortcode/Salon/DetailsStep.php:48
+#: src/SLN/Shortcode/Salon/DetailsStep.php:49
+#: src/SLN/Shortcode/Salon/DetailsStep.php:49
 msgid "Passwords are different"
 msgstr ""
 
@@ -412,7 +414,8 @@ msgstr ""
 
 #: src/SLN/PostType/Booking.php:135 src/SLN/PostType/Booking.php:173
 #: src/SLN/PostType/Booking.php:139 src/SLN/PostType/Booking.php:207
-#: src/SLN/PostType/Booking.php:139 src/SLN/PostType/Booking.php:207
+#: src/SLN/PostType/Booking.php:204 src/SLN/PostType/Booking.php:139
+#: src/SLN/PostType/Booking.php:204
 msgid "Booking"
 msgstr ""
 
@@ -475,7 +478,7 @@ msgid "Booking Archive"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:172 src/SLN/PostType/Booking.php:206
-#: src/SLN/PostType/Booking.php:206
+#: src/SLN/PostType/Booking.php:203 src/SLN/PostType/Booking.php:203
 msgid "Save Booking"
 msgstr ""
 
@@ -670,7 +673,7 @@ msgstr ""
 msgid "Service Description"
 msgstr ""
 
-#: src/SLN/Metabox/Service.php:35 src/SLN/Metabox/Service.php:35
+#: src/SLN/Metabox/Service.php:35
 msgid "something different"
 msgstr ""
 
@@ -682,7 +685,8 @@ msgstr ""
 msgid "Secondary"
 msgstr ""
 
-#: views/metabox/service.php:68 views/metabox/service.php:68
+#: views/metabox/service.php:68 views/metabox/service.php:70
+#: views/metabox/service.php:70
 msgid "Leave blank if you want this service available everydays at every hour"
 msgstr ""
 
@@ -1062,4 +1066,32 @@ msgstr ""
 
 #: views/shortcode/salon_thankyou.php:63 views/shortcode/salon_thankyou.php:63
 msgid "Confirm"
+msgstr ""
+
+#: src/SLN/Metabox/Service.php:35 src/SLN/Metabox/Service.php:35
+msgid "A very short description of this service. It is optional"
+msgstr ""
+
+#: views/metabox/service.php:29 views/metabox/service.php:29
+msgid ""
+"Select this if you want this service considered as secondary level service"
+msgstr ""
+
+#: views/metabox/service.php:34 views/metabox/service.php:34
+msgid "Not Available At"
+msgstr ""
+
+#: views/shortcode/salon_date.php:12 views/shortcode/salon_date.php:12
+#, php-format
+msgid "you can book from %s up to %s in advance"
+msgstr ""
+
+#: views/shortcode/salon_date.php:17 views/shortcode/salon_date.php:17
+#, php-format
+msgid "you can book %s in advance"
+msgstr ""
+
+#: views/shortcode/salon_date.php:20 views/shortcode/salon_date.php:20
+#, php-format
+msgid "you can book up to %s in advance"
 msgstr ""
