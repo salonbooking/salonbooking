@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-03 10:28+0100\n"
+"POT-Creation-Date: 2015-03-03 11:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1094,4 +1094,45 @@ msgstr ""
 #: views/shortcode/salon_date.php:20 views/shortcode/salon_date.php:20
 #, php-format
 msgid "you can book up to %s in advance"
+msgstr ""
+
+#: src/SLN/Func.php:133
+msgid "Always"
+msgstr ""
+
+#: src/SLN/Func.php:134
+msgid "half hour"
+msgstr ""
+
+#: src/SLN/Func.php:135
+msgid "hour"
+msgstr ""
+
+#: src/SLN/Func.php:136 src/SLN/Func.php:137 src/SLN/Func.php:138
+#: src/SLN/Func.php:139 src/SLN/Func.php:140
+msgid "hours"
+msgstr ""
+
+#: src/SLN/Func.php:141
+msgid "day"
+msgstr ""
+
+#: src/SLN/Func.php:142 src/SLN/Func.php:143 src/SLN/Func.php:144
+msgid "days"
+msgstr ""
+
+#: src/SLN/Func.php:145
+msgid "week"
+msgstr ""
+
+#: src/SLN/Func.php:146 src/SLN/Func.php:147
+msgid "weeks"
+msgstr ""
+
+#: src/SLN/Func.php:148
+msgid "month"
+msgstr ""
+
+#: src/SLN/Func.php:149 src/SLN/Func.php:150
+msgid "months"
 msgstr ""

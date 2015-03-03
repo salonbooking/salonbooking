@@ -130,24 +130,24 @@ class SLN_Func
     public static function getIntervalItems()
     {
         return array(
-            ''            => 'Always',
-            '+30 minutes' => 'half hour',
-            '+1 hour'     => '1 hour',
-            '+2 hours'    => '2 hours',
-            '+3 hours'    => '3 hours',
-            '+4 hours'    => '4 hours',
-            '+8 hours'    => '8 hours',
-            '+16 hours'   => '16 hours',
-            '+1 day'      => '1 day',
-            '+2 days'     => '2 days',
-            '+3 days'     => '3 days',
-            '+4 days'     => '4 days',
-            '+1 week'     => '1 week',
-            '+2 weeks'    => '2 weeks',
-            '+3 weeks'    => '3 weeks',
-            '+1 month'    => '1 month',
-            '+2 months'   => '2 months',
-            '+3 months'   => '3 months'
+            ''            => __('Always','sln'),
+            '+30 minutes' => __('half hour','sln'),
+            '+1 hour'     => '1 '.__('hour','sln'),
+            '+2 hours'    => '2 '.__('hours','sln'),
+            '+3 hours'    => '3 '.__('hours','sln'),
+            '+4 hours'    => '4 '.__('hours','sln'),
+            '+8 hours'    => '8 '.__('hours','sln'),
+            '+16 hours'   => '16 '.__('hours','sln'),
+            '+1 day'      => '1 '.__('day','sln'),
+            '+2 days'     => '2 '.__('days','sln'),
+            '+3 days'     => '3 '.__('days','sln'),
+            '+4 days'     => '4 '.__('days','sln'),
+            '+1 week'     => '1 '.__('week','sln'),
+            '+2 weeks'    => '2 '.__('weeks','sln'),
+            '+3 weeks'    => '3 '.__('weeks','sln'),
+            '+1 month'    => '1 '.__('month','sln'),
+            '+2 months'   => '2 '.__('months','sln'),
+            '+3 months'   => '3 '.__('months','sln')
         );
 
         return array(
