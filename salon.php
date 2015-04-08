@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Salon Booking Wordpress Plugin
+Plugin Name: Salon Booking Wordpress Plugin - Free Version
 Description: Let your customers book you services through your website. Perfect for hairdressing salons, barber shops and beauty centers.
 Version: 1.0.0
 Plugin URI: http://salon.wordpresschef.it/
