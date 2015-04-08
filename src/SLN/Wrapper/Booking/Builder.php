@@ -150,6 +150,7 @@ class SLN_Wrapper_Booking_Builder
 
     public function create()
     {
+        update_option(SLN_PLUGIN::F, intval(get_option(SLN_PLUGIN::F))+1);
         $settings             = $this->plugin->getSettings();
         $datetime             = $this->plugin->format()->datetime($this->getDateTime());
         $name                 = $this->get('firstname') . ' ' . $this->get('lastname');

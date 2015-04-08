@@ -9,7 +9,7 @@ class SLN_Settings
     {
         $this->settings = get_option(self::KEY);
     }
-
+    
     public function get($k)
     {
         return isset($this->settings[$k]) ? $this->settings[$k] : null;
