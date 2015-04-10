@@ -225,7 +225,7 @@ class SLN_Admin_Settings
             if (!method_exists($this, $method)) {
                 throw new Exception('method not found ' . $method);
             }
-            if (empty($_POST[self::PAGE . $current]) && !wp_verify_nonce($_POST[self::PAGE . $current])) {
+            if (empty($_POST[self::PAGE . $current]) || !wp_verify_nonce($_POST[self::PAGE . $current])) {
                 $this->$method();
             } else {
                 $this->showAlert('error', __('try again', 'sln'), __('Page verification failed', 'sln'));
