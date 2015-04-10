@@ -24,7 +24,7 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 This section describes how to install the plugin and get it working.
 
 
-1. Upload `salon` folder to the `/wp-content/plugins/` directory
+1. Upload `salon-free` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Go to Salon > Settings to complete your salon’s settings
 
