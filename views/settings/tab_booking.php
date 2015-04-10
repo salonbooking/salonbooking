@@ -12,7 +12,7 @@ function sln_availability_row($prefix, $row)
                 <label>
                     <?php SLN_Form::fieldCheckbox(
                         $prefix . "[days][{$k}]",
-                        $row['days'][$k]
+                        (isset($row['days'][$k]) ? 1 : null)
                     ) ?>
                     <?php echo substr($day, 0, 3) ?></label>
             </div>

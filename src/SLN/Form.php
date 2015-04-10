@@ -12,7 +12,7 @@ class SLN_Form
         if ($value instanceof DateTime) {
             $value = $value->format('H:i');
         }
-        if ($settings['items']) {
+        if (!empty($settings['items'])) {
             $items = $settings['items'];
         } else {
             $interval = isset($settings['interval']) ? $settings['interval'] : null;
@@ -98,7 +98,7 @@ class SLN_Form
 
     static public function fieldNumeric($name, $value = null, $settings = array())
     {
-        if ($settings['items']) {
+        if (!empty($settings['items'])) {
             $items = $settings['items'];
         } else {
             $min      = isset($settings['min']) ? $settings['min'] : 1;
@@ -178,7 +178,7 @@ class SLN_Form
         if (is_array($settings)) {
             $ret = (isset($settings['required']) && $settings['required']) ?
                 'required="required" ' : '';
-            if (is_array($settings['attrs'])) {
+            if (isset($settings['attrs']) && is_array($settings['attrs'])) {
                 foreach ($settings['attrs'] as $k => $v) {
                     $ret .= " $k=\"$v\"";
                 }

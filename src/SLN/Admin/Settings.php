@@ -55,7 +55,7 @@ class SLN_Admin_Settings
                 $this->getOpt($key)
             )
             ?>
-            <?php if (isset($settings['help'])) ?><p class="help-block"><?php echo $settings['help'] ?></p>
+            <?php if (isset($settings['help'])){ ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
         </div>
     <?php
     }
@@ -71,7 +71,7 @@ class SLN_Admin_Settings
         <div class="form-group">
             <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
             <?php echo SLN_Form::fieldText("salon_settings[$key]", $this->getOpt($key)) ?>
-            <?php if (isset($settings['help'])) ?><p class="help-block"><?php echo $settings['help'] ?></p>
+            <?php if (isset($settings['help'])){ ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }?>
         </div>
     <?php
     }
@@ -85,7 +85,7 @@ class SLN_Admin_Settings
         <div class="form-group">
             <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
             <?php SLN_Form::fieldTextarea("salon_settings[$key]", $this->getOpt($key), $settings['textarea']); ?>
-            <?php if (isset($settings['help'])) ?><p class="help-block"><?php echo $settings['help'] ?></p>
+            <?php if (isset($settings['help'])){ ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
         </div>
     <?php
     }
@@ -225,7 +225,7 @@ class SLN_Admin_Settings
             if (!method_exists($this, $method)) {
                 throw new Exception('method not found ' . $method);
             }
-            if (!wp_verify_nonce($_POST[self::PAGE . $current])) {
+            if (empty($_POST[self::PAGE . $current]) && !wp_verify_nonce($_POST[self::PAGE . $current])) {
                 $this->$method();
             } else {
                 $this->showAlert('error', __('try again', 'sln'), __('Page verification failed', 'sln'));

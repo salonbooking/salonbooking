@@ -18,10 +18,10 @@ class SLN_Action_Install
             }
         }
         if (!get_option(SLN_Settings::KEY)) {
-            if ($ids['thankyou']) {
+            if (isset($ids['thankyou'])) {
                 $data['settings']['thankyou'] = $ids['thankyou'];
             }
-            if ($ids['booking']) {
+            if (isset($ids['booking'])) {
                 $data['settings']['booking'] = $ids['booking'];
             }
             update_option(SLN_Settings::KEY, $data['settings']);

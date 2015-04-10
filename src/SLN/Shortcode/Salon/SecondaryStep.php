@@ -6,9 +6,9 @@ class SLN_Shortcode_Salon_SecondaryStep extends SLN_Shortcode_Salon_Step
     protected function dispatchForm()
     {
         $bb     = $this->getPlugin()->getBookingBuilder();
-        $values = $_POST['sln'];
+        $values = isset($_POST['sln']) ? $_POST['sln'] : array();
         foreach ($this->getServices() as $service) {
-            if (isset($values['services'][$service->getId()])) {
+            if (isset($values['services']) && isset($values['services'][$service->getId()])) {
                 $bb->addService($service);
             } else {
                 $bb->removeService($service);

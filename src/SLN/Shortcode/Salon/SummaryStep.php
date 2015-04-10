@@ -4,8 +4,8 @@ class SLN_Shortcode_Salon_SummaryStep extends SLN_Shortcode_Salon_Step
 {
     protected function dispatchForm()
     {
-        $values = $_POST['sln'];
         $bb     = $this->getPlugin()->getBookingBuilder();
+        $values = isset($_POST['sln']) ? $_POST['sln'] : array();
         if (!$bb->getLastBooking()) {
             $bb->set('note', SLN_Func::filter($values['note']));
             $bb->create();

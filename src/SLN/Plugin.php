@@ -143,7 +143,7 @@ class SLN_Plugin
 
     public function admin_notices()
     {
-        if ($_GET['sln-dismiss'] == 'dismiss_admin_notices') {
+        if (isset($_GET['sln-dismiss']) && $_GET['sln-dismiss'] == 'dismiss_admin_notices') {
             $this->getSettings()
                 ->setNoticesDisabled(true)
                 ->save();

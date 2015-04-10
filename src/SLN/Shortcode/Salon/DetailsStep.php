@@ -69,7 +69,9 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_Step
                 wp_update_user(
                     array('ID' => $current_user->ID, 'first_name' => $values['firstname'], 'last_name' => $values['lastname'])
                 );
-                update_user_meta($errors, '_sln_phone', $values['phone']);
+                if(isset($values['phone'])){
+                    update_user_meta($current_user->ID, '_sln_phone', $values['phone']);
+                }
             }
         }
         $this->bindValues($values);

@@ -239,7 +239,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             }
         }
 
-        return $states;
+        return null;
     }
 
     function posttype_admin_css()
