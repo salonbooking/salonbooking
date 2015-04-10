@@ -33,7 +33,7 @@ This section describes how to install the plugin and get it working.
 = What happen when plugin reach its booking limit? =
 
 You should buy the PRO version here.
-http://plugins.wordpresschef.it/downloads/salon-booking-wordpress-plugin/
+http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 
 == Screenshots ==
