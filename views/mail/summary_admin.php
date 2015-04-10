@@ -9,4 +9,4 @@ $data['subject'] = 'New booking for ' . $plugin->format()->date($booking->getDat
 $forAdmin = true;
 include dirname(__FILE__) . '/_header.php';
 include dirname(__FILE__) . '/_summary_content.php';
-include dirname(__FILE__) . ' /_footer.php';
+include dirname(__FILE__) . '/_footer.php';
