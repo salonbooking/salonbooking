@@ -88,7 +88,7 @@ Once activated this plugin creates a page named “<strong>Booking</strong>” p
 This plugin make a real-time control over your settings (e.g. booking rules) and the upcoming confirmed reservations in order to display available booking dates.</p>
 <p>Every time a user complete a reservation an email will be sent to the web site administrator and to the user with the details of the reservation.</p>
 <p>&nbsp;</p>
-<p>For any further information please go to our <strong><a href="http://salon.wordpresschef.it/" target="_blank">official Salon Booking Plugin website.</a></strong></p>
-<p>If you have problems please use our <strong><a href="http://plugins.wordpresschef.it/forums/" target="_blank">official support forum.</a></strong></p>
+<p>For any further information please go to our <strong><a href="http://salon.wpchef.it/" target="_blank">official Salon Booking Plugin website.</a></strong></p>
+<p>If you have problems please use our <strong><a href="http://plugins.wpchef.it/forums/" target="_blank">official support forum.</a></strong></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
