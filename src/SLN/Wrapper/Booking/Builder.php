@@ -163,7 +163,6 @@ class SLN_Wrapper_Booking_Builder
             array(
                 'post_type'   => SLN_Plugin::POST_TYPE_BOOKING,
                 'post_title'  => $name . ' - ' . $datetime,
-                'post_status' => $status
             )
         );
         $this->data['amount'] = $this->getTotal();
@@ -171,6 +170,7 @@ class SLN_Wrapper_Booking_Builder
             add_post_meta($id, '_' . SLN_Plugin::POST_TYPE_BOOKING . '_' . $k, $v, true);
         }
         $this->clear($id);
+        $this->getLastBooking()->setStatus($status);
     }
 
 }

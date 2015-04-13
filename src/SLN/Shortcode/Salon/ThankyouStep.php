@@ -8,7 +8,7 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
     {
         $bb      = $this->getPlugin()->getBookingBuilder();
         $booking = $bb->getLastBooking();
-        if ($_GET['op']) {
+        if (isset($_GET['op'])) {
             $op       = explode('-', $_GET['op']);
             $this->op = $op[0];
             if ($this->op == 'success') {
@@ -29,7 +29,6 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
                 }else{
                     echo('ipn_failed');
                 }
-                die();
             }
         } elseif ($_GET['mode'] == 'paypal') {
             $ppl = new SLN_Payment_Paypal($this->getPlugin());

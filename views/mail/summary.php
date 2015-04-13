@@ -3,7 +3,7 @@
  * @var SLN_Plugin          $plugin
  * @var SLN_Wrapper_Booking $booking
  */
-if(!isset($data['to'])){
+if(empty($data['to'])){
     $data['to']      = $booking->getEmail();
 }
 $data['subject'] = 'New booking ' 
