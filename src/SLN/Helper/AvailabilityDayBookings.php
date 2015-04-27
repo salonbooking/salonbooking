@@ -69,6 +69,16 @@ class SLN_Helper_AvailabilityDayBookings
 
         return $ret;
     }
+    public function countAttendantsByHour($hour = null)
+    {
+        $ret = array();
+        foreach ($this->getBookingsByHour($hour) as $b) {
+            $id = $b->getAttendantId();
+            $ret[$d] = 1 + (isset($ret[$id]) ? $ret[$id] : 0);
+        }
+
+        return $ret;
+    }
 
     public function countServicesByHour($hour = null)
     {

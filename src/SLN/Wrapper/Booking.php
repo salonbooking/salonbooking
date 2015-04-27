@@ -66,7 +66,9 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         return in_array($service->getId(), $this->getServicesIds());
     }
-
+    function getAttendantId(){
+        return apply_filters('sln_booking_attendant', get_post_meta($post_id, '_sln_booking_attendant', true));
+    }
     function getServicesIds()
     {
         $post_id = $this->getId();

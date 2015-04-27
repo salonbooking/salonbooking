@@ -140,6 +140,23 @@ class SLN_Helper_Availability
     {
         return $this->getDayBookings()->countBookingsByHour($hour);
     }
+    public function validateAttendant(SLN_Wrapper_Attendant $attendant)
+    {
+        if ($attendant->isNotAvailableOnDate($this->date)) {
+            return array(
+                __('this attendant is not available ', 'sln') . $attendant->getNotAvailableString()
+            );
+        }
+        $ids = $this->getDayBookings()->countAttendantsByHour();
+        if (
+            isset($ids[$attendant->getId()])
+        ) {
+            return array(
+                __('this attendant is busy in this hour', 'sln') . $attendant->getNotAvailableString()
+            );
+        }
+    }
+
 
 
     public function validateService(SLN_Wrapper_Service $service)

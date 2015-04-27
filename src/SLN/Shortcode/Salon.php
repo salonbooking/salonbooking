@@ -112,6 +112,9 @@ class SLN_Shortcode_Salon
     {
         return true;
     }
+    private function needAttendant(){
+        return true;
+    }
 
     public function getSteps()
     {
@@ -120,6 +123,7 @@ class SLN_Shortcode_Salon
                 'date',
                 'services',
                 'secondary',
+                'attendant',
                 'details',
                 'summary',
                 'thankyou'
@@ -130,6 +134,10 @@ class SLN_Shortcode_Salon
             if (!$this->needPayment()) {
                 unset($this->steps[array_search('thankyou', $this->steps)]);
             }
+            if (!$this->needAttendant()) {
+                unset($this->steps[array_search('attendant', $this->steps)]);
+            }
+
         }
 
         return $this->steps;

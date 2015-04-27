@@ -38,6 +38,23 @@ return array(
     'posts'    => array(
         array(
             'post' => array(
+                'post_title'   => 'Mario',
+                'post_excerpt' => 'mario',
+                'post_status'  => 'publish',
+                'post_type'    => 'sln_attendant'
+            ),
+        ),
+        array(
+            'post' => array(
+                'post_title'   => 'Pablo',
+                'post_excerpt' => 'pablo',
+                'post_status'  => 'publish',
+                'post_type'    => 'sln_attendant'
+            ),
+        ),
+ 
+        array(
+            'post' => array(
                 'post_title'   => 'Manicure',
                 'post_excerpt' => 'manicure',
                 'post_status'  => 'publish',

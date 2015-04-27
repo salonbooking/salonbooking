@@ -3,6 +3,7 @@
 class SLN_Plugin
 {
     const POST_TYPE_SERVICE = 'sln_service';
+    const POST_TYPE_ATTENDANT = 'sln_attendant';
     const POST_TYPE_BOOKING = 'sln_booking';
     const TEXT_DOMAIN = 'sln';
     const F = 'slnc';
@@ -12,6 +13,7 @@ class SLN_Plugin
     private static $instance;
     private $settings;
     private $services;
+    private $attendants;
     private $formatter;
     private $availabilityHelper;
 
@@ -38,6 +40,7 @@ class SLN_Plugin
         add_action('init', array($this, 'action_init'));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
+        new SLN_PostType_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
         new SLN_PostType_Booking($this, self::POST_TYPE_BOOKING);
     }
@@ -45,6 +48,7 @@ class SLN_Plugin
     private function initAdmin()
     {
         new SLN_Metabox_Service($this, self::POST_TYPE_SERVICE);
+        new SLN_Metabox_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_Metabox_Booking($this, self::POST_TYPE_BOOKING);
         new SLN_Admin_Settings($this);
         new SLN_Admin_Calendar($this);
@@ -94,6 +98,15 @@ class SLN_Plugin
         return $this->settings;
     }
 
+    public function createAttendant($attendant)
+    {
+        if (is_int($attendant)) {
+            $service = get_post($attendant);
+        }
+
+        return new SLN_Wrapper_Attendant($attendant);
+    }
+
     public function createService($service)
     {
         if (is_int($service)) {
@@ -140,6 +153,31 @@ class SLN_Plugin
 
         return $this->services;
     }
+
+    /**
+     * @return SLN_Wrapper_Attendant[]
+     */
+    public function getAttendants()
+    {
+        if (!isset($this->attendants)) {
+            $query = new WP_Query(
+                array(
+                    'post_type' => self::POST_TYPE_ATTENDANT,
+                    'nopaging'  => true
+                )
+            );
+            $ret   = array();
+            foreach ($query->get_posts() as $p) {
+                $ret[] = $this->createAttendant($p);
+            }
+            wp_reset_query();
+            wp_reset_postdata();
+            $this->attendants = $ret;
+        }
+
+        return $this->attendants;
+    }
+
 
     public function admin_notices()
     {

@@ -104,6 +104,18 @@ class SLN_Wrapper_Booking_Builder
         return $this;
     }
 
+    public function setAttendant(SLN_Wrapper_Attendant $attendant)
+    {
+        $this->data['attendant'] = $attendant->getId();
+    }
+    public function hasAttendant(SLN_Wrapper_Attendant $attendant)
+    {
+        
+        return isset($this->data['attendant']) && $attendant->getId() == $this->data['attendant'];
+    }
+
+
+
     public function hasService(SLN_Wrapper_Service $service)
     {
         return in_array($service->getId(), $this->data['services']);

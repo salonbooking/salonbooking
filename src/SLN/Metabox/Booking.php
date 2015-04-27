@@ -47,7 +47,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         );
     }
     public function save_post($post_id, $post){
-        if($_POST['emailto'] && $_POST['emailto_submit']){
+        if(isset($_POST['emailto']) && $_POST['emailto_submit']){
             $booking = new SLN_Wrapper_Booking($post_id);
             $to = $_POST['emailto'];
             $this->getPlugin()->sendMail(
