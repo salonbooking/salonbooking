@@ -42,6 +42,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             'duration'  => 'time',
             'date'      => 'date',
             'time'      => 'time',
+            'attendant'  => '',
             'services'  => 'set',
             'status'    => ''
         );

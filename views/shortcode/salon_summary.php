@@ -24,6 +24,15 @@ $confirmation = $plugin->getSettings()->get('confirmation');
             <span class="time"><?php echo $plugin->format()->time($datetime) ?></span></p>
         </div>
     </div>
+
+    <?php if($attendant = $bb->getAttendant()) :  ?>
+    <div class="row summ-row">
+        <div class="col-md-5"><span class="label"><?php _e('Attendant', 'sln') ?></span></div>
+        <div class="col-md-7">
+            <span class="attendant-label"><?php echo $attendant->getName(); ?></span></li>
+        </div>
+    </div>
+    <?php endif ?>
     <div class="row summ-row">
         <div class="col-md-5"><span class="label"><?php _e('Services booked', 'sln') ?></span></div>
         <div class="col-md-7">
@@ -39,6 +48,7 @@ $confirmation = $plugin->getSettings()->get('confirmation');
             </ul>
         </div>
     </div>
+
     <br/>
     <div class="row">
     <div class="form-group">

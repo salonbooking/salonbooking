@@ -62,12 +62,22 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return apply_filters('sln_booking_date', new DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
     }
 
+    function hasAttendant(SLN_Wrapper_Attendant $attendant)
+    {
+        return $this->getAttendantId() == $attendant->getId();
+    }
+
     function hasService(SLN_Wrapper_Service $service)
     {
         return in_array($service->getId(), $this->getServicesIds());
     }
     function getAttendantId(){
-        return apply_filters('sln_booking_attendant', get_post_meta($post_id, '_sln_booking_attendant', true));
+        return apply_filters('sln_booking_attendant', get_post_meta($this->getId(), '_sln_booking_attendant', true));
+    }
+    function getAttendant(){
+        if($id = $this->getAttendantId()){
+            return new SLN_Wrapper_Attendant($id);
+        }
     }
     function getServicesIds()
     {

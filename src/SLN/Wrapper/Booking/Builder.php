@@ -120,7 +120,16 @@ class SLN_Wrapper_Booking_Builder
     {
         return in_array($service->getId(), $this->data['services']);
     }
-
+    /**
+     * @return SLN_Wrapper_Attendant
+     */
+    public function getAttendant()
+    {
+        if(isset($this->data['attendant']) && $id = $this->data['attendant']){
+            return $this->plugin->createAttendant($id);
+        }
+    }
+    
     public function addService(SLN_Wrapper_Service $service)
     {
         $this->data['services'][] = $service->getId();
@@ -149,7 +158,7 @@ class SLN_Wrapper_Booking_Builder
 
         return $ret;
     }
-
+    
     public function getTotal()
     {
         $ret = 0;
