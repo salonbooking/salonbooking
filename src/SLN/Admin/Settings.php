@@ -183,7 +183,7 @@ class SLN_Admin_Settings
                      'hours_before_to',
                      'interval'
                  ) as $k) {
-            $this->settings->set($k, $_POST['salon_settings'][$k]);
+            $this->settings->set($k, isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '');
         }
         $this->settings->save();
         $this->showAlert(
