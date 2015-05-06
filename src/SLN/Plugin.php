@@ -5,6 +5,7 @@ class SLN_Plugin
     const POST_TYPE_SERVICE = 'sln_service';
     const POST_TYPE_ATTENDANT = 'sln_attendant';
     const POST_TYPE_BOOKING = 'sln_booking';
+    const USER_ROLE_STAFF = 'sln_staff';
     const TEXT_DOMAIN = 'sln';
     const F = 'slnc';
     const F1 = 50;
@@ -38,6 +39,7 @@ class SLN_Plugin
     private function init()
     {
         add_action('init', array($this, 'action_init'));
+        add_action( 'admin_init', array($this, 'add_admin_caps'));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
         new SLN_PostType_Attendant($this, self::POST_TYPE_ATTENDANT);
@@ -58,6 +60,10 @@ class SLN_Plugin
         add_action('wp_ajax_nopriv_salon', array($this, 'ajax'));
         add_action('wp_ajax_saloncalendar', array($this, 'ajax'));
 
+    }
+    public function add_admin_caps() {
+        $role = get_role( 'administrator');
+        $role->add_cap('manage_salon');
     }
 
     public function action_init()
@@ -208,7 +214,7 @@ class SLN_Plugin
         return SLN_PLUGIN_DIR . '/views/' . $view . '.php';
     }
 
-    public function loadView($view, $data)
+    public function loadView($view, $data = array())
     {
         ob_start();
         extract($data);

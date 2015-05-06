@@ -58,10 +58,26 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     function getDuration()
     {
         $post_id = $this->getId();
-
-        return apply_filters('sln_booking_date', new DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
+        $ret     = apply_filters('sln_booking_duration', get_post_meta($post_id, '_sln_booking_duration', true));
+        if(empty($ret)){
+            $ret = '00:00';
+        }
+        $ret     = SLN_Func::filter($ret, 'time');
+        return new DateTime('1970-01-01 ' . $ret);
     }
 
+    function evalDuration(){
+        $h = 0;
+        $i = 0;
+        foreach($this->getServices() as $s){
+            $d = $s->getDuration();
+            $h = $h + intval($d->format('H'));
+            $i = $i + intval($d->format('i'));
+        }
+        $i += $h*60;
+        $str = SLN_Func::convertToHoursMins($i);
+        update_post_meta($this->getId(), '_sln_booking_duration', $str);
+    }
     function hasAttendant(SLN_Wrapper_Attendant $attendant)
     {
         return $this->getAttendantId() == $attendant->getId();

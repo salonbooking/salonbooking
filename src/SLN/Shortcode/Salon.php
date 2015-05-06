@@ -15,7 +15,7 @@ class SLN_Shortcode_Salon
     function __construct(SLN_Plugin $plugin, $attrs)
     {
         $this->plugin = $plugin;
-        $this->attrs  = $attrs;
+        $this->attrs = $attrs;
     }
 
     public static function init(SLN_Plugin $plugin)
@@ -40,9 +40,9 @@ class SLN_Shortcode_Salon
         $found = false;
         foreach ($this->getSteps() as $step) {
             if ($curr == $step || $found) {
-                $found             = true;
+                $found = true;
                 $this->currentStep = $step;
-                $obj               = $this->getStepObject($step);
+                $obj = $this->getStepObject($step);
                 if (!$obj->isValid()) {
                     return $this->render($obj->render());
                 }
@@ -58,7 +58,7 @@ class SLN_Shortcode_Salon
     private function getStepObject($step)
     {
         $class = __CLASS__ . '_' . ucwords($step) . 'Step';
-        $obj   = new $class($this->plugin, $this, $step);
+        $obj = new $class($this->plugin, $this, $step);
         if ($obj instanceof SLN_Shortcode_Salon_Step) {
             return $obj;
         } else {
@@ -69,7 +69,7 @@ class SLN_Shortcode_Salon
     protected function render($content)
     {
         $salon = $this;
-        if(get_option(SLN_Plugin::F)> SLN_Plugin::F1){
+        if (get_option(SLN_Plugin::F) > SLN_Plugin::F1) {
             return $this->plugin->loadView('trial/shortcode', compact('salon'));
         } else {
             return $this->plugin->loadView('shortcode/salon', compact('content', 'salon'));
@@ -112,8 +112,18 @@ class SLN_Shortcode_Salon
     {
         return true;
     }
-    private function needAttendant(){
-        return true;
+
+    private function needAttendant()
+    {
+        return $this->plugin->getSettings()->get('attendant_enabled') ? true : false;
+    }
+
+    public function needSms()
+    {
+        return (
+            $this->plugin->getSettings()->get('sms_enabled')
+            && !is_user_logged_in()
+        ) ? true : false;
     }
 
     public function getSteps()
@@ -125,6 +135,7 @@ class SLN_Shortcode_Salon
                 'secondary',
                 'attendant',
                 'details',
+                'sms',
                 'summary',
                 'thankyou'
             );
@@ -136,6 +147,9 @@ class SLN_Shortcode_Salon
             }
             if (!$this->needAttendant()) {
                 unset($this->steps[array_search('attendant', $this->steps)]);
+            }
+            if (!$this->needSms()) {
+                unset($this->steps[array_search('sms', $this->steps)]);
             }
 
         }

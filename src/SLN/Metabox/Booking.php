@@ -44,11 +44,10 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             'time'      => 'time',
             'attendant'  => '',
             'services'  => 'set',
-            'status'    => ''
         );
     }
     public function save_post($post_id, $post){
-        if(isset($_POST['emailto']) && $_POST['emailto_submit']){
+        if(isset($_POST['emailto']) && isset($_POST['emailto_submit']) && !empty($_POST['emailto'])){
             $booking = new SLN_Wrapper_Booking($post_id);
             $to = $_POST['emailto'];
             $this->getPlugin()->sendMail(
@@ -57,6 +56,9 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             );
         }
         parent::save_post($post_id, $post);
+        $booking = new SLN_Wrapper_Booking($post_id);
+        $booking->evalDuration();
     } 
 
 }
+
