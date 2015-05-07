@@ -3426,7 +3426,7 @@ h2.nav-tab-wrapper img {
     margin: 0 0 2em -0.5em;
   }
 }
-#sln_service-details .services-notavailable label {
+#sln_service-details .services-notavailable label, #sln_attendant-details .attendants-notavailable label {
   margin-right: 2em;
 }
 @media only screen and (min-width: 951px) and (max-width: 1279px) {
