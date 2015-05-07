@@ -31,7 +31,7 @@ class SLN_Shortcode_Salon_SmsStep extends SLN_Shortcode_Salon_AbstractUserStep
     protected function dispatchForm()
     {
         $values = isset($_SESSION['sln_detail_step']) ? $_SESSION['sln_detail_step'] : array();
-        $valid = $_SESSION['sln_sms_valid'];
+        $valid = isset($_SESSION['sln_sms_valid']) ? $_SESSION['sln_sms_valid'] : false;
 
         if (!$valid) {
             if (isset($_POST['sln_verification'])) {

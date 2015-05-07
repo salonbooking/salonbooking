@@ -95,7 +95,7 @@
                     <?php $this->row_input_text('sms_password', __('Password', 'sln')); ?>
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <?php $this->row_input_text('sms_apikey', __('Api Key', 'sln')); ?>
+                    <?php $this->row_input_text('sms_prefix', __('Number Prefix', 'sln')); ?>
                 </div>
             </div>
         </div>
