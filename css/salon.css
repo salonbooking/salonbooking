@@ -4111,7 +4111,7 @@ body:not(.wp-admin) .hidden {
     width: 100%;
   }
 }
-#sln-salon .sln-service-list .row {
+#sln-salon .sln-service-list .row, #sln-salon .sln-attendant-list .row{
   margin-bottom: 1.1em;
 }
 #sln-salon .alert {
