@@ -27,7 +27,7 @@ class SLN_Admin_Settings
         add_menu_page(
             __('Salon', 'sln'),
             __('Salon', 'sln'),
-            'manage_salon',
+            'manage_options',
             'salon',
             array($this, 'settings_page'),
             SLN_PLUGIN_URL . '/img/admin_icon.png',
@@ -37,7 +37,7 @@ class SLN_Admin_Settings
             'salon',
             __('Salon Settings', 'sln'),
             __('Settings', 'sln'),
-            apply_filters('salonviews/settings/capability', 'manage_salon'),
+            apply_filters('salonviews/settings/capability', 'manage_options'),
             self::PAGE,
             array($this, 'show')
         );
@@ -148,7 +148,7 @@ class SLN_Admin_Settings
                      'sms_enabled',
                      'sms_account',
                      'sms_password',
-                     'sms_apikey',
+                     'sms_prefix',
                      'sms_provider',
                      'soc_facebook',
                      'soc_twitter',

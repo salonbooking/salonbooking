@@ -7,9 +7,6 @@ class SLN_Plugin
     const POST_TYPE_BOOKING = 'sln_booking';
     const USER_ROLE_STAFF = 'sln_staff';
     const TEXT_DOMAIN = 'sln';
-    const F = 'slnc';
-    const F1 = 50;
-    const F2 = 40;
 
     private static $instance;
     private $settings;
@@ -39,7 +36,7 @@ class SLN_Plugin
     private function init()
     {
         add_action('init', array($this, 'action_init'));
-        add_action( 'admin_init', array($this, 'add_admin_caps'));
+        add_action('admin_init', array($this, 'add_admin_caps'));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
         new SLN_PostType_Attendant($this, self::POST_TYPE_ATTENDANT);
@@ -61,8 +58,10 @@ class SLN_Plugin
         add_action('wp_ajax_saloncalendar', array($this, 'ajax'));
 
     }
-    public function add_admin_caps() {
-        $role = get_role( 'administrator');
+
+    public function add_admin_caps()
+    {
+        $role = get_role('administrator');
         $role->add_cap('manage_salon');
     }
 
@@ -71,18 +70,18 @@ class SLN_Plugin
         if (!session_id()) {
             session_start();
         }
-        load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME).'/languages');
+        load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME) . '/languages');
         wp_enqueue_style('salon', SLN_PLUGIN_URL . '/css/salon.css', array(), SLN_VERSION, 'all');
-   //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
+        //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
         wp_enqueue_script('smalot-datepicker', SLN_PLUGIN_URL . '/js/bootstrap-datetimepicker.js', array('jquery'), '20140711', true);
         wp_enqueue_script('salon', SLN_PLUGIN_URL . '/js/salon.js', array('jquery'), '20140711', true);
         wp_localize_script(
             'salon',
             'salon',
             array(
-                'ajax_url'   => admin_url('admin-ajax.php'),
+                'ajax_url' => admin_url('admin-ajax.php'),
                 'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
-                'loading'    => 'http://i.stack.imgur.com/drgpu.gif'
+                'loading' => 'http://i.stack.imgur.com/drgpu.gif'
             )
         );
         SLN_Shortcode_Salon::init($this);
@@ -145,10 +144,10 @@ class SLN_Plugin
             $query = new WP_Query(
                 array(
                     'post_type' => self::POST_TYPE_SERVICE,
-                    'nopaging'  => true
+                    'nopaging' => true
                 )
             );
-            $ret   = array();
+            $ret = array();
             foreach ($query->get_posts() as $p) {
                 $ret[] = $this->createService($p);
             }
@@ -169,10 +168,10 @@ class SLN_Plugin
             $query = new WP_Query(
                 array(
                     'post_type' => self::POST_TYPE_ATTENDANT,
-                    'nopaging'  => true
+                    'nopaging' => true
                 )
             );
-            $ret   = array();
+            $ret = array();
             foreach ($query->get_posts() as $p) {
                 $ret[] = $this->createAttendant($p);
             }
@@ -187,20 +186,16 @@ class SLN_Plugin
 
     public function admin_notices()
     {
-        if (isset($_GET['sln-dismiss']) && $_GET['sln-dismiss'] == 'dismiss_admin_notices') {
-            $this->getSettings()
-                ->setNoticesDisabled(true)
-                ->save();
-        }
-        if (!$this->getSettings()->getNoticesDisabled()) {
-            $dismissUrl = add_query_arg(array('sln-dismiss' => 'dismiss_admin_notices'));
-            echo $this->loadView('admin_notices', compact('dismissUrl'));
-        }
-        $cnt = get_option(SLN_PLUGIN::F);
-        if($cnt>self::F1){
-            echo $this->loadView('trial/admin_end');
-        }elseif($cnt > self::F2){
-            echo $this->loadView('trial/admin_near');
+        if (current_user_can('install_plugins')) {
+            if (isset($_GET['sln-dismiss']) && $_GET['sln-dismiss'] == 'dismiss_admin_notices') {
+                $this->getSettings()
+                    ->setNoticesDisabled(true)
+                    ->save();
+            }
+            if (!$this->getSettings()->getNoticesDisabled()) {
+                $dismissUrl = add_query_arg(array('sln-dismiss' => 'dismiss_admin_notices'));
+                echo $this->loadView('admin_notices', compact('dismissUrl'));
+            }
         }
     }
 
@@ -227,7 +222,7 @@ class SLN_Plugin
     public function sendMail($view, $data)
     {
         $data['data'] = $settings = new ArrayObject($data);
-        $content      = $this->loadView($view, $data);
+        $content = $this->loadView($view, $data);
         if (!function_exists('sln_html_content_type')) {
             function sln_html_content_type()
             {
@@ -275,7 +270,7 @@ class SLN_Plugin
     public function ajax()
     {
         check_ajax_referer('ajax_post_validation', 'security');
-        $method    = $_REQUEST['method'];
+        $method = $_REQUEST['method'];
         $className = 'SLN_Action_Ajax_' . ucwords($method);
         if (class_exists($className)) {
             /** @var SLN_Action_Ajax_Abstract $obj */

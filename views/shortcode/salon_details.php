@@ -87,7 +87,14 @@ $values = array(
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
+                        <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
+                        <div class="input-group">
+                            <span class="input-group-addon"><?php echo $prefix?></span>
+                        <?php endif ?>
                         <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true)) ?>
+                            <?php if(isset($prefix)):?>
+                                </div>
+                            <?php endif ?>
                     </div>
                 </div>
             <?php endforeach ?>

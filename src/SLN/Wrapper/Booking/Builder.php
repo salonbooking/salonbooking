@@ -171,7 +171,6 @@ class SLN_Wrapper_Booking_Builder
 
     public function create()
     {
-        update_option(SLN_PLUGIN::F, intval(get_option(SLN_PLUGIN::F))+1);
         $settings             = $this->plugin->getSettings();
         $datetime             = $this->plugin->format()->datetime($this->getDateTime());
         $name                 = $this->get('firstname') . ' ' . $this->get('lastname');
@@ -191,7 +190,6 @@ class SLN_Wrapper_Booking_Builder
             add_post_meta($id, '_' . SLN_Plugin::POST_TYPE_BOOKING . '_' . $k, $v, true);
         }
         $this->clear($id);
-        $this->getLastBooking()->evalDuration();
         $this->getLastBooking()->setStatus($status);
     }
 
