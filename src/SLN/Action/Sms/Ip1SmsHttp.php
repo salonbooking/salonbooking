@@ -6,7 +6,10 @@ class SLN_Action_Sms_Ip1SmsHttp extends SLN_Action_Sms_Fake
 
     public function send($to, $message)
     {
-// Set parameters
+        $settings = $this->plugin->getSettings();
+        $prefix = str_replace('+','',$settings->get('sms_prefix'));
+        $to = str_replace(' ','',$to);
+        // Set parameters
         $data = http_build_query(
             array(
                 'acc' => $this->plugin->getSettings()->get('sms_account'),
@@ -26,6 +29,6 @@ class SLN_Action_Sms_Ip1SmsHttp extends SLN_Action_Sms_Fake
             )
         );
         $context = stream_context_create($opts);
-        file_get_contents(self::API_URL . '?' . $data, false, $context);
+        $ret = file_get_contents(self::API_URL . '?' . $data, false, $context);
     }
 }
