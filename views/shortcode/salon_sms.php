@@ -16,7 +16,7 @@ include '_errors.php' ?>
 <?php endif ?>
 <h2><?php _e('Sms Verification', 'sln') ?>
     <br/>
-    <small><?php _e('We have sent an sms text on your mobile phone.', 'sln') ?></small>
+    <em><?php _e('We have sent an sms text on your mobile phone.', 'sln') ?></em>
 </h2>
 <form method="post" action="<?php echo $formAction ?>" role="form">
     <?php if ($valid): ?>
