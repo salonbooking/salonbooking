@@ -26,12 +26,16 @@ include '_errors.php' ?>
         <?php include "_form_actions.php" ?>
     <?php else: ?>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="<?php echo SLN_Form::makeID('sln_verification') ?>">
                         <?php _e('digit your verification code', 'sln'); ?>
                     </label>
-                    <?php SLN_Form::fieldText('sln_verification', '', array('required' => true)) ?>
+                </div>
+            </div>
+                        <div class="col-md-6">
+                <div class="form-group">
+                   <?php SLN_Form::fieldText('sln_verification', '', array('required' => true)) ?>
                     <a href="<?php echo $formAction ?>&resend=1" class="recover">
                         <?php _e('I didn\'t received the code, please send it again', 'sln') ?>
                     </a>
