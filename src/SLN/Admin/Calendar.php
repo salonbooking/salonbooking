@@ -20,7 +20,7 @@ class SLN_Admin_Calendar
             'salon',
             __('Salon Calendar', 'sln'),
             __('Calendar', 'sln'),
-            apply_filters('salonviews/settings/capability', 'manage_options'),
+            apply_filters('salonviews/settings/capability', 'manage_salon'),
             self::PAGE,
             array($this, 'show')
         );

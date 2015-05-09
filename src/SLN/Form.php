@@ -142,7 +142,15 @@ class SLN_Form
     <?php
     }
 
-    static public function fieldText($name, $value = false, $settings = array())
+    static public function fieldRadiobox($name, $value, $checked = false, $settings = array())
+    {
+        ?>
+        <input type="radio" name="<?php echo $name ?>" id="<?php echo self::makeID($name.'['.$value.']') ?>"
+               value="<?php echo $value?>"  <?php echo $checked ? 'checked="checked"' : '' ?> <?php echo self::attrs($settings) ?>/>
+    <?php
+    }
+
+   static public function fieldText($name, $value = false, $settings = array())
     {
         if (!isset($settings['required'])) {
             $settings['required'] = false;

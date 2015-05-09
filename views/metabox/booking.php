@@ -100,6 +100,30 @@ $helper->showNonce($postType);
     </div>
     <div class="sln-separator"></div>
     <div class="form-group sln_meta_field">
+        <label><?php _e('Attendant', 'sln'); ?></label><br/>
+        <?php foreach ($plugin->getAttendants() as $attendant) : ?>
+            <div class="row">
+                <div class="col-md-1 col-sm-1 col-xs-2">
+            <span class="service-checkbox">
+                <?php SLN_Form::fieldRadiobox(
+                    $helper->getFieldName($postType, 'attendant'),
+                    $attendant->getId(),
+                    $booking->hasAttendant($attendant)
+                ) ?>
+            </span>
+                </div>
+                <div class="col-md-8 col-sm-9 col-xs-10 sln_booking-attendant-info">
+                    <label for="<?php echo SLN_Form::makeID('sln[services][' . $attendant->getId() . ']') ?>">
+                        <strong class="service-name"><?php echo $attendant->getName(); ?></strong>
+                        <span class="service-description"><?php echo $attendant->getContent() ?></span>
+                    </label>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+ 
+    <div class="sln-separator"></div>
+    <div class="form-group sln_meta_field">
         <label><?php _e('Services', 'sln'); ?></label><br/>
         <?php foreach ($plugin->getServices() as $service) : ?>
             <div class="row">

@@ -56,10 +56,14 @@ $values = array(
                                'phone'     => __('Phone', 'sln'),
                                'password'  => __('Password', 'sln'),
                                'password_confirm' => __('Confirm your password', 'sln')
-                           ) as $field => $label): ?>
+                           ) as $field => $label):  ?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
+                        <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
+                        <div class="input-group">
+                            <span class="input-group-addon"><?php echo $prefix?></span>
+                            <?php endif ?>
                         <?php 
                             if(strpos($field, 'password') === 0){
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'password'));
@@ -67,8 +71,12 @@ $values = array(
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true));
                             }
                         ?>
+                        <?php if(($field == 'phone') && isset($prefix)):?>
+                        </div>
+                        <?php endif ?>
                     </div>
                 </div>
+
             <?php endforeach ?>
         </div>
         <?php include "_form_actions.php" ?>
@@ -87,7 +95,14 @@ $values = array(
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
+                        <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
+                        <div class="input-group">
+                            <span class="input-group-addon"><?php echo $prefix?></span>
+                        <?php endif ?>
                         <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true)) ?>
+                            <?php if(($field == 'phone') && isset($prefix)):?>
+                                </div>
+                            <?php endif ?>
                     </div>
                 </div>
             <?php endforeach ?>

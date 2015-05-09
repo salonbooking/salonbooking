@@ -144,11 +144,17 @@ class SLN_Admin_Settings
                      'gen_phone',
                      'gen_address',
                      'gen_timetable',
+                     'attendant_enabled',
+                     'sms_enabled',
+                     'sms_account',
+                     'sms_password',
+                     'sms_prefix',
+                     'sms_provider',
                      'soc_facebook',
                      'soc_twitter',
                      'soc_google'
                  ) as $k) {
-            $this->settings->set($k, $_POST['salon_settings'][$k]);
+            $this->settings->set($k, stripcslashes($_POST['salon_settings'][$k]));
         }
         $this->settings->save();
         $this->showAlert(
@@ -183,7 +189,7 @@ class SLN_Admin_Settings
                      'hours_before_to',
                      'interval'
                  ) as $k) {
-            $this->settings->set($k, $_POST['salon_settings'][$k]);
+            $this->settings->set($k, isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '');
         }
         $this->settings->save();
         $this->showAlert(

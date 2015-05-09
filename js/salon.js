@@ -23,7 +23,13 @@ jQuery(function ($) {
             $(this).parent().toggleClass("is-checked");
         })
     });
-    // CHECKBOXES
+    // RADIOBOXES
+    $('#sln-salon input:radio').each(function () {
+        $(this).click(function() {
+            $(".is-checked").removeClass('is-checked');
+            $(this).parent().toggleClass("is-checked");
+        });
+    });
 });
 
 function sln_stepDate($) {

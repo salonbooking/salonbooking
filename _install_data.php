@@ -31,11 +31,29 @@ return array(
         'pay_currency'     => 'USD',
         'pay_paypal_email' => 'test@test.com',
         'pay_paypal_test'  => true,
+        'parallels_hour'   => 1 
 //        'confirmation'     => true,
 //        'pay_enabled'      => true,
 //        'pay_cash'         => true
     ),
     'posts'    => array(
+        array(
+            'post' => array(
+                'post_title'   => 'Mario',
+                'post_excerpt' => 'mario',
+                'post_status'  => 'publish',
+                'post_type'    => 'sln_attendant'
+            ),
+        ),
+        array(
+            'post' => array(
+                'post_title'   => 'Pablo',
+                'post_excerpt' => 'pablo',
+                'post_status'  => 'publish',
+                'post_type'    => 'sln_attendant'
+            ),
+        ),
+ 
         array(
             'post' => array(
                 'post_title'   => 'Manicure',
