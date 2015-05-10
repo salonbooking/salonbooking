@@ -1,8 +1,9 @@
-<p>Last update 10.02.2015</p>
+<p>Last update 10.05.2015</p>
 <h2>Follow these steps in order to make “Salon bookings” plugin up and running.</h2>
 <h3></h3>
 <h3><em>Step 1</em></h3>
 <p><strong>Install and activate the plugin as usual.</strong></p>
+<p>Go to Plugins &gt; Plugin License and paste your license Key and press &quot;Activate License&quot; - only PRO - Version</p>
 <p>&nbsp;</p>
 <h3><em>Step 2</em></h3>
 <p><strong>Go to “Salon Settings” &#8211; &gt; “General” tab and provide the following information:</strong></p>
@@ -15,9 +16,22 @@
       d) Your salon’s address<br />
       <br>
       e) Your salon’s “booking notes” &#8211; provide your customers useful information about your booking policy. <br>
-      This information will be displayed at the end of booking process and inside the email booking notification.<br />
+This information will be displayed at the end of booking process and inside the email booking notification.</p>
+<p>f) If you want you can &quot;Enable attendants selection&quot; option if you want give your customers the possibility to choose their favourite attendants</p>
+<p>g) You can decide to &quot;Enable SMS verification&quot; if you want to aks your customers to verify their identity throught the firs timt registration process.<br>
+      To enable this option you need to subscribe an account on one of these providers:<br>
+</p>
+<li>Twilio</li>
+<li>Plivio</li>
+<li>ip1sms</li>
+<p>Then you need to fill the account informations: </p>
+<li>Account</li>
+<li>Password</li>
+<li>Number prefix&nbsp;</p>      
+<br />
       <br>
-f) set your salon’s social networks pages</p>
+</p>
+</li>
 <p><strong>When finish click “Update Settings” button</strong></p>
 <p>&nbsp;</p>
 <h3><em>Step 3</em></h3>
@@ -83,6 +97,13 @@ g) click on “<strong>Publish</strong>” button.</p>
 Once activated this plugin creates a page named “<strong>Booking</strong>” placing a shortcode <strong><code>[\salon]</code></strong> inside the text editor.</p>
 <p>You are free to place the shortcode inside another page if you want.</p>
 <p>&nbsp;</p>
+<h3><em>Step 7</em></h3>
+<p><strong>Add your attendandts</strong></p>
+<p>If have enabled the &quot;Enable attendants selection&quot; option you need to add them one by one going to &quot;Attendands&quot; section and click &quot;Add Attendant&quot;. Provide a name, eventually set their days of not availability and then click on &quot;Publish&quot;.</p>
+<p>&nbsp;</p>
+<h3><em>Step 8</em></h3>
+<p><strong>Staff user role</strong></p>
+<p>If you want to give your staff member the access to the website back-end you can add them throught the &quot;User&quot; wordpress section and select &quot;Staff member&quot; as rule. This way they can access only to the booking section of the administration back-end.</p>
 <p><strong>Other notes:</strong></p>
 <p>This plugin give final users the possibility to select only that dates and time that are actually available for bookings. <br>
 This plugin make a real-time control over your settings (e.g. booking rules) and the upcoming confirmed reservations in order to display available booking dates.</p>
@@ -90,5 +111,4 @@ This plugin make a real-time control over your settings (e.g. booking rules) and
 <p>&nbsp;</p>
 <p>For any further information please go to our <strong><a href="http://salon.wpchef.it/" target="_blank">official Salon Booking Plugin website.</a></strong></p>
 <p>If you have problems please use our <strong><a href="http://plugins.wpchef.it/forums/" target="_blank">official support forum.</a></strong></p>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
