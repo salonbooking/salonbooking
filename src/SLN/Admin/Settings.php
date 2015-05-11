@@ -27,7 +27,7 @@ class SLN_Admin_Settings
         add_menu_page(
             __('Salon', 'sln'),
             __('Salon', 'sln'),
-            'manage_options',
+            'manage_salon',
             'salon',
             array($this, 'settings_page'),
             SLN_PLUGIN_URL . '/img/admin_icon.png',
@@ -37,7 +37,7 @@ class SLN_Admin_Settings
             'salon',
             __('Salon Settings', 'sln'),
             __('Settings', 'sln'),
-            apply_filters('salonviews/settings/capability', 'manage_options'),
+            apply_filters('salonviews/settings/capability', 'manage_salon'),
             self::PAGE,
             array($this, 'show')
         );
