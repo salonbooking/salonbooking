@@ -1,9 +1,9 @@
-=== Salon booking Free Version ===
+=== Salon booking PRO Version ===
 Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment
 Requires at least: 4.1
-Tested up to: 4.1.1
-Stable tag: 1.0
+Tested up to: 4.2.2
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,15 +25,10 @@ This section describes how to install the plugin and get it working.
 
 
 1. Upload `salon-free` folder to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Go to Salon > Settings to complete your salon’s settings
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Activate your PRO license through the Plugins / Plugin license / paste your KEY and press "Activate license"
+4. Go to Salon > Settings to complete your salon’s settings
 
-== Frequently Asked Questions ==
-
-= What happen when plugin reach its booking limit? =
-
-You should buy the PRO version here.
-http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 
 == Screenshots ==
@@ -52,3 +47,10 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 
 == Changelog ==
+
+1.0.1
+
+Added "Attendands selection" option
+Added "SMS Verification" option
+Add "Salon staff" new users role
+Fixed booking system bug
