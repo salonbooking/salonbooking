@@ -69,7 +69,11 @@ class SLN_Shortcode_Salon
     protected function render($content)
     {
         $salon = $this;
-        return $this->plugin->loadView('shortcode/salon', compact('content', 'salon'));
+        if(get_option(SLN_Plugin::F)> SLN_Plugin::F1){
+            return $this->plugin->loadView('trial/shortcode', compact('salon'));
+        } else {
+            return $this->plugin->loadView('shortcode/salon', compact('content', 'salon'));
+        }
     }
 
 
