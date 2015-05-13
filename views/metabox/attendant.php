@@ -1,10 +1,23 @@
 <?php
 $helper->showNonce($postType);
 ?>
-<h3><?php _e('Not Available At','sln'); ?></h3>
+
 <?php
 $days = SLN_Func::getDays();
 ?>
+<div class="row">
+
+    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3  attendants-notavailable-h">
+        <?php
+        $helper->showFieldtext(
+            $helper->getFieldName($postType, 'email'),
+            __('E-mail', 'sln'),
+            $attendant->getEmail()
+        ); ?>
+    </div>
+
+</div>
+<h3><?php _e('Not available on','sln'); ?></h3>
 <div class="row">
     <div class="col-md-12 attendants-notavailable">
         <?php foreach ($days as $k => $day) { ?>
@@ -26,7 +39,7 @@ $days = SLN_Func::getDays();
             ) ?>
         </label>
     </div>
-    <div class="col-xs-6 col-md-3 col-lg-2 col-sm-3  attendants-notavailable-h">
+    <div class="col-xs-6 col-md-3 col-lg-2 col-sm-3  attendants-notavailable">
         <label>
             <?php echo __('To', 'sln') ?>
             <?php SLN_Form::fieldTime(
@@ -35,14 +48,9 @@ $days = SLN_Func::getDays();
             ) ?>
         </label>
     </div>
-    <em><?php _e('Leave blank if you want this attendant available everydays at every hour', 'sln') ?></em>
-    <div class="col-md-12 col-sm-12">
-        <?php
-        $helper->showFieldtext(
-            $helper->getFieldName($postType, 'email'),
-            __('E-mail', 'sln'),
-            $attendant->getEmail()
-        ); ?>
-    </div>
+    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12  attendants-notavailable-h">
+    <em><?php _e('Leave blank if you want this attendant available every working days at every working hour', 'sln') ?></em>
+</div>
+
 </div>
 <div class="sln-clear"></div>
