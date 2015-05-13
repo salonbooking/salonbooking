@@ -14,6 +14,12 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
         return $ret;
     }
 
+    function getEmail(){
+        return apply_filters(
+            'sln_attendant_email',
+            get_post_meta($this->getId(), '_sln_attendant_email', true)
+        );
+    }
 
     function getNotAvailableFrom()
     {

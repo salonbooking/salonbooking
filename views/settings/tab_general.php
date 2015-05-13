@@ -72,6 +72,9 @@
 
             <p><?php echo sprintf(__('You need to add your members staff <a href="%s">Here</a>.', 'sln'),
                     get_admin_url().'edit.php?post_type=sln_attendant') ?></p>
+            <?php $this->row_input_checkbox('attendant_email', __('Enable attendant email on new bookings', 'sln')); ?>
+            <p><?php _e('Attendant will receive a mail when admin receive a mail with the choosen attendant.', 'sln') ?></p>
+
         </div>
         <div class="col-md-6">
             <?php $this->row_input_checkbox('sms_enabled', __('Enable SMS verification', 'sln')); ?>
@@ -88,14 +91,17 @@
             <!-- form-group END -->
 
             <div class="row">
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-6 col-sm-6">
                     <?php $this->row_input_text('sms_account', __('Account', 'sln')); ?>
                 </div>
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-6 col-sm-6">
                     <?php $this->row_input_text('sms_password', __('Password', 'sln')); ?>
                 </div>
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-6 col-sm-6">
                     <?php $this->row_input_text('sms_prefix', __('Number Prefix', 'sln')); ?>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <?php $this->row_input_text('sms_from', __('Sender number', 'sln')); ?>
                 </div>
             </div>
         </div>

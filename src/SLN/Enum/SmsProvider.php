@@ -12,7 +12,9 @@ class SLN_Enum_SmsProvider
     private static $classes = array(
         'fake' => 'SLN_Action_Sms_Fake',
         'ip1smshttp' => 'SLN_Action_Sms_Ip1SmsHttp',
-        'ip1smswebservice' => 'SLN_Action_Sms_Ip1SmsWebservice'
+        'ip1smswebservice' => 'SLN_Action_Sms_Ip1SmsWebservice',
+        'twilio' => 'SLN_Action_Sms_Twilio',
+        'plivo' => 'SLN_Action_Sms_Plivo',
     );
 
     public static function toArray()
@@ -52,7 +54,9 @@ class SLN_Enum_SmsProvider
         self::$labels = array(
             'fake' => __('test (sms code is sent by mail to the admin)', 'sln'),
 //            'ip1smshttp' => 'ip1sms http',
-            'ip1smswebservice' => 'ip1sms'
+            'ip1smswebservice' => 'ip1sms',
+            'twilio' => 'Twilio',
+            'plivo' => 'Plivo'
         );
     }
 }

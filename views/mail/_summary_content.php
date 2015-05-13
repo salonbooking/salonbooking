@@ -18,7 +18,7 @@ function tpl_summary_details($booking, $plugin){
                 <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo _e('Time','sln') ?></td>
               </tr>
               <tr>
-                <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $plugin->format()->time($booking->getTime()) ?></td>
+                <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $plugin->format()->time($booking->getTime()) ?></td>
               </tr>
     <?php if($attendant = $booking->getAttendant()) :  ?>
               <tr>
@@ -87,13 +87,16 @@ function tpl_summary_details($booking, $plugin){
             <tr>
                 <td align="left" valign="top"
                     style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;">
+                    <?php _e('THIS', 'sln') ?>
+<?php /*
                     <?php _e('Dear', 'sln') ?>
-                    
+
                     <?php if($forAdmin): ?>
                     <?php _e('Administrator','sln') ?>
                 <?php else: ?>
                     <?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?>,
-                <?php endif; ?>    
+                <?php endif; ?>
+*/?>
                 </td>
             </tr>
             <tr>

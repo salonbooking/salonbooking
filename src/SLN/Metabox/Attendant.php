@@ -64,6 +64,7 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
             'notav_5'    => 'bool',
             'notav_6'    => 'bool',
             'notav_7'    => 'bool',
+            'email'    => 'text',
         );
     }
 }
