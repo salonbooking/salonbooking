@@ -6,7 +6,8 @@
 if(empty($data['to'])){
     $data['to']      = $booking->getEmail();
 }
-$data['subject'] = 'New booking ' 
+
+$data['subject'] = 'New booking '
     .' '. $plugin->format()->date($booking->getDate()) 
     . ' - ' . $plugin->format()->time($booking->getTime());
 $forAdmin = false;

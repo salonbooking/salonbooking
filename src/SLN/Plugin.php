@@ -7,6 +7,9 @@ class SLN_Plugin
     const POST_TYPE_BOOKING = 'sln_booking';
     const USER_ROLE_STAFF = 'sln_staff';
     const TEXT_DOMAIN = 'sln';
+    const F = 'slnc';
+    const F1 = 50;
+    const F2 = 40;
 
     private static $instance;
     private $settings;
@@ -195,6 +198,12 @@ class SLN_Plugin
             if (!$this->getSettings()->getNoticesDisabled()) {
                 $dismissUrl = add_query_arg(array('sln-dismiss' => 'dismiss_admin_notices'));
                 echo $this->loadView('admin_notices', compact('dismissUrl'));
+            }
+            $cnt = get_option(SLN_PLUGIN::F);
+            if($cnt>self::F1){
+                echo $this->loadView('trial/admin_end');
+            }elseif($cnt > self::F2){
+                echo $this->loadView('trial/admin_near');
             }
         }
     }

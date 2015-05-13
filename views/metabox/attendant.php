@@ -34,8 +34,15 @@ $days = SLN_Func::getDays();
                 $attendant->getNotAvailableTo()
             ) ?>
         </label>
-
+    </div>
+    <em><?php _e('Leave blank if you want this attendant available everydays at every hour', 'sln') ?></em>
+    <div class="col-md-12 col-sm-12">
+        <?php
+        $helper->showFieldtext(
+            $helper->getFieldName($postType, 'email'),
+            __('E-mail', 'sln'),
+            $attendant->getEmail()
+        ); ?>
     </div>
 </div>
-<em><?php _e('Leave blank if you want this attendant available everydays at every hour', 'sln') ?></em>
 <div class="sln-clear"></div>

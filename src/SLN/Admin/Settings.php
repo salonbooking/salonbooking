@@ -145,11 +145,13 @@ class SLN_Admin_Settings
                      'gen_address',
                      'gen_timetable',
                      'attendant_enabled',
+                     'attendant_email',
                      'sms_enabled',
                      'sms_account',
                      'sms_password',
                      'sms_prefix',
                      'sms_provider',
+                     'sms_from',
                      'soc_facebook',
                      'soc_twitter',
                      'soc_google'
