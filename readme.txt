@@ -48,9 +48,9 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
-1.0.1
+1.0.1 13/05/2015
 
-Added "Attendands selection" option
-Added "SMS Verification" option
-Add "Salon staff" new users role
-Fixed booking system bug
+* Added "Attendands selection" option
+* Added "SMS Verification" option
+* Add "Salon staff" new users role
+* Fixed booking system bug
