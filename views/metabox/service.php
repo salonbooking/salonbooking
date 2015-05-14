@@ -31,7 +31,7 @@ $helper->showNonce($postType);
     </div>
     <div class="sln-clear"></div>
 </div>
-<h3><?php _e('Not Available At','sln'); ?></h3>
+<h3><?php _e('Not available on','sln'); ?></h3>
 <?php
 $days = SLN_Func::getDays();
 ?>
@@ -67,5 +67,5 @@ $days = SLN_Func::getDays();
 
     </div>
 </div>
-<em><?php _e('Leave blank if you want this service available everydays at every hour', 'sln') ?></em>
+<em><?php _e('Leave blank if you want this service available every working days at every working hour', 'sln') ?></em>
 <div class="sln-clear"></div>
