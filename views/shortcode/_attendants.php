@@ -13,7 +13,7 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
 <div class="sln-attendant-list">
     <?php foreach ($attendants as $attendant) : ?>
         <div class="row">
-            <div class="col-xs-2 col-lg-1">
+            <div class="col-lg-1 col-md-3 col-xs-2">
             <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $errors   = $ah->validateAttendant($attendant);
@@ -30,7 +30,27 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
             ) ?>
             </span>
             </div>
-            <div class="col-lg-11 col-xs-10">
+
+            <div class="col-lg-3 col-md-3 col-xs-4">
+
+                <div class="attendant_thumb">
+                <?php   if ( has_post_thumbnail($attendant->getId())) { 
+
+                echo get_the_post_thumbnail($attendant->getId(), 'thumbnail'); 
+
+                 }
+                ?>
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="col-lg-8 col-md-6 col-xs-6">
+
+
                 <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
                     <strong class="attendant-name"><?php echo $attendant->getName(); ?></strong>
                     <span class="attendant-description"><?php echo $attendant->getContent() ?></span>
