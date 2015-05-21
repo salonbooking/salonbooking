@@ -3,7 +3,7 @@
 
 class SLN_Update_Init {
     public function __construct(){
-        add_action( 'admin_init', array($this,'sln_plugin_updater'), 0 );
+        add_action( 'admin_init', array($this,'plugin_updater'), 0 );
         add_action('admin_menu', array($this,'license_menu'));
         add_action('admin_init', array($this,'register_option'));
         add_action('admin_init', array($this,'activate_license'));
@@ -102,7 +102,7 @@ class SLN_Update_Init {
      * a license key
      *************************************/
 
-    function sln_activate_license() {
+    function activate_license() {
 
         // listen for our activate button to be clicked
         if( isset( $_POST['sln_license_activate'] ) ) {

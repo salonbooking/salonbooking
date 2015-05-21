@@ -30,12 +30,13 @@ class SLN_Func
         return floor($datediff / (60 * 60 * 24));
     }
 
-    public static function getMonths()
+    public static function getMonths($localized = false)
     {
         $timestamp = strtotime("1970-01-01");
         $ret       = array();
+        $format = $localized ? 'M' : 'F';
         for ($i = 1; $i <= 12; $i++) {
-            $ret[$i]   = date_i18n('F', $timestamp);
+            $ret[$i]   = date_i18n($format, $timestamp);
             $timestamp = strtotime('+1 month', $timestamp);
         }
 
@@ -85,8 +86,9 @@ class SLN_Func
             if (is_array($val)) {
                 $val = $val['year'] . '-' . $val['month'] . '-' . $val['day'];
             }
-
-            return date('Y-m-d', strtotime($val));
+            $ret = date('Y-m-d', strtotime($val));
+            if($ret == '1970-01-01') throw new Exception(sprintf('wrong date %s', $val));
+            return $ret;
         } elseif ($filter == 'bool') {
             return $val ? true : false;
         } elseif ($filter == 'set') {
