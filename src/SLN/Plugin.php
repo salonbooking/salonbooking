@@ -38,6 +38,7 @@ class SLN_Plugin
 
     private function init()
     {
+        new SLN_Update_Init();
         add_action('init', array($this, 'action_init'));
         add_action('admin_init', array($this, 'add_admin_caps'));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
