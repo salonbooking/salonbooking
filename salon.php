@@ -9,6 +9,7 @@ Author URI: http://plugins.wordpresschef.it/
 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 define('SLN_STORE_URL', 'http://plugins.wordpresschef.it');
 define('SLN_ITEM_NAME', 'Salon booking wordpress plugin');
 =======
@@ -251,10 +252,14 @@ define('SLN_STORE_URL', 'http://plugins.wordpresschef.it');
 define('SLN_ITEM_NAME', 'Salon booking wordpress plugin');
 >>>>>>> d5276a8... refactoring licence process
 >>>>>>> 45fec7b... refactoring licence process
+=======
+define('SLN_STORE_URL', 'http://plugins.wordpresschef.it');
+define('SLN_ITEM_NAME', 'Salon booking wordpress plugin');
+>>>>>>> 6a3d57b... fix licence process
 define('SLN_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('SLN_PLUGIN_DIR', untrailingslashit(dirname(__FILE__)));
 define('SLN_PLUGIN_URL', untrailingslashit(plugins_url('', __FILE__)));
-define('SLN_VERSION', '1.0.0');
+define('SLN_VERSION', '1.0.2');
 function sln_autoload($className)
 {
     if (strpos($className, 'SLN_') === 0) {
