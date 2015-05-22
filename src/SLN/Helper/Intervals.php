@@ -41,9 +41,11 @@ class SLN_Helper_Intervals
         $this->times   = $times;
         $suggestedTime = $date->format('H:i');
         $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
-        while (!isset($times[$suggestedTime])) {
+        $timeout = 0;
+        while ($timeout < 86400 && !isset($times[$suggestedTime])) {
             $date->modify("+$i minutes");
             $suggestedTime = $date->format('H:i');
+            $timeout++;
         }
         $this->suggestedDate = $date;
         $this->bindDates($ah->getDays());
@@ -108,7 +110,7 @@ class SLN_Helper_Intervals
             'suggestedDay'   => $this->suggestedDate->format('d'),
             'suggestedMonth' => $this->suggestedDate->format('m'),
             'suggestedYear'  => $this->suggestedDate->format('Y'),
-            'suggestedDate' => $this->suggestedDate->format('d M Y'),
+            'suggestedDate' => ucwords(date_i18n('d M Y', $this->suggestedDate->getTimestamp())),
             'suggestedTime'  => $this->suggestedDate->format('H:i'),
         );
     }

@@ -808,6 +808,13 @@
 
 // RADIOBOXES
 .attendant-radio {
+  
+ @media @phone{
+
+  margin: 0 auto 1rem auto;
+
+ } 
+
   display: block;
   width: 25px;
   height: 25px;
@@ -854,3 +861,60 @@
     opacity: 0;
   }
 }
+
+// THUMB ATTENDANTS
+
+.attendant_thumb {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+
+    @media @phone {
+      
+       margin: 0 auto 1rem auto;
+
+    }
+
+
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+}
+
+.sln-attendant-list {
+
+  .attendant-description{
+    display: inline-block;
+    font-style: italic;
+    font-size: 0.9rem;
+    font-weight: normal;
+
+  }
+
+  .row{margin: 1.5rem 0 1.5rem 0;}
+
+@media @phone {
+
+  label {
+
+        text-align: center;
+        width: 100%;
+       }
+
+      }
+
+
+  }
+
+

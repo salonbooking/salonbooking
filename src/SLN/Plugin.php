@@ -272,7 +272,7 @@ class SLN_Plugin
      * @param Datetime $datetime
      * @return \SLN_Helper_Intervals
      */
-    public function getIntervals(Datetime $datetime)
+    public function getIntervals(DateTime $datetime)
     {
         $obj = new SLN_Helper_Intervals($this->getAvailabilityHelper());
         $obj->setDatetime($datetime);

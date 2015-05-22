@@ -3899,7 +3899,7 @@ body:not(.wp-admin) .hidden {
 #sln-salon #salon-step-summary div.summ-row .total-amount {
   font-size: .8em;
   font-weight: bold;
-  color: #000000;
+  color: black;
 }
 #sln-salon .tycol {
   background: #eeeeee;
@@ -3918,7 +3918,7 @@ body:not(.wp-admin) .hidden {
 }
 #sln-salon .tycol i {
   font-size: 2.2em;
-  color: #008000;
+  color: green;
   margin-top: .6em;
 }
 #sln-salon .tycol i.c {
@@ -3961,7 +3961,7 @@ body:not(.wp-admin) .hidden {
 }
 #sln-salon .btn-primary,
 #sln-salon .btn-success {
-  color: #ffffff !important;
+  color: white !important;
 }
 #sln-salon ul {
   list-style-type: none;
@@ -4111,7 +4111,8 @@ body:not(.wp-admin) .hidden {
     width: 100%;
   }
 }
-#sln-salon .sln-service-list .row, #sln-salon .sln-attendant-list .row{
+#sln-salon .sln-service-list .row,
+#sln-salon .sln-attendants-list .row {
   margin-bottom: 1.1em;
 }
 #sln-salon .alert {
@@ -4369,6 +4370,11 @@ body:not(.wp-admin) .hidden {
   -o-transition: all 50ms ease-in-out;
   transition: all 50ms ease-in-out;
 }
+@media only screen and (max-width: 767px) {
+  .attendant-radio {
+    margin: 0 auto 1rem auto;
+  }
+}
 .attendant-radio:after {
   content: "";
   position: absolute;
@@ -4398,4 +4404,41 @@ body:not(.wp-admin) .hidden {
   height: 30px;
   margin: 0;
   opacity: 0;
+}
+.attendant_thumb {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 767px) {
+  .attendant_thumb {
+    margin: 0 auto 1rem auto;
+  }
+}
+.attendant_thumb img {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
+.sln-attendant-list .attendant-description {
+  display: inline-block;
+  font-style: italic;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+.sln-attendant-list .row {
+  margin: 1.5rem 0 1.5rem 0;
+}
+@media only screen and (max-width: 767px) {
+  .sln-attendant-list label {
+    text-align: center;
+    width: 100%;
+  }
 }

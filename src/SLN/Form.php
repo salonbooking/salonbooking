@@ -41,8 +41,8 @@ class SLN_Form
     static public function fieldJSDate($name, $value = null, $settings = array()){
         ?><span class="sln-jsdate">
         <div class="sln_datepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 
-            required="required" data-format="d M yyyy" class="form-control" 
-            value="<?php echo $value->format('d M Y') ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
+            required="required" data-format="d MM yyyy" class="form-control" 
+            value="<?php echo ucwords(date_i18n('d M Y', $value->getTimestamp())) ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
         </span><?php
     }
 
