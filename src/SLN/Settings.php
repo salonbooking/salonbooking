@@ -87,4 +87,8 @@ class SLN_Settings
     {
         return nl2br(htmlentities($this->get('disabled_message')));
     }
+
+    public function isAjaxEnabled(){
+        return true;
+    }
 }

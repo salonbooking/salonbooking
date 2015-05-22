@@ -34,7 +34,7 @@ $values = array(
                     <input name="login_password" type="password" class="form-control login-field"/>
                 </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-success btn-block" name="<?php echo $submitName ?>"
+                    <button type="submit" data-salon-data="<?php echo "sln_step_page=".$step->getShortcode()->getCurrentStep()."&$submitName=next" ?>" data-salon-toggle="next" class="btn btn-success btn-block" name="<?php echo $submitName ?>"
                             value="next">
                         Login <i class="glyphicon glyphicon-user"></i>
                     </button>
