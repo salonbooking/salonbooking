@@ -110,7 +110,7 @@ class SLN_Helper_Intervals
             'suggestedDay'   => $this->suggestedDate->format('d'),
             'suggestedMonth' => $this->suggestedDate->format('m'),
             'suggestedYear'  => $this->suggestedDate->format('Y'),
-            'suggestedDate' => ucwords(date_i18n('d M Y', $this->suggestedDate->getTimestamp())),
+            'suggestedDate' => ucwords(date_i18n('d M Y', $this->suggestedDate->format('U'))),
             'suggestedTime'  => $this->suggestedDate->format('H:i'),
         );
     }
