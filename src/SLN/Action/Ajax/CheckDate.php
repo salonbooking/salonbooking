@@ -106,7 +106,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
     public static function evalPickedDate($date){ 
         $date = explode(' ', $date);
         foreach(SLN_Func::getMonths(true) as $k => $v){
-            if(strcasecmp(substr($v, 0, 3),$date[1]) == 0){
+            if((strcasecmp(substr($v, 0, 3),$date[1]) == 0) || (strcasecmp($v, $date[1]) == 0)){
                 $ret = $date[2].'-'.($k < 10 ? '0'.$k : $k).'-'.$date[0];
                 return $ret;
             }
