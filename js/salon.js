@@ -13,17 +13,21 @@ jQuery(function ($) {
     sln_init($);
 });
 
-function sln_init($){
+function sln_init($) {
     if ($('#salon-step-services').length || $('#salon-step-secondary').length) {
         sln_serviceTotal($);
     }
     if ($('#salon-step-date').length) {
         sln_stepDate($);
-    }else {
+    } else {
         $('[data-salon-toggle="next"]').click(function (e) {
-            e.preventDefault();
             var form = $(this).closest('form');
-            sln_loadStep($, form.serialize() + '&' + $(this).data('salon-data'));
+            $('#sln-salon input.sln-invalid').removeClass('sln-invalid');
+            if (form[0].checkValidity()) {
+                sln_loadStep($, form.serialize() + '&' + $(this).data('salon-data'));
+            }else{
+                $('#sln-salon input:invalid').addClass('sln-invalid');
+            }
             return false;
         });
     }
@@ -58,7 +62,7 @@ function sln_loadStep($, data) {
         method: 'POST',
         dataType: 'json',
         success: function (data) {
-            if(typeof data.redirect != 'undefined') {
+            if (typeof data.redirect != 'undefined') {
                 window.location.href = data.redirect;
             } else {
                 $('#sln-salon').replaceWith(data.content);

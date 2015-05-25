@@ -17,7 +17,8 @@ function validate_signature($uri, $post_params=array(), $signature, $auth_token)
     foreach($post_params as $key => $value) {
         $uri .= "$key$value";
     }
-    $generated_signature = base64_encode(hash_hmac("sha1",$uri, $auth_token, true));
+    $tmp = hash_hmac("sha1",$uri, $auth_token, true);
+    $generated_signature = base64_encode($tmp);
     return $generated_signature == $signature;
 }
 
@@ -725,7 +726,7 @@ class Element {
         }
     }
 
-    public function toXML($header=FALSE) {
+    public function toXML() {
         if (!(isset($xmlstr))) {
             $xmlstr = '';
         }
