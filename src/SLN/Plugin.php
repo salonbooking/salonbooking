@@ -88,7 +88,7 @@ class SLN_Plugin
             array(
                 'ajax_url' => admin_url('admin-ajax.php'),
                 'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
-                'loading' => 'http://i.stack.imgur.com/drgpu.gif',
+                'loading' => SLN_PLUGIN_URL.'/img/preloader.gif',
                 'txt_validating' => __('Validating...')
             )
         );
