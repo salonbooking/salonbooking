@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-03 11:10+0100\n"
+"POT-Creation-Date: 2015-05-25 23:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,14 @@ msgstr ""
 
 #: views/settings/tab_booking.php:21 views/metabox/service.php:52
 #: views/settings/tab_booking.php:23 views/metabox/service.php:52
-#: views/settings/tab_booking.php:23
+#: views/metabox/attendant.php:35 views/settings/tab_booking.php:23
 msgid "From"
 msgstr ""
 
 #: views/settings/tab_booking.php:21 views/metabox/service.php:59
 #: views/settings/tab_booking.php:23 views/metabox/service.php:61
-#: views/metabox/service.php:61 views/settings/tab_booking.php:23
+#: views/metabox/service.php:61 views/metabox/attendant.php:44
+#: views/settings/tab_booking.php:23
 msgid "To"
 msgstr ""
 
@@ -68,7 +69,7 @@ msgstr ""
 #: views/settings/tab_general.php:32 views/metabox/booking.php:40
 #: views/shortcode/salon_details.php:56 views/shortcode/salon_details.php:85
 #: views/metabox/booking.php:74 views/metabox/booking.php:74
-#: views/shortcode/salon_details.php:56 views/shortcode/salon_details.php:85
+#: views/shortcode/salon_details.php:56 views/shortcode/salon_details.php:93
 msgid "Phone"
 msgstr ""
 
@@ -80,15 +81,15 @@ msgstr ""
 msgid "Bookings notes"
 msgstr ""
 
-#: views/settings/tab_general.php:71 views/settings/tab_general.php:71
+#: views/settings/tab_general.php:71 views/settings/tab_general.php:114
 msgid "Facebook"
 msgstr ""
 
-#: views/settings/tab_general.php:74 views/settings/tab_general.php:74
+#: views/settings/tab_general.php:74 views/settings/tab_general.php:117
 msgid "Twitter"
 msgstr ""
 
-#: views/settings/tab_general.php:77 views/settings/tab_general.php:77
+#: views/settings/tab_general.php:77 views/settings/tab_general.php:120
 msgid "Google+"
 msgstr ""
 
@@ -113,32 +114,32 @@ msgstr ""
 #: views/metabox/booking.php:13 views/shortcode/salon_details.php:53
 #: views/shortcode/salon_details.php:82 views/metabox/booking.php:47
 #: views/metabox/booking.php:47 views/shortcode/salon_details.php:53
-#: views/shortcode/salon_details.php:82
+#: views/shortcode/salon_details.php:90
 msgid "Firstname"
 msgstr ""
 
 #: views/metabox/booking.php:22 views/shortcode/salon_details.php:54
 #: views/shortcode/salon_details.php:83 views/metabox/booking.php:56
 #: views/metabox/booking.php:56 views/shortcode/salon_details.php:54
-#: views/shortcode/salon_details.php:83
+#: views/shortcode/salon_details.php:91
 msgid "Lastname"
 msgstr ""
 
 #: views/metabox/booking.php:31 views/shortcode/salon_details.php:55
 #: views/shortcode/salon_details.php:84 views/metabox/booking.php:65
 #: views/shortcode/salon_details.php:26 views/metabox/booking.php:65
-#: views/shortcode/salon_details.php:26 views/shortcode/salon_details.php:55
-#: views/shortcode/salon_details.php:84
+#: views/metabox/attendant.php:14 views/shortcode/salon_details.php:26
+#: views/shortcode/salon_details.php:55 views/shortcode/salon_details.php:92
 msgid "E-mail"
 msgstr ""
 
 #: views/metabox/booking.php:123 views/metabox/booking.php:158
-#: views/metabox/booking.php:158
+#: views/metabox/booking.php:182
 msgid "Amount"
 msgstr ""
 
 #: views/metabox/booking.php:132 views/metabox/booking.php:167
-#: views/metabox/booking.php:167
+#: views/metabox/booking.php:191
 msgid "n.a."
 msgstr ""
 
@@ -147,7 +148,7 @@ msgid "Booking is pending"
 msgstr ""
 
 #: views/shortcode/salon_thankyou.php:24 views/mail/status_confirmed.php:9
-#: views/mail/status_confirmed.php:9 views/shortcode/salon_thankyou.php:24
+#: views/mail/status_confirmed.php:17 views/shortcode/salon_thankyou.php:24
 msgid "Booking confirmed"
 msgstr ""
 
@@ -177,7 +178,8 @@ msgid "step %s of %s"
 msgstr ""
 
 #: views/shortcode/salon_details.php:57 views/shortcode/salon_details.php:33
-#: views/shortcode/salon_details.php:33 views/shortcode/salon_details.php:57
+#: views/settings/tab_general.php:98 views/shortcode/salon_details.php:33
+#: views/shortcode/salon_details.php:57
 msgid "Password"
 msgstr ""
 
@@ -185,11 +187,11 @@ msgstr ""
 msgid "Confirm your password"
 msgstr ""
 
-#: views/shortcode/salon_summary.php:49 views/shortcode/salon_summary.php:49
+#: views/shortcode/salon_summary.php:49 views/shortcode/salon_summary.php:59
 msgid "Leave a message"
 msgstr ""
 
-#: views/shortcode/salon_summary.php:53 views/shortcode/salon_summary.php:53
+#: views/shortcode/salon_summary.php:53 views/shortcode/salon_summary.php:63
 msgid "Finalize"
 msgstr ""
 
@@ -208,22 +210,23 @@ msgstr ""
 msgid "you can book up to %s before"
 msgstr ""
 
-#: views/shortcode/salon_date.php:28 views/shortcode/salon_date.php:28
+#: views/shortcode/salon_date.php:28 views/trial/shortcode.php:17
+#: views/shortcode/salon_date.php:28
 msgid "Booking is disabled"
 msgstr ""
 
 #: src/SLN/Wrapper/Service.php:97 src/SLN/Wrapper/Service.php:98
-#: src/SLN/Wrapper/Service.php:98
+#: src/SLN/Wrapper/Service.php:100 src/SLN/Wrapper/Attendant.php:66
 msgid "on "
 msgstr ""
 
 #: src/SLN/Wrapper/Service.php:101 src/SLN/Wrapper/Service.php:102
-#: src/SLN/Wrapper/Service.php:102
+#: src/SLN/Wrapper/Service.php:104 src/SLN/Wrapper/Attendant.php:70
 msgid " from "
 msgstr ""
 
 #: src/SLN/Wrapper/Service.php:104 src/SLN/Wrapper/Service.php:105
-#: src/SLN/Wrapper/Service.php:105
+#: src/SLN/Wrapper/Service.php:107 src/SLN/Wrapper/Attendant.php:73
 msgid " to "
 msgstr ""
 
@@ -315,12 +318,12 @@ msgid "Passwords are different"
 msgstr ""
 
 #: src/SLN/Helper/Availability.php:142 src/SLN/Helper/Availability.php:149
-#: src/SLN/Helper/Availability.php:149
+#: src/SLN/Helper/Availability.php:166
 msgid "this service is not available "
 msgstr ""
 
 #: src/SLN/Helper/Availability.php:152 src/SLN/Helper/Availability.php:159
-#: src/SLN/Helper/Availability.php:159
+#: src/SLN/Helper/Availability.php:176
 msgid "this service is full in this hour"
 msgstr ""
 
@@ -340,7 +343,7 @@ msgstr ""
 #: src/SLN/PostType/Booking.php:37 views/metabox/booking.php:91
 #: views/mail/_header.php:27 views/mail/_summary_content.php:58
 #: src/SLN/PostType/Booking.php:37 views/metabox/booking.php:91
-#: views/mail/_header.php:27 views/mail/_summary_content.php:58
+#: views/mail/_header.php:27 views/mail/_summary_content.php:67
 msgid "Status"
 msgstr ""
 
@@ -353,69 +356,69 @@ msgid "Booking Price"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:67 src/SLN/PostType/Booking.php:71
-#: src/SLN/PostType/Booking.php:71
+#: src/SLN/PostType/Booking.php:81
 msgid "Enter booking name"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:80 src/SLN/PostType/Booking.php:84
-#: src/SLN/PostType/Booking.php:88 src/SLN/PostType/Booking.php:84
-#: src/SLN/PostType/Booking.php:88
+#: src/SLN/PostType/Booking.php:88 src/SLN/PostType/Booking.php:94
+#: src/SLN/PostType/Booking.php:98
 msgid "Booking updated."
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:86 src/SLN/PostType/Booking.php:90
-#: src/SLN/PostType/Booking.php:90
+#: src/SLN/PostType/Booking.php:100
 #, php-format
 msgid "Booking restored to revision from %s"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:90 src/SLN/PostType/Booking.php:94
-#: src/SLN/PostType/Booking.php:94
+#: src/SLN/PostType/Booking.php:104
 msgid "Booking published."
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:92 src/SLN/PostType/Booking.php:96
-#: src/SLN/PostType/Booking.php:96
+#: src/SLN/PostType/Booking.php:106
 msgid "Booking saved."
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:94 src/SLN/PostType/Booking.php:98
-#: src/SLN/PostType/Booking.php:98
+#: src/SLN/PostType/Booking.php:108
 msgid "Booking submitted."
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:98 src/SLN/PostType/Booking.php:102
-#: src/SLN/PostType/Booking.php:102
+#: src/SLN/PostType/Booking.php:112
 #, php-format
 msgid "Booking scheduled for: <strong>%1$s</strong>."
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:101 src/SLN/PostType/Service.php:83
 #: src/SLN/PostType/Booking.php:105 src/SLN/PostType/Service.php:83
-#: src/SLN/PostType/Booking.php:105
+#: src/SLN/PostType/Attendant.php:71 src/SLN/PostType/Booking.php:115
 msgid "M j, Y @ G:i"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:104 src/SLN/PostType/Booking.php:108
-#: src/SLN/PostType/Booking.php:108
+#: src/SLN/PostType/Booking.php:118
 msgid "Booking draft updated."
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:115 src/SLN/PostType/Booking.php:119
-#: src/SLN/PostType/Booking.php:119
+#: src/SLN/PostType/Booking.php:129
 msgid "This is where bookings are stored."
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:134 src/SLN/PostType/Booking.php:138
-#: src/SLN/PostType/Booking.php:142 src/SLN/PostType/Booking.php:138
-#: src/SLN/PostType/Booking.php:142
+#: src/SLN/PostType/Booking.php:142 src/SLN/PostType/Booking.php:147
+#: src/SLN/PostType/Booking.php:151
 msgid "Bookings"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:135 src/SLN/PostType/Booking.php:173
 #: src/SLN/PostType/Booking.php:139 src/SLN/PostType/Booking.php:207
-#: src/SLN/PostType/Booking.php:204 src/SLN/PostType/Booking.php:139
-#: src/SLN/PostType/Booking.php:204
+#: src/SLN/PostType/Booking.php:204 src/SLN/PostType/Booking.php:148
+#: src/SLN/PostType/Booking.php:214
 msgid "Booking"
 msgstr ""
 
@@ -423,68 +426,68 @@ msgstr ""
 #: src/SLN/Admin/Settings.php:28 src/SLN/Admin/Settings.php:29
 #: src/SLN/PostType/Booking.php:140 src/SLN/Admin/Settings.php:28
 #: src/SLN/Admin/Settings.php:29 src/SLN/PostType/Service.php:111
-#: src/SLN/PostType/Booking.php:140
+#: src/SLN/PostType/Attendant.php:99 src/SLN/PostType/Booking.php:149
 msgid "Salon"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:137 src/SLN/PostType/Booking.php:141
-#: src/SLN/PostType/Booking.php:141
+#: src/SLN/PostType/Booking.php:150
 msgid "Salon Booking"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:139 src/SLN/PostType/Booking.php:143
-#: src/SLN/PostType/Booking.php:143
+#: src/SLN/PostType/Booking.php:152
 msgid "Add Booking"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:140 src/SLN/PostType/Booking.php:144
-#: src/SLN/PostType/Booking.php:144
+#: src/SLN/PostType/Booking.php:153
 msgid "Add New Booking"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:141 src/SLN/PostType/Booking.php:145
-#: src/SLN/PostType/Booking.php:145
+#: src/SLN/PostType/Booking.php:154
 msgid "Edit Booking"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:142 src/SLN/PostType/Booking.php:146
-#: src/SLN/PostType/Booking.php:146
+#: src/SLN/PostType/Booking.php:155
 msgid "New Booking"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:143 src/SLN/PostType/Booking.php:147
-#: src/SLN/PostType/Booking.php:147
+#: src/SLN/PostType/Booking.php:156
 msgid "View Booking"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:144 src/SLN/PostType/Booking.php:148
-#: src/SLN/PostType/Booking.php:148
+#: src/SLN/PostType/Booking.php:157
 msgid "Search Bookings"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:145 src/SLN/PostType/Booking.php:149
-#: src/SLN/PostType/Booking.php:149
+#: src/SLN/PostType/Booking.php:158
 msgid "No bookings found"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:146 src/SLN/PostType/Booking.php:150
-#: src/SLN/PostType/Booking.php:150
+#: src/SLN/PostType/Booking.php:159
 msgid "No bookings found in trash"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:147 src/SLN/PostType/Booking.php:151
-#: src/SLN/PostType/Booking.php:151
+#: src/SLN/PostType/Booking.php:160
 msgid "Booking Archive"
 msgstr ""
 
 #: src/SLN/PostType/Booking.php:172 src/SLN/PostType/Booking.php:206
-#: src/SLN/PostType/Booking.php:203 src/SLN/PostType/Booking.php:203
+#: src/SLN/PostType/Booking.php:203 src/SLN/PostType/Booking.php:213
 msgid "Save Booking"
 msgstr ""
 
 #: src/SLN/PostType/Service.php:23 views/metabox/service.php:21
 #: views/metabox/booking.php:146 src/SLN/PostType/Service.php:23
-#: views/metabox/service.php:21 views/metabox/booking.php:146
+#: views/metabox/service.php:21 views/metabox/booking.php:170
 msgid "Duration"
 msgstr ""
 
@@ -531,7 +534,7 @@ msgstr ""
 #: src/SLN/PostType/Service.php:109 src/SLN/PostType/Service.php:113
 #: views/metabox/booking.php:103 views/mail/_summary_content.php:32
 #: src/SLN/PostType/Service.php:109 src/SLN/PostType/Service.php:113
-#: views/metabox/booking.php:103 views/mail/_summary_content.php:32
+#: views/metabox/booking.php:127 views/mail/_summary_content.php:41
 msgid "Services"
 msgstr ""
 
@@ -618,7 +621,7 @@ msgid "M j, Y"
 msgstr ""
 
 #: src/SLN/Admin/Settings.php:38 src/SLN/Admin/Settings.php:237
-#: src/SLN/Admin/Settings.php:38 src/SLN/Admin/Settings.php:237
+#: src/SLN/Admin/Settings.php:38 src/SLN/Admin/Settings.php:245
 msgid "Salon Settings"
 msgstr ""
 
@@ -634,29 +637,29 @@ msgstr ""
 msgid "Reset completed with success"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:156 src/SLN/Admin/Settings.php:156
+#: src/SLN/Admin/Settings.php:156 src/SLN/Admin/Settings.php:164
 msgid "general settings are updated"
 msgstr ""
 
 #: src/SLN/Admin/Settings.php:157 src/SLN/Admin/Settings.php:192
-#: src/SLN/Admin/Settings.php:216 src/SLN/Admin/Settings.php:157
-#: src/SLN/Admin/Settings.php:192 src/SLN/Admin/Settings.php:216
+#: src/SLN/Admin/Settings.php:216 src/SLN/Admin/Settings.php:165
+#: src/SLN/Admin/Settings.php:200 src/SLN/Admin/Settings.php:224
 msgid "Update completed with success"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:191 src/SLN/Admin/Settings.php:191
+#: src/SLN/Admin/Settings.php:191 src/SLN/Admin/Settings.php:199
 msgid "booking settings are updated"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:215 src/SLN/Admin/Settings.php:215
+#: src/SLN/Admin/Settings.php:215 src/SLN/Admin/Settings.php:223
 msgid "payments settings are updated"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:231 src/SLN/Admin/Settings.php:231
+#: src/SLN/Admin/Settings.php:231 src/SLN/Admin/Settings.php:239
 msgid "try again"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:231 src/SLN/Admin/Settings.php:231
+#: src/SLN/Admin/Settings.php:231 src/SLN/Admin/Settings.php:239
 msgid "Page verification failed"
 msgstr ""
 
@@ -686,7 +689,6 @@ msgid "Secondary"
 msgstr ""
 
 #: views/metabox/service.php:68 views/metabox/service.php:70
-#: views/metabox/service.php:70
 msgid "Leave blank if you want this service available everydays at every hour"
 msgstr ""
 
@@ -711,11 +713,11 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: views/metabox/booking.php:134 views/metabox/booking.php:134
+#: views/metabox/booking.php:134 views/metabox/booking.php:158
 msgid "Personal message"
 msgstr ""
 
-#: views/mail/status_canceled.php:9 views/mail/status_canceled.php:9
+#: views/mail/status_canceled.php:9 views/mail/status_canceled.php:16
 msgid "Booking Canceled"
 msgstr ""
 
@@ -732,57 +734,57 @@ msgid "Time"
 msgstr ""
 
 #: views/mail/_summary_content.php:52 views/shortcode/salon_summary.php:35
-#: views/mail/_summary_content.php:52 views/shortcode/salon_summary.php:35
+#: views/mail/_summary_content.php:61 views/shortcode/salon_summary.php:44
 msgid "Total amount"
 msgstr ""
 
 #: views/mail/_summary_content.php:81 views/mail/payment_confirmed.php:10
-#: views/shortcode/salon_summary.php:15 views/mail/_summary_content.php:81
-#: views/mail/payment_confirmed.php:10 views/shortcode/salon_summary.php:15
+#: views/shortcode/salon_summary.php:15 views/mail/payment_confirmed.php:10
+#: views/shortcode/salon_summary.php:15
 msgid "Dear"
 msgstr ""
 
-#: views/mail/_summary_content.php:84 views/mail/_summary_content.php:84
+#: views/mail/_summary_content.php:84
 msgid "Administrator"
 msgstr ""
 
-#: views/mail/_summary_content.php:105 views/mail/_summary_content.php:105
+#: views/mail/_summary_content.php:105 views/mail/_summary_content.php:117
 msgid "Click here to approve "
 msgstr ""
 
-#: views/mail/_summary_content.php:107 views/mail/_summary_content.php:107
+#: views/mail/_summary_content.php:107 views/mail/_summary_content.php:119
 msgid "booking request."
 msgstr ""
 
-#: views/mail/_summary_content.php:114 views/mail/_summary_content.php:114
+#: views/mail/_summary_content.php:114
 msgid "your booking is pending, please wait our confirmation."
 msgstr ""
 
-#: views/mail/_summary_content.php:122 views/mail/_summary_content.php:122
+#: views/mail/_summary_content.php:122
 msgid "this is an email notification of a new booking"
 msgstr ""
 
-#: views/mail/_summary_content.php:126 views/mail/_summary_content.php:126
+#: views/mail/_summary_content.php:126
 msgid "this is an email confirmation of your booking at"
 msgstr ""
 
-#: views/mail/_summary_content.php:140 views/mail/_summary_content.php:140
+#: views/mail/_summary_content.php:140 views/mail/_summary_content.php:152
 msgid "Please take note of the following booking details."
 msgstr ""
 
-#: views/mail/_summary_content.php:205 views/mail/_summary_content.php:205
+#: views/mail/_summary_content.php:205 views/mail/_summary_content.php:217
 msgid "Important notes"
 msgstr ""
 
-#: views/mail/_summary_content.php:227 views/mail/_summary_content.php:227
+#: views/mail/_summary_content.php:227 views/mail/_summary_content.php:239
 msgid "Customer message:"
 msgstr ""
 
-#: views/mail/_summary_content.php:229 views/mail/_summary_content.php:229
+#: views/mail/_summary_content.php:229 views/mail/_summary_content.php:241
 msgid "Please confirm or reject this booking from administration"
 msgstr ""
 
-#: views/mail/_summary_content.php:232 views/mail/_summary_content.php:232
+#: views/mail/_summary_content.php:232 views/mail/_summary_content.php:244
 msgid "View this booking into administration."
 msgstr ""
 
@@ -965,11 +967,11 @@ msgstr ""
 msgid "Date and time booked"
 msgstr ""
 
-#: views/shortcode/salon_summary.php:28 views/shortcode/salon_summary.php:28
+#: views/shortcode/salon_summary.php:28 views/shortcode/salon_summary.php:37
 msgid "Services booked"
 msgstr ""
 
-#: views/shortcode/salon_summary.php:45 views/shortcode/salon_summary.php:45
+#: views/shortcode/salon_summary.php:45 views/shortcode/salon_summary.php:55
 msgid "Do you have any message for us?"
 msgstr ""
 
@@ -993,7 +995,7 @@ msgstr ""
 msgid "An account will be automatically created"
 msgstr ""
 
-#: views/shortcode/salon_details.php:77 views/shortcode/salon_details.php:77
+#: views/shortcode/salon_details.php:77 views/shortcode/salon_details.php:85
 msgid "Checkout"
 msgstr ""
 
@@ -1077,7 +1079,7 @@ msgid ""
 "Select this if you want this service considered as secondary level service"
 msgstr ""
 
-#: views/metabox/service.php:34 views/metabox/service.php:34
+#: views/metabox/service.php:34
 msgid "Not Available At"
 msgstr ""
 
@@ -1096,43 +1098,340 @@ msgstr ""
 msgid "you can book up to %s in advance"
 msgstr ""
 
-#: src/SLN/Func.php:133
+#: src/SLN/Func.php:133 src/SLN/Func.php:149
 msgid "Always"
 msgstr ""
 
-#: src/SLN/Func.php:134
+#: src/SLN/Func.php:134 src/SLN/Func.php:150
 msgid "half hour"
 msgstr ""
 
-#: src/SLN/Func.php:135
+#: src/SLN/Func.php:135 src/SLN/Func.php:151
 msgid "hour"
 msgstr ""
 
 #: src/SLN/Func.php:136 src/SLN/Func.php:137 src/SLN/Func.php:138
-#: src/SLN/Func.php:139 src/SLN/Func.php:140
+#: src/SLN/Func.php:139 src/SLN/Func.php:140 src/SLN/Func.php:152
+#: src/SLN/Func.php:153 src/SLN/Func.php:154 src/SLN/Func.php:155
+#: src/SLN/Func.php:156
 msgid "hours"
 msgstr ""
 
-#: src/SLN/Func.php:141
+#: src/SLN/Func.php:141 src/SLN/Func.php:157
 msgid "day"
 msgstr ""
 
 #: src/SLN/Func.php:142 src/SLN/Func.php:143 src/SLN/Func.php:144
+#: src/SLN/Func.php:158 src/SLN/Func.php:159 src/SLN/Func.php:160
 msgid "days"
 msgstr ""
 
-#: src/SLN/Func.php:145
+#: src/SLN/Func.php:145 src/SLN/Func.php:161
 msgid "week"
 msgstr ""
 
-#: src/SLN/Func.php:146 src/SLN/Func.php:147
+#: src/SLN/Func.php:146 src/SLN/Func.php:147 src/SLN/Func.php:162
+#: src/SLN/Func.php:163
 msgid "weeks"
 msgstr ""
 
-#: src/SLN/Func.php:148
+#: src/SLN/Func.php:148 src/SLN/Func.php:164
 msgid "month"
 msgstr ""
 
-#: src/SLN/Func.php:149 src/SLN/Func.php:150
+#: src/SLN/Func.php:149 src/SLN/Func.php:150 src/SLN/Func.php:165
+#: src/SLN/Func.php:166
 msgid "months"
+msgstr ""
+
+#: src/SLN/Shortcode/Salon/SmsStep.php:44
+msgid "Your verification code is not valid"
+msgstr ""
+
+#: src/SLN/Plugin.php:93
+msgid "Validating..."
+msgstr ""
+
+#: src/SLN/Helper/Availability.php:147
+msgid "this attendant is not available "
+msgstr ""
+
+#: src/SLN/Helper/Availability.php:155
+msgid "this attendant is busy in this hour"
+msgstr ""
+
+#: src/SLN/Enum/SmsProvider.php:55
+msgid "test (sms code is sent by mail to the admin)"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:37
+msgid "Enter attendant name"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:50 src/SLN/PostType/Attendant.php:54
+msgid "Attendant updated."
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:56
+#, php-format
+msgid "Attendant restored to revision from %s"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:60
+msgid "Attendant published."
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:62
+msgid "Attendant saved."
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:64
+msgid "Attendant submitted."
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:68
+#, php-format
+msgid "Attendant scheduled for: <strong>%1$s</strong>. "
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:74
+msgid "Attendant draft updated."
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:97 src/SLN/PostType/Attendant.php:101
+msgid "Attendants"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:98 src/SLN/PostType/Booking.php:42
+#: views/metabox/booking.php:103 views/mail/_summary_content.php:25
+#: views/shortcode/salon_summary.php:30
+msgid "Attendant"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:100
+msgid "Salon Attendant"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:102
+msgid "Add Attendant"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:103
+msgid "Add New Attendant"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:104
+msgid "Edit Attendant"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:105
+msgid "New Attendant"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:106
+msgid "View Attendant"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:107
+msgid "Search Attendants"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:108
+msgid "No attendants found"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:109
+msgid "No attendants found in trash"
+msgstr ""
+
+#: src/SLN/PostType/Attendant.php:110
+msgid "Attendants Archive"
+msgstr ""
+
+#: src/SLN/Metabox/Attendant.php:10
+msgid "Attendant Details"
+msgstr ""
+
+#: src/SLN/Metabox/Attendant.php:19
+msgid "Attendant description"
+msgstr ""
+
+#: src/SLN/Metabox/Attendant.php:31
+msgid "Attendant Description"
+msgstr ""
+
+#: src/SLN/Metabox/Attendant.php:35
+msgid "A very short description of this attendant. It is optional"
+msgstr ""
+
+#: src/SLN/Action/Install.php:30
+msgid "Salon staff"
+msgstr ""
+
+#: src/SLN/Update/Init.php:44
+msgid "Plugin License Options"
+msgstr ""
+
+#: src/SLN/Update/Init.php:53
+msgid "License Key"
+msgstr ""
+
+#: src/SLN/Update/Init.php:57
+msgid "Enter your license key"
+msgstr ""
+
+#: src/SLN/Update/Init.php:63 src/SLN/Update/Init.php:72
+msgid "Activate License"
+msgstr ""
+
+#: src/SLN/Update/Init.php:67
+msgid "active"
+msgstr ""
+
+#: src/SLN/Update/Init.php:69
+msgid "Deactivate License"
+msgstr ""
+
+#: src/SLN/Update/Processor.php:177 EDD_SL_Plugin_Updater.php:177
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+msgstr ""
+
+#: src/SLN/Update/Processor.php:184 EDD_SL_Plugin_Updater.php:184
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
+"\">update now</a>."
+msgstr ""
+
+#: src/SLN/Update/Processor.php:324 EDD_SL_Plugin_Updater.php:324
+msgid "You do not have permission to install plugin updates"
+msgstr ""
+
+#: src/SLN/Update/Processor.php:324 EDD_SL_Plugin_Updater.php:324
+msgid "Error"
+msgstr ""
+
+#: views/trial/shortcode.php:5 views/shortcode/salon.php:17
+msgid "Make a booking"
+msgstr ""
+
+#: views/trial/admin_end.php:2
+msgid "Salon booking plugin is expired"
+msgstr ""
+
+#: views/trial/admin_end.php:4 views/trial/admin_near.php:4
+msgid "<p>Update your plugin to a premium version</p>"
+msgstr ""
+
+#: views/trial/admin_near.php:2
+msgid "Salon booking plugin is almost expiring"
+msgstr ""
+
+#: views/metabox/service.php:34 views/metabox/attendant.php:20
+msgid "Not available on"
+msgstr ""
+
+#: views/metabox/service.php:70
+msgid ""
+"Leave blank if you want this service available every working days at every "
+"working hour"
+msgstr ""
+
+#: views/metabox/attendant.php:52
+msgid ""
+"Leave blank if you want this attendant available every working days at every "
+"working hour"
+msgstr ""
+
+#: views/mail/_summary_content.php:126
+msgid "Your booking is pending, please wait our confirmation."
+msgstr ""
+
+#: views/mail/_summary_content.php:134
+msgid "This is an email notification of a new booking"
+msgstr ""
+
+#: views/mail/_summary_content.php:138
+msgid "This is an email confirmation of your booking at"
+msgstr ""
+
+#: views/settings/tab_general.php:70
+msgid "Enable attendant selection"
+msgstr ""
+
+#: views/settings/tab_general.php:71
+msgid "Let your customers choose their favourite staff member."
+msgstr ""
+
+#: views/settings/tab_general.php:73
+#, php-format
+msgid "You need to add your members staff <a href=\"%s\">Here</a>."
+msgstr ""
+
+#: views/settings/tab_general.php:75
+msgid "Enable attendant email on new bookings"
+msgstr ""
+
+#: views/settings/tab_general.php:76
+msgid ""
+"Attendant will receive a mail when admin receive a mail with the choosen "
+"attendant."
+msgstr ""
+
+#: views/settings/tab_general.php:80
+msgid "Enable SMS verification"
+msgstr ""
+
+#: views/settings/tab_general.php:81
+msgid ""
+"Avoid spam asking your users to verify their identity with an SMS "
+"verification code during the first registration."
+msgstr ""
+
+#: views/settings/tab_general.php:82
+msgid "Select your service provider"
+msgstr ""
+
+#: views/settings/tab_general.php:95
+msgid "Account"
+msgstr ""
+
+#: views/settings/tab_general.php:101
+msgid "Number Prefix"
+msgstr ""
+
+#: views/settings/tab_general.php:104
+msgid "Sender number"
+msgstr ""
+
+#: views/shortcode/salon_sms.php:14
+msgid "Sms sent with success."
+msgstr ""
+
+#: views/shortcode/salon_sms.php:17
+msgid "Sms Verification"
+msgstr ""
+
+#: views/shortcode/salon_sms.php:19
+msgid "We have sent an sms text on your mobile phone."
+msgstr ""
+
+#: views/shortcode/salon_sms.php:24
+msgid "Your phone number is verified"
+msgstr ""
+
+#: views/shortcode/salon_sms.php:32
+msgid "digit your verification code"
+msgstr ""
+
+#: views/shortcode/salon_sms.php:40
+msgid "I didn't received the code, please send it again"
+msgstr ""
+
+#: views/shortcode/salon_attendant.php:11
+msgid "Select your attendant"
 msgstr ""

@@ -14,7 +14,7 @@
 ?>
 <div id="sln-salon" class="sln-bootstrap">
     <div>
-        <h1>Make a booking
+        <h1><?php _e('Make a booking');?>
             <svg class="icocal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"
                  preserveAspectRatio="xMinYMin meet" width="100%" height="100%"
                  style="width: 24px; height: 24px;">
