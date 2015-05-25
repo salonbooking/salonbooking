@@ -89,6 +89,6 @@ class SLN_Settings
     }
 
     public function isAjaxEnabled(){
-        return true;
+        return $this->get('ajax_enabled') ? true: false;
     }
 }

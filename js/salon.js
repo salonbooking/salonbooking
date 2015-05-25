@@ -66,6 +66,9 @@ function sln_loadStep($, data) {
                 window.location.href = data.redirect;
             } else {
                 $('#sln-salon').replaceWith(data.content);
+                $('html, body').animate({
+                    scrollTop: $("#sln-salon").offset().top
+                }, 700);
                 sln_init($);
             }
         }
