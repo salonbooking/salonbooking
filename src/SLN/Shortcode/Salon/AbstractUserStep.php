@@ -20,6 +20,15 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
 
     protected function dispatchAuth($username, $password)
     {
+        if(empty($username)){
+            $this->addError(__('username can\'t be empty'));
+        }
+        if(empty($password)){
+            $this->addError(__('password can\'t be empty'));
+        }
+        if(empty($username) || empty($password)){
+            return;
+        }
         global $user;
         $creds                  = array();
         $creds['user_login']    = $username;
@@ -27,6 +36,7 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
         $creds['remember']      = true;
         $user                   = wp_signon($creds, false);
         if (is_wp_error($user)) {
+            $this->addError(__('Bad credentials'));
             $this->addError($user->get_error_message());
 
             return false;
