@@ -33,7 +33,7 @@ class SLN_Update_Init {
      *************************************/
 
     function license_menu() {
-        add_plugins_page( 'Plugin License', 'Plugin License', 'manage_options', 'pluginname-license', array($this,'sln_license_page') );
+        add_plugins_page( 'Plugin License', 'Plugin License', 'manage_options', 'pluginname-license', array($this,'license_page') );
     }
 
     function license_page() {
@@ -84,7 +84,7 @@ class SLN_Update_Init {
 
     function register_option() {
         // creates our settings in the options table
-        register_setting('sln_license', 'sln_license_key', 'sln_sanitize_license' );
+        register_setting('sln_license', 'sln_license_key', array($this, 'sln_sanitize_license') );
     }
 
     function sln_sanitize_license( $new ) {
