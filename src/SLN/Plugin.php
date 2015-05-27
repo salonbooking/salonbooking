@@ -283,7 +283,7 @@ class SLN_Plugin
 
     public function ajax()
     {
-        check_ajax_referer('ajax_post_validation', 'security');
+        //check_ajax_referer('ajax_post_validation', 'security');
         $method = $_REQUEST['method'];
         $className = 'SLN_Action_Ajax_' . ucwords($method);
         if (class_exists($className)) {

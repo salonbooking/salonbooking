@@ -144,6 +144,7 @@ class SLN_Admin_Settings
                      'gen_phone',
                      'gen_address',
                      'gen_timetable',
+                     'ajax_enabled',
                      'attendant_enabled',
                      'attendant_email',
                      'sms_enabled',
@@ -156,7 +157,8 @@ class SLN_Admin_Settings
                      'soc_twitter',
                      'soc_google'
                  ) as $k) {
-            $this->settings->set($k, stripcslashes($_POST['salon_settings'][$k]));
+            $val = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
+            $this->settings->set($k, stripcslashes($val));
         }
         $this->settings->save();
         $this->showAlert(
@@ -210,6 +212,7 @@ class SLN_Admin_Settings
     {
         foreach (array(
                      'pay_currency',
+                     'pay_currency_pos',
                      'pay_paypal_email',
                      'pay_paypal_test',
                      'pay_cash',

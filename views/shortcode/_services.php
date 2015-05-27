@@ -8,7 +8,10 @@
  */
 
 $ah = $plugin->getAvailabilityHelper();
-$ah->setDate($plugin->getBookingBuilder()->getDateTime())
+$ah->setDate($plugin->getBookingBuilder()->getDateTime());
+$isSymbolLeft = $plugin->getSettings()->get('pay_currency_pos') == 'left';
+$symbolLeft = $isSymbolLeft ? $plugin->getSettings()->getCurrencySymbol() : '';
+$symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 ?>
 <div class="sln-service-list">
     <?php foreach ($services as $service) : ?>
@@ -58,7 +61,7 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
     <div class="row row-total">
         <div class="col-lg-9 col-xs-8 services-total-label"><?php _e('Subtotal', 'sln') ?></div>
         <div class="col-lg-3 col-xs-4 services-total">
-        <span id="services-total" data-symbol="<?php echo $plugin->getSettings()->getCurrencySymbol() ?>">
+        <span id="services-total" data-symbol-left="<?php echo $symbolLeft ?>" data-symbol-right="<?php echo $symbolRight ?>">
             <?php echo $plugin->format()->money(0, false) ?>
         </span>
         </div>

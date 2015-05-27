@@ -114,16 +114,16 @@ function tpl_summary_details($booking, $plugin){
 	<?php if($forAdmin): ?>
 
      <a  style="text-decoration:none;" href="<?php echo admin_url() ?>/post.php?post=<?php echo $booking->getId() ?>&action=edit">
-         <?php _e('Click here to approve ', 'sln') ?>
+         <?php echo __('Click here to approve ', 'sln') ?>
          <?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?>
-         <?php _e('booking request.', 'sln') ?>
+         <?php echo __('booking request.', 'sln') ?>
      </a>
 
  	
                      
 	<?php else: ?>
 
-<?php _e('Your booking is pending, please wait our confirmation.','sln') ?></p>
+<?php echo __('Your booking is pending, please wait our confirmation.','sln') ?></p>
 
 	<?php endif ?>
 
@@ -131,11 +131,11 @@ function tpl_summary_details($booking, $plugin){
 
 	<?php if($forAdmin): ?>
 
-	<?php _e('This is an email notification of a new booking', 'sln') ?>
+	<?php echo __('This is an email notification of a new booking', 'sln') ?>
 	
 	<?php else: ?> 
 
-<?php _e('This is an email confirmation of your booking at', 'sln') ?>
+<?php echo __('This is an email confirmation of your booking at', 'sln') ?>
 
 <b style="color:#666666;">
                         <?php echo $plugin->getSettings()->get('gen_name') ?
@@ -166,7 +166,7 @@ function tpl_summary_details($booking, $plugin){
       <tr>
         <td align="center" valign="top"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
           <tbody><tr>
-            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;">Our address</td>
+            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Our address', 'sln') ?></td>
             <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $plugin->getSettings()->get('gen_address') ?></td>
           </tr>
         </tbody></table></td>
@@ -179,7 +179,7 @@ function tpl_summary_details($booking, $plugin){
 <tr>
         <td align="center" valign="top" bgcolor="#ffffff"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
           <tbody><tr>
-            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;">Contacts</td>
+            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Contacts', 'sln')?></td>
             <td align="left" valign="top"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
               <tbody><tr>
                 <td height="27">&nbsp;</td>

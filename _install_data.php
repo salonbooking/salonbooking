@@ -13,6 +13,7 @@ return array(
         'soc_facebook'     => 'http://www.facebook.com',
         'soc_twitter'      => 'http://www.twitter.com',
         'soc_google'       => 'http://www.google.it',
+        'ajax_enabled'     => true,
         'booking'          => true,
         'thankyou'         => true,
         'availabilities'   => array(
@@ -29,6 +30,7 @@ return array(
             )
         ),
         'pay_currency'     => 'USD',
+        'pay_currency_pos' => 'right',
         'pay_paypal_email' => 'test@test.com',
         'pay_paypal_test'  => true,
         'parallels_hour'   => 1 

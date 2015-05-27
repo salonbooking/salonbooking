@@ -3140,7 +3140,7 @@ a.list-group-item.active > .badge,
   background-color: transparent;
   border: 0;
 }
-body:not(.wp-admin) .hidden {
+.hidden {
   display: none !important;
   visibility: hidden !important;
 }

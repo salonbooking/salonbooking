@@ -12,7 +12,8 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 'firstname' => $current_user->user_firstname,
                 'lastname'  => $current_user->user_lastname,
                 'email'     => $current_user->user_email,
-                'phone'     => get_user_meta($current_user->ID, '_sln_phone', true)
+                'phone'     => get_user_meta($current_user->ID, '_sln_phone', true),
+                'address'     => get_user_meta($current_user->ID, '_sln_address', true)
             );
             if (!$ret) {
                 return false;
@@ -32,6 +33,9 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 if (empty($values['phone'])) {
                     $this->addError(__('phone can\'t be empty', 'sln'));
                 }
+                if (empty($values['address'])) {
+                    $this->addError(__('address can\'t be empty', 'sln'));
+                } 
                 if (!filter_var($values['email'], FILTER_VALIDATE_EMAIL)) {
                     $this->addError(__('email is not valid', 'sln'));
                 }
@@ -61,8 +65,10 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 wp_update_user(
                     array('ID' => $current_user->ID, 'first_name' => $values['firstname'], 'last_name' => $values['lastname'])
                 );
-                if(isset($values['phone'])){
-                    update_user_meta($current_user->ID, '_sln_phone', $values['phone']);
+                foreach(array('phone', 'address') as $k){
+                    if(isset($values[$k])){
+                       update_user_meta($current_user->ID, '_sln_'.$k, $values[$k]);
+                    }
                 }
             }
         }

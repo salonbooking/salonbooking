@@ -34,7 +34,7 @@ $values = array(
                     <input name="login_password" type="password" class="form-control login-field"/>
                 </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-success btn-block" name="<?php echo $submitName ?>"
+                    <button type="submit" data-salon-data="<?php echo "sln_step_page=".$step->getShortcode()->getCurrentStep()."&$submitName=next" ?>" data-salon-toggle="next" class="btn btn-success btn-block" name="<?php echo $submitName ?>"
                             value="next">
                         Login <i class="glyphicon glyphicon-user"></i>
                     </button>
@@ -54,10 +54,11 @@ $values = array(
                                'lastname'  => __('Lastname', 'sln'),
                                'email'     => __('E-mail', 'sln'),
                                'phone'     => __('Phone', 'sln'),
+                               'address'     => __('Address', 'sln'),
                                'password'  => __('Password', 'sln'),
                                'password_confirm' => __('Confirm your password', 'sln')
                            ) as $field => $label):  ?>
-                <div class="col-md-6">
+                <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?>">
                     <div class="form-group">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>

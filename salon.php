@@ -12,7 +12,7 @@ Author URI: http://plugins.wpchef.it/
 define('SLN_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('SLN_PLUGIN_DIR', untrailingslashit(dirname(__FILE__)));
 define('SLN_PLUGIN_URL', untrailingslashit(plugins_url('', __FILE__)));
-define('SLN_VERSION', '1.0.3');
+define('SLN_VERSION', '1.0.4');
 
 function sln_autoload($className)
 {

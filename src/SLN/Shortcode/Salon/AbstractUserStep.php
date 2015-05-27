@@ -8,6 +8,7 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
             array('ID' => $errors, 'first_name' => $values['firstname'], 'last_name' => $values['lastname'])
         );
         add_user_meta($errors, '_sln_phone', $values['phone']);
+        add_user_meta($errors, '_sln_address', $values['address']);
         if (is_wp_error($errors)) {
             $this->addError($errors->get_error_message());
         }
@@ -20,6 +21,15 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
 
     protected function dispatchAuth($username, $password)
     {
+        if(empty($username)){
+            $this->addError(__('username can\'t be empty'));
+        }
+        if(empty($password)){
+            $this->addError(__('password can\'t be empty'));
+        }
+        if(empty($username) || empty($password)){
+            return;
+        }
         global $user;
         $creds                  = array();
         $creds['user_login']    = $username;
@@ -27,6 +37,7 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
         $creds['remember']      = true;
         $user                   = wp_signon($creds, false);
         if (is_wp_error($user)) {
+            $this->addError(__('Bad credentials'));
             $this->addError($user->get_error_message());
 
             return false;
@@ -45,7 +56,8 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
                 'firstname' => $current_user->user_firstname,
                 'lastname'  => $current_user->user_lastname,
                 'email'     => $current_user->user_email,
-                'phone'     => get_user_meta($current_user->ID, '_sln_phone', true)
+                'phone'     => get_user_meta($current_user->ID, '_sln_phone', true),
+                'address'     => get_user_meta($current_user->ID, '_sln_address', true)
             );
             $this->bindValues($values);
         }
@@ -60,10 +72,12 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
             'firstname' => '',
             'lastname'  => '',
             'email'     => '',
-            'phone'     => ''
+            'phone'     => '',
+            'address'     => ''
         );
         foreach ($fields as $field => $filter) {
-            $bb->set($field, SLN_Func::filter($values[$field], $filter));
+            $data = isset($values[$field]) ? $values[$field] : '';
+            $bb->set($field, SLN_Func::filter($data, $filter));
         }
 
         $bb->save();
