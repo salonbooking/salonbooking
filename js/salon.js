@@ -124,7 +124,7 @@ function sln_serviceTotal($) {
                 tot += $(this).data('price');
             }
         });
-        $totalbox.text(tot.formatMoney(2) + $totalbox.data('symbol'));
+        $totalbox.text($totalbox.data('symbol-left') + tot.formatMoney(2) + $totalbox.data('symbol-right'));
     }
 
     $checkboxes.click(function () {
