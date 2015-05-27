@@ -12,7 +12,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 'firstname' => $current_user->user_firstname,
                 'lastname'  => $current_user->user_lastname,
                 'email'     => $current_user->user_email,
-                'phone'     => get_user_meta($current_user->ID, '_sln_phone', true)
+                'phone'     => get_user_meta($current_user->ID, '_sln_phone', true),
                 'address'     => get_user_meta($current_user->ID, '_sln_address', true)
             );
             if (!$ret) {

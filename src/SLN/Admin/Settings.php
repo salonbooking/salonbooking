@@ -156,7 +156,8 @@ class SLN_Admin_Settings
                      'soc_twitter',
                      'soc_google'
                  ) as $k) {
-            $this->settings->set($k, stripcslashes($_POST['salon_settings'][$k]));
+            $val = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
+            $this->settings->set($k, stripcslashes($val));
         }
         $this->settings->save();
         $this->showAlert(

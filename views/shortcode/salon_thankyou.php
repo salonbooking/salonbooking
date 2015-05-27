@@ -42,7 +42,7 @@ $confirmation = $plugin->getSettings()->get('confirmation');
         <p class="ty"><?php echo sprintf(__('If you need to change your reservation please call the %s or send an email to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
             <?php echo $plugin->getSettings()->get('phone') ?></p>
         <p class="ty">
-            <?php echo $plugin->setSettings()->get('gen_timetable') 
+            <?php echo $plugin->getSettings()->get('gen_timetable') 
             /*_e(
                 'In case of delay of arrival. we will wait a maximum of 10 minutes from booking time. Then we will release your reservation',
                 'sln'

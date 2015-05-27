@@ -166,7 +166,7 @@ function tpl_summary_details($booking, $plugin){
       <tr>
         <td align="center" valign="top"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
           <tbody><tr>
-            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Our address', 'sln')</td>
+            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Our address', 'sln') ?></td>
             <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $plugin->getSettings()->get('gen_address') ?></td>
           </tr>
         </tbody></table></td>

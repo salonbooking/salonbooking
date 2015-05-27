@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 18:03+0200\n"
+"POT-Creation-Date: 2015-05-27 18:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,7 +119,7 @@ msgid "Set your PayPal email address"
 msgstr "Imposta l'indirizzo email del tuo account PayPal"
 
 #: views/settings/tab_payments.php:27 views/settings/tab_payments.php:33
-#: views/settings/tab_payments.php:44
+#: views/settings/tab_payments.php:44 views/settings/tab_payments.php:44
 msgid "Enable paypal sandbox"
 msgstr "Attiva il Sandbox di PayPal"
 
@@ -656,17 +656,18 @@ msgstr "Cancellato"
 msgid "Confirmed"
 msgstr "Confermato"
 
-#: src/SLN/Formatter.php:28 src/SLN/Formatter.php:31
+#: src/SLN/Formatter.php:28 src/SLN/Formatter.php:31 src/SLN/Formatter.php:31
 msgid "l M j, Y @ G:i"
 msgstr ""
 
 #: src/SLN/Formatter.php:38 src/SLN/Formatter.php:39 src/SLN/Formatter.php:42
+#: src/SLN/Formatter.php:42
 msgid "M j, Y"
 msgstr ""
 
 #: src/SLN/Admin/Settings.php:38 src/SLN/Admin/Settings.php:237
-#: src/SLN/Admin/Settings.php:245 src/SLN/Admin/Settings.php:38
-#: src/SLN/Admin/Settings.php:246
+#: src/SLN/Admin/Settings.php:245 src/SLN/Admin/Settings.php:246
+#: src/SLN/Admin/Settings.php:38 src/SLN/Admin/Settings.php:247
 msgid "Salon Settings"
 msgstr "Impostazioni Salon"
 
@@ -683,35 +684,35 @@ msgid "Reset completed with success"
 msgstr "Reset completato con successo"
 
 #: src/SLN/Admin/Settings.php:156 src/SLN/Admin/Settings.php:164
-#: src/SLN/Admin/Settings.php:164
+#: src/SLN/Admin/Settings.php:165
 msgid "general settings are updated"
 msgstr "Le impostazioni generali sono state aggiornate"
 
 #: src/SLN/Admin/Settings.php:157 src/SLN/Admin/Settings.php:192
 #: src/SLN/Admin/Settings.php:216 src/SLN/Admin/Settings.php:165
 #: src/SLN/Admin/Settings.php:200 src/SLN/Admin/Settings.php:224
-#: src/SLN/Admin/Settings.php:165 src/SLN/Admin/Settings.php:200
-#: src/SLN/Admin/Settings.php:225
+#: src/SLN/Admin/Settings.php:225 src/SLN/Admin/Settings.php:166
+#: src/SLN/Admin/Settings.php:201 src/SLN/Admin/Settings.php:226
 msgid "Update completed with success"
 msgstr "Aggiornamento completato con successo"
 
 #: src/SLN/Admin/Settings.php:191 src/SLN/Admin/Settings.php:199
-#: src/SLN/Admin/Settings.php:199
+#: src/SLN/Admin/Settings.php:200
 msgid "booking settings are updated"
 msgstr "Le impostazioni della prenotazione sono state aggiornate"
 
 #: src/SLN/Admin/Settings.php:215 src/SLN/Admin/Settings.php:223
-#: src/SLN/Admin/Settings.php:224
+#: src/SLN/Admin/Settings.php:224 src/SLN/Admin/Settings.php:225
 msgid "payments settings are updated"
 msgstr "Le impostazioni sui pagamenti sono state aggiornate"
 
 #: src/SLN/Admin/Settings.php:231 src/SLN/Admin/Settings.php:239
-#: src/SLN/Admin/Settings.php:240
+#: src/SLN/Admin/Settings.php:240 src/SLN/Admin/Settings.php:241
 msgid "try again"
 msgstr "riprova"
 
 #: src/SLN/Admin/Settings.php:231 src/SLN/Admin/Settings.php:239
-#: src/SLN/Admin/Settings.php:240
+#: src/SLN/Admin/Settings.php:240 src/SLN/Admin/Settings.php:241
 msgid "Page verification failed"
 msgstr "Verifica della pagina fallita"
 
@@ -976,6 +977,7 @@ msgid "Set your currency"
 msgstr "Imposta la valuta"
 
 #: views/settings/tab_payments.php:34 views/settings/tab_payments.php:45
+#: views/settings/tab_payments.php:45
 msgid ""
 "Check this option to test PayPal payments<br /> using your PayPal Sandbox "
 "account."
@@ -1130,7 +1132,7 @@ msgstr "Numero prenotazione"
 msgid "You will receive a confirmation of your booking by email."
 msgstr "Riceverai una conferma della tua prenotazione via email."
 
-#: views/shortcode/salon_thankyou.php:46 views/shortcode/salon_thankyou.php:46
+#: views/shortcode/salon_thankyou.php:46
 msgid ""
 "In case of delay of arrival. we will wait a maximum of 10 minutes from "
 "booking time. Then we will release your reservation"
@@ -1138,19 +1140,19 @@ msgstr ""
 "In caso di ritardo aspetteremo fino ad un massimo di dieci minuti. Trascorso "
 "questo tempo perderai la priorità."
 
-#: views/shortcode/salon_thankyou.php:53 views/shortcode/salon_thankyou.php:53
+#: views/shortcode/salon_thankyou.php:53 views/shortcode/salon_thankyou.php:54
 msgid "Pay with Paypal"
 msgstr "Paga con PayPal"
 
-#: views/shortcode/salon_thankyou.php:57 views/shortcode/salon_thankyou.php:57
+#: views/shortcode/salon_thankyou.php:57 views/shortcode/salon_thankyou.php:58
 msgid "Or"
 msgstr "Oppure"
 
-#: views/shortcode/salon_thankyou.php:59 views/shortcode/salon_thankyou.php:59
+#: views/shortcode/salon_thankyou.php:59 views/shortcode/salon_thankyou.php:60
 msgid "I'll pay later"
 msgstr "Pagherò dopo"
 
-#: views/shortcode/salon_thankyou.php:63 views/shortcode/salon_thankyou.php:63
+#: views/shortcode/salon_thankyou.php:63 views/shortcode/salon_thankyou.php:64
 msgid "Confirm"
 msgstr "Conferma"
 
@@ -1549,18 +1551,18 @@ msgstr ""
 msgid "Contacts"
 msgstr ""
 
-#: src/SLN/Formatter.php:22
+#: src/SLN/Formatter.php:22 src/SLN/Formatter.php:22
 msgid "free"
 msgstr ""
 
-#: views/settings/tab_payments.php:28
+#: views/settings/tab_payments.php:28 views/settings/tab_payments.php:28
 msgid "Set your currency position"
 msgstr ""
 
-#: views/settings/tab_payments.php:31
+#: views/settings/tab_payments.php:31 views/settings/tab_payments.php:31
 msgid "on left side"
 msgstr ""
 
-#: views/settings/tab_payments.php:31
+#: views/settings/tab_payments.php:31 views/settings/tab_payments.php:31
 msgid "on right side"
 msgstr ""
