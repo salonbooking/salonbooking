@@ -6,13 +6,13 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
 
     protected function dispatchForm()
     {
-        $bb      = $this->getPlugin()->getBookingBuilder();
+        $bb = $this->getPlugin()->getBookingBuilder();
         $booking = $bb->getLastBooking();
         if (isset($_GET['op'])) {
-            $op       = explode('-', $_GET['op']);
+            $op = explode('-', $_GET['op']);
             $this->op = $op[0];
             if ($this->op == 'success') {
-                if($this->getPlugin()->getSettings()->isPaypalTest()){
+                if ($this->getPlugin()->getSettings()->isPaypalTest()) {
                     update_post_meta($booking->getId(), '_sln_booking_transaction_id', 'test');
                     $booking->setStatus(SLN_Enum_BookingStatus::PAID);
                 }
@@ -26,14 +26,17 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
                     update_post_meta($booking->getId(), '_sln_booking_transaction_id', $ppl->getTransactionId());
                     $booking->setStatus(SLN_Enum_BookingStatus::PAID);
                     echo('ipn success');
-                }else{
+                } else {
                     echo('ipn_failed');
                 }
             }
         } elseif ($_GET['mode'] == 'paypal') {
             $ppl = new SLN_Payment_Paypal($this->getPlugin());
+            if ($this->isAjax()) {
+                $_SERVER['REQUEST_URI'] = str_replace($_SERVER['HTTP_ORIGIN'], '', $_SERVER['HTTP_REFERER']).'?sln_step_page=thankyou&submit_thankyou=1&mode=paypal';
+            }
             $url = $ppl->getUrl($booking->getId(), $booking->getAmount(), $booking->getTitle());
-            wp_redirect($url);
+            $this->redirect($url);
         } elseif ($_GET['mode'] == 'later') {
             $bb->getLastBooking()->setStatus(SLN_Enum_BookingStatus::PAY_LATER);
             $this->goToThankyou();
@@ -47,15 +50,14 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
     {
         $id = $this->getPlugin()->getSettings()->getThankyouPageId();
         if ($id) {
-            wp_redirect(get_permalink($id));
+            $this->redirect(get_permalink($id));
         }
     }
 
     public function getViewData()
     {
-        $ret        = parent::getViewData();
+        $ret = parent::getViewData();
         $formAction = $ret['formAction'];
-        $formAction = remove_query_arg('op', $formAction);
 
         return array_merge(
             $ret,
@@ -70,8 +72,23 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
                     array('mode' => 'paypal', 'submit_' . $this->getStep() => 1),
                     $formAction
                 ),
-                'paypalOp'   => $this->op
+                'paypalOp'   => $this->op,
             )
         );
+    }
+
+    public function redirect($url)
+    {
+        if ($this->isAjax()) {
+            throw new SLN_Action_Ajax_RedirectException($url);
+        } else {
+            wp_redirect($url);
+        }
+    }
+
+    private function isAjax()
+    {
+        return (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
     }
 }

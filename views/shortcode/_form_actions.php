@@ -18,19 +18,28 @@ foreach ($steps as $step) {
         $currentNum = $i;
     }
 }
+$ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 ?>
 <div id="sln-notifications"></div>
 <div class="form-actions row aligncenter">
     <div class="col-xs-6">
         <?php if ($backUrl && $currentNum > 1) : ?>
-            <a class="btn btn-default pull-right" href="<?php echo $backUrl ?> ">
+            <a class="btn btn-default pull-right"
+                <?php if($ajaxEnabled): ?>
+                    data-salon-data="<?php echo "sln_step_page=".$salon->getPrevStep() ?>" data-salon-toggle="direct"
+                <?php endif?>
+                href="<?php echo $backUrl ?> ">
                 <i class="glyphicon glyphicon-chevron-left"></i> <?php _e('Back', 'sln') ?>
             </a>
         <?php endif ?>
     </div>
     <div class="col-xs-6">
         <div>
-            <button id="sln-step-submit" type="submit" class="btn btn-danger btn-confirm" name="<?php echo $submitName ?>" value="next">
+            <button
+                <?php if($ajaxEnabled): ?>
+                    data-salon-data="<?php echo "sln_step_page=$current&$submitName=next" ?>" data-salon-toggle="next"
+                <?php endif?>
+                id="sln-step-submit" type="submit" class="btn btn-danger btn-confirm" name="<?php echo $submitName ?>" value="next">
                 <?php echo $nextLabel ?> <i class="glyphicon glyphicon-chevron-right"></i>
             </button>
             <?php if ($currentNum > 1): ?>

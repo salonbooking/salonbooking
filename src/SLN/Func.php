@@ -130,7 +130,8 @@ class SLN_Func
     static function currPageUrl()
     {
         $pageURL = 'http';
-        if ($_SERVER["HTTPS"] == "on") {
+        if ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+            || $_SERVER['SERVER_PORT'] == 443) {
             $pageURL .= "s";
         }
         $pageURL .= "://";

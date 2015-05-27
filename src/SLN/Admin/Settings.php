@@ -144,6 +144,7 @@ class SLN_Admin_Settings
                      'gen_phone',
                      'gen_address',
                      'gen_timetable',
+                     'ajax_enabled',
                      'attendant_enabled',
                      'attendant_email',
                      'sms_enabled',

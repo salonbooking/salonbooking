@@ -73,7 +73,9 @@
             <p><?php echo sprintf(__('You need to add your members staff <a href="%s">Here</a>.', 'sln'),
                     get_admin_url().'edit.php?post_type=sln_attendant') ?></p>
             <?php $this->row_input_checkbox('attendant_email', __('Enable attendant email on new bookings', 'sln')); ?>
-            <p><?php _e('Attendant will receive a mail when admin receive a mail with the choosen attendant.', 'sln') ?></p>
+            <p><?php _e('Attendant will receive a mail when admin receive a mail with the choosen attendant.', 'sln') ?></p><br/>
+            <?php $this->row_input_checkbox('ajax_enabled', __('Enable ajax steps', 'sln')); ?>
+            <p><?php _e('This allows loading steps via ajax.', 'sln') ?></p>
 
         </div>
         <div class="col-md-6">

@@ -29,15 +29,30 @@ class SLN_Shortcode_Salon_SummaryStep extends SLN_Shortcode_Salon_Step
         $bb = $this->getPlugin()->getBookingBuilder();
         if ($bb->getLastBooking()) {
             $data = $this->getViewData();
-            wp_redirect(
+            $this->redirect(
                 add_query_arg(array('submit_' . $this->getStep() => 1), $data['formAction'])
             );
         } elseif (!$bb->getServices()) {
-            wp_redirect(
+            $this->redirect(
                 add_query_arg(array('sln_step_page' => 'services'))
             );
         } else {
             return parent::render();
         }
+    }
+
+    public function redirect($url)
+    {
+        if ($this->isAjax()) {
+            throw new SLN_Action_Ajax_RedirectException($url);
+        } else {
+            wp_redirect($url);
+        }
+    }
+
+    private function isAjax()
+    {
+        return (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
     }
 }

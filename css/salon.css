@@ -4442,3 +4442,7 @@ a.list-group-item.active > .badge,
     width: 100%;
   }
 }
+.sln-invalid {
+  border: 1px solid red;
+  background-color: rgba(0, 255, 255, 0.5);
+}

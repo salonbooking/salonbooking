@@ -38,7 +38,6 @@ class SLN_Plugin
 
     private function init()
     {
-        new SLN_Update_Init();
         add_action('init', array($this, 'action_init'));
         add_action('admin_init', array($this, 'add_admin_caps'));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
@@ -284,7 +283,7 @@ class SLN_Plugin
 
     public function ajax()
     {
-        check_ajax_referer('ajax_post_validation', 'security');
+        //check_ajax_referer('ajax_post_validation', 'security');
         $method = $_REQUEST['method'];
         $className = 'SLN_Action_Ajax_' . ucwords($method);
         if (class_exists($className)) {

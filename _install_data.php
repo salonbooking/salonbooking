@@ -13,6 +13,7 @@ return array(
         'soc_facebook'     => 'http://www.facebook.com',
         'soc_twitter'      => 'http://www.twitter.com',
         'soc_google'       => 'http://www.google.it',
+        'ajax_enabled'     => true,
         'booking'          => true,
         'thankyou'         => true,
         'availabilities'   => array(

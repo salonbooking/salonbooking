@@ -3,8 +3,12 @@
  * @var SLN_Plugin $plugin
  * @var string     $formAction
  * @var string     $submitName
+ * @var SLN_Shortcode_Salon_ThankyouStep $step
  */
-$confirmation = $plugin->getSettings()->get('confirmation'); 
+$confirmation = $plugin->getSettings()->get('confirmation');
+$currentStep = $step->getShortcode()->getCurrentStep();
+$ajaxData = "sln_step_page=$currentStep&submit_$currentStep=1";
+$ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 ?>
 <div id="salon-step-thankyou">
     <?php if($confirmation) : ?>
@@ -48,19 +52,28 @@ $confirmation = $plugin->getSettings()->get('confirmation');
                 'sln'
             )*/ ?>
         </p>
+
+            <div id="sln-notifications"></div>
     <div class="row form-actions aligncenter">
         <?php if($plugin->getSettings()->get('pay_enabled') && $plugin->getSettings()->getPaypalEmail()) : ?>
-        <a href="<?php echo $paypalUrl ?>" class="btn btn-primary">
+        <a data-salon-data="<?php echo $ajaxData.'&mode=paypal' ?>" data-salon-toggle="direct"
+        href="<?php echo $paypalUrl ?>" class="btn btn-primary">
             <?php _e('Pay with Paypal', 'sln') ?>
         </a>
         <?php $ppl = true; endif; ?>
         <?php if($ppl && $plugin->getSettings()->get('pay_cash')): ?>
         <?php _e('Or', 'sln') ?>
-        <a href="<?php echo $laterUrl ?>" class="btn btn-success">
+        <a  href="<?php echo $laterUrl ?>" class="btn btn-success"
+            <?php if($ajaxEnabled): ?>
+                data-salon-data="<?php echo $ajaxData.'&mode=later' ?>" data-salon-toggle="direct"
+            <?php endif ?>>
             <?php _e('I\'ll pay later', 'sln') ?>
         </a>
         <?php elseif(!$ppl) : ?>
-        <a href="<?php echo $laterUrl ?>" class="btn btn-success">
+        <a  href="<?php echo $laterUrl ?>" class="btn btn-success"
+            <?php if($ajaxEnabled): ?>
+                data-salon-data="<?php echo $ajaxData.'&mode=later' ?>" data-salon-toggle="direct"
+            <?php endif ?>>
             <?php _e('Confirm', 'sln') ?>
         </a>
         <?php endif ?>

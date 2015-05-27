@@ -2,6 +2,7 @@
 
 class SLN_Shortcode_Salon
 {
+    const NAME = 'salon';
     const STEP_KEY = 'sln_step_page';
     const STEP_DEFAULT = 'date';
 
@@ -11,7 +12,6 @@ class SLN_Shortcode_Salon
     private $steps;
     private $currentStep;
 
-
     function __construct(SLN_Plugin $plugin, $attrs)
     {
         $this->plugin = $plugin;
@@ -20,12 +20,12 @@ class SLN_Shortcode_Salon
 
     public static function init(SLN_Plugin $plugin)
     {
-        add_shortcode('salon', array('SLN_Shortcode_Salon', 'create'));
+        add_shortcode(self::NAME, array(__CLASS__, 'create'));
     }
 
     public static function create($attrs)
     {
-        $obj = new SLN_Shortcode_Salon(SLN_Plugin::getInstance(), $attrs);
+        $obj = new self(SLN_Plugin::getInstance(), $attrs);
 
         return $obj->execute();
     }
@@ -69,7 +69,11 @@ class SLN_Shortcode_Salon
     protected function render($content)
     {
         $salon = $this;
-        return $this->plugin->loadView('shortcode/salon', compact('content', 'salon'));
+        if (get_option(SLN_Plugin::F) > SLN_Plugin::F1) {
+            return $this->plugin->loadView('trial/shortcode', compact('salon'));
+        } else {
+            return $this->plugin->loadView('shortcode/salon', compact('content', 'salon'));
+        }
     }
 
 

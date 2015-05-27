@@ -10,32 +10,77 @@ Number.prototype.formatMoney = function (c, d, t) {
 };
 
 jQuery(function ($) {
+    sln_init($);
+});
+
+function sln_init($) {
     if ($('#salon-step-services').length || $('#salon-step-secondary').length) {
         sln_serviceTotal($);
     }
     if ($('#salon-step-date').length) {
         sln_stepDate($);
+    } else {
+        $('[data-salon-toggle="next"]').click(function (e) {
+            var form = $(this).closest('form');
+            $('#sln-salon input.sln-invalid').removeClass('sln-invalid');
+            if (form[0].checkValidity()) {
+                sln_loadStep($, form.serialize() + '&' + $(this).data('salon-data'));
+            }else{
+                $('#sln-salon input:invalid').addClass('sln-invalid');
+            }
+            return false;
+        });
     }
+    $('[data-salon-toggle="direct"]').click(function (e) {
+        e.preventDefault();
+        sln_loadStep($, $(this).data('salon-data'));
+        return false;
+    });
 
     // CHECKBOXES
     $('#sln-salon input:checkbox').each(function () {
-        $(this).click(function() {
+        $(this).click(function () {
             $(this).parent().toggleClass("is-checked");
         })
     });
     // RADIOBOXES
     $('#sln-salon input:radio').each(function () {
-        $(this).click(function() {
+        $(this).click(function () {
             $(".is-checked").removeClass('is-checked');
             $(this).parent().toggleClass("is-checked");
         });
     });
-});
+
+}
+function sln_loadStep($, data) {
+    var loadingMessage = '<img src="' + salon.loading + '" alt="Loading ..." width="16" height="16" /> loading...';
+    data += "&action=salon&method=salonStep&security=" + salon.ajax_nonce;
+    $('#sln-notifications').html(loadingMessage);
+    $.ajax({
+        url: salon.ajax_url,
+        data: data,
+        method: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            if (typeof data.redirect != 'undefined') {
+                window.location.href = data.redirect;
+            } else {
+                $('#sln-salon').replaceWith(data.content);
+                salon.ajax_nonce = data.nonce;
+                $('html, body').animate({
+                    scrollTop: $("#sln-salon").offset().top
+                }, 700);
+                sln_init($);
+            }
+        },
+        error: function(data){alert('error'); console.log(data);}
+    });
+}
 
 function sln_stepDate($) {
     var isValid;
     var items = $('#salon-step-date').data('intervals');
-        var func = function(){
+    var func = function () {
         $('[data-ymd]').addClass('disabled');
         $.each(items.dates, function(key, value) {
            //console.log(value);
@@ -45,17 +90,17 @@ function sln_stepDate($) {
            //console.log(value);
            $('[data-ymd="'+value+'"]').removeClass('disabled');
         });
- 
-            return true; 
-        }
-        func();
-        $('body').on('sln_date',func);
+
+        return true;
+    }
+    func();
+    $('body').on('sln_date', func);
 
     function validate(obj, autosubmit) {
         var form = $(obj).closest('form');
         var validatingMessage = '<img src="' + salon.loading + '" alt="Loading ..." width="16" height="16" /> '+salon.txt_validating;
         var data = form.serialize();
-        data+= "&action=salon&method=checkDate&security="+salon.ajax_nonce;
+        data += "&action=salon&method=checkDate&security=" + salon.ajax_nonce;
         $('#sln-notifications').html(validatingMessage);
         $.ajax({
             url: salon.ajax_url,
@@ -76,14 +121,14 @@ function sln_stepDate($) {
                     $('#sln-notifications').html('');
                     isValid = true;
                     if (autosubmit)
-                        $('#sln-step-submit').click();
+                        submit();
                 }
                 bindIntervals(data.intervals);
             }
         });
     }
 
-    function bindIntervals(intervals){
+    function bindIntervals(intervals) {
 //        putOptions($('#sln_date_day'), intervals.days, intervals.suggestedDay);
 //        putOptions($('#sln_date_month'), intervals.months, intervals.suggestedMonth);
 //        putOptions($('#sln_date_year'), intervals.years, intervals.suggestedYear);
@@ -93,20 +138,27 @@ function sln_stepDate($) {
         putOptions($('#sln_time'), intervals.suggestedTime);
     }
 
-    function putOptions(selectElem, value){
+    function putOptions(selectElem, value) {
         selectElem.val(value);
     }
 
+    function submit() {
+        if ($('#sln-step-submit').data('salon-toggle').length)
+            sln_loadStep($, $('#salon-step-date').serialize() + '&' + $('#sln-step-submit').data('salon-data'));
+        else
+            $('#sln-step-submit').click();
+    }
+
     $('#sln_date, #sln_time').change(function () {
-        validate(this,false);
+        validate(this, false);
     });
     $('#salon-step-date').submit(function () {
         if (!isValid) {
             validate(this, true);
-            return false;
-        }else{
-            return true;
+        } else {
+            submit();
         }
+        return false;
     });
 
     initDatepickers($);
@@ -133,37 +185,44 @@ function sln_serviceTotal($) {
     evalTot();
 }
 
-    function initDatepickers($) {
-        $('.sln_datepicker input').each(function () {
-            if ($(this).hasClass('started')) {
-                return;
-            } else {
-                $(this)
-                    .addClass('started')
-                    .datetimepicker({
+function initDatepickers($) {
+    $('.sln_datepicker input').each(function () {
+        if ($(this).hasClass('started')) {
+            return;
+        } else {
+            $(this)
+                .addClass('started')
+                .datetimepicker({
                     format: $(this).data('format'),
                     minuteStep: 60,
                     autoclose: true,
-                    minView:2,
-                    maxView:4,
+                    minView: 2,
+                    maxView: 4,
                     todayBtn: true,
                     language: $(this).data('locale')
                 })
-                 .on('show',function(){$('body').trigger('sln_date');})
-                 .on('changeMonth',function(){$('body').trigger('sln_date');})
-                 .on('changeYear',function(){$('body').trigger('sln_date');})
-		;
-            }
-        });
-    }
-    function initTimepickers($) {
-        $('.sln_timepicker input').each(function () {
-            if ($(this).hasClass('started')) {
-                return;
-            } else {
-                 var picker = $(this)
-                    .addClass('started')
-                    .datetimepicker({
+                .on('show', function () {
+                    $('body').trigger('sln_date');
+                })
+                .on('changeMonth', function () {
+                    $('body').trigger('sln_date');
+                })
+                .on('changeYear', function () {
+                    $('body').trigger('sln_date');
+                })
+            ;
+        }
+    });
+}
+
+function initTimepickers($) {
+    $('.sln_timepicker input').each(function () {
+        if ($(this).hasClass('started')) {
+            return;
+        } else {
+            var picker = $(this)
+                .addClass('started')
+                .datetimepicker({
                     format: $(this).data('format'),
                     minuteStep: $(this).data('interval'),
                     autoclose: true,
@@ -171,11 +230,17 @@ function sln_serviceTotal($) {
                     maxView: 1,
                     startView: 1,
                 })
-                 .on('show',function(){$('body').trigger('sln_date');})
-                 .on('changeMonth',function(){$('body').trigger('sln_date');})
-                 .on('changeYear',function(){$('body').trigger('sln_date');})
-                 .data('datetimepicker').picker;
-               picker.addClass('timepicker');
-            }
-        });
-    }
+                .on('show', function () {
+                    $('body').trigger('sln_date');
+                })
+                .on('changeMonth', function () {
+                    $('body').trigger('sln_date');
+                })
+                .on('changeYear', function () {
+                    $('body').trigger('sln_date');
+                })
+                .data('datetimepicker').picker;
+            picker.addClass('timepicker');
+        }
+    });
+}
