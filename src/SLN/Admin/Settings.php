@@ -210,6 +210,7 @@ class SLN_Admin_Settings
     {
         foreach (array(
                      'pay_currency',
+                     'pay_currency_pos',
                      'pay_paypal_email',
                      'pay_paypal_test',
                      'pay_cash',

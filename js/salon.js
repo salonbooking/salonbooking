@@ -38,11 +38,11 @@ function sln_stepDate($) {
         var func = function(){
         $('[data-ymd]').addClass('disabled');
         $.each(items.dates, function(key, value) {
-           console.log(value);
+           //console.log(value);
            $('[data-ymd="'+value+'"]').removeClass('disabled');
         });
         $.each(items.times, function(key, value) {
-           console.log(value);
+           //console.log(value);
            $('[data-ymd="'+value+'"]').removeClass('disabled');
         });
  
@@ -167,7 +167,7 @@ function sln_serviceTotal($) {
                     format: $(this).data('format'),
                     minuteStep: $(this).data('interval'),
                     autoclose: true,
-                    minView: 0,
+                    minView: $(this).data('interval') == 60 ? 1: 0,
                     maxView: 1,
                     startView: 1,
                 })

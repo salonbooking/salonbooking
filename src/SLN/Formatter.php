@@ -11,12 +11,15 @@ class SLN_Formatter
 
     public function money($val, $showFree = true)
     {
-        $symbol = $this->plugin->getSettings()->getCurrencySymbol();
+        $s = $this->plugin->getSettings();
+        $isLeft = $s->get('pay_currency_pos') == 'left';
+        $rightSymbol = $isLeft ? '' : $s->getCurrencySymbol();
+        $leftSymbol = $isLeft ? $s->getCurrencySymbol() : '';
+        
         if (!$showFree) {
-            return (number_format($val, 2) . $symbol);
+            return ($leftSymbol. number_format($val, 2) . $rightSymbol);
         }
-
-        return $val > 0 ? (number_format($val, 2) . $symbol) : 'free';
+        return $val > 0 ? ($leftSymbol . number_format($val, 2) . $rightSymbol) : __('free','sln');
     }
 
     public function datetime($val)

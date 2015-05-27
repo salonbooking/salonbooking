@@ -24,6 +24,17 @@
                     $this->settings->getCurrency()
                 ) ?>
         </div>
+        <div class="col-md-3 col-sm-4">
+             <label for="salon_settings_pay_currency_pos"><?php _e('Set your currency position','sln') ?></label>
+                 <?php echo SLN_Form::fieldSelect(
+                        'salon_settings[pay_currency_pos]',
+                        array('left' => __('on left side'),'right' => __('on right side')),
+                        $this->settings->get('pay_currency_pos'),
+                        array(),
+                        true
+                    ) ?>
+        </div>
+ 
     </div>
     <div class="clearfix"></div>
             <div class="sln-separator"></div>

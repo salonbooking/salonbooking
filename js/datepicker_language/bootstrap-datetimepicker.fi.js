@@ -4,12 +4,12 @@
  */
 ;(function($){
 	$.fn.datetimepicker.dates['fi'] = {
-		days: ["sunnuntai", "maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai", "sunnuntai"],
-		daysShort: ["sun", "maa", "tii", "kes", "tor", "per", "lau", "sun"],
-		daysMin: ["su", "ma", "ti", "ke", "to", "pe", "la", "su"],
-		months: ["tammikuu", "helmikuu", "maaliskuu", "huhtikuu", "toukokuu", "kesäkuu", "heinäkuu", "elokuu", "syyskuu", "lokakuu", "marraskuu", "joulukuu"],
-		monthsShort: ["tam", "hel", "maa", "huh", "tou", "kes", "hei", "elo", "syy", "lok", "mar", "jou"],
-		today: "tänään",
+		days: ["Sunnuntai", "Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai", "Lauantai", "Sunnuntai"],
+		daysShort: ["Sun", "Maa", "Tii", "Kes", "Tor", "Per", "Lau", "Sun"],
+		daysMin: ["Su", "Ma", "Ti", "Ke", "To", "Pe", "La", "Su"],
+		months: ["Tammikuu", "Helmikuu", "Maaliskuu", "Huhtikuu", "Toukokuu", "Kesäkuu", "Heinäkuu", "Elokuu", "Syyskuu", "Lokakuu", "Marraskuu", "Joulukuu"],
+		monthsShort: ["Tam", "Hel", "Maa", "Huh", "Tou", "Kes", "Hei", "Elo", "Syy", "Lok", "Mar", "Jou"],
+		today: "Tänään",
 		suffix: [],
 		meridiem: []
 	};

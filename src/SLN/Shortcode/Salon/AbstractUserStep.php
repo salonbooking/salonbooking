@@ -8,6 +8,7 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
             array('ID' => $errors, 'first_name' => $values['firstname'], 'last_name' => $values['lastname'])
         );
         add_user_meta($errors, '_sln_phone', $values['phone']);
+        add_user_meta($errors, '_sln_address', $values['address']);
         if (is_wp_error($errors)) {
             $this->addError($errors->get_error_message());
         }
@@ -45,7 +46,8 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
                 'firstname' => $current_user->user_firstname,
                 'lastname'  => $current_user->user_lastname,
                 'email'     => $current_user->user_email,
-                'phone'     => get_user_meta($current_user->ID, '_sln_phone', true)
+                'phone'     => get_user_meta($current_user->ID, '_sln_phone', true),
+                'address'     => get_user_meta($current_user->ID, '_sln_address', true)
             );
             $this->bindValues($values);
         }
@@ -60,7 +62,8 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
             'firstname' => '',
             'lastname'  => '',
             'email'     => '',
-            'phone'     => ''
+            'phone'     => '',
+            'address'     => ''
         );
         foreach ($fields as $field => $filter) {
             $bb->set($field, SLN_Func::filter($values[$field], $filter));
