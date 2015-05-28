@@ -4460,3 +4460,11 @@ a.list-group-item.active > .badge,
   border: 1px solid red;
   background-color: rgba(0, 255, 255, 0.5);
 }
+
+/* aggiunti da Dimitri senza less */
+
+#sln-notifications{color:#ff0000; font-size: 0.8rem;}
+ #sln-salon .col-md-12.address{
+
+    padding:0 15px 0 15px;
+  } 
