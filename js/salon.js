@@ -53,7 +53,7 @@ function sln_init($) {
 
 }
 function sln_loadStep($, data) {
-    var loadingMessage = '<img src="' + salon.loading + '" alt="Loading ..." width="16" height="16" /> loading...';
+    var loadingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> loading..';
     data += "&action=salon&method=salonStep&security=" + salon.ajax_nonce;
     $('#sln-notifications').html(loadingMessage);
     $.ajax({
@@ -98,7 +98,7 @@ function sln_stepDate($) {
 
     function validate(obj, autosubmit) {
         var form = $(obj).closest('form');
-        var validatingMessage = '<img src="' + salon.loading + '" alt="Loading ..." width="16" height="16" /> '+salon.txt_validating;
+        var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> '+salon.txt_validating;
         var data = form.serialize();
         data += "&action=salon&method=checkDate&security=" + salon.ajax_nonce;
         $('#sln-notifications').html(validatingMessage);
