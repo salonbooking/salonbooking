@@ -58,7 +58,7 @@ $values = array(
                                'password'  => __('Password', 'sln'),
                                'password_confirm' => __('Confirm your password', 'sln')
                            ) as $field => $label):  ?>
-                <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?>">
+                <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?> address">
                     <div class="form-group">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
