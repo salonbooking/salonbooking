@@ -4079,12 +4079,26 @@ a.list-group-item.active > .badge,
     padding-left: 0;
     padding-right: 0;
   }
+  
+  #sln-salon .col-md-12.address{
+
+    padding:0 15px 0 15px;
+  } 
+
+  
 }
 @media only screen and (max-width: 767px) {
   #sln-salon .col-md-12 {
     padding-left: 0;
     padding-right: 0;
   }
+  
+  #sln-salon .col-md-12.address{
+
+    padding:0 15px 0 15px;
+  } 
+
+  
 }
 #sln-salon .form-actions.row.aligncenter .col-xs-6:nth-child(2) {
   width: 40%;
