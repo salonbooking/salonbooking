@@ -295,6 +295,8 @@ class SLN_Plugin
                 echo json_encode($ret);
             } elseif (is_string($ret)) {
                 echo $ret;
+            } else {
+                throw new Exception("no content returned from $className");
             }
             exit();
         } else {

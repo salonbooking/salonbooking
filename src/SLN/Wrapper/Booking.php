@@ -41,6 +41,14 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return apply_filters('sln_booking_phone', get_post_meta($post_id, '_sln_booking_phone', true));
     }
 
+    function getAddress()
+    {
+        $post_id = $this->getId();
+
+        return apply_filters('sln_booking_address', get_post_meta($post_id, '_sln_booking_address', true));
+    }
+
+
     function getTime()
     {
         $post_id = $this->getId();

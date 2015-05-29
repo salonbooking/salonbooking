@@ -3,11 +3,7 @@
 class SLN_Enum_SmsProvider
 {
 
-    private static $labels = array(
-        'fake' => 'test (sms code is sent by mail)',
-        'ip1smshttp' => 'ip1sms http',
-        'ip1smswebservice' => 'ip1sms webservice'
-    );
+    private static $labels = array();
 
     private static $classes = array(
         'fake' => 'SLN_Action_Sms_Fake',
@@ -53,7 +49,6 @@ class SLN_Enum_SmsProvider
     {
         self::$labels = array(
             'fake' => __('test (sms code is sent by mail to the admin)', 'sln'),
-//            'ip1smshttp' => 'ip1sms http',
             'ip1smswebservice' => 'ip1sms',
             'twilio' => 'Twilio',
             'plivo' => 'Plivo'

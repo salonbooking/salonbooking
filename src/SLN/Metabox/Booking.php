@@ -39,6 +39,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             'lastname'  => '',
             'email'     => '',
             'phone'     => '',
+            'address'   => '',
             'duration'  => 'time',
             'date'      => 'date',
             'time'      => 'time',
