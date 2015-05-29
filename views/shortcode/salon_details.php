@@ -91,9 +91,10 @@ $values = array(
                                'firstname' => __('Firstname', 'sln'),
                                'lastname'  => __('Lastname', 'sln'),
                                'email'     => __('E-mail', 'sln'),
-                               'phone'     => __('Phone', 'sln')
+                               'phone'     => __('Phone', 'sln'),
+                               'address'     => __('Address', 'sln'),
                            ) as $field => $label): ?>
-                <div class="col-md-6">
+                <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?>">
                     <div class="form-group">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
