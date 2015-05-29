@@ -218,7 +218,8 @@ class SLN_Admin_Settings
                      'pay_cash',
                      'pay_enabled'
                  ) as $k) {
-            $this->settings->set($k, $_POST['salon_settings'][$k]);
+            $data = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
+            $this->settings->set($k, $data);
         }
         $this->settings->save();
         $this->showAlert(
