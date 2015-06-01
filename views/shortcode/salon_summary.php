@@ -60,6 +60,6 @@ $confirmation = $plugin->getSettings()->get('confirmation');
         ); ?>
     </div>
     </div>
-    <?php $nextLabel = __('Finalize', 'sln');
+    <?php $nextLabel = __('Finalise', 'sln');
     include "_form_actions.php" ?>
 </form>

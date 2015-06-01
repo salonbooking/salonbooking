@@ -9,15 +9,15 @@ function salon_date_hoursbefore($hoursBefore)
 {
     if ($hoursBefore->from && $hoursBefore->to) : ?>
         <em><?php echo sprintf(
-                __('you can book from %s up to %s in advance', 'sln'),
+                __('you may book from %s up to %s in advance', 'sln'),
                 $hoursBefore->from,
                 $hoursBefore->to
             ) ?></em>
     <?php elseif ($hoursBefore->from): ?>
-        <em><?php echo sprintf(__('you can book %s in advance', 'sln'), $hoursBefore->from) ?></em>
+        <em><?php echo sprintf(__('you may book %s in advance', 'sln'), $hoursBefore->from) ?></em>
     <?php
     elseif ($hoursBefore->to) : ?>
-        <em><?php echo sprintf(__('you can book up to %s in advance', 'sln'), $hoursBefore->to) ?></em>
+        <em><?php echo sprintf(__('you may book up to %s in advance', 'sln'), $hoursBefore->to) ?></em>
     <?php endif;
 }
 
@@ -25,7 +25,7 @@ if ($plugin->getSettings()->isDisabled()):
     $message =  $plugin->getSettings()->getDisabledMessage(); 
     ?>
     <div class="alert alert-danger">
-        <p><?php echo empty($message) ? __('Booking is disabled', 'sln') : $message ?></p>
+        <p><?php echo empty($message) ? __('On-line booking is disabled', 'sln') : $message ?></p>
     </div>
 <?php
 else:

@@ -123,7 +123,7 @@ function tpl_summary_details($booking, $plugin){
                      
 	<?php else: ?>
 
-<?php echo __('Your booking is pending, please wait our confirmation.','sln') ?></p>
+<?php echo __('Your booking is pending, please await our confirmation.','sln') ?></p>
 
 	<?php endif ?>
 
@@ -131,11 +131,11 @@ function tpl_summary_details($booking, $plugin){
 
 	<?php if($forAdmin): ?>
 
-	<?php echo __('This is an email notification of a new booking', 'sln') ?>
+	<?php echo __('This is an e-mail notification of a new booking', 'sln') ?>
 	
 	<?php else: ?> 
 
-<?php echo __('This is an email confirmation of your booking at', 'sln') ?>
+<?php echo __('This is an e-mail confirmation of your booking at', 'sln') ?>
 
 <b style="color:#666666;">
                         <?php echo $plugin->getSettings()->get('gen_name') ?

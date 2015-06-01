@@ -50,10 +50,10 @@ $values = array(
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <div class="row">
             <?php foreach (array(
-                               'firstname' => __('Firstname', 'sln'),
-                               'lastname'  => __('Lastname', 'sln'),
-                               'email'     => __('E-mail', 'sln'),
-                               'phone'     => __('Phone', 'sln'),
+                               'firstname' => __('First name', 'sln'),
+                               'lastname'  => __('Last name', 'sln'),
+                               'email'     => __('e-mail', 'sln'),
+                               'phone'     => __('Mobile phone', 'sln'),
                                'address'     => __('Address', 'sln'),
                                'password'  => __('Password', 'sln'),
                                'password_confirm' => __('Confirm your password', 'sln')
@@ -88,10 +88,10 @@ $values = array(
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <div class="row">
             <?php foreach (array(
-                               'firstname' => __('Firstname', 'sln'),
-                               'lastname'  => __('Lastname', 'sln'),
-                               'email'     => __('E-mail', 'sln'),
-                               'phone'     => __('Phone', 'sln'),
+                               'firstname' => __('First name', 'sln'),
+                               'lastname'  => __('Last name', 'sln'),
+                               'email'     => __('e-mail', 'sln'),
+                               'phone'     => __('Mobile phone', 'sln'),
                                'address'     => __('Address', 'sln'),
                            ) as $field => $label): ?>
                 <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?>">

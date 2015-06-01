@@ -15,7 +15,7 @@
 
     <div class="row">
         <div class="col-md-4 col-sm-6">
-            <?php $this->row_input_text('pay_paypal_email', __('Set your PayPal email address', 'sln')); ?>
+            <?php $this->row_input_text('pay_paypal_email', __('Enter your PayPal e-mail address', 'sln')); ?>
         </div>
         <div class="col-md-3 col-sm-4">
              <label for="salon_settings_pay_currency"><?php _e('Set your currency','sln') ?></label>
@@ -41,7 +41,7 @@
     <div class="row">
         <div class="col-md-4 col-sm-6">
             <div class="form-group">
-                <?php $this->row_input_checkbox('pay_paypal_test', __('Enable paypal sandbox', 'sln')); ?>
+                <?php $this->row_input_checkbox('pay_paypal_test', __('Enable PayPal sandbox', 'sln')); ?>
                 <p><?php _e('Check this option to test PayPal payments<br /> using your PayPal Sandbox account.', 'sln') ?></p>
             </div>
         </div>

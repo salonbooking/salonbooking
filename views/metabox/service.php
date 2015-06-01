@@ -67,5 +67,5 @@ $days = SLN_Func::getDays();
 
     </div>
 </div>
-<em><?php _e('Leave blank if you want this service available every working days at every working hour', 'sln') ?></em>
+<em><?php _e('Leave this option blank if you want this service available for every hour each day', 'sln') ?></em>
 <div class="sln-clear"></div>

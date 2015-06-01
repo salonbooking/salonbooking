@@ -7,7 +7,7 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
         $postType = $this->getPostType();
         add_meta_box(
             $postType . '-details',
-            __('Attendant Details', 'sln'),
+            __('Assistant Details', 'sln'),
             array($this, 'details_meta_box'),
             $postType,
             'normal',
@@ -16,7 +16,7 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
         remove_meta_box('postexcerpt', $postType, 'side');
         add_meta_box(
             'postexcerpt',
-            __('Attendant description'),
+            __('Assistant description'),
             array($this, 'post_excerpt_meta_box'),
             $postType,
             'normal',
@@ -28,11 +28,11 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
     {
         ?>
         <label class="screen-reader-text" for="excerpt">
-            <?php _e('Attendant Description', 'sln') ?>
+            <?php _e('Assistant Description', 'sln') ?>
         </label>
         <textarea rows="1" cols="40" name="excerpt"
                   id="excerpt"><?php echo $post->post_excerpt; // textarea_escaped ?></textarea>
-        <p><?php _e('A very short description of this attendant. It is optional', 'sln'); ?></p>
+        <p><?php _e('A very short description of this assistant. It is optional', 'sln'); ?></p>
     <?php
     }
 

@@ -25,7 +25,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 
     <?php else: ?>
         <div class="row">
-            <div class="col-md-6 tycol"><?php echo $confirmation ? __('Booking is pending', 'sln') : __('Booking confirmed', 'sln') ?><br/>
+            <div class="col-md-6 tycol"><?php echo $confirmation ? __('Your booking is pending', 'sln') : __('Your booking is confirmed', 'sln') ?><br/>
                 <?php if($confirmation): ?> 
                     <i class="c glyphicon glyphicon-time"></i>
                 <?php else : ?>
@@ -39,11 +39,11 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 <?php $ppl = false; ?>
 <?php if($confirmation) : ?>
         <p class="ty"><strong><?php _e('You will receive a confirmation of your booking by email.','sln' )?></strong></p>
-        <p class="ty"><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an email to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
+        <p class="ty"><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
             <?php echo $plugin->getSettings()->get('gen_phone') ?></p>
         <p class="aligncenter"><a href="<?php echo home_url() ?>" class="btn btn-primary">Back to home</a></p>
 <?php else : ?> 
-        <p class="ty"><?php echo sprintf(__('If you need to change your reservation please call the %s or send an email to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
+        <p class="ty"><?php echo sprintf(__('If you need to change your reservation please call the %s or send an e-mail to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
             <?php echo $plugin->getSettings()->get('phone') ?></p>
         
         

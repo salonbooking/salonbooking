@@ -22,22 +22,22 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
             $values = $_POST['sln'];
             if (!is_user_logged_in()) {
                 if (empty($values['firstname'])) {
-                    $this->addError(__('firstname can\'t be empty', 'sln'));
+                    $this->addError(__('First name can\'t be empty', 'sln'));
                 }
                 if (empty($values['lastname'])) {
-                    $this->addError(__('lastname can\'t be empty', 'sln'));
+                    $this->addError(__('Last name can\'t be empty', 'sln'));
                 }
                 if (empty($values['email'])) {
-                    $this->addError(__('email can\'t be empty', 'sln'));
+                    $this->addError(__('e-mail can\'t be empty', 'sln'));
                 }
                 if (empty($values['phone'])) {
-                    $this->addError(__('phone can\'t be empty', 'sln'));
+                    $this->addError(__('Mobile phone can\'t be empty', 'sln'));
                 }
                 if (empty($values['address'])) {
-                    $this->addError(__('address can\'t be empty', 'sln'));
+                    $this->addError(__('Address can\'t be empty', 'sln'));
                 } 
                 if (!filter_var($values['email'], FILTER_VALIDATE_EMAIL)) {
-                    $this->addError(__('email is not valid', 'sln'));
+                    $this->addError(__('e-mail is not valid', 'sln'));
                 }
 
 

@@ -6,6 +6,7 @@ Version: 1.0.4
 Plugin URI: http://salon.wpchef.it/
 Author: Wordpress Chef / Plugins 
 Author URI: http://plugins.wpchef.it/
+Text Domain: sln
 */
 
 

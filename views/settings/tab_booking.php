@@ -138,7 +138,7 @@ function sln_availability_row($prefix, $row)
         <div class="sln-separator"></div>
         <?php
         $key            = 'available';
-        $label          = __('Online bookings available on:', 'sln');
+        $label          = __('On-line booking available days', 'sln');
         $availabilities = $this->getOpt('availabilities');
         ?>
         <div class="form-group">
@@ -229,8 +229,8 @@ function sln_availability_row($prefix, $row)
             <div class="col-md-6">
                 <?php $this->row_input_checkbox(
                     'confirmation',
-                    __('Bookings confirmation', 'sln'),
-                    array('help' => __('Select this option if you want to confirm every single booking.'))
+                    __('Booking confirmation', 'sln'),
+                    array('help' => __('Select this option to manually confirm each booking.'))
                 ); ?>
             </div>
             <div class="col-md-6">

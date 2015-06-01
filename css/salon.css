@@ -3885,7 +3885,8 @@ body:not(.wp-admin) .hidden {
   margin-top: 10px;
   padding-top: 10px;
 }
-#sln-salon #salon-step-summary div.summ-row .service-label {
+#sln-salon #salon-step-summary div.summ-row .service-label,
+#sln-salon #salon-step-summary div.summ-row .attendant-label {
   color: #076b9d;
   font-size: 0.8em;
 }
