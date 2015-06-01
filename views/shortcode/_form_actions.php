@@ -4,7 +4,7 @@
  */
 
 if (!isset($nextLabel)) {
-    $nextLabel = __('Go next', 'sln');
+    $nextLabel = __('Next step', 'sln');
 }
 $i       = 0;
 $salon  = $step->getShortcode();

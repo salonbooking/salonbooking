@@ -7,7 +7,7 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
         $postType = $this->getPostType();
         add_meta_box(
             $postType . '-details',
-            __('Service Details', 'sln'),
+            __('Service details', 'sln'),
             array($this, 'details_meta_box'),
             $postType,
             'normal',

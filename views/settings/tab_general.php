@@ -7,7 +7,7 @@
                 __('Your salon name', 'sln'),
                 array(
                     'help' => sprintf(
-                        __('Leaving this empty the default site name <strong>(%s)</strong> will be used', 'sln'),
+                        __('Leaving this field empty will cause the default site name <strong>(%s)</strong> to be used', 'sln'),
                         get_bloginfo('name')
                     )
                 )
@@ -21,7 +21,7 @@
                 __('Salon contact e-mail', 'sln'),
                 array(
                     'help' => sprintf(
-                        __('Leaving this empty the default site email <strong>(%s)</strong> will be used', 'sln'),
+                        __('Leaving this field empty will cause the default site email  <strong>(%s)</strong> to be used', 'sln'),
                         get_bloginfo('admin_email')
                     )
                 )
@@ -67,13 +67,13 @@
     <div class="sln-separator"></div>
     <div class="row">
         <div class="col-md-3">
-            <?php $this->row_input_checkbox('attendant_enabled', __('Enable attendant selection', 'sln')); ?>
+            <?php $this->row_input_checkbox('attendant_enabled', __('Enable assistant selection', 'sln')); ?>
             <p><?php _e('Let your customers choose their favourite staff member.', 'sln') ?></p>
 
             <p><?php echo sprintf(__('You need to add your members staff <a href="%s">Here</a>.', 'sln'),
                     get_admin_url().'edit.php?post_type=sln_attendant') ?></p>
-            <?php $this->row_input_checkbox('attendant_email', __('Enable attendant email on new bookings', 'sln')); ?>
-            <p><?php _e('Attendant will receive a mail when admin receive a mail with the choosen attendant.', 'sln') ?></p><br/>
+            <?php $this->row_input_checkbox('attendant_email', __('Enable assistant email on new bookings', 'sln')); ?>
+            <p><?php _e('Assistants will receive an e-mail when selected for a new booking.', 'sln') ?></p><br/>
             <?php $this->row_input_checkbox('ajax_enabled', __('Enable ajax steps', 'sln')); ?>
             <p><?php _e('This allows loading steps via ajax.', 'sln') ?></p>
 
@@ -103,7 +103,7 @@
                     <?php $this->row_input_text('sms_prefix', __('Number Prefix', 'sln')); ?>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <?php $this->row_input_text('sms_from', __('Sender number', 'sln')); ?>
+                    <?php $this->row_input_text('sms_from', __('Sender\'s number', 'sln')); ?>
                 </div>
             </div>
         </div>

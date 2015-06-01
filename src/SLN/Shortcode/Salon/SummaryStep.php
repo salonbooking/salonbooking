@@ -52,7 +52,6 @@ class SLN_Shortcode_Salon_SummaryStep extends SLN_Shortcode_Salon_Step
 
     private function isAjax()
     {
-        return (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
-            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
+        return defined( 'DOING_AJAX' ) && DOING_AJAX ;
     }
 }

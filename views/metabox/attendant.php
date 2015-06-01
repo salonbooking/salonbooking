@@ -49,7 +49,7 @@ $days = SLN_Func::getDays();
         </label>
     </div>
     <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12  attendants-notavailable-h">
-    <em><?php _e('Leave blank if you want this attendant available every working days at every working hour', 'sln') ?></em>
+    <em><?php _e('Leave this option blank if you want this assistant available for every hour each day', 'sln') ?></em>
 </div>
 
 </div>

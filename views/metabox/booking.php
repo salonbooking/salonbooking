@@ -76,6 +76,17 @@ $helper->showNonce($postType);
             );
             ?>
         </div>
+        <div class="col-md-6 col-sm-12">
+
+            <?php
+            $helper->showFieldtext(
+                $helper->getFieldName($postType, 'phone'),
+                __('Address', 'sln'),
+                $booking->getAddress()
+            );
+            ?>
+        </div>
+ 
     </div>
     <div class="row form-inline">
         <div class="col-md-6 col-sm-8">

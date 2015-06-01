@@ -2,7 +2,7 @@
 ?>
 <div id="sln-salon" class="sln-bootstrap">
     <div>
-        <h1><?php _e('Make a booking')?>
+        <h1><?php _e('Book an appointment')?>
             <svg class="icocal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"
                  preserveAspectRatio="xMinYMin meet" width="100%" height="100%"
                  style="width: 24px; height: 24px;">
@@ -14,7 +14,7 @@
             $message =  $plugin->getSettings()->getDisabledMessage(); 
         ?>
         <div class="alert alert-danger">
-            <p><?php echo empty($message) ? __('Booking is disabled', 'sln') : $message ?></p>
+            <p><?php echo empty($message) ? __('On-line booking is disabled', 'sln') : $message ?></p>
         </div>
     </div>
 </div>

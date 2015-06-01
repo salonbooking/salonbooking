@@ -11,17 +11,17 @@ $valid = isset($_SESSION['sln_sms_valid']) ? $_SESSION['sln_sms_valid'] : false;
 include '_errors.php' ?>
 <?php if (isset($_GET['resend'])): ?>
     <div class="alert alert-success">
-        <p><?php _e('Sms sent with success.') ?></p>
+        <p><?php _e('SMS sent successfully.') ?></p>
     </div>
 <?php endif ?>
-<h2><?php _e('Sms Verification', 'sln') ?>
+<h2><?php _e('SMS Verification', 'sln') ?>
     <br/>
-    <em><?php _e('We have sent an sms text on your mobile phone.', 'sln') ?></em>
+    <em><?php _e('We have sent an SMS text on your mobile phone.', 'sln') ?></em>
 </h2>
 <form method="post" action="<?php echo $formAction ?>" role="form">
     <?php if ($valid): ?>
         <div class="alert alert-success">
-            <p><?php _e('Your phone number is verified', 'sln') ?></p>
+            <p><?php _e('Your telephone number is verified', 'sln') ?></p>
         </div>
         <?php include "_form_actions.php" ?>
     <?php else: ?>

@@ -3,7 +3,7 @@ Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment
 Requires at least: 4.1
 Tested up to: 4.2.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,18 +24,20 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 
 Features of the plugin include:
 
+NEW FEATURES: - Ajax loading option
+
 
 * Attendants selection
 
-If you want you can give your customers the possibility to choose their favourite attendants during the booking process - NEW FEATURE
+If you want you can give your customers the possibility to choose their favourite attendants during the booking process
 
 * SMS user verification
 
-Avoid spam and verify your customers identity using an SMS verification process during the first time registration. The SMS verification process supports TWILIO, PLIVO and IP1SMS providers - NEW FEATURE
+Avoid spam and verify your customers identity using an SMS verification process during the first time registration. The SMS verification process supports TWILIO, PLIVO and IP1SMS providers 
 
 * Staff user role
 
-You can give access to the back-end to your salon’s staff limiting them to manage only the booking and calendar settings pages using the custom “Salon staff” user role. - NEW FEATURE
+You can give access to the back-end to your salon’s staff limiting them to manage only the booking and calendar settings pages using the custom “Salon staff” user role. 
 
 
 * Intuitive bookings calendar
@@ -152,6 +154,16 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 
 == Changelog ==
+
+1.0.4 28/05/2015
+
+* Ajax loading option
+* Currency position option
+* New Address field
+* Time selection fix
+* Date picker fixes for Dutch and Norvay languages
+* Missing translations strings
+
 
 1.0.3 22/05/2015
 

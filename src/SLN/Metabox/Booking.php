@@ -7,7 +7,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         $pt = $this->getPostType();
         add_meta_box(
             $pt . '-details',
-            __('Booking Details', 'sln'),
+            __('Booking details', 'sln'),
             array($this, 'details_meta_box'),
             $pt,
             'normal',
@@ -39,6 +39,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             'lastname'  => '',
             'email'     => '',
             'phone'     => '',
+            'address'   => '',
             'duration'  => 'time',
             'date'      => 'date',
             'time'      => 'time',

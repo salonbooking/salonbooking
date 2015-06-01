@@ -89,7 +89,7 @@ class SLN_Plugin
                 'ajax_url' => admin_url('admin-ajax.php'),
                 'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
                 'loading' => SLN_PLUGIN_URL.'/img/preloader.gif',
-                'txt_validating' => __('Validating...')
+                'txt_validating' => __('checking availability')
             )
         );
         SLN_Shortcode_Salon::init($this);
@@ -295,6 +295,8 @@ class SLN_Plugin
                 echo json_encode($ret);
             } elseif (is_string($ret)) {
                 echo $ret;
+            } else {
+                throw new Exception("no content returned from $className");
             }
             exit();
         } else {

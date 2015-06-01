@@ -3140,7 +3140,7 @@ a.list-group-item.active > .badge,
   background-color: transparent;
   border: 0;
 }
-.hidden {
+body:not(.wp-admin) .hidden {
   display: none !important;
   visibility: hidden !important;
 }
@@ -3863,6 +3863,7 @@ a.list-group-item.active > .badge,
   font-size: .8em;
   color: #666666;
   display: block;
+  text-align: left;
 }
 #sln-salon #salon-step-summary div.summ-row p.date {
   font-size: 1em;
@@ -3884,7 +3885,8 @@ a.list-group-item.active > .badge,
   margin-top: 10px;
   padding-top: 10px;
 }
-#sln-salon #salon-step-summary div.summ-row .service-label {
+#sln-salon #salon-step-summary div.summ-row .service-label,
+#sln-salon #salon-step-summary div.summ-row .attendant-label {
   color: #076b9d;
   font-size: 0.8em;
 }
@@ -3899,7 +3901,7 @@ a.list-group-item.active > .badge,
 #sln-salon #salon-step-summary div.summ-row .total-amount {
   font-size: .8em;
   font-weight: bold;
-  color: #000000;
+  color: black;
 }
 #sln-salon .tycol {
   background: #eeeeee;
@@ -3918,7 +3920,7 @@ a.list-group-item.active > .badge,
 }
 #sln-salon .tycol i {
   font-size: 2.2em;
-  color: #008000;
+  color: green;
   margin-top: .6em;
 }
 #sln-salon .tycol i.c {
@@ -3961,7 +3963,7 @@ a.list-group-item.active > .badge,
 }
 #sln-salon .btn-primary,
 #sln-salon .btn-success {
-  color: #ffffff !important;
+  color: white !important;
 }
 #sln-salon ul {
   list-style-type: none;
@@ -4085,6 +4087,9 @@ a.list-group-item.active > .badge,
     padding-left: 0;
     padding-right: 0;
   }
+}
+#sln-salon .col-md-12.field-address {
+  padding: 0 15px;
 }
 #sln-salon .form-actions.row.aligncenter .col-xs-6:nth-child(2) {
   width: 40%;
@@ -4443,6 +4448,10 @@ a.list-group-item.active > .badge,
   }
 }
 .sln-invalid {
-  border: 1px solid red;
-  background-color: rgba(0, 255, 255, 0.5);
+  border: 2px solid red;
+  background-color: white;
+}
+#sln-notifications {
+  color: #ff0000;
+  font-size: 0.8rem;
 }

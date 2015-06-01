@@ -34,26 +34,26 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $to   = $hb->getToDate();
         if (!$hb->isValidFrom($date)) {
             $txt = $plugin->format()->datetime($from);
-            $this->addError(sprintf(__('the date is too old, the minimum allowed is %s', 'sln'), $txt));
+            $this->addError(sprintf(__('The date is too old, the minimum allowed is %s', 'sln'), $txt));
         } elseif (!$hb->isValidTo($date)) {
             $txt = $plugin->format()->datetime($to);
-            $this->addError(sprintf(__('the date is too far, the maximum allowed is %s', 'sln'), $txt));
+            $this->addError(sprintf(__('The date is too far, the maximum allowed is %s', 'sln'), $txt));
         } elseif (!$ah->getItems()->isValidDatetime($date)) {
             $txt = $plugin->format()->datetime($date);
-            $this->addError(sprintf(__('we are not available at %s', 'sln'), $txt));
+            $this->addError(sprintf(__('We are unavailable at %s', 'sln'), $txt));
         } else {
             $ah->setDate($date);
             if (!$ah->isValidDate($date)) {
                 $this->addError(
                     __(
-                        'you can\'t book in this day because there aren\'t free places, please choose a different day',
+                        'There are no time slots available today - Please select a different day',
                         'sln'
                     )
                 );
             } elseif (!$ah->isValidTime($date)) {
                 $this->addError(
                     __(
-                        'you can\'t book in this hour because there aren\'t free places, please choose a different hour',
+                        'There are no time slots available for this period - Please select a  different hour',
                         'sln'
                     )
                 );

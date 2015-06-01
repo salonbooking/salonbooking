@@ -34,7 +34,7 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
     {
 
         if ($this->getPostType() === $post->post_type) {
-            $title = __('Enter attendant name', 'sln');
+            $title = __('Enter the assistant name', 'sln');
         }
 
         return $title;
@@ -47,31 +47,31 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
         $messages[$this->getPostType()] = array(
             0  => '', // Unused. Messages start at index 1.
             1  => sprintf(
-                __('Attendant updated.', 'sln')
+                __('Assistant updated.', 'sln')
             ),
             2  => '',
             3  => '',
-            4  => __('Attendant updated.', 'sln'),
+            4  => __('Assistant updated.', 'sln'),
             5  => isset($_GET['revision']) ? sprintf(
-                __('Attendant restored to revision from %s', 'sln'),
+                __('Assistant restored to revision from %s', 'sln'),
                 wp_post_revision_title((int)$_GET['revision'], false)
             ) : false,
             6  => sprintf(
-                __('Attendant published.', 'sln')
+                __('Assistant published.', 'sln')
             ),
-            7  => __('Attendant saved.', 'sln'),
+            7  => __('Assistant saved.', 'sln'),
             8  => sprintf(
-                __('Attendant submitted.', 'sln')
+                __('Assistant submitted.', 'sln')
             ),
             9  => sprintf(
                 __(
-                    'Attendant scheduled for: <strong>%1$s</strong>. ',
+                    'Assistant scheduled for: <strong>%1$s</strong>. ',
                     'sln'
                 ),
                 date_i18n(__('M j, Y @ G:i', 'restaurant'), strtotime($post->post_date))
             ),
             10 => sprintf(
-                __('Attendant draft updated.', 'sln')
+                __('Assistant draft updated.', 'sln')
             ),
         );
 
@@ -94,20 +94,20 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
                 'revisions',
             ),
             'labels'              => array(
-                'name'               => __('Attendants', 'sln'),
-                'singular_name'      => __('Attendant', 'sln'),
+                'name'               => __('Assistants', 'sln'),
+                'singular_name'      => __('Assistant', 'sln'),
                 'menu_name'          => __('Salon', 'sln'),
-                'name_admin_bar'     => __('Salon Attendant', 'sln'),
-                'all_items'          => __('Attendants', 'sln'),
-                'add_new'            => __('Add Attendant', 'sln'),
-                'add_new_item'       => __('Add New Attendant', 'sln'),
-                'edit_item'          => __('Edit Attendant', 'sln'),
-                'new_item'           => __('New Attendant', 'sln'),
-                'view_item'          => __('View Attendant', 'sln'),
-                'search_items'       => __('Search Attendants', 'sln'),
-                'not_found'          => __('No attendants found', 'sln'),
-                'not_found_in_trash' => __('No attendants found in trash', 'sln'),
-                'archive_title'      => __('Attendants Archive', 'sln'),
+                'name_admin_bar'     => __('Salon Assistant', 'sln'),
+                'all_items'          => __('Assistants', 'sln'),
+                'add_new'            => __('Add Assistant', 'sln'),
+                'add_new_item'       => __('Add New Assistant', 'sln'),
+                'edit_item'          => __('Edit Assistant', 'sln'),
+                'new_item'           => __('New Assistant', 'sln'),
+                'view_item'          => __('View Assistant', 'sln'),
+                'search_items'       => __('Search Assistants', 'sln'),
+                'not_found'          => __('No assistants found', 'sln'),
+                'not_found_in_trash' => __('No assistants found in trash', 'sln'),
+                'archive_title'      => __('Assistants Archive', 'sln'),
             )
         );
     }

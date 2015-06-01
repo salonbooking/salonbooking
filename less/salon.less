@@ -308,6 +308,7 @@
         font-size: .8em;
         color: @color-mid;
         display: block;
+        text-align: left;
       }
       p.date {
         font-size: 1em;
@@ -330,7 +331,7 @@
           padding-top: 10px;
         }
       }
-      .service-label {
+      .service-label, .attendant-label {
         color: @color-high;
         font-size: .8em
       }
@@ -516,6 +517,8 @@
       padding-right: 0;
     }
   }
+
+  .col-md-12.field-address{padding: 0 15px;}
 
   .form-actions.row.aligncenter {
     .col-xs-6:nth-child(2) {
@@ -918,6 +921,10 @@ img {
   }
 
 .sln-invalid{
-  border: 1px solid red;
-  background-color: rgba(0,255,255,.5);
+  border: 2px solid red;
+  background-color: white;
+}
+#sln-notifications {
+    color: #ff0000;
+    font-size: 0.8rem;
 }
