@@ -27,7 +27,7 @@ $confirmation = $plugin->getSettings()->get('confirmation');
 
     <?php if($attendant = $bb->getAttendant()) :  ?>
     <div class="row summ-row">
-        <div class="col-md-5"><span class="label"><?php _e('Attendant', 'sln') ?></span></div>
+        <div class="col-md-5"><span class="label"><?php _e('Assistant', 'sln') ?></span></div>
         <div class="col-md-7">
             <span class="attendant-label"><?php echo $attendant->getName(); ?></span></li>
         </div>
