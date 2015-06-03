@@ -1,4 +1,4 @@
-=== Salon booking Free Version ===
+=== Salon booking system ===
 Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment
 Requires at least: 4.1
@@ -20,20 +20,27 @@ Salon booking  is the best solution for Hair dresser salons, Barber shop, Beauty
 Salon booking is provided with a intuitive back-end bookings calendar where the administrator can have a quick overview of all the upcoming reservations.
 
 
-[youtube https://www.youtube.com/watch?v=ZrFBk5jME6w]
 
-Features of the plugin include:
-
-NEW FEATURES: - Ajax loading option
+PLUGIN’S FEATURES
 
 
-* Attendants selection
+NEW: - Ajax loading option
 
-If you want you can give your customers the possibility to choose their favourite attendants during the booking process
+
+* Assistant selection
+
+If you want you can give your customers the possibility to choose their favourite assistant during the booking process.
+
+
+* Assistant e-mail notification
+
+When a new booking is made the selected assistant will be notified by e-mail
+
 
 * SMS user verification
 
 Avoid spam and verify your customers identity using an SMS verification process during the first time registration. The SMS verification process supports TWILIO, PLIVO and IP1SMS providers 
+
 
 * Staff user role
 
@@ -49,9 +56,11 @@ Administrator has a full overview of the upcoming bookings for every single day 
 
 Administrator can set how many people can book for the same date/time and how long last on average a single slot (time/session). This setting should represent the capacity of your salon of attending people one or more people at same time.
 
+
 * Set your salon timetable
 
 Administrator can set the open and closing days and the time slots using our multiple rules system. This will be reflected on front-end bookings calendar.
+
 
 * Accept online Payments
 Salon booking is ready to accept online payments with Paypal. You can decide if user can pay in advance using credit cards or “pay later” once arrived at the salon.
@@ -64,8 +73,10 @@ Easily create as many services as you need, edit or delete them as a simple post
 * Full control of every single service
 Set  its price, duration, days of non availability, and a brief description. You can even make a difference between “main” and “optional” services.
 
+
 * Full control of every single booking
 When you receive a reservation you can view and eventually edit its own details. You can easily Add a new booking manually as you should for a post.
+
 
 * Nice emails confirmation
 When you receive a new reservation an email will be sent to you and to your client with all booking details.
@@ -83,6 +94,8 @@ This section describes how to install the plugin and get it working.
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Go to Salon > Settings to complete your salon’s settings
 
+
+
 == Frequently Asked Questions ==
 
 
@@ -98,7 +111,7 @@ The plugin has been tested on WordPress 4.0
  
 = Which version of php is supported? =
 
-The plugin supports php 5.2 and above version.
+The plugin supports php 5.3 and above version.
 
  
 = Is it possible to accept online payments? =
@@ -113,8 +126,11 @@ Do you need a custom payment gateway? Please contact us.
 
 The plugin can be translated in any languages  creating a .po file or using WPML plugin translating the strings.
 
-At the moment is available english and italian localization versions.
-In the next future we are going to release other localizated versions of the plugin.
+NOTE: Put your own translation files inside wp-content/languages/plugins
+
+If you want to contribuite to plugin translation please visit:
+
+https://www.transifex.com/projects/p/salon-booking-system/
 
  
 = Are there any conflicts with other plugins? =
@@ -122,9 +138,10 @@ In the next future we are going to release other localizated versions of the plu
 At the moment we didn’t spot any conflicts with other plugins.
 
  
-= Is it possible to customize the look and feel of the plugin front-end? =
+= Is it possible to customise the look and feel of the plugin front-end? =
 
-Every front-end element of the booking process has its own css class, so you can easily customize it.
+Every front-end element of the booking process has its own css class, so you can easily customise it.
+
 
 = What is the limit of the free version? =
 
@@ -155,14 +172,15 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 == Changelog ==
 
-1.0.4 28/05/2015
+1.0.4 02/06/2015
 
 * Ajax loading option
 * Currency position option
 * New Address field
 * Time selection fix
-* Date picker fixes for Dutch and Norvay languages
+* Date picker fixes for Dutch and Norway languages
 * Missing translations strings
+* Modified many english text strings
 
 
 1.0.3 22/05/2015
@@ -176,7 +194,7 @@ Date-picker multilanguage support fix
 
 1.0.1 13/05/2015
 
-* Added "Attendands selection" option
+* Added “Assistant selection" option
 * Added "SMS Verification" option
 * Add "Salon staff" new users role
 * Fixed booking system bug

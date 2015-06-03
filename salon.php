@@ -22,6 +22,20 @@ function sln_autoload($className)
     }
 }
 
+
+function my_update_notice() {
+	$info = __( 'ATTENTION! Back-up your translations files before update.', 'sln' );
+	echo '<span class="spam">' . strip_tags( $info, '<br><a><b><i><span>' ) . '</span>';
+}
+
+if ( is_admin() )
+	add_action( 'in_plugin_update_message-' . plugin_basename(__FILE__), 'my_update_notice' );
+
+
+
+
 spl_autoload_register('sln_autoload');
 SLN_Plugin::getInstance();
 ob_start();
+
+
