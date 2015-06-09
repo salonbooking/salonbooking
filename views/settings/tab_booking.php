@@ -80,6 +80,15 @@ function sln_availability_row($prefix, $row)
                         'Set these options carefully because it will affect the number of bookings you can accept for the same <strong>time/session</strong>.',
                         'sln'
                     ) ?></p>
+            <label>        <?php _e('Select your availability mode', 'sln') ?></label>
+            <?php $field = "salon_settings[availability_mode]"; ?>
+            <?php echo SLN_Form::fieldSelect(
+                $field,
+                SLN_Enum_AvailabilityModeProvider::toArray(),
+                $this->getOpt('availability_mode'),
+                array(),
+                true
+            ) ?>
 
         </div>
         <div class="col-md-6"></div>

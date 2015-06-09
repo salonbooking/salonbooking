@@ -184,6 +184,7 @@ class SLN_Admin_Settings
                      'confirmation',
                      'thankyou',
                      'availabilities',
+                     'availability_mode',
                      'disabled',
                      'disabled_message',
                      'confirmation',

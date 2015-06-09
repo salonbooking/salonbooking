@@ -4,6 +4,7 @@ return array(
         'hours_before_from' => '+1 day',
         'hours_before_to'  => '+1 month',
         'interval'         => 60,
+        'availability_mode' => 'classic',
         'disabled_message' => 'Booking is not available at the moment, please contact us at ' . get_option('admin_email'),
         'gen_name'         => '',
         'gen_email'        => '',
