@@ -470,6 +470,12 @@
 				left:   left,
 				zIndex: zIndex
 			});
+                        //fix marino
+                        this.element.trigger({
+				type: 'place',
+				date: this.date
+			});
+
 		},
 
 		update: function () {

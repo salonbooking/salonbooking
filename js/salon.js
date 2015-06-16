@@ -204,10 +204,7 @@ function initDatepickers($) {
                 .on('show', function () {
                     $('body').trigger('sln_date');
                 })
-                .on('changeMonth', function () {
-                    $('body').trigger('sln_date');
-                })
-                .on('changeYear', function () {
+                .on('place', function () {
                     $('body').trigger('sln_date');
                 })
             ;
