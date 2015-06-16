@@ -10,6 +10,8 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
         if (!isset($hour)) {
             $hour = $this->getDate()->format('H');
         }
+        SLN_Plugin::addLog(__CLASS__.' - checking hour('.$hour.')');
+
         $ret = array();
         foreach ($this->getBookings() as $b) {
             $t = $b->getTime();
@@ -23,7 +25,10 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
                 $ret[] = $b;
             }
         }
-
+        SLN_Plugin::addLog(__CLASS__.' - found('.count($ret).')');
+        foreach($ret as $b){
+            SLN_Plugin::addLog(' - ' . $b->getId());
+        }
         return $ret;
     }
 

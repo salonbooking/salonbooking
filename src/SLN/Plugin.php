@@ -10,6 +10,7 @@ class SLN_Plugin
     const F = 'slnc';
     const F1 = 50;
     const F2 = 40;
+    const DEBUG_ENABLED = true;
 
     private static $instance;
     private $settings;
@@ -287,9 +288,12 @@ class SLN_Plugin
         $method = $_REQUEST['method'];
         $className = 'SLN_Action_Ajax_' . ucwords($method);
         if (class_exists($className)) {
+            SLN_Plugin::addLog('calling ajax '.$className);
+            //SLN_Plugin::addLog(print_r($_POST,true));
             /** @var SLN_Action_Ajax_Abstract $obj */
             $obj = new $className($this);
             $ret = $obj->execute();
+            SLN_Plugin::addLog("$className returned:\r\n".json_encode($ret));
             if (is_array($ret)) {
                 header('Content-Type: application/json');
                 echo json_encode($ret);
@@ -302,5 +306,10 @@ class SLN_Plugin
         } else {
             throw new Exception("ajax method not found '$method'");
         }
+    }
+
+    public static function addLog($txt){
+        if(self::DEBUG_ENABLED)
+            file_put_contents(SLN_PLUGIN_DIR.'/log.txt', '['.date('Y-m-d H:i:s').'] '.$txt."\r\n", FILE_APPEND | LOCK_EX);
     }
 }

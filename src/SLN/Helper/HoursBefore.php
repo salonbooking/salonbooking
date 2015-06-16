@@ -12,6 +12,11 @@ class SLN_Helper_HoursBefore
 
     public function __construct(SLN_Settings $settings)
     {
+
+            //https://weston.ruter.net/2013/04/02/do-not-change-the-default-timezone-from-utc-in-wordpress/
+            //https://wordpress.org/support/topic/why-does-wordpress-set-timezone-to-utc
+            date_default_timezone_set(get_option('timezone_string'));
+
         $this->settings = $settings;
         $this->from     = $this->settings->get('hours_before_from');
         $this->to       = $this->settings->get('hours_before_to');
@@ -37,6 +42,10 @@ class SLN_Helper_HoursBefore
         } else {
             $this->toDate = new DateTime('+1 year');
         }
+        $str = $this->getHoursBeforeString();
+        SLN_Plugin::addLog(__CLASS__.'Initialized with'.print_r($str,true));
+
+        date_default_timezone_set('UTC');
     }
 
     private function minutes(DateTime $date)
@@ -78,4 +87,48 @@ class SLN_Helper_HoursBefore
 
         return $date <= $to;
     }
+
+    public function getHoursBefore()
+    {
+        $from = $this->from;
+        $to   = $this->to;
+
+        return (object)compact('from', 'to');
+    }
+
+    public function getHoursBeforeString()
+    {
+        $txt = SLN_Func::getIntervalItems();
+        $ret = $this->getHoursBefore();
+        if ($ret->from) {
+            $ret->from = $txt[$ret->from];
+        }
+        if ($ret->to) {
+            $ret->to = $txt[$ret->to];
+        }
+
+        return $ret;
+    }
+
+/*
+    public function getHoursBeforeDateTime()
+    {
+        $ret     = $this->getHoursBefore();
+        $ret->from = $now     = new DateTime();
+        $minutes = $this->minutes($now);
+        $now->setTime($now->format('H'), $minutes);
+        $ret->to = $now2 = clone $now;
+        if ($ret->from) {
+            $now->modify($ret->from);
+        } else {
+            $now->modify('+30 minutes');
+        }
+        if ($ret->to) {
+            $now2->modify($ret->to);
+        }
+
+        return $ret;
+    }
+*/
+
 }

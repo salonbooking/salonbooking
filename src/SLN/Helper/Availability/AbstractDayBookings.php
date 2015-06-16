@@ -32,6 +32,9 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
         wp_reset_query();
         wp_reset_postdata();
 
+        SLN_Plugin::addLog(__CLASS__.' - buildBookings('.$this->date->format('Y-m-d').')');
+        foreach($ret as $b)
+            SLN_Plugin::addLog(' - '.$b->getId());
         return $ret;
     }
 
@@ -63,6 +66,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
 
     public function countServicesByHour($hour = null, $minutes = null)
     {
+        SLN_Plugin::addLog(__CLASS__.' - count services by hour('.$hour.')');
         $ret = array();
         foreach ($this->getBookingsByHour($hour, $minutes) as $b) {
             foreach ($b->getServicesIds() as $id) {
@@ -73,7 +77,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
                 }
             }
         }
-
+        SLN_Plugin::addLog(print_r($ret, true)); 
         return $ret;
     }
 

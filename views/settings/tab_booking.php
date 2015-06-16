@@ -98,7 +98,7 @@ function sln_availability_row($prefix, $row)
     <div class="row settings-allowed">
         <div class="col-md-5">
                 <div class="form-group">
-                    <strong>
+                    <strong> 
                         <?php _e('Bookings are allowed from', 'sln') ?>
                     <?php $field = "salon_settings[hours_before_from]"; ?>
                     <?php echo SLN_Form::fieldSelect(

@@ -16,14 +16,6 @@ class SLN_Helper_Availability
         $this->settings = $settings;
     }
 
-    public function getHoursBefore()
-    {
-        $from = $this->settings->get('hours_before_from');
-        $to   = $this->settings->get('hours_before_to');
-
-        return (object)compact('from', 'to');
-    }
-
     public function getHoursBeforeHelper()
     {
         if (!isset($this->hoursBefore)) {
@@ -32,38 +24,8 @@ class SLN_Helper_Availability
 
         return $this->hoursBefore;
     }
-
-    public function getHoursBeforeString()
-    {
-        $txt = SLN_Func::getIntervalItems();
-        $ret = $this->getHoursBefore();
-        if ($ret->from) {
-            $ret->from = $txt[$ret->from];
-        }
-        if ($ret->to) {
-            $ret->to = $txt[$ret->to];
-        }
-
-        return $ret;
-    }
-
-    public function getHoursBeforeDateTime()
-    {
-        $ret     = $this->getHoursBefore();
-        $ret->from = $now     = new DateTime();
-        $minutes = $this->minutes($now);
-        $now->setTime($now->format('H'), $minutes);
-        $ret->to = $now2 = clone $now;
-        if ($ret->from) {
-            $now->modify($ret->from);
-        } else {
-            $now->modify('+30 minutes');
-        }
-        if ($ret->to) {
-            $now2->modify($ret->to);
-        }
-
-        return $ret;
+    public function getHoursBeforeString(){
+        return $this->getHoursBeforeHelper()->getHoursBeforeString();
     }
 
     public function getDays()
