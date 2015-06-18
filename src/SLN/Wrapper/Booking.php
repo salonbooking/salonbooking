@@ -89,6 +89,8 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
             SLN_Plugin::addLog(' - service '.$s.' +'.$d->format('H:i'));
         }
         $i += $h*60;
+        if($i == 0)
+            $i = 60;
         $str = SLN_Func::convertToHoursMins($i);
         update_post_meta($this->getId(), '_sln_booking_duration', $str);
         return $str;
