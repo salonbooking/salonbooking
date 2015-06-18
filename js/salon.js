@@ -202,9 +202,17 @@ function initDatepickers($) {
                     language: $(this).data('locale')
                 })
                 .on('show', function () {
+console.log('show');
                     $('body').trigger('sln_date');
                 })
                 .on('place', function () {
+console.log('place');
+                    $('body').trigger('sln_date');
+                })
+                .on('changeMonth', function () {
+                    $('body').trigger('sln_date');
+                })
+                .on('changeYear', function () {
                     $('body').trigger('sln_date');
                 })
             ;
@@ -228,15 +236,15 @@ function initTimepickers($) {
                     startView: 1,
                 })
                 .on('show', function () {
+console.log('time show');
                     $('body').trigger('sln_date');
                 })
-                .on('changeMonth', function () {
+                .on('place', function () {
+console.log('time place');
                     $('body').trigger('sln_date');
                 })
-                .on('changeYear', function () {
-                    $('body').trigger('sln_date');
-                })
-                .data('datetimepicker').picker;
+ 
+               .data('datetimepicker').picker;
             picker.addClass('timepicker');
         }
     });

@@ -1,9 +1,14 @@
 <?php
 
+
 abstract class SLN_Helper_Availability_AbstractDayBookings
 {
     private $bookings;
     private $date;
+
+    /** @return SLN_Wrapper_Booking[] :q*/
+    abstract public function getBookingsByHour($hour, $minutes = null);
+
 
     public function __construct(DateTime $date)
     {
@@ -43,15 +48,10 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
         return count($this->bookings);
     }
 
-    public function countBookingsByHour($hour = null)
+    public function countBookingsByHour($hour = null, $minutes = null)
     {
-        return count($this->getBookingsByHour($hour));
+        return count($this->getBookingsByHour($hour, $minutes));
     }
-
-    /**
-     * @return SLN_Wrapper_Booking[]
-     */
-    abstract public function getBookingsByHour($hour, $minutes = null);
 
     public function countAttendantsByHour($hour = null, $minutes = null)
     {
@@ -70,11 +70,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
         $ret = array();
         foreach ($this->getBookingsByHour($hour, $minutes) as $b) {
             foreach ($b->getServicesIds() as $id) {
-                if (isset($ret[$id])) {
-                    $ret[$id]++;
-                } else {
-                    $ret[$id] = 1;
-                }
+                $ret[$id] = 1 + (isset($ret[$id]) ? $ret[$id] : 0);
             }
         }
         SLN_Plugin::addLog(print_r($ret, true)); 
