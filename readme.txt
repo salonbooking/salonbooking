@@ -1,4 +1,4 @@
-=== Salon booking system ===
+﻿=== Salon booking system ===
 Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment
 Requires at least: 4.1

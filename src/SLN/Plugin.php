@@ -72,7 +72,7 @@ class SLN_Plugin
     public function action_init()
     {
         if (!session_id()) {
-            session_start();
+            session_start(); 
         }
         load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME) . '/languages');
         wp_enqueue_style('salon', SLN_PLUGIN_URL . '/css/salon.css', array(), SLN_VERSION, 'all');

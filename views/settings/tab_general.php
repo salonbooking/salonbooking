@@ -62,7 +62,7 @@
                     )
                 )
             ); ?>
-        </div>
+        </div> 
     </div>
     <div class="sln-separator"></div>
     <div class="row">
@@ -76,6 +76,8 @@
             <p><?php _e('Assistants will receive an e-mail when selected for a new booking.', 'sln') ?></p><br/>
             <?php $this->row_input_checkbox('ajax_enabled', __('Enable ajax steps', 'sln')); ?>
             <p><?php _e('This allows loading steps via ajax.', 'sln') ?></p>
+			<?php $this->row_input_checkbox('hide_prices', __('Hide Prices', 'sln')); ?>
+            <p><?php _e('Select this Option if you want to hide all prices from the front end.<br/>Note: Online Payment will be disabled.', 'sln') ?></p>
 
         </div>
         <div class="col-md-6">
