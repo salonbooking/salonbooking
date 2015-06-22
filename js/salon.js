@@ -84,11 +84,11 @@ function sln_stepDate($) {
         $('[data-ymd]').addClass('disabled');
         $.each(items.dates, function(key, value) {
            //console.log(value);
-           $('[data-ymd="'+value+'"]').removeClass('disabled');
+           $('.day[data-ymd="'+value+'"]').removeClass('disabled');
         });
         $.each(items.times, function(key, value) {
            //console.log(value);
-           $('[data-ymd="'+value+'"]').removeClass('disabled');
+           $('.hour[data-ymd="'+value+'"]').removeClass('disabled');
         });
 
         return true;
