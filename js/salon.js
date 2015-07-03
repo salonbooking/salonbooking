@@ -80,7 +80,11 @@ function sln_loadStep($, data) {
 function sln_stepDate($) {
     var isValid;
     var items = $('#salon-step-date').data('intervals');
+    var doingFunc = false;
     var func = function () {
+        if(doingFunc) return;
+        setTimeout(function(){
+           doingFunc = true;
         $('[data-ymd]').addClass('disabled');
         $.each(items.dates, function(key, value) {
            //console.log(value);
@@ -88,9 +92,12 @@ function sln_stepDate($) {
         });
         $.each(items.times, function(key, value) {
            //console.log(value);
-           $('.hour[data-ymd="'+value+'"]').removeClass('disabled');
+           $('.hour[data-ymd="'+value+'"]').removeClass('disabled'); 
+           $('.minute[data-ymd="'+value+'"]').removeClass('disabled'); 
+           $('.hour[data-ymd="'+value.split(':')[0]+':00"]').removeClass('disabled');
         });
-
+            doingFunc = false;
+       },200);
         return true;
     }
     func();
@@ -202,11 +209,9 @@ function initDatepickers($) {
                     language: $(this).data('locale')
                 })
                 .on('show', function () {
-console.log('show');
                     $('body').trigger('sln_date');
                 })
                 .on('place', function () {
-console.log('place');
                     $('body').trigger('sln_date');
                 })
                 .on('changeMonth', function () {
@@ -236,11 +241,9 @@ function initTimepickers($) {
                     startView: 1,
                 })
                 .on('show', function () {
-console.log('time show');
                     $('body').trigger('sln_date');
                 })
                 .on('place', function () {
-console.log('time place');
                     $('body').trigger('sln_date');
                 })
  

@@ -205,7 +205,6 @@ class SLN_Func
             $curr = strtotime('+' . $interval . ' minutes', $curr);
             $maxItems--;
         } while (date("H:i", $curr) != $start && $maxItems > 0);
-
         return $items;
     }
 

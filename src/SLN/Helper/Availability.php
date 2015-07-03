@@ -100,9 +100,9 @@ class SLN_Helper_Availability
         return $this->getDayBookings()->countBookingsByDay();
     }
 
-    public function getBookingsHourCount($hour = null)
+    public function getBookingsHourCount($hour = null, $minutes = null)
     {
-        return $this->getDayBookings()->countBookingsByHour($hour);
+        return $this->getDayBookings()->countBookingsByHour($hour, $minutes);
     }
     public function validateAttendant(SLN_Wrapper_Attendant $attendant)
     {
@@ -169,6 +169,6 @@ class SLN_Helper_Availability
         }
         $countHour = $this->settings->get('parallels_hour');
 
-        return !($countHour && $this->getBookingsHourCount($date->format('H')) >= $countHour);
+        return !($countHour && $this->getBookingsHourCount($date->format('H'), $date->format('i')) >= $countHour);
     }
 }

@@ -644,7 +644,7 @@
 				}
 			}
 			this.picker.find('.datetimepicker-hours td').html(html.join(''));
-
+	
 			html = [];
 			txt = '', meridian = '', meridianOld = '';
 			for (var i = 0; i < 60; i += this.minuteStep) {
@@ -668,7 +668,7 @@
 					//html.push('<span class="minute'+clsName+' minute_'+(hours<12?'am':'pm')+'">'+txt+'</span>');
 					//
                                         var ymd = i < 10 ? '0'+txt : txt;
-					html.push('<span data-minute="'+i+ '" class="minute' + clsName + '">' + txt + ':' + (i < 10 ? '0' + i : i) + '</span>');
+					html.push('<span data-ymd="'+hours+':'+(i >= 10 ? i : '0'+i) + '" class="minute' + clsName + '">' + txt + ':' + (i < 10 ? '0' + i : i) + '</span>');
 					if (i == 59) {
 						html.push('</fieldset>');
 					}
@@ -676,11 +676,10 @@
 					txt = i + ':00';
                                         var ymd = i < 10 ? '0'+txt : txt;
 					//html.push('<span class="hour'+clsName+'">'+txt+'</span>');
-					html.push('<span data-minute"'+i+ '" class="minute' + clsName + '">' + hours + ':' + (i < 10 ? '0' + i : i) + '</span>');
+					html.push('<span data-ymd="'+hours+':'+(i >= 10 ? i : '0'+i) + '" class="minute' + clsName + '">' + hours + ':' + (i < 10 ? '0' + i : i) + '</span>');
 				}
 			}
 			this.picker.find('.datetimepicker-minutes td').html(html.join(''));
-
 			var currentYear = this.date.getUTCFullYear();
 			var months = this.picker.find('.datetimepicker-months')
 				.find('th:eq(1)')
@@ -1249,6 +1248,7 @@
 			 */
 			//this.picker.find('>div').hide().filter('.datetimepicker-'+DPGlobal.modes[this.viewMode].clsName).show();
 			this.picker.find('>div').hide().filter('.datetimepicker-' + DPGlobal.modes[this.viewMode].clsName).css('display', 'block');
+	
 			this.updateNavArrows();
 		},
 
