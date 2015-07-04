@@ -80,17 +80,24 @@ function sln_loadStep($, data) {
 function sln_stepDate($) {
     var isValid;
     var items = $('#salon-step-date').data('intervals');
+    var doingFunc = false;
     var func = function () {
+        if(doingFunc) return;
+        setTimeout(function(){
+           doingFunc = true;
         $('[data-ymd]').addClass('disabled');
         $.each(items.dates, function(key, value) {
            //console.log(value);
-           $('[data-ymd="'+value+'"]').removeClass('disabled');
+           $('.day[data-ymd="'+value+'"]').removeClass('disabled');
         });
         $.each(items.times, function(key, value) {
            //console.log(value);
-           $('[data-ymd="'+value+'"]').removeClass('disabled');
+           $('.hour[data-ymd="'+value+'"]').removeClass('disabled'); 
+           $('.minute[data-ymd="'+value+'"]').removeClass('disabled'); 
+           $('.hour[data-ymd="'+value.split(':')[0]+':00"]').removeClass('disabled');
         });
-
+            doingFunc = false;
+       },200);
         return true;
     }
     func();
@@ -204,6 +211,9 @@ function initDatepickers($) {
                 .on('show', function () {
                     $('body').trigger('sln_date');
                 })
+                .on('place', function () {
+                    $('body').trigger('sln_date');
+                })
                 .on('changeMonth', function () {
                     $('body').trigger('sln_date');
                 })
@@ -233,13 +243,11 @@ function initTimepickers($) {
                 .on('show', function () {
                     $('body').trigger('sln_date');
                 })
-                .on('changeMonth', function () {
+                .on('place', function () {
                     $('body').trigger('sln_date');
                 })
-                .on('changeYear', function () {
-                    $('body').trigger('sln_date');
-                })
-                .data('datetimepicker').picker;
+ 
+               .data('datetimepicker').picker;
             picker.addClass('timepicker');
         }
     });

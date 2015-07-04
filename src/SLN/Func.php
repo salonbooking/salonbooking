@@ -205,14 +205,17 @@ class SLN_Func
             $curr = strtotime('+' . $interval . ' minutes', $curr);
             $maxItems--;
         } while (date("H:i", $curr) != $start && $maxItems > 0);
-
         return $items;
     }
 
     public static function getMinutesFromDuration($duration)
     {
+        if($duration instanceof DateTime){
+            $duration = $duration->format('H:i');
+        }
+
         if (is_string($duration)) {
-            $tmp = explode($duration, ':');
+            $tmp = explode(':', $duration);
             return ($tmp[0] * 60) + $tmp[1];
         } else {
             return 0;

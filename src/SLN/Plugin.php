@@ -10,6 +10,7 @@ class SLN_Plugin
     const F = 'slnc';
     const F1 = 50;
     const F2 = 40;
+    const DEBUG_ENABLED = true;
 
     private static $instance;
     private $settings;
@@ -71,7 +72,7 @@ class SLN_Plugin
     public function action_init()
     {
         if (!session_id()) {
-            session_start();
+            session_start(); 
         }
         load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME) . '/languages');
         wp_enqueue_style('salon', SLN_PLUGIN_URL . '/css/salon.css', array(), SLN_VERSION, 'all');
@@ -86,7 +87,7 @@ class SLN_Plugin
             'salon',
             'salon',
             array(
-                'ajax_url' => admin_url('admin-ajax.php'),
+                'ajax_url' => admin_url('admin-ajax.php') . '?lang='.(defined('ICL_LANGUAGE_CODE') ? 'ICL_LANGUAGE_CODE' : ''),
                 'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
                 'loading' => SLN_PLUGIN_URL.'/img/preloader.gif',
                 'txt_validating' => __('checking availability')
@@ -287,9 +288,12 @@ class SLN_Plugin
         $method = $_REQUEST['method'];
         $className = 'SLN_Action_Ajax_' . ucwords($method);
         if (class_exists($className)) {
+            SLN_Plugin::addLog('calling ajax '.$className);
+            //SLN_Plugin::addLog(print_r($_POST,true));
             /** @var SLN_Action_Ajax_Abstract $obj */
             $obj = new $className($this);
             $ret = $obj->execute();
+            SLN_Plugin::addLog("$className returned:\r\n".json_encode($ret));
             if (is_array($ret)) {
                 header('Content-Type: application/json');
                 echo json_encode($ret);
@@ -302,5 +306,10 @@ class SLN_Plugin
         } else {
             throw new Exception("ajax method not found '$method'");
         }
+    }
+
+    public static function addLog($txt){
+        if(self::DEBUG_ENABLED)
+            file_put_contents(SLN_PLUGIN_DIR.'/log.txt', '['.date('Y-m-d H:i:s').'] '.$txt."\r\n", FILE_APPEND | LOCK_EX);
     }
 }

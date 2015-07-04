@@ -21,6 +21,9 @@ class SLN_Helper_Intervals
 
     public function setDatetime(DateTime $date)
     {
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
         $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
         $times             = $ah->getTimes($date);
@@ -53,6 +56,9 @@ class SLN_Helper_Intervals
         ksort($this->years);
         ksort($this->days);
         ksort($this->months);
+
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set('UTC');
     }
 
     public function bindInitialDate($date)

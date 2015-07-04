@@ -34,7 +34,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $to   = $hb->getToDate();
         if (!$hb->isValidFrom($date)) {
             $txt = $plugin->format()->datetime($from);
-            $this->addError(sprintf(__('The date is too old, the minimum allowed is %s', 'sln'), $txt));
+            $this->addError(sprintf(__('The date is too near, the minimum allowed is %s', 'sln'), $txt));
         } elseif (!$hb->isValidTo($date)) {
             $txt = $plugin->format()->datetime($to);
             $this->addError(sprintf(__('The date is too far, the maximum allowed is %s', 'sln'), $txt));

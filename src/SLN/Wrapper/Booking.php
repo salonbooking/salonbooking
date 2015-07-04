@@ -67,25 +67,35 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_duration', get_post_meta($post_id, '_sln_booking_duration', true));
+
         if(empty($ret)){
             $ret = '00:00';
         }
         $ret     = SLN_Func::filter($ret, 'time');
+        if($ret == '00:00'){
+            $ret = $this->evalDuration();
+        } 
         return new DateTime('1970-01-01 ' . $ret);
     }
 
     function evalDuration(){
         $h = 0;
         $i = 0;
+        SLN_Plugin::addLog(__CLASS__.' eval duration of'.$this->getId());
         foreach($this->getServices() as $s){
             $d = $s->getDuration();
             $h = $h + intval($d->format('H'));
             $i = $i + intval($d->format('i'));
+            SLN_Plugin::addLog(' - service '.$s.' +'.$d->format('H:i'));
         }
         $i += $h*60;
+        if($i == 0)
+            $i = 60;
         $str = SLN_Func::convertToHoursMins($i);
         update_post_meta($this->getId(), '_sln_booking_duration', $str);
+        return $str;
     }
+
     function hasAttendant(SLN_Wrapper_Attendant $attendant)
     {
         return $this->getAttendantId() == $attendant->getId();
@@ -169,8 +179,10 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return new DateTime($this->getDate()->format('Y-m-d').' '.$this->getTime()->format('H:i'));
     }
     function getEndsAt(){
-        $start = $this->getStartsAt();
+        $start = $this->getStartsAt(); 
+        //SLN_Plugin::addLog($this->getId().' duration '.$this->getDuration()->format('H:i'));
         $minutes = SLN_Func::getMinutesFromDuration($this->getDuration());
+        //SLN_Plugin::addLog($this->getId().' duration '.$minutes.' minutes');
         if($minutes == 0) $minutes = 60;
         $start->modify('+'.$minutes.' minutes');
         return $start;

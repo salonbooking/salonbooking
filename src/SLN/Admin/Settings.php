@@ -52,7 +52,8 @@ class SLN_Admin_Settings
             <?php
             SLN_Form::fieldCheckbox(
                 "salon_settings[{$key}]",
-                $this->getOpt($key)
+                $this->getOpt($key), 
+				$settings
             )
             ?>
             <?php if (isset($settings['help'])){ ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
@@ -146,6 +147,7 @@ class SLN_Admin_Settings
                      'gen_timetable',
                      'ajax_enabled',
                      'attendant_enabled',
+                     'hide_prices',
                      'attendant_email',
                      'sms_enabled',
                      'sms_account',
@@ -160,6 +162,9 @@ class SLN_Admin_Settings
             $val = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
             $this->settings->set($k, stripcslashes($val));
         }
+		if(isset($_POST['salon_settings']['hide_prices'])){
+			$this->settings->set('pay_enabled','');
+		}
         $this->settings->save();
         $this->showAlert(
             'success',
@@ -184,6 +189,7 @@ class SLN_Admin_Settings
                      'confirmation',
                      'thankyou',
                      'availabilities',
+                     'availability_mode',
                      'disabled',
                      'disabled_message',
                      'confirmation',
@@ -283,12 +289,17 @@ class SLN_Admin_Settings
                 <p><strong><?php echo $title ?></strong></p>
             <?php } ?>
             <p><?php echo $txt ?></p>
-        </div>
+        </div> 
     <?php
     }
 
     function getCurrentTab()
     {
         return isset($_GET['tab']) ? $_GET['tab'] : 'homepage';
+    }
+	
+	function hidePriceSettings()
+    {
+		return $this->getOpt('hide_prices')==1 ? array('attrs'=>array('disabled'=>'disabled','title'=>'Please disable hide prices from general settings to enable online payment.')) : array();
     }
 }

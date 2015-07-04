@@ -9,6 +9,7 @@ $bb             = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
 $datetime       = $bb->getDateTime();
 $confirmation = $plugin->getSettings()->get('confirmation'); 
+$showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 ?>
 <h2><?php _e('Booking summary', 'sln') ?></h2>
 <form method="post" action="<?php echo $formAction ?>" role="form"  id="salon-step-summary">
@@ -39,12 +40,17 @@ $confirmation = $plugin->getSettings()->get('confirmation');
             <ul class="list-unstyled">
                 <?php foreach ($bb->getServices() as $service): ?>
                     <li> <span class="service-label"><?php echo $service->getName(); ?>
-                    <span class="service-price"><?php echo $plugin->format()->money($service->getPrice()) ?></li>
+                    <?php if($showPrices){?>
+					<span class="service-price"><?php echo $plugin->format()->money($service->getPrice()) ?>
+					<?php } ?>
+					</li>
                 <?php endforeach ?>
-                <li><span class="total-label"><?php _e('Total amount', 'sln') ?></span>
+                <?php if($showPrices){?>
+				<li><span class="total-label"><?php _e('Total amount', 'sln') ?></span>
                 <span class="total-price"><?php echo $plugin->format()->money(
                         $plugin->getBookingBuilder()->getTotal()
                     ) ?></span></li>
+				<?php } ?>
             </ul>
         </div>
     </div>

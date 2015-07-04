@@ -12,7 +12,8 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime());
 $isSymbolLeft = $plugin->getSettings()->get('pay_currency_pos') == 'left';
 $symbolLeft = $isSymbolLeft ? $plugin->getSettings()->getCurrencySymbol() : '';
 $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
-?>
+$showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
+ ?>
 <div class="sln-service-list">
     <?php foreach ($services as $service) : ?>
         <div class="row">
@@ -33,7 +34,7 @@ $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
             ) ?>
             </span>
             </div>
-            <div class="col-lg-8 col-xs-7">
+            <div class="col-lg-<?=$showPrices?'8':'11'?> col-xs-<?=$showPrices?'7':'11'?>">
                 <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                     <strong class="service-name"><?php echo $service->getName(); ?></strong>
                     <span class="service-description"><?php echo $service->getContent() ?></span>
@@ -44,9 +45,11 @@ $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
                     <?php endif ?>
                 </label>
             </div>
+		<?php if ($showPrices){  ?>
             <div class="col-lg-3 col-xs-4 service-price">
-                <?php echo $plugin->format()->money($service->getPrice()) ?>
+                <?php echo $plugin->format()->money($service->getPrice())?>
             </div>
+		<?php }	?>
         </div>
         <div class="clearfix"></div>
         <?php if ($errors) : ?>
@@ -58,6 +61,7 @@ $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
         <?php endif ?>
 
     <?php endforeach ?>
+	<?php if ($showPrices){ ?>
     <div class="row row-total">
         <div class="col-lg-9 col-xs-8 services-total-label"><?php _e('Subtotal', 'sln') ?></div>
         <div class="col-lg-3 col-xs-4 services-total">
@@ -66,4 +70,5 @@ $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
         </span>
         </div>
     </div>
+	<?php } ?>
 </div>

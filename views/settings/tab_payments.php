@@ -1,7 +1,8 @@
 <div class="sln-tab" id="sln-tab-payments">
     <div class="row">
         <div class="col-md-4 col-sm-6">
-            <?php $this->row_input_checkbox('pay_enabled', __('Enable online payments', 'sln')); ?>
+			<?php $settings=$this->hidePriceSettings();?>
+            <?php $this->row_input_checkbox('pay_enabled', __('Enable online payments', 'sln'),$settings); ?>
             <p><?php _e('Allow users to pay in advance using PayPal.', 'sln') ?></p>
         </div>
         <div class="col-md-4 col-sm-6">
@@ -35,7 +36,7 @@
                     ) ?>
         </div>
  
-    </div>
+    </div> 
     <div class="clearfix"></div>
             <div class="sln-separator"></div>
     <div class="row">
