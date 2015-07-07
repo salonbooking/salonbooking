@@ -1,4 +1,4 @@
-﻿=== Salon booking system ===
+=== Salon booking system ===
 Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment
 Requires at least: 4.1
@@ -8,23 +8,41 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
-Salon booking creates a complete booking system inside your wordPress installation.
+Salon booking creates a complete and easy to manage appointment booking system inside your wordPress installation.
 
 
 == Description ==
 
 Salon booking, is a plugin for WordPress based websites that creates a complete and easy to manage booking system in order to give your customers the ability to book for one or more services on your website.
 
-Salon booking  is the best solution for Hair dresser salons, Barber shop, Beauty salons and Spas that want to offer a quality online booking service to their clients.
+Salon booking  is the best solution for: 
+
+* Hair dresser salons
+* Barber shop
+* Beauty salons
+* Spas 
+
+and all that kind of businesses that want to offer a quality online booking service to their clients.
+
+Salon booking works upon a double booking algorithm:
+
+* Basic - fixed booking duration
+* Advanced - booking duration is based on the sum of the services booked
 
 Salon booking is provided with a intuitive back-end bookings calendar where the administrator can have a quick overview of all the upcoming reservations.
 
 
 
-PLUGIN’S FEATURES
+**LIST OF THE FEATURES**
 
 
-NEW: - Advanced booking algorytm + Hide prices option
+BRAND NEW: 
+
+*Advanced booking algorytm - calculate the sum of the duration of the services booked
+
+*Hide prices option - if you don't want to show-up services prices
+
+**EXISTING FEATURES**:
 
 * Ajax loading option
 
@@ -53,7 +71,7 @@ You can give access to the back-end to your salon’s staff limiting them to man
 Administrator has a full overview of the upcoming bookings for every single day of the month. Clicking on a single calendar day a list with all reservations will be displayed. Every single booking is linked to its own details page.
 
 
-* Set your own booking rules
+* Booking rules
 
 Administrator can set how many people can book for the same date/time and how long last on average a single slot (time/session). This setting should represent the capacity of your salon of attending people one or more people at same time.
 
@@ -133,6 +151,13 @@ If you want to contribuite to plugin translation please visit:
 
 https://www.transifex.com/projects/p/salon-booking-system/
 
+Languages available:
+
+*English
+*German
+*French
+*Italian
+
  
 = Are there any conflicts with other plugins? =
 
@@ -146,11 +171,12 @@ Every front-end element of the booking process has its own css class, so you can
 
 = What is the limit of the free version? =
 
-You can accept up to 20 reservations
+You can accept up to 30 reservations
 
 = What happen when plugin free version reach its booking limit? =
 
-You should buy the PRO version here.
+You should buy the PRO version here:
+
 http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 
@@ -173,11 +199,12 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 == Changelog ==
 
-1.0.5 22/06/2015
+1.0.5 07/07/2015
 
 * fixed WPML compatibily issue 
 * fixed real time availabilty control on date/time picker
 * fixed booking range selection issue
+* fixed time-session average duration bug
 
 
 1.0.4 02/06/2015
