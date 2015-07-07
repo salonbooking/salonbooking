@@ -133,6 +133,13 @@ If you want to contribuite to plugin translation please visit:
 
 https://www.transifex.com/projects/p/salon-booking-system/
 
+Languages available:
+
+*English
+*German
+*French
+*Italian
+
  
 = Are there any conflicts with other plugins? =
 
@@ -150,7 +157,8 @@ You can accept up to 20 reservations
 
 = What happen when plugin free version reach its booking limit? =
 
-You should buy the PRO version here.
+You should buy the PRO version here:
+
 http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 
@@ -173,11 +181,12 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 == Changelog ==
 
-1.0.5 22/06/2015
+1.0.5 07/07/2015
 
 * fixed WPML compatibily issue 
 * fixed real time availabilty control on date/time picker
 * fixed booking range selection issue
+* fixed time-session average duration bug
 
 
 1.0.4 02/06/2015
