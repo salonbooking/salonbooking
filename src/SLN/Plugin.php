@@ -8,8 +8,8 @@ class SLN_Plugin
     const USER_ROLE_STAFF = 'sln_staff';
     const TEXT_DOMAIN = 'sln';
     const F = 'slnc';
-    const F1 = 20;
-    const F2 = 15;
+    const F1 = 30;
+    const F2 = 20;
     const DEBUG_ENABLED = false;
 
     private static $instance;
