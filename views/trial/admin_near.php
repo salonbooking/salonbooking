@@ -1,5 +1,6 @@
 <div id="sln-setting-error" class="updated error">
-    <h3><?php _e('Salon booking plugin is almost expiring','sln') ?></h3>
+    <h3><?php _e('You are going to reach the bookings limit for the Salon Booking free version','sln') ?></h3>
 
-    <?php _e('<p>Update your plugin to a premium version</p>','sln');?>
+    <?php _e('<p><a href="http://plugins.wordpresschef.it/downloads/salon-booking-wordpress-plugin/">Please upgrade Salon Booking to a Premium version</p>','sln');?>
 </div>
+
