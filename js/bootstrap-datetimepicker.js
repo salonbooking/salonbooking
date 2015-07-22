@@ -602,7 +602,7 @@
 					clsName += ' disabled';
 				}
                                 var ymdm = (prevMonth.getMonth()+1);
-                                var ymd = prevMonth.getFullYear()+'-'+(parseInt(ymdm) < 10 ? '0' : '')+ymdm+'-'+ prevMonth.getDate();
+                                var ymd = prevMonth.getFullYear()+'-'+(parseInt(ymdm) < 10 ? '0' : '')+ymdm+'-'+ (parseInt(prevMonth.getDate()) < 10 ? '0' : '') + prevMonth.getDate();
 				html.push('<td data-ymd="'+ymd+ '" class="day ' + clsName + '">' + prevMonth.getUTCDate() + '</td>');
 				if (prevMonth.getUTCDay() == this.weekEnd) {
 					html.push('</tr>');
