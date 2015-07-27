@@ -4,6 +4,6 @@
         <br/> 
         <button type="submit" class="btn btn-warning" name="reset-settings" value="reset"
         onClick="return confirm('Do you really want to reset?');"
-        >Reset settings</button>
+        ><?php echo __('Reset settings', 'sln')?></button>
     </div>
 </div>
