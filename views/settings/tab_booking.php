@@ -175,7 +175,7 @@ function sln_availability_row($prefix, $row)
             <div class="col-md-2 pull-right">
                 <button data-collection="addnew" class="btn btn-block btn-primary"><i
                         class="glyphicon glyphicon-plus"></i> <?php _e(
-                        'Add new'
+                        'Add new','sln'
                     ) ?>
                 </button>
             </div>
