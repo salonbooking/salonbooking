@@ -239,7 +239,7 @@ function sln_availability_row($prefix, $row)
                 <?php $this->row_input_checkbox(
                     'confirmation',
                     __('Booking confirmation', 'sln'),
-                    array('help' => __('Select this option to manually confirm each booking.'))
+                    array('help' => __('Select this option to manually confirm each booking.','sln'))
                 ); ?>
             </div>
             <div class="col-md-6">
