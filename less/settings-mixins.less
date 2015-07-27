@@ -28,6 +28,46 @@
 @desktop:     ~"only screen and (min-width: 992px)";
 @desktop-xl:  ~"only screen and (min-width: 1200px)";
 
+// DROPDOWNS OVERRIDE
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+          box-shadow: @shadow;
+}
+.nav-divider(@color: #e5e5e5) {
+  height: 1px;
+  margin: ((@line-height-computed / 2) - 1) 0;
+  overflow: hidden;
+  background-color: @color;
+}
+.reset-filter() {
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+}
+@font-size-base:          14px;
+@line-height-computed:    floor((@font-size-base * @line-height-base));
+@caret-width-base:          4px;
+@zindex-dropdown:          1000;
+@dropdown-bg:              #fff;
+@dropdown-fallback-border:       #ccc;
+@dropdown-border:                rgba(0,0,0,.15);
+@border-radius-base:        4px;
+@dropdown-divider-bg:            #e5e5e5;
+@gray-dark:              lighten(#000, 20%);   // #333
+@line-height-base:        1.428571429;
+@dropdown-link-color:            @gray-dark;
+@dropdown-link-hover-color:      darken(@gray-dark, 5%);
+@dropdown-link-hover-bg:         #f5f5f5;
+@component-active-color:    #fff;
+@brand-primary:         @color-high;
+@dropdown-link-active-color:     @component-active-color;
+@dropdown-link-active-bg:        @component-active-bg;
+@component-active-bg:       @brand-primary;
+@gray-light:             lighten(#000, 46.7%);
+@dropdown-link-disabled-color:   @gray-light;@dropdown-header-color:          @gray-light;
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+@grid-float-breakpoint:     @screen-sm-min;
+// DROPDOWNS OVERRIDE // END
+
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
