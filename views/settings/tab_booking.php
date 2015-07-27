@@ -165,7 +165,7 @@ function sln_availability_row($prefix, $row)
                             </div>
                             <div class="col-md-2">
                                 <button class="btn btn-block btn-danger" data-collection="remove">
-                                    <i class="glyphicon glyphicon-minus"></i> Remove
+                                    <i class="glyphicon glyphicon-minus"></i> <?php echo __('Remove', 'sln')?>
                                 </button>
                             </div>
                         </div>
@@ -186,7 +186,7 @@ function sln_availability_row($prefix, $row)
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-block btn-danger" data-collection="remove">
-                            <i class="glyphicon glyphicon-minus"></i> Remove
+                            <i class="glyphicon glyphicon-minus"></i> <?php echo __('Remove', 'sln')?>
                         </button>
                     </div>
                 </div>
