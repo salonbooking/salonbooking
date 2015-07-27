@@ -14,7 +14,7 @@ $helper->showNonce($postType);
             <div class="row">
             <div class="col-lg-7 col-md-8 col-sm-8"><input type="text" class="form-control" name="emailto"/></div>
             <div class="col-lg-4 col-md-4 col-sm-4">
-                <button class="btn btn-success" type="submit" name="emailto_submit" value="submit">Invia</button>
+                <button class="btn btn-success" type="submit" name="emailto_submit" value="submit"><?php echo __('Send', 'sln')?></button>
 
             </div>
             </div>

@@ -39,7 +39,7 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
                     <strong class="service-name"><?php echo $service->getName(); ?></strong>
                     <span class="service-description"><?php echo $service->getContent() ?></span>
                     <?php if ($service->getDuration()->format('H:i') != '00:00'): ?>
-                        <span class="service-duration">Duration: <?php echo $service->getDuration()->format(
+                        <span class="service-duration"><?php echo __('Duration', 'sln')?>: <?php echo $service->getDuration()->format(
                                 'H:i'
                             ) ?></span>
                     <?php endif ?>

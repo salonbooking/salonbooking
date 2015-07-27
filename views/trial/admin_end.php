@@ -3,3 +3,4 @@
 
     <?php _e('<p><a href="http://plugins.wordpresschef.it/downloads/salon-booking-wordpress-plugin/">Please upgrade Salon Booking to a Premium version</a></p>','sln');?>
 </div>
+
