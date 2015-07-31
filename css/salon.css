@@ -1429,7 +1429,7 @@
 }
 @media only screen and (max-width: 767px) {
   .attendant-radio {
-    margin: 0 auto 1rem auto;
+    margin: 0 auto 1em auto;
   }
 }
 .attendant-radio:after {
@@ -1475,7 +1475,7 @@
 }
 @media only screen and (max-width: 767px) {
   .attendant_thumb {
-    margin: 0 auto 1rem auto;
+    margin: 0 auto 1em auto;
   }
 }
 .attendant_thumb img {
@@ -1487,11 +1487,11 @@
 .sln-attendant-list .attendant-description {
   display: inline-block;
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 1em;
   font-weight: normal;
 }
 .sln-attendant-list .row {
-  margin: 1.5rem 0 1.5rem 0;
+  margin: 1.5em 0 1.5em 0;
 }
 @media only screen and (max-width: 767px) {
   .sln-attendant-list label {
@@ -1505,5 +1505,5 @@
 }
 #sln-notifications {
   color: #ff0000;
-  font-size: 0.8rem;
+  font-size: 1em;
 }
