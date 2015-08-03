@@ -1,11 +1,13 @@
 <?php
 return array(
     'settings' => array(
+        'date_format'       => 'default',
+        'time_format'       => 'default',
         'hours_before_from' => '+1 day',
-        'hours_before_to'  => '+1 month',
-        'interval'         => 60,
+        'hours_before_to'   => '+1 month',
+        'interval'          => 60,
         'availability_mode' => 'basic',
-        'disabled_message' => 'Booking is not available at the moment, please contact us at ' . get_option('admin_email'),
+        'disabled_message'  => 'Booking is not available at the moment, please contact us at ' . get_option('admin_email'),
         'gen_name'         => '',
         'gen_email'        => '',
         'gen_phone'        => '00391122334455',

@@ -75,7 +75,10 @@ class SLN_Plugin
             session_start(); 
         }
         load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME) . '/languages');
-        wp_enqueue_style('salon-bootstrap', SLN_PLUGIN_URL . '/css/sln-bootstrap.css', array(), SLN_VERSION, 'all');
+        if(!$this->getSettings()->get('no_bootstrap')) {
+            wp_enqueue_style('salon-bootstrap', SLN_PLUGIN_URL . '/css/sln-bootstrap.css', array(), SLN_VERSION, 'all');
+        }
+
         wp_enqueue_style('salon', SLN_PLUGIN_URL . '/css/salon.css', array(), SLN_VERSION, 'all');
         //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
         //       wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.css', array(), SLN_VERSION, 'all');

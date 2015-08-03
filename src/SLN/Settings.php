@@ -91,4 +91,12 @@ class SLN_Settings
     public function isAjaxEnabled(){
         return $this->get('ajax_enabled') ? true: false;
     }
+
+    public function getDateFormat(){
+        return $this->get('date_format');
+    }
+
+    public function getTimeFormat(){
+        return $this->get('time_format');
+    }
 }

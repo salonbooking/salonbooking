@@ -157,7 +157,10 @@ class SLN_Admin_Settings
                      'sms_from',
                      'soc_facebook',
                      'soc_twitter',
-                     'soc_google'
+                     'soc_google',
+                     'date_format',
+                     'time_format',
+                     'no_bootstrap'
                  ) as $k) {
             $val = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
             $this->settings->set($k, stripcslashes($val));

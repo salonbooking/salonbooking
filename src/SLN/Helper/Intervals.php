@@ -107,6 +107,11 @@ class SLN_Helper_Intervals
 
     public function toArray()
     {
+       $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
+       $dateFormat = SLN_Enum_DateFormat::getPhpFormat($f);
+       $f = SLN_Plugin::getInstance()->getSettings()->get('time_format');
+       $timeFormat = SLN_Enum_TimeFormat::getPhpFormat($f);
+ 
         return array(
             'years'          => $this->getYears(),
             'months'         => $this->getMonths(),
@@ -116,8 +121,8 @@ class SLN_Helper_Intervals
             'suggestedDay'   => $this->suggestedDate->format('d'),
             'suggestedMonth' => $this->suggestedDate->format('m'),
             'suggestedYear'  => $this->suggestedDate->format('Y'),
-            'suggestedDate' => ucwords(date_i18n('d M Y', $this->suggestedDate->format('U'))),
-            'suggestedTime'  => $this->suggestedDate->format('H:i'),
+            'suggestedDate' => ucwords(date_i18n($dateFormat, $this->suggestedDate->format('U'))),
+            'suggestedTime'  => $this->suggestedDate->format($timeFormat),
         );
     }
 
