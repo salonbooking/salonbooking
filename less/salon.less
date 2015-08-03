@@ -5,8 +5,6 @@
 @import "datetimepicker.less";
 @import "dropdowns.less";
 @import "settings-mixins.less";
-@import "../bower_components/bootstrap/less/variables.less";
-@import "../bower_components/bootstrap/less/mixins.less";
 @import "sln-glyphicons.less";
 .datetimepicker.sln-datetimepicker {
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
@@ -14,11 +12,16 @@
     border-radius: 0;
   }
 }
+
+.datetimepicker.sln-datetimepicker {
+  max-width: 590px;
+  table {border-top: none;}
+}
 .datetimepicker.sln-datetimepicker table tr td.today,
 .datetimepicker.sln-datetimepicker table tr td.today:hover,
 .datetimepicker.sln-datetimepicker table tr td.today.disabled,
 .datetimepicker.sln-datetimepicker table tr td.today.disabled:hover,
-.datetimepicker.sln-datetimepicker table tr td.active,
+.datetimepicker.sln-datetimepicker table tr td.active, 
 .datetimepicker.sln-datetimepicker table tr td.active:hover,
 .datetimepicker.sln-datetimepicker table tr td.active.disabled,
 .datetimepicker.sln-datetimepicker table tr td.active.disabled:hover,
