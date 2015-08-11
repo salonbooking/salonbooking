@@ -5,8 +5,6 @@
 @import "datetimepicker.less";
 @import "dropdowns.less";
 @import "settings-mixins.less";
-@import "../bower_components/bootstrap/less/variables.less";
-@import "../bower_components/bootstrap/less/mixins.less";
 @import "sln-glyphicons.less";
 .datetimepicker.sln-datetimepicker {
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
@@ -14,11 +12,16 @@
     border-radius: 0;
   }
 }
+
+.datetimepicker.sln-datetimepicker {
+  max-width: 590px;
+  table {border-top: none;}
+}
 .datetimepicker.sln-datetimepicker table tr td.today,
 .datetimepicker.sln-datetimepicker table tr td.today:hover,
 .datetimepicker.sln-datetimepicker table tr td.today.disabled,
 .datetimepicker.sln-datetimepicker table tr td.today.disabled:hover,
-.datetimepicker.sln-datetimepicker table tr td.active,
+.datetimepicker.sln-datetimepicker table tr td.active, 
 .datetimepicker.sln-datetimepicker table tr td.active:hover,
 .datetimepicker.sln-datetimepicker table tr td.active.disabled,
 .datetimepicker.sln-datetimepicker table tr td.active.disabled:hover,
@@ -397,12 +400,31 @@
   overflow: hidden;
   .datetimepicker-hours,
   .datetimepicker-minutes > table {
-    margin-top: -65px;
+    //margin-top: -65px;
   }
   .datetimepicker.sln-datetimepicker {
     margin-top: 50px;
   }
 }
+
+.datetimepicker.sln-datetimepicker.timepicker {
+  .datetimepicker-minutes,
+  .datetimepicker-hours,
+  .datetimepicker-days,
+  .datetimepicker-months,
+  .datetimepicker-years {
+    table thead tr th {
+      height: 1px;
+      padding: 0;
+      font-size: 1px;
+      line-height: 1px;
+      text-indent: -9999px;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
 // NICO
 // MIXINS
 .btn-grey {
@@ -746,7 +768,7 @@
 // RADIOBOXES
 .attendant-radio {
  @media @phone{
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 1em auto;
  } 
   display: block;
   width: 25px;
@@ -800,7 +822,7 @@
     -o-border-radius: 50%;
     border-radius: 50%;
     @media @phone {
-       margin: 0 auto 1rem auto;
+       margin: 0 auto 1em auto;
     }
 img {
     display: inline;
@@ -813,10 +835,10 @@ img {
   .attendant-description{
     display: inline-block;
     font-style: italic;
-    font-size: 0.9rem;
+    font-size: 1em;
     font-weight: normal;
   }
-  .row{margin: 1.5rem 0 1.5rem 0;}
+  .row{margin: 1.5em 0 1.5em 0;}
 @media @phone {
   label {
         text-align: center;
@@ -830,5 +852,5 @@ img {
 }
 #sln-notifications {
     color: #ff0000;
-    font-size: 0.8rem;
+    font-size: 1em;
 }
