@@ -61,7 +61,7 @@ function tpl_summary_details($booking, $plugin){
                 <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Total amount', 'sln') ?></td>
               </tr>
               <tr>
-                <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $plugin->format()->money($booking->getAmount()) ?></td>
+                <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"><?php if(isset($showPrices)){?><?php echo $plugin->format()->money($booking->getAmount()) ?><?php } ?></td>
               </tr>
               <tr>
                 <td height="28" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Status','sln')?></td>
