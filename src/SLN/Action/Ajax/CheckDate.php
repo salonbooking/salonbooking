@@ -97,7 +97,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
     {
         $date = $this->date;
         $time = $this->time;
-        $ret = new DateTime(
+        $ret = new SLN_DateTime(
             SLN_Func::filter($date, 'date') . ' ' . SLN_Func::filter($time, 'time')
         );
         return $ret;

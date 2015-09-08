@@ -29,7 +29,7 @@ class SLN_Form
     static public function fieldDate($name, $value = null, $settings = array())
     {
         if (!($value instanceof DateTime)) {
-            $value = new DateTime($value);
+            $value = new SLN_DateTime($value);
         }
         echo "<span class=\"sln-date\">";
         self::fieldDay($name . '[day]', $value, $settings);

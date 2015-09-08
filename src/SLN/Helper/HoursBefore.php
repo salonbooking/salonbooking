@@ -18,6 +18,7 @@ class SLN_Helper_HoursBefore
         if($timezone = get_option('timezone_string'))
             date_default_timezone_set($timezone);
 
+
         $this->settings = $settings;
         $this->from     = $this->settings->get('hours_before_from');
         $this->to       = $this->settings->get('hours_before_to');
@@ -29,7 +30,7 @@ class SLN_Helper_HoursBefore
         if ($this->to) {
             $this->toString = $txt[$this->to];
         }
-        $this->fromDate = $now = new DateTime;
+        $this->fromDate = $now = new SLN_DateTime;
         $minutes = $this->minutes($now);
         $now->setTime($now->format('H'), $minutes);
         $this->toDate = $now2 = clone $now;
@@ -47,6 +48,8 @@ class SLN_Helper_HoursBefore
         SLN_Plugin::addLog(__CLASS__.'Initialized with'.print_r($str,true));
         if($timezone = get_option('timezone_string'))
             date_default_timezone_set('UTC');
+
+
     }
 
     private function minutes(DateTime $date)

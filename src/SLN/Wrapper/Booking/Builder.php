@@ -52,11 +52,16 @@ class SLN_Wrapper_Booking_Builder
 
     protected function getEmptyValue()
     {
-        $d = new DateTime('tomorrow');
-
+        $d = new SLN_DateTime();
+        $d->modify('+1 hour');
+        $tmp = $d->format('i');
+        $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
+        $diff = $tmp % $i;
+        if($i > 0)
+            $d->modify('+'.( $i - $diff).' minutes');
         return array(
             'date'     => $d->format('Y-m-d'),
-            'time'     => $d->format('H') . ':00',
+            'time'     => $d->format('H:i'),
             'services' => array(),
         );
     }
@@ -87,7 +92,8 @@ class SLN_Wrapper_Booking_Builder
 
     public function getDateTime()
     {
-        return new DateTime($this->getDate() . ' ' . $this->getTime());
+        $ret =  new SLN_DateTime($this->getDate() . ' ' . $this->getTime());
+        return $ret;
     }
 
     public function setDate($date)

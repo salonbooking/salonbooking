@@ -21,8 +21,7 @@ class SLN_Helper_Intervals
 
     public function setDatetime(DateTime $date)
     {
-        if($timezone = get_option('timezone_string'))
-            date_default_timezone_set($timezone);
+        $prev = date_default_timezone_get();
 
         $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
@@ -33,6 +32,7 @@ class SLN_Helper_Intervals
             $times = $ah->getTimes($date);
             $i++;
         }
+
         if (empty($times)) {
             $date->modify('-99 days');
             while (empty($times) && $i > 0) {
@@ -45,6 +45,7 @@ class SLN_Helper_Intervals
         $suggestedTime = $date->format('H:i');
         $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
         $timeout = 0;
+
         while ($timeout < 86400 && !isset($times[$suggestedTime])) {
             $date->modify("+$i minutes");
             $suggestedTime = $date->format('H:i');
@@ -57,8 +58,6 @@ class SLN_Helper_Intervals
         ksort($this->days);
         ksort($this->months);
 
-        if($timezone = get_option('timezone_string'))
-            date_default_timezone_set('UTC');
     }
 
     public function bindInitialDate($date)
@@ -73,6 +72,10 @@ class SLN_Helper_Intervals
 
     private function bindDates($dates)
     {
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
+
         $this->years  = array();
         $this->months = array();
         $this->days   = array();
@@ -103,6 +106,10 @@ class SLN_Helper_Intervals
         ksort($this->years);
         ksort($this->months);
         ksort($this->days);
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set('UTC');
+
+
     }
 
     public function toArray()

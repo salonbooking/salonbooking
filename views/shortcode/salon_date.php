@@ -29,6 +29,10 @@ if ($plugin->getSettings()->isDisabled()):
     </div>
 <?php
 else:
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
+
     $bb        = $plugin->getBookingBuilder();
     $intervals = $plugin->getIntervals($bb->getDateTime());
     $date      = $intervals->getSuggestedDate();
@@ -63,4 +67,10 @@ else:
         </div>
         <?php include "_form_actions.php" ?>
     </form>
+<?php
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set('UTC');
+?>
+
 <?php endif ?>
+

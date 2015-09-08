@@ -53,7 +53,7 @@ class SLN_Helper_Availability
         $avItems = $this->getItems();
         $hb      = $this->getHoursBeforeHelper();
         foreach (SLN_Func::getMinutesIntervals() as $time) {
-            $d = new DateTime($date->format('Y-m-d') . ' ' . $time);
+            $d = new SLN_DateTime($date->format('Y-m-d') . ' ' . $time);
             if (
                 $avItems->isValidDatetime($d)
                 && $this->isValidDate($d)
