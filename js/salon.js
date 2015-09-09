@@ -27,7 +27,6 @@ function sln_init($) {
                 sln_loadStep($, form.serialize() + '&' + $(this).data('salon-data'));
             }else{
                 $('#sln-salon input:invalid').addClass('sln-invalid');
-                $('#sln-salon form').submit();
             }
             return false;
         });

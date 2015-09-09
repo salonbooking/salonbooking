@@ -249,12 +249,10 @@ class SLN_Plugin
                 return 'text/html';
             }
         }
+
         add_filter('wp_mail_content_type', 'sln_html_content_type');
-        if($mail = $this->getSettings()->get('gen_email')){
-            $headers = 'From: '.$.' <'.$mail.'>' . "\r\n";
-            wp_mail($settings['to'], $settings['subject'], $content);
-        }else
-            wp_mail($settings['to'], $settings['subject'], $content);
+        $headers = 'From: '.$this->getSettings()->getSalonName().' <'.$this->getSettings()->getSalonEmail().'>' . "\r\n";
+        wp_mail($settings['to'], $settings['subject'], $content,$headers);
         remove_filter('wp_mail_content_type', 'sln_html_content_type');
     }
 
