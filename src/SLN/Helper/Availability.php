@@ -11,9 +11,10 @@ class SLN_Helper_Availability
     /** @var  SLN_Helper_HoursBefore */
     private $hoursBefore;
 
-    public function __construct(SLN_Settings $settings)
+    public function __construct(SLN_Plugin $plugin)
     {
-        $this->settings = $settings;
+        $this->settings = $plugin->getSettings();
+        $this->initialDate = $plugin->getBookingBuilder()->getDateTime();
     }
 
     public function getHoursBeforeHelper()
@@ -168,7 +169,6 @@ class SLN_Helper_Availability
             return false;
         }
         $countHour = $this->settings->get('parallels_hour');
-
-        return !($countHour && $this->getBookingsHourCount($date->format('H'), $date->format('i')) >= $countHour);
+        return ($date > $this->initialDate) && !($countHour && $this->getBookingsHourCount($date->format('H'), $date->format('i')) >= $countHour);
     }
 }

@@ -271,7 +271,7 @@ class SLN_Plugin
     public function getAvailabilityHelper()
     {
         if (!isset($this->availabilityHelper)) {
-            $this->availabilityHelper = new SLN_Helper_Availability($this->getSettings());
+            $this->availabilityHelper = new SLN_Helper_Availability($this);
         }
 
         return $this->availabilityHelper;
