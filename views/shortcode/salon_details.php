@@ -101,7 +101,7 @@ $values = array(
                         <div class="input-group">
                             <span class="input-group-addon"><?php echo $prefix?></span>
                         <?php endif ?>
-                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true)) ?>
+                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address'))) ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
                                 </div>
                             <?php endif ?>

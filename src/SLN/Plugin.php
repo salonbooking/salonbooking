@@ -250,7 +250,11 @@ class SLN_Plugin
             }
         }
         add_filter('wp_mail_content_type', 'sln_html_content_type');
-        wp_mail($settings['to'], $settings['subject'], $content);
+        if($mail = $this->getSettings()->get('gen_email')){
+            $headers = 'From: '.$.' <'.$mail.'>' . "\r\n";
+            wp_mail($settings['to'], $settings['subject'], $content);
+        }else
+            wp_mail($settings['to'], $settings['subject'], $content);
         remove_filter('wp_mail_content_type', 'sln_html_content_type');
     }
 

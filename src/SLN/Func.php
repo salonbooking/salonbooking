@@ -113,6 +113,8 @@ class SLN_Func
 
     public static function evalPickedDate($date)
     {
+        if(strpos($date, '-')) return $date;
+        $initial = $date;
         $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
         if($f == SLN_Enum_DateFormat::_DEFAULT){ 
             $date = explode(' ', $date);
@@ -124,11 +126,14 @@ class SLN_Func
             }
         }elseif($f == SLN_Enum_DateFormat::_SHORT){
             $date = explode('/',$date);
-            return sprintf('%04d-%02d-%02d', $date[2],$date[1],$date[0]);
+            if(count($date) == 3)
+                return sprintf('%04d-%02d-%02d', $date[2],$date[1],$date[0]);
+            else
+                throw new Exception('bad number of slashes');
         }else{
             return date('Y-m-d', strtotime($date));
         }
-        throw new Exception('wrong date');
+        throw new Exception('wrong date '.$initial.' format: '.$f);
     }
 
     static function addUrlParam($url, $k, $v)
