@@ -21,18 +21,19 @@ class SLN_Helper_Intervals
 
     public function setDatetime(DateTime $date)
     {
-        $prev = date_default_timezone_get();
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
 
         $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
         $times             = $ah->getTimes($date);
         $i                 = 0;
         while (empty($times) && $i < 100) {
-            $date->modify('+1 days');
             $times = $ah->getTimes($date);
+            $date->modify('+1 days');
             $i++;
         }
-
         if (empty($times)) {
             $date->modify('-99 days');
             while (empty($times) && $i > 0) {
@@ -57,6 +58,9 @@ class SLN_Helper_Intervals
         ksort($this->years);
         ksort($this->days);
         ksort($this->months);
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set('UTC');
+
 
     }
 
@@ -72,9 +76,6 @@ class SLN_Helper_Intervals
 
     private function bindDates($dates)
     {
-        if($timezone = get_option('timezone_string'))
-            date_default_timezone_set($timezone);
-
 
         $this->years  = array();
         $this->months = array();
@@ -106,8 +107,6 @@ class SLN_Helper_Intervals
         ksort($this->years);
         ksort($this->months);
         ksort($this->days);
-        if($timezone = get_option('timezone_string'))
-            date_default_timezone_set('UTC');
 
 
     }

@@ -50,6 +50,10 @@ class SLN_Helper_Availability
 
     public function getTimes($date)
     {
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
+
         $ret     = array();
         $avItems = $this->getItems();
         $hb      = $this->getHoursBeforeHelper();
@@ -64,6 +68,7 @@ class SLN_Helper_Availability
             }
         }
 	SLN_Plugin::addLog(__CLASS__.' getTimes '.print_r($ret,true));
+
         return $ret;
     }
 

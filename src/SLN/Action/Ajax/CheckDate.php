@@ -25,6 +25,10 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
 
     public function checkDateTime()
     {
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
+
         $plugin = $this->plugin;
         $date   = $this->getDateTime();
 //        $this->addError($plugin->format()->datetime($date));
