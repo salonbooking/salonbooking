@@ -28,7 +28,7 @@ class SLN_Formatter
             $val = $val->format('Y-m-d H:i:s');
         }
 
-        return date_i18n(__('l M j, Y @ G:i', 'sln'), strtotime($val));
+        return self::date($val).' '.self::time($val);
     }
 
     public function date($val)
@@ -39,13 +39,22 @@ class SLN_Formatter
             $val = strtotime($val);
         }
 
-        return date_i18n(__('M j, Y', 'sln'), strtotime($val));
+        $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
+        $phpFormat = SLN_Enum_DateFormat::getPhpFormat($f);
+        return date_i18n($phpFormat, strtotime($val));
     }
 
     public function time($val)
     {
+        $f = SLN_Plugin::getInstance()->getSettings()->get('time_format');
+        $phpFormat = SLN_Enum_TimeFormat::getPhpFormat($f);
         if ($val instanceof DateTime) {
-            return $val->format('H:i');
+            $val = $val->format('Y-m-d H:i');
+        } else {
+            $val = strtotime($val);
         }
+
+
+        return date_i18n($phpFormat, strtotime($val));
     }
 }
