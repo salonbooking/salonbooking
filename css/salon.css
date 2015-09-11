@@ -603,6 +603,7 @@
 .datetimepicker.sln-datetimepicker th,
 .datetimepicker.sln-datetimepicker table tr td span {
   border-radius: 0;
+  padding: 3px 5px;
 }
 .datetimepicker.sln-datetimepicker {
   max-width: 590px;
