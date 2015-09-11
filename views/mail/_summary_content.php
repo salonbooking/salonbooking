@@ -186,8 +186,8 @@ function tpl_summary_details($booking, $plugin){
               </tr>
               <tr>
                 <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:normal;">
-                    <?php $m = $plugin->getSettings()->get('gen_mail') ?
-                                    $plugin->getSettings()->get('gen_mail') : get_bloginfo('admin_email');?>
+                    <?php $m = $plugin->getSettings()->get('gen_email') ?
+                                    $plugin->getSettings()->get('gen_email') : get_bloginfo('admin_email');?>
                                 <a href="mailto:<?php echo $m ?>"
                                    style="color:#666666; text-decoration:none;"><?php echo $m ?></a></td>
               </tr>
