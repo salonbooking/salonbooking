@@ -29,9 +29,6 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
 
     public function checkDateTime()
     {
-        if($timezone = get_option('timezone_string'))
-            date_default_timezone_set($timezone);
-
 
         $plugin = $this->plugin;
         $date   = $this->getDateTime();
@@ -40,9 +37,8 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $hb   = $ah->getHoursBeforeHelper();
         $from = $hb->getFromDate();
         $to   = $hb->getToDate();
-
         if (!$hb->isValidFrom($date)) {
-            $txt = $plugin->format()->datetime($from);
+            $txt = $plugin->format()->datetime(new SLN_DateTime($from));
             $this->addError(sprintf(__('The date is too near, the minimum allowed is %s', 'sln'), $txt));
         } elseif (!$hb->isValidTo($date)) {
             $txt = $plugin->format()->datetime($to);
@@ -107,14 +103,8 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $date = $this->date;
         $time = $this->time;
         $ret = new SLN_DateTime(
-            SLN_Func::filter($date, 'date') . ' ' . SLN_Func::filter($time, 'time')
+            SLN_Func::filter($date, 'date') . ' ' . SLN_Func::filter($time, 'time'.':00')
         );
-        $tmp = $ret->format('i');
-        $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
-        $diff = $tmp % $i;
-        if($diff > 0)
-            $ret->modify('+'.( $i - $diff).' minutes');
- 
         return $ret;
     }
 }

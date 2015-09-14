@@ -2,13 +2,16 @@
 
 class SLN_DateTime extends DateTime
 {
-    public static $Format = 'Y-m-d H:i;s';
+    public static $Format = 'Y-m-d H:i:s';
  
     public function __construct($date = null, DateTimeZone $dtz = null)
     {
         parent::__construct($date, $dtz);
     }
 
+    public function formatWithWordpress($format){
+        return date_i18n($format, $this->format('U'));
+    }
     public function formatLocal($format){
         $off = get_option('gmt_offset');
         $this->modify(($off > 0 ? '+'.$off : $off).' hours');

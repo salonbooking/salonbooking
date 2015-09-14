@@ -24,10 +24,6 @@ class SLN_Formatter
 
     public function datetime($val)
     {
-        if ($val instanceof DateTime) {
-            $val = $val->format('Y-m-d H:i:s');
-        }
-
         return self::date($val).' '.self::time($val);
     }
 

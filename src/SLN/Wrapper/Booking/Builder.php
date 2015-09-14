@@ -52,12 +52,13 @@ class SLN_Wrapper_Booking_Builder
 
     protected function getEmptyValue()
     {
-        $d = new SLN_DateTime();
-        $d->modify('+1 hour');
+        $from = $this->plugin->getSettings()->get('hours_before_from');
+        $d = new SLN_DateTime(date('Y-m-d H:i:00'));
+        $d->modify($from);
         $tmp = $d->format('i');
         $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
         $diff = $tmp % $i;
-        if($i > 0)
+        if($diff > 0)
             $d->modify('+'.( $i - $diff).' minutes');
         return array(
             'date'     => $d->format('Y-m-d'),

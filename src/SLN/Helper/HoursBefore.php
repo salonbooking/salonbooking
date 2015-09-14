@@ -28,7 +28,7 @@ class SLN_Helper_HoursBefore
         if ($this->to) {
             $this->toString = $txt[$this->to];
         }
-        $now = new SLN_DateTime;
+        $now = new SLN_DateTime(date('Y-m-d H:i:00'));
         $tmp = $now->format('i');
         $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
         $diff = $tmp % $i;

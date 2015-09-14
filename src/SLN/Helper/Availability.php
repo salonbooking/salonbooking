@@ -172,6 +172,6 @@ class SLN_Helper_Availability
             return false;
         }
         $countHour = $this->settings->get('parallels_hour');
-        return ($date > $this->initialDate) && !($countHour && $this->getBookingsHourCount($date->format('H'), $date->format('i')) >= $countHour);
+        return ($date >= $this->initialDate) && !($countHour && $this->getBookingsHourCount($date->format('H'), $date->format('i')) >= $countHour);
     }
 }
