@@ -69,7 +69,7 @@ $values = array(
                             if(strpos($field, 'password') === 0){
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'password'));
                             }else{
-                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true));
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' =>  ($field != 'address')));
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>

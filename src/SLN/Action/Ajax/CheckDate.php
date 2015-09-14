@@ -8,6 +8,10 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
 
     public function execute()
     {
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
+
         if (!isset($this->date)) {
             $this->date = $_POST['sln']['date'];
             $this->time = $_POST['sln']['time'];
@@ -36,6 +40,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $hb   = $ah->getHoursBeforeHelper();
         $from = $hb->getFromDate();
         $to   = $hb->getToDate();
+
         if (!$hb->isValidFrom($date)) {
             $txt = $plugin->format()->datetime($from);
             $this->addError(sprintf(__('The date is too near, the minimum allowed is %s', 'sln'), $txt));
@@ -104,6 +109,12 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $ret = new SLN_DateTime(
             SLN_Func::filter($date, 'date') . ' ' . SLN_Func::filter($time, 'time')
         );
+        $tmp = $ret->format('i');
+        $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
+        $diff = $tmp % $i;
+        if($diff > 0)
+            $ret->modify('+'.( $i - $diff).' minutes');
+ 
         return $ret;
     }
 }

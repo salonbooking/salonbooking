@@ -13,15 +13,19 @@ class SLN_Shortcode_Salon_SmsStep extends SLN_Shortcode_Salon_AbstractUserStep
         if (!$valid) {
             if (!isset($_POST['sln_verification'])) {
                 $values = isset($_SESSION['sln_detail_step']) ? $_SESSION['sln_detail_step'] : array();
-                $_SESSION['sln_sms_tests']++;
-                $_SESSION['sln_sms_code'] = rand(0, 999999);
-                SLN_Enum_SmsProvider::getService(
-                    $this->getPlugin()
-                        ->getSettings()
-                        ->get('sms_provider'),
+                if(isset($values['phone'])){
+                    $_SESSION['sln_sms_tests']++;
+                    $_SESSION['sln_sms_code'] = rand(0, 999999);
+                    SLN_Enum_SmsProvider::getService(
+                        $this->getPlugin()
+                            ->getSettings()
+                            ->get('sms_provider'),
 
-                    $this->getPlugin()
-                )->send($values['phone'], $_SESSION['sln_sms_code']);
+                        $this->getPlugin()
+                    )->send($values['phone'], $_SESSION['sln_sms_code']);
+                }else{
+                    $this->addError(__('Phone number wrong or not defined, you need to define a valid phone number', 'sln'));
+                }
             }
         }
 

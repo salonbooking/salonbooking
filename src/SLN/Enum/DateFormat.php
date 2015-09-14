@@ -4,14 +4,17 @@ class SLN_Enum_DateFormat
 {
     const _DEFAULT = 'default';
     const _SHORT   = 'short';
+    const _SHORT_COMMA = 'short_comma';
     private static $labels = array();
     private static $phpFormats = array(
         self::_DEFAULT => 'd M Y',
         self::_SHORT => 'd/m/Y',
+        self::_SHORT_COMMA => 'd-m-Y'
     );
     private static $jsFormats = array(
         self::_DEFAULT => 'd M yyyy',
-        self::_SHORT => 'd/m/yyyy'
+        self::_SHORT => 'dd/mm/yyyy',
+        self::_SHORT_COMMA => 'dd-mm-yyyy'
     );
 
     public static function toArray()

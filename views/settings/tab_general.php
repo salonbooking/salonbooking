@@ -149,7 +149,7 @@
             ) ?>
         </div>
         <div class="col-md-3 col-sm-4">
-            <?php $this->row_input_checkbox('sms_enabled', __('Hide Bootstrap CSS', 'sln')); ?>
+            <?php $this->row_input_checkbox('no_bootstrap', __('Hide Bootstrap CSS', 'sln')); ?>
         </div>
     </div>
 </div>

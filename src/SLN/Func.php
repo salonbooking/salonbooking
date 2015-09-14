@@ -130,6 +130,12 @@ class SLN_Func
                 return sprintf('%04d-%02d-%02d', $date[2],$date[1],$date[0]);
             else
                 throw new Exception('bad number of slashes');
+        }elseif($f == SLN_Enum_DateFormat::_SHORT_COMMA){
+            $date = explode('-',$date);
+            if(count($date) == 3)
+                return sprintf('%04d-%02d-%02d', $date[2],$date[1],$date[0]);
+            else
+                throw new Exception('bad number of commas'); 
         }else{
             return date('Y-m-d', strtotime($date));
         }

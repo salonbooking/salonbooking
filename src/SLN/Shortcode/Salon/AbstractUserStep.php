@@ -36,6 +36,7 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
         $creds['user_password'] = $password;
         $creds['remember']      = true;
         $user                   = wp_signon($creds, false);
+ 
         if (is_wp_error($user)) {
             $this->addError(__('Bad credentials'));
             $this->addError($user->get_error_message());

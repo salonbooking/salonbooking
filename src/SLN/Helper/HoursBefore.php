@@ -15,8 +15,6 @@ class SLN_Helper_HoursBefore
 
         //https://weston.ruter.net/2013/04/02/do-not-change-the-default-timezone-from-utc-in-wordpress/
         //https://wordpress.org/support/topic/why-does-wordpress-set-timezone-to-utc
-        if($timezone = get_option('timezone_string'))
-            date_default_timezone_set($timezone);
 
 
         $this->settings = $settings;
@@ -30,9 +28,14 @@ class SLN_Helper_HoursBefore
         if ($this->to) {
             $this->toString = $txt[$this->to];
         }
-        $this->fromDate = $now = new SLN_DateTime;
-        $minutes = $this->minutes($now);
-        $now->setTime($now->format('H'), $minutes);
+        $now = new SLN_DateTime;
+        $tmp = $now->format('i');
+        $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
+        $diff = $tmp % $i;
+        if($diff > 0)
+            $now->modify('+'.( $i - $diff).' minutes');
+        $this->fromDate = $now;
+        //$now->setTime($now->format('H'), $minutes);
         $this->toDate = $now2 = clone $now;
         if ($this->from) {
             $now->modify($this->from);
@@ -46,12 +49,10 @@ class SLN_Helper_HoursBefore
         }
         $str = $this->getHoursBeforeString();
         SLN_Plugin::addLog(__CLASS__.'Initialized with'.print_r($str,true));
-        if($timezone = get_option('timezone_string'))
-            date_default_timezone_set('UTC');
 
 
     }
-
+/*
     private function minutes(DateTime $date)
     {
         $interval = $this->settings->getInterval();
@@ -60,7 +61,7 @@ class SLN_Helper_HoursBefore
 
         return $ret;
     }
-
+*/
     public function getFromDate()
     {
         return $this->fromDate;

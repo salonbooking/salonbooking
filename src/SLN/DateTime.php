@@ -6,15 +6,6 @@ class SLN_DateTime extends DateTime
  
     public function __construct($date = null, DateTimeZone $dtz = null)
     {
-/*
-        if($dtz === null)
-        {
-            $timezone = get_option('timezone_string');
-            if(!isset($timezone))
-                $timezone = date_default_timezone_get();
-            $dtz = new DateTimeZone($timezone);
-        }
-*/
         parent::__construct($date, $dtz);
     }
 
