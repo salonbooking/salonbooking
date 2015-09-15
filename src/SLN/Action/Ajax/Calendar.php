@@ -6,8 +6,8 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
     private $to;
     public function execute()
     {
-       $this->from = new DateTime(date("c", $_GET['from']/ 1000));
-       $this->to = new DateTime(date("c", $_GET['to']/ 1000));
+       $this->from = new SLN_DateTime(date("c", $_GET['from']/ 1000));
+       $this->to = new SLN_DateTime(date("c", $_GET['to']/ 1000));
        $ret = array(
            'success' => 1,
            'result' => $this->getResults()

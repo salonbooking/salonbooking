@@ -2,8 +2,8 @@
 Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment
 Requires at least: 4.1
-Tested up to: 4.2.2
-Stable tag: 1.0.6
+Tested up to: 4.3
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,11 +38,13 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 
 BRAND NEW: 
 
+*Custom date format
+
+**EXISTING FEATURES**:
+
 *Advanced booking algorytm - calculate the sum of the duration of the services booked
 
 *Hide prices option - if you don't want to show-up services prices
-
-**EXISTING FEATURES**:
 
 * Ajax loading option
 
@@ -199,6 +201,13 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 == Changelog ==
 
+
+1.1.0 15/09/2015
+
+* fixed css bug on time-picker
+* fixed bug on custom email inside email notification template
+* fixed bug on "Booking allowed from" time range 
+* minor css and mark-up fixes
 
 1.0.6 27/07/2015
 

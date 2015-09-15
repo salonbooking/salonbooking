@@ -124,4 +124,32 @@
             <?php $this->row_input_text('soc_google', __('Google+', 'sln')); ?>
         </div>
     </div>
+<br/>
+    <div class="row">
+        <div class="col-md-3 col-sm-4">
+            <label>        <?php _e('Date Format', 'sln') ?></label>
+            <?php $field = "salon_settings[date_format]"; ?>
+            <?php echo SLN_Form::fieldSelect(
+                $field,
+                SLN_Enum_DateFormat::toArray(),
+                $this->getOpt('date_format'),
+                array(),
+                true
+            ) ?>
+        </div>
+        <div class="col-md-3 col-sm-4">
+            <label>        <?php _e('Time Format', 'sln') ?></label>
+            <?php $field = "salon_settings[time_format]"; ?>
+            <?php echo SLN_Form::fieldSelect(
+                $field,
+                SLN_Enum_TimeFormat::toArray(),
+                $this->getOpt('time_format'),
+                array(),
+                true
+            ) ?>
+        </div>
+        <div class="col-md-3 col-sm-4">
+            <?php $this->row_input_checkbox('no_bootstrap', __('Hide Bootstrap CSS', 'sln')); ?>
+        </div>
+    </div>
 </div>

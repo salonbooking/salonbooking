@@ -86,6 +86,8 @@ class SLN_Func
                 $val = $val['year'] . '-' . $val['month'] . '-' . $val['day'];
             } elseif (strpos($val, ' ') !== false) {
                 $val = self::evalPickedDate($val);
+            }else{
+                $val = self::evalPickedDate($val);
             }
             $ret = date('Y-m-d', strtotime($val));
             if ($ret == '1970-01-01') throw new Exception(sprintf('wrong date %s', $val));
@@ -111,15 +113,33 @@ class SLN_Func
 
     public static function evalPickedDate($date)
     {
-        $date = explode(' ', $date);
-        foreach (SLN_Func::getMonths() as $k => $v) {
-            if (strcasecmp($date[1], $v) == 0) {
-                $ret = $date[2] . '-' . ($k < 10 ? '0' . $k : $k) . '-' . $date[0];
-                return $ret;
+        if(strpos($date, '-')) return $date;
+        $initial = $date;
+        $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
+        if($f == SLN_Enum_DateFormat::_DEFAULT){ 
+            $date = explode(' ', $date);
+            foreach (SLN_Func::getMonths() as $k => $v) {
+                if (strcasecmp($date[1], $v) == 0) {
+                    $ret = $date[2] . '-' . ($k < 10 ? '0' . $k : $k) . '-' . $date[0];
+                    return $ret;
+                }
             }
+        }elseif($f == SLN_Enum_DateFormat::_SHORT){
+            $date = explode('/',$date);
+            if(count($date) == 3)
+                return sprintf('%04d-%02d-%02d', $date[2],$date[1],$date[0]);
+            else
+                throw new Exception('bad number of slashes');
+        }elseif($f == SLN_Enum_DateFormat::_SHORT_COMMA){
+            $date = explode('-',$date);
+            if(count($date) == 3)
+                return sprintf('%04d-%02d-%02d', $date[2],$date[1],$date[0]);
+            else
+                throw new Exception('bad number of commas'); 
+        }else{
+            return date('Y-m-d', strtotime($date));
         }
-
-        throw new Exception('wrong date');
+        throw new Exception('wrong date '.$initial.' format: '.$f);
     }
 
     static function addUrlParam($url, $k, $v)

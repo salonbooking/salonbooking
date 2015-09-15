@@ -53,14 +53,14 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
 
-        return apply_filters('sln_booking_time', new DateTime(get_post_meta($post_id, '_sln_booking_time', true)));
+        return apply_filters('sln_booking_time', new SLN_DateTime(get_post_meta($post_id, '_sln_booking_time', true)));
     }
 
     function getDate()
     {
         $post_id = $this->getId();
 
-        return apply_filters('sln_booking_date', new DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
+        return apply_filters('sln_booking_date', new SLN_DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
     }
 
     function getDuration()
@@ -75,7 +75,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         if($ret == '00:00'){
             $ret = $this->evalDuration();
         } 
-        return new DateTime('1970-01-01 ' . $ret);
+        return new SLN_DateTime('1970-01-01 ' . $ret);
     }
 
     function evalDuration(){
@@ -176,7 +176,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         );
     }
     function getStartsAt(){
-        return new DateTime($this->getDate()->format('Y-m-d').' '.$this->getTime()->format('H:i'));
+        return new SLN_DateTime($this->getDate()->format('Y-m-d').' '.$this->getTime()->format('H:i'));
     }
     function getEndsAt(){
         $start = $this->getStartsAt(); 

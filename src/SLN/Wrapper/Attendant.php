@@ -31,11 +31,11 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
         return $this->getNotAvailableTime('to');
     }
 
-    function isNotAvailableOnDate(DateTime $date)
+    function isNotAvailableOnDate(SLN_DateTime $date)
     {
         $key              = array_search(SLN_Func::getDateDayName($date), SLN_Func::getDays());
         $notAvailableDay  = $this->getNotAvailableOn($key);
-        $time             = new DateTime('1970-01-01 ' . $date->format('H:i'));
+        $time             = new SLN_DateTime('1970-01-01 ' . $date->format('H:i'));
         $notAvailableTime = $this->getNotAvailableFrom()
             && $this->getNotAvailableFrom() <= $time
             && $this->getNotAvailableTo()

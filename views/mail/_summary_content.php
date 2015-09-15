@@ -58,10 +58,10 @@ function tpl_summary_details($booking, $plugin){
                 <td align="left" valign="top">&nbsp;</td>
               </tr>
               <tr>
-                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Total amount', 'sln') ?></td>
+                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php if(isset($showPrices)){?><?php _e('Total amount', 'sln') ?><?php } ?></td>
               </tr>
               <tr>
-                <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $plugin->format()->money($booking->getAmount()) ?></td>
+                <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"><?php if(isset($showPrices)){?><?php echo $plugin->format()->money($booking->getAmount()) ?><?php } ?></td>
               </tr>
               <tr>
                 <td height="28" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Status','sln')?></td>
@@ -186,8 +186,8 @@ function tpl_summary_details($booking, $plugin){
               </tr>
               <tr>
                 <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:normal;">
-                    <?php $m = $plugin->getSettings()->get('gen_mail') ?
-                                    $plugin->getSettings()->get('gen_mail') : get_bloginfo('admin_email');?>
+                    <?php $m = $plugin->getSettings()->get('gen_email') ?
+                                    $plugin->getSettings()->get('gen_email') : get_bloginfo('admin_email');?>
                                 <a href="mailto:<?php echo $m ?>"
                                    style="color:#666666; text-decoration:none;"><?php echo $m ?></a></td>
               </tr>

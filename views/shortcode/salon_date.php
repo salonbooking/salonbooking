@@ -29,9 +29,14 @@ if ($plugin->getSettings()->isDisabled()):
     </div>
 <?php
 else:
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
+
     $bb        = $plugin->getBookingBuilder();
     $intervals = $plugin->getIntervals($bb->getDateTime());
     $date      = $intervals->getSuggestedDate();
+
     ?>
     <h2><?php _e('When do you want to come?', 'sln') ?>
         <?php salon_date_hoursbefore($plugin->getAvailabilityHelper()->getHoursBeforeString()) ?>
@@ -64,3 +69,4 @@ else:
         <?php include "_form_actions.php" ?>
     </form>
 <?php endif ?>
+

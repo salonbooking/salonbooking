@@ -11,9 +11,10 @@ class SLN_Helper_Availability
     /** @var  SLN_Helper_HoursBefore */
     private $hoursBefore;
 
-    public function __construct(SLN_Settings $settings)
+    public function __construct(SLN_Plugin $plugin)
     {
-        $this->settings = $settings;
+        $this->settings = $plugin->getSettings();
+        $this->initialDate = $plugin->getBookingBuilder()->getDateTime();
     }
 
     public function getHoursBeforeHelper()
@@ -49,11 +50,13 @@ class SLN_Helper_Availability
 
     public function getTimes($date)
     {
+
+
         $ret     = array();
         $avItems = $this->getItems();
         $hb      = $this->getHoursBeforeHelper();
         foreach (SLN_Func::getMinutesIntervals() as $time) {
-            $d = new DateTime($date->format('Y-m-d') . ' ' . $time);
+            $d = new SLN_DateTime($date->format('Y-m-d') . ' ' . $time);
             if (
                 $avItems->isValidDatetime($d)
                 && $this->isValidDate($d)
@@ -63,6 +66,7 @@ class SLN_Helper_Availability
             }
         }
 	SLN_Plugin::addLog(__CLASS__.' getTimes '.print_r($ret,true));
+
         return $ret;
     }
 
@@ -168,7 +172,6 @@ class SLN_Helper_Availability
             return false;
         }
         $countHour = $this->settings->get('parallels_hour');
-
-        return !($countHour && $this->getBookingsHourCount($date->format('H'), $date->format('i')) >= $countHour);
+        return ($date >= $this->initialDate) && !($countHour && $this->getBookingsHourCount($date->format('H'), $date->format('i')) >= $countHour);
     }
 }
