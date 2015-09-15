@@ -12,7 +12,7 @@ class SLN_Enum_TimeFormat
     );
     private static $jsFormats = array(
         self::_DEFAULT => 'hh:ii',
-        self::_SHORT => 'H:iP'
+        self::_SHORT => 'H:iip'
     );
 
     public static function toArray()
