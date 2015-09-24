@@ -57,11 +57,7 @@ class SLN_Form
             $interval = isset($settings['interval']) ? $settings['interval'] : 60;
         ?><span class="sln-jstime">
         <div class="sln_timepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 
-<?php
-/*
             data-meridian="<?php echo strpos($phpFormat,'a') !== false ? 'true' : 'false' ?>"
-*/
-?>
             required="required" data-format="<?php echo $jsFormat ?>" class="form-control"
             value="<?php echo $value->format($phpFormat) ?>" data-interval="<?php echo $interval ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
         </span><?php
@@ -114,6 +110,7 @@ class SLN_Form
 
     static public function fieldNumeric($name, $value = null, $settings = array())
     {
+        //if($value != null) $value = (int) $value;
         if (!empty($settings['items'])) {
             $items = $settings['items'];
         } else {

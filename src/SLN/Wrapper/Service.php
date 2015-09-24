@@ -16,7 +16,7 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_service_unit', get_post_meta($post_id, '_sln_service_unit', true));
-        $ret     = !empty($ret) ? 0 : intval($ret);
+        $ret     = empty($ret) ? 0 : intval($ret);
 
         return $ret;
     }

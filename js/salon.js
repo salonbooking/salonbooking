@@ -90,8 +90,8 @@ function sln_stepDate($) {
            //console.log(value);
            $('.day[data-ymd="'+value+'"]').removeClass('disabled');
         });
+
         $.each(items.times, function(key, value) {
-           //console.log(value);
            $('.hour[data-ymd="'+value+'"]').removeClass('disabled'); 
            $('.minute[data-ymd="'+value+'"]').removeClass('disabled'); 
            $('.hour[data-ymd="'+value.split(':')[0]+':00"]').removeClass('disabled');

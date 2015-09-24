@@ -620,7 +620,7 @@
 				if ((actual.valueOf() + 3600000) <= this.startDate || actual.valueOf() > this.endDate) {
 					clsName += ' disabled';
 				} else if (hours == i) {
-					clsName += ' active';
+			//		clsName += ' active';
 				}
 				if (this.showMeridian && dates[this.language].meridiem.length == 2) {
 					meridian = (i < 12 ? dates[this.language].meridiem[0] : dates[this.language].meridiem[1]);
@@ -632,8 +632,8 @@
 					}
 					meridianOld = meridian;
 					txt = (i % 12 ? i % 12 : 12);
-                                        var ymd = i < 10 ? '0'+txt : txt;
- 					html.push('<span data-ymd="'+ymd+'" class="hour' + clsName + ' hour_' + (i < 12 ? 'am' : 'pm') + '">' + txt + '</span>');
+                                        var ymd = i < 10 ? '0'+i : i;
+ 					html.push('<span data-ymd="'+ymd+':00" class="hour' + clsName + ' hour_' + (i < 12 ? 'am' : 'pm') + '">' + txt + '</span>');
 					if (i == 23) {
 						html.push('</fieldset>');
 					}
@@ -653,7 +653,7 @@
 				if (actual.valueOf() < this.startDate || actual.valueOf() > this.endDate) {
 					clsName += ' disabled';
 				} else if (Math.floor(minutes / this.minuteStep) == Math.floor(i / this.minuteStep)) {
-					clsName += ' active';
+					//clsName += ' active';
 				}
 				if (this.showMeridian && dates[this.language].meridiem.length == 2) {
 					meridian = (hours < 12 ? dates[this.language].meridiem[0] : dates[this.language].meridiem[1]);

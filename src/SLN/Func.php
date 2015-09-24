@@ -64,7 +64,7 @@ class SLN_Func
             return $val;
         }
         if ($filter == 'int') {
-            return intval($filter);
+            return intval($val);
         } elseif ($filter == 'money') {
             return number_format(floatval(str_replace(',', '.', $val)), 2);
         } elseif ($filter == 'float') {
