@@ -1,6 +1,7 @@
 <?php
 if(!function_exists('tpl_summary_details')){
 function tpl_summary_details($booking, $plugin){
+$showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 ?>
 <table width="502" border="0" align="left" cellpadding="0" cellspacing="0">
           <tbody><tr>
