@@ -12,6 +12,7 @@ class SLN_Admin_Settings
         'general'       => 'General',
         'booking'       => 'Booking Rules',
         'payments'      => 'Payments',
+        'gcalendar'      => 'Google Calendar',
         'documentation' => 'Documentation'
     );
 
