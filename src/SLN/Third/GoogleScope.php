@@ -1,5 +1,6 @@
 <?php
-session_start();
+if (!isset($_SESSION))
+    session_start();
 
 function _pre($m) {
     echo "<pre>";
@@ -20,38 +21,9 @@ class SLN_GoogleScope {
     static public $key_file_location = 'google-api-php-client/gc.p12'; //change this           
     static public $outh2_client_id = "102246196260-hjpu1fs2rh5b9mesa9l5urelno396vc0.apps.googleusercontent.com";
     static public $outh2_client_secret = "AJzLfWtRDz53JLT5fYp5gLqZ";
-    static public $outh2_redirect_uri = SLN_PLUGIN_URL;
+    static public $outh2_redirect_uri;
     static public $client;
     static public $service;
-
-    static public function get_client() {
-        $client = new Google_Client();
-        $client->setClientId(self::$outh2_client_id);
-        $client->setClientSecret(self::$outh2_client_secret);
-        $client->setRedirectUri(self::$outh2_redirect_uri);
-        
-        //$service = new Google_Service_Oauth2($client);
-        
-        $client->addScope(self::$scopes);
-        $plus = new Google_Service_Plus($client);
-
-        if (isset($_GET['code'])) {
-            $client->authenticate($_GET['code']); // Authenticate
-            $_SESSION['access_token'] = $client->getAccessToken();
-            header('Location: http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF']);
-        }
-
-        $access_token = $_SESSION['access_token'];
-
-        if (isset($access_token) && $access_token) {
-            $client->setAccessToken($access_token);
-        } else {
-            $authUrl = $client->createAuthUrl();
-            header("Location: $authUrl");
-        }
-        return $client;
-    }
-   
 
     /**
      * constructor
@@ -71,6 +43,38 @@ class SLN_GoogleScope {
         self::$service = self::get_google_service();
         //Start Google Auth
         self::start_auth();
+    }
+
+    /**
+     * get_client
+     * @return \Google_Client
+     */
+    static public function get_client() {
+        $client = new Google_Client();
+        $client->setClientId(self::$outh2_client_id);
+        $client->setClientSecret(self::$outh2_client_secret);
+        $client->setRedirectUri(self::$outh2_redirect_uri);
+
+        //$service = new Google_Service_Oauth2($client);
+
+        $client->addScope(self::$scopes);
+        $plus = new Google_Service_Plus($client);
+
+        if (isset($_GET['code'])) {
+            $client->authenticate($_GET['code']); // Authenticate
+            $_SESSION['access_token'] = $client->getAccessToken();
+            header('Location: http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF']);
+        }
+
+        $access_token = $_SESSION['access_token'];
+
+        if (isset($access_token) && $access_token) {
+            $client->setAccessToken($access_token);
+        } else {
+            $authUrl = $client->createAuthUrl();
+            header("Location: $authUrl");
+        }
+        return $client;
     }
 
     /**
@@ -159,6 +163,8 @@ class SLN_GoogleScope {
     static public function create_event($params) {
         extract($params);
 
+        $catId = isset($params['catId']) && !empty($params['catId']) ? $params['catId'] : "primary";
+
         $event = new Google_Service_Calendar_Event();
         $event->setSummary($title);
         $event->setLocation($location);
@@ -184,7 +190,7 @@ class SLN_GoogleScope {
         $attendees = array($attendee1);
 
         $event->attendees = $attendees;
-        $createdEvent = self::$service->events->insert('primary', $event);
+        $createdEvent = self::$service->events->insert($catId, $event);
 
         return $createdEvent->getId();
     }
@@ -213,9 +219,9 @@ class SLN_GoogleScope {
      * @param type $event_id
      * @return type
      */
-    static public function delete_event($event_id) {
+    static public function delete_event($event_id, $catId = 'primary') {
         //return $this->service->events->delete('primary', $_SESSION['eventID']);
-        return self::$service->events->delete('primary', $event_id);
+        return self::$service->events->delete($catId, $event_id);
     }
 
     /**
@@ -235,7 +241,9 @@ class SLN_GoogleScope {
     static public function update_event($params) {
         extract($params);
 
-        $rule = self::$service->events->get('primary', $event_id);
+        $catId = isset($params['catId']) && !empty($params['catId']) ? $params['catId'] : "primary";
+
+        $rule = self::$service->events->get($catId, $event_id);
 
         $event = new Google_Service_Calendar_Event();
         $event->setSummary($title);
@@ -261,7 +269,7 @@ class SLN_GoogleScope {
         $attendees = array($attendee1);
         $event->attendees = $attendees;
 
-        $updatedRule = self::$service->events->update('primary', $rule->getId(), $event);
+        $updatedRule = self::$service->events->update($catId, $rule->getId(), $event);
         return $updatedRule;
     }
 

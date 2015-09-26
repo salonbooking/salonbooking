@@ -238,6 +238,38 @@ class SLN_Admin_Settings
             __('Update completed with success', 'sln')
         );
     }
+    
+    public function showTabGcalendar()
+    {        
+        //include SLN_PLUGIN_URL . "/src/SLN/Third/GoogleScope.php";
+    }
+    
+    public function processTabGcalendar() {
+        $gcalendar_array = array(
+                     'google_outh2_client_id',
+                     'google_outh2_client_secret',
+                     'google_outh2_redirect_uri'
+                 );
+        foreach ($gcalendar_array as $k) {
+            $data = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
+            $this->settings->set($k, $data);
+        }
+        $this->settings->save();
+        
+        $params = array();
+        foreach ($gcalendar_array as $k) {
+            $v = $this->settings->get($k);
+            $k = str_replace('google_','',$k);            
+            $params[$k] = $v;
+        }
+        SLN_GoogleScope::init($params);
+        
+        $this->showAlert(
+            'success',
+            __('Google Calendar settings are updated', 'sln'),
+            __('Update completed with success', 'sln')
+        );                        
+    }
 
     public function show()
     {

@@ -16,6 +16,7 @@ define('SLN_PLUGIN_DIR', untrailingslashit(dirname(__FILE__)));
 define('SLN_PLUGIN_URL', untrailingslashit(plugins_url('', __FILE__)));
 define('SLN_VERSION', '1.1.0');
 
+//TODO[feature-gcalendar]: move this require in the right place
 require_once SLN_PLUGIN_DIR . "/src/SLN/Third/GoogleScope.php";
 
 function sln_autoload($className) {
