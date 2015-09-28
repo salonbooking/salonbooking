@@ -111,6 +111,28 @@
         </div>
     </div>
     <div class="sln-separator"></div>
+            <div class="row">
+                <div class="clearfix"></div>
+                <div class="col-md-6">
+                    <?php $this->row_input_checkbox('sms_new', __('Send SMS on new bookings', 'sln')); ?>
+                    <?php $this->row_input_text('sms_new_number', __('Number', 'sln')); ?>
+                    <?php $this->row_input_checkbox('sms_new_attendant', __('Send SMS to attendant on new bookings', 'sln')); ?>
+                </div>
+                <div class="col-md-6">
+                    <?php $this->row_input_checkbox('sms_remind', __('Reminde the appointment via SMS', 'sln')); ?>
+                    <?php _e('From', 'sln') ?>
+                    <?php $field = "salon_settings[sms_remind_interval]"; ?>
+                    <?php echo SLN_Form::fieldSelect(
+                        $field,
+                        SLN_Func::getIntervalItemsShort(),
+                        $this->getOpt('sms_remind_interval'),
+                        array(),
+                        true
+                    ) ?>
+
+                </div>
+            </div>
+    <div class="sln-separator"></div>
 
     <div class="row">
         <div class="col-md-10"><h3>Social</h3></div>

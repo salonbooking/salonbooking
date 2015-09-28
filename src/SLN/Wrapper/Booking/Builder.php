@@ -193,7 +193,11 @@ class SLN_Wrapper_Booking_Builder
                 'post_title'  => $name . ' - ' . $datetime,
             )
         );
+        $deposit              = $this->plugin->getSettings()->get('pay_deposit');
         $this->data['amount'] = $this->getTotal();
+        if($deposit > 0) {
+            $this->data['deposit'] = ($this->data['amount'] / 100) * $deposit;
+        }
         foreach ($this->data as $k => $v) {
             add_post_meta($id, '_' . SLN_Plugin::POST_TYPE_BOOKING . '_' . $k, $v, true);
         }

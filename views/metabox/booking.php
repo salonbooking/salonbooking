@@ -195,7 +195,17 @@ $helper->showNonce($postType);
             );
             ?>
         </div>
-        <div class="col-md-6 col-sm-4">
+        <div class="col-md-3 col-sm-4">
+            <?php
+            $helper->showFieldtext(
+                $helper->getFieldName($postType, 'deposit'),
+                __('Amount', 'sln') . ' (' . $settings->getCurrencySymbol() . ')',
+                $booking->getDeposit()
+            );
+            ?>
+        </div>
+
+        <div class="col-md-3 col-sm-4">
             <div class="form-group">
                 <label for="">Transaction</label>
 

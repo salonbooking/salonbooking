@@ -155,6 +155,10 @@ class SLN_Admin_Settings
                      'sms_prefix',
                      'sms_provider',
                      'sms_from',
+                     'sms_new',
+                     'sms_new_number',
+                     'sms_remind',
+                     'sms_remind_interval',
                      'soc_facebook',
                      'soc_twitter',
                      'soc_google',
@@ -225,7 +229,8 @@ class SLN_Admin_Settings
                      'pay_paypal_email',
                      'pay_paypal_test',
                      'pay_cash',
-                     'pay_enabled'
+                     'pay_enabled',
+                     'pay_deposit'
                  ) as $k) {
             $data = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
             $this->settings->set($k, $data);

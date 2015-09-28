@@ -11,6 +11,16 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return $ret;
     }
 
+    function getDeposit()
+    {
+        $post_id = $this->getId();
+        $ret     = apply_filters('sln_booking_deposit', get_post_meta($post_id, '_sln_booking_deposit', true));
+        $ret     = number_format(!empty($ret) ? ($ret) : 0, 2);
+
+        return $ret;
+    }
+
+
     function getFirstname()
     {
         $post_id = $this->getId();

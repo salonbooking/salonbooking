@@ -15,6 +15,15 @@ $days = SLN_Func::getDays();
             $attendant->getEmail()
         ); ?>
     </div>
+    <div class="col-xs-3 col-md-3 col-lg-3 col-sm-3  attendants-notavailable-h">
+        <?php
+        $helper->showFieldtext(
+            $helper->getFieldName($postType, 'phone'),
+            __('Phone', 'sln'),
+            $attendant->getPhone()
+        ); ?>
+    </div>
+
 
 </div>
 <h3><?php _e('Not available on','sln'); ?></h3>

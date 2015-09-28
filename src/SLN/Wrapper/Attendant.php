@@ -21,6 +21,14 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
         );
     }
 
+    function getPhone(){
+        return apply_filters(
+            'sln_attendant_phone',
+            get_post_meta($this->getId(), '_sln_attendant_phone', true)
+        );
+    }
+
+
     function getNotAvailableFrom()
     {
         return $this->getNotAvailableTime('from');
