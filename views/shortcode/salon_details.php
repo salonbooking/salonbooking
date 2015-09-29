@@ -15,7 +15,6 @@ $values = array(
     'phone'     => get_user_meta($current_user->ID, '_sln_phone', true)
 );
 ?>
-    <?php include '_errors.php' ?>
  
 <?php if (!is_user_logged_in()): ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
@@ -109,7 +108,8 @@ $values = array(
                 </div>
             <?php endforeach ?>
         </div>
-        <?php include "_form_actions.php" ?>
+    <?php include '_errors.php'; ?>
+        <?php include "_form_actions.php"; ?>
     </form>
 <?php endif ?>
 

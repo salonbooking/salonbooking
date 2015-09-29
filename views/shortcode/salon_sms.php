@@ -6,9 +6,7 @@
  * @var SLN_Shortcode_Salon_Step $step
  */
 $bb = $plugin->getBookingBuilder();
-$valid = isset($_SESSION['sln_sms_valid']) ? $_SESSION['sln_sms_valid'] : false;
-
-include '_errors.php' ?>
+$valid = isset($_SESSION['sln_sms_valid']) ? $_SESSION['sln_sms_valid'] : false; ?>
 <?php if (isset($_GET['resend'])): ?>
     <div class="alert alert-success">
         <p><?php _e('SMS sent successfully.') ?></p>
@@ -42,7 +40,8 @@ include '_errors.php' ?>
                 </div>
             </div>
         </div>
-        <?php include "_form_actions.php" ?>
+        <?php include '_errors.php'; ?>
+        <?php include "_form_actions.php"; ?>
     <?php endif ?>
 </form>
 
