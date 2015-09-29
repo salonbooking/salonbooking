@@ -277,4 +277,24 @@ class SLN_Func
         $minutes = ($time % 60);
         return sprintf($format, $hours, $minutes);
     }
+
+    public static function groupServicesByCategory($services){
+        $ret = array(0 => array('term' => false, 'services' => array()));
+        foreach($services as $s){
+            $post_terms = get_the_terms( $s->getId(), SLN_Plugin::TAXONOMY_SERVICE_CATEGORY);
+            $nu_post_terms = array();
+            if ( !empty($post_terms) ) {
+                foreach ( $post_terms as $post_term ){
+                    $ret[$post_term->term_id]['term'] = $post_term;
+                    $ret[$post_term->term_id]['services'][] = $s;
+                }
+            } else {
+                $ret[0]['services'][] = $s;
+            }
+        }
+        if(empty($ret['0']['services'])){
+            unset($ret['0']);
+        }
+        return $ret;
+    }
 }
