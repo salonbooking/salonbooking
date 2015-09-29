@@ -35,7 +35,13 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
         } elseif ($_GET['mode'] == 'paypal') {
             $ppl = new SLN_Payment_Paypal($this->getPlugin());
             if ($this->isAjax()) {
-                $_SERVER['REQUEST_URI'] = str_replace($_SERVER['HTTP_ORIGIN'], '', $_SERVER['HTTP_REFERER']).'?sln_step_page=thankyou&submit_thankyou=1&mode=paypal';
+                //if($_SERVER['HTTP_ORIGIN'])
+                //    $_SERVER['REQUEST_URI'] = str_replace($_SERVER['HTTP_ORIGIN'], '', $_SERVER['HTTP_REFERER']).'?sln_step_page=thankyou&submit_thankyou=1&mode=paypal';
+                //else{
+                    $servername = "http://".$_SERVER["SERVER_NAME"];
+                    $_SERVER['REQUEST_URI'] = str_replace($servername, '', $_SERVER['HTTP_REFERER']).'?sln_step_page=thankyou&submit_thankyou=1&mode=paypal';
+                //}
+                    
             }
             $url = $ppl->getUrl($booking->getId(), ($deposit > 0) ? $booking->getDeposit() : $booking->getAmount(), $booking->getTitle());
             $this->redirect($url);

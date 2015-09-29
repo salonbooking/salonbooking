@@ -15,6 +15,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 'phone'     => get_user_meta($current_user->ID, '_sln_phone', true),
                 'address'     => get_user_meta($current_user->ID, '_sln_address', true)
             );
+                    $this->bindValues($values);
             if (!$ret) {
                 return false;
             }

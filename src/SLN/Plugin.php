@@ -5,6 +5,7 @@ class SLN_Plugin
     const POST_TYPE_SERVICE = 'sln_service';
     const POST_TYPE_ATTENDANT = 'sln_attendant';
     const POST_TYPE_BOOKING = 'sln_booking';
+    const TAXONOMY_SERVICE_CATEGORY = 'sln_service_category';
     const USER_ROLE_STAFF = 'sln_staff';
     const TEXT_DOMAIN = 'sln';
     const F = 'slnc';
@@ -46,6 +47,7 @@ class SLN_Plugin
         new SLN_PostType_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
         new SLN_PostType_Booking($this, self::POST_TYPE_BOOKING);
+        new SLN_TaxonomyType_ServiceCategory($this, self::TAXONOMY_SERVICE_CATEGORY, array(self::POST_TYPE_SERVICE) );
     }
 
     private function initAdmin()
