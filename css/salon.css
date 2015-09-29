@@ -596,6 +596,12 @@
 .glyphicon-arrow-down:before {
   content: "\e094";
 }
+.glyphicon-ban-circle:before {
+  content: "\e090";
+}
+.glyphicon-exclamation-sign:before {
+  content: "\e101";
+}
 .datetimepicker.sln-datetimepicker {
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
 }
@@ -992,12 +998,14 @@
     border-bottom: 0.6em solid #f8f8f8;
   }
 }
+#sln-salon .ty p,
 #sln-salon p.ty {
   color: #666666;
-  font-size: .8em;
+  font-size: 1em;
   margin-bottom: 1em;
 }
 @media only screen and (max-width: 767px) {
+  #sln-salon .ty p,
   #sln-salon p.ty {
     margin-bottom: .8em;
   }
@@ -1183,8 +1191,165 @@
 #sln-salon .sln-attendants-list .row {
   margin-bottom: 1.1em;
 }
+#sln-salon .ext-messages:after {
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  font-size: 2rem;
+  color: #004664;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  content: "\e086";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  #sln-salon .ext-messages:after {
+    font-size: 2.4rem;
+  }
+}
+#sln-salon .ext-messages-dang:after {
+  content: "\e090";
+  color: #fff;
+  background-color: #d51e26;
+  font-size: 1.4rem;
+  padding: .3rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media only screen and (min-width: 768px) {
+  #sln-salon .ext-messages-dang:after {
+    font-size: 2rem;
+    padding: .4rem;
+  }
+}
 #sln-salon .alert {
-  border-radius: 0;
+  border: none;
+  background-color: transparent;
+  padding: 2rem 0 0 0;
+  position: relative;
+  color: #555555;
+  margin: 2rem 15px;
+  font-style: italic;
+  font-size: 1em;
+}
+#sln-salon .alert:after {
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  font-size: 2rem;
+  color: #004664;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  content: "\e086";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  #sln-salon .alert:after {
+    font-size: 2.4rem;
+  }
+}
+#sln-salon .alert ul {
+  padding-left: 0;
+}
+#sln-salon .alert.alert-danger:after {
+  content: "\e090";
+  color: #fff;
+  background-color: #d51e26;
+  font-size: 1.4rem;
+  padding: .3rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media only screen and (min-width: 768px) {
+  #sln-salon .alert.alert-danger:after {
+    font-size: 2rem;
+    padding: .4rem;
+  }
+}
+#sln-salon .alert.ty {
+  margin: 2rem 15px;
+}
+#sln-salon .alert.ty:after {
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  font-size: 2rem;
+  color: #004664;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  content: "\e086";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  #sln-salon .alert.ty:after {
+    font-size: 2.4rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #sln-salon .alert {
+    padding: 0 0 0 3.4rem;
+    margin: 4rem 15px;
+    font-size: .8em;
+  }
+}
+#sln-salon #sln-notifications .alert:after {
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  font-size: 2rem;
+  color: #004664;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  content: "\e086";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  #sln-salon #sln-notifications .alert:after {
+    font-size: 2.4rem;
+  }
+}
+#sln-salon #sln-notifications .alert:after {
+  content: "\e090";
+  color: #fff;
+  background-color: #d51e26;
+  font-size: 1.4rem;
+  padding: .3rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media only screen and (min-width: 768px) {
+  #sln-salon #sln-notifications .alert:after {
+    font-size: 2rem;
+    padding: .4rem;
+  }
 }
 #sln-salon #salon-step-summary p.dear {
   margin-bottom: 1.4em;

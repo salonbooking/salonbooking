@@ -37,17 +37,17 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
             </div>
         </div>
 <?php $ppl = false; ?>
+<div class="alert ty">
 <?php if($confirmation) : ?>
-        <p class="ty"><strong><?php _e('You will receive a confirmation of your booking by email.','sln' )?></strong></p>
-        <p class="ty"><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
+        <p><strong><?php _e('You will receive a confirmation of your booking by email.','sln' )?></strong></p>
+        <p><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
             <?php echo $plugin->getSettings()->get('gen_phone') ?></p>
         <p class="aligncenter"><a href="<?php echo home_url() ?>" class="btn btn-primary"><?php _e('Back to home','sln') ?></a></p>
-<?php else : ?> 
-        <p class="ty"><?php echo sprintf(__('If you need to change your reservation please call the %s or send an e-mail to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
-            <?php echo $plugin->getSettings()->get('phone') ?></p>
-        
-        
-        
+<?php else : ?>
+        <p><?php echo sprintf(__('If you need to change your reservation please call the <strong>%s</strong> or send an e-mail to <strong>%s</strong>', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
+            <?php echo $plugin->getSettings()->get('phone') ?>
+        </p>
+        </div>
 
             <div id="sln-notifications"></div>
     <div class="row form-actions aligncenter">

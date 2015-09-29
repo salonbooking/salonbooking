@@ -20,9 +20,9 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
             <div class="col-xs-1 col-lg-1">
             <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
             <?php
-            $errors   = $ah->validateService($service);
+            $serviceErrors   = $ah->validateService($service);
             $settings = array('attrs' => array('data-price' => $service->getPrice()));
-            if ($errors) {
+            if ($serviceErrors) {
                 $settings['attrs']['disabled'] = 'disabled';
             }
             ?>
@@ -52,9 +52,9 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 		<?php }	?>
         </div>
         <div class="clearfix"></div>
-        <?php if ($errors) : ?>
+        <?php if ($serviceErrors) : ?>
             <div class="alert alert-warning">
-                <?php foreach ($errors as $error): ?>
+                <?php foreach ($serviceErrors as $error): ?>
                     <p><?php echo $error ?></p>
                 <?php endforeach ?>
             </div>
