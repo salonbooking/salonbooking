@@ -232,7 +232,7 @@ class SLN_Plugin
     {
         return SLN_PLUGIN_DIR . '/views/' . $view . '.php';
     }
-
+    
     public function loadView($view, $data = array())
     {
         ob_start();

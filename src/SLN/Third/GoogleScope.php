@@ -8,9 +8,11 @@ function _pre($m) {
     echo "</pre>";
 }
 
-require 'google-api-php-client/src/Google/autoload.php';
-require_once 'google-api-php-client/src/Google/Client.php';
-require_once 'google-api-php-client/src/Google/Service/Calendar.php';
+//Add to htaccess RewriteRule ^wp-admin/salon-settings/(.*)/$ /wp-admin/admin.php?page=salon-settings&tab=$1 [L]
+
+require SLN_PLUGIN_DIR . '/src/SLN/Third/google-api-php-client/src/Google/autoload.php';
+require_once SLN_PLUGIN_DIR . '/src/SLN/Third/google-api-php-client/src/Google/Client.php';
+require_once SLN_PLUGIN_DIR . '/src/SLN/Third/google-api-php-client/src/Google/Service/Calendar.php';
 
 class SLN_GoogleScope {
 
@@ -24,6 +26,30 @@ class SLN_GoogleScope {
     static public $outh2_redirect_uri;
     static public $client;
     static public $service;
+    static public $settings;
+
+    /**
+     * wp_init
+     * @param type $plugin
+     */
+    static public function wp_init() {
+        if (isset(self::$settings)) {
+            self::$outh2_client_id = self::$settings->get('google_outh2_client_id');
+            self::$outh2_client_secret = self::$settings->get('google_outh2_client_secret');
+            self::$outh2_redirect_uri = self::$settings->get('google_outh2_redirect_uri');
+            if (
+                    !empty(self::$outh2_client_id) &&
+                    !empty(self::$outh2_client_secret) &&
+                    !empty(self::$outh2_redirect_uri)
+            ) {
+                self::init();
+            }
+        }
+    }
+
+    static public function set_settings_by_plugin($plugin) {
+        self::$settings = $plugin->getSettings();
+    }
 
     /**
      * constructor
@@ -39,10 +65,10 @@ class SLN_GoogleScope {
         //Get Google Client
         //$this->client = $this->get_google_client();
         self::$client = self::get_client();
-        //Get Google Service
         self::$service = self::get_google_service();
-        //Start Google Auth
-        self::start_auth();
+        //Start Google Auth service2service
+        //self::start_auth(); 
+        return array(self::$client, self::$service);
     }
 
     /**
@@ -53,20 +79,39 @@ class SLN_GoogleScope {
         $client = new Google_Client();
         $client->setClientId(self::$outh2_client_id);
         $client->setClientSecret(self::$outh2_client_secret);
-        $client->setRedirectUri(self::$outh2_redirect_uri);
-
-        //$service = new Google_Service_Oauth2($client);
-
+        $client->setRedirectUri(isset(self::$outh2_redirect_uri) ? self::$outh2_redirect_uri : admin_url('/'));
+        $client->setAccessType('offline');
+        $client->setApprovalPrompt('force');
         $client->addScope(self::$scopes);
-        $plus = new Google_Service_Plus($client);
+
+        if ((isset($_GET['revoketoken']) && $_GET['revoketoken'] == 1)/* || $client->isAccessTokenExpired() */) {
+            $client->revokeToken();
+            self::$settings->set('sln_refresh_token', '');
+            self::$settings->set('sln_access_token', '');
+            self::$settings->save();
+            $_SESSION['access_token'] = "";
+
+            echo 'Access Token Expired'; // Debug
+            header("Location: " . admin_url('/'));
+        }
 
         if (isset($_GET['code'])) {
             $client->authenticate($_GET['code']); // Authenticate
             $_SESSION['access_token'] = $client->getAccessToken();
+            $token = $client->getAccessToken();
+            $refresh_token = json_decode($token);
+            $refresh_token = $refresh_token->refresh_token;
+
+            //update_option('sln_access_token', $token);
+            self::$settings->set('sln_refresh_token', $refresh_token);
+            self::$settings->set('sln_access_token', $token);
+            self::$settings->save();
             header('Location: http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF']);
         }
 
-        $access_token = $_SESSION['access_token'];
+        $access_token = isset($_SESSION['access_token']) ? $_SESSION['access_token'] : null;
+        if (!isset($access_token))
+            $access_token = self::$settings->get('sln_access_token');
 
         if (isset($access_token) && $access_token) {
             $client->setAccessToken($access_token);
@@ -124,23 +169,66 @@ class SLN_GoogleScope {
         }
     }
 
+    static public function is_connected() {
+        $ret = (isset(self::$client) && !self::$client->getAuth()->isAccessTokenExpired());
+        if (!$ret) {
+            $refresh_token = self::$settings->get('sln_refresh_token');
+            try {
+                if (isset(self::$client))
+                    self::$client->refreshToken($refresh_token);
+                else
+                    return false;
+            } catch (Exception $e) {
+                return false;
+            }
+            return true;
+        }
+
+//        $access_token = self::$settings->get('sln_access_token');
+//        _pre($access_token);
+//        $google_token= json_decode($access_token);
+//        _pre($google_token);
+//        _pre(self::$outh2_client_id);
+//        _pre(self::$outh2_client_secret);
+//        //self::$client->setAccessToken($google_token->access_token);
+//        if (!$ret) {            
+//            self::$client->refreshToken($access_token['refresh_token']);            
+//            $ret = true;
+//        }
+//        $access_token = self::$settings->get('sln_access_token');
+//        _pre($access_token);
+//        $google_token= json_decode($access_token);
+//        $new_token = self::$client->refreshToken($google_token->access_token);
+//        _pre($new_token);
+//        $client->setAccessToken($new_token);
+//        $new_token = self::$client->getAccessToken();
+//        self::$settings->set('sln_access_token', $new_token);
+        return $ret;
+    }
+
     /**
      * get_calendar_list
      * @return type
      */
     static public function get_calendar_list() {
-        $calendarList = self::$service->calendarList->listCalendarList();
-        $cal_list = array();
-        while (true) {
-            foreach ($calendarList->getItems() as $calendarListEntry) {
-                $cal_list[] = $calendarListEntry->getId();
-            }
-            $pageToken = $calendarList->getNextPageToken();
-            if ($pageToken) {
-                $optParams = array('pageToken' => $pageToken);
-                $calendarList = self::$service->calendarList->listCalendarList($optParams);
-            } else {
-                break;
+        $cal_list = null;
+        if (self::is_connected()) {
+            $calendarList = self::$service->calendarList->listCalendarList();
+            $cal_list = array();
+            while (true) {
+                foreach ($calendarList->getItems() as $calendarListEntry) {
+                    if (!isset($cal_list[$calendarListEntry->getId()]))
+                        $cal_list[$calendarListEntry->getId()] = array();
+                    $cal_list[$calendarListEntry->getId()]['id'] = $calendarListEntry->getId();
+                    $cal_list[$calendarListEntry->getId()]['label'] = $calendarListEntry->getSummary();
+                }
+                $pageToken = $calendarList->getNextPageToken();
+                if ($pageToken) {
+                    $optParams = array('pageToken' => $pageToken);
+                    $calendarList = self::$service->calendarList->listCalendarList($optParams);
+                } else {
+                    break;
+                }
             }
         }
         return $cal_list;
@@ -351,4 +439,9 @@ class SLN_GoogleScope {
 //);
 //SLN_GoogleScope::print_calendar_by_calendar_id($cparams);
 //SLN_GoogleScope::get_list_event($cal_list[0]);
+
+add_action('wp_loaded', function() {
+    if (isset($_GET['code']))
+        do_action('onchangeapi', SLN_GoogleScope::init());
+});
 ?>
