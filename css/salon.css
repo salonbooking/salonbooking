@@ -869,6 +869,16 @@
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+#sln-salon .tec-link {
+  display: inline-block;
+  margin-bottom: 2em;
+  padding: .8em 1em;
+  background-color: #eee;
+}
+#sln-salon .tec-link:hover {
+  background-color: #d51e26;
+  color: #fff;
+}
 #sln-salon .form-actions {
   margin-top: 2em;
 }
@@ -1203,15 +1213,27 @@
   display: inline-block;
   content: "\e086";
   position: absolute;
-  top: 0;
-  left: 0;
   border-radius: 50%;
   background-color: #fff;
   text-align: center;
 }
+@media only screen and (max-width: 767px) {
+  #sln-salon .ext-messages:after {
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
 @media only screen and (min-width: 768px) {
   #sln-salon .ext-messages:after {
     font-size: 2.4rem;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
   }
 }
 #sln-salon .ext-messages-dang:after {
@@ -1251,15 +1273,27 @@
   display: inline-block;
   content: "\e086";
   position: absolute;
-  top: 0;
-  left: 0;
   border-radius: 50%;
   background-color: #fff;
   text-align: center;
 }
+@media only screen and (max-width: 767px) {
+  #sln-salon .alert:after {
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
 @media only screen and (min-width: 768px) {
   #sln-salon .alert:after {
     font-size: 2.4rem;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
   }
 }
 #sln-salon .alert ul {
@@ -1295,22 +1329,33 @@
   display: inline-block;
   content: "\e086";
   position: absolute;
-  top: 0;
-  left: 0;
   border-radius: 50%;
   background-color: #fff;
   text-align: center;
 }
+@media only screen and (max-width: 767px) {
+  #sln-salon .alert.ty:after {
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
 @media only screen and (min-width: 768px) {
   #sln-salon .alert.ty:after {
     font-size: 2.4rem;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
   }
 }
 @media only screen and (min-width: 768px) {
   #sln-salon .alert {
-    padding: 0 0 0 3.4rem;
+    padding: 0 0 0 4rem;
     margin: 4rem 15px;
-    font-size: .8em;
   }
 }
 #sln-salon #sln-notifications .alert:after {
@@ -1325,15 +1370,27 @@
   display: inline-block;
   content: "\e086";
   position: absolute;
-  top: 0;
-  left: 0;
   border-radius: 50%;
   background-color: #fff;
   text-align: center;
 }
+@media only screen and (max-width: 767px) {
+  #sln-salon #sln-notifications .alert:after {
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
 @media only screen and (min-width: 768px) {
   #sln-salon #sln-notifications .alert:after {
     font-size: 2.4rem;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
   }
 }
 #sln-salon #sln-notifications .alert:after {

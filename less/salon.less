@@ -236,7 +236,7 @@
   }
   .form-group {
     margin-bottom: 2em;
-    label {
+    label  {
       color: @color-mid;
       font-size: 1em;
       margin-bottom: 0.5em;
@@ -252,6 +252,16 @@
       border-radius: 0;
       -webkit-box-shadow: none;
       box-shadow: none;
+    }
+  }
+  .tec-link {
+    display: inline-block;
+    margin-bottom: 2em;
+    padding: .8em 1em;
+    background-color: #eee;
+    &:hover {
+      background-color: @ca-red;
+      color: #fff;
     }
   }
   .form-actions {
@@ -559,15 +569,27 @@
       //width: 3rem;
       //height: 3rem;
       position: absolute;
-      top: 0;
-      left: 0;
       border-radius: 50%;
       background-color: #fff;
       text-align: center;
     }
+    @media @phone {
+      &:after {
+        top: 0;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+      }
+    }
     @media @tablet {
       &:after {
         font-size: 2.4rem;
+        left: 0;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
       }
     }
 }
@@ -609,9 +631,8 @@
       margin: 2rem 15px;
     }
     @media @tablet {
-      padding: 0 0 0 3.4rem;
+      padding: 0 0 0 4rem;
       margin: 4rem 15px;
-      font-size: .8em;
     }
   }
 

@@ -19,13 +19,15 @@ $values = array(
 <?php if (!is_user_logged_in()): ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <h2><?php _e('Returning customer?', 'sln') ?><em><?php _e('Please, log-in.', 'sln') ?></em></h2>
+    <?php include '_errors.php'; ?>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="login_name"><?php _e('E-mail') ?></label>
                     <input name="login_name" type="text" class="form-control login-field"/>
                 </div>
-                <a href=" <?php echo wp_lostpassword_url($formAction) ?>"><?php _e('Forgot password?', 'sln') ?></a>
+                    <a href=" <?php echo wp_lostpassword_url($formAction) ?>" class="tec-link"><?php _e('Forgot password?', 'sln') ?></a>
+                
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -45,7 +47,6 @@ $values = array(
     <h2><?php _e('Checkout as a guest', 'sln') ?>
         <em><?php _e('An account will be automatically created', 'sln') ?></em>
     </h2>
-
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <div class="row">
             <?php foreach (array(
@@ -84,6 +85,7 @@ $values = array(
 <?php else: ?>
     <h2><?php _e('Checkout', 'sln') ?></h2>
 
+    <?php include '_errors.php'; ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <div class="row">
             <?php foreach (array(
@@ -108,7 +110,6 @@ $values = array(
                 </div>
             <?php endforeach ?>
         </div>
-    <?php include '_errors.php'; ?>
         <?php include "_form_actions.php"; ?>
     </form>
 <?php endif ?>
