@@ -199,7 +199,7 @@ $helper->showNonce($postType);
             <?php
             $helper->showFieldtext(
                 $helper->getFieldName($postType, 'deposit'),
-                __('Amount', 'sln') . ' (' . $settings->getCurrencySymbol() . ')',
+                __('Deposit', 'sln') . ' (' . $settings->getCurrencySymbol() . ')',
                 $booking->getDeposit()
             );
             ?>

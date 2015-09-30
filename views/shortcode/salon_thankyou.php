@@ -54,7 +54,11 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
         <?php if($plugin->getSettings()->get('pay_enabled') && $plugin->getSettings()->getPaypalEmail()) : ?>
         <a data-salon-data="<?php echo $ajaxData.'&mode=paypal' ?>" data-salon-toggle="direct"
         href="<?php echo $paypalUrl ?>" class="btn btn-primary">
-            <?php _e('Pay with Paypal', 'sln') ?>
+            <?php if($deposit = $plugin->getBookingBuilder()->getLastBooking()->getDeposit() ): ?>
+                <?php echo sprintf(__('Pay %s as a deposit with Paypal', 'sln'), $plugin->format()->money($deposit)) ?>
+            <?php else : ?>
+                <?php _e('Pay with Paypal', 'sln') ?>
+            <?php endif ?>
         </a>
         <?php $ppl = true; endif; ?>
         <?php if($ppl && $plugin->getSettings()->get('pay_cash')): ?>
