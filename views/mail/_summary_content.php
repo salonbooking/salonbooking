@@ -71,11 +71,11 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
                 <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;">
                     <?php echo SLN_Enum_BookingStatus::getLabel($booking->getStatus()) ?>
                     <?php if( $booking->getDeposit() && $booking->hasStatus(SLN_Enum_BookingStatus::PAID) ){ ?>
-<<<<<<< HEAD
-                        <span style="font-size: 14px; font-family: normal"><br/><?php echo $plugin->format()->money($booking->getDeposit()) ?> Deposit</span>
-=======
-                        <span style="font-size: 14px; font-family: Arial, Helvetica, sans-serif;"><br/><?php echo $plugin->format()->money($booking->getAmount()) ?> Deposit</span>
->>>>>>> b09a77b1503073001aa402d19f683a0e3f3ece4f
+
+                        <span style="font-size: 14px; font-family: Arial, Helvetica, sans-serif; font-weight:normal;"><br/>Deposit <?php echo $plugin->format()->money($booking->getDeposit()) ?></span>
+
+                    
+
                     <?php } ?>
                 </td>
               </tr>
