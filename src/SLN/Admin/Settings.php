@@ -157,6 +157,7 @@ class SLN_Admin_Settings
                      'sms_from',
                      'sms_new',
                      'sms_new_number',
+                     'sms_new_attendant',
                      'sms_remind',
                      'sms_remind_interval',
                      'soc_facebook',
@@ -178,6 +179,17 @@ class SLN_Admin_Settings
             __('general settings are updated', 'sln'),
             __('Update completed with success', 'sln')
         );
+        if(isset($_POST['salon_settings']['sms_test_number'])){
+             SLN_Enum_SmsProvider::getService(
+                 $this->settings->get('sms_provider'),
+                 $this->plugin
+             )->send($_POST['salon_settings']['sms_test_number'], $_POST['salon_settings']['sms_test_message']);
+            $this->showAlert(
+                'success',
+                __('Test sms sent with success', 'sln'),
+                ''
+            );
+        }
     }
 
     public function showTabBooking()

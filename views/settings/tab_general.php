@@ -133,6 +133,18 @@
                 </div>
             </div>
     <div class="sln-separator"></div>
+            <h3>Send a test sms</h3>
+            <p>Just write here and save settings</p>
+            <div class="row">
+                <div class="clearfix"></div>
+                <div class="col-md-6">
+                    <?php $this->row_input_text('sms_test_number', __('Number', 'sln')); ?>
+                </div>
+                <div class="col-md-6">
+                    <?php $this->row_input_text('sms_test_message', __('Message', 'sln')); ?>
+                </div>
+            </div>
+    <div class="sln-separator"></div>
 
     <div class="row">
         <div class="col-md-10"><h3>Social</h3></div>

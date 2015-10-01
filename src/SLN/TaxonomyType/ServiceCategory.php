@@ -97,10 +97,8 @@ class SLN_TaxonomyType_ServiceCategory extends SLN_TaxonomyType_Abstract
 	<?php if ( current_user_can($tax->cap->edit_terms) ) { ?>
 			<div id="<?php echo $taxonomy; ?>-adder" class="wp-hidden-children">
 <h4>
-					<a id="<?php echo $taxonomy; ?>-add-toggle" href="<?php echo admin_url('edit-tags.php?taxonomy='.$taxonomy) ?>">
-						<?php
-							printf( __( '+ %s' ), $tax->labels->add_new_item );
-						?>
+					<a href="<?php echo admin_url('edit-tags.php?taxonomy='.$taxonomy) ?>">
+                                            _<?php _e('Manage service categories', 'sln') ?>
 					</a>
 </h4>
 			</div>
