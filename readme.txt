@@ -1,6 +1,6 @@
 === Salon booking system ===
 Contributors: wordpresschef
-Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment
+Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, paypal appointament, appointament calendar, booking software, reservation plugin, booking engine
 Requires at least: 4.1
 Tested up to: 4.3
 Stable tag: 1.1.0
