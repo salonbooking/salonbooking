@@ -179,7 +179,7 @@ class SLN_Admin_Settings
             __('general settings are updated', 'sln'),
             __('Update completed with success', 'sln')
         );
-        if(isset($_POST['salon_settings']['sms_test_number'])){
+        if($_POST['salon_settings']['sms_test_number'] && $_POST['salon_settings']['sms_test_message']){
              SLN_Enum_SmsProvider::getService(
                  $this->settings->get('sms_provider'),
                  $this->plugin
