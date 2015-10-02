@@ -236,7 +236,7 @@
   }
   .form-group {
     margin-bottom: 2em;
-    label {
+    label  {
       color: @color-mid;
       font-size: 1em;
       margin-bottom: 0.5em;
@@ -252,6 +252,16 @@
       border-radius: 0;
       -webkit-box-shadow: none;
       box-shadow: none;
+    }
+  }
+  .tec-link {
+    display: inline-block;
+    margin-bottom: 2em;
+    padding: .8em 1em;
+    background-color: #eee;
+    &:hover {
+      background-color: @ca-red;
+      color: #fff;
     }
   }
   .form-actions {
@@ -371,9 +381,9 @@
       border-bottom: .6em solid @color-bg;
     }
   }
-  p.ty {
+  .ty p, p.ty {
     color: @color-mid;
-    font-size: .8em;
+    font-size: 1em;
     margin-bottom: 1em;
     @media @phone {
       margin-bottom: .8em;
@@ -544,9 +554,94 @@
       margin-bottom: 1.1em;
     }
   }
+.ext-messages {
+  &:after {
+      font-family: 'Glyphicons Halflings';
+      font-style: normal;
+      font-weight: normal;
+      line-height: 1;
+      font-size: 2rem;
+      color: @text-blue;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: inline-block;
+      content: "\e086";
+      //width: 3rem;
+      //height: 3rem;
+      position: absolute;
+      border-radius: 50%;
+      background-color: #fff;
+      text-align: center;
+    }
+    @media @phone {
+      &:after {
+        top: 0;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+      }
+    }
+    @media @tablet {
+      &:after {
+        font-size: 2.4rem;
+        left: 0;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+    }
+}
+.ext-messages-dang {
+  &:after {
+      content: "\e090";
+      color: #fff;
+      background-color: @ca-red;
+      font-size: 1.4rem;
+      padding: .3rem;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    @media @tablet {
+      &:after {
+        font-size: 2rem;
+        padding: .4rem;
+      }
+    }
+}
   .alert {
-    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    padding: 2rem 0 0 0;
+    position: relative;
+    color: @text-medium;
+    margin: 2rem 15px;
+    font-style: italic;
+    font-size: 1em;
+    .ext-messages;
+    ul {
+      padding-left: 0;
+    }
+    &.alert-danger {
+      .ext-messages-dang;
+    }
+    &.ty {
+      .ext-messages;
+      margin: 2rem 15px;
+    }
+    @media @tablet {
+      padding: 0 0 0 4rem;
+      margin: 4rem 15px;
+    }
   }
+
+#sln-notifications {
+  .alert {
+    .ext-messages;
+    .ext-messages-dang;
+  }
+}
   #salon-step-summary p.dear {
     margin-bottom: 1.4em;
   }
