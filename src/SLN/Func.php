@@ -64,7 +64,7 @@ class SLN_Func
             return $val;
         }
         if ($filter == 'int') {
-            return intval($filter);
+            return intval($val);
         } elseif ($filter == 'money') {
             return number_format(floatval(str_replace(',', '.', $val)), 2);
         } elseif ($filter == 'float') {
@@ -85,6 +85,8 @@ class SLN_Func
             if (is_array($val)) {
                 $val = $val['year'] . '-' . $val['month'] . '-' . $val['day'];
             } elseif (strpos($val, ' ') !== false) {
+                $val = self::evalPickedDate($val);
+            }else{
                 $val = self::evalPickedDate($val);
             }
             $ret = date('Y-m-d', strtotime($val));
@@ -111,15 +113,33 @@ class SLN_Func
 
     public static function evalPickedDate($date)
     {
-        $date = explode(' ', $date);
-        foreach (SLN_Func::getMonths() as $k => $v) {
-            if (strcasecmp($date[1], $v) == 0) {
-                $ret = $date[2] . '-' . ($k < 10 ? '0' . $k : $k) . '-' . $date[0];
-                return $ret;
+        if(strpos($date, '-')) return $date;
+        $initial = $date;
+        $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
+        if($f == SLN_Enum_DateFormat::_DEFAULT){ 
+            $date = explode(' ', $date);
+            foreach (SLN_Func::getMonths() as $k => $v) {
+                if (strcasecmp($date[1], $v) == 0) {
+                    $ret = $date[2] . '-' . ($k < 10 ? '0' . $k : $k) . '-' . $date[0];
+                    return $ret;
+                }
             }
+        }elseif($f == SLN_Enum_DateFormat::_SHORT){
+            $date = explode('/',$date);
+            if(count($date) == 3)
+                return sprintf('%04d-%02d-%02d', $date[2],$date[1],$date[0]);
+            else
+                throw new Exception('bad number of slashes');
+        }elseif($f == SLN_Enum_DateFormat::_SHORT_COMMA){
+            $date = explode('-',$date);
+            if(count($date) == 3)
+                return sprintf('%04d-%02d-%02d', $date[2],$date[1],$date[0]);
+            else
+                throw new Exception('bad number of commas'); 
+        }else{
+            return date('Y-m-d', strtotime($date));
         }
-
-        throw new Exception('wrong date');
+        throw new Exception('wrong date '.$initial.' format: '.$f);
     }
 
     static function addUrlParam($url, $k, $v)
@@ -143,7 +163,32 @@ class SLN_Func
 
         return $pageURL;
     }
+    public static function getIntervalItemsShort()
+    {
+        return array(
+            '+10 minutes' => '10 '.__('minutes', 'sln'),
+            '+20 minutes' => '20 '.__('minutes', 'sln'),
+            '+30 minutes' => '30 '.__('minutes', 'sln'),
+            '+45 minutes' => '45 '.__('minutes', 'sln'),
+            '+1 hour'     => '1 ' . __('hour', 'sln'),
+            '+2 hours'    => '2 ' . __('hours', 'sln'),
+            '+3 hours'    => '3 ' . __('hours', 'sln'),
+            '+4 hours'    => '4 ' . __('hours', 'sln'),
+        );
 
+        return array(
+            'PT10M' => 'half hour',
+            'PT20M' => 'half hour',
+            'PT30M' => 'half hour',
+            'PT45M' => 'half hour',
+            'PT1H'  => '1 hour',
+            'PT2H'  => '2 hours',
+            'PT3H'  => '3 hours',
+            'PT4H'  => '4 hours',
+        );
+    }
+
+ 
     public static function getIntervalItems()
     {
         return array(
@@ -231,5 +276,25 @@ class SLN_Func
         $hours = floor($time / 60);
         $minutes = ($time % 60);
         return sprintf($format, $hours, $minutes);
+    }
+
+    public static function groupServicesByCategory($services){
+        $ret = array(0 => array('term' => false, 'services' => array()));
+        foreach($services as $s){
+            $post_terms = get_the_terms( $s->getId(), SLN_Plugin::TAXONOMY_SERVICE_CATEGORY);
+            $nu_post_terms = array();
+            if ( !empty($post_terms) ) {
+                foreach ( $post_terms as $post_term ){
+                    $ret[$post_term->term_id]['term'] = $post_term;
+                    $ret[$post_term->term_id]['services'][] = $s;
+                }
+            } else {
+                $ret[0]['services'][] = $s;
+            }
+        }
+        if(empty($ret['0']['services'])){
+            unset($ret['0']);
+        }
+        return $ret;
     }
 }

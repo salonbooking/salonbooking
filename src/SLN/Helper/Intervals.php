@@ -21,16 +21,15 @@ class SLN_Helper_Intervals
 
     public function setDatetime(DateTime $date)
     {
-        if($timezone = get_option('timezone_string'))
-            date_default_timezone_set($timezone);
+
 
         $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
         $times             = $ah->getTimes($date);
         $i                 = 0;
         while (empty($times) && $i < 100) {
-            $date->modify('+1 days');
             $times = $ah->getTimes($date);
+            $date->modify('+1 days');
             $i++;
         }
         if (empty($times)) {
@@ -45,6 +44,7 @@ class SLN_Helper_Intervals
         $suggestedTime = $date->format('H:i');
         $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
         $timeout = 0;
+
         while ($timeout < 86400 && !isset($times[$suggestedTime])) {
             $date->modify("+$i minutes");
             $suggestedTime = $date->format('H:i');
@@ -57,8 +57,6 @@ class SLN_Helper_Intervals
         ksort($this->days);
         ksort($this->months);
 
-        if($timezone = get_option('timezone_string'))
-            date_default_timezone_set('UTC');
     }
 
     public function bindInitialDate($date)
@@ -73,6 +71,7 @@ class SLN_Helper_Intervals
 
     private function bindDates($dates)
     {
+
         $this->years  = array();
         $this->months = array();
         $this->days   = array();
@@ -103,10 +102,17 @@ class SLN_Helper_Intervals
         ksort($this->years);
         ksort($this->months);
         ksort($this->days);
+
+
     }
 
     public function toArray()
     {
+       $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
+       $dateFormat = SLN_Enum_DateFormat::getPhpFormat($f);
+       $f = SLN_Plugin::getInstance()->getSettings()->get('time_format');
+       $timeFormat = SLN_Enum_TimeFormat::getPhpFormat($f);
+ 
         return array(
             'years'          => $this->getYears(),
             'months'         => $this->getMonths(),
@@ -116,8 +122,8 @@ class SLN_Helper_Intervals
             'suggestedDay'   => $this->suggestedDate->format('d'),
             'suggestedMonth' => $this->suggestedDate->format('m'),
             'suggestedYear'  => $this->suggestedDate->format('Y'),
-            'suggestedDate' => ucwords(date_i18n('d M Y', $this->suggestedDate->format('U'))),
-            'suggestedTime'  => $this->suggestedDate->format('H:i'),
+            'suggestedDate' => ucwords(date_i18n($dateFormat, $this->suggestedDate->format('U'))),
+            'suggestedTime'  => $this->suggestedDate->format($timeFormat),
         );
     }
 

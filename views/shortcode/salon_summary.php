@@ -66,18 +66,15 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
         ); ?>
         
     
-    <p class="ty">
-            <strong><?php _e('Terms & conditions','sln')?></strong>
-        </p>
-        
-        
-        <p class="ty">
+    <div class="alert ty">
+            <strong><?php _e('Terms & conditions','sln')?></strong><br />
+
             <?php echo $plugin->getSettings()->get('gen_timetable') 
             /*_e(
                 'In case of delay of arrival. we will wait a maximum of 10 minutes from booking time. Then we will release your reservation',
                 'sln'
             )*/ ?>
-        </p>
+    </div>
     
         
         

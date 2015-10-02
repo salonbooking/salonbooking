@@ -1,6 +1,7 @@
 <?php
 if(!function_exists('tpl_summary_details')){
 function tpl_summary_details($booking, $plugin){
+$showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 ?>
 <table width="502" border="0" align="left" cellpadding="0" cellspacing="0">
           <tbody><tr>
@@ -18,14 +19,14 @@ function tpl_summary_details($booking, $plugin){
                 <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo _e('Time','sln') ?></td>
               </tr>
               <tr>
-                <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $plugin->format()->time($booking->getTime()) ?></td>
+                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $plugin->format()->time($booking->getTime()) ?></td>
               </tr>
     <?php if($attendant = $booking->getAttendant()) :  ?>
               <tr>
                 <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo _e('Attendant','sln') ?></td>
               </tr>
               <tr>
-                <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $attendant->getName() ?></td>
+                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $attendant->getName() ?></td>
               </tr>
    <?php endif ?>
  
@@ -58,16 +59,25 @@ function tpl_summary_details($booking, $plugin){
                 <td align="left" valign="top">&nbsp;</td>
               </tr>
               <tr>
-                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Total amount', 'sln') ?></td>
+                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php if($showPrices){?><?php _e('Total amount', 'sln') ?><?php } ?></td>
               </tr>
               <tr>
-                <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $plugin->format()->money($booking->getAmount()) ?></td>
+                <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"><?php if($showPrices){?><?php echo $plugin->format()->money($booking->getAmount()) ?><?php } ?></td>
               </tr>
               <tr>
                 <td height="28" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Status','sln')?></td>
               </tr>
               <tr>
-                <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"><?php echo SLN_Enum_BookingStatus::getLabel($booking->getStatus()) ?></td>
+                <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;">
+                    <?php echo SLN_Enum_BookingStatus::getLabel($booking->getStatus()) ?>
+                    <?php if( $booking->getDeposit() && $booking->hasStatus(SLN_Enum_BookingStatus::PAID) ){ ?>
+
+                        <span style="font-size: 14px; font-family: Arial, Helvetica, sans-serif; font-weight:normal;"><br/>Deposit <?php echo $plugin->format()->money($booking->getDeposit()) ?></span>
+
+                    
+
+                    <?php } ?>
+                </td>
               </tr>
               <tr>
                 <td align="left" valign="top">&nbsp;</td>
@@ -186,8 +196,8 @@ function tpl_summary_details($booking, $plugin){
               </tr>
               <tr>
                 <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:normal;">
-                    <?php $m = $plugin->getSettings()->get('gen_mail') ?
-                                    $plugin->getSettings()->get('gen_mail') : get_bloginfo('admin_email');?>
+                    <?php $m = $plugin->getSettings()->get('gen_email') ?
+                                    $plugin->getSettings()->get('gen_email') : get_bloginfo('admin_email');?>
                                 <a href="mailto:<?php echo $m ?>"
                                    style="color:#666666; text-decoration:none;"><?php echo $m ?></a></td>
               </tr>

@@ -6,8 +6,7 @@ class SLN_Metabox_Helper
     {
         foreach ($meta as $meta_key => $new_meta_value) {
             $meta_value = get_post_meta($post_id, $meta_key, true);
-
-            if ($new_meta_value && '' == $meta_value) {
+            if ($new_meta_value && empty($meta_value)) {
                 add_post_meta($post_id, $meta_key, $new_meta_value, true);
             } elseif ($new_meta_value && $new_meta_value != $meta_value) {
                 update_post_meta($post_id, $meta_key, $new_meta_value);
@@ -21,7 +20,7 @@ class SLN_Metabox_Helper
     {
         foreach ($fieldList as $k => $v) {
             $field        = self::getFieldName($postType, $k);
-            $meta[$field] = SLN_Func::filter($_POST[$field], $v);
+            $meta[$field] = SLN_Func::filter(isset($_POST[$field]) ? $_POST[$field] : null, $v);
         }
 
         return $meta;

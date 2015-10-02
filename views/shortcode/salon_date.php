@@ -29,16 +29,18 @@ if ($plugin->getSettings()->isDisabled()):
     </div>
 <?php
 else:
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
+
     $bb        = $plugin->getBookingBuilder();
     $intervals = $plugin->getIntervals($bb->getDateTime());
     $date      = $intervals->getSuggestedDate();
+
     ?>
-    <h2><?php _e('When do you want to come?', 'sln') ?>
-        <?php salon_date_hoursbefore($plugin->getAvailabilityHelper()->getHoursBeforeString()) ?>
-    </h2>
+    <h2><?php _e('When do you want to come?', 'sln') ?></h2>
     <form method="post" action="<?php echo $formAction ?>" id="salon-step-date" 
           data-intervals="<?php echo esc_attr(json_encode($intervals->toArray()));?>">
-        <?php include '_errors.php' ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
@@ -61,6 +63,8 @@ else:
                 </div>
             </div>
         </div>
+        <?php include '_errors.php' ?>
         <?php include "_form_actions.php" ?>
     </form>
 <?php endif ?>
+

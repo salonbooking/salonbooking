@@ -12,7 +12,7 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
         if (is_wp_error($errors)) {
             $this->addError($errors->get_error_message());
         }
-        wp_new_user_notification($errors, $values['password']);
+        wp_new_user_notification($errors); //, $values['password']);
         if (!$this->dispatchAuth($values['email'], $values['password'])) {
             $this->bindValues($values);
             return false;
@@ -36,6 +36,7 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
         $creds['user_password'] = $password;
         $creds['remember']      = true;
         $user                   = wp_signon($creds, false);
+ 
         if (is_wp_error($user)) {
             $this->addError(__('Bad credentials'));
             $this->addError($user->get_error_message());

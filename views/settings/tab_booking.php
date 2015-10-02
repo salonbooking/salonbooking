@@ -165,7 +165,7 @@ function sln_availability_row($prefix, $row)
                             </div>
                             <div class="col-md-2">
                                 <button class="btn btn-block btn-danger" data-collection="remove">
-                                    <i class="glyphicon glyphicon-minus"></i> Remove
+                                    <i class="glyphicon glyphicon-minus"></i> <?php echo __('Remove', 'sln')?>
                                 </button>
                             </div>
                         </div>
@@ -175,7 +175,7 @@ function sln_availability_row($prefix, $row)
             <div class="col-md-2 pull-right">
                 <button data-collection="addnew" class="btn btn-block btn-primary"><i
                         class="glyphicon glyphicon-plus"></i> <?php _e(
-                        'Add new'
+                        'Add new','sln'
                     ) ?>
                 </button>
             </div>
@@ -186,7 +186,7 @@ function sln_availability_row($prefix, $row)
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-block btn-danger" data-collection="remove">
-                            <i class="glyphicon glyphicon-minus"></i> Remove
+                            <i class="glyphicon glyphicon-minus"></i> <?php echo __('Remove', 'sln')?>
                         </button>
                     </div>
                 </div>
@@ -239,7 +239,7 @@ function sln_availability_row($prefix, $row)
                 <?php $this->row_input_checkbox(
                     'confirmation',
                     __('Booking confirmation', 'sln'),
-                    array('help' => __('Select this option to manually confirm each booking.'))
+                    array('help' => __('Select this option to manually confirm each booking.','sln'))
                 ); ?>
             </div>
             <div class="col-md-6">

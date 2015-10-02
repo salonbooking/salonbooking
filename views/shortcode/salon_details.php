@@ -15,18 +15,19 @@ $values = array(
     'phone'     => get_user_meta($current_user->ID, '_sln_phone', true)
 );
 ?>
-    <?php include '_errors.php' ?>
  
 <?php if (!is_user_logged_in()): ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <h2><?php _e('Returning customer?', 'sln') ?><em><?php _e('Please, log-in.', 'sln') ?></em></h2>
+    <?php include '_errors.php'; ?>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="login_name"><?php _e('E-mail') ?></label>
                     <input name="login_name" type="text" class="form-control login-field"/>
                 </div>
-                <a href=" <?php echo wp_lostpassword_url($formAction) ?>"><?php _e('Forgot password?', 'sln') ?></a>
+                    <a href=" <?php echo wp_lostpassword_url($formAction) ?>" class="tec-link"><?php _e('Forgot password?', 'sln') ?></a>
+                
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -46,7 +47,6 @@ $values = array(
     <h2><?php _e('Checkout as a guest', 'sln') ?>
         <em><?php _e('An account will be automatically created', 'sln') ?></em>
     </h2>
-
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <div class="row">
             <?php foreach (array(
@@ -69,7 +69,7 @@ $values = array(
                             if(strpos($field, 'password') === 0){
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'password'));
                             }else{
-                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true));
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' =>  ($field != 'address')));
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>
@@ -85,6 +85,7 @@ $values = array(
 <?php else: ?>
     <h2><?php _e('Checkout', 'sln') ?></h2>
 
+    <?php include '_errors.php'; ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <div class="row">
             <?php foreach (array(
@@ -101,7 +102,7 @@ $values = array(
                         <div class="input-group">
                             <span class="input-group-addon"><?php echo $prefix?></span>
                         <?php endif ?>
-                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true)) ?>
+                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address'))) ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
                                 </div>
                             <?php endif ?>
@@ -109,7 +110,7 @@ $values = array(
                 </div>
             <?php endforeach ?>
         </div>
-        <?php include "_form_actions.php" ?>
+        <?php include "_form_actions.php"; ?>
     </form>
 <?php endif ?>
 

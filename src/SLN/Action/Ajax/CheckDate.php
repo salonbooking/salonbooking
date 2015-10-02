@@ -8,6 +8,10 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
 
     public function execute()
     {
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
+
         if (!isset($this->date)) {
             $this->date = $_POST['sln']['date'];
             $this->time = $_POST['sln']['time'];
@@ -25,6 +29,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
 
     public function checkDateTime()
     {
+
         $plugin = $this->plugin;
         $date   = $this->getDateTime();
 //        $this->addError($plugin->format()->datetime($date));
@@ -33,14 +38,14 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $from = $hb->getFromDate();
         $to   = $hb->getToDate();
         if (!$hb->isValidFrom($date)) {
-            $txt = $plugin->format()->datetime($from);
-            $this->addError(sprintf(__('The date is too near, the minimum allowed is %s', 'sln'), $txt));
+            $txt = $plugin->format()->datetime(new SLN_DateTime($from));
+            $this->addError(sprintf(__('The date is too near, the minimum allowed is:', 'sln') . '<br /><strong>%s</strong>', $txt));
         } elseif (!$hb->isValidTo($date)) {
             $txt = $plugin->format()->datetime($to);
-            $this->addError(sprintf(__('The date is too far, the maximum allowed is %s', 'sln'), $txt));
+            $this->addError(sprintf(__('The date is too far, the maximum allowed is:', 'sln') . '<br /><strong>%s</strong>', $txt));
         } elseif (!$ah->getItems()->isValidDatetime($date)) {
             $txt = $plugin->format()->datetime($date);
-            $this->addError(sprintf(__('We are unavailable at %s', 'sln'), $txt));
+            $this->addError(sprintf(__('We are unavailable at:', 'sln') . '<br /><strong>%s</strong>', $txt));
         } else {
             $ah->setDate($date);
             if (!$ah->isValidDate($date)) {
@@ -97,8 +102,8 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
     {
         $date = $this->date;
         $time = $this->time;
-        $ret = new DateTime(
-            SLN_Func::filter($date, 'date') . ' ' . SLN_Func::filter($time, 'time')
+        $ret = new SLN_DateTime(
+            SLN_Func::filter($date, 'date') . ' ' . SLN_Func::filter($time, 'time'.':00')
         );
         return $ret;
     }

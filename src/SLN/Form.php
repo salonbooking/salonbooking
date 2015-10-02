@@ -29,7 +29,7 @@ class SLN_Form
     static public function fieldDate($name, $value = null, $settings = array())
     {
         if (!($value instanceof DateTime)) {
-            $value = new DateTime($value);
+            $value = new SLN_DateTime($value);
         }
         echo "<span class=\"sln-date\">";
         self::fieldDay($name . '[day]', $value, $settings);
@@ -39,19 +39,27 @@ class SLN_Form
     }
 
     static public function fieldJSDate($name, $value = null, $settings = array()){
+       $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
+       $jsFormat = SLN_Enum_DateFormat::getJsFormat($f);
+       $phpFormat = SLN_Enum_DateFormat::getPhpFormat($f);
+ 
         ?><span class="sln-jsdate">
         <div class="sln_datepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 
-            required="required" data-format="d M yyyy" class="form-control" 
-            value="<?php echo ucwords(date_i18n('d M Y', $value->format('U'))) ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
+            required="required" data-format="<?php echo $jsFormat?>" class="form-control" 
+            value="<?php echo ucwords(date_i18n($phpFormat, $value->format('U'))) ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
         </span><?php
     }
 
     static public function fieldJSTime($name, $value, $settings){ 
+       $f = SLN_Plugin::getInstance()->getSettings()->get('time_format');
+       $jsFormat = SLN_Enum_TimeFormat::getJsFormat($f);
+       $phpFormat = SLN_Enum_TimeFormat::getPhpFormat($f);
             $interval = isset($settings['interval']) ? $settings['interval'] : 60;
         ?><span class="sln-jstime">
         <div class="sln_timepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 
-            required="required" data-format="hh:ii" class="form-control"
-            value="<?php echo $value->format('H:i') ?>" data-interval="<?php echo $interval ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
+            data-meridian="<?php echo strpos($phpFormat,'a') !== false ? 'true' : 'false' ?>"
+            required="required" data-format="<?php echo $jsFormat ?>" class="form-control"
+            value="<?php echo $value->format($phpFormat) ?>" data-interval="<?php echo $interval ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
         </span><?php
     }
 
@@ -102,6 +110,7 @@ class SLN_Form
 
     static public function fieldNumeric($name, $value = null, $settings = array())
     {
+        //if($value != null) $value = (int) $value;
         if (!empty($settings['items'])) {
             $items = $settings['items'];
         } else {

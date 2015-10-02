@@ -91,4 +91,25 @@ class SLN_Settings
     public function isAjaxEnabled(){
         return $this->get('ajax_enabled') ? true: false;
     }
+
+    public function getDateFormat(){
+        return $this->get('date_format');
+    }
+
+    public function getTimeFormat(){
+        return $this->get('time_format');
+    }
+    public function getSalonName(){
+        $ret = $this->get('gen_name');
+        if(!$ret)
+            $ret = get_bloginfo('name');
+        return $ret;
+    }
+    public function getSalonEmail(){
+        $ret = $this->get('gen_email');
+        if(!$ret)
+            $ret = get_bloginfo('admin_email');
+        return $ret;
+ 
+    }
 }

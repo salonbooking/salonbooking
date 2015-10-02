@@ -47,4 +47,27 @@
             </div>
         </div>
     </div> 
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+             <label for="salon_settings_pay_deposit"><?php _e('Pay a deposit of ','sln') ?></label>
+                 <?php echo SLN_Form::fieldSelect(
+                        'salon_settings[pay_deposit]',
+                        array(
+                            '0' => "entire amount (disabled)",
+                            '10' => "10%",
+                            '20' => "20%",
+                            '30' => "30%",
+                            '40' => "40%",
+                            '50' => "50%",
+                            '60' => "60%",
+                            '70' => "70%",
+                            '80' => "80%",
+                            '90' => "90%",
+                        ),
+                        $this->settings->get('pay_deposit'),
+                        array(),
+                        true
+                    ) ?>
+        </div>
+    </div>  
 </div>

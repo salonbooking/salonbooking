@@ -602,7 +602,7 @@
 					clsName += ' disabled';
 				}
                                 var ymdm = (prevMonth.getMonth()+1);
-                                var ymd = prevMonth.getFullYear()+'-'+(parseInt(ymdm) < 10 ? '0' : '')+ymdm+'-'+ prevMonth.getDate();
+                                var ymd = prevMonth.getFullYear()+'-'+(parseInt(ymdm) < 10 ? '0' : '')+ymdm+'-'+ (parseInt(prevMonth.getDate()) < 10 ? '0' : '') + prevMonth.getDate();
 				html.push('<td data-ymd="'+ymd+ '" class="day ' + clsName + '">' + prevMonth.getUTCDate() + '</td>');
 				if (prevMonth.getUTCDay() == this.weekEnd) {
 					html.push('</tr>');
@@ -620,7 +620,7 @@
 				if ((actual.valueOf() + 3600000) <= this.startDate || actual.valueOf() > this.endDate) {
 					clsName += ' disabled';
 				} else if (hours == i) {
-					clsName += ' active';
+			//		clsName += ' active';
 				}
 				if (this.showMeridian && dates[this.language].meridiem.length == 2) {
 					meridian = (i < 12 ? dates[this.language].meridiem[0] : dates[this.language].meridiem[1]);
@@ -632,8 +632,8 @@
 					}
 					meridianOld = meridian;
 					txt = (i % 12 ? i % 12 : 12);
-                                        var ymd = i < 10 ? '0'+txt : txt;
- 					html.push('<span data-ymd="'+ymd+'" class="hour' + clsName + ' hour_' + (i < 12 ? 'am' : 'pm') + '">' + txt + '</span>');
+                                        var ymd = i < 10 ? '0'+i : i;
+ 					html.push('<span data-ymd="'+ymd+':00" class="hour' + clsName + ' hour_' + (i < 12 ? 'am' : 'pm') + '">' + txt + '</span>');
 					if (i == 23) {
 						html.push('</fieldset>');
 					}
@@ -653,7 +653,7 @@
 				if (actual.valueOf() < this.startDate || actual.valueOf() > this.endDate) {
 					clsName += ' disabled';
 				} else if (Math.floor(minutes / this.minuteStep) == Math.floor(i / this.minuteStep)) {
-					clsName += ' active';
+					//clsName += ' active';
 				}
 				if (this.showMeridian && dates[this.language].meridiem.length == 2) {
 					meridian = (hours < 12 ? dates[this.language].meridiem[0] : dates[this.language].meridiem[1]);
@@ -668,7 +668,7 @@
 					//html.push('<span class="minute'+clsName+' minute_'+(hours<12?'am':'pm')+'">'+txt+'</span>');
 					//
                                         var ymd = i < 10 ? '0'+txt : txt;
-					html.push('<span data-ymd="'+hours+':'+(i >= 10 ? i : '0'+i) + '" class="minute' + clsName + '">' + txt + ':' + (i < 10 ? '0' + i : i) + '</span>');
+					html.push('<span data-ymd="'+(hours > 10 ? hours : '0'+hours)+':'+(i >= 10 ? i : '0'+i) + '" class="minute' + clsName + '">' + txt + ':' + (i < 10 ? '0' + i : i) + '</span>');
 					if (i == 59) {
 						html.push('</fieldset>');
 					}
@@ -676,7 +676,7 @@
 					txt = i + ':00';
                                         var ymd = i < 10 ? '0'+txt : txt;
 					//html.push('<span class="hour'+clsName+'">'+txt+'</span>');
-					html.push('<span data-ymd="'+hours+':'+(i >= 10 ? i : '0'+i) + '" class="minute' + clsName + '">' + hours + ':' + (i < 10 ? '0' + i : i) + '</span>');
+					html.push('<span data-ymd="'+(hours > 10 ? hours : '0'+hours)+':'+(i >= 10 ? i : '0'+i) + '" class="minute' + clsName + '">' + hours + ':' + (i < 10 ? '0' + i : i) + '</span>');
 				}
 			}
 			this.picker.find('.datetimepicker-minutes td').html(html.join(''));

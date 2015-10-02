@@ -13,16 +13,21 @@ $isSymbolLeft = $plugin->getSettings()->get('pay_currency_pos') == 'left';
 $symbolLeft = $isSymbolLeft ? $plugin->getSettings()->getCurrencySymbol() : '';
 $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
+$grouped = SLN_Func::groupServicesByCategory($services);
  ?>
 <div class="sln-service-list">
-    <?php foreach ($services as $service) : ?>
+    <?php foreach ($grouped as $group): ?>
+        <?php if($group['term'] !== false): ?> 
+        <h3><?php echo $group['term']->name ?></h3>
+        <?php endif ?>
+    <?php foreach ($group['services'] as $service) : ?>
         <div class="row">
             <div class="col-xs-1 col-lg-1">
             <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
             <?php
-            $errors   = $ah->validateService($service);
+            $serviceErrors   = $ah->validateService($service);
             $settings = array('attrs' => array('data-price' => $service->getPrice()));
-            if ($errors) {
+            if ($serviceErrors) {
                 $settings['attrs']['disabled'] = 'disabled';
             }
             ?>
@@ -39,7 +44,7 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
                     <strong class="service-name"><?php echo $service->getName(); ?></strong>
                     <span class="service-description"><?php echo $service->getContent() ?></span>
                     <?php if ($service->getDuration()->format('H:i') != '00:00'): ?>
-                        <span class="service-duration">Duration: <?php echo $service->getDuration()->format(
+                        <span class="service-duration"><?php echo __('Duration', 'sln')?>: <?php echo $service->getDuration()->format(
                                 'H:i'
                             ) ?></span>
                     <?php endif ?>
@@ -52,14 +57,15 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 		<?php }	?>
         </div>
         <div class="clearfix"></div>
-        <?php if ($errors) : ?>
+        <?php if ($serviceErrors) : ?>
             <div class="alert alert-warning">
-                <?php foreach ($errors as $error): ?>
+                <?php foreach ($serviceErrors as $error): ?>
                     <p><?php echo $error ?></p>
                 <?php endforeach ?>
             </div>
         <?php endif ?>
 
+    <?php endforeach ?>
     <?php endforeach ?>
 	<?php if ($showPrices){ ?>
     <div class="row row-total">

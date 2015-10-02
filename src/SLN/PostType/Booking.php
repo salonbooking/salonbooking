@@ -65,6 +65,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 break;
             case 'booking_price' :
                 echo $this->getPlugin()->format()->money(get_post_meta($post_id, '_sln_booking_amount', true));
+                if(get_post_status($post_id) == SLN_Enum_BookingStatus::PAID &&  $deposit = get_post_meta($post_id, '_sln_booking_deposit', true))
+                    echo '(deposit '.$this->getPlugin()->format()->money($deposit).')';
                 break;
             case 'booking_attendant' :
                 if($attendant = $this->getPlugin()->createBooking($post_id)->getAttendant())
@@ -192,12 +194,27 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 $p->sendMail('mail/status_confirmed', compact('booking'));
             } elseif ($new_status == SLN_Enum_BookingStatus::CANCELED && $old_status != $new_status) {
                 $p->sendMail('mail/status_canceled', compact('booking'));
-            } elseif ($new_status == SLN_Enum_BookingStatus::PAID && $old_status != $new_status) {
+            } elseif (
+                 in_array($new_status, array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::PAY_LATER))
+                 && $old_status != $new_status
+            ) {
                 $p->sendMail('mail/summary', compact('booking'));
                 $p->sendMail('mail/summary_admin', compact('booking'));
-            } elseif ($new_status == SLN_Enum_BookingStatus::PAY_LATER && $old_status != $new_status) {
-                $p->sendMail('mail/summary', compact('booking'));
-                $p->sendMail('mail/summary_admin', compact('booking'));
+                if($p->getSettings()->get('sms_new')) {
+                    $phone = $p->getSettings()->get('sms_new_number');
+                    SLN_Enum_SmsProvider::getService(
+                        $p->getSettings()->get('sms_provider'),
+                        $this->getPlugin()
+                    )->send($phone, $p->loadView('sms/summary', compact('booking')));
+                }
+                if($p->getSettings()->get('sms_new_attendant') && $booking->getAttendant()){
+                    $phone = $booking->getAttendant()->getPhone();
+                    SLN_Enum_SmsProvider::getService(
+                        $p->getSettings()->get('sms_provider'),
+                        $this->getPlugin()
+                    )->send($phone, $p->loadView('sms/summary', compact('booking')));
+ 
+                }
             }
         }
     }

@@ -15,6 +15,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 'phone'     => get_user_meta($current_user->ID, '_sln_phone', true),
                 'address'     => get_user_meta($current_user->ID, '_sln_address', true)
             );
+                    $this->bindValues($values);
             if (!$ret) {
                 return false;
             }
@@ -33,9 +34,9 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 if (empty($values['phone'])) {
                     $this->addError(__('Mobile phone can\'t be empty', 'sln'));
                 }
-                if (empty($values['address'])) {
-                    $this->addError(__('Address can\'t be empty', 'sln'));
-                } 
+#                if (empty($values['address'])) {
+#                    $this->addError(__('Address can\'t be empty', 'sln'));
+#                } 
                 if (!filter_var($values['email'], FILTER_VALIDATE_EMAIL)) {
                     $this->addError(__('e-mail is not valid', 'sln'));
                 }

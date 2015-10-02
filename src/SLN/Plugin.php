@@ -5,6 +5,7 @@ class SLN_Plugin
     const POST_TYPE_SERVICE = 'sln_service';
     const POST_TYPE_ATTENDANT = 'sln_attendant';
     const POST_TYPE_BOOKING = 'sln_booking';
+    const TAXONOMY_SERVICE_CATEGORY = 'sln_service_category';
     const USER_ROLE_STAFF = 'sln_staff';
     const TEXT_DOMAIN = 'sln';
     const F = 'slnc';
@@ -46,6 +47,7 @@ class SLN_Plugin
         new SLN_PostType_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
         new SLN_PostType_Booking($this, self::POST_TYPE_BOOKING);
+        new SLN_TaxonomyType_ServiceCategory($this, self::TAXONOMY_SERVICE_CATEGORY, array(self::POST_TYPE_SERVICE) );
     }
 
     private function initAdmin()
@@ -75,7 +77,15 @@ class SLN_Plugin
             session_start(); 
         }
         load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME) . '/languages');
-        wp_enqueue_style('salon-bootstrap', SLN_PLUGIN_URL . '/css/sln-bootstrap.css', array(), SLN_VERSION, 'all');
+        $this->preloadFrontendScripts();
+        SLN_Shortcode_Salon::init($this);
+    }
+
+    private function preloadFrontendScripts(){
+        if(!$this->getSettings()->get('no_bootstrap')) {
+            wp_enqueue_style('salon-bootstrap', SLN_PLUGIN_URL . '/css/sln-bootstrap.css', array(), SLN_VERSION, 'all');
+        }
+
         wp_enqueue_style('salon', SLN_PLUGIN_URL . '/css/salon.css', array(), SLN_VERSION, 'all');
         //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
         //       wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.css', array(), SLN_VERSION, 'all');
@@ -95,7 +105,6 @@ class SLN_Plugin
                 'txt_validating' => __('checking availability')
             )
         );
-        SLN_Shortcode_Salon::init($this);
     }
 
     public function admin_enqueue_scripts()
@@ -246,8 +255,10 @@ class SLN_Plugin
                 return 'text/html';
             }
         }
+
         add_filter('wp_mail_content_type', 'sln_html_content_type');
-        wp_mail($settings['to'], $settings['subject'], $content);
+        $headers = 'From: '.$this->getSettings()->getSalonName().' <'.$this->getSettings()->getSalonEmail().'>' . "\r\n";
+        wp_mail($settings['to'], $settings['subject'], $content,$headers);
         remove_filter('wp_mail_content_type', 'sln_html_content_type');
     }
 
@@ -266,7 +277,7 @@ class SLN_Plugin
     public function getAvailabilityHelper()
     {
         if (!isset($this->availabilityHelper)) {
-            $this->availabilityHelper = new SLN_Helper_Availability($this->getSettings());
+            $this->availabilityHelper = new SLN_Helper_Availability($this);
         }
 
         return $this->availabilityHelper;
@@ -286,6 +297,10 @@ class SLN_Plugin
 
     public function ajax()
     {
+        if($timezone = get_option('timezone_string'))
+            date_default_timezone_set($timezone);
+
+
         //check_ajax_referer('ajax_post_validation', 'security');
         $method = $_REQUEST['method'];
         $className = 'SLN_Action_Ajax_' . ucwords($method);

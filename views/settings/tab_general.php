@@ -111,6 +111,40 @@
         </div>
     </div>
     <div class="sln-separator"></div>
+            <div class="row">
+                <div class="clearfix"></div>
+                <div class="col-md-6">
+                    <?php $this->row_input_checkbox('sms_new', __('Send SMS on new bookings', 'sln')); ?>
+                    <?php $this->row_input_text('sms_new_number', __('Number', 'sln')); ?>
+                    <?php $this->row_input_checkbox('sms_new_attendant', __('Send SMS to attendant on new bookings', 'sln')); ?>
+                </div>
+                <div class="col-md-6">
+                    <?php $this->row_input_checkbox('sms_remind', __('Reminde the appointment via SMS', 'sln')); ?>
+                    <?php _e('From', 'sln') ?>
+                    <?php $field = "salon_settings[sms_remind_interval]"; ?>
+                    <?php echo SLN_Form::fieldSelect(
+                        $field,
+                        SLN_Func::getIntervalItemsShort(),
+                        $this->getOpt('sms_remind_interval'),
+                        array(),
+                        true
+                    ) ?>
+
+                </div>
+            </div>
+    <div class="sln-separator"></div>
+            <h3>Send a test sms</h3>
+            <p>Just write here and save settings</p>
+            <div class="row">
+                <div class="clearfix"></div>
+                <div class="col-md-6">
+                    <?php $this->row_input_text('sms_test_number', __('Number', 'sln')); ?>
+                </div>
+                <div class="col-md-6">
+                    <?php $this->row_input_text('sms_test_message', __('Message', 'sln')); ?>
+                </div>
+            </div>
+    <div class="sln-separator"></div>
 
     <div class="row">
         <div class="col-md-10"><h3>Social</h3></div>
@@ -122,6 +156,34 @@
         </div>
         <div class="col-md-3 col-sm-4">
             <?php $this->row_input_text('soc_google', __('Google+', 'sln')); ?>
+        </div>
+    </div>
+<br/>
+    <div class="row">
+        <div class="col-md-3 col-sm-4">
+            <label>        <?php _e('Date Format', 'sln') ?></label>
+            <?php $field = "salon_settings[date_format]"; ?>
+            <?php echo SLN_Form::fieldSelect(
+                $field,
+                SLN_Enum_DateFormat::toArray(),
+                $this->getOpt('date_format'),
+                array(),
+                true
+            ) ?>
+        </div>
+        <div class="col-md-3 col-sm-4">
+            <label>        <?php _e('Time Format', 'sln') ?></label>
+            <?php $field = "salon_settings[time_format]"; ?>
+            <?php echo SLN_Form::fieldSelect(
+                $field,
+                SLN_Enum_TimeFormat::toArray(),
+                $this->getOpt('time_format'),
+                array(),
+                true
+            ) ?>
+        </div>
+        <div class="col-md-3 col-sm-4">
+            <?php $this->row_input_checkbox('no_bootstrap', __('Hide Bootstrap CSS', 'sln')); ?>
         </div>
     </div>
 </div>
