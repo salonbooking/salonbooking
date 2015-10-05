@@ -18,8 +18,8 @@ class SLN_Helper_HoursBefore
 
 
         $this->settings = $settings;
-        $this->from     = $this->settings->get('hours_before_from');
-        $this->to       = $this->settings->get('hours_before_to');
+        $this->from     = $this->settings->getHoursBeforeFrom();
+        $this->to       = $this->settings->getHoursBeforeTo();
 
         $txt = SLN_Func::getIntervalItems();
         if ($this->from) {

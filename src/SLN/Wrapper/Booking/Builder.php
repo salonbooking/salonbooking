@@ -52,7 +52,7 @@ class SLN_Wrapper_Booking_Builder
 
     protected function getEmptyValue()
     {
-        $from = $this->plugin->getSettings()->get('hours_before_from');
+        $from = $this->plugin->getSettings()->getHoursBeforeFrom();
         $d = new SLN_DateTime(date('Y-m-d H:i:00'));
         $d->modify($from);
         $tmp = $d->format('i');

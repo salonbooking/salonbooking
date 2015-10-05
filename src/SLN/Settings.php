@@ -112,4 +112,15 @@ class SLN_Settings
         return $ret;
  
     }
+
+    public function getHoursBeforeFrom(){
+        $ret = $this->get('hours_before_from')
+        return $ret ? $ret : '+1 day';
+    }
+
+    public function getHoursBeforeTo(){
+        $ret = $this->get('hours_before_to')
+        return $ret ? $ret : '+1 month';
+    }
+
 }
