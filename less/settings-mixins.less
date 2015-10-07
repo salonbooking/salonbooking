@@ -19,6 +19,7 @@
 @ca-grey: #ebebeb;
 @ca-blue: #428bca;
 
+@font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
 
 
 @phone:      ~"only screen and (max-width: 767px)";
@@ -100,6 +101,13 @@
   -moz-transition: all @speed ease-in-out;
   -o-transition: all @speed ease-in-out;
   transition: all @speed ease-in-out;
+}
+.transform(@prop...) {
+  -webkit-transform: @prop;
+  -moz-transform: @prop;
+  -ms-transform: @prop;
+  -o-transform: @prop;
+  transform: @prop;
 }
 .zDepth-1 {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
