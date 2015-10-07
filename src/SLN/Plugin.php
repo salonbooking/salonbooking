@@ -44,7 +44,7 @@ class SLN_Plugin
         add_action('admin_init', array($this, 'add_admin_caps'));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
 
-        add_action('sln_sms_reminder', array('SLN_Action_Remind', 'execute'));
+        add_action('sln_sms_reminder', 'sln_sms_reminder');
         register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
         new SLN_PostType_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
@@ -331,4 +331,8 @@ class SLN_Plugin
         if(self::DEBUG_ENABLED)
             file_put_contents(SLN_PLUGIN_DIR.'/log.txt', '['.date('Y-m-d H:i:s').'] '.$txt."\r\n", FILE_APPEND | LOCK_EX);
     }
+}
+function sln_sms_reminder(){
+    $obj = new SLN_Action_Reminder();
+    $obj->execute();
 }
