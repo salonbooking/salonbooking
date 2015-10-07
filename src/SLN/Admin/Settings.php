@@ -173,6 +173,10 @@ class SLN_Admin_Settings
 		if(isset($_POST['salon_settings']['hide_prices'])){
 			$this->settings->set('pay_enabled','');
 		}
+        wp_clear_scheduled_hook('sln_sms_reminder');
+        if($_POST['salon_setttings']['sms_remind']){
+            wp_schedule_event(time(), 'hourly', 'sln_sms_reminder');
+        }
         $this->settings->save();
         $this->showAlert(
             'success',

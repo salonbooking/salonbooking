@@ -43,6 +43,8 @@ class SLN_Plugin
         add_action('init', array($this, 'action_init'));
         add_action('admin_init', array($this, 'add_admin_caps'));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
+
+        add_action('sln_sms_reminder', array('SLN_Action_Remind', 'execute'));
         register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
         new SLN_PostType_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);

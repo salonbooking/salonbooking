@@ -197,4 +197,21 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $start->modify('+'.$minutes.' minutes');
         return $start;
     }
+
+    function getRemind()
+    {
+        $post_id = $this->getId();
+
+        return apply_filters('sln_booking_remind', get_post_meta($post_id, '_sln_booking_remind', true));
+    }
+
+    function setRemind($remind)
+    {
+        $post_id = $this->getId();
+
+        update_post_meta($post_id, '_sln_booking_remind', $remind);
+    }
+
+
+
 }
