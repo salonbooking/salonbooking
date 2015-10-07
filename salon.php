@@ -2,7 +2,7 @@
 /*
 Plugin Name: Salon Booking Wordpress Plugin - Free Version
 Description: Let your customers book you services through your website. Perfect for hairdressing salons, barber shops and beauty centers.
-Version: 1.1.0
+Version: 1.2.0
 Plugin URI: http://salon.wpchef.it/
 Author: Wordpress Chef / Plugins 
 Author URI: http://plugins.wpchef.it/
@@ -13,7 +13,7 @@ Text Domain: sln
 define('SLN_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('SLN_PLUGIN_DIR', untrailingslashit(dirname(__FILE__)));
 define('SLN_PLUGIN_URL', untrailingslashit(plugins_url('', __FILE__)));
-define('SLN_VERSION', '1.1.0');
+define('SLN_VERSION', '1.2.0');
 
 function sln_autoload($className)
 {
@@ -24,7 +24,7 @@ function sln_autoload($className)
 
 
 function my_update_notice() {
-	$info = __( 'ATTENTION! Back-up your translations files before update.', 'sln' );
+	$info = __( 'ATTENTION! New text strings has been added up-date your translations files.', 'sln' );
 	echo '<span class="spam">' . strip_tags( $info, '<br><a><b><i><span>' ) . '</span>';
 }
 

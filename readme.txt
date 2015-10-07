@@ -1,9 +1,9 @@
 === Salon booking system ===
 Contributors: wordpresschef
-Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, paypal appointament, appointament calendar, booking software, reservation plugin, booking engine
+Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, paypal appointament, appointament calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.3
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,9 @@ Salon booking  is the best solution for:
 * Barber shop
 * Beauty salons
 * Spas 
+* Machine shop
+* Therapists
+
 
 and all that kind of businesses that want to offer a quality online booking service to their clients.
 
@@ -38,9 +41,17 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 
 BRAND NEW: 
 
-*Custom date format
+*SMS Booking notifications
+*SMS Booking reminder
+*SMS Notification to selected assistant
+
+*Pay a deposit
+*Group services by category
+
 
 **EXISTING FEATURES**:
+
+*Custom date format
 
 *Advanced booking algorytm - calculate the sum of the duration of the services booked
 
@@ -159,6 +170,7 @@ Languages available:
 *German
 *French
 *Italian
+*Dutch
 
  
 = Are there any conflicts with other plugins? =
@@ -173,7 +185,7 @@ Every front-end element of the booking process has its own css class, so you can
 
 = What is the limit of the free version? =
 
-You can accept up to 30 reservations
+You can accept up to 30 reservations. No time limits.
 
 = What happen when plugin free version reach its booking limit? =
 
@@ -200,6 +212,13 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 
 == Changelog ==
+
+1.2.0 05/10/2015
+
+*minor front-end redesign
+*Unit per hour bug fix
+*AM/PM time picker fix
+* other minor bug fix
 
 
 1.1.0 15/09/2015
