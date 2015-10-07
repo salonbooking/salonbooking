@@ -12,10 +12,12 @@ class SLN_Action_Reminder
         $this->plugin = SLN_Plugin::getInstance();
         $remind = $this->plugin->getSettings()->get('sms_remind');
         if($remind){
+            $this->plugin->addLog('reminder execution');
             $this->dispatchAdvice();
+            $this->plugin->addLog('reminder execution ended');
         }
-        return array('status' => 'OK');
     }
+
     private function dispatchAdvice(){
         $plugin = $this->plugin;
         $interval = $plugin->getSettings()->get('sms_remind_interval');
@@ -43,9 +45,10 @@ class SLN_Action_Reminder
             $booking = $plugin->createBooking($p);
             $d = $booking->getStartsAt();
             if($d >= $now && $d <= $date){
-                if(!$booking->getReminded()){
+                if(!$booking->getRemind()){
+                    $this->plugin->addLog('reminder sent to '.$booking->getId());
                     $smsProvider->send($booking->getPhone(), $plugin->loadView('sms/remind', compact('booking'))); 
-                    $booking->setReminded(true);
+                    $booking->setRemind(true);
                 }
             }
         }
