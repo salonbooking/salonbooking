@@ -166,25 +166,18 @@ class SLN_Func
     public static function getIntervalItemsShort()
     {
         return array(
-            '+10 minutes' => '10 '.__('minutes', 'sln'),
-            '+20 minutes' => '20 '.__('minutes', 'sln'),
-            '+30 minutes' => '30 '.__('minutes', 'sln'),
-            '+45 minutes' => '45 '.__('minutes', 'sln'),
+//            '+10 minutes' => '10 '.__('minutes', 'sln'),
+//            '+20 minutes' => '20 '.__('minutes', 'sln'),
+//            '+30 minutes' => '30 '.__('minutes', 'sln'),
+//            '+45 minutes' => '45 '.__('minutes', 'sln'),
             '+1 hour'     => '1 ' . __('hour', 'sln'),
             '+2 hours'    => '2 ' . __('hours', 'sln'),
             '+3 hours'    => '3 ' . __('hours', 'sln'),
             '+4 hours'    => '4 ' . __('hours', 'sln'),
-        );
-
-        return array(
-            'PT10M' => 'half hour',
-            'PT20M' => 'half hour',
-            'PT30M' => 'half hour',
-            'PT45M' => 'half hour',
-            'PT1H'  => '1 hour',
-            'PT2H'  => '2 hours',
-            'PT3H'  => '3 hours',
-            'PT4H'  => '4 hours',
+            '+6 hours'    => '6 ' . __('hours', 'sln'),
+            '+12 hours'    => '12 ' . __('hours', 'sln'),
+            '+24 hours'    => '24 ' . __('hours', 'sln'),
+            '+48 hours'    => '48 ' . __('hours', 'sln'),
         );
     }
 
