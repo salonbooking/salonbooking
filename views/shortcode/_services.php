@@ -74,7 +74,6 @@ $grouped = SLN_Func::groupServicesByCategory($services);
     </div>
     <!-- panel END -->
     <?php endforeach ?>
-    <?php endforeach ?>
 	<?php if ($showPrices){ ?>
     <div class="row row-total">
         <div class="col-lg-9 col-xs-8 services-total-label"><?php _e('Subtotal', 'sln') ?></div>
