@@ -58,6 +58,16 @@ class SLN_Admin_Settings {
         </div>
         <?php
     }
+    
+    function row_checkbox_text($key, $label, $settings = array()) {
+        ?>
+        <div class="form-group">
+            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
+        <?php echo SLN_Form::fieldCheckbox("salon_settings[$key]", $this->getOpt($key)) ?>
+            <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
+        </div>
+        <?php
+    }
 
     /**
      * select_text
@@ -294,12 +304,15 @@ class SLN_Admin_Settings {
 
     public function processTabGcalendar() {
         $gcalendar_array = array(
+            'google_calendar_enabled',
             'google_outh2_client_id',
             'google_outh2_client_secret',
             'google_outh2_redirect_uri',
             'google_client_calendar'
         );
+        
         foreach ($gcalendar_array as $k) {
+            $old_value[$k] = $this->settings->get($k);
             $data = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
             $this->settings->set($k, $data);
         }
@@ -310,11 +323,9 @@ class SLN_Admin_Settings {
             $k = str_replace('google_', '', $k);
             $params[$k] = $v;
         }
-
-        if (isset($_SESSION['stop_asking'])) {
-            unset($_SESSION['stop_asking']);
-            header("Location: ".admin_url("admin.php?page=salon&tab=gcalendar"));
-        }
+        
+        if ($old_value['google_calendar_enabled']!=$this->settings->get('google_calendar_enabled'))
+            header("Location: " . admin_url('admin.php?page=salon-settings&tab=gcalendar'));
         
         $this->showAlert(
                 'success', __('Google Calendar settings are updated', 'sln'), __('Update completed with success', 'sln')

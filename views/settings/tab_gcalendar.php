@@ -1,6 +1,12 @@
 <div class="sln-tab" id="sln-tab-general">
     <div class="row">
         <div class="col-md-10"><h3>Google Calendar</h3></div>
+        <div class="col-md-3 col-sm-4">           
+            <?php $this->row_checkbox_text('google_calendar_enabled', __('Abilita', 'sln')); ?>
+        </div>
+        
+        <div class="sln-separator"></div>
+        
         <div class="col-md-3 col-sm-4">
             <?php $this->row_input_text('google_outh2_client_id', __('Google Client ID', 'sln')); ?>
         </div>
@@ -17,9 +23,7 @@
             </script>
         </div>
 
-        <div class="clearfix"></div>
-
-        <div class="sln-separator"></div>
+        <div class="clearfix"></div>       
 
         <div class="col-md-3 col-sm-4">
             <?php            

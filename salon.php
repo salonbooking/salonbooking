@@ -37,7 +37,7 @@ $sln_plugin = SLN_Plugin::getInstance();
 require_once SLN_PLUGIN_DIR . "/src/SLN/Third/GoogleScope.php";
 $sln_googlescope = new SLN_GoogleScope();
 $GLOBALS['sln_googlescope'] = $sln_googlescope;
-$sln_googlescope->set_settings_by_plugin($sln_plugin);
+$sln_googlescope->set_settings_by_plugin(SLN_Plugin::getInstance());
 $sln_googlescope->wp_init();
 
 ob_start();

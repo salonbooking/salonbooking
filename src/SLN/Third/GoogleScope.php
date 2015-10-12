@@ -8,6 +8,36 @@ function _pre($m) {
     echo "</pre>";
 }
 
+function sln_my_wp_log($message, $file = null, $level = 1) {
+    // full path to log file
+    if ($file == null) {
+        $file = 'debug.log';
+    }
+
+    $file = SLN_PLUGIN_DIR . DIRECTORY_SEPARATOR . "src/SLN/Third/" . $file;
+
+    /* backtrace */
+    $bTrace = debug_backtrace(); // assoc array
+
+    /* Build the string containing the complete log line. */
+    $line = PHP_EOL . sprintf('[%s, <%s>, (%d)]==> %s', date("Y/m/d h:i:s" /* ,time() */), basename($bTrace[0]['file']), $bTrace[0]['line'], print_r($message, true));
+
+    if ($level > 1) {
+        $i = 0;
+        $line.=PHP_EOL . sprintf('Call Stack : ');
+        while (++$i < $level && isset($bTrace[$i])) {
+            $line.=PHP_EOL . sprintf("\tfile: %s, function: %s, line: %d" . PHP_EOL . "\targs : %s", isset($bTrace[$i]['file']) ? basename($bTrace[$i]['file']) : '(same as previous)', isset($bTrace[$i]['function']) ? $bTrace[$i]['function'] : '(anonymous)', isset($bTrace[$i]['line']) ? $bTrace[$i]['line'] : 'UNKNOWN', print_r($bTrace[$i]['args'], true));
+        }
+        $line.=PHP_EOL . sprintf('End Call Stack') . PHP_EOL;
+    }
+    // log to file
+    file_put_contents($file, $line, FILE_APPEND);
+
+    return true;
+}
+
+sln_my_wp_log("init googlescope class");
+
 //Add to htaccess RewriteRule ^wp-admin/salon-settings/(.*)/$ /wp-admin/admin.php?page=salon-settings&tab=$1 [L]
 
 require SLN_PLUGIN_DIR . '/src/SLN/Third/google-api-php-client/src/Google/autoload.php';
@@ -24,6 +54,8 @@ class SLN_GoogleScope {
     public $outh2_client_id = "102246196260-hjpu1fs2rh5b9mesa9l5urelno396vc0.apps.googleusercontent.com";
     public $outh2_client_secret = "AJzLfWtRDz53JLT5fYp5gLqZ";
     public $outh2_redirect_uri;
+    public $google_calendar_enabled = false;
+    public $google_client_calendar;
     public $client;
     public $service;
     public $settings;
@@ -43,16 +75,19 @@ class SLN_GoogleScope {
      * @param type $plugin
      */
     public function wp_init() {
+        $this->google_calendar_enabled = $this->settings->get('google_calendar_enabled');
+        $this->google_client_calendar = $this->settings->get('google_client_calendar');
+
         if (isset($this->settings)) {
             $this->outh2_client_id = $this->settings->get('google_outh2_client_id');
             $this->outh2_client_secret = $this->settings->get('google_outh2_client_secret');
             $this->outh2_redirect_uri = $this->settings->get('google_outh2_redirect_uri');
-            if (
-                    !empty($this->outh2_client_id) &&
+            if ($this->google_calendar_enabled &&
+                    (!empty($this->outh2_client_id) &&
                     !empty($this->outh2_client_secret) &&
-                    !empty($this->outh2_redirect_uri)
+                    !empty($this->outh2_redirect_uri))
             ) {
-                $this->start_auth();
+                $this->start_auth(!$this->google_calendar_enabled);
             }
         }
     }
@@ -60,13 +95,13 @@ class SLN_GoogleScope {
     /**
      * start_auth
      */
-    public function start_auth() {
+    public function start_auth($force_revoke_token = false) {
         $access_token = (isset($_SESSION['access_token']) && !empty($_SESSION['access_token']));
         if (!isset($access_token) || empty($access_token)) {
             $access_token = $this->settings->get('sln_access_token');
         }
         if (isset($access_token) && !empty($access_token)) {
-            if ((isset($_GET['revoketoken']) && $_GET['revoketoken'] == 1)/* || $client->isAccessTokenExpired() */) {
+            if ($force_revoke_token || (isset($_GET['revoketoken']) && $_GET['revoketoken'] == 1)/* || $client->isAccessTokenExpired() */) {
                 $res = wp_remote_get("https://accounts.google.com/o/oauth2/revoke?token={$access_token}");
                 $this->settings->set('sln_access_token', '');
                 $this->settings->save();
@@ -86,7 +121,7 @@ class SLN_GoogleScope {
             $this->client = $client;
             $this->service = $this->get_google_service();
         } else {
-            $loginUrl = 'https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=' . $this->outh2_client_id . '&redirect_uri=' . $this->outh2_redirect_uri . '&scope=' . $this->scopes . '&login_hint=magikboo23@gmail.com&access_type=offline&approval_prompt=force';
+            $loginUrl = 'https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=' . $this->outh2_client_id . '&redirect_uri=' . $this->outh2_redirect_uri . '&scope=' . $this->scopes . '&&access_type=offline&approval_prompt=force';
             header("Location: " . $loginUrl);
         }
     }
@@ -119,7 +154,7 @@ class SLN_GoogleScope {
                 die();
             }
 
-            if (isset($oauth_response['access_token'])) {                
+            if (isset($oauth_response['access_token'])) {
                 //refresh_token is present with only login setting approval_prompt=force
                 $oauth_refresh_token = $oauth_response['refresh_token'];
                 $oauth_token_type = $oauth_response['token_type'];
@@ -259,7 +294,7 @@ class SLN_GoogleScope {
         //$dateTimeS = gtime(set_data($date_start), $time_start);
         //$dateTimeS = date(DATE_ATOM, strtotime($date_start . " " . $time_start));
         $str_date = strtotime($date_start . " " . $time_start);
-        $dateTimeS = $this->date3339($str_date, $this->date_offset);
+        $dateTimeS = self::date3339($str_date, $this->date_offset);
 
         $start->setDateTime($dateTimeS);
         $event->setStart($start);
@@ -267,7 +302,7 @@ class SLN_GoogleScope {
         //$dateTimeE = gtime(set_data($date_end), $time_end);
         //$dateTimeE = date(DATE_ATOM, strtotime($date_end . " " . $time_end));
         $str_date = strtotime($date_end . " " . $time_end);
-        $dateTimeE = $this->date3339($str_date, $this->date_offset);
+        $dateTimeE = self::date3339($str_date, $this->date_offset);
 
         $end->setDateTime($dateTimeE);
         $event->setEnd($end);
@@ -339,7 +374,7 @@ class SLN_GoogleScope {
         //$dateTimeS = gtime(set_data($date_start), $time_start);
         //$dateTimeS = date(DATE_ATOM, strtotime($date_start . " " . $time_start));
         $str_date = strtotime($date_start . " " . $time_start);
-        $dateTimeS = $this->date3339($str_date, $this->date_offset);
+        $dateTimeS = self::date3339($str_date, $this->date_offset);
 
         $start->setDateTime($dateTimeS);
         $event->setStart($start);
@@ -347,7 +382,7 @@ class SLN_GoogleScope {
         //$dateTimeE = gtime(set_data($date_end), $time_end);
         //$dateTimeE = date(DATE_ATOM, strtotime($date_end . " " . $time_end));
         $str_date = strtotime($date_end . " " . $time_end);
-        $dateTimeE = $this->date3339($str_date, $this->date_offset);
+        $dateTimeE = self::date3339($str_date, $this->date_offset);
 
         $end->setDateTime($dateTimeE);
         $event->setEnd($end);
@@ -414,7 +449,7 @@ class SLN_GoogleScope {
      * @param type $offset
      * @return string
      */
-    public function date3339($timestamp = 0, $offset = 0) {
+    public static function date3339($timestamp = 0, $offset = 0) {
         if (!$timestamp)
             return "error";
         $date = date('Y-m-d\TH:i:s', $timestamp);
@@ -422,7 +457,80 @@ class SLN_GoogleScope {
         return $date;
     }
 
+    /**
+     * create_event_from_booking
+     * @param type $booking
+     * @return type
+     */
+    public function create_event_from_booking($booking) {
+        if (!$this->is_connected()) return;
+        
+        $gc_event = new SLN_GoogleCalendarEventFactory();
+        $event = $gc_event->get_event($booking);
+        
+        $attendee1 = new Google_Service_Calendar_EventAttendee();
+        $attendee1->setEmail($this->google_client_calendar);
+        $attendees = array($attendee1);
+
+        $event->attendees = $attendees;
+        $createdEvent = $this->service->events->insert($this->google_client_calendar, $event);
+
+        return $createdEvent->getId();
+    }
+
 }
+
+class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
+
+    public function get_event($booking) {
+        $event = new Google_Service_Calendar_Event();
+        $event->setSummary($booking->getTitle());
+        $event->setDescription($booking->getNote()." ".$booking->getPhone());
+        $event->setLocation($booking->getAddress());
+
+        $start = new Google_Service_Calendar_EventDateTime();
+        $str_date = strtotime($booking->getStartsAt()->format('Y-m-d H:i:s'));
+        $dateTimeS = SLN_GoogleScope::date3339($str_date);
+        $start->setDateTime($dateTimeS);
+        
+        $event->setStart($start);
+
+        $end = new Google_Service_Calendar_EventDateTime();
+        $str_date = strtotime($booking->getEndsAt()->format('Y-m-d H:i:s'));
+        $dateTimeE = SLN_GoogleScope::date3339($str_date);
+
+        $end->setDateTime($dateTimeE);
+
+        $event->setEnd($end);
+
+        return $event;
+    }
+
+}
+
+function test_booking($post_id, $post) {
+    sln_my_wp_log("save_post => test_booking");
+    sln_my_wp_log($post);
+    // Make sure the post obj is present and complete. If not, bail.
+    if (!is_object($post) || !isset($post->post_type)) {
+        return;
+    }
+
+    switch ($post->post_type) { // Do different things based on the post type
+        case "sln_booking":
+            sln_my_wp_log($post);
+            $booking = new SLN_Wrapper_Booking($post);
+            sln_my_wp_log($booking);
+            $ret = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
+            sln_my_wp_log($ret);
+            break;
+
+        default:
+            break;
+    }
+}
+
+add_action('save_post', 'test_booking', 1, 2);
 
 //SLN_GoogleScope::init();
 //echo "-->".SLN_GoogleScope::$outh2_client_id;
