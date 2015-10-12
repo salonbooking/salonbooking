@@ -3,7 +3,7 @@
 /*
   Plugin Name: Salon Booking Wordpress Plugin - Free Version
   Description: Let your customers book you services through your website. Perfect for hairdressing salons, barber shops and beauty centers.
-  Version: 1.1.0
+  Version: 1.1.0F
   Plugin URI: http://salon.wpchef.it/
   Author: Wordpress Chef / Plugins
   Author URI: http://plugins.wpchef.it/
@@ -35,12 +35,10 @@ $sln_plugin = SLN_Plugin::getInstance();
 
 //TODO[feature-gcalendar]: move this require in the right place
 require_once SLN_PLUGIN_DIR . "/src/SLN/Third/GoogleScope.php";
-SLN_GoogleScope::set_settings_by_plugin($sln_plugin);
-if (is_admin() && !isset($_GET['error']) && !isset($_SESSION['stop_asking'])) {
-    SLN_GoogleScope::wp_init();
-} else {
-    $_SESSION['stop_asking'] = true;
-}
+$sln_googlescope = new SLN_GoogleScope();
+$GLOBALS['sln_googlescope'] = $sln_googlescope;
+$sln_googlescope->set_settings_by_plugin($sln_plugin);
+$sln_googlescope->wp_init();
 
 ob_start();
 

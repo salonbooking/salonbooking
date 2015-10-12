@@ -11,7 +11,7 @@
             <?php $this->row_input_text('google_outh2_redirect_uri', __('Redirect URI', 'sln')); ?>
             <script>
                 jQuery(document).ready(function () {
-                    jQuery("#salon_settings_google_outh2_redirect_uri").val('<?php echo admin_url('/'); ?>');
+                    jQuery("#salon_settings_google_outh2_redirect_uri").val('<?php echo admin_url('admin-ajax.php?action=googleoauth-callback'); ?>');
                     jQuery("#salon_settings_google_outh2_redirect_uri").prop('readonly', true);
                 });
             </script>
@@ -22,8 +22,8 @@
         <div class="sln-separator"></div>
 
         <div class="col-md-3 col-sm-4">
-            <?php
-            $_calendar_list = SLN_GoogleScope::get_calendar_list();
+            <?php            
+            $_calendar_list = $GLOBALS['sln_googlescope']->get_calendar_list();
             if (isset($_calendar_list) && !empty($_calendar_list)) {
                 $this->select_text('google_client_calendar', __('Calendario', 'sln'), $_calendar_list);
             } else
