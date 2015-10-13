@@ -4,9 +4,9 @@
         <div class="col-md-3 col-sm-4">           
             <?php $this->row_checkbox_text('google_calendar_enabled', __('Abilita', 'sln')); ?>
         </div>
-        
+
         <div class="sln-separator"></div>
-        
+
         <div class="col-md-3 col-sm-4">
             <?php $this->row_input_text('google_outh2_client_id', __('Google Client ID', 'sln')); ?>
         </div>
@@ -26,8 +26,16 @@
         <div class="clearfix"></div>       
 
         <div class="col-md-3 col-sm-4">
-            <?php            
-            $_calendar_list = $GLOBALS['sln_googlescope']->get_calendar_list();
+            <?php
+            try {
+                $_calendar_list = $GLOBALS['sln_googlescope']->get_calendar_list();
+            } catch (Exception $e) {
+                $err = $e->getErrors();
+                if (isset($err)) {
+                    $messages = $e->getErrors();
+                    if (isset($messages[0]['message'])) echo "<p>".$messages[0]['message']."</p>";
+                }
+            }
             if (isset($_calendar_list) && !empty($_calendar_list)) {
                 $this->select_text('google_client_calendar', __('Calendario', 'sln'), $_calendar_list);
             } else
