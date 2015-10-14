@@ -36,8 +36,6 @@ function sln_my_wp_log($message, $file = null, $level = 1) {
     return true;
 }
 
-sln_my_wp_log("init googlescope class");
-
 //Add to htaccess RewriteRule ^wp-admin/salon-settings/(.*)/$ /wp-admin/admin.php?page=salon-settings&tab=$1 [L]
 //if (!file_exists(SLN_PLUGIN_DIR . '/src/SLN/Third/google-api-php-client/src/Google/autoload.php')) die('error');
 require SLN_PLUGIN_DIR . '/src/SLN/Third/google-api-php-client/src/Google/autoload.php';
@@ -258,6 +256,8 @@ class SLN_GoogleScope {
 
             $calendarList = $this->service->calendarList->listCalendarList();
             $cal_list = array();
+            $cal_list['']['id'] = 0;
+            $cal_list['']['label'] = __("Scegli tra i tuoi calendari", 'sln');
             while (true) {
                 foreach ($calendarList->getItems() as $calendarListEntry) {
                     if (!isset($cal_list[$calendarListEntry->getId()]))
@@ -396,6 +396,7 @@ class SLN_GoogleScope {
 
         $end->setDateTime($dateTimeE);
         $event->setEnd($end);
+
         $attendee1 = new Google_Service_Calendar_EventAttendee();
         $attendee1->setEmail($email); //change this
         $attendees = array($attendee1);
@@ -489,14 +490,55 @@ class SLN_GoogleScope {
         return $createdEvent->getId();
     }
 
+    /**
+     * create_event_from_booking
+     * @param type $booking
+     * @return type
+     */
+    public function update_event_from_booking($booking, $b_event_id) {
+        if (!$this->is_connected())
+            return;
+
+        $rule = $this->service->events->get($this->google_client_calendar, $b_event_id);
+
+        $gc_event = new SLN_GoogleCalendarEventFactory();
+        $event = $gc_event->get_event($booking);
+
+        $attendee1 = new Google_Service_Calendar_EventAttendee();
+        $attendee1->setEmail($this->google_client_calendar); //change this
+
+        $attendees = array($attendee1);
+        $event->attendees = $attendees;
+
+        $updatedRule = $this->service->events->update($this->google_client_calendar, $rule->getId(), $event);
+
+        return $updatedRule->getId();
+    }
+
 }
 
 class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
 
     public function get_event($booking) {
+        //Name and Phone
+        $desc .= $booking->getDisplayName() . " - ";
+        $desc .= $booking->getPhone() . " \n\r";
+        //Services
+        $services = $booking->getServices();
+        foreach ($services as $service) {
+            $desc .= "\n\r";
+            $desc .= $service->getName();
+            $desc .= " - ";
+            $desc .= $service->getContent();
+        }
+        $dec .= "\n\rNote:\n\r" . $booking->getNote();
+        $dec .= "\n\r" . $booking->getAttendant();
+        $dec .= "\n\r<a href='" . get_permalink($booking->getId()) ."'>Link</a>";
+
+
         $event = new Google_Service_Calendar_Event();
         $event->setSummary($booking->getTitle());
-        $event->setDescription($booking->getNote() . " " . $booking->getPhone());
+        $event->setDescription($desc);
         $event->setLocation($booking->getAddress());
 
         $start = new Google_Service_Calendar_EventDateTime();
@@ -520,8 +562,6 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
 }
 
 function test_booking($post_id, $post) {
-    sln_my_wp_log("save_post => test_booking");
-    sln_my_wp_log($post);
     // Make sure the post obj is present and complete. If not, bail.
     if (!is_object($post) || !isset($post->post_type)) {
         return;
@@ -529,11 +569,20 @@ function test_booking($post_id, $post) {
 
     switch ($post->post_type) { // Do different things based on the post type
         case "sln_booking":
-            sln_my_wp_log($post);
             $booking = new SLN_Wrapper_Booking($post);
-            sln_my_wp_log($booking);
-            $ret = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
-            sln_my_wp_log($ret);
+
+            $b_event_id = get_post_meta($booking->getId(), '_sln_calenda_event_id', true);
+            sln_my_wp_log($b_event_id);
+            if (isset($b_event_id) && !empty($b_event_id)) {
+                sln_my_wp_log("update");
+                $event_id = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $b_event_id);
+            } else {
+                sln_my_wp_log("create");
+                $event_id = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
+            }
+            sln_my_wp_log($event_id);
+            update_post_meta($booking->getId(), '_sln_calenda_event_id', $event_id);
+
             break;
 
         default:
@@ -542,6 +591,10 @@ function test_booking($post_id, $post) {
 }
 
 add_action('save_post', 'test_booking', 1, 2);
+
+/*
+ * aggiungere in Metabox/Booking.php - getFieldList => '_sln_calenda_event_id' => ''
+ */
 
 //SLN_GoogleScope::init();
 //echo "-->".SLN_GoogleScope::$outh2_client_id;

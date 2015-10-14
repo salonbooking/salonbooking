@@ -187,7 +187,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
                 $p->sendMail('mail/summary_admin', compact('booking'));
             }
             
-            $ret = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
+            //$ret = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
         }
     }
 
