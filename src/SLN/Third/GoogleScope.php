@@ -520,21 +520,23 @@ class SLN_GoogleScope {
 class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
 
     public function get_event($booking) {
+        $desc = "";
         //Name and Phone
-        $desc .= $booking->getDisplayName() . " - ";
+        $desc .= "Cliente: ".$booking->getDisplayName() . " - ";
         $desc .= $booking->getPhone() . " \n\r";
         //Services
         $services = $booking->getServices();
+        $desc .= "\n\rServizi:";
         foreach ($services as $service) {
             $desc .= "\n\r";
             $desc .= $service->getName();
             $desc .= " - ";
             $desc .= $service->getContent();
         }
-        $dec .= "\n\rNote:\n\r" . $booking->getNote();
-        $dec .= "\n\r" . $booking->getAttendant();
-        $dec .= "\n\r<a href='" . get_permalink($booking->getId()) ."'>Link</a>";
-
+        $desc .= "\n\rNote:\n\r" . $booking->getNote();
+        $desc .= "\n\rAttendant:: " . $booking->getAttendant();
+        $desc .= "\n\rStato: " . $booking->getStatus();
+        $desc .= "\n\rLink prenotazione: <a href='" . get_permalink($booking->getId()) ."'>Link</a>";
 
         $event = new Google_Service_Calendar_Event();
         $event->setSummary($booking->getTitle());
