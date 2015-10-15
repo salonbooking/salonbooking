@@ -410,6 +410,9 @@ class SLN_GoogleScope {
      * get_list_event return all the event for primary calendar
      */
     public function get_list_event($calId = 'primary') {
+        if (!$this->is_connected())
+            return;
+
         $events = $this->service->events->listEvents($calId);
         while (true) {
             foreach ($events->getItems() as $event) {
@@ -501,6 +504,9 @@ class SLN_GoogleScope {
 
         $rule = $this->service->events->get($this->google_client_calendar, $b_event_id);
 
+        sln_my_wp_log("rule");
+        sln_my_wp_log($rule);
+
         $gc_event = new SLN_GoogleCalendarEventFactory();
         $event = $gc_event->get_event($booking);
 
@@ -522,21 +528,20 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
     public function get_event($booking) {
         $desc = "";
         //Name and Phone
-        $desc .= "Cliente: ".$booking->getDisplayName() . " - ";
-        $desc .= $booking->getPhone() . " \n\r";
+        $desc .= "Cliente: " . $booking->getDisplayName() . " - ";
+        $desc .= $booking->getPhone() . " \n";
         //Services
         $services = $booking->getServices();
-        $desc .= "\n\rServizi:";
+        $desc .= "\nServizi:";
         foreach ($services as $service) {
-            $desc .= "\n\r";
+            $desc .= "\n";
             $desc .= $service->getName();
-            $desc .= " - ";
             $desc .= $service->getContent();
         }
-        $desc .= "\n\rNote:\n\r" . $booking->getNote();
-        $desc .= "\n\rAttendant:: " . $booking->getAttendant();
-        $desc .= "\n\rStato: " . $booking->getStatus();
-        $desc .= "\n\rLink prenotazione: <a href='" . get_permalink($booking->getId()) ."'>Link</a>";
+        $desc .= "\n\nNote:\n" . $booking->getNote();
+        $desc .= "\n\nAttendant: " . $booking->getAttendant();
+        $desc .= "\n\nStato: " . $booking->getStatus();
+        $desc .= "\n\nLink booking: " . get_permalink($booking->getId());
 
         $event = new Google_Service_Calendar_Event();
         $event->setSummary($booking->getTitle());
@@ -546,6 +551,8 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
         $start = new Google_Service_Calendar_EventDateTime();
         $str_date = strtotime($booking->getStartsAt()->format('Y-m-d H:i:s'));
         $dateTimeS = SLN_GoogleScope::date3339($str_date);
+        sln_my_wp_log("start_date");
+        sln_my_wp_log($dateTimeS);
         $start->setDateTime($dateTimeS);
 
         $event->setStart($start);
@@ -553,7 +560,8 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
         $end = new Google_Service_Calendar_EventDateTime();
         $str_date = strtotime($booking->getEndsAt()->format('Y-m-d H:i:s'));
         $dateTimeE = SLN_GoogleScope::date3339($str_date);
-
+        sln_my_wp_log("end_date");
+        sln_my_wp_log($dateTimeE);
         $end->setDateTime($dateTimeE);
 
         $event->setEnd($end);
@@ -564,23 +572,45 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
 }
 
 function test_booking($post_id, $post) {
+    remove_action('save_post', 'test_booking', 10, 2);
+
     // Make sure the post obj is present and complete. If not, bail.
     if (!is_object($post) || !isset($post->post_type)) {
         return;
     }
 
+    sln_my_wp_log("############################################################################");
+
     switch ($post->post_type) { // Do different things based on the post type
         case "sln_booking":
             $booking = new SLN_Wrapper_Booking($post);
 
+            sln_my_wp_log($post);
+            sln_my_wp_log($booking);
+            sln_my_wp_log($booking->getStartsAt());
+            sln_my_wp_log($booking->getEndsAt());
+
+            $event_id = "";
             $b_event_id = get_post_meta($booking->getId(), '_sln_calenda_event_id', true);
+
             sln_my_wp_log($b_event_id);
             if (isset($b_event_id) && !empty($b_event_id)) {
                 sln_my_wp_log("update");
-                $event_id = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $b_event_id);
-            } else {
+                try {
+                    $event_id = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $b_event_id);
+                } catch (Exception $e) {
+                    $b_event_id = "";
+                    update_post_meta($booking->getId(), '_sln_calenda_event_id', '');
+                }
+            }
+            if (!(isset($b_event_id) && !empty($b_event_id))) {
                 sln_my_wp_log("create");
-                $event_id = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
+                try {
+                    $event_id = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
+                } catch (Exception $e) {
+                    _pre($e);
+                    die;
+                }
             }
             sln_my_wp_log($event_id);
             update_post_meta($booking->getId(), '_sln_calenda_event_id', $event_id);
@@ -592,7 +622,7 @@ function test_booking($post_id, $post) {
     }
 }
 
-add_action('save_post', 'test_booking', 1, 2);
+add_action('save_post', 'test_booking', 10, 2);
 
 /*
  * aggiungere in Metabox/Booking.php - getFieldList => '_sln_calenda_event_id' => ''

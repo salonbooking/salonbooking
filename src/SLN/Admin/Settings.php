@@ -313,7 +313,7 @@ class SLN_Admin_Settings {
         
         foreach ($gcalendar_array as $k) {
             $old_value[$k] = $this->settings->get($k);
-            $data = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
+            $data = isset($_POST['salon_settings'][$k]) ? trim($_POST['salon_settings'][$k]) : '';
             $this->settings->set($k, $data);
         }
         $this->settings->save();
