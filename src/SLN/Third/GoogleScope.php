@@ -521,30 +521,48 @@ class SLN_GoogleScope {
         return $updatedRule->getId();
     }
 
+    /**
+     * delete_event
+     * @param type $event_id
+     * @return type
+     */
+    public function delete_event_from_booking($event_id) {
+        if (!$this->is_connected())
+            return;
+
+        return $this->service->events->delete($this->google_client_calendar, $event_id);
+    }
+
 }
 
 class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
 
     public function get_event($booking) {
+        require_once SLN_PLUGIN_DIR . "/src/SLN/Enum/BookingStatus.php";
+
         $desc = "";
         //Name and Phone
-        $desc .= "Cliente: " . $booking->getDisplayName() . " - ";
+        $desc .= __('Customer name', 'sln') . ": " . $booking->getDisplayName() . " - ";
         $desc .= $booking->getPhone() . " \n";
         //Services
         $services = $booking->getServices();
-        $desc .= "\nServizi:";
+        $desc .= "\n" . __('Services booked', 'sln') . ":";
         foreach ($services as $service) {
             $desc .= "\n";
             $desc .= $service->getName();
             $desc .= $service->getContent();
         }
-        $desc .= "\n\nNote:\n" . $booking->getNote();
-        $desc .= "\n\nAttendant: " . $booking->getAttendant();
-        $desc .= "\n\nStato: " . $booking->getStatus();
-        $desc .= "\n\nLink booking: " . get_permalink($booking->getId());
+        $notes = $booking->getNote();
+        $desc .= "\n\n" . __('Booking notes', 'sln') . ":\n" . (empty($notes) ? __("None", 'sln') : $notes);
+        $desc .= "\n\n" . __('Selected assistant', 'sln') . ": " . $booking->getAttendant();
+        $desc .= "\n\n" . __('Booking status', 'sln') . ": " . SLN_Enum_BookingStatus::getLabel($booking->getStatus());
+        $desc .= "\n\n" . __('Booking URL', 'sln') . ": " . get_permalink($booking->getId());
+
+        $title = $booking->getDisplayName() . " - " . $booking->getStartsAt()->format('d/m/Y h:iA');
+        sln_my_wp_log($title);
 
         $event = new Google_Service_Calendar_Event();
-        $event->setSummary($booking->getTitle());
+        $event->setSummary($title);
         $event->setDescription($desc);
         $event->setLocation($booking->getAddress());
 
@@ -592,8 +610,29 @@ function test_booking($post_id, $post) {
 
             $event_id = "";
             $b_event_id = get_post_meta($booking->getId(), '_sln_calenda_event_id', true);
-
             sln_my_wp_log($b_event_id);
+
+            require_once SLN_PLUGIN_DIR . "/src/SLN/Enum/BookingStatus.php";
+            if ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED) {
+                //If cancelled and i have a event i need to delete it or do return
+                if (isset($b_event_id) && !empty($b_event_id)) {
+                    sln_my_wp_log("delete");
+                    try {
+                        $ret = $GLOBALS['sln_googlescope']->delete_event_from_booking($b_event_id);
+                        sln_my_wp_log($ret);
+                    } catch (Exception $e) {
+                        sln_my_wp_log($e);
+                        return;
+                    }
+                    update_post_meta($booking->getId(), '_sln_calenda_event_id', '');
+                } else {
+                    sln_my_wp_log("do nothing");
+                    //If cancelled i do not have to add/edit any event
+                    return;
+                }
+            }
+
+
             if (isset($b_event_id) && !empty($b_event_id)) {
                 sln_my_wp_log("update");
                 try {
