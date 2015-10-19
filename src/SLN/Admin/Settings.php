@@ -16,7 +16,7 @@ class SLN_Admin_Settings {
         'documentation' => 'Documentation'
     );
 
-    public function __construct(SLN_Plugin $plugin) {        
+    public function __construct(SLN_Plugin $plugin) {
         $this->plugin = $plugin;
         $this->settings = $plugin->getSettings();
         add_action('admin_menu', array($this, 'admin_menu'));
@@ -58,7 +58,7 @@ class SLN_Admin_Settings {
         </div>
         <?php
     }
-    
+
     function row_checkbox_text($key, $label, $settings = array()) {
         ?>
         <div class="form-group">
@@ -310,7 +310,7 @@ class SLN_Admin_Settings {
             'google_outh2_redirect_uri',
             'google_client_calendar'
         );
-        
+
         foreach ($gcalendar_array as $k) {
             $old_value[$k] = $this->settings->get($k);
             $data = isset($_POST['salon_settings'][$k]) ? trim($_POST['salon_settings'][$k]) : '';
@@ -323,10 +323,16 @@ class SLN_Admin_Settings {
             $k = str_replace('google_', '', $k);
             $params[$k] = $v;
         }
-        
-        if ($old_value['google_calendar_enabled']!=$this->settings->get('google_calendar_enabled'))
+
+        if ($old_value['google_calendar_enabled'] != $this->settings->get('google_calendar_enabled') ||
+                $old_value['google_outh2_client_id'] != $this->settings->get('google_outh2_client_id') ||
+                $old_value['google_outh2_client_secret'] != $this->settings->get('google_outh2_client_secret')
+        )
+            header("Location: " . admin_url('admin.php?page=salon-settings&tab=gcalendar&revoketoken=1'));
+
+        if (isset($_GET['revoketoken']) && $_GET['revoketoken'] == 1)
             header("Location: " . admin_url('admin.php?page=salon-settings&tab=gcalendar'));
-        
+
         $this->showAlert(
                 'success', __('Google Calendar settings are updated', 'sln'), __('Update completed with success', 'sln')
         );

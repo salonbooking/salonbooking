@@ -48,7 +48,7 @@ class SLN_GoogleScope {
     public $client_id = '102246196260-so9c267umku08brmrgder71ige08t3nm.apps.googleusercontent.com'; //change this
     public $email_address = '102246196260-so9c267umku08brmrgder71ige08t3nm@developer.gserviceaccount.com'; //change this    
     public $scopes = "https://www.googleapis.com/auth/calendar";
-    public $key_file_location = 'google-api-php-client/gc.p12'; //change this           
+    public $key_file_location = 'prv.p12'; //change this           
     public $outh2_client_id = "102246196260-hjpu1fs2rh5b9mesa9l5urelno396vc0.apps.googleusercontent.com";
     public $outh2_client_secret = "AJzLfWtRDz53JLT5fYp5gLqZ";
     public $outh2_redirect_uri;
@@ -98,10 +98,10 @@ class SLN_GoogleScope {
      * start_auth
      */
     public function start_auth($force_revoke_token = false) {
-        $access_token = (isset($_SESSION['access_token']) && !empty($_SESSION['access_token']));
-        if (!isset($access_token) || empty($access_token)) {
+        $access_token = (isset($_SESSION['access_token']) && !empty($_SESSION['access_token'])) ? $_SESSION['access_token'] : "";
+        if (!isset($access_token) || empty($access_token))
             $access_token = $this->settings->get('sln_access_token');
-        }
+
         if (isset($access_token) && !empty($access_token)) {
             if ($force_revoke_token || (isset($_GET['revoketoken']) && $_GET['revoketoken'] == 1)/* || $client->isAccessTokenExpired() */) {
                 $res = wp_remote_get("https://accounts.google.com/o/oauth2/revoke?token={$access_token}");
@@ -112,20 +112,20 @@ class SLN_GoogleScope {
                 header("Location: " . admin_url('admin.php?page=salon-settings&tab=gcalendar'));
             }
 
-            $client = new Google_Client();
-            $client->setClientId($this->outh2_client_id);
-            $client->setClientSecret($this->outh2_client_secret);
-            $client->setRedirectUri(isset($this->outh2_redirect_uri) ? $this->outh2_redirect_uri : admin_url('admin-ajax.php?action=googleoauth-callback'));
-            $client->setAccessType('offline');
-            $client->addScope($this->scopes);
-            if ($this->is_connected())
-                $client->setAccessToken($access_token);
+            $this->client = new Google_Client();
+            $this->client->setClientId($this->outh2_client_id);
+            $this->client->setClientSecret($this->outh2_client_secret);
+            $this->client->setRedirectUri(isset($this->outh2_redirect_uri) ? $this->outh2_redirect_uri : admin_url('admin-ajax.php?action=googleoauth-callback'));
+            $this->client->setAccessType('offline');
+            //$this->client->setApplicationName('wpchief-calendar');
+            //$client->setIncludeGrantedScopes(true);
+            $this->client->addScope($this->scopes);
+            $this->client->setAccessToken($access_token);
 
-            $this->client = $client;
             $this->service = $this->get_google_service();
         } else {
             if (!$force_revoke_token) {
-                $loginUrl = 'https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=' . $this->outh2_client_id . '&redirect_uri=' . $this->outh2_redirect_uri . '&scope=' . $this->scopes . '&&access_type=offline&approval_prompt=force';
+                $loginUrl = 'https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=' . $this->outh2_client_id . '&redirect_uri=' . $this->outh2_redirect_uri . '&scope=' . $this->scopes . '&access_type=offline&approval_prompt=force';
                 header("Location: " . $loginUrl);
             }
         }
@@ -136,7 +136,7 @@ class SLN_GoogleScope {
      */
     public function get_client() {
         if (isset($_GET['error'])) {
-            header("Location: " . admin_url('admin.php?page=salon-settings&tab=gcalendar'));
+            header("Location: " . admin_url('admin.php?page=salon-settings&tab=gcalendar&revoketoken=1'));
         }
 
         $code = isset($_GET['code']) ? $_GET['code'] : null;
@@ -167,9 +167,9 @@ class SLN_GoogleScope {
                 $oauth_expiry = $oauth_response['expires_in'] + current_time('timestamp', true);
                 $idtoken_validation_result = wp_remote_get('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=' . $oauth_access_token);
 
-                $_SESSION['access_token'] = $oauth_access_token;
+                $_SESSION['access_token'] = $oauth_result['body']; //$oauth_access_token;
                 $_SESSION['refresh_token'] = $oauth_refresh_token;
-                $this->settings->set('sln_access_token', $oauth_access_token);
+                $this->settings->set('sln_access_token', $oauth_result['body']/* $oauth_access_token */);
                 $this->settings->set('sln_refresh_token', $oauth_refresh_token);
                 $this->settings->save();
 
@@ -183,6 +183,9 @@ class SLN_GoogleScope {
                 }
             } else {
                 _pre($oauth_response);
+                if (isset($oauth_response['error'])) {
+                    header("Location: " . admin_url('admin.php?page=salon-settings&tab=gcalendar&revoketoken=1'));
+                }
                 die();
             }
         } else {
@@ -211,7 +214,8 @@ class SLN_GoogleScope {
      * start_auth init the login to google services
      */
     public function start_auth_assertion() {
-        $key = file_get_contents($this->key_file_location);
+        $base = SLN_PLUGIN_DIR . "/src/SLN/Third/";
+        $key = file_get_contents($base . $this->key_file_location);
         $cred = new Google_Auth_AssertionCredentials(
                 $this->email_address, array($this->scopes), $key
         );
@@ -227,17 +231,48 @@ class SLN_GoogleScope {
      */
     public function is_connected() {
         $ret = (isset($this->client) && !$this->client->getAuth()->isAccessTokenExpired());
+        sln_my_wp_log("is connected " . $ret);
+        sln_my_wp_log("client " . isset($this->client));
+        
         if (!$ret) {
+            $access_token = (isset($_SESSION['access_token']) && !empty($_SESSION['access_token'])) ? $_SESSION['access_token'] : "";
+            if (!isset($access_token) || empty($access_token)) {
+                $access_token = $this->settings->get('sln_access_token');
+            }
+            sln_my_wp_log($access_token);
+            
             $refresh_token = isset($_SESSION['refresh_token']) ? $_SESSION['refresh_token'] : "";
-            if (!isset($refresh_token) || empty($refresh_token))
+            if (!isset($refresh_token) || empty($refresh_token)) {
                 $refresh_token = $this->settings->get('sln_refresh_token');
+            }
+            sln_my_wp_log($refresh_token);
 
             try {
-                if (isset($this->client))
+                if (isset($this->client)) {
+                    sln_my_wp_log("Refreshed Token");
                     $this->client->refreshToken($refresh_token);
-                else
-                    return false;
+                    sln_my_wp_log($refresh_token);
+                } else {
+                    sln_my_wp_log("Not Refreshed Token");
+
+                    $this->client = new Google_Client();
+                    $this->client->setClientId($this->outh2_client_id);
+                    $this->client->setClientSecret($this->outh2_client_secret);
+                    $this->client->setRedirectUri(isset($this->outh2_redirect_uri) ? $this->outh2_redirect_uri : admin_url('admin-ajax.php?action=googleoauth-callback'));
+                    $this->client->setAccessType('offline');
+                    //$this->client->setApplicationName('wpchief-calendar');
+                    //$client->setIncludeGrantedScopes(true);
+                    $this->client->addScope($this->scopes);
+                    $this->client->setAccessToken($access_token);
+                    $this->client->refreshToken($refresh_token);
+
+                    $this->service = $this->get_google_service();
+
+                    sln_my_wp_log("is connected2 :" . $this->client->getAuth()->isAccessTokenExpired());
+                }
+                return true;
             } catch (Exception $e) {
+                sln_my_wp_log($e);
                 return false;
             }
             return true;
@@ -250,28 +285,28 @@ class SLN_GoogleScope {
      * @return type
      */
     public function get_calendar_list() {
-        $cal_list = null;
+        $cal_list = array();
 
-        if ($this->is_connected()) {
+        if (!$this->is_connected())
+            return $cal_list;
 
-            $calendarList = $this->service->calendarList->listCalendarList();
-            $cal_list = array();
-            $cal_list['']['id'] = 0;
-            $cal_list['']['label'] = __("Scegli tra i tuoi calendari", 'sln');
-            while (true) {
-                foreach ($calendarList->getItems() as $calendarListEntry) {
-                    if (!isset($cal_list[$calendarListEntry->getId()]))
-                        $cal_list[$calendarListEntry->getId()] = array();
-                    $cal_list[$calendarListEntry->getId()]['id'] = $calendarListEntry->getId();
-                    $cal_list[$calendarListEntry->getId()]['label'] = $calendarListEntry->getSummary();
-                }
-                $pageToken = $calendarList->getNextPageToken();
-                if ($pageToken) {
-                    $optParams = array('pageToken' => $pageToken);
-                    $calendarList = $this->service->calendarList->listCalendarList($optParams);
-                } else {
-                    break;
-                }
+        $calendarList = $this->service->calendarList->listCalendarList();
+        $cal_list = array();
+        $cal_list['']['id'] = 0;
+        $cal_list['']['label'] = __("Scegli tra i tuoi calendari", 'sln');
+        while (true) {
+            foreach ($calendarList->getItems() as $calendarListEntry) {
+                if (!isset($cal_list[$calendarListEntry->getId()]))
+                    $cal_list[$calendarListEntry->getId()] = array();
+                $cal_list[$calendarListEntry->getId()]['id'] = $calendarListEntry->getId();
+                $cal_list[$calendarListEntry->getId()]['label'] = $calendarListEntry->getSummary();
+            }
+            $pageToken = $calendarList->getNextPageToken();
+            if ($pageToken) {
+                $optParams = array('pageToken' => $pageToken);
+                $calendarList = $this->service->calendarList->listCalendarList($optParams);
+            } else {
+                break;
             }
         }
 
@@ -464,6 +499,7 @@ class SLN_GoogleScope {
      * @return string
      */
     public static function date3339($timestamp = 0, $offset = 0) {
+        $offset = get_option('gmt_offset');
         if (!$timestamp)
             return "error";
         $date = date('Y-m-d\TH:i:s', $timestamp);
@@ -530,6 +566,25 @@ class SLN_GoogleScope {
         if (!$this->is_connected())
             return;
 
+//        try {
+//            $base = SLN_PLUGIN_DIR . "/src/SLN/Third/";
+//            $key = file_get_contents($base . $this->key_file_location);            
+//            $auth = new \Google_Auth_AssertionCredentials(
+//                    $this->client_id, array('https://www.googleapis.com/auth/calendar'), $key);
+//            $client = new \Google_Client();
+//            $client->setAssertionCredentials($auth);
+//            $client->setClientId($this->outh2_client_id);
+//            $service = new \Google_Service_Calendar($client);
+//            $service->events->delete($this->google_client_calendar, $event_id);
+//            return true;
+//        } catch (\Exception $e) {
+//            sln_my_wp_log("Exception while deleting event :- " . $e->getMessage());
+//            return false;
+//        }
+        $url = 'https://www.googleapis.com/calendar/v3/calendars/' . $this->google_client_calendar . '/events/' . $event_id;
+        sln_my_wp_log($url);
+        $ret = wp_remote_get($url);
+        return $ret;
         return $this->service->events->delete($this->google_client_calendar, $event_id);
     }
 
