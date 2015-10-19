@@ -58,9 +58,9 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 echo SLN_Enum_BookingStatus::getLabel(get_post_status($post_id));
                 break;
             case 'booking_date':
-                echo $this->getPlugin()->format()->datetime(
+                echo $this->getPlugin()->format()->datetime( new DateTime(
                     get_post_meta($post_id, '_sln_booking_date', true)
-                    . ' ' . get_post_meta($post_id, '_sln_booking_time', true)
+                    . ' ' . get_post_meta($post_id, '_sln_booking_time', true))
                 );
                 break;
             case 'booking_price' :
