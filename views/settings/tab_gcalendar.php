@@ -38,6 +38,10 @@
             }
             if (isset($_calendar_list) && !empty($_calendar_list)) {
                 $this->select_text('google_client_calendar', __('Calendars', 'sln'), $_calendar_list);
+                ?>
+                <input type="button" id="sln_synch" value="<?php echo __('Synchronize Bookings'); ?>">
+                <input type="button" id="sln_del" value="<?php echo __('Delete all Google Calendar Events'); ?>">
+                <?php
             } else
                 echo __("Per ottenere la lista dei tuoi calendari è necessario effettuare login Google OAuth", 'sln');
             ?>

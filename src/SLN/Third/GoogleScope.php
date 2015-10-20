@@ -42,6 +42,9 @@ require SLN_PLUGIN_DIR . '/src/SLN/Third/google-api-php-client/src/Google/autolo
 require_once SLN_PLUGIN_DIR . '/src/SLN/Third/google-api-php-client/src/Google/Client.php';
 require_once SLN_PLUGIN_DIR . '/src/SLN/Third/google-api-php-client/src/Google/Service/Calendar.php';
 
+/**
+ * Add '_sln_calendar_event_id' => '' in MetBox/Booking.php getFieldList
+ */
 class SLN_GoogleScope {
 
     public $date_offset = 0;
@@ -65,7 +68,86 @@ class SLN_GoogleScope {
         if (is_admin()) {
             add_action('wp_ajax_googleoauth-callback', array($this, 'get_client'));
             add_action('wp_ajax_nopriv_googleoauth-callback', array($this, 'get_client'));
+            add_action('wp_ajax_startsynch', array($this, 'start_synch'));
+            add_action('wp_ajax_deleteallevents', array($this, 'delete_all_bookings_event'));
+            add_action('admin_footer', array($this, 'add_script'));
         }
+    }
+
+    public function add_script() {
+        ?>
+        <script>
+            jQuery(document).ready(function () {
+                jQuery('#sln_synch').click(function () {
+                    var $button = jQuery(this);
+                    $button.addClass('disabled').after('<div class="load-spinner"><img src="<?php echo get_site_url() . '/wp-admin/images/wpspin_light.gif'; ?>" /></div>');
+                    var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+                    var data = {action: 'startsynch'};
+                    jQuery.post(ajaxurl, data, function (response) {
+                        if (response == 'OK') {
+                            alert("<?php echo __('Operation completed!', 'sln'); ?>");
+                        } else {
+                            var tmp = data.split('|');
+                            if (tmp[1])
+                                alert(tmp[1]);
+                        }
+                        $button.removeClass('disabled');
+                        jQuery('.load-spinner').remove();
+                    });
+                });
+                jQuery('#sln_del').click(function () {
+                    var $button = jQuery(this);
+                    $button.addClass('disabled').after('<div class="load-spinner"><img src="<?php echo get_site_url() . '/wp-admin/images/wpspin_light.gif'; ?>" /></div>');
+                    var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+                    var data = {action: 'deleteallevents'};
+                    jQuery.post(ajaxurl, data, function (response) {
+                        if (response == 'OK') {
+                            alert("<?php echo __('Operation completed!', 'sln'); ?>");
+                        } else {
+                            var tmp = data.split('|');
+                            if (tmp[1])
+                                alert(tmp[1]);
+                        }
+                        $button.removeClass('disabled');
+                        jQuery('.load-spinner').remove();
+                    });
+                });
+            });
+        </script>
+        <?php
+    }
+
+    public function start_synch() {
+        if (!$this->is_connected()) {
+            echo "KO|" . __("Google Client is not connected!");
+        }
+
+        $now = new DateTime('NOW');
+        $booking_handler = new SLN_Bookings_Handle($now);
+        $bookings = $booking_handler->getBookings();
+        foreach ($bookings as $k => $post) {
+            $event_id = get_post_meta($post->ID, '_sln_calendar_event_id', true);
+            $this->delete_event_from_booking($event_id);
+        }
+
+        foreach ($bookings as $k => $post) {
+            synch_a_booking($post->ID, $post, true);
+        }
+        echo "OK";
+        die();
+    }
+
+    public function delete_all_bookings_event($bookings = "") {
+        $now = new DateTime('NOW');
+        $booking_handler = new SLN_Bookings_Handle($now);
+        $bookings = $booking_handler->getBookings();
+
+        foreach ($bookings as $k => $post) {
+            $event_id = get_post_meta($post->ID, '_sln_calendar_event_id', true);
+            $this->delete_event_from_booking($event_id);
+        }
+        echo "OK";
+        die;
     }
 
     /**
@@ -444,24 +526,25 @@ class SLN_GoogleScope {
     /**
      * get_list_event return all the event for primary calendar
      */
-    public function get_list_event($calId = 'primary') {
+    public function get_list_event() {
         if (!$this->is_connected())
             return;
 
-        $events = $this->service->events->listEvents($calId);
+        $ret = array();
+        $events = $this->service->events->listEvents($this->google_client_calendar);
         while (true) {
             foreach ($events->getItems() as $event) {
-                echo "<br>" . $event->getId() . " " . $event->getSummary();
-                //$this->delete_event($event->getId());
+                $ret[$event->getId()] = $event->getSummary();
             }
             $pageToken = $events->getNextPageToken();
             if ($pageToken) {
                 $optParams = array('pageToken' => $pageToken);
-                $events = $this->service->events->listEvents($calId, $optParams);
+                $events = $this->service->events->listEvents($this->google_client_calendar, $optParams);
             } else {
                 break;
             }
         }
+        return $ret;
     }
 
     /**
@@ -573,9 +656,8 @@ class SLN_GoogleScope {
      * @return type
      */
     public function delete_event_from_booking($event_id) {
-        if (!$this->is_connected())
-            return;
-
+        //if (!$this->is_connected())
+        //  return;
 //        try {
 //            $base = SLN_PLUGIN_DIR . "/src/SLN/Third/";
 //            $key = file_get_contents($base . $this->key_file_location);            
@@ -591,11 +673,30 @@ class SLN_GoogleScope {
 //            sln_my_wp_log("Exception while deleting event :- " . $e->getMessage());
 //            return false;
 //        }
-        $url = 'https://www.googleapis.com/calendar/v3/calendars/' . $this->google_client_calendar . '/events/' . $event_id;
+//        $url = 'https://www.googleapis.com/calendar/v3/calendars/' . $this->google_client_calendar . '/events/' . $event_id;
+//        sln_my_wp_log($url);
+//        $ret = wp_remote_get($url);
+//        return $ret;
+
+        try {
+            $this->service->events->delete($this->google_client_calendar, $event_id);
+            sln_my_wp_log($event_id);
+            sln_my_wp_log($this->google_client_calendar);
+            //$event_id = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $b_event_id, true);
+        } catch (Exception $e) {
+            sln_my_wp_log($e);
+        }
+    }
+
+    public function clear_calendar_events() {
+        if (!$this->is_connected())
+            return;
+
+        $url = 'https://www.googleapis.com/calendar/v3/calendars/' . $this->google_client_calendar . '/clear';
         sln_my_wp_log($url);
         $ret = wp_remote_get($url);
+        sln_my_wp_log($ret);
         return $ret;
-        return $this->service->events->delete($this->google_client_calendar, $event_id);
     }
 
 }
@@ -654,8 +755,9 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
 
 }
 
-function test_booking($post_id, $post) {
-    remove_action('save_post', 'test_booking', 10, 2);
+function synch_a_booking($post_id, $post, $sync = false) {
+    if (!$sync)
+        remove_action('save_post', 'test_booking', 10, 2);
 
     // Make sure the post obj is present and complete. If not, bail.
     if (!is_object($post) || !isset($post->post_type)) {
@@ -663,7 +765,7 @@ function test_booking($post_id, $post) {
     }
 
     sln_my_wp_log("############################################################################");
-    //$event->setRecurrence(array('RRULE:FREQ=WEEKLY;UNTIL=20121231'));
+    //$event->setRecurrence(array('RRULE:FREQ = WEEKLY; UNTIL = 20121231'));
     switch ($post->post_type) { // Do different things based on the post type
         case "sln_booking":
             $booking = new SLN_Wrapper_Booking($post);
@@ -674,8 +776,9 @@ function test_booking($post_id, $post) {
             sln_my_wp_log($booking->getEndsAt());
 
             $event_id = "";
-            $b_event_id = get_post_meta($booking->getId(), '_sln_calenda_event_id', true);
+            $b_event_id = get_post_meta($booking->getId(), '_sln_calendar_event_id', true);
             sln_my_wp_log($b_event_id);
+            sln_my_wp_log($booking->getStatus());
 
             require_once SLN_PLUGIN_DIR . "/src/SLN/Enum/BookingStatus.php";
             if ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED) {
@@ -683,43 +786,37 @@ function test_booking($post_id, $post) {
                 if (isset($b_event_id) && !empty($b_event_id)) {
                     sln_my_wp_log("delete");
                     try {
-                        //$ret = $GLOBALS['sln_googlescope']->delete_event_from_booking($b_event_id);
-                        $event_id = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $b_event_id, true);
-                        sln_my_wp_log($ret);
+                        $GLOBALS['sln_googlescope']->delete_event_from_booking($b_event_id);
+                        update_post_meta($booking->getId(), '_sln_calendar_event_id', '');
                     } catch (Exception $e) {
                         sln_my_wp_log($e);
                         return;
                     }
-                    update_post_meta($booking->getId(), '_sln_calenda_event_id', '');
                 } else {
                     sln_my_wp_log("do nothing");
-                    //If cancelled i do not have to add/edit any event
                     return;
                 }
-            }
-
-
-            if (isset($b_event_id) && !empty($b_event_id)) {
-                sln_my_wp_log("update");
-                try {
-                    $event_id = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $b_event_id, ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED));
-                } catch (Exception $e) {
-                    $b_event_id = "";
-                    update_post_meta($booking->getId(), '_sln_calenda_event_id', '');
+            } else {
+                if (isset($b_event_id) && !empty($b_event_id)) {
+                    sln_my_wp_log("update");
+                    try {
+                        $event_id = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $b_event_id, ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED));
+                    } catch (Exception $e) {
+                        $b_event_id = "";
+                        update_post_meta($booking->getId(), '_sln_calendar_event_id', '');
+                    }
+                } else {
+                    sln_my_wp_log("create");
+                    try {
+                        $event_id = $GLOBALS['sln_googlescope']->create_event_from_booking($booking, ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED));
+                        update_post_meta($booking->getId(), '_sln_calendar_event_id', $event_id);
+                    } catch (Exception $e) {
+                        sln_my_wp_log($e);
+                        return;
+                    }
                 }
+                sln_my_wp_log($event_id);
             }
-            if (!(isset($b_event_id) && !empty($b_event_id))) {
-                sln_my_wp_log("create");
-                try {
-                    $event_id = $GLOBALS['sln_googlescope']->create_event_from_booking($booking, ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED));
-                } catch (Exception $e) {
-                    _pre($e);
-                    die;
-                }
-            }
-            sln_my_wp_log($event_id);
-            update_post_meta($booking->getId(), '_sln_calenda_event_id', $event_id);
-
             break;
 
         default:
@@ -727,10 +824,10 @@ function test_booking($post_id, $post) {
     }
 }
 
-add_action('save_post', 'test_booking', 10, 2);
+add_action('save_post', 'synch_a_booking', 5, 2);
 
 /*
- * aggiungere in Metabox/Booking.php - getFieldList => '_sln_calenda_event_id' => ''
+ * aggiungere in Metabox/Booking.php - getFieldList => '_sln_calendar_event_id' => ''
  */
 
 //SLN_GoogleScope::init();
@@ -765,4 +862,72 @@ add_action('save_post', 'test_booking', 10, 2);
 //    if (isset($_GET['code']))
 //        do_action('onchangeapi', SLN_GoogleScope::init());
 //});
+
+class SLN_Bookings_Handle {
+
+    private $from;
+
+    public function __construct($from) {
+        $this->from = $from;
+    }
+
+    public function getBookings() {
+        return $this->getResults();
+    }
+
+    private function getResults() {
+        $bookings = $this->buildBookings();
+        $ret = array();
+        foreach ($bookings as $b) {
+            $ret[] = $b;
+        }
+        return $ret;
+    }
+
+    private function buildBookings() {
+        $args = array(
+            'post_type' => SLN_Plugin::POST_TYPE_BOOKING,
+            'nopaging' => true,
+            'meta_query' => $this->getCriteria()
+        );
+        $query = new WP_Query($args);
+        $ret = array();
+        foreach ($query->get_posts() as $p) {
+            $ret[] = $p;
+        }
+        wp_reset_query();
+        wp_reset_postdata();
+
+        return $ret;
+    }
+
+    public function createBooking($booking) {
+        if (is_int($booking)) {
+            $booking = get_post($booking);
+        }
+
+        return new SLN_Wrapper_Booking($booking);
+    }
+
+    private function getCriteria() {
+        $from = $this->from->format('Y-m-d');
+        $criteria = array(
+            array(
+                'key' => '_sln_booking_date',
+                'value' => $from,
+                'compare' => '>=',
+            )
+        );
+        return $criteria;
+    }
+
+    private function getTitle($booking) {
+        return $booking->getTitle();
+    }
+
+    private function getEventHtml($booking) {
+        return $booking->getDisplayName();
+    }
+
+}
 ?>
