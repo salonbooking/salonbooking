@@ -545,8 +545,8 @@ class SLN_GoogleScope {
 
         $gc_event = new SLN_GoogleCalendarEventFactory();
         $event = $gc_event->get_event($booking);
-       
-        $event->setColorId("11");
+        if ($cancel)
+            $event->setColorId("11");
         
         $attendee1 = new Google_Service_Calendar_EventAttendee();
         $attendee1->setEmail($this->google_client_calendar); //change this
