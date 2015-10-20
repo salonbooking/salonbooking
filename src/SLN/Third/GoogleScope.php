@@ -512,12 +512,17 @@ class SLN_GoogleScope {
      * @param type $booking
      * @return type
      */
-    public function create_event_from_booking($booking) {
+    public function create_event_from_booking($booking, $cancel = false) {
         if (!$this->is_connected())
             return;
 
         $gc_event = new SLN_GoogleCalendarEventFactory();
         $event = $gc_event->get_event($booking);
+
+        if ($cancel)
+            $event->setColorId("11");
+        else
+            $event->setColorId("8");
 
         $attendee1 = new Google_Service_Calendar_EventAttendee();
         $attendee1->setEmail($this->google_client_calendar);
@@ -545,14 +550,17 @@ class SLN_GoogleScope {
 
         $gc_event = new SLN_GoogleCalendarEventFactory();
         $event = $gc_event->get_event($booking);
+
         if ($cancel)
             $event->setColorId("11");
-        
+        else
+            $event->setColorId("8");
+
         $attendee1 = new Google_Service_Calendar_EventAttendee();
         $attendee1->setEmail($this->google_client_calendar); //change this
 
         $attendees = array($attendee1);
-        $event->attendees = $attendees;        
+        $event->attendees = $attendees;
 
         $updatedRule = $this->service->events->update($this->google_client_calendar, $rule->getId(), $event);
 
@@ -694,7 +702,7 @@ function test_booking($post_id, $post) {
             if (isset($b_event_id) && !empty($b_event_id)) {
                 sln_my_wp_log("update");
                 try {
-                    $event_id = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $b_event_id);
+                    $event_id = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $b_event_id, ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED));
                 } catch (Exception $e) {
                     $b_event_id = "";
                     update_post_meta($booking->getId(), '_sln_calenda_event_id', '');
@@ -703,7 +711,7 @@ function test_booking($post_id, $post) {
             if (!(isset($b_event_id) && !empty($b_event_id))) {
                 sln_my_wp_log("create");
                 try {
-                    $event_id = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
+                    $event_id = $GLOBALS['sln_googlescope']->create_event_from_booking($booking, ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED));
                 } catch (Exception $e) {
                     _pre($e);
                     die;
