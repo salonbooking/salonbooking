@@ -233,14 +233,14 @@ class SLN_GoogleScope {
         $ret = (isset($this->client) && !$this->client->getAuth()->isAccessTokenExpired());
         sln_my_wp_log("is connected " . $ret);
         sln_my_wp_log("client " . isset($this->client));
-        
+
         if (!$ret) {
             $access_token = (isset($_SESSION['access_token']) && !empty($_SESSION['access_token'])) ? $_SESSION['access_token'] : "";
             if (!isset($access_token) || empty($access_token)) {
                 $access_token = $this->settings->get('sln_access_token');
             }
             sln_my_wp_log($access_token);
-            
+
             $refresh_token = isset($_SESSION['refresh_token']) ? $_SESSION['refresh_token'] : "";
             if (!isset($refresh_token) || empty($refresh_token)) {
                 $refresh_token = $this->settings->get('sln_refresh_token');
@@ -534,7 +534,7 @@ class SLN_GoogleScope {
      * @param type $booking
      * @return type
      */
-    public function update_event_from_booking($booking, $b_event_id) {
+    public function update_event_from_booking($booking, $b_event_id, $cancel = false) {
         if (!$this->is_connected())
             return;
 
@@ -545,12 +545,14 @@ class SLN_GoogleScope {
 
         $gc_event = new SLN_GoogleCalendarEventFactory();
         $event = $gc_event->get_event($booking);
-
+       
+        $event->setColorId("11");
+        
         $attendee1 = new Google_Service_Calendar_EventAttendee();
         $attendee1->setEmail($this->google_client_calendar); //change this
 
         $attendees = array($attendee1);
-        $event->attendees = $attendees;
+        $event->attendees = $attendees;        
 
         $updatedRule = $this->service->events->update($this->google_client_calendar, $rule->getId(), $event);
 
@@ -653,7 +655,7 @@ function test_booking($post_id, $post) {
     }
 
     sln_my_wp_log("############################################################################");
-
+    //$event->setRecurrence(array('RRULE:FREQ=WEEKLY;UNTIL=20121231'));
     switch ($post->post_type) { // Do different things based on the post type
         case "sln_booking":
             $booking = new SLN_Wrapper_Booking($post);
@@ -673,7 +675,8 @@ function test_booking($post_id, $post) {
                 if (isset($b_event_id) && !empty($b_event_id)) {
                     sln_my_wp_log("delete");
                     try {
-                        $ret = $GLOBALS['sln_googlescope']->delete_event_from_booking($b_event_id);
+                        //$ret = $GLOBALS['sln_googlescope']->delete_event_from_booking($b_event_id);
+                        $event_id = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $b_event_id, true);
                         sln_my_wp_log($ret);
                     } catch (Exception $e) {
                         sln_my_wp_log($e);

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-10"><h3>Google Calendar</h3></div>
         <div class="col-md-3 col-sm-4">           
-            <?php $this->row_checkbox_text('google_calendar_enabled', __('Abilita', 'sln')); ?>
+            <?php $this->row_checkbox_text('google_calendar_enabled', __('Enable', 'sln')); ?>
         </div>
 
         <div class="sln-separator"></div>
@@ -37,7 +37,7 @@
                 }
             }
             if (isset($_calendar_list) && !empty($_calendar_list)) {
-                $this->select_text('google_client_calendar', __('Calendario', 'sln'), $_calendar_list);
+                $this->select_text('google_client_calendar', __('Calendars', 'sln'), $_calendar_list);
             } else
                 echo __("Per ottenere la lista dei tuoi calendari è necessario effettuare login Google OAuth", 'sln');
             ?>
