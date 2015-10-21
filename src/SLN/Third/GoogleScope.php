@@ -805,7 +805,8 @@ function synch_a_booking($post_id, $post, $sync = false) {
                         $b_event_id = "";
                         update_post_meta($booking->getId(), '_sln_calendar_event_id', '');
                     }
-                } else {
+                }
+                if (!(isset($b_event_id) && !empty($b_event_id))) {
                     sln_my_wp_log("create");
                     try {
                         $event_id = $GLOBALS['sln_googlescope']->create_event_from_booking($booking, ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED));
@@ -824,7 +825,7 @@ function synch_a_booking($post_id, $post, $sync = false) {
     }
 }
 
-add_action('save_post', 'synch_a_booking', 5, 2);
+add_action('save_post', 'synch_a_booking', 10, 2);
 
 /*
  * aggiungere in Metabox/Booking.php - getFieldList => '_sln_calendar_event_id' => ''
