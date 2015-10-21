@@ -582,7 +582,9 @@ class SLN_GoogleScope {
      * @return string
      */
     public static function date3339($timestamp = 0, $offset = 0) {
-        $offset = get_option('gmt_offset');
+        $offset = get_option('gmt_offset')+1;
+        sln_my_wp_log("wp offset");
+        sln_my_wp_log($offset);
         if (!$timestamp)
             return "error";
         $date = date('Y-m-d\TH:i:s', $timestamp);
@@ -625,12 +627,7 @@ class SLN_GoogleScope {
     public function update_event_from_booking($booking, $b_event_id, $cancel = false) {
         if (!$this->is_connected())
             return;
-
-        $rule = $this->service->events->get($this->google_client_calendar, $b_event_id);
-
-        sln_my_wp_log("rule");
-        sln_my_wp_log($rule);
-
+        
         $gc_event = new SLN_GoogleCalendarEventFactory();
         $event = $gc_event->get_event($booking);
 
@@ -645,8 +642,21 @@ class SLN_GoogleScope {
         $attendees = array($attendee1);
         $event->attendees = $attendees;
 
-        $updatedRule = $this->service->events->update($this->google_client_calendar, $rule->getId(), $event);
+        /*$rule = $this->service->events->get($this->google_client_calendar, $b_event_id);*/
 
+        sln_my_wp_log("event updating");
+        sln_my_wp_log($event);
+
+        $updatedRule = $this->service->events->update($this->google_client_calendar, $b_event_id, $event);
+
+        $rule = $this->service->events->get($this->google_client_calendar, $b_event_id);
+
+        sln_my_wp_log("event rule updated");
+        sln_my_wp_log($rule);
+        
+        sln_my_wp_log("event updated 2");
+        sln_my_wp_log($updatedRule);
+        
         return $updatedRule->getId();
     }
 
@@ -733,21 +743,19 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
         $event->setLocation($booking->getAddress());
 
         $start = new Google_Service_Calendar_EventDateTime();
-        $str_date = strtotime($booking->getStartsAt()->format('Y-m-d H:i:s'));
+        $str_date = strtotime($booking->getStartsAt()->formatLocal('Y-m-d H:i:s'));
         $dateTimeS = SLN_GoogleScope::date3339($str_date);
         sln_my_wp_log("start_date");
         sln_my_wp_log($dateTimeS);
         $start->setDateTime($dateTimeS);
-
         $event->setStart($start);
 
         $end = new Google_Service_Calendar_EventDateTime();
-        $str_date = strtotime($booking->getEndsAt()->format('Y-m-d H:i:s'));
+        $str_date = strtotime($booking->getEndsAt()->formatLocal('Y-m-d H:i:s'));
         $dateTimeE = SLN_GoogleScope::date3339($str_date);
         sln_my_wp_log("end_date");
         sln_my_wp_log($dateTimeE);
         $end->setDateTime($dateTimeE);
-
         $event->setEnd($end);
 
         return $event;
@@ -757,7 +765,7 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
 
 function synch_a_booking($post_id, $post, $sync = false) {
     if (!$sync)
-        remove_action('save_post', 'test_booking', 10, 2);
+        remove_action('save_post', 'test_booking', 12, 2);
 
     // Make sure the post obj is present and complete. If not, bail.
     if (!is_object($post) || !isset($post->post_type)) {
@@ -825,7 +833,7 @@ function synch_a_booking($post_id, $post, $sync = false) {
     }
 }
 
-add_action('save_post', 'synch_a_booking', 10, 2);
+add_action('save_post', 'synch_a_booking', 12, 2);
 
 /*
  * aggiungere in Metabox/Booking.php - getFieldList => '_sln_calendar_event_id' => ''
