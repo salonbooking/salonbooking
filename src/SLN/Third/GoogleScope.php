@@ -650,12 +650,6 @@ class SLN_GoogleScope {
         $updatedRule = $this->service->events->update($this->google_client_calendar, $b_event_id, $event);
 
         $rule = $this->service->events->get($this->google_client_calendar, $b_event_id);
-
-        sln_my_wp_log("event rule updated");
-        sln_my_wp_log($rule);
-        
-        sln_my_wp_log("event updated 2");
-        sln_my_wp_log($updatedRule);
         
         return $updatedRule->getId();
     }
@@ -668,26 +662,6 @@ class SLN_GoogleScope {
     public function delete_event_from_booking($event_id) {
         //if (!$this->is_connected())
         //  return;
-//        try {
-//            $base = SLN_PLUGIN_DIR . "/src/SLN/Third/";
-//            $key = file_get_contents($base . $this->key_file_location);            
-//            $auth = new \Google_Auth_AssertionCredentials(
-//                    $this->client_id, array('https://www.googleapis.com/auth/calendar'), $key);
-//            $client = new \Google_Client();
-//            $client->setAssertionCredentials($auth);
-//            $client->setClientId($this->outh2_client_id);
-//            $service = new \Google_Service_Calendar($client);
-//            $service->events->delete($this->google_client_calendar, $event_id);
-//            return true;
-//        } catch (\Exception $e) {
-//            sln_my_wp_log("Exception while deleting event :- " . $e->getMessage());
-//            return false;
-//        }
-//        $url = 'https://www.googleapis.com/calendar/v3/calendars/' . $this->google_client_calendar . '/events/' . $event_id;
-//        sln_my_wp_log($url);
-//        $ret = wp_remote_get($url);
-//        return $ret;
-
         try {
             $this->service->events->delete($this->google_client_calendar, $event_id);
             sln_my_wp_log($event_id);
