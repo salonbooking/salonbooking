@@ -7,7 +7,7 @@
 @import "settings-mixins.less";
 @import "sln-glyphicons.less";
 .datetimepicker.sln-datetimepicker {
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+  font-family: @font-family;
   td, th, table tr td span {
     border-radius: 0;
     padding: 3px 5px;
@@ -89,9 +89,9 @@
   background: @color-bg;
   border: 1px solid #ddd;
   padding: 0;
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+  font-family: @font-family;
   p li, a div, input {
-    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+    font-family: @font-family;
   }
   > div {
     border: 1px solid #fff;
@@ -248,7 +248,7 @@
       line-height: 1em;
       height: auto;
       padding: .6em;
-      font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+      font-family: @font-family;
       border-radius: 0;
       -webkit-box-shadow: none;
       box-shadow: none;
@@ -497,7 +497,7 @@
       padding: 0.8em;
       background-color: #fff;
       border: none;
-      font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+      font-family: @font-family;
       color: @color-high;
       font-size: 1.3em;
       background-repeat: no-repeat;
@@ -950,6 +950,120 @@ img {
     color: #ff0000;
     font-size: 1em;
 }
+
+// SERVICS PANELS
+.panel.panel-salon {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  .panel-heading {
+    border: none;
+    padding: 0;
+    margin: 0;
+    a {
+      display: block;
+      position: relative;
+      color: @color-high;
+      font-size: 1em;
+      line-height: 1em;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-family: @font-family;
+      padding: 1em 2em 1em 2.4em;
+      margin-left: -.4em;
+      border: 1px solid transparent;
+      .icon.icon-plus {
+        left: .6em;
+        border: .12em solid #ccc;
+        &:before, &:after {
+          background-color: #ccc;
+        }
+        &:after {display: none;}
+      }
+      &.collapsed {
+        .icon.icon-plus {
+          border: .12em solid @ca-red;
+          &:before, &:after {
+            background-color: @ca-red;
+          }
+          &:after {display: block;}
+        }
+      }
+      &:hover {
+        //border-color: @color-high;
+        background-color: #eee;
+        .icon.icon-plus {
+          background-color: @ca-red;
+          border-color: @ca-red;
+          &:before, &:after {
+            background-color: #fff;
+          }
+          &:before{
+            .transform(rotate(-45deg));
+            width: .5em;
+            height: .5em;
+            border-radius: 0;
+            background-color: transparent !important;
+            border-left: .16em solid #fff;
+            border-bottom: .16em solid #fff;
+            top: ~"calc(50% - .35em)";
+            left: ~"calc(50% - .27em)";
+          }
+          &:after{
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  .panel-collapse {
+    margin: 1em 0 0 1.5em;
+  }
+  .icon {
+    position: absolute;
+    top: ~"calc(50% - .6em)";
+    left: 0;
+  }
+}
+
+.icon {
+      display: inline-block;
+      width: 1.2em;
+      height: 1.2em;
+      background-color: transparent;
+      border-radius: 50%;
+      margin: 0;
+      position: relative;
+      .trans-generic(100ms);
+      &:before, &:after {
+        display: inline-block;
+        content: "";
+        position: absolute;
+        border-radius: 30%;
+        .trans-generic(100ms);
+      }
+      &.icon-plus {
+        border: .12em solid @ca-red;
+        &:before, &:after {
+          background-color: @ca-red;
+        }
+        &:before {
+          width: .6em;
+          height: .2em;
+          top: ~"calc(50% - .08em)";
+          left: ~"calc(50% - .3em)";
+        }
+        &:after {
+          width: .14em;
+          height: .6em;
+          top: ~"calc(50% - .3em)";
+          left: ~"calc(50% - .075em)";
+        }
+      }
+    }
+// SERVICS PANELS // END
 
 // #sln-salon // END
 // deve stare tutto dentro questo selettore

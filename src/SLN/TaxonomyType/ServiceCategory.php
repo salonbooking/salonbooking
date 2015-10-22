@@ -65,7 +65,7 @@ class SLN_TaxonomyType_ServiceCategory extends SLN_TaxonomyType_Abstract
 		$output .= " {$term->name}</label>";
 		$output .= "</li>";
 	}
-
+        $output .= "<li class='selectit'><label><input type='radio' name='{$name}[]' value='' ".checked(empty($nu_post_terms),true,false)."/>".__('Not defined','sln')."</label></li>";
 	if ( $echo )
 		echo $output;
 	else
