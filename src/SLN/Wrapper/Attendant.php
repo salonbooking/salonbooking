@@ -66,6 +66,7 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
 
     public function getNotAvailableString()
     {
+        $ret = array();
         foreach (SLN_Func::getDays() as $k => $day) {
             if ($this->getNotAvailableOn($k)) {
                 $ret[] = $day;

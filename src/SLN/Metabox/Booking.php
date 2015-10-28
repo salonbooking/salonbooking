@@ -45,6 +45,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             'time'      => 'time',
             'attendant'  => '',
             'services'  => 'set',
+            '_sln_calendar_event_id' => ''
         );
     }
     public function save_post($post_id, $post){

@@ -17,8 +17,13 @@ $grouped = SLN_Func::groupServicesByCategory($services);
  ?>
 <div class="sln-service-list">
     <?php foreach ($grouped as $group): ?>
-        <?php if($group['term'] !== false): ?> 
-        <h3><?php echo $group['term']->name ?></h3>
+        <?php if($group['term'] !== false): ?>
+        <div class="panel panel-salon">
+            <h3 class="panel-heading"><a class="collapsed" role="button" data-toggle="collapse" href="#collapse<?php echo $group['term']->slug ?>" aria-expanded="false" aria-controls="collapse<?php echo $group['term']->slug ?>">
+            <?php echo $group['term']->name ?>
+            <span class="icon icon-plus"></span></a></h3>
+        <div id="collapse<?php echo $group['term']->slug ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse<?php echo $group['term']->slug ?>Heading" aria-expanded="false" style="height: 0px;">
+
         <?php endif ?>
     <?php foreach ($group['services'] as $service) : ?>
         <div class="row">
@@ -64,8 +69,13 @@ $grouped = SLN_Func::groupServicesByCategory($services);
                 <?php endforeach ?>
             </div>
         <?php endif ?>
-
     <?php endforeach ?>
+    <?php if($group['term'] !== false): ?>
+    <!-- panel END -->
+    </div>
+    </div>
+    <!-- panel END -->
+    <?php endif ?>
     <?php endforeach ?>
 	<?php if ($showPrices){ ?>
     <div class="row row-total">
