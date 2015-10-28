@@ -88,27 +88,45 @@ $helper->showNonce($postType);
         </div>
  
     </div>
+<?php
+    $bb        = $plugin->getBookingBuilder();
+    $intervals = $plugin->getIntervals($bb->getDateTime());
+    $date      = $intervals->getSuggestedDate();
+?>
+<span id="salon-step-date"
+          data-intervals="<?php echo esc_attr(json_encode($intervals->toArray()));?>">
     <div class="row form-inline">
-        <div class="col-md-6 col-sm-8">
-            <div class="form-group sln_meta_field">
-                <label><?php _e('Date', 'sln'); ?>
-                    <?php SLN_Form::fieldDate($helper->getFieldName($postType, 'date'), $booking->getDate()); ?>
-                    <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'time'), $booking->getTime()); ?>
-                </label>
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'date')) ?>"><?php _e(
+                            'select a day',
+                            'sln'
+                        ) ?></label>
+                    <?php SLN_Form::fieldJSDate($helper->getFieldName($postType, 'date'), $booking->getDate()) ?>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6 col-sm-4">
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'time')) ?>"><?php _e(
+                            'select an hour',
+                            'sln'
+                        ) ?></label>
+                    <?php SLN_Form::fieldJSTime($helper->getFieldName($postType, 'time'), $booking->getTime(), array('interval' =>  $plugin->getSettings()->get('interval') )) ?>
+                </div>
+            </div>
+        <div class="col-md-4 col-sm-12">
             <div class="form-group sln_meta_field ">
                 <label><?php _e('Status', 'sln'); ?></label>
                 <?php SLN_Form::fieldSelect(
                     $helper->getFieldName($postType, 'status'),
                     SLN_Enum_BookingStatus::toArray(),
                     $booking->getStatus(),
-                    array('map' => true)
+                    array('map' => true, 'class'=> 'form-control')
                 ); ?>
             </div>
         </div>
     </div>
+</span>
     <div class="sln-separator"></div>
     <div class="form-group sln_meta_field">
         <label><?php _e('Attendant', 'sln'); ?></label><br/>

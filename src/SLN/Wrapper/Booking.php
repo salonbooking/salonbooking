@@ -140,7 +140,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
     function getStatus()
     {
-        return $this->object->post_status;
+        return $this->object->post_status ? $this->object->post_status : 'sln-b-pending';
     }
 
     function hasStatus($status)

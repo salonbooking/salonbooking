@@ -15,7 +15,6 @@ $values = array(
     'phone'     => get_user_meta($current_user->ID, '_sln_phone', true)
 );
 ?>
- 
 <?php if (!is_user_logged_in()): ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <h2><?php _e('Returning customer?', 'sln') ?><em><?php _e('Please, log-in.', 'sln') ?></em></h2>

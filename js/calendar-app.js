@@ -71,4 +71,7 @@ console.log(events);
 		//e.stopPropagation();
 	});
 */
+        $('#calendar-add-new').click(function(){
+            alert('click');
+        });
 }
