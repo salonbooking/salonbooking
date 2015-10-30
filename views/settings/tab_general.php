@@ -1,6 +1,6 @@
 <div class="sln-tab" id="sln-tab-general">
-    <div class="row">
-        <div class="col-md-3 col-sm-4">
+    <div class="row sln-box sln-box--main">
+    <div class="col-md-3 col-sm-4">
             <?php
             $this->row_input_text(
                 'gen_name',

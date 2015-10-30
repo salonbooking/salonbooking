@@ -266,7 +266,7 @@ class SLN_Admin_Settings {
                 }
             }
             ?>
-        <div class="wrap sln-bootstrap">
+        <div id="sln-salon--admin" class="wrap sln-bootstrap">
         <?php screen_icon(); ?>
             <h2><?php _e('Salon Settings', 'sln'); ?></h2>
 
@@ -287,7 +287,7 @@ class SLN_Admin_Settings {
     }
 
     private function showTabsBar() {
-        echo '<h2 class="nav-tab-wrapper"><img src="' . SLN_PLUGIN_URL . '/img/settings_icon.png' . '"/>';
+        echo '<h2 class="nav-tab-wrapper">';
         $page = self::PAGE;
         $current = $this->getCurrentTab();
         foreach ($this->tabs as $tab => $name) {

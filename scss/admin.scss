@@ -1,8 +1,7 @@
-@import "bootstrap.less";
-@import "settings-mixins.less";
-
-
-
+@import 'bootstrap';
+@import 'settings-mixins';
+@import 'admin_config';
+@import 'typo';
 .sln_meta_field {
     display: block;
 }
@@ -50,7 +49,7 @@
         margin: 1em 0;
         .col-md-12 {
             padding-left: 0;
-            @media @phone {
+            @include bp(phone) {
                 padding-right: 0;
             }
         }
@@ -58,10 +57,10 @@
             margin-bottom: 1.4em;
             .form-group {
                 padding-right: 2em;
-                @media @tablet-port {
+                @include bp(tablet) {
                     padding-right: 1em;
                 }
-                @media @phone {
+                @include bp(phone) {
                     display: block;
                     width: 50%;
                     float: left;
@@ -78,17 +77,17 @@
     }
 
     .settings-allowed {
-        @media @tablet-port {
+        @include bp(tablet-port) {
             .col-md-5:nth-child(1) {margin-bottom: 1.4em;}
         }
-        @media @phone {
+        @include bp(phone) {
             .col-md-5:nth-child(1) {margin-bottom: 1.4em;}
             select {margin: .2em 0;}
         }
     }
 
     .settings-disable, .settings-confirmation {
-        @media @tablet-port {
+        @include bp(tablet-port) {
             .col-md-6:nth-child(1) {margin-bottom: 1.4em;}
         }
     }
@@ -96,8 +95,8 @@
 
 .salon_page_salon-settings.wp-core-ui .button-primary {
     color: #ffffff;
-    background: @ca-blue;
-    border-color: @ca-blue;
+    background: $ca-blue;
+    border-color: $ca-blue;
 
     display: inline-block;
     margin-bottom: 0;
@@ -177,7 +176,7 @@ h2.nav-tab-wrapper {
 // TABS END
 
 
-@media @tablet-port {
+@include bp(tablet-port) {
     .sln-tab {
            #sln-availabilities .items .item .btn.btn-block.btn-danger {
             width: 25%;
@@ -187,7 +186,7 @@ h2.nav-tab-wrapper {
            #sln-availabilities .col-md-2.pull-right {width: 29%; margin-top: 1em;}
     }
 }
-@media @phone {
+@include bp(phone) {
     .sln-tab {
            #sln-availabilities .items .item .btn.btn-block.btn-danger {margin-top: 2em;}
            #sln-availabilities .col-md-2.pull-right {width: 100%; margin-top: 1em;}
@@ -221,11 +220,11 @@ h2.nav-tab-wrapper {
         input[type='text'] {
             padding: 3px 10px;
             height: auto;
-            @media @tablet-port {height: 34px;}
+            @include bp(tablet-port) {height: 34px;}
         }
 
         .col-xs-6:nth-child(4){
-            @media @phone-port {
+            @include bp(phone-port) {
                 width: 100%;
             }
         }
@@ -238,17 +237,17 @@ h2.nav-tab-wrapper {
     }
 
     #_sln_service_secondary {
-        @media @phone {margin: 0 .5em -.6em 0;}
+        @include bp(phone) {margin: 0 .5em -.6em 0;}
     }
 
     .services-notavailable, .attendants-notavailable{
         margin: 0 0 1em -.5em;
-        @media @phone {margin: 0 0 2em -.5em;}
-        @media @tablet {margin: 0 0 2em -.5em;}
+        @include bp(phone) {margin: 0 0 2em -.5em;}
+        @include bp(tablet) {margin: 0 0 2em -.5em;}
         label {
             margin-right: 2em;
             @media only screen and (min-width: 951px) and (max-width: 1279px) {margin-right: .5em;}
-            @media @phone {
+            @include bp(phone)  {
                 display: block;
                 width: 50%;
                 float: left;
@@ -261,7 +260,7 @@ h2.nav-tab-wrapper {
     .services-notavailable-h, .attendants-notavailable-h {
         label {
             margin-right: 2em;
-            @media @phone {width: 100%; margin-bottom: 1em;}
+            @include bp(phone) {width: 100%; margin-bottom: 1em;}
         }
     }
 }
@@ -291,7 +290,7 @@ h2.nav-tab-wrapper {
             .col-md-6:nth-child(2) {margin-top: 1em;}
         }
 
-        @media @phone {
+        @include bp(phone) {
             select {margin-bottom: 1em;}
         }
 
@@ -311,13 +310,13 @@ h2.nav-tab-wrapper {
 
     .sln_booking-service-price {
         font-size: 1.1em; font-weight: bold;
-        @media @phone {
+        @include bp(phone) {
             margin-top: .4em;
         }
     }
 
     .sln_booking-service-info {
-        @media @phone {
+        @include bp(phone) {
             label {padding-right: 1em;}
         }
     }
@@ -339,9 +338,9 @@ h2.nav-tab-wrapper {
             padding: 1em 0;
         }
         .sln_accept-refuse {
-            border-left: 1px solid #ddd; 
-            @media @desktop-xl {padding-left: 9.75%;}
-            @media @phone {
+            border-left: 1px solid #ddd;
+            @include bp(desktop-xl) {padding-left: 9.75%;}
+            @include bp(phone) {
                 border-left: none;
                 border-top: 1px solid #ddd;
                 margin-top: 1em;
@@ -362,11 +361,11 @@ h2.nav-tab-wrapper {
             margin-right: 0;
             margin-left: 0;
             padding: 6px 0;
-            @media @tablet-port {
+            @include bp(tablet-port) {
                 padding: 5px 0;
                 font-size: 20px;
             }
-            @media @phone {
+            @include bp(phone) {
                 width: 100%;
                 margin-top: .6em;
             }
@@ -375,14 +374,14 @@ h2.nav-tab-wrapper {
 }
 
 .show--phone {
-    @media @tablet {
+    @include bp(tablet) {
         display: none !important;
         visibility: hidden !important;
     }
 }
 
 .hide--phone {
-    @media @phone {
+    @include bp(phone) {
         display: none !important;
         visibility: hidden !important;
     }
@@ -391,3 +390,41 @@ h2.nav-tab-wrapper {
 // /// BOOKING END
 
 
+// /// /// /// /// /// /// /// //
+// /// SETTINGS
+// /// /// /// /// /// /// /// //
+
+// GENERL RULES
+body {
+    background-color: transparent;
+}
+// GENERL RULES // END
+
+#sln-salon--admin {
+    font-size: $browser-context + px;
+    @import 'admin_config';
+    @import 'admin_components/buttons';
+
+
+    .sln-box {
+
+    }
+    .sln-box--main {
+        background-color: #fff;
+    }
+    // SELF OVERRIDES
+    h2.nav-tab-wrapper, h3.nav-tab-wrapper {border-bottom: none;}
+    .sln-tab {
+        border: none;
+        border-top-width: 0;
+        background: transparent;
+        padding: em(80px) 0;
+        .form-group label input {
+            display: initial;
+            margin-top: initial;
+        }
+    }
+    // SELF OVERRIDES // END
+}
+
+// /// SETTINGS END
