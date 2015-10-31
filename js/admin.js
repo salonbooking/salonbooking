@@ -23,7 +23,8 @@ jQuery(function ($) {
     });
 
 
-      $('.sln-select').select2({
+    $('.sln-select').select2({
+        tags: "true",
         width: '100%'
     });
 });

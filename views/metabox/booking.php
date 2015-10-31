@@ -7,6 +7,27 @@ $helper->showNonce($postType);
 
 <div class="sln-bootstrap">
 
+    <div class="row form-inline">
+        <div class="col-md-6 col-sm-8">
+            <div class="form-group sln_meta_field">
+                <label><?php _e('Date', 'sln'); ?>
+                    <?php SLN_Form::fieldDate($helper->getFieldName($postType, 'date'), $booking->getDate()); ?>
+                    <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'time'), $booking->getTime()); ?>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-4">
+            <div class="form-group sln_meta_field sln-select-wrapper">
+                <label><?php _e('Status', 'sln'); ?></label>
+                <?php SLN_Form::fieldSelect(
+                    $helper->getFieldName($postType, 'status'),
+                    SLN_Enum_BookingStatus::toArray(),
+                    $booking->getStatus(),
+                    array('map' => true)
+                ); ?>
+            </div>
+        </div>
+    </div>
 <div class="sln_booking-topbuttons">
     <div class="row">
         <div class="col-lg-5 col-md-6 col-sm-6">
@@ -88,34 +109,13 @@ $helper->showNonce($postType);
         </div>
  
     </div>
-    <div class="row form-inline">
-        <div class="col-md-6 col-sm-8">
-            <div class="form-group sln_meta_field">
-                <label><?php _e('Date', 'sln'); ?>
-                    <?php SLN_Form::fieldDate($helper->getFieldName($postType, 'date'), $booking->getDate()); ?>
-                    <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'time'), $booking->getTime()); ?>
-                </label>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-4">
-            <div class="form-group sln_meta_field ">
-                <label><?php _e('Status', 'sln'); ?></label>
-                <?php SLN_Form::fieldSelect(
-                    $helper->getFieldName($postType, 'status'),
-                    SLN_Enum_BookingStatus::toArray(),
-                    $booking->getStatus(),
-                    array('map' => true)
-                ); ?>
-            </div>
-        </div>
-    </div>
     <div class="sln-separator"></div>
     <div class="form-group sln_meta_field row">
-        <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
         <h3><?php _e('Attendant', 'sln'); ?></h3>
-            <select class="sln-select">
+            <select class="sln-select" name="select_attendant"  id="selectAttendant">
                 <?php foreach ($plugin->getAttendants() as $attendant) : ?>
-                   <option value="<?php echo SLN_Form::makeID('sln[services][' . $attendant->getId() . ']') ?>"><strong class="service-name"><?php echo $attendant->getName(); ?></option>
+                   <option data-id="<?php echo SLN_Form::makeID('sln[services][' . $attendant->getId() . ']') ?>" value="<?php echo SLN_Form::makeID('sln[services][' . $attendant->getId() . ']') ?>"><strong class="service-name"><?php echo $attendant->getName(); ?></option>
                 <?php endforeach ?>
             </select>
         </div>
@@ -123,9 +123,9 @@ $helper->showNonce($postType);
     </div>
     <div class="sln-separator"></div>
     <div class="form-group sln_meta_field row">
-        <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
         <h3><?php _e('Services', 'sln'); ?></h3>
-            <select class="sln-select" multiple="multiple" data-placeholder="Select one or more services">
+            <select class="sln-select" multiple="multiple" data-placeholder="Select or search one or more services">
                 <?php foreach ($plugin->getServices() as $service) : ?>
                    <option value="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"><?php echo $service->getName(); ?></option>
                 <?php endforeach ?>
