@@ -110,57 +110,28 @@ $helper->showNonce($postType);
         </div>
     </div>
     <div class="sln-separator"></div>
-    <div class="form-group sln_meta_field">
-        <label><?php _e('Attendant', 'sln'); ?></label><br/>
-        <?php foreach ($plugin->getAttendants() as $attendant) : ?>
-            <div class="row">
-                <div class="col-md-1 col-sm-1 col-xs-2">
-            <span class="service-checkbox">
-                <?php SLN_Form::fieldRadiobox(
-                    $helper->getFieldName($postType, 'attendant'),
-                    $attendant->getId(),
-                    $booking->hasAttendant($attendant)
-                ) ?>
-            </span>
-                </div>
-                <div class="col-md-8 col-sm-9 col-xs-10 sln_booking-attendant-info">
-                    <label for="<?php echo SLN_Form::makeID('sln[services][' . $attendant->getId() . ']') ?>">
-                        <strong class="service-name"><?php echo $attendant->getName(); ?></strong>
-                        <span class="service-description"><?php echo $attendant->getContent() ?></span>
-                    </label>
-                </div>
-            </div>
-        <?php endforeach ?>
+    <div class="form-group sln_meta_field row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+        <h3><?php _e('Attendant', 'sln'); ?></h3>
+            <select class="sln-select">
+                <?php foreach ($plugin->getAttendants() as $attendant) : ?>
+                   <option value="<?php echo SLN_Form::makeID('sln[services][' . $attendant->getId() . ']') ?>"><strong class="service-name"><?php echo $attendant->getName(); ?></option>
+                <?php endforeach ?>
+            </select>
+        </div>
+    <!-- .row // END -->
     </div>
- 
     <div class="sln-separator"></div>
-    <div class="form-group sln_meta_field">
-        <label><?php _e('Services', 'sln'); ?></label><br/>
-        <?php foreach ($plugin->getServices() as $service) : ?>
-            <div class="row">
-                <div class="col-md-1 col-sm-1 col-xs-2">
-            <span class="service-checkbox">
-                <?php SLN_Form::fieldCheckbox(
-                    $helper->getFieldName($postType, 'services[' . $service->getId() . ']'),
-                    $booking->hasService($service)
-                ) ?>
-            </span>
-                </div>
-                <div class="col-md-8 col-sm-9 col-xs-10 sln_booking-service-info">
-                    <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
-                        <strong class="service-name"><?php echo $service->getName(); ?></strong>
-                        <span class="service-description"><?php echo $service->getContent() ?></span>
-                        <span class="service-duration">Duration: <?php echo $service->getDuration()->format(
-                                'H:i'
-                            ) ?></span>
-                    </label>
-                </div>
-                <div class="show--phone col-xs-2"></div>
-                <div class="col-md-3 col-sm-2 col-xs-10 sln_booking-service-price">
-                    <?php echo $plugin->format()->money($service->getPrice()) ?>
-                </div>
-            </div>
-        <?php endforeach ?>
+    <div class="form-group sln_meta_field row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+        <h3><?php _e('Services', 'sln'); ?></h3>
+            <select class="sln-select" multiple="multiple" data-placeholder="Select one or more services">
+                <?php foreach ($plugin->getServices() as $service) : ?>
+                   <option value="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"><?php echo $service->getName(); ?></option>
+                <?php endforeach ?>
+            </select>
+        </div>
+    <!-- .row // END -->
     </div>
     <div class="sln-separator"></div>
     <div class="row">
