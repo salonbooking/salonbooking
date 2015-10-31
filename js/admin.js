@@ -23,7 +23,7 @@ jQuery(function ($) {
     });
 
 
-    $('.sln-select').select2({
+    $('.sln-select-wrapper select').select2({
         tags: "true",
         width: '100%'
     });
