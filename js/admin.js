@@ -68,16 +68,17 @@ function sln_adminDate($) {
         if(doingFunc) return;
         setTimeout(function(){
            doingFunc = true;
-        $('[data-ymd]').addClass('disabled');
+        $('[data-ymd]').removeClass('disabled');
+        $('[data-ymd]').addClass('red');
         $.each(items.dates, function(key, value) {
            //console.log(value);
-           $('.day[data-ymd="'+value+'"]').removeClass('disabled');
+           $('.day[data-ymd="'+value+'"]').removeClass('red');
         });
 
         $.each(items.times, function(key, value) {
-           $('.hour[data-ymd="'+value+'"]').removeClass('disabled'); 
-           $('.minute[data-ymd="'+value+'"]').removeClass('disabled'); 
-           $('.hour[data-ymd="'+value.split(':')[0]+':00"]').removeClass('disabled');
+           $('.hour[data-ymd="'+value+'"]').removeClass('red'); 
+           $('.minute[data-ymd="'+value+'"]').removeClass('red'); 
+           $('.hour[data-ymd="'+value.split(':')[0]+':00"]').removeClass('red');
         });
             doingFunc = false;
        },200);
@@ -85,7 +86,7 @@ function sln_adminDate($) {
     }
     func();
     $('body').on('sln_date', func);
-    function validate(obj, autosubmit) {
+    function validate(obj) {
         var form = $(obj).closest('form');
         var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> '+salon.txt_validating;
         var data = form.serialize();
@@ -97,26 +98,50 @@ function sln_adminDate($) {
             method: 'POST',
             dataType: 'json',
             success: function (data) {
+//console.log(data);
                 if (!data.success) {
                     var alertBox = $('<div class="alert alert-danger"></div>');
                     $(data.errors).each(function () {
                         alertBox.append('<p>').html(this);
                     });
                     $('#sln-notifications').html('').append(alertBox);
-                    $('#sln-step-submit').attr('disabled', true);
-                    isValid = false;
                 } else {
-                    $('#sln-step-submit').attr('disabled', false);
                     $('#sln-notifications').html('');
-                    isValid = true;
-                    if (autosubmit)
-                        submit();
                 }
+                updateServices(obj);
                 bindIntervals(data.intervals);
+           }
+       });
+    }
+    function updateServices(obj){
+        var form = $(obj).closest('form');
+        var data = form.serialize()+"&action=salon&method=CheckServices&security=" + salon.ajax_nonce;
+        $.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                 if (!data.success) {
+                    var alertBox = $('<div class="alert alert-danger"></div>');
+                    $.each(data.errors,function () {
+                        alertBox.append('<p>').html(this);
+                    });
+                    $('#sln-notifications').html('').append(alertBox);
+                } else {
+                    $('#sln-notifications').html('');
+                    $.each(data.services, function(key,value){
+                        var message = $('#sln-service-'+key+' .message');
+                        if(value)
+                             message.html('<div class="alert alert-danger">'+value+'</div>');
+                        else
+                             message.html('');
+                    });
+                }
+                
             }
         });
     }
-
     function bindIntervals(intervals) {
 //        putOptions($('#sln_date_day'), intervals.days, intervals.suggestedDay);
 //        putOptions($('#sln_date_month'), intervals.months, intervals.suggestedMonth);
@@ -132,7 +157,7 @@ function sln_adminDate($) {
     }
 
     $('#_sln_booking_date, #_sln_booking_time').change(function () {
-        validate(this, false);
+        validate(this);
     });
     initDatepickers($);
     initTimepickers($);
@@ -166,4 +191,35 @@ jQuery(function ($) {
     if($('#sln_booking-details').length){
         sln_adminDate($);
     }
+
+    $('#sln-update-user').click(function(){
+        var message = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ';
+        
+        var data = "&action=salon&method=UpdateUser&s="+$('#sln-update-user-field').val()+"&security=" + salon.ajax_nonce;
+        $('#sln-update-user-message').html(message);
+        $.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (!data.success) {
+                    var alertBox = $('<div class="alert alert-danger"></div>');
+                    $(data.errors).each(function () {
+                        alertBox.append('<p>').html(this);
+                    });
+                    $('#sln-update-user-message').html(alertBox);
+                } else {
+                    var alertBox = $('<div class="alert alert-success">'+data.message+'</div>');
+                    $('#sln-update-user-message').html(alertBox);
+                    $.each(data.result,function(key,value){
+                        console.log([key,value]);
+                        if(key == 'id') $('#post_author').val(value);
+                        else $('#_sln_booking_'+key).val(value);
+                    });
+                }
+            }
+        });
+        return false;
+    });
 });

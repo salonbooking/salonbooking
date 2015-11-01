@@ -212,6 +212,10 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         update_post_meta($post_id, '_sln_booking_remind', $remind);
     }
 
-
-
+    public function getUserData(){
+        $this->object->post_author ? get_userdata($this->object->post_author) : null; 
+    }
+    public function getUserDisplayName(){
+        $this->getUserData() ? $this->getUserData()->display_name : '';
+    }
 }
