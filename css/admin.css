@@ -3178,7 +3178,13 @@ body {
     border: none;
     border-top-width: 0;
     background: transparent;
-    padding: 5em 0; }
+    padding: 5em 0;
+    margin-right: 340px; }
     #sln-salon--admin .sln-tab .form-group label input {
       display: initial;
       margin-top: initial; }
+  #sln-salon--admin .sln-settings-sidebar {
+    width: 300px;
+    background-color: #ccc;
+    position: fixed;
+    right: 10px; }

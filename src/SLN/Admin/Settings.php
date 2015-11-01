@@ -123,6 +123,7 @@ class SLN_Admin_Settings {
     }
     
         public function showTab($tab) {
+            include $this->plugin->getViewFile('admin/utilities/settings-sidebar');
             include $this->plugin->getViewFile('settings/tab_' . $tab);
         }
 

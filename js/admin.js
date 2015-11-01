@@ -21,4 +21,8 @@ jQuery(function ($) {
        $('#post_status').val($(this).data('status')); 
        $('#save-post').click();
     });
+    $('.sln-select-wrapper select').select2({
+        tags: "true",
+        width: '100%'
+    });
 });

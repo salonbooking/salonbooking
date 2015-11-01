@@ -419,12 +419,18 @@ body {
         border-top-width: 0;
         background: transparent;
         padding: em(80px) 0;
+        margin-right: 340px;
         .form-group label input {
             display: initial;
             margin-top: initial;
         }
     }
     // SELF OVERRIDES // END
+    .sln-settings-sidebar {
+        width: 300px;
+        background-color: #ccc;
+        position: fixed;
+        right: 10px;
+    }
 }
-
 // /// SETTINGS END
