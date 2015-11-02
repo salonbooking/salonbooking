@@ -186,10 +186,10 @@ $helper->showNonce($postType);
     <div class="form-group sln_meta_field row">
         <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
             <h3><?php _e('Attendant', 'sln'); ?></h3>
-            <select class="sln-select" name="_sln_attendant" id="_sln_attendant">
+            <select class="sln-select" name="_sln_booking_attendant" id="_sln_booking_attendant">
                 <?php foreach ($plugin->getAttendants() as $attendant) : ?>
                     <option data-id="<?php echo SLN_Form::makeID('sln[attendant]['.$attendant->getId().']') ?>"
-                            value="<?php echo SLN_Form::makeID('sln[attendant]['.$attendant->getId().']') ?>"
+                            value="<?php echo $attendant->getId();?>"
                         <?php echo $booking->hasAttendant($attendant) ? 'selected="selected"' : '' ?>
                         ><strong class="service-name"><?php echo $attendant->getName(); ?></option>
                 <?php endforeach ?>
@@ -201,12 +201,11 @@ $helper->showNonce($postType);
         <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
             <h3><?php _e('Services', 'sln'); ?></h3>
             <select class="sln-select" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
-                    name="_sln_services" id="_sln_services">
+                    name="_sln_booking_services[]" id="_sln_booking_services">
                 <?php foreach ($plugin->getServices() as $service) : ?>
                     <option
                         class="red"
-                        data-id="<?php echo SLN_Form::makeID('sln[services]['.$service->getId().']') ?>"
-                        value="<?php echo SLN_Form::makeID('sln[services]['.$service->getId().']') ?>"
+                        value="sln_booking_services_<?php echo $service->getId() ?>"
                         <?php echo $booking->hasService($service) ? 'selected="selected"' : '' ?>
                         ><?php echo $service->getName(); ?>
                         (<?php echo $plugin->format()->money($service->getPrice()) ?>)

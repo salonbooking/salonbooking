@@ -71,7 +71,6 @@ function sln_adminDate($) {
             $('[data-ymd]').removeClass('disabled');
             $('[data-ymd]').addClass('red');
             $.each(items.dates, function (key, value) {
-                //console.log(value);
                 $('.day[data-ymd="' + value + '"]').removeClass('red');
             });
 
@@ -98,7 +97,6 @@ function sln_adminDate($) {
             method: 'POST',
             dataType: 'json',
             success: function (data) {
-//console.log(data);
                 if (!data.success) {
                     var alertBox = $('<div class="alert alert-danger"></div>');
                     $(data.errors).each(function () {
@@ -153,17 +151,17 @@ function sln_adminDate($) {
         validate(this);
     });
     validate($('#_sln_booking_date'));
-    $('#_sln_services').on('select2:open',function(){
+    $('#_sln_booking_services').on('select2:open',function(){
         var notifications = $('#sln-services-notifications');
         $.each(dataServices, function (key, value) {
-            var box = $('.select2-results__option[id$="sln_services_' + key + '"]');
+            var box = $('.select2-results__option[id$="sln_booking_services_' + key + '"]');
             if(value)
                 box.addClass('red').data('message','<div class="alert alert-danger">' + value + '</div>');
             else
                 box.removeClass('red').data('message', '');
             box.unbind('hover').hover(function(){});
         });
-        $('.select2-results__option[id*=sln_services]').unbind('hover').hover(
+        $('.select2-results__option[id*=sln_booking_services]').unbind('hover').hover(
             function(){ notifications.html($(this).data('message')) },
             function(){ notifications.html('') }
         );
@@ -247,7 +245,6 @@ jQuery(function ($) {
                     var alertBox = $('<div class="alert alert-success">' + data.message + '</div>');
                     $('#sln-update-user-message').html(alertBox);
                     $.each(data.result, function (key, value) {
-                        console.log([key, value]);
                         if (key == 'id') $('#post_author').val(value);
                         else $('#_sln_booking_' + key).val(value);
                     });

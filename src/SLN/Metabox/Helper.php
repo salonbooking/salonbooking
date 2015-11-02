@@ -22,7 +22,6 @@ class SLN_Metabox_Helper
             $field        = self::getFieldName($postType, $k);
             $meta[$field] = SLN_Func::filter(isset($_POST[$field]) ? $_POST[$field] : null, $v);
         }
-
         return $meta;
     }
 
