@@ -218,4 +218,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     public function getUserDisplayName(){
         $this->getUserData() ? $this->getUserData()->display_name : '';
     }
+    public function getUserId(){
+        return $this->object->post_author;
+    }
 }

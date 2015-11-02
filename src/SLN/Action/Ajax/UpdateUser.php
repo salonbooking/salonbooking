@@ -4,6 +4,7 @@ class SLN_Action_Ajax_UpdateUser extends SLN_Action_Ajax_Abstract
 {
     public function execute()
     {
+       if(!current_user_can( 'manage_options' )) throw new Exception('now allowed');
        $result = $this->getResult($_POST['s']);
        if(!$result){
            $ret = array(
@@ -19,12 +20,11 @@ class SLN_Action_Ajax_UpdateUser extends SLN_Action_Ajax_Abstract
        }
        return $ret;
     }
-    private function getResult($search)
+    private function getResult($id)
     {
         $number = 1;
-        $user_query = new WP_User_Query( compact('search','number') );
-        if(!$user_query->results) return;
-        $u = $user_query->results[0];
+        $u = new WP_User($id);
+        if(!$u) return;
         $values = array(
             'id' => $u->ID,
             'firstname' => $u->user_firstname,

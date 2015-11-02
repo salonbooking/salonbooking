@@ -78,14 +78,14 @@ $helper->showNonce($postType);
 
 <div class="row">
         <div class="col-md-12"><label for="sln-update-user-field"><?php _e('Search for existing users', 'sln') ?></label></div>
-        <div class="col-md-3 col-sm-6">
-            <input type="text" id="sln-update-user-field" class="form-control" placeholder="Username, name or email"
-                   value="<?php echo $booking->getUserDisplayName() ?>"/>
+        <div class="col-md-6 col-sm-6">
+            <select id="sln-update-user-field" placeholder="Username, name or email" class="form-control">
+                <?php if($booking->getId()){ ?>
+                <option value="<?php echo $booking->getUserId() ?>"><?php echo $booking->getUserDisplayName() ?></option>
+                <?php } ?>
+            </select>
         </div>
-        <div class="col-md-3 col-sm-6">
-            <button class="btn btn-primary" id="sln-update-user"><?php _e('Set user', 'sln') ?></button>
-        </div>
-        <div class="col-md-6 col-sm-12" id="sln-update-user-message">
+        <div class="col-md-6 col-sm-6" id="sln-update-user-message">
         </div>
         </div>
         <div class="clearfix"></div>
@@ -93,7 +93,7 @@ $helper->showNonce($postType);
     <div class="row">
         <div class="col-md-3 col-sm-6">
             <?php
-            $helper->showFieldtext(
+            $helper->showFieldText(
                 $helper->getFieldName($postType, 'firstname'),
                 __('Firstname', 'sln'),
                 $booking->getFirstname()
@@ -102,7 +102,7 @@ $helper->showNonce($postType);
         </div>
         <div class="col-md-3 col-sm-6">
             <?php
-            $helper->showFieldtext(
+            $helper->showFieldText(
                 $helper->getFieldName($postType, 'lastname'),
                 __('Lastname', 'sln'),
                 $booking->getLastname()
@@ -111,7 +111,7 @@ $helper->showNonce($postType);
         </div>
         <div class="col-md-3 col-sm-6">
             <?php
-            $helper->showFieldtext(
+            $helper->showFieldText(
                 $helper->getFieldName($postType, 'email'),
                 __('E-mail', 'sln'),
                 $booking->getEmail()
@@ -120,7 +120,7 @@ $helper->showNonce($postType);
         <div class="col-md-3 col-sm-6">
 
             <?php
-            $helper->showFieldtext(
+            $helper->showFieldText(
                 $helper->getFieldName($postType, 'phone'),
                 __('Phone', 'sln'),
                 $booking->getPhone()
@@ -130,8 +130,8 @@ $helper->showNonce($postType);
         <div class="col-md-6 col-sm-12">
 
             <?php
-            $helper->showFieldtext(
-                $helper->getFieldName($postType, 'phone'),
+            $helper->showFieldTextArea(
+                $helper->getFieldName($postType, 'address'),
                 __('Address', 'sln'),
                 $booking->getAddress()
             );
@@ -154,7 +154,7 @@ $helper->showNonce($postType);
         </div>
         <div class="col-md-3 col-sm-4">
             <?php
-            $helper->showFieldtext(
+            $helper->showFieldText(
                 $helper->getFieldName($postType, 'amount'),
                 __('Amount', 'sln').' ('.$settings->getCurrencySymbol().')',
                 $booking->getAmount()
@@ -163,7 +163,7 @@ $helper->showNonce($postType);
         </div>
         <div class="col-md-3 col-sm-4">
             <?php
-            $helper->showFieldtext(
+            $helper->showFieldText(
                 $helper->getFieldName($postType, 'deposit'),
                 __('Deposit', 'sln').' ('.$settings->getCurrencySymbol().')',
                 $booking->getDeposit()

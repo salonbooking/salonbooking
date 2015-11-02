@@ -208,7 +208,25 @@ jQuery(function ($) {
         sln_adminDate($);
     }
 
-    $('#sln-update-user').click(function () {
+    $('#sln-update-user-field').select2({
+         ajax: {
+    url: salon.ajax_url+'&action=salon&method=SearchUser&security=' + salon.ajax_nonce,
+    dataType: 'json',
+    delay: 250,
+    data: function (params) {
+      return {
+        s: params.term
+      };
+    },
+    minimumInputLength: 3,
+    processResults: function (data, page) {
+      return {
+        results: data.result
+      };
+    }
+    }});
+
+    $('#sln-update-user-field').on('select2:select', function(){
         var message = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ';
 
         var data = "&action=salon&method=UpdateUser&s=" + $('#sln-update-user-field').val() + "&security=" + salon.ajax_nonce;
