@@ -6,17 +6,53 @@ $helper->showNonce($postType);
 ?>
 
 <div class="sln-bootstrap">
+    <?php
+    $intervals = $plugin->getIntervals($booking->getDate());
+    $date = $intervals->getSuggestedDate();
+    ?>
+    <style>
+        .datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active),
+        .datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active),
+        .datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled),
+        .select2-results__option.red {
+            color: red !important;
+        }
 
+        .datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active):hover,
+        .datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active):hover,
+        .datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled):hover,
+        .select2-results__option.red:hover {
+            color: white !important;
+            background-color: red !important;
+        }
+
+    </style>
+<span id="salon-step-date"
+      data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>">
     <div class="row form-inline">
-        <div class="col-md-6 col-sm-8">
-            <div class="form-group sln_meta_field">
-                <label><?php _e('Date', 'sln'); ?>
-                    <?php SLN_Form::fieldDate($helper->getFieldName($postType, 'date'), $booking->getDate()); ?>
-                    <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'time'), $booking->getTime()); ?>
-                </label>
+        <div class="col-md-3 col-sm-6">
+            <div class="form-group">
+                <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'date')) ?>"><?php _e(
+                        'select a day',
+                        'sln'
+                    ) ?></label>
+                <?php SLN_Form::fieldJSDate($helper->getFieldName($postType, 'date'), $booking->getDate()) ?>
             </div>
         </div>
-        <div class="col-md-6 col-sm-4">
+        <div class="col-md-3 col-sm-6">
+            <div class="form-group">
+                <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'time')) ?>"><?php _e(
+                        'select an hour',
+                        'sln'
+                    ) ?></label>
+                <?php SLN_Form::fieldJSTime(
+                    $helper->getFieldName($postType, 'time'),
+                    $booking->getTime(),
+                    array('interval' => $plugin->getSettings()->get('interval'))
+                ) ?>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
             <div class="form-group sln_meta_field sln-select-wrapper">
                 <label><?php _e('Status', 'sln'); ?></label>
                 <?php SLN_Form::fieldSelect(
@@ -27,40 +63,48 @@ $helper->showNonce($postType);
                 ); ?>
             </div>
         </div>
+        <div class="col-md-3 col-sm-6" id="sln-notifications"></div>
     </div>
-<div class="sln_booking-topbuttons">
-    <div class="row">
-        <div class="col-lg-5 col-md-6 col-sm-6">
-            <h2><?php _e('Re-send email notification to ','sln') ?></h2>
-            <div class="row">
-            <div class="col-lg-7 col-md-8 col-sm-8"><input type="text" class="form-control" name="emailto"/></div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <button class="btn btn-success" type="submit" name="emailto_submit" value="submit"><?php echo __('Send', 'sln')?></button>
+</span>
 
-            </div>
-            </div>
+    <div class="sln_booking-topbuttons">
+        <div class="row">
+            <?php if ($plugin->getSettings()->get('confirmation') && $booking->getStatus(
+                ) == SLN_Enum_BookingStatus::PENDING
+            ) { ?>
+                <div class="col-lg-5 col-md-5 col-sm-6 sln_accept-refuse">
+                    <h2><?php _e('This booking waits for confirmation!', 'sln') ?></h2>
+
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 col-sm-6">
+                            <button id="booking-refuse" class="btn btn-success"
+                                    data-status="<?php echo SLN_Enum_BookingStatus::CONFIRMED ?>">
+                                <?php _e('Accept', 'sln') ?></button>
+                        </div>
+                        <div class="col-lg-5 col-md-6 col-sm-6">
+                            <button id="booking-accept" class="btn btn-danger"
+                                    data-status="<?php echo SLN_Enum_BookingStatus::CANCELED ?>">
+                                <?php _e('Refuse', 'sln') ?></button>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
 
-        <?php if ($plugin->getSettings()->get('confirmation') && $booking->getStatus() == SLN_Enum_BookingStatus::PENDING){ ?>
-        <div class="col-lg-5 col-md-5 col-sm-6 sln_accept-refuse">
-            <h2><?php _e('This booking waits for confirmation!','sln')?></h2>
-            <div class="row">
-            <div class="col-lg-5 col-md-6 col-sm-6">
-               <button id="booking-refuse" class="btn btn-success" data-status="<?php echo SLN_Enum_BookingStatus::CONFIRMED ?>">
-                <?php _e('Accept', 'sln') ?></button>
-            </div>
-            <div class="col-lg-5 col-md-6 col-sm-6"> <button id="booking-accept" class="btn btn-danger" data-status="<?php echo SLN_Enum_BookingStatus::CANCELED ?>">
-                <?php _e('Refuse', 'sln') ?></button>
-            </div>
-            </div>
-        </div>
-        <?php } ?>
     </div>
-    
-</div>
 
 
     <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <input type="text" id="sln-update-user-field" class="form-control" placeholder="username, name or email"
+                   value="<?php echo $booking->getUserDisplayName() ?>"/>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <button class="btn btn-danger" id="sln-update-user"><?php _e('Set user', 'sln') ?></button>
+        </div>
+        <div class="col-md-6 col-sm-12" id="sln-update-user-message">
+        </div>
+        <div class="clearfix"></div>
         <div class="col-md-3 col-sm-6">
             <?php
             $helper->showFieldtext(
@@ -107,31 +151,42 @@ $helper->showNonce($postType);
             );
             ?>
         </div>
- 
+
     </div>
     <div class="sln-separator"></div>
     <div class="form-group sln_meta_field row">
         <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
-        <h3><?php _e('Attendant', 'sln'); ?></h3>
-            <select class="sln-select" name="select_attendant"  id="selectAttendant">
+            <h3><?php _e('Attendant', 'sln'); ?></h3>
+            <select class="sln-select" name="_sln_attendant" id="_sln_attendant">
                 <?php foreach ($plugin->getAttendants() as $attendant) : ?>
-                   <option data-id="<?php echo SLN_Form::makeID('sln[services][' . $attendant->getId() . ']') ?>" value="<?php echo SLN_Form::makeID('sln[services][' . $attendant->getId() . ']') ?>"><strong class="service-name"><?php echo $attendant->getName(); ?></option>
+                    <option data-id="<?php echo SLN_Form::makeID('sln[attendant]['.$attendant->getId().']') ?>"
+                            value="<?php echo SLN_Form::makeID('sln[attendant]['.$attendant->getId().']') ?>"
+                        <?php echo $booking->hasAttendant($attendant) ? 'selected="selected"' : '' ?>
+                        ><strong class="service-name"><?php echo $attendant->getName(); ?></option>
                 <?php endforeach ?>
             </select>
         </div>
-    <!-- .row // END -->
     </div>
     <div class="sln-separator"></div>
     <div class="form-group sln_meta_field row">
         <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
-        <h3><?php _e('Services', 'sln'); ?></h3>
-            <select class="sln-select" multiple="multiple" data-placeholder="Select or search one or more services">
+            <h3><?php _e('Services', 'sln'); ?></h3>
+            <select class="sln-select" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
+                    name="_sln_services" id="_sln_services">
                 <?php foreach ($plugin->getServices() as $service) : ?>
-                   <option value="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"><?php echo $service->getName(); ?></option>
+                    <option
+                        class="red"
+                        data-id="<?php echo SLN_Form::makeID('sln[services]['.$service->getId().']') ?>"
+                        value="<?php echo SLN_Form::makeID('sln[services]['.$service->getId().']') ?>"
+                        <?php echo $booking->hasService($service) ? 'selected="selected"' : '' ?>
+                        ><?php echo $service->getName(); ?>
+                        (<?php echo $plugin->format()->money($service->getPrice()) ?>)
+                    </option>
                 <?php endforeach ?>
             </select>
         </div>
-    <!-- .row // END -->
+        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper" id="sln-services-notifications">
+        </div>
     </div>
     <div class="sln-separator"></div>
     <div class="row">
@@ -161,7 +216,7 @@ $helper->showNonce($postType);
             <?php
             $helper->showFieldtext(
                 $helper->getFieldName($postType, 'amount'),
-                __('Amount', 'sln') . ' (' . $settings->getCurrencySymbol() . ')',
+                __('Amount', 'sln').' ('.$settings->getCurrencySymbol().')',
                 $booking->getAmount()
             );
             ?>
@@ -170,7 +225,7 @@ $helper->showNonce($postType);
             <?php
             $helper->showFieldtext(
                 $helper->getFieldName($postType, 'deposit'),
-                __('Deposit', 'sln') . ' (' . $settings->getCurrencySymbol() . ')',
+                __('Deposit', 'sln').' ('.$settings->getCurrencySymbol().')',
                 $booking->getDeposit()
             );
             ?>
@@ -180,9 +235,27 @@ $helper->showNonce($postType);
             <div class="form-group">
                 <label for="">Transaction</label>
 
-                <p><?php echo $booking->getTransactionId() ? $booking->getTransactionId() : __('n.a.', 'sln') ?></p>
+                <p><?php echo $booking->getTransactionId() ? $booking->getTransactionId() : __(
+                        'n.a.',
+                        'sln'
+                    ) ?></p>
             </div>
         </div>
     </div>
     <div class="sln-clear"></div>
+    <div class="row">
+        <div class="col-lg-5 col-md-6 col-sm-6">
+            <h2><?php _e('Re-send email notification to ', 'sln') ?></h2>
+
+            <div class="row">
+                <div class="col-lg-7 col-md-8 col-sm-8"><input type="text" class="form-control" name="emailto"/>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <button class="btn btn-success" type="submit" name="emailto_submit"
+                            value="submit"><?php echo __('Send', 'sln') ?></button>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
