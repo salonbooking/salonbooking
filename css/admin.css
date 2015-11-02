@@ -3447,6 +3447,7 @@ h2.nav-tab-wrapper img {
   background-color: #e4e4e4;
   color: #d51e26;
   text-decoration: none;
+  overflow: hidden;
 }
 .sln-select-wrapper .select2-container--default .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove:before {
   display: block;

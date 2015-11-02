@@ -684,6 +684,19 @@
   color: #fff;
   background-color: #33CC33;
 }
+.datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled),
+.select2-results__option.red {
+  color: red !important;
+}
+.datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active):hover,
+.datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active):hover,
+.datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled):hover,
+.select2-results__option.red:hover {
+  color: white !important;
+  background-color: red !important;
+}
 #sln-salon {
   background: #f8f8f8;
   border: 1px solid #ddd;

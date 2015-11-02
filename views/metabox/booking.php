@@ -10,30 +10,13 @@ $helper->showNonce($postType);
     $intervals = $plugin->getIntervals($booking->getDate());
     $date = $intervals->getSuggestedDate();
     ?>
-    <style>
-        .datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active),
-        .datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active),
-        .datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled),
-        .select2-results__option.red {
-            color: red !important;
-        }
-
-        .datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active):hover,
-        .datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active):hover,
-        .datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled):hover,
-        .select2-results__option.red:hover {
-            color: white !important;
-            background-color: red !important;
-        }
-
-    </style>
 <span id="salon-step-date"
       data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>">
     <div class="row form-inline">
         <div class="col-md-3 col-sm-6">
             <div class="form-group">
                 <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'date')) ?>"><?php _e(
-                        'select a day',
+                        'Select a day',
                         'sln'
                     ) ?></label>
                 <?php SLN_Form::fieldJSDate($helper->getFieldName($postType, 'date'), $booking->getDate()) ?>
@@ -42,7 +25,7 @@ $helper->showNonce($postType);
         <div class="col-md-3 col-sm-6">
             <div class="form-group">
                 <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'time')) ?>"><?php _e(
-                        'select an hour',
+                        'Select an hour',
                         'sln'
                     ) ?></label>
                 <?php SLN_Form::fieldJSTime(
@@ -93,18 +76,21 @@ $helper->showNonce($postType);
 
     </div>
 
-
-    <div class="row">
+<div class="row">
+        <div class="col-md-12"><label for="sln-update-user-field"><?php _e('Search for existing users', 'sln') ?></label></div>
         <div class="col-md-3 col-sm-6">
-            <input type="text" id="sln-update-user-field" class="form-control" placeholder="username, name or email"
+            <input type="text" id="sln-update-user-field" class="form-control" placeholder="Username, name or email"
                    value="<?php echo $booking->getUserDisplayName() ?>"/>
         </div>
         <div class="col-md-3 col-sm-6">
-            <button class="btn btn-danger" id="sln-update-user"><?php _e('Set user', 'sln') ?></button>
+            <button class="btn btn-primary" id="sln-update-user"><?php _e('Set user', 'sln') ?></button>
         </div>
         <div class="col-md-6 col-sm-12" id="sln-update-user-message">
         </div>
+        </div>
         <div class="clearfix"></div>
+<div class="sln-separator"></div>
+    <div class="row">
         <div class="col-md-3 col-sm-6">
             <?php
             $helper->showFieldtext(
@@ -153,6 +139,49 @@ $helper->showNonce($postType);
         </div>
 
     </div>
+
+    <div class="sln-separator"></div>
+    <div class="row">
+        <div class="col-md-3 col-sm-4">
+            <div class="form-group sln_meta_field sln-select-wrapper">
+                <label><?php _e('Duration', 'sln'); ?></label>
+                <?php SLN_Form::fieldTime(
+                    $helper->getFieldName($postType, 'duration'),
+                    $booking->getDuration(),
+                    array('interval' => 10, 'maxItems' => 61)
+                ); ?>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-4">
+            <?php
+            $helper->showFieldtext(
+                $helper->getFieldName($postType, 'amount'),
+                __('Amount', 'sln').' ('.$settings->getCurrencySymbol().')',
+                $booking->getAmount()
+            );
+            ?>
+        </div>
+        <div class="col-md-3 col-sm-4">
+            <?php
+            $helper->showFieldtext(
+                $helper->getFieldName($postType, 'deposit'),
+                __('Deposit', 'sln').' ('.$settings->getCurrencySymbol().')',
+                $booking->getDeposit()
+            );
+            ?>
+        </div>
+
+        <div class="col-md-3 col-sm-4">
+            <div class="form-group">
+                <label for="">Transaction</label>
+
+                <p><?php echo $booking->getTransactionId() ? $booking->getTransactionId() : __(
+                        'n.a.',
+                        'sln'
+                    ) ?></p>
+            </div>
+        </div>
+    </div>
     <div class="sln-separator"></div>
     <div class="form-group sln_meta_field row">
         <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
@@ -200,48 +229,6 @@ $helper->showNonce($postType);
             </div>
         </div>
     </div>
-    <div class="sln-separator"></div>
-    <div class="row">
-        <div class="col-md-3 col-sm-4">
-            <div class="form-group sln_meta_field ">
-                <label><?php _e('Duration', 'sln'); ?></label>
-                <?php SLN_Form::fieldTime(
-                    $helper->getFieldName($postType, 'duration'),
-                    $booking->getDuration(),
-                    array('interval' => 10, 'maxItems' => 61)
-                ); ?>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-4">
-            <?php
-            $helper->showFieldtext(
-                $helper->getFieldName($postType, 'amount'),
-                __('Amount', 'sln').' ('.$settings->getCurrencySymbol().')',
-                $booking->getAmount()
-            );
-            ?>
-        </div>
-        <div class="col-md-3 col-sm-4">
-            <?php
-            $helper->showFieldtext(
-                $helper->getFieldName($postType, 'deposit'),
-                __('Deposit', 'sln').' ('.$settings->getCurrencySymbol().')',
-                $booking->getDeposit()
-            );
-            ?>
-        </div>
-
-        <div class="col-md-3 col-sm-4">
-            <div class="form-group">
-                <label for="">Transaction</label>
-
-                <p><?php echo $booking->getTransactionId() ? $booking->getTransactionId() : __(
-                        'n.a.',
-                        'sln'
-                    ) ?></p>
-            </div>
-        </div>
-    </div>
     <div class="sln-clear"></div>
     <div class="row">
         <div class="col-lg-5 col-md-6 col-sm-6">
@@ -258,4 +245,5 @@ $helper->showNonce($postType);
             </div>
         </div>
     </div>
+    <div class="sln-separator"></div>
 </div>
