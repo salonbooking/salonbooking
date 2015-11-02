@@ -5,9 +5,25 @@
   transition: all 200ms;
   margin: 0 40px 40px 0;
   text-decoration: none;
+  position: relative;
+  @extend %zi-navigazione;
+  input {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    z-index: 500;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
 }
 // SIZES
-.sln-btn--big {
+.sln-btn--fullwidth {width: 100%;}
+.sln-btn--big, .sln-btn--big input {
   display: inline-block;
   padding: 0 em(20px);
   height:  em(56px);
@@ -15,7 +31,7 @@
   @extend %font-big;
   line-height: em(56px);
 }
-.sln-btn--medium {
+.sln-btn--medium, .sln-btn--medium input {
   display: inline-block;
   min-width: 90px;
   height: 44px;
@@ -47,6 +63,7 @@
 .sln-btn--main {
   background-color: $cl_main--emphasis;
   color: white;
+  input {color: white;}
   &:hover {
     background-color: $cl_main;
   }
@@ -54,6 +71,7 @@
 .sln-btn--warning {
   background-color: $cl_warning;
   color: white;
+  input {color: white;}
   &:hover {
     background-color: $cl_main;
   }
@@ -61,6 +79,7 @@
 .sln-btn--problem {
   background-color: $cl_problem--light;
   color: white;
+  input {color: white;}
   &:hover {
     background-color: $cl_main;
   }
@@ -68,6 +87,7 @@
 .sln-btn--ok {
   background-color: $cl_ok;
   color: white;
+  input {color: white;}
   &:hover {
     background-color: $cl_main;
   }
@@ -75,6 +95,7 @@
 .sln-btn--borderonly {
   background-color: transparent;
   color: $cl_main;
+  input {color: $cl_main;}
   border: 1px solid #c5cfd4;
   &.sln-btn--icon:after {color: $cl_main;}
   &.sln-btn--active {border: 1px solid $cl_main;}
@@ -88,6 +109,7 @@
 .sln-btn--nobkg {
   background-color: transparent;
   color: $cl_main;
+  input {color: $cl_main;}
   &.sln-btn--icon:after {color: $cl_main;}
   &.sln-btn--active {border: 1px solid $cl_main;}
   &:hover {
@@ -101,6 +123,7 @@
 .sln-btn--icon {
     text-align: left;
     position: relative;
+    input {text-align: left;}
     &:after {
       content: "\f111";
       display: inline-block;
@@ -112,6 +135,7 @@
       text-align: center;
       @extend %font-icon;
       transition: all 200ms;
+      z-index: 200;
     }
     &.sln-btn--big {
       padding-right: em(64px);

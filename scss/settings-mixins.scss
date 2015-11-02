@@ -160,3 +160,19 @@ $icon-font-svg-id:        "glyphicons_halflingsregular";
   -moz-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23);
 }
+
+%zi-base {
+  z-index: 100;
+}
+%zi-fondo {
+  z-index: 200;
+}
+%zi-grafica {
+  z-index: 400;
+}
+%zi-highlights {
+  z-index: 600;
+}
+%zi-navigazione {
+  z-index: 800;
+}
