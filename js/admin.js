@@ -85,6 +85,7 @@ function sln_adminDate($) {
     }
     func();
     $('body').on('sln_date', func);
+    var firstValidate = true;
     function validate(obj) {
         var form = $(obj).closest('form');
         var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ' + salon.txt_validating;
@@ -97,14 +98,17 @@ function sln_adminDate($) {
             method: 'POST',
             dataType: 'json',
             success: function (data) {
-                if (!data.success) {
+                if(firstValidate){
+                    $('#sln-notifications').html('');
+                    firstValidate = false;
+                } else if (!data.success) {
                     var alertBox = $('<div class="alert alert-danger"></div>');
                     $(data.errors).each(function () {
                         alertBox.append('<p>').html(this);
                     });
                     $('#sln-notifications').html('').append(alertBox);
                 } else {
-                    $('#sln-notifications').html('');
+                    $('#sln-notifications').html('').append('<div class="alert alert-success">'+ $('#sln-notifications').data('valid-message')+'</div>');
                 }
                 updateServices(obj);
                 bindIntervals(data.intervals);
@@ -168,7 +172,24 @@ function sln_adminDate($) {
     });
     initDatepickers($);
     initTimepickers($);
-
+    $('#resend-notification-submit').click(function(){
+        var data = "post_id="+$('#post_ID').val()+"&emailto="+$('#resend-notification').val()+"&action=salon&method=ResendNotification&security=" + salon.ajax_nonce;
+        var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ';
+        $('#resend-notification-message').html(validatingMessage);
+        $.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if(data.success)
+                    $('#resend-notification-message').html('<div class="alert alert-success">'+data.success+'</div>');
+                else if(data.error)
+                    $('#resend-notification-message').html('<div class="alert alert-danger">'+data.error+'</div>');
+            }
+        });
+        return false;
+    });
 }
 
 
@@ -207,6 +228,14 @@ jQuery(function ($) {
     }
 
     $('#sln-update-user-field').select2({
+    placeholder: $('#sln-update-user-field').data('placeholder'),
+    language: {
+       noResults: function(){
+           return $('#sln-update-user-field').data('nomatches');
+       }
+    },
+
+
          ajax: {
     url: salon.ajax_url+'&action=salon&method=SearchUser&security=' + salon.ajax_nonce,
     dataType: 'json',
@@ -221,7 +250,7 @@ jQuery(function ($) {
       return {
         results: data.result
       };
-    }
+    },
     }});
 
     $('#sln-update-user-field').on('select2:select', function(){

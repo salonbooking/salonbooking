@@ -46,7 +46,7 @@ $helper->showNonce($postType);
                 ); ?>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6" id="sln-notifications"></div>
+        <div class="col-md-3 col-sm-6" id="sln-notifications"  data-valid-message="<?php _e('OK! the date and time slot you selected is available','sln'); ?>"></div>
     </div>
 </span>
 
@@ -79,10 +79,10 @@ $helper->showNonce($postType);
 <div class="row">
         <div class="col-md-12"><label for="sln-update-user-field"><?php _e('Search for existing users', 'sln') ?></label></div>
         <div class="col-md-6 col-sm-6">
-            <select id="sln-update-user-field" placeholder="Username, name or email" class="form-control">
-                <?php if($booking->getId()){ ?>
-                <option value="<?php echo $booking->getUserId() ?>"><?php echo $booking->getUserDisplayName() ?></option>
-                <?php } ?>
+            <select id="sln-update-user-field"
+                 data-nomatches="<?php _e('no users found','sln')?>"
+                 data-placeholder="<?php _e('Start typing the name or email')?>"
+                 class="form-control">
             </select>
         </div>
         <div class="col-md-6 col-sm-6" id="sln-update-user-message">
@@ -141,6 +141,41 @@ $helper->showNonce($postType);
     </div>
 
     <div class="sln-separator"></div>
+    <div class="form-group sln_meta_field row">
+        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
+            <h3><?php _e('Attendant', 'sln'); ?></h3>
+            <select class="sln-select" name="_sln_booking_attendant" id="_sln_booking_attendant">
+                <?php foreach ($plugin->getAttendants() as $attendant) : ?>
+                    <option data-id="<?php echo SLN_Form::makeID('sln[attendant]['.$attendant->getId().']') ?>"
+                            value="<?php echo $attendant->getId();?>"
+                        <?php echo $booking->hasAttendant($attendant) ? 'selected="selected"' : '' ?>
+                        ><strong class="service-name"><?php echo $attendant->getName(); ?></option>
+                <?php endforeach ?>
+            </select>
+        </div>
+    </div>
+    <div class="sln-separator"></div>
+    <div class="form-group sln_meta_field row">
+        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
+            <h3><?php _e('Services', 'sln'); ?></h3>
+            <select class="sln-select" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
+                    name="_sln_booking_services[]" id="_sln_booking_services">
+                <?php foreach ($plugin->getServices() as $service) : ?>
+                    <option
+                        class="red"
+                        value="sln_booking_services_<?php echo $service->getId() ?>"
+                        <?php echo $booking->hasService($service) ? 'selected="selected"' : '' ?>
+                        ><?php echo $service->getName(); ?>
+                        (<?php echo $plugin->format()->money($service->getPrice()) ?>)
+                    </option>
+                <?php endforeach ?>
+            </select>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper" id="sln-services-notifications">
+        </div>
+    </div>
+
+    <div class="sln-separator"></div>
     <div class="row">
         <div class="col-md-3 col-sm-4">
             <div class="form-group sln_meta_field sln-select-wrapper">
@@ -183,40 +218,6 @@ $helper->showNonce($postType);
         </div>
     </div>
     <div class="sln-separator"></div>
-    <div class="form-group sln_meta_field row">
-        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
-            <h3><?php _e('Attendant', 'sln'); ?></h3>
-            <select class="sln-select" name="_sln_booking_attendant" id="_sln_booking_attendant">
-                <?php foreach ($plugin->getAttendants() as $attendant) : ?>
-                    <option data-id="<?php echo SLN_Form::makeID('sln[attendant]['.$attendant->getId().']') ?>"
-                            value="<?php echo $attendant->getId();?>"
-                        <?php echo $booking->hasAttendant($attendant) ? 'selected="selected"' : '' ?>
-                        ><strong class="service-name"><?php echo $attendant->getName(); ?></option>
-                <?php endforeach ?>
-            </select>
-        </div>
-    </div>
-    <div class="sln-separator"></div>
-    <div class="form-group sln_meta_field row">
-        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
-            <h3><?php _e('Services', 'sln'); ?></h3>
-            <select class="sln-select" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
-                    name="_sln_booking_services[]" id="_sln_booking_services">
-                <?php foreach ($plugin->getServices() as $service) : ?>
-                    <option
-                        class="red"
-                        value="sln_booking_services_<?php echo $service->getId() ?>"
-                        <?php echo $booking->hasService($service) ? 'selected="selected"' : '' ?>
-                        ><?php echo $service->getName(); ?>
-                        (<?php echo $plugin->format()->money($service->getPrice()) ?>)
-                    </option>
-                <?php endforeach ?>
-            </select>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper" id="sln-services-notifications">
-        </div>
-    </div>
-    <div class="sln-separator"></div>
     <div class="row">
         <div class="col-md-12">
             <div class="form-group sln_meta_field ">
@@ -228,21 +229,4 @@ $helper->showNonce($postType);
             </div>
         </div>
     </div>
-    <div class="sln-clear"></div>
-    <div class="row">
-        <div class="col-lg-5 col-md-6 col-sm-6">
-            <h2><?php _e('Re-send email notification to ', 'sln') ?></h2>
-
-            <div class="row">
-                <div class="col-lg-7 col-md-8 col-sm-8"><input type="text" class="form-control" name="emailto"/>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <button class="btn btn-success" type="submit" name="emailto_submit"
-                            value="submit"><?php echo __('Send', 'sln') ?></button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="sln-separator"></div>
 </div>
