@@ -106,6 +106,19 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return $str;
     }
 
+    function evalTotal(){
+        $t = 0;
+        SLN_Plugin::addLog(__CLASS__.' eval total of'.$this->getId());
+        foreach($this->getServices() as $s){
+            $d = $s->getPrice();
+            $t += $d;
+            SLN_Plugin::addLog(' - service '.$s.' +'.$d);
+        }
+        update_post_meta($this->getId(), '_sln_booking_amount', $t);
+        return $t;
+    }
+
+
     function hasAttendant(SLN_Wrapper_Attendant $attendant)
     {
         return $this->getAttendantId() == $attendant->getId();
@@ -140,7 +153,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
     function getStatus()
     {
-        return in_array($this->object->post_status, array('draft','auto-draft')) ? 'sln-b-pending' : $this->object->post_status;
+        return $this->object->post_status;
     }
 
     function hasStatus($status)

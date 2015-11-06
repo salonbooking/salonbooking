@@ -2,8 +2,8 @@
 
 class SLN_Enum_BookingStatus
 {
-    const ERROR = 'sln-b-error';
     const PENDING = 'sln-b-pending';
+    const ERROR = 'sln-b-error';
     const PAID = 'sln-b-paid';
     const PAY_LATER = 'sln-b-paylater';
     const CANCELED = 'sln-b-canceled';
@@ -12,12 +12,12 @@ class SLN_Enum_BookingStatus
     private static $labels;
 
     private static $colors = array(
-            self::ERROR     => 'default',
             self::PENDING   => 'warning',
             self::PAID      => 'success',
             self::PAY_LATER => 'info',
             self::CANCELED  => 'danger',
-            self::CONFIRMED => 'success'
+            self::CONFIRMED => 'success',
+            self::ERROR     => 'default',
     );
 
     public static function toArray()
@@ -38,12 +38,12 @@ class SLN_Enum_BookingStatus
     public static function init()
     {
         self::$labels = array(
-            self::ERROR     => __('ERROR', 'sln'),
             self::PENDING   => __('Pending', 'sln'),
             self::PAID      => __('Paid', 'sln'),
             self::PAY_LATER => __('Pay later', 'sln'),
             self::CANCELED  => __('Canceled', 'sln'),
-            self::CONFIRMED => __('Confirmed', 'sln')
+            self::CONFIRMED => __('Confirmed', 'sln'),
+            self::ERROR     => __('ERROR', 'sln'),
         );
     }
 }
