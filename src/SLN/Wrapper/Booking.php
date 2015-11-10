@@ -188,6 +188,16 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
             get_post_meta($post_id, '_sln_booking_note', true)
         );
     }
+    function getAdminNote()
+    {
+        $post_id = $this->getId();
+
+        return apply_filters(
+            'sln_booking_admin_note',
+            get_post_meta($post_id, '_sln_booking_admin_note', true)
+        );
+    }
+
 
     function getTransactionId()
     {
@@ -234,4 +244,11 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     public function getUserId(){
         return $this->object->post_author;
     }
+
+    function isNew()
+    {
+        return strpos($this->object->post_status, 'sln-b-') !== 0;
+    }
+
+
 }

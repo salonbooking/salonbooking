@@ -194,6 +194,14 @@ function sln_adminDate($) {
 
 
 jQuery(function ($) {
+    function calculateTotal(){
+        var tot = 0;
+        $('#_sln_booking_services option:selected').each(function(){
+            tot += parseFloat($(this).data('price'));
+        });
+        $('#_sln_booking_amount').val(tot);
+        return false;
+    }
     function bindRemove() {
         $('button[data-collection="remove"]').unbind('click').on('click', function () {
             $(this).parent().parent().parent().remove();
@@ -223,6 +231,11 @@ jQuery(function ($) {
         tags: "true",
         width: '100%'
     });
+    $('#_sln_booking_services').on('select2:select', function(){
+        if($('#salon-step-date').data('isnew'))
+            calculateTotal();
+    });
+    $('#calculate-total').click(calculateTotal);
     if ($('#sln_booking-details').length) {
         sln_adminDate($);
     }
@@ -277,6 +290,7 @@ jQuery(function ($) {
                         if (key == 'id') $('#post_author').val(value);
                         else $('#_sln_booking_' + key).val(value);
                     });
+                    $('[name="_sln_booking_createuser"]').attr('checked', false);
                 }
             }
         });

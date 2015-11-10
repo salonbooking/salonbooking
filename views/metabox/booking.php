@@ -4,6 +4,14 @@
  */
 $helper->showNonce($postType);
 ?>
+<?php if(isset($_SESSION['_sln_booking_user_errors'])): ?>
+    <div class="error">
+    <?php foreach($_SESSION['_sln_booking_user_errors'] as $error): ?>
+        <p><?php echo $error ?></p>
+    <?php endforeach ?>
+    </div>
+    <?php unset($_SESSION['_sln_booking_user_errors']); ?>
+<?php endif ?>
 
 <div class="sln-bootstrap">
     <?php
@@ -11,7 +19,8 @@ $helper->showNonce($postType);
     $date = $intervals->getSuggestedDate();
     ?>
 <span id="salon-step-date"
-      data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>">
+      data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>"
+      data-isnew="<?php echo $booking->isNew() ? 1 : 0 ?>">
     <div class="row form-inline">
         <div class="col-md-3 col-sm-6">
             <div class="form-group">
@@ -73,7 +82,6 @@ $helper->showNonce($postType);
                 </div>
             <?php } ?>
         </div>
-
     </div>
 
 <div class="row">
@@ -118,7 +126,6 @@ $helper->showNonce($postType);
             ); ?>
         </div>
         <div class="col-md-3 col-sm-6">
-
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'phone'),
@@ -128,7 +135,6 @@ $helper->showNonce($postType);
             ?>
         </div>
         <div class="col-md-6 col-sm-12">
-
             <?php
             $helper->showFieldTextArea(
                 $helper->getFieldName($postType, 'address'),
@@ -137,7 +143,9 @@ $helper->showNonce($postType);
             );
             ?>
         </div>
-
+        <div class="col-md-6 col-sm-12">
+            <label><input type="checkbox" name="_sln_booking_createuser" <?php if($booking->isNew()){ ?>checked="checked"<?php } ?>/><?php _e('Create a new user') ?></label>
+        </div>
     </div>
 
     <div class="sln-separator"></div>
@@ -164,6 +172,7 @@ $helper->showNonce($postType);
                     <option
                         class="red"
                         value="sln_booking_services_<?php echo $service->getId() ?>"
+                        data-price="<?php echo $service->getPrice(); ?>"
                         <?php echo $booking->hasService($service) ? 'selected="selected"' : '' ?>
                         ><?php echo $service->getName(); ?>
                         (<?php echo $plugin->format()->money($service->getPrice()) ?>)
@@ -191,6 +200,7 @@ $helper->showNonce($postType);
                 $booking->getAmount()
             );
             ?>
+            <button class="btn btn-block btn-primary" id="calculate-total"><?php _e('Calculate total', 'sln') ?></button>
         </div>
         <div class="col-md-3 col-sm-4">
             <?php
@@ -225,4 +235,16 @@ $helper->showNonce($postType);
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group sln_meta_field ">
+                <label><?php _e('Administration notes', 'sln'); ?></label>
+                <?php SLN_Form::fieldTextarea(
+                    $helper->getFieldName($postType, 'admin_note'),
+                    $booking->getAdminNote()
+                ); ?>
+            </div>
+        </div>
+    </div>
+
 </div>
