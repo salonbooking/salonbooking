@@ -180,11 +180,7 @@ $helper->showNonce($postType);
         <div class="col-md-3 col-sm-4">
             <div class="form-group sln_meta_field sln-select-wrapper">
                 <label><?php _e('Duration', 'sln'); ?></label>
-                <?php SLN_Form::fieldTime(
-                    $helper->getFieldName($postType, 'duration'),
-                    $booking->getDuration(),
-                    array('interval' => 10, 'maxItems' => 61)
-                ); ?>
+                <input type="text" value="<?php echo $booking->getDuration()->format('H:i') ?>" class="form-control" readonly="readonly"/>
             </div>
         </div>
         <div class="col-md-3 col-sm-4">

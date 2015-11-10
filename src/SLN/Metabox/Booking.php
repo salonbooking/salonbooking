@@ -35,12 +35,12 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
     {
         return array(
             'amount'    => 'money',
+            'deposit'   => 'money',
             'firstname' => '',
             'lastname'  => '',
             'email'     => '',
             'phone'     => '',
             'address'   => '',
-            'duration'  => 'time',
             'date'      => 'date',
             'time'      => 'time',
             'attendant'  => '',
@@ -49,7 +49,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         );
     }
     public function save_post($post_id, $post){
-        if(!$_POST)
+        if(!isset($_POST['_sln_booking_status']))
             return;
         if(isset($_POST['_sln_booking_services']))
         foreach($_POST['_sln_booking_services'] as $k => $v){
@@ -62,7 +62,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         $new =  $_POST['_sln_booking_status'];
         if(strpos($new,'sln-b-') !== 0) $new = 'sln-b-pending';
         if(strpos($s,'sln-b-') !== 0){
-            var_dump($booking->evalTotal());
+            $booking->evalTotal();
             $postnew = array(
                 'ID' => $post_id,
                 'post_status' => $new
