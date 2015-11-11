@@ -50,7 +50,12 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             '_sln_calendar_event_id' => ''
         );
     }
+
+    private $disabledSavePost = false;
     public function save_post($post_id, $post){
+        if($this->disabledSavePost)
+            return;
+
         if(!isset($_POST['_sln_booking_status']))
             return;
         if(isset($_POST['_sln_booking_services']))
@@ -70,18 +75,23 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         $postnew = array();
         if(strpos($s,'sln-b-') !== 0){
             $postnew = array_merge($postnew, array(
+                'ID' => $post_id,
                 'post_status' => $new
             ));
         }
-        if($_POST['_sln_booking_createuser']){
+        if(isset($_POST['_sln_booking_createuser']) && $_POST['_sln_booking_createuser']){
             $userid = $this->registration($booking);
+            if($userid instanceof WP_Error)
+                return;
             $postnew = array_merge($postnew, array(
+                'ID' => $post_id,
                 'post_author' => $userid
             ));
         }
         if(!empty($postnew)){
-            foreach($postnew as $k => $v)
-                $postnew->$k = $v;
+            $this->disabledSavePost = true;
+            wp_update_post($postnew);
+            $this->disabledSavePost = false;
         }
     } 
 

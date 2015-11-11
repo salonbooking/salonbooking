@@ -197,7 +197,7 @@ jQuery(function ($) {
     function calculateTotal(){
         var tot = 0;
         $('#_sln_booking_services option:selected').each(function(){
-            tot += parseFloat($(this).data('price'));
+            tot = (parseFloat(tot) + parseFloat($(this).data('price'))).toFixed(2);
         });
         $('#_sln_booking_amount').val(tot);
         return false;
