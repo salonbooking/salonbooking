@@ -11,7 +11,7 @@ class SLN_Plugin
     const F = 'slnc';
     const F1 = 30;
     const F2 = 20;
-    const DEBUG_ENABLED = true;
+    const DEBUG_ENABLED = false;
 
     private static $instance;
     private $settings;
