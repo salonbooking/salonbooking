@@ -1,7 +1,7 @@
-@import "bootstrap.less";
-@import "settings-mixins.less";
-
-
+@import 'bootstrap';
+@import 'settings-mixins';
+@import 'admin_config';
+@import 'typo';
 
 .sln_meta_field {
     display: block;
@@ -50,7 +50,7 @@
         margin: 1em 0;
         .col-md-12 {
             padding-left: 0;
-            @media @phone {
+            @include bp(phone) {
                 padding-right: 0;
             }
         }
@@ -58,10 +58,10 @@
             margin-bottom: 1.4em;
             .form-group {
                 padding-right: 2em;
-                @media @tablet-port {
+                @include bp(tablet) {
                     padding-right: 1em;
                 }
-                @media @phone {
+                @include bp(phone) {
                     display: block;
                     width: 50%;
                     float: left;
@@ -78,17 +78,17 @@
     }
 
     .settings-allowed {
-        @media @tablet-port {
+        @include bp(tablet-port) {
             .col-md-5:nth-child(1) {margin-bottom: 1.4em;}
         }
-        @media @phone {
+        @include bp(phone) {
             .col-md-5:nth-child(1) {margin-bottom: 1.4em;}
             select {margin: .2em 0;}
         }
     }
 
     .settings-disable, .settings-confirmation {
-        @media @tablet-port {
+        @include bp(tablet-port) {
             .col-md-6:nth-child(1) {margin-bottom: 1.4em;}
         }
     }
@@ -96,8 +96,8 @@
 
 .salon_page_salon-settings.wp-core-ui .button-primary {
     color: #ffffff;
-    background: @ca-blue;
-    border-color: @ca-blue;
+    background: $ca-blue;
+    border-color: $ca-blue;
 
     display: inline-block;
     margin-bottom: 0;
@@ -177,7 +177,7 @@ h2.nav-tab-wrapper {
 // TABS END
 
 
-@media @tablet-port {
+@include bp(tablet-port) {
     .sln-tab {
            #sln-availabilities .items .item .btn.btn-block.btn-danger {
             width: 25%;
@@ -187,7 +187,7 @@ h2.nav-tab-wrapper {
            #sln-availabilities .col-md-2.pull-right {width: 29%; margin-top: 1em;}
     }
 }
-@media @phone {
+@include bp(phone) {
     .sln-tab {
            #sln-availabilities .items .item .btn.btn-block.btn-danger {margin-top: 2em;}
            #sln-availabilities .col-md-2.pull-right {width: 100%; margin-top: 1em;}
@@ -221,11 +221,11 @@ h2.nav-tab-wrapper {
         input[type='text'] {
             padding: 3px 10px;
             height: auto;
-            @media @tablet-port {height: 34px;}
+            @include bp(tablet-port) {height: 34px;}
         }
 
         .col-xs-6:nth-child(4){
-            @media @phone-port {
+            @include bp(phone-port) {
                 width: 100%;
             }
         }
@@ -238,17 +238,17 @@ h2.nav-tab-wrapper {
     }
 
     #_sln_service_secondary {
-        @media @phone {margin: 0 .5em -.6em 0;}
+        @include bp(phone) {margin: 0 .5em -.6em 0;}
     }
 
     .services-notavailable, .attendants-notavailable{
         margin: 0 0 1em -.5em;
-        @media @phone {margin: 0 0 2em -.5em;}
-        @media @tablet {margin: 0 0 2em -.5em;}
+        @include bp(phone) {margin: 0 0 2em -.5em;}
+        @include bp(tablet) {margin: 0 0 2em -.5em;}
         label {
             margin-right: 2em;
             @media only screen and (min-width: 951px) and (max-width: 1279px) {margin-right: .5em;}
-            @media @phone {
+            @include bp(phone)  {
                 display: block;
                 width: 50%;
                 float: left;
@@ -261,7 +261,7 @@ h2.nav-tab-wrapper {
     .services-notavailable-h, .attendants-notavailable-h {
         label {
             margin-right: 2em;
-            @media @phone {width: 100%; margin-bottom: 1em;}
+            @include bp(phone) {width: 100%; margin-bottom: 1em;}
         }
     }
 }
@@ -278,8 +278,6 @@ h2.nav-tab-wrapper {
 // /// BOOKING
 // /// /// /// /// /// /// /// //
 
-@input-height: 40px;
-@input-fsize: 16px;
 #sln_booking-details {
     * {
     -webkit-box-sizing: border-box;
@@ -293,10 +291,14 @@ h2.nav-tab-wrapper {
             .col-md-6:nth-child(2) {margin-top: 1em;}
         }
 
-        @media @phone {
+        @include bp(tablet) {
+            .form-control {
+                 width: 100%;
+            }
+        }
+        @include bp(phone) {
             select {margin-bottom: 1em;}
         }
-
     }
     .sln_meta_field {
         .row:before {
@@ -313,13 +315,13 @@ h2.nav-tab-wrapper {
 
     .sln_booking-service-price {
         font-size: 1.1em; font-weight: bold;
-        @media @phone {
+        @include bp(phone) {
             margin-top: .4em;
         }
     }
 
     .sln_booking-service-info {
-        @media @phone {
+        @include bp(phone) {
             label {padding-right: 1em;}
         }
     }
@@ -341,9 +343,9 @@ h2.nav-tab-wrapper {
             padding: 1em 0;
         }
         .sln_accept-refuse {
-            border-left: 1px solid #ddd; 
-            @media @desktop-xl {padding-left: 9.75%;}
-            @media @phone {
+            border-left: 1px solid #ddd;
+            @include bp(desktop-xl) {padding-left: 9.75%;}
+            @include bp(phone) {
                 border-left: none;
                 border-top: 1px solid #ddd;
                 margin-top: 1em;
@@ -364,30 +366,94 @@ h2.nav-tab-wrapper {
             margin-right: 0;
             margin-left: 0;
             padding: 6px 0;
-            @media @tablet-port {
+            @include bp(tablet-port) {
                 padding: 5px 0;
                 font-size: 20px;
             }
-            @media @phone {
+            @include bp(phone) {
                 width: 100%;
                 margin-top: .6em;
             }
         }
     }
-    .form-control {font-size: @input-fsize;}
 }
+
+.show--phone {
+    @include bp(tablet) {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+.hide--phone {
+    @include bp(phone) {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+// /// BOOKING END
+
+
+// /// /// /// /// /// /// /// //
+// /// SETTINGS
+// /// /// /// /// /// /// /// //
+
+// GENERL RULES
+body {
+    background-color: transparent;
+}
+// GENERL RULES // END
+
+#sln-salon--admin {
+    font-size: $browser-context + px;
+    @import 'admin_config';
+    @import 'admin_components/buttons';
+
+
+    .sln-box {
+
+    }
+    .sln-box--main {
+        background-color: #fff;
+    }
+    // SELF OVERRIDES
+    h2.nav-tab-wrapper, h3.nav-tab-wrapper {border-bottom: none;}
+    .sln-tab {
+        border: none;
+        border-top-width: 0;
+        background: transparent;
+        padding: em(80px) 0;
+        margin-right: 340px;
+        .form-group label input {
+            display: initial;
+            margin-top: initial;
+        }
+    }
+    // SELF OVERRIDES // END
+    .sln-admin-sidebar {
+        width: 300px;
+        background-color: #ccc;
+        position: fixed;
+        right: 10px;
+    }
+}
+// /// SETTINGS END
+
 
 // /// /// /// /// /// /// /// //
 // /// SELECT2 OVERRIDES
 // /// we add .sln-select to .select2-container
 // /// /// /// /// /// /// /// //
+$input-height: 40px;
+$input-fsize: 16px;
 .select2-container.sln-select,
 .select2-container-multi.sln-select  {
     .select2-choice, .select2-choices {
-        height: @input-height;
-        line-height: @input-height;
+        height: $input-height;
+        line-height: $input-height;
         background-image: none;
-        font-size: @input-fsize;
+        font-size: $input-fsize;
         border-radius: 4px;
         border: 1px solid #ddd;
         -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
@@ -414,7 +480,7 @@ h2.nav-tab-wrapper {
         padding: 2px 0;
         .select2-search-choice {
             padding: 0 40px 0 10px;
-            line-height: @input-height;
+            line-height: $input-height;
             background-color: #eee;
             background-image: none;
             border: none;
@@ -426,18 +492,18 @@ h2.nav-tab-wrapper {
                 right: 0;
                 background-image: none;
                 background-color: #e4e4e4;
-                color: @ca-red;
+                color: $ca-red;
                 text-decoration: none;
                 &:before {
                     display: block;
                     content: "x";
                     font-size: 16px;
                     font-weight: bold;
-                    line-height: calc(@input-height - 2px);
+                    line-height: calc($input-height - 2px);
                     text-align: center;
                 }
                 &:hover {
-                background-color: @ca-red;
+                background-color: $ca-red;
                 color: #fff;
                 }
             }
@@ -445,20 +511,20 @@ h2.nav-tab-wrapper {
     }
 }
 .select2-results  {
-    font-size: @input-fsize;
+    font-size: $input-fsize;
 }
 .select2-results .select2-result-label {
-    line-height: @input-height;
+    line-height: $input-height;
 }
 .sln-select-wrapper {
     .select2-container--default .select2-selection--multiple .select2-selection__rendered {
         padding: 0;
     }
     .select2-container--default .select2-selection--single {
-        height: @input-height;
-        line-height: @input-height;
+        height: $input-height;
+        line-height: $input-height;
         background-image: none;
-        font-size: @input-fsize;
+        font-size: $input-fsize;
         border-radius: 4px;
         border: 1px solid #ddd;
         -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
@@ -469,11 +535,11 @@ h2.nav-tab-wrapper {
         -webkit-transition: .05s border-color ease-in-out;
         transition: .05s border-color ease-in-out;
     }
-    .select2-container--default .select2-selection--single .select2-selection__arrow {top: ~"calc(50% - 13px)";}
-    .select2-container--default .select2-selection--single .select2-selection__rendered {line-height: @input-height;}
+    .select2-container--default .select2-selection--single .select2-selection__arrow {top: calc(50% - 13px);}
+    .select2-container--default .select2-selection--single .select2-selection__rendered {line-height: $input-height;}
     .select2-container--default .select2-selection--multiple {
         border-color: #ddd;
-        font-size: @input-fsize;
+        font-size: $input-fsize;
     }
     .select2-container--default .select2-selection--multiple .select2-selection__choice {
             padding: 0 40px 0 10px;
@@ -493,9 +559,8 @@ h2.nav-tab-wrapper {
                 right: 0;
                 background-image: none;
                 background-color: #e4e4e4;
-                color: @ca-red;
+                color: $ca-red;
                 text-decoration: none;
-                overflow: hidden;
                 &:before {
                     display: block;
                     content: "x";
@@ -505,13 +570,13 @@ h2.nav-tab-wrapper {
                     text-align: center;
                 }
                 &:hover {
-                background-color: @ca-red;
+                background-color: $ca-red;
                 color: #fff;
                 }
             }
         }
         .select2-container--default.select2-container--focus .select2-selection--multiple {
-            border:solid @ca-blue 1px;
+            border:solid $ca-blue 1px;
             outline:0;
         }
         .select2-container--default .select2-search--inline .select2-search__field {
@@ -526,7 +591,7 @@ h2.nav-tab-wrapper {
     &:before {
         position: absolute;
         right: 10px;
-        top: ~"calc(50% - 13px)";
+        top: calc(50% - 13px);
         width: 26px;
         height: 26px;
         display: block;

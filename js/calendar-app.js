@@ -6,7 +6,6 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl){
 		tmpl_cache: false,
 		day: ajaxDay,
 		onAfterEventsLoad: function(events) {
-console.log(events);
 			if(!events) {
 				return;
 			}
@@ -71,7 +70,4 @@ console.log(events);
 		//e.stopPropagation();
 	});
 */
-        $('#calendar-add-new').click(function(){
-            alert('click');
-        });
 }

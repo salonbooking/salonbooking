@@ -22,7 +22,6 @@ class SLN_Metabox_Helper
             $field        = self::getFieldName($postType, $k);
             $meta[$field] = SLN_Func::filter(isset($_POST[$field]) ? $_POST[$field] : null, $v);
         }
-
         return $meta;
     }
 
@@ -74,4 +73,15 @@ class SLN_Metabox_Helper
         </div>
     <?php
     }
+
+    public static function showFieldTextArea($field, $label, $val)
+    {
+        ?>
+        <div class="form-group sln_meta_field">
+            <label for="<?php echo $field ?>"><?php echo $label ?></label>
+            <?php SLN_Form::fieldTextarea($field, $val); ?>
+        </div>
+    <?php
+    }
+
 } 

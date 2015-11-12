@@ -134,7 +134,7 @@ class SLN_Helper_Availability
                 __('This service is unavailable ', 'sln') . $service->getNotAvailableString()
             );
         }
-        $ids = $this->getDayBookings()->countServicesByHour();;
+        $ids = $this->getDayBookings()->countServicesByHour();
         if (
             $service->getUnitPerHour() > 0
             && isset($ids[$service->getId()])
