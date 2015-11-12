@@ -46,7 +46,7 @@ Syncronize all your reservations inside your own Google Calendr and share the in
 
 *ADD BOOKINGS FROM BACK-END
 If you need to add a manual reservations, that ones received by phone for example, use the back-end interface with a real time
-control of your availability.
+control of your available date/time slots.
 
 
 
@@ -224,11 +224,12 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 == Changelog ==
 
-1.3.0 02/11/2015
+1.3.0 12/11/2015
 
 *Bug on customer login
 *Bug on back-end bookings archive
 *Wrong link inside the license activation alert
+*Wrong amount on payment step when deposit is disabled
 
 1.2.0 05/10/2015
 
