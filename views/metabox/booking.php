@@ -20,7 +20,8 @@ $helper->showNonce($postType);
     ?>
 <span id="salon-step-date"
       data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>"
-      data-isnew="<?php echo $booking->isNew() ? 1 : 0 ?>">
+      data-isnew="<?php echo $booking->isNew() ? 1 : 0 ?>"
+      data-deposit="<?php echo $settings->get('pay_deposit') ?>">
     <div class="row form-inline">
         <div class="col-md-3 col-sm-6">
             <div class="form-group">
@@ -206,7 +207,7 @@ $helper->showNonce($postType);
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'deposit'),
-                __('Deposit', 'sln').' ('.$settings->getCurrencySymbol().')',
+                __('Deposit', 'sln').' '.$settings->get('pay_deposit').'% ('.$settings->getCurrencySymbol().')',
                 $booking->getDeposit()
             );
             ?>

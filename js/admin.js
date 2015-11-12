@@ -192,14 +192,51 @@ function sln_adminDate($) {
     });
 }
 
+function sln_validateEmail(email) {
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+}
+function sln_validateBooking($){
+        var form = $('#_sln_booking_firstname').closest('form');
+        $(form).submit(function(){
+            $('.sln-invalid').removeClass('sln-invalid');
+            $('.sln-error').remove();
+            var hasErrors = false;
+            $.each([
+                '#_sln_booking_firstname',
+                '#_sln_booking_lastname',
+                '#_sln_booking_email',
+                '#_sln_booking_phone',
+                '#_sln_booking_services',
+            ], function(k, val){
+                if(val == '#_sln_booking_email'){
+                    if(!sln_validateEmail($(val).val())){
+                        $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is not a valid email</div>');
+                        if(!hasErrors) $(val).focus();
+                        hasErrors = true;
+                    }
+                }else if(!$(val).val()){
+                    $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is required</div>');
+                    if(!hasErrors) $(val).focus();
+                    hasErrors = true;
+                }
+            });
+            return !hasErrors;
+        });
+}
 
 jQuery(function ($) {
+    if($('#_sln_booking_firstname').length){
+        sln_validateBooking($);
+    }
     function calculateTotal(){
         var tot = 0;
         $('#_sln_booking_services option:selected').each(function(){
             tot = (parseFloat(tot) + parseFloat($(this).data('price'))).toFixed(2);
         });
         $('#_sln_booking_amount').val(tot);
+        if($('#salon-step-date').data('deposit') > 0)
+            $('#_sln_booking_deposit').val(((tot / 100).toFixed(2) * $('#salon-step-date').data('deposit')).toFixed(2))
         return false;
     }
     function bindRemove() {

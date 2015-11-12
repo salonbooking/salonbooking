@@ -9,6 +9,8 @@ function _pre($m) {
 }
 
 function sln_my_wp_log($message, $file = null, $level = 1) {
+    SLN_Plugin::addLog($message);
+    return;
     // full path to log file
     if ($file == null) {
         $file = 'debug.log';
