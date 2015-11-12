@@ -4,6 +4,7 @@ class SLN_Currency
 {
     private static $currencies = array(
         'AUD' => array('name' => 'Australian Dollar', 'symbol' => 'A$', 'ASCII' => 'A&#36;'),
+        'BRL' => array('name' => 'Brazilian Real', 'symbol' => 'R$', 'ASCII' => 'B&#36;'),
         'CAD' => array('name' => 'Canadian Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
         'CZK' => array('name' => 'Czech Koruna', 'symbol' => 'Kč', 'ASCII' => ''),
         'DKK' => array('name' => 'Danish Krone', 'symbol' => 'Kr', 'ASCII' => ''),
