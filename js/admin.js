@@ -333,4 +333,8 @@ jQuery(function ($) {
         });
         return false;
     });
+    $('.sln-select-wrapper select').select2({
+        tags: "true",
+        width: '100%'
+    });
 });

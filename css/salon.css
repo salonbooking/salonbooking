@@ -763,7 +763,15 @@
 #sln-salon .sln-service-list .service-price {
   font-size: 1em;
   font-weight: bold;
-  padding-top: 0.2em;
+  padding-top: .2em;
+}
+#sln-salon .services-total {
+  text-align: right;
+}
+#sln-salon .services-total-label.col-xs-6,
+#sln-salon .services-total.col-xs-6 {
+  width: 50%;
+  padding-right: 15px;
 }
 #sln-salon .service-checkbox input {
   min-width: 16px !important;
@@ -984,7 +992,7 @@
 #sln-salon #salon-step-summary div.summ-row .total-amount {
   font-size: .8em;
   font-weight: bold;
-  color: black;
+  color: #000000;
 }
 #sln-salon .tycol {
   background: #eeeeee;
@@ -1003,7 +1011,7 @@
 }
 #sln-salon .tycol i {
   font-size: 2.2em;
-  color: green;
+  color: #008000;
   margin-top: .6em;
 }
 #sln-salon .tycol i.c {
@@ -1048,7 +1056,7 @@
 }
 #sln-salon .btn-primary,
 #sln-salon .btn-success {
-  color: white !important;
+  color: #ffffff !important;
 }
 #sln-salon ul {
   list-style-type: none;
@@ -1573,16 +1581,17 @@
   #sln-salon .sln-service-list .col-xs-1 {
     width: 8%;
   }
-  #sln-salon .sln-service-list .col-xs-7 {
+  #sln-salon .sln-service-list .col-xs-8 {
     width: 90%;
     padding-left: 5%;
   }
-  #sln-salon .sln-service-list .col-xs-4.service-price {
+  #sln-salon .sln-service-list .col-xs-3.service-price {
     width: 80%;
     margin-left: 13%;
     border-top: 1px dashed #ccc;
     padding-top: .5em;
     padding-left: 0;
+    padding-right: 0;
     margin-top: .5em;
   }
 }
@@ -1596,11 +1605,11 @@
     width: 8%;
   }
   #sln-salon .sln-service-list .col-xs-7 {
-    width: 70%;
     padding-left: 5%;
   }
   #sln-salon .sln-service-list .col-xs-4.service-price {
-    width: 20%;
+    padding-right: 0;
+    text-align: right;
   }
 }
 #sln-salon h1:nth-child(2) {
