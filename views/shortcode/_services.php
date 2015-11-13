@@ -44,7 +44,7 @@ $grouped = SLN_Func::groupServicesByCategory($services);
             ) ?>
             </span>
             </div>
-            <div class="col-lg-<?=$showPrices?'8':'11'?> col-xs-<?=$showPrices?'7':'11'?>">
+            <div class="col-lg-<?=$showPrices?'8':'11'?> col-xs-<?=$showPrices?'8':'11'?>">
                 <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                     <strong class="service-name"><?php echo $service->getName(); ?></strong>
                     <span class="service-description"><?php echo $service->getContent() ?></span>
@@ -56,7 +56,7 @@ $grouped = SLN_Func::groupServicesByCategory($services);
                 </label>
             </div>
 		<?php if ($showPrices){  ?>
-            <div class="col-lg-3 col-xs-4 service-price">
+            <div class="col-lg-3 col-xs-3 service-price">
                 <?php echo $plugin->format()->money($service->getPrice())?>
             </div>
 		<?php }	?>
@@ -79,8 +79,8 @@ $grouped = SLN_Func::groupServicesByCategory($services);
     <?php endforeach ?>
 	<?php if ($showPrices){ ?>
     <div class="row row-total">
-        <div class="col-lg-9 col-xs-8 services-total-label"><?php _e('Subtotal', 'sln') ?></div>
-        <div class="col-lg-3 col-xs-4 services-total">
+        <div class="col-xs-6 services-total-label"><?php _e('Subtotal', 'sln') ?></div>
+        <div class="col-xs-6 services-total">
         <span id="services-total" data-symbol-left="<?php echo $symbolLeft ?>" data-symbol-right="<?php echo $symbolRight ?>">
             <?php echo $plugin->format()->money(0, false) ?>
         </span>
