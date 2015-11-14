@@ -24,7 +24,7 @@ class SLN_Admin_Settings {
 
     public function admin_menu() {
         add_menu_page(
-                __('Salon', 'sln'), __('Salon', 'sln'), 'manage_options', 'salon', array($this, 'settings_page'), SLN_PLUGIN_URL . '/img/admin_icon.png', 100
+                __('Salon', 'sln'), __('Salon', 'sln'), 'manage_options', 'salon', array($this, 'settings_page'), SLN_PLUGIN_URL . '/img/admin_icon.png'
         );
         $this->settings_page = add_submenu_page(
                 'salon', __('Salon Settings', 'sln'), __('Settings', 'sln'), apply_filters('salonviews/settings/capability', 'manage_options'), self::PAGE, array($this, 'show')
