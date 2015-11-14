@@ -11,7 +11,7 @@ class SLN_Plugin
     const F = 'slnc';
     const F1 = 30;
     const F2 = 20;
-    const DEBUG_ENABLED = true;
+    const DEBUG_ENABLED = false;
 
     private static $instance;
     private $settings;
@@ -57,6 +57,7 @@ class SLN_Plugin
         new SLN_Metabox_Service($this, self::POST_TYPE_SERVICE);
         new SLN_Metabox_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_Metabox_Booking($this, self::POST_TYPE_BOOKING);
+        new SLN_Metabox_BookingActions($this, self::POST_TYPE_BOOKING);
         new SLN_Admin_Settings($this);
         new SLN_Admin_Calendar($this);
         add_action('admin_notices', array($this, 'admin_notices'));
@@ -111,8 +112,10 @@ class SLN_Plugin
 
     public function admin_enqueue_scripts()
     {
+        wp_enqueue_script('salon-admin-select2', SLN_PLUGIN_URL . '/js/select2.min.js', array('jquery'), true);
         wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL . '/js/admin.js', array('jquery'), '20140711', true);
         wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL . '/css/admin.css', array(), SLN_VERSION, 'all');
+        wp_enqueue_style('salon-admin-select2-css', SLN_PLUGIN_URL . '/css/select2.min.css', array(), SLN_VERSION, 'all');
     }
 
     /** @return SLN_Settings */

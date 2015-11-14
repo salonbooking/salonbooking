@@ -1,6 +1,6 @@
 <div class="sln-tab" id="sln-tab-general">
-    <div class="row">
-        <div class="col-md-3 col-sm-4">
+    <div class="row sln-box sln-box--main">
+    <div class="col-md-3 col-sm-4">
             <?php
             $this->row_input_text(
                 'gen_name',
@@ -85,6 +85,7 @@
             <p><?php _e('Avoid spam asking your users to verify their identity with an SMS verification code during the first registration.', 'sln') ?></p>
             <label>        <?php _e('Select your service provider', 'sln') ?></label>
             <?php $field = "salon_settings[sms_provider]"; ?>
+            <div class="sln-select-wrapper">
             <?php echo SLN_Form::fieldSelect(
                 $field,
                 SLN_Enum_SmsProvider::toArray(),
@@ -92,6 +93,7 @@
                 array(),
                 true
             ) ?>
+            </div>
             <!-- form-group END -->
 
             <div class="row">
@@ -121,6 +123,7 @@
                 <div class="col-md-6">
                     <?php $this->row_input_checkbox('sms_remind', __('Reminde the appointment via SMS', 'sln')); ?>
                     <?php _e('From', 'sln') ?>
+                    <div class="sln-select-wrapper">
                     <?php $field = "salon_settings[sms_remind_interval]"; ?>
                     <?php echo SLN_Form::fieldSelect(
                         $field,
@@ -129,6 +132,7 @@
                         array(),
                         true
                     ) ?>
+                    </div>
 
                 </div>
             </div>
@@ -160,7 +164,7 @@
     </div>
 <br/>
     <div class="row">
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-3 col-sm-4 sln-select-wrapper">
             <label>        <?php _e('Date Format', 'sln') ?></label>
             <?php $field = "salon_settings[date_format]"; ?>
             <?php echo SLN_Form::fieldSelect(
@@ -171,7 +175,7 @@
                 true
             ) ?>
         </div>
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-3 col-sm-4 sln-select-wrapper">
             <label>        <?php _e('Time Format', 'sln') ?></label>
             <?php $field = "salon_settings[time_format]"; ?>
             <?php echo SLN_Form::fieldSelect(
@@ -187,3 +191,4 @@
         </div>
     </div>
 </div>
+<div class="clearfix"></div>

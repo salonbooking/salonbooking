@@ -85,6 +85,22 @@
     background-color: #33CC33;
   }
 }
+
+.datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled),
+.select2-results__option.red {
+    color: red !important;
+}
+
+.datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active):hover,
+.datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active):hover,
+.datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled):hover,
+.select2-results__option.red:hover {
+    color: white !important;
+    background-color: red !important;
+}
+
 #sln-salon {
   background: @color-bg;
   border: 1px solid #ddd;
@@ -143,9 +159,13 @@
     .service-price {
       font-size: 1em;
       font-weight: bold;
-      padding-top: .2em
+      padding-top: .2em;
     }
   }
+  .services-total {
+    text-align: right;
+  }
+  .services-total-label.col-xs-6, .services-total.col-xs-6 {width: 50%; padding-right: 15px;}
   .service-checkbox input {
     min-width: 16px !important;
     min-height: 16px !important;
@@ -777,16 +797,17 @@
       .col-xs-1 {
         width: 8%;
       }
-      .col-xs-7 {
+      .col-xs-8 {
         width: 90%;
         padding-left: 5%;
       }
-      .col-xs-4.service-price {
+      .col-xs-3.service-price {
         width: 80%;
         margin-left: 13%;
         border-top: 1px dashed #ccc;
         padding-top: .5em;
         padding-left: 0;
+        padding-right: 0;
         margin-top: .5em;
       }
     }
@@ -799,11 +820,13 @@
         width: 8%;
       }
       .col-xs-7 {
-        width: 70%;
+        //width: 70%;
         padding-left: 5%;
       }
       .col-xs-4.service-price {
-        width: 20%;
+        //width: 20%;
+        padding-right: 0;
+        text-align: right;
       }
     }
   }
