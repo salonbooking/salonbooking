@@ -16,7 +16,7 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
         remove_meta_box('postexcerpt', $postType, 'side');
         add_meta_box(
             'postexcerpt',
-            __('Service description'),
+            __('Service description', 'sln'),
             array($this, 'post_excerpt_meta_box'),
             $postType,
             'normal',
