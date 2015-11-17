@@ -25,6 +25,14 @@
       max-width: 100%;
       height: 100%;
   }
+  @media @tablet-max-port  {
+      //position: fixed;
+      //top: 0 !important;
+      left: 0 !important;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+  }
 }
 .datetimepicker.sln-datetimepicker table tr td.today,
 .datetimepicker.sln-datetimepicker table tr td.today:hover,
@@ -119,6 +127,13 @@
       text-align: center;
       padding: 0;
     }
+    @media @tablet-max-port {
+      background: #eee;
+      font-size: 1.4em;
+      border: 2px solid #fff;
+      text-align: center;
+      padding: 0;
+    }
 }
 
 .datetimepicker.sln-datetimepicker table tr td.day{
@@ -127,10 +142,21 @@
       height: 60px;
       line-height: 60px;
     }
+    @media @tablet-max-port {
+      width: 60px !important;
+      height: 60px;
+      line-height: 60px;
+    }
 }
 .datetimepicker.sln-datetimepicker table tr td span.hour,
 .datetimepicker.sln-datetimepicker table tr td span.minute {
     @media @phone {
+      width: 25% !important;
+      height: 60px;
+      line-height: 60px;
+      margin: 0;
+    }
+    @media @tablet-max-port {
       width: 25% !important;
       height: 60px;
       line-height: 60px;

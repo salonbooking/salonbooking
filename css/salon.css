@@ -627,6 +627,14 @@
     height: 100%;
   }
 }
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .datetimepicker.sln-datetimepicker {
+    left: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}
 .datetimepicker.sln-datetimepicker table tr td.today,
 .datetimepicker.sln-datetimepicker table tr td.today:hover,
 .datetimepicker.sln-datetimepicker table tr td.today.disabled,
@@ -718,6 +726,17 @@
     padding: 0;
   }
 }
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .datetimepicker.sln-datetimepicker table tr td.day,
+  .datetimepicker.sln-datetimepicker table tr td span.hour,
+  .datetimepicker.sln-datetimepicker table tr td span.minute {
+    background: #eee;
+    font-size: 1.4em;
+    border: 2px solid #fff;
+    text-align: center;
+    padding: 0;
+  }
+}
 @media only screen and (max-width: 767px) {
   .datetimepicker.sln-datetimepicker table tr td.day {
     width: 60px !important;
@@ -725,7 +744,23 @@
     line-height: 60px;
   }
 }
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .datetimepicker.sln-datetimepicker table tr td.day {
+    width: 60px !important;
+    height: 60px;
+    line-height: 60px;
+  }
+}
 @media only screen and (max-width: 767px) {
+  .datetimepicker.sln-datetimepicker table tr td span.hour,
+  .datetimepicker.sln-datetimepicker table tr td span.minute {
+    width: 25% !important;
+    height: 60px;
+    line-height: 60px;
+    margin: 0;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
   .datetimepicker.sln-datetimepicker table tr td span.hour,
   .datetimepicker.sln-datetimepicker table tr td span.minute {
     width: 25% !important;
