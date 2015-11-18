@@ -181,7 +181,7 @@ class SLN_Admin_Settings {
                 $this->settings->set('pay_enabled', '');
             }
             wp_clear_scheduled_hook('sln_sms_reminder');
-            if ($_POST['salon_settings']['sms_remind']) {
+            if (isset($_POST['salon_settings']['sms_remind']) && $_POST['salon_settings']['sms_remind']) {
                 wp_schedule_event(time(), 'hourly', 'sln_sms_reminder');
             }
             $this->settings->save();
