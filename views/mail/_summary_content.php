@@ -1,6 +1,17 @@
 <?php
-if(!function_exists('tpl_summary_details')){
-function tpl_summary_details($booking, $plugin){
+
+if(!isset($forAdmin)) {
+    $forAdmin = false;
+}
+
+if(!function_exists('tpl_pending_payment')){
+function sln_tpl_pending_payment($booking, $plugin){
+?>
+<?
+}}
+
+if(!function_exists('sln_tpl_summary_details')){
+function sln_tpl_summary_details($booking, $plugin){
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 ?>
 <table width="502" border="0" align="left" cellpadding="0" cellspacing="0">
@@ -85,6 +96,7 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
             </tbody></table></td>
           </tr>
         </tbody></table>
+        
 <?php
 }}
 ?>
@@ -167,9 +179,16 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
             </tr>
             <tr>
                 <td align="left" valign="top" bgcolor="#ffffff">
-                    <?php tpl_summary_details($booking, $plugin) ?>
+                    <?php include('_summary_details.php') ?>
                 </td>
             </tr>
+            <?php if($booking->hasStatus(SLN_Enum_BookingStatus::PENDING_PAYMENT)){ ?>
+            <tr>
+                <td align="left" valign="top" bgcolor="#ffffff">
+                    <?php include('_summary_pendingpayment.php') ?>
+                </td>
+            </tr>
+            <?php } ?>
             <tr>
                 <td height="25" align="left" valign="top">&nbsp;</td>
             </tr>

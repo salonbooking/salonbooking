@@ -181,6 +181,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
                 $p->sendMail('mail/status_confirmed', compact('booking'));
             } elseif ($new_status == SLN_Enum_BookingStatus::CANCELED && $old_status != $new_status) {
                 $p->sendMail('mail/status_canceled', compact('booking'));
+            } elseif ($new_status == SLN_Enum_BookingStatus::PENDING_PAYMENT && $old_status != $new_status) {
+                $p->sendMail('mail/status_pending_payment', compact('booking'));
             } elseif (
                  in_array($new_status, array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::PAY_LATER))
                  && $old_status != $new_status
@@ -199,8 +201,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
                     SLN_Enum_SmsProvider::getService(
                         $p->getSettings()->get('sms_provider'),
                         $this->getPlugin()
-                    )->send($phone, $p->loadView('sms/summary', compact('booking')));
- 
+                    )->send($phone, $p->loadView('sms/summary', compact('booking'))); 
                 }
             }
             

@@ -3,19 +3,16 @@
         <div class="col-md-4 col-sm-6">
 			<?php $settings=$this->hidePriceSettings();?>
             <?php $this->row_input_checkbox('pay_enabled', __('Enable online payments', 'sln'),$settings); ?>
-            <p><?php _e('Allow users to pay in advance using PayPal.', 'sln') ?></p>
+            <p><?php _e('Allow users to pay in advance.', 'sln') ?></p>
         </div>
         <div class="col-md-4 col-sm-6">
             <?php $this->row_input_checkbox('pay_cash', __('Enable "Pay later" option', 'sln')); ?>
             <p><?php _e('Give users the option to pay once they are at your salon.', 'sln') ?></p>
         </div>
-  </div>
+    </div>
 
 
     <div class="row">
-        <div class="col-md-4 col-sm-6">
-            <?php $this->row_input_text('pay_paypal_email', __('Enter your PayPal e-mail address', 'sln')); ?>
-        </div>
         <div class="col-md-3 col-sm-4">
              <label for="salon_settings_pay_currency"><?php _e('Set your currency','sln') ?></label>
                 <?php echo SLN_Form::fieldCurrency(
@@ -36,6 +33,22 @@
  
     </div> 
     <div class="row">
+        <div class="col-md-3 col-sm-4">
+             <label for="salon_settings_pay_currency_pos"><?php _e('Payment method','sln') ?></label>
+                 <?php echo SLN_Form::fieldSelect(
+                        'salon_settings[pay_method]',
+                        SLN_Enum_PaymentMethodProvider::toArray(),
+                        $this->settings->getPaymentMethod(),
+                        array(),
+                        true
+                    ) ?>
+        </div>
+    </div>
+    <div class="payment-mode-data" id="payment-mode-paypal">
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <?php $this->row_input_text('pay_paypal_email', __('Enter your PayPal e-mail address', 'sln')); ?>
+        </div>
         <div class="col-md-4 col-sm-6">
             <div class="form-group">
                 <?php $this->row_input_checkbox('pay_paypal_test', __('Enable PayPal sandbox', 'sln')); ?>
@@ -43,6 +56,17 @@
             </div>
         </div>
     </div> 
+    </div>
+    <div class="payment-mode-data" id="payment-mode-stripe">
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <?php $this->row_input_text('pay_stripe_apiKey', __('Enter your Stripe api key', 'sln')); ?>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <?php $this->row_input_text('pay_stripe_apiKeyPublic', __('Enter your Stripe publishable api key', 'sln')); ?>
+        </div>
+    </div> 
+    </div>
     <div class="row">
         <div class="col-md-6 col-sm-6">
              <label for="salon_settings_pay_deposit"><?php _e('Pay a deposit of ','sln') ?></label>

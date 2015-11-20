@@ -9,6 +9,11 @@ $confirmation = $plugin->getSettings()->get('confirmation');
 $currentStep = $step->getShortcode()->getCurrentStep();
 $ajaxData = "sln_step_page=$currentStep&submit_$currentStep=1";
 $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
+
+$paymentMethod = $plugin->getSettings()->get('pay_enabled') ? 
+SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMethod(), $plugin)
+: false;
+
 ?>
 <div id="salon-step-thankyou">
     <?php if($confirmation) : ?>
@@ -17,10 +22,12 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
         <h2><?php _e('Booking Confirmation', 'sln') ?></h2>
     <?php endif ?>
 
-    <?php if (isset($paypalOp) && $paypalOp == 'cancel'): ?>
+    <?php include '_errors.php'; ?>
+
+    <?php if (isset($payOp) && $payOp == 'cancel'): ?>
 
         <div class="alert alert-danger">
-            <p><?php _e('The payment on paypal is failed, please try again.', 'sln') ?></p>
+            <p><?php _e('The payment is failed, please try again.', 'sln') ?></p>
         </div>
 
     <?php else: ?>
@@ -51,18 +58,41 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 
             <div id="sln-notifications"></div>
     <div class="row form-actions aligncenter">
-        <?php if($plugin->getSettings()->get('pay_enabled') && $plugin->getSettings()->getPaypalEmail()) : ?>
-        <a data-salon-data="<?php echo $ajaxData.'&mode=paypal' ?>" data-salon-toggle="direct"
-        href="<?php echo $paypalUrl ?>" class="btn btn-primary">
+        <?php if($paymentMethod): ?>
+<?php if($paymentMethod->getMethodKey() == 'paypal'): ?>
+        <a data-salon-data="<?php echo $ajaxData.'&mode='.$paymentMethod->getMethodKey() ?>" data-salon-toggle="direct"
+        href="<?php echo $payUrl ?>" class="btn btn-primary">
             <?php $deposit = $plugin->getBookingBuilder()->getLastBooking()->getDeposit(); ?> 
             <?php if($deposit > 0): ?>
-                <?php echo sprintf(__('Pay %s as a deposit with Paypal', 'sln'), $plugin->format()->money($deposit)) ?>
+                <?php echo sprintf(__('Pay %s as a deposit with %s', 'sln'), $plugin->format()->money($deposit), $paymentMethod->getMethodLabel()) ?>
             <?php else : ?>
-                <?php _e('Pay with Paypal', 'sln') ?>
+                <?php sprintf(_e('Pay with %s', 'sln'), $paymentMethod->getMethodLabel()) ?>
             <?php endif ?>
         </a>
-        <?php $ppl = true; endif; ?>
-        <?php if($ppl && $plugin->getSettings()->get('pay_cash')): ?>
+<?php elseif($paymentMethod->getMethodKey() == 'stripe'): ?>
+<form method="POST" action="<?php echo $booking->getPayUrl() ?>&mode=<?php echo $paymentMethod->getMethodKey() ?>">
+<script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<?php echo $paymentMethod->getApiKeyPublic()?>"
+<?php /*    data-image="/img/documentation/checkout/marketplace.png"
+    data-name="Stripe.com"
+*/?>
+    data-description="Booking #<?php echo $booking->getId() ?>"
+    data-amount="<?php echo intval($booking->getToPayAmount() * 100) ?>"
+    data-label="<?php $deposit = $plugin->getBookingBuilder()->getLastBooking()->getDeposit(); ?>
+            <?php if($deposit > 0): ?>
+                <?php echo sprintf(__('Pay %s as a deposit with %s', 'sln'), $plugin->format()->money($deposit), $paymentMethod->getMethodLabel()) ?>
+            <?php else : ?>
+                <?php sprintf(_e('Pay with %s', 'sln'), $paymentMethod->getMethodLabel()) ?>
+            <?php endif ?>"
+    data-email="<?php echo $booking->getEmail() ?>"
+    data-currency="<?php echo $plugin->getSettings()->getCurrency() ?>"
+    data-locale="auto">
+  </script>
+</form>
+<?php endif ?>
+        <?php endif; ?>
+        <?php if($paymentMethod && $plugin->getSettings()->get('pay_cash')): ?>
         <?php _e('Or', 'sln') ?>
         <a  href="<?php echo $laterUrl ?>" class="btn btn-success"
             <?php if($ajaxEnabled): ?>
@@ -70,7 +100,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
             <?php endif ?>>
             <?php _e('I\'ll pay later', 'sln') ?>
         </a>
-        <?php elseif(!$ppl) : ?>
+        <?php elseif(!$paymentMethod) : ?>
         <a  href="<?php echo $laterUrl ?>" class="btn btn-success"
             <?php if($ajaxEnabled): ?>
                 data-salon-data="<?php echo $ajaxData.'&mode=later' ?>" data-salon-toggle="direct"

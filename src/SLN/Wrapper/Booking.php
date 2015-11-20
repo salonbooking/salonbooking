@@ -20,6 +20,9 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return $ret;
     }
 
+    function getToPayAmount(){
+        return $this->getDeposit() > 0 ? $this->getDeposit() : $this->getAmount();
+    }
 
     function getFirstname()
     {
@@ -250,5 +253,26 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return strpos($this->object->post_status, 'sln-b-') !== 0;
     }
 
-
+    public function markPaid($transactionId){
+        update_post_meta($this->getId(), '_sln_booking_transaction_id', $transactionId);
+        $this->setStatus(SLN_Enum_BookingStatus::PAID);
+    }
+    public function getPayUrl(){
+        return add_query_arg(
+            array(
+               'sln_step_page' => 'thankyou',
+               'submit_thankyou' => 1,
+               'sln_booking_id' => $this->getUniqueId()
+            ),
+            get_post_permalink( SLN_Plugin::getInstance()->getSettings()->get('pay'))
+        );
+    }
+    public function getUniqueId(){
+        $id = get_post_meta($this->getId(), '_sln_booking_uniqid', true);
+        if(!$id){
+            $id = md5(uniqid().$this->getId());
+            update_post_meta($this->getId(), '_sln_booking_uniqid', $id);
+        }
+        return $this->getId().'-'.$id;
+    }
 }

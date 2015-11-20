@@ -2,6 +2,7 @@
 
 class SLN_Enum_BookingStatus
 {
+    const PENDING_PAYMENT = 'sln-b-pendingpayment';
     const PENDING = 'sln-b-pending';
     const ERROR = 'sln-b-error';
     const PAID = 'sln-b-paid';
@@ -12,6 +13,7 @@ class SLN_Enum_BookingStatus
     private static $labels;
 
     private static $colors = array(
+            self::PENDING_PAYMENT => 'warning',
             self::PENDING   => 'warning',
             self::PAID      => 'success',
             self::PAY_LATER => 'info',
@@ -38,6 +40,7 @@ class SLN_Enum_BookingStatus
     public static function init()
     {
         self::$labels = array(
+            self::PENDING_PAYMENT   => __('Pending payment', 'sln'),
             self::PENDING   => __('Pending', 'sln'),
             self::PAID      => __('Paid', 'sln'),
             self::PAY_LATER => __('Pay later', 'sln'),

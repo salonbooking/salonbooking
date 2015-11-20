@@ -148,11 +148,18 @@ class SLN_Plugin
 
     public function createBooking($booking)
     {
+        if(is_string($booking) && strpos($booking, '-') !== false){
+            $secureId = $booking;
+            $booking = intval($booking);
+        }
         if (is_int($booking)) {
             $booking = get_post($booking);
         }
-
-        return new SLN_Wrapper_Booking($booking);
+        $ret = new SLN_Wrapper_Booking($booking);
+        if(isset($secureId) && $ret->getUniqueId() != $secureId){
+            throw new Exception('Not allowed, failing secure id');
+        }
+        return $ret;
     }
 
     public function getBookingBuilder()

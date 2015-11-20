@@ -337,4 +337,9 @@ jQuery(function ($) {
         tags: "true",
         width: '100%'
     });
+
+    $('#salon_settings_pay_method').change(function(){
+        $('.payment-mode-data').hide();
+        $('#payment-mode-'+$(this).val()).show();
+    }).change();
 });

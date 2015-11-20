@@ -71,7 +71,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         $booking->evalDuration();
         $s = $booking->getStatus();
         $new =  $_POST['_sln_booking_status'];
-        if(strpos($new,'sln-b-') !== 0) $new = 'sln-b-pending';
+        if(strpos($new,'sln-b-') !== 0) $new = 'sln-b-pendingpayment';
         $postnew = array();
         if(strpos($s,'sln-b-') !== 0){
             $postnew = array_merge($postnew, array(
