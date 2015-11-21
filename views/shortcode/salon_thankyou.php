@@ -59,38 +59,7 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
             <div id="sln-notifications"></div>
     <div class="row form-actions aligncenter">
         <?php if($paymentMethod): ?>
-<?php if($paymentMethod->getMethodKey() == 'paypal'): ?>
-        <a data-salon-data="<?php echo $ajaxData.'&mode='.$paymentMethod->getMethodKey() ?>" data-salon-toggle="direct"
-        href="<?php echo $payUrl ?>" class="btn btn-primary">
-            <?php $deposit = $plugin->getBookingBuilder()->getLastBooking()->getDeposit(); ?> 
-            <?php if($deposit > 0): ?>
-                <?php echo sprintf(__('Pay %s as a deposit with %s', 'sln'), $plugin->format()->money($deposit), $paymentMethod->getMethodLabel()) ?>
-            <?php else : ?>
-                <?php sprintf(_e('Pay with %s', 'sln'), $paymentMethod->getMethodLabel()) ?>
-            <?php endif ?>
-        </a>
-<?php elseif($paymentMethod->getMethodKey() == 'stripe'): ?>
-<form method="POST" action="<?php echo $booking->getPayUrl() ?>&mode=<?php echo $paymentMethod->getMethodKey() ?>">
-<script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<?php echo $paymentMethod->getApiKeyPublic()?>"
-<?php /*    data-image="/img/documentation/checkout/marketplace.png"
-    data-name="Stripe.com"
-*/?>
-    data-description="Booking #<?php echo $booking->getId() ?>"
-    data-amount="<?php echo intval($booking->getToPayAmount() * 100) ?>"
-    data-label="<?php $deposit = $plugin->getBookingBuilder()->getLastBooking()->getDeposit(); ?>
-            <?php if($deposit > 0): ?>
-                <?php echo sprintf(__('Pay %s as a deposit with %s', 'sln'), $plugin->format()->money($deposit), $paymentMethod->getMethodLabel()) ?>
-            <?php else : ?>
-                <?php sprintf(_e('Pay with %s', 'sln'), $paymentMethod->getMethodLabel()) ?>
-            <?php endif ?>"
-    data-email="<?php echo $booking->getEmail() ?>"
-    data-currency="<?php echo $plugin->getSettings()->getCurrency() ?>"
-    data-locale="auto">
-  </script>
-</form>
-<?php endif ?>
+            <?php echo $paymentMethod->renderPayButton(compact('booking', 'paymentMethod', 'ajaxData', 'payUrl')); ?>
         <?php endif; ?>
         <?php if($paymentMethod && $plugin->getSettings()->get('pay_cash')): ?>
         <?php _e('Or', 'sln') ?>

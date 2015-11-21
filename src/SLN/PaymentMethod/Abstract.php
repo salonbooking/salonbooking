@@ -32,4 +32,12 @@ abstract class SLN_PaymentMethod_Abstract
         return $this->methodLabel;
     }
 
+    public function renderPayButton($data){
+        return $this->plugin->loadView('payment_method/'.$this->getMethodKey().'/pay', $data); 
+    }
+
+    public function renderSettingsFields($data){
+        return $this->plugin->loadView('payment_method/'.$this->getMethodKey().'/settings', $data); 
+    }
+
 }

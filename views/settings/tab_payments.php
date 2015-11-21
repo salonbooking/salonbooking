@@ -44,29 +44,13 @@
                     ) ?>
         </div>
     </div>
-    <div class="payment-mode-data" id="payment-mode-paypal">
-    <div class="row">
-        <div class="col-md-4 col-sm-6">
-            <?php $this->row_input_text('pay_paypal_email', __('Enter your PayPal e-mail address', 'sln')); ?>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="form-group">
-                <?php $this->row_input_checkbox('pay_paypal_test', __('Enable PayPal sandbox', 'sln')); ?>
-                <p><?php _e('Check this option to test PayPal payments<br /> using your PayPal Sandbox account.', 'sln') ?></p>
-            </div>
-        </div>
-    </div> 
-    </div>
-    <div class="payment-mode-data" id="payment-mode-stripe">
-    <div class="row">
-        <div class="col-md-4 col-sm-6">
-            <?php $this->row_input_text('pay_stripe_apiKey', __('Enter your Stripe api key', 'sln')); ?>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <?php $this->row_input_text('pay_stripe_apiKeyPublic', __('Enter your Stripe publishable api key', 'sln')); ?>
-        </div>
-    </div> 
-    </div>
+<?php 
+    foreach(SLN_Enum_PaymentMethodProvider::toArray() as $k => $v){
+        ?><div class="payment-mode-data" id="payment-mode-<?php echo $k?>"><?php
+        echo SLN_Enum_PaymentMethodProvider::getService($k, $this->plugin)->renderSettingsFields(array('adminSettings' => $this));
+        ?></div><?php
+    }
+?>
     <div class="row">
         <div class="col-md-6 col-sm-6">
              <label for="salon_settings_pay_deposit"><?php _e('Pay a deposit of ','sln') ?></label>
