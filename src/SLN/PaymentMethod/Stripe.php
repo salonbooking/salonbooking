@@ -35,10 +35,10 @@ class SLN_PaymentMethod_Stripe extends SLN_PaymentMethod_Paypal//Abstract
 
     public function dispatchThankYou(SLN_Shortcode_Salon_ThankyouStep $shortcode, $booking = null){
         if ($_GET['mode'] == $this->getMethodKey()) {
-            if(!isset($_GET['stripeToken'])){
+            if(!isset($_POST['stripeToken'])){
                 return;
             }
-            if($id = $this->charge($booking, $_GET['stripeToken'])){
+            if($id = $this->charge($booking, $_POST['stripeToken'])){
                 $booking->markPaid($id);
                 $shortcode->goToThankyou();
             }else{
