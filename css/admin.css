@@ -8,13 +8,13 @@
 #sln-salon--admin .sln-btn, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin p.submit, #sln-salon--admin .sln-toolbox, #sln-salon--admin .sln-admin-sidebar {
   z-index: 800; }
 
-#sln-salon--admin .sln-input--simple input, #sln-salon--admin .sln-select input, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin .sln-select textarea, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .sln-box-title, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
+#sln-salon--admin .sln-input--simple input, #sln-salon--admin .sln-select input, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin .sln-select textarea, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .col-time, #sln-salon--admin .sln-box-title, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
   font-family: "Open sans", serif;
   font-size: 1rem;
   line-height: 1.41667rem;
   line-height: 1.41667rem; }
 
-#sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field {
+#sln-salon--admin .sln-checkbutton input + label, #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field {
   font-family: "Open sans", serif;
   font-size: 0.75rem;
   font-weight: normal;
@@ -25,7 +25,7 @@
   font-size: 0.66667rem;
   line-height: 0.91667rem; }
 
-#sln-salon--admin .sln-input--simple p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p {
+#sln-salon--admin .sln-input--simple p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, #sln-salon--admin #time-range p {
   font-family: "Open sans", serif;
   font-size: 0.58333rem;
   line-height: 0.83333rem; }
@@ -42,10 +42,10 @@
 #sln-salon--admin .sln-input--simple input:focus, #sln-salon--admin .sln-select input:focus, #sln-salon--admin .sln-input--simple textarea:focus, #sln-salon--admin .sln-select textarea:focus {
   color: #0C6EB6; }
 
-#sln-salon--admin .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, #sln-salon--admin .sln-btn--icon:after, #sln-salon--admin p.submit:after {
+#sln-salon--admin .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, #sln-salon--admin .sln-checkbutton input + label:after, #sln-salon--admin .sln-btn--icon:after, #sln-salon--admin p.submit:after {
   color: white;
   font-family: "FontAwesome";
-  font-size: 0.83333rem; }
+  font-size: 0.91667rem; }
 
 @font-face {
   font-family: 'FontAwesome';
@@ -375,13 +375,15 @@ body {
   background-color: transparent; }
 
 #sln-salon--admin {
-  font-size: 24px; }
-  #sln-salon--admin .sln-input--simple input, #sln-salon--admin .sln-select input, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin .sln-select textarea, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .sln-box-title, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln #sln-salon--admin .select2-selection--single, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--multiple, .select2-container.select2-container--sln #sln-salon--admin .select2-selection--multiple {
+  font-size: 24px;
+  /* TIME RANGE */
+  /* TIME RANGE // END */ }
+  #sln-salon--admin .sln-input--simple input, #sln-salon--admin .sln-select input, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin .sln-select textarea, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .col-time, #sln-salon--admin .sln-box-title, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln #sln-salon--admin .select2-selection--single, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--multiple, .select2-container.select2-container--sln #sln-salon--admin .select2-selection--multiple {
     font-family: "Open sans", serif;
     font-size: 1rem;
     line-height: 1.41667rem;
     line-height: 1.41667rem; }
-  #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, #sln-salon--admin .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln #sln-salon--admin .select2-dropdown, #sln-salon--admin .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .select2-container.select2-container--sln .select2-search--dropdown #sln-salon--admin .select2-search__field {
+  #sln-salon--admin .sln-checkbutton input + label, #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, #sln-salon--admin .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln #sln-salon--admin .select2-dropdown, #sln-salon--admin .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .select2-container.select2-container--sln .select2-search--dropdown #sln-salon--admin .select2-search__field {
     font-family: "Open sans", serif;
     font-size: 0.75rem;
     font-weight: normal;
@@ -390,7 +392,7 @@ body {
     font-family: "Open sans", serif;
     font-size: 0.66667rem;
     line-height: 0.91667rem; }
-  #sln-salon--admin .sln-input--simple p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p {
+  #sln-salon--admin .sln-input--simple p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, #sln-salon--admin #time-range p {
     font-family: "Open sans", serif;
     font-size: 0.58333rem;
     line-height: 0.83333rem; }
@@ -402,10 +404,10 @@ body {
     color: #003553; }
   #sln-salon--admin .sln-input--simple input:focus, #sln-salon--admin .sln-select input:focus, #sln-salon--admin .sln-input--simple textarea:focus, #sln-salon--admin .sln-select textarea:focus {
     color: #0C6EB6; }
-  #sln-salon--admin .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, #sln-salon--admin .sln-btn--icon:after, #sln-salon--admin p.submit:after {
+  #sln-salon--admin .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, #sln-salon--admin .sln-checkbutton input + label:after, #sln-salon--admin .sln-btn--icon:after, #sln-salon--admin p.submit:after {
     color: white;
     font-family: "FontAwesome";
-    font-size: 0.83333rem; }
+    font-size: 0.91667rem; }
 
 @font-face {
   #sln-salon--admin {
@@ -466,6 +468,8 @@ body {
       border: 0.125rem solid transparent; }
       #sln-salon--admin .sln-checkbox input + label:hover, #sln-salon--admin .sln-radiobox input + label:hover {
         border-color: #c7dff3; } }
+  #sln-salon--admin .sln-booking-rule {
+    border: 0.08333rem solid #c7dff3; }
   #sln-salon--admin .sln-fake-label {
     font-weight: 400;
     padding: 0 0.66667rem;
@@ -578,6 +582,63 @@ body {
     #sln-salon--admin .sln-radiobox input:checked + label:after,
     #sln-salon--admin .sln-radiobox input:checked + label:hover:after {
       background: #003553; }
+  #sln-salon--admin .sln-checkbutton-group {
+    margin-bottom: 1.66667rem; }
+  #sln-salon--admin .sln-checkbutton {
+    margin-right: 0.41667rem;
+    margin-bottom: 0.41667rem;
+    display: block;
+    float: left; }
+    #sln-salon--admin .sln-checkbutton input {
+      position: absolute;
+      margin-left: -9999px;
+      visibility: hidden; }
+    #sln-salon--admin .sln-checkbutton input + label {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+      padding: 0 2.91667rem 0 0.625rem;
+      margin-bottom: 0;
+      width: 7.5rem;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      transition: all 150ms;
+      position: relative;
+      text-align: left;
+      color: #003553;
+      background-color: #c7dff3; }
+    #sln-salon--admin .sln-checkbutton input + label:after {
+      content: "\f096";
+      display: inline-block;
+      position: absolute;
+      position: absolute;
+      top: 0;
+      right: 0.625rem;
+      bottom: 0;
+      text-align: center;
+      font-size: 1rem;
+      color: #003553;
+      transition: opacity 150ms,  color 150ms; }
+    #sln-salon--admin .sln-checkbutton input + label:after {
+      content: "\f096"; }
+    #sln-salon--admin .sln-checkbutton input + label:hover {
+      background-color: #003553;
+      color: #fff; }
+      #sln-salon--admin .sln-checkbutton input + label:hover:after {
+        color: #fff; }
+    #sln-salon--admin .sln-checkbutton input:checked + label {
+      background-color: #5bc24c;
+      color: #fff; }
+      #sln-salon--admin .sln-checkbutton input:checked + label:after {
+        content: "\f14a";
+        color: #fff; }
+      #sln-salon--admin .sln-checkbutton input:checked + label:hover {
+        background-color: #003553;
+        color: #fff; }
+        #sln-salon--admin .sln-checkbutton input:checked + label:hover:after {
+          color: #fff; }
   #sln-salon--admin .sln-switch {
     margin: 0 0 1.66667rem 0; }
     #sln-salon--admin .sln-switch input {
@@ -667,6 +728,120 @@ body {
       padding-left: 0; }
   #sln-salon--admin .sln-input-bigborder label {
     width: 100%; }
+  #sln-salon--admin .ui-slider-horizontal {
+    height: 8px;
+    background: #D7D7D7;
+    border: 1px solid #BABABA;
+    box-shadow: 0 1px 0 #FFF, 0 1px 0 #CFCFCF inset;
+    clear: both;
+    margin: 8px 0;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px; }
+  #sln-salon--admin .ui-slider {
+    position: relative;
+    text-align: left; }
+  #sln-salon--admin .ui-slider-horizontal .ui-slider-range {
+    top: -1px;
+    height: 100%; }
+  #sln-salon--admin .ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    display: block; }
+  #sln-salon--admin .ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 22px;
+    height: 22px;
+    cursor: default;
+    border: none;
+    cursor: pointer; }
+  #sln-salon--admin .ui-slider a:focus {
+    outline: none; }
+  #sln-salon--admin #time-range {
+    width: 100%; }
+  #sln-salon--admin .ui-slider-horizontal {
+    height: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    clear: both;
+    margin: 3px 4px 3px 6px; }
+  #sln-salon--admin .ui-slider .ui-slider-range {
+    height: 2.5rem;
+    border: none;
+    border-radius: 0;
+    background-color: #003553;
+    background-image: none;
+    border-top-left-radius: 1.25rem;
+    border-bottom-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+    top: 0; }
+  #sln-salon--admin .ui-slider .ui-slider-handle {
+    height: 2.5rem;
+    width: 2.5rem;
+    top: 0;
+    border: none;
+    border-radius: 0;
+    background-color: #c7dff3;
+    background-image: none;
+    box-shadow: none;
+    outline: none;
+    margin-left: 0;
+    margin-right: 2.5rem;
+    border: 2px solid #003553;
+    border-radius: 100%; }
+    #sln-salon--admin .ui-slider .ui-slider-handle:nth-child(2) {
+      margin-left: -2px; }
+    #sln-salon--admin .ui-slider .ui-slider-handle:nth-child(3) {
+      margin-left: -40px; }
+    #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: calc(50% - 5px);
+      border-left: 5px solid #003553;
+      border-bottom: 5px solid #003553;
+      width: 10px;
+      height: 10px; }
+    #sln-salon--admin .ui-slider .ui-slider-handle:before {
+      left: 0.41667rem;
+      transform: rotate(45deg); }
+    #sln-salon--admin .ui-slider .ui-slider-handle:after {
+      right: 0.41667rem;
+      transform: rotate(-135deg); }
+    #sln-salon--admin .ui-slider .ui-slider-handle:hover, #sln-salon--admin .ui-slider .ui-slider-handle:focus {
+      background-color: #0C6EB6; }
+      #sln-salon--admin .ui-slider .ui-slider-handle:hover:before, #sln-salon--admin .ui-slider .ui-slider-handle:hover:after, #sln-salon--admin .ui-slider .ui-slider-handle:focus:before, #sln-salon--admin .ui-slider .ui-slider-handle:focus:after {
+        border-left: 5px solid white;
+        border-bottom: 5px solid white; }
+  #sln-salon--admin .sln-slider {
+    height: 3.125rem;
+    margin-bottom: 1.66667rem; }
+  #sln-salon--admin .col {
+    float: left; }
+  #sln-salon--admin .col-time {
+    width: 30%; }
+  #sln-salon--admin .col-slider {
+    width: 70%;
+    height: 3.125rem;
+    border: 2px solid #c7dff3;
+    background-color: #fff;
+    border-top-left-radius: 1.58333rem;
+    border-bottom-left-radius: 1.58333rem;
+    border-top-right-radius: 1.58333rem;
+    border-bottom-right-radius: 1.58333rem; }
+  #sln-salon--admin .col-time {
+    color: #003553;
+    line-height: 3.125rem;
+    text-align: center; }
+    #sln-salon--admin .col-time span {
+      font-weight: 700; }
+  #sln-salon--admin .col.col-time, #sln-salon--admin .col.col-slider {
+    padding: 0; }
   #sln-salon--admin .sln-btn, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin p.submit {
     text-align: center;
     border: none;
@@ -859,6 +1034,10 @@ body {
     content: "\f05a"; }
   #sln-salon--admin .sln-icon--close:after {
     content: "\f00d"; }
+  #sln-salon--admin .sln-icon--trash:after {
+    content: "\f014"; }
+  #sln-salon--admin .sln-icon--file:after {
+    content: "\f0f6"; }
   #sln-salon--admin h2.nav-tab-wrapper .nav-tab {
     margin: 0; }
     #sln-salon--admin h2.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type) {
@@ -994,6 +1173,12 @@ body {
       transition: max-height 200ms; }
   #sln-salon--admin .sln-box--info-visible .sln-box-info .sln-box-info-content {
     max-height: 1000px; }
+  #sln-salon--admin .sln-booking-rule {
+    margin: 1.66667rem 0;
+    padding-top: 0.83333rem;
+    padding-bottom: 0.83333rem;
+    border-left: none;
+    border-right: none; }
   #sln-salon--admin h2.nav-tab-wrapper, #sln-salon--admin h3.nav-tab-wrapper {
     border-bottom: none;
     margin-bottom: 1.66667rem; }

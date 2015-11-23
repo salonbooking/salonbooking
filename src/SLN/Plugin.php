@@ -111,7 +111,8 @@ class SLN_Plugin
 
     public function admin_enqueue_scripts()
     {
-        wp_enqueue_script('salon-admin-select2', SLN_PLUGIN_URL . '/js/select2.min.js', array('jquery'), true);
+        wp_enqueue_script('jqueryUi', SLN_PLUGIN_URL . '/js/select2.min.js', array('jquery'), true);
+        wp_enqueue_script('salon-admin-select2', 'http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js', array('jquery'), true);
         wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL . '/js/admin.js', array('jquery'), '20140711', true);
         wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL . '/css/admin.css', array(), SLN_VERSION, 'all');
         wp_enqueue_style('salon-admin-select2-css', SLN_PLUGIN_URL . '/css/select2.min.css', array(), SLN_VERSION, 'all');

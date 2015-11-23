@@ -230,6 +230,16 @@
     content: "\f00d";
   }
 }
+.sln-icon--trash {
+  &:after {
+    content: "\f014";
+  }
+}
+.sln-icon--file {
+  &:after {
+    content: "\f0f6";
+  }
+}
 
 h2.nav-tab-wrapper .nav-tab {
     @extend .sln-btn;

@@ -53,6 +53,14 @@ function sln_availability_row($prefix, $row)
             <p class="sln-input-help">Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
         </div>
     </div>
+    <div class="sln-box-info">
+       <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
+       <div class="sln-box-info-content row">
+       <div class="col-md-4 col-sm-8 col-xs-12">
+       <h5>Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</h5>
+        </div>
+        </div>
+    </div>
     </div>
 <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-6">
@@ -129,6 +137,116 @@ function sln_availability_row($prefix, $row)
         </div>
     </div>
     </div>
+</div>
+
+<div class="sln-box sln-box--main">
+    <h2 class="sln-box-title">Online bookings timing <span>Donec vestibulum sagittis lorem, ut maximus ex consequat non.</span></h2>
+    <div class="sln-box--sub row">
+    <div class="col-xs-12"><h2 class="sln-box-title">Booking time range <span>Define the time range in wich customers may book an appointment</span></h2></div>
+            <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
+                <label for="salon_settings_pay_currency">Set your currency</label>
+                        <select name="salon_settings[pay_currency]" id="salon_settings_pay_currency" class="form-control">
+                            <option value="AUD">AUD (A$)</option>
+                            <option value="CAD">CAD ($)</option>
+                            <option value="CZK">CZK (Kč)</option>
+                            <option value="DKK">DKK (Kr)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="HKD">HKD ($)</option>
+                            <option value="HUF">HUF (Ft)</option>
+                            <option value="ILS">ILS (₩)</option>
+                            <option value="JPY">JPY (¥)</option>
+                            <option value="MXN">MXN ($)</option>
+                            <option value="NOK">NOK (Kr)</option>
+                            <option value="NZD">NZD ($)</option>
+                            <option value="PHP">PHP (₱)</option>
+                            <option value="PLN">PLN (zł)</option>
+                            <option value="GBP">GBP (£)</option>
+                            <option value="SGD">SGD ($)</option>
+                            <option value="SEK">SEK (kr)</option>
+                            <option value="CHF">CHF (CHF)</option>
+                            <option value="TWD">TWD (NT$)</option>
+                            <option value="THB">THB (฿)</option>
+                            <option value="USD" selected="selected">USD ($)</option>
+                    </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
+                <label for="salon_settings_pay_currency_pos">Set your currency position</label>
+                         <select name="salon_settings[pay_currency_pos]" id="salon_settings_pay_currency_pos" class="form-control">
+                            <option value="left">on left side</option>
+                            <option value="right" selected="selected">on right side</option>
+                    </select>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
+                <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+            </div>
+    </div>
+    <div class="sln-box--sub row">
+    <div class="col-xs-12"><h2 class="sln-box-title">Online bookin available days <span class="block">The following rules should represent your real time table.<br>
+    Leave it blank if you want bookings available everydays at every hour</span></h2>
+    </div>
+    <div class="col-xs-12 sln-booking-rule">
+    <h2 class="sln-box-title">Rule One</h2>
+    <h6 class="sln-fake-label">Available days</h6>
+    <div class="sln-checkbutton-group">
+        <div class="sln-checkbutton">
+          <input id="check-sunday" class="big-check-base big-check-onoff" type="checkbox">
+          <label for="check-sunday" data-value="Sunday">Sunday</label>
+        </div>
+        <div class="sln-checkbutton">
+          <input id="check-monday" class="big-check-base big-check-onoff" type="checkbox">
+          <label for="check-monday" data-value="Monday">Monday</label>
+        </div>
+        <div class="sln-checkbutton">
+          <input id="check-tuesday" class="big-check-base big-check-onoff" type="checkbox">
+          <label for="check-tuesday" data-value="Tuesday">Tuesday</label>
+        </div>
+        <div class="sln-checkbutton">
+          <input id="check-wednesday" class="big-check-base big-check-onoff" type="checkbox">
+          <label for="check-wednesday" data-value="Wednesday">Wednesday</label>
+        </div>
+        <div class="sln-checkbutton">
+          <input id="check-thursday" class="big-check-base big-check-onoff" type="checkbox">
+          <label for="check-thursday" data-value="Thursday">Thursday</label>
+        </div>
+        <div class="sln-checkbutton">
+          <input id="check-fryday" class="big-check-base big-check-onoff" type="checkbox">
+          <label for="check-fryday" data-value="Fryday">Fryday</label>
+        </div>
+        <div class="sln-checkbutton">
+          <input id="check-saturday" class="big-check-base big-check-onoff" type="checkbox">
+          <label for="check-saturday" data-value="Saturday">Saturday</label>
+        </div>
+        <div class="clearfix"></div>
+        </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 sln-slider-wrapper">
+             <h6 class="sln-fake-label">First shift</h6>
+            <div class="sln-slider">
+            <div class="sliders_step1 col col-slider"><div id="slider-range"></div></div>
+            <div class="col col-time"><span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span></div>
+            <div class="clearfix"></div>
+            </div>
+             <h6 class="sln-fake-label">Second shift</h6>
+            <div class="sln-slider">
+            <div class="sliders_step1 col col-slider"><div id="slider-range-b"></div></div>
+            <div class="col col-time"><span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span></div>
+            <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
+        <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+            <button class="sln-btn sln-btn--problem sln-btn--big sln-btn--icon sln-icon--trash">Remove this rule</button>
+        </div>
+
+    </div>
+    </div>
+    <div class="col-xs-12">
+    <button class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file">Add a new rule</button>
+    </div>
+    </div>
+
+
+    <div class="clearfix"></div>
 </div>
 </div>
 
