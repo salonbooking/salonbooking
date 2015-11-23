@@ -13,7 +13,7 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
         $plugin = $this->getPlugin();
         $settings = $plugin->getSettings(); 
         $bb = $plugin->getBookingBuilder();
-        if($_GET['sln_booking_id']){
+        if(isset($_GET['sln_booking_id']) && $_GET['sln_booking_id']){
             $bb->clear($_GET['sln_booking_id']);
            
         }
