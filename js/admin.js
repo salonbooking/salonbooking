@@ -25,4 +25,22 @@ jQuery(function ($) {
         tags: "true",
         width: '100%'
     });
+    $('.sln-select select').select2({
+        containerCssClass: 'sln-select-rendered',
+        dropdownCssClass: 'sln-select-dropdown',
+        theme: "sln",
+        width: '100%'
+    });
+    $('.sln-toolbox-trigger').click(function() {
+        $(this).parent().toggleClass('open');
+        event.preventDefault();
+    });
+    $('.sln-toolbox-trigger-mob').click(function() {
+        $(this).parent().find('.sln-toolbox').toggleClass('open');
+        event.preventDefault();
+    });
+    $('.sln-box-info-trigger button').click(function() {
+        $(this).parent().parent().parent().toggleClass('sln-box--info-visible');
+        event.preventDefault();
+    });
 });

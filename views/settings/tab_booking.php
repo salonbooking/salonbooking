@@ -35,6 +35,105 @@ function sln_availability_row($prefix, $row)
 }
 
 ?>
+
+
+<div class="sln-tab" id="sln-tab-booking">
+    <div class="sln-box sln-box--main">
+    <h2 class="sln-box-title">Availability mode <span>Select your availabiliti mode</span></h2>
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <div class="sln-radiobox">
+                <input id="salon_settings_availability_mode--basic"  type="radio" name="salon_settings_availability_mode" value="basic">
+                <label for="salon_settings_availability_mode--basic">Basic (check only the booking date)</label>
+                <input id="salon_settings_availability_mode--advanced" type="radio" name="salon_settings_availability_mode" value="advanced" checked="checked">
+                <label for="salon_settings_availability_mode--advanced">Advanced (evaluate also booking duration)</label>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 form-group sln-box-maininfo align-top">
+            <p class="sln-input-help">Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+        </div>
+    </div>
+    </div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="sln-box sln-box--main">
+    <h2 class="sln-box-title">Customers per session <span class="block">How many people you can attend during a single time/session?</span></h2>
+    <div class="row">
+            <div class="col-xs-12 form-group sln-select  sln-select--info-label">
+            <!--<label for="salon_settings_parallels_hour">Customers per time/session</label>-->
+            <div class="row">
+            <div class="col-xs-4">
+            <select name="salon_settings[parallels_hour]" id="salon_settings_parallels_hour" class="form-control">
+                            <option value="1" selected="selected">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                    </select>
+            </div>
+            <div class="col-xs-8 sln-label--big"><label for="salon_settings_sms_remind_interval">Customers per session</label></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="sln-box sln-box--main">
+    <h2 class="sln-box-title">Session average duration <span class="block">How many people you can attend during a single time/session?</span></h2>
+    <div class="row">
+            <div class="col-xs-12 form-group sln-select  sln-select--info-label">
+            <!--<label for="salon_settings_parallels_hour">Customers per time/session</label>-->
+            <div class="row">
+            <div class="col-xs-4">
+            <select name="salon_settings[parallels_hour]" id="salon_settings_parallels_hour" class="form-control">
+                            <option value="1" selected="selected">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                    </select>
+            </div>
+            <div class="col-xs-8 sln-label--big"><label for="salon_settings_sms_remind_interval">Customers per session</label></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+<!--
 <div class="sln-tab" id="sln-tab-booking">
     <div class="row form-inline">
         <div class="col-md-6">
@@ -47,7 +146,6 @@ function sln_availability_row($prefix, $row)
                     $this->getOpt('parallels_hour'),
                     array('min' => 1, 'max' => 20)
                 ) ?>
-                
             </div>
 <?php /*
             <div class="form-group">
@@ -109,11 +207,11 @@ function sln_availability_row($prefix, $row)
                         true
                     ) ?>
                    </strong>
-            <!-- form-group END -->
-            </div>
-        <!-- col end END -->
-        </div>
-    
+            <!-- form-group END
+            </div> -->
+        <!-- col end END
+        </div> -->
+    <!--
         <div class="col-md-5">
                 <div class="form-group">
                     <strong>
@@ -132,12 +230,13 @@ function sln_availability_row($prefix, $row)
                         <?php _e('in advance', 'sln') ?>
                    </strong>
                    </strong>
-            <!-- form-group END -->
-            </div>
-        <!-- col end END -->
-        </div>
-    <!-- row end END -->
-    </div>
+            <!-- form-group END
+            </div> -->
+        <!-- col end END
+        </div> -->
+    <!-- row end END
+    </div> -->
+    <!--
     <div class="row setting-interval">
         <div class="col-md-8">
 
@@ -248,3 +347,4 @@ function sln_availability_row($prefix, $row)
             </div>
         </div>
     </div>
+    -->

@@ -37,7 +37,7 @@ class SLN_Admin_Settings {
             <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
         <?php
         SLN_Form::fieldCheckbox(
-                "salon_settings[{$key}]", $this->getOpt($key), $settings
+                "salon_settings[{$key}hh]", $this->getOpt($key), $settings
         )
         ?>
         <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
@@ -269,7 +269,18 @@ class SLN_Admin_Settings {
             ?>
         <div id="sln-salon--admin" class="wrap sln-bootstrap">
         <?php screen_icon(); ?>
-            <h2><?php _e('Salon Settings', 'sln'); ?></h2>
+        <div class="row">
+            <h2 class="col-xs-12 col-sm-4"><?php _e('Salon Settings', 'sln'); ?></h2>
+            <div class="sln-admin-nav col-xs-12 col-sm-8">
+                <ul class="sln-admin-nav">
+                <li><a href="admin.php?page=salon-calendar" class="sln-btn--icon sln-icon--calendar">Calendar</a></li>
+                <li><a href="edit.php?post_type=sln_booking" class="sln-btn--icon sln-icon--booking">Bookings</a></li>
+                <li><a href="edit.php?post_type=sln_service" class="sln-btn--icon sln-icon--services">Services</a></li>
+                <li><a href="edit.php?post_type=sln_attendant" class="sln-btn--icon sln-icon--assistants">Assistants</a></li>
+                <li class="current"><a href="admin.php?page=salon-settings" class="current sln-btn--icon sln-icon--settings">Settings</a></li>
+            </ul>
+            </div>
+        </div>
 
         <?php settings_errors(); ?>
         <?php $this->showTabsBar(); ?>

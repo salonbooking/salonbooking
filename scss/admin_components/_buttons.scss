@@ -2,8 +2,7 @@
   text-align: center;
   border: none;
   cursor: pointer;
-  transition: all 200ms;
-  margin: 0 40px 40px 0;
+  transition: background-color 200ms, color 300ms;
   text-decoration: none;
   position: relative;
   @extend %zi-navigazione;
@@ -25,36 +24,60 @@
 .sln-btn--fullwidth {width: 100%;}
 .sln-btn--big, .sln-btn--big input {
   display: inline-block;
-  padding: 0 em(20px);
-  height:  em(56px);
-  min-width: 260px;
+  padding: 0 rem(20px);
+  height:  rem(56px);
+  min-width: rem(240px);
   @extend %font-big;
-  line-height: em(56px);
+  line-height: rem(56px);
+  @include bp(phone) {font-size: rem(16px);}
 }
 .sln-btn--medium, .sln-btn--medium input {
   display: inline-block;
   min-width: 90px;
-  height: 44px;
-  @extend %font-small;
-  line-height: 44px;
-  padding: 0 15px;
+  height: rem(44px);
+  @extend %font-medium;
+  line-height: rem(44px);
+  padding: 0 rem(15px);
 }
 .sln-btn--small {
   display: inline-block;
-  height: 30px;
-  @extend %font-small;
+  height: rem(30px);
+  @extend %font-medium;
   font-size: 14px;
-  line-height: 30px;
+  line-height: rem(30px);
   padding: 0 10px;
   &.sln-btn--icon {
-    width: 40px;
-    height: 40px;
+    width: 1.8rem;
+    height: 1.8rem;
+    @include b-radius(50%);
+    overflow: hidden;
+    font-size: 0px;
+    line-height: 0;
+    &:after {
+      left: 0;
+      top: 0;
+      font-size: 1.8rem;
+    line-height: 1.8rem;
+    }
+  }
+}
+.sln-btn--small--round {
+  display: inline-block;
+  height: rem(40px);
+  @extend %font-medium;
+  font-size: 14px;
+  line-height: rem(40px);
+  padding: 0 10px;
+  @include b-radius(50%);
+  &.sln-btn--icon {
+    width: rem(60px);
+    height: rem(60px);
     text-indent: -100px;
     overflow: hidden;
     &:after {
-      left: 70px;
-      top: calc(50% - 16px);
-      font-size: 20px;
+      left: rem(46px);
+      top: calc(50% - 18px);
+      font-size: rem(30px);
     }
   }
 }
@@ -66,6 +89,14 @@
   input {color: white;}
   &:hover {
     background-color: $cl_main;
+  }
+  &.sln-btn--small.sln-btn--icon {
+    background-color: transparent;
+    &:after {color: $cl_main--emphasis;}
+    &:hover {
+      background-color: transparent;
+      &:after {color: $cl_main;}
+    }
   }
 }
 .sln-btn--warning {
@@ -138,18 +169,18 @@
       z-index: 200;
     }
     &.sln-btn--big {
-      padding-right: em(64px);
+      padding-right: rem(64px);
       &:after {
-        padding: 0 em(12px);
-        line-height: em(40px);
+        padding: 0 rem(12px);
+        line-height: rem(54px);
       }
     }
     &.sln-btn--medium {
-      padding-right: em(54px);
+      padding-right: rem(54px);
       &:after {
-        padding: 0 em(12px);
-        font-size: em(18px);
-        line-height: em(40px);
+        padding: 0 rem(12px);
+        font-size: rem(18px);
+        line-height: rem(40px);
       }
     }
 }
@@ -179,9 +210,24 @@
     content: "\f013";
   }
 }
+.sln-icon--tools {
+  &:after {
+    content: "\f0ad";
+  }
+}
 .sln-icon--save {
   &:after {
     content: "\f0c7";
+  }
+}
+.sln-icon--info {
+  &:after {
+    content: "\f05a";
+  }
+}
+.sln-icon--close {
+  &:after {
+    content: "\f00d";
   }
 }
 
@@ -193,7 +239,89 @@ h2.nav-tab-wrapper .nav-tab {
     &:not(.nav-tab-active):not(:last-of-type)  {
       border-right: none;
     }
+    @include bp(phone) {
+      display: block;
+      border-right: inherit;
+    }
 }
 h2.nav-tab-wrapper .nav-tab.nav-tab-active {
     @extend .sln-btn--active;
 }
+
+.sln-admin-nav {
+  //@extend %display-flex;
+  display: block;
+  float: right;
+  margin-bottom: rem(40px);
+  li{float: left;}
+  a {
+      @extend .sln-btn;
+      @extend .sln-btn--nobkg;
+      @extend .sln-btn--medium;
+      margin: 0;
+      border-right: none;
+      &.current {@extend .sln-btn--active;}
+  }
+}
+// TOOBOX
+.sln-toolbox {
+  background-color: alpha-tones($cl_main, .9);
+  max-width: 100%;
+  float: right;
+  margin-top: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  margin-top: rem(20px);
+  max-height:  rem(59px);
+
+  overflow: hidden;
+  @extend %zi-navigazione;
+  @include transition(max-height 500ms, padding 200ms);
+  .sln-btn {opacity: 0; @include transition(opacity 200ms);}
+    &.open {
+      max-height:  600px;
+      .sln-btn {opacity: 1;}
+      .sln-toolbox-trigger {
+        opacity: .75;
+        &:hover {opacity: 1;}
+      }
+    }
+  &:not(.open) {max-height: 0px; padding: 0;}
+  .sln-btn {margin-bottom: rem(4px);}
+  @include bp(tablet) {
+    max-width: 300px;
+    float: right;
+    margin-top: 0;
+    position: absolute;
+    right: 0;
+    bottom: 99%;
+    background-color: alpha-tones($cl_main, .85);
+    &:not(.open) {max-height: 0px;}
+  }
+  @include bp(desktop) {
+    float: none;
+    position: relative;
+    bottom: initial;
+    margin-top: rem(20px);
+    max-height:  rem(59px);
+    background-color: alpha-tones($cl_main, 0);
+    &:not(.open) {max-height: rem(59px);}
+    .sln-toolbox-trigger {
+      opacity: 1;
+      @include transition(opacity 250ms);
+    }
+  }
+}
+// TOOLBOX // END
+
+// WP BUTTONS
+  p.submit {
+    @extend .sln-btn;
+    @extend .sln-btn--main;
+    @extend .sln-btn--big;
+    @extend .sln-btn--icon;
+    @extend .sln-icon--save;
+    border-radius: 0;
+  }
