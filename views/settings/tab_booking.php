@@ -145,6 +145,39 @@ function sln_availability_row($prefix, $row)
     </div>
             <div class="clearfix"></div>
         <div class="sln-separator"></div>
+
+        <!-- algolplus START -->
+        <div class="row settings-allowed">
+            <div class="col-md-6">
+                <?php $this->row_input_checkbox(
+                    'cancellation_enabled',
+                    __('Enable booking cancellation', 'sln'),
+                    array('help' => __('Select this option to enable booking cancellation.','sln'))
+                ); ?>
+            </div>
+            <div class="col-md-6">
+                <label><?php _e('How many hours before the appointment the cancellation is allowed', 'sln') ?></label>
+                <?php $field = "salon_settings[hours_before_cancellation]"; ?>
+                <?php echo SLN_Form::fieldSelect(
+                    $field,
+                    array(
+                        '1' => '1h',
+                        '5' => '5h',
+                        '12' => '12h',
+                        '24' => '24h',
+                        '48' => '48h',
+                        '72' => '72h',
+                    ),
+                    $this->getOpt('hours_before_cancellation'),
+                    array(),
+                    true
+                ) ?>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="sln-separator"></div>
+        <!-- algolplus END -->
+
         <?php
         $key            = 'available';
         $label          = __('On-line booking available days', 'sln');
