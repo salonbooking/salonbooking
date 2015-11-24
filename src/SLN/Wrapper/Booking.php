@@ -250,5 +250,14 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return strpos($this->object->post_status, 'sln-b-') !== 0;
     }
 
-
+    // algolplus start
+    public function getRating()
+    {
+        return get_post_meta($this->getId(), '_sln_booking_rating', true);
+    }
+    public function setRating($rating)
+    {
+        return update_post_meta($this->getId(), '_sln_booking_rating', $rating);
+    }
+    // algolplus end
 }

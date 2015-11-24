@@ -1888,3 +1888,50 @@
   top: calc(50% - .3em);
   left: calc(50% - .075em);
 }
+
+
+/* algolplus start */
+#sln-salon-my-account .table-striped > tbody > tr:nth-of-type(even) {
+  background-color: rgba(255, 255, 255, 1);
+}
+#sln-salon-my-account .table thead tr {
+  border-bottom: 3px solid #0073a4;
+}
+#sln-salon-my-account .table thead tr th {
+  text-align: center;
+  text-transform: uppercase;
+}
+#sln-salon-my-account .table tbody tr td:not(:nth-child(3)) {
+  text-align: center;
+}
+#sln-salon-my-account .table tbody tr td:last-child {
+  text-transform: uppercase;
+}
+#sln-salon-my-account h3 {
+  color: black;
+  margin: 20px 0px;
+}
+
+#sln-salon-my-account .status {
+  margin-bottom: 20px;
+}
+
+#sln-salon-my-account .warning {
+  color: rgb(142, 234, 0);
+}
+#sln-salon-my-account .success {
+  color: green;
+}
+#sln-salon-my-account .info {
+  color: cornflowerblue;
+}
+#sln-salon-my-account .danger {
+  color: red;
+}
+
+#sln-salon-my-account button {
+  border-radius: 10px !important;
+  text-transform: uppercase;
+}
+
+/* algolplus end */

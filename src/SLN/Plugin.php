@@ -82,6 +82,8 @@ class SLN_Plugin
         load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME) . '/languages');
         $this->preloadFrontendScripts();
         SLN_Shortcode_Salon::init($this);
+        SLN_Shortcode_SalonMyAccount::init($this); // algolplus
+        SLN_Shortcode_SalonMyAccount_Details::init($this); // algolplus
     }
 
     private function preloadFrontendScripts(){
@@ -98,6 +100,8 @@ class SLN_Plugin
             wp_enqueue_script('smalot-datepicker-lang',  SLN_PLUGIN_URL .'/js/datepicker_language/bootstrap-datetimepicker.'.$lang.'.js', array('jquery'), '2015-05-01',true);
         }
         wp_enqueue_script('salon', SLN_PLUGIN_URL . '/js/salon.js', array('jquery'), '20140711', true);
+        wp_enqueue_script('salon-my-account', SLN_PLUGIN_URL . '/js/salon-my-account.js', array('jquery'), '20140711', true); // algolplus
+        wp_enqueue_script('salon-raty', SLN_PLUGIN_URL . '/js/jquery.raty.js', array('jquery'), '20140711', true); // algolplus
         wp_localize_script(
             'salon',
             'salon',
@@ -105,7 +109,9 @@ class SLN_Plugin
                 'ajax_url' => admin_url('admin-ajax.php') . '?lang='.(defined('ICL_LANGUAGE_CODE') ? 'ICL_LANGUAGE_CODE' : ''),
                 'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
                 'loading' => SLN_PLUGIN_URL.'/img/preloader.gif',
-                'txt_validating' => __('checking availability')
+                'txt_validating' => __('checking availability'),
+                'images_folder' => SLN_PLUGIN_URL.'/img',   // algolplus
+                'confirm_cancellation_text' => __('Do you really want to cancel?', 'sln'),   // algolplus
             )
         );
     }
