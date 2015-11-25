@@ -17,6 +17,7 @@ class SLN_Settings
 
     public function set($key, $val)
     {
+        if(is_string($val)) $val = trim($val);
         if (empty($val)) {
             unset($this->settings[$key]);
         } else {
