@@ -18,19 +18,19 @@ jQuery(function ($) {
         return false;
     });
     $('#booking-accept, #booking-refuse').click(function(){
-       $('#post_status').val($(this).data('status')); 
+       $('#post_status').val($(this).data('status'));
        $('#save-post').click();
     });
     $('.sln-select-wrapper select').select2({
         tags: "true",
         width: '100%'
-    });
+    }).focus(function () { $(this).select2('open'); });
     $('.sln-select select').select2({
         containerCssClass: 'sln-select-rendered',
         dropdownCssClass: 'sln-select-dropdown',
         theme: "sln",
         width: '100%'
-    });
+    }).focus(function () { $(this).select2('open'); });
     $('.sln-toolbox-trigger').click(function() {
         $(this).parent().toggleClass('open');
         event.preventDefault();

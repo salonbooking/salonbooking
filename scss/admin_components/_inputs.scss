@@ -44,7 +44,7 @@
 		@extend %font-bigger;
 		@extend %font-cl_main;
 		font-weight: 400;
-		padding: rem(16px) rem(24px);
+		padding: rem(16px) rem(24px) rem(16px) 0;
 		margin-bottom: 0;
 	}
 }
@@ -219,10 +219,18 @@
 
 .sln-checkbutton-group {margin-bottom: rem(40px);}
 .sln-checkbutton {
-	margin-right: rem(10px);
-	margin-bottom: rem(10px);
+	margin-right: 10px;
+    	margin-bottom: 10px;
+    	width: calc(50% - 10px);
     	display: block;
     	float: left;
+    	@include bp(tablet) {
+    		width: calc(25% - 10px);
+    	}
+    	@include bp(desktop) {
+    		width: calc(25% - 10px);
+    		max-width: rem(200px);
+    	}
 	input {
 		position: absolute;
 		margin-left: -9999px;
@@ -236,15 +244,20 @@
 		user-select: none;
 		padding: 0 rem(70px ) 0 rem(15px);
 		margin-bottom: 0;
-		width: rem(180px);
+		width: 100%;
 		height: rem(60px);
 		line-height: rem(60px);
 		transition: all 150ms;
 		position: relative;
-		@extend %font-big;
+		@extend %font-bigger;
 		text-align: left;
 		color: $cl_main;
 		background-color: $cl_main--light;
+		@include bp(tablet) {
+			height: rem(80px);
+			line-height: rem(80px);
+			padding: 0 rem(70px ) 0 rem(20px);
+	    	}
 	}
 	input + label:after {
 		content: "\f096";
@@ -502,25 +515,27 @@
     content: "";
     display: block;
     position: absolute;
-    top: calc(50% - 5px);
-    border-left: 5px solid $cl_main;
-    border-bottom: 5px solid $cl_main;
-    width: 10px;
-    height: 10px;
+    top: calc(50% - 6px);
+    //border-left: 5px solid $cl_main;
+    //border-bottom: 5px solid $cl_main;
+    width: rem(10px);
+    height: rem(10px);
+    @extend %font-icon;
+    line-height: rem(20px);
+    color: $cl_main;
   }
   &:before {
-    left: rem(10px);
-    transform: rotate(45deg);
+  	content: "\f053";
+	left: rem(6px);
   }
   &:after {
-    right: rem(10px);
-    transform: rotate(-135deg);
+  	content: "\f054";
+  	right: rem(11px);
   }
   &:hover, &:focus {
     background-color: $cl_main--emphasis;
     &:before, &:after {
-      border-left: 5px solid white;
-      border-bottom: 5px solid white;
+      color: #fff;
     }
   }
 }

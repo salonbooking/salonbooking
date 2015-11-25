@@ -143,39 +143,62 @@ function sln_availability_row($prefix, $row)
     <h2 class="sln-box-title">Online bookings timing <span>Donec vestibulum sagittis lorem, ut maximus ex consequat non.</span></h2>
     <div class="sln-box--sub row">
     <div class="col-xs-12"><h2 class="sln-box-title">Booking time range <span>Define the time range in wich customers may book an appointment</span></h2></div>
-            <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
-                <label for="salon_settings_pay_currency">Set your currency</label>
-                        <select name="salon_settings[pay_currency]" id="salon_settings_pay_currency" class="form-control">
-                            <option value="AUD">AUD (A$)</option>
-                            <option value="CAD">CAD ($)</option>
-                            <option value="CZK">CZK (Kč)</option>
-                            <option value="DKK">DKK (Kr)</option>
-                            <option value="EUR">EUR (€)</option>
-                            <option value="HKD">HKD ($)</option>
-                            <option value="HUF">HUF (Ft)</option>
-                            <option value="ILS">ILS (₩)</option>
-                            <option value="JPY">JPY (¥)</option>
-                            <option value="MXN">MXN ($)</option>
-                            <option value="NOK">NOK (Kr)</option>
-                            <option value="NZD">NZD ($)</option>
-                            <option value="PHP">PHP (₱)</option>
-                            <option value="PLN">PLN (zł)</option>
-                            <option value="GBP">GBP (£)</option>
-                            <option value="SGD">SGD ($)</option>
-                            <option value="SEK">SEK (kr)</option>
-                            <option value="CHF">CHF (CHF)</option>
-                            <option value="TWD">TWD (NT$)</option>
-                            <option value="THB">THB (฿)</option>
-                            <option value="USD" selected="selected">USD ($)</option>
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select  sln-select--info-label">
+            <label for="salon_settings_hours_before_from">Range starts</label>
+            <div class="row">
+            <div class="col-xs-7">
+            <select name="salon_settings[hours_before_from]" id="salon_settings_hours_before_from" class="form-control">
+                            <option value="">Always</option>
+                            <option value="+30 minutes">half hour</option>
+                            <option value="+1 hour">1 hour</option>
+                            <option value="+2 hours">2 hours</option>
+                            <option value="+3 hours">3 hours</option>
+                            <option value="+4 hours">4 hours</option>
+                            <option value="+8 hours">8 hours</option>
+                            <option value="+16 hours">16 hours</option>
+                            <option value="+1 day" selected="selected">1 day</option>
+                            <option value="+2 days">2 days</option>
+                            <option value="+3 days">3 days</option>
+                            <option value="+4 days">4 days</option>
+                            <option value="+1 week">1 week</option>
+                            <option value="+2 weeks">2 weeks</option>
+                            <option value="+3 weeks">3 weeks</option>\
+                            <option value="+1 month">1 month</option>
+                            <option value="+2 months">2 months</option>
+                            <option value="+3 months">3 months</option>
                     </select>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
-                <label for="salon_settings_pay_currency_pos">Set your currency position</label>
-                         <select name="salon_settings[pay_currency_pos]" id="salon_settings_pay_currency_pos" class="form-control">
-                            <option value="left">on left side</option>
-                            <option value="right" selected="selected">on right side</option>
+            <div class="col-xs-5 sln-label--big"><label for="salon_settings_hours_before_from">Minimum</label></div>
+            </div>
+        </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select   sln-select--boxedoptions sln-select--info-label">
+            <label for="salon_settings_hours_before_to">Range ends</label>
+            <div class="row">
+            <div class="col-xs-7">
+            <select name="salon_settings[hours_before_to]" data-dropdown-css-class="sln-select-dropdown--boxedoptions" id="salon_settings_hours_before_to" class="form-control">
+                            <option value="">Always</option>
+                            <option value="+30 minutes">half hour</option>
+                            <option value="+1 hour">1 hour</option>
+                            <option value="+2 hours">2 hours</option>
+                            <option value="+3 hours">3 hours</option>
+                            <option value="+4 hours">4 hours</option>
+                            <option value="+8 hours">8 hours</option>
+                            <option value="+16 hours">16 hours</option>
+                            <option value="+1 day">1 day</option>
+                            <option value="+2 days">2 days</option>
+                            <option value="+3 days">3 days</option>
+                            <option value="+4 days">4 days</option>
+                            <option value="+1 week">1 week</option>
+                            <option value="+2 weeks">2 weeks</option>
+                            <option value="+3 weeks">3 weeks</option>
+                            <option value="+1 month" selected="selected">1 month</option>
+                            <option value="+2 months">2 months</option>
+                            <option value="+3 months">3 months</option>
                     </select>
             </div>
+            <div class="col-xs-5 sln-label--big"><label for="salon_settings_hours_before_to">Maximum</label></div>
+            </div>
+        </div>
             <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
                 <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
             </div>
@@ -248,6 +271,45 @@ function sln_availability_row($prefix, $row)
 
     <div class="clearfix"></div>
 </div>
+<div class="sln-box sln-box--main">
+    <h2 class="sln-box-title">Booking manual confirmation</h2>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-checkbox">
+            <input type="checkbox" name="salon_settings[confirmation]" id="salon_settings_confirmation" value="1">
+            <label for="salon_settings_confirmation">Booking confirmation</label>
+            <p class="help-block">Select this option to manually confirm each booking.</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-select ">
+            <label for="thankyou">Thank you page</label>
+        <select name="salon_settings[thankyou]" id="salon_settings[thankyou]">
+            <option value="">Nessuna</option>
+            <option class="level-0" value="9">Booking</option>
+            <option class="level-0" value="2">Sample Page</option>
+            <option class="level-0" value="10" selected="selected">Thank you for booking</option>
+        </select>
+            <p class="help-block">Select a page where to redirect your users after booking completition</p>
+        </div>
+    </div>
+</div>
+
+<div class="sln-box sln-box--main">
+    <h2 class="sln-box-title">Pause booking service <span class="block">If checked the online booking form will be disabled and your users will see a message.</span></h2>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-switch">
+            <h6 class="sln-fake-label">Online Booking status</h6>
+            <input type="checkbox" name="salon_settings[disabled]" id="salon_settings_disabled" value="1">
+                <label class="sln-switch-btn" for="salon_settings_disabled"  data-on="On" data-off="Off"></label>
+                <label class="sln-switch-text"  for="salon_settings_disabled" data-on="Online Booking is active" 
+                data-off="Online Booking is paused"></label>
+            </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-input--simple">
+        <label for="salon_settings_disabled_message">Message on disabled booking</label>
+               <textarea name="salon_settings[disabled_message]" id="salon_settings_disabled_message" placeholder="Write a message" rows="5">Booking is not available at the moment, please contact us at me@nicovece.com</textarea>
+        </div>
+    </div>
+</div>
+
+
 </div>
 
 

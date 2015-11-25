@@ -12,6 +12,14 @@
             <p class="sln-input-help">Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
         </div>
     </div>
+    <div class="sln-box-info">
+       <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
+       <div class="sln-box-info-content row">
+       <div class="col-md-4 col-sm-8 col-xs-12">
+       <h5>Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</h5>
+        </div>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-6">
@@ -29,7 +37,7 @@
         <div class="sln-box-info">
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
        <div class="sln-box-info-content row">
-       <div class="col-md-4 col-sm-8 col-xs-12">
+       <div class="col-xs-12">
        <h5>Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</h5>
         </div>
         </div>
@@ -66,7 +74,7 @@
         <div class="sln-box-info">
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
        <div class="sln-box-info-content row">
-       <div class="col-md-4 col-sm-8 col-xs-12">
+       <div class="col-xs-12">
        <h5>Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</h5>
         </div>
         </div>
