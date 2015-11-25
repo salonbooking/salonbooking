@@ -34,8 +34,7 @@ class SLN_Shortcode_SalonMyAccount_Details
 
 	public function execute()
 	{
-		if (!is_user_logged_in())
-		{
+		if (!is_user_logged_in()) {
 			return false;
 		}
 		$accountBookings = new SLN_Helper_Availability_MyAccountBookings();
@@ -50,15 +49,13 @@ class SLN_Shortcode_SalonMyAccount_Details
 
 	private function prepareBookings($bookings)
 	{
-		return array_map(function($elem)
-		{
+		return array_map(function($elem) {
 			$attendant = $elem->getAttendant();
 			return array(
 				'id' => $elem->getId(),
 				'date' => $elem->getDate()->format('M, j Y g:ia'),
 				'timestamp' => strtotime($elem->getDate()),
-				'services' => implode("<br>", array_map(function($elem2)
-				{
+				'services' => implode("<br>", array_map(function($elem2) {
 					return $elem2->getName();
 				}, $elem->getServices())),
 				'assistant' => !empty($attendant) ? $attendant->getName() : '',

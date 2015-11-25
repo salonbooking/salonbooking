@@ -7,8 +7,7 @@ class SLN_Action_Ajax_MyAccountDetails extends SLN_Action_Ajax_Abstract
 		if($timezone = get_option('timezone_string'))
 			date_default_timezone_set($timezone);
 
-		if (!is_user_logged_in())
-		{
+		if (!is_user_logged_in()) {
 			return array( 'redirect' => wp_login_url());
 		}
 

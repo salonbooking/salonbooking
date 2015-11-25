@@ -7,8 +7,7 @@ class SLN_Action_Ajax_SetBookingRating extends SLN_Action_Ajax_Abstract
 		if($timezone = get_option('timezone_string'))
 			date_default_timezone_set($timezone);
 
-		if (!is_user_logged_in())
-		{
+		if (!is_user_logged_in()) {
 			return array( 'redirect' => wp_login_url());
 		}
 
@@ -18,20 +17,16 @@ class SLN_Action_Ajax_SetBookingRating extends SLN_Action_Ajax_Abstract
 
 		$available = $booking->getUserId() == get_current_user_id();
 
-		if ($available)
-		{
+		if ($available) {
 			$booking->setRating($_POST['score']);
 		}
-		else
-		{
+		else {
 			$this->addError(__("You don't have access", 'sln'));
 		}
 
-		if ($errors = $this->getErrors())
-		{
+		if ($errors = $this->getErrors()) {
 			$ret = compact('errors');
-		} else
-		{
+		} else {
 			$ret = array('success' => 1);
 		}
 

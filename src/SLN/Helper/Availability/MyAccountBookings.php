@@ -29,8 +29,7 @@ class SLN_Helper_Availability_MyAccountBookings
 		);
 		$query = new WP_Query($args);
 		$ret = array();
-		foreach ($query->get_posts() as $p)
-		{
+		foreach ($query->get_posts() as $p) {
 			$ret[] = SLN_Plugin::getInstance()->createBooking($p);
 		}
 		wp_reset_query();
