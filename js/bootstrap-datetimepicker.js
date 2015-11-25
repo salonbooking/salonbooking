@@ -632,14 +632,14 @@
 					}
 					meridianOld = meridian;
 					txt = (i % 12 ? i % 12 : 12);
-                                        var ymd = i < 10 ? '0'+i : i;
+                                        var ymd = i < 10 ? ('0'+i) : i;
  					html.push('<span data-ymd="'+ymd+':00" class="hour' + clsName + ' hour_' + (i < 12 ? 'am' : 'pm') + '">' + txt + '</span>');
 					if (i == 23) {
 						html.push('</fieldset>');
 					}
 				} else {
 					txt = i + ':00';
-                                        var ymd = i < 10 ? '0'+txt : txt;
+                                        var ymd = i < 10 ? ('0'+txt) : txt;
 					html.push('<span data-ymd="'+ymd+'" class="hour' + clsName + '">' + txt + '</span>');
 				}
 			}
@@ -668,7 +668,7 @@
 					//html.push('<span class="minute'+clsName+' minute_'+(hours<12?'am':'pm')+'">'+txt+'</span>');
 					//
                                         var ymd = i < 10 ? '0'+txt : txt;
-					html.push('<span data-ymd="'+(hours > 10 ? hours : '0'+hours)+':'+(i >= 10 ? i : '0'+i) + '" class="minute' + clsName + '">' + txt + ':' + (i < 10 ? '0' + i : i) + '</span>');
+					html.push('<span data-ymd="'+(hours >= 10 ? hours : ('0'+hours))+':'+(i >= 10 ? i : '0'+i) + '" class="minute' + clsName + '">' + txt + ':' + (i < 10 ? '0' + i : i) + '</span>');
 					if (i == 59) {
 						html.push('</fieldset>');
 					}
@@ -676,7 +676,7 @@
 					txt = i + ':00';
                                         var ymd = i < 10 ? '0'+txt : txt;
 					//html.push('<span class="hour'+clsName+'">'+txt+'</span>');
-					html.push('<span data-ymd="'+(hours > 10 ? hours : '0'+hours)+':'+(i >= 10 ? i : '0'+i) + '" class="minute' + clsName + '">' + hours + ':' + (i < 10 ? '0' + i : i) + '</span>');
+					html.push('<span data-ymd="'+(hours >= 10 ? hours : ('0'+hours))+':'+(i >= 10 ? i : '0'+i) + '" class="minute' + clsName + '">' + hours + ':' + (i < 10 ? '0' + i : i) + '</span>');
 				}
 			}
 			this.picker.find('.datetimepicker-minutes td').html(html.join(''));
