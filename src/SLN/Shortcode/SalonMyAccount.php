@@ -35,7 +35,7 @@ class SLN_Shortcode_SalonMyAccount
     public function execute()
     {
         if (!is_user_logged_in()) {
-            wp_redirect(wp_login_url());
+            return wp_login_form();
         }
         return $this->render();
     }
