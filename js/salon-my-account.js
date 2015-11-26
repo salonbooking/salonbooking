@@ -44,6 +44,7 @@ var slnMyAccount = {
                 } else {
                     jQuery('#sln-salon-my-account').html(data.content);
                     slnMyAccount.createRatings();
+                    jQuery("[data-toggle='tooltip']").tooltip();
                 }
             },
             error: function(data){alert('error'); console.log(data);}

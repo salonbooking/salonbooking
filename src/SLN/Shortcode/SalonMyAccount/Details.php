@@ -44,6 +44,7 @@ class SLN_Shortcode_SalonMyAccount_Details
 				'history' => $this->prepareBookings($accountBookings->getBookings(get_current_user_id())),
 				'cancellation_enabled' => $this->plugin->getSettings()->get('cancellation_enabled'),
 				'seconds_before_cancellation' => $this->plugin->getSettings()->get('hours_before_cancellation') * 3600,
+				'gen_phone' => $this->plugin->getSettings()->get('gen_phone'),
 		));
 	}
 

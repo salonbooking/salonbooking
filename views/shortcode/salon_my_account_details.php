@@ -31,11 +31,17 @@
 							</div>
 
 							<?php if ($item['status_code'] != SLN_Enum_BookingStatus::CANCELED
-							    && $data['cancellation_enabled']
-							    && $item['timestamp']-time() > $data['seconds_before_cancellation']): ?>
-									<button class="btn btn-danger btn-confirm" onclick="slnMyAccount.cancelBooking(<?php echo $item['id']; ?>);">
+							    && $data['cancellation_enabled']): ?>
+									<?php if ($item['timestamp']-time() > $data['seconds_before_cancellation']): ?>
+										<button class="btn btn-danger btn-confirm" onclick="slnMyAccount.cancelBooking(<?php echo $item['id']; ?>);">
+											<span><?php _e('Cancel Booking','sln');?></span>
+										</button>
+									<?php else: ?>
+									<button class="btn" data-toggle="tooltip" data-placement="top" style="cursor: not-allowed;"
+									        title="<?php _e('Sorry, you cannot cancel this booking online. Please call ' . $data['gen_phone'], 'sln'); ?>">
 										<span><?php _e('Cancel Booking','sln');?></span>
 									</button>
+									<?php endif ?>
 							<?php endif; ?>
 						</td>
 					</tr>
@@ -80,7 +86,7 @@
 							<div>
 								<?php if($item['status_code'] == SLN_Enum_BookingStatus::CONFIRMED): ?>
 										<?php if(empty($item['rating'])): ?>
-										<button class="btn sln-btn--warning" onclick="slnMyAccount.rate(this);">
+										<button class="btn btn-default" onclick="slnMyAccount.rate(this);">
 											<span><?php _e('Rate our service','sln');?></span>
 										</button>
 										<?php endif; ?>

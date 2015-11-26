@@ -1934,4 +1934,12 @@
   text-transform: uppercase;
 }
 
+#sln-salon-my-account .tooltip-inner {
+  background-color: grey !important;
+  text-transform: none;
+}
+#sln-salon-my-account .tooltip-arrow {
+  border-top-color: grey !important;
+}
+
 /* algolplus end */
