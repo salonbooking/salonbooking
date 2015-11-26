@@ -245,13 +245,13 @@ function sln_availability_row($prefix, $row)
         <div class="col-xs-12 col-md-8 sln-slider-wrapper">
              <h6 class="sln-fake-label">First shift</h6>
             <div class="sln-slider">
-            <div class="sliders_step1 col col-slider"><div id="slider-range"></div></div>
+            <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
             <div class="col col-time"><span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span></div>
             <div class="clearfix"></div>
             </div>
              <h6 class="sln-fake-label">Second shift</h6>
             <div class="sln-slider">
-            <div class="sliders_step1 col col-slider"><div id="slider-range-b"></div></div>
+            <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
             <div class="col col-time"><span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span></div>
             <div class="clearfix"></div>
             </div>

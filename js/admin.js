@@ -44,7 +44,7 @@ jQuery(function ($) {
         event.preventDefault();
     });
     // TIME RANGE //
-$("#slider-range, #slider-range-b").slider({
+    $('.slider-range').each(function(){ $(this).slider({
     range: true,
     min: 480,
     max: 1260,
@@ -77,7 +77,7 @@ $("#slider-range, #slider-range-b").slider({
 
 
 
-        $('.slider-time').html(hours1 + ':' + minutes1);
+        $(this).parent().parent().find('.col-time .slider-time').html(hours1 + ':' + minutes1);
 
         var hours2 = Math.floor(ui.values[1] / 60);
         var minutes2 = ui.values[1] - (hours2 * 60);
@@ -102,7 +102,8 @@ $("#slider-range, #slider-range-b").slider({
             minutes2 = minutes2 + "";
         }
 
-        $('.slider-time2').html(hours2 + ':' + minutes2);
+        $(this).parent().parent().find('.col-time .slider-time2').html(hours2 + ':' + minutes2);
     }
-});
+});});
+
 });
