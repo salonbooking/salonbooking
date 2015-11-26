@@ -3,7 +3,7 @@
 	<div>
 		<h3><?php _e('UPCOMING BOOKING','sln');?></h3>
 		<?php if($data['cancelled']): ?>
-			<p><?php _e('Cancelled', 'sln'); ?></p>
+			<p><?php _e('The booking has been cancelled', 'sln'); ?></p>
 		<?php endif ?>
 		<?php if (!empty($data['upcoming'])):?>
 			<table class="table table-bordered table-striped">
