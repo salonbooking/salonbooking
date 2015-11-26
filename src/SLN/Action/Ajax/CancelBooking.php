@@ -23,9 +23,9 @@ class SLN_Action_Ajax_CancelBooking extends SLN_Action_Ajax_Abstract
 
 		if ($cancellationEnabled && !$outOfTime && $available) {
 			$booking->setStatus(SLN_Enum_BookingStatus::CANCELED);
+			$booking = $plugin->createBooking($_POST['id']);
 
 			$args = compact('booking');
-			$plugin->sendMail('mail/status_canceled', $args);
 
 			$args['forAdmin'] = true;
 			$args['to'] = get_option('admin_email');
