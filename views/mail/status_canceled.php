@@ -3,7 +3,7 @@
  * @var SLN_Plugin                $plugin
  * @var SLN_Wrapper_Booking       $booking
  */
-if($data['to']){
+if(!isset($data['to'])){    // algolplus fix
     $data['to'] = $booking->getEmail();
 }
 if ($plugin->getSettings()->get('attendant_email')
