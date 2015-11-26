@@ -258,11 +258,11 @@ jQuery(function ($) {
         bindRemove();
         return false;
     });
-<<<<<<< HEAD
+/*
     $('#booking-accept, #booking-refuse').click(function(){
        $('#post_status').val($(this).data('status'));
        $('#save-post').click();
-=======
+*/
     $('#booking-accept, #booking-refuse').click(function () {
         $('#post_status').val($(this).data('status'));
         $('#save-post').click();
@@ -337,7 +337,6 @@ jQuery(function ($) {
             }
         });
         return false;
->>>>>>> feature-pending-payment
     });
     $('.sln-select-wrapper select').select2({
         tags: "true",
@@ -361,7 +360,6 @@ jQuery(function ($) {
         $(this).parent().parent().parent().toggleClass('sln-box--info-visible');
         event.preventDefault();
     });
-<<<<<<< HEAD
     // TIME RANGE //
     $('.slider-range').each(function(){ $(this).slider({
     range: true,
@@ -425,11 +423,8 @@ jQuery(function ($) {
     }
 });});
 
-=======
-
     $('#salon_settings_pay_method').change(function(){
         $('.payment-mode-data').hide();
         $('#payment-mode-'+$(this).val()).show();
     }).change();
->>>>>>> feature-pending-payment
 });
