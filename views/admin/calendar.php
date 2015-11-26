@@ -38,6 +38,7 @@ jQuery(function($){
 	<button class="btn btn-warning active" data-calendar-view="month"><?php _e('Month')?></button>
 	<button class="btn btn-warning" data-calendar-view="week"><?php _e('Week')?></button>
 	<button class="btn btn-warning" data-calendar-view="day"><?php _e('Day')?></button>
+        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="pull-right btn btn-warning" id="calendar-add-new">Add new</a>
             </div>
         </div>
         <div class="clearfix"></div>

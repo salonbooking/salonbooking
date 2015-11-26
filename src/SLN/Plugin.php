@@ -11,7 +11,7 @@ class SLN_Plugin
     const F = 'slnc';
     const F1 = 30;
     const F2 = 20;
-    const DEBUG_ENABLED = true;
+    const DEBUG_ENABLED = false;
 
     private static $instance;
     private $settings;
@@ -57,6 +57,7 @@ class SLN_Plugin
         new SLN_Metabox_Service($this, self::POST_TYPE_SERVICE);
         new SLN_Metabox_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_Metabox_Booking($this, self::POST_TYPE_BOOKING);
+        new SLN_Metabox_BookingActions($this, self::POST_TYPE_BOOKING);
         new SLN_Admin_Settings($this);
         new SLN_Admin_Calendar($this);
         add_action('admin_notices', array($this, 'admin_notices'));
@@ -148,11 +149,18 @@ class SLN_Plugin
 
     public function createBooking($booking)
     {
+        if(is_string($booking) && strpos($booking, '-') !== false){
+            $secureId = $booking;
+            $booking = intval($booking);
+        }
         if (is_int($booking)) {
             $booking = get_post($booking);
         }
-
-        return new SLN_Wrapper_Booking($booking);
+        $ret = new SLN_Wrapper_Booking($booking);
+        if(isset($secureId) && $ret->getUniqueId() != $secureId){
+            throw new Exception('Not allowed, failing secure id');
+        }
+        return $ret;
     }
 
     public function getBookingBuilder()

@@ -5,6 +5,8 @@
  * @var string                       $submitName
  * @var SLN_Shortcode_Salon_DateStep $step
  */
+if(!function_exists('salon_date_hoursbefore'))
+{
 function salon_date_hoursbefore($hoursBefore)
 {
     if ($hoursBefore->from && $hoursBefore->to) : ?>
@@ -19,6 +21,7 @@ function salon_date_hoursbefore($hoursBefore)
     elseif ($hoursBefore->to) : ?>
         <em><?php echo sprintf(__('you may book up to %s in advance', 'sln'), $hoursBefore->to) ?></em>
     <?php endif;
+}
 }
 
 if ($plugin->getSettings()->isDisabled()):

@@ -2,6 +2,7 @@
 @import 'settings-mixins';
 @import 'admin_config';
 @import 'typo';
+
 .sln_meta_field {
     display: block;
 }
@@ -290,10 +291,14 @@ h2.nav-tab-wrapper {
             .col-md-6:nth-child(2) {margin-top: 1em;}
         }
 
+        @include bp(tablet) {
+            .form-control {
+                 width: 100%;
+            }
+        }
         @include bp(phone) {
             select {margin-bottom: 1em;}
         }
-
     }
     .sln_meta_field {
         .row:before {

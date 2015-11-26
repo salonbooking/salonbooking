@@ -31,6 +31,9 @@ function sln_my_wp_log($message, $file = null, $level = 1) {
         $line.=PHP_EOL . sprintf('End Call Stack') . PHP_EOL;
     }
     // log to file
+    SLN_Plugin::addLog($line);
+    return true;
+ 
     file_put_contents($file, $line, FILE_APPEND);
 
     return true;

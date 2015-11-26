@@ -35,32 +35,103 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
     {
         return array(
             'amount'    => 'money',
+            'deposit'   => 'money',
             'firstname' => '',
             'lastname'  => '',
             'email'     => '',
             'phone'     => '',
             'address'   => '',
-            'duration'  => 'time',
             'date'      => 'date',
             'time'      => 'time',
             'attendant'  => '',
-            'services'  => 'set',
+            'services'  => 'nofilter',
+            'note' => '',
+            'admin_note' => '',
             '_sln_calendar_event_id' => ''
         );
     }
+
+    private $disabledSavePost = false;
     public function save_post($post_id, $post){
-        if(isset($_POST['emailto']) && isset($_POST['emailto_submit']) && !empty($_POST['emailto'])){
-            $booking = new SLN_Wrapper_Booking($post_id);
-            $to = $_POST['emailto'];
-            $this->getPlugin()->sendMail(
-                'mail/summary',
-                compact('booking','to')
-            );
+        if($this->disabledSavePost)
+            return;
+
+        if(!isset($_POST['_sln_booking_status']))
+            return;
+        if(isset($_POST['_sln_booking_services']))
+        foreach($_POST['_sln_booking_services'] as $k => $v){
+            $_POST['_sln_booking_services'][$k] = str_replace('sln_booking_services_','', $v);
         }
         parent::save_post($post_id, $post);
+        $this->validate($_POST);
+        if(isset($_SESSION['_sln_booking_user_errors']))
+            return;
+
         $booking = new SLN_Wrapper_Booking($post_id);
         $booking->evalDuration();
+        $s = $booking->getStatus();
+        $new =  $_POST['_sln_booking_status'];
+        if(strpos($new,'sln-b-') !== 0) $new = 'sln-b-pendingpayment';
+        $postnew = array();
+        if(strpos($s,'sln-b-') !== 0){
+            $postnew = array_merge($postnew, array(
+                'ID' => $post_id,
+                'post_status' => $new
+            ));
+        }
+        if(isset($_POST['_sln_booking_createuser']) && $_POST['_sln_booking_createuser']){
+            $userid = $this->registration($booking);
+            if($userid instanceof WP_Error)
+                return;
+            $postnew = array_merge($postnew, array(
+                'ID' => $post_id,
+                'post_author' => $userid
+            ));
+        }
+        if(!empty($postnew)){
+            $this->disabledSavePost = true;
+            wp_update_post($postnew);
+            $this->disabledSavePost = false;
+        }
     } 
 
+    protected function registration($booking){
+        $errors = wp_create_user($booking->getEmail(), wp_generate_password(), $booking->getEmail());
+        wp_update_user(
+            array('ID' => $errors, 'first_name' => $booking->getFirstname(), 'last_name' => $booking->getLastname())
+        );
+        add_user_meta($errors, '_sln_phone', $booking->getPhone());
+        add_user_meta($errors, '_sln_address', $booking->getAddress());
+        if (is_wp_error($errors)) {
+            $this->addError($errors->get_error_message());
+        }
+        wp_new_user_notification($errors); //, $values['password']);
+        return $errors;
+    }
+
+    private function validate($values){
+        if (empty($values['_sln_booking_firstname'])) {
+            $this->addError(__('First name can\'t be empty', 'sln'));
+        }
+        if (empty($values['_sln_booking_lastname'])) {
+            $this->addError(__('Last name can\'t be empty', 'sln'));
+        }
+        if (empty($values['_sln_booking_email'])) {
+            $this->addError(__('e-mail can\'t be empty', 'sln'));
+        }
+        if (empty($values['_sln_booking_phone'])) {
+            $this->addError(__('Mobile phone can\'t be empty', 'sln'));
+        }
+#       if (empty($values['address'])) {
+#           $this->addError(__('Address can\'t be empty', 'sln'));
+#       }
+        if (!filter_var($values['_sln_booking_email'], FILTER_VALIDATE_EMAIL)) {
+            $this->addError(__('e-mail is not valid', 'sln'));
+        }
+    }
+
+    protected function addError($message){
+        $_SESSION['_sln_booking_user_errors'][] = $message;
+    }
 }
 

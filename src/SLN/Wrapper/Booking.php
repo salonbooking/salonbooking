@@ -6,7 +6,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_amount', get_post_meta($post_id, '_sln_booking_amount', true));
-        $ret     = number_format(!empty($ret) ? ($ret) : 0, 2);
+        $ret     = number_format(empty($ret) ? 0 : floatval($ret), 2);
 
         return $ret;
     }
@@ -15,11 +15,14 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_deposit', get_post_meta($post_id, '_sln_booking_deposit', true));
-        $ret     = number_format(!empty($ret) ? ($ret) : 0, 2);
+        $ret     = number_format(empty($ret) ? 0 : floatval($ret), 2);
 
         return $ret;
     }
 
+    function getToPayAmount(){
+        return $this->getDeposit() > 0 ? $this->getDeposit() : $this->getAmount();
+    }
 
     function getFirstname()
     {
@@ -106,6 +109,19 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return $str;
     }
 
+    function evalTotal(){
+        $t = 0;
+        SLN_Plugin::addLog(__CLASS__.' eval total of'.$this->getId());
+        foreach($this->getServices() as $s){
+            $d = $s->getPrice();
+            $t += $d;
+            SLN_Plugin::addLog(' - service '.$s.' +'.$d);
+        }
+        update_post_meta($this->getId(), '_sln_booking_amount', $t);
+        return $t;
+    }
+
+
     function hasAttendant(SLN_Wrapper_Attendant $attendant)
     {
         return $this->getAttendantId() == $attendant->getId();
@@ -175,6 +191,16 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
             get_post_meta($post_id, '_sln_booking_note', true)
         );
     }
+    function getAdminNote()
+    {
+        $post_id = $this->getId();
+
+        return apply_filters(
+            'sln_booking_admin_note',
+            get_post_meta($post_id, '_sln_booking_admin_note', true)
+        );
+    }
+
 
     function getTransactionId()
     {
@@ -212,6 +238,41 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         update_post_meta($post_id, '_sln_booking_remind', $remind);
     }
 
+    public function getUserData(){
+        $this->object->post_author ? get_userdata($this->object->post_author) : null; 
+    }
+    public function getUserDisplayName(){
+        $this->getUserData() ? $this->getUserData()->display_name : '';
+    }
+    public function getUserId(){
+        return $this->object->post_author;
+    }
 
+    function isNew()
+    {
+        return strpos($this->object->post_status, 'sln-b-') !== 0;
+    }
 
+    public function markPaid($transactionId){
+        update_post_meta($this->getId(), '_sln_booking_transaction_id', $transactionId);
+        $this->setStatus(SLN_Enum_BookingStatus::PAID);
+    }
+    public function getPayUrl(){
+        return add_query_arg(
+            array(
+               'sln_step_page' => 'thankyou',
+               'submit_thankyou' => 1,
+               'sln_booking_id' => $this->getUniqueId()
+            ),
+            get_permalink( SLN_Plugin::getInstance()->getSettings()->get('pay'))
+        );
+    }
+    public function getUniqueId(){
+        $id = get_post_meta($this->getId(), '_sln_booking_uniqid', true);
+        if(!$id){
+            $id = md5(uniqid().$this->getId());
+            update_post_meta($this->getId(), '_sln_booking_uniqid', $id);
+        }
+        return $this->getId().'-'.$id;
+    }
 }

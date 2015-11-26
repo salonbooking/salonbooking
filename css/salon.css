@@ -684,6 +684,19 @@
   color: #fff;
   background-color: #33CC33;
 }
+.datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled),
+.select2-results__option.red {
+  color: red !important;
+}
+.datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active):hover,
+.datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active):hover,
+.datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled):hover,
+.select2-results__option.red:hover {
+  color: white !important;
+  background-color: red !important;
+}
 #sln-salon {
   background: #f8f8f8;
   border: 1px solid #ddd;
@@ -750,7 +763,15 @@
 #sln-salon .sln-service-list .service-price {
   font-size: 1em;
   font-weight: bold;
-  padding-top: 0.2em;
+  padding-top: .2em;
+}
+#sln-salon .services-total {
+  text-align: right;
+}
+#sln-salon .services-total-label.col-xs-6,
+#sln-salon .services-total.col-xs-6 {
+  width: 50%;
+  padding-right: 15px;
 }
 #sln-salon .service-checkbox input {
   min-width: 16px !important;
@@ -1560,16 +1581,17 @@
   #sln-salon .sln-service-list .col-xs-1 {
     width: 8%;
   }
-  #sln-salon .sln-service-list .col-xs-7 {
+  #sln-salon .sln-service-list .col-xs-8 {
     width: 90%;
     padding-left: 5%;
   }
-  #sln-salon .sln-service-list .col-xs-4.service-price {
+  #sln-salon .sln-service-list .col-xs-3.service-price {
     width: 80%;
     margin-left: 13%;
     border-top: 1px dashed #ccc;
     padding-top: .5em;
     padding-left: 0;
+    padding-right: 0;
     margin-top: .5em;
   }
 }
@@ -1583,11 +1605,11 @@
     width: 8%;
   }
   #sln-salon .sln-service-list .col-xs-7 {
-    width: 70%;
     padding-left: 5%;
   }
   #sln-salon .sln-service-list .col-xs-4.service-price {
-    width: 20%;
+    padding-right: 0;
+    text-align: right;
   }
 }
 #sln-salon h1:nth-child(2) {

@@ -7,28 +7,27 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
         global $current_user;
         if (isset($_POST['login_name'])) {
             $ret = $this->dispatchAuth($_POST['login_name'], $_POST['login_password']);
-            get_currentuserinfo();
-            if ($ret) {
-               $values = array(
-                    'firstname' => $current_user->user_firstname,
-                    'lastname'  => $current_user->user_lastname,
-                    'email'     => $current_user->user_email,
-                    'phone'     => get_user_meta($current_user->ID, '_sln_phone', true),
-                    'address'     => get_user_meta($current_user->ID, '_sln_address', true)
-                );
-                $this->validateValues($values);
+            if (!$ret) {
+                return false;
+            }
+
+            $values = array(
+                'firstname' => $current_user->user_firstname,
+                'lastname'  => $current_user->user_lastname,
+                'email'     => $current_user->user_email,
+                'phone'     => get_user_meta($current_user->ID, '_sln_phone', true),
+                'address'     => get_user_meta($current_user->ID, '_sln_address', true)
+            );
+            $this->bindValues($values);
+            $this->validate($values);
+            if ($this->getErrors()) {
                 $this->bindValues($values);
-                if ($this->getErrors()) {
-                    $this->bindValues($values);
-                    return false;
-                }
-            }else{
                 return false;
             }
         } else {
             $values = $_POST['sln'];
             if (!is_user_logged_in()) {
-                $this->validateValues($values);
+                $this->validate($values);
                 if ($this->getErrors()) {
                     $this->bindValues($values);
                     return false;
@@ -64,7 +63,8 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
 
         return true;
     }
-    private function validateValues($values){
+
+    private function validate($values){
         if (empty($values['firstname'])) {
             $this->addError(__('First name can\'t be empty', 'sln'));
         }

@@ -42,6 +42,10 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
             $this->addError($user->get_error_message());
 
             return false;
+        }else{
+            wp_set_current_user($user->ID);
+            //global $current_user;
+            //$current_user = new WP_User($user->ID);
         }
 
         return true;
