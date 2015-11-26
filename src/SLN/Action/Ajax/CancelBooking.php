@@ -15,7 +15,6 @@ class SLN_Action_Ajax_CancelBooking extends SLN_Action_Ajax_Abstract
 
 		$ret = array();
 		$plugin = SLN_Plugin::getInstance();
-//		$posttypeBooking = new SLN_PostType_Booking($plugin, SLN_Plugin::POST_TYPE_BOOKING);
 		$booking = $plugin->createBooking($_POST['id']);
 
 		$available = $booking->getUserId() == get_current_user_id();
@@ -23,9 +22,14 @@ class SLN_Action_Ajax_CancelBooking extends SLN_Action_Ajax_Abstract
 		$outOfTime = (strtotime($booking->getDate())-time()) < $plugin->getSettings()->get('hours_before_cancellation') * 3600;
 
 		if ($cancellationEnabled && !$outOfTime && $available) {
-//			$posttypeBooking->transitionPostStatus(SLN_Enum_BookingStatus::CANCELED, $booking->getStatus(), get_post($_POST['id']));
-			$plugin->sendMail('mail/status_canceled', compact('booking'));
 			$booking->setStatus(SLN_Enum_BookingStatus::CANCELED);
+
+			$args = compact('booking');
+			$plugin->sendMail('mail/status_canceled', $args);
+
+			$args['forAdmin'] = true;
+			$args['to'] = get_option('admin_email');
+			$plugin->sendMail('mail/status_canceled', $args);
 		} elseif (!$available) {
 			$this->addError(__("You don't have access", 'sln'));
 		} elseif (!$cancellationEnabled) {
