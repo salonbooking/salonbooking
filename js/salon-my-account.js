@@ -22,19 +22,20 @@ var slnMyAccount = {
                     alert('error');
                     console.log(data);
                 } else {
-                    slnMyAccount.loadContent();
+                    slnMyAccount.loadContent('cancelled');
                 }
             },
             error: function(data){alert('error'); console.log(data);}
         });
     },
 
-    loadContent: function () {
+    loadContent: function (option) {
         jQuery.ajax({
             url: salon.ajax_url,
             data: {
                 action: 'salon',
                 method: 'myAccountDetails',
+                option: option
             },
             method: 'POST',
             dataType: 'json',
