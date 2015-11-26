@@ -19,7 +19,7 @@ class SLN_Action_Ajax_CancelBooking extends SLN_Action_Ajax_Abstract
 
 		$available = $booking->getUserId() == get_current_user_id();
 		$cancellationEnabled = $plugin->getSettings()->get('cancellation_enabled');
-		$outOfTime = (strtotime($booking->getDate())-time()) < $plugin->getSettings()->get('hours_before_cancellation') * 3600;
+		$outOfTime = (strtotime($booking->getStartsAt())-current_time('timestamp')) < $plugin->getSettings()->get('hours_before_cancellation') * 3600;
 
 		if ($cancellationEnabled && !$outOfTime && $available) {
 			$booking->setStatus(SLN_Enum_BookingStatus::CANCELED);

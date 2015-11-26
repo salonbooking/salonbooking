@@ -35,7 +35,7 @@
 
 							<?php if ($item['status_code'] != SLN_Enum_BookingStatus::CANCELED
 							    && $data['cancellation_enabled']): ?>
-									<?php if ($item['timestamp']-time() > $data['seconds_before_cancellation']): ?>
+									<?php if ($item['timestamp']-current_time('timestamp') > $data['seconds_before_cancellation']): ?>
 										<button class="btn btn-danger btn-confirm" onclick="slnMyAccount.cancelBooking(<?php echo $item['id']; ?>);">
 											<span><?php _e('Cancel Booking','sln');?></span>
 										</button>

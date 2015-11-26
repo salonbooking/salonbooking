@@ -55,8 +55,8 @@ class SLN_Shortcode_SalonMyAccount_Details
 			$attendant = $elem->getAttendant();
 			return array(
 				'id' => $elem->getId(),
-				'date' => $elem->getDate()->format('M, j Y g:ia'),
-				'timestamp' => strtotime($elem->getDate()),
+				'date' => $elem->getStartsAt()->format('M, j Y g:ia'),
+				'timestamp' => strtotime($elem->getStartsAt()),
 				'services' => implode("<br>", array_map(function($elem2) {
 					return $elem2->getName();
 				}, $elem->getServices())),
