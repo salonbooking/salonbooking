@@ -20,12 +20,12 @@
 				<tbody>
 				<?php foreach ( $data['upcoming'] as $item ): ?>
 					<tr>
-						<td><?php echo $item['id'] ?></td>
-						<td><strong><?php echo $item['date'] ?></strong></td>
-						<td><?php echo $item['services']; ?></td>
-						<td><?php echo $item['assistant'] ?></td>
-						<td><nobr><strong><?php echo $item['total'] ?></strong></nobr></td>
-						<td>
+						<td data-th="<?php _e('Booking','sln');?>"><?php echo $item['id'] ?></td>
+						<td data-th="<?php _e('Date','sln');?>"><strong><?php echo $item['date'] ?></strong></td>
+						<td data-th="<?php _e('Services','sln');?>"><?php echo $item['services']; ?></td>
+						<td data-th="<?php _e('Assistant','sln');?>"><?php echo $item['assistant'] ?></td>
+						<td data-th="<?php _e('Total','sln');?>"><nobr><strong><?php echo $item['total'] ?></strong></nobr></td>
+						<td data-th="<?php _e('Status','sln');?>">
 							<div class="status <?php echo SLN_Enum_BookingStatus::getColor($item['status_code']); ?>">
 								<nobr>
 									<span class="glyphicon <?php echo SLN_Enum_BookingStatus::getIcon($item['status_code']); ?>" aria-hidden="true"></span>
@@ -37,12 +37,14 @@
 							    && $data['cancellation_enabled']): ?>
 									<?php if ($item['timestamp']-current_time('timestamp') > $data['seconds_before_cancellation']): ?>
 										<button class="btn btn-danger btn-confirm" onclick="slnMyAccount.cancelBooking(<?php echo $item['id']; ?>);">
-											<span><?php _e('Cancel Booking','sln');?></span>
+											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 
+											<?php _e('Cancel booking','sln');?>
 										</button>
 									<?php else: ?>
 									<button class="btn" data-toggle="tooltip" data-placement="top" style="cursor: not-allowed;"
 									        title="<?php _e('Sorry, you cannot cancel this booking online. Please call ' . $data['gen_phone'], 'sln'); ?>">
-										<span><?php _e('Cancel Booking','sln');?></span>
+										<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> 
+										<?php _e('Cancel booking','sln');?>
 									</button>
 									<?php endif ?>
 							<?php endif; ?>
@@ -73,12 +75,12 @@
 				<tbody>
 				<?php foreach ( $data['history'] as $item ): ?>
 					<tr>
-						<td><?php echo $item['id'] ?></td>
-						<td><strong><?php echo $item['date'] ?></strong></td>
-						<td><?php echo $item['services'] ?></td>
-						<td><?php echo $item['assistant'] ?></td>
-						<td><nobr><strong><?php echo $item['total'] ?></strong></nobr></td>
-						<td>
+						<td data-th="<?php _e('Booking','sln');?>"><?php echo $item['id'] ?></td>
+						<td data-th="<?php _e('Date','sln');?>"><strong><?php echo $item['date'] ?></strong></td>
+						<td data-th="<?php _e('Services','sln');?>"><?php echo $item['services'] ?></td>
+						<td data-th="<?php _e('Assistant','sln');?>"><?php echo $item['assistant'] ?></td>
+						<td data-th="<?php _e('Total','sln');?>"><nobr><strong><?php echo $item['total'] ?></strong></nobr></td>
+						<td data-th="<?php _e('Status','sln');?>">
 							<div class="status <?php echo SLN_Enum_BookingStatus::getColor($item['status_code']); ?>">
 								<nobr>
 									<span class="glyphicon <?php echo SLN_Enum_BookingStatus::getIcon($item['status_code']); ?>" aria-hidden="true"></span>
@@ -89,12 +91,13 @@
 							<div>
 								<?php if($item['status_code'] == SLN_Enum_BookingStatus::CONFIRMED): ?>
 										<?php if(empty($item['rating'])): ?>
-										<button class="btn btn-default" onclick="slnMyAccount.rate(this);">
-											<span><?php _e('Rate our service','sln');?></span>
+										<button class="btn btn-default sln-rate-service" onclick="slnMyAccount.rate(this);">
+											<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> 
+											<?php _e('Rate our service','sln');?>
 										</button>
 										<?php endif; ?>
 									<input type="hidden" name="sln-rating" value="<?php echo $item['rating']; ?>">
-									<div class="rating" id="<?php echo $item['id']; ?>" style="display: none;"><?php _e('Your rating','sln');?></div>
+									<div class="rating" id="<?php echo $item['id']; ?>" style="display: none;"><?php _e('Your rating ','sln');?></div>
 								<?php endif; ?>
 							</div>
 						</td>
