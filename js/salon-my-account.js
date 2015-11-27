@@ -64,7 +64,13 @@ var slnMyAccount = {
         var $ratyElem = $rating.parent().find('.rating');
         $ratyElem.raty({
             score: jQuery($rating).val(),
+            space: false,
             path: salon.images_folder,
+
+            starType : 'i',
+            starOff:"glyphicon glyphicon-star-empty",
+            starOn:"glyphicon glyphicon-star",
+
             click: function(score) {
                 jQuery.ajax({
                     url: salon.ajax_url,
@@ -90,7 +96,7 @@ var slnMyAccount = {
                 });
             }
         });
-        $ratyElem.css('display', 'block');
+        $ratyElem.css('display', 'inline-block');
     },
 
     rate: function (btn) {

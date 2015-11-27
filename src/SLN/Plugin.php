@@ -100,6 +100,7 @@ class SLN_Plugin
             wp_enqueue_script('smalot-datepicker-lang',  SLN_PLUGIN_URL .'/js/datepicker_language/bootstrap-datetimepicker.'.$lang.'.js', array('jquery'), '2015-05-01',true);
         }
         wp_enqueue_script('salon', SLN_PLUGIN_URL . '/js/salon.js', array('jquery'), '20140711', true);
+        wp_enqueue_script('salon-bootstrap', SLN_PLUGIN_URL . '/js/bootstrap.min.js', array('jquery'), '20140711', true); // algolplus
         wp_enqueue_script('salon-my-account', SLN_PLUGIN_URL . '/js/salon-my-account.js', array('jquery'), '20140711', true); // algolplus
         wp_enqueue_script('salon-raty', SLN_PLUGIN_URL . '/js/jquery.raty.js', array('jquery'), '20140711', true); // algolplus
         wp_localize_script(
