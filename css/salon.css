@@ -1892,6 +1892,16 @@
 
 /* algolplus start */
 
+#sln-salon-my-account #sln-salon .btn:hover {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+#sln-salon-my-account #sln-salon .btn.btn-confirm:hover {
+  background-color: #d51e26;
+}
+
 #sln-salon-my-account #sln-salon {
   font-size: 13px !important;
 }
@@ -1956,14 +1966,13 @@
   display: inline-block;
 }
 
-#sln-salon-my-account .warning {
-  color: rgb(142, 234, 0);
-}
 #sln-salon-my-account .success {
   color: #9AC91C;
 }
+
+#sln-salon-my-account .warning,
 #sln-salon-my-account .info {
-  color: cornflowerblue;
+  color: #ff5a00;
 }
 #sln-salon-my-account .danger {
   color: red;
@@ -1985,6 +1994,10 @@
 }
 #sln-salon .tooltip.in {
   opacity: 1;
+}
+
+#sln-salon-my-account .btn {
+  background-color: silver;
 }
 
 #sln-salon-my-account .btn .glyphicon {
@@ -2015,12 +2028,13 @@
 #sln-salon-my-account .rating {
   width:            auto;
   background-color: #eee;
-  padding:          8px;
+  padding:          4px 8px 6px;
   border-radius:    3px;
   font-size:        16px;
   font-variant:     small-caps;
-  text-transform: lowercase;
+  text-transform:   lowercase;
   font-size:        14px;
+  white-space:      nowrap;
 }
 
 #sln-salon-my-account .rating img {
@@ -2058,14 +2072,17 @@
     display: none;
   }
 
-  #sln-salon-my-account td {
-    width:      100%;
-    display:    block;
-    text-align: left !important;
-    border:     none !important;
+  #sln-salon-my-account .table tbody tr td {
+    width:        100%;
+    display:      block;
+    text-align:   left;
+    border:       none;
+    padding-left: 8em;
+    position:     relative;
+    min-height: 52px;
   }
 
-  #sln-salon-my-account tr {
+  #sln-salon-my-account .table tbody tr {
     border: solid 1px #ddd;
   }
 
@@ -2080,8 +2097,10 @@
     font-weight:    bold;
     text-transform: uppercase;
     color:          #0073a4;
-    width:          8em;
+    max-width:          8em;
     display:        inline-block;
+    position:       absolute;
+    left:           8px;
   }
 
   #sln-salon-my-account .status ~ div {
