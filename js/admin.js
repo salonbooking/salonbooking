@@ -423,8 +423,12 @@ jQuery(function ($) {
     }
 });});
 
-    $('#salon_settings_pay_method').change(function(){
-        $('.payment-mode-data').hide();
-        $('#payment-mode-'+$(this).val()).show();
-    }).change();
+    //$('#salon_settings_pay_method').change(function(){
+    //    $('.payment-mode-data').hide();
+    //    $('#payment-mode-'+$(this).val()).show();
+    //}).change();
+   $('input:radio[name=salon_settings_availability_mode]').change(function() {
+        $('.payment-mode-data').hide().removeClass('sln-box--fadein');
+        $('#payment-mode-'+$(this).data('method')).show().addClass('sln-box--fadein');
+    });
 });

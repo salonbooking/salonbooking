@@ -205,3 +205,32 @@ $icon-font-svg-id:        "glyphicons_halflingsregular";
   display: -webkit-flex;
   display: flex;
 }
+
+// ANIMATIONS
+@-webkit-keyframes fade-in {
+    0% {opacity: 0;-webkit-transform: scale(0)}
+    100% {opacity: 1;-webkit-transform: scale(1);}
+}
+
+@-moz-keyframes fade-in {
+    0% {opacity: 0;-webkit-transform: scale(0)}
+    100% {opacity: 1;-webkit-transform: scale(1);}
+}
+
+@-ms-keyframes fade-in {
+    0% {opacity: 0;-webkit-transform: scale(0)}
+    100% {opacity: 1;-webkit-transform: scale(1);}
+}
+
+@keyframes fade-in {
+    0% {opacity: 0;transform: scale(.99);}
+    100% {opacity: 1;transform: scale(1);}
+}
+
+
+@mixin fadein($time){
+    -webkit-animation: fade-in $time;
+    -moz-animation: fade-in $time;
+    -ms-animation: fade-in $time;
+    animation: fade-in $time;
+}

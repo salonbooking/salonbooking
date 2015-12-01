@@ -155,7 +155,7 @@
 .sln-radiobox {
 	@extend %sln-input-label--big;
 	@extend %sln-input-help;
-	margin-bottom: rem(40px);
+	@include bp(tablet) {margin-bottom: rem(40px);}
 	input {
 		position: absolute;
 		margin-left: -9999px;
@@ -214,6 +214,9 @@
 	input:checked + label:after,
 	input:checked + label:hover:after {
 	  background: $cl_main;
+	}
+	&.sln-radiobox--fullwidth {
+		label {width: 100%;}
 	}
 }
 

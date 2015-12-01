@@ -432,13 +432,14 @@ body {
         margin-bottom: rem(40px);
         border: rem(2px) solid $cl_main--light;
     }
+    .sln-box--fadein {@include fadein(250ms);}
     .sln-box-maininfo {
         @extend %font-medium;
         @extend %font-cl_standard;
         padding-bottom: rem(20px);
         p {@extend %font-medium; @extend %font-cl_standard; margin-top: 0;}
         &.align-top {
-            padding-top: rem(38px);
+            @include bp(tablet) {padding-top: rem(38px);}
         }
     }
     .sln-box-title {
