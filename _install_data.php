@@ -124,6 +124,17 @@ return array(
                 'ping_status'    => 'closed',
             ),
             'meta' => array()
-        )
+        ),
+        'bookingmyaccount'  => array(   // algolplus
+            'post' => array(
+                'post_title'     => 'Booking My Account',
+                'post_content'   => '[salon_booking_my_account]',
+                'post_status'    => 'publish',
+                'post_type'      => 'page',
+                'comment_status' => 'closed',
+                'ping_status'    => 'closed',
+            ),
+            'meta' => array()
+        ),
     )
 );
