@@ -348,16 +348,20 @@ jQuery(function ($) {
         theme: "sln",
         width: '100%'
     }).focus(function () { $(this).select2('open'); });
-    $('.sln-toolbox-trigger').click(function() {
+    $('.sln-toolbox-trigger').click(function(event) {
         $(this).parent().toggleClass('open');
         event.preventDefault();
     });
-    $('.sln-toolbox-trigger-mob').click(function() {
+    $('.sln-toolbox-trigger-mob').click(function(event) {
         $(this).parent().find('.sln-toolbox').toggleClass('open');
         event.preventDefault();
     });
-    $('.sln-box-info-trigger button').click(function() {
+    $('.sln-box-info-trigger button').click(function(event) {
         $(this).parent().parent().parent().toggleClass('sln-box--info-visible');
+        event.preventDefault();
+    });
+     $('.sln-box-info-content:after').click(function(event) {
+        alert('ciccio');
         event.preventDefault();
     });
     // TIME RANGE //

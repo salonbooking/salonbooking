@@ -3,6 +3,7 @@
     <h2 class="sln-box-title">Online payment<span>Allow users to pay in advance using PayPal</span></h2>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-switch">
+            <h6 class="sln-fake-label">Online payment status</h6>
             <input id="switch-1" class="big-check-base sln-switch--round" type="checkbox" checked="checked">
             <label class="sln-switch-btn" for="switch-1"  data-on="On" data-off="Off"></label>
             <label class="sln-switch-text"  for="switch-1" data-on="Online payment is enabled" 
@@ -19,6 +20,7 @@
        <h5>Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</h5>
         </div>
         </div>
+        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
 </div>
 <div class="row">
@@ -27,7 +29,7 @@
     <h2 class="sln-box-title">Pay later <span>Let users pay once they are at your salon.</span></h2>
     <div class="row">
             <div class="col-xs-12 form-group sln-switch">
-            <h6 class="sln-fake-label">Deposit amount</h6>
+            <h6 class="sln-fake-label">Pay later status</h6>
             <input type="checkbox" name="salon_settings[pay_cash]" id="salon_settings_pay_cash" value="1" checked="checked">
                 <label class="sln-switch-btn" for="salon_settings_pay_cash"  data-on="On" data-off="Off"></label>
                 <label class="sln-switch-text"  for="salon_settings_pay_cash" data-on="Pay later is enabled" 
@@ -41,6 +43,7 @@
        <h5>Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</h5>
         </div>
         </div>
+        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
     </div>
     </div>
@@ -78,6 +81,7 @@
        <h5>Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</h5>
         </div>
         </div>
+        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
     </div>
     </div>

@@ -13,7 +13,7 @@ $cl_ok: #5bc24c;
 }
 
 $browser-context: 24;
-@include bp(phone) {
+@include bp(tablet) {
   //browser-context: 26;
 }
 

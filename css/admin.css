@@ -5,8 +5,11 @@
   *:focus, *:before:focus, *:after:focus {
     outline: 0 !important; }
 
-#sln-salon--admin .sln-btn, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin p.submit, #sln-salon--admin .sln-toolbox, #sln-salon--admin .sln-admin-sidebar {
+#sln-salon--admin .sln-btn, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin p.submit, #sln-salon--admin .sln-toolbox {
   z-index: 800; }
+
+#sln-salon--admin .sln-admin-sidebar {
+  z-index: 1000; }
 
 @-webkit-keyframes fade-in {
   0% {
@@ -46,18 +49,18 @@
   line-height: 1.41667rem;
   line-height: 1.41667rem; }
 
-#sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field {
+#sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin .sln-fake-label, #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-maininfo p, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field {
   font-family: "Open sans", serif;
   font-size: 0.75rem;
   font-weight: normal;
   line-height: 1.16667rem; }
 
-#sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin .sln-fake-label, #sln-salon--admin .sln-btn--medium, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-btn--medium input, #sln-salon--admin h2.nav-tab-wrapper .nav-tab input, #sln-salon--admin .sln-admin-nav a input, #sln-salon--admin .sln-btn--small, #sln-salon--admin .sln-btn--small--round, #sln-salon--admin .sln-box-maininfo, #sln-salon--admin .sln-box-maininfo p {
+#sln-salon--admin .sln-input--simple p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, #sln-salon--admin .sln-btn--medium, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-btn--medium input, #sln-salon--admin h2.nav-tab-wrapper .nav-tab input, #sln-salon--admin .sln-admin-nav a input, #sln-salon--admin .sln-btn--small, #sln-salon--admin .sln-btn--small--round, #sln-salon--admin .sln-box-maininfo {
   font-family: "Open sans", serif;
   font-size: 0.66667rem;
   line-height: 0.91667rem; }
 
-#sln-salon--admin .sln-input--simple p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, #sln-salon--admin #time-range p {
+#sln-salon--admin #time-range p {
   font-family: "Open sans", serif;
   font-size: 0.58333rem;
   line-height: 0.83333rem; }
@@ -417,16 +420,16 @@ body {
     font-size: 1rem;
     line-height: 1.41667rem;
     line-height: 1.41667rem; }
-  #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, #sln-salon--admin .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln #sln-salon--admin .select2-dropdown, #sln-salon--admin .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .select2-container.select2-container--sln .select2-search--dropdown #sln-salon--admin .select2-search__field {
+  #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin .sln-fake-label, #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-maininfo p, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, #sln-salon--admin .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln #sln-salon--admin .select2-dropdown, #sln-salon--admin .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .select2-container.select2-container--sln .select2-search--dropdown #sln-salon--admin .select2-search__field {
     font-family: "Open sans", serif;
     font-size: 0.75rem;
     font-weight: normal;
     line-height: 1.16667rem; }
-  #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin .sln-fake-label, #sln-salon--admin .sln-btn--medium, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-btn--medium input, #sln-salon--admin h2.nav-tab-wrapper .nav-tab input, #sln-salon--admin .sln-admin-nav a input, #sln-salon--admin .sln-btn--small, #sln-salon--admin .sln-btn--small--round, #sln-salon--admin .sln-box-maininfo, #sln-salon--admin .sln-box-maininfo p {
+  #sln-salon--admin .sln-input--simple p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, #sln-salon--admin .sln-btn--medium, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-btn--medium input, #sln-salon--admin h2.nav-tab-wrapper .nav-tab input, #sln-salon--admin .sln-admin-nav a input, #sln-salon--admin .sln-btn--small, #sln-salon--admin .sln-btn--small--round, #sln-salon--admin .sln-box-maininfo {
     font-family: "Open sans", serif;
     font-size: 0.66667rem;
     line-height: 0.91667rem; }
-  #sln-salon--admin .sln-input--simple p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, #sln-salon--admin #time-range p {
+  #sln-salon--admin #time-range p {
     font-family: "Open sans", serif;
     font-size: 0.58333rem;
     line-height: 0.83333rem; }
@@ -527,8 +530,12 @@ body {
       user-select: none;
       padding: 0 1.25rem 0 3.75rem;
       height: 3.25rem;
-      line-height: 3.08333rem;
-      display: inline-block; }
+      display: table-cell;
+      vertical-align: middle; }
+      @media only screen and (min-width: 768px) {
+        #sln-salon--admin .sln-checkbox input + label {
+          line-height: 3.08333rem;
+          display: inline-block; } }
       #sln-salon--admin .sln-checkbox input + label:nth-child(2) {
         margin-top: 1.25rem; }
       #sln-salon--admin .sln-checkbox input + label:before, #sln-salon--admin .sln-checkbox input + label:after {
@@ -605,7 +612,7 @@ body {
       width: 1.75rem;
       height: 1.75rem;
       top: 0.625rem;
-      left: 0.625rem;
+      left: 0.66667rem;
       transition: background 0.15s;
       backface-visibility: hidden;
       font-size: 1.66667rem;
@@ -775,6 +782,11 @@ body {
     margin-bottom: 1.66667rem; }
     #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big {
       padding-left: 0; }
+      #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label {
+        padding: 0;
+        height: 2.5rem;
+        display: table-cell;
+        vertical-align: middle; }
   #sln-salon--admin .sln-input-bigborder label {
     width: 100%; }
   #sln-salon--admin .ui-slider-horizontal {
@@ -919,7 +931,7 @@ body {
     line-height: 2.33333rem; }
     @media only screen and (max-width: 767px) {
       #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input {
-        font-size: 0.66667rem; } }
+        font-size: 0.75rem; } }
   #sln-salon--admin .sln-btn--medium, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-btn--medium input, #sln-salon--admin h2.nav-tab-wrapper .nav-tab input, #sln-salon--admin .sln-admin-nav a input {
     display: inline-block;
     min-width: 90px;
@@ -964,12 +976,18 @@ body {
     #sln-salon--admin .sln-btn--small--round.sln-btn--icon, #sln-salon--admin p.sln-btn--small--round.submit {
       width: 2.5rem;
       height: 2.5rem;
-      text-indent: -100px;
+      font-size: 0.08333rem;
       overflow: hidden; }
       #sln-salon--admin .sln-btn--small--round.sln-btn--icon:after, #sln-salon--admin p.sln-btn--small--round.submit:after {
-        left: 1.91667rem;
-        top: calc(50% - 18px);
-        font-size: 1.25rem; }
+        width: 2.5rem;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        background-color: #0C6EB6;
+        left: 0;
+        top: 0;
+        font-size: 1.08333rem; }
+      #sln-salon--admin .sln-btn--small--round.sln-btn--icon:hover:after, #sln-salon--admin p.sln-btn--small--round.submit:hover:after, #sln-salon--admin .sln-btn--small--round.sln-btn--icon:focus:after, #sln-salon--admin p.sln-btn--small--round.submit:focus:after {
+        background-color: #003553; }
   #sln-salon--admin .sln-btn--main, #sln-salon--admin p.submit {
     background-color: #0C6EB6;
     color: white; }
@@ -1046,7 +1064,6 @@ body {
       content: "\f111";
       display: inline-block;
       position: absolute;
-      position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
@@ -1086,6 +1103,9 @@ body {
     content: "\f014"; }
   #sln-salon--admin .sln-icon--file:after {
     content: "\f0f6"; }
+  #sln-salon--admin .sln-icon--warning:after {
+    content: "\f12a";
+    font-size: 1.16667rem; }
   #sln-salon--admin h2.nav-tab-wrapper .nav-tab {
     margin: 0; }
     #sln-salon--admin h2.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type) {
@@ -1137,7 +1157,8 @@ body {
       max-height: 0px;
       padding: 0; }
     #sln-salon--admin .sln-toolbox .sln-btn, #sln-salon--admin .sln-toolbox h2.nav-tab-wrapper .nav-tab, #sln-salon--admin h2.nav-tab-wrapper .sln-toolbox .nav-tab, #sln-salon--admin .sln-toolbox .sln-admin-nav a, #sln-salon--admin .sln-admin-nav .sln-toolbox a, #sln-salon--admin .sln-toolbox p.submit {
-      margin-bottom: 0.16667rem; }
+      margin-bottom: 0.16667rem;
+      width: 100%; }
     @media only screen and (min-width: 768px) {
       #sln-salon--admin .sln-toolbox {
         max-width: 300px;
@@ -1218,13 +1239,37 @@ body {
         display: block; } }
   #sln-salon--admin .sln-box-info {
     padding-bottom: 0.83333rem; }
+    #sln-salon--admin .sln-box-info .sln-box-info-trigger .sln-btn--small.sln-btn--icon:after, #sln-salon--admin .sln-box-info .sln-box-info-trigger p.sln-btn--small.submit:after {
+      font-size: 1.41667rem;
+      line-height: 1.41667rem; }
+    #sln-salon--admin .sln-box-info .sln-box-info-trigger .sln-icon--close {
+      display: none; }
+    #sln-salon--admin .sln-box-info .sln-box-info-trigger .sln-icon--info {
+      margin-top: 0;
+      -webkit-transition: margin-top 300ms;
+      -moz-transition: margin-top 300ms;
+      -o-transition: margin-top 300ms;
+      transition: margin-top 300ms; }
     #sln-salon--admin .sln-box-info .sln-box-info-content {
       max-height: 0;
       overflow: hidden;
+      position: relative;
       -webkit-transition: max-height 200ms;
       -moz-transition: max-height 200ms;
       -o-transition: max-height 200ms;
       transition: max-height 200ms; }
+  #sln-salon--admin .sln-box--info-visible .sln-box-info .sln-box-info-trigger .sln-icon--info {
+    margin-top: 0.83333rem;
+    -webkit-transition: margin-top 300ms;
+    -moz-transition: margin-top 300ms;
+    -o-transition: margin-top 300ms;
+    transition: margin-top 300ms; }
+  #sln-salon--admin .sln-box--info-visible .sln-box-info .sln-box-info-trigger .sln-icon--close, #sln-salon--admin .sln-box--info-visible .sln-box-info .sln-box-info-trigger .sln-icon--info {
+    display: inline-block; }
+    #sln-salon--admin .sln-box--info-visible .sln-box-info .sln-box-info-trigger .sln-icon--close:after, #sln-salon--admin .sln-box--info-visible .sln-box-info .sln-box-info-trigger .sln-icon--info:after {
+      color: #003553; }
+    #sln-salon--admin .sln-box--info-visible .sln-box-info .sln-box-info-trigger .sln-icon--close:hover:after, #sln-salon--admin .sln-box--info-visible .sln-box-info .sln-box-info-trigger .sln-icon--info:hover:after {
+      color: #0C6EB6; }
   #sln-salon--admin .sln-box--info-visible .sln-box-info .sln-box-info-content {
     max-height: 1000px; }
   #sln-salon--admin .sln-booking-rule {
@@ -1253,12 +1298,10 @@ body {
     bottom: 0;
     right: 0;
     background-color: rgba(0, 53, 83, 0.9);
-    padding: 0 0.41667rem 0.41667rem 0.41667rem; }
+    padding: 0.625rem; }
     #sln-salon--admin .sln-admin-sidebar .sln-update-settings {
       float: left;
       max-width: 260px; }
-    #sln-salon--admin .sln-admin-sidebar .sln-btn--big, #sln-salon--admin .sln-admin-sidebar p.submit {
-      width: 100%; }
     @media only screen and (min-width: 768px) {
       #sln-salon--admin .sln-admin-sidebar {
         width: 100%;
@@ -1276,7 +1319,7 @@ body {
         background-color: rgba(0, 53, 83, 0); }
         #sln-salon--admin .sln-admin-sidebar .sln-update-settings {
           float: none;
-          max-width: 100%; } }
+          width: 100%; } }
     #sln-salon--admin .sln-admin-sidebar .sln-toolbox-trigger-mob {
       float: right; }
 

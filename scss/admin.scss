@@ -437,7 +437,7 @@ body {
         @extend %font-medium;
         @extend %font-cl_standard;
         padding-bottom: rem(20px);
-        p {@extend %font-medium; @extend %font-cl_standard; margin-top: 0;}
+        p {@extend %font-big; @extend %font-cl_standard; margin-top: 0;}
         &.align-top {
             @include bp(tablet) {padding-top: rem(38px);}
         }
@@ -459,17 +459,37 @@ body {
     }
     .sln-box-info {
         padding-bottom:  rem(20px);
-        .sln-box-info-trigger {}
+        .sln-box-info-trigger {
+            .sln-btn--small.sln-btn--icon:after {font-size: rem(34px); line-height: rem(34px);}
+            .sln-icon--close {display: none;}
+            .sln-icon--info {
+                margin-top: 0;
+                @include transition(margin-top 300ms);
+            }
+        }
         .sln-box-info-content {
             max-height: 0;
             overflow: hidden;
+            position: relative;
             @include transition(max-height 200ms);
             @extend %font-big; @extend %font-cl_standard;
             h5 {@extend %font-big; @extend %font-cl_standard;}
         }
     }
     .sln-box--info-visible .sln-box-info {
-        .sln-box-info-trigger {}
+        .sln-box-info-trigger {
+            .sln-icon--info {
+                margin-top: rem(20px);
+                @include transition(margin-top 300ms);
+            }
+            .sln-icon--close, .sln-icon--info {
+                display: inline-block;
+                &:after {color: $cl_main;}
+                &:hover {
+                    &:after {color: $cl_main--emphasis;}
+                }
+            }
+        }
         .sln-box-info-content {max-height: 1000px;}
     }
 
@@ -504,13 +524,12 @@ body {
         bottom: 0;
         right: 0;
         background-color: alpha-tones($cl_main, .9);
-        padding: 0 rem(10px) rem(10px) rem(10px);
+        padding: rem(15px);
+        @extend %zi-top;
         .sln-update-settings {
             float: left;
             max-width: 260px;
         }
-        @extend %zi-navigazione;
-        .sln-btn--big {width: 100%;}
         @include bp(tablet) {
             width: 100%;
             bottom: 0;
@@ -528,7 +547,7 @@ body {
             background-color: alpha-tones($cl_main, 0);
             .sln-update-settings {
                 float: none;
-                max-width: 100%;
+                width: 100%;
             }
         }
         .sln-toolbox-trigger-mob {float: right;}

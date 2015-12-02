@@ -31,7 +31,7 @@
 }
 %sln-input-label {
 	label {
-		@extend %font-medium;
+		@extend %font-big;
 		@extend %font-cl_main;
 		font-weight: 400;
 		padding: 0 rem(16px);
@@ -50,7 +50,7 @@
 }
 %sln-input-help {
 	p {
-		@extend %font-small;
+		@extend %font-medium;
 		@extend %font-cl_standard--medium;
 		font-weight: 400;
 		padding: rem(10px) rem(16px);
@@ -74,7 +74,7 @@
 	}
 }
 .sln-fake-label {
-	@extend %font-medium;
+	@extend %font-big;
 	@extend %font-cl_main;
 	font-weight: 400;
 	padding: 0 rem(16px);
@@ -108,8 +108,12 @@
 		user-select: none;
 		padding: 0 rem(30px) 0 rem(90px);
 		height: rem(78px);
-		line-height: rem(74px);
-		display: inline-block;
+		display: table-cell;
+		vertical-align: middle;
+		@include bp(tablet) {
+			line-height: rem(74px);
+			display: inline-block;
+		}
 		@extend %sln-big-border--onhover;
 		&:nth-child(2) {margin-top: rem(30px);}
 		&:before, &:after  {
@@ -199,7 +203,7 @@
 			width: rem(42px);
 			height: rem(42px);
 			top: rem(15px);
-			left: rem(15px);
+			left: rem(16px);
 			transition: background 0.15s;
 			backface-visibility: hidden;
 			@extend %font-icon;
@@ -411,8 +415,14 @@
 	margin-bottom: rem(40px);
 	&.sln-select--info-label {
 		.sln-label--big {
-			@extend %sln-input-label--big;
 			padding-left: 0;
+			@extend %sln-input-label--big;
+			label {
+				padding: 0;
+				height: rem(60px);
+				display: table-cell;
+				vertical-align: middle;
+			}
 		}
 	}
 }

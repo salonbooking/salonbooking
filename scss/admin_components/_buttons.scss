@@ -29,7 +29,7 @@
   min-width: rem(240px);
   @extend %font-big;
   line-height: rem(56px);
-  @include bp(phone) {font-size: rem(16px);}
+  @include bp(phone) {font-size: rem(18px);}
 }
 .sln-btn--medium, .sln-btn--medium input {
   display: inline-block;
@@ -72,12 +72,19 @@
   &.sln-btn--icon {
     width: rem(60px);
     height: rem(60px);
-    text-indent: -100px;
+    font-size: rem(2px);
     overflow: hidden;
     &:after {
-      left: rem(46px);
-      top: calc(50% - 18px);
-      font-size: rem(30px);
+      width: rem(60px);
+      height: rem(60px);
+      line-height: rem(60px);
+      background-color: $cl_main--emphasis;
+      left: 0;
+      top: 0;
+      font-size: rem(26px);
+    }
+    &:hover:after, &:focus:after {
+      background-color: $cl_main;
     }
   }
 }
@@ -159,7 +166,6 @@
       content: "\f111";
       display: inline-block;
       position: absolute;
-      position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
@@ -240,6 +246,12 @@
     content: "\f0f6";
   }
 }
+.sln-icon--warning {
+  &:after {
+    content: "\f12a";
+    font-size: rem(28px);
+  }
+}
 
 h2.nav-tab-wrapper .nav-tab {
     @extend .sln-btn;
@@ -299,7 +311,7 @@ h2.nav-tab-wrapper .nav-tab.nav-tab-active {
       }
     }
   &:not(.open) {max-height: 0px; padding: 0;}
-  .sln-btn {margin-bottom: rem(4px);}
+  .sln-btn {margin-bottom: rem(4px); width: 100%;}
   @include bp(tablet) {
     max-width: 300px;
     float: right;
