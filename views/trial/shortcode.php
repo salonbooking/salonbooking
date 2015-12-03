@@ -1,4 +1,3 @@
-<?php?>
 <div id="sln-salon" class="sln-bootstrap">
     <div>
         <h1><?php _e('Book an appointment') ?>
@@ -16,6 +15,5 @@
         <div class="alert alert-danger">
             <p><?php echo empty($message) ? __('On-line booking is disabled', 'sln') : $message ?></p>
         </div>
-        <?php } ?>
     </div>
 </div>
