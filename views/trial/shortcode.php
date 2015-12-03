@@ -1,8 +1,11 @@
 <?php
+if (current_user_can('activate_plugins'))
+    echo '<span class="sln_notice">' . __('Your free version is expired - upgrade to PRO') . '</span>';
+
 ?>
 <div id="sln-salon" class="sln-bootstrap">
     <div>
-        <h1><?php _e('Book an appointment')?>
+        <h1><?php _e('Book an appointment') ?>
             <svg class="icocal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"
                  preserveAspectRatio="xMinYMin meet" width="100%" height="100%"
                  style="width: 24px; height: 24px;">
@@ -11,7 +14,10 @@
             </svg>
         </h1>
         <?php
-            $message =  $plugin->getSettings()->getDisabledMessage(); 
+        if (current_user_can('activate_plugins')) {
+            echo $content;
+        }
+        $message = $plugin->getSettings()->getDisabledMessage();
         ?>
         <div class="alert alert-danger">
             <p><?php echo empty($message) ? __('On-line booking is disabled', 'sln') : $message ?></p>

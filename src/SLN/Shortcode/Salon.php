@@ -77,7 +77,7 @@ class SLN_Shortcode_Salon
     {
         $salon = $this;
         if (get_option(SLN_Plugin::F) > SLN_Plugin::F1) {
-            return $this->plugin->loadView('trial/shortcode', compact('salon'));
+            return $this->plugin->loadView('trial/shortcode', compact('content', 'salon'));
         } else {
             return $this->plugin->loadView('shortcode/salon', compact('content', 'salon'));
         }
