@@ -1,8 +1,4 @@
-<?php
-if (current_user_can('activate_plugins'))
-    echo '<span class="sln_notice">' . __('Your free version is expired - upgrade to PRO') . '</span>';
-
-?>
+<?php?>
 <div id="sln-salon" class="sln-bootstrap">
     <div>
         <h1><?php _e('Book an appointment') ?>
@@ -14,13 +10,12 @@ if (current_user_can('activate_plugins'))
             </svg>
         </h1>
         <?php
-        if (current_user_can('activate_plugins')) {
-            echo $content;
-        }
+
         $message = $plugin->getSettings()->getDisabledMessage();
         ?>
         <div class="alert alert-danger">
             <p><?php echo empty($message) ? __('On-line booking is disabled', 'sln') : $message ?></p>
         </div>
+        <?php } ?>
     </div>
 </div>

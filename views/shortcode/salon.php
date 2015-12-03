@@ -13,8 +13,13 @@
 //);
 ?>
 <div id="sln-salon" class="sln-bootstrap">
+    <?php
+    if ($trial_exp)
+        echo '<span class="sln_notice">' . __('Your free version is expired - upgrade to PRO', 'sln') . '</span>';
+
+    ?>
     <div>
-        <h1><?php _e('Book an appointment','sln');?>
+        <h1><?php _e('Book an appointment', 'sln'); ?>
             <svg class="icocal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"
                  preserveAspectRatio="xMinYMin meet" width="100%" height="100%"
                  style="width: 24px; height: 24px;">
@@ -24,16 +29,17 @@
         </h1>
         <?php
         /*
-            <ul class="salon-bar nav nav-pills nav-justified thumbnail">
-                <?php $i = 0;
-                foreach ($salon->getSteps() as $step) : $i++; ?>
-                    <li <?php echo $step == $salon->getCurrentStep() ? 'class="active"' : ''?>>
-                        <?php echo $i ?>. <?php echo $labels[$step] ?>
-                    </li>
-                <?php endforeach ?>
-            </ul>
-        */
+          <ul class="salon-bar nav nav-pills nav-justified thumbnail">
+          <?php $i = 0;
+          foreach ($salon->getSteps() as $step) : $i++; ?>
+          <li <?php echo $step == $salon->getCurrentStep() ? 'class="active"' : ''?>>
+          <?php echo $i ?>. <?php echo $labels[$step] ?>
+          </li>
+          <?php endforeach ?>
+          </ul>
+         */
+
         ?>
-        <?php echo $content ?>
+<?php echo $content ?>
     </div>
 </div>
