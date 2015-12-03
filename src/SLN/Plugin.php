@@ -175,6 +175,7 @@ class SLN_Plugin
                 array(
                 'post_type' => self::POST_TYPE_SERVICE,
                 'nopaging' => true,
+                'meta_key' => '_sln_service_order',
                 'meta_query', array(
                     'relation' => 'OR',
                     array(
@@ -190,6 +191,7 @@ class SLN_Plugin
                 'order' => 'ASC',
                 )
             );
+            //echo "Last SQL-Query: {$query->request}";
             $ret = array();
             foreach ($query->get_posts() as $p) {
                 $ret[] = $this->createService($p);
