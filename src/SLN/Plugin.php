@@ -13,6 +13,8 @@ class SLN_Plugin
     const F1 = 30;
     const F2 = 20;
     const DEBUG_ENABLED = false;
+    const CATEGORY_ORDER = 'sln_service_category_order';
+    const SERVICE_ORDER = '_sln_service_order';
 
     private static $instance;
     private $settings;
@@ -175,19 +177,18 @@ class SLN_Plugin
                 array(
                 'post_type' => self::POST_TYPE_SERVICE,
                 'nopaging' => true,
-                'meta_key' => '_sln_service_order',
-                'meta_query', array(
+                'meta_query' => array(
                     'relation' => 'OR',
                     array(
-                        'key' => '_sln_service_order',
+                        'key' => self::SERVICE_ORDER,
                         'compare' => 'EXISTS'
                     ),
                     array(
-                        'key' => '_sln_service_order',
+                        'key' => self::SERVICE_ORDER,
                         'compare' => 'NOT EXISTS'
                     )
                 ),
-                'orderby' => '_sln_service_order',
+                'orderby' => self::SERVICE_ORDER,
                 'order' => 'ASC',
                 )
             );

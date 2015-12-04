@@ -48,7 +48,7 @@ class SLN_TaxonomyType_ServiceCategory extends SLN_TaxonomyType_Abstract
     {
 
         if ($taxonomy[0] == SLN_Plugin::TAXONOMY_SERVICE_CATEGORY) {
-            $order = get_option('sln_service_category_order', '""');
+            $order = get_option(SLN_Plugin::CATEGORY_ORDER, '""');
             return "FIELD(t.term_id, $order)";
         }
     }

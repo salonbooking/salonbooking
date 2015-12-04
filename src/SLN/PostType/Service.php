@@ -25,19 +25,18 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
 
         if (is_admin() && 'edit.php' == $pagenow && $post_type == SLN_Plugin::POST_TYPE_SERVICE) {
             $query->set('nopaging', 'true');
-           // $query->set('meta_key', '_sln_service_order');
             $query->set('meta_query', array(
                 'relation' => 'OR',
                 array(
-                    'key' => '_sln_service_order',
+                    'key' => SLN_Plugin::SERVICE_ORDER,
                     'compare' => 'EXISTS'
                 ),
                 array(
-                    'key' => '_sln_service_order',
+                    'key' => SLN_Plugin::SERVICE_ORDER,
                     'compare' => 'NOT EXISTS'
                 )
             ));
-            $query->set('orderby', '_sln_service_order');
+            $query->set('orderby', SLN_Plugin::SERVICE_ORDER);
             $query->set('order', 'ASC');
         }
     }
@@ -93,7 +92,7 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
         if (!isset($params['positions']))
             return;
 
-        update_option('sln_service_category_order', $params['positions']);
+        update_option(SLN_Plugin::CATEGORY_ORDER, $params['positions']);
     }
 
     public function manage_columns($columns)
