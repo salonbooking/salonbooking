@@ -1,8 +1,10 @@
 <?php
 
-class SLN_PostType_Booking extends SLN_PostType_Abstract {
+class SLN_PostType_Booking extends SLN_PostType_Abstract
+{
 
-    public function init() {
+    public function init()
+    {
         parent::init();
 //        add_filter('wp_insert_post_data', array($this, 'insert_post_data'), '99', 2);
 
@@ -26,23 +28,24 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
 //        return $data;
 //    }
 
-    public function manage_columns($columns) {
+    public function manage_columns($columns)
+    {
         $ret = array(
             'cb' => $columns['cb'],
             'ID' => __('Booking ID'),
-            'myauthor' => __('User name', 'sln'),
-            'date' => __('Submitted', 'sln'),
-            'booking_status' => __('Status', 'sln'),
             'booking_date' => __('Booking Date', 'sln'),
+            'booking_status' => __('Status', 'sln'),
+            'myauthor' => __('User name', 'sln'),
+            'booking_attendant' => __('Attendant', 'sln'),
+//            'date' => __('Submitted', 'sln'),
             'booking_price' => __('Booking Price', 'sln'),
+            'booking_services' => __('Booking Services', 'sln'),
         );
-        if ($this->getPlugin()->getSettings()->get('attendant_enabled')) {
-            $ret['booking_attendant'] = __('Attendant', 'sln');
-        }
         return $ret;
     }
 
-    public function manage_column($column, $post_id) {
+    public function manage_column($column, $post_id)
+    {
         switch ($column) {
             case 'ID' :
                 echo edit_post_link($post_id, '<p>', '</p>', $post_id);
@@ -55,15 +58,24 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
                 echo SLN_Enum_BookingStatus::getLabel(get_post_status($post_id));
                 break;
             case 'booking_date':
-                echo $this->getPlugin()->format()->datetime( new DateTime(
+                echo $this->getPlugin()->format()->datetime(new DateTime(
                     get_post_meta($post_id, '_sln_booking_date', true)
                     . ' ' . get_post_meta($post_id, '_sln_booking_time', true))
                 );
                 break;
             case 'booking_price' :
                 echo $this->getPlugin()->format()->money(get_post_meta($post_id, '_sln_booking_amount', true));
-                if(get_post_status($post_id) == SLN_Enum_BookingStatus::PAID &&  $deposit = get_post_meta($post_id, '_sln_booking_deposit', true))
-                    echo '(deposit '.$this->getPlugin()->format()->money($deposit).')';
+                if (get_post_status($post_id) == SLN_Enum_BookingStatus::PAID && $deposit = get_post_meta($post_id, '_sln_booking_deposit', true))
+                    echo '(deposit ' . $this->getPlugin()->format()->money($deposit) . ')';
+                break;
+            case 'booking_services' :
+                $services = get_post_meta($post_id, '_sln_booking_services', true);
+                $name_services = array();
+                foreach ($services as $service) {
+                    $helper = new SLN_Wrapper_Service($service);
+                    $name_services[] = $helper->getName();
+                }
+                echo implode(', ', $name_services);
                 break;
             case 'booking_attendant' :
                 if ($attendant = $this->getPlugin()->createBooking($post_id)->getAttendant())
@@ -74,7 +86,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         }
     }
 
-    public function enter_title_here($title, $post) {
+    public function enter_title_here($title, $post)
+    {
         if ($this->getPostType() === $post->post_type) {
             $title = __('Enter booking name', 'sln');
         }
@@ -82,34 +95,35 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         return $title;
     }
 
-    public function updated_messages($messages) {
+    public function updated_messages($messages)
+    {
         global $post, $post_ID;
 
         $messages[$this->getPostType()] = array(
             0 => '', // Unused. Messages start at index 1.
             1 => sprintf(
-                    __('Booking updated.', 'sln')
+                __('Booking updated.', 'sln')
             ),
             2 => '',
             3 => '',
             4 => __('Booking updated.', 'sln'),
             5 => isset($_GET['revision']) ? sprintf(
-                            __('Booking restored to revision from %s', 'sln'), wp_post_revision_title((int) $_GET['revision'], false)
-                    ) : false,
+                    __('Booking restored to revision from %s', 'sln'), wp_post_revision_title((int) $_GET['revision'], false)
+                ) : false,
             6 => sprintf(
-                    __('Booking published.', 'sln')
+                __('Booking published.', 'sln')
             ),
             7 => __('Booking saved.', 'sln'),
             8 => sprintf(
-                    __('Booking submitted.', 'sln')
+                __('Booking submitted.', 'sln')
             ),
             9 => sprintf(
-                    __(
-                            'Booking scheduled for: <strong>%1$s</strong>.', 'sln'
-                    ), date_i18n(__('M j, Y @ G:i', 'sln'), strtotime($post->post_date))
+                __(
+                    'Booking scheduled for: <strong>%1$s</strong>.', 'sln'
+                ), date_i18n(__('M j, Y @ G:i', 'sln'), strtotime($post->post_date))
             ),
             10 => sprintf(
-                    __('Booking draft updated.', 'sln')
+                __('Booking draft updated.', 'sln')
             ),
         );
 
@@ -117,7 +131,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         return $messages;
     }
 
-    protected function getPostTypeArgs() {
+    protected function getPostTypeArgs()
+    {
         return array(
             'description' => __('This is where bookings are stored.', 'sln'),
             'public' => true,
@@ -155,25 +170,27 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         );
     }
 
-    private function registerPostStatus() {
+    private function registerPostStatus()
+    {
         foreach (SLN_Enum_BookingStatus::toArray() as $k => $v) {
             register_post_status(
-                    $k, array(
+                $k, array(
                 'label' => $v,
                 'public' => true,
                 'exclude_from_search' => false,
                 'show_in_admin_all_list' => true,
                 'show_in_admin_status_list' => true,
                 'label_count' => _n_noop(
-                        $v . ' <span class="count">(%s)</span>', $v . ' <span class="count">(%s)</span>'
+                    $v . ' <span class="count">(%s)</span>', $v . ' <span class="count">(%s)</span>'
                 )
-                    )
+                )
             );
         }
         add_action('transition_post_status', array($this, 'transitionPostStatus'), 10, 3);
     }
 
-    public function transitionPostStatus($new_status, $old_status, $post) {
+    public function transitionPostStatus($new_status, $old_status, $post)
+    {
         if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
             $p = $this->getPlugin();
             $booking = $p->createBooking($post);
@@ -182,40 +199,38 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
             } elseif ($new_status == SLN_Enum_BookingStatus::CANCELED && $old_status != $new_status) {
                 $p->sendMail('mail/status_canceled', compact('booking'));
             } elseif (
-                 in_array($new_status, array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::PAY_LATER))
-                 && $old_status != $new_status
+                in_array($new_status, array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::PAY_LATER)) && $old_status != $new_status
             ) {
                 $p->sendMail('mail/summary', compact('booking'));
                 $p->sendMail('mail/summary_admin', compact('booking'));
-                if($p->getSettings()->get('sms_new')) {
+                if ($p->getSettings()->get('sms_new')) {
                     $phone = $p->getSettings()->get('sms_new_number');
                     SLN_Enum_SmsProvider::getService(
-                        $p->getSettings()->get('sms_provider'),
-                        $this->getPlugin()
+                        $p->getSettings()->get('sms_provider'), $this->getPlugin()
                     )->send($phone, $p->loadView('sms/summary', compact('booking')));
                 }
-                if($p->getSettings()->get('sms_new_attendant') && $booking->getAttendant()){
+                if ($p->getSettings()->get('sms_new_attendant') && $booking->getAttendant()) {
                     $phone = $booking->getAttendant()->getPhone();
                     SLN_Enum_SmsProvider::getService(
-                        $p->getSettings()->get('sms_provider'),
-                        $this->getPlugin()
+                        $p->getSettings()->get('sms_provider'), $this->getPlugin()
                     )->send($phone, $p->loadView('sms/summary', compact('booking')));
- 
                 }
             }
-            
+
             //$ret = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
         }
     }
 
-    public function bulkAdminFooter() {
+    public function bulkAdminFooter()
+    {
         global $post;
         if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
+
             ?>
             <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    $('#save-post').attr('value', '<?php echo __('Save Booking', 'sln') ?>');
-                    $('#submitdiv h3 span').text('<?php echo __('Booking', 'sln') ?>');
+                jQuery( document ).ready( function ( $ ) {
+                    $( '#save-post' ).attr( 'value', '<?php echo __('Save Booking', 'sln') ?>' );
+                    $( '#submitdiv h3 span' ).text( '<?php echo __('Booking', 'sln') ?>' );
             <?php
             foreach (SLN_Enum_BookingStatus::toArray() as $k => $v) {
                 $complete = '';
@@ -224,19 +239,22 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
                     $complete = ' selected=\"selected\"';
                     $label = '<span id=\"post-status-display\">' . $v . '</span>';
                 }
+
                 ?>
-                        $("select#post_status").append("<option value=\"<?php echo $k ?>\" <?php echo $complete ?>><?php echo $v ?></option>");
-                        $(".misc-pub-section label").append("<?php echo $label ?>");
+                        $( "select#post_status" ).append( "<option value=\"<?php echo $k ?>\" <?php echo $complete ?>><?php echo $v ?></option>" );
+                        $( ".misc-pub-section label" ).append( "<?php echo $label ?>" );
                 <?php
             }
+
             ?>
-                });
+                } );
             </script>
             <?php
         }
     }
 
-    public function bulkPostStates() {
+    public function bulkPostStates()
+    {
         global $post;
         $arg = get_query_var('post_status');
         if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
@@ -253,9 +271,11 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         return null;
     }
 
-    function posttype_admin_css() {
+    function posttype_admin_css()
+    {
         global $post_type;
         if ($post_type == SLN_Plugin::POST_TYPE_BOOKING) {
+
             ?>
             <style type="text/css">
                 #post-preview, #view-post-btn, #misc-publishing-actions #visibility,
@@ -265,14 +285,13 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
                 }
             </style>
             <script type="text/javascript">
-                jQuery(function () {
-                    jQuery('#_sln_booking_status, #post_status').change(function () {
-                        jQuery('#_sln_booking_status, #post_status').val(jQuery(this).val());
-                    });
-                });
+                jQuery( function () {
+                    jQuery( '#_sln_booking_status, #post_status' ).change( function () {
+                        jQuery( '#_sln_booking_status, #post_status' ).val( jQuery( this ).val() );
+                    } );
+                } );
             </script>
             <?php
         }
     }
-
 }

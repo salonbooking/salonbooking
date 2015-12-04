@@ -68,7 +68,8 @@ return array(
             ),
             'meta' => array(
                 '_sln_service_price' => 15,
-                '_sln_service_unit'  => 3
+                '_sln_service_unit'  => 3,
+                '_sln_service_order' => '0',
             )
         ),
         array(
@@ -84,7 +85,8 @@ return array(
                 '_sln_service_duration'   => '00:30',
                 '_sln_service_secondary'  => true,
                 '_sln_service_notav_from' => '11',
-                '_sln_service_notav_to'   => '15'
+                '_sln_service_notav_to'   => '15',
+                '_sln_service_order'      => '0',
             )
         ),
         array(
@@ -100,7 +102,8 @@ return array(
                 '_sln_service_duration'   => '01:00',
                 '_sln_service_secondary'  => true,
                 '_sln_service_notav_from' => '11',
-                '_sln_service_notav_to'   => '15'
+                '_sln_service_notav_to'   => '15',
+                '_sln_service_order'      => '0',
             )
         ),
         'booking'  => array(
