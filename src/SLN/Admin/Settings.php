@@ -32,17 +32,12 @@ class SLN_Admin_Settings {
     }
 
     function row_input_checkbox($key, $label, $settings = array()) {
-        ?>
-        <div class="form-group">
-            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
-        <?php
         SLN_Form::fieldCheckbox(
-                "salon_settings[{$key}hh]", $this->getOpt($key), $settings
+                "salon_settings[{$key}]", $this->getOpt($key), $settings
         )
         ?>
-        <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
-        </div>
-        <?php
+        <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
+        <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
     }
 
     function getOpt($key) {
@@ -51,22 +46,15 @@ class SLN_Admin_Settings {
 
     function row_input_text($key, $label, $settings = array()) {
         ?>
-        <div class="form-group">
-            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
+            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
         <?php echo SLN_Form::fieldText("salon_settings[$key]", $this->getOpt($key)) ?>
-        <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
-        </div>
-        <?php
+        <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
         }
-        
         function row_checkbox_text($key, $label, $settings = array()) {
         ?>
-        <div class="form-group">
-            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
+            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
         <?php echo SLN_Form::fieldCheckbox("salon_settings[$key]", $this->getOpt($key)) ?>
-            <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
-        </div>
-        <?php
+            <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
     }
 
         function row_input_textarea($key, $label, $settings = array()) {
@@ -74,17 +62,14 @@ class SLN_Admin_Settings {
                 $settings['textarea'] = array();
             }
             ?>
-        <div class="form-group">
-            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
+            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
         <?php SLN_Form::fieldTextarea("salon_settings[$key]", $this->getOpt($key), $settings['textarea']); ?>
         <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
-        </div>
         <?php
     }
 
     function row_input_page($key, $label, $settings = array()) {
         ?>
-        <div class="form-group">
             <label for="<?php echo $key ?>"><?php echo $label ?></label>
         <?php
         wp_dropdown_pages(
@@ -93,10 +78,7 @@ class SLN_Admin_Settings {
                     'selected' => $this->getOpt($key) ? $this->getOpt($key) : null,
                     'show_option_none' => 'Nessuna'
                 )
-        )
-        ?>
-        </div>
-        <?php
+        );
         }
 
          /**
@@ -107,7 +89,6 @@ class SLN_Admin_Settings {
      */
     function select_text($key, $label, $list, $settings = array()) {
         ?>
-        <div class="form-group">
             <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
         <select name="salon_settings[<?php echo $key ?>]">
             <?php
@@ -118,7 +99,6 @@ class SLN_Admin_Settings {
             }
             ?>
         </select>
-        </div>
         <?php
     }
     
