@@ -15,7 +15,7 @@
 <div id="sln-salon" class="sln-bootstrap">
     <?php
     if ($trial_exp)
-        echo '<span class="sln_notice">' . __('Your free version is expired - upgrade to PRO', 'sln') . '</span>';
+        echo '<h2 class="sln_notice">' . __('Your free version is expired - upgrade to PRO', 'sln') . '</h2>';
 
     ?>
     <div>
