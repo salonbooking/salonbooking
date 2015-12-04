@@ -278,7 +278,7 @@ class SLN_Func
         global $wpdb;
         $ret = array(0 => array('term' => false, 'services' => array()));
         $order = get_option(SLN_Plugin::CATEGORY_ORDER, '""');
-        $sql = "SELECT * from wp_term_taxonomy tt, wp_terms t WHERE tt.term_id = t.term_id AND tt.taxonomy = '" . SLN_Plugin::TAXONOMY_SERVICE_CATEGORY . "' ORDER BY FIELD(t.term_id, $order)";
+        $sql = "SELECT * FROM {$wpdb->term_taxonomy} tt, {$wpdb->terms} t WHERE tt.term_id = t.term_id AND tt.taxonomy = '" . SLN_Plugin::TAXONOMY_SERVICE_CATEGORY . "' ORDER BY FIELD(t.term_id, $order)";
         $categories = $wpdb->get_results($sql);
         foreach ($categories as $cat) {
             foreach ($services as $s) {
