@@ -426,6 +426,9 @@ body {
         @include transition(background-color 250ms);
         &.sln-box--info-visible {background-color: $cl_warning--light;}
     }
+    .sln-box--main--small {
+        min-height: 220px;
+    }
     .sln-box--sub {
         padding-top: rem(20px);
         padding-bottom: rem(20px);

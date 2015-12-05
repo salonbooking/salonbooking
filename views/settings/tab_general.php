@@ -254,7 +254,7 @@
 </div>
 <div class="row">
     <div class="col-sm-6">
-    <div class="sln-box sln-box--main">
+    <div class="sln-box sln-box--main sln-box--main--small">
     <h2 class="sln-box-title">Ajax steps <span>This allows loading steps via ajax</span></h2>
     <div class="row">
             <div class="col-xs-12 form-group  sln-checkbox">
@@ -265,7 +265,7 @@
     </div>
     </div>
     <div class="col-sm-6">
-    <div class="sln-box sln-box--main">
+    <div class="sln-box sln-box--main sln-box--main--small">
     <h2 class="sln-box-title">Bootstrap CSS</h2>
     <div class="row">
             <div class="col-xs-12 form-group  sln-checkbox">

@@ -1207,6 +1207,8 @@ body {
     transition: background-color 250ms; }
     #sln-salon--admin .sln-box--main.sln-box--info-visible {
       background-color: #f7c65f; }
+  #sln-salon--admin .sln-box--main--small {
+    min-height: 220px; }
   #sln-salon--admin .sln-box--sub {
     padding-top: 0.83333rem;
     padding-bottom: 0.83333rem;
