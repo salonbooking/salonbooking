@@ -755,7 +755,7 @@ body {
     #sln-salon--admin .sln-switch input + label.sln-switch-btn + label.sln-switch-text {
       position: relative;
       width: 75%;
-      max-width: 200px; }
+      max-width: 300px; }
     #sln-salon--admin .sln-switch input + label.sln-switch-btn + label.sln-switch-text:before,
     #sln-salon--admin .sln-switch input + label.sln-switch-btn + label.sln-switch-text:after {
       content: "";
@@ -1208,7 +1208,7 @@ body {
     #sln-salon--admin .sln-box--main.sln-box--info-visible {
       background-color: #f7c65f; }
   #sln-salon--admin .sln-box--main--small {
-    min-height: 220px; }
+    min-height: 240px; }
   #sln-salon--admin .sln-box--sub {
     padding-top: 0.83333rem;
     padding-bottom: 0.83333rem;
