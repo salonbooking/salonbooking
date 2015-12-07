@@ -2,16 +2,15 @@
 /**
  * @param $this SLN_Admin_Settings
  */
-function sln_availability_row($prefix, $row)
+function sln_availability_row($prefix, $row, $rulenumber)
 {
     ?>
     <div class="col-xs-12 sln-booking-rule">
-    <h2 class="sln-box-title">Rule One</h2>
+    <h2 class="sln-box-title">Rule <strong><?php echo $rulenumber; ?></strong></h2>
     <h6 class="sln-fake-label">Available days</h6>
         <div class="sln-checkbutton-group">
         <?php foreach (SLN_Func::getDays() as $k => $day) : ?>
             <div class="sln-checkbutton">
-                
                     <?php SLN_Form::fieldCheckboxButton(
                         $prefix . "[days][{$k}]",
                         (isset($row['days'][$k]) ? 1 : null),
@@ -26,13 +25,20 @@ function sln_availability_row($prefix, $row)
              <h6 class="sln-fake-label">First shift</h6>
             <div class="sln-slider">
             <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
-            <div class="col col-time"><span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span></div>
+            <div class="col col-time"><span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span>
+            <input type="text" name="salon_settings[gen_name]" id="" value="11:45" class="slider-time-hidden-input">
+            <input type="text" name="salon_settings[gen_name]" id="" value="20:30" class="slider-time-hidden-input2">
+            </div>
             <div class="clearfix"></div>
             </div>
              <h6 class="sln-fake-label">Second shift</h6>
             <div class="sln-slider">
             <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
-            <div class="col col-time"><span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span></div>
+            <div class="col col-time">
+            <span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span>
+            <input type="text" name="salon_settings[gen_name]" id="" value="8:45" class="slider-time-hidden-input">
+            <input type="text" name="salon_settings[gen_name]" id="" value="16:00" class="slider-time-hidden-input2">
+            </div>
             <div class="clearfix"></div>
             </div>
         </div>
@@ -187,24 +193,32 @@ function sln_availability_row($prefix, $row)
                 <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
             </div>
     </div>
-    <div class="sln-box--sub row">
+    <div class="sln-box--sub sln-booking-rules row">
     <?php
         $key            = 'available';
         $label          = __('On-line booking available days', 'sln');
         $availabilities = $this->getOpt('availabilities');
         ?>
-    <div class="col-xs-12"><h2 class="sln-box-title"><?php echo $label ?> <span class="block"><?php _e('The following rules, should represent your real timetable. <br />Leave blank if you want bookings available everydays at every hour', 'sln') ?></span></h2>
+    <div class="col-xs-12">
+    <h2 class="sln-box-title"><?php echo $label ?> <span class="block"><?php _e('The following rules, should represent your real timetable. <br />Leave blank if you want bookings available everydays at every hour', 'sln') ?></span></h2>
     </div>
-    <?php foreach ($availabilities as $k => $row): ?>
-    <?php sln_availability_row("salon_settings[availabilities][$k]", $row); ?>
-    
-<?php endforeach ?>
-
+    <div id="sln-booking-rules-wrapper">
+        <?php
+            $n = 0;
+            foreach ($availabilities as $k => $row):
+            $n++;
+        ?>
+        <?php sln_availability_row("salon_settings[availabilities][$k]", $row, $n); ?>
+        <?php endforeach ?>
+    </div>
     <div class="col-xs-12">
     <button data-collection="addnew" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file"><?php _e(
                         'Add new','sln'
                     ) ?>
                 </button>
+    </div>
+    <div data-collection="prototype" data-count="<?php echo count($availabilities) ?>">
+        <?php sln_availability_row("salon_settings[availabilities][__new__]", $row); ?>
     </div>
     </div>
 

@@ -246,14 +246,14 @@ jQuery(function ($) {
         });
     }
 
-    var prototype = $('#sln-availabilities div[data-collection="prototype"]');
+    var prototype = $('.sln-booking-rules div[data-collection="prototype"]');
     var html = prototype.html();
     var count = prototype.data('count');
     prototype.remove();
     bindRemove();
 
     $('button[data-collection="addnew"]').click(function () {
-        $('#sln-availabilities div.items').append('<div class="item">' + html.replace(/__new__/g, count) + '</div>');
+        $('#sln-booking-rules-wrapper').append('<div class="sln-booking-rule">' + html.replace(/__new__/g, count) + '</div>');
         count++;
         bindRemove();
         return false;
@@ -365,12 +365,30 @@ jQuery(function ($) {
         event.preventDefault();
     });
     // TIME RANGE //
-    $('.slider-range').each(function(){ $(this).slider({
+    $('.slider-range').each(function(){
+        var labelFrom = $(this).parent().parent().find('.col-time .slider-time');
+            labelTo = $(this).parent().parent().find('.col-time .slider-time2');
+            inputFrom = $(this).parent().parent().find('.col-time .slider-time-hidden-input'),
+            inputTo = $(this).parent().parent().find('.col-time .slider-time-hidden-input2'),
+            orarioFrom = inputFrom.val(),
+            oreFrom = orarioFrom.substr(0, orarioFrom.indexOf(':')),
+            oreInMinutiFrom = parseInt(Math.floor( oreFrom * 60)),
+            minutiFrom = parseInt(orarioFrom.substr(orarioFrom.indexOf(":") + 1)),
+            totaleMinutiFrom = oreInMinutiFrom+minutiFrom,
+            orarioTo = inputTo.val(),
+            oreTo = orarioTo.substr(0, orarioTo.indexOf(':')),
+            oreInMinutiTo = parseInt(Math.floor( oreTo * 60)),
+            minutiTo = parseInt(orarioTo.substr(orarioTo.indexOf(":") + 1)),
+            totaleMinutiTo = oreInMinutiTo+minutiTo;
+            labelFrom.html(inputFrom.val());
+            labelTo.html(inputTo.val());
+    $(this).slider({
     range: true,
     min: 480,
     max: 1260,
     step: 15,
-    values: [540, 1020],
+    values: [totaleMinutiFrom, totaleMinutiTo],
+    //values: [540, 1020],
     slide: function (e, ui) {
         var hours1 = Math.floor(ui.values[0] / 60);
         var minutes1 = ui.values[0] - (hours1 * 60);
@@ -399,6 +417,7 @@ jQuery(function ($) {
 
 
         $(this).parent().parent().find('.col-time .slider-time').html(hours1 + ':' + minutes1);
+        $(this).parent().parent().find('.col-time .slider-time-hidden-input').val(hours1 + ':' + minutes1);
 
         var hours2 = Math.floor(ui.values[1] / 60);
         var minutes2 = ui.values[1] - (hours2 * 60);
@@ -424,9 +443,10 @@ jQuery(function ($) {
         }
 
         $(this).parent().parent().find('.col-time .slider-time2').html(hours2 + ':' + minutes2);
+        $(this).parent().parent().find('.col-time .slider-time-hidden-input2').val(hours2 + ':' + minutes2);
+        //alert(hours2 + ':' + minutes2);
     }
 });});
-
     //$('#salon_settings_pay_method').change(function(){
     //    $('.payment-mode-data').hide();
     //    $('#payment-mode-'+$(this).val()).show();
