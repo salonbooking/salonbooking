@@ -314,6 +314,9 @@ class SLN_Func
 //                $ret[0]['services'][] = $s;
 //            }
 //        }
+        if (empty($categories)) {
+            $ret[0]['services'] = $services;
+        }
         if (empty($ret['0']['services'])) {
             unset($ret['0']);
         }
