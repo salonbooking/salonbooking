@@ -142,44 +142,15 @@
             <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
         </div>
     </div>
-    <div class="sln-box--sub row payment-mode-data" id="payment-mode-stripe" style="display: block;">
-    <div class="col-xs-12"><h2 class="sln-box-title">Stripe account informations</h2></div>
-        <div class="col-xs-12 col-sm-4 sln-input--simple">
-            <label for="salon_settings_pay_stripe_apiKey">Enter your Stripe API key</label>
-                <input type="text" name="salon_settings[pay_stripe_apiKey]" id="salon_settings_pay_stripe_apiKey" value="sk_test_jUzp39d02lXXZGr4AyNvRDDc">
-            <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at.</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 sln-input--simple">
-            <label for="salon_settings_pay_stripe_apiKey">Enter your Stripe publishable api key</label>
-                <input type="text" name="salon_settings[pay_stripe_apiKeyPublic]" id="salon_settings_pay_stripe_apiKeyPublic" value="pk_test_A7SMBbMwikB6VOncPfBKMBhO">
-            <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at.</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 sln-box-maininfo  align-top">
-            <p class="sln-input-help">Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
-        </div>
-    </div>
-    <div class="sln-box--sub row payment-mode-data" id="payment-mode-paypal" style="display: none;">
-    <div class="col-xs-12"><h2 class="sln-box-title">Paypal account informations</h2></div>
-        <div class="col-xs-12 col-sm-6 col-md-4 sln-input--simple">
-            <label for="salon_settings_gen_name">Enter your PayPal e-mail address</label>
-                <input type="text" name="salon_settings[gen_name]" id="salon_settings_gen_name" placeholder="Prova nome salon bis">
-            <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at.</p>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-5 sln-checkbox">
-                <input type="checkbox" name="salon_settings[pay_paypal_test]" id="salon_settings_pay_paypal_test" value="1" checked="checked">
-        <label for="salon_settings_pay_paypal_test">Enable PayPal sandbox</label>
-        <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at.</p>
-        </div>
-        <!--<div class="col-xs-12 col-sm-4 sln-box-maininfo  align-top">
-            <p class="sln-input-help">Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
-        </div>
-        <div class="clearfix"></div>-->
-        <div class="col-xs-12 col-sm-6 col-md-3 sln-box-maininfo  align-top">
-            <p class="sln-input-help">Check this option to test PayPal payments
-using your PayPal Sandbox account.</p>
-        </div>
-    </div>
-    <div class="clearfix"></div>
+    <?php
+    foreach(SLN_Enum_PaymentMethodProvider::toArray() as $k => $v){
+        ?><div class="sln-box--sub row payment-mode-data" id="payment-mode-<?php echo $k?>"><?php
+        echo SLN_Enum_PaymentMethodProvider::getService($k, $this->plugin)->renderSettingsFields(
+            array('adminSettings' => $this));
+        ?></div><?php
+    }
+?>
+<div class="clearfix"></div>
 </div>
 <!--
     <div class="row">
