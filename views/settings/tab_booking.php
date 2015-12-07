@@ -228,20 +228,20 @@ function sln_availability_row($prefix, $row, $rulenumber)
 <div class="sln-box sln-box--main">
     <h2 class="sln-box-title">Booking manual confirmation</h2>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-checkbox">
-            <input type="checkbox" name="salon_settings[confirmation]" id="salon_settings_confirmation" value="1">
-            <label for="salon_settings_confirmation">Booking confirmation</label>
-            <p class="help-block">Select this option to manually confirm each booking.</p>
+        <div class="col-xs-12 col-sm-12 col-md-4 form-group sln-checkbox">
+            <?php $this->row_input_checkbox(
+                    'confirmation',
+                    __('Booking confirmation', 'sln'),
+                    array('help' => __('Select this option to manually confirm each booking.','sln'))
+                ); ?>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-select ">
-            <label for="thankyou">Thank you page</label>
-        <select name="salon_settings[thankyou]" id="salon_settings[thankyou]">
-            <option value="">Nessuna</option>
-            <option class="level-0" value="9">Booking</option>
-            <option class="level-0" value="2">Sample Page</option>
-            <option class="level-0" value="10" selected="selected">Thank you for booking</option>
-        </select>
-            <p class="help-block">Select a page where to redirect your users after booking completition</p>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select ">
+            <?php $this->row_input_page('thankyou', __('Thank you page', 'sln')); ?>
+            <p class="help-block"><?php _e('Select a page where to redirect your users after booking completition.', 'sln') ?></p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select ">
+            <?php $this->row_input_page('pay', __('Pay page', 'sln')); ?>
+            <p class="help-block"><?php _e('Select a page where to redirect your users for payment.', 'sln') ?></p>
         </div>
     </div>
 </div>
