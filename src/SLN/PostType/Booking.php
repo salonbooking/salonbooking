@@ -1,8 +1,10 @@
 <?php
 
-class SLN_PostType_Booking extends SLN_PostType_Abstract {
+class SLN_PostType_Booking extends SLN_PostType_Abstract
+{
 
-    public function init() {
+    public function init()
+    {
         parent::init();
 //        add_filter('wp_insert_post_data', array($this, 'insert_post_data'), '99', 2);
 
@@ -26,23 +28,24 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
 //        return $data;
 //    }
 
-    public function manage_columns($columns) {
+    public function manage_columns($columns)
+    {
         $ret = array(
             'cb' => $columns['cb'],
             'ID' => __('Booking ID'),
-            'myauthor' => __('User name', 'sln'),
-            'date' => __('Submitted', 'sln'),
-            'booking_status' => __('Status', 'sln'),
             'booking_date' => __('Booking Date', 'sln'),
+            'booking_status' => __('Status', 'sln'),
+            'myauthor' => __('User name', 'sln'),
+            'booking_attendant' => __('Attendant', 'sln'),
+//            'date' => __('Submitted', 'sln'),
             'booking_price' => __('Booking Price', 'sln'),
+            'booking_services' => __('Booking Services', 'sln'),
         );
-        if ($this->getPlugin()->getSettings()->get('attendant_enabled')) {
-            $ret['booking_attendant'] = __('Attendant', 'sln');
-        }
         return $ret;
     }
 
-    public function manage_column($column, $post_id) {
+    public function manage_column($column, $post_id)
+    {
         switch ($column) {
             case 'ID' :
                 echo edit_post_link($post_id, '<p>', '</p>', $post_id);
@@ -55,15 +58,24 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
                 echo SLN_Enum_BookingStatus::getLabel(get_post_status($post_id));
                 break;
             case 'booking_date':
-                echo $this->getPlugin()->format()->datetime( new DateTime(
+                echo $this->getPlugin()->format()->datetime(new DateTime(
                     get_post_meta($post_id, '_sln_booking_date', true)
                     . ' ' . get_post_meta($post_id, '_sln_booking_time', true))
                 );
                 break;
             case 'booking_price' :
                 echo $this->getPlugin()->format()->money(get_post_meta($post_id, '_sln_booking_amount', true));
-                if(get_post_status($post_id) == SLN_Enum_BookingStatus::PAID &&  $deposit = get_post_meta($post_id, '_sln_booking_deposit', true))
-                    echo '(deposit '.$this->getPlugin()->format()->money($deposit).')';
+                if (get_post_status($post_id) == SLN_Enum_BookingStatus::PAID && $deposit = get_post_meta($post_id, '_sln_booking_deposit', true))
+                    echo '(deposit ' . $this->getPlugin()->format()->money($deposit) . ')';
+                break;
+            case 'booking_services' :
+                $services = get_post_meta($post_id, '_sln_booking_services', true);
+                $name_services = array();
+                foreach ($services as $service) {
+                    $helper = new SLN_Wrapper_Service($service);
+                    $name_services[] = $helper->getName();
+                }
+                echo implode(', ', $name_services);
                 break;
             case 'booking_attendant' :
                 if ($attendant = $this->getPlugin()->createBooking($post_id)->getAttendant())
@@ -74,7 +86,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         }
     }
 
-    public function enter_title_here($title, $post) {
+    public function enter_title_here($title, $post)
+    {
         if ($this->getPostType() === $post->post_type) {
             $title = __('Enter booking name', 'sln');
         }
@@ -82,7 +95,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         return $title;
     }
 
-    public function updated_messages($messages) {
+    public function updated_messages($messages)
+    {
         global $post, $post_ID;
 
         $messages[$this->getPostType()] = array(
@@ -117,7 +131,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         return $messages;
     }
 
-    protected function getPostTypeArgs() {
+    protected function getPostTypeArgs()
+    {
         return array(
             'description' => __('This is where bookings are stored.', 'sln'),
             'public' => true,
@@ -155,7 +170,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         );
     }
 
-    private function registerPostStatus() {
+    private function registerPostStatus()
+    {
         foreach (SLN_Enum_BookingStatus::toArray() as $k => $v) {
             register_post_status(
                     $k, array(
@@ -173,7 +189,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         add_action('transition_post_status', array($this, 'transitionPostStatus'), 10, 3);
     }
 
-    public function transitionPostStatus($new_status, $old_status, $post) {
+    public function transitionPostStatus($new_status, $old_status, $post)
+    {
         if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
             $p = $this->getPlugin();
             $booking = $p->createBooking($post);
@@ -201,7 +218,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
                     SLN_Enum_SmsProvider::getService(
                         $p->getSettings()->get('sms_provider'),
                         $this->getPlugin()
-                    )->send($phone, $p->loadView('sms/summary', compact('booking'))); 
+                    )->send($phone, $p->loadView('sms/summary', compact('booking')));
                 }
             }
             
@@ -209,7 +226,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         }
     }
 
-    public function bulkAdminFooter() {
+    public function bulkAdminFooter()
+    {
         global $post;
         if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
             ?>
@@ -237,7 +255,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         }
     }
 
-    public function bulkPostStates() {
+    public function bulkPostStates()
+    {
         global $post;
         $arg = get_query_var('post_status');
         if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
@@ -254,7 +273,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract {
         return null;
     }
 
-    function posttype_admin_css() {
+    function posttype_admin_css()
+    {
         global $post_type;
         if ($post_type == SLN_Plugin::POST_TYPE_BOOKING) {
             ?>

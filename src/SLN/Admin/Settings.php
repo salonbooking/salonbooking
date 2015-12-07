@@ -214,6 +214,8 @@ class SLN_Admin_Settings {
         'pay',
         'availabilities',
         'availability_mode',
+        'cancellation_enabled',         // algolplus
+        'hours_before_cancellation',    // algolplus
         'disabled',
         'disabled_message',
         'confirmation',

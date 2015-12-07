@@ -22,6 +22,17 @@ class SLN_Enum_BookingStatus
             self::ERROR     => 'default',
     );
 
+    // algolplus start
+    private static $icons  = array(
+	        self::PENDING   => 'glyphicon-time',
+	        self::PAID      => 'glyphicon-thumbs-up',
+	        self::PAY_LATER => 'glyphicon-minus',
+	        self::CANCELED  => 'glyphicon-ban-circle',
+	        self::CONFIRMED => 'glyphicon-flag',
+	        self::ERROR     => 'glyphicon-warning-sign',
+    );
+    // algolplus end
+
     public static function toArray()
     {
         return self::$labels;
@@ -35,6 +46,12 @@ class SLN_Enum_BookingStatus
     {
         return isset(self::$colors[$key]) ? self::$colors[$key] : self::$colors[self::ERROR];
     }
+    // algolplus start
+    public static function getIcon($key)
+    {
+        return isset(self::$icons[$key]) ? self::$icons[$key] : self::$icons[self::ERROR];
+    }
+    // algolplus end
 
 
     public static function init()

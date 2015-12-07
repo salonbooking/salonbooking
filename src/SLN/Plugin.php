@@ -2,6 +2,7 @@
 
 class SLN_Plugin
 {
+
     const POST_TYPE_SERVICE = 'sln_service';
     const POST_TYPE_ATTENDANT = 'sln_attendant';
     const POST_TYPE_BOOKING = 'sln_booking';
@@ -12,6 +13,8 @@ class SLN_Plugin
     const F1 = 30;
     const F2 = 20;
     const DEBUG_ENABLED = false;
+    const CATEGORY_ORDER = 'sln_service_category_order';
+    const SERVICE_ORDER = '_sln_service_order';
 
     private static $instance;
     private $settings;
@@ -19,7 +22,6 @@ class SLN_Plugin
     private $attendants;
     private $formatter;
     private $availabilityHelper;
-
 
     public static function getInstance()
     {
@@ -49,7 +51,7 @@ class SLN_Plugin
         new SLN_PostType_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
         new SLN_PostType_Booking($this, self::POST_TYPE_BOOKING);
-        new SLN_TaxonomyType_ServiceCategory($this, self::TAXONOMY_SERVICE_CATEGORY, array(self::POST_TYPE_SERVICE) );
+        new SLN_TaxonomyType_ServiceCategory($this, self::TAXONOMY_SERVICE_CATEGORY, array(self::POST_TYPE_SERVICE, self::POST_TYPE_ATTENDANT));
     }
 
     private function initAdmin()
@@ -65,7 +67,6 @@ class SLN_Plugin
         add_action('wp_ajax_salon', array($this, 'ajax'));
         add_action('wp_ajax_nopriv_salon', array($this, 'ajax'));
         add_action('wp_ajax_saloncalendar', array($this, 'ajax'));
-
     }
 
     public function add_admin_caps()
@@ -77,35 +78,41 @@ class SLN_Plugin
     public function action_init()
     {
         if (!session_id()) {
-            session_start(); 
+            session_start();
         }
         load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME) . '/languages');
         $this->preloadFrontendScripts();
         SLN_Shortcode_Salon::init($this);
+        SLN_Shortcode_SalonMyAccount::init($this); // algolplus
+        SLN_Shortcode_SalonMyAccount_Details::init($this); // algolplus
     }
 
-    private function preloadFrontendScripts(){
-        if(!$this->getSettings()->get('no_bootstrap')) {
+    private function preloadFrontendScripts()
+    {
+        if (!$this->getSettings()->get('no_bootstrap')) {
             wp_enqueue_style('salon-bootstrap', SLN_PLUGIN_URL . '/css/sln-bootstrap.css', array(), SLN_VERSION, 'all');
         }
 
         wp_enqueue_style('salon', SLN_PLUGIN_URL . '/css/salon.css', array(), SLN_VERSION, 'all');
         //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
         //       wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.css', array(), SLN_VERSION, 'all');
-        $lang = strtolower(substr(get_locale(),0,2));
+        $lang = strtolower(substr(get_locale(), 0, 2));
         wp_enqueue_script('smalot-datepicker', SLN_PLUGIN_URL . '/js/bootstrap-datetimepicker.js', array('jquery'), '20140711', true);
-        if($lang != 'en') {
-            wp_enqueue_script('smalot-datepicker-lang',  SLN_PLUGIN_URL .'/js/datepicker_language/bootstrap-datetimepicker.'.$lang.'.js', array('jquery'), '2015-05-01',true);
+        if ($lang != 'en') {
+            wp_enqueue_script('smalot-datepicker-lang', SLN_PLUGIN_URL . '/js/datepicker_language/bootstrap-datetimepicker.' . $lang . '.js', array('jquery'), '2015-05-01', true);
         }
         wp_enqueue_script('salon', SLN_PLUGIN_URL . '/js/salon.js', array('jquery'), '20140711', true);
+        wp_enqueue_script('salon-bootstrap', SLN_PLUGIN_URL . '/js/bootstrap.min.js', array('jquery'), '20140711', true); // algolplus
+        wp_enqueue_script('salon-my-account', SLN_PLUGIN_URL . '/js/salon-my-account.js', array('jquery'), '20140711', true); // algolplus
+        wp_enqueue_script('salon-raty', SLN_PLUGIN_URL . '/js/jquery.raty.js', array('jquery'), '20140711', true); // algolplus
         wp_localize_script(
-            'salon',
-            'salon',
-            array(
-                'ajax_url' => admin_url('admin-ajax.php') . '?lang='.(defined('ICL_LANGUAGE_CODE') ? 'ICL_LANGUAGE_CODE' : ''),
-                'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
-                'loading' => SLN_PLUGIN_URL.'/img/preloader.gif',
-                'txt_validating' => __('checking availability')
+            'salon', 'salon', array(
+            'ajax_url' => admin_url('admin-ajax.php') . '?lang=' . (defined('ICL_LANGUAGE_CODE') ? 'ICL_LANGUAGE_CODE' : ''),
+            'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
+            'loading' => SLN_PLUGIN_URL . '/img/preloader.gif',
+            'txt_validating' => __('checking availability'),
+            'images_folder' => SLN_PLUGIN_URL . '/img', // algolplus
+            'confirm_cancellation_text' => __('Do you really want to cancel?', 'sln'), // algolplus
             )
         );
     }
@@ -175,10 +182,24 @@ class SLN_Plugin
         if (!isset($this->services)) {
             $query = new WP_Query(
                 array(
-                    'post_type' => self::POST_TYPE_SERVICE,
-                    'nopaging' => true
+                'post_type' => self::POST_TYPE_SERVICE,
+                'nopaging' => true,
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    array(
+                        'key' => self::SERVICE_ORDER,
+                        'compare' => 'EXISTS'
+                    ),
+                    array(
+                        'key' => self::SERVICE_ORDER,
+                        'compare' => 'NOT EXISTS'
+                    )
+                ),
+                'orderby' => self::SERVICE_ORDER,
+                'order' => 'ASC',
                 )
             );
+            //echo "Last SQL-Query: {$query->request}";
             $ret = array();
             foreach ($query->get_posts() as $p) {
                 $ret[] = $this->createService($p);
@@ -199,8 +220,8 @@ class SLN_Plugin
         if (!isset($this->attendants)) {
             $query = new WP_Query(
                 array(
-                    'post_type' => self::POST_TYPE_ATTENDANT,
-                    'nopaging' => true
+                'post_type' => self::POST_TYPE_ATTENDANT,
+                'nopaging' => true
                 )
             );
             $ret = array();
@@ -215,7 +236,6 @@ class SLN_Plugin
         return $this->attendants;
     }
 
-
     public function admin_notices()
     {
         if (current_user_can('install_plugins')) {
@@ -229,9 +249,9 @@ class SLN_Plugin
                 echo $this->loadView('admin_notices', compact('dismissUrl'));
             }
             $cnt = get_option(SLN_PLUGIN::F);
-            if($cnt>self::F1){
+            if ($cnt > self::F1) {
                 echo $this->loadView('trial/admin_end');
-            }elseif($cnt > self::F2){
+            } elseif ($cnt > self::F2) {
                 echo $this->loadView('trial/admin_near');
             }
         }
@@ -246,7 +266,7 @@ class SLN_Plugin
     {
         return SLN_PLUGIN_DIR . '/views/' . $view . '.php';
     }
-    
+
     public function loadView($view, $data = array())
     {
         ob_start();
@@ -262,6 +282,7 @@ class SLN_Plugin
         $data['data'] = $settings = new ArrayObject($data);
         $content = $this->loadView($view, $data);
         if (!function_exists('sln_html_content_type')) {
+
             function sln_html_content_type()
             {
                 return 'text/html';
@@ -269,8 +290,8 @@ class SLN_Plugin
         }
 
         add_filter('wp_mail_content_type', 'sln_html_content_type');
-        $headers = 'From: '.$this->getSettings()->getSalonName().' <'.$this->getSettings()->getSalonEmail().'>' . "\r\n";
-        wp_mail($settings['to'], $settings['subject'], $content,$headers);
+        $headers = 'From: ' . $this->getSettings()->getSalonName() . ' <' . $this->getSettings()->getSalonEmail() . '>' . "\r\n";
+        wp_mail($settings['to'], $settings['subject'], $content, $headers);
         remove_filter('wp_mail_content_type', 'sln_html_content_type');
     }
 
@@ -309,7 +330,7 @@ class SLN_Plugin
 
     public function ajax()
     {
-        if($timezone = get_option('timezone_string'))
+        if ($timezone = get_option('timezone_string'))
             date_default_timezone_set($timezone);
 
 
@@ -317,12 +338,12 @@ class SLN_Plugin
         $method = $_REQUEST['method'];
         $className = 'SLN_Action_Ajax_' . ucwords($method);
         if (class_exists($className)) {
-            SLN_Plugin::addLog('calling ajax '.$className);
+            SLN_Plugin::addLog('calling ajax ' . $className);
             //SLN_Plugin::addLog(print_r($_POST,true));
             /** @var SLN_Action_Ajax_Abstract $obj */
             $obj = new $className($this);
             $ret = $obj->execute();
-            SLN_Plugin::addLog("$className returned:\r\n".json_encode($ret));
+            SLN_Plugin::addLog("$className returned:\r\n" . json_encode($ret));
             if (is_array($ret)) {
                 header('Content-Type: application/json');
                 echo json_encode($ret);
@@ -337,12 +358,15 @@ class SLN_Plugin
         }
     }
 
-    public static function addLog($txt){
-        if(self::DEBUG_ENABLED)
-            file_put_contents(SLN_PLUGIN_DIR.'/log.txt', '['.date('Y-m-d H:i:s').'] '.$txt."\r\n", FILE_APPEND | LOCK_EX);
+    public static function addLog($txt)
+    {
+        if (self::DEBUG_ENABLED)
+            file_put_contents(SLN_PLUGIN_DIR . '/log.txt', '[' . date('Y-m-d H:i:s') . '] ' . $txt . "\r\n", FILE_APPEND | LOCK_EX);
     }
 }
-function sln_sms_reminder(){
+
+function sln_sms_reminder()
+{
     $obj = new SLN_Action_Reminder();
     $obj->execute();
 }

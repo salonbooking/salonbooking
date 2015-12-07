@@ -68,7 +68,8 @@ return array(
             ),
             'meta' => array(
                 '_sln_service_price' => 15,
-                '_sln_service_unit'  => 3
+                '_sln_service_unit'  => 3,
+                '_sln_service_order' => '0',
             )
         ),
         array(
@@ -84,7 +85,8 @@ return array(
                 '_sln_service_duration'   => '00:30',
                 '_sln_service_secondary'  => true,
                 '_sln_service_notav_from' => '11',
-                '_sln_service_notav_to'   => '15'
+                '_sln_service_notav_to'   => '15',
+                '_sln_service_order'      => '0',
             )
         ),
         array(
@@ -100,7 +102,8 @@ return array(
                 '_sln_service_duration'   => '01:00',
                 '_sln_service_secondary'  => true,
                 '_sln_service_notav_from' => '11',
-                '_sln_service_notav_to'   => '15'
+                '_sln_service_notav_to'   => '15',
+                '_sln_service_order'      => '0',
             )
         ),
         'booking'  => array(
@@ -124,6 +127,17 @@ return array(
                 'ping_status'    => 'closed',
             ),
             'meta' => array()
-        )
+        ),
+        'bookingmyaccount'  => array(   // algolplus
+            'post' => array(
+                'post_title'     => 'Booking My Account',
+                'post_content'   => '[salon_booking_my_account]',
+                'post_status'    => 'publish',
+                'post_type'      => 'page',
+                'comment_status' => 'closed',
+                'ping_status'    => 'closed',
+            ),
+            'meta' => array()
+        ),
     )
 );
