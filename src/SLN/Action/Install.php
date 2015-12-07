@@ -23,7 +23,9 @@ class SLN_Action_Install
             }
             if (isset($ids['booking'])) {
                 $data['settings']['booking'] = $ids['booking'];
+                $data['settings']['pay'] = $ids['pay'];
             }
+
             update_option(SLN_Settings::KEY, $data['settings']);
         }
 

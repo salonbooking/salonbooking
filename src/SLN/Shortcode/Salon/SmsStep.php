@@ -16,13 +16,7 @@ class SLN_Shortcode_Salon_SmsStep extends SLN_Shortcode_Salon_AbstractUserStep
                 if(isset($values['phone'])){
                     $_SESSION['sln_sms_tests']++;
                     $_SESSION['sln_sms_code'] = rand(0, 999999);
-                    SLN_Enum_SmsProvider::getService(
-                        $this->getPlugin()
-                            ->getSettings()
-                            ->get('sms_provider'),
-
-                        $this->getPlugin()
-                    )->send($values['phone'], $_SESSION['sln_sms_code']);
+                    $this->sendSms($values['phone'], $_SESSION['sln_sms_code']);
                 }else{
                     $this->addError(__('Phone number wrong or not defined, you need to define a valid phone number', 'sln'));
                 }
@@ -30,6 +24,11 @@ class SLN_Shortcode_Salon_SmsStep extends SLN_Shortcode_Salon_AbstractUserStep
         }
 
         return parent::render();
+    }
+    private function sendSms($phone, $code){
+        $p = $this->getPlugin();
+        SLN_Enum_SmsProvider::getService($p->getSettings()->get('sms_provider'), $p)
+            ->send($values['phone'], $p->loadView('sms/summary',compact('code')));
     }
 
     protected function dispatchForm()

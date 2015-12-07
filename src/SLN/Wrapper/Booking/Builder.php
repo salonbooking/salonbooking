@@ -46,7 +46,7 @@ class SLN_Wrapper_Booking_Builder
     public function getLastBooking()
     {
         if ($this->lastId) {
-            return $this->plugin->createBooking(get_post($this->lastId));
+            return $this->plugin->createBooking($this->lastId);
         }
     }
 

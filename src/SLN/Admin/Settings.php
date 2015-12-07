@@ -211,6 +211,7 @@ class SLN_Admin_Settings {
             foreach (array(
         'confirmation',
         'thankyou',
+        'pay',
         'availabilities',
         'availability_mode',
         'cancellation_enabled',         // algolplus
@@ -237,7 +238,8 @@ class SLN_Admin_Settings {
         }
 
         public function processTabPayments() {
-            foreach (array(
+            $fields = array(
+        'pay_method',
         'pay_currency',
         'pay_currency_pos',
         'pay_paypal_email',
@@ -245,7 +247,13 @@ class SLN_Admin_Settings {
         'pay_cash',
         'pay_enabled',
         'pay_deposit'
-            ) as $k) {
+            );
+
+            foreach(SLN_Enum_PaymentMethodProvider::toArray() as $k => $v){
+                $fields = array_merge($fields, SLN_Enum_PaymentMethodProvider::getService($k, $this->plugin)->getFields());
+            }
+
+            foreach ($fields as $k) {
                 $data = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
                 $this->settings->set($k, $data);
             }

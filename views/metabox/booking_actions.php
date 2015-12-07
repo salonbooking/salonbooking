@@ -9,3 +9,5 @@
         value="submit"><?php echo __('Send', 'sln') ?></button>
 <br/>
 <span id="resend-notification-message"></span>
+<br/>
+<a class="button" href="<?php echo $booking->getPayUrl()?>" target="_blank">Pay &raquo;</a>

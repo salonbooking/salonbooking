@@ -279,5 +279,10 @@ function sln_availability_row($prefix, $row)
                 <?php $this->row_input_page('thankyou', __('Thank you page', 'sln')); ?>
                 <p><?php _e('Select a page where to redirect your users after booking completition.', 'sln') ?></p>
             </div>
+            <div class="col-md-6">
+                <?php $this->row_input_page('pay', __('Pay page', 'sln')); ?>
+                <p><?php _e('Select a page where to redirect your users for payment.', 'sln') ?></p>
+            </div>
+
         </div>
     </div>

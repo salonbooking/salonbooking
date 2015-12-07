@@ -17,6 +17,7 @@ class SLN_Settings
 
     public function set($key, $val)
     {
+        if(is_string($val)) $val = trim($val);
         if (empty($val)) {
             unset($this->settings[$key]);
         } else {
@@ -126,4 +127,11 @@ class SLN_Settings
         $ret = $this->get('availability_mode');
         return $ret ? $ret : 'basic';
     }
+    
+    public function getPaymentMethod()
+    {
+        return isset($this->settings['pay_method']) ? $this->settings['pay_method'] : 'paypal';
+    }
+
+
 }
