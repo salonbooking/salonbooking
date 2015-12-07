@@ -274,7 +274,7 @@ class SLN_Admin_Settings {
         <?php screen_icon(); ?>
         <div class="row">
             <h2 class="col-xs-12 col-sm-4"><?php _e('Salon Settings', 'sln'); ?></h2>
-            <div class="sln-admin-nav visible-md-block col-sm-8">
+            <div class="sln-admin-nav hidden-xs col-sm-8">
                 <ul class="sln-admin-nav">
                 <li><a href="admin.php?page=salon-calendar" class="sln-btn--icon sln-icon--calendar">Calendar</a></li>
                 <li><a href="edit.php?post_type=sln_booking" class="sln-btn--icon sln-icon--booking">Bookings</a></li>
