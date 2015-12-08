@@ -29,7 +29,7 @@ class SLN_Action_Ajax_SearchUser extends SLN_Action_Ajax_Abstract
         else
             $user_query = new WP_User_Query( compact('include', 'number') );
 
-        if(!$user_query->results) return [];
+        if(!$user_query->results) return array();
         else $results = $user_query->results;
 
         $value = array();
