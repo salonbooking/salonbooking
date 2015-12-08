@@ -51,22 +51,29 @@ class SLN_Shortcode_SalonMyAccount_Details
 
 	private function prepareBookings($bookings)
 	{
-		return array_map(function($elem) {
-			$attendant = $elem->getAttendant();
-			return array(
-				'id' => $elem->getId(),
-				'date' => $elem->getStartsAt()->format('M, j Y g:ia'),
-				'timestamp' => strtotime($elem->getStartsAt()),
-				'services' => implode("<br>", array_map(function($elem2) {
-					return $elem2->getName();
-				}, $elem->getServices())),
-				'assistant' => !empty($attendant) ? $attendant->getName() : '',
-				'total' => $this->plugin->getSettings()->getCurrencySymbol() . ' ' . $elem->getAmount(),
-				'status' => SLN_Enum_BookingStatus::getLabel($elem->getStatus()),
-				'status_code' => $elem->getStatus(),
-				'rating' => $elem->getRating(),
-			);
-		}, $bookings);
+		$result = array();
+		foreach ( $bookings as $booking ) {
+			$result[] = $this->prepareBooking($booking);
+		}
+
+		return $result;
+	}
+
+	private function prepareBooking($booking) {
+		$attendant = $booking->getAttendant();
+		return array(
+			'id' => $booking->getId(),
+			'date' => $booking->getStartsAt()->format('M, j Y g:ia'),
+			'timestamp' => strtotime($booking->getStartsAt()),
+			'services' => implode("<br>", array_map(function($elem2) {
+				return $elem2->getName();
+			}, $booking->getServices())),
+			'assistant' => !empty($attendant) ? $attendant->getName() : '',
+			'total' => $this->plugin->getSettings()->getCurrencySymbol() . ' ' . $booking->getAmount(),
+			'status' => SLN_Enum_BookingStatus::getLabel($booking->getStatus()),
+			'status_code' => $booking->getStatus(),
+			'rating' => $booking->getRating(),
+		);
 	}
 
 	protected function render($data)
