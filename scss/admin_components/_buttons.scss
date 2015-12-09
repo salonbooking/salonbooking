@@ -30,6 +30,7 @@
   @extend %font-big;
   line-height: rem(56px);
   @include bp(phone) {font-size: rem(18px);}
+  &.sln-btn--block {display: block;}
 }
 .sln-btn--medium, .sln-btn--medium input {
   display: inline-block;
@@ -38,6 +39,7 @@
   @extend %font-medium;
   line-height: rem(44px);
   padding: 0 rem(15px);
+  &.sln-btn--block {display: block;}
 }
 .sln-btn--small {
   display: inline-block;

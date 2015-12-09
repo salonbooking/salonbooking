@@ -938,12 +938,16 @@ body {
     @media only screen and (max-width: 767px) {
       #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input {
         font-size: 0.75rem; } }
+    #sln-salon--admin .sln-btn--big.sln-btn--block, #sln-salon--admin p.sln-btn--block.submit, #sln-salon--admin .sln-btn--big input.sln-btn--block, #sln-salon--admin p.submit input.sln-btn--block {
+      display: block; }
   #sln-salon--admin .sln-btn--medium, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-btn--medium input, #sln-salon--admin h2.nav-tab-wrapper .nav-tab input, #sln-salon--admin .sln-admin-nav a input {
     display: inline-block;
     min-width: 90px;
     height: 1.83333rem;
     line-height: 1.83333rem;
     padding: 0 0.625rem; }
+    #sln-salon--admin .sln-btn--medium.sln-btn--block, #sln-salon--admin h2.nav-tab-wrapper .sln-btn--block.nav-tab, #sln-salon--admin .sln-admin-nav a.sln-btn--block, #sln-salon--admin .sln-btn--medium input.sln-btn--block, #sln-salon--admin h2.nav-tab-wrapper .nav-tab input.sln-btn--block, #sln-salon--admin .sln-admin-nav a input.sln-btn--block {
+      display: block; }
   #sln-salon--admin .sln-btn--small {
     display: inline-block;
     height: 1.25rem;
