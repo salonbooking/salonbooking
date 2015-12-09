@@ -130,14 +130,18 @@
 <div class="sln-box sln-box--main">
     <h2 class="sln-box-title">Payment methods</h2>
     <div class="row">
-        <div class="sln-radiobox sln-radiobox--fullwidth salon_settings_pay_method col-sm-4">
-            <input id="salon_settings_availability_mode--basic" type="radio" name="salon_settings_availability_mode" value="paypal" data-method="paypal">
-            <label for="salon_settings_availability_mode--basic">Paypal</label>
+    
+<?php 
+$current_payment_method = $this->settings->getPaymentMethod();
+foreach(SLN_Enum_PaymentMethodProvider::toArray() as $method => $name){  
+	$checked = ($current_payment_method == $method) ?  'checked="checked"' : '';
+?>
+		<div class="sln-radiobox sln-radiobox--fullwidth salon_settings_pay_method col-sm-4">
+            <input id="salon_settings_availability_mode--<?php echo $method?>" type="radio" name="salon_settings_availability_mode" value="<?php echo $method?>" data-method="<?php echo $method?>" <?php echo $checked?> >
+            <label for="salon_settings_availability_mode--<?php echo $method?>"><?php echo $name?></label>
         </div>
-        <div class="sln-radiobox sln-radiobox--fullwidth salon_settings_pay_method col-sm-4">
-            <input id="salon_settings_availability_mode--advanced" type="radio" name="salon_settings_availability_mode" value="stripe" data-method="stripe" checked="checked">
-            <label for="salon_settings_availability_mode--advanced">Stripe</label>
-        </div>
+<?php } ?>    
+
         <div class="col-sm-4 sln-box-maininfo  align-top">
             <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
         </div>
