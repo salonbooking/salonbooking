@@ -520,6 +520,14 @@ body {
             margin-top: initial;
         }
     }
+    // MESSAGES
+    .sln-message {
+      @extend %font-big;
+      border-bottom: rem(4px) solid $cl_warning;
+      display: inline-block;
+      padding: rem(4px);
+    }
+    // MESSAGES // END
     // SELF OVERRIDES // END: ;
     .sln-admin-sidebar {
         position: fixed;

@@ -366,10 +366,10 @@ jQuery(function ($) {
     });
     // TIME RANGE //
     $('.slider-range').each(function(){
-        var labelFrom = $(this).parent().parent().find('.col-time .slider-time');
-            labelTo = $(this).parent().parent().find('.col-time .slider-time2');
-            inputFrom = $(this).parent().parent().find('.col-time .slider-time-hidden-input'),
-            inputTo = $(this).parent().parent().find('.col-time .slider-time-hidden-input2'),
+        var labelFrom = $(this).parent().parent().find('.col-time .slider-time-from');
+            labelTo = $(this).parent().parent().find('.col-time .slider-time-to');
+            inputFrom = $(this).parent().parent().find('.col-time .slider-time-input-from'),
+            inputTo = $(this).parent().parent().find('.col-time .slider-time-input-to'),
             orarioFrom = inputFrom.val(),
             oreFrom = orarioFrom.substr(0, orarioFrom.indexOf(':')),
             oreInMinutiFrom = parseInt(Math.floor( oreFrom * 60)),
@@ -416,8 +416,8 @@ jQuery(function ($) {
 
 
 
-        $(this).parent().parent().find('.col-time .slider-time').html(hours1 + ':' + minutes1);
-        $(this).parent().parent().find('.col-time .slider-time-hidden-input').val(hours1 + ':' + minutes1);
+        $(this).parent().parent().find('.col-time .slider-time-from').html(hours1 + ':' + minutes1);
+        $(this).parent().parent().find('.col-time .slider-time-input-from').val(hours1 + ':' + minutes1);
 
         var hours2 = Math.floor(ui.values[1] / 60);
         var minutes2 = ui.values[1] - (hours2 * 60);
@@ -442,8 +442,8 @@ jQuery(function ($) {
             minutes2 = minutes2 + "";
         }
 
-        $(this).parent().parent().find('.col-time .slider-time2').html(hours2 + ':' + minutes2);
-        $(this).parent().parent().find('.col-time .slider-time-hidden-input2').val(hours2 + ':' + minutes2);
+        $(this).parent().parent().find('.col-time .slider-time-to').html(hours2 + ':' + minutes2);
+        $(this).parent().parent().find('.col-time .slider-time-input-to').val(hours2 + ':' + minutes2);
         //alert(hours2 + ':' + minutes2);
     }
 });});

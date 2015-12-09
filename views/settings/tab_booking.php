@@ -25,9 +25,9 @@ function sln_availability_row($prefix, $row, $rulenumber)
              <h6 class="sln-fake-label">First shift</h6>
             <div class="sln-slider">
             <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
-            <div class="col col-time"><span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span>
-            <input type="text" name="<?php echo $prefix ?>[from][0]" id="" value="<?php echo $row['from'][0]?>" class="slider-time-hidden-input">
-            <input type="text" name="<?php echo $prefix ?>[to][0]" id="" value="<?php echo $row['to'][0]?>" class="slider-time-hidden-input">
+            <div class="col col-time"><span class="slider-time-from">9:00</span> to <span class="slider-time-to">16:00</span>
+            <input type="text" name="<?php echo $prefix ?>[from][0]" id="" value="<?php echo $row['from'][0] ? $row['from'][0]  : "9:00" ?>" class="slider-time-input-from hidden">
+            <input type="text" name="<?php echo $prefix ?>[to][0]" id="" value="<?php echo $row['to'][0] ? $row['to'][0]  : "13:00" ?>" class="slider-time-input-to hidden">
             </div>
             <div class="clearfix"></div>
             </div>
@@ -35,9 +35,9 @@ function sln_availability_row($prefix, $row, $rulenumber)
             <div class="sln-slider">
             <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
             <div class="col col-time">
-            <span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span>
-            <input type="text" name="<?php echo $prefix ?>[from][1]" id="" value="<?php echo $row['from'][1]?>" class="slider-time-hidden-input">
-            <input type="text" name="<?php echo $prefix ?>[to][1]" id="" value="<?php echo $row['to'][1]?>" class="slider-time-hidden-input">
+            <span class="slider-time-from">9:00</span> to <span class="slider-time-to">16:00</span>
+            <input type="text" name="<?php echo $prefix ?>[from][1]" id="" value="<?php echo $row['from'][1] ? $row['from'][1]  : "14:30" ?>" class="slider-time-input-from hidden">
+            <input type="text" name="<?php echo $prefix ?>[to][1]" id="" value="<?php echo $row['to'][1] ? $row['to'][1]  : "19:00" ?>" class="slider-time-input-to hidden">
             </div>
             <div class="clearfix"></div>
             </div>

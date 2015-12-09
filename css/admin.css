@@ -52,7 +52,7 @@
     #sln-salon--admin .sln-input--simple input, #sln-salon--admin .sln-select input, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin .sln-select textarea, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .sln-checkbutton input + label, #sln-salon--admin .col-time, #sln-salon--admin .sln-box-title, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
       font-size: 1rem; } }
 
-.sln-message, #sln-salon--admin .sln-message, #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin .sln-fake-label, #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-maininfo p, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field {
+#sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin .sln-fake-label, #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-maininfo p, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, #sln-salon--admin .sln-message, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field {
   font-family: "Open sans", serif;
   font-size: 0.75rem;
   font-weight: normal;
@@ -79,9 +79,6 @@
 
 #sln-salon--admin .sln-input--simple input:focus, #sln-salon--admin .sln-select input:focus, #sln-salon--admin .sln-input--simple textarea:focus, #sln-salon--admin .sln-select textarea:focus {
   color: #0C6EB6; }
-
-.sln-message, #sln-salon--admin .sln-message {
-  color: #f5b025; }
 
 #sln-salon--admin .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, #sln-salon--admin .sln-checkbutton input + label:after, #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after, #sln-salon--admin .sln-btn--icon:after, #sln-salon--admin p.submit:after, .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before {
   font-family: "FontAwesome";
@@ -429,7 +426,7 @@ body {
     @media only screen and (min-width: 768px) {
       #sln-salon--admin .sln-input--simple input, #sln-salon--admin .sln-select input, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin .sln-select textarea, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .sln-checkbutton input + label, #sln-salon--admin .col-time, #sln-salon--admin .sln-box-title, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln #sln-salon--admin .select2-selection--single, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--multiple, .select2-container.select2-container--sln #sln-salon--admin .select2-selection--multiple {
         font-size: 1rem; } }
-  #sln-salon--admin .sln-message, #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin .sln-fake-label, #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-maininfo p, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, #sln-salon--admin .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln #sln-salon--admin .select2-dropdown, #sln-salon--admin .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .select2-container.select2-container--sln .select2-search--dropdown #sln-salon--admin .select2-search__field {
+  #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin .sln-fake-label, #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input, #sln-salon--admin .sln-box-maininfo p, #sln-salon--admin .sln-box-title span, #sln-salon--admin .sln-box-info .sln-box-info-content, #sln-salon--admin .sln-box-info .sln-box-info-content h5, #sln-salon--admin .sln-message, #sln-salon--admin .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln #sln-salon--admin .select2-dropdown, #sln-salon--admin .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .select2-container.select2-container--sln .select2-search--dropdown #sln-salon--admin .select2-search__field {
     font-family: "Open sans", serif;
     font-size: 0.75rem;
     font-weight: normal;
@@ -450,8 +447,6 @@ body {
     color: #003553; }
   #sln-salon--admin .sln-input--simple input:focus, #sln-salon--admin .sln-select input:focus, #sln-salon--admin .sln-input--simple textarea:focus, #sln-salon--admin .sln-select textarea:focus {
     color: #0C6EB6; }
-  #sln-salon--admin .sln-message {
-    color: #f5b025; }
   #sln-salon--admin .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, #sln-salon--admin .sln-checkbutton input + label:after, #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after, #sln-salon--admin .sln-btn--icon:after, #sln-salon--admin p.submit:after, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before, .select2-container.select2-container--sln .select2-selection--single #sln-salon--admin .select2-selection__arrow:before {
     font-family: "FontAwesome";
     font-size: 0.91667rem; }
@@ -1305,6 +1300,10 @@ body {
     #sln-salon--admin .sln-tab .form-group label input {
       display: initial;
       margin-top: initial; }
+  #sln-salon--admin .sln-message {
+    border-bottom: 0.16667rem solid #f5b025;
+    display: inline-block;
+    padding: 0.16667rem; }
   #sln-salon--admin .sln-admin-sidebar {
     position: fixed;
     width: 100%;
