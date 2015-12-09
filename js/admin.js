@@ -455,4 +455,8 @@ jQuery(function ($) {
         $('.payment-mode-data').hide().removeClass('sln-box--fadein');
         $('#payment-mode-'+$(this).data('method')).show().addClass('sln-box--fadein');
     });
+
+   $('input:radio[name=salon_settings_availability_mode]').each(function() {
+    if($(this).is(':checked')) { $('#payment-mode-'+$(this).data('method')).show().addClass('sln-box--fadein'); }
+    });
 });
