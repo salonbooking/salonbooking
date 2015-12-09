@@ -26,8 +26,8 @@ function sln_availability_row($prefix, $row, $rulenumber)
             <div class="sln-slider">
             <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
             <div class="col col-time"><span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span>
-            <input type="text" name="salon_settings[gen_name]" id="" value="11:45" class="slider-time-hidden-input">
-            <input type="text" name="salon_settings[gen_name]" id="" value="20:30" class="slider-time-hidden-input2">
+            <input type="text" name="<?php echo $prefix ?>[from][0]" id="" value="<?php echo $row['from'][0]?>" class="slider-time-hidden-input">
+            <input type="text" name="<?php echo $prefix ?>[to][0]" id="" value="<?php echo $row['to'][0]?>" class="slider-time-hidden-input">
             </div>
             <div class="clearfix"></div>
             </div>
@@ -36,8 +36,8 @@ function sln_availability_row($prefix, $row, $rulenumber)
             <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
             <div class="col col-time">
             <span class="slider-time">9:00</span> to <span class="slider-time2">16:00</span>
-            <input type="text" name="salon_settings[gen_name]" id="" value="8:45" class="slider-time-hidden-input">
-            <input type="text" name="salon_settings[gen_name]" id="" value="16:00" class="slider-time-hidden-input2">
+            <input type="text" name="<?php echo $prefix ?>[from][1]" id="" value="<?php echo $row['from'][1]?>" class="slider-time-hidden-input">
+            <input type="text" name="<?php echo $prefix ?>[to][1]" id="" value="<?php echo $row['to'][1]?>" class="slider-time-hidden-input">
             </div>
             <div class="clearfix"></div>
             </div>
