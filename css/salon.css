@@ -1064,7 +1064,7 @@
 #sln-salon #salon-step-summary div.summ-row .total-amount {
   font-size: .8em;
   font-weight: bold;
-  color: #000000;
+  color: black;
 }
 #sln-salon .tycol {
   background: #eeeeee;
@@ -1083,7 +1083,7 @@
 }
 #sln-salon .tycol i {
   font-size: 2.2em;
-  color: #008000;
+  color: green;
   margin-top: .6em;
 }
 #sln-salon .tycol i.c {
@@ -1128,7 +1128,7 @@
 }
 #sln-salon .btn-primary,
 #sln-salon .btn-success {
-  color: #ffffff !important;
+  color: white !important;
 }
 #sln-salon ul {
   list-style-type: none;

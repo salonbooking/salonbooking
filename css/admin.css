@@ -2864,7 +2864,7 @@ a.list-group-item.active > .badge,
   background-color: transparent;
   border: 0;
 }
-.hidden {
+body:not(.wp-admin) .hidden {
   display: none !important;
   visibility: hidden !important;
 }
