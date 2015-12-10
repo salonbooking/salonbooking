@@ -48,21 +48,22 @@
     <div class="sln-box--sub row">
     <div class="col-xs-12"><h2 class="sln-box-title">Your Google calendars</h2></div>
             <?php
+            $api_error = false;
             try {
                 $_calendar_list = $GLOBALS['sln_googlescope']->get_calendar_list();
-                echo '<div class="col-xs-12 col-sm-4 form-group sln-select  sln-select--info-label">';
-            $this->select_text('google_client_calendar', __('Calendars', 'sln'), $_calendar_list);
-            echo '</div>';
             } catch (Exception $e) {
                 $err = $e->getErrors();
                 if (isset($err)) {
                     $messages = $e->getErrors();
-                    if (isset($messages[0]['message'])) echo "<p>".$messages[0]['message']."</p>";
+                    if (isset($messages[0]['message'])) 
+						$api_error = $messages[0]['message'];
                 }
             }
-            if (isset($_calendar_list) && !empty($_calendar_list)) {
-                $this->select_text('google_client_calendar', __('Calendars', 'sln'), $_calendar_list);
-                ?>
+            // got calendars?
+            if (isset($_calendar_list) && !empty($_calendar_list)) { ?>
+                <div class="col-xs-12 col-sm-4 form-group sln-select  sln-select--info-label">
+				<?php $this->select_text('google_client_calendar', __('Calendars', 'sln'), $_calendar_list); ?>
+				</div>
                 <div class="col-xs-12 col-sm-4">
                 <div class="sln-btn sln-btn--main sln-btn--big">
                 <input type="button" id="sln_synch" value="<?php echo __('Synchronize Bookings'); ?>">
@@ -74,9 +75,11 @@
                 </div>
                 </div>
                 <?php
-            } else
-                echo '<div class="col-xs-12 col-sm-8 sln-box-maininfo  align-top"><h5 class="sln-message sln-message--warning">' .
-                 __("Per ottenere la lista dei tuoi calendari è necessario effettuare login Google OAuth", 'sln') . '</h5></div>';
+            } 
+            elseif($api_error)// API failed!
+                echo '<div class="col-xs-12 col-sm-8 sln-box-maininfo  align-top"><h5 class="sln-message sln-message--warning">' .__("Google API Error: ", 'sln') .$api_error . '</h5></div>';
+            else// not assigned to API
+                echo '<div class="col-xs-12 col-sm-8 sln-box-maininfo  align-top"><h5 class="sln-message sln-message--warning">' .__("Per ottenere la lista dei tuoi calendari è necessario effettuare login Google OAuth", 'sln') . '</h5></div>';
             ?>
     </div>
     <div class="clearfix"></div>
