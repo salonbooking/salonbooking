@@ -1,6 +1,6 @@
 <div class="sln-tab" id="sln-tab-general">
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">Salon informations <span>Leaving this field empty will cause the default site name</span></h2>
+    <h2 class="sln-box-title"><?php __('Salon\'s informations','sln') ?> <span>-</span></h2>
     <div class="row">
         <div class="col-sm-4 form-group sln-input--simple">
             <?php
@@ -50,14 +50,14 @@
             ); ?>
         </div>
         <div class="col-sm-4 form-group sln-box-maininfo align-top">
-            <p class="sln-input-help">Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+            <p class="sln-input-help"><?php __('Provide the full address of your Salon','sln') ?></p>
         </div>
     </div>
     <div class="sln-box-info">
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
        <div class="sln-box-info-content row">
        <div class="col-md-4 col-sm-8 col-xs-12">
-       <h5>Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</h5>
+       <h5><?php __('-','sln') ?></h5>
         </div>
         </div>
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
@@ -65,7 +65,7 @@
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">Bookings notes</h2>
+    <h2 class="sln-box-title"><?php __('Booking notes','sln') ?></h2>
     <div class="row">
         <div class="col-xs-12 col-sm-8 form-group sln-input--simple">
             <?php $this->row_input_textarea(
@@ -83,7 +83,7 @@
             ); ?>
         </div>
         <div class="col-md-4 col-sm-4 form-group sln-box-maininfo align-top">
-            <p class="sln-input-help">Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+            <p class="sln-input-help"><?php __('-','sln') ?></p>
         </div>
     </div>
     <!-- SE SERVONO MAGGIORI INFO
@@ -100,12 +100,12 @@
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">Assistant selection <span>Let your customers choose their favourite staff member</span></h2>
+    <h2 class="sln-box-title"><?php __('Assistant selection <span>Let your customers choose their favourite staff member</span>','sln') ?></h2>
     <div class="row">
         <div class="col-sm-6 form-group">
         <div class="sln-checkbox">
             <?php $this->row_input_checkbox('attendant_enabled', __('Enable assistant selection', 'sln')); ?>
-            <p class="sln-input-help"><?php echo sprintf(__('You need to add your members staff <a href="%s">Here</a>.', 'sln'),
+            <p class="sln-input-help"><?php echo sprintf(__('If you need to add or manage your members staff <a href="%s">Here</a>.', 'sln'),
                     get_admin_url().'edit.php?post_type=sln_attendant') ?></p>
         </div>
         </div>
@@ -119,16 +119,16 @@
     <div class="row">
         <div class="col-sm-6 form-group">
             <a href="<?php echo get_admin_url() . 'edit.php?post_type=sln_attendant'; ?> "
-            class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--assistants">Manage staff</a>
+            class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--assistants"><?php __('Manage staff','sln') ?></a>
             <p>You need to add your members staff.</p>
         </div>
         <div class="col-sm-4 form-group sln-box-maininfo">
-            <p class="sln-input-help">Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+            <p class="sln-input-help"><?php __('-','sln') ?></p>
         </div>
     </div>
 </div>
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">SMS Verification service <span>Ask users to verify identity with an SMS verification code</span></h2>
+    <h2 class="sln-box-title"><?php __('SMS Verification service <span>Ask users to verify their identity with an SMS verification code</span>','sln') ?></h2>
     <div class="row">
         <div class="col-sm-8 sln-checkbox">
             <?php $this->row_input_checkbox('sms_enabled', __('Enable SMS verification', 'sln')); ?>
@@ -167,13 +167,13 @@
         </div>
     </div>
     <div class="col-sm-4 form-group sln-box-maininfo align-top">
-        <p class="sln-input-help">Avoid spam asking your users to verify their identity with an SMS verification code during the first registration. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+        <p class="sln-input-help"><?php __('-','sln') ?></p>
     </div>
     </div>
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">SMS Notifications service</h2>
+    <h2 class="sln-box-title"><?php __('SMS Notifications service','sln') ?></h2>
     <div class="row">
         <div class="col-sm-6 form-group sln-checkbox">
             <?php $this->row_input_checkbox('sms_new', __('Send SMS on new bookings', 'sln')); ?>
@@ -187,7 +187,7 @@
             <?php $this->row_input_checkbox('sms_remind', __('Reminde the appointment via SMS', 'sln')); ?>
         </div>
         <div class="col-sm-6 form-group sln-select  sln-select--info-label">
-            <label for="salon_settings_sms_remind_interval">SMS Timing</label>
+            <label for="salon_settings_sms_remind_interval"><?php __('SMS Timing','sln') ?></label>
             <div class="row">
             <div class="col-xs-6 col-sm-6">
             <?php $field = "salon_settings[sms_remind_interval]"; ?>
@@ -199,7 +199,7 @@
                         true
                     ) ?>
             </div>
-            <div class="col-xs-6 col-sm-6 sln-label--big"><label for="salon_settings_sms_remind_interval">Before</label></div>
+            <div class="col-xs-6 col-sm-6 sln-label--big"><label for="salon_settings_sms_remind_interval"><?php __('Before','sln') ?></label></div>
             </div>
         </div>
     </div>
@@ -208,14 +208,14 @@
             <?php $this->row_input_checkbox('sms_new_attendant', __('Send SMS to attendant on new bookings', 'sln')); ?>
         </div>
         <div class="col-xs-12 col-sm-6 sln-box-maininfo  align-top">
-        <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+        <p class="sln-input-help"><?php __('-','sln') ?></p>
     </div>
     </div>
     <div class="sln-box-info">
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
        <div class="sln-box-info-content row">
        <div class="col-md-4 col-sm-8 col-xs-12">
-       <h5>Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</h5>
+       <h5><?php __('-','sln') ?></h5>
         </div>
         </div>
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
@@ -223,7 +223,7 @@
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">Date and Time settings</h2>
+    <h2 class="sln-box-title"><?php __('Date and Time settings','sln') ?></h2>
     <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
                 <label for="salon_settings_date_format"><?php _e('Date Format', 'sln') ?></label>
@@ -248,29 +248,29 @@
                     ) ?>
             </div>
             <div class="col-sm-6 col-md-4 sln-box-maininfo  align-top">
-                <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+                <p class="sln-input-help"><?php __('Select your favourite date and time format. Do you need another format? Send an email to support@wpchef.it','sln') ?></p>
             </div>
             </div>
 </div>
 <div class="row">
     <div class="col-sm-6">
     <div class="sln-box sln-box--main sln-box--main--small">
-    <h2 class="sln-box-title">Ajax steps <span>This allows loading steps via ajax</span></h2>
+    <h2 class="sln-box-title"><?php __('Ajax steps <span>This allows loading steps via ajax</span>','sln') ?></h2>
     <div class="row">
             <div class="col-xs-12 form-group  sln-checkbox">
             <?php $this->row_input_checkbox('ajax_enabled', __('Enable ajax steps', 'sln')); ?>
-            <p><?php _e('This allows loading steps via ajax.', 'sln') ?></p>
+            <p><?php _e('This allows loading steps via ajax for a more smooth booking form transition.', 'sln') ?></p>
             </div>
         </div>
     </div>
     </div>
     <div class="col-sm-6">
     <div class="sln-box sln-box--main sln-box--main--small">
-    <h2 class="sln-box-title">Bootstrap CSS</h2>
+    <h2 class="sln-box-title"><?php __('Bootstrap CSS','sln') ?></h2>
     <div class="row">
             <div class="col-xs-12 form-group  sln-checkbox">
                 <?php $this->row_input_checkbox('no_bootstrap', __('Hide Bootstrap CSS', 'sln')); ?>
-                <p class="sln-input-help">Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus.</p>
+                <p class="sln-input-help"><?php __('Only for advanced users.','sln') ?></p>
             </div>
         </div>
     </div>
