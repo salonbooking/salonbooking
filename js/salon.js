@@ -194,6 +194,7 @@ function sln_serviceTotal($) {
 
 function initDatepickers($) {
     $('.sln_datepicker input').each(function () {
+      $(this).attr('readonly','readonly');
         if ($(this).hasClass('started')) {
             return;
         } else {
@@ -227,6 +228,7 @@ function initDatepickers($) {
 
 function initTimepickers($) {
     $('.sln_timepicker input').each(function () {
+      $(this).attr('readonly','readonly');
         if ($(this).hasClass('started')) {
             return;
         } else {
