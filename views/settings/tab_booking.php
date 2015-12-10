@@ -246,6 +246,42 @@ function sln_availability_row($prefix, $row, $rulenumber)
     </div>
 </div>
 
+
+<div class="sln-box sln-box--main">
+    <h2 class="sln-box-title">User booking cancellation</h2>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 form-group sln-checkbox">
+            <?php $this->row_input_checkbox(
+                    'cancellation_enabled',
+                    __('Booking cancellation', 'sln'),
+                    array('help' => __('Select this option to enable booking cancellation.','sln'))
+                ); ?>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select ">
+                <label>Time in advance</label>
+                <?php $field = "salon_settings[hours_before_cancellation]"; ?>
+                <?php echo SLN_Form::fieldSelect(
+                    $field,
+                    array(
+                        '1' => '1h',
+                        '5' => '5h',
+                        '12' => '12h',
+                        '24' => '24h',
+                        '48' => '48h',
+                        '72' => '72h',
+                    ),
+                    $this->getOpt('hours_before_cancellation'),
+                    array(),
+                    true
+                ) ?>
+                <p class="help-block"><?php _e('How many hours before the appointment the cancellation is allowed', 'sln') ?></p>
+            </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
+            <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+        </div>
+    </div>
+</div>
+
 <div class="sln-box sln-box--main">
     <h2 class="sln-box-title">Pause booking service <span class="block">If checked the online booking form will be disabled and your users will see a message.</span></h2>
     <div class="row">
