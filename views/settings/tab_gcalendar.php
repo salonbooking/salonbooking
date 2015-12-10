@@ -65,11 +65,13 @@
 				<?php $this->select_text('google_client_calendar', __('Calendars', 'sln'), $_calendar_list); ?>
 				</div>
                 <div class="col-xs-12 col-sm-4">
+                <h6 class="sln-fake-label">&nbsp;</h6>
                 <div class="sln-btn sln-btn--main sln-btn--big">
                 <input type="button" id="sln_synch" value="<?php echo __('Synchronize Bookings'); ?>">
                 </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
+                <h6 class="sln-fake-label">&nbsp;</h6>
                 <div class="sln-btn sln-btn--warning sln-btn--block sln-btn--big sln-btn--icon sln-icon--save">
                 <input type="button" id="sln_del" value="<?php echo __('Delete all Google Calendar Events'); ?>">
                 </div>

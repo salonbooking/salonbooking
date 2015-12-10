@@ -136,7 +136,7 @@ foreach(SLN_Enum_PaymentMethodProvider::toArray() as $method => $name){
 	$checked = ($current_payment_method == $method) ?  'checked="checked"' : '';
 ?>
 		<div class="sln-radiobox sln-radiobox--fullwidth salon_settings_pay_method col-sm-4">
-            <input id="salon_settings_availability_mode--<?php echo $method?>" type="radio" name="salon_settings[pay_method]" value="<?php echo $method?>" data-method="<?php echo $method?>" <?php echo $checked; ?> >
+            <input class="sln-pay_method-radio" id="salon_settings_availability_mode--<?php echo $method?>" type="radio" name="salon_settings[pay_method]" value="<?php echo $method?>" data-method="<?php echo $method?>" <?php echo $checked; ?> >
             <label for="salon_settings_availability_mode--<?php echo $method?>"><?php echo $name?></label>
         </div>
 <?php } ?>

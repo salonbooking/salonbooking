@@ -451,12 +451,12 @@ jQuery(function ($) {
     //    $('.payment-mode-data').hide();
     //    $('#payment-mode-'+$(this).val()).show();
     //}).change();
-   $('input:radio[name=salon_settings_availability_mode]').change(function() {
+   $('input.sln-pay_method-radio').change(function() {
         $('.payment-mode-data').hide().removeClass('sln-box--fadein');
         $('#payment-mode-'+$(this).data('method')).show().addClass('sln-box--fadein');
     });
 
-   $('input:radio[name=salon_settings_availability_mode]').each(function() {
+   $('input.sln-pay_method-radio').each(function() {
     if($(this).is(':checked')) { $('#payment-mode-'+$(this).data('method')).show().addClass('sln-box--fadein'); }
     });
 });
