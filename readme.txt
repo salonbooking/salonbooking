@@ -2,8 +2,8 @@
 Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, paypal appointament, appointament calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
-Tested up to: 4.3.1
-Stable tag: 1.3.1
+Tested up to: 4.4
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,16 +41,25 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 
 **BRAND NEW FEATURES**: 
 
+* Back-end settings pages full redesign
+* Bookings cancelation from front-end ( a new page MY BOOKING ACCOUNT )
+* Stripe as new payment method
+* Guidelines for custom alternative payment methods
+* Custom services order with drag&drop
+* Full front-end access to administrator even when the free-version is expired
+* New "Payment pending" status for bookings taken from back-end that require a payment from customers
+
+
+
+
+**EXISTING FEATURES**:
+
 * GOOGLE CALENDAR INTEGRATION
 Syncronize all your reservations inside your own Google Calendr and share the information with your staff memebers
 
 * ADD BOOKINGS FROM BACK-END
 If you need to add a manual reservations, that ones received by phone for example, use the back-end interface with a real time
 control of your available date/time slots.
-
-
-
-**EXISTING FEATURES**:
 
 * SMS Booking notifications
 * SMS Booking reminder
@@ -223,6 +232,15 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 
 == Changelog ==
+
+11.12.2015
+
+* Fixed bug on Timezone issues
+* Fixed bug on availables hours for "tomorrow bookings"
+* Fixed bug on services duration calculation 
+* Bookings, Services and Assistants back-end columns improvements
+* Back-end calendar small improvements ( added the name of the assistant on reservation detail)
+* Date and time picker improvements on mobile and tablets
 
 1.3.1 25/11/2015
 
