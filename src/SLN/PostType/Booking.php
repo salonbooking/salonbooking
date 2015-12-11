@@ -40,6 +40,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
 //            'date' => __('Submitted', 'sln'),
             'booking_price' => __('Booking Price', 'sln'),
             'booking_services' => __('Booking Services', 'sln'),
+            'booking_review' => __('Booking Review', 'sln'),
         );
         return $ret;
     }
@@ -82,6 +83,13 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                     echo $attendant->getName();
                 else
                     echo "-";
+                break;
+            case 'booking_review' :
+                $comments = get_comments("post_id=$post_id");
+                echo '<input type="hidden" name="sln-rating" value="' . get_post_meta($post_id, '_sln_booking_rating', true) . '">
+                        <div class="rating" style="display: none;"></div>
+                        <div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">' . (isset($comments[0]) ? $comments[0]->comment_content : ''). '</div>';
+
                 break;
         }
     }
