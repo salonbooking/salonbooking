@@ -482,7 +482,16 @@ function initTimepickers($) {
     }
 
     Plugin.call($target, option)
-  })
+  });
+
+setTimeout(function(){
+  $('.datetimepicker.sln-datetimepicker').append('<button class="sln-datetimepicker-close" type="button">Close</button>');
+}, 500);
+
+$('body').on("click", ".sln-datetimepicker-close" , function() {
+  $('.datetimepicker.sln-datetimepicker div').hide();
+  alert('pollo');
+});
 
 }(jQuery);
 

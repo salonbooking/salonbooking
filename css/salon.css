@@ -617,35 +617,35 @@
 .datetimepicker.sln-datetimepicker table {
   border-top: none;
 }
+.datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
+  display: block;
+  width: 100%;
+  height: 40px;
+  background-color: #d51e26;
+  text-align: center;
+  line-height: 40px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  font-style: normal;
+  margin: 20px 0 10px 0;
+}
+.datetimepicker.sln-datetimepicker .sln-datetimepicker-close:hover {
+  background-color: #ff000b;
+}
 @media only screen and (max-width: 767px) {
   .datetimepicker.sln-datetimepicker {
-    position: fixed;
-    top: 0 !important;
     left: 0 !important;
     width: 100%;
     max-width: 100%;
-    height: 90%;
-    overflow: visible;
+    height: auto;
     margin-top: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
-  .datetimepicker.sln-datetimepicker:after {
-    display: block;
-    content: 'Close';
-    width: 100%;
-    height: 80px;
-    background-color: #d51e26;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    text-align: center;
-    line-height: 60px ;
-    color: #fff;
-    font-family: inherit;
-    font-size: .9em;
-    text-transform: uppercase;
-    pointer-events: none;
-    cursor: pointer;
+  .datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
+    height: 60px;
+    line-height: 60px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
@@ -655,9 +655,6 @@
     max-width: 100%;
     height: auto;
     min-height: 200px;
-  }
-  .datetimepicker.sln-datetimepicker:after {
-    display: none;
   }
 }
 .datetimepicker.sln-datetimepicker table tr td.today,
