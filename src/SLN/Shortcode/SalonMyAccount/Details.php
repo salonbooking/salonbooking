@@ -46,6 +46,8 @@ class SLN_Shortcode_SalonMyAccount_Details
 				'seconds_before_cancellation' => $this->plugin->getSettings()->get('hours_before_cancellation') * 3600,
 				'gen_phone' => $this->plugin->getSettings()->get('gen_phone'),
 				'cancelled' => !empty($_POST['option']) && $_POST['option'] = 'cancelled' ? true : false,
+				'user_name' => wp_get_current_user()->user_firstname,
+				'gen_name' => $this->plugin->getSettings()->get('gen_name'),
 		));
 	}
 

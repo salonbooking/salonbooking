@@ -91,7 +91,7 @@
 							<div>
 								<?php if($item['status_code'] == SLN_Enum_BookingStatus::CONFIRMED): ?>
 										<?php if(empty($item['rating'])): ?>
-										<button class="btn btn-default sln-rate-service" onclick="slnMyAccount.rate(this);">
+										<button class="btn btn-default sln-rate-service" onclick="slnMyAccount.showRateForm(<?php echo $item['id']; ?>);">
 											<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> 
 											<?php _e('Rate our service','sln');?>
 										</button>
@@ -105,6 +105,43 @@
 				<?php endforeach; ?>
 				</tbody>
 			</table>
+
+			<div id="ratingModal" class="modal fade" role="dialog" tabindex="-1">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"></h4>
+						</div>
+						<div class="modal-body">
+							<div id="step1">
+								<p><?php _e('Hi','sln');?> <?php echo $data['user_name'] ?>!</p>
+								<p><?php _e('How was your expirience with us this time?','sln');?></p>
+								<p><textarea id="" placeholder="<?php _e('please, drop us some lines to understand if your expirience has been  in line  with your expectrations','sln');?>"></textarea></p>
+								<p>
+									<div class="rating" id="<?php echo $item['id']; ?>"></div>
+									<span><?php _e('Rate our service','sln');?></span>
+								</p>
+								<p>
+									<button type="button" class="btn btn-primary" onclick="slnMyAccount.sendRate();"><?php _e('Send your review','sln');?></button>
+									<button type="button" class="btn btn-default" data-dismiss="modal"><?php _e('Cancel','sln');?></button>
+								</p>
+							</div>
+							<div id="step2">
+								<p><?php _e('Thank you for your review. It will help us improving our services.','sln');?></p>
+								<p><?php _e('We hope to see you again at','sln');?> <?php echo $data['gen_name']; ?></p>
+							</div>
+						</div>
+						<div class="modal-footer">
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
 		<?php else: ?>
 			<p><?php _e('No bookings', 'sln'); ?></p>
 		<?php endif; ?>

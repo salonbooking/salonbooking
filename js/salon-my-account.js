@@ -53,61 +53,81 @@ var slnMyAccount = {
     },
 
     createRatings: function () {
-        jQuery('#sln-salon-my-account [name=sln-rating]').each(function() {
+        jQuery('[name=sln-rating]').each(function() {
             if (jQuery(this).val()) {
-                slnMyAccount.createRaty(jQuery(this));
+                slnMyAccount.createRaty(jQuery(this), true);
             }
         });
     },
 
-    createRaty: function ($rating) {
+    createRaty: function ($rating, readOnly) {
+        readOnly = readOnly == undefined ? false : readOnly;
         var $ratyElem = $rating.parent().find('.rating');
         $ratyElem.raty({
             score: jQuery($rating).val(),
             space: false,
             path: salon.images_folder,
-
+            readOnly: readOnly,
             starType : 'i',
             starOff:"glyphicon glyphicon-star-empty",
             starOn:"glyphicon glyphicon-star",
-
-            click: function(score) {
-                jQuery.ajax({
-                    url: salon.ajax_url,
-                    data: {
-                        action: 'salon',
-                        method: 'setBookingRating',
-                        id: jQuery($ratyElem).attr('id'),
-                        score: score
-                    },
-                    method: 'POST',
-                    dataType: 'json',
-                    success: function (data) {
-                        if (typeof data.redirect != 'undefined') {
-                            window.location.href = data.redirect;
-                        } else if (data.success != 1) {
-                            alert('error');
-                            console.log(data);
-                        } else {
-
-                        }
-                    },
-                    error: function(data){alert('error'); console.log(data);}
-                });
-            }
         });
         $ratyElem.css('display', 'inline-block');
     },
 
-    rate: function (btn) {
-            this.createRaty(jQuery(btn).parent().find('[name=sln-rating]'));
-            jQuery(btn).remove();
+    showRateForm: function (id) {
+        this.createRaty(jQuery("#ratingModal .rating"));
+        jQuery("#ratingModal textarea").attr('id', id);
+
+        jQuery("#ratingModal #step2").css('display', 'none');
+        jQuery("#ratingModal").modal('show');
+        jQuery("#ratingModal #step1").css('display', 'block');
+
+        return false;
+    },
+
+    sendRate: function() {
+        if (jQuery("#ratingModal .rating").raty('score') == undefined)
             return false;
+
+        jQuery.ajax({
+            url: salon.ajax_url,
+            data: {
+                action: 'salon',
+                method: 'setBookingRating',
+                id: jQuery("#ratingModal textarea").attr('id'),
+                score: jQuery("#ratingModal .rating").raty('score'),
+                comment: jQuery("#ratingModal textarea").val(),
+            },
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (typeof data.redirect != 'undefined') {
+                    window.location.href = data.redirect;
+                } else if (data.success != 1) {
+                    alert('error');
+                    console.log(data);
+                } else {
+                    jQuery("#ratingModal #step1").css('display', 'none');
+                    jQuery("#ratingModal #step2").css('display', 'block');
+                    setTimeout(function() {
+                        jQuery('#ratingModal .close').click();
+                    }, 3000);
+
+                    slnMyAccount.loadContent();
+                }
+            },
+            error: function(data){alert('error'); console.log(data);}
+        });
+        return false;
     },
 
     init: function () {
         if (jQuery('#sln-salon-my-account').size()) {
             this.loadContent();
+        }
+        else if (jQuery('[name=post_type]').size()) {
+            this.createRatings();
         }
     }
 };
