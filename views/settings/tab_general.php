@@ -1,6 +1,6 @@
 <div class="sln-tab" id="sln-tab-general">
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php __('Salon\'s informations','sln') ?> <span>-</span></h2>
+    <h2 class="sln-box-title"><?php _e('Salon\'s informations','sln'); ?> <span>-</span></h2>
     <div class="row">
         <div class="col-sm-4 form-group sln-input--simple">
             <?php
@@ -65,14 +65,14 @@
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php __('Booking notes','sln') ?></h2>
+    <h2 class="sln-box-title"><?php _e('Booking notes','sln') ?></h2>
     <div class="row">
         <div class="col-xs-12 col-sm-8 form-group sln-input--simple">
             <?php $this->row_input_textarea(
                 'gen_timetable',
-                __('Bookings notes', 'sln'),
+                __('Use this field to provide your customers important infos about terms and conditions of their reservation.', 'sln'),
                 array(
-                    'help' => 'Use this field to provide your customers important infos about terms and conditions of their reservation.',
+                    'help' => 'Will be displayed on checkout page before booking completition.',
                     'textarea' => array(
                         'attrs' => array(
                             'rows' => 5,
@@ -100,12 +100,12 @@
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php __('Assistant selection <span>Let your customers choose their favourite staff member</span>','sln') ?></h2>
+    <h2 class="sln-box-title"><?php _e('Assistant selection <span> - </span>','sln') ?></h2>
     <div class="row">
         <div class="col-sm-6 form-group">
         <div class="sln-checkbox">
             <?php $this->row_input_checkbox('attendant_enabled', __('Enable assistant selection', 'sln')); ?>
-            <p class="sln-input-help"><?php echo sprintf(__('If you need to add or manage your members staff <a href="%s">Here</a>.', 'sln'),
+            <p class="sln-input-help"><?php echo sprintf(__('Let your customers choose their favourite staff member.', 'sln'),
                     get_admin_url().'edit.php?post_type=sln_attendant') ?></p>
         </div>
         </div>
@@ -119,8 +119,8 @@
     <div class="row">
         <div class="col-sm-6 form-group">
             <a href="<?php echo get_admin_url() . 'edit.php?post_type=sln_attendant'; ?> "
-            class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--assistants"><?php __('Manage staff','sln') ?></a>
-            <p>You need to add your members staff.</p>
+            class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--assistants"><?php _e('Manage staff','sln') ?></a>
+            <p><?php _e('If you need to add or manage your staff members.','sln'); ?></p>
         </div>
         <div class="col-sm-4 form-group sln-box-maininfo">
             <p class="sln-input-help"><?php __('-','sln') ?></p>
@@ -128,7 +128,7 @@
     </div>
 </div>
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php __('SMS Verification service <span>Ask users to verify their identity with an SMS verification code</span>','sln') ?></h2>
+    <h2 class="sln-box-title"><?php _e('SMS Verification service <span>Ask users to verify their identity with an SMS verification code</span>','sln') ?></h2>
     <div class="row">
         <div class="col-sm-8 sln-checkbox">
             <?php $this->row_input_checkbox('sms_enabled', __('Enable SMS verification', 'sln')); ?>
@@ -151,10 +151,10 @@
         </div>
         <div class="row">
             <div class="col-sm-6 sln-input--simple">
-                <?php $this->row_input_text('sms_account', __('Account', 'sln')); ?>
+                <?php $this->row_input_text('sms_account', __('Account ID', 'sln')); ?>
             </div>
             <div class="col-sm-6 sln-input--simple">
-                <?php $this->row_input_text('sms_password', __('Password', 'sln')); ?>
+                <?php $this->row_input_text('sms_password', __('Auth Token', 'sln')); ?>
             </div>
         </div>
         <div class="row">
@@ -167,24 +167,24 @@
         </div>
     </div>
     <div class="col-sm-4 form-group sln-box-maininfo align-top">
-        <p class="sln-input-help"><?php __('-','sln') ?></p>
+        <p class="sln-input-help"><?php _e('To use all the SMS features you need an active account with Plivo o Twilio providers. <br /><br />Please read carefully their documentation about how to properly set the options.','sln') ?></p>
     </div>
     </div>
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php __('SMS Notifications service','sln') ?></h2>
+    <h2 class="sln-box-title"><?php _e('SMS Notifications service','sln') ?></h2>
     <div class="row">
         <div class="col-sm-6 form-group sln-checkbox">
-            <?php $this->row_input_checkbox('sms_new', __('Send SMS on new bookings', 'sln')); ?>
+            <?php $this->row_input_checkbox('sms_new', __('Send SMS notification on new bookings ( to the customer and a staff member )', 'sln')); ?>
         </div>
         <div class="col-sm-4 form-group sln-input--simple">
-            <?php $this->row_input_text('sms_new_number', __('Recipient number', 'sln')); ?>
+            <?php $this->row_input_text('sms_new_number', __('Staff member number', 'sln')); ?>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-6 form-group sln-checkbox">
-            <?php $this->row_input_checkbox('sms_remind', __('Reminde the appointment via SMS', 'sln')); ?>
+            <?php $this->row_input_checkbox('sms_remind', __('Remind the appointment to the client with an SMS', 'sln')); ?>
         </div>
         <div class="col-sm-6 form-group sln-select  sln-select--info-label">
             <label for="salon_settings_sms_remind_interval"><?php __('SMS Timing','sln') ?></label>
@@ -199,23 +199,23 @@
                         true
                     ) ?>
             </div>
-            <div class="col-xs-6 col-sm-6 sln-label--big"><label for="salon_settings_sms_remind_interval"><?php __('Before','sln') ?></label></div>
+            <div class="col-xs-6 col-sm-6 sln-label--big"><label for="salon_settings_sms_remind_interval"><?php _e('Before the appointment','sln') ?></label></div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-6 form-group sln-checkbox">
-            <?php $this->row_input_checkbox('sms_new_attendant', __('Send SMS to attendant on new bookings', 'sln')); ?>
+            <?php $this->row_input_checkbox('sms_new_attendant', __('Send an SMS to selected attendant on new bookings', 'sln')); ?>
         </div>
         <div class="col-xs-12 col-sm-6 sln-box-maininfo  align-top">
-        <p class="sln-input-help"><?php __('-','sln') ?></p>
+        <p class="sln-input-help"><?php _e('-','sln') ?></p>
     </div>
     </div>
     <div class="sln-box-info">
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
        <div class="sln-box-info-content row">
        <div class="col-md-4 col-sm-8 col-xs-12">
-       <h5><?php __('-','sln') ?></h5>
+       <h5><?php _e('-','sln') ?></h5>
         </div>
         </div>
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
@@ -223,7 +223,7 @@
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php __('Date and Time settings','sln') ?></h2>
+    <h2 class="sln-box-title"><?php _e('Date and Time settings','sln') ?></h2>
     <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
                 <label for="salon_settings_date_format"><?php _e('Date Format', 'sln') ?></label>
@@ -248,14 +248,14 @@
                     ) ?>
             </div>
             <div class="col-sm-6 col-md-4 sln-box-maininfo  align-top">
-                <p class="sln-input-help"><?php __('Select your favourite date and time format. Do you need another format? Send an email to support@wpchef.it','sln') ?></p>
+                <p class="sln-input-help"><?php _e('Select your favourite date and time format. Do you need another format? Send an email to support@wpchef.it','sln') ?></p>
             </div>
             </div>
 </div>
 <div class="row">
     <div class="col-sm-6">
     <div class="sln-box sln-box--main sln-box--main--small">
-    <h2 class="sln-box-title"><?php __('Ajax steps <span>This allows loading steps via ajax</span>','sln') ?></h2>
+    <h2 class="sln-box-title"><?php _e('Ajax steps <span>This allows loading steps via ajax</span>','sln') ?></h2>
     <div class="row">
             <div class="col-xs-12 form-group  sln-checkbox">
             <?php $this->row_input_checkbox('ajax_enabled', __('Enable ajax steps', 'sln')); ?>
@@ -266,11 +266,11 @@
     </div>
     <div class="col-sm-6">
     <div class="sln-box sln-box--main sln-box--main--small">
-    <h2 class="sln-box-title"><?php __('Bootstrap CSS','sln') ?></h2>
+    <h2 class="sln-box-title"><?php _e('Bootstrap CSS','sln') ?></h2>
     <div class="row">
             <div class="col-xs-12 form-group  sln-checkbox">
                 <?php $this->row_input_checkbox('no_bootstrap', __('Hide Bootstrap CSS', 'sln')); ?>
-                <p class="sln-input-help"><?php __('Only for advanced users.','sln') ?></p>
+                <p class="sln-input-help"><?php _e('Only for advanced users.','sln') ?></p>
             </div>
         </div>
     </div>
