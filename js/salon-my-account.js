@@ -78,6 +78,7 @@ var slnMyAccount = {
     showRateForm: function (id) {
         this.createRaty(jQuery("#ratingModal .rating"));
         jQuery("#ratingModal textarea").attr('id', id);
+        jQuery("#ratingModal textarea").val('');
 
         jQuery("#ratingModal #step2").css('display', 'none');
         jQuery("#ratingModal").modal('show');
@@ -87,7 +88,7 @@ var slnMyAccount = {
     },
 
     sendRate: function() {
-        if (jQuery("#ratingModal .rating").raty('score') == undefined)
+        if (jQuery("#ratingModal .rating").raty('score') == undefined || jQuery("#ratingModal textarea").val() == '')
             return false;
 
         jQuery.ajax({

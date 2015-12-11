@@ -19,24 +19,22 @@ class SLN_Action_Ajax_SetBookingRating extends SLN_Action_Ajax_Abstract
 			if ($available) {
 				$booking->setRating($_POST['score']);
 
-
-//				$args = compact('booking');
-//				$args['forAdmin'] = true;
-//				$args['to'] = get_option('admin_email');
-//				SLN_Plugin::getInstance()->sendMail('mail/status_canceled', $args);
 				wp_insert_comment(array(
 					'comment_author' => wp_get_current_user()->display_name,
 					'comment_author_email' => wp_get_current_user()->user_email,
 					'comment_content' => $_POST['comment'],
 					'comment_post_ID' => $_POST['id'],
 				));
+
+				$args = compact('booking');
+				SLN_Plugin::getInstance()->sendMail('mail/booking_rated', $args);
 			}
 			else {
 				$this->addError(__("You don't have access", 'sln'));
 			}
 		}
 		else {
-			$this->addError(__("Set rating", 'sln'));
+			$this->addError(__("Set rating and comment", 'sln'));
 		}
 
 		if ($errors = $this->getErrors()) {

@@ -118,11 +118,11 @@
 						<div class="modal-body">
 							<div id="step1">
 								<p><?php _e('Hi','sln');?> <?php echo $data['user_name'] ?>!</p>
-								<p><?php _e('How was your expirience with us this time?','sln');?></p>
+								<p><?php _e('How was your expirience with us this time? (required)','sln');?></p>
 								<p><textarea id="" placeholder="<?php _e('please, drop us some lines to understand if your expirience has been  in line  with your expectrations','sln');?>"></textarea></p>
 								<p>
 									<div class="rating" id="<?php echo $item['id']; ?>"></div>
-									<span><?php _e('Rate our service','sln');?></span>
+									<span><?php _e('Rate our service (required)','sln');?></span>
 								</p>
 								<p>
 									<button type="button" class="btn btn-primary" onclick="slnMyAccount.sendRate();"><?php _e('Send your review','sln');?></button>
