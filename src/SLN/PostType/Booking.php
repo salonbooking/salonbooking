@@ -85,8 +85,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                     echo "-";
                 break;
             case 'booking_review' :
-                $comments = get_comments("post_id=$post_id");
-                echo '<input type="hidden" name="sln-rating" value="' . get_post_meta($post_id, '_sln_booking_rating', true) . '">
+                $comments = get_comments("post_id=$post_id&type=sln_review");
+                echo '<input type="hidden" name="sln-rating" value="' . $this->getPlugin()->createBooking($post_id)->getRating() . '">
                         <div class="rating" style="display: none;"></div>
                         <div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">' . (isset($comments[0]) ? $comments[0]->comment_content : ''). '</div>';
 

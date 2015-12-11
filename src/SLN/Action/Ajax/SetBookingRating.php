@@ -24,6 +24,7 @@ class SLN_Action_Ajax_SetBookingRating extends SLN_Action_Ajax_Abstract
 					'comment_author_email' => wp_get_current_user()->user_email,
 					'comment_content' => $_POST['comment'],
 					'comment_post_ID' => $_POST['id'],
+					'comment_type' => 'sln_review',
 				));
 
 				$args = compact('booking');
