@@ -379,15 +379,14 @@ jQuery(function ($) {
             oreTo = orarioTo.substr(0, orarioTo.indexOf(':')),
             oreInMinutiTo = parseInt(Math.floor( oreTo * 60)),
             minutiTo = parseInt(orarioTo.substr(orarioTo.indexOf(":") + 1)),
-            totaleMinutiTo = oreInMinutiTo+minutiTo,
-            averageDuration = $('#salon_settings_interval').val();
+            totaleMinutiTo = oreInMinutiTo+minutiTo;
             labelFrom.html(inputFrom.val());
             labelTo.html(inputTo.val());
     $(this).slider({
     range: true,
     min: 360,
     max: 1380,
-    step: averageDuration,
+    step: 15,
     values: [totaleMinutiFrom, totaleMinutiTo],
     //values: [540, 1020],
     slide: function (e, ui) {
