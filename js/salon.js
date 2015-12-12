@@ -485,7 +485,7 @@ function initTimepickers($) {
   });
 
 setTimeout(function(){
-  $('.datetimepicker.sln-datetimepicker').append('<button class="sln-datetimepicker-close" type="button">Close</button>');
+  $('.datetimepicker.sln-datetimepicker div').append('<i class="sln-datetimepicker-close">Close</i>');
 }, 500);
 
 $('body').on("click", ".sln-datetimepicker-close" , function() {
