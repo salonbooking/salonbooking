@@ -128,25 +128,28 @@
     </div>
 </div>
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php _e('SMS Verification service <span>Ask users to verify their identity with an SMS verification code</span>','sln') ?></h2>
-    <div class="row">
-        <div class="col-sm-8 sln-checkbox">
-            <?php $this->row_input_checkbox('sms_enabled', __('Enable SMS verification', 'sln')); ?>
-            <p><?php _e('Avoid spam asking your users to verify their identity with an SMS verification code during the first registration.', 'sln') ?></p>
-        </div>
-    </div>
-    <div class="row">
+<h2 class="sln-box-title"><?php _e('SMS services','sln') ?></h2>
+<div class="sln-box--sub row">
+   <div class="col-xs-12">
+       <h2 class="sln-box-title"><?php _e('SMS Verification service <span>Ask users to verify their identity with an SMS verification code</span>','sln') ?></h2>
+   </div>
+   <div class="col-sm-8 sln-checkbox">
+       <?php $this->row_input_checkbox('sms_enabled', __('Enable SMS verification', 'sln')); ?>
+       <p><?php _e('Avoid spam asking your users to verify their identity with an SMS verification code during the first registration.', 'sln') ?></p>
+   </div>
+   <div class="col-xs-12">
+<div class="row">
     <div class="col-sm-8 form-group">
         <div class="row">
             <div class="col-xs-12 sln-select">
                 <label for="salon_settings_sms_provider"><?php _e('Select your service provider', 'sln') ?></label>
                 <?php echo SLN_Form::fieldSelect(
-                    $field,
-                    SLN_Enum_SmsProvider::toArray(),
-                    $this->getOpt('sms_provider'),
-                    array(),
-                    true
-                ) ?>
+                $field,
+                SLN_Enum_SmsProvider::toArray(),
+                $this->getOpt('sms_provider'),
+                array(),
+                true
+            ) ?>
             </div>
         </div>
         <div class="row">
@@ -170,57 +173,86 @@
         <p class="sln-input-help"><?php _e('To use all the SMS features you need an active account with Plivo o Twilio providers. <br /><br />Please read carefully their documentation about how to properly set the options.','sln') ?></p>
     </div>
     </div>
+   </div>
+    
 </div>
 
-<div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php _e('SMS Notifications service','sln') ?></h2>
-    <div class="row">
-        <div class="col-sm-6 form-group sln-checkbox">
-            <?php $this->row_input_checkbox('sms_new', __('Send SMS notification on new bookings ( to the customer and a staff member )', 'sln')); ?>
-        </div>
-        <div class="col-sm-4 form-group sln-input--simple">
-            <?php $this->row_input_text('sms_new_number', __('Staff member number', 'sln')); ?>
-        </div>
+<div class="sln-box--sub row">
+    <div class="col-xs-12">
+        <h2 class="sln-box-title"><?php _e('SMS Notifications service','sln') ?></h2>
     </div>
-    <div class="row">
-        <div class="col-sm-6 form-group sln-checkbox">
-            <?php $this->row_input_checkbox('sms_remind', __('Remind the appointment to the client with an SMS', 'sln')); ?>
-        </div>
-        <div class="col-sm-6 form-group sln-select  sln-select--info-label">
-            <label for="salon_settings_sms_remind_interval"><?php __('SMS Timing','sln') ?></label>
-            <div class="row">
-            <div class="col-xs-6 col-sm-6">
-            <?php $field = "salon_settings[sms_remind_interval]"; ?>
-                    <?php echo SLN_Form::fieldSelect(
-                        $field,
-                        SLN_Func::getIntervalItemsShort(),
-                        $this->getOpt('sms_remind_interval'),
-                        array(),
-                        true
-                    ) ?>
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-sm-6 form-group sln-checkbox">
+                <?php $this->row_input_checkbox('sms_new', __('Send SMS notification on new bookings ( to the customer and a staff member )', 'sln')); ?>
             </div>
-            <div class="col-xs-6 col-sm-6 sln-label--big"><label for="salon_settings_sms_remind_interval"><?php _e('Before the appointment','sln') ?></label></div>
+            <div class="col-sm-4 form-group sln-input--simple">
+                <?php $this->row_input_text('sms_new_number', __('Staff member number', 'sln')); ?>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 form-group sln-checkbox">
-            <?php $this->row_input_checkbox('sms_new_attendant', __('Send an SMS to selected attendant on new bookings', 'sln')); ?>
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-sm-6 form-group sln-checkbox">
+                <?php $this->row_input_checkbox('sms_remind', __('Remind the appointment to the client with an SMS', 'sln')); ?>
+            </div>
+            <div class="col-sm-6 form-group sln-select  sln-select--info-label">
+                <label for="salon_settings_sms_remind_interval"><?php __('SMS Timing','sln') ?></label>
+                <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                <?php $field = "salon_settings[sms_remind_interval]"; ?>
+                        <?php echo SLN_Form::fieldSelect(
+                            $field,
+                            SLN_Func::getIntervalItemsShort(),
+                            $this->getOpt('sms_remind_interval'),
+                            array(),
+                            true
+                        ) ?>
+                </div>
+                <div class="col-xs-6 col-sm-6 sln-label--big"><label for="salon_settings_sms_remind_interval"><?php _e('Before the appointment','sln') ?></label></div>
+                </div>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-6 sln-box-maininfo  align-top">
-        <p class="sln-input-help"><?php _e('-','sln') ?></p>
     </div>
-    </div>
-    <div class="sln-box-info">
-       <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
-       <div class="sln-box-info-content row">
-       <div class="col-md-4 col-sm-8 col-xs-12">
-       <h5><?php _e('-','sln') ?></h5>
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-sm-6 form-group sln-checkbox">
+                <?php $this->row_input_checkbox('sms_new_attendant', __('Send an SMS to selected attendant on new bookings', 'sln')); ?>
+            </div>
+            <div class="col-xs-12 col-sm-6 sln-box-maininfo  align-top">
+            <p class="sln-input-help"><?php _e('-','sln') ?></p>
         </div>
         </div>
-        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
+    <div class="clearfix"></div>
 </div>
+<div class="sln-box--sub row">
+    <div class="col-xs-12">
+        <h2 class="sln-box-title"><?php _e('SMS Test','sln') ?><span><?php _e('Just write here and save settings','sln') ?></span></h2>
+    </div>
+    <div class="col-sm-4 form-group sln-input--simple">
+        <?php $this->row_input_text('sms_test_number', __('Number', 'sln')); ?>
+    </div>
+    <div class="col-sm-4 form-group sln-input--simple">
+        <?php $this->row_input_text('sms_test_message', __('Message', 'sln')); ?>
+    </div>
+    <div class="col-sm-6 col-md-4 sln-box-maininfo  align-top">
+                <p class="sln-input-help">In vehicula nunc tortor, maximus accumsan est egestas quis. Etiam dictum sollicitudin consequat tempus.</p>
+            </div>
+</div>
+<div class="sln-box-info">
+   <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
+   <div class="sln-box-info-content row">
+   <div class="col-md-4 col-sm-8 col-xs-12">
+   <h5><?php _e('-','sln') ?></h5>
+    </div>
+    </div>
+    <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
+</div>
+</div>
+
+
+
 
 <div class="sln-box sln-box--main">
     <h2 class="sln-box-title"><?php _e('Date and Time settings','sln') ?></h2>

@@ -259,6 +259,8 @@ h2.nav-tab-wrapper .nav-tab {
     @extend .sln-btn;
     @extend .sln-btn--borderonly;
     @extend .sln-btn--medium;
+    font-size: rem(18px);
+    font-weight: normal;
     margin: 0;
     &:not(.nav-tab-active):not(:last-of-type)  {
       border-right: none;
@@ -282,6 +284,8 @@ h2.nav-tab-wrapper .nav-tab.nav-tab-active {
       @extend .sln-btn;
       @extend .sln-btn--nobkg;
       @extend .sln-btn--medium;
+      font-size: rem(18px) !important;
+      min-width: 120px;
       margin: 0;
       border-right: none;
       &.current {@extend .sln-btn--active;}

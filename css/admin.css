@@ -1117,6 +1117,8 @@ body {
     content: "\f12a";
     font-size: 1.16667rem; }
   #sln-salon--admin h2.nav-tab-wrapper .nav-tab {
+    font-size: 0.75rem;
+    font-weight: normal;
     margin: 0; }
     #sln-salon--admin h2.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type) {
       border-right: none; }
@@ -1131,6 +1133,8 @@ body {
     #sln-salon--admin .sln-admin-nav li {
       float: left; }
     #sln-salon--admin .sln-admin-nav a {
+      font-size: 0.75rem !important;
+      min-width: 120px;
       margin: 0;
       border-right: none; }
   #sln-salon--admin .sln-toolbox {
