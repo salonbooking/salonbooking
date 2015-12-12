@@ -384,8 +384,8 @@ jQuery(function ($) {
             labelTo.html(inputTo.val());
     $(this).slider({
     range: true,
-    min: 360,
-    max: 1380,
+    min: 0,
+    max: 1440,
     step: 15,
     values: [totaleMinutiFrom, totaleMinutiTo],
     //values: [540, 1020],
@@ -410,7 +410,7 @@ jQuery(function ($) {
             minutes1 = minutes1 + "";
         }
         if (hours1 == 0) {
-            hours1 = 12;
+            hours1 = 0;
             minutes1 = minutes1;
         }
 
@@ -429,10 +429,12 @@ jQuery(function ($) {
             if (hours2 == 12) {
                 hours2 = hours2;
                 minutes2 = minutes2 + "";
-            } else if (hours2 == 24) {
-                hours2 = 11;
-                minutes2 = "59";
-            } else {
+            }
+            //else if (hours2 == 24) {
+            //    hours2 = 11;
+            //    minutes2 = "59";
+            //}
+            else {
                 //hours2 = hours2 - 12;
                 hours2 = hours2;
                 minutes2 = minutes2 + "";
