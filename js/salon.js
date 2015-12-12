@@ -484,14 +484,15 @@ function initTimepickers($) {
     Plugin.call($target, option)
   });
 
+function reattachEvents(){
+    $('.sln-datetimepicker-close').unbind('click').click(function(){
+      $('.datetimepicker.sln-datetimepicker').hide();
+    });
+}
 setTimeout(function(){
-  $('.datetimepicker.sln-datetimepicker div').append('<i class="sln-datetimepicker-close">Close</i>');
+  $('.datetimepicker.sln-datetimepicker div').append('<em class="sln-datetimepicker-close">Close</em>');
+  $('.entry-title').append('<em class="sln-datetimepicker-close">Close</em>');
+  reattachEvents();
 }, 500);
-
-$('body').on("click", ".sln-datetimepicker-close" , function() {
-  $('.datetimepicker.sln-datetimepicker div').hide();
-  alert('pollo');
-});
-
 }(jQuery);
 
