@@ -194,6 +194,7 @@ function sln_serviceTotal($) {
 
 function initDatepickers($) {
     $('.sln_datepicker input').each(function () {
+      $(this).attr('readonly','readonly');
         if ($(this).hasClass('started')) {
             return;
         } else {
@@ -227,6 +228,7 @@ function initDatepickers($) {
 
 function initTimepickers($) {
     $('.sln_timepicker input').each(function () {
+      $(this).attr('readonly','readonly');
         if ($(this).hasClass('started')) {
             return;
         } else {
@@ -480,7 +482,17 @@ function initTimepickers($) {
     }
 
     Plugin.call($target, option)
-  })
+  });
 
+function reattachEvents(){
+    $('.sln-datetimepicker-close').unbind('click').click(function(){
+      $('.datetimepicker.sln-datetimepicker').hide();
+    });
+}
+setTimeout(function(){
+  $('.datetimepicker.sln-datetimepicker div').append('<em class="sln-datetimepicker-close">Close</em>');
+  $('.entry-title').append('<em class="sln-datetimepicker-close">Close</em>');
+  reattachEvents();
+}, 500);
 }(jQuery);
 
