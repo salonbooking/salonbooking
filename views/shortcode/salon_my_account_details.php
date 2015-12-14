@@ -1,5 +1,4 @@
 <!-- algolplus -->
-<div id="sln-salon" class="sln-bootstrap">
 	<div>
 		<h3><?php _e('UPCOMING BOOKING','sln');?></h3>
 		<?php if($data['cancelled']): ?>
@@ -96,8 +95,9 @@
 											<?php _e('Rate our service','sln');?>
 										</button>
 										<?php endif; ?>
+<!--										<span>--><?php //_e('Your rating ','sln');?><!--</span>-->
 									<input type="hidden" name="sln-rating" value="<?php echo $item['rating']; ?>">
-									<div class="rating" id="<?php echo $item['id']; ?>" style="display: none;"><?php _e('Your rating ','sln');?></div>
+									<div class="rating" id="<?php echo $item['id']; ?>" style="display: none;"></div>
 								<?php endif; ?>
 							</div>
 						</td>
@@ -146,4 +146,3 @@
 			<p><?php _e('No bookings', 'sln'); ?></p>
 		<?php endif; ?>
 	</div>
-</div>

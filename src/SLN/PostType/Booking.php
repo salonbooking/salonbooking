@@ -93,7 +93,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
 
                 if (!empty($comment)) {
                     echo '<a href="' . esc_url(add_query_arg(array('p' => $post_id), admin_url('edit-comments.php'))) . '"
-                    style="display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">' . $comment->comment_content . '</a>';
+                            class="overflow-dots">' . $comment->comment_content . '</a>';
                 }
 
                 break;
