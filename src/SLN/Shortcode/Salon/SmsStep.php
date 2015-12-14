@@ -28,7 +28,7 @@ class SLN_Shortcode_Salon_SmsStep extends SLN_Shortcode_Salon_AbstractUserStep
     private function sendSms($phone, $code){
         $p = $this->getPlugin();
         SLN_Enum_SmsProvider::getService($p->getSettings()->get('sms_provider'), $p)
-            ->send($values['phone'], $p->loadView('sms/summary',compact('code')));
+            ->send($values['phone'], $p->loadView('sms/verify',compact('code')));
     }
 
     protected function dispatchForm()
