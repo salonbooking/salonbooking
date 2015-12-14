@@ -185,10 +185,11 @@
     <div class="col-xs-12">
         <div class="row">
             <div class="col-sm-6 form-group sln-checkbox">
-                <?php $this->row_input_checkbox('sms_new', __('Send SMS notification on new bookings ( to the customer and a staff member )', 'sln')); ?>
+                <?php $this->row_input_checkbox('sms_new', __('Send SMS notification on new bookings', 'sln')); ?>
+            <p><?php _e('SMS will be sent to your customer and a staff member','sln'); ?></p>
             </div>
             <div class="col-sm-4 form-group sln-input--simple">
-                <?php $this->row_input_text('sms_new_number', __('Staff member number', 'sln')); ?>
+                <?php $this->row_input_text('sms_new_number', __('Staff member notification number', 'sln')); ?>
             </div>
         </div>
     </div>
@@ -210,7 +211,9 @@
                             true
                         ) ?>
                 </div>
-                <div class="col-xs-6 col-sm-6 sln-label--big"><label for="salon_settings_sms_remind_interval"><?php _e('Before the appointment','sln') ?></label></div>
+                <div class="col-xs-6 col-sm-6 sln-label--big">
+
+                    <label for="salon_settings_sms_remind_interval"><?php _e('Before the appointment','sln') ?></label></div>
                 </div>
             </div>
         </div>
@@ -219,6 +222,7 @@
         <div class="row">
             <div class="col-sm-6 form-group sln-checkbox">
                 <?php $this->row_input_checkbox('sms_new_attendant', __('Send an SMS to selected attendant on new bookings', 'sln')); ?>
+            <p><?php _e('Remember to set the mobile number of your staff members','sln');?></p>
             </div>
             <div class="col-xs-12 col-sm-6 sln-box-maininfo  align-top">
             <p class="sln-input-help"><?php _e('-','sln') ?></p>
@@ -229,7 +233,7 @@
 </div>
 <div class="sln-box--sub row">
     <div class="col-xs-12">
-        <h2 class="sln-box-title"><?php _e('SMS Test','sln') ?><span><?php _e('Just write here and save settings','sln') ?></span></h2>
+        <h2 class="sln-box-title"><?php _e('SMS Test consolle','sln') ?><span><?php _e('fill the fields and update settings','sln') ?></span></h2>
     </div>
     <div class="col-sm-4 form-group sln-input--simple">
         <?php $this->row_input_text('sms_test_number', __('Number', 'sln')); ?>
@@ -238,7 +242,7 @@
         <?php $this->row_input_text('sms_test_message', __('Message', 'sln')); ?>
     </div>
     <div class="col-sm-6 col-md-4 sln-box-maininfo  align-top">
-                <p class="sln-input-help">In vehicula nunc tortor, maximus accumsan est egestas quis. Etiam dictum sollicitudin consequat tempus.</p>
+                <p class="sln-input-help"><?php _e('Use this consolle just to test your SMS services. Fill the destination number without the counrty code, write a text message and click "Update settings" to send an SMS.','sln');?></p>
             </div>
 </div>
 <div class="sln-box-info">

@@ -215,10 +215,12 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 }
                 if($p->getSettings()->get('sms_new_attendant') && $booking->getAttendant()){
                     $phone = $booking->getAttendant()->getPhone();
-                    SLN_Enum_SmsProvider::getService(
-                        $p->getSettings()->get('sms_provider'),
-                        $this->getPlugin()
-                    )->send($phone, $p->loadView('sms/summary', compact('booking')));
+                    if($phone){
+                        SLN_Enum_SmsProvider::getService(
+                            $p->getSettings()->get('sms_provider'),
+                            $this->getPlugin()
+                        )->send($phone, $p->loadView('sms/summary', compact('booking')));
+                    }
                 }
             }
             

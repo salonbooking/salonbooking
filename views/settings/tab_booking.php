@@ -6,8 +6,8 @@ function sln_availability_row($prefix, $row, $rulenumber)
 {
     ?>
     <div class="col-xs-12 sln-booking-rule">
-    <h2 class="sln-box-title">Rule <strong><?php echo $rulenumber; ?></strong></h2>
-    <h6 class="sln-fake-label">Available days</h6>
+    <h2 class="sln-box-title"><?php _e('Rule','sln');?> <strong><?php echo $rulenumber; ?></strong></h2>
+    <h6 class="sln-fake-label"><?php _e('Available days checked and green.','sln');?></h6>
         <div class="sln-checkbutton-group">
         <?php foreach (SLN_Func::getDays() as $k => $day) : ?>
             <div class="sln-checkbutton">
@@ -22,7 +22,7 @@ function sln_availability_row($prefix, $row, $rulenumber)
         </div>
     <div class="row">
         <div class="col-xs-12 col-md-8 sln-slider-wrapper">
-             <h6 class="sln-fake-label">First shift</h6>
+             <h6 class="sln-fake-label"><?php _e('First shift','sln');?></h6>
             <div class="sln-slider">
             <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
             <div class="col col-time"><span class="slider-time-from">9:00</span> to <span class="slider-time-to">16:00</span>
@@ -31,7 +31,7 @@ function sln_availability_row($prefix, $row, $rulenumber)
             </div>
             <div class="clearfix"></div>
             </div>
-             <h6 class="sln-fake-label">Second shift</h6>
+             <h6 class="sln-fake-label"><?php _e('Second shift','sln');?></h6>
             <div class="sln-slider">
             <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
             <div class="col col-time">
@@ -43,7 +43,7 @@ function sln_availability_row($prefix, $row, $rulenumber)
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
-        <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+        <p class="sln-input-help"><?php _e('This rule represents your open and close days, your open and close shift. Set carefully as it will affect your reservation system.','sln');?></p>
             <button class="sln-btn sln-btn--problem sln-btn--big sln-btn--icon sln-icon--trash" data-collection="remove"><?php echo __('Remove', 'sln')?></button>
         </div>
 
@@ -69,7 +69,7 @@ function sln_availability_row($prefix, $row, $rulenumber)
 
 <div class="sln-tab" id="sln-tab-booking">
     <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">Availability mode <span><?php _e('Select your availability mode', 'sln') ?></span></h2>
+    <h2 class="sln-box-title"><?php _e('Availability mode','sln');?> <span><?php _e('Select your favourite booking system mode.', 'sln') ?></span></h2>
     <div class="row">
         <div class="col-xs-12 col-sm-8">
             <div class="sln-radiobox">
@@ -84,14 +84,18 @@ function sln_availability_row($prefix, $row, $rulenumber)
             </div>
         </div>
         <div class="col-xs-12 col-sm-4 form-group sln-box-maininfo align-top">
-            <p class="sln-input-help">Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+            <p class="sln-input-help"><?php _e('You need to choose which kind of booking algorithm want to use for your salon. Click over "i" icon to get more information about this option.','sln');?></p>
         </div>
     </div>
     <div class="sln-box-info">
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
        <div class="sln-box-info-content row">
        <div class="col-md-4 col-sm-8 col-xs-12">
-       <h5>Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</h5>
+       <h5><?php _e('The BASIC one sets a fixed duration for each booking and it doesn’t care about the number and the duration of the booked services. <br />
+
+You are able to set a fixed duration using the “Session average duration” option.<br /><br />
+
+The ADVANCED mode is more complex and complete as it takes in count the duration of each services booked for every single reservation. <br />We suggest to use this one.','sln');?></h5>
         </div>
         </div>
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
@@ -100,7 +104,7 @@ function sln_availability_row($prefix, $row, $rulenumber)
 <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-6">
     <div class="sln-box sln-box--main sln-box--main--small">
-    <h2 class="sln-box-title">Customers per session <span class="block"><?php _e('How many people you can attend during a single time/session?', 'sln') ?></span></h2>
+    <h2 class="sln-box-title"><?php _e('Customers per session','sln');?> <span class="block"><?php _e('How many people you can attend during a single time/session?', 'sln') ?></span></h2>
     <div class="row">
             <div class="col-xs-12 form-group sln-select  sln-select--info-label">
             <!--<label for="salon_settings_parallels_hour">Customers per time/session</label>-->
@@ -126,7 +130,7 @@ function sln_availability_row($prefix, $row, $rulenumber)
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6">
     <div class="sln-box sln-box--main sln-box--main--small">
-    <h2 class="sln-box-title">Session average duration <span class="block"><?php _e('Define your time-session average duration', 'sln') ?></span></h2>
+    <h2 class="sln-box-title"><?php _e('Session average duration','sln');?> <span class="block"><?php _e('Define your time-session average duration', 'sln') ?></span></h2>
     <div class="row">
             <div class="col-xs-12 form-group sln-select  sln-select--info-label">
             <!--<label for="salon_settings_parallels_hour">Customers per time/session</label>-->
@@ -139,7 +143,7 @@ function sln_availability_row($prefix, $row, $rulenumber)
                     $this->getOpt('interval') ? $this->getOpt('interval') : 15
                 ) ?>
             </div>
-            <div class="col-xs-8 sln-label--big"><label for="<?php echo SLN_Form::makeID($field) ?>">Minutes per session</label></div>
+            <div class="col-xs-8 sln-label--big"><label for="<?php echo SLN_Form::makeID($field) ?>"><?php _e('Minutes per session','sln');?></label></div>
             <div class="col-xs-12">
             <p class="help-block"><?php _e(
                     'Set these options carefully because it will affect the number of bookings you can accept for the same <strong>time/session</strong>.',
@@ -154,11 +158,11 @@ function sln_availability_row($prefix, $row, $rulenumber)
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">Online bookings timing <span>Donec vestibulum sagittis lorem, ut maximus ex consequat non.</span></h2>
+    <h2 class="sln-box-title"><?php _e('Online bookings timing','sln');?> <span>-</span></h2>
     <div class="sln-box--sub row">
-    <div class="col-xs-12"><h2 class="sln-box-title">Booking time range <span>Define the time range in wich customers may book an appointment</span></h2></div>
+    <div class="col-xs-12"><h2 class="sln-box-title"><?php _e('Booking time range <span>Define the time range in wich customers may book an appointment</span><','sln');?>/h2></div>
             <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select  sln-select--info-label">
-            <label for="salon_settings_hours_before_from">Range starts</label>
+            <label for="salon_settings_hours_before_from"><?php _e('Range starts','sln');?></label>
             <div class="row">
             <div class="col-xs-7">
             <?php $field = "salon_settings[hours_before_from]"; ?>
@@ -170,11 +174,11 @@ function sln_availability_row($prefix, $row, $rulenumber)
                         true
                     ) ?>
             </div>
-            <div class="col-xs-5 sln-label--big"><label for="salon_settings_hours_before_from">Minimum</label></div>
+            <div class="col-xs-5 sln-label--big"><label for="salon_settings_hours_before_from"><?php _e('Minimum','sln');?></label></div>
             </div>
         </div>
             <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select   sln-select--boxedoptions sln-select--info-label">
-            <label for="salon_settings_hours_before_to">Range ends</label>
+            <label for="salon_settings_hours_before_to"><?php _e('Range ends','sln');?></label>
             <div class="row">
             <div class="col-xs-7">
             <?php $field = "salon_settings[hours_before_to]"; ?>
@@ -186,11 +190,11 @@ function sln_availability_row($prefix, $row, $rulenumber)
                         true
                     ) ?>
             </div>
-            <div class="col-xs-5 sln-label--big"><label for="salon_settings_hours_before_to">Maximum</label></div>
+            <div class="col-xs-5 sln-label--big"><label for="salon_settings_hours_before_to"><?php _e('Maximum','sln');?></label></div>
             </div>
         </div>
             <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
-                <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+                <p class="sln-input-help"><?php _e('If you want for example that your customer can make a reservation up to two days before the appointment date and from a maximum of one month before the appointment date use this range options to set your desired rule.','sln');?></p>
             </div>
     </div>
     <div class="sln-box--sub sln-booking-rules row">
@@ -226,7 +230,7 @@ function sln_availability_row($prefix, $row, $rulenumber)
     <div class="clearfix"></div>
 </div>
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">Booking manual confirmation</h2>
+    <h2 class="sln-box-title"><?php _e('Booking manual confirmation','sln');?></h2>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 form-group sln-checkbox">
             <?php $this->row_input_checkbox(
@@ -236,29 +240,31 @@ function sln_availability_row($prefix, $row, $rulenumber)
                 ); ?>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select ">
+            <?php $this->row_input_page('pay', __('Booking page', 'sln')); ?>
+            <p class="help-block"><?php _e('Select a page with the booking form.', 'sln') ?></p>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select ">
             <?php $this->row_input_page('thankyou', __('Thank you page', 'sln')); ?>
             <p class="help-block"><?php _e('Select a page where to redirect your users after booking completition.', 'sln') ?></p>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select ">
-            <?php $this->row_input_page('pay', __('Pay page', 'sln')); ?>
-            <p class="help-block"><?php _e('Select a page where to redirect your users for payment.', 'sln') ?></p>
-        </div>
+
     </div>
 </div>
 
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">User booking cancellation</h2>
+    <h2 class="sln-box-title"><?php _e('User booking cancellation','sln');?></h2>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 form-group sln-checkbox">
             <?php $this->row_input_checkbox(
                     'cancellation_enabled',
                     __('Booking cancellation', 'sln'),
-                    array('help' => __('Select this option to enable booking cancellation.','sln'))
+                    array('help' => __('Select this option if you want your users able to cancel a booking from the front-end.','sln'))
                 ); ?>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select ">
-                <label>Time in advance</label>
+                <label><?php _e('Time in advance','sln');?></label>
                 <?php $field = "salon_settings[hours_before_cancellation]"; ?>
                 <?php echo SLN_Form::fieldSelect(
                     $field,
@@ -274,19 +280,19 @@ function sln_availability_row($prefix, $row, $rulenumber)
                     array(),
                     true
                 ) ?>
-                <p class="help-block"><?php _e('How many hours before the appointment the cancellation is allowed', 'sln') ?></p>
+                <p class="help-block"><?php _e('How many hours before the appointment the cancellation is still allowed', 'sln') ?></p>
             </div>
         <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
-            <p class="sln-input-help">Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
+            <p class="sln-input-help"><?php _e('Users once logged in inside the MY ACCOUNT BOOKING page will be able to see the list of their upcoming reservations and eventually Cancel them. An email notification will be sent to you and to the customers.','sln');?></p>
         </div>
     </div>
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title">Pause booking service <span class="block">If checked the online booking form will be disabled and your users will see a message.</span></h2>
+    <h2 class="sln-box-title"><?php _e('Pause online booking service <span class="block">If ON the online booking form will be disabled and your users will see a message.</span>','sln');?></h2>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-switch">
-            <h6 class="sln-fake-label">Online Booking status</h6>
+            <h6 class="sln-fake-label"><?php _e('Online Booking status','sln');?></h6>
             <!--<input type="checkbox" name="salon_settings[disabled]" id="salon_settings_disabled" value="1">
                 <label class="sln-switch-btn" for="salon_settings_disabled"  data-on="On" data-off="Off"></label>
                 <label class="sln-switch-text"  for="salon_settings_disabled" data-on="Online Booking is active" 
@@ -294,13 +300,13 @@ function sln_availability_row($prefix, $row, $rulenumber)
                             <?php SLN_Form::fieldCheckboxSwitch(
                                 "salon_settings[disabled]",
                                 $this->getOpt('disabled'),
-                                $labelOn = "Online Booking is active",
-                                $labelOff = "Online Booking is paused"
+                                $labelOn = "Online Booking is disabled",
+                                $labelOff = "Online Booking is active"
                             ) ?>
             </div>
         <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-input--simple">
-        <label for="salon_settings_disabled_message">Message on disabled booking</label>
-               <textarea name="salon_settings[disabled_message]" id="salon_settings_disabled_message" placeholder="Write a message" rows="5">Booking is not available at the moment, please contact us at me@nicovece.com</textarea>
+        <label for="salon_settings_disabled_message"><?php _e('Message on disabled booking','sln');?></label>
+               <textarea name="salon_settings[disabled_message]" id="salon_settings_disabled_message" placeholder="Write a message" rows="5"><?php _e('Booking is not available at the moment, please contact us at me@nicovece.com','sln');?></textarea>
         </div>
     </div>
 </div>
