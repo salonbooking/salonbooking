@@ -491,7 +491,6 @@ function reattachEvents(){
 }
 setTimeout(function(){
   $('.datetimepicker.sln-datetimepicker div').append('<em class="sln-datetimepicker-close">Close</em>');
-  $('.entry-title').append('<em class="sln-datetimepicker-close">Close</em>');
   reattachEvents();
 }, 500);
 }(jQuery);
