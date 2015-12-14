@@ -1,0 +1,163 @@
+.select2-container.select2-container--sln {
+	.select2-selection--single, .select2-selection--multiple {
+	  height: rem(60px);
+	  @extend %font-bigger;
+	  line-height: rem(60px);
+	  border: none;
+	  border-radius: 0;
+	  background-color: $cl_main--light;
+	  transition: all 150ms;
+	  &:hover, &:focus {
+	    background-color: $cl_main;
+	    .select2-selection__rendered {color: #fff;}
+	    .select2-selection__arrow:before {color: #fff;}
+	  }
+	}
+	  &.select2-container--open {
+	  	.select2-selection--single, .select2-selection--multiple{
+	    		background-color: $cl_main;
+	    		.select2-selection__rendered {color: #fff;}
+	    		.select2-selection__arrow:before {color: #fff;}
+	  	}
+	  }
+	.select2-selection--single .select2-selection__rendered {
+	    color: $cl_main;
+	    line-height: rem(60px);
+	}
+	.select2-selection--single .select2-selection__rendered {
+	    display: block;
+	    padding-left: 1em;
+	    padding-right: 1em;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    &:hover {
+	    	.select2-selection__arrow:before {color: #fff;}
+	    }
+	}
+
+	.select2-selection--single .select2-selection__arrow {
+		height: rem(26px);
+		position: absolute;
+		top: calc(50% - 7px);
+		right: rem(20px);
+		//border-left: rem(7px) solid $cl_main;
+		//border-bottom: rem(7px) solid $cl_main;
+		width: rem(20px);
+		height: rem(20px);
+	 	//transform: rotate(-45deg);
+		b {display: none;}
+	  &:before {
+	  	display: block;
+	  	width: rem(20px);
+		height: rem(20px);
+	  	content: "\f078";
+	  	position: absolute;
+	  	top: 0;
+	  	left: 0;
+	  	@extend %font-icon;
+	  	line-height: rem(20px);
+	  	color: $cl_main;
+	  }
+	}
+	.select2-dropdown {
+		width: 220px !important;
+		background-color: #fff;
+		color: $cl_main;
+	  	border: 2px solid alpha-tones($cl_main--emphasis, .5);
+	  	padding: .2%;
+		border-radius: 0;
+		@extend %font-big;
+	}
+	.sln-select-dropdown--boxedoptions {
+		width: 400px !important;
+	    	.select2-results__options {
+	    		padding: .5%;
+	    		margin: 0;
+	    	}
+		.select2-results__option {
+			background-color: $cl_main--light;
+			display: inline-block;
+			width: 24.4%;
+			text-align: center;
+			padding: rem(20px) rem(10px);
+			margin: .3%;
+		}
+	}
+	.select2-results__options {
+		padding: .5%;
+		background-color: #fff;
+		max-height: 200px;
+    		overflow-y: auto;
+	}
+	.select2-results__option {
+	  padding: rem(10px) rem(20px);
+	  margin: 0 0 2px 0;
+	  background-color: $cl_main--light;
+	  border-top: 2px soldi #fff;
+	}
+	.select2-search--dropdown {
+		padding: .5% 1% 0 .5%;
+		.select2-search__field {
+		  @extend %font-big;
+		  padding: .5em 1em;
+		  border: none;
+		  border: rem(3px) solid alpha-tones($cl_main--emphasis, .5);
+		  &:focus, &:hover {
+		  	outline: 2px solid $cl_main--emphasis;
+		  	background-color: $cl_main;
+		  	color: #fff;
+		  }
+		}
+	}
+	.select2-results__option--highlighted[aria-selected] {
+	  background-color: $cl_main;
+	  color: #fff;
+	}
+	.select2-results__option[aria-selected=true] {
+	  background-color: $cl_main--medium;
+	  color: #fff;
+	}
+	.select2-selection--multiple .select2-search__field {
+	  @include placeholder-color($cl_main--emphasis)
+	}
+	.select2-selection--multiple .select2-selection__choice {
+	  background-color: $cl_main--emphasis;
+	  border: none;
+	  color: #fff;
+	  padding: 0 40px 0 10px;
+	  border-radius: 0;
+	  line-height: 50px;
+	  position: relative;
+	}
+	.select2-selection--multiple .select2-selection__choice__remove {
+	  position: absolute;
+	  right: 5px;
+	  top: calc(50% - 12px);
+	  font-size: 24px;
+	  line-height: 14px;
+	  border-radius: 50%;
+	  padding: 4px;
+	  background-color: #fff;
+	  color: $cl_problem;
+	  opacity: .75;
+	  transition: opacity 200ms;
+	  &:hover {
+	    color: $cl_problem;
+	    opacity: 1;
+	  }
+	}
+
+
+	.select2-selection--single:focus{
+	  outline: none;
+	}
+	.select2-selection--single:focus .select2-selection__rendered {
+	   
+	}
+	/* BIG SELECT // END */
+}
+.select2-container--default .select2-results>.select2-results__options {
+    max-height: 200px;
+    overflow-y: auto;
+}

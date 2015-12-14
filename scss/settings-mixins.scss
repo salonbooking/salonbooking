@@ -138,6 +138,12 @@ $icon-font-svg-id:        "glyphicons_halflingsregular";
   -o-transition: all $speed ease-in-out;
   transition: all $speed ease-in-out;
 }
+@mixin transition ($prop...) {
+  -webkit-transition: $prop;
+  -moz-transition: $prop;
+  -o-transition: $prop;
+  transition: $prop;
+}
 @mixin transform ($prop...) {
   -webkit-transform: $prop;
   -moz-transform: $prop;
@@ -145,6 +151,19 @@ $icon-font-svg-id:        "glyphicons_halflingsregular";
   -o-transform: $prop;
   transform: $prop;
 }
+
+@mixin b-radius($value){
+  @if $value == 50% {
+    border-radius: 50%;
+    border-radius: 9999px;
+  }
+  border-top-left-radius: $value;
+  border-top-right-radius: $value;
+  border-bottom-left-radius: $value;
+  border-bottom-right-radius: $value;
+}
+
+
 %zDepth-1 {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
@@ -175,4 +194,46 @@ $icon-font-svg-id:        "glyphicons_halflingsregular";
 }
 %zi-navigazione {
   z-index: 800;
+}
+%zi-top {
+  z-index: 1000;
+}
+
+
+// FLEX
+%display-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// ANIMATIONS
+@-webkit-keyframes fade-in {
+    0% {opacity: 0;-webkit-transform: scale(0)}
+    100% {opacity: 1;-webkit-transform: scale(1);}
+}
+
+@-moz-keyframes fade-in {
+    0% {opacity: 0;-webkit-transform: scale(0)}
+    100% {opacity: 1;-webkit-transform: scale(1);}
+}
+
+@-ms-keyframes fade-in {
+    0% {opacity: 0;-webkit-transform: scale(0)}
+    100% {opacity: 1;-webkit-transform: scale(1);}
+}
+
+@keyframes fade-in {
+    0% {opacity: 0;transform: scale(.99);}
+    100% {opacity: 1;transform: scale(1);}
+}
+
+
+@mixin fadein($time){
+    -webkit-animation: fade-in $time;
+    -moz-animation: fade-in $time;
+    -ms-animation: fade-in $time;
+    animation: fade-in $time;
 }
