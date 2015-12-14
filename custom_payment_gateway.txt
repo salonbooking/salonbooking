@@ -1,0 +1,57 @@
+CUSTOM PAYMENT METHOD INTEGRATION GUIDELINES
+
+
+1) add a init 
+        add_action(‘init’, ’custom_payment_init’);
+ 
+2) init method
+function custom_payment_init(){
+    SLN_Enum_PaymentMethodProvider::addService(‘custom’’, ‘Custom’, ‘CustomPay’);
+}
+
+3) custom payment class
+
+class CustomPay extends SLN_PaymentMethod_Abstract
+{
+    /**
+     * define here your custom fields for settings
+     */
+    public function getFields(){
+        return array(
+            ‘pay_custom_text’
+        );
+    }
+    public function renderPayButton($data){
+        return $this->plugin->loadView(‘payment_method/‘.$this->getMethodKey().’/pay’, $data);
+    }
+
+    public function renderSettingsFields($data){
+        return $this->plugin->loadView(‘payment_method/‘.$this->getMethodKey().’/settings’, $data);
+    }
+}
+
+4) custom views
+views/payment_method/custom/pay.php
+<span>
+        <a data-salon-data=“<?php echo $ajaxData.’&mode=‘.$paymentMethod->getMethodKey() ?>” data-salon-toggle=“direct”
+        href=“<?php echo $payUrl ?>” class=“btn btn-primary”>
+            <?php $deposit = $plugin->getBookingBuilder()->getLastBooking()->getDeposit(); ?>
+            <?php if($deposit > 0): ?>
+                <?php echo sprintf(__(‘Pay %s as a deposit with %s’, ‘sln’), $plugin->format()->money($deposit), $paymentMethod->getMethodLabel()) ?>
+            <?php else : ?>
+                <?php sprintf(_e(‘Pay with %s’, ‘sln’), $paymentMethod->getMethodLabel()) ?>
+            <?php endif ?>
+        </a>
+        <p><?php echo $plugin->getSettings()->get(‘pay_custom_text’) ?></p>
+</span>
+
+views/payment_method/custom/settings.php
+
+<div class=“row”>
+        <div class=“col-md-4 col-sm-6”>
+            <?php $adminSettings->row_input_text(‘pay_custom_text’, ‘enter label of payment here’); ?>
+        </div>
+</div>
+
+Note: you can create custom views using directly code inside renderPayButton and renderSettingsFields methods 
+
