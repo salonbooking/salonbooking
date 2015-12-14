@@ -34,7 +34,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
         $noTimeStatuses = SLN_Enum_BookingStatus::$noTimeStatuses;
         foreach ($query->get_posts() as $p) {
             $tmp = SLN_Plugin::getInstance()->createBooking($p);
-            if(!$p->hasStatus($noTimeStatuses))
+            if(!$tmp->hasStatus($noTimeStatuses))
                 $ret[] = $tmp;
         }
         wp_reset_query();
