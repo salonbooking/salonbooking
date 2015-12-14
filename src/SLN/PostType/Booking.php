@@ -86,9 +86,15 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 break;
             case 'booking_review' :
                 $comments = get_comments("post_id=$post_id&type=sln_review");
+                $comment = isset($comments[0]) ? $comments[0] : null;
+
                 echo '<input type="hidden" name="sln-rating" value="' . $this->getPlugin()->createBooking($post_id)->getRating() . '">
-                        <div class="rating" style="display: none;"></div>
-                        <div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">' . (isset($comments[0]) ? $comments[0]->comment_content : ''). '</div>';
+                        <div class="rating" style="display: none;"></div>';
+
+                if (!empty($comment)) {
+                    echo '<a href="' . esc_url(add_query_arg(array('p' => $post_id), admin_url('edit-comments.php'))) . '"
+                    style="display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">' . $comment->comment_content . '</a>';
+                }
 
                 break;
         }

@@ -67,6 +67,30 @@ class SLN_Plugin
         add_action('wp_ajax_salon', array($this, 'ajax'));
         add_action('wp_ajax_nopriv_salon', array($this, 'ajax'));
         add_action('wp_ajax_saloncalendar', array($this, 'ajax'));
+
+        add_filter('manage_edit-comments_columns', array($this, 'add_comment_columns') );
+        add_filter('manage_comments_custom_column', array($this, 'comment_column'), 10, 2);
+    }
+    function add_comment_columns( $columns )
+    {
+        $columns['sln_rating_column'] = __('Rating', 'sln');
+
+        return $columns;
+    }
+    function comment_column( $column, $comment_ID )
+    {
+        if ('sln_rating_column' == $column) {
+            $comment = get_comment( $comment_ID);
+            if ($comment->comment_type == 'sln_review') {
+                $post = get_post( $comment->comment_post_ID );
+                if ($post->post_type == 'sln_booking') {
+                    $rating = get_post_meta($post->ID, '_sln_booking_rating', true);
+
+                    echo '<input type="hidden" name="sln-rating" value="' . $rating . '">
+                            <div class="rating" style="display: none;"></div>';
+                }
+            }
+        }
     }
 
     public function add_admin_caps()

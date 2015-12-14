@@ -127,7 +127,7 @@ var slnMyAccount = {
         if (jQuery('#sln-salon-my-account').size()) {
             this.loadContent();
         }
-        else if (jQuery('[name=post_type]').size()) {
+        else /*if (jQuery('[name=post_type]').val() == 'sln_booking')*/ {
             this.createRatings();
         }
     }

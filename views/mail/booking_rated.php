@@ -43,7 +43,7 @@ include dirname(__FILE__).'/_header.php';
 
 					<td width="147" align="center" valign="top">
 						<p style="padding-left: 20px;">
-							<a href="<?php echo get_edit_post_link( $booking->getId() ); ?>"style="
+							<a href="<?php echo esc_url(add_query_arg(array('p' => $booking->getId()), admin_url('edit-comments.php'))); ?>"style="
 										display: inline-block;
 									    padding: 6px 12px;
 									    margin-bottom: 0;
