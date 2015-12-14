@@ -149,7 +149,10 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     function getServices(){
         $ret = array();
         foreach($this->getServicesIds() as $id){
-            $ret[] = new SLN_Wrapper_Service($id);
+            $tmp = new SLN_Wrapper_Service($id);
+            if(!$tmp->isEmpty()){
+                $ret[] = $tmp;
+            }
         }
         return $ret;
     }
