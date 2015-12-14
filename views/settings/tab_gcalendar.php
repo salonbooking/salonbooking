@@ -16,6 +16,7 @@
         <div class="hidden-xs col-md-4 col-sm-4 form-group sln-box-maininfo align-top">
             <p class="sln-input-help">Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at.</p>
         </div>
+        <div class="clearfix"></div>
         <div class="col-sm-4 form-group sln-input--simple">
             <?php $this->row_input_text('google_outh2_client_id', __('Google Client ID', 'sln')); ?>
         </div>
@@ -31,7 +32,7 @@
                 });
             </script>
         </div>
-        <div class="col-xs-12 visible-xs-block form-group sln-box-maininfo align-top">
+        <div class="col-xs-12 visible-xs-block hidden-lg form-group sln-box-maininfo align-top">
             <p class="sln-input-help">Sed eget metus vitae enim suscipit scelerisque non sed neque. Mauris semper hendrerit erat, in consectetur arcu eleifend at. Donec orci lacus, euismod euismod luctus sed, rhoncus in tellus. Mauris tempus arcu ut luctus venenatis.</p>
         </div>
     </div>
