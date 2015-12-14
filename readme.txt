@@ -233,11 +233,13 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 == Changelog ==
 
-11.12.2015
+14.12.2015
 
 * Fixed bug on Timezone issues
 * Fixed bug on availables hours for "tomorrow bookings"
 * Fixed bug on services duration calculation 
+* Fixed bug on slot availability after booking cancellation
+* Fixed bug on Plivo SMS notification sending on selected assistant 
 * Bookings, Services and Assistants back-end columns improvements
 * Back-end calendar small improvements ( added the name of the assistant on reservation detail)
 * Date and time picker improvements on mobile and tablets
@@ -309,3 +311,8 @@ Date-picker multilanguage support fix
 * Added "SMS Verification" option
 * Add "Salon staff" new users role
 * Fixed booking system bug
+
+== Upgrade Notice ==
+
+= 2.0 =
+This new version brings a lot of new features, back-end settings redesign and some bug fixes. Probably you'll need to update your translations.
