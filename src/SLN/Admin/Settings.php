@@ -13,7 +13,7 @@ class SLN_Admin_Settings {
         'booking' => 'Booking Rules',
         'payments' => 'Payments',
         'gcalendar' => 'Google Calendar',
-        'documentation' => 'Documentation'
+        'documentation' => 'Support'
     );
 
     public function __construct(SLN_Plugin $plugin) {
