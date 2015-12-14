@@ -111,11 +111,12 @@ var slnMyAccount = {
                 } else {
                     jQuery("#ratingModal #step1").css('display', 'none');
                     jQuery("#ratingModal #step2").css('display', 'block');
-                    setTimeout(function() {
-                        jQuery('#ratingModal .close').click();
-                    }, 3000);
 
-                    slnMyAccount.loadContent();
+                    jQuery('#ratingModal .close').delay(2000).queue(function () {
+                        jQuery(this).click();
+                        slnMyAccount.loadContent();
+                        jQuery(this).dequeue();
+                    });
                 }
             },
             error: function(data){alert('error'); console.log(data);}
