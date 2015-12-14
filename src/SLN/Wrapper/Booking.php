@@ -161,7 +161,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
     function hasStatus($status)
     {
-        return $this->getStatus() == $status;
+        return SLN_Func::has($this->getStatus(),$status);
     }
 
     /**
