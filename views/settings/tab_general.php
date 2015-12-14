@@ -142,6 +142,7 @@
     <div class="col-sm-8 form-group">
         <div class="row">
             <div class="col-xs-12 sln-select">
+                <?php $field = "salon_settings[sms_provider]"; ?>
                 <label for="salon_settings_sms_provider"><?php _e('Select your service provider', 'sln') ?></label>
                 <?php echo SLN_Form::fieldSelect(
                 $field,
