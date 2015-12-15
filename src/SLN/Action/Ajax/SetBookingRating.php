@@ -2,6 +2,8 @@
 
 class SLN_Action_Ajax_SetBookingRating extends SLN_Action_Ajax_Abstract
 {
+	private $errors = array();
+
 	public function execute()
 	{
 		if($timezone = get_option('timezone_string'))
