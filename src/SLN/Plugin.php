@@ -74,7 +74,7 @@ class SLN_Plugin
     }
 
     function comment_text($comment_text, $comment, $args) {
-        if ($comment->comment_type == 'sln_review') {
+        if ((empty(get_current_screen()) || get_current_screen()->base != 'edit-comments') && $comment->comment_type == 'sln_review') {
             $post = get_post( $comment->comment_post_ID );
             if ($post->post_type == 'sln_booking') {
                 $rating = get_post_meta($post->ID, '_sln_booking_rating', true);
