@@ -397,8 +397,8 @@
   list-style: none;
   font-size: 1em;
   text-align: left;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
+  background-color: #fff;
+  border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -433,7 +433,7 @@
 .dropdown-menu.datetimepicker > .active > a,
 .dropdown-menu.datetimepicker > .active > a:hover,
 .dropdown-menu.datetimepicker > .active > a:focus {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   outline: 0;
   background-color: #076b9d;
@@ -722,6 +722,8 @@
   border: 1px solid #ddd;
   padding: 0;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+  /* algolplus start */
+  /* algolplus end */
 }
 #sln-salon p li,
 #sln-salon a div,
@@ -769,7 +771,7 @@
 }
 #sln-salon .sln-service-list .service-description,
 #sln-salon .sln-service-list .service-duration {
-  color: #666666;
+  color: #666;
   font-size: .8em;
   display: block;
   clear: both;
@@ -833,7 +835,7 @@
 #sln-salon h2 em {
   display: block;
   clear: both;
-  color: #999999;
+  color: #999;
   font-size: 0.68em;
   font-style: normal;
 }
@@ -843,7 +845,7 @@
   }
 }
 #sln-salon .row-total {
-  border-top: 7px solid #eeeeee;
+  border-top: 7px solid #eee;
   font-weight: bold;
   font-size: 1.2em;
   padding-top: 1.4em;
@@ -894,7 +896,7 @@
   margin-bottom: 2em;
 }
 #sln-salon .form-group label {
-  color: #666666;
+  color: #666;
   font-size: 1em;
   margin-bottom: 0.5em;
   font-weight: normal;
@@ -1051,7 +1053,7 @@
   text-align: center;
   font-size: 0.8em;
   font-weight: bold;
-  color: #999999;
+  color: #999;
   margin-top: .4em;
 }
 @media only screen and (max-width: 767px) {
@@ -1060,10 +1062,10 @@
   }
 }
 #sln-salon #salon-step-summary p.dear {
-  color: #666666;
+  color: #666;
 }
 #sln-salon #salon-step-summary div.summ-row {
-  background: #eeeeee;
+  background: #eee;
   margin-bottom: 3px;
   padding: 10px 0;
 }
@@ -1073,7 +1075,7 @@
 }
 #sln-salon #salon-step-summary div.summ-row span.label {
   font-size: .8em;
-  color: #666666;
+  color: #666;
   display: block;
   text-align: left;
 }
@@ -1116,8 +1118,8 @@
   color: black;
 }
 #sln-salon .tycol {
-  background: #eeeeee;
-  color: #666666;
+  background: #eee;
+  color: #666;
   padding: .8em;
   height: 8em;
   border-left: 0.6em solid #f8f8f8;
@@ -1136,7 +1138,7 @@
   margin-top: .6em;
 }
 #sln-salon .tycol i.c {
-  color: #ff9d03 !important;
+  color: #FF9D03 !important;
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   #sln-salon .tycol {
@@ -1152,7 +1154,7 @@
 }
 #sln-salon .ty p,
 #sln-salon p.ty {
-  color: #666666;
+  color: #666;
   font-size: 1em;
   margin-bottom: 1em;
 }
@@ -2193,4 +2195,133 @@
   height: .6em;
   top: calc(50% - .3em);
   left: calc(50% - .075em);
+}
+@media (min-width: 768px) {
+  #sln-salon #sln-salon-my-account .modal-dialog {
+    width: 560px;
+  }
+}
+#sln-salon #sln-salon-my-account .modal-dialog {
+  margin: 20% auto;
+}
+#sln-salon #sln-salon-my-account .modal-header {
+  border-bottom: none;
+}
+#sln-salon #sln-salon-my-account .modal-footer {
+  border-top: none;
+}
+#sln-salon #sln-salon-my-account .modal-content {
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(150, 150, 150, 0.3);
+}
+#sln-salon #sln-salon-my-account #step1 {
+  margin-top: 40px;
+}
+#sln-salon #sln-salon-my-account #step1 p {
+  margin: 0;
+}
+#sln-salon #sln-salon-my-account #step2 {
+  padding-top: 100px;
+}
+#sln-salon #sln-salon-my-account #step2 p {
+  margin: 0;
+}
+#sln-salon #sln-salon-my-account #step2 p:first-child {
+  color: #0083C3;
+}
+#sln-salon #sln-salon-my-account #step2 p:last-child {
+  margin-top: 20px;
+}
+#sln-salon #sln-salon-my-account .modal-body {
+  padding: 0 50px;
+  height: 400px;
+}
+#sln-salon #sln-salon-my-account .modal-body button {
+  display: block;
+  margin: 0 auto;
+  border-radius: 0 !important;
+  padding: 8px 24px !important;
+  font-variant: normal !important;
+  text-transform: initial !important;
+  font-size: 18px;
+}
+#sln-salon #sln-salon-my-account .modal-body button.btn-primary {
+  background: #0083C3;
+  margin-top: 50px;
+}
+#sln-salon #sln-salon-my-account .modal-body button.btn-default {
+  background: none;
+  color: #0083C3 !important;
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+#sln-salon #sln-salon-my-account .modal {
+  background-color: rgba(220, 220, 220, 0.4);
+}
+#sln-salon #sln-salon-my-account .modal button.close,
+#sln-salon #sln-salon-my-account .modal button.close:hover {
+  background: none;
+  border: none;
+  position: relative;
+  color: #fff;
+  opacity: initial;
+  text-shadow: none;
+  margin: 10px 20px 0 0;
+}
+#sln-salon #sln-salon-my-account .modal button.close:before,
+#sln-salon #sln-salon-my-account .modal button.close:hover:before {
+  content: "\00d7";
+  border-radius: 50%;
+  background: #555;
+  border: none;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  line-height: 16px;
+  font-size: 20px;
+}
+#sln-salon #sln-salon-my-account .modal textarea {
+  width: 100%;
+  resize: none;
+  margin: 20px 0;
+  border: none;
+  background: #D2E5F6;
+  padding: 16px;
+  color: #36AEE8;
+  border-radius: 2px;
+  height: 140px;
+}
+#sln-salon #sln-salon-my-account .modal textarea::-webkit-input-placeholder {
+  color: #36AEE8;
+}
+#sln-salon #sln-salon-my-account .modal textarea::-moz-placeholder {
+  color: #36AEE8;
+}
+#sln-salon #sln-salon-my-account .modal textarea:-moz-placeholder {
+  color: #36AEE8;
+}
+#sln-salon #sln-salon-my-account .modal textarea:-ms-input-placeholder {
+  color: #36AEE8;
+}
+#sln-salon #sln-salon-my-account .modal textarea::placeholder {
+  color: #36AEE8;
+}
+#sln-salon #sln-salon-my-account .modal textarea::input-placeholder {
+  color: #36AEE8;
+}
+#sln-salon #sln-salon-my-account .modal .rating {
+  display: inline-block !important;
+  background: none;
+}
+#sln-salon #sln-salon-my-account .modal .rating i {
+  vertical-align: bottom;
+  font-size: 24px;
+  color: #0083C3;
+}
+#sln-salon #sln-salon-my-account .modal .rating span {
+  font-size: .9em;
 }
