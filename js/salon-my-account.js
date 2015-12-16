@@ -72,7 +72,7 @@ var slnMyAccount = {
             starOff:"glyphicon glyphicon-star-empty",
             starOn:"glyphicon glyphicon-star",
         });
-        $ratyElem.css('display', 'inline-block');
+        $ratyElem.css('display', 'block');
     },
 
     showRateForm: function (id) {

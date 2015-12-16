@@ -70,7 +70,23 @@ class SLN_Plugin
 
         add_filter('manage_edit-comments_columns', array($this, 'add_comment_columns') );
         add_filter('manage_comments_custom_column', array($this, 'comment_column'), 10, 2);
+        add_filter('comment_text',array($this, 'comment_text'),10,3);
     }
+
+    function comment_text($comment_text, $comment, $args) {
+        if ($comment->comment_type == 'sln_review') {
+            $post = get_post( $comment->comment_post_ID );
+            if ($post->post_type == 'sln_booking') {
+                $rating = get_post_meta($post->ID, '_sln_booking_rating', true);
+
+                return '<script> jQuery(document).ready(function() { slnMyAccount.createRatings(); }); </script>
+                            <div><input type="hidden" name="sln-rating" value="' . $rating . '"/>
+                            <div class="rating" style="display: none;"></div></div>' . $comment_text;
+            }
+        }
+        return $comment_text;
+    }
+
     function add_comment_columns( $columns )
     {
         $columns['sln_rating_column'] = __('Rating', 'sln');
