@@ -104,7 +104,7 @@ class SLN_Plugin
                     $rating = get_post_meta($post->ID, '_sln_booking_rating', true);
 
                     echo '<input type="hidden" name="sln-rating" value="' . $rating . '">
-                            <div class="rating" style="display: none;"></div>';
+                            <div class="rating" style="display: none;"></div><a name="salon-review"></a>';
                 }
             }
         }

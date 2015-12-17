@@ -92,7 +92,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                         <div class="rating" style="display: none;"></div>';
 
                 if (!empty($comment)) {
-                    echo '<a href="' . esc_url(add_query_arg(array('p' => $post_id), admin_url('edit-comments.php'))) . '"
+                    echo '<a href="' . esc_url(add_query_arg(array('p' => $post_id), admin_url('edit-comments.php'))) . '#salon-review"
                             class="overflow-dots">' . $comment->comment_content . '</a>';
                 }
 

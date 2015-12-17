@@ -44,7 +44,7 @@ include dirname(__FILE__).'/_header.php';
 
 					<td width="147" align="center" valign="top">
 						<p style="padding-left: 20px;">
-							<a href="<?php echo esc_url(add_query_arg(array('p' => $booking->getId()), admin_url('edit-comments.php'))); ?>"style="
+							<a href="<?php echo esc_url(add_query_arg(array('p' => $booking->getId()), admin_url('edit-comments.php'))); ?>#salon-review"style="
 										display: inline-block;
 									    padding: 16px 12px;
 									    margin-bottom: 0;
