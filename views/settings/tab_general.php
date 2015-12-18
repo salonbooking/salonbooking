@@ -264,7 +264,6 @@
     <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
                 <label for="salon_settings_date_format"><?php _e('Date Format', 'sln') ?></label>
-                <?php $field = "salon_settings[time_format]"; ?>
                 <?php $field = "salon_settings[date_format]"; ?>
                 <?php echo SLN_Form::fieldSelect(
                     $field,
@@ -276,6 +275,7 @@
             </div>
             <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
                 <label for="salon_settings_time_format"><?php _e('Time Format', 'sln') ?></label>
+                <?php $field = "salon_settings[time_format]"; ?>
                     <?php echo SLN_Form::fieldSelect(
                         $field,
                         SLN_Enum_TimeFormat::toArray(),
