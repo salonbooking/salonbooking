@@ -91,11 +91,7 @@ function sln_availability_row($prefix, $row, $rulenumber)
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
        <div class="sln-box-info-content row">
        <div class="col-md-4 col-sm-8 col-xs-12">
-       <h5><?php _e('The BASIC one sets a fixed duration for each booking and it doesn’t care about the number and the duration of the booked services. <br />
-
-You are able to set a fixed duration using the “Session average duration” option.<br /><br />
-
-The ADVANCED mode is more complex and complete as it takes in count the duration of each services booked for every single reservation. <br />We suggest to use this one.','sln');?></h5>
+       <h5><?php _e('The BASIC one sets a fixed duration for each booking and it doesn\'t care about the number and the duration of the booked services. <br />You are able to set a fixed duration using the "Session average duration" option.<br /><br />The ADVANCED mode is more complex and complete as it takes in count the duration of each services booked for every single reservation. <br />We suggest to use this one.','sln');?></h5>
         </div>
         </div>
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
