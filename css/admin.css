@@ -3959,8 +3959,8 @@ body {
   #sln-salon--admin .sln-box-info {
     padding-bottom: 1.33333rem; }
     #sln-salon--admin .sln-box-info .sln-box-info-trigger .sln-btn--small.sln-btn--icon:after, #sln-salon--admin .sln-box-info .sln-box-info-trigger p.sln-btn--small.submit:after {
-      font-size: 2.26667rem;
-      line-height: 2.26667rem; }
+      font-size: 2rem;
+      line-height: 2rem; }
     #sln-salon--admin .sln-box-info .sln-box-info-trigger .sln-icon--close {
       display: none; }
     #sln-salon--admin .sln-box-info .sln-box-info-trigger .sln-icon--info {
