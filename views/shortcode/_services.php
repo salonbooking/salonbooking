@@ -44,7 +44,7 @@ $grouped = SLN_Func::groupServicesByCategory($services);
             ) ?>
             </span>
             </div>
-            <div class="col-lg-<?=$showPrices?'8':'11'?> col-xs-<?=$showPrices?'8':'11'?>">
+            <div class="col-lg-<?php echo $showPrices?'8':'11'?> col-xs-<?php echo $showPrices?'8':'11'?>">
                 <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                     <strong class="service-name"><?php echo $service->getName(); ?></strong>
                     <span class="service-description"><?php echo $service->getContent() ?></span>

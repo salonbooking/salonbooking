@@ -1,4 +1,4 @@
-$cl_main: #004664;
+$cl_main: rgb(0,53,83);
 $cl_main--medium: #4c7186;
 $cl_main--light: #c7dff3;
 $cl_main--emphasis: #0C6EB6;
@@ -8,10 +8,13 @@ $cl_warning: #f5b025;
 $cl_warning--light: #f7c65f;
 $cl_ok: #5bc24c;
 
+@function alpha-tones($tone, $alpha){
+  @return rgba($tone, $alpha)
+}
 
-$browser-context: 16;
+$browser-context: 15;
 
-@function em($pixels, $context: $browser-context) {
+@function rem($pixels, $context: $browser-context) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
   }
@@ -20,5 +23,20 @@ $browser-context: 16;
     $context: $context * 1px;
   }
 
-  @return $pixels / $context * 1em;
+  @return $pixels / $context * 1rem;
+}
+
+@mixin placeholder-color($color) {
+  &::-webkit-input-placeholder {
+     color: $color;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+     color: $color;
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+     color: $color;
+  }
+  &:-ms-input-placeholder {
+     color: $color;
+  }
 }

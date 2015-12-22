@@ -33,6 +33,11 @@ class SLN_Enum_BookingStatus
     );
     // algolplus end
 
+    public static $noTimeStatuses = array(
+        self::ERROR,
+        self::CANCELED,
+    );
+
     public static function toArray()
     {
         return self::$labels;

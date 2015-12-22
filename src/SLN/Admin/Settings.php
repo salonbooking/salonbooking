@@ -13,7 +13,7 @@ class SLN_Admin_Settings {
         'booking' => 'Booking Rules',
         'payments' => 'Payments',
         'gcalendar' => 'Google Calendar',
-        'documentation' => 'Documentation'
+        'documentation' => 'Support'
     );
 
     public function __construct(SLN_Plugin $plugin) {
@@ -32,17 +32,27 @@ class SLN_Admin_Settings {
     }
 
     function row_input_checkbox($key, $label, $settings = array()) {
-        ?>
-        <div class="form-group">
-            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
-        <?php
         SLN_Form::fieldCheckbox(
                 "salon_settings[{$key}]", $this->getOpt($key), $settings
         )
         ?>
-        <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
-        </div>
+        <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
+        <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
+    }
+
+    function row_input_checkbox_switch($key, $label, $settings = array()) { ?>
+        <h6 class="sln-fake-label"><?php echo $label ?></h6>
+        <?php SLN_Form::fieldCheckbox(
+                "salon_settings[{$key}]", $this->getOpt($key), $settings
+        )
+        ?>
+        <label for="salon_settings_<?php echo $key ?>" class="sln-switch-btn" data-on="On" data-off="Off"></label>
         <?php
+            if (isset($settings['help'])) { ?>
+            <label class="sln-switch-text"  for="salon_settings_<?php echo $key ?>" data-on="<?php echo $settings['bigLabelOn'] ?>" 
+                data-off="<?php echo $settings['bigLabelOff'] ?>"></label>
+            <?php }
+            if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
     }
 
     function getOpt($key) {
@@ -51,22 +61,15 @@ class SLN_Admin_Settings {
 
     function row_input_text($key, $label, $settings = array()) {
         ?>
-        <div class="form-group">
-            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
+            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
         <?php echo SLN_Form::fieldText("salon_settings[$key]", $this->getOpt($key)) ?>
-        <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
-        </div>
-        <?php
+        <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
         }
-        
         function row_checkbox_text($key, $label, $settings = array()) {
         ?>
-        <div class="form-group">
-            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
+            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
         <?php echo SLN_Form::fieldCheckbox("salon_settings[$key]", $this->getOpt($key)) ?>
-            <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
-        </div>
-        <?php
+            <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
     }
 
         function row_input_textarea($key, $label, $settings = array()) {
@@ -74,17 +77,14 @@ class SLN_Admin_Settings {
                 $settings['textarea'] = array();
             }
             ?>
-        <div class="form-group">
-            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
+            <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
         <?php SLN_Form::fieldTextarea("salon_settings[$key]", $this->getOpt($key), $settings['textarea']); ?>
         <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php } ?>
-        </div>
         <?php
     }
 
     function row_input_page($key, $label, $settings = array()) {
         ?>
-        <div class="form-group">
             <label for="<?php echo $key ?>"><?php echo $label ?></label>
         <?php
         wp_dropdown_pages(
@@ -93,10 +93,7 @@ class SLN_Admin_Settings {
                     'selected' => $this->getOpt($key) ? $this->getOpt($key) : null,
                     'show_option_none' => 'Nessuna'
                 )
-        )
-        ?>
-        </div>
-        <?php
+        );
         }
 
          /**
@@ -107,7 +104,6 @@ class SLN_Admin_Settings {
      */
     function select_text($key, $label, $list, $settings = array()) {
         ?>
-        <div class="form-group">
             <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label></th>
         <select name="salon_settings[<?php echo $key ?>]">
             <?php
@@ -118,7 +114,6 @@ class SLN_Admin_Settings {
             }
             ?>
         </select>
-        </div>
         <?php
     }
     
@@ -279,7 +274,18 @@ class SLN_Admin_Settings {
             ?>
         <div id="sln-salon--admin" class="wrap sln-bootstrap">
         <?php screen_icon(); ?>
-            <h2><?php _e('Salon Settings', 'sln'); ?></h2>
+        <div class="row">
+            <h2 class="col-xs-12 col-sm-4"><?php _e('Salon Settings', 'sln'); ?></h2>
+            <div class="sln-admin-nav hidden-xs col-sm-8">
+                <ul class="sln-admin-nav">
+                <li><a href="admin.php?page=salon-calendar" class="sln-btn--icon sln-icon--calendar">Calendar</a></li>
+                <li><a href="edit.php?post_type=sln_booking" class="sln-btn--icon sln-icon--booking">Bookings</a></li>
+                <li><a href="edit.php?post_type=sln_service" class="sln-btn--icon sln-icon--services">Services</a></li>
+                <li><a href="edit.php?post_type=sln_attendant" class="sln-btn--icon sln-icon--assistants">Assistants</a></li>
+                <li class="current"><a href="admin.php?page=salon-settings" class="current sln-btn--icon sln-icon--settings">Settings</a></li>
+            </ul>
+            </div>
+        </div>
 
         <?php settings_errors(); ?>
         <?php $this->showTabsBar(); ?>

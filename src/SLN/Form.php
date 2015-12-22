@@ -154,12 +154,55 @@ class SLN_Form
                value="1"  <?php echo $value ? 'checked="checked"' : '' ?> <?php echo self::attrs($settings) ?>/>
     <?php
     }
+    static public function fieldCheckboxButton($name, $value = false, $label, $settings = array())
+    {
+        ?>
+        <input type="checkbox" class="big-check-base big-check-onoff" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>"
+               value="1"  <?php echo $value ? 'checked="checked"' : '' ?> <?php echo self::attrs($settings) ?>/>
+               <label for="<?php echo self::makeID($name) ?>"><?php echo $label; ?></label>
+    <?php
+    }
+
+    static public function fieldCheckboxSwitch($name, $value = false, $labelOn, $labelOff, $settings = array())
+    {
+        ?>
+        <input type="checkbox" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>"
+               value="1"  <?php echo $value ? 'checked="checked"' : '' ?> <?php echo self::attrs($settings) ?>/>
+                <label class="sln-switch-btn" for="<?php echo self::makeID($name) ?>"  data-on="On" data-off="Off"></label>
+                <label class="sln-switch-text"  for="<?php echo self::makeID($name) ?>" data-on="<?php echo $labelOn ?>" 
+                data-off="<?php echo $labelOff ?>"></label>
+    <?php
+    }
 
     static public function fieldRadiobox($name, $value, $checked = false, $settings = array())
     {
         ?>
         <input type="radio" name="<?php echo $name ?>" id="<?php echo self::makeID($name.'['.$value.']') ?>"
                value="<?php echo $value?>"  <?php echo $checked ? 'checked="checked"' : '' ?> <?php echo self::attrs($settings) ?>/>
+    <?php
+    }
+
+    static public function fieldRadioboxGroup($name, $items, $value, $settings = array(), $map = false)
+    {
+        if (isset($settings['map'])) {
+            $map = $settings['map'];
+        }
+        $settings['attrs']['class'] = "form-control";
+        ?>
+
+        <!--<select name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" <?php echo self::attrs($settings) ?>>-->
+            <?php
+            foreach ($items as $key => $label) {
+                $key      = $map ? $key : $label;
+                $checked = $key == $value ? 'checked="checked"' : '';
+                ?>
+                <input type="radio" name="<?php echo $name ?>" id="<?php echo self::makeID($name.'['.$key.']') ?>"
+               value="<?php echo esc_attr($key) ?>"  <?php echo $checked ? 'checked="checked"' : '' ?> <?php echo self::attrs($settings) ?>/>
+                <label for="<?php echo self::makeID($name.'['.$key.']') ?>"><?php echo $label ?></label>
+            <?php
+            }
+            ?>
+        <!--</select>-->
     <?php
     }
 

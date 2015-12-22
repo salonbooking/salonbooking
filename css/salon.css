@@ -397,8 +397,8 @@
   list-style: none;
   font-size: 1em;
   text-align: left;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -433,7 +433,7 @@
 .dropdown-menu.datetimepicker > .active > a,
 .dropdown-menu.datetimepicker > .active > a:hover,
 .dropdown-menu.datetimepicker > .active > a:focus {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   outline: 0;
   background-color: #076b9d;
@@ -637,6 +637,46 @@
 .datetimepicker.sln-datetimepicker table {
   border-top: none;
 }
+.datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
+  display: block;
+  width: 100%;
+  height: 40px;
+  background-color: #d51e26;
+  text-align: center;
+  line-height: 40px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  font-style: normal;
+  margin: 20px 0 10px 0;
+}
+.datetimepicker.sln-datetimepicker .sln-datetimepicker-close:hover {
+  background-color: #ff000b;
+}
+@media only screen and (max-width: 767px) {
+  .datetimepicker.sln-datetimepicker {
+    left: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-top: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
+    height: 60px;
+    line-height: 60px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .datetimepicker.sln-datetimepicker {
+    left: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+  }
+}
 .datetimepicker.sln-datetimepicker table tr td.today,
 .datetimepicker.sln-datetimepicker table tr td.today:hover,
 .datetimepicker.sln-datetimepicker table tr td.today.disabled,
@@ -717,13 +757,65 @@
   color: white !important;
   background-color: red !important;
 }
+@media only screen and (max-width: 767px) {
+  .datetimepicker.sln-datetimepicker table tr td.day,
+  .datetimepicker.sln-datetimepicker table tr td span.hour,
+  .datetimepicker.sln-datetimepicker table tr td span.minute {
+    background: #eee;
+    font-size: 1.4em;
+    border: 2px solid #fff;
+    text-align: center;
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .datetimepicker.sln-datetimepicker table tr td.day,
+  .datetimepicker.sln-datetimepicker table tr td span.hour,
+  .datetimepicker.sln-datetimepicker table tr td span.minute {
+    background: #eee;
+    font-size: 1.4em;
+    border: 2px solid #fff;
+    text-align: center;
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .datetimepicker.sln-datetimepicker table tr td.day {
+    width: 60px !important;
+    height: 60px;
+    line-height: 60px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .datetimepicker.sln-datetimepicker table tr td.day {
+    width: 60px !important;
+    height: 60px;
+    line-height: 60px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .datetimepicker.sln-datetimepicker table tr td span.hour,
+  .datetimepicker.sln-datetimepicker table tr td span.minute {
+    width: 25% !important;
+    height: 60px;
+    line-height: 60px;
+    margin: 0;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .datetimepicker.sln-datetimepicker table tr td span.hour,
+  .datetimepicker.sln-datetimepicker table tr td span.minute {
+    width: 25% !important;
+    height: 60px;
+    line-height: 60px;
+    margin: 0;
+  }
+}
 #sln-salon {
   background: #f8f8f8;
   border: 1px solid #ddd;
   padding: 0;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
-  /* algolplus start */
-  /* algolplus end */
 }
 #sln-salon p li,
 #sln-salon a div,
@@ -771,7 +863,7 @@
 }
 #sln-salon .sln-service-list .service-description,
 #sln-salon .sln-service-list .service-duration {
-  color: #666;
+  color: #666666;
   font-size: .8em;
   display: block;
   clear: both;
@@ -835,7 +927,7 @@
 #sln-salon h2 em {
   display: block;
   clear: both;
-  color: #999;
+  color: #999999;
   font-size: 0.68em;
   font-style: normal;
 }
@@ -845,7 +937,7 @@
   }
 }
 #sln-salon .row-total {
-  border-top: 7px solid #eee;
+  border-top: 7px solid #eeeeee;
   font-weight: bold;
   font-size: 1.2em;
   padding-top: 1.4em;
@@ -896,7 +988,7 @@
   margin-bottom: 2em;
 }
 #sln-salon .form-group label {
-  color: #666;
+  color: #666666;
   font-size: 1em;
   margin-bottom: 0.5em;
   font-weight: normal;
@@ -1053,7 +1145,7 @@
   text-align: center;
   font-size: 0.8em;
   font-weight: bold;
-  color: #999;
+  color: #999999;
   margin-top: .4em;
 }
 @media only screen and (max-width: 767px) {
@@ -1062,10 +1154,10 @@
   }
 }
 #sln-salon #salon-step-summary p.dear {
-  color: #666;
+  color: #666666;
 }
 #sln-salon #salon-step-summary div.summ-row {
-  background: #eee;
+  background: #eeeeee;
   margin-bottom: 3px;
   padding: 10px 0;
 }
@@ -1075,7 +1167,7 @@
 }
 #sln-salon #salon-step-summary div.summ-row span.label {
   font-size: .8em;
-  color: #666;
+  color: #666666;
   display: block;
   text-align: left;
 }
@@ -1118,8 +1210,8 @@
   color: black;
 }
 #sln-salon .tycol {
-  background: #eee;
-  color: #666;
+  background: #eeeeee;
+  color: #666666;
   padding: .8em;
   height: 8em;
   border-left: 0.6em solid #f8f8f8;
@@ -1138,7 +1230,7 @@
   margin-top: .6em;
 }
 #sln-salon .tycol i.c {
-  color: #FF9D03 !important;
+  color: #ff9d03 !important;
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   #sln-salon .tycol {
@@ -1154,7 +1246,7 @@
 }
 #sln-salon .ty p,
 #sln-salon p.ty {
-  color: #666;
+  color: #666666;
   font-size: 1em;
   margin-bottom: 1em;
 }

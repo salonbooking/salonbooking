@@ -16,4 +16,7 @@ abstract class SLN_Wrapper_Abstract
     {
         return $this->object->ID;
     }
+    public function isEmpty(){
+        return empty($this->object);
+    }
 }
