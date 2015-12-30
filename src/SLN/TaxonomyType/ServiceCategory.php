@@ -22,7 +22,7 @@ class SLN_TaxonomyType_ServiceCategory extends SLN_TaxonomyType_Abstract
             'hierarchical' => false,
             'labels' => $labels,
             'show_in_menu' => 'salon',
-            'show_ui' => false,
+            'show_ui' => true,
             'show_admin_column' => true,
             'query_var' => true,
             'rewrite' => array('slug' => 'servicecategory'),
