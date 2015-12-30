@@ -11,7 +11,7 @@
             <?php if($deposit > 0): ?>
                 <?php echo sprintf(__('Pay %s as a deposit with %s', 'sln'), $plugin->format()->money($deposit), $paymentMethod->getMethodLabel()) ?>
             <?php else : ?>
-                <?php sprintf(_e('Pay with %s', 'sln'), $paymentMethod->getMethodLabel()) ?>
+                <?php sprintf(__('Pay with %s', 'sln'), $paymentMethod->getMethodLabel()) ?>
             <?php endif ?>"
     data-email="<?php echo $booking->getEmail() ?>"
     data-currency="<?php echo $plugin->getSettings()->getCurrency() ?>"
