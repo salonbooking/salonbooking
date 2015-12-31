@@ -301,8 +301,24 @@ function sln_availability_row($prefix, $row, $rulenumber)
                             ) ?>
             </div>
         <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-input--simple">
-        <label for="salon_settings_disabled_message"><?php _e('Message on disabled booking','sln');?></label>
-               <textarea name="salon_settings[disabled_message]" id="salon_settings_disabled_message" placeholder="Write a message" rows="5"><?php _e('Booking is not available at the moment, please contact us at me@nicovece.com','sln');?></textarea>
+        <label for="<?php echo SLN_form::makeID("salon_settings[disabled_message]") ?>"><?php _e(
+                                'Message on disabled booking',
+                                'sln'
+                            ) ?></label>
+                        <?php
+                            $admin_email = get_bloginfo('admin_email');
+                            SLN_Form::fieldTextarea(
+                            "salon_settings[disabled_message]",
+                            $this->getOpt('disabled_message'),
+                            array(
+                                'attrs' => array(
+                                    'placeholder' => __('Booking is not available at the moment, please contact us at ') . $admin_email,
+                                    'rows'        => 5,
+                                    'class'       => 'form-control',
+                                    'style'       => 'width: 100%;'
+                                )
+                            )
+                        ) ?>
         </div>
     </div>
 </div>
