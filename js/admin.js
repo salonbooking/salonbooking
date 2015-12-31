@@ -1,3 +1,7 @@
+if (jQuery('#toplevel_page_salon').hasClass('wp-menu-open')) {
+  jQuery('#wpbody-content .wrap').addClass('sln-bootstrap');
+  jQuery('#wpbody-content .wrap').attr('id', 'sln-salon--admin');
+}
 function initDatepickers($) {
     $('.sln_datepicker input').each(function () {
         if ($(this).hasClass('started')) {
