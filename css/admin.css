@@ -2834,9 +2834,10 @@ body {
   background-color: transparent; }
 
 #sln-salon--admin {
-  font-size: 24px;
   /* TIME RANGE */
   /* TIME RANGE // END */ }
+  #sln-salon--admin > * {
+    font-size: 24px; }
   #sln-salon--admin .sln-input--simple input, #sln-salon--admin .sln-select input, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin .sln-select textarea, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .sln-checkbutton input + label, #sln-salon--admin .col-time, #sln-salon--admin .sln-box-title, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln #sln-salon--admin .select2-selection--single, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--multiple, .select2-container.select2-container--sln #sln-salon--admin .select2-selection--multiple {
     font-family: "Open sans", serif;
     font-size: 0.83333rem;

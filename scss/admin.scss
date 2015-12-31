@@ -408,7 +408,7 @@ body {
 // GENERL RULES // END
 
 #sln-salon--admin {
-    font-size: $browser-context + px;
+    > * {font-size: $browser-context + px;}
     @import 'admin_config';
     @import 'typo';
     @import 'admin_components/inputs';
