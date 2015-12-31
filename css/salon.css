@@ -736,11 +736,13 @@
   background-color: #076b9d;
 }
 .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
-.datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active) {
+.datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active) {
   color: #33CC33;
 }
 .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled):hover,
-.datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active):hover {
+.datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active):hover,
+.datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active):hover {
   color: #fff;
   background-color: #33CC33;
 }
@@ -1276,107 +1278,107 @@
 #sln-salon ul {
   list-style-type: none;
 }
-#sln-salon .sln_notice {
+.sln_notice {
   color: #ff000b;
   text-align: center;
 }
-#sln-salon .overflow-dots {
+.overflow-dots {
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-#sln-salon #sln-salon-my-account .btn:hover {
+#sln-salon-my-account .btn:hover {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
-#sln-salon #sln-salon-my-account .btn.btn-confirm:hover {
+#sln-salon-my-account .btn.btn-confirm:hover {
   background-color: #d51e26;
 }
-#sln-salon #sln-salon-my-account td {
+#sln-salon-my-account td {
   font-size: 13px !important;
 }
-#sln-salon #sln-salon-my-account .table-bordered {
+#sln-salon-my-account .table-bordered {
   border-width: 2px;
 }
-#sln-salon #sln-salon-my-account .table-striped > tbody > tr:nth-of-type(even) {
+#sln-salon-my-account .table-striped > tbody > tr:nth-of-type(even) {
   background-color: #ffffff;
 }
-#sln-salon #sln-salon-my-account .table thead tr {
+#sln-salon-my-account .table thead tr {
   border-bottom: 3px solid #0073a4;
   color: #0073a4;
 }
-#sln-salon #sln-salon-my-account .table thead tr th {
+#sln-salon-my-account .table thead tr th {
   text-align: center;
   text-transform: uppercase;
   background-color: #fff;
 }
-#sln-salon #sln-salon-my-account .table tbody tr td {
+#sln-salon-my-account .table tbody tr td {
   color: #555;
   text-align: center;
 }
-#sln-salon #sln-salon-my-account .table tbody tr td strong {
+#sln-salon-my-account .table tbody tr td strong {
   color: #555;
 }
-#sln-salon #sln-salon-my-account .table tbody tr td:nth-child(2),
-#sln-salon #sln-salon-my-account .table tbody tr td:nth-child(3) {
+#sln-salon-my-account .table tbody tr td:nth-child(2),
+#sln-salon-my-account .table tbody tr td:nth-child(3) {
   text-align: left;
 }
-#sln-salon #sln-salon-my-account .table thead tr th {
+#sln-salon-my-account .table thead tr th {
   padding: 8px;
 }
-#sln-salon #sln-salon-my-account .table tbody tr td {
+#sln-salon-my-account .table tbody tr td {
   padding: 16px 8px;
 }
-#sln-salon #sln-salon-my-account .table tbody tr td:nth-child(2) {
+#sln-salon-my-account .table tbody tr td:nth-child(2) {
   max-width: 100px;
 }
-#sln-salon #sln-salon-my-account .table tbody tr td:last-child {
+#sln-salon-my-account .table tbody tr td:last-child {
   width: 170px;
 }
-#sln-salon #sln-salon-my-account .table tbody tr td:nth-child(2),
-#sln-salon #sln-salon-my-account .table tbody tr td:last-child {
+#sln-salon-my-account .table tbody tr td:nth-child(2),
+#sln-salon-my-account .table tbody tr td:last-child {
   text-transform: uppercase;
 }
-#sln-salon #sln-salon-my-account h3 {
+#sln-salon-my-account h3 {
   color: black;
   margin: 20px 0px;
 }
-#sln-salon #sln-salon-my-account .status {
+#sln-salon-my-account .status {
   margin-bottom: 20px;
   display: inline-block;
 }
-#sln-salon #sln-salon-my-account .success {
+#sln-salon-my-account .success {
   color: #9AC91C;
 }
-#sln-salon #sln-salon-my-account .warning,
-#sln-salon #sln-salon-my-account .info {
+#sln-salon-my-account .warning,
+#sln-salon-my-account .info {
   color: #ff5a00;
 }
-#sln-salon #sln-salon-my-account .danger {
+#sln-salon-my-account .danger {
   color: red;
 }
-#sln-salon #sln-salon-my-account button {
+#sln-salon-my-account button {
   border-radius: 4px !important;
   text-transform: uppercase;
 }
-#sln-salon #sln-salon-my-account .tooltip-inner {
+#sln-salon-my-account .tooltip-inner {
   background-color: #919FA7 !important;
   max-width: 160px;
   text-transform: none;
   text-align: left;
 }
-#sln-salon #sln-salon-my-account .tooltip-arrow {
+#sln-salon-my-account .tooltip-arrow {
   border-top-color: #919FA7 !important;
 }
-#sln-salon #sln-salon-my-account .tooltip.in {
+#sln-salon-my-account .tooltip.in {
   opacity: 1;
 }
-#sln-salon #sln-salon-my-account .btn {
+#sln-salon-my-account .btn {
   background-color: silver;
 }
-#sln-salon #sln-salon-my-account .btn .glyphicon {
+#sln-salon-my-account .btn .glyphicon {
   opacity: 1       !important;
   position: initial !important;
   top: 1px     !important;
@@ -1388,17 +1390,17 @@
   -o-transition: inherit !important;
   transition: inherit !important;
 }
-#sln-salon #sln-salon-my-account .btn {
+#sln-salon-my-account .btn {
   padding: 4px 8px 6px !important;
   font-variant: small-caps !important;
   text-transform: lowercase   !important;
   color: #fff        !important;
   width: auto        !important;
 }
-#sln-salon #sln-salon-my-account .sln-rate-service {
+#sln-salon-my-account .sln-rate-service {
   background-color: #F75B17     !important;
 }
-#sln-salon #sln-salon-my-account .rating {
+#sln-salon-my-account .rating {
   width: auto;
   background-color: #eee;
   padding: 4px 8px 6px;
@@ -1409,19 +1411,19 @@
   font-size: 14px;
   white-space: nowrap;
 }
-#sln-salon #sln-salon-my-account .rating img {
+#sln-salon-my-account .rating img {
   vertical-align: text-bottom;
 }
-#sln-salon #sln-salon-my-account .rating i {
+#sln-salon-my-account .rating i {
   vertical-align: initial;
   font-size: 11px;
   color: red;
 }
 @media screen and (max-width: 800px) {
-  #sln-salon #sln-salon-my-account thead {
+  #sln-salon-my-account thead {
     display: none;
   }
-  #sln-salon #sln-salon-my-account .table tbody tr td {
+  #sln-salon-my-account .table tbody tr td {
     width: 100%;
     display: block;
     text-align: left;
@@ -1430,15 +1432,15 @@
     position: relative;
     min-height: 52px;
   }
-  #sln-salon #sln-salon-my-account .table tbody tr {
+  #sln-salon-my-account .table tbody tr {
     border: solid 1px #ddd;
   }
-  #sln-salon #sln-salon-my-account td:nth-child(2),
-  #sln-salon #sln-salon-my-account td:last-child {
+  #sln-salon-my-account td:nth-child(2),
+  #sln-salon-my-account td:last-child {
     max-width: initial !important;
     width: 100% !important;
   }
-  #sln-salon #sln-salon-my-account td:before {
+  #sln-salon-my-account td:before {
     content: attr(data-th) ": ";
     font-weight: bold;
     text-transform: uppercase;
@@ -1448,16 +1450,16 @@
     position: absolute;
     left: 8px;
   }
-  #sln-salon #sln-salon-my-account .status ~ div {
+  #sln-salon-my-account .status ~ div {
     display: inline-block;
   }
-  #sln-salon #sln-salon-my-account * {
+  #sln-salon-my-account * {
     margin: 0;
   }
-  #sln-salon #sln-salon-my-account > div {
+  #sln-salon-my-account > div {
     padding: 0;
   }
-  #sln-salon #sln-salon-my-account .table-bordered {
+  #sln-salon-my-account .table-bordered {
     border: none;
   }
 }
