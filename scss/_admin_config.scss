@@ -12,7 +12,7 @@ $cl_ok: #5bc24c;
   @return rgba($tone, $alpha)
 }
 
-$browser-context: 15;
+$browser-context: 24;
 
 @function rem($pixels, $context: $browser-context) {
   @if (unitless($pixels)) {
