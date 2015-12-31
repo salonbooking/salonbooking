@@ -310,7 +310,7 @@ function sln_availability_row($prefix, $row, $rulenumber)
                             SLN_Form::fieldTextarea(
                             "salon_settings[disabled_message]",
                             $this->getOpt('disabled_message'),
-                            array(
+                                array(
                                 'attrs' => array(
                                     'placeholder' => __('Booking is not available at the moment, please contact us at ') . $admin_email,
                                     'rows'        => 5,
