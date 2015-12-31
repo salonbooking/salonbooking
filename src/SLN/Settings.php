@@ -66,7 +66,7 @@ class SLN_Settings
 
     public function isPaypalTest()
     {
-        return $this->settings['pay_paypal_test'] ? true : false;
+        return (isset($this->settings['pay_paypal_test']) && $this->settings['pay_paypal_test']) ? true : false;
     }
 
     public function getPaypalEmail()
