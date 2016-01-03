@@ -272,7 +272,7 @@ class SLN_Admin_Settings {
                 }
             }
             ?>
-        <div id="sln-salon--admin" class="wrap sln-bootstrap">
+        <div id="sln-salon--admin" class="wrap sln-bootstrap sln-salon--settings">
         <?php screen_icon(); ?>
         <div class="row">
             <h2 class="col-xs-12 col-sm-4"><?php _e('Salon Settings', 'sln'); ?></h2>

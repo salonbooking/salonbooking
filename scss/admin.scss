@@ -408,13 +408,11 @@ body {
 // GENERL RULES // END
 
 #sln-salon--admin {
-    > * {font-size: $browser-context + px;}
     @import 'admin_config';
     @import 'typo';
     @import 'admin_components/inputs';
     @import 'admin_components/buttons';
-
-
+    &.sln-salon--settings {font-size: $browser-context + px;}
     .sln-box {
         padding: rem(20px);
         margin-bottom:  rem(40px);
