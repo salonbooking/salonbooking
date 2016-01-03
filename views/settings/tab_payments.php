@@ -27,6 +27,21 @@
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
 </div>
+
+<div class="sln-box sln-box--main">
+    <h2 class="sln-box-title"><?php _e('Prices visibility','sln') ?></h2>
+    <div class="row">
+        <div class="col-sm-6 form-group">
+        <div class="sln-checkbox">
+            <?php $this->row_input_checkbox('hide_prices', __('Hide Prices', 'sln')); ?>
+        </div>
+        </div>
+        <div class="col-md-4 col-sm-4 form-group sln-box-maininfo align-top">
+            <p class="sln-input-help"><?php _e('Select this Option if you want to hide all prices from the front end.<br/>Note: Online Payment will be disabled.', 'sln') ?></p>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-6">
     <div class="sln-box sln-box--main sln-box--main--small">
