@@ -216,19 +216,19 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 == Screenshots ==
 
-1. screenshot-1.gif salon general settings
+1. screenshot-1.gif Back-end > Salon Bookings >Settings > General
 
-2. screenshot-2.gif service’s details
+2. screenshot-2.gif Back-end > Salon Bookings >Settings > Bookings rules
 
-3. screenshot-3.gif  booking’s details
+3. screenshot-3.gif  Back-end > Salon Bookings >Settings > Payments
 
-4. screenshot-4.gif salon’s booking rules
+4. screenshot-4.gif Back-end > Salon Bookings >Settings > Google Calendar
 
-5. screenshot-5.gif payments settings
+5. screenshot-5.gif Back-end > Salon Bookings >Bookings 
 
-6. screenshot-6.gif attendants section
+6. screenshot-6.gif Back-end > Salon Bookings >Assistants
 
-7. screenshot-7.gif front-end booking process demo
+7. screenshot-7.gif Back-end > Salon Bookings >Services
 
 
 == Changelog ==
