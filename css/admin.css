@@ -2424,7 +2424,9 @@
   *:focus, *:before:focus, *:after:focus {
     outline: 0 !important; }
 
-#sln-salon--admin .sln-btn, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin p.submit, #sln-salon--admin .sln-toolbox {
+#sln-salon--admin .sln-btn, #sln-salon--admin h2.nav-tab-wrapper .nav-tab, #sln-salon--admin .sln-admin-nav a, #sln-salon--admin p.submit, #sln-salon--admin .sln-toolbox, .salon_page_salon-calendar .sln-calendar--wrapper button,
+.sln-calendar--wrapper button, .salon_page_salon-calendar .sln-calendar--wrapper .sln-btn--addbooking,
+.sln-calendar--wrapper .sln-btn--addbooking {
   z-index: 800; }
 
 #sln-salon--admin .sln-admin-sidebar {
@@ -2499,7 +2501,8 @@
 #sln-salon--admin .sln-input--simple input:focus, #sln-salon--admin .sln-select input:focus, #sln-salon--admin .sln-input--simple textarea:focus, #sln-salon--admin .sln-select textarea:focus {
   color: #0C6EB6; }
 
-#sln-salon--admin .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, #sln-salon--admin .sln-checkbutton input + label:after, #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after, #sln-salon--admin .sln-btn--icon:after, #sln-salon--admin p.submit:after, .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before {
+#sln-salon--admin .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, #sln-salon--admin .sln-checkbutton input + label:after, #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after, #sln-salon--admin .sln-btn--icon:after, #sln-salon--admin p.submit:after, .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before, .salon_page_salon-calendar .sln-calendar--wrapper .sln-btn--addbooking:after,
+.sln-calendar--wrapper .sln-btn--addbooking:after {
   font-family: "FontAwesome";
   font-size: 0.91667rem; }
 
@@ -2865,7 +2868,9 @@ body {
     color: #003553; }
   #sln-salon--admin .sln-input--simple input:focus, #sln-salon--admin .sln-select input:focus, #sln-salon--admin .sln-input--simple textarea:focus, #sln-salon--admin .sln-select textarea:focus {
     color: #0C6EB6; }
-  #sln-salon--admin .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, #sln-salon--admin .sln-checkbutton input + label:after, #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after, #sln-salon--admin .sln-btn--icon:after, #sln-salon--admin p.submit:after, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before, .select2-container.select2-container--sln .select2-selection--single #sln-salon--admin .select2-selection__arrow:before {
+  #sln-salon--admin .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, #sln-salon--admin .sln-checkbutton input + label:after, #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after, #sln-salon--admin .sln-btn--icon:after, #sln-salon--admin p.submit:after, #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before, .select2-container.select2-container--sln .select2-selection--single #sln-salon--admin .select2-selection__arrow:before, #sln-salon--admin
+  .sln-calendar--wrapper .sln-btn--addbooking:after,
+  .sln-calendar--wrapper #sln-salon--admin .sln-btn--addbooking:after {
     font-family: "FontAwesome";
     font-size: 0.91667rem; }
 
@@ -3899,6 +3904,117 @@ body {
 .select2-container--default .select2-results > .select2-results__options {
   max-height: 200px;
   overflow-y: auto; }
+
+.salon_page_salon-calendar .sln-calendar--wrapper,
+.sln-calendar--wrapper {
+  font-size: 12px; }
+  .salon_page_salon-calendar .sln-calendar--wrapper .btn-group,
+  .sln-calendar--wrapper .btn-group {
+    margin: 3em 0  2em 0; }
+  .salon_page_salon-calendar .sln-calendar--wrapper button,
+  .sln-calendar--wrapper button {
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 200ms, color 300ms;
+    text-decoration: none;
+    position: relative;
+    background-color: #c7dff3;
+    color: #003553;
+    display: inline-block;
+    height: 1.83333rem;
+    font-size: 1.2em;
+    line-height: 1.83333rem;
+    padding: 0 0.625rem;
+    margin-bottom: 1em; }
+    .salon_page_salon-calendar .sln-calendar--wrapper button.active,
+    .sln-calendar--wrapper button.active {
+      background-color: #5bc24c;
+      color: #fff; }
+    .salon_page_salon-calendar .sln-calendar--wrapper button:hover,
+    .sln-calendar--wrapper button:hover {
+      border-color: #003553;
+      background-color: #003553;
+      color: #fff; }
+    .salon_page_salon-calendar .sln-calendar--wrapper button.f-row,
+    .sln-calendar--wrapper button.f-row {
+      width: 32%; }
+    .salon_page_salon-calendar .sln-calendar--wrapper button.s-row,
+    .sln-calendar--wrapper button.s-row {
+      width: 23.8%; }
+    @media only screen and (min-width: 768px) {
+      .salon_page_salon-calendar .sln-calendar--wrapper button,
+      .sln-calendar--wrapper button {
+        width: auto;
+        min-width: 90px;
+        height: 1.83333rem;
+        font-size: 1.2em;
+        line-height: 1.83333rem; }
+        .salon_page_salon-calendar .sln-calendar--wrapper button.s-row, .salon_page_salon-calendar .sln-calendar--wrapper button.f-row,
+        .sln-calendar--wrapper button.s-row,
+        .sln-calendar--wrapper button.f-row {
+          width: auto; } }
+  .salon_page_salon-calendar .sln-calendar--wrapper .sln-btn--addbooking,
+  .sln-calendar--wrapper .sln-btn--addbooking {
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 200ms, color 300ms;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    min-width: 140px;
+    height: 1.83333rem;
+    font-size: 1.2em;
+    line-height: 1.83333rem;
+    padding: 0 0.625rem;
+    background-color: #0C6EB6;
+    color: white;
+    text-align: left;
+    position: relative;
+    padding-right: 2.25rem;
+    margin-bottom: 1em; }
+    .salon_page_salon-calendar .sln-calendar--wrapper .sln-btn--addbooking:after,
+    .sln-calendar--wrapper .sln-btn--addbooking:after {
+      content: "\f017";
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      transition: all 200ms;
+      z-index: 200;
+      padding: 0 0.5rem;
+      font-size: 0.75rem;
+      line-height: 1.875rem; }
+    .salon_page_salon-calendar .sln-calendar--wrapper .sln-btn--addbooking:hover,
+    .sln-calendar--wrapper .sln-btn--addbooking:hover {
+      background-color: #003553; }
+    @media only screen and (min-width: 768px) {
+      .salon_page_salon-calendar .sln-calendar--wrapper .sln-btn--addbooking,
+      .sln-calendar--wrapper .sln-btn--addbooking {
+        height: 2.66667rem;
+        font-size: 1.4em;
+        line-height: 2.66667rem; }
+        .salon_page_salon-calendar .sln-calendar--wrapper .sln-btn--addbooking:after,
+        .sln-calendar--wrapper .sln-btn--addbooking:after {
+          font-size: 1rem;
+          line-height: 2.66667rem; } }
+    @media only screen and (min-width: 992px) {
+      .salon_page_salon-calendar .sln-calendar--wrapper .sln-btn--addbooking,
+      .sln-calendar--wrapper .sln-btn--addbooking {
+        height: 1.83333rem;
+        font-size: 1.2em;
+        line-height: 1.83333rem; }
+        .salon_page_salon-calendar .sln-calendar--wrapper .sln-btn--addbooking:after,
+        .sln-calendar--wrapper .sln-btn--addbooking:after {
+          font-size: 0.75rem;
+          line-height: 1.875rem; } }
+  .salon_page_salon-calendar .sln-calendar--wrapper span[data-cal-date],
+  .sln-calendar--wrapper span[data-cal-date] {
+    display: inline-block;
+    margin: .5em 0 0 .5em; }
 
 .select2-container.sln-select .select2-choice, .select2-container.sln-select .select2-choices,
 .select2-container-multi.sln-select .select2-choice,
