@@ -10,20 +10,20 @@ if(!function_exists('tpl_summary_details')){
                             <td align="left" valign="top">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Date', 'sln')?></td>
+                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Date', 'salon-booking-system')?></td>
                         </tr>
                         <tr>
                             <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"><?php echo $plugin->format()->date($booking->getDate()); ?></td>
                         </tr>
                         <tr>
-                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo _e('Time','sln') ?></td>
+                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo _e('Time','salon-booking-system') ?></td>
                         </tr>
                         <tr>
                             <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $plugin->format()->time($booking->getTime()) ?></td>
                         </tr>
                         <?php if($attendant = $booking->getAttendant()) :  ?>
                             <tr>
-                                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo _e('Attendant','sln') ?></td>
+                                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo _e('Attendant','salon-booking-system') ?></td>
                             </tr>
                             <tr>
                                 <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $attendant->getName() ?></td>
@@ -59,13 +59,13 @@ if(!function_exists('tpl_summary_details')){
                             <td align="left" valign="top">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php if($showPrices){?><?php _e('Total amount', 'sln') ?><?php } ?></td>
+                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php if($showPrices){?><?php _e('Total amount', 'salon-booking-system') ?><?php } ?></td>
                         </tr>
                         <tr>
                             <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"><?php if($showPrices){?><?php echo $plugin->format()->money($booking->getAmount()) ?><?php } ?></td>
                         </tr>
                         <tr>
-                            <td height="28" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Status','sln')?></td>
+                            <td height="28" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Status','salon-booking-system')?></td>
                         </tr>
                         <tr>
                             <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;">
@@ -99,11 +99,11 @@ if(!function_exists('tpl_summary_details')){
                 <td align="left" valign="top"
                     style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;">
 <p>
-<?php echo __('Dear', 'sln') . ' ' . $booking->getDisplayName() . ','; ?>
+<?php echo __('Dear', 'salon-booking-system') . ' ' . $booking->getDisplayName() . ','; ?>
 </p>
 
 <p>
-                        <?php echo __('the folowing booking at ' . $plugin->getSettings()->get('gen_name') . ' has been canceled', 'sln') ?>.</p>
+                        <?php echo __('the folowing booking at ' . $plugin->getSettings()->get('gen_name') . ' has been canceled', 'salon-booking-system') ?>.</p>
                 </td>
             </tr>
             <tr>
@@ -120,7 +120,7 @@ if(!function_exists('tpl_summary_details')){
             <tr>
                 <td align="center" valign="top"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
                         <tbody><tr>
-                            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Our address', 'sln') ?></td>
+                            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Our address', 'salon-booking-system') ?></td>
                             <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $plugin->getSettings()->get('gen_address') ?></td>
                         </tr>
                         </tbody></table></td>
@@ -133,7 +133,7 @@ if(!function_exists('tpl_summary_details')){
             <tr>
                 <td align="center" valign="top" bgcolor="#ffffff"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
                         <tbody><tr>
-                            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Contacts', 'sln')?></td>
+                            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Contacts', 'salon-booking-system')?></td>
                             <td align="left" valign="top"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
                                     <tbody><tr>
                                         <td height="27">&nbsp;</td>
@@ -168,7 +168,7 @@ if(!function_exists('tpl_summary_details')){
                         <tr>
                             <td height="24" align="left" valign="top"
                                 style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;">
-                                <?php _e('Important notes', 'sln') ?></td>
+                                <?php _e('Important notes', 'salon-booking-system') ?></td>
                         </tr>
                         <tr>
                             <td align="left" valign="top"

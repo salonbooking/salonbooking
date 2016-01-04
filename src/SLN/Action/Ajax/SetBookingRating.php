@@ -33,11 +33,11 @@ class SLN_Action_Ajax_SetBookingRating extends SLN_Action_Ajax_Abstract
 				SLN_Plugin::getInstance()->sendMail('mail/booking_rated', $args);
 			}
 			else {
-				$this->addError(__("You don't have access", 'sln'));
+				$this->addError(__("You don't have access", 'salon-booking-system'));
 			}
 		}
 		else {
-			$this->addError(__("Set rating and comment", 'sln'));
+			$this->addError(__("Set rating and comment", 'salon-booking-system'));
 		}
 
 		if ($errors = $this->getErrors()) {

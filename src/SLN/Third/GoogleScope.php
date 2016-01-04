@@ -88,7 +88,7 @@ class SLN_GoogleScope {
                     var data = {action: 'startsynch'};
                     jQuery.post(ajaxurl, data, function (response) {
                         if (response == 'OK') {
-                            alert("<?php echo __('Operation completed!', 'sln'); ?>");
+                            alert("<?php echo __('Operation completed!', 'salon-booking-system'); ?>");
                         } else {
                             var tmp = data.split('|');
                             if (tmp[1])
@@ -105,7 +105,7 @@ class SLN_GoogleScope {
                     var data = {action: 'deleteallevents'};
                     jQuery.post(ajaxurl, data, function (response) {
                         if (response == 'OK') {
-                            alert("<?php echo __('Operation completed!', 'sln'); ?>");
+                            alert("<?php echo __('Operation completed!', 'salon-booking-system'); ?>");
                         } else {
                             var tmp = data.split('|');
                             if (tmp[1])
@@ -378,7 +378,7 @@ class SLN_GoogleScope {
         $calendarList = $this->service->calendarList->listCalendarList();
         $cal_list = array();
         $cal_list['']['id'] = 0;
-        $cal_list['']['label'] = __("Scegli tra i tuoi calendari", 'sln');
+        $cal_list['']['label'] = __("Scegli tra i tuoi calendari", 'salon-booking-system');
         while (true) {
             foreach ($calendarList->getItems() as $calendarListEntry) {
                 if (!isset($cal_list[$calendarListEntry->getId()]))
@@ -695,21 +695,21 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
 
         $desc = "";
         //Name and Phone
-        $desc .= __('Customer name', 'sln') . ": " . $booking->getDisplayName() . " - ";
+        $desc .= __('Customer name', 'salon-booking-system') . ": " . $booking->getDisplayName() . " - ";
         $desc .= $booking->getPhone() . " \n";
         //Services
         $services = $booking->getServices();
-        $desc .= "\n" . __('Services booked', 'sln') . ":";
+        $desc .= "\n" . __('Services booked', 'salon-booking-system') . ":";
         foreach ($services as $service) {
             $desc .= "\n";
             $desc .= $service->getName();
             $desc .= $service->getContent();
         }
         $notes = $booking->getNote();
-        $desc .= "\n\n" . __('Booking notes', 'sln') . ":\n" . (empty($notes) ? __("None", 'sln') : $notes);
-        $desc .= "\n\n" . __('Selected assistant', 'sln') . ": " . $booking->getAttendant();
-        $desc .= "\n\n" . __('Booking status', 'sln') . ": " . SLN_Enum_BookingStatus::getLabel($booking->getStatus());
-        $desc .= "\n\n" . __('Booking URL', 'sln') . ": " . get_permalink($booking->getId());
+        $desc .= "\n\n" . __('Booking notes', 'salon-booking-system') . ":\n" . (empty($notes) ? __("None", 'salon-booking-system') : $notes);
+        $desc .= "\n\n" . __('Selected assistant', 'salon-booking-system') . ": " . $booking->getAttendant();
+        $desc .= "\n\n" . __('Booking status', 'salon-booking-system') . ": " . SLN_Enum_BookingStatus::getLabel($booking->getStatus());
+        $desc .= "\n\n" . __('Booking URL', 'salon-booking-system') . ": " . get_permalink($booking->getId());
 
         $title = $booking->getDisplayName() . " - " . $booking->getStartsAt()->format('d/m/Y h:iA');
         sln_my_wp_log($title);

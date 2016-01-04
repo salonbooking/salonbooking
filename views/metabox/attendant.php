@@ -11,7 +11,7 @@ $days = SLN_Func::getDays();
         <?php
         $helper->showFieldtext(
             $helper->getFieldName($postType, 'email'),
-            __('E-mail', 'sln'),
+            __('E-mail', 'salon-booking-system'),
             $attendant->getEmail()
         ); ?>
     </div>
@@ -19,14 +19,14 @@ $days = SLN_Func::getDays();
         <?php
         $helper->showFieldtext(
             $helper->getFieldName($postType, 'phone'),
-            __('Phone', 'sln'),
+            __('Phone', 'salon-booking-system'),
             $attendant->getPhone()
         ); ?>
     </div>
 
 
 </div>
-<h3><?php _e('Not available on','sln'); ?></h3>
+<h3><?php _e('Not available on','salon-booking-system'); ?></h3>
 <div class="row">
     <div class="col-md-12 attendants-notavailable">
         <?php foreach ($days as $k => $day) { ?>
@@ -41,7 +41,7 @@ $days = SLN_Func::getDays();
     </div>
     <div class="col-xs-6 col-md-3 col-lg-2 col-sm-3  attendants-notavailable-h">
         <label>
-            <?php echo __('From', 'sln') ?>
+            <?php echo __('From', 'salon-booking-system') ?>
             <?php SLN_Form::fieldTime(
                 $helper->getFieldName($postType, 'notav_from'),
                 $attendant->getNotAvailableFrom()
@@ -50,7 +50,7 @@ $days = SLN_Func::getDays();
     </div>
     <div class="col-xs-6 col-md-3 col-lg-2 col-sm-3  attendants-notavailable">
         <label>
-            <?php echo __('To', 'sln') ?>
+            <?php echo __('To', 'salon-booking-system') ?>
             <?php SLN_Form::fieldTime(
                 $helper->getFieldName($postType, 'notav_to'),
                 $attendant->getNotAvailableTo()
@@ -58,7 +58,7 @@ $days = SLN_Func::getDays();
         </label>
     </div>
     <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12  attendants-notavailable-h">
-    <em><?php _e('Leave this option blank if you want this assistant available for every hour each day', 'sln') ?></em>
+    <em><?php _e('Leave this option blank if you want this assistant available for every hour each day', 'salon-booking-system') ?></em>
 </div>
 
 </div>

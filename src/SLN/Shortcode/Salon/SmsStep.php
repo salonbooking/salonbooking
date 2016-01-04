@@ -18,7 +18,7 @@ class SLN_Shortcode_Salon_SmsStep extends SLN_Shortcode_Salon_AbstractUserStep
                     $_SESSION['sln_sms_code'] = rand(0, 999999);
                     $this->sendSms($values['phone'], $_SESSION['sln_sms_code']);
                 }else{
-                    $this->addError(__('Phone number wrong or not defined, you need to define a valid phone number', 'sln'));
+                    $this->addError(__('Phone number wrong or not defined, you need to define a valid phone number', 'salon-booking-system'));
                 }
             }
         }
@@ -43,7 +43,7 @@ class SLN_Shortcode_Salon_SmsStep extends SLN_Shortcode_Salon_AbstractUserStep
                     return true;
                 } else {
                     $_SESSION['sln_sms_valid'] = false;
-                    $this->addError(__('Your verification code is not valid', 'sln'));
+                    $this->addError(__('Your verification code is not valid', 'salon-booking-system'));
                     return false;
                 }
             }

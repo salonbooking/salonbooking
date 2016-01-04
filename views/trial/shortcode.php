@@ -13,7 +13,7 @@
         $message = $plugin->getSettings()->getDisabledMessage();
         ?>
         <div class="alert alert-danger">
-            <p><?php echo empty($message) ? __('On-line booking is disabled', 'sln') : $message ?></p>
+            <p><?php echo empty($message) ? __('On-line booking is disabled', 'salon-booking-system') : $message ?></p>
         </div>
     </div>
 </div>

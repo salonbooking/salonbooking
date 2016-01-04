@@ -11,15 +11,15 @@ function salon_date_hoursbefore($hoursBefore)
 {
     if ($hoursBefore->from && $hoursBefore->to) : ?>
         <em><?php echo sprintf(
-                __('you may book from %s up to %s in advance', 'sln'),
+                __('you may book from %s up to %s in advance', 'salon-booking-system'),
                 $hoursBefore->from,
                 $hoursBefore->to
             ) ?></em>
     <?php elseif ($hoursBefore->from): ?>
-        <em><?php echo sprintf(__('you may book %s in advance', 'sln'), $hoursBefore->from) ?></em>
+        <em><?php echo sprintf(__('you may book %s in advance', 'salon-booking-system'), $hoursBefore->from) ?></em>
     <?php
     elseif ($hoursBefore->to) : ?>
-        <em><?php echo sprintf(__('you may book up to %s in advance', 'sln'), $hoursBefore->to) ?></em>
+        <em><?php echo sprintf(__('you may book up to %s in advance', 'salon-booking-system'), $hoursBefore->to) ?></em>
     <?php endif;
 }
 }
@@ -28,7 +28,7 @@ if ($plugin->getSettings()->isDisabled()):
     $message =  $plugin->getSettings()->getDisabledMessage(); 
     ?>
     <div class="alert alert-danger">
-        <p><?php echo empty($message) ? __('On-line booking is disabled', 'sln') : $message ?></p>
+        <p><?php echo empty($message) ? __('On-line booking is disabled', 'salon-booking-system') : $message ?></p>
     </div>
 <?php
 else:
@@ -41,7 +41,7 @@ else:
     $date      = $intervals->getSuggestedDate();
 
     ?>
-    <h2><?php _e('When do you want to come?', 'sln') ?></h2>
+    <h2><?php _e('When do you want to come?', 'salon-booking-system') ?></h2>
     <form method="post" action="<?php echo $formAction ?>" id="salon-step-date" 
           data-intervals="<?php echo esc_attr(json_encode($intervals->toArray()));?>">
         <div class="row">
@@ -49,7 +49,7 @@ else:
                 <div class="form-group">
                     <label for="<?php echo SLN_Form::makeID('sln[date][day]') ?>"><?php _e(
                             'select a day',
-                            'sln'
+                            'salon-booking-system'
                         ) ?></label>
                     <?php SLN_Form::fieldJSDate('sln[date]', $date) ?>
                 </div>
@@ -60,7 +60,7 @@ else:
                 <div class="form-group">
                     <label for="<?php echo SLN_Form::makeID('sln[date][time]') ?>"><?php _e(
                             'select an hour',
-                            'sln'
+                            'salon-booking-system'
                         ) ?></label>
                     <?php SLN_Form::fieldJSTime('sln[time]', $date, array('interval' =>  $plugin->getSettings()->get('interval') )) ?>
                 </div>

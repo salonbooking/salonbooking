@@ -20,12 +20,12 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
 
         $new_columns = array(
             'cb' => $columns['cb'],
-            'sln_thumb' => __('Thumbnail', 'sln'),
+            'sln_thumb' => __('Thumbnail', 'salon-booking-system'),
             'title' => $columns['title'],
-            'taxonomy-sln_service_category' => __('Skills', 'sln'),
-            'sln_email' => __('Email', 'sln'),
-            'sln_phone' => __('Telephone', 'sln'),
-            'sln_days_off' => __('Days off', 'sln'),
+            'taxonomy-sln_service_category' => __('Skills', 'salon-booking-system'),
+            'sln_email' => __('Email', 'salon-booking-system'),
+            'sln_phone' => __('Telephone', 'salon-booking-system'),
+            'sln_days_off' => __('Days off', 'salon-booking-system'),
         );
 //        return array_merge(
 //            $columns,
@@ -64,7 +64,7 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
     {
 
         if ($this->getPostType() === $post->post_type) {
-            $title = __('Enter the assistant name', 'sln');
+            $title = __('Enter the assistant name', 'salon-booking-system');
         }
 
         return $title;
@@ -77,28 +77,28 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
         $messages[$this->getPostType()] = array(
             0 => '', // Unused. Messages start at index 1.
             1 => sprintf(
-                __('Assistant updated.', 'sln')
+                __('Assistant updated.', 'salon-booking-system')
             ),
             2 => '',
             3 => '',
-            4 => __('Assistant updated.', 'sln'),
+            4 => __('Assistant updated.', 'salon-booking-system'),
             5 => isset($_GET['revision']) ? sprintf(
-                    __('Assistant restored to revision from %s', 'sln'), wp_post_revision_title((int) $_GET['revision'], false)
+                    __('Assistant restored to revision from %s', 'salon-booking-system'), wp_post_revision_title((int) $_GET['revision'], false)
                 ) : false,
             6 => sprintf(
-                __('Assistant published.', 'sln')
+                __('Assistant published.', 'salon-booking-system')
             ),
-            7 => __('Assistant saved.', 'sln'),
+            7 => __('Assistant saved.', 'salon-booking-system'),
             8 => sprintf(
-                __('Assistant submitted.', 'sln')
+                __('Assistant submitted.', 'salon-booking-system')
             ),
             9 => sprintf(
                 __(
-                    'Assistant scheduled for: <strong>%1$s</strong>. ', 'sln'
+                    'Assistant scheduled for: <strong>%1$s</strong>. ', 'salon-booking-system'
                 ), date_i18n(__('M j, Y @ G:i', 'restaurant'), strtotime($post->post_date))
             ),
             10 => sprintf(
-                __('Assistant draft updated.', 'sln')
+                __('Assistant draft updated.', 'salon-booking-system')
             ),
         );
 
@@ -121,20 +121,20 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
                 'revisions',
             ),
             'labels' => array(
-                'name' => __('Assistants', 'sln'),
-                'singular_name' => __('Assistant', 'sln'),
-                'menu_name' => __('Salon', 'sln'),
-                'name_admin_bar' => __('Salon Assistant', 'sln'),
-                'all_items' => __('Assistants', 'sln'),
-                'add_new' => __('Add Assistant', 'sln'),
-                'add_new_item' => __('Add New Assistant', 'sln'),
-                'edit_item' => __('Edit Assistant', 'sln'),
-                'new_item' => __('New Assistant', 'sln'),
-                'view_item' => __('View Assistant', 'sln'),
-                'search_items' => __('Search Assistants', 'sln'),
-                'not_found' => __('No assistants found', 'sln'),
-                'not_found_in_trash' => __('No assistants found in trash', 'sln'),
-                'archive_title' => __('Assistants Archive', 'sln'),
+                'name' => __('Assistants', 'salon-booking-system'),
+                'singular_name' => __('Assistant', 'salon-booking-system'),
+                'menu_name' => __('Salon', 'salon-booking-system'),
+                'name_admin_bar' => __('Salon Assistant', 'salon-booking-system'),
+                'all_items' => __('Assistants', 'salon-booking-system'),
+                'add_new' => __('Add Assistant', 'salon-booking-system'),
+                'add_new_item' => __('Add New Assistant', 'salon-booking-system'),
+                'edit_item' => __('Edit Assistant', 'salon-booking-system'),
+                'new_item' => __('New Assistant', 'salon-booking-system'),
+                'view_item' => __('View Assistant', 'salon-booking-system'),
+                'search_items' => __('Search Assistants', 'salon-booking-system'),
+                'not_found' => __('No assistants found', 'salon-booking-system'),
+                'not_found_in_trash' => __('No assistants found in trash', 'salon-booking-system'),
+                'archive_title' => __('Assistants Archive', 'salon-booking-system'),
             )
         );
     }

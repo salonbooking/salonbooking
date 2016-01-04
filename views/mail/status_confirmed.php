@@ -14,7 +14,7 @@ if ($plugin->getSettings()->get('attendant_email')
     $data['to'] = array($data['to'], $email);
 }
 
-$data['subject'] = __('Booking confirmed','sln')
+$data['subject'] = __('Booking confirmed','salon-booking-system')
     . ' ' . $plugin->format()->date($booking->getDate())
     . ' - ' . $plugin->format()->time($booking->getTime());
 include dirname(__FILE__).'/_header.php';

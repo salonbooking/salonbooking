@@ -9,7 +9,7 @@ $bb             = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
 $services = $step->getServices();
 ?>
-<h2><?php _e('What do you need?','sln') ?></h2>
+<h2><?php _e('What do you need?','salon-booking-system') ?></h2>
     <?php include '_errors.php'; ?>
 <form id="salon-step-services" method="post" action="<?php echo $formAction ?>" role="form">
     <?php include "_services.php"; ?>

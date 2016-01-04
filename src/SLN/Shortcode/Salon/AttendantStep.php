@@ -6,7 +6,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
     protected function dispatchForm()
     {
         $bb     = $this->getPlugin()->getBookingBuilder();
-        $values = isset($_POST['sln']) ? $_POST['sln'] : array();
+        $values = isset($_POST['salon-booking-system']) ? $_POST['salon-booking-system'] : array();
         foreach ($this->getAttendants() as $attendant) {
             if (isset($values['attendant']) && $values['attendant'] == $attendant->getId()) {
                 $bb->setAttendant($attendant);

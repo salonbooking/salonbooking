@@ -17,7 +17,7 @@ jQuery(function($){
 });
 </script>
 <div class="wrap sln-bootstrap">
-    <h1><?php _e('Calendar','sln')?></h1>
+    <h1><?php _e('Calendar','salon-booking-system')?></h1>
 </div>
 <div class="clearfix"></div>
 <div class="row">
@@ -48,10 +48,10 @@ jQuery(function($){
 
 <div class="row">
 <div class="col-md-11">
-    <h4><?php _e('Bookings status legend','sln')?></h4> 
+    <h4><?php _e('Bookings status legend','salon-booking-system')?></h4> 
 <ul>
 <li><span class="pull-left event event-warning"></span><?php echo SLN_Enum_BookingStatus::getLabel(SLN_Enum_BookingStatus::PENDING) ?></li> 
-<li><span class="pull-left event event-success"></span><?php echo SLN_Enum_BookingStatus::getLabel(SLN_Enum_BookingStatus::PAID) ?> <?php _e('or','sln')?> <?php echo SLN_Enum_BookingStatus::getLabel(SLN_Enum_BookingStatus::CONFIRMED)?></li>
+<li><span class="pull-left event event-success"></span><?php echo SLN_Enum_BookingStatus::getLabel(SLN_Enum_BookingStatus::PAID) ?> <?php _e('or','salon-booking-system')?> <?php echo SLN_Enum_BookingStatus::getLabel(SLN_Enum_BookingStatus::CONFIRMED)?></li>
 <li><span class="pull-left event event-info"></span><?php echo SLN_Enum_BookingStatus::getLabel(SLN_Enum_BookingStatus::PAY_LATER) ?></li>
 <li><span class="pull-left event event-danger"></span><?php echo SLN_Enum_BookingStatus::getLabel(SLN_Enum_BookingStatus::CANCELED) ?></li>
 </ul>

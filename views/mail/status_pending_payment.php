@@ -7,7 +7,7 @@ if(!isset($data['to'])){
     $data['to'] = $booking->getEmail();
 }
 
-$data['subject'] = __('Pending payment on booking','sln')
+$data['subject'] = __('Pending payment on booking','salon-booking-system')
     . ' ' . $plugin->format()->date($booking->getDate())
     . ' - ' . $plugin->format()->time($booking->getTime());
 include dirname(__FILE__).'/_header.php';

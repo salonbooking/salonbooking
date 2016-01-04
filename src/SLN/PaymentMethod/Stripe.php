@@ -26,7 +26,7 @@ class SLN_PaymentMethod_Stripe extends SLN_PaymentMethod_Paypal//Abstract
             return $charge['id'];
         } catch (Exception $e) {
             SLN_Plugin::addLog('stripe error: '.$e->getMessage()); 
-            $this->setError(__('Payment failed, please try again', 'sln'));            
+            $this->setError(__('Payment failed, please try again', 'salon-booking-system'));            
 
             return false;
         }

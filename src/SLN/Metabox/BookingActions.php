@@ -7,7 +7,7 @@ class SLN_Metabox_BookingActions extends SLN_Metabox_Abstract
         $pt = $this->getPostType();
         add_meta_box(
             $pt . '-actions',
-            __('Booking Actions', 'sln'),
+            __('Booking Actions', 'salon-booking-system'),
             array($this, 'actions_meta_box'),
             $pt,
             'side',

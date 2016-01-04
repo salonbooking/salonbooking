@@ -4,7 +4,7 @@
  */
 
 if (!isset($nextLabel)) {
-    $nextLabel = __('Next step', 'sln');
+    $nextLabel = __('Next step', 'salon-booking-system');
 }
 $i       = 0;
 $salon  = $step->getShortcode();
@@ -29,7 +29,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
                     data-salon-data="<?php echo "sln_step_page=".$salon->getPrevStep() ?>" data-salon-toggle="direct"
                 <?php endif?>
                 href="<?php echo $backUrl ?> ">
-                <i class="glyphicon glyphicon-chevron-left"></i> <?php _e('Back', 'sln') ?>
+                <i class="glyphicon glyphicon-chevron-left"></i> <?php _e('Back', 'salon-booking-system') ?>
             </a>
         <?php endif ?>
     </div>
@@ -43,7 +43,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
                 <?php echo $nextLabel ?> <i class="glyphicon glyphicon-chevron-right"></i>
             </button>
             <?php if ($currentNum > 1): ?>
-                <span class="sln-step-num"><?php echo sprintf(__('step %s of %s', 'sln'), $currentNum, $count) ?></span>
+                <span class="sln-step-num"><?php echo sprintf(__('step %s of %s', 'salon-booking-system'), $currentNum, $count) ?></span>
             <?php endif ?>
         </div>
     </div>

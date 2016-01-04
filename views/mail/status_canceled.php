@@ -13,7 +13,7 @@ if ($plugin->getSettings()->get('attendant_email')
     $data['to'] = array($data['to'], $email);
 }
 
-$data['subject'] = __('Booking Canceled','sln')
+$data['subject'] = __('Booking Canceled','salon-booking-system')
     . ' ' . $plugin->format()->date($booking->getDate()) 
     . ' - ' . $plugin->format()->time($booking->getTime());
 

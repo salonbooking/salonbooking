@@ -31,11 +31,11 @@ class SLN_Action_Ajax_CancelBooking extends SLN_Action_Ajax_Abstract
 			$args['to'] = get_option('admin_email');
 			$plugin->sendMail('mail/status_canceled', $args);
 		} elseif (!$available) {
-			$this->addError(__("You don't have access", 'sln'));
+			$this->addError(__("You don't have access", 'salon-booking-system'));
 		} elseif (!$cancellationEnabled) {
-			$this->addError(__('Cancellation disabled', 'sln'));
+			$this->addError(__('Cancellation disabled', 'salon-booking-system'));
 		} elseif ($outOfTime) {
-			$this->addError(__('Out of time', 'sln'));
+			$this->addError(__('Out of time', 'salon-booking-system'));
 		}
 
 		if ($errors = $this->getErrors()) {

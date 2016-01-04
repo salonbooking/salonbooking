@@ -6,10 +6,10 @@
         <h6 class="sln-fake-label">Reset</h6>
         <button type="submit" class="sln-btn sln-btn--warning sln-btn--big sln-btn--icon sln-icon--warning" name="reset-settings" value="reset"
         onClick="return confirm('Do you really want to reset?');"
-        ><?php echo __('Reset settings', 'sln')?></button>
+        ><?php echo __('Reset settings', 'salon-booking-system')?></button>
         </div>
         <div class="col-sm-4 form-group sln-box-maininfo align-top">
-            <p class="sln-input-help"><?php _e('Use this option to restore all the original settings. All your actual settings will be lost. <br />This operation can\'t be undone.', 'sln'); ?></p>
+            <p class="sln-input-help"><?php _e('Use this option to restore all the original settings. All your actual settings will be lost. <br />This operation can\'t be undone.', 'salon-booking-system'); ?></p>
         </div>
     </div>
     

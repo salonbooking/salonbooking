@@ -25,7 +25,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 return false;
             }
         } else {
-            $values = $_POST['sln'];
+            $values = $_POST['salon-booking-system'];
             if (!is_user_logged_in()) {
                 $this->validate($values);
                 if ($this->getErrors()) {
@@ -34,10 +34,10 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 }
 
                 if (email_exists($values['email'])) {
-                    $this->addError(__('E-mail exists', 'sln'));
+                    $this->addError(__('E-mail exists', 'salon-booking-system'));
                 }
                 if ($values['password'] != $values['password_confirm']) {
-                    $this->addError(__('Passwords are different', 'sln'));
+                    $this->addError(__('Passwords are different', 'salon-booking-system'));
                 }
                 if ($this->getErrors()) {
                     $this->bindValues($values);
@@ -66,22 +66,22 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
 
     private function validate($values){
         if (empty($values['firstname'])) {
-            $this->addError(__('First name can\'t be empty', 'sln'));
+            $this->addError(__('First name can\'t be empty', 'salon-booking-system'));
         }
         if (empty($values['lastname'])) {
-            $this->addError(__('Last name can\'t be empty', 'sln'));
+            $this->addError(__('Last name can\'t be empty', 'salon-booking-system'));
         }
         if (empty($values['email'])) {
-            $this->addError(__('e-mail can\'t be empty', 'sln'));
+            $this->addError(__('e-mail can\'t be empty', 'salon-booking-system'));
         }
         if (empty($values['phone'])) {
-            $this->addError(__('Mobile phone can\'t be empty', 'sln'));
+            $this->addError(__('Mobile phone can\'t be empty', 'salon-booking-system'));
         }
 #       if (empty($values['address'])) {
-#           $this->addError(__('Address can\'t be empty', 'sln'));
+#           $this->addError(__('Address can\'t be empty', 'salon-booking-system'));
 #       } 
         if (!filter_var($values['email'], FILTER_VALIDATE_EMAIL)) {
-            $this->addError(__('e-mail is not valid', 'sln'));
+            $this->addError(__('e-mail is not valid', 'salon-booking-system'));
         }
     }
 }
