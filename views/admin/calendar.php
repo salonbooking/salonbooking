@@ -20,25 +20,25 @@ jQuery(function($){
     <h1><?php _e('Calendar','sln')?></h1>
 </div>
 <div class="clearfix"></div>
-<div class="row">
+<div class="row sln-calendar--wrapper">
     <div class="col-md-11">
 <div class="page-header pull-left">
 <h3></h3>
 </div>
         <div class="form-inline pull-right">
             <div class="btn-group">
-	<button class="btn btn-primary" data-calendar-nav="prev">&laquo; <?php _e('Previous') ?></button>
-	<button class="btn btn-default" data-calendar-nav="today"><?php _e('Today')?></button>
-	<button class="btn btn-primary" data-calendar-nav="next"><?php _e('Next') ?> &raquo;</button>
+	<button class="f-row" data-calendar-nav="prev">&laquo; <?php _e('Previous') ?></button>
+	<button class="f-row" data-calendar-nav="today"><?php _e('Today')?></button>
+	<button class="f-row f-row--end" data-calendar-nav="next"><?php _e('Next') ?> &raquo;</button>
 <?php /*
 </div>
 <div class="btn-group">
 */ ?>
-	<button class="btn btn-warning" data-calendar-view="year"><?php _e('Year')?></button>
-	<button class="btn btn-warning active" data-calendar-view="month"><?php _e('Month')?></button>
-	<button class="btn btn-warning" data-calendar-view="week"><?php _e('Week')?></button>
-	<button class="btn btn-warning" data-calendar-view="day"><?php _e('Day')?></button>
-        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="pull-right btn btn-warning" id="calendar-add-new">Add new booking</a>
+	<button class="s-row" data-calendar-view="year"><?php _e('Year')?></button>
+	<button class="s-row active" data-calendar-view="month"><?php _e('Month')?></button>
+	<button class="s-row" data-calendar-view="week"><?php _e('Week')?></button>
+	<button class="s-row s-row--end" data-calendar-view="day"><?php _e('Day')?></button>
+        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn--addbooking" id="calendar-add-new">Add new booking</a>
             </div>
         </div>
         <div class="clearfix"></div>

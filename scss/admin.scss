@@ -565,6 +565,117 @@ body {
     }
 }
 @import 'sln-select2';
+
+// CALENDAR
+.salon_page_salon-calendar .sln-calendar--wrapper,
+.sln-calendar--wrapper {
+    font-size: 12px;
+    .btn-group {margin: 3em 0  2em 0;}
+    button {
+        text-align: center;
+        border: none;
+        cursor: pointer;
+        transition: background-color 200ms, color 300ms;
+        text-decoration: none;
+        position: relative;
+        @extend %zi-navigazione;
+        background-color: $cl_main--light;
+        color: $cl_main;
+        //border: 1px solid #c5cfd4;
+        display: inline-block;
+        height: rem(44px);
+        font-size: 1.2em;
+        line-height: rem(44px);
+        padding: 0 rem(15px);
+        margin-bottom: 1em ;
+        &.active {
+            //border: 1px solid $cl_main--medium;
+            background-color: $cl_ok;
+            color: #fff;
+        }
+        &:hover {
+          border-color: $cl_main;
+          background-color: $cl_main;
+          color: #fff;
+        }
+        &.f-row {
+            width: 32%;
+        }
+        &.s-row {
+            width: 23.8%;
+        }
+        @include bp(tablet) {
+            width: auto;
+            min-width: 90px;
+            height: rem(44px);
+            font-size: 1.2em;
+            line-height: rem(44px);
+            &.s-row, &.f-row {width: auto;}
+        }
+    }
+    .sln-btn--addbooking {
+        text-align: center;
+        border: none;
+        cursor: pointer;
+        transition: background-color 200ms, color 300ms;
+        text-decoration: none;
+        position: relative;
+        @extend %zi-navigazione;
+        display: inline-block;
+        min-width: 140px;
+        height: rem(44px);
+        font-size: 1.2em;
+        line-height: rem(44px);
+        padding: 0 rem(15px);
+        background-color: $cl_main--emphasis;
+        color: white;
+        text-align: left;
+        position: relative;
+        padding-right: rem(54px);
+        margin-bottom: 1em ;
+        &:after {
+          content: "\f017";
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          text-align: center;
+          @extend %font-icon;
+          transition: all 200ms;
+          z-index: 200;
+          padding: 0 rem(12px);
+          font-size: rem(18px);
+          line-height: rem(45px);
+        }
+        &:hover {
+          background-color: $cl_main;
+        }
+        @include bp(tablet) {
+            height: rem(64px);
+            font-size: 1.4em;
+            line-height: rem(64px);
+            &:after {
+              font-size: rem(24px);
+              line-height: rem(64px);
+            }
+        }
+        @include bp(desktop) {
+            height: rem(44px);
+            font-size: 1.2em;
+            line-height: rem(44px);
+            &:after {
+              font-size: rem(18px);
+              line-height: rem(45px);
+            }
+        }
+    }
+    span[data-cal-date] {
+        display: inline-block;
+        margin: .5em 0 0 .5em;
+    }
+}
+// CALENDAR // EN
 // /// SETTINGS END
 
 
