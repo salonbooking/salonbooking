@@ -149,7 +149,6 @@ class SLN_Admin_Settings {
         'gen_timetable',
         'ajax_enabled',
         'attendant_enabled',
-        'hide_prices',
         'attendant_email',
         'sms_enabled',
         'sms_account',
@@ -172,9 +171,6 @@ class SLN_Admin_Settings {
                 $val = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
                 $this->settings->set($k, stripcslashes($val));
             }
-            if (isset($_POST['salon_settings']['hide_prices'])) {
-                $this->settings->set('pay_enabled', '');
-            }
             wp_clear_scheduled_hook('sln_sms_reminder');
             if (isset($_POST['salon_settings']['sms_remind']) && $_POST['salon_settings']['sms_remind']) {
                 wp_schedule_event(time(), 'hourly', 'sln_sms_reminder');
@@ -184,12 +180,17 @@ class SLN_Admin_Settings {
                     'success', __('general settings are updated', 'sln'), __('Update completed with success', 'sln')
             );
             if ($_POST['salon_settings']['sms_test_number'] && $_POST['salon_settings']['sms_test_message']) {
-                SLN_Enum_SmsProvider::getService(
-                        $this->settings->get('sms_provider'), $this->plugin
-                )->send($_POST['salon_settings']['sms_test_number'], $_POST['salon_settings']['sms_test_message']);
+                try{
+                $this->plugin->sendSms(
+                    $_POST['salon_settings']['sms_test_number'],
+                    $_POST['salon_settings']['sms_test_message']
+                );
                 $this->showAlert(
                         'success', __('Test sms sent with success', 'sln'), ''
                 );
+                }catch(\SLN_Action_Sms_Exception $e){
+                    $this->showAlert('error', $e->getMessage());
+                }
             }
         }
 
@@ -234,6 +235,7 @@ class SLN_Admin_Settings {
 
         public function processTabPayments() {
             $fields = array(
+        'hide_prices',
         'pay_method',
         'pay_currency',
         'pay_currency_pos',
@@ -243,7 +245,6 @@ class SLN_Admin_Settings {
         'pay_enabled',
         'pay_deposit'
             );
-
             foreach(SLN_Enum_PaymentMethodProvider::toArray() as $k => $v){
                 $fields = array_merge($fields, SLN_Enum_PaymentMethodProvider::getService($k, $this->plugin)->getFields());
             }
@@ -252,6 +253,12 @@ class SLN_Admin_Settings {
                 $data = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
                 $this->settings->set($k, $data);
             }
+
+            if (isset($_POST['salon_settings']['hide_prices'])) {
+                $this->settings->set('pay_enabled', '');
+            }
+
+
             $this->settings->save();
             $this->showAlert(
                     'success', __('payments settings are updated', 'sln'), __('Update completed with success', 'sln')
@@ -370,7 +377,8 @@ class SLN_Admin_Settings {
     }
 
     function hidePriceSettings() {
-        return $this->getOpt('hide_prices') == 1 ? array('attrs' => array('disabled' => 'disabled', 'title' => 'Please disable hide prices from general settings to enable online payment.')) : array();
+        $ret = $this->getOpt('hide_prices')  ? array('attrs' => array('disabled' => 'disabled', 'title' => 'Please disable hide prices from general settings to enable online payment.')) : array();
+        return $ret;
     }
 
 }

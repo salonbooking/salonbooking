@@ -233,7 +233,7 @@
 </div>
 <div class="sln-box--sub row">
     <div class="col-xs-12">
-        <h2 class="sln-box-title"><?php _e('SMS Test consolle','sln') ?><span><?php _e('fill the fields and update settings','sln') ?></span></h2>
+        <h2 class="sln-box-title"><?php _e('SMS Test console','sln') ?><span><?php _e('fill the fields and update settings','sln') ?></span></h2>
     </div>
     <div class="col-sm-4 form-group sln-input--simple">
         <?php $this->row_input_text('sms_test_number', __('Number', 'sln')); ?>
@@ -242,7 +242,7 @@
         <?php $this->row_input_text('sms_test_message', __('Message', 'sln')); ?>
     </div>
     <div class="col-sm-6 col-md-4 sln-box-maininfo  align-top">
-                <p class="sln-input-help"><?php _e('Use this consolle just to test your SMS services. Fill the destination number without the counrty code, write a text message and click "Update settings" to send an SMS.','sln');?></p>
+                <p class="sln-input-help"><?php _e('Use this console just to test your SMS services. Fill the destination number without the counrty code, write a text message and click "Update settings" to send an SMS.','sln');?></p>
             </div>
 </div>
 <div class="sln-box-info">

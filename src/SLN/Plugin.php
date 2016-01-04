@@ -405,6 +405,14 @@ class SLN_Plugin
         if (self::DEBUG_ENABLED)
             file_put_contents(SLN_PLUGIN_DIR . '/log.txt', '[' . date('Y-m-d H:i:s') . '] ' . $txt . "\r\n", FILE_APPEND | LOCK_EX);
     }
+
+    public function sendSms($number, $message){
+        $provider = SLN_Enum_SmsProvider::getService(
+            $this->getSettings()->get('sms_provider'),
+            $this
+        );
+        $provider->send($number, $message);
+    }
 }
 
 function sln_sms_reminder()

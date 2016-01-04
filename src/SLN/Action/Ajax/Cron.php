@@ -20,10 +20,6 @@ class SLN_Action_Ajax_Cron extends SLN_Action_Ajax_Abstract
         $date = new DateTime();
         $date->modify($interval);
         $now = new DateTime(); 
-        $smsProvider = SLN_Enum_SmsProvider::getService(
-            $plugin->getSettings()->get('sms_provider'),
-            $this->plugin
-        );
         $args = array(
             'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
             'nopaging'   => true,
@@ -41,7 +37,7 @@ class SLN_Action_Ajax_Cron extends SLN_Action_Ajax_Abstract
             $booking = $plugin->createBooking($p);
             $d = $booking->getStartsAt();
             if($d >= $now && $d <= $date){
-                $smsProvider->send($booking->getPhone(), $plugin->loadView('sms/remind', compact('booking'))); 
+                $plugin->sendSms($booking->getPhone(), $plugin->loadView('sms/remind', compact('booking'))); 
             }
         }
         wp_reset_query();

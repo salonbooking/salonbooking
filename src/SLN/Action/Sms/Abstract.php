@@ -29,4 +29,7 @@ abstract class SLN_Action_Sms_Abstract
         $to = str_replace(' ','',$to);
         return $prefix . $to;
     }
+    protected function createException($message, $code = 1000, $previous = null){
+        throw new SLN_Action_Sms_Exception($message, $code, $previous);
+    }
 }

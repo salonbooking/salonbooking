@@ -6,6 +6,7 @@ class SLN_Action_Sms_Twilio extends SLN_Action_Sms_Abstract
 
     public function send($to, $message)
     {
+        try{
         require_once '_twilio.php';
 
         $client = new Services_Twilio($this->getAccount(), $this->getPassword());
@@ -19,5 +20,8 @@ class SLN_Action_Sms_Twilio extends SLN_Action_Sms_Abstract
             $this->processTo($to),
             $message
         );
+        }catch(Services_Twilio_RestException $e){
+            $this->createException('Twilio: '.$e->getMessage(),1000, $e);
+        }
     }
 }

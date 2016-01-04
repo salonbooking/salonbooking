@@ -24,10 +24,6 @@ class SLN_Action_Reminder
         $date = new DateTime();
         $date->modify($interval);
         $now = new DateTime(); 
-        $smsProvider = SLN_Enum_SmsProvider::getService(
-            $plugin->getSettings()->get('sms_provider'),
-            $this->plugin
-        );
         $args = array(
             'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
             'nopaging'   => true,
@@ -47,7 +43,7 @@ class SLN_Action_Reminder
             if($d >= $now && $d <= $date){
                 if(!$booking->getRemind()){
                     $this->plugin->addLog('reminder sent to '.$booking->getId());
-                    $smsProvider->send($booking->getPhone(), $plugin->loadView('sms/remind', compact('booking'))); 
+                    $plugin->sendSms($booking->getPhone(), $plugin->loadView('sms/remind', compact('booking'))); 
                     $booking->setRemind(true);
                 }
             }

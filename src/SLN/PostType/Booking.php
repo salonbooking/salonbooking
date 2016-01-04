@@ -222,18 +222,12 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 $p->sendMail('mail/summary_admin', compact('booking'));
                 if($p->getSettings()->get('sms_new')) {
                     $phone = $p->getSettings()->get('sms_new_number');
-                    SLN_Enum_SmsProvider::getService(
-                        $p->getSettings()->get('sms_provider'),
-                        $this->getPlugin()
-                    )->send($phone, $p->loadView('sms/summary', compact('booking')));
+                    $this->getPlugin()->sendSms($phone, $p->loadView('sms/summary', compact('booking')));
                 }
                 if($p->getSettings()->get('sms_new_attendant') && $booking->getAttendant()){
                     $phone = $booking->getAttendant()->getPhone();
                     if($phone){
-                        SLN_Enum_SmsProvider::getService(
-                            $p->getSettings()->get('sms_provider'),
-                            $this->getPlugin()
-                        )->send($phone, $p->loadView('sms/summary', compact('booking')));
+                        $this->getPlugin()->send($phone, $p->loadView('sms/summary', compact('booking')));
                     }
                 }
             }

@@ -1563,7 +1563,7 @@ msgid "Remember to set the mobile number of your staff members"
 msgstr ""
 
 #: views/settings/tab_general.php:236
-msgid "SMS Test consolle"
+msgid "SMS Test console"
 msgstr ""
 
 #: views/settings/tab_general.php:236
@@ -1580,7 +1580,7 @@ msgstr ""
 
 #: views/settings/tab_general.php:245
 msgid ""
-"Use this consolle just to test your SMS services. Fill the destination "
+"Use this console just to test your SMS services. Fill the destination "
 "number without the counrty code, write a text message and click \"Update "
 "settings\" to send an SMS."
 msgstr ""
