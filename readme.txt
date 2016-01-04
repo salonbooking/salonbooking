@@ -163,12 +163,12 @@ The plugin has been tested on WordPress 4.0
  
 = Which version of php is supported? =
 
-The plugin supports php 5.3 and above version.
+The plugin supports php 5.2 and above version.
 
  
 = Is it possible to accept online payments? =
 
-Yes. At the moment only PayPal as payment gateway is supported.
+Yes. At the moment you can accept payments from PayPal and Stripe. Furthermore we provide some guidelines for custom payment gateways support.
 
 Do you need a custom payment gateway? Please contact us.
 
