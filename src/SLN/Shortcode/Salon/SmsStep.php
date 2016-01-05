@@ -16,7 +16,11 @@ class SLN_Shortcode_Salon_SmsStep extends SLN_Shortcode_Salon_AbstractUserStep
                 if(isset($values['phone'])){
                     $_SESSION['sln_sms_tests']++;
                     $_SESSION['sln_sms_code'] = rand(0, 999999);
-                    $this->sendSms($values['phone'], $_SESSION['sln_sms_code']);
+                    try{
+                        $this->sendSms($values['phone'], $_SESSION['sln_sms_code']);
+                    }catch(Exception $e){
+                        $this->addError($e->getMessage());
+                    }
                 }else{
                     $this->addError(__('Phone number wrong or not defined, you need to define a valid phone number', 'salon-booking-system'));
                 }
