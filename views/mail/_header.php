@@ -21,10 +21,10 @@
         <td width="55" align="left" valign="top"><a href="#"><img src="<?php echo SLN_PLUGIN_URL ?>/img/summary.png" width="40" height="41" alt="img1" border="0" align="left"></a></td>
         <td align="left" valign="top"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
           <tr>
-            <td height="20" align="left" valign="bottom" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#cccccc; font-weight:bold;"><?php _e('Booking ID','sln') ?> <b style="color:#666666;"><?php echo $booking->getId() ?></b></td>
+            <td height="20" align="left" valign="bottom" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#cccccc; font-weight:bold;"><?php _e('Booking ID','salon-booking-system') ?> <b style="color:#666666;"><?php echo $booking->getId() ?></b></td>
           </tr>
           <tr>
-            <td height="25" align="left" valign="bottom" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#cccccc; font-weight:bold;"><?php _e('Status','sln')?> <b style="color:#666666;"><?php echo SLN_Enum_BookingStatus::getLabel(
+            <td height="25" align="left" valign="bottom" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#cccccc; font-weight:bold;"><?php _e('Status','salon-booking-system')?> <b style="color:#666666;"><?php echo SLN_Enum_BookingStatus::getLabel(
                                         $booking->getStatus()
                                     ) ?></b></td>
           </tr>

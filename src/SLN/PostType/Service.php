@@ -100,16 +100,16 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
         $new_columns = array(
             'cb' => $columns['cb'],
             'title' => $columns['title'],
-            'service_duration' => __('Duration', 'sln'),
-            'service_price' => __('Price', 'sln'),
+            'service_duration' => __('Duration', 'salon-booking-system'),
+            'service_price' => __('Price', 'salon-booking-system'),
             'taxonomy-sln_service_category' => $columns['taxonomy-sln_service_category'],
-            'sln_days_off' => __('Days off', 'sln'),
+            'sln_days_off' => __('Days off', 'salon-booking-system'),
         );
 
 //        return array_merge(
 //            $columns, array(
-//            'service_duration' => __('Duration', 'sln'),
-//            'service_price' => __('Price', 'sln')
+//            'service_duration' => __('Duration', 'salon-booking-system'),
+//            'service_price' => __('Price', 'salon-booking-system')
 //            )
 //        );
         return $new_columns;
@@ -145,7 +145,7 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
     {
 
         if ($this->getPostType() === $post->post_type) {
-            $title = __('Enter service name', 'sln');
+            $title = __('Enter service name', 'salon-booking-system');
         }
 
         return $title;
@@ -158,28 +158,28 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
         $messages[$this->getPostType()] = array(
             0 => '', // Unused. Messages start at index 1.
             1 => sprintf(
-                __('Service updated.', 'sln')
+                __('Service updated.', 'salon-booking-system')
             ),
             2 => '',
             3 => '',
-            4 => __('Service updated.', 'sln'),
+            4 => __('Service updated.', 'salon-booking-system'),
             5 => isset($_GET['revision']) ? sprintf(
-                    __('Service restored to revision from %s', 'sln'), wp_post_revision_title((int) $_GET['revision'], false)
+                    __('Service restored to revision from %s', 'salon-booking-system'), wp_post_revision_title((int) $_GET['revision'], false)
                 ) : false,
             6 => sprintf(
-                __('Service published.', 'sln')
+                __('Service published.', 'salon-booking-system')
             ),
-            7 => __('Service saved.', 'sln'),
+            7 => __('Service saved.', 'salon-booking-system'),
             8 => sprintf(
-                __('Service submitted.', 'sln')
+                __('Service submitted.', 'salon-booking-system')
             ),
             9 => sprintf(
                 __(
-                    'Service scheduled for: <strong>%1$s</strong>. ', 'sln'
+                    'Service scheduled for: <strong>%1$s</strong>. ', 'salon-booking-system'
                 ), date_i18n(__('M j, Y @ G:i', 'restaurant'), strtotime($post->post_date))
             ),
             10 => sprintf(
-                __('Service draft updated.', 'sln')
+                __('Service draft updated.', 'salon-booking-system')
             ),
         );
 
@@ -202,20 +202,20 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
                 'revisions',
             ),
             'labels' => array(
-                'name' => __('Services', 'sln'),
-                'singular_name' => __('Service', 'sln'),
-                'menu_name' => __('Salon', 'sln'),
-                'name_admin_bar' => __('Salon Service', 'sln'),
-                'all_items' => __('Services', 'sln'),
-                'add_new' => __('Add Service', 'sln'),
-                'add_new_item' => __('Add New Service', 'sln'),
-                'edit_item' => __('Edit Service', 'sln'),
-                'new_item' => __('New Service', 'sln'),
-                'view_item' => __('View Service', 'sln'),
-                'search_items' => __('Search Services', 'sln'),
-                'not_found' => __('No services found', 'sln'),
-                'not_found_in_trash' => __('No services found in trash', 'sln'),
-                'archive_title' => __('Services Archive', 'sln'),
+                'name' => __('Services', 'salon-booking-system'),
+                'singular_name' => __('Service', 'salon-booking-system'),
+                'menu_name' => __('Salon', 'salon-booking-system'),
+                'name_admin_bar' => __('Salon Service', 'salon-booking-system'),
+                'all_items' => __('Services', 'salon-booking-system'),
+                'add_new' => __('Add Service', 'salon-booking-system'),
+                'add_new_item' => __('Add New Service', 'salon-booking-system'),
+                'edit_item' => __('Edit Service', 'salon-booking-system'),
+                'new_item' => __('New Service', 'salon-booking-system'),
+                'view_item' => __('View Service', 'salon-booking-system'),
+                'search_items' => __('Search Services', 'salon-booking-system'),
+                'not_found' => __('No services found', 'salon-booking-system'),
+                'not_found_in_trash' => __('No services found in trash', 'salon-booking-system'),
+                'archive_title' => __('Services Archive', 'salon-booking-system'),
             )
         );
     }

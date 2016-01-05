@@ -8,7 +8,7 @@ class SLN_Plugin
     const POST_TYPE_BOOKING = 'sln_booking';
     const TAXONOMY_SERVICE_CATEGORY = 'sln_service_category';
     const USER_ROLE_STAFF = 'sln_staff';
-    const TEXT_DOMAIN = 'sln';
+    const TEXT_DOMAIN = 'salon-booking-system';
     const F = 'slnc';
     const F1 = 30;
     const F2 = 20;
@@ -90,7 +90,7 @@ class SLN_Plugin
 
     function add_comment_columns( $columns )
     {
-        $columns['sln_rating_column'] = __('Rating', 'sln');
+        $columns['sln_rating_column'] = __('Rating', 'salon-booking-system');
 
         return $columns;
     }
@@ -153,7 +153,7 @@ class SLN_Plugin
             'loading' => SLN_PLUGIN_URL . '/img/preloader.gif',
             'txt_validating' => __('checking availability'),
             'images_folder' => SLN_PLUGIN_URL . '/img', // algolplus
-            'confirm_cancellation_text' => __('Do you really want to cancel?', 'sln'), // algolplus
+            'confirm_cancellation_text' => __('Do you really want to cancel?', 'salon-booking-system'), // algolplus
             )
         );
     }

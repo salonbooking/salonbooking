@@ -9,13 +9,13 @@ class SLN_Action_Ajax_SearchUser extends SLN_Action_Ajax_Abstract
        if(!$result){
            $ret = array(
                'success' => 0,
-               'errors' => array(__('User not found','sln'))
+               'errors' => array(__('User not found','salon-booking-system'))
            );
        }else{
            $ret = array(
                'success' => 1,
                'result' => $result,
-               'message' => __('User updated','sln')
+               'message' => __('User updated','salon-booking-system')
            );
        }
        return $ret;

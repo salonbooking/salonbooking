@@ -4,22 +4,22 @@
  * @var SLN_Shortcode_Salon $salon
  */
 //$labels = array(
-//    'date'      => __('date', 'sln'),
-//    'services'  => __('services', 'sln'),
-//    'secondary' => __('secondary', 'sln'),
-//    'details'   => __('details', 'sln'),
-//    'summary'   => __('summary', 'sln'),
-//    'thankyou'  => __('thankyou', 'sln'),
+//    'date'      => __('date', 'salon-booking-system'),
+//    'services'  => __('services', 'salon-booking-system'),
+//    'secondary' => __('secondary', 'salon-booking-system'),
+//    'details'   => __('details', 'salon-booking-system'),
+//    'summary'   => __('summary', 'salon-booking-system'),
+//    'thankyou'  => __('thankyou', 'salon-booking-system'),
 //);
 ?>
 <div id="sln-salon" class="sln-bootstrap">
     <?php
     if ($trial_exp)
-        echo '<h2 class="sln_notice">' . __('Your free version is expired - upgrade to PRO', 'sln') . '</h2>';
+        echo '<h2 class="sln_notice">' . __('Your free version is expired - upgrade to PRO', 'salon-booking-system') . '</h2>';
 
     ?>
     <div>
-        <h1><?php _e('Book an appointment', 'sln'); ?>
+        <h1><?php _e('Book an appointment', 'salon-booking-system'); ?>
             <svg class="icocal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"
                  preserveAspectRatio="xMinYMin meet" width="100%" height="100%"
                  style="width: 24px; height: 24px;">

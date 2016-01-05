@@ -17,9 +17,9 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
 ?>
 <div id="salon-step-thankyou">
     <?php if($confirmation) : ?>
-        <h2><?php _e('Booking status', 'sln') ?></h2>
+        <h2><?php _e('Booking status', 'salon-booking-system') ?></h2>
     <?php else : ?> 
-        <h2><?php _e('Booking Confirmation', 'sln') ?></h2>
+        <h2><?php _e('Booking Confirmation', 'salon-booking-system') ?></h2>
     <?php endif ?>
 
     <?php include '_errors.php'; ?>
@@ -27,31 +27,31 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
     <?php if (isset($payOp) && $payOp == 'cancel'): ?>
 
         <div class="alert alert-danger">
-            <p><?php _e('The payment is failed, please try again.', 'sln') ?></p>
+            <p><?php _e('The payment is failed, please try again.', 'salon-booking-system') ?></p>
         </div>
 
     <?php else: ?>
         <div class="row">
-            <div class="col-md-6 tycol"><?php echo $confirmation ? __('Your booking is pending', 'sln') : __('Your booking is confirmed', 'sln') ?><br/>
+            <div class="col-md-6 tycol"><?php echo $confirmation ? __('Your booking is pending', 'salon-booking-system') : __('Your booking is confirmed', 'salon-booking-system') ?><br/>
                 <?php if($confirmation): ?> 
                     <i class="c glyphicon glyphicon-time"></i>
                 <?php else : ?>
                     <i class="glyphicon glyphicon-ok-circle"></i>
                 <?php endif ?>
             </div>
-            <div class="col-md-6 tycol"><?php _e('Booking number', 'sln') ?>
+            <div class="col-md-6 tycol"><?php _e('Booking number', 'salon-booking-system') ?>
                 <br/><span class="num"><?php echo $plugin->getBookingBuilder()->getLastBooking()->getId() ?></span>
             </div>
         </div>
 <?php $ppl = false; ?>
 <div class="alert ty">
 <?php if($confirmation) : ?>
-        <p><strong><?php _e('You will receive a confirmation of your booking by email.','sln' )?></strong></p>
-        <p><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
+        <p><strong><?php _e('You will receive a confirmation of your booking by email.','salon-booking-system' )?></strong></p>
+        <p><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'salon-booking-system'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
             <?php echo $plugin->getSettings()->get('gen_phone') ?></p>
-        <p class="aligncenter"><a href="<?php echo home_url() ?>" class="btn btn-primary"><?php _e('Back to home','sln') ?></a></p>
+        <p class="aligncenter"><a href="<?php echo home_url() ?>" class="btn btn-primary"><?php _e('Back to home','salon-booking-system') ?></a></p>
 <?php else : ?>
-        <p><?php echo sprintf(__('If you need to change your reservation please call the <strong>%s</strong> or send an e-mail to <strong>%s</strong>', 'sln'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
+        <p><?php echo sprintf(__('If you need to change your reservation please call the <strong>%s</strong> or send an e-mail to <strong>%s</strong>', 'salon-booking-system'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
             <?php echo $plugin->getSettings()->get('phone') ?>
         </p>
         </div>
@@ -62,19 +62,19 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
             <?php echo $paymentMethod->renderPayButton(compact('booking', 'paymentMethod', 'ajaxData', 'payUrl')); ?>
         <?php endif; ?>
         <?php if($paymentMethod && $plugin->getSettings()->get('pay_cash')): ?>
-        <?php _e('Or', 'sln') ?>
+        <?php _e('Or', 'salon-booking-system') ?>
         <a  href="<?php echo $laterUrl ?>" class="btn btn-success"
             <?php if($ajaxEnabled): ?>
                 data-salon-data="<?php echo $ajaxData.'&mode=later' ?>" data-salon-toggle="direct"
             <?php endif ?>>
-            <?php _e('I\'ll pay later', 'sln') ?>
+            <?php _e('I\'ll pay later', 'salon-booking-system') ?>
         </a>
         <?php elseif(!$paymentMethod) : ?>
         <a  href="<?php echo $laterUrl ?>" class="btn btn-success"
             <?php if($ajaxEnabled): ?>
                 data-salon-data="<?php echo $ajaxData.'&mode=later' ?>" data-salon-toggle="direct"
             <?php endif ?>>
-            <?php _e('Confirm', 'sln') ?>
+            <?php _e('Confirm', 'salon-booking-system') ?>
         </a>
         <?php endif ?>
     </div>

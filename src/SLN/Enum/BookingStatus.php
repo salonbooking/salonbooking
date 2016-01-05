@@ -62,13 +62,13 @@ class SLN_Enum_BookingStatus
     public static function init()
     {
         self::$labels = array(
-            self::PENDING_PAYMENT   => __('Pending payment', 'sln'),
-            self::PENDING   => __('Pending', 'sln'),
-            self::PAID      => __('Paid', 'sln'),
-            self::PAY_LATER => __('Pay later', 'sln'),
-            self::CANCELED  => __('Canceled', 'sln'),
-            self::CONFIRMED => __('Confirmed', 'sln'),
-            self::ERROR     => __('ERROR', 'sln'),
+            self::PENDING_PAYMENT   => __('Pending payment', 'salon-booking-system'),
+            self::PENDING   => __('Pending', 'salon-booking-system'),
+            self::PAID      => __('Paid', 'salon-booking-system'),
+            self::PAY_LATER => __('Pay later', 'salon-booking-system'),
+            self::CANCELED  => __('Canceled', 'salon-booking-system'),
+            self::CONFIRMED => __('Confirmed', 'salon-booking-system'),
+            self::ERROR     => __('ERROR', 'salon-booking-system'),
         );
     }
 }

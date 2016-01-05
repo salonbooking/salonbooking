@@ -1,7 +1,7 @@
 <div class="sln-tab" id="sln-tab-google-calendar">
 <div class="sln-box sln-box--main">
 
-    <h2 class="sln-box-title"><?php _e('Support','sln');?></h2>
+    <h2 class="sln-box-title"><?php _e('Support','salon-booking-system');?></h2>
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 form-group sln-box-maininfo">
 

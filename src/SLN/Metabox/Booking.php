@@ -7,7 +7,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         $pt = $this->getPostType();
         add_meta_box(
             $pt . '-details',
-            __('Booking details', 'sln'),
+            __('Booking details', 'salon-booking-system'),
             array($this, 'details_meta_box'),
             $pt,
             'normal',
@@ -111,22 +111,22 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
 
     private function validate($values){
         if (empty($values['_sln_booking_firstname'])) {
-            $this->addError(__('First name can\'t be empty', 'sln'));
+            $this->addError(__('First name can\'t be empty', 'salon-booking-system'));
         }
         if (empty($values['_sln_booking_lastname'])) {
-            $this->addError(__('Last name can\'t be empty', 'sln'));
+            $this->addError(__('Last name can\'t be empty', 'salon-booking-system'));
         }
         if (empty($values['_sln_booking_email'])) {
-            $this->addError(__('e-mail can\'t be empty', 'sln'));
+            $this->addError(__('e-mail can\'t be empty', 'salon-booking-system'));
         }
         if (empty($values['_sln_booking_phone'])) {
-            $this->addError(__('Mobile phone can\'t be empty', 'sln'));
+            $this->addError(__('Mobile phone can\'t be empty', 'salon-booking-system'));
         }
 #       if (empty($values['address'])) {
-#           $this->addError(__('Address can\'t be empty', 'sln'));
+#           $this->addError(__('Address can\'t be empty', 'salon-booking-system'));
 #       }
         if (!filter_var($values['_sln_booking_email'], FILTER_VALIDATE_EMAIL)) {
-            $this->addError(__('e-mail is not valid', 'sln'));
+            $this->addError(__('e-mail is not valid', 'salon-booking-system'));
         }
     }
 

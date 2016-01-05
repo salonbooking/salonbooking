@@ -24,10 +24,10 @@ class SLN_Admin_Settings {
 
     public function admin_menu() {
         add_menu_page(
-                __('Salon', 'sln'), __('Salon', 'sln'), 'manage_options', 'salon', array($this, 'settings_page'), SLN_PLUGIN_URL . '/img/admin_icon.png'
+                __('Salon', 'salon-booking-system'), __('Salon', 'salon-booking-system'), 'manage_options', 'salon', array($this, 'settings_page'), SLN_PLUGIN_URL . '/img/admin_icon.png'
         );
         $this->settings_page = add_submenu_page(
-                'salon', __('Salon Settings', 'sln'), __('Settings', 'sln'), apply_filters('salonviews/settings/capability', 'manage_options'), self::PAGE, array($this, 'show')
+                'salon', __('Salon Settings', 'salon-booking-system'), __('Settings', 'salon-booking-system'), apply_filters('salonviews/settings/capability', 'manage_options'), self::PAGE, array($this, 'show')
         );
     }
 
@@ -131,7 +131,7 @@ class SLN_Admin_Settings {
                 $this->settings->clear();
                 SLN_Action_Install::execute(true);
                 $this->showAlert(
-                        'success', __('remember to customize your settings', 'sln'), __('Reset completed with success', 'sln')
+                        'success', __('remember to customize your settings', 'salon-booking-system'), __('Reset completed with success', 'salon-booking-system')
                 );
             }
         }
@@ -177,7 +177,7 @@ class SLN_Admin_Settings {
             }
             $this->settings->save();
             $this->showAlert(
-                    'success', __('general settings are updated', 'sln'), __('Update completed with success', 'sln')
+                    'success', __('general settings are updated', 'salon-booking-system'), __('Update completed with success', 'salon-booking-system')
             );
             if ($_POST['salon_settings']['sms_test_number'] && $_POST['salon_settings']['sms_test_message']) {
                 try{
@@ -186,7 +186,7 @@ class SLN_Admin_Settings {
                     $_POST['salon_settings']['sms_test_message']
                 );
                 $this->showAlert(
-                        'success', __('Test sms sent with success', 'sln'), ''
+                        'success', __('Test sms sent with success', 'salon-booking-system'), ''
                 );
                 }catch(\SLN_Action_Sms_Exception $e){
                     $this->showAlert('error', $e->getMessage());
@@ -225,7 +225,7 @@ class SLN_Admin_Settings {
             }
             $this->settings->save();
             $this->showAlert(
-                    'success', __('booking settings are updated', 'sln'), __('Update completed with success', 'sln')
+                    'success', __('booking settings are updated', 'salon-booking-system'), __('Update completed with success', 'salon-booking-system')
             );
         }
 
@@ -261,7 +261,7 @@ class SLN_Admin_Settings {
 
             $this->settings->save();
             $this->showAlert(
-                    'success', __('payments settings are updated', 'sln'), __('Update completed with success', 'sln')
+                    'success', __('payments settings are updated', 'salon-booking-system'), __('Update completed with success', 'salon-booking-system')
             );
         }
 
@@ -275,14 +275,14 @@ class SLN_Admin_Settings {
                 if (empty($_POST[self::PAGE . $current]) || !wp_verify_nonce($_POST[self::PAGE . $current])) {
                     $this->$method();
                 } else {
-                    $this->showAlert('error', __('try again', 'sln'), __('Page verification failed', 'sln'));
+                    $this->showAlert('error', __('try again', 'salon-booking-system'), __('Page verification failed', 'salon-booking-system'));
                 }
             }
             ?>
         <div id="sln-salon--admin" class="wrap sln-bootstrap sln-salon--settings">
         <?php screen_icon(); ?>
         <div class="row">
-            <h2 class="col-xs-12 col-sm-4"><?php _e('Salon Settings', 'sln'); ?></h2>
+            <h2 class="col-xs-12 col-sm-4"><?php _e('Salon Settings', 'salon-booking-system'); ?></h2>
             <div class="sln-admin-nav hidden-xs col-sm-8">
                 <ul class="sln-admin-nav">
                 <li><a href="admin.php?page=salon-calendar" class="sln-btn--icon sln-icon--calendar">Calendar</a></li>
@@ -301,7 +301,7 @@ class SLN_Admin_Settings {
         $this->showTab($current);
         wp_nonce_field(self::PAGE . $current);
         if ($current != 'homepage') {
-            submit_button(esc_attr__('Update Settings', 'sln'), 'primary');
+            submit_button(esc_attr__('Update Settings', 'salon-booking-system'), 'primary');
         }
         ?>
             </form>
@@ -368,7 +368,7 @@ class SLN_Admin_Settings {
             header("Location: " . admin_url('admin.php?page=salon-settings&tab=gcalendar'));
 
         $this->showAlert(
-                'success', __('Google Calendar settings are updated', 'sln'), __('Update completed with success', 'sln')
+                'success', __('Google Calendar settings are updated', 'salon-booking-system'), __('Update completed with success', 'salon-booking-system')
         );
     }
 

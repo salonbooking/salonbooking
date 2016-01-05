@@ -44,27 +44,27 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $to   = $hb->getToDate();
         if (!$hb->isValidFrom($date)) {
             $txt = $plugin->format()->datetime(new SLN_DateTime($from));
-            $this->addError(sprintf(__('The date is too near, the minimum allowed is:', 'sln') . '<br /><strong>%s</strong>', $txt));
+            $this->addError(sprintf(__('The date is too near, the minimum allowed is:', 'salon-booking-system') . '<br /><strong>%s</strong>', $txt));
         } elseif (!$hb->isValidTo($date)) {
             $txt = $plugin->format()->datetime($to);
-            $this->addError(sprintf(__('The date is too far, the maximum allowed is:', 'sln') . '<br /><strong>%s</strong>', $txt));
+            $this->addError(sprintf(__('The date is too far, the maximum allowed is:', 'salon-booking-system') . '<br /><strong>%s</strong>', $txt));
         } elseif (!$ah->getItems()->isValidDatetime($date)) {
             $txt = $plugin->format()->datetime($date);
-            $this->addError(sprintf(__('We are unavailable at:', 'sln') . '<br /><strong>%s</strong>', $txt));
+            $this->addError(sprintf(__('We are unavailable at:', 'salon-booking-system') . '<br /><strong>%s</strong>', $txt));
         } else {
             $ah->setDate($date);
             if (!$ah->isValidDate($date)) {
                 $this->addError(
                     __(
                         'There are no time slots available today - Please select a different day',
-                        'sln'
+                        'salon-booking-system'
                     )
                 );
             } elseif (!$ah->isValidTime($date)) {
                 $this->addError(
                     __(
                         'There are no time slots available for this period - Please select a  different hour',
-                        'sln'
+                        'salon-booking-system'
                     )
                 );
             }

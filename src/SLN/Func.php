@@ -169,42 +169,42 @@ class SLN_Func
     public static function getIntervalItemsShort()
     {
         return array(
-//            '+10 minutes' => '10 '.__('minutes', 'sln'),
-//            '+20 minutes' => '20 '.__('minutes', 'sln'),
-//            '+30 minutes' => '30 '.__('minutes', 'sln'),
-//            '+45 minutes' => '45 '.__('minutes', 'sln'),
-            '+1 hour' => '1 ' . __('hour', 'sln'),
-            '+2 hours' => '2 ' . __('hours', 'sln'),
-            '+3 hours' => '3 ' . __('hours', 'sln'),
-            '+4 hours' => '4 ' . __('hours', 'sln'),
-            '+6 hours' => '6 ' . __('hours', 'sln'),
-            '+12 hours' => '12 ' . __('hours', 'sln'),
-            '+24 hours' => '24 ' . __('hours', 'sln'),
-            '+48 hours' => '48 ' . __('hours', 'sln'),
+//            '+10 minutes' => '10 '.__('minutes', 'salon-booking-system'),
+//            '+20 minutes' => '20 '.__('minutes', 'salon-booking-system'),
+//            '+30 minutes' => '30 '.__('minutes', 'salon-booking-system'),
+//            '+45 minutes' => '45 '.__('minutes', 'salon-booking-system'),
+            '+1 hour' => '1 ' . __('hour', 'salon-booking-system'),
+            '+2 hours' => '2 ' . __('hours', 'salon-booking-system'),
+            '+3 hours' => '3 ' . __('hours', 'salon-booking-system'),
+            '+4 hours' => '4 ' . __('hours', 'salon-booking-system'),
+            '+6 hours' => '6 ' . __('hours', 'salon-booking-system'),
+            '+12 hours' => '12 ' . __('hours', 'salon-booking-system'),
+            '+24 hours' => '24 ' . __('hours', 'salon-booking-system'),
+            '+48 hours' => '48 ' . __('hours', 'salon-booking-system'),
         );
     }
 
     public static function getIntervalItems()
     {
         return array(
-            '' => __('Always', 'sln'),
-            '+30 minutes' => __('half hour', 'sln'),
-            '+1 hour' => '1 ' . __('hour', 'sln'),
-            '+2 hours' => '2 ' . __('hours', 'sln'),
-            '+3 hours' => '3 ' . __('hours', 'sln'),
-            '+4 hours' => '4 ' . __('hours', 'sln'),
-            '+8 hours' => '8 ' . __('hours', 'sln'),
-            '+16 hours' => '16 ' . __('hours', 'sln'),
-            '+1 day' => '1 ' . __('day', 'sln'),
-            '+2 days' => '2 ' . __('days', 'sln'),
-            '+3 days' => '3 ' . __('days', 'sln'),
-            '+4 days' => '4 ' . __('days', 'sln'),
-            '+1 week' => '1 ' . __('week', 'sln'),
-            '+2 weeks' => '2 ' . __('weeks', 'sln'),
-            '+3 weeks' => '3 ' . __('weeks', 'sln'),
-            '+1 month' => '1 ' . __('month', 'sln'),
-            '+2 months' => '2 ' . __('months', 'sln'),
-            '+3 months' => '3 ' . __('months', 'sln')
+            '' => __('Always', 'salon-booking-system'),
+            '+30 minutes' => __('half hour', 'salon-booking-system'),
+            '+1 hour' => '1 ' . __('hour', 'salon-booking-system'),
+            '+2 hours' => '2 ' . __('hours', 'salon-booking-system'),
+            '+3 hours' => '3 ' . __('hours', 'salon-booking-system'),
+            '+4 hours' => '4 ' . __('hours', 'salon-booking-system'),
+            '+8 hours' => '8 ' . __('hours', 'salon-booking-system'),
+            '+16 hours' => '16 ' . __('hours', 'salon-booking-system'),
+            '+1 day' => '1 ' . __('day', 'salon-booking-system'),
+            '+2 days' => '2 ' . __('days', 'salon-booking-system'),
+            '+3 days' => '3 ' . __('days', 'salon-booking-system'),
+            '+4 days' => '4 ' . __('days', 'salon-booking-system'),
+            '+1 week' => '1 ' . __('week', 'salon-booking-system'),
+            '+2 weeks' => '2 ' . __('weeks', 'salon-booking-system'),
+            '+3 weeks' => '3 ' . __('weeks', 'salon-booking-system'),
+            '+1 month' => '1 ' . __('month', 'salon-booking-system'),
+            '+2 months' => '2 ' . __('months', 'salon-booking-system'),
+            '+3 months' => '3 ' . __('months', 'salon-booking-system')
         );
 
         return array(

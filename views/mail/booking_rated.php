@@ -7,20 +7,20 @@ if(!isset($data['to'])){
 	$data['to'] = get_option('admin_email');
 }
 
-$data['subject'] = __('Booking was rated','sln');
+$data['subject'] = __('Booking was rated','salon-booking-system');
 
 include dirname(__FILE__).'/_header.php';
 ?>
 
 	<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
 		<td height="105" valign="middle" bgcolor="#f2f2f2">
-			<p style="margin-left: 49px; margin-right: 49px;"><?php _e('Dear Administrator,','sln') ?></p>
+			<p style="margin-left: 49px; margin-right: 49px;"><?php _e('Dear Administrator,','salon-booking-system') ?></p>
 			<p style="margin-left: 49px; margin-right: 49px;">
 				<?php
-				_e('your customers','sln');
+				_e('your customers','salon-booking-system');
 				$usermeta = get_user_meta($booking->getUserId());
 				echo ' ' . $usermeta['first_name'][0] . ' ' . $usermeta['last_name'][0] . ' ';
-				_e('has submitted a new review on his last visit at','sln');
+				_e('has submitted a new review on his last visit at','salon-booking-system');
 				echo ' ' . $plugin->getSettings()->get('gen_name') . '.';
 				?>
 			</p>
@@ -66,7 +66,7 @@ include dirname(__FILE__).'/_header.php';
 									    color: #fff;
 									    background-color: #114566;
 									    text-decoration: none;">
-								<?php _e('READ THE FULL REVIEW','sln'); ?></a>
+								<?php _e('READ THE FULL REVIEW','salon-booking-system'); ?></a>
 						</p>
 					</td>
 				</tr>

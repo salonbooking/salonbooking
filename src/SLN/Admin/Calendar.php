@@ -18,8 +18,8 @@ class SLN_Admin_Calendar
     {
         $this->settings_page = add_submenu_page(
             'salon',
-            __('Salon Calendar', 'sln'),
-            __('Calendar', 'sln'),
+            __('Salon Calendar', 'salon-booking-system'),
+            __('Calendar', 'salon-booking-system'),
             apply_filters('salonviews/settings/capability', 'manage_salon'),
             self::PAGE,
             array($this, 'show')

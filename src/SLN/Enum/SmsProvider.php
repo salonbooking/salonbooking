@@ -48,7 +48,7 @@ class SLN_Enum_SmsProvider
     public static function init()
     {
         self::$labels = array(
-            'fake' => __('test (sms code is sent by mail to the admin)', 'sln'),
+            'fake' => __('test (sms code is sent by mail to the admin)', 'salon-booking-system'),
             'ip1smswebservice' => 'ip1sms',
             'twilio' => 'Twilio',
             'plivo' => 'Plivo'

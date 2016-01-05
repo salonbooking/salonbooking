@@ -112,7 +112,7 @@ class SLN_Helper_Availability
     {
         if ($attendant->isNotAvailableOnDate($this->date)) {
             return array(
-                __('This assistant is not available  ', 'sln') . $attendant->getNotAvailableString()
+                __('This assistant is not available  ', 'salon-booking-system') . $attendant->getNotAvailableString()
             );
         }
         $ids = $this->getDayBookings()->countAttendantsByHour();
@@ -120,7 +120,7 @@ class SLN_Helper_Availability
             isset($ids[$attendant->getId()])
         ) {
             return array(
-                __('This assistant is unavailable during this period', 'sln') . $attendant->getNotAvailableString()
+                __('This assistant is unavailable during this period', 'salon-booking-system') . $attendant->getNotAvailableString()
             );
         }
     }
@@ -131,7 +131,7 @@ class SLN_Helper_Availability
     {
         if ($service->isNotAvailableOnDate($this->date)) {
             return array(
-                __('This service is unavailable ', 'sln') . $service->getNotAvailableString()
+                __('This service is unavailable ', 'salon-booking-system') . $service->getNotAvailableString()
             );
         }
         $ids = $this->getDayBookings()->countServicesByHour();
@@ -141,7 +141,7 @@ class SLN_Helper_Availability
             && $ids[$service->getId()] >= $service->getUnitPerHour()
         ) {
             return array(
-                __('The service for this hour is currently full', 'sln') . $service->getNotAvailableString()
+                __('The service for this hour is currently full', 'salon-booking-system') . $service->getNotAvailableString()
             );
         }
     }

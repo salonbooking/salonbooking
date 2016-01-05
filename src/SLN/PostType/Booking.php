@@ -33,14 +33,14 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
         $ret = array(
             'cb' => $columns['cb'],
             'ID' => __('Booking ID'),
-            'booking_date' => __('Booking Date', 'sln'),
-            'booking_status' => __('Status', 'sln'),
-            'myauthor' => __('User name', 'sln'),
-            'booking_attendant' => __('Attendant', 'sln'),
-//            'date' => __('Submitted', 'sln'),
-            'booking_price' => __('Booking Price', 'sln'),
-            'booking_services' => __('Booking Services', 'sln'),
-            'booking_review' => __('Booking Review', 'sln'),
+            'booking_date' => __('Booking Date', 'salon-booking-system'),
+            'booking_status' => __('Status', 'salon-booking-system'),
+            'myauthor' => __('User name', 'salon-booking-system'),
+            'booking_attendant' => __('Attendant', 'salon-booking-system'),
+//            'date' => __('Submitted', 'salon-booking-system'),
+            'booking_price' => __('Booking Price', 'salon-booking-system'),
+            'booking_services' => __('Booking Services', 'salon-booking-system'),
+            'booking_review' => __('Booking Review', 'salon-booking-system'),
         );
         return $ret;
     }
@@ -103,7 +103,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
     public function enter_title_here($title, $post)
     {
         if ($this->getPostType() === $post->post_type) {
-            $title = __('Enter booking name', 'sln');
+            $title = __('Enter booking name', 'salon-booking-system');
         }
 
         return $title;
@@ -116,28 +116,28 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
         $messages[$this->getPostType()] = array(
             0 => '', // Unused. Messages start at index 1.
             1 => sprintf(
-                    __('Booking updated.', 'sln')
+                    __('Booking updated.', 'salon-booking-system')
             ),
             2 => '',
             3 => '',
-            4 => __('Booking updated.', 'sln'),
+            4 => __('Booking updated.', 'salon-booking-system'),
             5 => isset($_GET['revision']) ? sprintf(
-                            __('Booking restored to revision from %s', 'sln'), wp_post_revision_title((int) $_GET['revision'], false)
+                            __('Booking restored to revision from %s', 'salon-booking-system'), wp_post_revision_title((int) $_GET['revision'], false)
                     ) : false,
             6 => sprintf(
-                    __('Booking published.', 'sln')
+                    __('Booking published.', 'salon-booking-system')
             ),
-            7 => __('Booking saved.', 'sln'),
+            7 => __('Booking saved.', 'salon-booking-system'),
             8 => sprintf(
-                    __('Booking submitted.', 'sln')
+                    __('Booking submitted.', 'salon-booking-system')
             ),
             9 => sprintf(
                     __(
-                            'Booking scheduled for: <strong>%1$s</strong>.', 'sln'
-                    ), date_i18n(__('M j, Y @ G:i', 'sln'), strtotime($post->post_date))
+                            'Booking scheduled for: <strong>%1$s</strong>.', 'salon-booking-system'
+                    ), date_i18n(__('M j, Y @ G:i', 'salon-booking-system'), strtotime($post->post_date))
             ),
             10 => sprintf(
-                    __('Booking draft updated.', 'sln')
+                    __('Booking draft updated.', 'salon-booking-system')
             ),
         );
 
@@ -148,7 +148,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
     protected function getPostTypeArgs()
     {
         return array(
-            'description' => __('This is where bookings are stored.', 'sln'),
+            'description' => __('This is where bookings are stored.', 'salon-booking-system'),
             'public' => true,
             'show_ui' => true,
             'map_meta_cap' => true,
@@ -166,20 +166,20 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 'revisions',
             ),
             'labels' => array(
-                'name' => __('Bookings', 'sln'),
-                'singular_name' => __('Booking', 'sln'),
-                'menu_name' => __('Salon', 'sln'),
-                'name_admin_bar' => __('Salon Booking', 'sln'),
-                'all_items' => __('Bookings', 'sln'),
-                'add_new' => __('Add Booking', 'sln'),
-                'add_new_item' => __('Add New Booking', 'sln'),
-                'edit_item' => __('Edit Booking', 'sln'),
-                'new_item' => __('New Booking', 'sln'),
-                'view_item' => __('View Booking', 'sln'),
-                'search_items' => __('Search Bookings', 'sln'),
-                'not_found' => __('No bookings found', 'sln'),
-                'not_found_in_trash' => __('No bookings found in trash', 'sln'),
-                'archive_title' => __('Booking Archive', 'sln'),
+                'name' => __('Bookings', 'salon-booking-system'),
+                'singular_name' => __('Booking', 'salon-booking-system'),
+                'menu_name' => __('Salon', 'salon-booking-system'),
+                'name_admin_bar' => __('Salon Booking', 'salon-booking-system'),
+                'all_items' => __('Bookings', 'salon-booking-system'),
+                'add_new' => __('Add Booking', 'salon-booking-system'),
+                'add_new_item' => __('Add New Booking', 'salon-booking-system'),
+                'edit_item' => __('Edit Booking', 'salon-booking-system'),
+                'new_item' => __('New Booking', 'salon-booking-system'),
+                'view_item' => __('View Booking', 'salon-booking-system'),
+                'search_items' => __('Search Bookings', 'salon-booking-system'),
+                'not_found' => __('No bookings found', 'salon-booking-system'),
+                'not_found_in_trash' => __('No bookings found in trash', 'salon-booking-system'),
+                'archive_title' => __('Booking Archive', 'salon-booking-system'),
             )
         );
     }
@@ -243,8 +243,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function ($) {
-                    $('#save-post').attr('value', '<?php echo __('Save Booking', 'sln') ?>');
-                    $('#submitdiv h3 span').text('<?php echo __('Booking', 'sln') ?>');
+                    $('#save-post').attr('value', '<?php echo __('Save Booking', 'salon-booking-system') ?>');
+                    $('#submitdiv h3 span').text('<?php echo __('Booking', 'salon-booking-system') ?>');
             <?php
             foreach (SLN_Enum_BookingStatus::toArray() as $k => $v) {
                 $complete = '';

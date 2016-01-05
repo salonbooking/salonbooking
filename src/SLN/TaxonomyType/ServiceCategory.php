@@ -9,13 +9,13 @@ class SLN_TaxonomyType_ServiceCategory extends SLN_TaxonomyType_Abstract
         $labels = array(
             'name' => _x('Service Categories', 'taxonomy general name'),
             'singular_name' => _x('Service Category', 'taxonomy singular name'),
-            'search_items' => __('Search Service Category', 'sln'),
-            'all_items' => __('All Service Categories', 'sln'),
-            'edit_item' => __('Edit Service Category', 'sln'),
-            'update_item' => __('Update Service Category', 'sln'),
-            'add_new_item' => __('Add New Service Category', 'sln'),
-            'new_item_name' => __('New Service Category Name', 'sln'),
-            'menu_name' => __('Service Category', 'sln'),
+            'search_items' => __('Search Service Category', 'salon-booking-system'),
+            'all_items' => __('All Service Categories', 'salon-booking-system'),
+            'edit_item' => __('Edit Service Category', 'salon-booking-system'),
+            'update_item' => __('Update Service Category', 'salon-booking-system'),
+            'add_new_item' => __('Add New Service Category', 'salon-booking-system'),
+            'new_item_name' => __('New Service Category Name', 'salon-booking-system'),
+            'menu_name' => __('Service Category', 'salon-booking-system'),
         );
 
         $args = array(
@@ -75,7 +75,7 @@ class SLN_TaxonomyType_ServiceCategory extends SLN_TaxonomyType_Abstract
             $output .= " {$term->name}</label>";
             $output .= "</li>";
         }
-        $output .= "<li class='selectit'><label><input type='radio' name='{$name}[]' value='' " . checked(empty($nu_post_terms), true, false) . "/>" . __('Not defined', 'sln') . "</label></li>";
+        $output .= "<li class='selectit'><label><input type='radio' name='{$name}[]' value='' " . checked(empty($nu_post_terms), true, false) . "/>" . __('Not defined', 'salon-booking-system') . "</label></li>";
         if ($echo)
             echo $output;
         else
@@ -110,7 +110,7 @@ class SLN_TaxonomyType_ServiceCategory extends SLN_TaxonomyType_Abstract
                 <div id="<?php echo $taxonomy; ?>-adder" class="wp-hidden-children">
                     <h4>
                         <a href="<?php echo admin_url('edit-tags.php?taxonomy=' . $taxonomy) ?>">
-                            _<?php _e('Manage service categories', 'sln') ?>
+                            _<?php _e('Manage service categories', 'salon-booking-system') ?>
                         </a>
                     </h4>
                 </div>

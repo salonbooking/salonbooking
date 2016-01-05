@@ -27,7 +27,7 @@ $helper->showNonce($postType);
             <div class="form-group">
                 <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'date')) ?>"><?php _e(
                         'Select a day',
-                        'sln'
+                        'salon-booking-system'
                     ) ?></label>
                 <?php SLN_Form::fieldJSDate($helper->getFieldName($postType, 'date'), $booking->getDate()) ?>
             </div>
@@ -36,7 +36,7 @@ $helper->showNonce($postType);
             <div class="form-group">
                 <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'time')) ?>"><?php _e(
                         'Select an hour',
-                        'sln'
+                        'salon-booking-system'
                     ) ?></label>
                 <?php SLN_Form::fieldJSTime(
                     $helper->getFieldName($postType, 'time'),
@@ -47,7 +47,7 @@ $helper->showNonce($postType);
         </div>
         <div class="col-md-3 col-sm-6">
             <div class="form-group sln_meta_field sln-select-wrapper">
-                <label><?php _e('Status', 'sln'); ?></label>
+                <label><?php _e('Status', 'salon-booking-system'); ?></label>
                 <?php SLN_Form::fieldSelect(
                     $helper->getFieldName($postType, 'status'),
                     SLN_Enum_BookingStatus::toArray(),
@@ -56,7 +56,7 @@ $helper->showNonce($postType);
                 ); ?>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6" id="sln-notifications"  data-valid-message="<?php _e('OK! the date and time slot you selected is available','sln'); ?>"></div>
+        <div class="col-md-3 col-sm-6" id="sln-notifications"  data-valid-message="<?php _e('OK! the date and time slot you selected is available','salon-booking-system'); ?>"></div>
     </div>
 </span>
 
@@ -66,18 +66,18 @@ $helper->showNonce($postType);
                 ) == SLN_Enum_BookingStatus::PENDING
             ) { ?>
                 <div class="col-lg-5 col-md-5 col-sm-6 sln_accept-refuse">
-                    <h2><?php _e('This booking waits for confirmation!', 'sln') ?></h2>
+                    <h2><?php _e('This booking waits for confirmation!', 'salon-booking-system') ?></h2>
 
                     <div class="row">
                         <div class="col-lg-5 col-md-6 col-sm-6">
                             <button id="booking-refuse" class="btn btn-success"
                                     data-status="<?php echo SLN_Enum_BookingStatus::CONFIRMED ?>">
-                                <?php _e('Accept', 'sln') ?></button>
+                                <?php _e('Accept', 'salon-booking-system') ?></button>
                         </div>
                         <div class="col-lg-5 col-md-6 col-sm-6">
                             <button id="booking-accept" class="btn btn-danger"
                                     data-status="<?php echo SLN_Enum_BookingStatus::CANCELED ?>">
-                                <?php _e('Refuse', 'sln') ?></button>
+                                <?php _e('Refuse', 'salon-booking-system') ?></button>
                         </div>
                     </div>
                 </div>
@@ -86,10 +86,10 @@ $helper->showNonce($postType);
     </div>
 
 <div class="row">
-        <div class="col-md-12"><label for="sln-update-user-field"><?php _e('Search for existing users', 'sln') ?></label></div>
+        <div class="col-md-12"><label for="sln-update-user-field"><?php _e('Search for existing users', 'salon-booking-system') ?></label></div>
         <div class="col-md-6 col-sm-6">
             <select id="sln-update-user-field"
-                 data-nomatches="<?php _e('no users found','sln')?>"
+                 data-nomatches="<?php _e('no users found','salon-booking-system')?>"
                  data-placeholder="<?php _e('Start typing the name or email')?>"
                  class="form-control">
             </select>
@@ -104,7 +104,7 @@ $helper->showNonce($postType);
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'firstname'),
-                __('Firstname', 'sln'),
+                __('Firstname', 'salon-booking-system'),
                 $booking->getFirstname()
             );
             ?>
@@ -113,7 +113,7 @@ $helper->showNonce($postType);
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'lastname'),
-                __('Lastname', 'sln'),
+                __('Lastname', 'salon-booking-system'),
                 $booking->getLastname()
             );
             ?>
@@ -122,7 +122,7 @@ $helper->showNonce($postType);
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'email'),
-                __('E-mail', 'sln'),
+                __('E-mail', 'salon-booking-system'),
                 $booking->getEmail()
             ); ?>
         </div>
@@ -130,7 +130,7 @@ $helper->showNonce($postType);
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'phone'),
-                __('Phone', 'sln'),
+                __('Phone', 'salon-booking-system'),
                 $booking->getPhone()
             );
             ?>
@@ -139,7 +139,7 @@ $helper->showNonce($postType);
             <?php
             $helper->showFieldTextArea(
                 $helper->getFieldName($postType, 'address'),
-                __('Address', 'sln'),
+                __('Address', 'salon-booking-system'),
                 $booking->getAddress()
             );
             ?>
@@ -152,7 +152,7 @@ $helper->showNonce($postType);
     <div class="sln-separator"></div>
     <div class="form-group sln_meta_field row">
         <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
-            <h3><?php _e('Attendant', 'sln'); ?></h3>
+            <h3><?php _e('Attendant', 'salon-booking-system'); ?></h3>
             <select class="sln-select" name="_sln_booking_attendant" id="_sln_booking_attendant">
                 <?php foreach ($plugin->getAttendants() as $attendant) : ?>
                     <option data-id="<?php echo SLN_Form::makeID('sln[attendant]['.$attendant->getId().']') ?>"
@@ -166,7 +166,7 @@ $helper->showNonce($postType);
     <div class="sln-separator"></div>
     <div class="form-group sln_meta_field row">
         <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
-            <h3><?php _e('Services', 'sln'); ?></h3>
+            <h3><?php _e('Services', 'salon-booking-system'); ?></h3>
             <select class="sln-select" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
                     name="_sln_booking_services[]" id="_sln_booking_services">
                 <?php foreach ($plugin->getServices() as $service) : ?>
@@ -189,7 +189,7 @@ $helper->showNonce($postType);
     <div class="row">
         <div class="col-md-3 col-sm-4">
             <div class="form-group sln_meta_field sln-select-wrapper">
-                <label><?php _e('Duration', 'sln'); ?></label>
+                <label><?php _e('Duration', 'salon-booking-system'); ?></label>
                 <input type="text" value="<?php echo $booking->getDuration()->format('H:i') ?>" class="form-control" readonly="readonly"/>
             </div>
         </div>
@@ -197,17 +197,17 @@ $helper->showNonce($postType);
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'amount'),
-                __('Amount', 'sln').' ('.$settings->getCurrencySymbol().')',
+                __('Amount', 'salon-booking-system').' ('.$settings->getCurrencySymbol().')',
                 $booking->getAmount()
             );
             ?>
-            <button class="btn btn-block btn-primary" id="calculate-total"><?php _e('Calculate total', 'sln') ?></button>
+            <button class="btn btn-block btn-primary" id="calculate-total"><?php _e('Calculate total', 'salon-booking-system') ?></button>
         </div>
         <div class="col-md-3 col-sm-4">
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'deposit'),
-                __('Deposit', 'sln').' '.$settings->get('pay_deposit').'% ('.$settings->getCurrencySymbol().')',
+                __('Deposit', 'salon-booking-system').' '.$settings->get('pay_deposit').'% ('.$settings->getCurrencySymbol().')',
                 $booking->getDeposit()
             );
             ?>
@@ -219,7 +219,7 @@ $helper->showNonce($postType);
 
                 <p><?php echo $booking->getTransactionId() ? $booking->getTransactionId() : __(
                         'n.a.',
-                        'sln'
+                        'salon-booking-system'
                     ) ?></p>
             </div>
         </div>
@@ -228,7 +228,7 @@ $helper->showNonce($postType);
     <div class="row">
         <div class="col-md-12">
             <div class="form-group sln_meta_field ">
-                <label><?php _e('Personal message', 'sln'); ?></label>
+                <label><?php _e('Personal message', 'salon-booking-system'); ?></label>
                 <?php SLN_Form::fieldTextarea(
                     $helper->getFieldName($postType, 'note'),
                     $booking->getNote()
@@ -239,7 +239,7 @@ $helper->showNonce($postType);
     <div class="row">
         <div class="col-md-12">
             <div class="form-group sln_meta_field ">
-                <label><?php _e('Administration notes', 'sln'); ?></label>
+                <label><?php _e('Administration notes', 'salon-booking-system'); ?></label>
                 <?php SLN_Form::fieldTextarea(
                     $helper->getFieldName($postType, 'admin_note'),
                     $booking->getAdminNote()

@@ -45,8 +45,8 @@ class SLN_Enum_AvailabilityModeProvider
     public static function init()
     {
         self::$labels = array(
-            'basic' => __('Basic (checks only the booking date)', 'sln'),
-            'advanced' => __('Advanced (evaluates also booking duration)', 'sln'),
+            'basic' => __('Basic (checks only the booking date)', 'salon-booking-system'),
+            'advanced' => __('Advanced (evaluates also booking duration)', 'salon-booking-system'),
         );
     }
 }

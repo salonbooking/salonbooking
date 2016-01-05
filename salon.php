@@ -22,7 +22,7 @@ function sln_autoload($className) {
 }
 
 function my_update_notice() {
-    $info = __('-', 'sln');
+    $info = __('-', 'salon-booking-system');
     echo '<span class="spam">' . strip_tags($info, '<br><a><b><i><span>') . '</span>';
 }
 

@@ -19,7 +19,7 @@ class SLN_Formatter
         if (!$showFree) {
             return ($leftSymbol. number_format($val, 2) . $rightSymbol);
         }
-        return $val > 0 ? ($leftSymbol . number_format($val, 2) . $rightSymbol) : __('free','sln');
+        return $val > 0 ? ($leftSymbol . number_format($val, 2) . $rightSymbol) : __('free','salon-booking-system');
     }
 
     public function datetime($val)

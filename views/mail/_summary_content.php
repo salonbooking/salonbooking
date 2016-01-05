@@ -15,10 +15,10 @@ if(!isset($forAdmin)) {
                     style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;">
                    
 <?php /*
-                    <?php _e('Dear', 'sln') ?>
+                    <?php _e('Dear', 'salon-booking-system') ?>
 
                     <?php if($forAdmin): ?>
-                    <?php _e('Administrator','sln') ?>
+                    <?php _e('Administrator','salon-booking-system') ?>
                 <?php else: ?>
                     <?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?>,
                 <?php endif; ?>
@@ -40,16 +40,16 @@ if(!isset($forAdmin)) {
 	<?php if($forAdmin): ?>
 
      <a  style="text-decoration:none;" href="<?php echo admin_url() ?>/post.php?post=<?php echo $booking->getId() ?>&action=edit">
-         <?php echo __('Click here to approve ', 'sln') ?>
+         <?php echo __('Click here to approve ', 'salon-booking-system') ?>
          <?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?>
-         <?php echo __('booking request.', 'sln') ?>
+         <?php echo __('booking request.', 'salon-booking-system') ?>
      </a>
 
  	
                      
 	<?php else: ?>
 
-<?php echo __('Your booking is pending, please await our confirmation.','sln') ?></p>
+<?php echo __('Your booking is pending, please await our confirmation.','salon-booking-system') ?></p>
 
 	<?php endif ?>
 
@@ -57,11 +57,11 @@ if(!isset($forAdmin)) {
 
 	<?php if($forAdmin): ?>
 
-	<?php echo __('This is an e-mail notification of a new booking', 'sln') ?>
+	<?php echo __('This is an e-mail notification of a new booking', 'salon-booking-system') ?>
 	
 	<?php else: ?> 
 
-<?php echo __('This is an e-mail confirmation of your booking at', 'sln') ?>
+<?php echo __('This is an e-mail confirmation of your booking at', 'salon-booking-system') ?>
 
 <b style="color:#666666;">
                         <?php echo $plugin->getSettings()->get('gen_name') ?
@@ -75,7 +75,7 @@ if(!isset($forAdmin)) {
 
 
 
-                    <p><?php _e('Please take note of the following booking details.', 'sln') ?></p>
+                    <p><?php _e('Please take note of the following booking details.', 'salon-booking-system') ?></p>
                 </td>
             </tr>
             <tr>
@@ -99,7 +99,7 @@ if(!isset($forAdmin)) {
       <tr>
         <td align="center" valign="top"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
           <tbody><tr>
-            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Our address', 'sln') ?></td>
+            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Our address', 'salon-booking-system') ?></td>
             <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $plugin->getSettings()->get('gen_address') ?></td>
           </tr>
         </tbody></table></td>
@@ -112,7 +112,7 @@ if(!isset($forAdmin)) {
 <tr>
         <td align="center" valign="top" bgcolor="#ffffff"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
           <tbody><tr>
-            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Contacts', 'sln')?></td>
+            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Contacts', 'salon-booking-system')?></td>
             <td align="left" valign="top"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
               <tbody><tr>
                 <td height="27">&nbsp;</td>
@@ -147,7 +147,7 @@ if(!isset($forAdmin)) {
             <tr>
                 <td height="24" align="left" valign="top"
                     style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;">
-                    <?php _e('Important notes', 'sln') ?></td>
+                    <?php _e('Important notes', 'salon-booking-system') ?></td>
             </tr>
             <tr>
                 <td align="left" valign="top"
@@ -169,12 +169,12 @@ if(!isset($forAdmin)) {
                 <td height="24" align="left" valign="top"
                     style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;">
  
-<p><?php _e('Customer message:', 'sln')?>: <?php echo esc_attr($booking->getNote())?></p>
+<p><?php _e('Customer message:', 'salon-booking-system')?>: <?php echo esc_attr($booking->getNote())?></p>
 <?php if ($plugin->getSettings()->get('confirmation') && $booking->hasStatus(SLN_Enum_BookingStatus::PENDING)) : ?>
-    <p><strong><?php _e('Please confirm or reject this booking from administration', 'sln') ?></strong></p>
+    <p><strong><?php _e('Please confirm or reject this booking from administration', 'salon-booking-system') ?></strong></p>
 <?php endif ?>
 <a href="<?php echo admin_url() ?>/post.php?post=<?php echo $booking->getId() ?>&action=edit">
-    <?php _e('View this booking into administration.','sln') ?></a>
+    <?php _e('View this booking into administration.','salon-booking-system') ?></a>
     <p>&nbsp;</p>
                 </td>
             </tr>

@@ -49,7 +49,7 @@ $grouped = SLN_Func::groupServicesByCategory($services);
                     <strong class="service-name"><?php echo $service->getName(); ?></strong>
                     <span class="service-description"><?php echo $service->getContent() ?></span>
                     <?php if ($service->getDuration()->format('H:i') != '00:00'): ?>
-                        <span class="service-duration"><?php echo __('Duration', 'sln')?>: <?php echo $service->getDuration()->format(
+                        <span class="service-duration"><?php echo __('Duration', 'salon-booking-system')?>: <?php echo $service->getDuration()->format(
                                 'H:i'
                             ) ?></span>
                     <?php endif ?>
@@ -79,7 +79,7 @@ $grouped = SLN_Func::groupServicesByCategory($services);
     <?php endforeach ?>
 	<?php if ($showPrices){ ?>
     <div class="row row-total">
-        <div class="col-xs-6 services-total-label"><?php _e('Subtotal', 'sln') ?></div>
+        <div class="col-xs-6 services-total-label"><?php _e('Subtotal', 'salon-booking-system') ?></div>
         <div class="col-xs-6 services-total">
         <span id="services-total" data-symbol-left="<?php echo $symbolLeft ?>" data-symbol-right="<?php echo $symbolRight ?>">
             <?php echo $plugin->format()->money(0, false) ?>
