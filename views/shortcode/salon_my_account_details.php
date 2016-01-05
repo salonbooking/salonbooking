@@ -88,7 +88,7 @@
 							</div>
 
 							<div>
-								<?php if($item['status_code'] == SLN_Enum_BookingStatus::CONFIRMED): ?>
+								<?php if($item['status_code'] == SLN_Enum_BookingStatus::PAY_LATER  OR $item['status_code'] == SLN_Enum_BookingStatus::PAID): ?>
 										<?php if(empty($item['rating'])): ?>
 										<button class="btn btn-default sln-rate-service" onclick="slnMyAccount.showRateForm(<?php echo $item['id']; ?>);">
 											<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> 
