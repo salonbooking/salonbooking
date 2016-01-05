@@ -25,7 +25,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 return false;
             }
         } else {
-            $values = $_POST['salon-booking-system'];
+            $values = $_POST['sln'];
             if (!is_user_logged_in()) {
                 $this->validate($values);
                 if ($this->getErrors()) {

@@ -12,9 +12,9 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
             date_default_timezone_set($timezone);
 
         if (!isset($this->date)) {
-            if(isset($_POST['salon-booking-system'])){
-                $this->date = $_POST['salon-booking-system']['date'];
-                $this->time = $_POST['salon-booking-system']['time'];
+            if(isset($_POST['sln'])){
+                $this->date = $_POST['sln']['date'];
+                $this->time = $_POST['sln']['time'];
             }
             if(isset($_POST['_sln_booking_date'])) {
                 $this->date = $_POST['_sln_booking_date'];

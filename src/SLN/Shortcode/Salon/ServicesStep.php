@@ -7,7 +7,7 @@ class SLN_Shortcode_Salon_ServicesStep extends SLN_Shortcode_Salon_Step
     protected function dispatchForm()
     {
         $bb     = $this->getPlugin()->getBookingBuilder();
-        $values = isset($_POST['salon-booking-system']) ? $_POST['salon-booking-system'] : array();
+        $values = isset($_POST['sln']) ? $_POST['sln'] : array();
         foreach ($this->getServices() as $service) {
             if (isset($values['services']) && isset($values['services'][$service->getId()])) {
                 $bb->addService($service);

@@ -6,7 +6,7 @@ class SLN_Shortcode_Salon_DateStep extends SLN_Shortcode_Salon_Step
     protected function dispatchForm()
     {
         $bb     = $this->getPlugin()->getBookingBuilder();
-        $values = $_POST['salon-booking-system'];
+        $values = $_POST['sln'];
         $date   = SLN_Func::filter($values['date'], 'date');
         $time   = SLN_Func::filter($values['time'], 'time');
         $bb
