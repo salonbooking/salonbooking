@@ -5,16 +5,20 @@ class SLN_Enum_DateFormat
     const _DEFAULT = 'default';
     const _SHORT   = 'short';
     const _SHORT_COMMA = 'short_comma';
+    const _MDY = 'mm/dd/yyyy';
+    
     private static $labels = array();
     private static $phpFormats = array(
         self::_DEFAULT => 'd M Y',
         self::_SHORT => 'd/m/Y',
-        self::_SHORT_COMMA => 'd-m-Y'
+        self::_SHORT_COMMA => 'd-m-Y',
+        self::_MDY => 'm/d/Y'
     );
     private static $jsFormats = array(
         self::_DEFAULT => 'd M yyyy',
         self::_SHORT => 'dd/mm/yyyy',
-        self::_SHORT_COMMA => 'dd-mm-yyyy'
+        self::_SHORT_COMMA => 'dd-mm-yyyy',
+        self::_MDY => 'mm/dd/yyyy'
     );
 
     public static function toArray()
