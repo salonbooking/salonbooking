@@ -172,7 +172,7 @@ class SLN_GoogleScope {
                     !empty($this->outh2_redirect_uri))
             ) {
                 if ($this->google_calendar_enabled)
-                    $this->start_auth();
+                    $this->start_auth(isset($_GET['force_revoke_token']) ? false : true );
                 else
                     $this->start_auth(true);
             }

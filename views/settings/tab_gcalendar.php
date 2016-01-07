@@ -45,6 +45,7 @@
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
 
+    <a href="?<?php echo "page={$_GET['page']}&tab={$_GET['tab']}&force_revoke_token=1" ?>"><?php echo __('Get authorization'); ?></a>
     <div class="sln-box--sub row">
     <div class="col-xs-12"><h2 class="sln-box-title"><?php _e('Your Google calendars','salon-booking-system');?></h2></div>
             <?php
