@@ -3283,41 +3283,44 @@
 .salon_page_salon-settings.wp-core-ui .sln-tab .button-primary {
   margin: 0 0 0 -1em; }
 
-h2.nav-tab-wrapper img {
-  margin-right: 10px; }
-
-@media only screen and (max-width: 567px) {
-  h2.nav-tab-wrapper {
-    padding-right: 0;
-    padding-left: 0;
-    padding-top: 10px;
-    position: relative; }
-    h2.nav-tab-wrapper img {
-      margin-bottom: 10px;
-      position: absolute;
-      right: 0;
-      top: -25px; }
-    h2.nav-tab-wrapper .nav-tab {
-      display: block;
-      margin-right: 0;
-      font-size: 12px;
-      line-height: 12px;
-      padding: 10px; } }
-
-@media only screen and (min-width: 568px) {
-  h2.nav-tab-wrapper {
-    padding-right: 0;
-    padding-left: 0;
-    padding-top: 10px;
-    position: relative; }
-    h2.nav-tab-wrapper img {
-      margin-bottom: 0; }
-    h2.nav-tab-wrapper .nav-tab {
-      display: inline-block;
-      margin-right: 0;
-      font-size: 12px;
-      line-height: 12px;
-      padding: 10px; } }
+h2.nav-tab-wrapper {
+  margin-top: 1.66667rem; }
+  @media only screen and (min-width: 992px) {
+    h2.nav-tab-wrapper {
+      margin-top: 0; } }
+  h2.nav-tab-wrapper img {
+    margin-right: 10px; }
+  @media only screen and (max-width: 567px) {
+    h2.nav-tab-wrapper {
+      padding-right: 0;
+      padding-left: 0;
+      padding-top: 10px;
+      position: relative; }
+      h2.nav-tab-wrapper img {
+        margin-bottom: 10px;
+        position: absolute;
+        right: 0;
+        top: -25px; }
+      h2.nav-tab-wrapper .nav-tab {
+        display: block;
+        margin-right: 0;
+        font-size: 12px;
+        line-height: 12px;
+        padding: 10px; } }
+  @media only screen and (min-width: 568px) {
+    h2.nav-tab-wrapper {
+      padding-right: 0;
+      padding-left: 0;
+      padding-top: 10px;
+      position: relative; }
+      h2.nav-tab-wrapper img {
+        margin-bottom: 0; }
+      h2.nav-tab-wrapper .nav-tab {
+        display: inline-block;
+        margin-right: 0;
+        font-size: 12px;
+        line-height: 12px;
+        padding: 10px; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .sln-tab #sln-availabilities .items .item .btn.btn-block.btn-danger {
@@ -3575,8 +3578,8 @@ body {
   #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label {
     font-weight: 400;
     padding: 0 0.66667rem;
-    margin-bottom: 0;
-    line-height: 1.66667rem; }
+    margin-bottom: 0.41667rem;
+    line-height: 1rem; }
   #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label {
     font-weight: 400;
     padding: 0.66667rem 1rem 0.66667rem 0;
@@ -3623,8 +3626,13 @@ body {
       vertical-align: middle; }
       @media only screen and (min-width: 768px) {
         #sln-salon--admin .sln-checkbox input + label {
-          line-height: 3.08333rem;
-          display: inline-block; } }
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          -webkit-box-align: center;
+          align-items: center; } }
       #sln-salon--admin .sln-checkbox input + label:nth-child(2) {
         margin-top: 1.25rem; }
       #sln-salon--admin .sln-checkbox input + label:before, #sln-salon--admin .sln-checkbox input + label:after {
@@ -3673,11 +3681,19 @@ body {
     user-select: none;
     padding: 0 1.25rem 0 3.75rem;
     height: 3.25rem;
-    line-height: 3.08333rem;
     display: inline-block;
     border-top-left-radius: 1.625rem;
     border-bottom-left-radius: 1.625rem;
     margin-bottom: 0.83333rem; }
+    @media only screen and (min-width: 768px) {
+      #sln-salon--admin .sln-radiobox input + label {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        align-items: center; } }
     #sln-salon--admin .sln-radiobox input + label:nth-child(2) {
       margin-top: 1.25rem; }
     #sln-salon--admin .sln-radiobox input + label:before, #sln-salon--admin .sln-radiobox input + label:after {
@@ -4211,7 +4227,6 @@ body {
         border-right: inherit; } }
   #sln-salon--admin .sln-admin-nav {
     display: block;
-    float: right;
     margin-bottom: 1.66667rem; }
     #sln-salon--admin .sln-admin-nav li {
       float: left; }
@@ -4220,6 +4235,9 @@ body {
       min-width: 120px;
       margin: 0;
       border-right: none; }
+    @media only screen and (min-width: 992px) {
+      #sln-salon--admin .sln-admin-nav {
+        float: right; } }
   #sln-salon--admin .sln-toolbox {
     background-color: rgba(0, 53, 83, 0.9);
     max-width: 100%;

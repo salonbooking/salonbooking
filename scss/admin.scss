@@ -131,6 +131,10 @@
 
 // TABS
 h2.nav-tab-wrapper {
+    margin-top: rem(40px);
+    @include bp(desktop) {
+        margin-top: 0;
+    }
     img {
         margin-right: 10px;
     }

@@ -102,14 +102,14 @@
 <div class="sln-box sln-box--main">
     <h2 class="sln-box-title"><?php _e('Assistant selection <span> - </span>','salon-booking-system') ?></h2>
     <div class="row">
-        <div class="col-sm-6 form-group">
+        <div class="col-sm-10 col-md-10 form-group">
         <div class="sln-checkbox">
             <?php $this->row_input_checkbox('attendant_enabled', __('Enable assistant selection', 'salon-booking-system')); ?>
             <p class="sln-input-help"><?php echo sprintf(__('Let your customers choose their favourite staff member.', 'salon-booking-system'),
                     get_admin_url().'edit.php?post_type=sln_attendant') ?></p>
         </div>
         </div>
-        <div class="col-sm-6 form-group">
+        <div class="col-sm-10 col-md-10 form-group">
         <div class="sln-checkbox">
             <?php $this->row_input_checkbox('attendant_email', __('Enable assistant email on new bookings', 'salon-booking-system')); ?>
             <p><?php _e('Assistants will receive an e-mail when selected for a new booking.', 'salon-booking-system') ?></p>
@@ -184,21 +184,21 @@
     </div>
     <div class="col-xs-12">
         <div class="row">
-            <div class="col-sm-6 form-group sln-checkbox">
+            <div class="col-sm-8 col-md-6 form-group sln-checkbox">
                 <?php $this->row_input_checkbox('sms_new', __('Send SMS notification on new bookings', 'salon-booking-system')); ?>
             <p><?php _e('SMS will be sent to your customer and a staff member','salon-booking-system'); ?></p>
             </div>
-            <div class="col-sm-4 form-group sln-input--simple">
+            <div class="col-sm-4 col-md-4 form-group sln-input--simple">
                 <?php $this->row_input_text('sms_new_number', __('Staff member notification number', 'salon-booking-system')); ?>
             </div>
         </div>
     </div>
     <div class="col-xs-12">
         <div class="row">
-            <div class="col-sm-6 form-group sln-checkbox">
+            <div class="col-sm-8 col-md-6 form-group sln-checkbox">
                 <?php $this->row_input_checkbox('sms_remind', __('Remind the appointment to the client with an SMS', 'salon-booking-system')); ?>
             </div>
-            <div class="col-sm-6 form-group sln-select  sln-select--info-label">
+            <div class="col-sm-4 col-md-4 form-group sln-select  sln-select--info-label">
                 <label for="salon_settings_sms_remind_interval"><?php __('SMS Timing','salon-booking-system') ?></label>
                 <div class="row">
                 <div class="col-xs-6 col-sm-6">
@@ -220,7 +220,7 @@
     </div>
     <div class="col-xs-12">
         <div class="row">
-            <div class="col-sm-6 form-group sln-checkbox">
+            <div class="col-sm-10 form-group sln-checkbox">
                 <?php $this->row_input_checkbox('sms_new_attendant', __('Send an SMS to selected attendant on new bookings', 'salon-booking-system')); ?>
             <p><?php _e('Remember to set the mobile number of your staff members','salon-booking-system');?></p>
             </div>
@@ -290,7 +290,7 @@
             </div>
 </div>
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-8 col-md-6">
     <div class="sln-box sln-box--main sln-box--main--small">
     <h2 class="sln-box-title"><?php _e('Ajax steps <span>This allows loading steps via ajax</span>','salon-booking-system') ?></h2>
     <div class="row">
@@ -301,7 +301,7 @@
         </div>
     </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-8 col-md-6">
     <div class="sln-box sln-box--main sln-box--main--small">
     <h2 class="sln-box-title"><?php _e('Bootstrap CSS','salon-booking-system') ?></h2>
     <div class="row">

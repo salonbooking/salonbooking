@@ -277,7 +277,6 @@ h2.nav-tab-wrapper .nav-tab.nav-tab-active {
 .sln-admin-nav {
   //@extend %display-flex;
   display: block;
-  float: right;
   margin-bottom: rem(40px);
   li{float: left;}
   a {
@@ -290,6 +289,9 @@ h2.nav-tab-wrapper .nav-tab.nav-tab-active {
       border-right: none;
       &.current {@extend .sln-btn--active;}
   }
+    @include bp(desktop) {
+      float: right;
+    }
 }
 // TOOBOX
 .sln-toolbox {
