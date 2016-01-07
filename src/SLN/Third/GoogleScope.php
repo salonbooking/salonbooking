@@ -172,7 +172,7 @@ class SLN_GoogleScope {
                     !empty($this->outh2_redirect_uri))
             ) {
                 if ($this->google_calendar_enabled)
-                    $this->start_auth(isset($_GET['force_revoke_token']) ? false : true );
+                    $this->start_auth(false);
                 else
                     $this->start_auth(true);
             }
@@ -210,8 +210,10 @@ class SLN_GoogleScope {
             $this->service = $this->get_google_service();
         } else {
             if (!$force_revoke_token) {
-                $loginUrl = 'https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=' . $this->outh2_client_id . '&redirect_uri=' . $this->outh2_redirect_uri . '&scope=' . $this->scopes . '&access_type=offline&approval_prompt=force';
-                header("Location: " . $loginUrl);
+                if ( isset($_GET['force_revoke_token']) ) {
+                    $loginUrl = 'https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=' . $this->outh2_client_id . '&redirect_uri=' . $this->outh2_redirect_uri . '&scope=' . $this->scopes . '&access_type=offline&approval_prompt=force';
+                    header("Location: " . $loginUrl);
+                }
             }
         }
     }
