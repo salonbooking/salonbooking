@@ -139,7 +139,9 @@ class SLN_Wrapper_Booking_Builder
     
     public function addService(SLN_Wrapper_Service $service)
     {
-        $this->data['services'][] = $service->getId();
+        if((!isset($this->data['services'])) || (!in_array($service->getId(), $this->data['services']))){
+            $this->data['services'][] = $service->getId();
+        }
     }
 
     public function removeService(SLN_Wrapper_Service $service)

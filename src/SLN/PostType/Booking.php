@@ -47,12 +47,12 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
 
     public function manage_column($column, $post_id)
     {
+        $obj = $this->getPlugin()->createBooking($post_id);
         switch ($column) {
             case 'ID' :
                 echo edit_post_link($post_id, '<p>', '</p>', $post_id);
                 break;
             case 'myauthor':
-                $obj = new SLN_Wrapper_Booking($post_id);
                 echo edit_post_link($obj->getDisplayName(), null, null, $post_id);
                 break;
             case 'booking_status' :
@@ -70,16 +70,14 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                     echo '(deposit ' . $this->getPlugin()->format()->money($deposit) . ')';
                 break;
             case 'booking_services' :
-                $services = get_post_meta($post_id, '_sln_booking_services', true);
                 $name_services = array();
-                foreach ($services as $service) {
-                    $helper = new SLN_Wrapper_Service($service);
+                foreach ($obj->getServices() as $helper) {
                     $name_services[] = $helper->getName();
                 }
                 echo implode(', ', $name_services);
                 break;
             case 'booking_attendant' :
-                if ($attendant = $this->getPlugin()->createBooking($post_id)->getAttendant())
+                if ($attendant = $obj->getAttendant())
                     echo $attendant->getName();
                 else
                     echo "-";
@@ -88,7 +86,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 $comments = get_comments("post_id=$post_id&type=sln_review");
                 $comment = isset($comments[0]) ? $comments[0] : null;
 
-                echo '<input type="hidden" name="sln-rating" value="' . $this->getPlugin()->createBooking($post_id)->getRating() . '">
+                echo '<input type="hidden" name="sln-rating" value="' . $obj->getRating() . '">
                         <div class="rating" style="display: none;"></div>';
 
                 if (!empty($comment)) {
