@@ -20,7 +20,7 @@ jQuery(function($){
     <h1><?php _e('Calendar','salon-booking-system')?></h1>
 </div>
 <div class="clearfix"></div>
-<div class="container sln-calendar--wrapper">
+<div class="container-fluid sln-calendar--wrapper">
     <div class="row">
         <div class="col-md-11">
 <div class="page-header pull-left">

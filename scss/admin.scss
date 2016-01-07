@@ -569,6 +569,7 @@ body {
 // CALENDAR
 .salon_page_salon-calendar .sln-calendar--wrapper,
 .sln-calendar--wrapper {
+    max-width: 95%;
     font-size: 12px;
     .btn-group {margin: 3em 0  2em 0;}
     button {
@@ -668,6 +669,27 @@ body {
               font-size: rem(18px);
               line-height: rem(45px);
             }
+        }
+    }
+    span[data-cal-date] {
+        @include bp(phone) {
+            width: 100%;
+            text-align: center;
+            margin-right: 0;
+        }
+    }
+    .cal-year-box [class*="span"] {
+        border-bottom: 1px solid #e1e1e1;
+        @include bp(phone) {
+            min-height: 100px;
+        }
+    }
+    .badge {
+        @include bp(phone) {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 0;
         }
     }
 }

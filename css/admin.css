@@ -4567,6 +4567,7 @@ body {
 
 .salon_page_salon-calendar .sln-calendar--wrapper,
 .sln-calendar--wrapper {
+  max-width: 95%;
   font-size: 12px; }
   .salon_page_salon-calendar .sln-calendar--wrapper .btn-group,
   .sln-calendar--wrapper .btn-group {
@@ -4671,6 +4672,26 @@ body {
         .sln-calendar--wrapper .sln-btn--addbooking:after {
           font-size: 0.75rem;
           line-height: 1.875rem; } }
+  @media only screen and (max-width: 767px) {
+    .salon_page_salon-calendar .sln-calendar--wrapper span[data-cal-date],
+    .sln-calendar--wrapper span[data-cal-date] {
+      width: 100%;
+      text-align: center;
+      margin-right: 0; } }
+  .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box [class*="span"],
+  .sln-calendar--wrapper .cal-year-box [class*="span"] {
+    border-bottom: 1px solid #e1e1e1; }
+    @media only screen and (max-width: 767px) {
+      .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box [class*="span"],
+      .sln-calendar--wrapper .cal-year-box [class*="span"] {
+        min-height: 100px; } }
+  @media only screen and (max-width: 767px) {
+    .salon_page_salon-calendar .sln-calendar--wrapper .badge,
+    .sln-calendar--wrapper .badge {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 0; } }
 
 .select2-container.sln-select .select2-choice, .select2-container.sln-select .select2-choices,
 .select2-container-multi.sln-select .select2-choice,
