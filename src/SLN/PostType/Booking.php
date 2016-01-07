@@ -210,6 +210,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             $booking = $p->createBooking($post);
             if ($new_status == SLN_Enum_BookingStatus::CONFIRMED && $old_status != $new_status) {
                 $p->sendMail('mail/status_confirmed', compact('booking'));
+                $this->sendSmsBooking($booking);
             } elseif ($new_status == SLN_Enum_BookingStatus::CANCELED && $old_status != $new_status) {
                 $p->sendMail('mail/status_canceled', compact('booking'));
             } elseif ($new_status == SLN_Enum_BookingStatus::PENDING_PAYMENT && $old_status != $new_status) {
@@ -220,19 +221,28 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             ) {
                 $p->sendMail('mail/summary', compact('booking'));
                 $p->sendMail('mail/summary_admin', compact('booking'));
-                if($p->getSettings()->get('sms_new')) {
-                    $phone = $p->getSettings()->get('sms_new_number');
-                    $this->getPlugin()->sendSms($phone, $p->loadView('sms/summary', compact('booking')));
-                }
-                if($p->getSettings()->get('sms_new_attendant') && $booking->getAttendant()){
-                    $phone = $booking->getAttendant()->getPhone();
-                    if($phone){
-                        $this->getPlugin()->send($phone, $p->loadView('sms/summary', compact('booking')));
-                    }
-                }
+                $this->sendSmsBooking($booking);
             }
             
             //$ret = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
+        }
+    }
+
+    public function sendSmsBooking($booking){
+        $p = $this->getPlugin();
+        if($p->getSettings()->get('sms_new')) {
+            $phone = $p->getSettings()->get('sms_new_number');
+            if($phone)
+                $this->getPlugin()->sendSms($phone, $p->loadView('sms/summary', compact('booking')));
+            $phone = $booking->getPhone();
+            if($phone)
+                $this->getPlugin()->sendSms($phone, $p->loadView('sms/summary', compact('booking')));
+        }
+        if($p->getSettings()->get('sms_new_attendant') && $booking->getAttendant()){
+            $phone = $booking->getAttendant()->getPhone();
+            if($phone){
+                $this->getPlugin()->sendSms($phone, $p->loadView('sms/summary', compact('booking')));
+            }
         }
     }
 
