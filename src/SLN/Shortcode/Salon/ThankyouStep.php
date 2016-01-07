@@ -19,15 +19,19 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
         }
         $booking = $bb->getLastBooking();
         $paymentMethod = SLN_Enum_PaymentMethodProvider::getService($settings->getPaymentMethod(), $plugin);
-        if(isset($_GET['op']) || (isset($_GET['mode']) && $_GET['mode'] != 'later')){
-            if($error = $paymentMethod->dispatchThankyou($this, $booking)){
-                $this->addError($error); 
-            }
-        } elseif (isset($_GET['mode']) && $_GET['mode'] == 'later') {
+        $mode = isset($_GET['mode']) ? $_GET['mode'] : null;
+        if ($mode == 'confirm') {
+            $this->goToThankyou();
+        } elseif ($mode == 'later') {
             $booking->setStatus(SLN_Enum_BookingStatus::PAY_LATER);
             $this->goToThankyou();
+        } elseif (isset($_GET['op']) || $mode) {
+            if($error = $paymentMethod->dispatchThankyou($this, $booking)){
+                $this->addError($error); 
+            }else{
+                $this->goToThankyou();
+            }
         }
-
 
         return false;
     }
@@ -50,6 +54,10 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
             array(
                 'formAction' => $formAction,
                 'booking'    => $this->getPlugin()->getBookingBuilder()->getLastBooking(),
+                'confirmUrl'   => add_query_arg(
+                    array('mode' => 'confirm', 'submit_' . $this->getStep() => 1),
+                    $formAction
+                ),
                 'laterUrl'   => add_query_arg(
                     array('mode' => 'later', 'submit_' . $this->getStep() => 1),
                     $formAction
