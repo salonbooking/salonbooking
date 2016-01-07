@@ -1,4 +1,4 @@
-#sln-salon--admin {
+#sln-salon--admin, .sln-calendar--wrapper {
     @import 'bootstrap';
 }
 @import 'settings-mixins';
@@ -669,10 +669,6 @@ body {
               line-height: rem(45px);
             }
         }
-    }
-    span[data-cal-date] {
-        display: inline-block;
-        margin: .5em 0 0 .5em;
     }
 }
 // CALENDAR // EN
