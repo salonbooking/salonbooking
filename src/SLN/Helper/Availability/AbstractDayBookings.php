@@ -58,7 +58,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
 
     public function countAttendantsByHour($hour = null, $minutes = null)
     {
-        SLN_Plugin::addLog(__CLASS__.' - count services by hour('.$hour.') minutes('.$minutes.')');
+        SLN_Plugin::addLog(__CLASS__.' - count attendants by hour('.$hour.') minutes('.$minutes.')');
         $ret = array();
         foreach ($this->getBookingsByHour($hour, $minutes) as $b) {
             $id = $b->getAttendantId();

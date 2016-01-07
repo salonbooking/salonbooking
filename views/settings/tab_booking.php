@@ -2,7 +2,7 @@
 /**
  * @param $this SLN_Admin_Settings
  */
-function sln_availability_row($prefix, $row, $rulenumber)
+function sln_availability_row($prefix, $row, $rulenumber = 'New')
 {
     ?>
     <div class="col-xs-12 sln-booking-rule">

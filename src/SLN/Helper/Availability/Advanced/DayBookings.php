@@ -21,7 +21,7 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
         $now->setTime($hour, $minutes ? $minutes : 0);
  
         foreach ($this->getBookings() as $b) {
-            if ($b->getStartsAt() <= $now && $b->getEndsAt() >= $now) {
+            if ($b->getStartsAt() <= $now && $b->getEndsAt() > $now) {
                 $ret[] = $b;
             }
         }
