@@ -44,8 +44,6 @@
         </div>
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
-
-    <a href="?<?php echo "page={$_GET['page']}&tab={$_GET['tab']}&force_revoke_token=1" ?>"><?php echo __('Get authorization'); ?></a>
     <div class="sln-box--sub row">
     <div class="col-xs-12"><h2 class="sln-box-title"><?php _e('Your Google calendars','salon-booking-system');?></h2></div>
             <?php
@@ -77,12 +75,22 @@
                 <input type="button" id="sln_del" value="<?php echo __('Delete all Google Calendar Events'); ?>">
                 </div>
                 </div>
+                <div class="col-xs-12">
+                <a href="?<?php echo "page={$_GET['page']}&tab={$_GET['tab']}&force_revoke_token=1"; ?>" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--settings sln-btn--disabled"><?php echo __('Get authorization'); ?></a></div>
                 <?php
-            } 
+            }
             elseif($api_error)// API failed!
-                echo '<div class="col-xs-12 col-sm-8 sln-box-maininfo  align-top"><h5 class="sln-message sln-message--warning">' .__("Google API Error: ", 'salon-booking-system') .$api_error . '</h5></div>';
-            else// not assigned to API
-                echo '<div class="col-xs-12 col-sm-8 sln-box-maininfo  align-top"><h5 class="sln-message sln-message--warning">' .__("Te get the list of your Google Calendar you need to log-in with Google OAuth. At the moment you are not logged-in.", 'salon-booking-system') . '</h5></div>';
+               { echo '<div class="col-xs-12 col-sm-8 sln-box-maininfo  align-top"><h5 class="sln-message sln-message--warning">' .__("Google API Error: ", 'salon-booking-system') .$api_error . '</h5></div>';
+                echo '<div class="col-xs-12"><a href="?';
+                echo "page={$_GET['page']}&tab={$_GET['tab']}&force_revoke_token=1";
+                echo '" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--settings">' . __('Get authorization') . '</a></div>';
+            } else// not assigned to API
+            {
+                echo '<div class="col-xs-12 col-sm-8 sln-box-maininfo  align-top"><h5 class="sln-message sln-message--warning">' .__("To get the list of your Google Calendar you need to log-in with Google OAuth. At the moment you are not logged-in.", 'salon-booking-system') . '</h5></div>';
+                echo '<div class="col-xs-12"><a href="?';
+                echo "page={$_GET['page']}&tab={$_GET['tab']}&force_revoke_token=1";
+                echo '" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--settings">' . __('Get authorization') . '</a></div>';
+            }
             ?>
     </div>
     <div class="clearfix"></div>

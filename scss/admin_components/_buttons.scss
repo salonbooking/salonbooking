@@ -19,6 +19,9 @@
     background-color: transparent;
     cursor: pointer;
   }
+  &:hover, &:focus {
+    text-decoration: none;
+  }
 }
 // SIZES
 .sln-btn--fullwidth {width: 100%;}
@@ -96,8 +99,10 @@
   background-color: $cl_main--emphasis;
   color: white;
   input {color: white;}
-  &:hover {
+  &:hover, &:focus {
     background-color: $cl_main;
+    color: white;
+    input {color: white;}
   }
   &.sln-btn--small.sln-btn--icon {
     background-color: transparent;
@@ -112,24 +117,30 @@
   background-color: $cl_warning;
   color: white;
   input {color: white;}
-  &:hover {
+  &:hover, &:focus {
     background-color: $cl_main;
+    color: white;
+    input {color: white;}
   }
 }
 .sln-btn--problem {
   background-color: $cl_problem--light;
   color: white;
   input {color: white;}
-  &:hover {
+  &:hover, &:focus {
     background-color: $cl_main;
+    color: white;
+    input {color: white;}
   }
 }
 .sln-btn--ok {
   background-color: $cl_ok;
   color: white;
   input {color: white;}
-  &:hover {
+  &:hover, &:focus {
     background-color: $cl_main;
+    color: white;
+    input {color: white;}
   }
 }
 .sln-btn--borderonly {
@@ -139,7 +150,7 @@
   border: 1px solid #c5cfd4;
   &.sln-btn--icon:after {color: $cl_main;}
   &.sln-btn--active {border: 1px solid $cl_main;}
-  &:hover {
+  &:hover, &:focus {
     border-color: $cl_main;
     background-color: $cl_main;
     color: #fff;
@@ -152,7 +163,7 @@
   input {color: $cl_main;}
   &.sln-btn--icon:after {color: $cl_main;}
   &.sln-btn--active {border: 1px solid $cl_main;}
-  &:hover {
+  &:hover, &:focus {
     border-color: $cl_main;
     background-color: $cl_main;
     color: #fff;
@@ -254,6 +265,14 @@
     font-size: rem(28px);
   }
 }
+
+// BTN UTILITIES
+.sln-btn--disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: .5;
+}
+// BTN UTILITIES // END
 
 h2.nav-tab-wrapper .nav-tab {
     @extend .sln-btn;

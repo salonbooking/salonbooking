@@ -4026,6 +4026,8 @@ body {
       border: none;
       background-color: transparent;
       cursor: pointer; }
+    #sln-salon--admin .sln-btn:hover, #sln-salon--admin h2.nav-tab-wrapper .nav-tab:hover, #sln-salon--admin .sln-admin-nav a:hover, #sln-salon--admin p.submit:hover, #sln-salon--admin .sln-btn:focus, #sln-salon--admin h2.nav-tab-wrapper .nav-tab:focus, #sln-salon--admin .sln-admin-nav a:focus, #sln-salon--admin p.submit:focus {
+      text-decoration: none; }
   #sln-salon--admin .sln-btn--fullwidth {
     width: 100%; }
   #sln-salon--admin .sln-btn--big, #sln-salon--admin p.submit, #sln-salon--admin .sln-btn--big input, #sln-salon--admin p.submit input {
@@ -4102,8 +4104,11 @@ body {
     color: white; }
     #sln-salon--admin .sln-btn--main input, #sln-salon--admin p.submit input {
       color: white; }
-    #sln-salon--admin .sln-btn--main:hover, #sln-salon--admin p.submit:hover {
-      background-color: #003553; }
+    #sln-salon--admin .sln-btn--main:hover, #sln-salon--admin p.submit:hover, #sln-salon--admin .sln-btn--main:focus, #sln-salon--admin p.submit:focus {
+      background-color: #003553;
+      color: white; }
+      #sln-salon--admin .sln-btn--main:hover input, #sln-salon--admin p.submit:hover input, #sln-salon--admin .sln-btn--main:focus input, #sln-salon--admin p.submit:focus input {
+        color: white; }
     #sln-salon--admin .sln-btn--main.sln-btn--small.sln-btn--icon, #sln-salon--admin p.sln-btn--small.submit {
       background-color: transparent; }
       #sln-salon--admin .sln-btn--main.sln-btn--small.sln-btn--icon:after, #sln-salon--admin p.sln-btn--small.submit:after {
@@ -4117,22 +4122,31 @@ body {
     color: white; }
     #sln-salon--admin .sln-btn--warning input {
       color: white; }
-    #sln-salon--admin .sln-btn--warning:hover {
-      background-color: #003553; }
+    #sln-salon--admin .sln-btn--warning:hover, #sln-salon--admin .sln-btn--warning:focus {
+      background-color: #003553;
+      color: white; }
+      #sln-salon--admin .sln-btn--warning:hover input, #sln-salon--admin .sln-btn--warning:focus input {
+        color: white; }
   #sln-salon--admin .sln-btn--problem {
     background-color: #e63f24;
     color: white; }
     #sln-salon--admin .sln-btn--problem input {
       color: white; }
-    #sln-salon--admin .sln-btn--problem:hover {
-      background-color: #003553; }
+    #sln-salon--admin .sln-btn--problem:hover, #sln-salon--admin .sln-btn--problem:focus {
+      background-color: #003553;
+      color: white; }
+      #sln-salon--admin .sln-btn--problem:hover input, #sln-salon--admin .sln-btn--problem:focus input {
+        color: white; }
   #sln-salon--admin .sln-btn--ok {
     background-color: #5bc24c;
     color: white; }
     #sln-salon--admin .sln-btn--ok input {
       color: white; }
-    #sln-salon--admin .sln-btn--ok:hover {
-      background-color: #003553; }
+    #sln-salon--admin .sln-btn--ok:hover, #sln-salon--admin .sln-btn--ok:focus {
+      background-color: #003553;
+      color: white; }
+      #sln-salon--admin .sln-btn--ok:hover input, #sln-salon--admin .sln-btn--ok:focus input {
+        color: white; }
   #sln-salon--admin .sln-btn--borderonly, #sln-salon--admin h2.nav-tab-wrapper .nav-tab {
     background-color: transparent;
     color: #003553;
@@ -4143,11 +4157,11 @@ body {
       color: #003553; }
     #sln-salon--admin .sln-btn--borderonly.sln-btn--active, #sln-salon--admin h2.nav-tab-wrapper .sln-btn--active.nav-tab, #sln-salon--admin h2.nav-tab-wrapper .nav-tab.nav-tab-active, #sln-salon--admin h2.nav-tab-wrapper .sln-admin-nav a.nav-tab.current, #sln-salon--admin .sln-admin-nav h2.nav-tab-wrapper a.nav-tab.current, #sln-salon--admin .sln-admin-nav a.sln-btn--borderonly.current {
       border: 1px solid #003553; }
-    #sln-salon--admin .sln-btn--borderonly:hover, #sln-salon--admin h2.nav-tab-wrapper .nav-tab:hover {
+    #sln-salon--admin .sln-btn--borderonly:hover, #sln-salon--admin h2.nav-tab-wrapper .nav-tab:hover, #sln-salon--admin .sln-btn--borderonly:focus, #sln-salon--admin h2.nav-tab-wrapper .nav-tab:focus {
       border-color: #003553;
       background-color: #003553;
       color: #fff; }
-      #sln-salon--admin .sln-btn--borderonly:hover.sln-btn--icon:after, #sln-salon--admin h2.nav-tab-wrapper .nav-tab:hover.sln-btn--icon:after, #sln-salon--admin h2.nav-tab-wrapper p.nav-tab.submit:hover:after, #sln-salon--admin p.sln-btn--borderonly.submit:hover:after {
+      #sln-salon--admin .sln-btn--borderonly:hover.sln-btn--icon:after, #sln-salon--admin h2.nav-tab-wrapper .nav-tab:hover.sln-btn--icon:after, #sln-salon--admin h2.nav-tab-wrapper p.nav-tab.submit:hover:after, #sln-salon--admin p.sln-btn--borderonly.submit:hover:after, #sln-salon--admin .sln-btn--borderonly:focus.sln-btn--icon:after, #sln-salon--admin h2.nav-tab-wrapper .nav-tab:focus.sln-btn--icon:after, #sln-salon--admin h2.nav-tab-wrapper p.nav-tab.submit:focus:after, #sln-salon--admin p.sln-btn--borderonly.submit:focus:after {
         color: #fff; }
   #sln-salon--admin .sln-btn--nobkg, #sln-salon--admin .sln-admin-nav a {
     background-color: transparent;
@@ -4158,11 +4172,11 @@ body {
       color: #003553; }
     #sln-salon--admin .sln-btn--nobkg.sln-btn--active, #sln-salon--admin h2.nav-tab-wrapper .sln-btn--nobkg.nav-tab.nav-tab-active, #sln-salon--admin h2.nav-tab-wrapper .sln-admin-nav a.nav-tab.nav-tab-active, #sln-salon--admin .sln-admin-nav h2.nav-tab-wrapper a.nav-tab.nav-tab-active, #sln-salon--admin .sln-admin-nav a.sln-btn--active, #sln-salon--admin .sln-admin-nav a.current {
       border: 1px solid #003553; }
-    #sln-salon--admin .sln-btn--nobkg:hover, #sln-salon--admin .sln-admin-nav a:hover {
+    #sln-salon--admin .sln-btn--nobkg:hover, #sln-salon--admin .sln-admin-nav a:hover, #sln-salon--admin .sln-btn--nobkg:focus, #sln-salon--admin .sln-admin-nav a:focus {
       border-color: #003553;
       background-color: #003553;
       color: #fff; }
-      #sln-salon--admin .sln-btn--nobkg:hover.sln-btn--icon:after, #sln-salon--admin .sln-admin-nav a:hover.sln-btn--icon:after, #sln-salon--admin p.sln-btn--nobkg.submit:hover:after {
+      #sln-salon--admin .sln-btn--nobkg:hover.sln-btn--icon:after, #sln-salon--admin .sln-admin-nav a:hover.sln-btn--icon:after, #sln-salon--admin p.sln-btn--nobkg.submit:hover:after, #sln-salon--admin .sln-btn--nobkg:focus.sln-btn--icon:after, #sln-salon--admin .sln-admin-nav a:focus.sln-btn--icon:after, #sln-salon--admin p.sln-btn--nobkg.submit:focus:after {
         color: #fff; }
   #sln-salon--admin .sln-btn--icon, #sln-salon--admin p.submit {
     text-align: left;
@@ -4215,6 +4229,10 @@ body {
   #sln-salon--admin .sln-icon--warning:after {
     content: "\f12a";
     font-size: 1.16667rem; }
+  #sln-salon--admin .sln-btn--disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: .5; }
   #sln-salon--admin h2.nav-tab-wrapper .nav-tab {
     font-size: 0.75rem;
     font-weight: normal;
