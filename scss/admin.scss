@@ -509,6 +509,7 @@ body {
         border-right: none;
     }
     // SELF OVERRIDES
+    .settings-error {border-color: $cl_problem;}
     h2.nav-tab-wrapper, h3.nav-tab-wrapper {
         border-bottom: none;
         margin-bottom: rem(40px);

@@ -4415,6 +4415,8 @@ body {
     padding-bottom: 0.83333rem;
     border-left: none;
     border-right: none; }
+  #sln-salon--admin .settings-error {
+    border-color: #D22221; }
   #sln-salon--admin h2.nav-tab-wrapper, #sln-salon--admin h3.nav-tab-wrapper {
     border-bottom: none;
     margin-bottom: 1.66667rem; }
