@@ -3,7 +3,7 @@ Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, paypal appointament, appointament calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.4
-Stable tag: 2.0.1
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ Salon booking  is the best solution for:
 * Barber shop
 * Beauty salons
 * Spas 
-* Machine shop
+* Car shop
 * Therapists
 
 
@@ -41,6 +41,11 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 
 **BRAND NEW FEATURES**: 
 
+* Customer reviews - let your customers submit a feedback after each reservation
+
+
+**EXISTING FEATURES**:
+
 * Back-end settings pages full redesign
 * Bookings cancelation from front-end ( a new page MY BOOKING ACCOUNT )
 * Stripe as new payment method
@@ -48,11 +53,6 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 * Custom services order with drag&drop
 * Full front-end access to administrator even when the free-version is expired
 * New "Payment pending" status for bookings taken from back-end that require a payment from customers
-
-
-
-
-**EXISTING FEATURES**:
 
 * GOOGLE CALENDAR INTEGRATION
 Syncronize all your reservations inside your own Google Calendr and share the information with your staff memebers
@@ -232,6 +232,19 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 
 == Changelog ==
+
+08.01.2016
+
+* Fixed bug - Screen options
+* Fixed bug - Assistant overbooking
+* Fixed bug - SMS notifications not sent
+* Fixed bug - Managing Services categories
+* Fixed bug - Custom message on disabled booking
+* Fixed bug - Redirect page with Manual booking confirmation option active
+* Fixed bug - Hide price option missing
+* Fixed bug - Google Calendar settings error loop
+* Changed text strings text-domain
+* CSS improvements on front-end and back-end
 
 18.12.2015
 
