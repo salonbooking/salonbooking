@@ -6,8 +6,9 @@
   Version: 2.1.0
   Plugin URI: http://salon.wpchef.it/
   Author: Wordpress Chef / Plugins
-  Author URI: http://plugins.wpchef.it/
-  Text Domain: sln
+  Author URI: http://salon.wpchef.it/
+  Text Domain: salon-booking-system
+  Domain Path: /languages
  */
 
 define('SLN_PLUGIN_BASENAME', plugin_basename(__FILE__));
