@@ -242,7 +242,7 @@
         <?php $this->row_input_text('sms_test_message', __('Message', 'salon-booking-system')); ?>
     </div>
     <div class="col-sm-6 col-md-4 sln-box-maininfo  align-top">
-                <p class="sln-input-help"><?php _e('Use this console just to test your SMS services. Fill the destination number without the counrty code, write a text message and click "Update settings" to send an SMS.','salon-booking-system');?></p>
+                <p class="sln-input-help"><?php _e('Use this console just to test your SMS services. Fill the destination number without the country code, write a text message and click "Update settings" to send an SMS.','salon-booking-system');?></p>
             </div>
 </div>
 <div class="sln-box-info">
