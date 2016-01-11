@@ -380,7 +380,7 @@ class SLN_GoogleScope {
         $calendarList = $this->service->calendarList->listCalendarList();
         $cal_list = array();
         $cal_list['']['id'] = 0;
-        $cal_list['']['label'] = __("Scegli tra i tuoi calendari", 'salon-booking-system');
+        $cal_list['']['label'] = __("Choose among your Calendars", 'salon-booking-system');
         while (true) {
             foreach ($calendarList->getItems() as $calendarListEntry) {
                 if (!isset($cal_list[$calendarListEntry->getId()]))
