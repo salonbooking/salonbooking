@@ -143,7 +143,8 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_services', get_post_meta($post_id, '_sln_booking_services', true));
-        $ret = array_unique($ret); 
+        if(is_array($ret))
+            $ret = array_unique($ret); 
         return empty($ret) ? array() : $ret;
     }
     function getServices(){
