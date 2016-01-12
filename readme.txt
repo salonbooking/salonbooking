@@ -3,7 +3,7 @@ Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, paypal appointament, appointament calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.4
-Stable tag: 2.1
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,7 +96,7 @@ Avoid spam and verify your customers identity using an SMS verification process 
 
 * Staff user role
 
-You can give access to the back-end to your salon’s staff limiting them to manage only the booking and calendar settings pages using the custom “Salon staff” user role. 
+You can give access to the back-end to your salonâ€™s staff limiting them to manage only the booking and calendar settings pages using the custom â€œSalon staffâ€ user role. 
 
 
 * Intuitive bookings calendar
@@ -115,7 +115,7 @@ Administrator can set the open and closing days and the time slots using our mul
 
 
 * Accept online Payments
-Salon booking is ready to accept online payments with Paypal. You can decide if user can pay in advance using credit cards or “pay later” once arrived at the salon.
+Salon booking is ready to accept online payments with Paypal. You can decide if user can pay in advance using credit cards or â€œpay laterâ€ once arrived at the salon.
 
 
 * Create as many services as you want
@@ -123,7 +123,7 @@ Easily create as many services as you need, edit or delete them as a simple post
 
 
 * Full control of every single service
-Set  its price, duration, days of non availability, and a brief description. You can even make a difference between “main” and “optional” services.
+Set  its price, duration, days of non availability, and a brief description. You can even make a difference between â€œmainâ€ and â€œoptionalâ€ services.
 
 
 * Full control of every single booking
@@ -144,7 +144,7 @@ This section describes how to install the plugin and get it working.
 
 1. Upload `salon-free` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Go to Salon > Settings to complete your salon’s settings
+1. Go to Salon > Settings to complete your salonâ€™s settings
 
 
 
@@ -195,7 +195,7 @@ Languages available:
  
 = Are there any conflicts with other plugins? =
 
-At the moment we didn’t spot any conflicts with other plugins.
+At the moment we didnâ€™t spot any conflicts with other plugins.
 
  
 = Is it possible to customise the look and feel of the plugin front-end? =
@@ -230,8 +230,19 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 7. screenshot-7.gif Back-end > Salon Bookings >Services
 
+8. screenshot-8.gif Front-end > Booking My Account
+
+9. screenshot-9.gif Front-end > Booking My Account > Submit review
+
 
 == Changelog ==
+
+12.01.2016
+
+* Fixed bug on front-end
+* Fixed bug on front-end "error alert" on last step
+* Fixed bug on utomatic updates alert 
+
 
 08.01.2016
 
@@ -324,7 +335,7 @@ Date-picker multilanguage support fix
 
 1.0.1 13/05/2015
 
-* Added “Assistant selection" option
+* Added â€œAssistant selection" option
 * Added "SMS Verification" option
 * Add "Salon staff" new users role
 * Fixed booking system bug
