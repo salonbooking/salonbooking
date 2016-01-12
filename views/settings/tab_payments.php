@@ -140,7 +140,7 @@
                     ) ?>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
-                <p class="sln-input-help"><?php _e('If you want a new currency to be added please send us an email to suppor@wpchef.it','salon-booking-system');?></p>
+                <p class="sln-input-help"><?php _e('If you want a new currency to be added please send us an email to support@wpchef.it','salon-booking-system');?></p>
             </div>
             </div>
 </div>
