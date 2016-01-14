@@ -254,11 +254,26 @@ jQuery(function ($) {
     var html = prototype.html();
     var count = prototype.data('count');
     prototype.remove();
+
+    var prototypeHoliday = $('.sln-booking-holiday-rules div[data-collection="prototype"]');
+    var htmlHoliday = prototypeHoliday.html();
+    var countHoliday = prototypeHoliday.data('count');
+    prototypeHoliday.remove();
+
+    initDatepickers($);
     bindRemove();
 
     $('button[data-collection="addnew"]').click(function () {
         $('#sln-booking-rules-wrapper').append('<div class="sln-booking-rule">' + html.replace(/__new__/g, count) + '</div>');
         count++;
+        bindRemove();
+        return false;
+    });
+
+    $('button[data-collection="addnewholiday"]').click(function () {
+        $('#sln-booking-holiday-rules-wrapper').append(htmlHoliday.replace(/__new__/g, countHoliday) );
+        countHoliday++;
+        initDatepickers($);
         bindRemove();
         return false;
     });

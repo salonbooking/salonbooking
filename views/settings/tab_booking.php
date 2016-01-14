@@ -64,6 +64,32 @@ function sln_availability_row($prefix, $row, $rulenumber = 'New')
 <?php
 }
 
+function sln_holiday_row($prefix, $row, $rulenumber = 'New') {
+	?>
+	<div class="col-xs-12 sln-booking-rule">
+	<h2 class="sln-box-title"><?php _e('Rule','salon-booking-system');?> <strong><?php echo $rulenumber; ?></strong></h2>
+	<div class="row">
+		<div class="col-xs-12 col-md-4 sln-slider-wrapper">
+			<h6 class="sln-fake-label"><?php _e('Start on', 'salon-booking-system') ?></h6>
+			<?php $dateFormat = SLN_Enum_DateFormat::getPhpFormat(SLN_Plugin::getInstance()->getSettings()->get('date_format')); ?>
+			<?php $dateFrom = isset($row['from']) ? $row['from'] : date($dateFormat); ?>
+			<?php $dateFrom = DateTime::createFromFormat($dateFormat, $dateFrom); ?>
+
+            <div class="sln_datepicker"><?php SLN_Form::fieldJSDate($prefix."[from]", $dateFrom) ?></div>
+		</div>
+		<div class="col-xs-12 col-md-4 sln-slider-wrapper">
+			<h6 class="sln-fake-label"><?php _e('End on', 'salon-booking-system') ?></h6>
+			<?php $dateTo = isset($row['to']) ? $row['to'] : date($dateFormat); ?>
+			<?php $dateTo = DateTime::createFromFormat($dateFormat, $dateTo); ?>
+            <div class="sln_datepicker"><?php SLN_Form::fieldJSDate($prefix."[to]", $dateTo) ?></div>
+		</div>
+        <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
+            <button class="sln-btn sln-btn--problem sln-btn--big sln-btn--icon sln-icon--trash" data-collection="remove"><?php echo __('Remove', 'salon-booking-system')?></button>
+        </div>
+	</div>
+	</div>
+	<?php
+}
 ?>
 
 
@@ -222,6 +248,37 @@ function sln_availability_row($prefix, $row, $rulenumber = 'New')
     </div>
     </div>
 
+    <div class="sln-box--sub sln-booking-holiday-rules row">
+        <?php
+        $row = null;
+        $key            = 'holiday';
+        $label          = __('Holidays days', 'salon-booking-system');
+        $holidays = $this->getOpt('holidays');
+        ?>
+        <div class="col-xs-12">
+            <h2 class="sln-box-title"><?php echo $label ?> <span class="block"><?php _e('Set one or more rules for your holidays.<br /> Users will not be able to make reservation during these periods', 'salon-booking-system') ?></span></h2>
+        </div>
+        <div id="sln-booking-holiday-rules-wrapper">
+            <?php if(is_array($holidays)): ?>
+		        <?php
+	            $n = 0;
+	            foreach ($holidays as $k => $row):
+	                $n++;
+	                ?>
+	                <?php sln_holiday_row("salon_settings[holidays][$k]", $row, $n); ?>
+	            <?php endforeach ?>
+            <?php endif ?>
+        </div>
+        <div class="col-xs-12">
+            <button data-collection="addnewholiday" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file"><?php _e(
+                    'Add new','salon-booking-system'
+                ) ?>
+            </button>
+        </div>
+        <div data-collection="prototype" data-count="<?php echo count($holidays) ?>">
+            <?php sln_holiday_row("salon_settings[holidays][__new__]", $row); ?>
+        </div>
+    </div>
 
     <div class="clearfix"></div>
 </div>

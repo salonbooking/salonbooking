@@ -209,6 +209,7 @@ class SLN_Admin_Settings {
         'thankyou',
         'pay',
         'availabilities',
+        'holidays',                     // algolplus
         'availability_mode',
         'cancellation_enabled',         // algolplus
         'hours_before_cancellation',    // algolplus
