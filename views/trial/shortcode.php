@@ -1,6 +1,6 @@
 <div id="sln-salon" class="sln-bootstrap">
     <div>
-        <h1><?php _e('Book an appointment') ?>
+        <h1><?php _e('Book an appointment', 'salon-booking-system') ?>
             <svg class="icocal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"
                  preserveAspectRatio="xMinYMin meet" width="100%" height="100%"
                  style="width: 24px; height: 24px;">

@@ -148,7 +148,7 @@ class SLN_Plugin
         wp_enqueue_script('salon-raty', SLN_PLUGIN_URL . '/js/jquery.raty.js', array('jquery'), '20140711', true); // algolplus
         wp_localize_script(
             'salon', 'salon', array(
-            'ajax_url' => admin_url('admin-ajax.php') . '?lang=' . (defined('ICL_LANGUAGE_CODE') ? 'ICL_LANGUAGE_CODE' : ''),
+            'ajax_url' => admin_url('admin-ajax.php') . '?lang=' . (defined('ICL_LANGUAGE_CODE') ? 'ICL_LANGUAGE_CODE' : $lang),
             'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
             'loading' => SLN_PLUGIN_URL . '/img/preloader.gif',
             'txt_validating' => __('checking availability'),
