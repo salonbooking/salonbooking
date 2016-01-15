@@ -41,7 +41,7 @@ msgstr ""
 
 #: src/SLN/Action/Ajax/CheckDate.php:47
 msgid "The date is too near, the minimum allowed is:"
-msgstr ""
+msgstr "La data è troppo recente"
 
 #: src/SLN/Action/Ajax/CheckDate.php:50
 msgid "The date is too far, the maximum allowed is:"
