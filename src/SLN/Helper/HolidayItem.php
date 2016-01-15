@@ -14,9 +14,9 @@ class SLN_Helper_HolidayItem
         if ($date instanceof DateTime) {
             $date = $date->format('Y-m-d');
         }
-        $date = strtotime($date);
+        $date = strtotime(SLN_Func::evalPickedDate($date));
 
-        return ($date < strtotime($this->data['from']) || $date > strtotime($this->data['to'] . ' 23:59:59'));
+        return ($date < strtotime(SLN_Func::evalPickedDate($this->data['from'])) || $date > strtotime(SLN_Func::evalPickedDate($this->data['to']) . ' 23:59:59'));
     }
 
 }
