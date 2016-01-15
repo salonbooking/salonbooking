@@ -48,7 +48,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         } elseif (!$hb->isValidTo($date)) {
             $txt = $plugin->format()->datetime($to);
             $this->addError(sprintf(__('The date is too far, the maximum allowed is:', 'salon-booking-system') . '<br /><strong>%s</strong>', $txt));
-        } elseif (!$ah->getItems()->isValidDatetime($date)) {
+        } elseif (!$ah->getItems()->isValidDatetime($date) || !$ah->getHolidaysItems()->isValidDate($date)) {
             $txt = $plugin->format()->datetime($date);
             $this->addError(sprintf(__('We are unavailable at:', 'salon-booking-system') . '<br /><strong>%s</strong>', $txt));
         } else {
