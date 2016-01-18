@@ -208,4 +208,20 @@ class SLN_Wrapper_Booking_Builder
         $this->getLastBooking()->setStatus($status);
     }
 
+    public function getDuration()
+    {
+        $h = 0;
+        $i = 0;
+        foreach($this->getServices() as $s){
+            $d = $s->getDuration();
+            $h = $h + intval($d->format('H'));
+            $i = $i + intval($d->format('i'));
+        }
+        $i += $h*60;
+        if($i == 0)
+            $i = 60;
+        $str = SLN_Func::convertToHoursMins($i);
+        return $str;
+    }
+
 }

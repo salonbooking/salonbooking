@@ -109,23 +109,63 @@ class SLN_Helper_Availability
     {
         return $this->getDayBookings()->countBookingsByHour($hour, $minutes);
     }
-    public function validateAttendant(SLN_Wrapper_Attendant $attendant)
+
+    public function validateAttendant(SLN_Wrapper_Attendant $attendant, $duration = null)
     {
-        if ($attendant->isNotAvailableOnDate($this->date)) {
-            return array(
-                __('This assistant is not available  ', 'salon-booking-system') . $attendant->getNotAvailableString()
-            );
+
+        SLN_Plugin::addLog(__CLASS__.sprintf(' - validate attendant %s by date(%s) and duration(%s)',$attendant,$this->date->format('Ymd H:i'), $duration));
+        if($duration){
+            $startDate = clone $this->date;
+            $endDate = clone $startDate;
+            $endDate->modify(sprintf('+%s minutes', SLN_Func::getMinutesFromDuration($duration)));
+            $times = $this->getTimes($startDate); 
+            $times = $this->filterTimes($times, $startDate, $endDate);
+            foreach($times as $time){
+                SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
+                SLN_Plugin::addLog(__CLASS__.sprintf(' - attendant %s by date(%s) not available',$attendant,$time->format('Ymd H:i')));
+                if ($attendant->isNotAvailableOnDate($time)) {
+                    $this->date = $startDate;
+                    return array(
+                        __('This assistant is not available  ', 'salon-booking-system') . $attendant->getNotAvailableString()
+                    );
+                } 
+                $ids = $this->getDayBookings()->countAttendantsByHour($time->format('H'), $time->format('i'));
+                if (isset($ids[$attendant->getId()])) {
+                    $this->date = $startDate;
+                    SLN_Plugin::addLog(__CLASS__.sprintf(' - attendant %s by date(%s) busy',$attendant,$time->format('Ymd H:i')));
+                    return array(
+                        __('This assistant is unavailable during this period', 'salon-booking-system') . $attendant->getNotAvailableString()
+                    );
+                } 
+            }
+        }else{
+            if ($attendant->isNotAvailableOnDate($this->date)) {
+                $this->date = $startDate;
+                return array(
+                    __('This assistant is not available  ', 'salon-booking-system') . $attendant->getNotAvailableString()
+                );
+            }
+            $ids = $this->getDayBookings()->countAttendantsByHour();
+            if (isset($ids[$attendant->getId()])) {
+                $this->date = $startDate;
+                return array(
+                    __('This assistant is unavailable during this period', 'salon-booking-system') . $attendant->getNotAvailableString()
+                );
+            }
         }
-        $ids = $this->getDayBookings()->countAttendantsByHour();
-        if (
-            isset($ids[$attendant->getId()])
-        ) {
-            return array(
-                __('This assistant is unavailable during this period', 'salon-booking-system') . $attendant->getNotAvailableString()
-            );
-        }
+        $this->date = $startDate;
     }
 
+    private function filterTimes($times, $startDate, $endDate){
+        $ret = [];
+        foreach($times as $t){
+            $t = new SLN_DateTime($startDate->format('Y-m-d').' '.$t);
+            if($t->format('YmdHi') >= $startDate->format('YmdHi') && $t->format('YmdHi') <= $endDate->format('YmdHi')){
+               $ret[] = $t;
+            }
+        }
+        return $ret;
+    }
 
 
     public function validateService(SLN_Wrapper_Service $service)
