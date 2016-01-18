@@ -157,7 +157,7 @@ class SLN_Helper_Availability
     }
 
     private function filterTimes($times, $startDate, $endDate){
-        $ret = [];
+        $ret = array();
         foreach($times as $t){
             $t = new SLN_DateTime($startDate->format('Y-m-d').' '.$t);
             if($t->format('YmdHi') >= $startDate->format('YmdHi') && $t->format('YmdHi') <= $endDate->format('YmdHi')){
