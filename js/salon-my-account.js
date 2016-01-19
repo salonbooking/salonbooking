@@ -134,6 +134,20 @@ var slnMyAccount = {
     }
 };
 
+function addClassIfNarrow(element, narrowClass) {
+    if (element.length > 0) {
+        jQuery(window).on("load resize",function(){
+            var elementWidth = element.width();
+            if (elementWidth < 600){
+                element.addClass(narrowClass);
+            } else {
+                element.removeClass(narrowClass);
+            }
+        });
+    }
+}
+
 jQuery(document).ready(function() {
     slnMyAccount.init();
+    addClassIfNarrow(jQuery('#sln-salon-my-account'), 'mobile-version')
 });

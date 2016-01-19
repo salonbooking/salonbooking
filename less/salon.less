@@ -775,8 +775,7 @@
       font-size: 11px;
       color: red;
     }
-
-    @media screen and (max-width: 800px) {
+    &.mobile-version {
       thead {
         display: none;
       }
@@ -827,7 +826,10 @@
       .table-bordered {
         border: none;
       }
+    }
 
+    @media screen and (max-width: 800px) {
+      &:extend(.mobile-version all);
     }
   }
 .timepicker {

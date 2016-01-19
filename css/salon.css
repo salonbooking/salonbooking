@@ -1419,49 +1419,47 @@
   font-size: 11px;
   color: red;
 }
-@media screen and (max-width: 800px) {
-  #sln-salon-my-account thead {
-    display: none;
-  }
-  #sln-salon-my-account .table tbody tr td {
-    width: 100%;
-    display: block;
-    text-align: left;
-    border: none;
-    padding-left: 8em;
-    position: relative;
-    min-height: 52px;
-  }
-  #sln-salon-my-account .table tbody tr {
-    border: solid 1px #ddd;
-  }
-  #sln-salon-my-account td:nth-child(2),
-  #sln-salon-my-account td:last-child {
-    max-width: initial !important;
-    width: 100% !important;
-  }
-  #sln-salon-my-account td:before {
-    content: attr(data-th) ": ";
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #0073a4;
-    max-width: 8em;
-    display: inline-block;
-    position: absolute;
-    left: 8px;
-  }
-  #sln-salon-my-account .status ~ div {
-    display: inline-block;
-  }
-  #sln-salon-my-account * {
-    margin: 0;
-  }
-  #sln-salon-my-account > div {
-    padding: 0;
-  }
-  #sln-salon-my-account .table-bordered {
-    border: none;
-  }
+#sln-salon-my-account.mobile-version thead {
+  display: none;
+}
+#sln-salon-my-account.mobile-version .table tbody tr td {
+  width: 100%;
+  display: block;
+  text-align: left;
+  border: none;
+  padding-left: 8em;
+  position: relative;
+  min-height: 52px;
+}
+#sln-salon-my-account.mobile-version .table tbody tr {
+  border: solid 1px #ddd;
+}
+#sln-salon-my-account.mobile-version td:nth-child(2),
+#sln-salon-my-account.mobile-version td:last-child {
+  max-width: initial !important;
+  width: 100% !important;
+}
+#sln-salon-my-account.mobile-version td:before {
+  content: attr(data-th) ": ";
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0073a4;
+  max-width: 8em;
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+}
+#sln-salon-my-account.mobile-version .status ~ div {
+  display: inline-block;
+}
+#sln-salon-my-account.mobile-version * {
+  margin: 0;
+}
+#sln-salon-my-account.mobile-version > div {
+  padding: 0;
+}
+#sln-salon-my-account.mobile-version .table-bordered {
+  border: none;
 }
 .timepicker {
   overflow: hidden;
