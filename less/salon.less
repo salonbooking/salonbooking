@@ -189,7 +189,7 @@
 
 #sln-salon {
   background: @color-bg;
-  border: 1px solid #ddd;
+  border: 1px solid @bg-contrast-high;
   padding: 0;
   font-family: @font-family;
   p li, a div, input {
@@ -621,6 +621,7 @@
     white-space: nowrap;
   }
   #sln-salon-my-account {
+    padding: 1.6em 10px !important;
     .btn:hover {
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
@@ -628,7 +629,7 @@
     }
 
     .btn.btn-confirm:hover {
-      background-color: #d51e26;
+      background-color: @ca-red;
     }
 
     td {
@@ -636,15 +637,20 @@
     }
 
     .table-bordered {
-      border-width: 2px;
+      border-width: 1px;
+      border: none;
+      border-top: 1px solid @bg-contrast-high;
     }
 
     .table-striped > tbody > tr:nth-of-type(even) {
-      background-color: rgba(255, 255, 255, 1);
+      background-color: @bg-high;
     }
     .table thead tr {
-      border-bottom: 3px solid #0073a4;
-      color: #0073a4;
+      border-bottom: 2px solid @color-high;
+      color: @color-high;
+    }
+    .table {
+      margin-bottom: 4em;
     }
     .table thead tr th {
       text-align: center;
@@ -653,12 +659,12 @@
     }
 
     .table tbody tr td {
-      color: #555;
+      color: @text-medium;
       text-align: center;
     }
 
     .table tbody tr td strong {
-      color: #555;
+      color: @text-medium;
     }
 
     .table tbody tr td:nth-child(2),
@@ -668,6 +674,8 @@
 
     .table thead tr th {
       padding: 8px;
+      font-size: .7em;
+      border-bottom: 1px solid transparent;
     }
     .table tbody tr td {
       padding: 16px 8px;
@@ -678,7 +686,7 @@
     }
 
     .table tbody tr td:last-child {
-      width: 170px;
+      //width: 170px;
     }
 
     .table tbody tr td:nth-child(2),
@@ -756,7 +764,7 @@
 
     .rating {
       width:            auto;
-      background-color: #eee;
+      background-color: @bg-high;
       padding:          4px 8px 6px;
       border-radius:    3px;
       font-size:        16px;
@@ -775,7 +783,22 @@
       font-size: 11px;
       color: red;
     }
+    .sln-my-account-message {
+      display: block;
+      border: solid 1px @bg-contrast-high;
+      min-height: 52px;
+      line-height: 52px;
+      padding: 0 1em;
+      margin: 1em 0 0 0;
+      text-transform: uppercase;
+      font-size: .7em;
+      color: @color-high;
+    }
     &.mobile-version {
+
+    .sln-my-account-message {
+      margin: 1em 0 0 0;
+    }
       > div:first-child {margin-bottom: 2em;}
       thead {
         display: none;
@@ -795,12 +818,12 @@
         padding-left: 10em;
         position:     relative;
         min-height: 52px;
-        border-bottom: solid 1px #ddd;
+        border-bottom: solid 1px @bg-contrast-high;
         &:last-child {border-bottom: none;}
       }
 
       .table tbody tr {
-        border: solid 1px #ddd;
+        border: solid 1px @bg-contrast-high;
       }
 
       td:nth-child(2),
@@ -836,7 +859,6 @@
         border: none;
       }
     }
-
     @media screen and (max-width: 767px) {
       &:extend(.mobile-version all);
       h1 .icocal {display: none;}
@@ -878,7 +900,7 @@
   color: #7e7e7e;
 }
 .btn-dark-grey {
-  background-color: #555;
+  background-color: @text-medium;
   color: #fff;
 }
 .btn-red {
@@ -1605,7 +1627,7 @@ img {
 			&:before {
 				content: "\00d7";
 				border-radius: 50%;
-				background: #555;
+				background: @text-medium;
 				border: none;
 				width: 20px;
 				height: 20px;

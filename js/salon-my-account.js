@@ -138,7 +138,7 @@ function addClassIfNarrow(element, narrowClass) {
     if (element.length > 0) {
         jQuery(window).on("load resize",function(){
             var elementWidth = element.width();
-            if (elementWidth < 600){
+            if (elementWidth < 769){
                 element.addClass(narrowClass);
             } else {
                 element.removeClass(narrowClass);

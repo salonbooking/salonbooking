@@ -58,7 +58,7 @@
 				</tbody>
 			</table>
 		<?php else: ?>
-			<p><?php _e('No bookings', 'salon-booking-system'); ?></p>
+			<p class="sln-my-account-message"><strong><?php _e('No upcoming bookings', 'salon-booking-system'); ?></strong></p>
 		<?php endif; ?>
 	</div>
 
