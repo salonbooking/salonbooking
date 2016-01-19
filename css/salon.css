@@ -813,6 +813,10 @@
     margin: 0;
   }
 }
+.sln_datepicker #sln_date.form-control[readonly],
+.sln_timepicker #sln_time.form-control[readonly] {
+  cursor: pointer;
+}
 #sln-salon {
   background: #f8f8f8;
   border: 1px solid #dddddd;
