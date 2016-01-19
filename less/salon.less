@@ -25,7 +25,7 @@
     text-align: center;
     line-height: 40px;
     text-decoration: none;
-    color: #fff;
+    color: @color-white;
     cursor: pointer;
     font-style: normal;
     margin: 20px 0 10px 0;
@@ -120,7 +120,7 @@
   color: #33CC33;
   //background-color: #D6FDD6;
   &:hover {
-    color: #fff;
+    color: @color-white;
     background-color: #33CC33;
   }
 }
@@ -146,14 +146,14 @@
     @media @phone {
       background: #eee;
       font-size: 1.4em;
-      border: 2px solid #fff;
+      border: 2px solid @color-white;
       text-align: center;
       padding: 0;
     }
     @media @tablet-max-port {
       background: #eee;
       font-size: 1.4em;
-      border: 2px solid #fff;
+      border: 2px solid @color-white;
       text-align: center;
       padding: 0;
     }
@@ -200,7 +200,7 @@
     font-family: @font-family;
   }
   > div {
-    border: 1px solid #fff;
+    border: 1px solid @color-white;
     padding: 1.6em 2em;
     @media @phone {
       padding: 1em .8em;
@@ -371,7 +371,7 @@
     background-color: #eee;
     &:hover {
       background-color: @ca-red;
-      color: #fff;
+      color: @color-white;
     }
   }
   .form-actions {
@@ -437,7 +437,7 @@
       background: @ca-blue;
       background-image: none;
       font-size: 1em;
-      color: #fff;
+      color: @color-white;
       font-weight: bold;
       font-family: @font-family;
       text-shadow: none;
@@ -534,7 +534,7 @@
         clear: both;
         padding: 5px;
         &:last-child {
-          border-top: 1px solid #fff;
+          border-top: 1px solid @color-white;
           margin-top: 10px;
           padding-top: 10px;
         }
@@ -639,13 +639,11 @@
     td {
       font-size: 13px !important;
     }
-
     .table-bordered {
       border-width: 1px;
       border: none;
       border-top: 1px solid @bg-contrast-high;
     }
-
     .table-striped > tbody > tr:nth-of-type(even) {
       background-color: @bg-high;
     }
@@ -659,7 +657,7 @@
     .table thead tr th {
       text-align: center;
       text-transform: uppercase;
-      background-color: #fff;
+      background-color: @color-white;
     }
 
     .table tbody tr td {
@@ -703,17 +701,16 @@
     }
 
     .status {
-      margin-bottom: 20px;
       display: inline-block;
     }
 
     .success {
-      color: #9AC91C;
+      color: @cl_ok;
     }
 
     .warning,
     .info {
-      color: #ff5a00;
+      color: @cl_warning;
     }
     .danger {
       color: red;
@@ -758,12 +755,13 @@
       padding:          4px 8px 6px !important;
       font-variant:     small-caps  !important;
       text-transform:   lowercase   !important;
-      color:            #fff        !important;
+      color:            @color-white        !important;
       width:            auto        !important;
     }
 
     .sln-rate-service {
-      background-color: #F75B17     !important;
+      background-color: @cl_warning     !important;
+      margin-top: 1em;
     }
 
     .rating {
@@ -799,15 +797,15 @@
       color: @color-high;
     }
     &.mobile-version {
-
-    .sln-my-account-message {
-      margin: 1em 0 0 0;
-    }
+      .sln-my-account-message {
+        margin: 1em 0 0 0;
+      }
       > div:first-child {margin-bottom: 2em;}
       thead {
         display: none;
       }
-      .table {
+      .table-striped > tbody > tr:nth-of-type(even) {
+        background-color: @color-white;
       }
       .table tr {
         display: block;
@@ -825,17 +823,14 @@
         border-bottom: solid 1px @bg-contrast-high;
         &:last-child {border-bottom: none;}
       }
-
       .table tbody tr {
         border: solid 1px @bg-contrast-high;
       }
-
       td:nth-child(2),
       td:last-child {
         max-width:  initial !important;
         width:      100% !important;
       }
-
       td:before {
         content:        attr(data-th) ": ";
         font-weight:    bold;
@@ -846,19 +841,15 @@
         position:       absolute;
         left:           1em;
       }
-
+      .status {
+        margin-right: 80% !important;
+      }
       .status ~ div {
         display: inline-block;
       }
-
-      * {
-        margin: 0;
-      }
-
-      > div {
+       div {
         padding: 0;
       }
-
       .table-bordered {
         border: none;
       }
@@ -905,11 +896,11 @@
 }
 .btn-dark-grey {
   background-color: @text-medium;
-  color: #fff;
+  color: @color-white;
 }
 .btn-red {
   background-color: @ca-red;
-  color: #fff;
+  color: @color-white;
 }
 // MIXINS END
 #sln-salon {
@@ -956,7 +947,7 @@
     .form-control {
       width: 100%;
       padding: 0.8em;
-      background-color: #fff;
+      background-color: @color-white;
       border: none;
       font-family: @font-family;
       color: @color-high;
@@ -1031,7 +1022,7 @@
       //height: 3rem;
       position: absolute;
       border-radius: 50%;
-      background-color: #fff;
+      background-color: @color-white;
       text-align: center;
     }
     @media @phone {
@@ -1057,7 +1048,7 @@
 .ext-messages-dang {
   &:after {
       content: "\e090";
-      color: #fff;
+      color: @color-white;
       background-color: @ca-red;
       font-size: 1.4rem;
       padding: .3rem;
@@ -1128,7 +1119,7 @@
       .glyphicon {
         top: 1.2em;
         left: .5em;
-        color: #fff;
+        color: @color-white;
       }
       &:hover {
         .btn-dark-grey;
@@ -1462,7 +1453,7 @@ img {
           background-color: @ca-red;
           border-color: @ca-red;
           &:before, &:after {
-            background-color: #fff;
+            background-color: @color-white;
           }
           &:before{
             .transform(rotate(-45deg));
@@ -1470,8 +1461,8 @@ img {
             height: .5em;
             border-radius: 0;
             background-color: transparent !important;
-            border-left: .16em solid #fff;
-            border-bottom: .16em solid #fff;
+            border-left: .16em solid @color-white;
+            border-bottom: .16em solid @color-white;
             top: ~"calc(50% - .35em)";
             left: ~"calc(50% - .27em)";
           }
@@ -1623,7 +1614,7 @@ img {
 		    background:    none;
 		    border:        none;
 		    position: relative;
-		    color:         #fff;
+		    color:         @color-white;
 			opacity:       initial;
 			text-shadow:   none;
 			margin: 10px 20px 0 0;

@@ -645,7 +645,7 @@
   text-align: center;
   line-height: 40px;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
   font-style: normal;
   margin: 20px 0 10px 0;
@@ -743,7 +743,7 @@
 .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled):hover,
 .datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active):hover,
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active):hover {
-  color: #fff;
+  color: #ffffff;
   background-color: #33CC33;
 }
 .datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active),
@@ -765,7 +765,7 @@
   .datetimepicker.sln-datetimepicker table tr td span.minute {
     background: #eee;
     font-size: 1.4em;
-    border: 2px solid #fff;
+    border: 2px solid #ffffff;
     text-align: center;
     padding: 0;
   }
@@ -776,7 +776,7 @@
   .datetimepicker.sln-datetimepicker table tr td span.minute {
     background: #eee;
     font-size: 1.4em;
-    border: 2px solid #fff;
+    border: 2px solid #ffffff;
     text-align: center;
     padding: 0;
   }
@@ -829,7 +829,7 @@
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
 }
 #sln-salon > div {
-  border: 1px solid #fff;
+  border: 1px solid #ffffff;
   padding: 1.6em 2em;
 }
 @media only screen and (max-width: 767px) {
@@ -1018,7 +1018,7 @@
 }
 #sln-salon .tec-link:hover {
   background-color: #d51e26;
-  color: #fff;
+  color: #ffffff;
 }
 #sln-salon .form-actions {
   margin-top: 2em;
@@ -1090,7 +1090,7 @@
   background: #428bca;
   background-image: none;
   font-size: 1em;
-  color: #fff;
+  color: #ffffff;
   font-weight: bold;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   text-shadow: none;
@@ -1193,7 +1193,7 @@
   padding: 5px;
 }
 #sln-salon #salon-step-summary div.summ-row li:last-child {
-  border-top: 1px solid #fff;
+  border-top: 1px solid #ffffff;
   margin-top: 10px;
   padding-top: 10px;
 }
@@ -1324,7 +1324,7 @@
 #sln-salon-my-account .table thead tr th {
   text-align: center;
   text-transform: uppercase;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 #sln-salon-my-account .table tbody tr td {
   color: #555555;
@@ -1357,15 +1357,14 @@
   margin: 20px 0px;
 }
 #sln-salon-my-account .status {
-  margin-bottom: 20px;
   display: inline-block;
 }
 #sln-salon-my-account .success {
-  color: #9AC91C;
+  color: #5bc24c;
 }
 #sln-salon-my-account .warning,
 #sln-salon-my-account .info {
-  color: #ff5a00;
+  color: #f5b025;
 }
 #sln-salon-my-account .danger {
   color: red;
@@ -1405,11 +1404,12 @@
   padding: 4px 8px 6px !important;
   font-variant: small-caps !important;
   text-transform: lowercase   !important;
-  color: #fff        !important;
+  color: #ffffff !important;
   width: auto        !important;
 }
 #sln-salon-my-account .sln-rate-service {
-  background-color: #F75B17     !important;
+  background-color: #f5b025 !important;
+  margin-top: 1em;
 }
 #sln-salon-my-account .rating {
   width: auto;
@@ -1450,6 +1450,9 @@
 #sln-salon-my-account.mobile-version thead {
   display: none;
 }
+#sln-salon-my-account.mobile-version .table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #ffffff;
+}
 #sln-salon-my-account.mobile-version .table tr {
   display: block;
   margin: 1em 0 2em 0;
@@ -1486,13 +1489,13 @@
   position: absolute;
   left: 1em;
 }
+#sln-salon-my-account.mobile-version .status {
+  margin-right: 80% !important;
+}
 #sln-salon-my-account.mobile-version .status ~ div {
   display: inline-block;
 }
-#sln-salon-my-account.mobile-version * {
-  margin: 0;
-}
-#sln-salon-my-account.mobile-version > div {
+#sln-salon-my-account.mobile-version div {
   padding: 0;
 }
 #sln-salon-my-account.mobile-version .table-bordered {
@@ -1528,11 +1531,11 @@
 }
 .btn-dark-grey {
   background-color: #555555;
-  color: #fff;
+  color: #ffffff;
 }
 .btn-red {
   background-color: #d51e26;
-  color: #fff;
+  color: #ffffff;
 }
 #sln-salon {
   max-width: 900px;
@@ -1591,7 +1594,7 @@
 #sln-salon .sln_timepicker .form-control {
   width: 100%;
   padding: 0.8em;
-  background-color: #fff;
+  background-color: #ffffff;
   border: none;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   color: #076b9d;
@@ -1677,7 +1680,7 @@
   content: "\e086";
   position: absolute;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #ffffff;
   text-align: center;
 }
 @media only screen and (max-width: 767px) {
@@ -1701,7 +1704,7 @@
 }
 #sln-salon .ext-messages-dang:after {
   content: "\e090";
-  color: #fff;
+  color: #ffffff;
   background-color: #d51e26;
   font-size: 1.4rem;
   padding: .3rem;
@@ -1737,7 +1740,7 @@
   content: "\e086";
   position: absolute;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #ffffff;
   text-align: center;
 }
 @media only screen and (max-width: 767px) {
@@ -1764,7 +1767,7 @@
 }
 #sln-salon .alert.alert-danger:after {
   content: "\e090";
-  color: #fff;
+  color: #ffffff;
   background-color: #d51e26;
   font-size: 1.4rem;
   padding: .3rem;
@@ -1793,7 +1796,7 @@
   content: "\e086";
   position: absolute;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #ffffff;
   text-align: center;
 }
 @media only screen and (max-width: 767px) {
@@ -1834,7 +1837,7 @@
   content: "\e086";
   position: absolute;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #ffffff;
   text-align: center;
 }
 @media only screen and (max-width: 767px) {
@@ -1858,7 +1861,7 @@
 }
 #sln-salon #sln-notifications .alert:after {
   content: "\e090";
-  color: #fff;
+  color: #ffffff;
   background-color: #d51e26;
   font-size: 1.4rem;
   padding: .3rem;
@@ -1906,18 +1909,18 @@
 #sln-salon .btn.btn-default .glyphicon {
   top: 1.2em;
   left: .5em;
-  color: #fff;
+  color: #ffffff;
 }
 #sln-salon .btn.btn-default:hover {
   background-color: #555555;
-  color: #fff;
+  color: #ffffff;
 }
 #sln-salon .btn.btn-default:hover .glyphicon {
   opacity: 1;
 }
 #sln-salon .btn.btn-confirm {
   background-color: #d51e26;
-  color: #fff;
+  color: #ffffff;
 }
 #sln-salon .btn.btn-confirm .glyphicon {
   right: 1em;
@@ -2259,7 +2262,7 @@
 }
 #sln-salon .panel.panel-salon .panel-heading a:hover .icon.icon-plus:before,
 #sln-salon .panel.panel-salon .panel-heading a:hover .icon.icon-plus:after {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 #sln-salon .panel.panel-salon .panel-heading a:hover .icon.icon-plus:before {
   -webkit-transform: rotate(-45deg);
@@ -2271,8 +2274,8 @@
   height: .5em;
   border-radius: 0;
   background-color: transparent !important;
-  border-left: .16em solid #fff;
-  border-bottom: .16em solid #fff;
+  border-left: 0.16em solid #ffffff;
+  border-bottom: 0.16em solid #ffffff;
   top: calc(50% - .35em);
   left: calc(50% - .27em);
 }
@@ -2398,7 +2401,7 @@
   background: none;
   border: none;
   position: relative;
-  color: #fff;
+  color: #ffffff;
   opacity: initial;
   text-shadow: none;
   margin: 10px 20px 0 0;
