@@ -1419,17 +1419,29 @@
   font-size: 11px;
   color: red;
 }
+#sln-salon-my-account.mobile-version > div:first-child {
+  margin-bottom: 2em;
+}
 #sln-salon-my-account.mobile-version thead {
   display: none;
+}
+#sln-salon-my-account.mobile-version .table tr {
+  display: block;
+  margin: 1em 0 2em 0;
 }
 #sln-salon-my-account.mobile-version .table tbody tr td {
   width: 100%;
   display: block;
   text-align: left;
   border: none;
-  padding-left: 8em;
+  padding-right: 10px;
+  padding-left: 10em;
   position: relative;
   min-height: 52px;
+  border-bottom: solid 1px #ddd;
+}
+#sln-salon-my-account.mobile-version .table tbody tr td:last-child {
+  border-bottom: none;
 }
 #sln-salon-my-account.mobile-version .table tbody tr {
   border: solid 1px #ddd;
@@ -1444,10 +1456,10 @@
   font-weight: bold;
   text-transform: uppercase;
   color: #0073a4;
-  max-width: 8em;
+  max-width: 10em;
   display: inline-block;
   position: absolute;
-  left: 8px;
+  left: 1em;
 }
 #sln-salon-my-account.mobile-version .status ~ div {
   display: inline-block;
@@ -1460,6 +1472,11 @@
 }
 #sln-salon-my-account.mobile-version .table-bordered {
   border: none;
+}
+@media screen and (max-width: 767px) {
+  #sln-salon-my-account h1 .icocal {
+    display: none;
+  }
 }
 .timepicker {
   overflow: hidden;

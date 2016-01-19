@@ -776,18 +776,27 @@
       color: red;
     }
     &.mobile-version {
+      > div:first-child {margin-bottom: 2em;}
       thead {
         display: none;
       }
-
+      .table {
+      }
+      .table tr {
+        display: block;
+        margin: 1em 0 2em 0;
+      }
       .table tbody tr td {
         width:        100%;
         display:      block;
         text-align:   left;
         border:       none;
-        padding-left: 8em;
+        padding-right: 10px;
+        padding-left: 10em;
         position:     relative;
         min-height: 52px;
+        border-bottom: solid 1px #ddd;
+        &:last-child {border-bottom: none;}
       }
 
       .table tbody tr {
@@ -805,10 +814,10 @@
         font-weight:    bold;
         text-transform: uppercase;
         color:          #0073a4;
-        max-width:          8em;
+        max-width:          10em;
         display:        inline-block;
         position:       absolute;
-        left:           8px;
+        left:           1em;
       }
 
       .status ~ div {
@@ -828,8 +837,9 @@
       }
     }
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 767px) {
       &:extend(.mobile-version all);
+      h1 .icocal {display: none;}
     }
   }
 .timepicker {
