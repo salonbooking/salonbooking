@@ -37,6 +37,7 @@
 								</nobr>
 							</div>
 
+							<div>
 							<?php if ($item['status_code'] != SLN_Enum_BookingStatus::CANCELED
 							    && $data['cancellation_enabled']): ?>
 									<?php if ($item['timestamp']-current_time('timestamp') > $data['seconds_before_cancellation']): ?>
@@ -52,6 +53,7 @@
 									</button>
 									<?php endif ?>
 							<?php endif; ?>
+							</div>
 						</td>
 					</tr>
 				<?php endforeach; ?>
