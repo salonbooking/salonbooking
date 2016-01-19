@@ -208,6 +208,8 @@ class SLN_Admin_Settings {
         'confirmation',
         'thankyou',
         'pay',
+        'reservation_interval_enabled', // algolplus
+        'minutes_between_reservation',  // algolplus
         'availabilities',
         'holidays',                     // algolplus
         'availability_mode',
