@@ -159,9 +159,7 @@ class SLN_Helper_Availability
         $ret = array();
         foreach($times as $t){
             $t = new SLN_DateTime($startDate->format('Y-m-d').' '.$t);
-            SLN_Plugin::addLog(__CLASS__.'->'.__METHOD__."if({$t->format('YmdHi')} >= {$startDate->format('YmdHi')} && {$t->format('YmdHi')} <= {$endDate->format('YmdHi')})");
- 
-            if($t->format('YmdHi') >= $startDate->format('YmdHi') && $t->format('YmdHi') <= $endDate->format('YmdHi')){
+            if($t->format('YmdHi') >= $startDate->format('YmdHi') && $t->format('YmdHi') < $endDate->format('YmdHi')){
                SLN_Plugin::addLog(__CLASS__.'->'.__METHOD__.' '.$t->format('YmdHi'));
                $ret[] = $t;
             }
