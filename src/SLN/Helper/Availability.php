@@ -52,7 +52,6 @@ class SLN_Helper_Availability
     public function getTimes($date)
     {
 
-
         $ret     = array();
         $avItems = $this->getItems();
         $hb      = $this->getHoursBeforeHelper();
@@ -84,6 +83,7 @@ class SLN_Helper_Availability
     {
         if (empty($this->date) || $this->date->format('Ymd') != $date->format('Ymd')) {
             $obj = SLN_Enum_AvailabilityModeProvider::getService($this->settings->getAvailabilityMode(), $date);
+            SLN_Plugin::addLog(__CLASS__.sprintf(' - started %s', get_class($obj)));
             $this->dayBookings = $obj;
         }
 
@@ -118,12 +118,11 @@ class SLN_Helper_Availability
             $startDate = clone $this->date;
             $endDate = clone $startDate;
             $endDate->modify(sprintf('+%s minutes', SLN_Func::getMinutesFromDuration($duration)));
-            $times = $this->getTimes($startDate); 
-            $times = $this->filterTimes($times, $startDate, $endDate);
+            $times = $this->filterTimes(SLN_Func::getMinutesIntervals(), $startDate, $endDate);
             foreach($times as $time){
                 SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
-                SLN_Plugin::addLog(__CLASS__.sprintf(' - attendant %s by date(%s) not available',$attendant,$time->format('Ymd H:i')));
                 if ($attendant->isNotAvailableOnDate($time)) {
+                    SLN_Plugin::addLog(__CLASS__.sprintf(' - attendant %s by date(%s) not available',$attendant,$time->format('Ymd H:i')));
                     $this->date = $startDate;
                     return array(
                         __('This assistant is not available  ', 'salon-booking-system') . $attendant->getNotAvailableString()
@@ -131,8 +130,8 @@ class SLN_Helper_Availability
                 } 
                 $ids = $this->getDayBookings()->countAttendantsByHour($time->format('H'), $time->format('i'));
                 if (isset($ids[$attendant->getId()])) {
-                    $this->date = $startDate;
                     SLN_Plugin::addLog(__CLASS__.sprintf(' - attendant %s by date(%s) busy',$attendant,$time->format('Ymd H:i')));
+                    $this->date = $startDate;
                     return array(
                         __('This assistant is unavailable during this period', 'salon-booking-system') . $attendant->getNotAvailableString()
                     );
@@ -160,7 +159,10 @@ class SLN_Helper_Availability
         $ret = array();
         foreach($times as $t){
             $t = new SLN_DateTime($startDate->format('Y-m-d').' '.$t);
+            SLN_Plugin::addLog(__CLASS__.'->'.__METHOD__."if({$t->format('YmdHi')} >= {$startDate->format('YmdHi')} && {$t->format('YmdHi')} <= {$endDate->format('YmdHi')})");
+ 
             if($t->format('YmdHi') >= $startDate->format('YmdHi') && $t->format('YmdHi') <= $endDate->format('YmdHi')){
+               SLN_Plugin::addLog(__CLASS__.'->'.__METHOD__.' '.$t->format('YmdHi'));
                $ret[] = $t;
             }
         }
