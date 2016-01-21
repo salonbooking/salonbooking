@@ -21,7 +21,7 @@ class SLN_Admin_Tools
             __('Salon Tools', 'salon-booking-system'),
             __('Tools', 'salon-booking-system'),
             apply_filters('salonviews/settings/capability', 'manage_salon'),
-            'salon-tools',
+            self::PAGE,
             array($this, 'show')
         );
     }
