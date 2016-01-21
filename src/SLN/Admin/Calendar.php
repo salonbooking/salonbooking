@@ -11,17 +11,20 @@ class SLN_Admin_Calendar
     {
         $this->plugin   = $plugin;
         $this->settings = $plugin->getSettings();
-        add_action('admin_menu', array($this, 'admin_menu'));
+        add_action('admin_menu', array($this, 'admin_menu'), 0 ); //algol plus add first
     }
 
     public function admin_menu()
     {
+        add_menu_page(
+                __('Salon', 'salon-booking-system'), __('Salon', 'salon-booking-system'), 'manage_options', 'salon', array($this, 'show'), SLN_PLUGIN_URL . '/img/admin_icon.png'
+        );
         $this->settings_page = add_submenu_page(
             'salon',
             __('Salon Calendar', 'salon-booking-system'),
             __('Calendar', 'salon-booking-system'),
             apply_filters('salonviews/settings/capability', 'manage_salon'),
-            self::PAGE,
+            'salon',// algolplus SAME slug to replace submenu Salon with Calendar
             array($this, 'show')
         );
 
