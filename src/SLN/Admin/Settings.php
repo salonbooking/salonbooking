@@ -23,9 +23,6 @@ class SLN_Admin_Settings {
     }
 
     public function admin_menu() {
-        add_menu_page(
-                __('Salon', 'salon-booking-system'), __('Salon', 'salon-booking-system'), 'manage_options', 'salon', array($this, 'settings_page'), SLN_PLUGIN_URL . '/img/admin_icon.png'
-        );
         $this->settings_page = add_submenu_page(
                 'salon', __('Salon Settings', 'salon-booking-system'), __('Settings', 'salon-booking-system'), apply_filters('salonviews/settings/capability', 'manage_options'), self::PAGE, array($this, 'show')
         );
