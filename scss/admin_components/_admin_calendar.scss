@@ -1,0 +1,17 @@
+.sln-calendar-view {
+	background-color: #fff;
+	margin: 0;
+	@extend %zi-base;
+	.btn-group {margin-top: 0;}
+	#calendar {
+		@extend %zi-fondo;
+	}
+
+	#cal-day-box {
+		@extend %zi-grafica;
+	}
+	#cal-day-panel {
+		@extend %zi-highlights;
+	}
+// .sln-calendar-view // END
+}

@@ -97,7 +97,7 @@
 }
 
 .salon_page_salon-settings.wp-core-ui .button-primary {
-    color: #ffffff;
+    color: $cl_main--white;
     background: $ca-blue;
     border-color: $ca-blue;
 
@@ -130,6 +130,7 @@
 .salon_page_salon-settings.wp-core-ui .sln-tab .button-primary  {margin: 0 0 0 -1em;}
 
 // TABS
+.nav-tab-wrapper,
 h2.nav-tab-wrapper {
     margin-top: rem(40px);
     @include bp(desktop) {
@@ -411,7 +412,7 @@ body {
 }
 // GENERL RULES // END
 
-#sln-salon--admin {
+#sln-salon--admin, .sln-calendar--wrapper {
     @import 'admin_config';
     @import 'typo';
     @import 'admin_components/inputs';
@@ -426,7 +427,7 @@ body {
         @include bp(desktop) {padding: rem(40px) rem(40px) 0 rem(40px);}
     }
     .sln-box--main {
-        background-color: #fff;
+        background-color: $cl_main--white;
         @include transition(background-color 250ms);
         &.sln-box--info-visible {background-color: $cl_warning--light;}
     }
@@ -510,7 +511,7 @@ body {
     }
     // SELF OVERRIDES
     .settings-error {border-color: $cl_problem;}
-    h2.nav-tab-wrapper, h3.nav-tab-wrapper {
+    .nav-tab-wrapper, h2.nav-tab-wrapper, h3.nav-tab-wrapper {
         border-bottom: none;
         margin-bottom: rem(40px);
     }
@@ -576,106 +577,49 @@ body {
 .sln-calendar--wrapper {
     max-width: 95%;
     font-size: 12px;
-    .btn-group {margin: 3em 0  2em 0;}
-    button {
-        text-align: center;
-        border: none;
-        cursor: pointer;
-        transition: background-color 200ms, color 300ms;
-        text-decoration: none;
-        position: relative;
-        @extend %zi-navigazione;
-        background-color: $cl_main--light;
-        color: $cl_main;
-        //border: 1px solid #c5cfd4;
-        display: inline-block;
-        height: rem(44px);
-        font-size: 1.2em;
-        line-height: rem(44px);
-        padding: 0 rem(15px);
-        margin-bottom: 1em ;
-        &.active {
-            //border: 1px solid $cl_main--medium;
-            background-color: $cl_ok;
-            color: #fff;
-        }
-        &:hover {
-          border-color: $cl_main;
-          background-color: $cl_main;
-          color: #fff;
-        }
-        &.f-row {
-            width: 32%;
-        }
-        &.s-row {
-            width: 23.8%;
-        }
-        @include bp(tablet) {
-            width: auto;
-            min-width: 90px;
-            height: rem(44px);
-            font-size: 1.2em;
-            line-height: rem(44px);
-            &.s-row, &.f-row {width: auto;}
-        }
-    }
-    .sln-btn--addbooking {
-        text-align: center;
-        border: none;
-        cursor: pointer;
-        transition: background-color 200ms, color 300ms;
-        text-decoration: none;
-        position: relative;
-        @extend %zi-navigazione;
-        display: inline-block;
-        min-width: 140px;
-        height: rem(44px);
-        font-size: 1.2em;
-        line-height: rem(44px);
-        padding: 0 rem(15px);
-        background-color: $cl_main--emphasis;
-        color: white;
-        text-align: left;
-        position: relative;
-        padding-right: rem(54px);
-        margin-bottom: 1em ;
-        &:after {
-          content: "\f017";
-          display: inline-block;
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          text-align: center;
-          @extend %font-icon;
-          transition: all 200ms;
-          z-index: 200;
-          padding: 0 rem(12px);
-          font-size: rem(18px);
-          line-height: rem(45px);
-        }
-        &:hover {
-          background-color: $cl_main;
-        }
-        @include bp(tablet) {
-            height: rem(64px);
-            font-size: 1.4em;
-            line-height: rem(64px);
-            &:after {
-              font-size: rem(24px);
-              line-height: rem(64px);
-            }
-        }
-        @include bp(desktop) {
-            height: rem(44px);
-            font-size: 1.2em;
-            line-height: rem(44px);
-            &:after {
-              font-size: rem(18px);
-              line-height: rem(45px);
+    background-color: #ddd;
+    padding: rem(20px);
+    .btn-group {
+        //margin: 3em 0  2em 0;
+        .sln-btn {
+            position: relative;
+            button {
+                font-size: rem(18px) !important;
+                position: absolute;
+                top: -1px;
+                right: -1px;
+                bottom: -1px;
+                left: -1px;
             }
         }
     }
+    //button {
+    //    &.active {
+    //        //border: 1px solid $cl_main--medium;
+    //        background-color: $cl_ok;
+    //        color: $cl_main--white;
+    //        &:hover {background-color: $cl_main;}
+    //    }
+    //    &:hover {
+    //      //border-color: $cl_main;
+    //      //background-color: $cl_main;
+    //      color: $cl_main--white;
+    //    }
+    //    &.f-row {
+    //        width: 32%;
+    //    }
+    //    &.s-row {
+    //        width: 23.8%;
+    //    }
+    //    @include bp(tablet) {
+    //        width: auto;
+    //        min-width: 90px;
+    //        height: rem(44px);
+    //        font-size: 1.2em;
+    //        line-height: rem(44px);
+    //        &.s-row, &.f-row {width: auto;}
+    //    }
+    //}
     span[data-cal-date] {
         @include bp(phone) {
             width: 100%;
@@ -697,6 +641,7 @@ body {
             border-radius: 0;
         }
     }
+    @import 'admin_components/admin_calendar';
 }
 // CALENDAR // EN
 // /// SETTINGS END
@@ -719,7 +664,7 @@ $input-fsize: 16px;
         border: 1px solid #ddd;
         -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
         box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
-        background-color: #fff;
+        background-color: $cl_main--white;
         color: #32373c;
         outline: 0;
         -webkit-transition: .05s border-color ease-in-out;
@@ -765,7 +710,7 @@ $input-fsize: 16px;
                 }
                 &:hover {
                 background-color: $ca-red;
-                color: #fff;
+                color: $cl_main--white;
                 }
             }
         }
@@ -790,7 +735,7 @@ $input-fsize: 16px;
         border: 1px solid #ddd;
         -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
         box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
-        background-color: #fff;
+        background-color: $cl_main--white;
         color: #32373c;
         outline: 0;
         -webkit-transition: .05s border-color ease-in-out;
@@ -832,7 +777,7 @@ $input-fsize: 16px;
                 }
                 &:hover {
                 background-color: $ca-red;
-                color: #fff;
+                color: $cl_main--white;
                 }
             }
         }
@@ -873,3 +818,7 @@ $input-fsize: 16px;
 }
 // /// SELECT2 OVERRIDES END
 
+// TEMP
+#wpwrap {
+    @extend %zi-zero;
+}

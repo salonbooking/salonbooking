@@ -23,30 +23,52 @@ jQuery(function($){
 <div class="container-fluid sln-calendar--wrapper">
     <div class="row">
         <div class="col-md-11">
-<div class="page-header pull-left">
-<h3></h3>
-</div>
-        <div class="form-inline pull-right">
-            <div class="btn-group">
-    <button class="f-row" data-calendar-nav="prev">&laquo; <?php _e('Previous') ?></button>
-    <button class="f-row" data-calendar-nav="today"><?php _e('Today')?></button>
-    <button class="f-row f-row--end" data-calendar-nav="next"><?php _e('Next') ?> &raquo;</button>
-<?php /*
-</div>
-<div class="btn-group">
-*/ ?>
-    <button class="s-row" data-calendar-view="year"><?php _e('Year')?></button>
-    <button class="s-row active" data-calendar-view="month"><?php _e('Month')?></button>
-    <button class="s-row" data-calendar-view="week"><?php _e('Week')?></button>
-    <button class="s-row s-row--end" data-calendar-view="day"><?php _e('Day')?></button>
-        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn--addbooking" id="calendar-add-new">Add new booking</a>
+            <div class="page-header pull-left">
+                <h3 class="current-view--title"></h3>
             </div>
         </div>
+    </div>
+
+
+<div class="row">
+    <div class="col-md-12 btn-group nav-tab-wrapper">
+    <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="year">
+    <button class="" data-calendar-view="year"><?php _e('Year')?></button>
+    </div>
+    <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="month">
+    <button class=" active" data-calendar-view="month"><?php _e('Month')?></button>
+    </div>
+    <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="week">
+    <button class="" data-calendar-view="week"><?php _e('Week')?></button>
+    </div>
+    <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="day">
+    <button class="" data-calendar-view="day"><?php _e('Day')?></button>
+    </div>
+    <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="pull-right sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--booking" id="calendar-add-new">Add new booking</a>
+            </div>
+</div>
+
+<div class="row sln-calendar-view sln-box">
+<h2 class="col-md-6 sln-box-title current-view--title"></h2>
+    <div class="col-md-6 form-inline">
+            <div class="btn-group pull-right">
+    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-btn--icon--left sln-icon--arrow--left" data-calendar-view="day">
+        <button class="f-row" data-calendar-nav="prev"><?php _e('Previous') ?></button>
+    </div>
+    <div class="sln-btn sln-btn--light sln-btn--medium" data-calendar-view="day">
+        <button class="f-row" data-calendar-nav="today"><?php _e('Today')?></button>
+    </div>
+    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-icon--arrow--right" data-calendar-view="day">
+        <button class="f-row f-row--end" data-calendar-nav="next"><?php _e('Next') ?></button>
+    </div>
+    </div>
+    </div>
+
         <div class="clearfix"></div>
         <div id="calendar"></div>
-    </div>
-    </div>
-<div class="clearfix"></div>
+    <div class="clearfix"></div>
+<!-- row sln-calendar-wrapper // END -->
+</div>
 
 <div class="row">
 <div class="col-md-11">

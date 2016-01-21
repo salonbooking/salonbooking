@@ -2,11 +2,11 @@
   text-align: center;
   border: none;
   cursor: pointer;
-  transition: background-color 200ms, color 300ms;
+  @include transition(background-color 200ms, color 300ms);
   text-decoration: none;
   position: relative;
   @extend %zi-navigazione;
-  input {
+  input, button {
     width: 100%;
     position: absolute;
     top: 0;
@@ -18,6 +18,7 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    @include transition(background-color 200ms, color 300ms);
   }
   &:hover, &:focus {
     text-decoration: none;
@@ -25,7 +26,7 @@
 }
 // SIZES
 .sln-btn--fullwidth {width: 100%;}
-.sln-btn--big, .sln-btn--big input {
+.sln-btn--big, .sln-btn--big input, .sln-btn--big button {
   display: inline-block;
   padding: 0 rem(20px);
   height:  rem(56px);
@@ -35,7 +36,7 @@
   @include bp(phone) {font-size: rem(18px);}
   &.sln-btn--block {display: block;}
 }
-.sln-btn--medium, .sln-btn--medium input {
+.sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button {
   display: inline-block;
   min-width: 90px;
   height: rem(44px);
@@ -97,12 +98,12 @@
 // COLORS
 .sln-btn--main {
   background-color: $cl_main--emphasis;
-  color: white;
-  input {color: white;}
+  color: $cl_main--white;
+  input, button {color: $cl_main--white;}
   &:hover, &:focus {
     background-color: $cl_main;
-    color: white;
-    input {color: white;}
+    color: $cl_main--white;
+    input, button {color: $cl_main--white;}
   }
   &.sln-btn--small.sln-btn--icon {
     background-color: transparent;
@@ -113,68 +114,88 @@
     }
   }
 }
-.sln-btn--warning {
-  background-color: $cl_warning;
-  color: white;
-  input {color: white;}
+.sln-btn--light {
+  background-color: $cl_main--light;
+  color: $cl_main;
+  input, button {color: $cl_main;}
   &:hover, &:focus {
     background-color: $cl_main;
-    color: white;
-    input {color: white;}
+    color: $cl_main--white;
+    input, button {color: $cl_main--white;}
+  }
+  &.sln-btn--small.sln-btn--icon {
+    background-color: transparent;
+    &:after {color: $cl_main--light;}
+    &:hover {
+      background-color: transparent;
+      &:after {color: $cl_main;}
+    }
+  }
+}
+.sln-btn--warning {
+  background-color: $cl_warning;
+  color: $cl_main--white;
+  input, button {color: $cl_main--white;}
+  &:hover, &:focus {
+    background-color: $cl_main;
+    color: $cl_main--white;
+    input, button {color: $cl_main--white;}
   }
 }
 .sln-btn--problem {
   background-color: $cl_problem--light;
-  color: white;
-  input {color: white;}
+  color: $cl_main--white;
+  input, button {color: $cl_main--white;}
   &:hover, &:focus {
     background-color: $cl_main;
-    color: white;
-    input {color: white;}
+    color: $cl_main--white;
+    input, button {color: $cl_main--white;}
   }
 }
 .sln-btn--ok {
   background-color: $cl_ok;
-  color: white;
-  input {color: white;}
+  color: $cl_main--white;
+  input, button {color: $cl_main--white;}
   &:hover, &:focus {
     background-color: $cl_main;
-    color: white;
-    input {color: white;}
+    color: $cl_main--white;
+    input, button {color: $cl_main--white;}
   }
 }
 .sln-btn--borderonly {
   background-color: transparent;
   color: $cl_main;
-  input {color: $cl_main;}
+  input, button {color: $cl_main;}
   border: 1px solid #c5cfd4;
   &.sln-btn--icon:after {color: $cl_main;}
   &.sln-btn--active {border: 1px solid $cl_main;}
   &:hover, &:focus {
     border-color: $cl_main;
     background-color: $cl_main;
-    color: #fff;
-    &.sln-btn--icon:after {color: #fff;}
+    color: $cl_main--white;
+    input, button {color: $cl_main--white;}
+    &.sln-btn--icon:after {color: $cl_main--white;}
   }
 }
 .sln-btn--nobkg {
   background-color: transparent;
   color: $cl_main;
-  input {color: $cl_main;}
+  input, button {color: $cl_main;}
   &.sln-btn--icon:after {color: $cl_main;}
   &.sln-btn--active {border: 1px solid $cl_main;}
   &:hover, &:focus {
     border-color: $cl_main;
     background-color: $cl_main;
-    color: #fff;
-    &.sln-btn--icon:after {color: #fff;}
+    color: $cl_main--white;
+    input, button {color: $cl_main--white;}
+    &.sln-btn--icon:after {color: $cl_main--white;}
   }
 }
 
 .sln-btn--icon {
     text-align: left;
     position: relative;
-    input {text-align: left;}
+    input, button {text-align: left;}
     &:after {
       content: "\f111";
       display: inline-block;
@@ -184,7 +205,7 @@
       bottom: 0;
       text-align: center;
       @extend %font-icon;
-      transition: all 200ms;
+      @include transition(background-color 200ms, color 300ms);
       z-index: 200;
     }
     &.sln-btn--big {
@@ -200,6 +221,32 @@
         padding: 0 rem(12px);
         font-size: rem(18px);
         line-height: rem(40px);
+      }
+    }
+    &.sln-btn--icon--left {
+      button {text-align: right;}
+      &:after {
+        top: 0;
+        right: initial;
+        bottom: 0;
+        left: 0;
+      }
+      &.sln-btn--big {
+        padding-right: inherit;
+        padding-left: rem(64px);
+        &:after {
+          padding: 0 rem(12px);
+          line-height: rem(54px);
+        }
+      }
+      &.sln-btn--medium {
+        padding-right: inherit;
+        padding-left: rem(54px);
+        &:after {
+          padding: 0 rem(12px);
+          font-size: rem(18px);
+          line-height: rem(40px);
+        }
       }
     }
 }
@@ -265,6 +312,18 @@
     font-size: rem(28px);
   }
 }
+.sln-icon--arrow--left {
+  &:after {
+    content: "\f053";
+    line-height: rem(44px) !important;
+  }
+}
+.sln-icon--arrow--right {
+  &:after {
+    content: "\f054";
+    line-height: rem(44px) !important;
+  }
+}
 
 // BTN UTILITIES
 .sln-btn--disabled {
@@ -274,6 +333,7 @@
 }
 // BTN UTILITIES // END
 
+.nav-tab-wrapper .nav-tab,
 h2.nav-tab-wrapper .nav-tab {
     @extend .sln-btn;
     @extend .sln-btn--borderonly;
@@ -289,8 +349,12 @@ h2.nav-tab-wrapper .nav-tab {
       border-right: inherit;
     }
 }
+.nav-tab-wrapper .nav-tab.nav-tab-active,
 h2.nav-tab-wrapper .nav-tab.nav-tab-active {
     @extend .sln-btn--active;
+}
+.btn-group.nav-tab-wrapper .active {
+    @extend .sln-btn--ok;
 }
 
 .sln-admin-nav {
