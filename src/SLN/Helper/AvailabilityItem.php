@@ -8,17 +8,19 @@ class SLN_Helper_AvailabilityItem
     function __construct($data)
     {
         $this->data = $data;
-        if ($data['from'][0] != '00:00') {
-            $this->times[] = array(
-                strtotime($data['from'][0]),
-                strtotime($data['to'][0]),
-            );
-        }
-        if ($data['from'][1] != '00:00') {
-            $this->times[] = array(
-                strtotime($data['from'][1]),
-                strtotime($data['to'][1]),
-            );
+        if($data){
+            if ($data['from'][0] != '00:00') {
+                $this->times[] = array(
+                    strtotime($data['from'][0]),
+                    strtotime($data['to'][0]),
+                );
+            }
+            if ($data['from'][1] != '00:00') {
+                $this->times[] = array(
+                    strtotime($data['from'][1]),
+                    strtotime($data['to'][1]),
+                );
+            }
         }
         if (empty($this->times)) {
             $this->times[] = array(strtotime('00:00'), strtotime('23:59'));
