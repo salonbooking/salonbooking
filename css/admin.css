@@ -4785,12 +4785,41 @@ body {
     .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-booking-add,
     .sln-calendar--wrapper .btn-group .sln-booking-add {
       display: none; } }
-  @media only screen and (max-width: 767px) {
-    .salon_page_salon-calendar .sln-calendar--wrapper span[data-cal-date],
-    .sln-calendar--wrapper span[data-cal-date] {
-      width: 100%;
-      text-align: center;
-      margin-right: 0; } }
+  .salon_page_salon-calendar .sln-calendar--wrapper span[data-cal-date],
+  .sln-calendar--wrapper span[data-cal-date] {
+    background-color: rgba(199, 223, 243, 0.5);
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+    margin-top: 0;
+    line-height: 1.66667rem; }
+    @media only screen and (min-width: 768px) {
+      .salon_page_salon-calendar .sln-calendar--wrapper span[data-cal-date],
+      .sln-calendar--wrapper span[data-cal-date] {
+        display: block;
+        width: 1.83333rem;
+        height: 1.83333rem;
+        line-height: 1.66667rem;
+        text-align: center;
+        margin-top: 0.41667rem;
+        margin-right: 0.41667rem;
+        border: 2px solid #c7dff3;
+        background-color: transparent;
+        border-radius: 50%;
+        border-radius: 9999px;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%; }
+        .salon_page_salon-calendar .sln-calendar--wrapper span[data-cal-date]:hover,
+        .sln-calendar--wrapper span[data-cal-date]:hover {
+          background-color: #c7dff3; } }
+  @media only screen and (min-width: 768px) {
+    .salon_page_salon-calendar .sln-calendar--wrapper .cal-day-today span[data-cal-date],
+    .sln-calendar--wrapper .cal-day-today span[data-cal-date] {
+      width: 2.66667rem;
+      height: 2.66667rem;
+      line-height: 2.5rem; } }
   .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box [class*="span"],
   .sln-calendar--wrapper .cal-year-box [class*="span"] {
     border-bottom: 1px solid #e1e1e1; }
@@ -4798,6 +4827,14 @@ body {
       .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box [class*="span"],
       .sln-calendar--wrapper .cal-year-box [class*="span"] {
         min-height: 100px; } }
+  .salon_page_salon-calendar .sln-calendar--wrapper #cal-week-box,
+  .sln-calendar--wrapper #cal-week-box {
+    background-color: #c7dff3;
+    border: none; }
+    .salon_page_salon-calendar .sln-calendar--wrapper #cal-week-box:hover,
+    .sln-calendar--wrapper #cal-week-box:hover {
+      background-color: #003553;
+      color: #fff; }
   @media only screen and (max-width: 767px) {
     .salon_page_salon-calendar .sln-calendar--wrapper .badge,
     .sln-calendar--wrapper .badge {
@@ -4820,20 +4857,21 @@ body {
   .salon_page_salon-calendar .sln-calendar--wrapper .sln-box-title.current-view--title,
   .sln-calendar--wrapper .sln-box-title.current-view--title {
     font-size: 1rem; }
+  .salon_page_salon-calendar .sln-calendar--wrapper .sln-booking-add,
+  .sln-calendar--wrapper .sln-booking-add {
+    margin: 1.66667rem 0; }
   @media only screen and (min-width: 768px) {
     .salon_page_salon-calendar .sln-calendar--wrapper,
     .sln-calendar--wrapper {
       padding: 0.83333rem; }
-      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav,
-      .sln-calendar--wrapper .sln-calendar-viewnav {
+      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav, .salon_page_salon-calendar .sln-calendar--wrapper .sln-booking-add,
+      .sln-calendar--wrapper .sln-calendar-viewnav,
+      .sln-calendar--wrapper .sln-booking-add {
         float: right; } }
   @media only screen and (max-width: 767px) {
     .salon_page_salon-calendar .sln-calendar--wrapper,
     .sln-calendar--wrapper {
-      margin-top: 0.83333rem; }
-      .salon_page_salon-calendar .sln-calendar--wrapper .sln-booking-add,
-      .sln-calendar--wrapper .sln-booking-add {
-        margin: 1.66667rem 0; } }
+      margin-top: 0.83333rem; } }
   .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view,
   .sln-calendar--wrapper .sln-calendar-view {
     background-color: #fff;

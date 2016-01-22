@@ -606,16 +606,45 @@ body {
         }
     }
     span[data-cal-date] {
-        @include bp(phone) {
-            width: 100%;
+        background-color: alpha-tones($cl_main--light, .5);
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+        margin-top: 0;
+        line-height: rem(40px);
+        @include bp(tablet) {
+            display: block;
+            width: rem(44px);
+            height: rem(44px);
+            line-height: rem(40px);
             text-align: center;
-            margin-right: 0;
+            margin-top: rem(10px);
+            margin-right: rem(10px);
+            border: 2px solid $cl_main--light;
+            background-color: transparent;
+            @include b-radius(50%);
+            &:hover {background-color: $cl_main--light;}
+        }
+    }
+    .cal-day-today span[data-cal-date] {
+        @include bp(tablet) {
+            width: rem(64px);
+            height: rem(64px);
+            line-height: rem(60px);
         }
     }
     .cal-year-box [class*="span"] {
         border-bottom: 1px solid #e1e1e1;
         @include bp(phone) {
             min-height: 100px;
+        }
+    }
+    #cal-week-box {
+        background-color: $cl_main--light;
+        border: none;
+        &:hover {
+            background-color: $cl_main;
+            color: $cl_main--white;
         }
     }
     .badge {
@@ -635,13 +664,13 @@ body {
     .sln-box-title.current-view--title {
         font-size: rem(24px);
     }
+    .sln-booking-add {margin: rem(40px) 0;}
     @include bp(tablet) {
         padding: rem(20px);
-        .sln-calendar-viewnav {float: right;}
+        .sln-calendar-viewnav, .sln-booking-add {float: right;}
     }
     @include bp(phone) {
         margin-top: rem(20px);
-        .sln-booking-add {margin: rem(40px) 0;}
     }
     @import 'admin_components/admin_calendar';
 }
