@@ -179,7 +179,9 @@ $icon-font-svg-id:        "glyphicons_halflingsregular";
   -moz-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23);
 }
-
+%zi-zero {
+  z-index: 0;
+}
 %zi-base {
   z-index: 100;
 }

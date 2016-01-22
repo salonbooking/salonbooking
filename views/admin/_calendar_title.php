@@ -1,13 +1,12 @@
-<?php echo $booking->getDisplayName()?>
- <?php echo __('on ','salon-booking-system'). $booking->getStartsAt()->format('d/m/Y h:i') ?>
+<strong><?php echo $booking->getDisplayName()?></strong>
+ <?php echo ' ' . $booking->getStartsAt()->format('h:i') . '&#8594;' . $booking->getEndsAt()->format('h:i') . ' - ' . implode(', ',$booking->getServices()) ?>
  <?php if($attendant = $booking->getAttendant()) :  ?>
-  <?php 
-
-echo _e('assisted by ','salon-booking-system');
+  <?php
+  echo ' - ';
+  echo _e('assisted by ','salon-booking-system');
   echo $attendant->getName() 
 
   ?>
    <?php endif ?>
- (<?php echo implode(', ',$booking->getServices()) ?>)
 
 
