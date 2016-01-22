@@ -6,7 +6,7 @@ class SLN_Helper_AvailabilityItems
 
     public function __construct($availabilities)
     {
-        if($availabilies){
+        if($availabilities){
             foreach ($availabilities as $item) {
                 $this->items[] = new SLN_Helper_AvailabilityItem($item);
             }
