@@ -19,7 +19,7 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl){
 			});
 		},
 		onAfterViewLoad: function(view) {
-			$('.page-header h3').text(this.getTitle());
+			$('.current-view--title').text(this.getTitle());
 			$('.btn-group button').removeClass('active');
 			$('button[data-calendar-view="' + view + '"]').addClass('active');
 		},
