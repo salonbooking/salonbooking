@@ -647,6 +647,11 @@ body {
             color: $cl_main--white;
         }
     }
+    #cal-slide-tick {
+        width: rem(44px);
+        height: rem(44px);
+        background-color: $cl_main--light;
+    }
     .badge {
         @include bp(phone) {
             display: block;
