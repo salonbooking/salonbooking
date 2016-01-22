@@ -32,19 +32,20 @@ jQuery(function($){
 
 <div class="row">
     <div class="col-md-12 btn-group nav-tab-wrapper">
-    <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new">Add new booking</a>
-    <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="year">
-    <button class="" data-calendar-view="year"><?php _e('Year')?></button>
+        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new">Add new booking</a>
+        <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="day">
+        <button class="" data-calendar-view="day"><?php _e('Day')?></button>
+        </div>
+        <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="week">
+        <button class="" data-calendar-view="week"><?php _e('Week')?></button>
+        </div>
+        <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="month">
+        <button class=" active" data-calendar-view="month"><?php _e('Month')?></button>
+        </div>
+        <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="year">
+        <button class="" data-calendar-view="year"><?php _e('Year')?></button>
+        </div>
     </div>
-    <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="month">
-    <button class=" active" data-calendar-view="month"><?php _e('Month')?></button>
-    </div>
-    <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="week">
-    <button class="" data-calendar-view="week"><?php _e('Week')?></button>
-    </div>
-    <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="day">
-    <button class="" data-calendar-view="day"><?php _e('Day')?></button>
-    </div></div>
 </div>
 
 <div class="row sln-calendar-view sln-box">
