@@ -4337,10 +4337,10 @@ body {
     font-size: 1.16667rem; }
   #sln-salon--admin .sln-icon--arrow--left:after, .sln-calendar--wrapper .sln-icon--arrow--left:after {
     content: "\f053";
-    line-height: 1.83333rem !important; }
+    line-height: 1.91667rem !important; }
   #sln-salon--admin .sln-icon--arrow--right:after, .sln-calendar--wrapper .sln-icon--arrow--right:after {
     content: "\f054";
-    line-height: 1.83333rem !important; }
+    line-height: 1.91667rem !important; }
   #sln-salon--admin .sln-btn--disabled, .sln-calendar--wrapper .sln-btn--disabled {
     pointer-events: none;
     cursor: default;
@@ -4731,8 +4731,14 @@ body {
 .sln-calendar--wrapper {
   max-width: 95%;
   font-size: 12px;
-  background-color: #ddd;
-  padding: 0.83333rem; }
+  background-color: rgba(199, 223, 243, 0.25); }
+  @media only screen and (max-width: 767px) {
+    .salon_page_salon-calendar .sln-calendar--wrapper .nav-tab-wrapper,
+    .sln-calendar--wrapper .nav-tab-wrapper {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0;
+      text-align: center; } }
   .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-btn, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln-salon--admin .nav-tab-wrapper .nav-tab, #sln-salon--admin .nav-tab-wrapper .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .nav-tab-wrapper .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .nav-tab-wrapper .btn-group .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .btn-group a, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-admin-nav a, .salon_page_salon-calendar .sln-calendar--wrapper .sln-admin-nav .btn-group a, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln-salon--admin p.submit, #sln-salon--admin .salon_page_salon-calendar .sln-calendar--wrapper .btn-group p.submit, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group p.submit,
   .sln-calendar--wrapper .btn-group .sln-btn,
   .sln-calendar--wrapper .btn-group #sln-salon--admin .nav-tab-wrapper .nav-tab, #sln-salon--admin .nav-tab-wrapper
@@ -4756,6 +4762,29 @@ body {
       right: -1px;
       bottom: -1px;
       left: -1px; }
+  .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-booking-add,
+  .sln-calendar--wrapper .btn-group .sln-booking-add {
+    float: right; }
+  @media only screen and (max-width: 767px) {
+    .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-btn, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln-salon--admin .nav-tab-wrapper .nav-tab, #sln-salon--admin .nav-tab-wrapper .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .nav-tab-wrapper .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .nav-tab-wrapper .btn-group .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .btn-group a, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-admin-nav a, .salon_page_salon-calendar .sln-calendar--wrapper .sln-admin-nav .btn-group a, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln-salon--admin p.submit, #sln-salon--admin .salon_page_salon-calendar .sln-calendar--wrapper .btn-group p.submit, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group p.submit, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-btn button, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln-salon--admin .nav-tab-wrapper .nav-tab button, #sln-salon--admin .nav-tab-wrapper .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .nav-tab button, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .nav-tab-wrapper .nav-tab button, .salon_page_salon-calendar .sln-calendar--wrapper .nav-tab-wrapper .btn-group .nav-tab button, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln-salon--admin .sln-admin-nav a button, #sln-salon--admin .sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .btn-group a button, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-admin-nav a button, .salon_page_salon-calendar .sln-calendar--wrapper .sln-admin-nav .btn-group a button, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln-salon--admin p.submit button, #sln-salon--admin .salon_page_salon-calendar .sln-calendar--wrapper .btn-group p.submit button, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group p.submit button,
+    .sln-calendar--wrapper .btn-group .sln-btn,
+    .sln-calendar--wrapper .btn-group #sln-salon--admin .nav-tab-wrapper .nav-tab, #sln-salon--admin .nav-tab-wrapper
+    .sln-calendar--wrapper .btn-group .nav-tab, .sln-calendar--wrapper .btn-group .nav-tab-wrapper .nav-tab, .sln-calendar--wrapper .nav-tab-wrapper .btn-group .nav-tab,
+    .sln-calendar--wrapper .btn-group #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-admin-nav
+    .sln-calendar--wrapper .btn-group a, .sln-calendar--wrapper .btn-group .sln-admin-nav a, .sln-calendar--wrapper .sln-admin-nav .btn-group a,
+    .sln-calendar--wrapper .btn-group #sln-salon--admin p.submit, #sln-salon--admin
+    .sln-calendar--wrapper .btn-group p.submit, .sln-calendar--wrapper .btn-group p.submit,
+    .sln-calendar--wrapper .btn-group .sln-btn button,
+    .sln-calendar--wrapper .btn-group #sln-salon--admin .nav-tab-wrapper .nav-tab button, #sln-salon--admin .nav-tab-wrapper
+    .sln-calendar--wrapper .btn-group .nav-tab button, .sln-calendar--wrapper .btn-group .nav-tab-wrapper .nav-tab button, .sln-calendar--wrapper .nav-tab-wrapper .btn-group .nav-tab button,
+    .sln-calendar--wrapper .btn-group #sln-salon--admin .sln-admin-nav a button, #sln-salon--admin .sln-admin-nav
+    .sln-calendar--wrapper .btn-group a button, .sln-calendar--wrapper .btn-group .sln-admin-nav a button, .sln-calendar--wrapper .sln-admin-nav .btn-group a button,
+    .sln-calendar--wrapper .btn-group #sln-salon--admin p.submit button, #sln-salon--admin
+    .sln-calendar--wrapper .btn-group p.submit button, .sln-calendar--wrapper .btn-group p.submit button {
+      min-width: 80px; }
+    .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-booking-add,
+    .sln-calendar--wrapper .btn-group .sln-booking-add {
+      display: none; } }
   @media only screen and (max-width: 767px) {
     .salon_page_salon-calendar .sln-calendar--wrapper span[data-cal-date],
     .sln-calendar--wrapper span[data-cal-date] {
@@ -4776,6 +4805,35 @@ body {
       width: 100%;
       margin-top: 20px;
       border-radius: 0; } }
+  .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav,
+  .sln-calendar--wrapper .sln-calendar-viewnav {
+    margin: 0 -0.83333rem 0.83333rem -0.83333rem; }
+    .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .sln-btn, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin .nav-tab-wrapper .nav-tab, #sln-salon--admin .nav-tab-wrapper .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .nav-tab-wrapper .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .nav-tab-wrapper .sln-calendar-viewnav .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav a, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .sln-admin-nav a, .salon_page_salon-calendar .sln-calendar--wrapper .sln-admin-nav .sln-calendar-viewnav a, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin p.submit, #sln-salon--admin .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav p.submit, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav p.submit,
+    .sln-calendar--wrapper .sln-calendar-viewnav .sln-btn,
+    .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin .nav-tab-wrapper .nav-tab, #sln-salon--admin .nav-tab-wrapper
+    .sln-calendar--wrapper .sln-calendar-viewnav .nav-tab, .sln-calendar--wrapper .sln-calendar-viewnav .nav-tab-wrapper .nav-tab, .sln-calendar--wrapper .nav-tab-wrapper .sln-calendar-viewnav .nav-tab,
+    .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin .sln-admin-nav a, #sln-salon--admin .sln-admin-nav
+    .sln-calendar--wrapper .sln-calendar-viewnav a, .sln-calendar--wrapper .sln-calendar-viewnav .sln-admin-nav a, .sln-calendar--wrapper .sln-admin-nav .sln-calendar-viewnav a,
+    .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin p.submit, #sln-salon--admin
+    .sln-calendar--wrapper .sln-calendar-viewnav p.submit, .sln-calendar--wrapper .sln-calendar-viewnav p.submit {
+      min-width: 90px; }
+  .salon_page_salon-calendar .sln-calendar--wrapper .sln-box-title.current-view--title,
+  .sln-calendar--wrapper .sln-box-title.current-view--title {
+    font-size: 1rem; }
+  @media only screen and (min-width: 768px) {
+    .salon_page_salon-calendar .sln-calendar--wrapper,
+    .sln-calendar--wrapper {
+      padding: 0.83333rem; }
+      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav,
+      .sln-calendar--wrapper .sln-calendar-viewnav {
+        float: right; } }
+  @media only screen and (max-width: 767px) {
+    .salon_page_salon-calendar .sln-calendar--wrapper,
+    .sln-calendar--wrapper {
+      margin-top: 0.83333rem; }
+      .salon_page_salon-calendar .sln-calendar--wrapper .sln-booking-add,
+      .sln-calendar--wrapper .sln-booking-add {
+        margin: 1.66667rem 0; } }
   .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view,
   .sln-calendar--wrapper .sln-calendar-view {
     background-color: #fff;

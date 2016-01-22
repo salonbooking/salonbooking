@@ -577,8 +577,15 @@ body {
 .sln-calendar--wrapper {
     max-width: 95%;
     font-size: 12px;
-    background-color: #ddd;
-    padding: rem(20px);
+    background-color: alpha-tones($cl_main--light, .25);
+    .nav-tab-wrapper {
+        @include bp(phone) {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 0;
+            text-align: center;
+        }
+    }
     .btn-group {
         //margin: 3em 0  2em 0;
         .sln-btn {
@@ -592,34 +599,12 @@ body {
                 left: -1px;
             }
         }
+        .sln-booking-add {float: right;}
+        @include bp(phone) {
+            .sln-btn, .sln-btn button {min-width: 80px;}
+            .sln-booking-add {display: none;}
+        }
     }
-    //button {
-    //    &.active {
-    //        //border: 1px solid $cl_main--medium;
-    //        background-color: $cl_ok;
-    //        color: $cl_main--white;
-    //        &:hover {background-color: $cl_main;}
-    //    }
-    //    &:hover {
-    //      //border-color: $cl_main;
-    //      //background-color: $cl_main;
-    //      color: $cl_main--white;
-    //    }
-    //    &.f-row {
-    //        width: 32%;
-    //    }
-    //    &.s-row {
-    //        width: 23.8%;
-    //    }
-    //    @include bp(tablet) {
-    //        width: auto;
-    //        min-width: 90px;
-    //        height: rem(44px);
-    //        font-size: 1.2em;
-    //        line-height: rem(44px);
-    //        &.s-row, &.f-row {width: auto;}
-    //    }
-    //}
     span[data-cal-date] {
         @include bp(phone) {
             width: 100%;
@@ -640,6 +625,23 @@ body {
             margin-top: 20px;
             border-radius: 0;
         }
+    }
+    .sln-calendar-viewnav {
+        margin: 0 rem(-20px) rem(20px) rem(-20px);
+        .sln-btn {
+            min-width: 90px;
+        }
+    }
+    .sln-box-title.current-view--title {
+        font-size: rem(24px);
+    }
+    @include bp(tablet) {
+        padding: rem(20px);
+        .sln-calendar-viewnav {float: right;}
+    }
+    @include bp(phone) {
+        margin-top: rem(20px);
+        .sln-booking-add {margin: rem(40px) 0;}
     }
     @import 'admin_components/admin_calendar';
 }
