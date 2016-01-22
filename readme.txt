@@ -3,7 +3,7 @@ Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, paypal appointament, appointament calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.4
-Stable tag: 2.1.1
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,11 +41,14 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 
 **BRAND NEW FEATURES**: 
 
-* Customer reviews - let your customers submit a feedback after each reservation
+* Holidays rules - set your days off during the year
+* Offest between reservaions - if you need to add an extra OFF interval between two sequecial reservations
+* New section added "Tool" where you can get debugging infos
 
 
 **EXISTING FEATURES**:
 
+* Customer reviews - let your customers submit a feedback after each reservation
 * Back-end settings pages full redesign
 * Bookings cancelation from front-end ( a new page MY BOOKING ACCOUNT )
 * Stripe as new payment method
@@ -236,6 +239,13 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 
 == Changelog ==
+
+22.01.2016
+
+* Fixed bug on booking alghorithm 
+* Fixed minor Php Warnings and Notices
+* Changed the order of Salon booking back-end menù
+* Layout improvements to the back-end Calendar
 
 12.01.2016
 
