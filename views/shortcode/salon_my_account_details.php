@@ -89,7 +89,7 @@
 					<?php if($data['attendant_enabled']): ?>
 						<th><?php _e('Assistant','salon-booking-system');?></th>
 					<?php endif; ?>
-					<?php if($data['hide_prices']): ?>
+					<?php if(!$data['hide_prices']): ?>
 						<th><?php _e('Total','salon-booking-system');?></th>
 					<?php endif; ?>
 					<th><?php _e('Status','salon-booking-system');?></th>
@@ -104,7 +104,7 @@
 						<?php if($data['attendant_enabled']): ?>
 							<td data-th="<?php _e('Assistant','salon-booking-system');?>"><?php echo $item['assistant'] ?></td>
 						<?php endif; ?>
-						<?php if($data['hide_prices']): ?>
+						<?php if(!$data['hide_prices']): ?>
 							<td data-th="<?php _e('Total','salon-booking-system');?>"><nobr><strong><?php echo $item['total'] ?></strong></nobr></td>
 						<?php endif; ?>
 						<td data-th="<?php _e('Status','salon-booking-system');?>">
