@@ -16,8 +16,12 @@
 					<th><?php _e('Booking','salon-booking-system');?></th>
 					<th><?php _e('Date','salon-booking-system');?></th>
 					<th><?php _e('Services','salon-booking-system');?></th>
-					<th><?php _e('Assistant','salon-booking-system');?></th>
-					<th><?php _e('Total','salon-booking-system');?></th>
+					<?php if($data['attendant_enabled']): ?>
+						<th><?php _e('Assistant','salon-booking-system');?></th>
+					<?php endif; ?>
+					<?php if($data['hide_prices']): ?>
+						<th><?php _e('Total','salon-booking-system');?></th>
+					<?php endif; ?>
 					<th><?php _e('Status','salon-booking-system');?></th>
 				</tr>
 				</thead>
@@ -27,8 +31,12 @@
 						<td data-th="<?php _e('Booking','salon-booking-system');?>"><?php echo $item['id'] ?></td>
 						<td data-th="<?php _e('Date','salon-booking-system');?>"><strong><?php echo $item['date'] ?></strong></td>
 						<td data-th="<?php _e('Services','salon-booking-system');?>"><?php echo $item['services']; ?></td>
-						<td data-th="<?php _e('Assistant','salon-booking-system');?>"><?php echo $item['assistant'] ?></td>
-						<td data-th="<?php _e('Total','salon-booking-system');?>"><nobr><strong><?php echo $item['total'] ?></strong></nobr></td>
+						<?php if($data['attendant_enabled']): ?>
+							<td data-th="<?php _e('Assistant','salon-booking-system');?>"><?php echo $item['assistant'] ?></td>
+						<?php endif; ?>
+						<?php if($data['hide_prices']): ?>
+							<td data-th="<?php _e('Total','salon-booking-system');?>"><nobr><strong><?php echo $item['total'] ?></strong></nobr></td>
+						<?php endif; ?>
 						<td data-th="<?php _e('Status','salon-booking-system');?>">
 							<div class="status <?php echo SLN_Enum_BookingStatus::getColor($item['status_code']); ?>">
 								<nobr>
@@ -78,8 +86,12 @@
 					<th><?php _e('Booking','salon-booking-system');?></th>
 					<th><?php _e('Date','salon-booking-system');?></th>
 					<th><?php _e('Services','salon-booking-system');?></th>
-					<th><?php _e('Assistant','salon-booking-system');?></th>
-					<th><?php _e('Total','salon-booking-system');?></th>
+					<?php if($data['attendant_enabled']): ?>
+						<th><?php _e('Assistant','salon-booking-system');?></th>
+					<?php endif; ?>
+					<?php if($data['hide_prices']): ?>
+						<th><?php _e('Total','salon-booking-system');?></th>
+					<?php endif; ?>
 					<th><?php _e('Status','salon-booking-system');?></th>
 				</tr>
 				</thead>
@@ -89,8 +101,12 @@
 						<td data-th="<?php _e('Booking','salon-booking-system');?>"><?php echo $item['id'] ?></td>
 						<td data-th="<?php _e('Date','salon-booking-system');?>"><strong><?php echo $item['date'] ?></strong></td>
 						<td data-th="<?php _e('Services','salon-booking-system');?>"><?php echo $item['services'] ?></td>
-						<td data-th="<?php _e('Assistant','salon-booking-system');?>"><?php echo $item['assistant'] ?></td>
-						<td data-th="<?php _e('Total','salon-booking-system');?>"><nobr><strong><?php echo $item['total'] ?></strong></nobr></td>
+						<?php if($data['attendant_enabled']): ?>
+							<td data-th="<?php _e('Assistant','salon-booking-system');?>"><?php echo $item['assistant'] ?></td>
+						<?php endif; ?>
+						<?php if($data['hide_prices']): ?>
+							<td data-th="<?php _e('Total','salon-booking-system');?>"><nobr><strong><?php echo $item['total'] ?></strong></nobr></td>
+						<?php endif; ?>
 						<td data-th="<?php _e('Status','salon-booking-system');?>">
 							<div class="status <?php echo SLN_Enum_BookingStatus::getColor($item['status_code']); ?>">
 								<nobr>
