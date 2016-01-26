@@ -95,7 +95,7 @@
                         $this->settings->get('pay_deposit'),
                         array(
 
-'help' => __('Require users the to pay only a % of the total amount.','salon-booking-system'),
+'help' => __('Require users the to pay only a %% of the total amount.','salon-booking-system'),
                             ),
                         true
                     ) ?>
