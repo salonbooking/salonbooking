@@ -63,13 +63,16 @@ class SLN_Shortcode_SalonMyAccount_Details
 
 	private function prepareBooking($booking) {
 		$attendant = $booking->getAttendant();
+                $serviceNames = array();
+                foreach($booking->getServices() as $s){
+                    $serviceNames[] = $s->getName();
+                }
+
 		return array(
 			'id' => $booking->getId(),
 			'date' => $booking->getStartsAt()->format('M, j Y g:ia'),
 			'timestamp' => strtotime($booking->getStartsAt()),
-			'services' => implode("<br>", array_map(function($elem2) {
-				return $elem2->getName();
-			}, $booking->getServices())),
+			'services' => implode("<br>", $serviceNames),
 			'assistant' => !empty($attendant) ? $attendant->getName() : '',
 			'total' => $this->plugin->getSettings()->getCurrencySymbol() . ' ' . $booking->getAmount(),
 			'status' => SLN_Enum_BookingStatus::getLabel($booking->getStatus()),

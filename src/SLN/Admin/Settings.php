@@ -185,7 +185,7 @@ class SLN_Admin_Settings {
                 $this->showAlert(
                         'success', __('Test sms sent with success', 'salon-booking-system'), ''
                 );
-                }catch(\SLN_Action_Sms_Exception $e){
+                }catch(SLN_Action_Sms_Exception $e){
                     $this->showAlert('error', $e->getMessage());
                 }
             }

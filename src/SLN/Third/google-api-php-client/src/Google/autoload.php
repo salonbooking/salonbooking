@@ -15,8 +15,7 @@
  * limitations under the License.
  */
 
-spl_autoload_register(
-    function ($className) {
+function sln_google_autoload($className) {
       $classPath = explode('_', $className);
       if ($classPath[0] != 'Google') {
         return;
@@ -28,5 +27,6 @@ spl_autoload_register(
       if (file_exists($filePath)) {
         require_once($filePath);
       }
-    }
-);
+}
+
+spl_autoload_register('sln_google_autoload');
