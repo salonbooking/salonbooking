@@ -18,7 +18,7 @@ class SLN_Enum_AvailabilityModeProvider
     public static function getLabel($key)
     {
         if (isset(self::$labels[$key])) {
-            throw new \Exception('label not found');
+            throw new Exception('label not found');
         }
         return self::$labels[$key];
     }
@@ -37,7 +37,7 @@ class SLN_Enum_AvailabilityModeProvider
 
     public static function getServiceName($key){
         if (!isset(self::$classes[$key])) {
-            throw new \Exception(sprintf('provider "%s" not found',$key));
+            throw new Exception(sprintf('provider "%s" not found',$key));
         }
         return self::$classes[$key];
     }
