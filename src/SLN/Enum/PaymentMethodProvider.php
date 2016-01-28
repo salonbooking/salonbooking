@@ -46,4 +46,6 @@ class SLN_Enum_PaymentMethodProvider
 }
 
 SLN_Enum_PaymentMethodProvider::addService('paypal', 'PayPal', 'SLN_PaymentMethod_Paypal');
-SLN_Enum_PaymentMethodProvider::addService('stripe', 'Stripe', 'SLN_PaymentMethod_Stripe');
+if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+    SLN_Enum_PaymentMethodProvider::addService('stripe', 'Stripe', 'SLN_PaymentMethod_Stripe');
+}
