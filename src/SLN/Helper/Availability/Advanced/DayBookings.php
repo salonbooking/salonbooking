@@ -22,7 +22,7 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
  
         foreach ($this->getBookings() as $b) {
             if (SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled')) {
-                $minutes = SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation')
+                $minutes = SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation');
                 // cool in php 5.3
                 //$getEndsAt = $b->getEndsAt()->add(new DateInterval("PT".SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation')."M"));
                 $b->getEndsAt()->modify('+'.$minutes.' minutes');
