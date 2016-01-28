@@ -55,6 +55,14 @@ class SLN_Form
        $jsFormat = SLN_Enum_TimeFormat::getJsFormat($f);
        $phpFormat = SLN_Enum_TimeFormat::getPhpFormat($f);
             $interval = isset($settings['interval']) ? $settings['interval'] : 60;
+            if($interval > 60){
+                if($interval % 60 == 0) $interval = 60;
+                else if($interval % 30 == 0) $interval = 30;
+                else if($interval % 15 == 0) $interval = 15;
+                else if($interval % 10 == 0) $interval = 10;
+                else if($interval % 5 == 0) $interval = 5;
+            }
+
         ?><span class="sln-jstime">
         <div class="sln_timepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 
             data-meridian="<?php echo strpos($phpFormat,'a') !== false ? 'true' : 'false' ?>"

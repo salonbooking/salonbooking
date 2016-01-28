@@ -238,7 +238,7 @@ class SLN_Func
             $interval :
             SLN_Plugin::getInstance()->getSettings()->getInterval();
         $maxItems = isset($maxItems) ?
-            $maxItems : 1440;
+            $maxItems : (24*60/$interval); // as default it is 24 hours
         $items = array();
         do {
             $items[] = date("H:i", $curr);
