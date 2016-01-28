@@ -161,7 +161,7 @@ function sln_holiday_row($prefix, $row, $rulenumber = 'New') {
                 <?php $field = "salon_settings[interval]"; ?>
                 <?php echo SLN_Form::fieldSelect(
                     $field,
-                    array('5', '10', '15', '30', '60'),
+                    SLN_Enum_Interval::toArray(),
                     $this->getOpt('interval') ? $this->getOpt('interval') : 15
                 ) ?>
             </div>
