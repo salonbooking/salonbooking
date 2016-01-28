@@ -35,7 +35,7 @@ class SLN_Enum_TimeFormat
 
     public static function init()
     {
-        $d = new \DateTime;
+        $d = new DateTime;
         $d = $d->format('U');
         foreach(self::$phpFormats as $k => $v){
             self::$labels[$k] = date_i18n($v,$d); 
