@@ -15,7 +15,7 @@ class SLN_Enum_PaymentMethodProvider
     public static function getLabel($key)
     {
         if (!isset(self::$labels[$key])) {
-            throw new \Exception(sprintf('label not found "%s"', $key));
+            throw new Exception(sprintf('label not found "%s"', $key));
         }
         return self::$labels[$key];
     }
@@ -34,7 +34,7 @@ class SLN_Enum_PaymentMethodProvider
 
     public static function getServiceName($key){
         if (!isset(self::$classes[$key])) {
-            throw new \Exception(sprintf('payment method "%s" not found',$key));
+            throw new Exception(sprintf('payment method "%s" not found',$key));
         }
         return self::$classes[$key];
     }
