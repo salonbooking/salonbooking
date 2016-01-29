@@ -48,6 +48,8 @@ class SLN_Shortcode_SalonMyAccount_Details
 				'cancelled' => !empty($_POST['option']) && $_POST['option'] = 'cancelled' ? true : false,
 				'user_name' => wp_get_current_user()->user_firstname,
 				'gen_name' => $this->plugin->getSettings()->get('gen_name'),
+				'hide_prices' => $this->plugin->getSettings()->get('hide_prices'),
+				'attendant_enabled' => $this->plugin->getSettings()->get('attendant_enabled'),
 		));
 	}
 
