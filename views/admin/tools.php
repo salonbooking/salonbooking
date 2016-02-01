@@ -34,7 +34,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-2 form-group col-md-offset-7">
-						<input type="submit" class="btn btn-confirm" value="Import" name="sln-tools-import">
+						<input type="submit" class="btn btn-default" value="Import" name="sln-tools-import">
 					</div>
 				</div>
 			</div>
