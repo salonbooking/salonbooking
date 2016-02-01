@@ -4,7 +4,7 @@
  * @var SLN_Wrapper_Booking       $booking
  */
 $data['to'] = $booking->getEmail();
-$data['subject'] = 'Payment for booking #'.$booking->getId().' has been confirmed';
+$data['subject'] = sprintf(__('Payment for booking #%s has been confirmed','salon-booking-system'),$booking->getId());
 include dirname(__FILE__).'/_header.php';
 ?>
 <p ><?php _e('Dear', 'salon-booking-system') ?>
