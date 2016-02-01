@@ -10,7 +10,7 @@ if ($plugin->getSettings()->get('attendant_email')
 ) {
     $data['to'] = array($data['to'], $email);
 }
-$data['subject'] = 'New booking for '
+$data['subject'] = __('New booking for ','salon-booking-system')
     . $plugin->format()->date($booking->getDate())
     . ' - ' . $plugin->format()->time($booking->getTime());
 $forAdmin = true;
