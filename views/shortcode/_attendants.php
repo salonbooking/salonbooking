@@ -16,7 +16,22 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
             <div class="col-lg-1 col-md-3 col-xs-2">
             <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
-            $errors   = $ah->validateAttendant($attendant, $bb->getDuration());
+            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
+            $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $bb->getServices());
+
+            if ( $validateErrors && $validateAttServicesErrors) {
+                $errors = array_merge($validateErrors, $validateAttServicesErrors);
+            }
+            elseif ($validateErrors) {
+                $errors = $validateErrors;
+            }
+            elseif ($validateAttServicesErrors) {
+                $errors = $validateAttServicesErrors;
+            }
+            else {
+                $errors = false;
+            }
+
             $settings = array();
             if ($errors) {
                 $settings['attrs']['disabled'] = 'disabled';

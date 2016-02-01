@@ -110,6 +110,24 @@ class SLN_Helper_Availability
         return $this->getDayBookings()->countBookingsByHour($hour, $minutes);
     }
 
+    public function validateAttendantServices(SLN_Wrapper_Attendant $attendant, array $services)
+    {
+        if (!count($attendant->getServicesIds())) {
+            return;
+        }
+
+        /** @var SLN_Wrapper_Service $service */
+        foreach($services as $service) {
+            if ($attendant->hasService($service)) {
+                return;
+            }
+        }
+
+        return array(
+            __('This assistant is not available for any of the selected services', 'salon-booking-system')
+        );
+    }
+
     public function validateAttendant(SLN_Wrapper_Attendant $attendant, $duration = null)
     {
 

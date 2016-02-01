@@ -174,6 +174,21 @@ function sln_adminDate($) {
             function(){ notifications.html('') }
         );
     });
+    $('#_sln_attendant_services').on('select2:open',function(){
+        var notifications = $('#sln-services-notifications');
+        $.each(dataServices, function (key, value) {
+            var box = $('.select2-results__option[id$="sln_attendant_services_' + key + '"]');
+            if(value)
+                box.addClass('red').data('message','<div class="alert alert-danger">' + value + '</div>');
+            else
+                box.removeClass('red').data('message', '');
+            box.unbind('hover').hover(function(){});
+        });
+        $('.select2-results__option[id*=sln_attendant_services]').unbind('hover').hover(
+            function(){ notifications.html($(this).data('message')) },
+            function(){ notifications.html('') }
+        );
+    });
     initDatepickers($);
     initTimepickers($);
     $('#resend-notification-submit').click(function(){
