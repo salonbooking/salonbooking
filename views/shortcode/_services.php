@@ -16,6 +16,9 @@ $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 $grouped = SLN_Func::groupServicesByCategory($services);
 $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMinutes();
+var_dump($ah->getFreeMinutes($bb->getDateTime()));
+var_dump($bb->getServicesDurationMinutes());
+var_dump($minutes);
  ?>
 <div class="sln-service-list">
     <?php foreach ($grouped as $group): ?>
@@ -88,7 +91,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
         <div class="col-xs-6 services-total-label"><?php _e('Subtotal', 'salon-booking-system') ?></div>
         <div class="col-xs-6 services-total">
         <span id="services-total" 
-              data-minutes="<?php echo $minutes - $bb->getDuration()?>"
+              data-minutes="<?php echo $minutes ?>"
               data-symbol-left="<?php echo $symbolLeft ?>"
               data-symbol-right="<?php echo $symbolRight ?>">
             <?php echo $plugin->format()->money(0, false) ?>
