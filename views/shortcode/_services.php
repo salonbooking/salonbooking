@@ -82,7 +82,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
     <!-- panel END -->
     <?php endif ?>
     <?php endforeach ?>
-    <div class="alert alert-warning" style="display: none" id="availabilityerror"><p><?php echo __('you can\'t add more services because there aren\'t enough time','salon-booking-system') ?></p></div>
+    <div class="alert alert-danger" style="display: none" id="availabilityerror"><p><?php echo __('you can\'t add more services because there aren\'t enough time','salon-booking-system') ?></p></div>
 	<?php if ($showPrices){ ?>
     <div class="row row-total">
         <div class="col-xs-6 services-total-label"><?php _e('Subtotal', 'salon-booking-system') ?></div>
