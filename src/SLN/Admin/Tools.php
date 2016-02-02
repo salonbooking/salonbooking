@@ -24,9 +24,15 @@ class SLN_Admin_Tools {
 	}
 
 	public function show() {
+		if (version_compare(phpversion(), "5.3.0", "<")) {
+			$info = json_encode( get_option( SLN_Settings::KEY ) );
+		} else {
+			$info = json_encode( get_option( SLN_Settings::KEY ), JSON_PRETTY_PRINT );
+		}
+		
 		echo $this->plugin->loadView(
 		'admin/tools', array(
-			'info' => json_encode( get_option( SLN_Settings::KEY ), JSON_PRETTY_PRINT )
+			'info' => $info
 		)
 		);
 	}
