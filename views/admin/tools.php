@@ -34,7 +34,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-2 form-group col-md-offset-7">
-						<input type="submit" class="btn btn-default" value="Import" name="sln-tools-import">
+						<input  disabled type="submit" class="btn btn-default" value="Import" name="sln-tools-import" id="submit-import">
 					</div>
 				</div>
 			</div>
@@ -47,5 +47,19 @@
 		jQuery('#wpbody #tools-textarea').click(function() {
 			jQuery('#tools-textarea').select();
 		});
+		
+		jQuery('#tools-import').on('keyup', function(){
+			var $textarea = jQuery('#tools-import').val();
+			var disable = ($textarea.length == '');
+			$("#submit-import").prop("disabled", disable);
+		});
+		
+		jQuery('#submit-import').on('click', function(e){
+			if (!confirm('Are you sure to continue?')) {
+				e.preventDefault();
+				$(document.activeElement).blur();
+			}
+		});
+
 	});
 </script>
