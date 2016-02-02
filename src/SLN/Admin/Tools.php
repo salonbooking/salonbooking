@@ -45,6 +45,8 @@ class SLN_Admin_Tools {
 		if (is_array($import_data)) {
 			update_option( SLN_Settings::KEY, $import_data );
 			add_action( 'admin_notices', array( $this, 'tool_admin_notice' ) );
+		} else {
+			add_action( 'admin_notices', array( $this, 'tool_admin_error_notice' ) );
 		}
 	}
 
@@ -52,6 +54,14 @@ class SLN_Admin_Tools {
 		?>
 		<div class="updated">
 			<p><?php _e( 'Settings updated successfully!', 'salon-booking-system' ); ?></p>
+		</div>
+		<?php
+	}
+	
+	public function tool_admin_error_notice() {
+		?>
+		<div class="error">
+			<p><?php _e( 'You have entered the wrong data', 'salon-booking-system' ); ?></p>
 		</div>
 		<?php
 	}
