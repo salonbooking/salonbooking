@@ -227,4 +227,18 @@ class SLN_Helper_Availability
         $countHour = $this->settings->get('parallels_hour');
         return ($date >= $this->initialDate) && !($countHour && $this->getBookingsHourCount($date->format('H'), $date->format('i')) >= $countHour);
     }
+
+    public function getFreeMinutes($date){
+        $date = clone $date;
+        $ret = 0;
+        $interval = $this->settings->getInterval();
+        $max = 24*60;
+
+        $avItems = $this->getItems();
+        while($avItems->isValidDatetime($date) && $this->isValidTime($date) && $ret <= $max){
+            $ret += $interval;
+            $date->modify(sprintf('+%s minutes',$interval));
+        }
+        return $ret;
+    }
 }

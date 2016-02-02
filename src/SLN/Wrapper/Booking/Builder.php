@@ -151,6 +151,9 @@ class SLN_Wrapper_Booking_Builder
             unset($this->data['services'][$k]);
         }
     }
+    public function clearServices(){
+        $this->data['services'] = array();
+    }
 
     /**
      * @return SLN_Wrapper_Service[]
@@ -210,6 +213,14 @@ class SLN_Wrapper_Booking_Builder
 
     public function getDuration()
     {
+        $i = $this->getServicesDurationMinutes();
+        if($i == 0)
+            $i = 60;
+        $str = SLN_Func::convertToHoursMins($i);
+        return $str;
+    }
+
+    public function getServicesDurationMinutes(){
         $h = 0;
         $i = 0;
         foreach($this->getServices() as $s){
@@ -218,10 +229,6 @@ class SLN_Wrapper_Booking_Builder
             $i = $i + intval($d->format('i'));
         }
         $i += $h*60;
-        if($i == 0)
-            $i = 60;
-        $str = SLN_Func::convertToHoursMins($i);
-        return $str;
+        return $i;
     }
-
 }
