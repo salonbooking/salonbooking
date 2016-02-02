@@ -16,9 +16,6 @@ $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 $grouped = SLN_Func::groupServicesByCategory($services);
 $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMinutes();
-var_dump($ah->getFreeMinutes($bb->getDateTime()));
-var_dump($bb->getServicesDurationMinutes());
-var_dump($minutes);
  ?>
 <div class="sln-service-list">
     <?php foreach ($grouped as $group): ?>
@@ -85,7 +82,7 @@ var_dump($minutes);
     <!-- panel END -->
     <?php endif ?>
     <?php endforeach ?>
-    <div class="alert alert-danger" style="display: none" id="availabilityerror"><p><?php echo __('you can\'t add more services because there aren\'t enough time','salon-booking-system') ?></p></div>
+    <div class="alert alert-danger" style="display: none" id="availabilityerror"><p><?php echo __('not enough time for this service','salon-booking-system') ?></p></div>
 	<?php if ($showPrices){ ?>
     <div class="row row-total">
         <div class="col-xs-6 services-total-label"><?php _e('Subtotal', 'salon-booking-system') ?></div>
