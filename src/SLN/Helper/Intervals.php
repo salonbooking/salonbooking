@@ -28,8 +28,8 @@ class SLN_Helper_Intervals
         $times             = $ah->getTimes($date);
         $i                 = 0;
         while (empty($times) && $i < 100) {
-            $times = $ah->getTimes($date);
             $date->modify('+1 days');
+            $times = $ah->getTimes($date);
             $i++;
         }
         if (empty($times)) {

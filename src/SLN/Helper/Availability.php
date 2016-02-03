@@ -55,12 +55,16 @@ class SLN_Helper_Availability
         $ret     = array();
         $avItems = $this->getItems();
         $hb      = $this->getHoursBeforeHelper();
+        $from = $hb->getFromDate();
+        $to = $hb->getToDate();
+
         foreach (SLN_Func::getMinutesIntervals() as $time) {
             $d = new SLN_DateTime($date->format('Y-m-d') . ' ' . $time);
             if (
                 $avItems->isValidDatetime($d)
                 && $this->isValidDate($d)
                 && $this->isValidTime($d)
+                && $d > $from && $d < $to
             ) {
                 $ret[$time] = $time;
             }

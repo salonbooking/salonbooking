@@ -121,7 +121,8 @@ function sln_stepDate($) {
                         alertBox.append('<p>').html(this);
                     });
                     $('#sln-notifications').html('').append(alertBox);
-                    $('#sln-step-submit').attr('disabled', true);
+// we bind a new interval so we needn't to disable
+//                    $('#sln-step-submit').attr('disabled', true);
                     isValid = false;
                 } else {
                     $('#sln-step-submit').attr('disabled', false);
