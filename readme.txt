@@ -1,9 +1,9 @@
 === Salon booking system ===
 Contributors: wordpresschef
-Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, paypal appointament, appointament calendar, booking software, reservation plugin, booking engine, booking plugin
+Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.4
-Stable tag: 2.2
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,13 +41,16 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 
 **BRAND NEW FEATURES**: 
 
-* Holidays rules - set your days off during the year
-* Offest between reservaions - if you need to add an extra OFF interval between two sequecial reservations
-* New section added "Tool" where you can get debugging infos
+* Import / Export settings tool
+* More intervals available for "Session average duration" option
+* Auto hide columns on Booking my Account page when Assistant selection is not acrive and when "Hide price" is active
 
 
 **EXISTING FEATURES**:
 
+* Holidays rules - set your days off during the year
+* Offset between reservations - if you need to add an extra OFF interval between two sequencial reservations
+* New section added "Tool" where you can get debugging infos
 * Customer reviews - let your customers submit a feedback after each reservation
 * Back-end settings pages full redesign
 * Bookings cancelation from front-end ( a new page MY BOOKING ACCOUNT )
@@ -58,7 +61,7 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 * New "Payment pending" status for bookings taken from back-end that require a payment from customers
 
 * GOOGLE CALENDAR INTEGRATION
-Syncronize all your reservations inside your own Google Calendr and share the information with your staff memebers
+Synchronise all your reservations inside your own Google Calendar and share the information with your staff members
 
 * ADD BOOKINGS FROM BACK-END
 If you need to add a manual reservations, that ones received by phone for example, use the back-end interface with a real time
@@ -76,7 +79,7 @@ control of your available date/time slots.
 
 * Custom date format
 
-* Advanced booking algorytm - calculate the sum of the duration of the services booked
+* Advanced booking algorithm - calculate the sum of the duration of the services booked
 
 * Hide prices option - if you don't want to show-up services prices
 
@@ -99,7 +102,7 @@ Avoid spam and verify your customers identity using an SMS verification process 
 
 * Staff user role
 
-You can give access to the back-end to your salonâ€™s staff limiting them to manage only the booking and calendar settings pages using the custom â€œSalon staffâ€ user role. 
+You can give access to the back-end to your salon staff limiting them to manage only the booking and calendar settings pages using the custom Salon staff user role. 
 
 
 * Intuitive bookings calendar
@@ -118,7 +121,7 @@ Administrator can set the open and closing days and the time slots using our mul
 
 
 * Accept online Payments
-Salon booking is ready to accept online payments with Paypal. You can decide if user can pay in advance using credit cards or â€œpay laterâ€ once arrived at the salon.
+Salon booking is ready to accept online payments with Paypal. You can decide if user can pay in advance using credit cards or pay later once arrived at the salon.
 
 
 * Create as many services as you want
@@ -126,7 +129,7 @@ Easily create as many services as you need, edit or delete them as a simple post
 
 
 * Full control of every single service
-Set  its price, duration, days of non availability, and a brief description. You can even make a difference between â€œmainâ€ and â€œoptionalâ€ services.
+Set  its price, duration, days of non availability, and a brief description. You can even make a difference between main and optional services.
 
 
 * Full control of every single booking
@@ -147,7 +150,7 @@ This section describes how to install the plugin and get it working.
 
 1. Upload `salon-free` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Go to Salon > Settings to complete your salonâ€™s settings
+1. Go to Salon > Settings to complete your salon settings
 
 
 
@@ -156,7 +159,7 @@ This section describes how to install the plugin and get it working.
 
 = What kind of business this plugins best fits? =
 
-This plugin has been developed thinking about the specific need of Barber Shop, Hairdressing salon, Beauty Centers and Spas.
+This plugin has been developed thinking about the specific need of Barber Shop, Hairdressing salon, Beauty Centres and Spas.
 
  
 = Which version of WordPress this plugin requires? =
@@ -198,7 +201,7 @@ Languages available:
  
 = Are there any conflicts with other plugins? =
 
-At the moment we didnâ€™t spot any conflicts with other plugins.
+At the moment we didn’t spot any conflicts with other plugins.
 
  
 = Is it possible to customise the look and feel of the plugin front-end? =
@@ -214,8 +217,7 @@ You can accept up to 30 reservations. No time limits.
 
 You should buy the PRO version here:
 
-http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
-
+http://salon.wordpresschef.it
 
 == Screenshots ==
 
@@ -240,9 +242,15 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 == Changelog ==
 
+05.02.2016
+
+* Fixed bug on booking algorithm
+* Fixed issue with timezone on Google Calendar integration
+* Fixed issue on front-end date picker
+
 22.01.2016
 
-* Fixed bug on booking alghorithm 
+* Fixed bug on booking algorithm 
 * Fixed minor Php Warnings and Notices
 * Changed the order of Salon booking back-end menù
 * Layout improvements to the back-end Calendar
@@ -251,7 +259,7 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 * Fixed bug on front-end
 * Fixed bug on front-end "error alert" on last step
-* Fixed bug on utomatic updates alert 
+* Fixed bug on automatic updates alert 
 
 
 08.01.2016
@@ -274,7 +282,7 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 14.12.2015
 
 * Fixed bug on Timezone issues
-* Fixed bug on availables hours for "tomorrow bookings"
+* Fixed bug on available hours for "tomorrow bookings"
 * Fixed bug on services duration calculation 
 * Fixed bug on slot availability after booking cancellation
 * Fixed bug on Plivo SMS notification sending on selected assistant 
@@ -317,8 +325,8 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 1.0.5 07/07/2015
 
-* fixed WPML compatibily issue 
-* fixed real time availabilty control on date/time picker
+* fixed WPML compatibility issue 
+* fixed real time availability control on date/time picker
 * fixed booking range selection issue
 * fixed time-session average duration bug
 
@@ -336,12 +344,12 @@ http://plugins.wpchef.it/downloads/salon-booking-wordpress-plugin/
 
 1.0.3 22/05/2015
 
-Date-picker multilanguage support fix
+Date-picker multilanguages support fix
 
 
 1.0.2 19/05/2015
 
-Date-picker multilanguage support fix
+Date-picker multilanguages support fix
 
 1.0.1 13/05/2015
 
