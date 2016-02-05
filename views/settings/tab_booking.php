@@ -73,14 +73,14 @@ function sln_holiday_row($prefix, $row, $rulenumber = 'New') {
 			<h6 class="sln-fake-label"><?php _e('Start on', 'salon-booking-system') ?></h6>
 			<?php $dateFormat = SLN_Enum_DateFormat::getPhpFormat(SLN_Plugin::getInstance()->getSettings()->get('date_format')); ?>
 			<?php $dateFrom = isset($row['from']) ? $row['from'] : date($dateFormat); ?>
-			<?php $dateFrom = /*DateTime::createFromFormat*/ sln_date_create_from_format($dateFormat, $dateFrom); ?>
+            <?php $dateFrom = sln_date_create_from_format($dateFormat, $dateFrom); ?>
 
             <div class="sln_datepicker"><?php SLN_Form::fieldJSDate($prefix."[from]", $dateFrom) ?></div>
 		</div>
 		<div class="col-xs-12 col-md-4 sln-slider-wrapper">
 			<h6 class="sln-fake-label"><?php _e('End on', 'salon-booking-system') ?></h6>
 			<?php $dateTo = isset($row['to']) ? $row['to'] : date($dateFormat); ?>
-			<?php $dateTo = /*DateTime::createFromFormat*/ sln_date_create_from_format($dateFormat, $dateTo); ?>
+			<?php $dateTo = sln_date_create_from_format($dateFormat, $dateTo); ?>
             <div class="sln_datepicker"><?php SLN_Form::fieldJSDate($prefix."[to]", $dateTo) ?></div>
 		</div>
         <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
@@ -95,7 +95,7 @@ function sln_date_create_from_format( $dformat, $dvalue )
   {
 
     $schedule = $dvalue;
-    $schedule_format = str_replace(array('Y','m','d', 'H', 'i','a'),array('%Y','%m','%d', '%I', '%M', '%p' ) ,$dformat);
+    $schedule_format = str_replace(array('Y','m','d', 'H', 'i','a', 'M'),array('%Y','%m','%d', '%I', '%M', '%p', '%b') ,$dformat);
     // %Y, %m and %d correspond to date()'s Y m and d.
     // %I corresponds to H, %M to i and %p to a
     $ugly = strptime($schedule, $schedule_format);
