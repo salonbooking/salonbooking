@@ -8,6 +8,7 @@ class SLN_Plugin
     const POST_TYPE_BOOKING = 'sln_booking';
     const TAXONOMY_SERVICE_CATEGORY = 'sln_service_category';
     const USER_ROLE_STAFF = 'sln_staff';
+    const USER_ROLE_CUSTOMER = 'sln_customer';
     const TEXT_DOMAIN = 'salon-booking-system';
     const F = 'slnc';
     const F1 = 30;
@@ -63,6 +64,7 @@ class SLN_Plugin
         new SLN_Admin_Settings($this);
         new SLN_Admin_Calendar($this);
         new SLN_Admin_Tools($this);
+        new SLN_Admin_Customers($this);
         add_action('admin_notices', array($this, 'admin_notices'));
         //http://codex.wordpress.org/AJAX_in_Plugins
         add_action('wp_ajax_salon', array($this, 'ajax'));
