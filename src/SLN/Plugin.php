@@ -57,6 +57,7 @@ class SLN_Plugin
     
     private function initAdmin()
     {
+        SLN_Action_Install::init();
         new SLN_Metabox_Service($this, self::POST_TYPE_SERVICE);
         new SLN_Metabox_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_Metabox_Booking($this, self::POST_TYPE_BOOKING);
