@@ -6,7 +6,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_amount', get_post_meta($post_id, '_sln_booking_amount', true));
-        $ret     = number_format(empty($ret) ? 0 : floatval($ret), 2);
+        $ret     = empty($ret) ? 0 : floatval($ret);
 
         return $ret;
     }
@@ -15,7 +15,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_deposit', get_post_meta($post_id, '_sln_booking_deposit', true));
-        $ret     = number_format(empty($ret) ? 0 : floatval($ret), 2);
+        $ret     = empty($ret) ? 0 : floatval($ret);
 
         return $ret;
     }
