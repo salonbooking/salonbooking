@@ -61,10 +61,10 @@ class SLN_Plugin
         new SLN_Metabox_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_Metabox_Booking($this, self::POST_TYPE_BOOKING);
         new SLN_Metabox_BookingActions($this, self::POST_TYPE_BOOKING);
+        new SLN_Admin_Customers($this);
         new SLN_Admin_Settings($this);
         new SLN_Admin_Calendar($this);
         new SLN_Admin_Tools($this);
-        new SLN_Admin_Customers($this);
         add_action('admin_notices', array($this, 'admin_notices'));
         //http://codex.wordpress.org/AJAX_in_Plugins
         add_action('wp_ajax_salon', array($this, 'ajax'));
