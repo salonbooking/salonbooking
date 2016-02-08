@@ -93,24 +93,28 @@ class SLN_Admin_Customers {
 
 		switch ($table->current_action()) {
 			case 'delete':
-
+				if (!empty($_REQUEST['users'])) {
+					$redirect = wp_unslash(str_replace('/admin.php?', '/users.php?', $_SERVER['REQUEST_URI']));
+					wp_redirect(remove_query_arg('page', $redirect));
+					exit;
+				}
 				break;
-			default:
-				if (!empty($table->current_action())) {
-					if (empty($_REQUEST['users'])) {
-						wp_redirect($redirect);
-						exit();
-					}
-					$update = '';
-					wp_redirect(add_query_arg('update', $update, $redirect));
-					exit();
-				}
-				else {
-					if (!empty($_GET['_wp_http_referer'])) {
-						wp_redirect(remove_query_arg(array('_wp_http_referer', '_wpnonce'), wp_unslash($_SERVER['REQUEST_URI'])));
-						exit;
-					}
-				}
+//			default:
+//				if (!empty($table->current_action())) {
+//					if (empty($_REQUEST['users'])) {
+//						wp_redirect($redirect);
+//						exit();
+//					}
+//					$update = '';
+//					wp_redirect(add_query_arg('update', $update, $redirect));
+//					exit();
+//				}
+//				else {
+//					if (!empty($_GET['_wp_http_referer'])) {
+//						wp_redirect(remove_query_arg(array('_wp_http_referer', '_wpnonce'), wp_unslash($_SERVER['REQUEST_URI'])));
+//						exit;
+//					}
+//				}
 		}
 
 		$table->prepare_items();
