@@ -45,6 +45,10 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 			case 'total_amount':
 				$html = SLN_Plugin::getInstance()->getSettings()->getCurrencySymbol().' '.$customer_object->getCustomerValue();
 				break;
+			case 'id':
+				$link = esc_url( add_query_arg( 'wp_http_referer', urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ), SLN_Admin_Customers::get_edit_customer_link($user_id) ) );
+				$html = '<strong><a href="' . $link . '">' . $user_object->get($column_name) . '</a></strong><br />';
+				break;
 			default:
 				$html = $user_object->get($column_name);
 		}
