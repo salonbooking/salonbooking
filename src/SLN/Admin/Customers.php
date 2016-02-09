@@ -93,10 +93,13 @@ class SLN_Admin_Customers {
 
 		switch ($table->current_action()) {
 			case 'delete':
-				if (!empty($_REQUEST['users'])) {
-					$redirect = wp_unslash(str_replace('/admin.php?', '/users.php?', $_SERVER['REQUEST_URI']));
-					wp_redirect(remove_query_arg('page', $redirect));
-					exit;
+				if (!is_multisite() && !empty($_REQUEST['users'])) {
+//					$redirect = wp_unslash(str_replace('/admin.php?', '/users.php?', $_SERVER['REQUEST_URI']));
+//					wp_redirect(remove_query_arg('page', $redirect));
+//					exit;
+					foreach($_REQUEST['users'] as $userId) {
+						wp_delete_user( $userId );
+					}
 				}
 				break;
 //			default:
@@ -115,6 +118,11 @@ class SLN_Admin_Customers {
 //						exit;
 //					}
 //				}
+		}
+
+		if (!empty($_GET['_wp_http_referer'])) {
+			wp_redirect(remove_query_arg(array('_wp_http_referer', '_wpnonce'), wp_unslash($_SERVER['REQUEST_URI'])));
+			exit;
 		}
 
 		$table->prepare_items();
