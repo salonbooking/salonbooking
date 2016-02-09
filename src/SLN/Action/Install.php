@@ -3,14 +3,20 @@
 class SLN_Action_Install
 {
     /** @var array DB updates that need to be run */
-    private static $db_updates = array(
+    private static $dbUpdates = array(
         '2.2.1' => 'Updates/sln-update-2.2.1.php',
     );
 
-    public static function init()
+    public static function initActions()
     {
         if (!empty($_GET['do_update_sln'])) {
             self::update();
+        }
+
+        if (version_compare(SLN_Plugin::getInstance()->getSettings()->getDbVersion(), max(array_keys(self::$dbUpdates)), '<')) {
+            echo SLN_Plugin::getInstance()->loadView('notice/html_notice_update');
+        } else {
+            SLN_Plugin::getInstance()->getSettings()->setDbVersion()->save();
         }
     }
 
@@ -43,34 +49,20 @@ class SLN_Action_Install
 
         new SLN_UserRole_SalonStaff(SLN_Plugin::getInstance(), SLN_Plugin::USER_ROLE_STAFF, __('Salon staff', 'salon-booking-system'));
         new SLN_UserRole_SalonCustomer(SLN_Plugin::getInstance(), SLN_Plugin::USER_ROLE_CUSTOMER, __('Salon customer', 'salon-booking-system'));
-        self::updateVersion();
     }
 
-    /**
-     * Update salon-booking-system version to current.
-     *
-     * @param string|null $version
-     */
-    private static function updateVersion($version = null)
-    {
-        update_option('salon-booking-system-version', is_null($version) ? SLN_VERSION : $version);
-    }
-
-    /**
-     * Handle updates.
-     */
     private static function update()
     {
-        $current_version = get_option('salon-booking-system-version', '0.0.0');
+        $current_version = SLN_Plugin::getInstance()->getSettings()->getDbVersion();
 
-        foreach (self::$db_updates as $version => $updater) {
+        foreach (self::$dbUpdates as $version => $updater) {
             if (version_compare($current_version, $version, '<')) {
                 include($updater);
-                self::updateVersion($version);
+                SLN_Plugin::getInstance()->getSettings()->setDbVersion($version)->save();
             }
         }
 
-        self::updateVersion();
+        SLN_Plugin::getInstance()->getSettings()->setDbVersion()->save();
     }
 
     private static function checkPost($title, $post_type)
