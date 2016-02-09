@@ -6,8 +6,11 @@ $query = $wpdb->prepare("SELECT post_author FROM {$wpdb->prefix}posts WHERE post
 $users = $wpdb->get_col($query);
 $users = array_unique($users);
 foreach ($users as $userId) {
-	wp_update_user(array(
-		'ID' => $userId,
-		'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
-	));
+	$user = new WP_User($userId);
+	if (empty(array_intersect($user->roles, array('administrator', SLN_Plugin::USER_ROLE_STAFF, SLN_Plugin::USER_ROLE_CUSTOMER)))) {
+		wp_update_user(array(
+			'ID' => $userId,
+			'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
+		));
+	}
 }
