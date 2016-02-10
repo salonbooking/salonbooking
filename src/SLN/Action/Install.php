@@ -4,7 +4,7 @@ class SLN_Action_Install
 {
     /** @var array DB updates that need to be run */
     private static $dbUpdates = array(
-        '2.2' => 'Updates/sln-update-2.2.php',
+        '2.4' => 'Updates/sln-update-2.4.php',
     );
 
     public static function initActions()
