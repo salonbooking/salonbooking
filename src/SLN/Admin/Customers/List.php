@@ -21,7 +21,7 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 	public function get_columns() {
 		$columns = array(
 			'cb'             => '<input type="checkbox" />',
-			'id'             => __('Customer ID', 'salon-booking-system'),
+			'ID'             => __('Customer ID', 'salon-booking-system'),
 			'first_name'     => __('First Name', 'salon-booking-system'),
 			'last_name'      => __('Last Name', 'salon-booking-system'),
 			'email'          => __('E-mail', 'salon-booking-system'),
@@ -45,7 +45,9 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 			case 'total_amount':
 				$html = SLN_Plugin::getInstance()->getSettings()->getCurrencySymbol().' '.$customer_object->getCustomerValue();
 				break;
-			case 'id':
+			case 'first_name':
+			case 'last_name':
+			case 'ID':
 				$link = esc_url( add_query_arg( 'wp_http_referer', urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ), SLN_Admin_Customers::get_edit_customer_link($user_id) ) );
 				$html = '<strong><a href="' . $link . '">' . $user_object->get($column_name) . '</a></strong><br />';
 				break;

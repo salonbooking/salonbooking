@@ -91,7 +91,7 @@
 
 		<?php if ($count): ?>
 			<div class="row">
-				<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 postbox">
+				<div class="col-xs-10 col-md-10 col-lg-10 col-sm-10 postbox">
 				<?php
 
 				$_GET['post_type'] = SLN_Plugin::POST_TYPE_BOOKING;
