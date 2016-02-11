@@ -93,12 +93,21 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             wp_update_post($postnew);
             $this->disabledSavePost = false;
         }
+
+        $booking = new SLN_Wrapper_Booking($post_id);
+        $user = new WP_User($booking->getUserId());
+        if (array_search('administrator', $user->roles) === false && array_search('subscriber', $user->roles) !== false) {
+            wp_update_user(array(
+                'ID' => $booking->getUserId(),
+                'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
+            ));
+        }
     } 
 
     protected function registration($booking){
         $errors = wp_create_user($booking->getEmail(), wp_generate_password(), $booking->getEmail());
         wp_update_user(
-            array('ID' => $errors, 'first_name' => $booking->getFirstname(), 'last_name' => $booking->getLastname())
+            array('ID' => $errors, 'first_name' => $booking->getFirstname(), 'last_name' => $booking->getLastname(), 'role' => SLN_Plugin::USER_ROLE_CUSTOMER)
         );
         add_user_meta($errors, '_sln_phone', $booking->getPhone());
         add_user_meta($errors, '_sln_address', $booking->getAddress());

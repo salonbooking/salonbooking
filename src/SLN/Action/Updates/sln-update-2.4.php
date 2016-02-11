@@ -7,8 +7,7 @@ $users = $wpdb->get_col($query);
 $users = array_unique($users);
 foreach ($users as $userId) {
 	$user = new WP_User($userId);
-	$f = array_intersect($user->roles, array('administrator', SLN_Plugin::USER_ROLE_STAFF, SLN_Plugin::USER_ROLE_CUSTOMER));
-	if (empty($f)) {
+	if (array_search('administrator', $user->roles) === false && array_search('subscriber', $user->roles) !== false) {
 		wp_update_user(array(
 			'ID' => $userId,
 			'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
