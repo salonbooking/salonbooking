@@ -106,15 +106,18 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
 
     protected function registration($booking){
         $errors = wp_create_user($booking->getEmail(), wp_generate_password(), $booking->getEmail());
-        wp_update_user(
-            array('ID' => $errors, 'first_name' => $booking->getFirstname(), 'last_name' => $booking->getLastname(), 'role' => SLN_Plugin::USER_ROLE_CUSTOMER)
-        );
-        add_user_meta($errors, '_sln_phone', $booking->getPhone());
-        add_user_meta($errors, '_sln_address', $booking->getAddress());
-        if (is_wp_error($errors)) {
+        if (!is_wp_error($errors)) {
+            wp_update_user(
+                array('ID' => $errors, 'first_name' => $booking->getFirstname(), 'last_name' => $booking->getLastname(), 'role' => SLN_Plugin::USER_ROLE_CUSTOMER)
+            );
+            add_user_meta($errors, '_sln_phone', $booking->getPhone());
+            add_user_meta($errors, '_sln_address', $booking->getAddress());
+
+            wp_new_user_notification($errors); //, $values['password']);
+        } else {
             $this->addError($errors->get_error_message());
         }
-        wp_new_user_notification($errors); //, $values['password']);
+
         return $errors;
     }
 
