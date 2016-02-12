@@ -22,7 +22,7 @@ class SLN_PaymentMethod_Paypal extends SLN_PaymentMethod_Abstract
             } elseif ($action == 'notify') {
                 $this->processIpn($op[1]);
             } elseif ($action == 'cancel') {
-                return __('Payment canceled', 'salon-booking-system');
+                return __('Your payment has not been completed', 'salon-booking-system');
             } else {
                 throw new Exception('payment method operation not managed');
             }
