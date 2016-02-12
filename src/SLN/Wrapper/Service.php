@@ -85,6 +85,8 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
             'sln_service_notav_' . $key,
             get_post_meta($post_id, '_sln_service_notav_' . $key, true)
         );
+        if($key == 'to' && $ret == '00:00')
+            $ret = '23:59';
         $ret     = SLN_Func::filter($ret, 'time');
 
         return new SLN_DateTime('1970-01-01 ' . $ret);
@@ -104,7 +106,7 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         if ($from != '00:00') {
             $ret .= ' '.__(' from ', 'salon-booking-system') . ' ' . $from;
         }
-        if ($to != '00:00') {
+        if ($to != '23:59') {
             $ret .= ' '.__(' to ', 'salon-booking-system') . ' ' . $to;
         }
 
