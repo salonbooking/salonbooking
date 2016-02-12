@@ -98,14 +98,14 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
                 $ret[] = $day;
             }
         }
-        $ret  = $ret ? __('on ', 'salon-booking-system') . implode(', ', $ret) : '';
+        $ret  = $ret ? ' '.__('on ', 'salon-booking-system') .' '. implode(', ', $ret) : '';
         $from = $this->getNotAvailableFrom()->format('H:i');
         $to   = $this->getNotAvailableTo()->format('H:i');
         if ($from != '00:00') {
-            $ret .= __(' from ', 'salon-booking-system') . $from;
+            $ret .= ' '.__(' from ', 'salon-booking-system') . ' ' . $from;
         }
         if ($to != '00:00') {
-            $ret .= __(' to ', 'salon-booking-system') . $to;
+            $ret .= ' '.__(' to ', 'salon-booking-system') . ' ' . $to;
         }
 
         return $ret;
