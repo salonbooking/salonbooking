@@ -22,11 +22,15 @@ class SLN_Helper_HolidayItems
         return $this->items;
     }
 
-
-    public function isValidDate($day)
+    public function isValidDatetime(DateTime $date)
     {
-        foreach ($this->toArray() as $av) {
-            if (!$av->isValidDate($day)) {
+        return $this->isValidTime($date->format('Y-m-d'), $date->format('H:i'));
+    }
+
+    public function isValidTime($date, $time)
+    {
+        foreach ($this->toArray() as $h) {
+            if (!$h->isValidTime($date, $time)) {
                 return false;
             }
         }
