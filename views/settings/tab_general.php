@@ -288,6 +288,19 @@
                 <p class="sln-input-help"><?php _e('Select your favourite date and time format. Do you need another format? Send an email to support@wpchef.it','salon-booking-system') ?></p>
             </div>
             </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
+            <label for="salon_settings_week_start"><?php _e('Start week on', 'salon-booking-system') ?></label>
+            <?php $field = "salon_settings[week_start]"; ?>
+            <?php echo SLN_Form::fieldSelect(
+                $field,
+                SLN_Enum_DaysOfWeek::toArray(),
+                $this->getOpt('week_start'),
+                array(),
+                true
+            ) ?>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-8 col-md-6">

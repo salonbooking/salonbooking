@@ -163,6 +163,7 @@ class SLN_Admin_Settings {
         'soc_google',
         'date_format',
         'time_format',
+        'week_start',
         'no_bootstrap'
             ) as $k) {
                 $val = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
