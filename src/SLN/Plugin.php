@@ -47,6 +47,7 @@ class SLN_Plugin
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         
         add_action('sln_sms_reminder', 'sln_sms_reminder');
+        add_action('sln_email_reminder', 'sln_email_reminder');
         register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
         new SLN_PostType_Booking($this, self::POST_TYPE_BOOKING);
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
@@ -419,5 +420,11 @@ class SLN_Plugin
 function sln_sms_reminder()
 {
     $obj = new SLN_Action_Reminder();
-    $obj->execute();
+    $obj->executeSms();
+}
+
+function sln_email_reminder()
+{
+    $obj = new SLN_Action_Reminder();
+    $obj->executeEmail();
 }

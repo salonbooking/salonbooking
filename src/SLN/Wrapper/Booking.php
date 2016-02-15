@@ -242,6 +242,20 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         update_post_meta($post_id, '_sln_booking_remind', $remind);
     }
 
+    function getEmailRemind()
+    {
+        $post_id = $this->getId();
+
+        return apply_filters('sln_booking_email_remind', get_post_meta($post_id, '_sln_booking_email_remind', true));
+    }
+
+    function setEmailRemind($remind)
+    {
+        $post_id = $this->getId();
+
+        update_post_meta($post_id, '_sln_booking_email_remind', $remind);
+    }
+
     public function getUserData(){
         $this->object->post_author ? get_userdata($this->object->post_author) : null; 
     }
