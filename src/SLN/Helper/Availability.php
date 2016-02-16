@@ -36,10 +36,11 @@ class SLN_Helper_Availability
         $count    = SLN_Func::countDaysBetweenDatetimes($from, $interval->getToDate());
         $ret      = array();
         $avItems  = $this->getItems();
+        $hItems   = $this->getHolidaysItems();
         while ($count > 0) {
             $date = $from->format('Y-m-d');
             $count--;
-            if ($avItems->isValidDate($date) && $this->isValidDate($from)) {
+            if ($avItems->isValidDate($date) && $hItems->isValidDate($date) && $this->isValidDate($from)) {
                 $ret[] = $date;
             }
             $from->modify('+1 days');

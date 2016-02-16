@@ -89,27 +89,20 @@ function sln_holiday_row($prefix, $row, $rulenumber = 'New') {
         <div class="clearfix"></div>
 	</div>
     <div class="row">
-        <div class="col-xs-12 col-md-8 sln-slider-wrapper">
-            <h6 class="sln-fake-label"><?php _e('First shift','salon-booking-system');?></h6>
-            <div class="sln-slider">
-                <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
-                <div class="col col-time"><span class="slider-time-from">9:00</span> to <span class="slider-time-to">16:00</span>
-                    <input type="text" name="<?php echo $prefix ?>[from][0]" id="" value="<?php echo isset($row['from'][0]) ? $row['from'][0]  : "9:00" ?>" class="slider-time-input-from hidden">
-                    <input type="text" name="<?php echo $prefix ?>[to][0]" id="" value="<?php echo isset($row['to'][0]) ? $row['to'][0]  : "13:00" ?>" class="slider-time-input-to hidden">
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <h6 class="sln-fake-label"><?php _e('Second shift','salon-booking-system');?></h6>
-            <div class="sln-slider">
-                <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
-                <div class="col col-time">
-                    <span class="slider-time-from">9:00</span> to <span class="slider-time-to">16:00</span>
-                    <input type="text" name="<?php echo $prefix ?>[from][1]" id="" value="<?php echo isset($row['from'][1]) ? $row['from'][1]  : "14:30" ?>" class="slider-time-input-from hidden">
-                    <input type="text" name="<?php echo $prefix ?>[to][1]" id="" value="<?php echo isset($row['to'][1]) ? $row['to'][1]  : "19:00" ?>" class="slider-time-input-to hidden">
-                </div>
-                <div class="clearfix"></div>
-            </div>
+        <div class="col-xs-12 col-md-4 sln-slider-wrapper">
+            <h6 class="sln-fake-label"><?php _e('at', 'salon-booking-system') ?></h6>
+            <?php $timeFormat = SLN_Enum_TimeFormat::getPhpFormat(SLN_Plugin::getInstance()->getSettings()->get('time_format')); ?>
+            <?php $timeFrom = isset($row['from_time']) ? $row['from_time'] : date($timeFormat); ?>
+            <?php $timeFrom = sln_date_create_from_format($timeFormat, $timeFrom); ?>
+            <div class="sln_timepicker"><?php SLN_Form::fieldJSTime($prefix."[from_time]", $timeFrom, array('interval' => SLN_Plugin::getInstance()->getSettings()->get('interval'))) ?></div>
         </div>
+        <div class="col-xs-12 col-md-4 sln-slider-wrapper">
+            <h6 class="sln-fake-label"><?php _e('at', 'salon-booking-system') ?></h6>
+            <?php $timeTo = isset($row['to_time']) ? $row['to_time'] : date($timeFormat); ?>
+            <?php $timeTo = sln_date_create_from_format($timeFormat, $timeTo); ?>
+            <div class="sln_timepicker"><?php SLN_Form::fieldJSTime($prefix."[to_time]", $timeTo, array('interval' => SLN_Plugin::getInstance()->getSettings()->get('interval'))) ?></div>
+        </div>
+        <div class="clearfix"></div>
     </div>
 	</div>
 	<?php
@@ -119,7 +112,7 @@ function sln_date_create_from_format( $dformat, $dvalue )
   {
 
     $schedule = $dvalue;
-    $schedule_format = str_replace(array('Y','m','d', 'H', 'i','a', 'M'),array('%Y','%m','%d', '%I', '%M', '%p', '%b') ,$dformat);
+    $schedule_format = str_replace(array('Y','m','M','d', 'H', 'g', 'i','a'),array('%Y','%m','%b','%d', '%H', '%I', '%M', '%p') ,$dformat);
     // %Y, %m and %d correspond to date()'s Y m and d.
     // %I corresponds to H, %M to i and %p to a
     $ugly = strptime($schedule, $schedule_format);

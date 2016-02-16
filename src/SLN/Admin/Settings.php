@@ -201,7 +201,7 @@ class SLN_Admin_Settings {
                 $tmp[] = $row;
             }
             $_POST['salon_settings']['availabilities'] = $tmp;
-            $_POST['salon_settings']['holidays'] = array_values($_POST['salon_settings']['holidays']);
+            $_POST['salon_settings']['holidays'] = isset($_POST['salon_settings']['holidays']) ? array_values($_POST['salon_settings']['holidays']) : array();
             foreach (array(
         'confirmation',
         'thankyou',
