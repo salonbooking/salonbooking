@@ -11,6 +11,7 @@ function initDatepickers($) {
                 .addClass('started')
                 .datetimepicker({
                     format: $(this).data('format'),
+                    weekStart: $(this).data('weekstart'),
                     minuteStep: 60,
                     autoclose: true,
                     minView: 2,

@@ -37,6 +37,23 @@ class SLN_Settings
         delete_option(self::KEY, $this->settings);
     }
 
+    public function getVersion()
+    {
+        return SLN_VERSION;
+    }
+
+    public function getDbVersion()
+    {
+        return empty($this->settings['sln_db_version']) ? '0.0.0' : $this->settings['sln_db_version'];
+    }
+
+    public function setDbVersion($version = null)
+    {
+        $this->settings['sln_db_version'] = is_null($version) ? $this->getVersion() : $version;
+
+        return $this;
+    }
+
     public function getCurrency()
     {
         return empty($this->settings['pay_currency']) ? 'USD' : $this->settings['pay_currency'];
