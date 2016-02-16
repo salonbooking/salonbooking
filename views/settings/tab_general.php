@@ -256,7 +256,48 @@
 </div>
 </div>
 
+<div class="sln-box sln-box--main">
+    <h2 class="sln-box-title"><?php _e('Email services','salon-booking-system') ?></h2>
+    <div class="sln-box--sub row">
+        <div class="col-xs-12">
+            <h2 class="sln-box-title"><?php _e('Email Notifications service','salon-booking-system') ?></h2>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-sm-8 col-md-6 form-group sln-checkbox">
+                    <?php $this->row_input_checkbox('email_remind', __('Remind the appointment to the client with an Email', 'salon-booking-system')); ?>
+                </div>
+                <div class="col-sm-4 col-md-4 form-group sln-select  sln-select--info-label">
+                    <label for="salon_settings_email_remind_interval"><?php __('Email Timing','salon-booking-system') ?></label>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6">
+                            <?php $field = "salon_settings[email_remind_interval]"; ?>
+                            <?php echo SLN_Form::fieldSelect(
+                                $field,
+                                SLN_Func::getIntervalItemsShort(),
+                                $this->getOpt('email_remind_interval'),
+                                array(),
+                                true
+                            ) ?>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 sln-label--big">
 
+                            <label for="salon_settings_email_remind_interval"><?php _e('Before the appointment','salon-booking-system') ?></label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sln-box-info">
+        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
+        <div class="sln-box-info-content row">
+            <div class="col-md-4 col-sm-8 col-xs-12">
+                <h5><?php _e('-','salon-booking-system') ?></h5>
+            </div>
+        </div>
+        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
+    </div>
+</div>
 
 
 <div class="sln-box sln-box--main">
@@ -288,6 +329,19 @@
                 <p class="sln-input-help"><?php _e('Select your favourite date and time format. Do you need another format? Send an email to support@wpchef.it','salon-booking-system') ?></p>
             </div>
             </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
+            <label for="salon_settings_week_start"><?php _e('Start week on', 'salon-booking-system') ?></label>
+            <?php $field = "salon_settings[week_start]"; ?>
+            <?php echo SLN_Form::fieldSelect(
+                $field,
+                SLN_Enum_DaysOfWeek::toArray(),
+                $this->getOpt('week_start'),
+                array(),
+                true
+            ) ?>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-8 col-md-6">
