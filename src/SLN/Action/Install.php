@@ -9,6 +9,10 @@ class SLN_Action_Install
 
     public static function initActions()
     {
+        if (defined('DOING_AJAX') && DOING_AJAX) {
+            return;
+        }
+
         if (!empty($_GET['do_update_sln'])) {
             self::update();
         }
