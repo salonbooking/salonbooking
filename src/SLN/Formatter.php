@@ -19,7 +19,6 @@ class SLN_Formatter
         if (!$showFree) {
             return ($leftSymbol. number_format($val, 2) . $rightSymbol);
         }
-        if($val == '2,249.50') throw new \Exception('err');
         return $val > 0 ? ($leftSymbol . number_format($val, 2) . $rightSymbol) : __('free','salon-booking-system');
     }
 
