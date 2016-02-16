@@ -7,14 +7,10 @@ class SLN_Helper_HolidayItem
     function __construct($data)
     {
         $this->data = $data;
-        if (empty($this->data)) {
-            $this->data[] = array(
-                'from_date' => '0',
-                'to_date'   => '0',
-                'from_time' => '00:00',
-                'to_time'   => '00:00',
-                );
-        }
+        $this->data['from_date'] = isset($this->data['from_date']) ? $this->data['from_date'] : '0';
+        $this->data['to_date']   = isset($this->data['to_date'])   ? $this->data['to_date']   : '0';
+        $this->data['from_time'] = isset($this->data['from_time']) ? $this->data['from_time'] : '00:00';
+        $this->data['to_time']   = isset($this->data['to_time'])   ? $this->data['to_time']   : '00:00';
     }
 
     public function isValidDate($date)
