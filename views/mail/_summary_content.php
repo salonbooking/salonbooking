@@ -59,7 +59,18 @@ if(!isset($forAdmin)) {
 
 	<?php echo __('This is an e-mail notification of a new booking', 'salon-booking-system') ?>
 	
-	<?php else: ?> 
+	<?php else: ?>
+
+	    <?php if(isset($remind) && $remind): ?>
+
+	    <?php echo __('Remind your booking at', 'salon-booking-system') ?>
+
+        <b style="color:#666666;">
+        <?php echo $plugin->getSettings()->get('gen_name') ?
+                    $plugin->getSettings()->get('gen_name') : get_bloginfo('name') ?>.</b>
+        <br>
+
+	    <?php else: ?>
 
 <?php echo __('This is an e-mail confirmation of your booking at', 'salon-booking-system') ?>
 
@@ -67,7 +78,7 @@ if(!isset($forAdmin)) {
                         <?php echo $plugin->getSettings()->get('gen_name') ?
                             $plugin->getSettings()->get('gen_name') : get_bloginfo('name') ?>.</b><br></p>
 
-
+<?php endif ?>
 <?php endif ?>
 
 <?php endif ?>

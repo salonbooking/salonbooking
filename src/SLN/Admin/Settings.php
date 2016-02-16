@@ -158,6 +158,8 @@ class SLN_Admin_Settings {
         'sms_new_attendant',
         'sms_remind',
         'sms_remind_interval',
+        'email_remind',
+        'email_remind_interval',
         'soc_facebook',
         'soc_twitter',
         'soc_google',
@@ -172,6 +174,10 @@ class SLN_Admin_Settings {
             wp_clear_scheduled_hook('sln_sms_reminder');
             if (isset($_POST['salon_settings']['sms_remind']) && $_POST['salon_settings']['sms_remind']) {
                 wp_schedule_event(time(), 'hourly', 'sln_sms_reminder');
+            }
+            wp_clear_scheduled_hook('sln_email_reminder');
+            if (isset($_POST['salon_settings']['email_remind']) && $_POST['salon_settings']['email_remind']) {
+                wp_schedule_event(time(), 'hourly', 'sln_email_reminder');
             }
             $this->settings->save();
             $this->showAlert(
