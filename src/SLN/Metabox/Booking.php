@@ -79,8 +79,8 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
                 'post_status' => $new
             ));
         }
-        if(isset($_POST['_sln_booking_createuser']) && $_POST['_sln_booking_createuser']){
-            $userid = $this->registration($booking);
+        if(isset($_POST['_sln_booking_createuser']) && $_POST['_sln_booking_createuser'] && get_post_field('post_type', $post_id) === SLN_Plugin::POST_TYPE_BOOKING){
+            $userid = $this->registration($_POST);
             if($userid instanceof WP_Error)
                 return;
             $postnew = array_merge($postnew, array(
@@ -93,19 +93,31 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             wp_update_post($postnew);
             $this->disabledSavePost = false;
         }
+
+        $booking = new SLN_Wrapper_Booking($post_id);
+        $user = new WP_User($booking->getUserId());
+        if (array_search('administrator', $user->roles) === false && array_search('subscriber', $user->roles) !== false) {
+            wp_update_user(array(
+                'ID' => $booking->getUserId(),
+                'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
+            ));
+        }
     } 
 
-    protected function registration($booking){
-        $errors = wp_create_user($booking->getEmail(), wp_generate_password(), $booking->getEmail());
-        wp_update_user(
-            array('ID' => $errors, 'first_name' => $booking->getFirstname(), 'last_name' => $booking->getLastname())
-        );
-        add_user_meta($errors, '_sln_phone', $booking->getPhone());
-        add_user_meta($errors, '_sln_address', $booking->getAddress());
-        if (is_wp_error($errors)) {
+    protected function registration($data){
+        $errors = wp_create_user($data['_sln_booking_email'], wp_generate_password(), $data['_sln_booking_email']);
+        if (!is_wp_error($errors)) {
+            wp_update_user(
+                array('ID' => $errors, 'first_name' => $data['_sln_booking_firstname'], 'last_name' => $data['_sln_booking_lastname'], 'role' => SLN_Plugin::USER_ROLE_CUSTOMER)
+            );
+            add_user_meta($errors, '_sln_phone', $data['_sln_booking_phone']);
+            add_user_meta($errors, '_sln_address', $data['_sln_booking_address']);
+
+            wp_new_user_notification($errors); //, $values['password']);
+        } else {
             $this->addError($errors->get_error_message());
         }
-        wp_new_user_notification($errors); //, $values['password']);
+
         return $errors;
     }
 

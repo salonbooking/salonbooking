@@ -2,6 +2,28 @@
 
 class SLN_Action_Install
 {
+    /** @var array DB updates that need to be run */
+    private static $dbUpdates = array(
+        '2.4' => 'Updates/sln-update-2.4.php',
+    );
+
+    public static function initActions()
+    {
+        if (defined('DOING_AJAX') && DOING_AJAX) {
+            return;
+        }
+
+        if (!empty($_GET['do_update_sln'])) {
+            self::update();
+        }
+
+        if (version_compare(SLN_Plugin::getInstance()->getSettings()->getDbVersion(), max(array_keys(self::$dbUpdates)), '<')) {
+            echo SLN_Plugin::getInstance()->loadView('notice/html_notice_update');
+        } else {
+            SLN_Plugin::getInstance()->getSettings()->setDbVersion()->save();
+        }
+    }
+
     public static function execute($force = false)
     {
         $data = require SLN_PLUGIN_DIR . '/_install_data.php';
@@ -30,6 +52,21 @@ class SLN_Action_Install
         }
 
         new SLN_UserRole_SalonStaff(SLN_Plugin::getInstance(), SLN_Plugin::USER_ROLE_STAFF, __('Salon staff', 'salon-booking-system'));
+        new SLN_UserRole_SalonCustomer(SLN_Plugin::getInstance(), SLN_Plugin::USER_ROLE_CUSTOMER, __('Salon customer', 'salon-booking-system'));
+    }
+
+    private static function update()
+    {
+        $current_version = SLN_Plugin::getInstance()->getSettings()->getDbVersion();
+
+        foreach (self::$dbUpdates as $version => $updater) {
+            if (version_compare($current_version, $version, '<')) {
+                include($updater);
+                SLN_Plugin::getInstance()->getSettings()->setDbVersion($version)->save();
+            }
+        }
+
+        SLN_Plugin::getInstance()->getSettings()->setDbVersion()->save();
     }
 
     private static function checkPost($title, $post_type)
