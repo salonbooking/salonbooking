@@ -8,6 +8,7 @@ class SLN_Plugin
     const POST_TYPE_BOOKING = 'sln_booking';
     const TAXONOMY_SERVICE_CATEGORY = 'sln_service_category';
     const USER_ROLE_STAFF = 'sln_staff';
+    const USER_ROLE_CUSTOMER = 'sln_customer';
     const TEXT_DOMAIN = 'salon-booking-system';
     const F = 'slnc';
     const F1 = 30;
@@ -44,6 +45,7 @@ class SLN_Plugin
     {
         add_action('init', array($this, 'action_init'));
         add_action('admin_init', array($this, 'add_admin_caps'));
+        add_action('admin_init', array( 'SLN_Action_Install', 'initActions' ));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         
         add_action('sln_sms_reminder', 'sln_sms_reminder');
@@ -60,6 +62,7 @@ class SLN_Plugin
         new SLN_Metabox_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_Metabox_Booking($this, self::POST_TYPE_BOOKING);
         new SLN_Metabox_BookingActions($this, self::POST_TYPE_BOOKING);
+        new SLN_Admin_Customers($this);
         new SLN_Admin_Settings($this);
         new SLN_Admin_Calendar($this);
         new SLN_Admin_Tools($this);
