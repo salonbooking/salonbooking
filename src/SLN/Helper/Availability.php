@@ -36,7 +36,7 @@ class SLN_Helper_Availability
         $count    = SLN_Func::countDaysBetweenDatetimes($from, $interval->getToDate());
         $ret      = array();
         $avItems  = $this->getItems();
-        $hItems  = $this->getHolidaysItems();
+        $hItems   = $this->getHolidaysItems();
         while ($count > 0) {
             $date = $from->format('Y-m-d');
             $count--;
@@ -54,6 +54,7 @@ class SLN_Helper_Availability
 
         $ret     = array();
         $avItems = $this->getItems();
+        $hItems  = $this->getHolidaysItems();
         $hb      = $this->getHoursBeforeHelper();
         $from = $hb->getFromDate();
         $to = $hb->getToDate();
@@ -62,6 +63,7 @@ class SLN_Helper_Availability
             $d = new SLN_DateTime($date->format('Y-m-d') . ' ' . $time);
             if (
                 $avItems->isValidDatetime($d)
+                && $hItems->isValidDatetime($d)
                 && $this->isValidDate($d)
                 && $this->isValidTime($d)
                 && $d > $from && $d < $to

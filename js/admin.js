@@ -262,6 +262,7 @@ jQuery(function ($) {
     prototypeHoliday.remove();
 
     initDatepickers($);
+    initTimepickers($);
     bindRemove();
 
     $('button[data-collection="addnew"]').click(function () {
@@ -275,6 +276,7 @@ jQuery(function ($) {
         $('#sln-booking-holiday-rules-wrapper').append(htmlHoliday.replace(/__new__/g, countHoliday) );
         countHoliday++;
         initDatepickers($);
+        initTimepickers($);
         bindRemove();
         return false;
     });
