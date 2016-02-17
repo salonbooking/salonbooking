@@ -138,6 +138,9 @@ class SLN_Admin_Settings {
         }
 
         public function processTabGeneral() {
+        $_POST['salon_settings']['email_subject'] = !empty($_POST['salon_settings']['email_subject']) ?
+                                                            $_POST['salon_settings']['email_subject'] :
+                                                            'Your booking reminder for [DATE] at [TIME] at [SALON NAME]';
             foreach (array(
         'gen_name',
         'gen_email',
@@ -160,6 +163,7 @@ class SLN_Admin_Settings {
         'sms_remind_interval',
         'email_remind',
         'email_remind_interval',
+        'email_subject',
         'soc_facebook',
         'soc_twitter',
         'soc_google',
