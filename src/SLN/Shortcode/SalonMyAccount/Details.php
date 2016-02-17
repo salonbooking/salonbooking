@@ -70,13 +70,18 @@ class SLN_Shortcode_SalonMyAccount_Details
                     $serviceNames[] = $s->getName();
                 }
 
+		$total = $this->plugin->format()->money($booking->getAmount());
+        if (SLN_Enum_BookingStatus::PAID == $booking->getStatus() && $deposit = $booking->getDeposit()) {
+	        $total .= ' (' . $this->plugin->format()->money($deposit) . ' ' .
+	                  __('already paid as deposit','salon-booking-system') . ')';
+        }
 		return array(
 			'id' => $booking->getId(),
 			'date' => $booking->getStartsAt()->format('M, j Y g:ia'),
 			'timestamp' => strtotime($booking->getStartsAt()),
 			'services' => implode("<br>", $serviceNames),
 			'assistant' => !empty($attendant) ? $attendant->getName() : '',
-			'total' => $this->plugin->getSettings()->getCurrencySymbol() . ' ' . $booking->getAmount(),
+			'total' => $total,
 			'status' => SLN_Enum_BookingStatus::getLabel($booking->getStatus()),
 			'status_code' => $booking->getStatus(),
 			'rating' => $booking->getRating(),
