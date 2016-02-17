@@ -8,45 +8,51 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
-Salon booking creates a complete and easy to manage appointment booking system inside your wordPress installation.
+A complete and easy to manage appointment booking system for your wordPress install.
 
 
 == Description ==
 
-Salon booking, is a plugin for WordPress based websites that creates a complete and easy to manage booking system in order to give your customers the ability to book for one or more services on your website.
+Salon booking is a complete and easy to manage booking system to help your business getting more reservations on your website.
 
 Salon booking  is the best solution for: 
 
-* Hair dresser salons
-* Barber shop
-* Beauty salons
-* Spas 
-* Car shop
-* Therapists
+**HAIR DRESSERS SALON**
+**BARBER SHOP**
+**BEAUTY SALONS**
+**SPAS** 
+**CAR SHOPS**
+**THERAPISTS**
+**TUTORS**
 
 
-and all that kind of businesses that want to offer a quality online booking service to their clients.
+Is the perfect solution to all that kind of business where the ONE TO ONE appointment booking is crucial.
+Salon booking is provided with a intuitive back-end bookings calendar where administrator have a quick overview of all the upcoming reservations.
 
-Salon booking works upon a double booking algorithm:
+Take a look at this video:
+
+https://www.youtube.com/watch?v=YdZ_-WPBOlc
+
+
+Salon booking works with double booking algorithms:
 
 * Basic - fixed booking duration
 * Advanced - booking duration is based on the sum of the services booked
 
-Salon booking is provided with a intuitive back-end bookings calendar where the administrator can have a quick overview of all the upcoming reservations.
 
 
 
 **LIST OF THE FEATURES**
 
 
-**BRAND NEW FEATURES**: 
+**Recently added**: 
 
 * Import / Export settings tool
 * More intervals available for "Session average duration" option
 * Auto hide columns on Booking my Account page when Assistant selection is not acrive and when "Hide price" is active
 
 
-**EXISTING FEATURES**:
+
 
 * Holidays rules - set your days off during the year
 * Offset between reservations - if you need to add an extra OFF interval between two sequencial reservations
@@ -60,10 +66,11 @@ Salon booking is provided with a intuitive back-end bookings calendar where the 
 * Full front-end access to administrator even when the free-version is expired
 * New "Payment pending" status for bookings taken from back-end that require a payment from customers
 
-* GOOGLE CALENDAR INTEGRATION
+
+**GOOGLE CALENDAR INTEGRATION**
 Synchronise all your reservations inside your own Google Calendar and share the information with your staff members
 
-* ADD BOOKINGS FROM BACK-END
+**ADD BOOKINGS FROM BACK-END**
 If you need to add a manual reservations, that ones received by phone for example, use the back-end interface with a real time
 control of your available date/time slots.
 
