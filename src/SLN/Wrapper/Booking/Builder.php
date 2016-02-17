@@ -187,11 +187,7 @@ class SLN_Wrapper_Booking_Builder
         $settings             = $this->plugin->getSettings();
         $datetime             = $this->plugin->format()->datetime($this->getDateTime());
         $name                 = $this->get('firstname') . ' ' . $this->get('lastname');
-        $status               = $settings->get('confirmation') ?
-            SLN_Enum_BookingStatus::PENDING
-            : ($settings->get('pay_enabled') ?
-                SLN_Enum_BookingStatus::PENDING
-                : SLN_Enum_BookingStatus::PAY_LATER);
+        $status               = $this->getCreateStatus();
         $id                   = wp_insert_post(
             array(
                 'post_type'   => SLN_Plugin::POST_TYPE_BOOKING,
@@ -218,6 +214,15 @@ class SLN_Wrapper_Booking_Builder
                 'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
             ));
         }
+    }
+    private function getCreateStatus(){
+        $settings = $this->plugin->getSettings();
+        return $settings->get('confirmation') ?
+            SLN_Enum_BookingStatus::PENDING
+            : ($settings->get('pay_enabled') ?
+                SLN_Enum_BookingStatus::PENDING
+                : ($settings->isHidePrices() ? SLN_Enum_BookingStatus::CONFIRMED
+                    : SLN_Enum_BookingStatus::PAY_LATER ));
     }
 
     public function getDuration()
