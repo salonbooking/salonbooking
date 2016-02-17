@@ -286,6 +286,14 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-8 form-group sln-input--simple">
+                    <?php $this->row_input_text('email_subject', __('Email Subject', 'salon-booking-system')); ?>
+                </div>
+                <div class="col-sm-4 col-md-4 sln-box-maininfo  align-top">
+                    <p class="sln-input-help"><?php _e('You can use [DATE], [TIME], [SALON NAME]','salon-booking-system') ?></p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="sln-box-info">
