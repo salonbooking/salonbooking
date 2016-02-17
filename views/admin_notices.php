@@ -1,7 +1,7 @@
-<div id="sln-setting-error" class="updated settings-error error">
-    <h3><?php _e('Salon booking plugin has been activated','salon-booking-system') ?></h3>
+<div id="sln-setting-error" class="updated settings-success success">
+    <h3><?php _e('Congratulation! Salon Booking is now active.','salon-booking-system') ?></h3>
 
-    <?php _e('<p>A new <strong>"Salon"</strong> section has been created into the left sidebar<br/>There you can find <strong>"Services", "Bookings", "Settings"</strong> sections<br/>We have also created "services" and "bookings" for demo purpose. Feel free to delete them<br/>Go to "Salon > Settings" section in order to set your own salon booking system</p>','salon-booking-system');?>
+    <?php _e('<p>A new <strong>"Salon"</strong> section has been created into the left sidebar<br/>Three new pages has been created: "Booking", "Booking my account" and "Thank you page"<br/>We have also added some "services" and "bookings" for demo purpose. Feel free to delete them<br/>Go to <a href="/wp-admin/admin.php?page=salon"><strong>"Salon > Settings"</strong></a>section to setup your Salon Booking System</p>','salon-booking-system');?>
 
     <p>
         <strong><a class="dismiss-notice"
