@@ -25,7 +25,7 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 			'first_name'     => __('First Name', 'salon-booking-system'),
 			'last_name'      => __('Last Name', 'salon-booking-system'),
 			'email'          => __('E-mail', 'salon-booking-system'),
-			'billing_phone'  => __('Telephone', 'salon-booking-system'),
+			'_sln_phone'     => __('Telephone', 'salon-booking-system'),
 			'total_bookings' => __('Total Reservations', 'salon-booking-system'),
 			'total_amount'   => __('Customer Value', 'salon-booking-system'),
 		);
