@@ -150,5 +150,7 @@ class SLN_Settings
         return isset($this->settings['pay_method']) ? $this->settings['pay_method'] : 'paypal';
     }
 
-
+    public function isHidePrices(){
+        return $this->get('hide_prices') == 1 ? true : false;
+    }
 }

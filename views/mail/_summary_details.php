@@ -1,5 +1,5 @@
 <?php
-$showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
+$showPrices = !$plugin->getSettings()->isHidePrices();
 ?>
 <table width="502" border="0" align="left" cellpadding="0" cellspacing="0">
           <tbody><tr>
