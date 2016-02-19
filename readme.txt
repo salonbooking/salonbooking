@@ -8,12 +8,12 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
-A complete and easy to manage appointment booking system for your wordPress install.
+A complete and easy to manage appointments booking system for your Salon.
 
 
 == Description ==
 
-Salon booking is a complete and easy to manage booking system to help your business getting more reservations on your website.
+Salon Booking is a complete and easy to manage appointments booking system to help your business getting more reservations on your website and saving a lot of time with your agenda management tasks.
 
 Salon booking  is the best solution for: 
 
@@ -26,7 +26,8 @@ Salon booking  is the best solution for:
 **TUTORS**
 
 
-Is the perfect solution to all that kind of business where the ONE TO ONE appointment booking is crucial.
+It’s the perfect solution to all that kind of business where the ONE TO ONE appointment booking is crucial.
+
 Salon booking is provided with a intuitive back-end bookings calendar where administrator have a quick overview of all the upcoming reservations.
 
 Take a look at this video:
@@ -47,15 +48,21 @@ Salon booking works with double booking algorithms:
 
 **Recently added**: 
 
+* Customers management archive
+* Holidays rules hourly range added
+* Week start on..
+* Email booking reminder 
+* Multiple assistants selection
+* Filter assistants by services
+
+
+**With Salon Booking you can also..**
+
 * Import / Export settings tool
 * More intervals available for "Session average duration" option
-* Auto hide columns on Booking my Account page when Assistant selection is not acrive and when "Hide price" is active
-
-
-
-
+* Auto hide columns on Booking my Account page when Assistant selection is not active and when "Hide price" is active
 * Holidays rules - set your days off during the year
-* Offset between reservations - if you need to add an extra OFF interval between two sequencial reservations
+* Offset between reservations - if you need to add an extra OFF interval between two sequential reservations
 * New section added "Tool" where you can get debugging infos
 * Customer reviews - let your customers submit a feedback after each reservation
 * Back-end settings pages full redesign
@@ -249,6 +256,13 @@ http://salon.wordpresschef.it
 
 == Changelog ==
 
+19.02.2016
+
+* Fixed bug with French and Deutsch languages
+* Fixed bug when payment on Paypal is cancelled
+* Fixed bug with "Not available days" on services
+
+
 08.02.2016
 
 * Fixed issue with timezone on Google Calendar integration
@@ -356,16 +370,16 @@ http://salon.wordpresschef.it
 
 1.0.3 22/05/2015
 
-Date-picker multilanguages support fix
+Date-picker multi-languages support fix
 
 
 1.0.2 19/05/2015
 
-Date-picker multilanguages support fix
+Date-picker multi-languages support fix
 
 1.0.1 13/05/2015
 
-* Added â€œAssistant selection" option
+* Added “Assistant selection" option
 * Added "SMS Verification" option
 * Add "Salon staff" new users role
 * Fixed booking system bug
