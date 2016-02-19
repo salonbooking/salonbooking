@@ -15,9 +15,6 @@ class SLN_Helper_Availability_MyAccountBookings
 		$args = array(
 			'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
 			'nopaging'   => true,
-			'order'      => 'DESC',
-			'orderby'    => 'meta_value',
-			'meta_key'   => '_sln_booking_date',
 			'meta_query' => array(
 				array(
 					'key'     => '_sln_booking_date',
@@ -34,11 +31,35 @@ class SLN_Helper_Availability_MyAccountBookings
 		}
 		wp_reset_query();
 		wp_reset_postdata();
+		usort(
+				$ret,
+				$mode == 'past' ? array($this, 'sortDescByStartsAt') : array($this, 'sortAscByStartsAt')
+		);
 
 		SLN_Plugin::addLog(__CLASS__.' - buildBookings('.$this->date->format('Y-m-d').', ' . $mode . ')');
 		foreach($ret as $b)
 			SLN_Plugin::addLog(' - '.$b->getId());
 		return $ret;
+	}
+
+	/**
+	 * @param SLN_Wrapper_Booking $a
+	 * @param SLN_Wrapper_Booking $b
+	 *
+	 * @return int
+	 */
+	private function sortAscByStartsAt($a, $b) {
+		return (strtotime($a->getStartsAt()->format('Y-m-d H:i:s')) > strtotime($b->getStartsAt()->format('Y-m-d H:i:s')) ? 1 : -1 );
+	}
+
+	/**
+	 * @param SLN_Wrapper_Booking $a
+	 * @param SLN_Wrapper_Booking $b
+	 *
+	 * @return int
+	 */
+	private function sortDescByStartsAt($a, $b) {
+		return (strtotime($a->getStartsAt()->format('Y-m-d H:i:s')) >= strtotime($b->getStartsAt()->format('Y-m-d H:i:s')) ? -1 : 1 );
 	}
 
 	public function getBookings($user, $mode = 'past')

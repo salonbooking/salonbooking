@@ -32,6 +32,7 @@ return array(
             "to"   => array("13:00", "20:00")
             )
         ),
+        'email_subject'    => 'Your booking reminder for [DATE] at [TIME] at [SALON NAME]',
         'pay_currency'     => 'USD',
         'pay_currency_pos' => 'right',
         'pay_paypal_email' => 'test@test.com',

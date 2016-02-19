@@ -145,7 +145,7 @@ class SLN_Plugin
         $lang = strtolower(substr(get_locale(), 0, 2));
         wp_enqueue_script('smalot-datepicker', SLN_PLUGIN_URL . '/js/bootstrap-datetimepicker.js', array('jquery'), '20140711', true);
         if ($lang != 'en') {
-            wp_enqueue_script('smalot-datepicker-lang', SLN_PLUGIN_URL . '/js/datepicker_language/bootstrap-datetimepicker.' . $lang . '.js', array('jquery'), '2015-05-01', true);
+            wp_enqueue_script('smalot-datepicker-lang', SLN_PLUGIN_URL . '/js/datepicker_language/bootstrap-datetimepicker.' . $lang . '.js', array('jquery'), '2016-02-16', true);
         }
         wp_enqueue_script('salon', SLN_PLUGIN_URL . '/js/salon.js', array('jquery'), '20140711', true);
         wp_enqueue_script('salon-bootstrap', SLN_PLUGIN_URL . '/js/bootstrap.min.js', array('jquery'), '20140711', true); // algolplus
