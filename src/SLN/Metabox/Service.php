@@ -68,6 +68,7 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
             'notav_5'    => 'bool',
             'notav_6'    => 'bool',
             'notav_7'    => 'bool',
+            'exec_order' => 'int',
         );
     }
 }

@@ -22,11 +22,24 @@ $helper->showNonce($postType);
             <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'duration'), $service->getDuration()); ?>
         </div>
     </div>
-    <div class="col-xs-6 col-md-4 col-sm-6 col-lg-6">
+    <div class="col-xs-6 col-md-4 col-sm-2 col-lg-2">
         <div class="form-group">
             <label><?php _e('Secondary', 'salon-booking-system'); ?></label>
             <?php SLN_Form::fieldCheckbox($helper->getFieldName($postType, 'secondary'), $service->isSecondary()) ?>
             <br/><em><?php _e('Select this if you want this service considered as secondary level service','salon-booking-system'); ?></em>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-6 col-sm-4 col-lg-4">
+        <div class="form-group">
+            <?php $m_attendant_enabled = $settings->get('m_attendant_enabled'); ?>
+            <?php $attrs = $m_attendant_enabled ? array() : array('disabled'=>'disabled') ?>
+            <label><?php _e('Execution Order', 'salon-booking-system'); ?></label>
+            <?php SLN_Form::fieldNumeric($helper->getFieldName($postType, 'exec_order'), $service->getExecOrder(), array('min' => 1, 'max' => 10, 'attrs' => $attrs)) ?>
+            <?php if (!$m_attendant_enabled) {
+                SLN_Form::fieldText($helper->getFieldName($postType, 'exec_order'), $service->getExecOrder(), array('type' => 'hidden'));
+            } ?>
+            <br/><em><?php _e('Set this option if you have enabled "Multiple assistants selection". Use a number to give this service an order of execution compared to the other services.','salon-booking-system'); ?></em>
+            <br/><em><?php _e('Consider that this option will affect the availability of your staff members that you have associated th this service.','salon-booking-system'); ?></em>
         </div>
     </div>
     <div class="sln-clear"></div>

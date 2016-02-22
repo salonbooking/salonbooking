@@ -42,6 +42,15 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         return $ret;
     }
 
+    function getExecOrder()
+    {
+        $post_id = $this->getId();
+        $ret     = apply_filters('sln_service_exec_order', get_post_meta($post_id, '_sln_service_exec_order', true));
+        $ret     = empty($ret) || 1 > $ret || 10 < $ret ? 1 : $ret;
+
+        return $ret;
+    }
+
     function getNotAvailableOn($key)
     {
         $post_id = $this->getId();
