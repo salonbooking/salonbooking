@@ -149,6 +149,7 @@ class SLN_Admin_Settings {
         'gen_timetable',
         'ajax_enabled',
         'attendant_enabled',
+        'm_attendant_enabled',
         'attendant_email',
         'sms_enabled',
         'sms_account',
