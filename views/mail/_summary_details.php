@@ -1,5 +1,5 @@
 <?php
-$showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
+$showPrices = !$plugin->getSettings()->isHidePrices();
 ?>
 <table width="502" border="0" align="left" cellpadding="0" cellspacing="0">
           <tbody><tr>
@@ -37,7 +37,7 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
                 <td align="left" valign="top">&nbsp;</td>
               </tr>
               <tr>
-                <td height="30" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Services') ?></td>
+                <td height="30" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Services','salon-booking-system') ?></td>
               </tr>
                                     <?php foreach ($plugin->getServices() as $service) : ?>
                                         <?php if ($booking->hasService($service)): ?>

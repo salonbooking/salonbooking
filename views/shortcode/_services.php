@@ -8,12 +8,14 @@
  */
 
 $ah = $plugin->getAvailabilityHelper();
-$ah->setDate($plugin->getBookingBuilder()->getDateTime());
+$bb = $plugin->getBookingBuilder();
+$ah->setDate($bb->getDateTime());
 $isSymbolLeft = $plugin->getSettings()->get('pay_currency_pos') == 'left';
 $symbolLeft = $isSymbolLeft ? $plugin->getSettings()->getCurrencySymbol() : '';
 $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 $grouped = SLN_Func::groupServicesByCategory($services);
+$minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMinutes();
  ?>
 <div class="sln-service-list">
     <?php foreach ($grouped as $group): ?>
@@ -31,7 +33,10 @@ $grouped = SLN_Func::groupServicesByCategory($services);
             <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
             <?php
             $serviceErrors   = $ah->validateService($service);
-            $settings = array('attrs' => array('data-price' => $service->getPrice()));
+            $settings = array('attrs' => array(
+                'data-price' => $service->getPrice(),
+                'data-duration' => SLN_Func::getMinutesFromDuration($service->getDuration())
+            ));
             if ($serviceErrors) {
                 $settings['attrs']['disabled'] = 'disabled';
             }
@@ -77,11 +82,15 @@ $grouped = SLN_Func::groupServicesByCategory($services);
     <!-- panel END -->
     <?php endif ?>
     <?php endforeach ?>
+    <div class="alert alert-danger" style="display: none" id="availabilityerror"><p><?php echo __('not enough time for this service','salon-booking-system') ?></p></div>
 	<?php if ($showPrices){ ?>
     <div class="row row-total">
         <div class="col-xs-6 services-total-label"><?php _e('Subtotal', 'salon-booking-system') ?></div>
         <div class="col-xs-6 services-total">
-        <span id="services-total" data-symbol-left="<?php echo $symbolLeft ?>" data-symbol-right="<?php echo $symbolRight ?>">
+        <span id="services-total" 
+              data-minutes="<?php echo $minutes ?>"
+              data-symbol-left="<?php echo $symbolLeft ?>"
+              data-symbol-right="<?php echo $symbolRight ?>">
             <?php echo $plugin->format()->money(0, false) ?>
         </span>
         </div>

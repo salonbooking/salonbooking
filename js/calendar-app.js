@@ -4,6 +4,7 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl){
 		view: 'month',
 		tmpl_path: templatesUrl,
 		tmpl_cache: false,
+		format12: true,
 		day: ajaxDay,
 		onAfterEventsLoad: function(events) {
 			if(!events) {

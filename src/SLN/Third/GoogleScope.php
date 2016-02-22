@@ -587,14 +587,29 @@ class SLN_GoogleScope {
      * @return string
      */
     public static function date3339($timestamp = 0, $offset = 0) {
-        $offset = get_option('gmt_offset')+1;
+        $timezone = get_option('timezone_string');
+
+        $date = new DateTime('now', new DateTimeZone($timezone));
+        $seconds = $date->format('Z');
+        $def = date_default_timezone_get();
+        if($def != $timezone);
+            $timestamp = $timestamp - $seconds;
+        $offset = $date->format('Z')/3600;
+        //$offset = get_option('gmt_offset')+1;
         sln_my_wp_log("wp offset");
         sln_my_wp_log($offset);
-        if (!$timestamp)
-            return "error";
-        $date = date('Y-m-d\TH:i:s', $timestamp);
+        if (!$timestamp) {
+            $ret = "error";
+        } else {
+            $ret = date('Y-m-d\TH:i:s', $timestamp);
+            $ret .= sprintf(".000%+03d:%02d", intval($offset), abs($offset - intval($offset)) * 60);
+        }
+        return $ret; 
+/*
+        $date = date('Y-m-d\TH:i:s', $timestamp, new DateTimeZone($timezone));
         $date .= sprintf(".000%+03d:%02d", intval($offset), abs($offset - intval($offset)) * 60);
         return $date;
+*/
     }
 
     /**

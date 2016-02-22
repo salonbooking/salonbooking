@@ -59,7 +59,18 @@ if(!isset($forAdmin)) {
 
 	<?php echo __('This is an e-mail notification of a new booking', 'salon-booking-system') ?>
 	
-	<?php else: ?> 
+	<?php else: ?>
+
+	    <?php if(isset($remind) && $remind): ?>
+
+	    <?php echo __('Remind your booking at', 'salon-booking-system') ?>
+
+        <b style="color:#666666;">
+        <?php echo $plugin->getSettings()->get('gen_name') ?
+                    $plugin->getSettings()->get('gen_name') : get_bloginfo('name') ?>.</b>
+        <br>
+
+	    <?php else: ?>
 
 <?php echo __('This is an e-mail confirmation of your booking at', 'salon-booking-system') ?>
 
@@ -67,7 +78,7 @@ if(!isset($forAdmin)) {
                         <?php echo $plugin->getSettings()->get('gen_name') ?
                             $plugin->getSettings()->get('gen_name') : get_bloginfo('name') ?>.</b><br></p>
 
-
+<?php endif ?>
 <?php endif ?>
 
 <?php endif ?>
@@ -99,8 +110,18 @@ if(!isset($forAdmin)) {
       <tr>
         <td align="center" valign="top"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
           <tbody><tr>
-            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Our address', 'salon-booking-system') ?></td>
-            <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $plugin->getSettings()->get('gen_address') ?></td>
+              <?php
+              if($forAdmin) {
+                  $title = __('Customer address', 'salon-booking-system');
+                  $text = $booking->getAddress();
+              }
+              else {
+                  $title = __('Our address', 'salon-booking-system');
+                  $text = $plugin->getSettings()->get('gen_address');
+              }
+              ?>
+            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo $title ?></td>
+            <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $text ?></td>
           </tr>
         </tbody></table></td>
       </tr>
@@ -112,15 +133,31 @@ if(!isset($forAdmin)) {
 <tr>
         <td align="center" valign="top" bgcolor="#ffffff"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
           <tbody><tr>
-            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo __('Contacts', 'salon-booking-system')?></td>
+              <?php
+              if($forAdmin) {
+                  $title = __('Customer contacts', 'salon-booking-system');
+                  $text = $booking->getDisplayName();
+                  $m = $booking->getEmail();
+                  $phone = $booking->getPhone();
+              }
+              else {
+                  $title = __('Contacts', 'salon-booking-system');
+                  $text = '';
+                  $m = $plugin->getSettings()->get('gen_email') ?
+                      $plugin->getSettings()->get('gen_email') : get_bloginfo('admin_email');
+                  $phone = $plugin->getSettings()->get('gen_phone');
+              }
+              ?>
+            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo $title ?></td>
             <td align="left" valign="top"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
               <tbody><tr>
                 <td height="27">&nbsp;</td>
               </tr>
               <tr>
+                  <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $text ?></td>
+              </tr>
+              <tr>
                 <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:normal;">
-                    <?php $m = $plugin->getSettings()->get('gen_email') ?
-                                    $plugin->getSettings()->get('gen_email') : get_bloginfo('admin_email');?>
                                 <a href="mailto:<?php echo $m ?>"
                                    style="color:#666666; text-decoration:none;"><?php echo $m ?></a></td>
               </tr>
@@ -128,7 +165,7 @@ if(!isset($forAdmin)) {
                 <td height="22">&nbsp;</td>
               </tr>
               <tr>
-                <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $plugin->settings->get('gen_phone') ?></td>
+                <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $phone ?></td>
               </tr>
               <tr>
                 <td height="35">&nbsp;</td>

@@ -8,6 +8,7 @@ class SLN_Plugin
     const POST_TYPE_BOOKING = 'sln_booking';
     const TAXONOMY_SERVICE_CATEGORY = 'sln_service_category';
     const USER_ROLE_STAFF = 'sln_staff';
+    const USER_ROLE_CUSTOMER = 'sln_customer';
     const TEXT_DOMAIN = 'salon-booking-system';
     const F = 'slnc';
     const F1 = 30;
@@ -44,9 +45,11 @@ class SLN_Plugin
     {
         add_action('init', array($this, 'action_init'));
         add_action('admin_init', array($this, 'add_admin_caps'));
+        add_action('admin_init', array( 'SLN_Action_Install', 'initActions' ));
         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
         
         add_action('sln_sms_reminder', 'sln_sms_reminder');
+        add_action('sln_email_reminder', 'sln_email_reminder');
         register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
         new SLN_PostType_Booking($this, self::POST_TYPE_BOOKING);
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
@@ -60,6 +63,7 @@ class SLN_Plugin
         new SLN_Metabox_Attendant($this, self::POST_TYPE_ATTENDANT);
         new SLN_Metabox_Booking($this, self::POST_TYPE_BOOKING);
         new SLN_Metabox_BookingActions($this, self::POST_TYPE_BOOKING);
+        new SLN_Admin_Customers($this);
         new SLN_Admin_Settings($this);
         new SLN_Admin_Calendar($this);
         new SLN_Admin_Tools($this);
@@ -141,7 +145,7 @@ class SLN_Plugin
         $lang = strtolower(substr(get_locale(), 0, 2));
         wp_enqueue_script('smalot-datepicker', SLN_PLUGIN_URL . '/js/bootstrap-datetimepicker.js', array('jquery'), '20140711', true);
         if ($lang != 'en') {
-            wp_enqueue_script('smalot-datepicker-lang', SLN_PLUGIN_URL . '/js/datepicker_language/bootstrap-datetimepicker.' . $lang . '.js', array('jquery'), '2015-05-01', true);
+            wp_enqueue_script('smalot-datepicker-lang', SLN_PLUGIN_URL . '/js/datepicker_language/bootstrap-datetimepicker.' . $lang . '.js', array('jquery'), '2016-02-16', true);
         }
         wp_enqueue_script('salon', SLN_PLUGIN_URL . '/js/salon.js', array('jquery'), '20140711', true);
         wp_enqueue_script('salon-bootstrap', SLN_PLUGIN_URL . '/js/bootstrap.min.js', array('jquery'), '20140711', true); // algolplus
@@ -419,5 +423,11 @@ class SLN_Plugin
 function sln_sms_reminder()
 {
     $obj = new SLN_Action_Reminder();
-    $obj->execute();
+    $obj->executeSms();
+}
+
+function sln_email_reminder()
+{
+    $obj = new SLN_Action_Reminder();
+    $obj->executeEmail();
 }

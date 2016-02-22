@@ -51,7 +51,7 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
             <?php echo $plugin->getSettings()->get('gen_phone') ?></p>
         <p class="aligncenter"><a href="<?php echo $confirmUrl ?>"
              data-salon-toggle="direct" data-salon-data="<?php echo $ajaxData.'&mode=confirm' ?>"
-             class="btn btn-primary"><?php _e('Confirm','salon-booking-system') ?></a></p>
+             class="btn btn-primary"><?php _e('Complete','salon-booking-system') ?></a></p>
 <?php /*
         <p class="aligncenter"><a href="<?php echo home_url() ?>" class="btn btn-primary"><?php _e('Back to home','salon-booking-system') ?></a></p>
 */ ?> 

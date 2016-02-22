@@ -85,6 +85,8 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
             'sln_service_notav_' . $key,
             get_post_meta($post_id, '_sln_service_notav_' . $key, true)
         );
+        if($key == 'to' && $ret == '00:00')
+            $ret = '23:59';
         $ret     = SLN_Func::filter($ret, 'time');
 
         return new SLN_DateTime('1970-01-01 ' . $ret);
@@ -98,14 +100,14 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
                 $ret[] = $day;
             }
         }
-        $ret  = $ret ? __('on ', 'salon-booking-system') . implode(', ', $ret) : '';
+        $ret  = $ret ? ' '.__('on ', 'salon-booking-system') .' '. implode(', ', $ret) : '';
         $from = $this->getNotAvailableFrom()->format('H:i');
         $to   = $this->getNotAvailableTo()->format('H:i');
         if ($from != '00:00') {
-            $ret .= __(' from ', 'salon-booking-system') . $from;
+            $ret .= ' '.__(' from ', 'salon-booking-system') . ' ' . $from;
         }
-        if ($to != '00:00') {
-            $ret .= __(' to ', 'salon-booking-system') . $to;
+        if ($to != '23:59') {
+            $ret .= ' '.__(' to ', 'salon-booking-system') . ' ' . $to;
         }
 
         return $ret;

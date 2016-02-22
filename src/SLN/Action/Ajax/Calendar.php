@@ -28,12 +28,13 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
     private function wrapBooking($booking){
         return array(
 	"id" => $booking->getId(),
-	"title" => $this->getTitle($booking),
+    "title" => $this->getTitle($booking),
+    "customer" => $booking->getDisplayName(),
 	"url" => get_edit_post_link($booking->getId()),
 	"class" => "event-".SLN_Enum_BookingStatus::getColor($booking->getStatus()),
 	"start" => $booking->getStartsAt()->format('U') * 1000,
 	"end" => $booking->getEndsAt()->format('U') * 1000,
-        "event_html" => $this->getEventHtml($booking)
+    "event_html" => $this->getEventHtml($booking)
 	);
     }
 

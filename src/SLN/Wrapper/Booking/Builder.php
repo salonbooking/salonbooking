@@ -151,6 +151,9 @@ class SLN_Wrapper_Booking_Builder
             unset($this->data['services'][$k]);
         }
     }
+    public function clearServices(){
+        $this->data['services'] = array();
+    }
 
     /**
      * @return SLN_Wrapper_Service[]
@@ -184,11 +187,7 @@ class SLN_Wrapper_Booking_Builder
         $settings             = $this->plugin->getSettings();
         $datetime             = $this->plugin->format()->datetime($this->getDateTime());
         $name                 = $this->get('firstname') . ' ' . $this->get('lastname');
-        $status               = $settings->get('confirmation') ?
-            SLN_Enum_BookingStatus::PENDING
-            : ($settings->get('pay_enabled') ?
-                SLN_Enum_BookingStatus::PENDING
-                : SLN_Enum_BookingStatus::PAY_LATER);
+        $status               = $this->getCreateStatus();
         $id                   = wp_insert_post(
             array(
                 'post_type'   => SLN_Plugin::POST_TYPE_BOOKING,
@@ -206,10 +205,36 @@ class SLN_Wrapper_Booking_Builder
         $this->clear($id);
         $this->getLastBooking()->evalDuration($status);
         $this->getLastBooking()->setStatus($status);
+
+        $userid = $this->getLastBooking()->getUserId();
+        $user = new WP_User($userid);
+        if (array_search('administrator', $user->roles) === false && array_search('subscriber', $user->roles) !== false) {
+            wp_update_user(array(
+                'ID' => $userid,
+                'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
+            ));
+        }
+    }
+    private function getCreateStatus(){
+        $settings = $this->plugin->getSettings();
+        return $settings->get('confirmation') ?
+            SLN_Enum_BookingStatus::PENDING
+            : ($settings->get('pay_enabled') ?
+                SLN_Enum_BookingStatus::PENDING
+                : ($settings->isHidePrices() ? SLN_Enum_BookingStatus::CONFIRMED
+                    : SLN_Enum_BookingStatus::PAY_LATER ));
     }
 
     public function getDuration()
     {
+        $i = $this->getServicesDurationMinutes();
+        if($i == 0)
+            $i = 60;
+        $str = SLN_Func::convertToHoursMins($i);
+        return $str;
+    }
+
+    public function getServicesDurationMinutes(){
         $h = 0;
         $i = 0;
         foreach($this->getServices() as $s){
@@ -218,10 +243,6 @@ class SLN_Wrapper_Booking_Builder
             $i = $i + intval($d->format('i'));
         }
         $i += $h*60;
-        if($i == 0)
-            $i = 60;
-        $str = SLN_Func::convertToHoursMins($i);
-        return $str;
+        return $i;
     }
-
 }

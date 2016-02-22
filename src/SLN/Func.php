@@ -112,6 +112,9 @@ class SLN_Func
             return $val;
         }
     }
+    public static function removeAccents($string) {
+        return strtolower(trim(preg_replace('~[^0-9a-z]+~i', '-', preg_replace('~&([a-z]{1,2})(acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', htmlentities($string, ENT_QUOTES, 'UTF-8'))), ' '));
+    }
 
     public static function evalPickedDate($date)
     {
@@ -120,9 +123,12 @@ class SLN_Func
         $initial = $date;
         $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
         if ($f == SLN_Enum_DateFormat::_DEFAULT) {
+            if(!strpos($date, ' ')) throw new Exception('bad date format');
             $date = explode(' ', $date);
             foreach (SLN_Func::getMonths() as $k => $v) {
-                if (strcasecmp($date[1], $v) == 0) {
+//                var_dump([$date[1], $v, self::removeAccents($date[1]) == self::removeAccents($v)]);
+//                if (strcasecmp($date[1], $v) == 0) {
+                if (self::removeAccents($date[1]) == self::removeAccents($v)) {
                     $ret = $date[2] . '-' . ($k < 10 ? '0' . $k : $k) . '-' . $date[0];
                     return $ret;
                 }

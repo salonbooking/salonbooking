@@ -3,14 +3,14 @@
 class SLN_Helper_HolidayItem
 {
     private $data;
-    private $timestampBegin;
-    private $timestampEnd;
 
     function __construct($data)
     {
         $this->data = $data;
-        $this->timestampBegin = strtotime(SLN_Func::evalPickedDate($this->data['from']));
-        $this->timestampEnd = strtotime(SLN_Func::evalPickedDate($this->data['to']) . ' 23:59:59');
+        $this->data['from_date'] = isset($this->data['from_date']) ? $this->data['from_date'] : '0';
+        $this->data['to_date']   = isset($this->data['to_date'])   ? $this->data['to_date']   : '0';
+        $this->data['from_time'] = isset($this->data['from_time']) ? $this->data['from_time'] : '00:00';
+        $this->data['to_time']   = isset($this->data['to_time'])   ? $this->data['to_time']   : '00:00';
     }
 
     public function isValidDate($date)
@@ -18,9 +18,14 @@ class SLN_Helper_HolidayItem
         if ($date instanceof DateTime) {
             $date = $date->format('Y-m-d');
         }
-        $date = strtotime(SLN_Func::evalPickedDate($date));
 
-        return ($date < $this->timestampBegin || $date > $this->timestampEnd);
+        return ($this->isValidTime($date) || $this->isValidTime($date.'23:59:59'));
+    }
+
+    public function isValidTime($date)
+    {
+        $date = strtotime($date);
+        return ($date < strtotime($this->data['from_date'].$this->data['from_time']) || $date >= strtotime($this->data['to_date'].$this->data['to_time']));
     }
 
 }

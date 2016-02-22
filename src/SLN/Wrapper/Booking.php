@@ -6,7 +6,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_amount', get_post_meta($post_id, '_sln_booking_amount', true));
-        $ret     = number_format(empty($ret) ? 0 : floatval($ret), 2);
+        $ret     = empty($ret) ? 0 : floatval($ret);
 
         return $ret;
     }
@@ -15,7 +15,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_deposit', get_post_meta($post_id, '_sln_booking_deposit', true));
-        $ret     = number_format(empty($ret) ? 0 : floatval($ret), 2);
+        $ret     = empty($ret) ? 0 : floatval($ret);
 
         return $ret;
     }
@@ -240,6 +240,20 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $post_id = $this->getId();
 
         update_post_meta($post_id, '_sln_booking_remind', $remind);
+    }
+
+    function getEmailRemind()
+    {
+        $post_id = $this->getId();
+
+        return apply_filters('sln_booking_email_remind', get_post_meta($post_id, '_sln_booking_email_remind', true));
+    }
+
+    function setEmailRemind($remind)
+    {
+        $post_id = $this->getId();
+
+        update_post_meta($post_id, '_sln_booking_email_remind', $remind);
     }
 
     public function getUserData(){

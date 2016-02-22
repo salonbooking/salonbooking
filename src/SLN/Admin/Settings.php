@@ -138,6 +138,9 @@ class SLN_Admin_Settings {
         }
 
         public function processTabGeneral() {
+        $_POST['salon_settings']['email_subject'] = !empty($_POST['salon_settings']['email_subject']) ?
+                                                            $_POST['salon_settings']['email_subject'] :
+                                                            'Your booking reminder for [DATE] at [TIME] at [SALON NAME]';
             foreach (array(
         'gen_name',
         'gen_email',
@@ -158,11 +161,15 @@ class SLN_Admin_Settings {
         'sms_new_attendant',
         'sms_remind',
         'sms_remind_interval',
+        'email_remind',
+        'email_remind_interval',
+        'email_subject',
         'soc_facebook',
         'soc_twitter',
         'soc_google',
         'date_format',
         'time_format',
+        'week_start',
         'no_bootstrap'
             ) as $k) {
                 $val = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
@@ -171,6 +178,10 @@ class SLN_Admin_Settings {
             wp_clear_scheduled_hook('sln_sms_reminder');
             if (isset($_POST['salon_settings']['sms_remind']) && $_POST['salon_settings']['sms_remind']) {
                 wp_schedule_event(time(), 'hourly', 'sln_sms_reminder');
+            }
+            wp_clear_scheduled_hook('sln_email_reminder');
+            if (isset($_POST['salon_settings']['email_remind']) && $_POST['salon_settings']['email_remind']) {
+                wp_schedule_event(time(), 'hourly', 'sln_email_reminder');
             }
             $this->settings->save();
             $this->showAlert(
@@ -201,6 +212,7 @@ class SLN_Admin_Settings {
                 $tmp[] = $row;
             }
             $_POST['salon_settings']['availabilities'] = $tmp;
+            $_POST['salon_settings']['holidays'] = isset($_POST['salon_settings']['holidays']) ? array_values($_POST['salon_settings']['holidays']) : array();
             foreach (array(
         'confirmation',
         'thankyou',

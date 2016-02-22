@@ -121,7 +121,8 @@ function sln_stepDate($) {
                         alertBox.append('<p>').html(this);
                     });
                     $('#sln-notifications').html('').append(alertBox);
-                    $('#sln-step-submit').attr('disabled', true);
+// we bind a new interval so we needn't to disable
+//                    $('#sln-step-submit').attr('disabled', true);
                     isValid = false;
                 } else {
                     $('#sln-step-submit').attr('disabled', false);
@@ -175,7 +176,7 @@ function sln_stepDate($) {
 function sln_serviceTotal($) {
     var $checkboxes = $('.sln-service-list input[type="checkbox"]');
     var $totalbox = $('#services-total');
-
+    var freeMinutes = parseInt($totalbox.data('minutes'));
     function evalTot() {
         var tot = 0;
         $checkboxes.each(function () {
@@ -186,8 +187,25 @@ function sln_serviceTotal($) {
         $totalbox.text($totalbox.data('symbol-left') + tot.formatMoney(2) + $totalbox.data('symbol-right'));
     }
 
+    function evalDuration(obj){
+        var minutes = parseInt($(obj).data('duration'));
+        if($(obj).is(':checked')){
+            freeMinutes -=  minutes;
+        }else{
+            freeMinutes +=  minutes;
+        }
+        if(freeMinutes < 0){
+            $('#availabilityerror').show();
+            $('#sln-step-submit').attr('disabled', true);
+        }else{
+            $('#availabilityerror').hide();
+            $('#sln-step-submit').attr('disabled', false);
+        }
+    }
+
     $checkboxes.click(function () {
         evalTot();
+        evalDuration(this);
     });
     evalTot();
 }
@@ -202,6 +220,7 @@ function initDatepickers($) {
                 .addClass('started')
                 .datetimepicker({
                     format: $(this).data('format'),
+                    weekStart: $(this).data('weekstart'),
                     minuteStep: 60,
                     autoclose: true,
                     minView: 2,

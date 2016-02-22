@@ -36,7 +36,7 @@ class SLN_Helper_Availability
         $count    = SLN_Func::countDaysBetweenDatetimes($from, $interval->getToDate());
         $ret      = array();
         $avItems  = $this->getItems();
-        $hItems  = $this->getHolidaysItems();
+        $hItems   = $this->getHolidaysItems();
         while ($count > 0) {
             $date = $from->format('Y-m-d');
             $count--;
@@ -54,13 +54,19 @@ class SLN_Helper_Availability
 
         $ret     = array();
         $avItems = $this->getItems();
+        $hItems  = $this->getHolidaysItems();
         $hb      = $this->getHoursBeforeHelper();
+        $from = $hb->getFromDate();
+        $to = $hb->getToDate();
+
         foreach (SLN_Func::getMinutesIntervals() as $time) {
             $d = new SLN_DateTime($date->format('Y-m-d') . ' ' . $time);
             if (
                 $avItems->isValidDatetime($d)
+                && $hItems->isValidDatetime($d)
                 && $this->isValidDate($d)
                 && $this->isValidTime($d)
+                && $d > $from && $d < $to
             ) {
                 $ret[$time] = $time;
             }
@@ -244,5 +250,19 @@ class SLN_Helper_Availability
         }
         $countHour = $this->settings->get('parallels_hour');
         return ($date >= $this->initialDate) && !($countHour && $this->getBookingsHourCount($date->format('H'), $date->format('i')) >= $countHour);
+    }
+
+    public function getFreeMinutes($date){
+        $date = clone $date;
+        $ret = 0;
+        $interval = $this->settings->getInterval();
+        $max = 24*60;
+
+        $avItems = $this->getItems();
+        while($avItems->isValidDatetime($date) && $this->isValidTime($date) && $ret <= $max){
+            $ret += $interval;
+            $date->modify(sprintf('+%s minutes',$interval));
+        }
+        return $ret;
     }
 }
