@@ -1,5 +1,7 @@
-<strong><?php echo $booking->getDisplayName()?></strong>
- <?php echo ' ' . $booking->getStartsAt()->format('h:i') . '&#8594;' . $booking->getEndsAt()->format('h:i') . ' - ' . implode(', ',$booking->getServices()) ?>
+<?php 
+$format = SLN_Plugin::getInstance()->format();
+?><strong><?php echo $booking->getDisplayName()?></strong>
+ <?php echo ' ' . $format->time($booking->getStartsAt()) . '&#8594;' . $format->time($booking->getEndsAt()) . ' - ' . implode(', ',$booking->getServices()) ?>
  <?php if($attendant = $booking->getAttendant()) :  ?>
   <?php
   echo ' - ';

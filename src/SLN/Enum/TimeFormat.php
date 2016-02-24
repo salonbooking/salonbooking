@@ -10,6 +10,7 @@ class SLN_Enum_TimeFormat
         self::_DEFAULT => 'H:i',
         self::_SHORT => 'g:ia',
     );
+    #http://www.malot.fr/bootstrap-datetimepicker/#options
     private static $jsFormats = array(
         self::_DEFAULT => 'hh:ii',
         self::_SHORT => 'H:iip'

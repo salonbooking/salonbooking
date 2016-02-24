@@ -159,6 +159,7 @@ class SLN_Plugin
             'txt_validating' => __('checking availability'),
             'images_folder' => SLN_PLUGIN_URL . '/img', // algolplus
             'confirm_cancellation_text' => __('Do you really want to cancel?', 'salon-booking-system'), // algolplus
+            'time_format' => SLN_Enum_TimeFormat::getJSFormat($this->getSettings()->get('time_format'))
             )
         );
     }
