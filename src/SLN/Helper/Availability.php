@@ -116,7 +116,7 @@ class SLN_Helper_Availability
         return $this->getDayBookings()->countBookingsByHour($hour, $minutes);
     }
 
-    public function validateAttendantServices(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service)
+    public function validateAttendantService(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service)
     {
         if(!$assistant->hasAllServices()){
             if (!$attendant->hasService($service)) {
