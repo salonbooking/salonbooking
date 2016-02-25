@@ -51,7 +51,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
     public function getViewData()
     {
         $ret = parent::getViewData();
-        $ret['isMultipleAttSelection'] = boolval($this->getPlugin()->getSettings()->get('m_attendant_enabled'));
+        $ret['isMultipleAttSelection'] = $this->getPlugin()->getSettings()->get('m_attendant_enabled') ? true : false;
 
         return $ret;
     }
