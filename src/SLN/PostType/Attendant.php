@@ -59,7 +59,7 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
                 if($obj->hasAllServices()){
                     echo __("All", 'salon-booking-system');
                 }else{
-                    $tmp = [];
+                    $tmp = array();
                     foreach($obj->getServices() as $s){
                          $tmp[] = sprintf('<a href="%s">%s</a>', get_edit_post_link($s->getId()), $s->getName());
                     }
