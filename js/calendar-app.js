@@ -1,3 +1,26 @@
+function initSalonCalendarPrototypes(Calendar) {
+    // http://momentjs.com/docs/#/displaying/format/
+    // vs http://www.malot.fr/bootstrap-datetimepicker/#options
+    var format = salon.time_format
+        .replace('ii','mm')
+        .replace('h','{|}')
+        .replace('H','h')
+        .replace('{|}','H')
+        .replace('p','a')
+        .replace('P','A')
+        ;
+    
+    Calendar.__proto__._hour = function(hour, part) {
+        var time_start = this.options.time_start.split(":");
+        var time_split = parseInt(this.options.time_split);
+        var h = "" + (parseInt(time_start[0]) + hour * Math.max(time_split / 60, 1));
+        var m = "" + (time_split * part + (hour == 0) ? parseInt(time_start[1]) : 0);
+        var d = new Date();
+        d.setHours(h)
+        d.setMinutes(m);
+        return moment(d).format(format);
+    };
+}
 function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl){
 	var options = {
 		events_source: ajaxUrl,
@@ -32,7 +55,7 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl){
 	};
 
 	var calendar = $('#calendar').calendar(options);
-
+        initSalonCalendarPrototypes(calendar);
 	$('.btn-group button[data-calendar-nav]').each(function() {
 		var $this = $(this);
 		$this.click(function() {

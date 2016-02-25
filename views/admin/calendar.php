@@ -3,6 +3,7 @@
 <script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/underscore-min.js"></script>
 <script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/calendar.js"></script>
+<script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/moment.min.js"></script>
 <script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/calendar-app.js"></script>
 <script>
 <?php $today = new DateTime()?>
