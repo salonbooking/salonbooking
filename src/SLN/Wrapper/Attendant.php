@@ -85,7 +85,7 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
         return $ret;
     }
 
-	public function getServicesIds()
+    public function getServicesIds()
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_attendant_services', get_post_meta($post_id, '_sln_attendant_services', true));
@@ -94,7 +94,7 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
         return empty($ret) ? array() : $ret;
     }
 
-	public function getServices()
+    public function getServices()
     {
         $ret = array();
         foreach($this->getServicesIds() as $id){
@@ -106,9 +106,15 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
         return $ret;
     }
 
-	public function hasService(SLN_Wrapper_Service $service)
+    public function hasService(SLN_Wrapper_Service $service)
     {
         return in_array($service->getId(), $this->getServicesIds());
+    }
+
+    public function hasAllServices()
+    {
+        //an assistant without services is an assistant available for all services
+        return $this->getServicesIds() ? false : true;
     }
 
     public function getName()

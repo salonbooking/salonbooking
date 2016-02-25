@@ -56,10 +56,15 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
                 break;
             case 'sln_services':
                 $obj = $this->getPlugin()->createAttendant($post_id);
-                $tmp = [];
-                foreach($obj->getServices() as $s) $tmp[] = sprintf('<a href="%s">%s</a>', get_edit_post_link($s->getId()), $s->getName());
-                if(empty($tmp)) echo __("All", 'salon-booking-system');
-                else echo implode(', ',$tmp);
+                if($obj->hasAllServices()){
+                    echo __("All", 'salon-booking-system');
+                }else{
+                    $tmp = [];
+                    foreach($obj->getServices() as $s){
+                         $tmp[] = sprintf('<a href="%s">%s</a>', get_edit_post_link($s->getId()), $s->getName());
+                    }
+                    echo implode(', ',$tmp);
+                }
                 break;
             case 'sln_thumb':
                 echo get_the_post_thumbnail( $post_id, array(70, 70) );
