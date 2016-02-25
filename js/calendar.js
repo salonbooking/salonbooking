@@ -526,7 +526,11 @@ if(!String.prototype.formatNum) {
 		var in_hour = 60 / time_split;
 		return (hour == 0) ? (in_hour - (parseInt(time_start[1]) / time_split)) : in_hour;
 	};
-
+        /** BEGIN SLN CUSTOMIZATIONS */
+	Calendar.prototype._hour = calendar_getHourFunc();
+	Calendar.prototype._trans = calendar_getTransFunc();
+      
+/*
 	Calendar.prototype._hour = function(hour, part) {
 		var time_start = this.options.time_start.split(":");
 		var time_split = parseInt(this.options.time_split);
@@ -535,7 +539,8 @@ if(!String.prototype.formatNum) {
 
 		return h.formatNum(2) + ":" + m.formatNum(2);
 	};
-
+*/
+        /** END SLN CUSTOMIZATIONS **/
 	Calendar.prototype._week = function(event) {
 		this._loadTemplate('week-days');
 

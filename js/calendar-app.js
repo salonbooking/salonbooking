@@ -1,16 +1,5 @@
-function initSalonCalendarPrototypes(Calendar) {
-    // http://momentjs.com/docs/#/displaying/format/
-    // vs http://www.malot.fr/bootstrap-datetimepicker/#options
-    var format = salon.time_format
-        .replace('ii','mm')
-        .replace('h','{|}')
-        .replace('H','h')
-        .replace('{|}','H')
-        .replace('p','a')
-        .replace('P','A')
-        ;
-    
-    Calendar.__proto__._hour = function(hour, part) {
+function calendar_getHourFunc(){
+    return function(hour, part){
         var time_start = this.options.time_start.split(":");
         var time_split = parseInt(this.options.time_split);
         var h = "" + (parseInt(time_start[0]) + hour * Math.max(time_split / 60, 1));
@@ -18,9 +7,32 @@ function initSalonCalendarPrototypes(Calendar) {
         var d = new Date();
         d.setHours(h)
         d.setMinutes(m);
-        return moment(d).format(format);
-    };
+        return moment(d).format(calendarGetTimeFormat());
+    }
 }
+
+function calendar_getTransFunc(){
+    return function(label){
+        return calendar_translations[label];
+    }
+}
+
+function calendarGetTimeFormat(){
+    // http://momentjs.com/docs/#/displaying/format/
+    // vs http://www.malot.fr/bootstrap-datetimepicker/#options
+   console.log(salon);
+    if(!salon.moment_time_format)
+        salon.moment_time_format = salon.time_format
+        .replace('ii','mm')
+        .replace('h','{|}')
+        .replace('H','h')
+        .replace('{|}','H')
+        .replace('p','a')
+        .replace('P','A')
+        ;
+    return salon.moment_time_format; 
+}
+
 function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl){
 	var options = {
 		events_source: ajaxUrl,
@@ -55,7 +67,6 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl){
 	};
 
 	var calendar = $('#calendar').calendar(options);
-        initSalonCalendarPrototypes(calendar);
 	$('.btn-group button[data-calendar-nav]').each(function() {
 		var $this = $(this);
 		$this.click(function() {
