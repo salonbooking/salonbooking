@@ -8,7 +8,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         $bb     = $this->getPlugin()->getBookingBuilder();
         $bb->removeAttendants();
         $values = isset($_POST['sln']) ? $_POST['sln'] : array();
-        $isMultipleAttSelection = boolval($this->getPlugin()->getSettings()->get('m_attendant_enabled'));
+        $isMultipleAttSelection = $this->getPlugin()->getSettings()->get('m_attendant_enabled') ? true: false;
         foreach ($bb->getServices() as $service) {
             if ($isMultipleAttSelection) {
                 if (isset($values['attendants'][$service->getId()])) {
