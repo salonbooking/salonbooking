@@ -583,4 +583,9 @@ jQuery(function ($) {
    $('input.sln-pay_method-radio').each(function() {
     if($(this).is(':checked')) { $('#payment-mode-'+$(this).data('method')).show().addClass('sln-box--fadein'); }
     });
+    $('#salon_settings_m_attendant_enabled').change(function(){
+        if ($(this).is(':checked')) {
+            $('#salon_settings_attendant_enabled').attr('checked', 'checked').change();
+        }
+    }).change();
 });

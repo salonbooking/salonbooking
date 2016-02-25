@@ -3,8 +3,8 @@
  * @var SLN_Plugin                        $plugin
  * @var string                            $formAction
  * @var string                            $submitName
- * @var SLN_Shortcode_Salon_AttendantsStep $step
- * @var SLN_Wrapper_Attendant[]             $attendants
+ * @var SLN_Shortcode_Salon_AttendantStep $step
+ * @var SLN_Wrapper_Attendant[]           $attendants
  */
 
 $ah = $plugin->getAvailabilityHelper();
@@ -39,7 +39,8 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
             ?>
 
             <?php SLN_Form::fieldRadiobox(
-                'sln[attendant]',$attendant->getId(),
+                'sln[attendants][]',
+                $attendant->getId(),
                 $bb->hasAttendant($attendant),
                 $settings
             ) ?>

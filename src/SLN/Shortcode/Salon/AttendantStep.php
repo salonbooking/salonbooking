@@ -6,10 +6,19 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
     protected function dispatchForm()
     {
         $bb     = $this->getPlugin()->getBookingBuilder();
+        $bb->removeAttendants();
         $values = isset($_POST['sln']) ? $_POST['sln'] : array();
-        foreach ($this->getAttendants() as $attendant) {
-            if (isset($values['attendant']) && $values['attendant'] == $attendant->getId()) {
-                $bb->setAttendant($attendant);
+        $isMultipleAttSelection = boolval($this->getPlugin()->getSettings()->get('m_attendant_enabled'));
+        foreach ($bb->getServices() as $service) {
+            if ($isMultipleAttSelection) {
+                if (isset($values['attendants'][$service->getId()])) {
+                    $bb->setAttendant(new SLN_Wrapper_Attendant($values['attendants'][$service->getId()]), $service);
+                }
+            }
+            else {
+                if (isset($values['attendants'][0])) {
+                    $bb->setAttendant(new SLN_Wrapper_Attendant($values['attendants'][0]), $service);
+                }
             }
         }
         $bb->save();
@@ -37,5 +46,13 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         $tmp = $this->getAttendants();
 
         return (!empty($tmp)) && parent::isValid();
+    }
+
+    public function getViewData()
+    {
+        $ret = parent::getViewData();
+        $ret['isMultipleAttSelection'] = boolval($this->getPlugin()->getSettings()->get('m_attendant_enabled'));
+
+        return $ret;
     }
 }

@@ -64,6 +64,7 @@ class SLN_Wrapper_Booking_Builder
             'date'     => $d->format('Y-m-d'),
             'time'     => $d->format('H:i'),
             'services' => array(),
+            'attendants' => array(),
         );
     }
 
@@ -111,30 +112,60 @@ class SLN_Wrapper_Booking_Builder
         return $this;
     }
 
-    public function setAttendant(SLN_Wrapper_Attendant $attendant)
+    public function setAttendant(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service)
     {
-        $this->data['attendant'] = $attendant->getId();
-    }
-    public function hasAttendant(SLN_Wrapper_Attendant $attendant)
-    {
-        
-        return isset($this->data['attendant']) && $attendant->getId() == $this->data['attendant'];
+        if ($this->hasService($service)) {
+            $this->data['attendants'][$service->getId()] = $attendant->getId();
+        }
     }
 
+    public function hasAttendant(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service = null)
+    {
+        if (!isset($this->data['attendants'])) {
+            return false;
+        }
+
+        if (is_null($service)) {
+            return in_array($attendant->getId(), $this->data['attendants']);
+        }
+        else {
+            return isset($this->data['attendants'][$service->getId()]) && $this->data['attendants'][$service->getId()] == $attendant->getId();
+        }
+    }
+
+    public function removeAttendants()
+    {
+        $this->data['attendants'] = array();
+    }
 
 
     public function hasService(SLN_Wrapper_Service $service)
     {
         return in_array($service->getId(), $this->data['services']);
     }
-    /**
-     * @return SLN_Wrapper_Attendant
+
+	/**
+     * @return SLN_Wrapper_Attendant|false
      */
     public function getAttendant()
     {
-        if(isset($this->data['attendant']) && $id = $this->data['attendant']){
-            return $this->plugin->createAttendant($id);
+        $atts = $this->getAttendants();
+        return reset($atts);
+    }
+    /**
+     * @return SLN_Wrapper_Attendant[]
+     */
+    public function getAttendants()
+    {
+        $ids = $this->data['attendants'];
+        $ret = array();
+        foreach ($this->plugin->getAttendants() as $attendant) {
+            $service_id = array_search($attendant->getId(), $ids);
+            if ($service_id !== false) {
+                $ret[$service_id] = $attendant;
+            }
         }
+        return $ret;
     }
     
     public function addService(SLN_Wrapper_Service $service)

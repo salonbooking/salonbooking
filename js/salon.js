@@ -46,7 +46,13 @@ function sln_init($) {
     // RADIOBOXES
     $('#sln-salon input:radio').each(function () {
         $(this).click(function () {
-            $(".is-checked").removeClass('is-checked');
+            //var selector = '.is-checked input[name="' + jQuery(this).attr('name').replace(/([\[\]])/g, '\\\\$1') + '"]';
+            var name = jQuery(this).attr('name');
+            jQuery('.is-checked').each(function() {
+                if(jQuery(this).find('input').attr('name') == name) {
+                    $(this).removeClass('is-checked');
+                }
+            });
             $(this).parent().toggleClass("is-checked");
         });
     });
