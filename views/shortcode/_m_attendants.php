@@ -12,12 +12,13 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime());
 $selectedServices = $bb->getServices();
 
 foreach ($selectedServices as $service) :
+    $hasAttendants = false;
 ?>
 <div class="sln-attendant-list">
     <h3><?php echo $service->getName() ?></h3>
     <?php foreach ($attendants as $attendant) : ?>
         <?php
-        $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $bb->getServices());
+        $validateAttServicesErrors = $ah->validateAttendantService($attendant, $service);
         if (!empty($validateAttServicesErrors)) {
             continue;
         }
@@ -75,7 +76,12 @@ foreach ($selectedServices as $service) :
                 <?php endforeach ?>
             </div>
         <?php endif ?>
-
+        <?php $hasAttendants = true ?>
     <?php endforeach ?>
+    <?php if(!$hasAttendants) : ?>
+        <div class="alert alert-warning">
+            <p><?php echo __('No assistants available for the selected time/slot - please choose another one', 'salon-booking-system') ?></p>
+        </div>
+    <?php endif ?> 
 </div>
 <?php endforeach ?>

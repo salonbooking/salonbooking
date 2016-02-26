@@ -8,17 +8,22 @@
  */
 
 $ah = $plugin->getAvailabilityHelper();
-$ah->setDate($plugin->getBookingBuilder()->getDateTime())
+$ah->setDate($plugin->getBookingBuilder()->getDateTime());
+$hasAttendants = false;
 ?>
 <div class="sln-attendant-list">
     <?php foreach ($attendants as $attendant) : ?>
+        <?php
+            $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $bb->getServices());
+            if(!empty($validateAttServicesErrors)) {
+                continue;
+            }
+        ?>
         <div class="row">
             <div class="col-lg-1 col-md-3 col-xs-2">
             <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
-            $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $bb->getServices());
-
             if ( $validateErrors && $validateAttServicesErrors) {
                 $errors = array_merge($validateErrors, $validateAttServicesErrors);
             }
@@ -81,6 +86,11 @@ $ah->setDate($plugin->getBookingBuilder()->getDateTime())
                 <?php endforeach ?>
             </div>
         <?php endif ?>
-
+        <?php $hasAttendants = true ?>
     <?php endforeach ?>
+    <?php if(!$hasAttendants) : ?>
+        <div class="alert alert-warning">
+            <p><?php echo __('No assistants available for the selected time/slot - please choose another one', 'salon-booking-system') ?></p>
+        </div>
+    <?php endif ?> 
 </div>

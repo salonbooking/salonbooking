@@ -118,7 +118,7 @@ class SLN_Helper_Availability
 
     public function validateAttendantService(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service)
     {
-        if(!$assistant->hasAllServices()){
+        if(!$attendant->hasAllServices()){
             if (!$attendant->hasService($service)) {
                 return array(
                     __('This assistant is not available for the selected service', 'salon-booking-system')
@@ -129,20 +129,18 @@ class SLN_Helper_Availability
 
     public function validateAttendantServices(SLN_Wrapper_Attendant $attendant, array $services)
     {
-        if (!count($attendant->getServicesIds())) {
+        if($attendant->hasAllServices()){
             return;
         }
 
         /** @var SLN_Wrapper_Service $service */
         foreach($services as $service) {
-            if ($attendant->hasService($service)) {
-                return;
+            if (!$attendant->hasService($service)) {
+                return array(
+                    __('This assistant is not available for any of the selected services', 'salon-booking-system')
+                );
             }
         }
-
-        return array(
-            __('This assistant is not available for any of the selected services', 'salon-booking-system')
-        );
     }
 
     public function validateAttendant(SLN_Wrapper_Attendant $attendant, $duration = null)
