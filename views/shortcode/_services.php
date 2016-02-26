@@ -16,6 +16,9 @@ $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 $grouped = SLN_Func::groupServicesByCategory($services);
 $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMinutes();
+if ($plugin->getSettings()->getAvailabilityMode() == 'advanced' && boolval($plugin->getSettings()->get('reservation_interval_enabled'))) {
+    $minutes -= intval($plugin->getSettings()->get('minutes_between_reservation'));
+}
  ?>
 <div class="sln-service-list">
     <?php foreach ($grouped as $group): ?>
