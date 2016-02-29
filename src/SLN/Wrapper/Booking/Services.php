@@ -60,13 +60,13 @@ final class SLN_Wrapper_Booking_Services {
 			$service = SLN_Plugin::getInstance()->createService($sId);
 
 			$services[] = array(
-				'service'     => $sId,
-				'attendant'   => $atId,
-				'starts_date' => $startsAt->format('Y-m-d'),
-				'starts_time' => $startsAt->format('H:i'),
-				'duration'    => $service->getDuration()->format('H:i'),
-				'price'       => $service->getPrice(),
-				'exec_order'  => $service->getExecOrder(),
+				'service'    => $sId,
+				'attendant'  => $atId,
+				'start_date' => $startsAt->format('Y-m-d'),
+				'start_time' => $startsAt->format('H:i'),
+				'duration'   => $service->getDuration()->format('H:i'),
+				'price'      => $service->getPrice(),
+				'exec_order' => $service->getExecOrder(),
 			);
 
 			$d = $service->getDuration();
