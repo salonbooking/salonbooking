@@ -23,7 +23,7 @@ $helper->showNonce($postType);
             </div>
     <div class="sln-clear"></div>
 </div>
-
+<?php /*
 <?php $m_attendant_enabled = $settings->get('m_attendant_enabled'); ?>
 <?php if($m_attendant_enabled): ?>
 <div class="row sln-service-price-time">
@@ -32,11 +32,9 @@ $helper->showNonce($postType);
             <?php $attrs = $m_attendant_enabled ? array() : array('disabled'=>'disabled') ?>
             <label><?php _e('Execution Order', 'salon-booking-system'); ?></label>
             <?php SLN_Form::fieldNumeric($helper->getFieldName($postType, 'exec_order'), $service->getExecOrder(), array('min' => 1, 'max' => 10, 'attrs' => $attrs)) ?>
-<?php /*
             <?php if (!$m_attendant_enabled) {
                 SLN_Form::fieldText($helper->getFieldName($postType, 'exec_order'), $service->getExecOrder(), array('type' => 'hidden'));
             } ?>
-*/
 ?>
             <br/><em><?php _e('Set this option if you have enabled "Multiple assistants selection". Use a number to give this service an order of execution compared to the other services.','salon-booking-system'); ?></em>
             <br/><em><?php _e('Consider that this option will affect the availability of your staff members that you have associated th this service.','salon-booking-system'); ?></em>
@@ -45,7 +43,7 @@ $helper->showNonce($postType);
     <div class="sln-clear"></div>
 </div>
 <?php endif ?>
-
+*/?>
 <div class="sln-box--sub sln-booking-rules row">
     <div class="col-xs-6">
         <h2 class="sln-box-title"><?php _e('Not available on','salon-booking-system'); ?></h2>
