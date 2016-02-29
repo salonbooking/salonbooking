@@ -52,8 +52,8 @@ Salon booking works with double booking algorithms:
 * Holidays rules hourly range added
 * Week start on..
 * Email booking reminder 
-* Multiple assistants selection
 * Filter assistants by services
+* Assistants and Services advanced booking rules
 
 
 **With Salon Booking you can also..**
