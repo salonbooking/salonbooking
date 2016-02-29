@@ -1,8 +1,8 @@
 
-@import 'settings-mixins';
-@import 'admin_config';
+/*@import 'settings-mixins';
 //@import 'bootstrap';
-#{$wrapper} {
+@import 'admin_config';
+#sln-salon--admin, .sln-calendar--wrapper  {
     @import 'typo';
     @import 'admin_components/inputs';
     @import 'admin_components/buttons';
@@ -11,6 +11,22 @@
     @import 'admin_components/shop-details';
     @import 'admin_components/service-details';
 }
+*/
+
+#sln-salon--admin, .sln-calendar--wrapper {
+    //@import 'bootstrap';
+}
+@import 'settings-mixins';
+@import 'admin_config';
+@import 'typo';
+    @import 'admin_config';
+    @import 'typo';
+    @import 'admin_components/inputs';
+    @import 'admin_components/buttons';
+    @import 'admin_components/boxes';
+    @import 'admin_components/panels';
+    @import 'admin_components/shop-details';
+    @import 'admin_components/service-details';
 
 .sln_meta_field {
     display: block;
