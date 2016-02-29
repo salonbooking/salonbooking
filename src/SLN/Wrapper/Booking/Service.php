@@ -2,103 +2,21 @@
 
 
 final class SLN_Wrapper_Booking_Service {
-	private $service;
-	private $attendant;
-	private $startsAt;
-	private $duration;
-	private $price = 0.0;
-	private $execOrder = 0;
-
+	private $data;
 
 	/**
-	 * @param SLN_Wrapper_Service $service
-	 * @param bool|false $update
+	 * SLN_Wrapper_Booking_Service constructor.
 	 *
-	 * @return $this
+	 * @param $data
 	 */
-	public function setService(SLN_Wrapper_Service $service, $update = false)
-	{
-		$this->service = $service;
-		if ($update) {
-			$this->setPrice($service->getPrice());
-			$this->setDuration($service->getDuration());
-			$this->setExecOrder($service->getExecOrder());
-		}
-
-		return $this;
-	}
-
-	/**
-	 * @param SLN_Wrapper_Attendant $attendant
-	 *
-	 * @return $this
-	 */
-	public function setAttendant(SLN_Wrapper_Attendant $attendant)
-	{
-		$this->attendant = $attendant;
-
-		return $this;
-	}
-
-	/**
-	 * @param float $price
-	 *
-	 * @return $this
-	 */
-	public function setPrice($price)
-	{
-		$this->price = $price;
-
-		return $this;
-	}
-
-	/**
-	 * @param SLN_DateTime $duration
-	 *
-	 * @return $this
-	 */
-	public function setDuration($duration)
-	{
-		$this->duration = $duration;
-
-		return $this;
-	}
-
-	/**
-	 * @param DateTime $startsAt
-	 *
-	 * @return $this
-	 */
-	public function setStartsAt($startsAt)
-	{
-		$this->startsAt = $startsAt;
-
-		return $this;
-	}
-
-	/**
-	 * @param int $execOrder
-	 *
-	 * @return $this
-	 */
-	public function setExecOrder($execOrder)
-	{
-		$this->execOrder = $execOrder;
-
-		return $this;
-	}
-
-	/**
-	 * @return array
-	 */
-	public function toArray() {
-		return array(
-			'attendant'  => $this->attendant->getId(),
-			'service'    => $this->service->getId(),
-			'duration'   => $this->duration->format('Y-m-d H:i'),
-			'starts_at'  => $this->startsAt->format('Y-m-d H:i'),
-			'price'      => floatval($this->price),
-			'exec_order' => intval($this->execOrder),
+	public function __construct( $data ) {
+		$this->data = array(
+			'service'   => SLN_Plugin::getInstance()->createService($data['service']),
+			'attendant' => SLN_Plugin::getInstance()->createAttendant($data['attendant']),
+			'starts_at'  => new SLN_DateTime(SLN_Func::filter($data['starts_date'], 'date') . ' ' . SLN_Func::filter($data['starts_time'], 'time')),
+			'duration'  => new SLN_DateTime('1970-01-01 ' . SLN_Func::filter($data['duration'], 'time')),
+			'price'     => $data['price'],
+			'exec_order' => $data['exec_order'],
 		);
 	}
 
@@ -106,6 +24,27 @@ final class SLN_Wrapper_Booking_Service {
 	 * @return SLN_DateTime
 	 */
 	public function getDuration() {
-		return $this->duration;
+		return $this->data['duration'];
+	}
+
+	/**
+	 * @return array
+	 */
+	public function toArray() {
+		return array(
+			'attendant'   => $this->data['attendant']->getId(),
+			'service'     => $this->data['service']->getId(),
+			'duration'    => $this->data['duration']->format('H:i'),
+			'starts_date' => $this->data['starts_at']->format('Y-m-d'),
+			'starts_time' => $this->data['starts_at']->format('H:i'),
+			'price'       => floatval($this->data['price']),
+			'exec_order'  => intval($this->data['exec_order']),
+		);
+	}
+
+	public function __toString(){
+		/** @var SLN_Wrapper_Service $service */
+		$service = $this->data['service'];
+		return $service->__toString();
 	}
 }

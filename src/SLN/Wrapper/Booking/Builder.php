@@ -241,6 +241,7 @@ class SLN_Wrapper_Booking_Builder
             add_post_meta($id, '_' . SLN_Plugin::POST_TYPE_BOOKING . '_' . $k, $v, true);
         }
         $this->clear($id);
+        $this->getLastBooking()->evalBookingServices();
         $this->getLastBooking()->evalDuration($status);
         $this->getLastBooking()->setStatus($status);
 
