@@ -10,8 +10,7 @@ $helper->showNonce($postType);
             <label for="_sln_attendant_phone">Telefono cell.</label>
             <input type="text" name="_sln_attendant_phone" id="_sln_attendant_phone" value="<?php echo $attendant->getPhone() ?>" class="form-control">
     </div>
-<?php 
-/*
+
     <div class="col-sm-12 col-md-6 form-group sln-select sln-select--multiple">
             <label>Servizi</label>
             <select class="sln-select select2-hidden-accessible" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
@@ -28,8 +27,6 @@ $helper->showNonce($postType);
                 <?php endforeach ?>
             </select>
     </div>
-*/
-?>
 </div>
 
 <div class="sln-box--sub sln-booking-rules row">
