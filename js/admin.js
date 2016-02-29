@@ -588,4 +588,27 @@ jQuery(function ($) {
             $('#salon_settings_attendant_enabled').attr('checked', 'checked').change();
         }
     }).change();
+
+   $('.sln-panel .collapse').on('shown.bs.collapse', function() {
+        $(this).parent().find('.sln-paneltrigger').addClass('sln-btn--active');
+        $(this).parent().addClass('sln-panel--active');
+    }).on('hide.bs.collapse', function() {
+        $(this).parent().find('.sln-paneltrigger').removeClass('sln-btn--active');
+        $(this).parent().removeClass('sln-panel--active');
+    });
+    $('.sln-panel--oncheck .sln-panel-heading input:checkbox').change(function () {
+        if($(this).is(':checked')) {
+            $(this).parent().parent().parent().find( '.sln-paneltrigger' ).removeClass('sln-btn--disabled');
+        } else {
+            $(this).parent().parent().parent().find( '.sln-paneltrigger' ).addClass('sln-btn--disabled');
+            $(this).parent().parent().parent().find( '.collapse' ).collapse('hide');
+        }
+    });
+    $('.sln-panel--oncheck .sln-panel-heading input').each(function() {
+        if($(this).is(':checked')) {
+            $(this).parent().parent().parent().find( '.sln-paneltrigger' ).removeClass('sln-btn--disabled');
+        } else {
+            $(this).parent().parent().parent().find( '.sln-paneltrigger' ).addClass('sln-btn--disabled');
+        }
+    });
 });
