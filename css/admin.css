@@ -135,7 +135,9 @@ h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medi
 
 .sln-checkbox input + label:after, .sln-radiobox input + label:after, .sln-checkbutton input + label:after, .ui-slider .ui-slider-handle:before, .ui-slider .ui-slider-handle:after, .sln-btn--icon:after, p.submit:after, .sln-paneltrigger.sln-btn:after, .nav-tab-wrapper .sln-paneltrigger.nav-tab:after, .sln-admin-nav a.sln-paneltrigger:after, .sln-tab-nav li a.sln-paneltrigger:after, p.sln-paneltrigger.submit:after, #sln_shop-details .handlediv.button-link .toggle-indicator:after,
 #sln_attendant-details .handlediv.button-link .toggle-indicator:after,
-#postexcerpt .handlediv.button-link .toggle-indicator:after, #sln_service-details .handlediv.button-link .toggle-indicator:after, .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:after,
+#postexcerpt .handlediv.button-link .toggle-indicator:after, #sln_service-details .handlediv.button-link .toggle-indicator:after, .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before, .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick:after, .salon_page_salon-calendar .sln-calendar--wrapper #cal-slide-tick:after,
+.sln-calendar--wrapper #cal-day-tick:after,
+.sln-calendar--wrapper #cal-slide-tick:after, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:after,
 .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:after {
   font-family: "FontAwesome";
   font-size: 0.91667rem; }
@@ -207,7 +209,9 @@ h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medi
 
 .sln-checkbox input + label:after, .sln-radiobox input + label:after, .sln-checkbutton input + label:after, .ui-slider .ui-slider-handle:before, .ui-slider .ui-slider-handle:after, .sln-btn--icon:after, p.submit:after, .sln-paneltrigger.sln-btn:after, .nav-tab-wrapper .sln-paneltrigger.nav-tab:after, .sln-admin-nav a.sln-paneltrigger:after, .sln-tab-nav li a.sln-paneltrigger:after, p.sln-paneltrigger.submit:after, #sln_shop-details .handlediv.button-link .toggle-indicator:after,
 #sln_attendant-details .handlediv.button-link .toggle-indicator:after,
-#postexcerpt .handlediv.button-link .toggle-indicator:after, #sln_service-details .handlediv.button-link .toggle-indicator:after, .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:after,
+#postexcerpt .handlediv.button-link .toggle-indicator:after, #sln_service-details .handlediv.button-link .toggle-indicator:after, .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before, .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick:after, .salon_page_salon-calendar .sln-calendar--wrapper #cal-slide-tick:after,
+.sln-calendar--wrapper #cal-day-tick:after,
+.sln-calendar--wrapper #cal-slide-tick:after, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:after,
 .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:after {
   font-family: "FontAwesome";
   font-size: 0.91667rem; }
@@ -2479,11 +2483,41 @@ body {
     .sln-calendar--wrapper #cal-week-box:hover {
       background-color: #003553;
       color: #fff; }
-  .salon_page_salon-calendar .sln-calendar--wrapper #cal-slide-tick,
+  .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick, .salon_page_salon-calendar .sln-calendar--wrapper #cal-slide-tick,
+  .sln-calendar--wrapper #cal-day-tick,
   .sln-calendar--wrapper #cal-slide-tick {
     width: 1.83333rem;
     height: 1.83333rem;
-    background-color: #c7dff3; }
+    background-color: #c7dff3;
+    border-radius: 50%;
+    border-radius: 9999px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    pointer-events: none; }
+    .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick:after, .salon_page_salon-calendar .sln-calendar--wrapper #cal-slide-tick:after,
+    .sln-calendar--wrapper #cal-day-tick:after,
+    .sln-calendar--wrapper #cal-slide-tick:after {
+      content: "\f077";
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: calc(50% - 10px);
+      left: calc(50% - 10px);
+      font-size: 0.91667rem;
+      color: #003553;
+      text-align: center; }
+  .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick,
+  .sln-calendar--wrapper #cal-day-tick {
+    top: initial;
+    bottom: 0.41667rem; }
+    .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick:after,
+    .sln-calendar--wrapper #cal-day-tick:after {
+      content: "\f078"; }
+  .salon_page_salon-calendar .sln-calendar--wrapper #cal-slide-tick,
+  .sln-calendar--wrapper #cal-slide-tick {
+    top: -2.25rem; }
   @media only screen and (max-width: 767px) {
     .salon_page_salon-calendar .sln-calendar--wrapper .badge,
     .sln-calendar--wrapper .badge {
@@ -2557,57 +2591,60 @@ body {
     .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view .btn-group,
     .sln-calendar--wrapper .sln-calendar-view .btn-group {
       margin-top: 0; }
-    .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item,
-    .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item {
-      position: relative; }
-      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item .sln-calendar-event-callto,
-      .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item .sln-calendar-event-callto {
-        display: none; }
-      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item:hover .sln-calendar-event-callto,
-      .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item:hover .sln-calendar-event-callto {
-        display: block; }
-    .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto,
-    .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto {
-      display: inline-block;
-      position: absolute;
-      left: calc(100% + 14px);
-      top: calc(50% - 15px);
-      white-space: nowrap;
-      background-color: #0C6EB6;
-      color: #fff;
-      padding: 0 2.25rem 0 0.83333rem;
-      line-height: 30px; }
-      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:before,
-      .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:before {
-        display: block;
-        content: '';
-        width: 24px;
-        height: 24px;
-        position: absolute;
-        left: -8px;
-        top: calc(50% - 8px);
-        width: 0;
-        height: 0;
-        border-top: 8px solid transparent;
-        border-bottom: 8px solid transparent;
-        border-right: 8px solid #0C6EB6; }
-      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:after,
-      .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:after {
-        content: "\f013";
+    .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content,
+    .sln-calendar--wrapper .sln-calendar-view #cal-slide-content {
+      background-color: rgba(199, 223, 243, 0.5); }
+      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item,
+      .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item {
+        position: relative; }
+        .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item .sln-calendar-event-callto,
+        .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item .sln-calendar-event-callto {
+          display: none; }
+        .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item:hover .sln-calendar-event-callto,
+        .sln-calendar--wrapper .sln-calendar-view #cal-slide-content a.event-item:hover .sln-calendar-event-callto {
+          display: block; }
+      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto,
+      .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto {
         display: inline-block;
         position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        text-align: center;
-        -webkit-transition: background-color 200ms, color 300ms;
-        -moz-transition: background-color 200ms, color 300ms;
-        -o-transition: background-color 200ms, color 300ms;
-        transition: background-color 200ms, color 300ms;
-        z-index: 200;
-        padding: 0 0.5rem;
-        font-size: 0.75rem;
-        line-height: 1.875rem; }
+        left: calc(100% + 14px);
+        top: calc(50% - 15px);
+        white-space: nowrap;
+        background-color: #0C6EB6;
+        color: #fff;
+        padding: 0 2.25rem 0 0.83333rem;
+        line-height: 30px; }
+        .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:before,
+        .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:before {
+          display: block;
+          content: '';
+          width: 24px;
+          height: 24px;
+          position: absolute;
+          left: -8px;
+          top: calc(50% - 8px);
+          width: 0;
+          height: 0;
+          border-top: 8px solid transparent;
+          border-bottom: 8px solid transparent;
+          border-right: 8px solid #0C6EB6; }
+        .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:after,
+        .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto:after {
+          content: "\f013";
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          text-align: center;
+          -webkit-transition: background-color 200ms, color 300ms;
+          -moz-transition: background-color 200ms, color 300ms;
+          -o-transition: background-color 200ms, color 300ms;
+          transition: background-color 200ms, color 300ms;
+          z-index: 200;
+          padding: 0 0.5rem;
+          font-size: 0.75rem;
+          line-height: 1.875rem; }
 
 .select2-container.sln-select .select2-choice, .select2-container.sln-select .select2-choices,
 .select2-container-multi.sln-select-- .select2-choice,

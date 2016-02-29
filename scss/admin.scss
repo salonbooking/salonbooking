@@ -582,10 +582,34 @@ body {
             color: $cl_main--white;
         }
     }
-    #cal-slide-tick {
+    #cal-day-tick, #cal-slide-tick {
         width: rem(44px);
         height: rem(44px);
         background-color: $cl_main--light;
+        @include b-radius(50%);
+        pointer-events: none;
+        &:after {
+            content: "\f077";
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: calc(50% - 10px);
+            left: calc(50% - 10px);
+            @extend %font-icon;
+            font-size: rem(22px);
+            color: $cl_main;
+            text-align: center;
+        }
+    }
+    #cal-day-tick {
+        top: initial;
+        bottom: rem(10px);
+        &:after {
+            content: "\f078";
+        }
+    }
+    #cal-slide-tick {
+        top: - rem(54px);
     }
     .badge {
         @include bp(phone) {
