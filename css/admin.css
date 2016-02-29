@@ -90,7 +90,7 @@ h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, p.submit, #sln
     #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
       font-size: 1rem; } }
 
-.sln-input--simple label, #titlewrap-- label, #postexcerpt .inside label, .sln-select label, .sln-fake-label, .sln-btn--big, p.submit, .sln-btn--big input, p.submit input, .sln-btn--big button, p.submit button, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
+.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-input--simple label, #titlewrap-- label, #postexcerpt .inside label, .sln-select label, .sln-fake-label, .sln-btn--big, p.submit, .sln-btn--big input, p.submit input, .sln-btn--big button, p.submit button, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
 #poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5, #sln-salon--admin .sln-message, .sln-calendar--wrapper .sln-message, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field {
   font-family: "Open sans", serif;
   font-size: 0.75rem;
@@ -98,10 +98,12 @@ h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, p.submit, #sln
   line-height: 1.16667rem;
   font-weight: normal; }
 
-.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p, .sln-btn--medium, .nav-tab-wrapper .nav-tab,
+.sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p, .sln-btn--medium, .nav-tab-wrapper .nav-tab,
 h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medium input, .nav-tab-wrapper .nav-tab input, .sln-admin-nav a input, .sln-tab-nav li a input, .sln-btn--medium button, .nav-tab-wrapper .nav-tab button, .sln-admin-nav a button, .sln-tab-nav li a button, .sln-btn--small, #sln_shop-details .handlediv.button-link .toggle-indicator,
 #sln_attendant-details .handlediv.button-link .toggle-indicator,
-#postexcerpt .handlediv.button-link .toggle-indicator, #sln_service-details .handlediv.button-link .toggle-indicator, .sln-btn--small--round, .sln-box-maininfo, .vertical-tabs {
+#postexcerpt .handlediv.button-link .toggle-indicator, #sln_service-details .handlediv.button-link .toggle-indicator, .sln-btn--small--round, .sln-box p, #sln_shop-details p,
+#sln_attendant-details p,
+#postexcerpt p, #sln_service-details p, .sln-box-maininfo, .vertical-tabs {
   font-family: "Open sans", serif;
   font-size: 0.66667rem;
   line-height: 0.91667rem;
@@ -117,7 +119,9 @@ h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medi
 #poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5 {
   color: #444; }
 
-.sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p {
+.sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p, .sln-box p, #sln_shop-details p,
+#sln_attendant-details p,
+#postexcerpt p, #sln_service-details p {
   color: #888; }
 
 .sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-input--simple label, #titlewrap-- label, #postexcerpt .inside label, .sln-select label, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-fake-label, .sln-box-title, #poststuff #sln_shop-details > h2,
@@ -156,7 +160,7 @@ h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medi
     #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
       font-size: 1rem; } }
 
-.sln-input--simple label, #titlewrap-- label, #postexcerpt .inside label, .sln-select label, .sln-fake-label, .sln-btn--big, p.submit, .sln-btn--big input, p.submit input, .sln-btn--big button, p.submit button, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
+.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-input--simple label, #titlewrap-- label, #postexcerpt .inside label, .sln-select label, .sln-fake-label, .sln-btn--big, p.submit, .sln-btn--big input, p.submit input, .sln-btn--big button, p.submit button, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
 #poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5, #sln-salon--admin .sln-message, .sln-calendar--wrapper .sln-message, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field {
   font-family: "Open sans", serif;
   font-size: 0.75rem;
@@ -164,10 +168,12 @@ h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medi
   line-height: 1.16667rem;
   font-weight: normal; }
 
-.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p, .sln-btn--medium, .nav-tab-wrapper .nav-tab,
+.sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p, .sln-btn--medium, .nav-tab-wrapper .nav-tab,
 h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medium input, .nav-tab-wrapper .nav-tab input, .sln-admin-nav a input, .sln-tab-nav li a input, .sln-btn--medium button, .nav-tab-wrapper .nav-tab button, .sln-admin-nav a button, .sln-tab-nav li a button, .sln-btn--small, #sln_shop-details .handlediv.button-link .toggle-indicator,
 #sln_attendant-details .handlediv.button-link .toggle-indicator,
-#postexcerpt .handlediv.button-link .toggle-indicator, #sln_service-details .handlediv.button-link .toggle-indicator, .sln-btn--small--round, .sln-box-maininfo, .vertical-tabs {
+#postexcerpt .handlediv.button-link .toggle-indicator, #sln_service-details .handlediv.button-link .toggle-indicator, .sln-btn--small--round, .sln-box p, #sln_shop-details p,
+#sln_attendant-details p,
+#postexcerpt p, #sln_service-details p, .sln-box-maininfo, .vertical-tabs {
   font-family: "Open sans", serif;
   font-size: 0.66667rem;
   line-height: 0.91667rem;
@@ -183,7 +189,9 @@ h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medi
 #poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5 {
   color: #444; }
 
-.sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p {
+.sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p, .sln-box p, #sln_shop-details p,
+#sln_attendant-details p,
+#postexcerpt p, #sln_service-details p {
   color: #888; }
 
 .sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-input--simple label, #titlewrap-- label, #postexcerpt .inside label, .sln-select label, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-fake-label, .sln-box-title, #poststuff #sln_shop-details > h2,
@@ -1437,6 +1445,12 @@ p.submit {
     #sln_attendant-details,
     #postexcerpt, #sln_service-details {
       padding: 1.66667rem 1.66667rem 0 1.66667rem; } }
+  .sln-box p, #sln_shop-details p,
+  #sln_attendant-details p,
+  #postexcerpt p, #sln_service-details p {
+    font-weight: 400;
+    padding: 0.41667rem 0.66667rem;
+    margin: 0; }
 
 .sln-box--main, #sln_shop-details,
 #sln_attendant-details,
