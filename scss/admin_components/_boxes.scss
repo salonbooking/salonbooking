@@ -5,6 +5,13 @@
         margin-right: 0;
         @include bp(tablet) {padding: rem(30px);}
         @include bp(desktop) {padding: rem(40px) rem(40px) 0 rem(40px);}
+        p {
+            @extend %font-medium;
+            @extend %font-cl_standard--medium;
+            font-weight: 400;
+            padding: rem(10px) rem(16px);
+            margin: 0;
+        }
     }
     .sln-box--main {
         background-color: #fff;

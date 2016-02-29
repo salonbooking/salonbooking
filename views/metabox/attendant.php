@@ -35,7 +35,7 @@ $helper->showNonce($postType);
 <div class="sln-box--sub sln-booking-rules row">
     <div class="col-xs-6">
         <h2 class="sln-box-title"><?php _e('Not available on','salon-booking-system'); ?></h2>
-        <small><?php _e('Leave this option blank if you want this attendant available for every hour each day', 'salon-booking-system') ?></small>
+        <p class="help-block"><?php _e('Leave this option blank if you want this attendant available for every hour each day', 'salon-booking-system') ?></p>
     </div>
     <div class="sln-clear"></div>
     <div id="sln-booking-rules-wrapper">
