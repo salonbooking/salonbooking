@@ -1,0 +1,83 @@
+.sln-box {
+        padding: rem(20px);
+        margin-bottom:  rem(40px);
+        margin-left: 0;
+        margin-right: 0;
+        @include bp(tablet) {padding: rem(30px);}
+        @include bp(desktop) {padding: rem(40px) rem(40px) 0 rem(40px);}
+    }
+    .sln-box--main {
+        background-color: #fff;
+        @include transition(background-color 250ms);
+        &.sln-box--info-visible {background-color: $cl_warning--light;}
+    }
+    .sln-box--main--small {
+        min-height: 240px;
+    }
+    .sln-box--sub {
+        padding-top: rem(20px);
+        padding-bottom: rem(20px);
+        margin-bottom: rem(40px);
+        border: rem(2px) solid $cl_main--light;
+    }
+    .sln-box--fadein {@include fadein(250ms);}
+    .sln-box-maininfo {
+        @extend %font-medium;
+        @extend %font-cl_standard;
+        padding-bottom: rem(20px);
+        p {@extend %font-big; @extend %font-cl_standard; margin-top: 0;}
+        &.align-top {
+            @include bp(tablet) {padding-top: rem(38px);}
+        }
+    }
+    .sln-box-title {
+        @extend %font-cl_main;
+        padding: 0 0 rem(20px);
+        @extend %font-bigger;
+        font-weight: 400;
+        span {
+            @extend %font-big;
+            @extend %font-cl_standard;
+            &:not(block) {
+                padding-left: rem(10px);
+                @include bp(phone) {padding: 0;}
+            }
+            &.block {display: block; padding-left: 0;}
+            @include bp(phone) {display: block;}
+        }
+    }
+    .sln-box-info {
+        padding-bottom:  rem(20px);
+        .sln-box-info-trigger {
+            .sln-btn--small.sln-btn--icon:after {font-size: rem(30px); line-height: rem(30px);}
+            .sln-icon--close {display: none;}
+            .sln-icon--info {
+                margin-top: 0;
+                @include transition(margin-top 300ms);
+            }
+        }
+        .sln-box-info-content {
+            max-height: 0;
+            overflow: hidden;
+            position: relative;
+            @include transition(max-height 200ms);
+            @extend %font-big; @extend %font-cl_standard;
+            h5 {@extend %font-big; @extend %font-cl_standard;}
+        }
+    }
+    .sln-box--info-visible .sln-box-info {
+        .sln-box-info-trigger {
+            .sln-icon--info {
+                margin-top: rem(20px);
+                @include transition(margin-top 300ms);
+            }
+            .sln-icon--close, .sln-icon--info {
+                display: inline-block;
+                &:after {color: $cl_main;}
+                &:hover {
+                    &:after {color: $cl_main--emphasis;}
+                }
+            }
+        }
+        .sln-box-info-content {max-height: 1000px;}
+    }

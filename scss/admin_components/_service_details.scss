@@ -1,0 +1,53 @@
+#sln_service-details  {
+    @extend .sln-box;
+    @extend .sln-box--main;
+    border: none;
+    font-size: $browser-context + px;
+    padding-bottom: rem(20px);
+    &.postbox .inside, &.stuffbox .inside {
+        padding: 0;
+        line-height: inherit;
+        font-size: inherit;
+    }
+    .handlediv.button-link .toggle-indicator {
+        @extend .sln-btn;
+        @extend .sln-btn--main;
+        @extend .sln-btn--small ;
+        @extend .sln-btn--icon;
+        @extend .sln-icon--arrow--up;
+        &:after {font-size: rem(16px);}
+        &:before {display: none;}
+    }
+    &.closed .handlediv.button-link .toggle-indicator {
+        @extend .sln-icon--arrow--down;
+    }
+    .sln-btn.sln-paneltrigger {
+        text-align: left;
+        width: calc(100% + 30px);
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .sln-btn--nobkg.sln-paneltrigger {
+        &.sln-btn--active {
+            //background-color: $cl_main;
+            //color: $cl_main--white;
+            //border: none;
+        }
+    }
+    .sln-btn--big.sln-paneltrigger {
+        font-size: rem(20px);
+        line-height: rem(34px);
+        @include bp(tablet) {
+            font-size: rem(24px);
+            line-height: rem(54px);
+        }
+    }
+}
+#poststuff #sln_service-details > h2 {
+    @extend .sln-box-title;
+    border-bottom: none;
+    span {
+        @extend %font-cl_main;
+        font-size: 1em;
+    }
+}

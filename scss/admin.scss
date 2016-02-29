@@ -1,9 +1,16 @@
-#sln-salon--admin, .sln-calendar--wrapper {
-    @import 'bootstrap';
-}
+
 @import 'settings-mixins';
 @import 'admin_config';
-@import 'typo';
+//@import 'bootstrap';
+#{$wrapper} {
+    @import 'typo';
+    @import 'admin_components/inputs';
+    @import 'admin_components/buttons';
+    @import 'admin_components/boxes';
+    @import 'admin_components/panels';
+    @import 'admin_components/shop-details';
+    @import 'admin_components/service-details';
+}
 
 .sln_meta_field {
     display: block;
@@ -226,7 +233,6 @@ h2.nav-tab-wrapper {
 
     .sln-service-price-time {
         input[type='text'] {
-            padding: 3px 10px;
             height: auto;
             @include bp(tablet-port) {height: 34px;}
         }
@@ -413,94 +419,7 @@ body {
 // GENERL RULES // END
 
 #sln-salon--admin, .sln-calendar--wrapper {
-    @import 'admin_config';
-    @import 'typo';
-    @import 'admin_components/inputs';
-    @import 'admin_components/buttons';
     &.sln-salon--settings {font-size: $browser-context + px;}
-    .sln-box {
-        padding: rem(20px);
-        margin-bottom:  rem(40px);
-        margin-left: 0;
-        margin-right: 0;
-        @include bp(tablet) {padding: rem(30px);}
-        @include bp(desktop) {padding: rem(40px) rem(40px) 0 rem(40px);}
-    }
-    .sln-box--main {
-        background-color: $cl_main--white;
-        @include transition(background-color 250ms);
-        &.sln-box--info-visible {background-color: $cl_warning--light;}
-    }
-    .sln-box--main--small {
-        min-height: 240px;
-    }
-    .sln-box--sub {
-        padding-top: rem(20px);
-        padding-bottom: rem(20px);
-        margin-bottom: rem(40px);
-        border: rem(2px) solid $cl_main--light;
-    }
-    .sln-box--fadein {@include fadein(250ms);}
-    .sln-box-maininfo {
-        @extend %font-medium;
-        @extend %font-cl_standard;
-        padding-bottom: rem(20px);
-        p {@extend %font-big; @extend %font-cl_standard; margin-top: 0;}
-        &.align-top {
-            @include bp(tablet) {padding-top: rem(38px);}
-        }
-    }
-    .sln-box-title {
-        @extend %font-cl_main;
-        padding: 0 0 rem(20px);
-        @extend %font-bigger;
-        span {
-            @extend %font-big;
-            @extend %font-cl_standard;
-            &:not(block) {
-                padding-left: rem(10px);
-                @include bp(phone) {padding: 0;}
-            }
-            &.block {display: block; padding-left: 0;}
-            @include bp(phone) {display: block;}
-        }
-    }
-    .sln-box-info {
-        padding-bottom:  rem(20px);
-        .sln-box-info-trigger {
-            .sln-btn--small.sln-btn--icon:after {font-size: rem(30px); line-height: rem(30px);}
-            .sln-icon--close {display: none;}
-            .sln-icon--info {
-                margin-top: 0;
-                @include transition(margin-top 300ms);
-            }
-        }
-        .sln-box-info-content {
-            max-height: 0;
-            overflow: hidden;
-            position: relative;
-            @include transition(max-height 200ms);
-            @extend %font-big; @extend %font-cl_standard;
-            h5 {@extend %font-big; @extend %font-cl_standard;}
-        }
-    }
-    .sln-box--info-visible .sln-box-info {
-        .sln-box-info-trigger {
-            .sln-icon--info {
-                margin-top: rem(20px);
-                @include transition(margin-top 300ms);
-            }
-            .sln-icon--close, .sln-icon--info {
-                display: inline-block;
-                &:after {color: $cl_main;}
-                &:hover {
-                    &:after {color: $cl_main--emphasis;}
-                }
-            }
-        }
-        .sln-box-info-content {max-height: 1000px;}
-    }
-
     .sln-booking-rule {
         margin: rem(40px) 0;
         padding-top: rem(20px);
@@ -690,7 +609,7 @@ body {
 $input-height: 40px;
 $input-fsize: 16px;
 .select2-container.sln-select,
-.select2-container-multi.sln-select  {
+.select2-container-multi.sln-select--  {
     .select2-choice, .select2-choices {
         height: $input-height;
         line-height: $input-height;
@@ -718,7 +637,7 @@ $input-fsize: 16px;
     }
 }
 .select2-container-multi.sln-select {
-    .select2-choices {
+    /*.select2-choices {
         padding: 2px 0;
         .select2-search-choice {
             padding: 0 40px 0 10px;
@@ -750,7 +669,7 @@ $input-fsize: 16px;
                 }
             }
         }
-    }
+    }*/
 }
 .select2-results  {
     font-size: $input-fsize;
@@ -783,7 +702,7 @@ $input-fsize: 16px;
         border-color: #ddd;
         font-size: $input-fsize;
     }
-    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        /*.select2-container--default .select2-selection--multiple .select2-selection__choice {
             padding: 0 40px 0 10px;
             margin-left: 7px;
             margin-top: 8px;
@@ -816,7 +735,7 @@ $input-fsize: 16px;
                 color: $cl_main--white;
                 }
             }
-        }
+        }*/
         .select2-container--default.select2-container--focus .select2-selection--multiple {
             border:solid $ca-blue 1px;
             outline:0;
@@ -853,8 +772,18 @@ $input-fsize: 16px;
     }
 }
 // /// SELECT2 OVERRIDES END
+.vertical-tabs {
+    @extend %font-medium;
+    @include bp(desktop) {
+        li {
+            display: block;
+            width: 100%;
+        }
+    }
+}
 
-// TEMP
 #wpwrap {
     @extend %zi-zero;
 }
+
+

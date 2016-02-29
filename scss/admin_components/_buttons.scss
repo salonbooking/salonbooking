@@ -76,14 +76,14 @@
   padding: 0 10px;
   @include b-radius(50%);
   &.sln-btn--icon {
-    width: rem(60px);
-    height: rem(60px);
+    width: rem(30px);
+    height: rem(30px);
     font-size: rem(2px);
     overflow: hidden;
     &:after {
-      width: rem(60px);
-      height: rem(60px);
-      line-height: rem(60px);
+      width: rem(30px);
+      height: rem(30px);
+      line-height: rem(30px);
       background-color: $cl_main--emphasis;
       left: 0;
       top: 0;
@@ -122,6 +122,16 @@
     background-color: $cl_main;
     color: $cl_main--white;
     input, button {color: $cl_main--white;}
+  }
+  &.sln-btn--active {
+    background-color: $cl_main;
+    color: $cl_main--white;
+    input, button {color: $cl_main--white;}
+      &:hover, &:focus {
+        background-color: $cl_main--light;
+        color: $cl_main;
+        input, button {color: $cl_main;}
+    }
   }
   &.sln-btn--small.sln-btn--icon {
     background-color: transparent;
@@ -166,7 +176,7 @@
   background-color: transparent;
   color: $cl_main;
   input, button {color: $cl_main;}
-  border: 1px solid #c5cfd4;
+  border: 1px solid $cl_main--light--border;
   &.sln-btn--icon:after {color: $cl_main;}
   &.sln-btn--active {border: 1px solid $cl_main;}
   &:hover, &:focus {
@@ -179,6 +189,7 @@
 }
 .sln-btn--nobkg {
   background-color: transparent;
+  border: 1px solid transparent;
   color: $cl_main;
   input, button {color: $cl_main;}
   &.sln-btn--icon:after {color: $cl_main;}
@@ -312,6 +323,20 @@
     font-size: rem(28px);
   }
 }
+
+.sln-icon--arrow--up {
+  &:after {
+    content: "\f077";
+    font-size: rem(28px);
+  }
+}
+.sln-icon--arrow--down {
+  &:after {
+    content: "\f078";
+    font-size: rem(28px);
+  }
+}
+
 .sln-icon--arrow--left {
   &:after {
     content: "\f053";
@@ -375,6 +400,49 @@ h2.nav-tab-wrapper .nav-tab.nav-tab-active {
     @include bp(desktop) {
       float: right;
     }
+}
+
+.sln-tab-nav {
+  display: block;
+  border-bottom: none;
+  li{
+      margin-bottom: 0;
+      display: block;
+      a {
+          @extend .sln-btn;
+          @extend .sln-btn--borderonly;
+          @extend .sln-btn--medium;
+          display: block;
+          font-size: rem(18px);
+          font-weight: normal;
+          margin: 0;
+      }
+    &.active a {@extend .sln-btn--active;}
+  }
+  @include bp(phone) {
+    li:not(.active):not(:last-of-type)  {
+      a {border-bottom-color: transparent;}
+    }
+  }
+  @include bp(tablet) {
+    li{
+      float: left;
+      margin-bottom: rem(40px);
+      display: list-item;
+      a {
+        display: inline-block;
+        font-size: rem(18px);
+        font-weight: normal;
+        margin: 0;
+      }
+      &:not(.active):not(:last-of-type)  {
+        a {
+          border-right-color: transparent;
+        }
+      }
+      &.active a {@extend .sln-btn--active;}
+    }
+  }
 }
 // TOOBOX
 .sln-toolbox {
