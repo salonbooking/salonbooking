@@ -6,7 +6,7 @@
 		box-shadow: none;
 		border-color: $cl_main--light;
 		background-color: $cl_main--light;
-		@extend %font-big;
+		@extend %font-bigger;
 		@extend %font-cl_main;
 		padding: rem(11px) rem(16px);
 		@include placeholder-color($cl_main--medium);
