@@ -508,7 +508,7 @@ h2.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medi
         color: #fff; }
 
 .sln-switch {
-  margin: 0 0 1.66667rem 0; }
+  margin: 0 0 1rem 0; }
   .sln-switch input {
     position: absolute;
     margin-left: -9999px;
