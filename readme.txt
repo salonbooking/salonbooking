@@ -8,7 +8,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
-A complete and easy to manage appointments booking system for your Salon.
+A complete and easy to manage appointments booking system for busy Salons.
 
 
 == Description ==
