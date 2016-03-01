@@ -37,7 +37,7 @@ final class SLN_Wrapper_Booking_Services {
 	}
 
 	/**
-	 * @param array $data   array($service_id => $attendant_id)
+	 * @param array $data   array($service_id => $attendant_id) or array($service_id => array('attendant' => $attendant_id, 'price' => float, 'duration' => 'H:i' ))
 	 * @param SLN_DateTime $startsAt
 	 * @param int $offset   minutes
 	 *
@@ -55,25 +55,50 @@ final class SLN_Wrapper_Booking_Services {
 		});
 
 		$services = array();
-		foreach($data as $sId => $atId) {
+		foreach($data as $sId => $item) {
 
 			$service = SLN_Plugin::getInstance()->createService($sId);
+
+			if (is_array($item)) {
+				if (isset($item['attendant'])) {
+					$atId = $item['attendant'];
+				}
+				if (isset($item['price'])) {
+					$price = SLN_Func::filter($item['price'], 'money');
+				}
+				if (isset($item['duration'])) {
+					$duration = $item['duration'];
+				}
+			} else {
+				$atId = $item;
+			}
+
+			if (!isset($atId)) {
+				$atId = 0;
+			}
+			if (!isset($price)) {
+				$price = $service->getPrice();
+			}
+
+			if (!isset($duration)) {
+				$duration = $service->getDuration()->format('H:i');
+			}
 
 			$services[] = array(
 				'service'    => $sId,
 				'attendant'  => $atId,
 				'start_date' => $startsAt->format('Y-m-d'),
 				'start_time' => $startsAt->format('H:i'),
-				'duration'   => $service->getDuration()->format('H:i'),
-				'price'      => $service->getPrice(),
+				'duration'   => $duration,
+				'price'      => $price,
 				'exec_order' => $service->getExecOrder(),
 			);
 
-			$d = $service->getDuration();
-			$h = intval($d->format('H'));
-			$i = intval($d->format('i'));
-			$duration = $h*60 + $i + $offset;
-			$startsAt = $startsAt->modify('+'.$duration.' minutes');
+			$durationParts = explode(':', $duration);
+			$h = intval($durationParts[0]);
+			$i = intval($durationParts[1]);
+			$minutes = $h*60 + $i + $offset;
+			$startsAt = $startsAt->modify('+'.$minutes.' minutes');
 		}
 		$ret = new SLN_Wrapper_Booking_Services($services);
 
