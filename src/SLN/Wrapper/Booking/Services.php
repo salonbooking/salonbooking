@@ -61,7 +61,7 @@ final class SLN_Wrapper_Booking_Services {
 
 			if (is_array($item)) {
 				if (isset($item['attendant'])) {
-					$atId = $item['attendant'];
+					$atId = intval($item['attendant']);
 				}
 				if (isset($item['price'])) {
 					$price = SLN_Func::filter($item['price'], 'money');
@@ -70,7 +70,7 @@ final class SLN_Wrapper_Booking_Services {
 					$duration = $item['duration'];
 				}
 			} else {
-				$atId = $item;
+				$atId = intval($item);
 			}
 
 			if (!isset($atId)) {
