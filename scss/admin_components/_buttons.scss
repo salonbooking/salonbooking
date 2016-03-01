@@ -399,6 +399,9 @@ h2.nav-tab-wrapper .nav-tab.nav-tab-active {
   }
     @include bp(desktop) {
       float: right;
+      position: absolute;
+      text-outline: 0;
+      right: 0;
     }
 }
 
