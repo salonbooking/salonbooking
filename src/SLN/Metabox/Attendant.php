@@ -78,7 +78,6 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
                 $_POST['_sln_attendant_services'][$k] = str_replace('sln_attendant_services_','', $v);
             }
         }
-
         parent::save_post($post_id, $post);
     }
 }

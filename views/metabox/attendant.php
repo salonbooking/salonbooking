@@ -14,7 +14,7 @@ $helper->showNonce($postType);
     <div class="col-sm-12 col-md-6 form-group sln-select sln-select--multiple">
             <label>Servizi</label>
             <select class="sln-select select2-hidden-accessible" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
-                    name="_sln_booking_services[]" id="_sln_booking_services" tabindex="-1" aria-hidden="true">
+                    name="_sln_attendant_services[]" id="_sln_attendant_services" tabindex="-1" aria-hidden="true">
                 <?php foreach ($plugin->getServices() as $service) : ?>
                     <option
                         class="red"
