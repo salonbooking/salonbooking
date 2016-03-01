@@ -330,11 +330,13 @@ function sln_date_create_from_format( $dformat, $dvalue )
     <div id="sln-booking-rules-wrapper">
         <?php
             $n = 0;
+            if(!is_array($availabilities)) $availabilities = array();
             foreach ($availabilities as $k => $row):
             $n++;
         ?>
         <?php sln_availability_row("salon_settings[availabilities][$k]", $row, $n); ?>
         <?php endforeach ?>
+        <?php endid ?>
     </div>
     <div class="col-xs-12">
     <button data-collection="addnew" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file"><?php _e(
