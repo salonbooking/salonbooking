@@ -166,7 +166,7 @@ $helper->showNonce($postType);
                     '__service_id__',
                     array(
                         'attrs' => array(
-                            'disabled'      => 'disabled',
+                            'readonly'      => 'readonly',
                             'data-price'    => '__service_price__',
                             'data-duration' => '__service_duration__',
                         )
@@ -192,7 +192,7 @@ $helper->showNonce($postType);
                     '_sln_booking[attendants][__service_id__]',
                     array('__attendant_id__' => '__attendant_name__'),
                     '__attendant_id__',
-                    array('attrs' => array('disabled'=>'disabled')),
+                    array('attrs' => array('readonly'=>'readonly')),
                     true
                 ) ?>
             </div>
@@ -222,7 +222,7 @@ $helper->showNonce($postType);
                     $bookingService->getService()->getId(),
                     array(
                         'attrs' => array(
-                            'disabled'      => 'disabled',
+                            'readonly'      => 'readonly',
                             'data-price'    => $servicesData[ $bookingService->getService()->getId()]['old_price'],
                             'data-duration' => $servicesData[ $bookingService->getService()->getId()]['old_duration'],
                         )
@@ -248,7 +248,7 @@ $helper->showNonce($postType);
                     '_sln_booking[attendants][' . $bookingService->getService()->getId() . ']',
                     array($bookingService->getAttendant()->getId() => $bookingService->getAttendant()->getName()),
                     $bookingService->getAttendant()->getId(),
-                    array('attrs' => array('disabled'=>'disabled')),
+                    array('attrs' => array('readonly'=>'readonly')),
                     true
                 ) ?>
             </div>
@@ -305,42 +305,6 @@ $helper->showNonce($postType);
             var attendantsData = '<?php echo json_encode($attendantsData); ?>';
             var lineItem = '<?php echo $lineItem; ?>';
         </script>
-    </div>
-
-    <div class="sln-separator"></div>
-    <div class="form-group sln_meta_field row">
-        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
-            <h3><?php _e('Attendant', 'salon-booking-system'); ?></h3>
-            <select class="sln-select" name="_sln_booking_attendant" id="_sln_booking_attendant">
-                <?php foreach ($plugin->getAttendants() as $attendant) : ?>
-                    <option data-id="<?php echo SLN_Form::makeID('sln[attendant]['.$attendant->getId().']') ?>"
-                            value="<?php echo $attendant->getId();?>"
-                        <?php echo $booking->hasAttendant($attendant) ? 'selected="selected"' : '' ?>
-                        ><strong class="service-name"><?php echo $attendant->getName(); ?></option>
-                <?php endforeach ?>
-            </select>
-        </div>
-    </div>
-    <div class="sln-separator"></div>
-    <div class="form-group sln_meta_field row">
-        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
-            <h3><?php _e('Services', 'salon-booking-system'); ?></h3>
-            <select class="sln-select" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
-                    name="_sln_booking_services[]" id="_sln_booking_services">
-                <?php foreach ($plugin->getServices() as $service) : ?>
-                    <option
-                        class="red"
-                        value="sln_booking_services_<?php echo $service->getId() ?>"
-                        data-price="<?php echo $service->getPrice(); ?>"
-                        <?php echo $booking->hasService($service) ? 'selected="selected"' : '' ?>
-                        ><?php echo $service->getName(); ?>
-                        (<?php echo $plugin->format()->money($service->getPrice()) ?>)
-                    </option>
-                <?php endforeach ?>
-            </select>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper" id="sln-services-notifications">
-        </div>
     </div>
 
     <div class="sln-separator"></div>

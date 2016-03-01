@@ -67,7 +67,6 @@ function initTimepickers($) {
 function sln_adminDate($) {
     var items = $('#salon-step-date').data('intervals');
     var doingFunc = false;
-    var dataServices = {};
 
     var func = function () {
         if (doingFunc) return;
@@ -135,8 +134,6 @@ function sln_adminDate($) {
                     $.each(data.errors, function () {
                         alertBox.append('<p>').html(this);
                     });
-                } else {
-                    dataServices = data.services;
                 }
             }
         });
@@ -160,36 +157,6 @@ function sln_adminDate($) {
         validate(this);
     });
     validate($('#_sln_booking_date'));
-    $('#_sln_booking_services').on('select2:open',function(){
-        var notifications = $('#sln-services-notifications');
-        $.each(dataServices, function (key, value) {
-            var box = $('.select2-results__option[id$="sln_booking_services_' + key + '"]');
-            if(value)
-                box.addClass('red').data('message','<div class="alert alert-danger">' + value + '</div>');
-            else
-                box.removeClass('red').data('message', '');
-            box.unbind('hover').hover(function(){});
-        });
-        $('.select2-results__option[id*=sln_booking_services]').unbind('hover').hover(
-            function(){ notifications.html($(this).data('message')) },
-            function(){ notifications.html('') }
-        );
-    });
-    $('#_sln_attendant_services').on('select2:open',function(){
-        var notifications = $('#sln-services-notifications');
-        $.each(dataServices, function (key, value) {
-            var box = $('.select2-results__option[id$="sln_attendant_services_' + key + '"]');
-            if(value)
-                box.addClass('red').data('message','<div class="alert alert-danger">' + value + '</div>');
-            else
-                box.removeClass('red').data('message', '');
-            box.unbind('hover').hover(function(){});
-        });
-        $('.select2-results__option[id*=sln_attendant_services]').unbind('hover').hover(
-            function(){ notifications.html($(this).data('message')) },
-            function(){ notifications.html('') }
-        );
-    });
     initDatepickers($);
     initTimepickers($);
     $('#resend-notification-submit').click(function(){
@@ -227,7 +194,7 @@ function sln_validateBooking($){
                 '#_sln_booking_lastname',
                 '#_sln_booking_email',
                 '#_sln_booking_phone',
-                '#_sln_booking_services',
+                '#_sln_booking_service_select',
             ], function(k, val){
                 if(val == '#_sln_booking_email'){
                     if(!sln_validateEmail($(val).val())){
@@ -235,6 +202,10 @@ function sln_validateBooking($){
                         if(!hasErrors) $(val).focus();
                         hasErrors = true;
                     }
+                }else if(val == '#_sln_booking_service_select' && !$('[name=_sln_booking\\[services\\]\\[\\]]').size()){
+                    $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is required</div>');
+                    if(!hasErrors) $(val).focus();
+                    hasErrors = true;
                 }else if(!$(val).val()){
                     $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is required</div>');
                     if(!hasErrors) $(val).focus();
@@ -251,7 +222,7 @@ jQuery(function ($) {
     }
     function calculateTotal(){
         var tot = 0;
-        $('#_sln_booking_services option:selected').each(function(){
+        $('[name=_sln_booking\\[services\\]\\[\\]]').each(function(){
             tot = (parseFloat(tot) + parseFloat($(this).data('price'))).toFixed(2);
         });
         $('#_sln_booking_amount').val(tot);
@@ -309,10 +280,6 @@ jQuery(function ($) {
     $('.sln-select-wrapper select').select2({
         tags: "true",
         width: '100%'
-    });
-    $('#_sln_booking_services').on('select2:select', function(){
-        if($('#salon-step-date').data('isnew'))
-            calculateTotal();
     });
     $('#calculate-total').click(calculateTotal);
     if ($('#sln_booking-details').length) {
@@ -638,6 +605,8 @@ jQuery(function ($) {
         if (!added) {
             $('.sln-booking-service-action').before(line);
         }
+        if($('#salon-step-date').data('isnew'))
+            calculateTotal();
 
         bindRemove();
         return false;

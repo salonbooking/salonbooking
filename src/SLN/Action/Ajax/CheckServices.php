@@ -1,5 +1,5 @@
 <?php
-
+// TODO: REFACTORING
 class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
 {
     private $date;
