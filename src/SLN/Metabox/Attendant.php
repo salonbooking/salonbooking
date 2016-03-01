@@ -6,7 +6,8 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
     {
         $postType = $this->getPostType();
         add_meta_box(
-            $postType . '-details',
+//            $postType . '-details',
+            'sln_service-details',
             __('Assistant Details', 'salon-booking-system'),
             array($this, 'details_meta_box'),
             $postType,
