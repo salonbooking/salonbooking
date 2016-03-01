@@ -34,8 +34,8 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
     protected function getFieldList()
     {
         return array(
-            'amount'    => 'money',
-            'deposit'   => 'money',
+            'amount'    => 'float',
+            'deposit'   => 'float',
             'firstname' => '',
             'lastname'  => '',
             'email'     => '',
