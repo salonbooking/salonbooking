@@ -261,6 +261,26 @@ class SLN_Plugin
     }
 
     /**
+     * @return SLN_Wrapper_Service[]
+     */
+    public function getServicesOrderByExec()
+    {
+        $services = $this->getServices();
+        usort($services, function($a, $b) {
+            /** @var SLN_Wrapper_Service $a */
+            /** @var SLN_Wrapper_Service $b */
+            $aExecOrder = $a->getExecOrder();
+            $bExecOrder = $b->getExecOrder();
+            if ($aExecOrder > $bExecOrder)
+                return 1;
+            else
+                return -1;
+        });
+
+        return $services;
+    }
+
+    /**
      * @return SLN_Wrapper_Attendant[]
      */
     public function getAttendants()

@@ -51,6 +51,32 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         return $ret;
     }
 
+    public function getAttendantsIds()
+    {
+        $ret = array();
+        foreach($this->getAttendants() as $attendant) {
+            $ret[] = $attendant->getId();
+        }
+
+        return $ret;
+    }
+
+	/**
+     * @return SLN_Wrapper_Attendant[]
+     */
+    public function getAttendants()
+    {
+        $ret = array();
+        foreach(SLN_Plugin::getInstance()->getAttendants() as $attendant) {
+            $attendantServicesIds = $attendant->getServicesIds();
+            if (empty($attendantServicesIds) || in_array($this->getId(), $attendantServicesIds)) {
+                $ret[] = $attendant;
+            }
+        }
+
+        return $ret;
+    }
+
     function getNotAvailableOn($key)
     {
         $post_id = $this->getId();

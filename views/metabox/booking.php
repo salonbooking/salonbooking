@@ -1,6 +1,8 @@
 <?php
 /**
  * @var SLN_Metabox_Helper $helper
+ * @var SLN_Plugin $plugin
+ * @var SLN_Wrapper_Booking $booking
  */
 $helper->showNonce($postType);
 ?>
@@ -147,6 +149,162 @@ $helper->showNonce($postType);
         <div class="col-md-6 col-sm-12">
             <label><input type="checkbox" name="_sln_booking_createuser" <?php if($booking->isNew()){ ?>checked="checked"<?php } ?>/><?php _e('Create a new user') ?></label>
         </div>
+    </div>
+
+    <div class="sln-separator"></div>
+    <div class="form-group sln_meta_field row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <h3><?php _e('Services & Attendants', 'salon-booking-system'); ?></h3>
+        </div>
+
+        <?php ob_start(); ?>
+        <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-line">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <?php SLN_Form::fieldSelect(
+                    '_sln_booking[services][]',
+                    array('__service_id__' => '__service_title__'),
+                    '__service_id__',
+                    array(
+                        'attrs' => array(
+                            'disabled'      => 'disabled',
+                            'data-price'    => '__service_price__',
+                            'data-duration' => '__service_duration__',
+                        )
+                    ),
+                    true
+                )
+                ?>
+                <?php SLN_Form::fieldText(
+                    '_sln_booking[price][__service_id__]',
+                    '__service_price__',
+                    array('type' => 'hidden')
+                )
+                ?>
+                <?php SLN_Form::fieldText(
+                    '_sln_booking[duration][__service_id__]',
+                    '__service_duration__',
+                    array('type' => 'hidden')
+                )
+                ?>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <?php SLN_Form::fieldSelect(
+                    '_sln_booking[attendants][__service_id__]',
+                    array('__attendant_id__' => '__attendant_name__'),
+                    '__attendant_id__',
+                    array('attrs' => array('disabled'=>'disabled')),
+                    true
+                ) ?>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div>
+                    <button class="sln-btn sln-btn--problem sln-btn--big sln-btn--icon sln-icon--trash" data-collection="remove"><?php echo __('Remove', 'salon-booking-system')?></button>
+                </div>
+            </div>
+        </div>
+        <?php
+        $lineItem = ob_get_clean();
+        $lineItem = preg_replace("/\r\n|\n/", ' ', $lineItem);
+
+        $servicesData = array();
+        foreach($booking->getBookingServices()->getItems() as $bookingService): ?>
+        <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-line">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <?php
+                $servicesData[ $bookingService->getService()->getId()] = array(
+                    'old_price'    => $bookingService->getPrice(),
+                    'old_duration' => 60*$bookingService->getDuration()->format('H') + intval($bookingService->getDuration()->format('i')),
+                );
+                ?>
+                <?php SLN_Form::fieldSelect(
+                    '_sln_booking[services][]',
+                    array($bookingService->getService()->getId() => $bookingService->getService()->getName() . ' (' . $plugin->format()->money($bookingService->getPrice()) . ')'),
+                    $bookingService->getService()->getId(),
+                    array(
+                        'attrs' => array(
+                            'disabled'      => 'disabled',
+                            'data-price'    => $servicesData[ $bookingService->getService()->getId()]['old_price'],
+                            'data-duration' => $servicesData[ $bookingService->getService()->getId()]['old_duration'],
+                        )
+                    ),
+                    true
+                    )
+                ?>
+                <?php SLN_Form::fieldText(
+                    '_sln_booking[price]['.$bookingService->getService()->getId().']',
+                    $servicesData[ $bookingService->getService()->getId()]['old_price'],
+                    array('type' => 'hidden')
+                )
+                ?>
+                <?php SLN_Form::fieldText(
+                    '_sln_booking[duration]['.$bookingService->getService()->getId().']',
+                    $servicesData[ $bookingService->getService()->getId()]['old_duration'],
+                    array('type' => 'hidden')
+                )
+                ?>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <?php SLN_Form::fieldSelect(
+                    '_sln_booking[attendants][' . $bookingService->getService()->getId() . ']',
+                    array($bookingService->getAttendant()->getId() => $bookingService->getAttendant()->getName()),
+                    $bookingService->getAttendant()->getId(),
+                    array('attrs' => array('disabled'=>'disabled')),
+                    true
+                ) ?>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <div>
+                    <button class="sln-btn sln-btn--problem sln-btn--big sln-btn--icon sln-icon--trash" data-collection="remove"><?php echo __('Remove', 'salon-booking-system')?></button>
+                </div>
+            </div>
+        </div>
+        <?php endforeach ?>
+        <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-action">
+            <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
+                <select class="sln-select" name="_sln_booking_service_select" id="_sln_booking_service_select">
+                <?php
+                foreach ($plugin->getServicesOrderByExec() as $service) {
+                    $servicesData[ $service->getId()] = array_merge(
+                        isset($servicesData[ $service->getId() ]) ? $servicesData[ $service->getId() ] : array(),
+                        array(
+                            'title'      => $service->getName() . ' (' . $plugin->format()->money($service->getPrice()) . ')',
+                            'name'       => $service->getName(),
+                            'price'      => $service->getPrice(),
+                            'duration'   => 60*$service->getDuration()->format('H') + intval($service->getDuration()->format('i')),
+                            'exec_order' => $service->getExecOrder(),
+                            'attendants' => $service->getAttendantsIds()
+                        )
+                    );
+                    ?>
+                    <option data-id="<?php echo SLN_Form::makeID('sln[service]['.$service->getId().']') ?>"
+                            value="<?php echo $service->getId();?>"
+                    ><strong class="service-name"><?php echo $servicesData[ $service->getId()]['title']; ?></option>
+                    <?php
+                }
+                ?>
+                </select>
+                <?php
+                $attendantsData = array();
+                foreach ($plugin->getAttendants() as $attendant) {
+                    $attendantsData[ $attendant->getId()] = array($attendant->getName());
+                }
+                ?>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
+                <select class="sln-select" name="_sln_booking_attendant_select" id="_sln_booking_attendant_select">
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <button data-collection="addnewserviceline"class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file">
+                    <?php _e('Add new','salon-booking-system') ?>
+                </button>
+            </div>
+        </div>
+        <script>
+            var servicesData = '<?php echo json_encode($servicesData); ?>';
+            var attendantsData = '<?php echo json_encode($attendantsData); ?>';
+            var lineItem = '<?php echo $lineItem; ?>';
+        </script>
     </div>
 
     <div class="sln-separator"></div>

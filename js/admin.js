@@ -588,4 +588,59 @@ jQuery(function ($) {
             $('#salon_settings_attendant_enabled').attr('checked', 'checked').change();
         }
     }).change();
+
+    if (servicesData !== undefined) {
+        servicesData = $.parseJSON(servicesData);
+    }
+    if (attendantsData !== undefined) {
+        attendantsData = $.parseJSON(attendantsData);
+    }
+    $('#_sln_booking_service_select').change(function() {
+        var html = '';
+        $.each(servicesData[$(this).val()].attendants, function( index, value ) {
+            html += '<option value="'+ value +'">' + attendantsData[value] + '</option>';
+        });
+
+        $('#_sln_booking_attendant_select').html(html).change();
+    }).change();
+
+    function getNewBookingServiceLineString(serviceId, attendantId) {
+        var line = lineItem;
+        line = line.replace(/__service_id__/g, serviceId);
+        line = line.replace(/__attendant_id__/g, attendantId);
+        line = line.replace(/__service_title__/g, servicesData[serviceId].title);
+        line = line.replace(/__attendant_name__/g, attendantsData[attendantId]);
+        line = line.replace(/__service_price__/g, servicesData[serviceId].price);
+        line = line.replace(/__service_duration__/g, servicesData[serviceId].duration);
+        return line;
+    }
+
+    bindRemove();
+
+    $('button[data-collection="addnewserviceline"]').click(function () {
+        var serviceVal = $('#_sln_booking_service_select').val();
+        var attendantVal = $('#_sln_booking_attendant_select').val();
+        if (attendantVal == undefined ||
+            $('[name=_sln_booking\\[services\\]\\[\\]] option[value=' + serviceVal + ']:selected').size()
+        ) {
+            return false;
+        }
+
+        var line = getNewBookingServiceLineString(serviceVal,attendantVal);
+        var added = false;
+        $('[name=_sln_booking\\[services\\]\\[\\]]').each(function () {
+            if (servicesData[serviceVal].exec_order <= servicesData[$(this).val()].exec_order) {
+                $(this).parent().parent().before(line);
+                added = true;
+            }
+        });
+
+        if (!added) {
+            $('.sln-booking-service-action').before(line);
+        }
+
+        bindRemove();
+        return false;
+    });
+
 });

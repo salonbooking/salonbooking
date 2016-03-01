@@ -28,6 +28,27 @@ final class SLN_Wrapper_Booking_Service {
 	}
 
 	/**
+	 * @return float
+	 */
+	public function getPrice() {
+		return floatval($this->data['price']);
+	}
+
+	/**
+	 * @return SLN_Wrapper_Service
+	 */
+	public function getService() {
+		return $this->data['service'];
+	}
+
+	/**
+	 * @return SLN_Wrapper_Attendant
+	 */
+	public function getAttendant() {
+		return $this->data['attendant'];
+	}
+
+	/**
 	 * @return array
 	 */
 	public function toArray() {
@@ -43,8 +64,6 @@ final class SLN_Wrapper_Booking_Service {
 	}
 
 	public function __toString(){
-		/** @var SLN_Wrapper_Service $service */
-		$service = $this->data['service'];
-		return $service->__toString();
+		return $this->getService()->__toString();
 	}
 }

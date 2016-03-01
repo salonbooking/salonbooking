@@ -127,7 +127,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     }
 
     function evalDuration(){
-        $this->maybeProcessBookingServices();
+//        $this->maybeProcessBookingServices();
         $h = 0;
         $i = 0;
         SLN_Plugin::addLog(__CLASS__.' eval duration of'.$this->getId());
