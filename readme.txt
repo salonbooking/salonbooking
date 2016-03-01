@@ -53,7 +53,6 @@ Salon booking works with double booking algorithms:
 * Week start on..
 * Email booking reminder 
 * Filter assistants by services
-* Assistants and Services advanced booking rules
 
 
 **With Salon Booking you can also..**
