@@ -358,8 +358,8 @@
 }
 // BTN UTILITIES // END
 
-.nav-tab-wrapper .nav-tab,
-h2.nav-tab-wrapper .nav-tab {
+.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
+h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
     @extend .sln-btn;
     @extend .sln-btn--borderonly;
     @extend .sln-btn--medium;
@@ -374,11 +374,11 @@ h2.nav-tab-wrapper .nav-tab {
       border-right: inherit;
     }
 }
-.nav-tab-wrapper .nav-tab.nav-tab-active,
-h2.nav-tab-wrapper .nav-tab.nav-tab-active {
+.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active,
+h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active {
     @extend .sln-btn--active;
 }
-.btn-group.nav-tab-wrapper .active {
+.btn-group.sln-nav-tab-wrapper.nav-tab-wrapper .active {
     @extend .sln-btn--ok;
 }
 

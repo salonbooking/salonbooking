@@ -324,7 +324,7 @@ class SLN_Admin_Settings {
     }
 
     private function showTabsBar() {
-        echo '<h2 class="nav-tab-wrapper">';
+        echo '<h2 class="sln-nav-tab-wrapper nav-tab-wrapper">';
         $page = self::PAGE;
         $current = $this->getCurrentTab();
         foreach ($this->tabs as $tab => $name) {

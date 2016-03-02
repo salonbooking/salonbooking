@@ -153,8 +153,8 @@
 .salon_page_salon-settings.wp-core-ui .sln-tab .button-primary  {margin: 0 0 0 -1em;}
 
 // TABS
-.nav-tab-wrapper,
-h2.nav-tab-wrapper {
+.sln-nav-tab-wrapper.nav-tab-wrapper,
+h2.sln-nav-tab-wrapper.nav-tab-wrapper {
     margin-top: rem(40px);
     @include bp(desktop) {
         margin-top: 0;
@@ -446,7 +446,7 @@ body {
     }
     // SELF OVERRIDES
     .settings-error {border-color: $cl_problem;}
-    .nav-tab-wrapper, h2.nav-tab-wrapper, h3.nav-tab-wrapper {
+    .sln-nav-tab-wrapper.nav-tab-wrapper, h2.sln-nav-tab-wrapper.nav-tab-wrapper, h3.sln-nav-tab-wrapper.nav-tab-wrapper {
         border-bottom: none;
         margin-bottom: rem(40px);
     }
@@ -513,7 +513,7 @@ body {
     max-width: 95%;
     font-size: 12px;
     background-color: alpha-tones($cl_main--light, .25);
-    .nav-tab-wrapper {
+    .sln-nav-tab-wrapper.nav-tab-wrapper {
         @include bp(phone) {
             margin-top: 0;
             margin-bottom: 0;
