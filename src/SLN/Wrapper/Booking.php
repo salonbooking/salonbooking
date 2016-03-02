@@ -167,16 +167,22 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         return in_array($service->getId(), $this->getServicesIds());
     }
-    function getAttendantsIds(){
+
+	/**
+     * @param bool|false $unique
+     *
+     * @return array
+     */
+    function getAttendantsIds($unique = false){
         $post_id = $this->getId();
         $data     = apply_filters('sln_booking_attendants', get_post_meta($post_id, '_sln_booking_services', true));
         $ret = array();
         if(is_array($data)) {
             foreach($data as $item) {
-                $ret[] = $item['attendant'];
+                $ret[$item['service']] = $item['attendant'];
             }
         }
-        return $ret;
+        return $unique ? array_unique($ret) : $ret;
     }
 
     /**
@@ -194,9 +200,15 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return false;
     }
 
-    function getAttendants(){
+    /**
+     * @param bool $unique
+     *
+     * @return SLN_Wrapper_Attendant[]
+     */
+    function getAttendants($unique = false){
         $ret = array();
-        foreach($this->getAttendantsIds() as $service_id => $id){
+        $attIds = $this->getAttendantsIds($unique);
+        foreach($attIds as $service_id => $id){
             $tmp = new SLN_Wrapper_Attendant($id);
             if(!$tmp->isEmpty()){
                 $ret[$service_id] = $tmp;
