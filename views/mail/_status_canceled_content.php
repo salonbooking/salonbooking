@@ -5,55 +5,33 @@ if(!function_exists('tpl_summary_details')){
         ?>
         <table width="502" border="0" align="left" cellpadding="0" cellspacing="0">
             <tbody><tr>
-                <td width="157" align="center" valign="top" style="border-right:2px solid #f2f2f2;"><table width="112" border="0" align="center" cellpadding="0" cellspacing="0">
+                <td width="157" align="center" valign="top" style="border-right:2px solid #f2f2f2;">
+                    <table width="306" border="0" align="center" cellpadding="0" cellspacing="0">
                         <tbody><tr>
                             <td align="left" valign="top">&nbsp;</td>
                         </tr>
                         <tr>
                             <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Date', 'salon-booking-system')?></td>
+                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Time','salon-booking-system') ?></td>
+                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Service','salon-booking-system') ?></td>
+                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Attendant','salon-booking-system') ?></td>
                         </tr>
-                        <tr>
-                            <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"><?php echo $plugin->format()->date($booking->getDate()); ?></td>
-                        </tr>
-                        <tr>
-                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo _e('Time','salon-booking-system') ?></td>
-                        </tr>
-                        <tr>
-                            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $plugin->format()->time($booking->getTime()) ?></td>
-                        </tr>
-                        <?php if($attendant = $booking->getAttendant()) :  ?>
+                        <?php $printDate = true; ?>
+                        <?php foreach($booking->getBookingServices()->getItems() as $bookingService): ?>
                             <tr>
-                                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo _e('Attendant','salon-booking-system') ?></td>
+                                <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#666666; font-weight:bold;"><?php if ($printDate) {$printDate = false; echo $plugin->format()->date($bookingService->getStartsAt());} ?></td>
+                                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#666666; font-weight:bold;"><?php echo $plugin->format()->time($bookingService->getStartsAt()) ?></td>
+                                <td height="20" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $bookingService->getService()->getName(); ?></td>
+                                <td height="20" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $bookingService->getAttendant()->getName(); ?></td>
                             </tr>
-                            <tr>
-                                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $attendant->getName() ?></td>
-                            </tr>
-                        <?php endif ?>
+                        <?php endforeach ?>
+                        <tr>
+                            <td align="left" valign="top">&nbsp;</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
 
-                        <tr>
-                            <td align="left" valign="top">&nbsp;</td>
-                        </tr>
-                        </tbody></table></td>
-                <td width="194" align="center" valign="top" style="border-right:2px solid #f2f2f2;"><table width="155" border="0" cellspacing="0" cellpadding="0">
-                        <tbody><tr>
-                            <td align="left" valign="top">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td height="30" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Services') ?></td>
-                        </tr>
-                        <?php foreach ($plugin->getServices() as $service) : ?>
-                            <?php if ($booking->hasService($service)): ?>
-                                <tr>
-                                    <td height="20" align="left" valign="top"
-                                        style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $service->getName(
-                                        ); ?></td>
-                                </tr>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                        <tr>
-                            <td align="left" valign="top">&nbsp;</td>
-                        </tr>
-                        </tbody></table></td>
                 <td width="147" align="center" valign="top"><table width="112" border="0" align="center" cellpadding="0" cellspacing="0">
                         <tbody><tr>
                             <td align="left" valign="top">&nbsp;</td>
