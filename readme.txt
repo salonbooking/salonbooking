@@ -17,13 +17,13 @@ Salon Booking is a complete and easy to manage appointments booking system to he
 
 Salon booking  is the best solution for: 
 
-**HAIR DRESSERS SALON**
-**BARBER SHOP**
-**BEAUTY SALONS**
-**SPAS** 
-**CAR SHOPS**
-**THERAPISTS**
-**TUTORS**
+* **HAIR DRESSERS SALON**
+* **BARBER SHOP**
+* **BEAUTY SALONS**
+* **SPAS** 
+* **CAR SHOPS**
+* **THERAPISTS**
+* **TUTORS**
 
 
 It’s the perfect solution to all that kind of business where the ONE TO ONE appointment booking is crucial.
