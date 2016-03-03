@@ -52,7 +52,7 @@ $helper->showNonce($postType);
     <div class="sln-clear"></div>
     <div id="sln-booking-rules-wrapper">
         <div class="col-xs-12 sln-booking-rule">
-            <h6 class="sln-fake-label">Not available days checked and green.</h6>
+            <h6 class="sln-fake-label"><?php echo __('Not available days checked and green.', 'salon-booking-system') ?></h6>
             <div class="sln-checkbutton-group">
         <?php foreach (SLN_Func::getDays() as $k => $day) : ?>
             <div class="sln-checkbutton">

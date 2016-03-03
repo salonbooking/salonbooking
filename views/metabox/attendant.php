@@ -3,16 +3,16 @@ $helper->showNonce($postType);
 ?>
 <div class="row sln-service-price-time">
     <div class="col-sm-6 col-md-3 form-group sln-input--simple">
-            <label for="_sln_attendant_email">E-mail</label>
+            <label for="_sln_attendant_email"><?php echo __('E-mail', 'salon-booking-system') ?></label>
             <input type="text" name="_sln_attendant_email" id="_sln_attendant_email" value="<?php echo $attendant->getEmail() ?>" class="form-control">
     </div>
     <div class="col-sm-6 col-md-3 form-group sln-select">
-            <label for="_sln_attendant_phone">Telefono cell.</label>
+            <label for="_sln_attendant_phone"><?php echo __('Phone', 'salon-booking-system') ?></label>
             <input type="text" name="_sln_attendant_phone" id="_sln_attendant_phone" value="<?php echo $attendant->getPhone() ?>" class="form-control">
     </div>
 
     <div class="col-sm-12 col-md-6 form-group sln-select sln-select--multiple">
-            <label>Servizi</label>
+            <label><?php echo __('Services', 'salon-booking-system') ?></label>
             <select class="sln-select select2-hidden-accessible" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
                     name="_sln_attendant_services[]" id="_sln_attendant_services" tabindex="-1" aria-hidden="true">
                 <?php foreach ($plugin->getServices() as $service) : ?>
@@ -37,7 +37,7 @@ $helper->showNonce($postType);
     <div class="sln-clear"></div>
     <div id="sln-booking-rules-wrapper">
         <div class="col-xs-12 sln-booking-rule">
-            <h6 class="sln-fake-label">Not available days checked and green.</h6>
+            <h6 class="sln-fake-label"><?php echo __('Not available days checked and green.', 'salon-booking-system') ?></h6>
             <div class="sln-checkbutton-group">
         <?php foreach (SLN_Func::getDays() as $k => $day) : ?>
             <div class="sln-checkbutton">
