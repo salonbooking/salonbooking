@@ -54,7 +54,7 @@ class SLN_Plugin
         new SLN_PostType_Booking($this, self::POST_TYPE_BOOKING);
         new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
         new SLN_PostType_Attendant($this, self::POST_TYPE_ATTENDANT);
-        new SLN_TaxonomyType_ServiceCategory($this, self::TAXONOMY_SERVICE_CATEGORY, array(self::POST_TYPE_SERVICE, self::POST_TYPE_ATTENDANT));
+        new SLN_TaxonomyType_ServiceCategory($this, self::TAXONOMY_SERVICE_CATEGORY, array(self::POST_TYPE_SERVICE));
     }
     
     private function initAdmin()
