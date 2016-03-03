@@ -128,16 +128,16 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         if (empty($values['_sln_booking_lastname'])) {
             $this->addError(__('Last name can\'t be empty', 'salon-booking-system'));
         }
-        if (empty($values['_sln_booking_email'])) {
-            $this->addError(__('e-mail can\'t be empty', 'salon-booking-system'));
+        if(isset($_POST['_sln_booking_createuser']) && $_POST['_sln_booking_createuser']) {
+            if (empty($values['_sln_booking_email'])) {
+                $this->addError(__('e-mail can\'t be empty', 'salon-booking-system'));
+            }
+            if (empty($values['_sln_booking_phone'])) {
+                $this->addError(__('Mobile phone can\'t be empty', 'salon-booking-system'));
+            }
         }
-        if (empty($values['_sln_booking_phone'])) {
-            $this->addError(__('Mobile phone can\'t be empty', 'salon-booking-system'));
-        }
-#       if (empty($values['address'])) {
-#           $this->addError(__('Address can\'t be empty', 'salon-booking-system'));
-#       }
-        if (!filter_var($values['_sln_booking_email'], FILTER_VALIDATE_EMAIL)) {
+
+        if (!empty($values['_sln_booking_email']) && !filter_var($values['_sln_booking_email'], FILTER_VALIDATE_EMAIL)) {
             $this->addError(__('e-mail is not valid', 'salon-booking-system'));
         }
     }
