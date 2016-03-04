@@ -8,7 +8,6 @@ var gulp  = require('gulp'),
     sass = require('gulp-sass'),
     minifyCss = require('gulp-minify-css');//
     //sourcemaps = require('gulp-sourcemaps');
-    /
 
 var sassOptions = {
   errLogToConsole: true,
