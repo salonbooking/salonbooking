@@ -298,7 +298,7 @@ class SLN_Admin_Settings {
             <div class="col-xs-12"><h2><?php _e('Salon Settings', 'salon-booking-system'); ?></h2></div>
             <div class="sln-admin-nav hidden-xs hidden-sm col-sm-12 col-md-8">
                 <ul class="sln-admin-nav">
-                <li><a href="admin.php?page=salon-calendar" class="sln-btn--icon sln-icon--calendar">Calendar</a></li>
+                <li><a href="admin.php?page=salon" class="sln-btn--icon sln-icon--calendar">Calendar</a></li>
                 <li><a href="edit.php?post_type=sln_booking" class="sln-btn--icon sln-icon--booking">Bookings</a></li>
                 <li><a href="edit.php?post_type=sln_service" class="sln-btn--icon sln-icon--services">Services</a></li>
                 <li><a href="edit.php?post_type=sln_attendant" class="sln-btn--icon sln-icon--assistants">Assistants</a></li>

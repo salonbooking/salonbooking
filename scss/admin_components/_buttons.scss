@@ -1,4 +1,5 @@
-.sln-btn {
+.sln-btn,
+.sln-bootstrap .sln-btn {
   text-align: center;
   border: none;
   cursor: pointer;
@@ -22,6 +23,7 @@
   }
   &:hover, &:focus {
     text-decoration: none;
+    text-shadow: none;
   }
 }
 // SIZES
@@ -96,7 +98,8 @@
 }
 
 // COLORS
-.sln-btn--main {
+.sln-btn--main,
+.sln-bootstrap .sln-btn--main {
   background-color: $cl_main--emphasis;
   color: $cl_main--white;
   input, button {color: $cl_main--white;}
@@ -114,7 +117,8 @@
     }
   }
 }
-.sln-btn--light {
+.sln-btn--light ,
+.sln-bootstrap .sln-btn--light {
   background-color: $cl_main--light;
   color: $cl_main;
   input, button {color: $cl_main;}
@@ -142,7 +146,8 @@
     }
   }
 }
-.sln-btn--warning {
+.sln-btn--warning,
+.sln-bootstrap .sln-btn--warning {
   background-color: $cl_warning;
   color: $cl_main--white;
   input, button {color: $cl_main--white;}
@@ -152,7 +157,8 @@
     input, button {color: $cl_main--white;}
   }
 }
-.sln-btn--problem {
+.sln-btn--problem,
+.sln-bootstrap .sln-btn--problem {
   background-color: $cl_problem--light;
   color: $cl_main--white;
   input, button {color: $cl_main--white;}
@@ -162,7 +168,8 @@
     input, button {color: $cl_main--white;}
   }
 }
-.sln-btn--ok {
+.sln-btn--ok,
+.sln-bootstrap .sln-btn--ok {
   background-color: $cl_ok;
   color: $cl_main--white;
   input, button {color: $cl_main--white;}
@@ -172,7 +179,8 @@
     input, button {color: $cl_main--white;}
   }
 }
-.sln-btn--borderonly {
+.sln-btn--borderonly,
+.sln-bootstrap .sln-btn--borderonly {
   background-color: transparent;
   color: $cl_main;
   input, button {color: $cl_main;}
@@ -187,7 +195,8 @@
     &.sln-btn--icon:after {color: $cl_main--white;}
   }
 }
-.sln-btn--nobkg {
+.sln-btn--nobkg,
+.sln-bootstrap .sln-btn--nobkg {
   background-color: transparent;
   border: 1px solid transparent;
   color: $cl_main;
@@ -401,7 +410,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active {
       float: right;
       position: absolute;
       text-outline: 0;
-      right: 0;
+      right: 10px;
     }
 }
 
@@ -501,6 +510,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active {
 // TOOLBOX // END
 
 // WP BUTTONS
+#{$wrapper} {
   p.submit {
     @extend .sln-btn;
     @extend .sln-btn--main;
@@ -509,3 +519,4 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active {
     @extend .sln-icon--save;
     border-radius: 0;
   }
+}
