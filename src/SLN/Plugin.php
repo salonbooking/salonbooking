@@ -13,7 +13,7 @@ class SLN_Plugin
     const F = 'slnc';
     const F1 = 30;
     const F2 = 20;
-    const DEBUG_ENABLED = false;
+    const DEBUG_ENABLED = 1;
     const CATEGORY_ORDER = 'sln_service_category_order';
     const SERVICE_ORDER = '_sln_service_order';
 

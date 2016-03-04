@@ -39,8 +39,14 @@ function sln_init($) {
 
     // CHECKBOXES
     $('#sln-salon input:checkbox').each(function () {
-        $(this).click(function () {
-            $(this).parent().toggleClass("is-checked");
+        $(this).change(function () {
+            if($(this).is(':checked')) {
+                $(this).parent().addClass("is-checked");
+            }
+            else {
+                $(this).parent().removeClass("is-checked");
+            }
+
         })
     });
     // RADIOBOXES
@@ -209,9 +215,55 @@ function sln_serviceTotal($) {
         }
     }
 
+    function checkServices($) {
+        var form, data;
+        if ($('#salon-step-services').size()) {
+            form = $('#salon-step-services');
+            data = form.serialize() + "&action=salon&method=CheckServices&part=primaryServices&security=" + salon.ajax_nonce;
+        }
+        else {
+            form = $('#salon-step-secondary');
+            data = form.serialize() + "&action=salon&method=CheckServices&part=secondaryServices&security=" + salon.ajax_nonce;
+        }
+
+        $.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (!data.success) {
+                    var alertBox = $('<div class="alert alert-danger"></div>');
+                    $.each(data.errors, function () {
+                        alertBox.append('<p>').html(this);
+                    });
+                }
+                else {
+                    $('.alert').remove();
+                    $.each(data.services, function(index, value) {
+                        var checkbox = $('#sln_services_' + index);
+                        if (value.status == -1) {
+                            var alertBox = $('<div class="alert alert-warning"><p>' + value.error + '</p></div>');
+                            checkbox.attr('checked', false).attr('disabled', 'disabled').change();
+                            checkbox.parent().parent().parent().next().after(alertBox);
+                        }
+                        else if (value.status == 0) {
+                            checkbox.attr('checked', false).attr('disabled', false).change();
+                        }
+                        else if (value.status == 1) {
+                            checkbox.attr('checked', true).change();
+                        }
+                    });
+                    evalTot();
+                }
+            }
+        });
+    }
+
     $checkboxes.click(function () {
-        evalTot();
-        evalDuration(this);
+        checkServices($);
+
+        //evalDuration(this);
     });
     evalTot();
 }

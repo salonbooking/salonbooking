@@ -50,7 +50,7 @@ class SLN_Wrapper_Booking_Builder
         }
     }
 
-    protected function getEmptyValue()
+    public function getEmptyValue()
     {
         $from = $this->plugin->getSettings()->getHoursBeforeFrom();
         $d = new SLN_DateTime(date('Y-m-d H:i:00'));
@@ -193,20 +193,50 @@ class SLN_Wrapper_Booking_Builder
         $this->data['services'] = array();
     }
 
+    public function getServicesIds() {
+        return array_keys($this->getServices());
+    }
+
+    public function getPrimaryServicesIds() {
+        return array_keys($this->getPrimaryServices());
+    }
+
+    public function getSecondaryServicesIds() {
+        return array_keys($this->getSecondaryServices());
+    }
+
     /**
+     * @param bool $primary
+     * @param bool $secondary
+     *
      * @return SLN_Wrapper_Service[]
      */
-    public function getServices()
+    public function getServices($primary = true, $secondary = true)
     {
         $ids = array_keys($this->data['services']);
         $ret = array();
         foreach ($this->plugin->getServices() as $service) {
             if (in_array($service->getId(), $ids)) {
-                $ret[$service->getId()] = $service;
+                if ($secondary && $service->isSecondary()) {
+                    $ret[$service->getId()] = $service;
+                }
+                elseif ($primary && !$service->isSecondary()) {
+                    $ret[$service->getId()] = $service;
+                }
             }
         }
 
         return $ret;
+    }
+
+    public function getPrimaryServices()
+    {
+        return $this->getServices(true, false);
+    }
+
+    public function getSecondaryServices()
+    {
+        return $this->getServices(false, true);
     }
     
     public function getTotal()
@@ -264,11 +294,18 @@ class SLN_Wrapper_Booking_Builder
                     : SLN_Enum_BookingStatus::PAY_LATER ));
     }
 
+    public function getEndsAt()
+    {
+        $endsAt = clone $this->getDateTime();
+        $endsAt->modify("+".SLN_Func::getMinutesFromDuration($this->getDuration())."minutes");
+        return $endsAt;
+    }
+
     public function getDuration()
     {
         $i = $this->getServicesDurationMinutes();
-        if($i == 0)
-            $i = 60;
+//        if($i == 0)
+//            $i = 60;
         $str = SLN_Func::convertToHoursMins($i);
         return $str;
     }

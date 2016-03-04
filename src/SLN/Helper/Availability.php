@@ -14,7 +14,7 @@ class SLN_Helper_Availability
     public function __construct(SLN_Plugin $plugin)
     {
         $this->settings = $plugin->getSettings();
-        $this->initialDate = $plugin->getBookingBuilder()->getDateTime();
+        $this->initialDate = $plugin->getBookingBuilder()->getEmptyValue();
     }
 
     public function getHoursBeforeHelper()
@@ -99,7 +99,7 @@ class SLN_Helper_Availability
     }
 
     /**
-     * @return SLN_Helper_AvailabilityDayBookings
+     * @return SLN_Helper_Availability_AbstractDayBookings
      */
     public function getDayBookings()
     {
@@ -200,24 +200,136 @@ class SLN_Helper_Availability
         return $ret;
     }
 
-
-    public function validateService(SLN_Wrapper_Service $service)
+    public function validateAttendant2(SLN_Wrapper_Attendant $attendant, DateTime $date = null, DateTime $duration = null)
     {
-        if ($service->isNotAvailableOnDate($this->date)) {
-            return array(
-                __('This service is unavailable ', 'salon-booking-system') . $service->getNotAvailableString()
-            );
+        $interval = min(SLN_Enum_Interval::toArray());
+
+        $date = empty($date) ? $this->date : $date;
+        $duration = empty($duration) ? new DateTime('1970-01-01 00:00:00') : $duration;
+
+        $startAt = clone $date;
+        $endAt = clone $date;
+        $endAt = $endAt->modify('+'.SLN_Func::getMinutesFromDuration($duration).'minutes');
+
+        $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $startAt, $endAt);
+        foreach($times as $time) {
+            $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
+            if ($attendant->isNotAvailableOnDate($time)) {
+                return array(
+                    __('This attendant is unavailable ', 'salon-booking-system') . $attendant->getNotAvailableString()
+                );
+            }
+
+            $ids = $this->getDayBookings()->countAttendantsByHour($time->format('H'), $time->format('i'));
+            if (
+                isset($ids[$attendant->getId()])
+                && $ids[$attendant->getId()] >= 0
+            ) {
+                return array(
+                    sprintf(__('The attendant for %s is currently full', 'salon-booking-system'), $time->format('H:i'))
+                );
+            }
         }
-        $ids = $this->getDayBookings()->countServicesByHour();
-        if (
-            $service->getUnitPerHour() > 0
-            && isset($ids[$service->getId()])
-            && $ids[$service->getId()] >= $service->getUnitPerHour()
-        ) {
-            return array(
-                __('The service for this hour is currently full', 'salon-booking-system') . $service->getNotAvailableString()
-            );
+    }
+
+    public function validateService(SLN_Wrapper_Service $service, DateTime $date = null, DateTime $duration = null)
+    {
+        $interval = min(SLN_Enum_Interval::toArray());
+
+        $date = empty($date) ? $this->date : $date;
+        $duration = empty($duration) ? $service->getDuration() : $duration;
+
+        $startAt = clone $date;
+        $endAt = clone $date;
+        $endAt = $endAt->modify('+'.SLN_Func::getMinutesFromDuration($duration).'minutes');
+
+        $attendants = $service->getAttendants();
+        $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $startAt, $endAt);
+        foreach($times as $time) {
+            $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
+            if ($service->isNotAvailableOnDate($time)) {
+                return array(
+                    __('This service is unavailable ', 'salon-booking-system') . $service->getNotAvailableString()
+                );
+            }
+
+            foreach($attendants as $k => $attendant) {
+                if ($this->validateAttendant2($attendant, $time)) {
+                    unset($attendants[$k]);
+                }
+            }
+
+            if (empty($attendants)) {
+                return array(
+                    __('No one of the assistants is available at ', 'salon-booking-system') . $time->format('H:i')
+                );
+            }
+
+            $ids = $this->getDayBookings()->countServicesByHour($time->format('H'), $time->format('i'));
+            if (
+                $service->getUnitPerHour() > 0
+                && isset($ids[$service->getId()])
+                && $ids[$service->getId()] >= $service->getUnitPerHour()
+            ) {
+                return array(
+                    sprintf(__('The service for %s is currently full', 'salon-booking-system'), $time->format('H:i'))
+                );
+            }
         }
+    }
+
+    public function returnValidatedServices(array $servicesIds) {
+        $date = $this->date;
+        $bookingServices = SLN_Wrapper_Booking_Services::build(array_fill_keys($servicesIds, 0), $date);
+        $validated = array();
+        foreach($bookingServices->getItems() as $bookingService){
+            $serviceErrors = $this->validateService($bookingService->getService(), $bookingService->getStartsAt());
+            if (empty($serviceErrors)) {
+                $validated[] = $bookingService->getService()->getId();
+            }
+            else {
+                break;
+            }
+        }
+        return $validated;
+    }
+
+    /**
+     * @param array $order
+     * @param SLN_Wrapper_Service[] $newServices
+     *
+     * @return array
+     */
+    public function checkEachOfNewServicesForExistOrder($order, $newServices) {
+        $ret = array();
+        $date = $this->date;
+        foreach($newServices as $service) {
+            $services = $order;
+            if (!in_array($service->getId(), $services)) {
+                $services[] = $service->getId();
+                $bookingServices = SLN_Wrapper_Booking_Services::build(array_fill_keys($services, 0), $date);
+                foreach($bookingServices->getItems() as $bookingService){
+                    $serviceErrors = $this->validateService($bookingService->getService(), $bookingService->getStartsAt());
+                    if (!empty($serviceErrors)) {
+                        if ($bookingService->getService()->getId() == $service->getId()) {
+                            $error = $serviceErrors[0];
+                        }
+                        else {
+                            $tmp = $bookingServices->findByService($service->getId());
+                            $error = __('You already selected service at') . ($tmp ? ' ' . $tmp->getStartsAt()->format('H:i') : '');
+                        }
+                        $ret[$service->getId()] = array($error);
+                        break;
+                    }
+                }
+
+                if (!isset($ret[$service->getId()])) {
+                    $ret[$service->getId()] = array();
+                }
+            }
+        }
+
+        return $ret;
     }
 
     /**

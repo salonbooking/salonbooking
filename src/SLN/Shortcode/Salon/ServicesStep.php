@@ -32,7 +32,7 @@ class SLN_Shortcode_Salon_ServicesStep extends SLN_Shortcode_Salon_Step
     {
         if (!isset($this->services)) {
             $this->services = array();
-            foreach ($this->getPlugin()->getServices() as $service) {
+            foreach ($this->getPlugin()->getServicesOrderByExec() as $service) {
                 if (!$service->isSecondary()) {
                     $this->services[] = $service;
                 }
