@@ -25,7 +25,7 @@
 				<h2 class="sln-box-title"><?php _e('Settings import','salon-booking-system') ?></h2>
 				<div class="row">
 					<div class="col-sm-12 form-group">
-						<h6 class="sln-fake-label"><?php _e('Copy and paste into this field settings of the plugin to impoert settings into the current wordpress install.','salon-booking-system')?></h6>
+						<h6 class="sln-fake-label"><?php _e('Copy and paste into this field settings of the plugin to import settings into the current wordpress install.','salon-booking-system')?></h6>
 					</div>
 					<div class="col-sm-8 form-group sln-input--simple">
 						<textarea rows="7" id="tools-import" name="tools-import"></textarea>
