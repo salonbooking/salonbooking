@@ -512,6 +512,8 @@ body {
     font-size: 12px;
     background-color: alpha-tones($cl_main--light, .25);
     .sln-nav-tab-wrapper.nav-tab-wrapper {
+        padding-left: 15px;
+        padding-right: 15px;
         @include bp(phone) {
             margin-top: 0;
             margin-bottom: 0;

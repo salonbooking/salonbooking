@@ -3358,13 +3358,17 @@ body {
   max-width: 95%;
   font-size: 12px;
   background-color: rgba(199, 223, 243, 0.25); }
-  @media only screen and (max-width: 767px) {
-    .salon_page_salon-calendar .sln-calendar--wrapper .sln-nav-tab-wrapper.nav-tab-wrapper,
-    .sln-calendar--wrapper .sln-nav-tab-wrapper.nav-tab-wrapper {
-      margin-top: 0;
-      margin-bottom: 0;
-      padding: 0;
-      text-align: center; } }
+  .salon_page_salon-calendar .sln-calendar--wrapper .sln-nav-tab-wrapper.nav-tab-wrapper,
+  .sln-calendar--wrapper .sln-nav-tab-wrapper.nav-tab-wrapper {
+    padding-left: 15px;
+    padding-right: 15px; }
+    @media only screen and (max-width: 767px) {
+      .salon_page_salon-calendar .sln-calendar--wrapper .sln-nav-tab-wrapper.nav-tab-wrapper,
+      .sln-calendar--wrapper .sln-nav-tab-wrapper.nav-tab-wrapper {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
+        text-align: center; } }
   .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-btn, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-admin-nav a, .sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .btn-group a, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .sln-tab-nav li a, .sln-tab-nav li .salon_page_salon-calendar .sln-calendar--wrapper .btn-group a, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln-salon--admin p.submit, #sln-salon--admin .salon_page_salon-calendar .sln-calendar--wrapper .btn-group p.submit, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group p.submit, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group #sln_shop-details .handlediv.button-link .toggle-indicator, #sln_shop-details .handlediv.button-link .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .toggle-indicator, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group
   #sln_attendant-details .handlediv.button-link .toggle-indicator,
   #sln_attendant-details .handlediv.button-link .salon_page_salon-calendar .sln-calendar--wrapper .btn-group .toggle-indicator, .salon_page_salon-calendar .sln-calendar--wrapper .btn-group
