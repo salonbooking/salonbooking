@@ -39,7 +39,7 @@ jQuery(function($){
 
 <div class="row">
     <div class="col-md-12 btn-group nav-tab-wrapper sln-nav-tab-wrapper">
-        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new">Add new booking</a>
+        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new">Add new booking</a>
         <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="day">
         <button class="" data-calendar-view="day"><?php _e('Day')?></button>
         </div>
