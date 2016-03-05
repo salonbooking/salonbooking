@@ -5,7 +5,7 @@
 <div class="sln-toolbox">
 <button class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--tools sln-toolbox-trigger visible-md-inline-block visible-lg-inline-block">Tools </button>
 <a href="edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--booking">Manage bookings </a>
-<a href="admin.php?page=salon-calendar" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--calendar">Check calendar </a>
+<a href="admin.php?page=salon" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--calendar">Check calendar </a>
 <a href="edit.php?post_type=sln_attendant" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--assistants">Active assistants </a>
 </div>
 <button class="sln-btn sln-btn--main sln-btn--small--round sln-btn--icon sln-icon--tools sln-toolbox-trigger-mob 
