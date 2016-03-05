@@ -53,7 +53,7 @@ $helper->showNonce($postType);
         <div class="row">
            <div class="col-xs-12 col-md-8 sln-slider-wrapper">
               <div class="sln-slider">
-                  <div class="sliders_step1 col col-slider"><div class="slider-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 50%;"></div><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 50%;"></span></div></div>
+                  <div class="sliders_step1 col col-slider"><div class="slider-range"></div></div>
                   <div class="col col-time"><span class="slider-time-from">0:00</span> to <span class="slider-time-to">12:00</span>
                       <?php echo SLN_Form::fieldText($helper->getFieldName($postType, 'notav_from'), $attendant->getNotAvailableFrom()->format('H:i'), array('attrs' => array('class' => 'slider-time-input-from hidden'))) ?>
                       <?php echo SLN_Form::fieldText($helper->getFieldName($postType, 'notav_to'), $attendant->getNotAvailableTo()->format('H:i'), array('attrs' => array('class' => 'slider-time-input-to hidden'))) ?>
