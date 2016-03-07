@@ -2,37 +2,29 @@
 
 class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availability_AbstractDayBookings
 {
-    private $cache;
+    /**
+     * @return DateTime
+     */
+    public function getTime($hour = null, $minutes = null) {
+        if (!isset($hour)) {
+            $hour = $this->getDate()->format('H');
+        }
+        $now = clone $this->getDate();
+        $now->setTime($hour, $minutes ? $minutes : 0);
+        return $now;
+    }
 
     /**
      * @return SLN_Wrapper_Booking[]
      */
-    public function getBookingsByHour($hour, $minutes = null)
+    public function getBookingsByHour($hour = null, $minutes = null)
     {
-        if (!isset($hour)) {
-            $hour = $this->getDate()->format('H');
-        }
-        if(isset($this->cache[$hour.$minutes])){
-            return $this->cache[$hour.$minutes];
-        }
+        $now = $this->getTime($hour, $minutes);
+        $time = $now->format('H:i');
         $ret = array();
-   
-        $now = clone $this->getDate();
-        $now->setTime($hour, $minutes ? $minutes : 0);
- 
-        foreach ($this->getBookings() as $b) {
-            if (SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled')) {
-                $minutes = SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation');
-                // cool in php 5.3
-                //$getEndsAt = $b->getEndsAt()->add(new DateInterval("PT".SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation')."M"));
-                $getEndsAt = $b->getEndsAt()->modify('+'.$minutes.' minutes');
-            }else{
-                $getEndsAt = $b->getEndsAt();
-            }
-
-            if ($b->getStartsAt() <= $now && $getEndsAt > $now) {
-                $ret[] = $b;
-            }
+        $bookings = $this->timeslots[$time]['booking'];
+        foreach($bookings as $bId) {
+            $ret[] = new SLN_Wrapper_Booking($bId);
         }
 
         if(!empty($ret)){
@@ -44,7 +36,66 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
         }else{
             SLN_Plugin::addLog(__CLASS__.' - checking hour('.$hour.') EMPTY');
         }
-        $this->cache[$hour] = $ret;
+        return $ret;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCountAttendantsByHour( $hour = null, $minutes = null )
+    {
+        $now = $this->getTime($hour, $minutes);
+        $time = $now->format('H:i');
+        $ret = $this->timeslots[$time]['attendant'];
+        return $ret;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCountServicesByHour($hour = null, $minutes = null)
+    {
+        $now = $this->getTime($hour, $minutes);
+        $time = $now->format('H:i');
+        $ret = $this->timeslots[$time]['service'];
+        return $ret;
+    }
+
+    protected function buildTimeslots() {
+        $ret = array();
+        $interval = min(SLN_Enum_Interval::toArray());
+        foreach(SLN_Func::getMinutesIntervals($interval) as $t) {
+            $ret[$t] = array('booking' => array(), 'service' => array(), 'attendant' => array());
+        }
+
+        $bookingOffsetEnabled = boolval(SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled'));
+        $bookingOffset = intval(SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation'));
+
+        /** @var SLN_Wrapper_Booking[] $bookings */
+        $bookings = $this->bookings;
+        foreach($bookings as $booking) {
+            $bookingServices = $booking->getBookingServices();
+            foreach ($bookingServices->getItems() as $bookingService) {
+                $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $bookingService->getStartsAt(), $bookingService->getEndsAt());
+                foreach($times as $time) {
+                    $time = $time->format('H:i');
+                    $ret[$time]['booking'][] = $booking->getId();
+                    @$ret[$time]['service'][$bookingService->getService()->getId()] ++;
+                    @$ret[$time]['attendant'][$bookingService->getAttendant()->getId()] ++;
+                }
+
+                if ($bookingServices->isLast($bookingService) && $bookingOffsetEnabled) {
+                    $offsetStart = $bookingService->getEndsAt();
+                    $offsetEnd = $bookingService->getEndsAt()->modify('+'.$bookingOffset.' minutes');
+                    $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $offsetStart, $offsetEnd);
+                    foreach($times as $time) {
+                        $time = $time->format('H:i');
+                        $ret[$time]['booking'][] = $booking->getId();
+                    }
+                }
+            }
+        }
+
         return $ret;
     }
 }

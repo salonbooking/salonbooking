@@ -152,7 +152,7 @@ $helper->showNonce($postType);
     </div>
 
     <div class="sln-separator"></div>
-    <div class="form-group sln_meta_field row">
+    <div id="sln_booking_services" class="form-group sln_meta_field row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <h3><?php _e('Services & Attendants', 'salon-booking-system'); ?></h3>
         </div>
@@ -202,6 +202,7 @@ $helper->showNonce($postType);
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
         <?php
         $lineItem = ob_get_clean();
         $lineItem = preg_replace("/\r\n|\n/", ' ', $lineItem);
@@ -258,6 +259,7 @@ $helper->showNonce($postType);
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
         <?php endforeach ?>
         <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-action">
             <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">

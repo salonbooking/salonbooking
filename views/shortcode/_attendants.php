@@ -9,6 +9,7 @@
 
 $ah = $plugin->getAvailabilityHelper();
 $ah->setDate($plugin->getBookingBuilder()->getDateTime());
+$duration = new SLN_DateTime('1970-01-01 '.$bb->getDuration());
 $hasAttendants = false;
 ?>
 <div class="sln-attendant-list">
@@ -23,15 +24,9 @@ $hasAttendants = false;
             <div class="col-lg-1 col-md-3 col-xs-2">
             <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
-            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
-            if ( $validateErrors && $validateAttServicesErrors) {
-                $errors = array_merge($validateErrors, $validateAttServicesErrors);
-            }
-            elseif ($validateErrors) {
+            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDateTime(), $duration);
+            if ($validateErrors) {
                 $errors = $validateErrors;
-            }
-            elseif ($validateAttServicesErrors) {
-                $errors = $validateAttServicesErrors;
             }
             else {
                 $errors = false;

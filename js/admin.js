@@ -64,6 +64,38 @@ function initTimepickers($) {
         }
     });
 }
+
+function sln_checkServices($) {
+    var form = $('#post');
+    var data = form.serialize() + "&action=salon&method=CheckServices&part=allServices&security=" + salon.ajax_nonce;
+    $.ajax({
+        url: salon.ajax_url,
+        data: data,
+        method: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            if (!data.success) {
+                var alertBox = $('<div class="alert alert-danger"></div>');
+                $.each(data.errors, function () {
+                    alertBox.append('<p>').html(this);
+                });
+            }
+            else {
+                $('#sln_booking_services').find('.alert').remove();
+                $.each(data.services, function(index, value) {
+                    var serviceItem = $('#_sln_booking_attendants_' + index);
+                    if (value.status == -1) {
+                        $.each(value.errors, function(index, value) {
+                            var alertBox = $('<div class="alert alert-danger"><p>' + value + '</p></div>');
+                            serviceItem.parent().parent().next().after(alertBox);
+                        });
+                    }
+                });
+            }
+        }
+    });
+}
+
 function sln_adminDate($) {
     var items = $('#salon-step-date').data('intervals');
     var doingFunc = false;
@@ -114,27 +146,9 @@ function sln_adminDate($) {
                 } else {
                     $('#sln-notifications').html('').append('<div class="alert alert-success">'+ $('#sln-notifications').data('valid-message')+'</div>');
                 }
-                updateServices(obj);
-                bindIntervals(data.intervals);
-            }
-        });
-    }
-
-    function updateServices(obj) {
-        var form = $(obj).closest('form');
-        var data = form.serialize() + "&action=salon&method=CheckServices&security=" + salon.ajax_nonce;
-        $.ajax({
-            url: salon.ajax_url,
-            data: data,
-            method: 'POST',
-            dataType: 'json',
-            success: function (data) {
-                if (!data.success) {
-                    var alertBox = $('<div class="alert alert-danger"></div>');
-                    $.each(data.errors, function () {
-                        alertBox.append('<p>').html(this);
-                    });
-                }
+                sln_checkServices($);
+                //updateServices(obj);
+                //bindIntervals(data.intervals);
             }
         });
     }
@@ -230,11 +244,13 @@ jQuery(function ($) {
             $('#_sln_booking_deposit').val(((tot / 100).toFixed(2) * $('#salon-step-date').data('deposit')).toFixed(2))
         return false;
     }
+    function bindRemoveFunction() {
+        $(this).parent().parent().parent().remove();
+        return false;
+    }
+
     function bindRemove() {
-        $('button[data-collection="remove"]').unbind('click').on('click', function () {
-            $(this).parent().parent().parent().remove();
-            return false;
-        });
+        $('button[data-collection="remove"]').unbind('click', bindRemoveFunction).on('click', bindRemoveFunction);
     }
 
     var prototype = $('.sln-booking-rules div[data-collection="prototype"]');
@@ -571,6 +587,22 @@ jQuery(function ($) {
         $('#_sln_booking_attendant_select').html(html).change();
     }).change();
 
+
+
+    function bindRemoveBookingsServicesFunction() {
+        if($('#salon-step-date').data('isnew'))
+            calculateTotal();
+        if ($('#_sln_booking_service_select').size()) {
+            sln_checkServices($);
+        }
+        return false;
+    }
+
+    function bindRemoveBookingsServices() {
+        bindRemove();
+        $('button[data-collection="remove"]').unbind('click', bindRemoveBookingsServicesFunction).on('click', bindRemoveBookingsServicesFunction);
+    }
+
     function getNewBookingServiceLineString(serviceId, attendantId) {
         var line = lineItem;
         line = line.replace(/__service_id__/g, serviceId);
@@ -582,7 +614,7 @@ jQuery(function ($) {
         return line;
     }
 
-    bindRemove();
+    bindRemoveBookingsServices();
 
     $('button[data-collection="addnewserviceline"]').click(function () {
         var serviceVal = $('#_sln_booking_service_select').val();
@@ -608,8 +640,8 @@ jQuery(function ($) {
         if($('#salon-step-date').data('isnew'))
             calculateTotal();
 
-        bindRemove();
+        bindRemoveBookingsServices();
+        sln_checkServices($);
         return false;
     });
-
 });

@@ -24,6 +24,24 @@ final class SLN_Wrapper_Booking_Services {
 		return empty($this->items) ? array() : $this->items;
 	}
 
+	/**
+	 * @param int $serviceId
+	 *
+	 * @return false|SLN_Wrapper_Booking_Service
+	 */
+	public function findByService($serviceId) {
+		foreach($this->getItems() as $bookingService) {
+			if ($serviceId == $bookingService->getService()->getId()) {
+				return $bookingService;
+			}
+		}
+		return false;
+	}
+
+	public function isLast(SLN_Wrapper_Booking_Service $bookingService) {
+		return count($this->items) && $this->items[count($this->items) - 1] === $bookingService;
+	}
+
 	public function toArrayRecursive() {
 		$ret = array();
 		if(!empty($this->items)){

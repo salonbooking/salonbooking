@@ -56,6 +56,18 @@ final class SLN_Wrapper_Booking_Service {
 	}
 
 	/**
+	 * @return SLN_DateTime
+	 */
+	public function getEndsAt() {
+		$durationParts = explode(':', $this->getDuration()->format('H:i'));
+		$h = intval($durationParts[0]);
+		$i = intval($durationParts[1]);
+		$minutes = $h*60 + $i;
+		$endsAt = clone $this->getStartsAt();
+		return $endsAt->modify('+'.$minutes.' minutes');
+	}
+
+	/**
 	 * @return array
 	 */
 	public function toArray() {

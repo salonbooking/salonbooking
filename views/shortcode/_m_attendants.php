@@ -9,21 +9,23 @@
 
 $ah = $plugin->getAvailabilityHelper();
 $ah->setDate($plugin->getBookingBuilder()->getDateTime());
-$selectedServices = $bb->getServices();
 
-foreach ($selectedServices as $service) :
+$bookingServices = SLN_Wrapper_Booking_Services::build($bb->getAttendantsIds(), $bb->getDateTime());
+
+foreach ($bookingServices->getItems() as $bookingService) :
+    $service = $bookingService->getService();
     $hasAttendants = false;
 ?>
 <div class="sln-attendant-list">
     <h3><?php echo $service->getName() ?></h3>
     <?php foreach ($attendants as $attendant) : ?>
         <?php
-        $validateAttServicesErrors = $ah->validateAttendantService($attendant, $service);
-        if (!empty($validateAttServicesErrors)) {
+        $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);
+        if (!empty($validateAttServiceErrors)) {
             continue;
         }
 
-        $errors   = $ah->validateAttendant($attendant, $bb->getDuration());
+        $errors   = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getDuration());
         $settings = array();
         if ($errors) {
             $settings['attrs']['disabled'] = 'disabled';

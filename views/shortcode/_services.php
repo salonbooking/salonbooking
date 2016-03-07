@@ -9,17 +9,32 @@
 
 $ah = $plugin->getAvailabilityHelper();
 $bb = $plugin->getBookingBuilder();
+$bookingOffsetEnabled = boolval(SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled'));
+$bookingOffset = intval(SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation'));
+$endsAt = $bb->getEndsAt();
+//if ($bookingOffsetEnabled) {
+//    $endsAt = $endsAt->modify('+'.$bookingOffset.' minutes');
+//}
 $ah->setDate($bb->getDateTime());
 $isSymbolLeft = $plugin->getSettings()->get('pay_currency_pos') == 'left';
 $symbolLeft = $isSymbolLeft ? $plugin->getSettings()->getCurrencySymbol() : '';
 $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 $grouped = SLN_Func::groupServicesByCategory($services);
-$minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMinutes();
-if ($plugin->getSettings()->getAvailabilityMode() == 'advanced' && boolval($plugin->getSettings()->get('reservation_interval_enabled'))) {
-    $minutes -= intval($plugin->getSettings()->get('minutes_between_reservation'));
-}
+
+$servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds(), $services);
+
  ?>
+<?php SLN_Form::fieldText(
+    'sln[date]',
+    $bb->getDate(),
+    array('type' => 'hidden')
+) ?>
+<?php SLN_Form::fieldText(
+    'sln[time]',
+    $bb->getTime(),
+    array('type' => 'hidden')
+) ?>
 <div class="sln-service-list">
     <?php foreach ($grouped as $group): ?>
         <?php if($group['term'] !== false): ?>
@@ -30,12 +45,13 @@ if ($plugin->getSettings()->getAvailabilityMode() == 'advanced' && boolval($plug
         <div id="collapse<?php echo $group['term']->slug ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse<?php echo $group['term']->slug ?>Heading" aria-expanded="false" style="height: 0px;">
 
         <?php endif ?>
-    <?php foreach ($group['services'] as $service) : ?>
+    <?php /** @var SLN_Wrapper_Service $service */
+        foreach ( $group['services'] as $service) : ?>
         <div class="row">
             <div class="col-xs-1 col-lg-1">
             <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
             <?php
-            $serviceErrors   = $ah->validateService($service);
+            $serviceErrors = isset($servicesErrors[$service->getId()]) ? $servicesErrors[$service->getId()] : array();
             $settings = array('attrs' => array(
                 'data-price' => $service->getPrice(),
                 'data-duration' => SLN_Func::getMinutesFromDuration($service->getDuration())
@@ -91,7 +107,6 @@ if ($plugin->getSettings()->getAvailabilityMode() == 'advanced' && boolval($plug
         <div class="col-xs-6 services-total-label"><?php _e('Subtotal', 'salon-booking-system') ?></div>
         <div class="col-xs-6 services-total">
         <span id="services-total" 
-              data-minutes="<?php echo $minutes ?>"
               data-symbol-left="<?php echo $symbolLeft ?>"
               data-symbol-right="<?php echo $symbolRight ?>">
             <?php echo $plugin->format()->money(0, false) ?>
