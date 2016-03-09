@@ -9,12 +9,6 @@
 
 $ah = $plugin->getAvailabilityHelper();
 $bb = $plugin->getBookingBuilder();
-$bookingOffsetEnabled = boolval(SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled'));
-$bookingOffset = intval(SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation'));
-$endsAt = $bb->getEndsAt();
-//if ($bookingOffsetEnabled) {
-//    $endsAt = $endsAt->modify('+'.$bookingOffset.' minutes');
-//}
 $ah->setDate($bb->getDateTime());
 $isSymbolLeft = $plugin->getSettings()->get('pay_currency_pos') == 'left';
 $symbolLeft = $isSymbolLeft ? $plugin->getSettings()->getCurrencySymbol() : '';

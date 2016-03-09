@@ -75,6 +75,10 @@ final class SLN_Wrapper_Booking_Services {
 		$services = array();
 		foreach($data as $sId => $item) {
 
+			$atId     = null;
+			$price    = null;
+			$duration = null;
+
 			$service = SLN_Plugin::getInstance()->createService($sId);
 
 			if (is_array($item)) {
@@ -91,14 +95,14 @@ final class SLN_Wrapper_Booking_Services {
 				$atId = intval($item);
 			}
 
-			if (!isset($atId)) {
+			if (empty($atId)) {
 				$atId = 0;
 			}
-			if (!isset($price)) {
+			if (empty($price)) {
 				$price = $service->getPrice();
 			}
 
-			if (!isset($duration)) {
+			if (empty($duration)) {
 				$duration = $service->getDuration()->format('H:i');
 			}
 

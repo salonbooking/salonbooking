@@ -68,8 +68,8 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
             $ret[$t] = array('booking' => array(), 'service' => array(), 'attendant' => array());
         }
 
-        $bookingOffsetEnabled = boolval(SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled'));
-        $bookingOffset = intval(SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation'));
+        $bookingOffsetEnabled = SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled');
+        $bookingOffset = SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation');
 
         /** @var SLN_Wrapper_Booking[] $bookings */
         $bookings = $this->bookings;

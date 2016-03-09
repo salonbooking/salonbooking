@@ -306,8 +306,6 @@ class SLN_Wrapper_Booking_Builder
     public function getDuration()
     {
         $i = $this->getServicesDurationMinutes();
-//        if($i == 0)
-//            $i = 60;
         $str = SLN_Func::convertToHoursMins($i);
         return $str;
     }
