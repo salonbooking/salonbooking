@@ -494,6 +494,7 @@
 
 
 /* TIME RANGE */
+#sln-salon--admin, .sln-calendar--wrapper {
  #time-range p {
     @extend %font-small;
 }
@@ -638,5 +639,6 @@
   span {font-weight: 700;}
 }
 .col.col-time, .col.col-slider {padding: 0;}
+}
 /* TIME RANGE // END */
 
