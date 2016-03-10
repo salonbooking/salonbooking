@@ -1,0 +1,9 @@
+@import 'settings-mixins';
+//@import 'colors';
+@import 'typo';
+#sln-salon {
+	h2 {
+		@include font-bigger();
+	}
+// // // #sln-salon // END
+}
