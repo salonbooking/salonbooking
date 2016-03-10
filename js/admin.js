@@ -615,4 +615,10 @@ jQuery(function ($) {
             $(this).parent().parent().parent().find( '.sln-paneltrigger' ).addClass('sln-btn--disabled');
         }
     });
+    // CALENDAR
+    //$('.cal-month-day.cal-day-inmonth [data-toggle="tooltip"]').click(function(e) {
+    $(document).on("click",".cal-month-day.cal-day-inmonth span", function (e) {
+        $('.tooltip').hide();
+        event.preventDefault(e);
+    });
 });
