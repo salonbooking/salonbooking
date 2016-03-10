@@ -11,56 +11,6 @@ class SLN_Helper_Availability_Basic_DayBookings extends SLN_Helper_Availability_
         return $now;
     }
 
-    /**
-     * @return SLN_Wrapper_Booking[]
-     */
-    public function getBookingsByHour($hour = null, $minutes = null)
-    {
-        // for Basic mode $now always BookingBuilder Start Time
-        $now = $this->getTime($hour, $minutes);
-        $time = $now->format('H:i');
-        $ret = array();
-        $bookings = $this->timeslots[$time]['booking'];
-        foreach($bookings as $bId) {
-            $ret[] = new SLN_Wrapper_Booking($bId);
-        }
-
-        if(!empty($ret)){
-            SLN_Plugin::addLog(__CLASS__.' - checking hour('.$hour.')');
-            SLN_Plugin::addLog(__CLASS__.' - found('.count($ret).')');
-            foreach($ret as $b){
-                SLN_Plugin::addLog(' - ' . $b->getId(). ' => '.$b->getStartsAt()->format('H:i').' - '.$b->getEndsAt()->format('H:i'));
-            }
-        }else{
-            SLN_Plugin::addLog(__CLASS__.' - checking hour('.$hour.') EMPTY');
-        }
-        return $ret;
-    }
-
-    /**
-     * @return array
-     */
-    public function getCountAttendantsByHour( $hour = null, $minutes = null )
-    {
-        // for Basic mode $now always BookingBuilder Start Time
-        $now = $this->getTime($hour, $minutes);
-        $time = $now->format('H:i');
-        $ret = $this->timeslots[$time]['attendant'];
-        return $ret;
-    }
-
-    /**
-     * @return array
-     */
-    public function getCountServicesByHour($hour = null, $minutes = null)
-    {
-        // for Basic mode $now always BookingBuilder Start Time
-        $now = $this->getTime($hour, $minutes);
-        $time = $now->format('H:i');
-        $ret = $this->timeslots[$time]['service'];
-        return $ret;
-    }
-
     protected function buildTimeslots() {
         $ret = array();
         $interval = min(SLN_Enum_Interval::toArray());
