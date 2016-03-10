@@ -2499,6 +2499,11 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
     #sln_attendant-details,
     #postexcerpt, #sln_service-details {
       padding: 1.66667rem 1.66667rem 0 1.66667rem; } }
+  @media only screen and (min-width: 992px) {
+    .sln-box.sln-calendar-view, .sln-calendar-view#sln_shop-details,
+    .sln-calendar-view#sln_attendant-details,
+    .sln-calendar-view#postexcerpt, .sln-calendar-view#sln_service-details {
+      padding: 1.66667rem; } }
   .sln-box p, #sln_shop-details p,
   #sln_attendant-details p,
   #postexcerpt p, #sln_service-details p {
@@ -3522,6 +3527,18 @@ body {
       width: 2.66667rem;
       height: 2.66667rem;
       line-height: 2.5rem; } }
+  @media only screen and (min-width: 768px) {
+    .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box span[data-cal-date],
+    .sln-calendar--wrapper .cal-year-box span[data-cal-date] {
+      width: initial;
+      height: 1.83333rem;
+      line-height: 1.66667rem;
+      padding: 0 0.83333rem;
+      border: 1px solid #c7dff3;
+      border-top-left-radius: 0%;
+      border-top-right-radius: 0%;
+      border-bottom-left-radius: 0%;
+      border-bottom-right-radius: 0%; } }
   .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box [class*="span"],
   .sln-calendar--wrapper .cal-year-box [class*="span"] {
     border-bottom: 1px solid #e1e1e1; }
