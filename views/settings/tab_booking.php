@@ -377,7 +377,7 @@ function sln_date_create_from_format( $dformat, $dvalue )
             </button>
         </div>
         <div data-collection="prototype" data-count="<?php echo count($holidays) ?>">
-            <?php sln_holiday_row("salon_settings[holidays][__new__]", $row); ?>
+            <?php sln_holiday_row("salon_settings[holidays][__new__]", array()); ?>
         </div>
     </div>
 
