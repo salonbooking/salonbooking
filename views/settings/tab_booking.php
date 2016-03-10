@@ -2,8 +2,11 @@
 /**
  * @param $this SLN_Admin_Settings
  */
-function sln_availability_row($prefix, $row, $rulenumber = 'New')
+function sln_availability_row($prefix, $row = array(), $rulenumber = 'New')
 {
+    if(empty($row) || !isset($row['from'])){
+        $row = array('from' => array('9:00','14:00'), 'to' => array('13:00','19:00'));
+    }
     ?>
     <div class="col-xs-12 sln-booking-rule">
     <h2 class="sln-box-title"><?php _e('Rule','salon-booking-system');?> <strong><?php echo $rulenumber; ?></strong></h2>
@@ -336,7 +339,6 @@ function sln_date_create_from_format( $dformat, $dvalue )
         ?>
         <?php sln_availability_row("salon_settings[availabilities][$k]", $row, $n); ?>
         <?php endforeach ?>
-        <?php endid ?>
     </div>
     <div class="col-xs-12">
     <button data-collection="addnew" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file"><?php _e(
@@ -345,7 +347,7 @@ function sln_date_create_from_format( $dformat, $dvalue )
                 </button>
     </div>
     <div data-collection="prototype" data-count="<?php echo count($availabilities) ?>">
-        <?php sln_availability_row("salon_settings[availabilities][__new__]", $row); ?>
+        <?php sln_availability_row("salon_settings[availabilities][__new__]"); ?>
     </div>
     </div>
 

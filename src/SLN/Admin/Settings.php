@@ -209,6 +209,7 @@ class SLN_Admin_Settings {
 
         public function processTabBooking() {
             $tmp = array();
+            if($_POST['salon_settings']['availabilities'])
             foreach ($_POST['salon_settings']['availabilities'] as $row) {
                 $tmp[] = $row;
             }
