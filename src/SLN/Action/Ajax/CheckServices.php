@@ -207,20 +207,6 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
         return $this->getServices(false, true);
     }
 
-//    protected function getServices()
-//    {
-//
-//        $plugin = $this->plugin;
-//        $date   = $this->getDateTime();
-//        $ah   = $plugin->getAvailabilityHelper();
-//        $ah->setDate($date);
-//        $ret = array();
-//        foreach($plugin->getServices() as $s){
-//            $ret[$s->getId()] = $ah->validateService($s);
-//        }
-//        return $ret;
-//    }
-
     protected function getDateTime()
     {
         $date = $this->date;

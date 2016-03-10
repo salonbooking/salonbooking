@@ -188,7 +188,6 @@ function sln_stepDate($) {
 function sln_serviceTotal($) {
     var $checkboxes = $('.sln-service-list input[type="checkbox"]');
     var $totalbox = $('#services-total');
-    var freeMinutes = parseInt($totalbox.data('minutes'));
     function evalTot() {
         var tot = 0;
         $checkboxes.each(function () {
@@ -197,22 +196,6 @@ function sln_serviceTotal($) {
             }
         });
         $totalbox.text($totalbox.data('symbol-left') + tot.formatMoney(2) + $totalbox.data('symbol-right'));
-    }
-
-    function evalDuration(obj){
-        var minutes = parseInt($(obj).data('duration'));
-        if($(obj).is(':checked')){
-            freeMinutes -=  minutes;
-        }else{
-            freeMinutes +=  minutes;
-        }
-        if(freeMinutes < 0){
-            $('#availabilityerror').show();
-            $('#sln-step-submit').attr('disabled', true);
-        }else{
-            $('#availabilityerror').hide();
-            $('#sln-step-submit').attr('disabled', false);
-        }
     }
 
     function checkServices($) {
