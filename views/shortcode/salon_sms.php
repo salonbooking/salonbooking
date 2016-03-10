@@ -6,7 +6,12 @@
  * @var SLN_Shortcode_Salon_Step $step
  */
 $bb = $plugin->getBookingBuilder();
-$valid = isset($_SESSION['sln_sms_valid']) ? $_SESSION['sln_sms_valid'] : false; ?>
+$valid = isset($_SESSION['sln_sms_valid']) ? $_SESSION['sln_sms_valid'] : false;
+$currentStep = $step->getShortcode()->getCurrentStep();
+$ajaxData = "sln_step_page=$currentStep&submit_$currentStep=1";
+$ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
+
+?>
 <?php if (isset($_GET['resend'])): ?>
     <div class="alert alert-success">
         <p><?php _e('SMS sent successfully.') ?></p>
@@ -34,7 +39,10 @@ $valid = isset($_SESSION['sln_sms_valid']) ? $_SESSION['sln_sms_valid'] : false;
                         <div class="col-md-6">
                 <div class="form-group">
                    <?php SLN_Form::fieldText('sln_verification', '', array('required' => true)) ?>
-                    <a href="<?php echo $formAction ?>&resend=1" class="recover">
+                    <a href="<?php echo $formAction ?>&resend=1" class="recover"
+                        <?php if($ajaxEnabled): ?>
+                       data-salon-data="<?php echo $ajaxData.'&resend=1' ?>" data-salon-toggle="direct"
+                        <?php endif ?>>
                         <?php _e('I didn\'t received the code, please send it again', 'salon-booking-system') ?>
                     </a>
                 </div>
