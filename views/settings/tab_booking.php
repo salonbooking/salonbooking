@@ -71,7 +71,7 @@ function sln_holiday_row($prefix, $row, $rulenumber = 'New') {
 	<div class="row">
 		<div class="col-xs-12 col-md-4 sln-slider-wrapper">
 			<h6 class="sln-fake-label"><?php _e('Start on', 'salon-booking-system') ?></h6>
-			<?php $dateFormat = SLN_Enum_DateFormat::getPhpFormat(SLN_Plugin::getInstance()->getSettings()->get('date_format')); ?>
+			<?php $dateFormat = SLN_Enum_DateFormat::getPhpFormat(SLN_Enum_DateFormat::_MYSQL); ?>
 			<?php $dateFrom = isset($row['from_date']) ? $row['from_date'] : date($dateFormat); ?>
             <?php $dateFrom = sln_date_create_from_format($dateFormat, $dateFrom); ?>
 
@@ -91,7 +91,7 @@ function sln_holiday_row($prefix, $row, $rulenumber = 'New') {
     <div class="row">
         <div class="col-xs-12 col-md-4 sln-slider-wrapper">
             <h6 class="sln-fake-label"><?php _e('at', 'salon-booking-system') ?></h6>
-            <?php $timeFormat = SLN_Enum_TimeFormat::getPhpFormat(SLN_Plugin::getInstance()->getSettings()->get('time_format')); ?>
+            <?php $timeFormat = SLN_Enum_TimeFormat::getPhpFormat(SLN_Enum_TimeFormat::_DEFAULT); ?>
             <?php $timeFrom = isset($row['from_time']) ? $row['from_time'] : date($timeFormat); ?>
             <?php $timeFrom = sln_date_create_from_format($timeFormat, $timeFrom); ?>
             <div class="sln_timepicker"><?php SLN_Form::fieldJSTime($prefix."[from_time]", $timeFrom, array('interval' => SLN_Plugin::getInstance()->getSettings()->get('interval'))) ?></div>
