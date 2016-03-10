@@ -214,6 +214,13 @@ class SLN_Admin_Settings {
             }
             $_POST['salon_settings']['availabilities'] = $tmp;
             $_POST['salon_settings']['holidays'] = isset($_POST['salon_settings']['holidays']) ? array_values($_POST['salon_settings']['holidays']) : array();
+            foreach($_POST['salon_settings']['holidays'] as &$holidayData) {
+				$holidayData['from_date'] = SLN_Func::evalPickedDate($holidayData['from_date']);
+				$holidayData['to_date']   = SLN_Func::evalPickedDate($holidayData['to_date']);
+				$holidayData['from_time'] = date('H:i', strtotime($holidayData['from_time']));
+				$holidayData['to_time']   = date('H:i', strtotime($holidayData['to_time']));
+            }
+
             foreach (array(
         'confirmation',
         'thankyou',

@@ -19,13 +19,13 @@ class SLN_Helper_HolidayItem
             $date = $date->format('Y-m-d');
         }
 
-        return ($this->isValidTime($date) || $this->isValidTime($date.'23:59:59'));
+        return ($this->isValidTime($date) || $this->isValidTime($date.' 23:59:59'));
     }
 
     public function isValidTime($date)
     {
         $date = strtotime($date);
-        return ($date < strtotime($this->data['from_date'].$this->data['from_time']) || $date >= strtotime($this->data['to_date'].$this->data['to_time']));
+        return ($date < strtotime($this->data['from_date'].' '.$this->data['from_time']) || $date >= strtotime($this->data['to_date'].' '.$this->data['to_time']));
     }
 
 }
