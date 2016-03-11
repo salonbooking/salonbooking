@@ -3,7 +3,7 @@ Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.4
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -254,6 +254,13 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+11.03.2016
+
+* Fixed bug on calendar daily view 
+* Fixed bug on SMS verification code
+* Fixed bug on Holidays rules 
+* Fixed minor CSS bugs 
 
 03.03.2016
 
