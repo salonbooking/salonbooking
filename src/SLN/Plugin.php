@@ -266,7 +266,7 @@ class SLN_Plugin
     public function getServicesOrderByExec()
     {
         $services = $this->getServices();
-        usort($services, function($a, $b) {
+        $func = function($a, $b) {
             /** @var SLN_Wrapper_Service $a */
             /** @var SLN_Wrapper_Service $b */
             $aExecOrder = $a->getExecOrder();
@@ -275,7 +275,8 @@ class SLN_Plugin
                 return 1;
             else
                 return -1;
-        });
+        }
+        usort($services, $func);
 
         return $services;
     }
