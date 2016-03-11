@@ -52,7 +52,7 @@ final class SLN_Wrapper_Booking_Service {
 	 * @return SLN_DateTime
 	 */
 	public function getStartsAt() {
-		return new SLN_DateTime($this->data['starts_at']);
+		return $this->data['starts_at'];
 	}
 
 	/**
