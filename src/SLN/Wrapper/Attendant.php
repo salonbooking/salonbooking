@@ -59,6 +59,8 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
             'sln_attendant_notav_' . $key,
             get_post_meta($post_id, '_sln_attendant_notav_' . $key, true)
         );
+        if($key == 'to' && $ret == '00:00')
+            $ret = '23:59';
         $ret     = SLN_Func::filter($ret, 'time');
 
         return new DateTime('1970-01-01 ' . $ret);

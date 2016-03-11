@@ -16,6 +16,8 @@
         <div class="hidden-xs col-md-4 col-sm-4 form-group sln-box-maininfo align-top">
             <p class="sln-input-help"><?php _e('To use this feature you need to generate an OAuth Client ID on Google Developers Console. Click on "i" icon to get more information on this feature.','salon-booking-system');?></p>
         </div>
+        </div>
+          <div class="row">
         <div class="col-sm-4 form-group sln-input--simple">
             <?php $this->row_input_text('google_outh2_client_id', __('Google Client ID', 'salon-booking-system')); ?>
         </div>

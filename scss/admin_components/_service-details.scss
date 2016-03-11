@@ -1,0 +1,32 @@
+#sln_service-details  {
+    @extend .sln-box;
+    @extend .sln-box--main;
+    border: none;
+    font-size: $browser-context + px;
+    padding-bottom: rem(20px);
+    &.postbox .inside, &.stuffbox .inside {
+        padding: 0;
+        line-height: inherit;
+        font-size: inherit;
+    }
+    .handlediv.button-link .toggle-indicator {
+        @extend .sln-btn;
+        @extend .sln-btn--main;
+        @extend .sln-btn--small ;
+        @extend .sln-btn--icon;
+        @extend .sln-icon--arrow--up;
+        &:after {font-size: rem(16px);}
+        &:before {display: none;}
+    }
+    &.closed .handlediv.button-link .toggle-indicator {
+        @extend .sln-icon--arrow--down;
+    }
+}
+#poststuff #sln_service-details > h2.hndle.ui-sortable-handle {
+    @extend .sln-box-title;
+    border-bottom: none;
+    span {
+        @extend %font-cl_main;
+        font-size: 1em;
+    }
+}

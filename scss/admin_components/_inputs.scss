@@ -1,5 +1,5 @@
 %sln-input {
-	input, textarea {
+	input, input.form-control, textarea {
 		width: 100%;
 		border-radius: 0;
 		-webkit-box-shadow: none;
@@ -8,7 +8,7 @@
 		background-color: $cl_main--light;
 		@extend %font-bigger;
 		@extend %font-cl_main;
-		padding: rem(10px) rem(16px);
+		padding: rem(11px) rem(16px);
 		@include placeholder-color($cl_main--medium);
 		transition: border-color 100ms, background-color 250ms;
 		&:focus {
@@ -161,6 +161,12 @@
 	  opacity: 1;
 	  color: $cl_main;
 	}
+	label span {
+		// USED FOR EMPHASIS
+		display: inline-block;
+		padding-left: rem(10px);
+		font-weight: 700;
+	}
 }
 
 .sln-radiobox {
@@ -239,6 +245,12 @@
 	}
 	&.sln-radiobox--fullwidth {
 		label {width: 100%;}
+	}
+	label span {
+		// USED FOR EMPHASIS
+		display: inline-block;
+		padding-left: rem(10px);
+		font-weight: 700;
 	}
 }
 
@@ -427,7 +439,9 @@
 
 .sln-select {
 	position: relative;
-	@extend %sln-input;
+	&:not(.sln-select--multiple) {
+		@extend %sln-input;
+	}
 	@extend %sln-input-label;
 	@extend %sln-input-help;
 	margin-bottom: rem(40px);
@@ -443,6 +457,36 @@
 			}
 		}
 	}
+	&.sln-select--multiple {
+		input {
+			background-color: transparent;
+			border: none;
+			-webkit-box-shadow: none;
+			-moz-box-shadow:    none;
+			box-shadow:         none;
+			@include placeholder-color(rgba(255,255,255,0));
+			&:focus {
+				-webkit-box-shadow: none;
+				-moz-box-shadow:    none;
+				box-shadow:         none;
+			}
+		}
+		.select2-container--sln.select2-container--below input {color: $cl_main;}
+		.select2-container--sln.select2-container--below.select2-container--focus input {color: $cl_main;}
+		&:hover {
+			 input {color: #fff;}
+			 .select2-container--sln.select2-container--below.select2-container--focus input {color: #fff;}
+		}
+		.select2-search--inline {
+			margin-bottom: 0;
+			.select2-search__field {
+				line-height: rem(45px);
+				padding: 0 rem(50px) 0 rem(20px);
+				margin: 0  rem(10px)  rem(5px) 0;
+				margin-top: 0;
+			}
+		}
+	}
 }
 .sln-input-bigborder {
 	label {@extend %sln-big-border; width: 100%;}
@@ -450,6 +494,7 @@
 
 
 /* TIME RANGE */
+#sln-salon--admin, .sln-calendar--wrapper {
  #time-range p {
     @extend %font-small;
 }
@@ -594,5 +639,6 @@
   span {font-weight: 700;}
 }
 .col.col-time, .col.col-slider {padding: 0;}
+}
 /* TIME RANGE // END */
 

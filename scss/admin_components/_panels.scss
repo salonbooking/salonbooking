@@ -1,0 +1,78 @@
+.sln-panel {
+    //@extend .sln-box--sub;
+    border: 1px solid $cl_main--light;
+    border-bottom: none;
+    //margin-bottom: rem(5px);
+    @include transition(border 200ms, margin-bottom 200ms);
+    &.sln-panel--active {
+        padding-top: rem(20px);
+        //margin-bottom: rem(40px);
+        border: 1px solid $cl_main--light;
+        border-bottom: none;
+        &:last-child {
+            //margin-bottom: rem(40px);
+            border-bottom: 1px solid $cl_main--light;
+        }
+    }
+    .sln-box--sub {margin: rem(10px) rem(10px) rem(40px) rem(10px);}
+    @include bp(tablet) {
+        &.sln-panel--active {padding-top: 0;}
+    }
+    border-right: none;
+    border-left: none;
+    padding-top: rem(30px);
+    padding-bottom: rem(30px);
+    .sln-checkbox input + label,
+    .sln-checkbox input + label:nth-child(2) {margin-top: 0;}
+}
+
+.sln-panel:last-of-type {
+    margin-bottom: rem(40px);
+    border-bottom: 1px solid $cl_main--light;
+}
+.sln-panel--content {
+    opacity: 0;
+    @include transition(height 200ms, opacity 200ms);
+    &.in {opacity: 1; height: auto;}
+}
+.sln-paneltrigger {
+    &.sln-btn {
+        text-align: left;
+        @extend .sln-btn--icon;
+        @extend .sln-icon--arrow--down;
+        margin-bottom: 0;
+        &:after {font-size: 1em;}
+        @include transition(background-color 200ms);
+        &.sln-btn--active {
+            @extend .sln-icon--arrow--up;
+            border-color: transparent;
+            background-color: $cl_main--emphasis;
+            color: $cl_main--white;
+            margin-bottom: rem(40px);
+            &:after {color: $cl_main--white; font-size: 1em;}
+            &:hover {background-color: $cl_main;}
+        }
+        @include bp(tablet) {
+        }
+    }
+    &.sln-btn--big{
+        font-size: rem(20px);
+        line-height: rem(54px);
+        @include bp(tablet) {
+            font-size: rem(24px);
+            line-height: rem(54px);
+        }
+    }
+}
+.sln-panel.sln-panel--oncheck {
+    padding-top: rem(20px);
+    padding-bottom: rem(20px);
+    .sln-input--simple,
+    .sln-checkbox {
+    margin-bottom: 0;
+    display: inline-block;
+    }
+    .sln-paneltrigger {
+        margin-top: rem(9px);
+    }
+}

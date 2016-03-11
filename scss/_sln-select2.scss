@@ -1,8 +1,13 @@
 .select2-container.select2-container--sln {
+	.select2-selection--single {
+		height: rem(60px);
+		line-height: rem(60px);
+	}
+	.select2-selection--multiple {
+		line-height: 0 !important;
+	}
 	.select2-selection--single, .select2-selection--multiple {
-	  height: rem(60px);
 	  @extend %font-bigger;
-	  line-height: rem(60px);
 	  border: none;
 	  border-radius: 0;
 	  background-color: $cl_main--light;
@@ -14,7 +19,7 @@
 	  }
 	}
 	  &.select2-container--open {
-	  	.select2-selection--single, .select2-selection--multiple{
+	  	.select2-selection--single, .select2-selection--multiple {
 	    		background-color: $cl_main;
 	    		.select2-selection__rendered {color: #fff;}
 	    		.select2-selection__arrow:before {color: #fff;}
@@ -118,26 +123,37 @@
 	  background-color: $cl_main--medium;
 	  color: #fff;
 	}
+	.select2-selection--multiple .select2-selection__rendered {
+		margin: 0;
+		padding: rem(10px) rem(10px) rem(5px) rem(10px);
+	}
 	.select2-selection--multiple .select2-search__field {
-	  @include placeholder-color($cl_main--emphasis)
+	  @include placeholder-color($cl_main--emphasis);
+	}
+	.select2-selection--multiple .select2-search--inline .select2-search__field {
+		margin-top: 0;
+		line-height: rem(45px);
+		margin: 0  rem(10px)  rem(5px) 0;
 	}
 	.select2-selection--multiple .select2-selection__choice {
-	  background-color: $cl_main--emphasis;
-	  border: none;
-	  color: #fff;
-	  padding: 0 40px 0 10px;
-	  border-radius: 0;
-	  line-height: 50px;
-	  position: relative;
+		float: left;
+		background-color: $cl_main--emphasis;
+		border: none;
+		color: #fff;
+		padding: 0 rem(50px) 0 rem(20px);
+		border-radius: 0;
+		line-height: rem(45px);
+		position: relative;
+		margin: 0  rem(10px)  rem(5px) 0;
 	}
 	.select2-selection--multiple .select2-selection__choice__remove {
 	  position: absolute;
-	  right: 5px;
-	  top: calc(50% - 12px);
-	  font-size: 24px;
-	  line-height: 14px;
+	  right: rem(5px);
+	  top: calc(50% - 8px);
+	  font-size: 16px;
+	  line-height: 8px;
 	  border-radius: 50%;
-	  padding: 4px;
+	  padding: rem(4px);
 	  background-color: #fff;
 	  color: $cl_problem;
 	  opacity: .75;

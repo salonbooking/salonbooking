@@ -119,14 +119,14 @@ final class SLN_Wrapper_Booking_Services {
 		return $ret;
 	}
 
-        public function serviceCmp($a, $b) 
-        {
-			$aExecOrder = SLN_Plugin::getInstance()->createService($a)->getExecOrder();
-			$bExecOrder = SLN_Plugin::getInstance()->createService($b)->getExecOrder();
-			if ($aExecOrder > $bExecOrder)
-				return 1;
-			else
-				return -1;
+    public static function serviceCmp($a, $b)
+    {
+		$aExecOrder = SLN_Plugin::getInstance()->createService($a)->getExecOrder();
+		$bExecOrder = SLN_Plugin::getInstance()->createService($b)->getExecOrder();
+		if ($aExecOrder > $bExecOrder)
+			return 1;
+		else
+			return -1;
 	}
 
 

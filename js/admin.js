@@ -147,8 +147,6 @@ function sln_adminDate($) {
                     $('#sln-notifications').html('').append('<div class="alert alert-success">'+ $('#sln-notifications').data('valid-message')+'</div>');
                 }
                 sln_checkServices($);
-                //updateServices(obj);
-                //bindIntervals(data.intervals);
             }
         });
     }
@@ -210,8 +208,12 @@ function sln_validateBooking($){
                 '#_sln_booking_phone',
                 '#_sln_booking_service_select',
             ], function(k, val){
-                if(val == '#_sln_booking_email'){
-                    if(!sln_validateEmail($(val).val())){
+                if (val == '#_sln_booking_phone' && !$('[name=_sln_booking_createuser]').is(':checked')) {
+                    return;
+                }else if(val == '#_sln_booking_email'){
+                    if (!$('[name=_sln_booking_createuser]').is(':checked') && !$(val).val()) {
+                        return;
+                    }else if(!sln_validateEmail($(val).val())){
                         $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is not a valid email</div>');
                         if(!hasErrors) $(val).focus();
                         hasErrors = true;
@@ -571,6 +573,35 @@ jQuery(function ($) {
             $('#salon_settings_attendant_enabled').attr('checked', 'checked').change();
         }
     }).change();
+
+   $('.sln-panel .collapse').on('shown.bs.collapse', function() {
+        $(this).parent().find('.sln-paneltrigger').addClass('sln-btn--active');
+        $(this).parent().addClass('sln-panel--active');
+    }).on('hide.bs.collapse', function() {
+        $(this).parent().find('.sln-paneltrigger').removeClass('sln-btn--active');
+        $(this).parent().removeClass('sln-panel--active');
+    });
+    $('.sln-panel--oncheck .sln-panel-heading input:checkbox').change(function () {
+        if($(this).is(':checked')) {
+            $(this).parent().parent().parent().find( '.sln-paneltrigger' ).removeClass('sln-btn--disabled');
+        } else {
+            $(this).parent().parent().parent().find( '.sln-paneltrigger' ).addClass('sln-btn--disabled');
+            $(this).parent().parent().parent().find( '.collapse' ).collapse('hide');
+        }
+    });
+    $('.sln-panel--oncheck .sln-panel-heading input').each(function() {
+        if($(this).is(':checked')) {
+            $(this).parent().parent().parent().find( '.sln-paneltrigger' ).removeClass('sln-btn--disabled');
+        } else {
+            $(this).parent().parent().parent().find( '.sln-paneltrigger' ).addClass('sln-btn--disabled');
+        }
+    });
+    // CALENDAR
+    //$('.cal-month-day.cal-day-inmonth [data-toggle="tooltip"]').click(function(e) {
+    $(document).on("click",".cal-month-day.cal-day-inmonth span", function (e) {
+        $('.tooltip').hide();
+        event.preventDefault(e);
+    });
 
     if (servicesData !== undefined) {
         servicesData = $.parseJSON(servicesData);

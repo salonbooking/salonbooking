@@ -1,4 +1,5 @@
-.sln-btn {
+.sln-btn,
+.sln-bootstrap .sln-btn {
   text-align: center;
   border: none;
   cursor: pointer;
@@ -22,6 +23,7 @@
   }
   &:hover, &:focus {
     text-decoration: none;
+    text-shadow: none;
   }
 }
 // SIZES
@@ -76,14 +78,14 @@
   padding: 0 10px;
   @include b-radius(50%);
   &.sln-btn--icon {
-    width: rem(60px);
-    height: rem(60px);
+    width: rem(30px);
+    height: rem(30px);
     font-size: rem(2px);
     overflow: hidden;
     &:after {
-      width: rem(60px);
-      height: rem(60px);
-      line-height: rem(60px);
+      width: rem(30px);
+      height: rem(30px);
+      line-height: rem(30px);
       background-color: $cl_main--emphasis;
       left: 0;
       top: 0;
@@ -96,7 +98,8 @@
 }
 
 // COLORS
-.sln-btn--main {
+.sln-btn--main,
+.sln-bootstrap .sln-btn--main {
   background-color: $cl_main--emphasis;
   color: $cl_main--white;
   input, button {color: $cl_main--white;}
@@ -114,7 +117,8 @@
     }
   }
 }
-.sln-btn--light {
+.sln-btn--light ,
+.sln-bootstrap .sln-btn--light {
   background-color: $cl_main--light;
   color: $cl_main;
   input, button {color: $cl_main;}
@@ -122,6 +126,16 @@
     background-color: $cl_main;
     color: $cl_main--white;
     input, button {color: $cl_main--white;}
+  }
+  &.sln-btn--active {
+    background-color: $cl_main;
+    color: $cl_main--white;
+    input, button {color: $cl_main--white;}
+      &:hover, &:focus {
+        background-color: $cl_main--light;
+        color: $cl_main;
+        input, button {color: $cl_main;}
+    }
   }
   &.sln-btn--small.sln-btn--icon {
     background-color: transparent;
@@ -132,7 +146,8 @@
     }
   }
 }
-.sln-btn--warning {
+.sln-btn--warning,
+.sln-bootstrap .sln-btn--warning {
   background-color: $cl_warning;
   color: $cl_main--white;
   input, button {color: $cl_main--white;}
@@ -142,7 +157,8 @@
     input, button {color: $cl_main--white;}
   }
 }
-.sln-btn--problem {
+.sln-btn--problem,
+.sln-bootstrap .sln-btn--problem {
   background-color: $cl_problem--light;
   color: $cl_main--white;
   input, button {color: $cl_main--white;}
@@ -152,7 +168,8 @@
     input, button {color: $cl_main--white;}
   }
 }
-.sln-btn--ok {
+.sln-btn--ok,
+.sln-bootstrap .sln-btn--ok {
   background-color: $cl_ok;
   color: $cl_main--white;
   input, button {color: $cl_main--white;}
@@ -162,11 +179,12 @@
     input, button {color: $cl_main--white;}
   }
 }
-.sln-btn--borderonly {
+.sln-btn--borderonly,
+.sln-bootstrap .sln-btn--borderonly {
   background-color: transparent;
   color: $cl_main;
   input, button {color: $cl_main;}
-  border: 1px solid #c5cfd4;
+  border: 1px solid $cl_main--light--border;
   &.sln-btn--icon:after {color: $cl_main;}
   &.sln-btn--active {border: 1px solid $cl_main;}
   &:hover, &:focus {
@@ -177,8 +195,10 @@
     &.sln-btn--icon:after {color: $cl_main--white;}
   }
 }
-.sln-btn--nobkg {
+.sln-btn--nobkg,
+.sln-bootstrap .sln-btn--nobkg {
   background-color: transparent;
+  border: 1px solid transparent;
   color: $cl_main;
   input, button {color: $cl_main;}
   &.sln-btn--icon:after {color: $cl_main;}
@@ -312,6 +332,20 @@
     font-size: rem(28px);
   }
 }
+
+.sln-icon--arrow--up {
+  &:after {
+    content: "\f077";
+    font-size: rem(28px);
+  }
+}
+.sln-icon--arrow--down {
+  &:after {
+    content: "\f078";
+    font-size: rem(28px);
+  }
+}
+
 .sln-icon--arrow--left {
   &:after {
     content: "\f053";
@@ -333,8 +367,8 @@
 }
 // BTN UTILITIES // END
 
-.nav-tab-wrapper .nav-tab,
-h2.nav-tab-wrapper .nav-tab {
+.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
+h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
     @extend .sln-btn;
     @extend .sln-btn--borderonly;
     @extend .sln-btn--medium;
@@ -349,11 +383,11 @@ h2.nav-tab-wrapper .nav-tab {
       border-right: inherit;
     }
 }
-.nav-tab-wrapper .nav-tab.nav-tab-active,
-h2.nav-tab-wrapper .nav-tab.nav-tab-active {
+.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active,
+h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active {
     @extend .sln-btn--active;
 }
-.btn-group.nav-tab-wrapper .active {
+.btn-group.sln-nav-tab-wrapper.nav-tab-wrapper .active {
     @extend .sln-btn--ok;
 }
 
@@ -374,7 +408,53 @@ h2.nav-tab-wrapper .nav-tab.nav-tab-active {
   }
     @include bp(desktop) {
       float: right;
+      position: absolute;
+      text-outline: 0;
+      right: 10px;
     }
+}
+
+.sln-tab-nav {
+  display: block;
+  border-bottom: none;
+  li{
+      margin-bottom: 0;
+      display: block;
+      a {
+          @extend .sln-btn;
+          @extend .sln-btn--borderonly;
+          @extend .sln-btn--medium;
+          display: block;
+          font-size: rem(18px);
+          font-weight: normal;
+          margin: 0;
+      }
+    &.active a {@extend .sln-btn--active;}
+  }
+  @include bp(phone) {
+    li:not(.active):not(:last-of-type)  {
+      a {border-bottom-color: transparent;}
+    }
+  }
+  @include bp(tablet) {
+    li{
+      float: left;
+      margin-bottom: rem(40px);
+      display: list-item;
+      a {
+        display: inline-block;
+        font-size: rem(18px);
+        font-weight: normal;
+        margin: 0;
+      }
+      &:not(.active):not(:last-of-type)  {
+        a {
+          border-right-color: transparent;
+        }
+      }
+      &.active a {@extend .sln-btn--active;}
+    }
+  }
 }
 // TOOBOX
 .sln-toolbox {
@@ -430,6 +510,7 @@ h2.nav-tab-wrapper .nav-tab.nav-tab-active {
 // TOOLBOX // END
 
 // WP BUTTONS
+#{$wrapper} {
   p.submit {
     @extend .sln-btn;
     @extend .sln-btn--main;
@@ -438,3 +519,4 @@ h2.nav-tab-wrapper .nav-tab.nav-tab-active {
     @extend .sln-icon--save;
     border-radius: 0;
   }
+}

@@ -2,7 +2,7 @@
 <script type="text/javascript">
     var salon;
     var calendar_translations = {
-        'Go to daily view': 'test<?php _e('Go to daily view', 'salon-booking-system') ?>'
+        'Go to daily view': '<?php _e('Go to daily view', 'salon-booking-system') ?>'
     };
 </script>
 <script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/calendar_language/<?php echo str_replace('_','-',get_locale())?>.js"></script>
@@ -38,8 +38,8 @@ jQuery(function($){
 
 
 <div class="row">
-    <div class="col-md-12 btn-group nav-tab-wrapper">
-        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new">Add new booking</a>
+    <div class="col-md-12 btn-group nav-tab-wrapper sln-nav-tab-wrapper">
+        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new">Add new booking</a>
         <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="day">
         <button class="" data-calendar-view="day"><?php _e('Day')?></button>
         </div>

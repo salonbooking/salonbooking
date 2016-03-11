@@ -209,11 +209,19 @@ class SLN_Admin_Settings {
 
         public function processTabBooking() {
             $tmp = array();
+            if($_POST['salon_settings']['availabilities'])
             foreach ($_POST['salon_settings']['availabilities'] as $row) {
                 $tmp[] = $row;
             }
             $_POST['salon_settings']['availabilities'] = $tmp;
             $_POST['salon_settings']['holidays'] = isset($_POST['salon_settings']['holidays']) ? array_values($_POST['salon_settings']['holidays']) : array();
+            foreach($_POST['salon_settings']['holidays'] as &$holidayData) {
+				$holidayData['from_date'] = SLN_Func::evalPickedDate($holidayData['from_date']);
+				$holidayData['to_date']   = SLN_Func::evalPickedDate($holidayData['to_date']);
+				$holidayData['from_time'] = date('H:i', strtotime($holidayData['from_time']));
+				$holidayData['to_time']   = date('H:i', strtotime($holidayData['to_time']));
+            }
+
             foreach (array(
         'confirmation',
         'thankyou',
@@ -295,10 +303,10 @@ class SLN_Admin_Settings {
         <div id="sln-salon--admin" class="wrap sln-bootstrap sln-salon--settings">
         <?php screen_icon(); ?>
         <div class="row">
-            <h2 class="col-xs-12 col-sm-12 col-md-4"><?php _e('Salon Settings', 'salon-booking-system'); ?></h2>
+            <div class="col-xs-12"><h2><?php _e('Salon Settings', 'salon-booking-system'); ?></h2></div>
             <div class="sln-admin-nav hidden-xs hidden-sm col-sm-12 col-md-8">
                 <ul class="sln-admin-nav">
-                <li><a href="admin.php?page=salon-calendar" class="sln-btn--icon sln-icon--calendar">Calendar</a></li>
+                <li><a href="admin.php?page=salon" class="sln-btn--icon sln-icon--calendar">Calendar</a></li>
                 <li><a href="edit.php?post_type=sln_booking" class="sln-btn--icon sln-icon--booking">Bookings</a></li>
                 <li><a href="edit.php?post_type=sln_service" class="sln-btn--icon sln-icon--services">Services</a></li>
                 <li><a href="edit.php?post_type=sln_attendant" class="sln-btn--icon sln-icon--assistants">Assistants</a></li>
@@ -324,7 +332,7 @@ class SLN_Admin_Settings {
     }
 
     private function showTabsBar() {
-        echo '<h2 class="nav-tab-wrapper">';
+        echo '<h2 class="sln-nav-tab-wrapper nav-tab-wrapper">';
         $page = self::PAGE;
         $current = $this->getCurrentTab();
         foreach ($this->tabs as $tab => $name) {

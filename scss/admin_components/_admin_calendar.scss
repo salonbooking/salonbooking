@@ -14,6 +14,7 @@
 		@extend %zi-highlights;
 	}
 	#cal-slide-content {
+		background-color: alpha-tones($cl_main--light, .5);
 		a.event-item {
 			position: relative;
 			.sln-calendar-event-callto {display: none;}

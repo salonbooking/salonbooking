@@ -220,7 +220,8 @@ class SLN_Form
         if (!isset($settings['required'])) {
             $settings['required'] = false;
         }
-        $settings['attrs']['class'] = "form-control";
+        if(!(isset($settings['attrs']) && isset($settings['attrs']['class'])))
+            $settings['attrs']['class'] = "form-control";
         ?>
         <input type="<?php echo isset($settings['type']) ? $settings['type'] : 'text' ?>" name="<?php echo $name ?>"
                id="<?php echo self::makeID($name) ?>"

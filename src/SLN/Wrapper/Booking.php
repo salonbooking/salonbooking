@@ -7,7 +7,6 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $post_id = $this->getId();
         $ret     = apply_filters('sln_booking_amount', get_post_meta($post_id, '_sln_booking_amount', true));
         $ret     = empty($ret) ? 0 : floatval($ret);
-
         return $ret;
     }
 
@@ -215,6 +214,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         }
         return $ret;
     }
+
     function getServicesIds()
     {
         $post_id = $this->getId();

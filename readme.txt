@@ -3,12 +3,12 @@ Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.4
-Stable tag: 2.3
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
-A complete and easy to manage appointments booking system for your Salon.
+A complete and easy to manage appointments booking system for busy Salons.
 
 
 == Description ==
@@ -17,13 +17,13 @@ Salon Booking is a complete and easy to manage appointments booking system to he
 
 Salon booking  is the best solution for: 
 
-**HAIR DRESSERS SALON**
-**BARBER SHOP**
-**BEAUTY SALONS**
-**SPAS** 
-**CAR SHOPS**
-**THERAPISTS**
-**TUTORS**
+* **HAIR DRESSERS SALON**
+* **BARBER SHOP**
+* **BEAUTY SALONS**
+* **SPAS** 
+* **CAR SHOPS**
+* **THERAPISTS**
+* **TUTORS**
 
 
 It’s the perfect solution to all that kind of business where the ONE TO ONE appointment booking is crucial.
@@ -52,7 +52,6 @@ Salon booking works with double booking algorithms:
 * Holidays rules hourly range added
 * Week start on..
 * Email booking reminder 
-* Multiple assistants selection
 * Filter assistants by services
 
 
@@ -255,6 +254,17 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+11.03.2016
+
+* Fixed bug on calendar daily view 
+* Fixed bug on SMS verification code
+* Fixed bug on Holidays rules 
+* Fixed minor CSS bugs 
+
+03.03.2016
+
+* Fixed italian strings inside Assistant and Service detail page
 
 19.02.2016
 
