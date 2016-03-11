@@ -174,15 +174,18 @@ class SLN_Wrapper_Booking_Builder
     {
         if((!isset($this->data['services'])) || (!in_array($service->getId(), array_keys($this->data['services'])))){
             $this->data['services'][$service->getId()] = 0;
-            uksort($this->data['services'], function($a, $b) {
-                $aExecOrder = SLN_Plugin::getInstance()->createService($a)->getExecOrder();
-                $bExecOrder = SLN_Plugin::getInstance()->createService($b)->getExecOrder();
-                if ($aExecOrder > $bExecOrder)
-                    return 1;
-                else
-                    return -1;
-            });
+            uksort($this->data['services'], array($this, 'serviceCmp'));
         }
+    }
+
+    public function serviceCmp($a, $b)
+    {
+        $aExecOrder = SLN_Plugin::getInstance()->createService($a)->getExecOrder();
+        $bExecOrder = SLN_Plugin::getInstance()->createService($b)->getExecOrder();
+        if ($aExecOrder > $bExecOrder)
+            return 1;
+        else
+            return -1;
     }
 
     public function removeService(SLN_Wrapper_Service $service)
