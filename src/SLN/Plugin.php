@@ -275,7 +275,7 @@ class SLN_Plugin
                 return 1;
             else
                 return -1;
-        }
+        };
         usort($services, $func);
 
         return $services;
