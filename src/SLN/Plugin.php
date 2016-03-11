@@ -266,19 +266,20 @@ class SLN_Plugin
     public function getServicesOrderByExec()
     {
         $services = $this->getServices();
-        $func = function($a, $b) {
-            /** @var SLN_Wrapper_Service $a */
-            /** @var SLN_Wrapper_Service $b */
-            $aExecOrder = $a->getExecOrder();
-            $bExecOrder = $b->getExecOrder();
-            if ($aExecOrder > $bExecOrder)
-                return 1;
-            else
-                return -1;
-        };
-        usort($services, $func);
+        usort($services, array($this, 'serviceCmp'));
 
         return $services;
+    }
+
+    public function serviceCmp($a, $b) {
+        /** @var SLN_Wrapper_Service $a */
+        /** @var SLN_Wrapper_Service $b */
+        $aExecOrder = $a->getExecOrder();
+        $bExecOrder = $b->getExecOrder();
+        if ($aExecOrder > $bExecOrder)
+            return 1;
+        else
+            return -1;
     }
 
     /**
