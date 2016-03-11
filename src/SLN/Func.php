@@ -261,7 +261,7 @@ class SLN_Func
      *
      * @return SLN_DateTime[]
      */
-    public static function filterTimes($times, $startDate, $endDate){
+    public static function filterTimes($times, DateTime $startDate, DateTime $endDate){
         $ret = array();
         foreach($times as $t){
             $t = new SLN_DateTime($startDate->format('Y-m-d').' '.$t);
