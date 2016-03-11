@@ -127,7 +127,7 @@ final class SLN_Wrapper_Booking_Services {
 				return 1;
 			else
 				return -1;
-	};
+	}
 
 
 }
