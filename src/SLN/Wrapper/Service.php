@@ -150,7 +150,10 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
 
     public function getName()
     {
+        if($this->object)
         return $this->object->post_title;
+        else
+        return 'n.d.';
     }
 
     public function getContent()
