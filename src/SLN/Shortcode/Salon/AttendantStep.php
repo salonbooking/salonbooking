@@ -20,7 +20,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         foreach ($bookingServices->getItems() as $bookingService) {
             $service = $bookingService->getService();
             if ($isMultipleAttSelection) {
-                $tmp = $ah->getAvailableAttsIdsForServiceOnTime($service, $bookingService->getEndsAt(), $bookingService->getDuration());
+                $tmp = $ah->getAvailableAttsIdsForServiceOnTime($service, $bookingService->getStartsAt(), $bookingService->getDuration());
                 $availAttsForEachService[$service->getId()] = $tmp;
                 if (empty($tmp)) {
                     $this->addError(
@@ -47,11 +47,11 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
             }
             else {
                 if (is_null($availAtts)) {
-                    $availAtts = $ah->getAvailableAttsIdsForServiceOnTime($bookingService->getService(), $bookingService->getEndsAt(), $bookingService->getDuration());
+                    $availAtts = $ah->getAvailableAttsIdsForServiceOnTime($bookingService->getService(), $bookingService->getStartsAt(), $bookingService->getDuration());
                 }
                 $availAtts = array_intersect(
                     $availAtts,
-                    $ah->getAvailableAttsIdsForServiceOnTime($bookingService->getService(), $bookingService->getEndsAt(), $bookingService->getDuration())
+                    $ah->getAvailableAttsIdsForServiceOnTime($bookingService->getService(), $bookingService->getStartsAt(), $bookingService->getDuration())
                 );
                 if (empty($availAtts)) {
                     $this->addError(__('No one of the attendants isn\'t available for selected services', 'salon-booking-system'));
