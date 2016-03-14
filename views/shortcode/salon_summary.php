@@ -26,11 +26,11 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
         </div>
     </div>
 
-    <?php if($attendant = $bb->getAttendant()) :  ?>
+    <?php if($attendants = $bb->getAttendants()) :  ?>
     <div class="row summ-row">
-        <div class="col-md-5"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
+        <div class="col-md-5"><span class="label"><?php _e('Assistants', 'salon-booking-system') ?></span></div>
         <div class="col-md-7">
-            <span class="attendant-label"><?php echo $attendant->getName(); ?></span></li>
+            <span class="attendant-label"><?php echo implode(', ', array_map(function($att) { return $att->getName(); }, array_unique($attendants))); ?></span></li>
         </div>
     </div>
     <?php endif ?>
