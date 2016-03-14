@@ -108,16 +108,12 @@
             <p class="sln-input-help"><?php _e('Let your customers choose their favourite staff member.', 'salon-booking-system') ?></p>
         </div>
         </div>
-<?php
-/*
         <div class="col-sm-10 col-md-10 form-group">
             <div class="sln-checkbox">
                 <?php $this->row_input_checkbox('m_attendant_enabled', __('Enable multiple assistants selection', 'salon-booking-system')); ?>
                 <p class="sln-input-help"><?php _e('Users can select more than one assistants for their booked services. Please set with care the "execution order" inside your services section.', 'salon-booking-system') ?></p>
             </div>
         </div>
-*/
-?>
         <div class="col-sm-10 col-md-10 form-group">
         <div class="sln-checkbox">
             <?php $this->row_input_checkbox('attendant_email', __('Enable assistant email on new bookings', 'salon-booking-system')); ?>
