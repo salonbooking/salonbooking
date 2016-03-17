@@ -21,11 +21,16 @@ $helper->showNonce($postType);
             <label for="_sln_service_secondary"><?php _e('Secondary', 'salon-booking-system'); ?></label>
                     <p><?php _e('Select this if you want this service considered as secondary level service','salon-booking-system'); ?></p>
     </div>
-    <div class="col-sm-4 col-md-6 form-group">
+    <div class="sln-clear"></div>
+</div>
+<div class="row">
+    <div class="col-sm-4 col-md-4 form-group sln-select">
         <label><?php _e('Execution Order', 'salon-booking-system'); ?></label>
         <?php SLN_Form::fieldNumeric($helper->getFieldName($postType, 'exec_order'), $service->getExecOrder(), array('min' => 1, 'max' => 10, 'attrs' => array())) ?>
-        <br/><em><?php _e('Set this option if you have enabled "Multiple assistants selection". Use a number to give this service an order of execution compared to the other services.','salon-booking-system'); ?></em>
-        <br/><em><?php _e('Consider that this option will affect the availability of your staff members that you have associated th this service.','salon-booking-system'); ?></em>
+    </div>
+    <div class="col-sm-8 col-md-8 form-group">
+        <p><?php _e('Use a number to give this service an order of execution compared to the other services.','salon-booking-system'); ?></p>
+        <p><?php _e('Consider that this option will affect the availability of your staff members that you have associated with this service.','salon-booking-system'); ?></p>
     </div>
     <div class="sln-clear"></div>
 </div>
