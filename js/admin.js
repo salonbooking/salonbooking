@@ -606,7 +606,7 @@ jQuery(function ($) {
     });
 
     function createSelect2NoSearch() {
-        $('.sln-select-wrapper.no-search select').select2({
+        $('.sln-select-wrapper-no-search select').select2({
             tags: "true",
             width: '100%',
             minimumResultsForSearch: Infinity
