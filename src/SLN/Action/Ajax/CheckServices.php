@@ -91,8 +91,8 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                     $ret[$sId] = array('status' => -1, 'error' => $error[0]);
                 }
             }
-        } elseif (isset($_POST['part']) && $_POST['part'] == 'allServices' && !empty($_POST['_sln_booking']['services'])) { // for admin
-            $services = $_POST['_sln_booking']['services'];
+        } elseif (isset($_POST['part']) && $_POST['part'] == 'allServices' && !empty($_POST['_sln_booking']['service'])) { // for admin
+            $services = $_POST['_sln_booking']['service'];
 
             $date = new SLN_DateTime($this->date.' '.$this->time);
             $ah = SLN_Plugin::getInstance()->getAvailabilityHelper();
@@ -101,7 +101,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
             $data = array();
             foreach($services as $sId) {
                 $data[$sId] = array(
-                    'attendant' => $_POST['_sln_booking']['attendants'][$sId],
+                    'attendant' => $_POST['_sln_booking']['attendant'][$sId],
                     'price'     => $_POST['_sln_booking']['price'][$sId],
                     'duration'  => SLN_Func::convertToHoursMins($_POST['_sln_booking']['duration'][$sId]),
                 );
@@ -155,7 +155,9 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
 
                 $ret[$bookingService->getService()->getId()] = array(
                     'status' => empty($errors) ? 1 : -1,
-                    'errors' => $errors
+                    'errors' => $errors,
+                    'startsAt' => SLN_Plugin::getInstance()->format()->time($bookingService->getStartsAt()),
+                    'endsAt' => SLN_Plugin::getInstance()->format()->time($bookingService->getEndsAt()),
                 );
             }
         }

@@ -90,6 +90,8 @@ function sln_checkServices($) {
                             serviceItem.parent().parent().next().after(alertBox);
                         });
                     }
+                    serviceItem.parent().parent().find('label.time:first').html(value.startsAt);
+                    serviceItem.parent().parent().find('label.time:last').html(value.endsAt);
                 });
             }
         }
@@ -603,6 +605,15 @@ jQuery(function ($) {
         event.preventDefault(e);
     });
 
+    function createSelect2NoSearch() {
+        $('.sln-select-wrapper.no-search select').select2({
+            tags: "true",
+            width: '100%',
+            minimumResultsForSearch: Infinity
+        });
+    }
+    createSelect2NoSearch();
+
     if (servicesData !== undefined) {
         servicesData = $.parseJSON(servicesData);
     }
@@ -655,6 +666,7 @@ jQuery(function ($) {
         ) {
             return false;
         }
+        $('.sln-booking-service-line label.time').html('');
 
         var line = getNewBookingServiceLineString(serviceVal,attendantVal);
         var added = false;
@@ -671,6 +683,7 @@ jQuery(function ($) {
         if($('#salon-step-date').data('isnew'))
             calculateTotal();
 
+        createSelect2NoSearch();
         bindRemoveBookingsServices();
         sln_checkServices($);
         return false;
