@@ -130,7 +130,9 @@ class SLN_GoogleScope {
         $bookings = $booking_handler->getBookings();
         foreach ($bookings as $k => $post) {
             $event_id = get_post_meta($post->ID, '_sln_calendar_event_id', true);
-            $this->delete_event_from_booking($event_id);
+            if (!empty($event_id)) {
+                $this->delete_event_from_booking($event_id);
+            }
         }
 
         foreach ($bookings as $k => $post) {
