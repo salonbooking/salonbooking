@@ -24,11 +24,11 @@ $helper->showNonce($postType);
     <div class="sln-clear"></div>
 </div>
 <div class="row">
-    <div class="col-sm-4 col-md-4 form-group sln-select">
+    <div class="col-sm-6 col-md-3 form-group sln-select">
         <label><?php _e('Execution Order', 'salon-booking-system'); ?></label>
         <?php SLN_Form::fieldNumeric($helper->getFieldName($postType, 'exec_order'), $service->getExecOrder(), array('min' => 1, 'max' => 10, 'attrs' => array())) ?>
     </div>
-    <div class="col-sm-8 col-md-8 form-group sln-box-maininfo align-top">
+    <div class="col-sm-6 col-md-9 form-group sln-box-maininfo align-top">
         <p class="sln-input-help"><?php _e('Use a number to give this service an order of execution compared to the other services.','salon-booking-system'); ?></p>
         <p class="sln-input-help"><?php _e('Consider that this option will affect the availability of your staff members that you have associated with this service.','salon-booking-system'); ?></p>
     </div>
