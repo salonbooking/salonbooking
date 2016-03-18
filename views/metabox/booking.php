@@ -311,7 +311,7 @@ $helper->showNonce($postType);
         <div class="clearfix"></div>
         <?php endforeach ?>
         <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-action">
-            <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper sln-select-wrapper-no-search">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2 col-md-offset-2 sln-select-wrapper sln-select-wrapper-no-search">
                 <select class="sln-select" name="_sln_booking_service_select" id="_sln_booking_service_select">
                 <?php
                 foreach ($plugin->getServicesOrderByExec() as $service) {
@@ -341,7 +341,7 @@ $helper->showNonce($postType);
                 }
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper sln-select-wrapper-no-search">
+            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper sln-select-wrapper-no-search">
                 <select class="sln-select" name="_sln_booking_attendant_select" id="_sln_booking_attendant_select">
                 </select>
             </div>
