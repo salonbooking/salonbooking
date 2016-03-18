@@ -86,7 +86,7 @@ function sln_checkServices($) {
                     var serviceItem = $('#_sln_booking_attendants_' + index);
                     if (value.status == -1) {
                         $.each(value.errors, function(index, value) {
-                            var alertBox = $('<div class="alert alert-danger"><p>' + value + '</p></div>');
+                            var alertBox = $('<div class="row col-xs-12 col-sm-12 col-md-12"><div class="col-md-offset-2 col-md-6 alert alert-danger"><p>' + value + '</p></div></div>');
                             serviceItem.parent().parent().next().after(alertBox);
                         });
                     }
