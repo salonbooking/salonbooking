@@ -72,7 +72,7 @@ final class SLN_Wrapper_Booking_Service {
 	 */
 	public function toArray() {
 		return array(
-			'attendant'  => $this->data['attendant']->getId(),
+			'attendant'  => @$this->data['attendant']->getId(),
 			'service'    => $this->data['service']->getId(),
 			'duration'   => $this->data['duration']->format('H:i'),
 			'start_date' => $this->data['starts_at']->format('Y-m-d'),
