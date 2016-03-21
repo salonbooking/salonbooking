@@ -156,7 +156,7 @@ class SLN_Plugin
             'ajax_url' => admin_url('admin-ajax.php') . '?lang=' . (defined('ICL_LANGUAGE_CODE') ? 'ICL_LANGUAGE_CODE' : $lang),
             'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
             'loading' => SLN_PLUGIN_URL . '/img/preloader.gif',
-            'txt_validating' => __('checking availability'),
+            'txt_validating' => __('checking availability','salon-booking-system'),
             'images_folder' => SLN_PLUGIN_URL . '/img', // algolplus
             'confirm_cancellation_text' => __('Do you really want to cancel?', 'salon-booking-system'), // algolplus
             'time_format' => SLN_Enum_TimeFormat::getJSFormat($this->getSettings()->get('time_format'))
