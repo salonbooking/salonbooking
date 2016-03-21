@@ -159,19 +159,31 @@ $helper->showNonce($postType);
 
         <?php ob_start(); ?>
         <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-line">
-            <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-1 col-md-1">
+                <label class="time"></label>
+            </div>
+            <div class="col-xs-6 col-sm-1 col-md-1">
+                <label class="time"></label>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[services][]',
                     array('__service_id__' => '__service_title__'),
                     '__service_id__',
                     array(
                         'attrs' => array(
-                            'readonly'      => 'readonly',
+                            'disabled'      => 'disabled',
                             'data-price'    => '__service_price__',
                             'data-duration' => '__service_duration__',
                         )
                     ),
                     true
+                )
+                ?>
+                <?php SLN_Form::fieldText(
+                    '_sln_booking[service][__service_id__]',
+                    '__service_id__',
+                    array('type' => 'hidden')
                 )
                 ?>
                 <?php SLN_Form::fieldText(
@@ -187,14 +199,20 @@ $helper->showNonce($postType);
                 )
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][__service_id__]',
                     array('__attendant_id__' => '__attendant_name__'),
                     '__attendant_id__',
-                    array('attrs' => array('readonly'=>'readonly')),
+                    array('attrs' => array('disabled'=>'disabled')),
                     true
                 ) ?>
+                <?php SLN_Form::fieldText(
+                    '_sln_booking[attendant][__service_id__]',
+                    '__attendant_id__',
+                    array('type' => 'hidden')
+                )
+                ?>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div>
@@ -206,11 +224,26 @@ $helper->showNonce($postType);
         <?php
         $lineItem = ob_get_clean();
         $lineItem = preg_replace("/\r\n|\n/", ' ', $lineItem);
+        ?>
+        <div class="row col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-6 col-sm-1 col-md-1"><h4><?php _e('Start at', 'salon-booking-system') ?></h4></div>
+            <div class="col-xs-6 col-sm-1 col-md-1"><h4><?php _e('End at', 'salon-booking-system') ?></h4></div>
+            <div class="col-xs-12 col-sm-4 col-md-4"><h4><?php _e('Service', 'salon-booking-system') ?></h4></div>
+            <div class="col-xs-12 col-sm-2 col-md-2"><h4><?php _e('Attendant', 'salon-booking-system') ?></h4></div>
+            <div class="col-xs-12 col-sm-4 col-md-4"><h4><?php _e('', 'salon-booking-system') ?></h4></div>
+        </div>
+        <?php
 
         $servicesData = array();
         foreach($booking->getBookingServices()->getItems() as $bookingService): ?>
         <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-line">
-            <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-1 col-md-1">
+                <label class="time"><?php echo SLN_Plugin::getInstance()->format()->time($bookingService->getStartsAt()) ?></label>
+            </div>
+            <div class="col-xs-6 col-sm-1 col-md-1">
+                <label class="time"><?php echo SLN_Plugin::getInstance()->format()->time($bookingService->getEndsAt()) ?></label>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
                 <?php
                 $servicesData[ $bookingService->getService()->getId()] = array(
                     'old_price'    => $bookingService->getPrice(),
@@ -219,17 +252,27 @@ $helper->showNonce($postType);
                 ?>
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[services][]',
-                    array($bookingService->getService()->getId() => $bookingService->getService()->getName() . ' (' . $plugin->format()->money($bookingService->getPrice()) . ')'),
+                    array(
+                        $bookingService->getService()->getId() => $bookingService->getService()->getName() . ' (' .
+                                                                  $plugin->format()->money($bookingService->getPrice()) . ') - ' .
+                                                                  $bookingService->getDuration()->format('H:i')
+                    ),
                     $bookingService->getService()->getId(),
                     array(
                         'attrs' => array(
-                            'readonly'      => 'readonly',
+                            'disabled'      => 'disabled',
                             'data-price'    => $servicesData[ $bookingService->getService()->getId()]['old_price'],
                             'data-duration' => $servicesData[ $bookingService->getService()->getId()]['old_duration'],
                         )
                     ),
                     true
                     )
+                ?>
+                <?php SLN_Form::fieldText(
+                    '_sln_booking[service]['.$bookingService->getService()->getId().']',
+                    $bookingService->getService()->getId(),
+                    array('type' => 'hidden')
+                )
                 ?>
                 <?php SLN_Form::fieldText(
                     '_sln_booking[price]['.$bookingService->getService()->getId().']',
@@ -244,14 +287,20 @@ $helper->showNonce($postType);
                 )
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][' . $bookingService->getService()->getId() . ']',
                     array($bookingService->getAttendant()->getId() => $bookingService->getAttendant()->getName()),
                     $bookingService->getAttendant()->getId(),
-                    array('attrs' => array('readonly'=>'readonly')),
+                    array('attrs' => array('disabled'=>'disabled')),
                     true
                 ) ?>
+                <?php SLN_Form::fieldText(
+                    '_sln_booking[attendant]['.$bookingService->getService()->getId().']',
+                    $bookingService->getAttendant()->getId(),
+                    array('type' => 'hidden')
+                )
+                ?>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div>
@@ -262,14 +311,14 @@ $helper->showNonce($postType);
         <div class="clearfix"></div>
         <?php endforeach ?>
         <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-action">
-            <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2 col-md-offset-2 sln-select-wrapper sln-select-wrapper-no-search">
                 <select class="sln-select" name="_sln_booking_service_select" id="_sln_booking_service_select">
                 <?php
                 foreach ($plugin->getServicesOrderByExec() as $service) {
                     $servicesData[ $service->getId()] = array_merge(
                         isset($servicesData[ $service->getId() ]) ? $servicesData[ $service->getId() ] : array(),
                         array(
-                            'title'      => $service->getName() . ' (' . $plugin->format()->money($service->getPrice()) . ')',
+                            'title'      => $service->getName() . ' (' . $plugin->format()->money($service->getPrice()) . ') - ' . $service->getDuration()->format('H:i'),
                             'name'       => $service->getName(),
                             'price'      => $service->getPrice(),
                             'duration'   => 60*$service->getDuration()->format('H') + intval($service->getDuration()->format('i')),
@@ -292,7 +341,7 @@ $helper->showNonce($postType);
                 }
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
+            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper sln-select-wrapper-no-search">
                 <select class="sln-select" name="_sln_booking_attendant_select" id="_sln_booking_attendant_select">
                 </select>
             </div>
