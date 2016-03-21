@@ -603,10 +603,10 @@ jQuery(function ($) {
         event.preventDefault(e);
     });
 
-    if (servicesData !== undefined) {
+    if (typeof servicesData !== 'undefined') {
         servicesData = $.parseJSON(servicesData);
     }
-    if (attendantsData !== undefined) {
+    if (typeof attendantsData !== 'undefined') {
         attendantsData = $.parseJSON(attendantsData);
     }
     $('#_sln_booking_service_select').change(function() {
