@@ -130,7 +130,9 @@ class SLN_GoogleScope {
         $bookings = $booking_handler->getBookings();
         foreach ($bookings as $k => $post) {
             $event_id = get_post_meta($post->ID, '_sln_calendar_event_id', true);
-            $this->delete_event_from_booking($event_id);
+            if (!empty($event_id)) {
+                $this->delete_event_from_booking($event_id);
+            }
         }
 
         foreach ($bookings as $k => $post) {
@@ -715,16 +717,16 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
         $desc .= __('Customer name', 'salon-booking-system') . ": " . $booking->getDisplayName() . " - ";
         $desc .= $booking->getPhone() . " \n";
         //Services
-        $services = $booking->getServices();
-        $desc .= "\n" . __('Services booked', 'salon-booking-system') . ":";
-        foreach ($services as $service) {
+        $desc .= "\n" . __('Booked services', 'salon-booking-system') . ":";
+        foreach ($booking->getBookingServices()->getItems() as $bookingService) {
             $desc .= "\n";
-            $desc .= $service->getName();
-            $desc .= $service->getContent();
+            $desc .= $bookingService->getService()->getName() . ': ' .
+                     $bookingService->getStartsAt()->format('H:i') . ' ➝ ' .
+                     $bookingService->getEndsAt()->format('H:i') . ' - ' .
+                     $bookingService->getAttendant()->getName();
         }
         $notes = $booking->getNote();
         $desc .= "\n\n" . __('Booking notes', 'salon-booking-system') . ":\n" . (empty($notes) ? __("None", 'salon-booking-system') : $notes);
-        $desc .= "\n\n" . __('Selected assistant', 'salon-booking-system') . ": " . $booking->getAttendant();
         $desc .= "\n\n" . __('Booking status', 'salon-booking-system') . ": " . SLN_Enum_BookingStatus::getLabel($booking->getStatus());
         $desc .= "\n\n" . __('Booking URL', 'salon-booking-system') . ": " . get_permalink($booking->getId());
 
