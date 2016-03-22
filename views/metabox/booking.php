@@ -313,6 +313,7 @@ $helper->showNonce($postType);
         <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-action">
             <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2 col-md-offset-2 sln-select-wrapper sln-select-wrapper-no-search">
                 <select class="sln-select" name="_sln_booking_service_select" id="_sln_booking_service_select">
+                    <option value=""><?php _e('Select a service','salon-booking-system') ?></option>
                 <?php
                 foreach ($plugin->getServicesOrderByExec() as $service) {
                     $servicesData[ $service->getId()] = array_merge(
@@ -343,6 +344,7 @@ $helper->showNonce($postType);
             </div>
             <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper sln-select-wrapper-no-search">
                 <select class="sln-select" name="_sln_booking_attendant_select" id="_sln_booking_attendant_select">
+                    <option value=""><?php _e('Select an assistant','salon-booking-system') ?></option>
                 </select>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">

@@ -622,11 +622,13 @@ jQuery(function ($) {
     }
     $('#_sln_booking_service_select').change(function() {
         var html = '';
-        $.each(servicesData[$(this).val()].attendants, function( index, value ) {
-            html += '<option value="'+ value +'">' + attendantsData[value] + '</option>';
-        });
-
-        $('#_sln_booking_attendant_select').html(html).change();
+        if (servicesData[$(this).val()] != undefined) {
+            $.each(servicesData[$(this).val()].attendants, function( index, value ) {
+                html += '<option value="'+ value +'">' + attendantsData[value] + '</option>';
+            });
+        }
+        $('#_sln_booking_attendant_select option:not(:first)').remove();
+        $('#_sln_booking_attendant_select').append(html).change();
     }).change();
 
 
@@ -661,7 +663,7 @@ jQuery(function ($) {
     $('button[data-collection="addnewserviceline"]').click(function () {
         var serviceVal = $('#_sln_booking_service_select').val();
         var attendantVal = $('#_sln_booking_attendant_select').val();
-        if (attendantVal == undefined ||
+        if (attendantVal == undefined || attendantVal == '' ||
             $('[name=_sln_booking\\[services\\]\\[\\]] option[value=' + serviceVal + ']:selected').size()
         ) {
             return false;
