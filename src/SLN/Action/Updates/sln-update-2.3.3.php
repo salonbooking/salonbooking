@@ -38,8 +38,8 @@ foreach ($query->get_posts() as $p) {
 
 	$date = new SLN_DateTime(get_post_meta($post_id, '_sln_booking_date', true));
 	$time = new SLN_DateTime(get_post_meta($post_id, '_sln_booking_time', true));
-	$bookingServices = SLN_Wrapper_Booking_Services::build($data, new SLN_DateTime($date->format('Y-m-d').' '.$time->format('H:i')));
-	$ret = $bookingServices->toArrayRecursive();
+	@$bookingServices = SLN_Wrapper_Booking_Services::build($data, new SLN_DateTime($date->format('Y-m-d').' '.$time->format('H:i')));
+	@$ret = $bookingServices->toArrayRecursive();
 
 	update_post_meta($post_id, '_sln_booking_services', $ret);
 	update_post_meta($post_id, '_sln_booking_services_processed', 1);
