@@ -81,11 +81,11 @@ $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds()
         </div>
         <div class="clearfix"></div>
         <?php if ($serviceErrors) : ?>
-            <div class="alert alert-warning">
+            <div><div class="col-xs-offset-2 col-lg-offset-1"><div class="alert alert-danger alert-no-spacing">
                 <?php foreach ($serviceErrors as $error): ?>
                     <p><?php echo $error ?></p>
                 <?php endforeach ?>
-            </div>
+            </div></div></div>
         <?php endif ?>
     <?php endforeach ?>
     <?php if($group['term'] !== false): ?>
