@@ -68,7 +68,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             $duration =  $h.':'.$i;
 
             $services[$serviceId]            = array(
-                'attendant' => $_POST['_sln_booking']['attendant'][$serviceId],
+                'attendant' => $_POST['_sln_booking']['attendants'][$serviceId],
                 'price' => $_POST['_sln_booking']['price'][$serviceId],
                 'duration' => $duration,
             );

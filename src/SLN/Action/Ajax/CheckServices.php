@@ -101,7 +101,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
             $data = array();
             foreach($services as $sId) {
                 $data[$sId] = array(
-                    'attendant' => $_POST['_sln_booking']['attendant'][$sId],
+                    'attendant' => $_POST['_sln_booking']['attendants'][$sId],
                     'price'     => $_POST['_sln_booking']['price'][$sId],
                     'duration'  => SLN_Func::convertToHoursMins($_POST['_sln_booking']['duration'][$sId]),
                 );

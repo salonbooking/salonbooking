@@ -199,20 +199,14 @@ $helper->showNonce($postType);
                 )
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper">
+            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper sln-select-wrapper-no-search">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][__service_id__]',
                     array('__attendant_id__' => '__attendant_name__'),
                     '__attendant_id__',
-                    array('attrs' => array('disabled'=>'disabled')),
+                    array('attrs' => array('data-service' => '__service_id__', 'data-attendant' => '')),
                     true
                 ) ?>
-                <?php SLN_Form::fieldText(
-                    '_sln_booking[attendant][__service_id__]',
-                    '__attendant_id__',
-                    array('type' => 'hidden')
-                )
-                ?>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div>
@@ -287,20 +281,14 @@ $helper->showNonce($postType);
                 )
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper">
+            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper sln-select-wrapper-no-search">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][' . $bookingService->getService()->getId() . ']',
                     array($bookingService->getAttendant()->getId() => $bookingService->getAttendant()->getName()),
                     $bookingService->getAttendant()->getId(),
-                    array('attrs' => array('disabled'=>'disabled')),
+                    array('attrs' => array('data-service' => $bookingService->getService()->getId(), 'data-attendant' => '')),
                     true
                 ) ?>
-                <?php SLN_Form::fieldText(
-                    '_sln_booking[attendant]['.$bookingService->getService()->getId().']',
-                    $bookingService->getAttendant()->getId(),
-                    array('type' => 'hidden')
-                )
-                ?>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div>
