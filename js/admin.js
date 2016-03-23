@@ -605,6 +605,14 @@ jQuery(function ($) {
         event.preventDefault(e);
     });
 
+    function createSelect2() {
+        $('.sln-select-wrapper select').select2({
+            tags: "true",
+            width: '100%'
+        });
+    }
+    createSelect2();
+
     function createSelect2NoSearch() {
         $('.sln-select-wrapper-no-search select').select2({
             tags: "true",
@@ -683,6 +691,7 @@ jQuery(function ($) {
         if($('#salon-step-date').data('isnew'))
             calculateTotal();
 
+        createSelect2();
         createSelect2NoSearch();
         bindRemoveBookingsServices();
         sln_checkServices($);
