@@ -1719,6 +1719,9 @@
     padding: .4rem;
   }
 }
+#sln-salon .alert-no-spacing {
+  margin: 1em 15px !important;
+}
 #sln-salon .alert {
   border: none;
   background-color: transparent;

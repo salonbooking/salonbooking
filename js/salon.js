@@ -226,7 +226,7 @@ function sln_serviceTotal($) {
                     $.each(data.services, function(index, value) {
                         var checkbox = $('#sln_services_' + index);
                         if (value.status == -1) {
-                            var alertBox = $('<div class="alert alert-warning"><p>' + value.error + '</p></div>');
+                            var alertBox = $('<div><div class="col-xs-offset-2 col-lg-offset-1"><div class="alert alert-danger alert-no-spacing"><p>' + value.error + '</p></div></div></div>');
                             checkbox.attr('checked', false).attr('disabled', 'disabled').change();
                             checkbox.parent().parent().parent().next().after(alertBox);
                         }
