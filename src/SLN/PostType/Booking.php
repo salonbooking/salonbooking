@@ -11,7 +11,8 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
         if (is_admin()) {
             add_action('manage_' . $this->getPostType() . '_posts_custom_column', array($this, 'manage_column'), 10, 2);
             add_filter('manage_' . $this->getPostType() . '_posts_columns', array($this, 'manage_columns'));
-            add_action('admin_footer-post.php', array($this, 'bulkAdminFooter'));
+            add_action('admin_footer-post.php', array($this, 'bulkAdminFooterEdit'));
+            add_action('admin_footer-post-new.php', array($this, 'bulkAdminFooterNew'));
             add_filter('display_post_states', array($this, 'bulkPostStates'));
             add_action('admin_head-post-new.php', array($this, 'posttype_admin_css'));
             add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
@@ -246,14 +247,25 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
         }
     }
 
-    public function bulkAdminFooter()
+    public function bulkAdminFooterNew()
+    {
+        $this->bulkAdminFooter(true);
+    }
+
+    public function bulkAdminFooterEdit()
+    {
+        $this->bulkAdminFooter(false);
+    }
+
+    public function bulkAdminFooter($isNew = false)
     {
         global $post;
         if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function ($) {
-                    $('#save-post').attr('value', '<?php echo __('Save Booking', 'salon-booking-system') ?>');
+                    $('#save-post').attr('value', '<?php echo __($isNew ? "Add booking" : 'Update booking', 'salon-booking-system') ?>').addClass('sln-btn sln-btn--main');
+                    $('#misc-publishing-actions > *').css('display', 'none');
                     $('#submitdiv h3 span').text('<?php echo __('Booking', 'salon-booking-system') ?>');
             <?php
             foreach (SLN_Enum_BookingStatus::toArray() as $k => $v) {
