@@ -79,7 +79,7 @@ class SLN_Shortcode_SalonMyAccount_Details
 			'date' => $booking->getStartsAt()->format('M, j Y g:ia'),
 			'timestamp' => strtotime($booking->getStartsAt()),
 			'services' => implode("<br>", $serviceNames),
-			'assistant' => implode(', ', array_map(function($att) { return $att->getName(); }, array_unique($booking->getAttendants()))),
+			'assistant' => $booking->getAttendantsString(),
 			'total' => $total,
 			'status' => SLN_Enum_BookingStatus::getLabel($booking->getStatus()),
 			'status_code' => $booking->getStatus(),

@@ -185,7 +185,7 @@ class SLN_Plugin
 
     public function createAttendant($attendant)
     {
-        if (is_int($attendant)) {
+        if (!empty($attendant) && is_int($attendant)) {
             $attendant = get_post($attendant);
         }
 

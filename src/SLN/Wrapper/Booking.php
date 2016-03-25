@@ -190,7 +190,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $atts_ids = $this->getAttendantsIds();
         $att = reset($atts_ids);
         if ($att !== false) {
-            $tmp = new SLN_Wrapper_Attendant($att);
+            $tmp = SLN_Plugin::getInstance()->createAttendant($att);
             if(!$tmp->isEmpty()){
                 return $tmp;
             }
@@ -207,12 +207,26 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $ret = array();
         $attIds = $this->getAttendantsIds($unique);
         foreach($attIds as $service_id => $id){
-            $tmp = new SLN_Wrapper_Attendant($id);
+            $tmp = SLN_Plugin::getInstance()->createAttendant($id);
             if(!$tmp->isEmpty()){
                 $ret[$service_id] = $tmp;
             }
         }
         return $ret;
+    }
+
+    function getAttendantsString(){
+        $attendants = $this->getAttendants(true);
+        if (!empty($attendants)) {
+            $ret = array();
+            foreach($attendants as $attendant) {
+                $ret[] = $attendant->getName();
+            }
+            return implode(', ', $ret);
+        }
+        else {
+            return SLN_Plugin::getInstance()->createAttendant(null)->getName();
+        }
     }
 
     function getServicesIds()

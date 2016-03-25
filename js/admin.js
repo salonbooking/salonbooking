@@ -681,6 +681,9 @@ jQuery(function ($) {
         var serviceVal = $(this).attr('data-service');
         var attendantVal = $(this).val();
         var selectHtml = '';
+        if (attendantVal == '') {
+            selectHtml += '<option value="" selected >n.d.</option>';
+        }
         $.each(servicesData[serviceVal].attendants, function( index, value ) {
             selectHtml += '<option value="'+ value +'" ' + (value == attendantVal ? 'selected' : '') + ' >' + attendantsData[value] + '</option>';
         });

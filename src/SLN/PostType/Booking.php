@@ -78,12 +78,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 echo implode(', ', $name_services);
                 break;
             case 'booking_attendant' :
-                $name_attendants = array();
-                $attendants = $obj->getAttendants(true);
-                foreach ($attendants as $helper) {
-                    $name_attendants[] = $helper->getName();
-                }
-                echo implode(', ', ($name_attendants));
+                echo $obj->getAttendantsString();
                 break;
             case 'booking_review' :
                 $comments = get_comments("post_id=$post_id&type=sln_review");
