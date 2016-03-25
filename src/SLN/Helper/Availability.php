@@ -220,7 +220,7 @@ class SLN_Helper_Availability
             if (empty($attendants)) {
                 SLN_Plugin::addLog(__CLASS__.sprintf(' - all of the assistants for service %s by date(%s) are busy',$service,$time->format('Ymd H:i')));
                 return array(
-                    __('No one of the assistants is available at ', 'salon-booking-system') . $time->format('H:i')
+                    __('No one of the assistants for this service is available at ', 'salon-booking-system') . $time->format('H:i')
                 );
             }
 
