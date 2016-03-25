@@ -9,6 +9,13 @@ class SLN_Action_Install
         '2.3.3' => 'Updates/sln-update-2.3.3.php',
     );
 
+    private static function getDbUpdates()
+    {
+        return array_map(function($elem) {
+            return plugin_dir_path(__FILE__) . $elem;
+        }, self::$dbUpdates);
+    }
+
     public static function initActions()
     {
         if (defined('DOING_AJAX') && DOING_AJAX) {
@@ -19,7 +26,7 @@ class SLN_Action_Install
             self::update();
         }
 
-        if (version_compare(SLN_Plugin::getInstance()->getSettings()->getDbVersion(), max(array_keys(self::$dbUpdates)), '<')) {
+        if (version_compare(SLN_Plugin::getInstance()->getSettings()->getDbVersion(), max(array_keys(self::getDbUpdates())), '<')) {
             echo SLN_Plugin::getInstance()->loadView('notice/html_notice_update');
         } else {
             SLN_Plugin::getInstance()->getSettings()->setDbVersion()->save();
@@ -61,7 +68,7 @@ class SLN_Action_Install
     {
         $current_version = SLN_Plugin::getInstance()->getSettings()->getDbVersion();
 
-        foreach (self::$dbUpdates as $version => $updater) {
+        foreach (self::getDbUpdates() as $version => $updater) {
             if (version_compare($current_version, $version, '<')) {
                 include($updater);
                 SLN_Plugin::getInstance()->getSettings()->setDbVersion($version)->save();
