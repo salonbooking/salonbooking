@@ -63,7 +63,7 @@ final class SLN_Wrapper_Booking_Services {
 	 */
 	public static function build($data, $startsAt, $offset = 0) {
 		$startsAt = clone $startsAt;
-		uksort($data, array('SLN_Wrapper_Booking_Services', 'serviceCmp'));
+		uksort($data, array(SLN_Plugin::getInstance(), 'serviceCmp'));
 		$services = array();
 		foreach($data as $sId => $item) {
 
@@ -115,16 +115,5 @@ final class SLN_Wrapper_Booking_Services {
 
 		return $ret;
 	}
-
-    public static function serviceCmp($a, $b)
-    {
-		$aExecOrder = SLN_Plugin::getInstance()->createService($a)->getExecOrder();
-		$bExecOrder = SLN_Plugin::getInstance()->createService($b)->getExecOrder();
-		if ($aExecOrder > $bExecOrder)
-			return 1;
-		else
-			return -1;
-	}
-
 
 }

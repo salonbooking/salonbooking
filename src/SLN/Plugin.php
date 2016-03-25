@@ -276,10 +276,22 @@ class SLN_Plugin
         /** @var SLN_Wrapper_Service $b */
         $aExecOrder = $a->getExecOrder();
         $bExecOrder = $b->getExecOrder();
-        if ($aExecOrder > $bExecOrder)
-            return 1;
-        else
-            return -1;
+        if ($aExecOrder != $bExecOrder) {
+            return $aExecOrder > $bExecOrder ? 1 : -1;
+        }
+        else {
+            $aPosOrder = $a->getPosOrder();
+            $bPosOrder = $b->getPosOrder();
+            if ($aPosOrder != $bPosOrder) {
+                return $aPosOrder > $bPosOrder ? 1 : -1;
+            }
+            elseif ($a->getId() > $b->getId()) {
+                return 1;
+            }
+            else {
+                return -1;
+            }
+        }
     }
 
     /**
