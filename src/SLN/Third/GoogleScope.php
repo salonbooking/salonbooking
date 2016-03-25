@@ -590,8 +590,9 @@ class SLN_GoogleScope {
      */
     public static function date3339($timestamp = 0, $offset = 0) {
         $timezone = get_option('timezone_string');
-
-        $date = new DateTime('now', new DateTimeZone($timezone));
+        $date = new DateTime(date('Y-m-d H:i:s', $timestamp), new DateTimeZone($timezone));
+        return $date->format(DateTime::RFC3339);
+/*
         $seconds = $date->format('Z');
         $def = date_default_timezone_get();
         if($def != $timezone);
@@ -604,9 +605,10 @@ class SLN_GoogleScope {
             $ret = "error";
         } else {
             $ret = date('Y-m-d\TH:i:s', $timestamp);
-            $ret .= sprintf(".000%+03d:%02d", intval($offset), abs($offset - intval($offset)) * 60);
+            $ret .= sprintf(".000%+03d:%02d", 0,0);//intval($offset), abs($offset - intval($offset)) * 60);
         }
         return $ret; 
+*/
 /*
         $date = date('Y-m-d\TH:i:s', $timestamp, new DateTimeZone($timezone));
         $date .= sprintf(".000%+03d:%02d", intval($offset), abs($offset - intval($offset)) * 60);
@@ -739,7 +741,7 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
         $event->setLocation($booking->getAddress());
 
         $start = new Google_Service_Calendar_EventDateTime();
-        $str_date = strtotime($booking->getStartsAt()->formatLocal('Y-m-d H:i:s'));
+        $str_date = strtotime($booking->getStartsAt()->format('Y-m-d H:i:s'));
         $dateTimeS = SLN_GoogleScope::date3339($str_date);
         sln_my_wp_log("start_date");
         sln_my_wp_log($dateTimeS);
@@ -747,7 +749,7 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
         $event->setStart($start);
 
         $end = new Google_Service_Calendar_EventDateTime();
-        $str_date = strtotime($booking->getEndsAt()->formatLocal('Y-m-d H:i:s'));
+        $str_date = strtotime($booking->getEndsAt()->format('Y-m-d H:i:s'));
         $dateTimeE = SLN_GoogleScope::date3339($str_date);
         sln_my_wp_log("end_date");
         sln_my_wp_log($dateTimeE);
