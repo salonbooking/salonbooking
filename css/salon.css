@@ -2196,7 +2196,7 @@
   font-weight: normal;
 }
 #sln-salon .sln-attendant-list .row {
-  margin: 1.5em 0 1.5em 0;
+  margin: 1.5em 0 0 0;
 }
 @media only screen and (max-width: 767px) {
   #sln-salon .sln-attendant-list label {
