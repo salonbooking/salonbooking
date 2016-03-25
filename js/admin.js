@@ -220,10 +220,12 @@ function sln_validateBooking($){
                         if(!hasErrors) $(val).focus();
                         hasErrors = true;
                     }
-                }else if(val == '#_sln_booking_service_select' && !$('[name=_sln_booking\\[services\\]\\[\\]]').size()){
-                    $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is required</div>');
-                    if(!hasErrors) $(val).focus();
-                    hasErrors = true;
+                }else if(val == '#_sln_booking_service_select'){
+                    if (!$('[name=_sln_booking\\[services\\]\\[\\]]').size()) {
+                        $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is required</div>');
+                        if(!hasErrors) $(val).focus();
+                        hasErrors = true;
+                    }
                 }else if(!$(val).val()){
                     $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is required</div>');
                     if(!hasErrors) $(val).focus();
