@@ -3,9 +3,53 @@ $cl_main--medium: #4c7186;
 $cl_main--light: rgb(199,223,243);
 $cl_main--light--border: #c5cfd4;
 $cl_main--white: #fff;
+$cl_main--grey: #888;
 $cl_main--emphasis: #0C6EB6;
 $cl_problem: #D22221;
 $cl_problem--light: #e63f24;
 $cl_warning: #f5b025;
 $cl_warning--light: #f7c65f;
 $cl_ok: #5bc24c;
+
+$sln-color--main: rgba(255, 255, 255, .75);
+$sln-color--contrast: rgba(0, 66, 88, 1);
+$sln-color--contrast--alpha: rgba(0, 66, 88, .3);
+$sln-color--dark: rgba(0, 0, 0, 1);
+
+$sln-color--main--noalpha: rgba(255, 255, 255, 1);
+//$sln-color--emphasis: rgba(139, 195, 74, 1);
+//$sln-color--emphasis: #607D8B;
+$sln-color--emphasis: #0277BD;
+$sln-color--emphasis--hover: #0091EA;
+
+%text-color--main {color: $sln-color--main--noalpha;}
+%text-color--contrast {color: $sln-color--contrast;}
+%text-color--contrast--alpha {color: $sln-color--contrast--alpha;}
+%text-color--dark {color: $sln-color--dark;}
+%text-color--emphasis {color: $sln-color--emphasis;}
+%text-color--emphasis--hover {color: $sln-color--emphasis--hover;}
+%text-color--grey {color: $cl_main--grey;}
+%text-color--ok {color: $cl_ok;}
+
+// BACKGORUNDS
+%bgc-color--main {background-color: $sln-color--main;}
+%bgc-color--contrast {background-color: $sln-color--contrast;}
+%bgc-color--contrast--alpha {background-color: $sln-color--contrast--alpha;}
+%bgc-color--dark {background-color: $sln-color--dark;}
+%bgc-color--emphasis {background-color: $sln-color--emphasis;}
+%bgc-color--emphasis--hover {background-color: $sln-color--emphasis--hover;}
+%bgc-color--transparent {background-color: transparent;}
+%bgc-color--grey {background-color: $cl_main--grey;}
+%bgc-color--ok {background-color: $cl_ok;}
+
+// BORDERS
+%bd-color--main {border-color: $sln-color--main !important;}
+%bd-color--contrast {border-color: $sln-color--contrast !important;}
+%bd-color--contrast--alpha {border-color: $sln-color--contrast--alpha !important;}
+%bd-color--dark {border-color: $sln-color--dark !important;}
+%bd-color--emphasis {border-color: $sln-color--emphasis !important;}
+%bd-color--emphasis--hover {border-color: $sln-color--emphasis--hover !important;}
+%bd-color--transparent {border-color: transparent !important;}
+%bd-color--main--noalpha {border-color: $sln-color--main--noalpha !important;}
+%bd-color--grey {border-color: $cl_main--grey !important;}
+%bd-color--ok {border-color: $cl_ok !important;}

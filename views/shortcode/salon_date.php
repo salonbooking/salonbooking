@@ -39,35 +39,110 @@ else:
     $bb        = $plugin->getBookingBuilder();
     $intervals = $plugin->getIntervals($bb->getDateTime());
     $date      = $intervals->getSuggestedDate();
-
-    ?>
-    <h2><?php _e('When do you want to come?', 'salon-booking-system') ?></h2>
+?>
     <form method="post" action="<?php echo $formAction ?>" id="salon-step-date" 
           data-intervals="<?php echo esc_attr(json_encode($intervals->toArray()));?>">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
+    <h2><?php _e('When do you want to come?', 'salon-booking-system') ?></h2>
+        <?php
+        $size = $_SESSION["size"];
+        if ($size == '900') {
+        ?>
+        <div class="row sln-box--main">
+            <div class="col-md-4 sln-input sln-input--datepicker">
                     <label for="<?php echo SLN_Form::makeID('sln[date][day]') ?>"><?php _e(
                             'select a day',
                             'salon-booking-system'
                         ) ?></label>
                     <?php SLN_Form::fieldJSDate('sln[date]', $date) ?>
-                </div>
             </div>
-        </div>
-        <div class="row">
-           <div class="col-md-12">
-                <div class="form-group">
+           <div class="col-md-4 sln-input sln-input--datepicker">
                     <label for="<?php echo SLN_Form::makeID('sln[date][time]') ?>"><?php _e(
                             'select an hour',
                             'salon-booking-system'
                         ) ?></label>
                     <?php SLN_Form::fieldJSTime('sln[time]', $date, array('interval' =>  $plugin->getSettings()->get('interval') )) ?>
-                </div>
+            </div>
+           <div class="col-md-4 sln-input">
+           <label for="">&nbsp;</label>
+           <?php include "_form_actions.php" ?></div>
+        </div>
+        <?php
+        // IF SIZE == 900 // END
+        } else if ($size == '600') {
+        ?>
+        <div class="row sln-box--main">
+            <div class="col-md-6 sln-input sln-input--datepicker">
+                    <label for="<?php echo SLN_Form::makeID('sln[date][day]') ?>"><?php _e(
+                            'select a day',
+                            'salon-booking-system'
+                        ) ?></label>
+                    <?php SLN_Form::fieldJSDate('sln[date]', $date) ?>
+            </div>
+           <div class="col-md-6 sln-input sln-input--datepicker">
+                    <label for="<?php echo SLN_Form::makeID('sln[date][time]') ?>"><?php _e(
+                            'select an hour',
+                            'salon-booking-system'
+                        ) ?></label>
+                    <?php SLN_Form::fieldJSTime('sln[time]', $date, array('interval' =>  $plugin->getSettings()->get('interval') )) ?>
             </div>
         </div>
-        <?php include '_errors.php' ?>
-        <?php include "_form_actions.php" ?>
+        <div class="row sln-box--main">
+            <div class="col-md-6">&nbsp;</div>
+           <div class="col-md-6">
+           <?php include "_form_actions.php" ?></div>
+        </div>
+        <?php
+        // IF SIZE == 600 // END
+        } else if ($size == '400') {
+        ?>
+        <div class="row sln-box--main">
+            <div class="col-md-12 sln-input sln-input--datepicker">
+                    <label for="<?php echo SLN_Form::makeID('sln[date][day]') ?>"><?php _e(
+                            'select a day',
+                            'salon-booking-system'
+                        ) ?></label>
+                    <?php SLN_Form::fieldJSDate('sln[date]', $date) ?>
+            </div>
+           <div class="col-md-12 sln-input sln-input--datepicker">
+                    <label for="<?php echo SLN_Form::makeID('sln[date][time]') ?>"><?php _e(
+                            'select an hour',
+                            'salon-booking-system'
+                        ) ?></label>
+                    <?php SLN_Form::fieldJSTime('sln[time]', $date, array('interval' =>  $plugin->getSettings()->get('interval') )) ?>
+            </div>
+        </div>
+        <div class="row sln-box--main">
+           <div class="col-md-12">
+           <?php include "_form_actions.php" ?></div>
+        </div>
+        <?php
+        // IF SIZE == 400 // END
+        } else {
+        ?>
+        <div class="row sln-box--main">
+            <div class="col-md-4 sln-input sln-input--datepicker">
+                    <label for="<?php echo SLN_Form::makeID('sln[date][day]') ?>"><?php _e(
+                            'select a day',
+                            'salon-booking-system'
+                        ) ?></label>
+                    <?php SLN_Form::fieldJSDate('sln[date]', $date) ?>
+            </div>
+           <div class="col-md-4 sln-input sln-input--datepicker">
+                    <label for="<?php echo SLN_Form::makeID('sln[date][time]') ?>"><?php _e(
+                            'select an hour',
+                            'salon-booking-system'
+                        ) ?></label>
+                    <?php SLN_Form::fieldJSTime('sln[time]', $date, array('interval' =>  $plugin->getSettings()->get('interval') )) ?>
+            </div>
+           <div class="col-md-4">
+           <label for="">&nbsp;</label>
+           <?php include "_form_actions.php" ?></div>
+        </div>
+        <?php
+        // IF SIZE ELSE // END
+        }
+        // errors are wrapped in a .row.sln-box--main
+        include '_errors.php'; ?>
     </form>
 <?php endif ?>
 

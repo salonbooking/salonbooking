@@ -9,9 +9,35 @@ $bb             = $plugin->getBookingBuilder();
 $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
 $services = $step->getServices();
 ?>
-<h2><?php _e('What do you need?','salon-booking-system') ?></h2>
     <?php include '_errors.php'; ?>
 <form id="salon-step-services" method="post" action="<?php echo $formAction ?>" role="form">
-    <?php include "_services.php"; ?>
-    <?php include "_form_actions.php" ?>
+<h2><?php _e('What do you need?','salon-booking-system') ?></h2>
+<?php
+	$size = $_SESSION["size"];
+	if ($size == '900') { ?>
+		<div class="row sln-box--main">
+			<div class="col-md-8"><?php include "_services.php"; ?></div>
+			<div class="col-md-4"><?php include "_form_actions.php" ?></div>
+		</div>
+	<?php
+	// IF SIZE 900 // END
+	} else if ($size == '600') { ?>
+		<div class="row sln-box--main"><div class="col-md-12"><?php include "_services.php"; ?></div></div>
+		<div class="row sln-box--main">
+            <div class="col-md-6">&nbsp;</div>
+           <div class="col-md-6">
+           <?php include "_form_actions.php" ?></div>
+        </div>
+	<?php
+	// IF SIZE 600 // END
+	} else if ($size == '400') { ?>
+		<div class="row sln-box--main"><div class="col-md-12"><?php include "_services.php"; ?></div></div>
+		<div class="row sln-box--main"><div class="col-md-12"><?php include "_form_actions.php" ?></div></div>
+	<?php
+	// IF SIZE 400 // END
+	} else  { ?>
+	<?php
+	// ELSE // END
+	}
+?>
 </form>

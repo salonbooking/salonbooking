@@ -1,0 +1,30 @@
+.sln-input {
+	margin-bottom: rem(16px);
+	input, textarea {
+		width: 100%;
+		border-radius: 0;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		border: none;
+		padding: rem(11px) rem(16px);
+		@include font-bigger(30, 60);
+		height: auto;
+		border-width: 1px;
+		border-style: solid;
+		@extend %bd-color--contrast--alpha;
+	}
+	label {padding: rem(11px) rem(16px);}
+	.help-block {
+		padding: 0 rem(16px);
+		margin-bottom: 0;
+		@extend %text-color--contrast;
+		a {
+			@extend %text-color--contrast;
+		}
+	}
+}
+#sln-salon.sln-salon--s .sln-input {
+  input {
+  	&[type="text"] {margin-bottom: rem(40);}
+  }
+}

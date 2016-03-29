@@ -19,8 +19,11 @@ $hasAttendants = false;
                 continue;
             }
         ?>
-        <div class="row">
-            <div class="col-lg-1 col-md-3 col-xs-2">
+    <?php
+    $size = $_SESSION["size"];
+    if ($size == '900') { ?>
+        <div class="row sln-attendant">
+        <div class="col-md-1 sln-checkbox sln-steps-check sln-attendant-check">
             <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
@@ -50,43 +53,187 @@ $hasAttendants = false;
                 $settings
             ) ?>
             </span>
-            </div>
-
-            <div class="col-lg-3 col-md-3 col-xs-4">
-
-                <div class="attendant_thumb">
-                <?php   if ( has_post_thumbnail($attendant->getId())) { 
-
-                echo get_the_post_thumbnail($attendant->getId(), 'thumbnail'); 
-
-                 }
-                ?>
+        <!-- .sln-attendant-check // END -->
+        </div>
+        <div class="col-lg-3 col-md-3 col-xs-4 sln-steps-thumb sln-attendant-thumb">
+            <?php
+            if ( has_post_thumbnail($attendant->getId())) {
+                echo get_the_post_thumbnail($attendant->getId(), 'thumbnail');
+            }
+            ?>
+        </div>
+        <div class="col-md-8">
+            <div class="row sln-steps-info sln-attendant-info">
+                <div class="col-md-12">
+                    <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
+                        <h3 class="sln-steps-name sln-attendant-name"><?php echo $attendant->getName(); ?></h3>
+                    </label>
+                <!-- .sln-attendant-info // END -->
                 </div>
-
-
             </div>
-
-
-
-
-            <div class="col-lg-8 col-md-6 col-xs-6">
-
-
-                <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
-                    <strong class="attendant-name"><?php echo $attendant->getName(); ?></strong>
-                    <span class="attendant-description"><?php echo $attendant->getContent() ?></span>
-                </label>
+            <div class="row sln-steps-description sln-attendant-description">
+                    <div class="col-md-12">
+                        <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
+                            <p><?php echo $attendant->getContent() ?></p>
+                        </label>
+                    <!-- .sln-attendant-info // END -->
+                    </div>
             </div>
         </div>
-        <div class="clearfix"></div>
-        <?php if ($errors) : ?>
-            <div class="alert alert-warning">
+        <?php if ($attendantErrors) : ?>
+            <div class="col-md-12 alert alert-warning">
                 <?php foreach ($errors as $error): ?>
                     <p><?php echo $error ?></p>
                 <?php endforeach ?>
             </div>
         <?php endif ?>
-        <?php $hasAttendants = true ?>
+    </div>
+    <?php
+    // IF SIZE 900 // END
+    } else if ($size == '600') { ?>
+    <div class="row sln-attendant">
+        <div class="col-md-1 sln-checkbox sln-steps-check sln-attendant-check">
+            <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
+            <?php
+            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
+            if ( $validateErrors && $validateAttServicesErrors) {
+                $errors = array_merge($validateErrors, $validateAttServicesErrors);
+            }
+            elseif ($validateErrors) {
+                $errors = $validateErrors;
+            }
+            elseif ($validateAttServicesErrors) {
+                $errors = $validateAttServicesErrors;
+            }
+            else {
+                $errors = false;
+            }
+
+            $settings = array();
+            if ($errors) {
+                $settings['attrs']['disabled'] = 'disabled';
+            }
+            ?>
+
+            <?php SLN_Form::fieldRadiobox(
+                'sln[attendants][]',
+                $attendant->getId(),
+                $bb->hasAttendant($attendant),
+                $settings
+            ) ?>
+            </span>
+        <!-- .sln-attendant-check // END -->
+        </div>
+        <div class="col-lg-3 col-md-3 col-xs-4 sln-steps-thumb sln-attendant-thumb">
+            <?php
+            if ( has_post_thumbnail($attendant->getId())) {
+                echo get_the_post_thumbnail($attendant->getId(), 'thumbnail');
+            }
+            ?>
+        </div>
+        <div class="col-md-8">
+            <div class="row sln-steps-info sln-attendant-info">
+                <div class="col-md-12">
+                    <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
+                        <h3 class="sln-steps-name sln-attendant-name"><?php echo $attendant->getName(); ?></h3>
+                    </label>
+                <!-- .sln-attendant-info // END -->
+                </div>
+            </div>
+            <div class="row sln-steps-description sln-attendant-description">
+                    <div class="col-md-12">
+                        <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
+                            <p><?php echo $attendant->getContent() ?></p>
+                        </label>
+                    <!-- .sln-attendant-info // END -->
+                    </div>
+            </div>
+        </div>
+        <?php if ($attendantErrors) : ?>
+            <div class="col-md-12 alert alert-warning">
+                <?php foreach ($errors as $error): ?>
+                    <p><?php echo $error ?></p>
+                <?php endforeach ?>
+            </div>
+        <?php endif ?>
+    </div>
+    <?php
+    // IF SIZE 600 // END
+    } else if ($size == '400') { ?>
+    <div class="row sln-attendant">
+        <div class="col-md-1 sln-checkbox sln-steps-check sln-attendant-check">
+            <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
+            <?php
+            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
+            if ( $validateErrors && $validateAttServicesErrors) {
+                $errors = array_merge($validateErrors, $validateAttServicesErrors);
+            }
+            elseif ($validateErrors) {
+                $errors = $validateErrors;
+            }
+            elseif ($validateAttServicesErrors) {
+                $errors = $validateAttServicesErrors;
+            }
+            else {
+                $errors = false;
+            }
+
+            $settings = array();
+            if ($errors) {
+                $settings['attrs']['disabled'] = 'disabled';
+            }
+            ?>
+
+            <?php SLN_Form::fieldRadiobox(
+                'sln[attendants][]',
+                $attendant->getId(),
+                $bb->hasAttendant($attendant),
+                $settings
+            ) ?>
+            </span>
+        <!-- .sln-attendant-check // END -->
+        </div>
+        <div class="col-xs-11">
+            <div class="row sln-steps-info sln-attendant-info">
+                <div class="col-xs-4 sln-steps-thumb sln-attendant-thumb">
+                    <?php
+                    if ( has_post_thumbnail($attendant->getId())) {
+                        echo get_the_post_thumbnail($attendant->getId(), 'thumbnail');
+                    }
+                    ?>
+                </div>
+                <div class="col-xs-7">
+                    <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
+                        <h3 class="sln-steps-name sln-attendant-name"><?php echo $attendant->getName(); ?></h3>
+                    </label>
+                <!-- .sln-attendant-info // END -->
+                </div>
+            </div>
+            <div class="row sln-steps-description sln-attendant-description">
+                    <div class="col-md-12">
+                        <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
+                            <p><?php echo $attendant->getContent() ?></p>
+                        </label>
+                    <!-- .sln-attendant-info // END -->
+                    </div>
+            </div>
+        </div>
+        <?php if ($attendantErrors) : ?>
+            <div class="col-md-12 alert alert-warning">
+                <?php foreach ($errors as $error): ?>
+                    <p><?php echo $error ?></p>
+                <?php endforeach ?>
+            </div>
+        <?php endif ?>
+    </div>
+    <?php
+    // IF SIZE 400 // END
+    } else  { ?>
+
+    <?php
+    // ELSE // END
+    }  ?>
+    <?php $hasAttendants = true ?>
     <?php endforeach ?>
     <?php if(!$hasAttendants) : ?>
         <div class="alert alert-warning">

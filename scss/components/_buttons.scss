@@ -1,0 +1,66 @@
+.sln-btn,
+.sln-bootstrap .sln-btn {
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  @include transition(background-color 200ms, color 250ms);
+  text-decoration: none;
+  position: relative;
+  @extend %zi-navigazione;
+  input, button, a {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    z-index: 500;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    @include transition(background-color 200ms, color 250ms);
+  }
+  &:hover, &:focus {
+    text-decoration: none;
+    text-shadow: none;
+  }
+}
+
+// SIZES
+.sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
+  display: inline-block;
+  padding: 0 rem(16px);
+  @include font-bigger(20, 79);
+  height:  rem(82);
+  text-transform: uppercase;
+  @include bp(phone) {font-size: rem(18px);}
+  &.sln-btn--block {display: block;}
+}
+.sln-btn--minwidth {min-width: rem(240);}
+.sln-btn--fullwidth {width: 100%;}
+// COLORS
+.sln-btn--emphasis,
+.sln-bootstrap .sln-btn--emphasis {
+  @extend %bgc-color--emphasis;
+  @extend %text-color--main;
+  input, button, a {@extend %text-color--main;}
+  &:hover, &:focus {
+    @extend %bgc-color--emphasis--hover;
+    @extend %text-color--main;
+    input, button, a {@extend %text-color--main; text-decoration: none;}
+    @extend %zDepth-2;
+  }
+}
+.sln-btn--nobkg,
+.sln-bootstrap .sln-btn--nobkg {
+  @extend %bgc-color--transparent;
+  @extend %text-color--contrast;
+  input, button {@extend %text-color--dark;}
+  &:hover, &:focus {
+    @extend %bgc-color--emphasis--hover;
+    @extend %text-color--main;
+    input, button {@extend %text-color--main;}
+    @extend %zDepth-2;
+  }
+}

@@ -90,6 +90,34 @@ $browser-context: 24;
   border-bottom-right-radius: $value;
 }
 
+%absolute-centering {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+%absolute-horizontal-centering {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(0);
+  -ms-transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(0);
+}
+%absolute-vertical-centering {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+%absolute-vertical-centering--override {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
 
 %zDepth-1 {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);

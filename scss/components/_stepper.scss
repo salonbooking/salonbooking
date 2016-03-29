@@ -1,0 +1,58 @@
+.sln-stepper {
+  width: 100%;
+  margin-bottom: - rem(40);
+  display: flex;
+  .step {
+    padding: rem(20);
+    flex-grow: 1;
+    //opacity: .5;
+    .step-number {
+    	display: inline-block;
+    	width: rem(30);
+    	height: rem(30);
+    	font-size: rem(18);
+    	line-height: rem(30);
+    	font-weight: bold;
+    	text-align: center;
+    	@include b-radius(50%);
+    	@extend %bgc-color--contrast--alpha;
+    	@extend %text-color--main;
+    	// TEMP
+    	font-family: Arial;
+    }
+    .step-label {
+      text-transform: capitalize;
+      padding-left: rem(8);
+      @extend %text-color--grey;
+    }
+    &.step--active {
+    	opacity: 1;
+      .step-number {
+        @extend %bgc-color--emphasis;
+        @extend %text-color--main;
+      }
+      .step-label {
+        @extend %text-color--contrast;
+      }
+    }
+  }
+}
+#sln-salon.sln-salon--m .sln-stepper,
+#sln-salon.sln-salon--s .sln-stepper {
+  width: calc(100% + #{rem(80)};
+  margin: - rem(40);
+  margin-top: - rem(20);
+  margin-bottom: - rem(40);
+  .step-label {display: none;}
+  .step--active .step-label {display: inline-block;}
+}
+#sln-salon.sln-salon--s .sln-stepper {
+  .step {
+    padding: rem(20) 0 rem(20) rem(20);
+  }
+}
+#sln-salon.sln-step-details .sln-stepper,
+#sln-salon.sln-step-summary .sln-stepper,
+#sln-salon.sln-step-thankyou .sln-stepper {
+  margin-top: rem(40);
+}

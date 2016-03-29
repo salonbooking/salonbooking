@@ -20,31 +20,30 @@ foreach ($steps as $step) {
 }
 $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 ?>
-<div id="sln-notifications"></div>
-<div class="form-actions row aligncenter">
-    <div class="col-xs-6">
-        <?php if ($backUrl && $currentNum > 1) : ?>
-            <a class="btn btn-default pull-right"
+<div class="form-actions row">
+    <div class="col-md-8 pull-right">
+        <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
+            <button
+                <?php if($ajaxEnabled): ?>
+                    data-salon-data="<?php echo "sln_step_page=$current&$submitName=next" ?>" data-salon-toggle="next"
+                <?php endif?>
+                id="sln-step-submit" type="submit" class="" name="<?php echo $submitName ?>" value="next">
+                <?php echo $nextLabel ?> <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+        <div class="col-md-4 pull-right">
+            <a class="sln-btn sln-btn--nobkg sln-btn--big"
                 <?php if($ajaxEnabled): ?>
                     data-salon-data="<?php echo "sln_step_page=".$salon->getPrevStep() ?>" data-salon-toggle="direct"
                 <?php endif?>
                 href="<?php echo $backUrl ?> ">
                 <i class="glyphicon glyphicon-chevron-left"></i> <?php _e('Back', 'salon-booking-system') ?>
             </a>
-        <?php endif ?>
-    </div>
-    <div class="col-xs-6">
-        <div>
-            <button
-                <?php if($ajaxEnabled): ?>
-                    data-salon-data="<?php echo "sln_step_page=$current&$submitName=next" ?>" data-salon-toggle="next"
-                <?php endif?>
-                id="sln-step-submit" type="submit" class="btn btn-danger btn-confirm" name="<?php echo $submitName ?>" value="next">
-                <?php echo $nextLabel ?> <i class="glyphicon glyphicon-chevron-right"></i>
-            </button>
-            <?php if ($currentNum > 1): ?>
-                <span class="sln-step-num"><?php echo sprintf(__('step %s of %s', 'salon-booking-system'), $currentNum, $count) ?></span>
-            <?php endif ?>
         </div>
-    </div>
+        <?php if ($backUrl && $currentNum > 1) : ?>
+        <?php endif ?>
+            <?php /* if ($currentNum > 1): ?>
+                <span class="sln-step-num"><?php echo sprintf(__('step %s of %s', 'salon-booking-system'), $currentNum, $count) ?></span>
+            <?php endif */ ?>
 </div>

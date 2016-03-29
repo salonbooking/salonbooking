@@ -59,9 +59,9 @@ function sln_init($) {
 
 }
 function sln_loadStep($, data) {
-    var loadingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> loading..';
+    var loadingMessage = '<div class="sln-loader">Loading...</div>';
     data += "&action=salon&method=salonStep&security=" + salon.ajax_nonce;
-    $('#sln-notifications').html(loadingMessage);
+    $('#sln-notifications').html(loadingMessage).addClass('sln-notifications--active');
     $.ajax({
         url: salon.ajax_url,
         data: data,
@@ -114,7 +114,7 @@ function sln_stepDate($) {
         var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> '+salon.txt_validating;
         var data = form.serialize();
         data += "&action=salon&method=checkDate&security=" + salon.ajax_nonce;
-        $('#sln-notifications').html(validatingMessage);
+        $('#sln-notifications').addClass('sln-notifications--active').html(validatingMessage);
         $.ajax({
             url: salon.ajax_url,
             data: data,
@@ -132,7 +132,7 @@ function sln_stepDate($) {
                     isValid = false;
                 } else {
                     $('#sln-step-submit').attr('disabled', false);
-                    $('#sln-notifications').html('');
+                    $('#sln-notifications').html('').removeClass('sln-notifications--active');
                     isValid = true;
                     if (autosubmit)
                         submit();
