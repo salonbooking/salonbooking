@@ -71,12 +71,24 @@ $fontfamily--main:"Open sans", serif;
 }
 
 // SIZES // END
-
 // GENERAL
+
+%sln-textsize--bigger {font-size: 1.75em;}
+%sln-textsize--big {font-size: 1.5em;}
+%sln-textsize--medium {font-size: 1.25em;}
+%sln-textsize--base {font-size: 1em;}
+%sln-textsize--small {font-size: .75em;}
+%sln-textsize--smaller {font-size: .5em;}
 #sln-salon {
-  font-size: 14px;
+  font-size: $browser-context;
+  h1 {@extend %sln-textsize--bigger;}
+  h2 {@extend %sln-textsize--big;}
+  h3 {@extend %sln-textsize--medium;}
+
+  p {@extend %sln-textsize--base;}
 }
-%sln-title--medium {font-size: rem(30px);}
+//%sln-title--medium {font-size: rem(30px);}
+%sln-title--medium {font-size: 2em;}
 // GENERAL // END
 
 // ICONS

@@ -20,10 +20,10 @@ $customsize = $_GET["size"];
 if (isset($customsize)) {
     $_SESSION["size"] = $customsize;
 } else {
-  $_SESSION["size"] = "400";
+  $_SESSION["size"] = "600";
 }
 ?>
-<div id="sln-salon" class="sln-bootstrap <?php
+<div id="sln-salon" class="sln-bootstrap container-fluid <?php
             $size = $_SESSION["size"];
             if ($size == '900') { echo 'sln-salon--l'; }
             else if ($size == '600') { echo 'sln-salon--m'; }

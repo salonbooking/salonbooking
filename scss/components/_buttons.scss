@@ -31,14 +31,22 @@
 .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
   display: inline-block;
   padding: 0 rem(16px);
-  @include font-bigger(20, 79);
-  height:  rem(82);
+  @include font-bigger(16, 70);
+  height:  rem(70);
   text-transform: uppercase;
   @include bp(phone) {font-size: rem(18px);}
   &.sln-btn--block {display: block;}
 }
 .sln-btn--minwidth {min-width: rem(240);}
 .sln-btn--fullwidth {width: 100%;}
+
+#sln-salon.sln-salon--m {
+  .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
+    padding: 0 rem(10px);
+    @include font-bigger(14, 60);
+    height:  rem(60);
+  }
+}
 // COLORS
 .sln-btn--emphasis,
 .sln-bootstrap .sln-btn--emphasis {

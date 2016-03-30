@@ -1,3 +1,4 @@
+@import 'normalize';
 @import 'settings-mixins';
 @import 'colors';
 @import 'typo';
@@ -29,17 +30,27 @@
 	}
 
 	// TEMP
-	h1 {font-size: 1.4em;}
-	h1, h2{@extend %text-color--contrast;}
+	//h1 {font-size: 1.4em;}
+	//h1, h2{@extend %text-color--contrast;}
 // // // #sln-salon // END
 }
 // GENERAL
+h1, h2, h3, h4, h5, h6 {
+	&[class^="col-"] {
+		clear: none;
+		margin-top: 0;
+		margin-bottom: 0;
+		word-wrap: initial;
+	}
+}
 .sln-steps {
 	margin-bottom: rem(40);
 }
 .sln-steps-name, .sln-steps-price {
 	@extend %text-color--contrast;
 	@extend %sln-title--medium;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 .sln-steps-info,
 .sln-steps-description {
@@ -64,6 +75,8 @@
 	list-style: none;
 	display: inline-block;
 	margin-bottom: rem(20);
+	margin-left: 0;
+    padding-left: 0;
 	li {
 		padding-bottom: rem(7);
 		margin-bottom: rem(14);
@@ -279,6 +292,6 @@
 	padding-top: 10rem;
 	padding-bottom: 20rem;
 	background-color: none !important;
-	background-image: url('http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg');
+	//background-image: url('http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg');
 	background-size: cover;
 }

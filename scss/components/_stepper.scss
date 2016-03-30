@@ -10,11 +10,12 @@
     	display: inline-block;
     	width: rem(30);
     	height: rem(30);
-    	font-size: rem(18);
+    	//font-size: rem(18);
     	line-height: rem(30);
     	font-weight: bold;
     	text-align: center;
     	@include b-radius(50%);
+      @extend %sln-textsize--small;
     	@extend %bgc-color--contrast--alpha;
     	@extend %text-color--main;
     	// TEMP
