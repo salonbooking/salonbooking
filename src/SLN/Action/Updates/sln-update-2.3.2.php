@@ -14,6 +14,7 @@ foreach ($query->get_posts() as $p) {
 	$booking_services_processed = get_post_meta($post_id, '_sln_booking_services_processed', true);
 	$booking_services           = get_post_meta($post_id, '_sln_booking_services', true);
 	$booking_attendant          = get_post_meta($post_id, '_sln_booking_attendant', true);
+	$booking_attendants         = get_post_meta($post_id, '_sln_booking_attendants', true);
 
 	$data = array();
 
@@ -22,7 +23,6 @@ foreach ($query->get_posts() as $p) {
 			foreach($booking_services as $booking_service) {
 				$data[$booking_service['attendant']] = $booking_attendant; // it's not a mistake
 			}
-			delete_post_meta($post_id, '_sln_booking_attendant');
 		}
 		else {
 			foreach($booking_services as $booking_service) {
@@ -31,10 +31,19 @@ foreach ($query->get_posts() as $p) {
 		}
 	}
 	else {
-		foreach($booking_services as $service) {
-			$data[$service] = $booking_attendant;
+		if (!empty($booking_attendants)) {
+			foreach($booking_services as $service) {
+				$data[(int)$service] = isset($booking_attendants[$service]) ? $booking_attendants[$service] : '';
+			}
+		}
+		else {
+			foreach($booking_services as $service) {
+				$data[(int)$service] = $booking_attendant;
+			}
 		}
 	}
+	delete_post_meta($post_id, '_sln_booking_attendant');
+	delete_post_meta($post_id, '_sln_booking_attendants');
 
 	$date = new SLN_DateTime(get_post_meta($post_id, '_sln_booking_date', true));
 	$time = new SLN_DateTime(get_post_meta($post_id, '_sln_booking_time', true));
