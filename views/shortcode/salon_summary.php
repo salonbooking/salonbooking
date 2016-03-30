@@ -198,16 +198,6 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
             <small> (<?php echo $plugin->format()->money($service->getPrice()) ?>)</small>
             <?php } ?>
             </li>
-            <li> <span class="service-label"><?php echo $service->getName(); ?></span>
-            <?php if($showPrices){?>
-            <small> (<?php echo $plugin->format()->money($service->getPrice()) ?>)</small>
-            <?php } ?>
-            </li>
-            <li> <span class="service-label"><?php echo $service->getName(); ?></span>
-            <?php if($showPrices){?>
-            <small> (<?php echo $plugin->format()->money($service->getPrice()) ?>)</small>
-            <?php } ?>
-            </li>
         <?php endforeach ?>
     </ul>
         </div>
