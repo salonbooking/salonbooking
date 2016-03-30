@@ -64,7 +64,7 @@ class SLN_Form
                 else if($interval % 5 == 0) $interval = 5;
             }
         $minutes = $value->format('i');
-        $diff = $interval - $minutes % $interval;
+        $diff = ($interval - $minutes % $interval) % $interval;
         $value = clone $value;
         $value->modify("+$diff minutes");
 
