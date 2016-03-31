@@ -30,9 +30,9 @@
 // SIZES
 .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
   display: inline-block;
-  padding: 0 rem(16px);
-  @include font-bigger(16, 70);
-  height:  rem(70);
+  padding: 0 rem(10px);
+  @include font-bigger(14, 60);
+  height:  rem(60);
   text-transform: uppercase;
   @include bp(phone) {font-size: rem(18px);}
   &.sln-btn--block {display: block;}

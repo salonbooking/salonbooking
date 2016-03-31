@@ -33,7 +33,10 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
     if ($size == '900') { ?>
     <div class="row sln-service">
         <div class="col-md-1 sln-checkbox sln-steps-check sln-service-check">
+            <?php /*
             <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
+            </span>
+            */ ?>
             <?php
             $serviceErrors   = $ah->validateService($service);
             $settings = array('attrs' => array(
@@ -44,13 +47,14 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
                 $settings['attrs']['disabled'] = 'disabled';
             }
             ?>
-
+            <div class="sln-checkbox">
             <?php SLN_Form::fieldCheckbox(
                 'sln[services][' . $service->getId() . ']',
                 $bb->hasService($service),
                 $settings
             ) ?>
-            </span>
+            <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"><?php echo $service->getName(); ?></label>
+            </div>
         <!-- .sln-service-check // END -->
         </div>
         <div class="col-md-11">
@@ -95,25 +99,29 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
         <div class="col-md-12">
             <div class="row sln-steps-info sln-service-info">
                 <div class="col-md-1 sln-checkbox sln-steps-check sln-service-check">
-                    <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
-                    <?php
-                    $serviceErrors   = $ah->validateService($service);
-                    $settings = array('attrs' => array(
-                        'data-price' => $service->getPrice(),
-                        'data-duration' => SLN_Func::getMinutesFromDuration($service->getDuration())
-                    ));
-                    if ($serviceErrors) {
-                        $settings['attrs']['disabled'] = 'disabled';
-                    }
-                    ?>
-
-                    <?php SLN_Form::fieldCheckbox(
-                        'sln[services][' . $service->getId() . ']',
-                        $bb->hasService($service),
-                        $settings
-                    ) ?>
-                    </span>
-                <!-- .sln-service-check // END -->
+                    <?php /*
+                        <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
+                        </span>
+                        */ ?>
+                        <?php
+                        $serviceErrors   = $ah->validateService($service);
+                        $settings = array('attrs' => array(
+                            'data-price' => $service->getPrice(),
+                            'data-duration' => SLN_Func::getMinutesFromDuration($service->getDuration())
+                        ));
+                        if ($serviceErrors) {
+                            $settings['attrs']['disabled'] = 'disabled';
+                        }
+                        ?>
+                        <div class="sln-checkbox">
+                        <?php SLN_Form::fieldCheckbox(
+                            'sln[services][' . $service->getId() . ']',
+                            $bb->hasService($service),
+                            $settings
+                        ) ?>
+                        <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"><?php echo $service->getName(); ?></label>
+                        </div>
+        <!-- .sln-service-check // END -->
                 </div>
                 <div class="col-md-8">
                     <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
@@ -156,28 +164,32 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
     <div class="row sln-service">
         <div class="col-md-12">
             <div class="row sln-steps-info sln-service-info">
-                <div class="col-md-1 sln-checkbox sln-steps-check sln-service-check">
-                    <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
-                    <?php
-                    $serviceErrors   = $ah->validateService($service);
-                    $settings = array('attrs' => array(
-                        'data-price' => $service->getPrice(),
-                        'data-duration' => SLN_Func::getMinutesFromDuration($service->getDuration())
-                    ));
-                    if ($serviceErrors) {
-                        $settings['attrs']['disabled'] = 'disabled';
-                    }
-                    ?>
-
-                    <?php SLN_Form::fieldCheckbox(
-                        'sln[services][' . $service->getId() . ']',
-                        $bb->hasService($service),
-                        $settings
-                    ) ?>
-                    </span>
-                <!-- .sln-service-check // END -->
+                <div class="col-md-2 sln-checkbox sln-steps-check sln-service-check">
+                    <?php /*
+            <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
+            </span>
+            */ ?>
+            <?php
+            $serviceErrors   = $ah->validateService($service);
+            $settings = array('attrs' => array(
+                'data-price' => $service->getPrice(),
+                'data-duration' => SLN_Func::getMinutesFromDuration($service->getDuration())
+            ));
+            if ($serviceErrors) {
+                $settings['attrs']['disabled'] = 'disabled';
+            }
+            ?>
+            <div class="sln-checkbox">
+            <?php SLN_Form::fieldCheckbox(
+                'sln[services][' . $service->getId() . ']',
+                $bb->hasService($service),
+                $settings
+            ) ?>
+            <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"><?php echo $service->getName(); ?></label>
+            </div>
+        <!-- .sln-service-check // END -->
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                         <h3 class="sln-steps-name sln-service-name"><?php echo $service->getName(); ?></h3>
                     </label>
@@ -189,8 +201,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
                 </h3>
             </div>
             <div class="row sln-steps-description sln-service-description">
-                    <div class="col-md-1">&nbsp;</div>
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                             <p><?php echo $service->getContent() ?></p>
                             <?php if ($service->getDuration()->format('H:i') != '00:00'): ?>

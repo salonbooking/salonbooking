@@ -50,6 +50,7 @@ if (isset($customsize)) {
          */
 
         ?>
+<?php /*
 <div class="sln-stepper">
 <?php $i = 0;
           foreach ($salon->getSteps() as $step) : $i++; ?>
@@ -59,3 +60,4 @@ if (isset($customsize)) {
 <?php endforeach ?>
 <div id="sln-notifications"></div>
 </div>
+*/ ?>

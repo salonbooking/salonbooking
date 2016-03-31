@@ -275,10 +275,11 @@ th {
 .sln-bootstrap .sln-btn--nobkg button, .sln-steps-description, .sln-summary-row .label, .sln-total-label, .sln-total-price {
   color: black; }
 
-.sln-text--emphasis {
+.sln-text--emphasis, .sln-checkbox input:checked + label:after,
+.sln-checkbox input:checked + label:hover:after {
   color: #0277BD; }
 
-.sln-text--emphasis--hoverk {
+.sln-text--emphasis--hoverk, .sln-checkbox input + label:hover:after {
   color: #0091EA; }
 
 .sln-text--grey, .sln-stepper .step .step-label {
@@ -287,7 +288,7 @@ th {
 .sln-text--ok {
   color: #5bc24c; }
 
-#sln-salon {
+.sln-checkbox input + label:before, #sln-salon {
   background-color: rgba(255, 255, 255, 0.75); }
 
 .sln-stepper .step .step-number {
@@ -318,6 +319,12 @@ th {
 .sln-input input, .sln-input textarea, #sln-salon, .sln-list--dashed li, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
+.sln-checkbox input + label:before {
+  border-color: #0277BD !important; }
+
+.sln-checkbox input + label:hover:before {
+  border-color: #0091EA !important; }
+
 #sln-salon h1 {
   font-size: 1.75em; }
 
@@ -327,10 +334,10 @@ th {
 #sln-salon h3 {
   font-size: 1.25em; }
 
-#sln-salon p {
+#sln-salon p, .sln-stepper .step .step-number {
   font-size: 1em; }
 
-.sln-stepper .step .step-number {
+.sln-checkbox label, .sln-stepper .step {
   font-size: .75em; }
 
 #sln-salon {
@@ -461,6 +468,75 @@ th {
 #sln-salon.sln-salon--s .sln-input input[type="text"] {
   margin-bottom: 2.5rem; }
 
+#sln-salon label {
+  cursor: pointer; }
+
+.sln-checkbox label {
+  font-weight: 400;
+  padding: 1rem 1.5rem 1rem 0;
+  margin-bottom: 0; }
+
+.sln-checkbox input {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden; }
+
+.sln-checkbox input + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  padding: 0;
+  height: 1.875rem;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 0; }
+  @media only screen and (min-width: 768px) {
+    .sln-checkbox input + label {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+      align-items: center; } }
+  .sln-checkbox input + label:before, .sln-checkbox input + label:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem; }
+  .sln-checkbox input + label:before {
+    content: "";
+    transition: transform 0.5s;
+    backface-visibility: hidden;
+    border-style: solid;
+    border-width: 0.125rem; }
+  .sln-checkbox input + label:after {
+    background-color: transparent;
+    content: " \f00c";
+    transition: all 0.15s;
+    backface-visibility: hidden;
+    opacity: 0;
+    font-family: "FontAwesome";
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    text-align: center;
+    color: #fff; }
+  .sln-checkbox input + label:hover:after {
+    opacity: 1; }
+
+.sln-checkbox input:checked + label:after,
+.sln-checkbox input:checked + label:hover:after {
+  opacity: 1; }
+
+.sln-checkbox label span {
+  display: inline-block;
+  padding-left: 0.625rem;
+  font-weight: 700; }
+
 .sln-btn,
 .sln-bootstrap .sln-btn {
   text-align: center;
@@ -499,13 +575,13 @@ th {
 
 .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
   display: inline-block;
-  padding: 0 1rem;
+  padding: 0 0.625rem;
   font-family: "Open sans", serif;
   font-weight: normal;
-  font-size: 1rem;
-  line-height: calc(1rem + 0.5rem);
-  line-height: 4.375rem;
-  height: 4.375rem;
+  font-size: 0.875rem;
+  line-height: calc(0.875rem + 0.4375rem);
+  line-height: 3.75rem;
+  height: 3.75rem;
   text-transform: uppercase; }
   @media only screen and (max-width: 767px) {
     .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
@@ -542,13 +618,13 @@ th {
   margin-bottom: -2.5rem;
   display: flex; }
   .sln-stepper .step {
-    padding: 1.25rem;
+    padding: 1.25rem 0.625rem;
     flex-grow: 1; }
     .sln-stepper .step .step-number {
       display: inline-block;
-      width: 1.875rem;
-      height: 1.875rem;
-      line-height: 1.875rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
       font-weight: bold;
       text-align: center;
       border-radius: 50%;
@@ -738,11 +814,6 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     position: absolute;
     left: 0; }
 
-#sln-salon.sln-salon--m .sln-steps-description,
-#sln-salon.sln-salon--s .sln-steps-description {
-  border: none;
-  margin-top: 0; }
-
 #sln-salon.sln-salon--m .sln-attendants-wrapper,
 #sln-salon.sln-salon--s .sln-attendants-wrapper {
   border-bottom-style: solid;
@@ -798,4 +869,5 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   padding-top: 10rem;
   padding-bottom: 20rem;
   background-color: none !important;
+  background-image: url("http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg");
   background-size: cover; }

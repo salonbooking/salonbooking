@@ -3,19 +3,20 @@
   margin-bottom: - rem(40);
   display: flex;
   .step {
-    padding: rem(20);
+    padding: rem(20) rem(10);
     flex-grow: 1;
+    @extend %sln-textsize--small;
     //opacity: .5;
     .step-number {
     	display: inline-block;
-    	width: rem(30);
-    	height: rem(30);
+    	width: rem(24);
+    	height: rem(24);
     	//font-size: rem(18);
-    	line-height: rem(30);
+    	line-height: rem(24);
     	font-weight: bold;
     	text-align: center;
     	@include b-radius(50%);
-      @extend %sln-textsize--small;
+      @extend %sln-textsize--base;
     	@extend %bgc-color--contrast--alpha;
     	@extend %text-color--main;
     	// TEMP

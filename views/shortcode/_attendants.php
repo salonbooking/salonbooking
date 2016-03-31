@@ -23,7 +23,7 @@ $hasAttendants = false;
     $size = $_SESSION["size"];
     if ($size == '900') { ?>
         <div class="row sln-attendant">
-        <div class="col-md-1 sln-checkbox sln-steps-check sln-attendant-check">
+        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check">
             <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
@@ -92,7 +92,7 @@ $hasAttendants = false;
     // IF SIZE 900 // END
     } else if ($size == '600') { ?>
     <div class="row sln-attendant">
-        <div class="col-md-1 sln-checkbox sln-steps-check sln-attendant-check">
+        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check">
             <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
@@ -161,7 +161,7 @@ $hasAttendants = false;
     // IF SIZE 600 // END
     } else if ($size == '400') { ?>
     <div class="row sln-attendant">
-        <div class="col-md-1 sln-checkbox sln-steps-check sln-attendant-check">
+        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check">
             <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());

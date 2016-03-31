@@ -227,8 +227,8 @@ h1, h2, h3, h4, h5, h6 {
 #sln-salon.sln-salon--m,
 #sln-salon.sln-salon--s {
 	.sln-steps-description {
-		border: none;
-		margin-top: 0;
+		//border: none;
+		//margin-top: 0;
 	}
 	.sln-attendants-wrapper {
 		border-bottom-style: solid;
@@ -292,6 +292,6 @@ h1, h2, h3, h4, h5, h6 {
 	padding-top: 10rem;
 	padding-bottom: 20rem;
 	background-color: none !important;
-	//background-image: url('http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg');
+	background-image: url('http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg');
 	background-size: cover;
 }

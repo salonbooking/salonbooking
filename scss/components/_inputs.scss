@@ -28,3 +28,101 @@
   	&[type="text"] {margin-bottom: rem(40);}
   }
 }
+
+// LABELS GENERAL
+#sln-salon label {
+	cursor: pointer;
+}
+// LABELS GENERAL // END
+
+// CHECKBOXES
+%sln-input-label--big {
+	label {
+		@extend %sln-textsize--small;
+		font-weight: 400;
+		padding: rem(16px) rem(24px) rem(16px) 0;
+		margin-bottom: 0;
+	}
+}
+.sln-checkbox {
+	@extend %sln-input-label--big;
+	//@extend %sln-input-help;
+	//margin-bottom: rem(40px);
+	input {
+		position: absolute;
+		margin-left: -9999px;
+		visibility: hidden;
+	}
+	input + label {
+		display: block;
+		position: relative;
+		cursor: pointer;
+		outline: none;
+		user-select: none;
+		padding: 0;
+		height: rem(30);
+		display: table-cell;
+		vertical-align: middle;
+		font-size: 0;
+		@include bp(tablet) {
+			//line-height: rem(74px);
+			//display: inline-block;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			-webkit-box-align: center;
+			align-items: center;
+		}
+		@extend %sln-big-border--onhover;
+		&:before, &:after  {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: rem(24);
+			height: rem(24);
+			//border-radius: rem(4);
+		}
+		&:before {
+			content: "";
+			transition: transform 0.5s;
+			backface-visibility: hidden;
+			border-style: solid;
+			border-width: rem(2);
+			@extend %bd-color--emphasis;
+			@extend %bgc-color--main;
+		}
+		&:after {
+			background-color: transparent;
+			content: " \f00c";
+			transition: all 0.15s;
+			backface-visibility: hidden;
+			opacity: 0;
+			@include font-icon(18);
+			line-height: rem(24);
+			text-align: center;
+			color: #fff;
+		}
+		&:hover:before {
+			@extend %bd-color--emphasis--hover;
+		}
+		&:hover:after {
+			opacity: 1;
+			@extend %text-color--emphasis--hover;
+		}
+	}
+	input:checked + label:after,
+	input:checked + label:hover:after {
+	  opacity: 1;
+	  @extend %text-color--emphasis;
+	}
+	label span {
+		// USED FOR EMPHASIS
+		display: inline-block;
+		padding-left: rem(10px);
+		font-weight: 700;
+	}
+}
+// CHECKBOXES // END
