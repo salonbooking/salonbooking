@@ -32,11 +32,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
     $size = $_SESSION["size"];
     if ($size == '900') { ?>
     <div class="row sln-service">
-        <div class="col-md-1 sln-checkbox sln-steps-check sln-service-check">
-            <?php /*
-            <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
-            </span>
-            */ ?>
+        <div class="col-md-1 sln-checkbox sln-steps-check sln-service-check <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
             <?php
             $serviceErrors   = $ah->validateService($service);
             $settings = array('attrs' => array(
@@ -47,14 +43,12 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
                 $settings['attrs']['disabled'] = 'disabled';
             }
             ?>
-            <div class="sln-checkbox">
             <?php SLN_Form::fieldCheckbox(
                 'sln[services][' . $service->getId() . ']',
                 $bb->hasService($service),
                 $settings
             ) ?>
-            <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"><?php echo $service->getName(); ?></label>
-            </div>
+            <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"></label>
         <!-- .sln-service-check // END -->
         </div>
         <div class="col-md-11">
@@ -119,7 +113,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
                             $bb->hasService($service),
                             $settings
                         ) ?>
-                        <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"><?php echo $service->getName(); ?></label>
+                        <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"></label>
                         </div>
         <!-- .sln-service-check // END -->
                 </div>
@@ -185,7 +179,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
                 $bb->hasService($service),
                 $settings
             ) ?>
-            <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"><?php echo $service->getName(); ?></label>
+            <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"></label>
             </div>
         <!-- .sln-service-check // END -->
                 </div>

@@ -21,7 +21,7 @@ foreach ($steps as $step) {
 $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 ?>
 <div class="form-actions row">
-    <div class="col-md-8 pull-right">
+    <div class="col-md-7 pull-right">
         <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
             <button
                 <?php if($ajaxEnabled): ?>
@@ -41,6 +41,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
                 <i class="glyphicon glyphicon-chevron-left"></i> <?php _e('Back', 'salon-booking-system') ?>
             </a>
         </div>
+        <div class="col-md-1 pull-right"></div>
         <?php if ($backUrl && $currentNum > 1) : ?>
         <?php endif ?>
             <?php /* if ($currentNum > 1): ?>

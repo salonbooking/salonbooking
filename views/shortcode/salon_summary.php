@@ -12,7 +12,7 @@ $confirmation = $plugin->getSettings()->get('confirmation');
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 ?>
 <form method="post" action="<?php echo $formAction ?>" role="form"  id="salon-step-summary">
-<h2><?php _e('Booking summary', 'salon-booking-system') ?></h2>
+<h2 class="salon-step-title"><?php _e('Booking summary', 'salon-booking-system') ?></h2>
 <div class="row">
     <div class="col-md-8">
         <p class="sln-text--dark"><?php _e('Dear', 'salon-booking-system') ?>

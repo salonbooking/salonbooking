@@ -17,7 +17,7 @@ $values = array(
 ?>
 <?php if (!is_user_logged_in()): ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
-        <h2><?php _e('Returning customer?', 'salon-booking-system') ?> <?php _e('Please, log-in.', 'salon-booking-system') ?> </h2>
+        <h2 class="salon-step-title"><?php _e('Returning customer?', 'salon-booking-system') ?> <?php _e('Please, log-in.', 'salon-booking-system') ?> </h2>
     <?php
     $size = $_SESSION["size"];
     if ($size == '900') { ?>
@@ -104,7 +104,7 @@ $values = array(
     }  ?>
     </form>
     <form method="post" action="<?php echo $formAction ?>" role="form">
-    <h2><?php _e('Checkout as a guest', 'salon-booking-system') ?>, <?php _e('An account will be automatically created', 'salon-booking-system') ?>
+    <h2 class="salon-step-title"><?php _e('Checkout as a guest', 'salon-booking-system') ?>, <?php _e('An account will be automatically created', 'salon-booking-system') ?>
     </h2>
     <?php
     $size = $_SESSION["size"];
@@ -238,7 +238,7 @@ $values = array(
 <?php else: ?>
 
     <form method="post" action="<?php echo $formAction ?>" role="form">
-    <h2><?php _e('Checkout', 'salon-booking-system') ?></h2>
+    <h2 class="salon-step-title"><?php _e('Checkout', 'salon-booking-system') ?></h2>
     <?php
     $size = $_SESSION["size"];
     if ($size == '900') { ?>

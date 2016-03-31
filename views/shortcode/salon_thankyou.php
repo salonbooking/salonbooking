@@ -21,9 +21,9 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
     if ($size == '900') { ?>
     <div class="col-md-8">
             <?php if($confirmation) : ?>
-        <h2><?php _e('Booking status', 'salon-booking-system') ?></h2>
+        <h2 class="salon-step-title"><?php _e('Booking status', 'salon-booking-system') ?></h2>
     <?php else : ?> 
-        <h2><?php _e('Booking Confirmation', 'salon-booking-system') ?></h2>
+        <h2 class="salon-step-title"><?php _e('Booking Confirmation', 'salon-booking-system') ?></h2>
     <?php endif ?>
 
     <?php include '_errors.php'; ?>
@@ -47,7 +47,7 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
         </div>
         <div class="col-md-12"><hr></div>
         <div class="col-md-12">
-        <h2><?php _e('Booking number', 'salon-booking-system') ?></h2>
+        <h2 class="salon-step-title"><?php _e('Booking number', 'salon-booking-system') ?></h2>
         <h3><?php echo $plugin->getBookingBuilder()->getLastBooking()->getId() ?></h3>
         </div>
     </div>
@@ -116,9 +116,9 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
     } else if ($size == '600') { ?>
     <div class="col-md-12">
             <?php if($confirmation) : ?>
-        <h2><?php _e('Booking status', 'salon-booking-system') ?></h2>
+        <h2 class="salon-step-title"><?php _e('Booking status', 'salon-booking-system') ?></h2>
     <?php else : ?> 
-        <h2><?php _e('Booking Confirmation', 'salon-booking-system') ?></h2>
+        <h2 class="salon-step-title"><?php _e('Booking Confirmation', 'salon-booking-system') ?></h2>
     <?php endif ?>
 
     <?php include '_errors.php'; ?>
@@ -142,7 +142,7 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
         </div>
         <div class="col-md-12"><hr></div>
         <div class="col-md-12">
-        <h2><?php _e('Booking number', 'salon-booking-system') ?></h2>
+        <h2 class="salon-step-title"><?php _e('Booking number', 'salon-booking-system') ?></h2>
         <h3><?php echo $plugin->getBookingBuilder()->getLastBooking()->getId() ?></h3>
         </div>
     </div>
@@ -212,9 +212,9 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
     } else if ($size == '400') { ?>
     <div class="col-md-12">
             <?php if($confirmation) : ?>
-        <h2><?php _e('Booking status', 'salon-booking-system') ?></h2>
+        <h2 class="salon-step-title"><?php _e('Booking status', 'salon-booking-system') ?></h2>
     <?php else : ?> 
-        <h2><?php _e('Booking Confirmation', 'salon-booking-system') ?></h2>
+        <h2 class="salon-step-title"><?php _e('Booking Confirmation', 'salon-booking-system') ?></h2>
     <?php endif ?>
 
     <?php include '_errors.php'; ?>
@@ -238,7 +238,7 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
         </div>
         <div class="col-md-12"><hr></div>
         <div class="col-md-12">
-        <h2><?php _e('Booking number', 'salon-booking-system') ?></h2>
+        <h2 class="salon-step-title"><?php _e('Booking number', 'salon-booking-system') ?></h2>
         <h3><?php echo $plugin->getBookingBuilder()->getLastBooking()->getId() ?></h3>
         </div>
     </div>

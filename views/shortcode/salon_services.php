@@ -11,7 +11,7 @@ $services = $step->getServices();
 ?>
     <?php include '_errors.php'; ?>
 <form id="salon-step-services" method="post" action="<?php echo $formAction ?>" role="form">
-<h2><?php _e('What do you need?','salon-booking-system') ?></h2>
+<h2 class="salon-step-title"><?php _e('What do you need?','salon-booking-system') ?></h2>
 <?php
 	$size = $_SESSION["size"];
 	if ($size == '900') { ?>

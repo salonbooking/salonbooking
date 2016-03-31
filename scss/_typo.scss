@@ -64,18 +64,18 @@ $fontfamily--main:"Open sans", serif;
 @mixin font-icon($fontSize: null) {
   font-family: "FontAwesome";
   @if ($fontSize) {
-    font-size: rem($fontSize);
+    font-size: $fontSize;
   } @else {
-    font-size: rem(22);
+    font-size: 1em;
   }
 }
 
 // SIZES // END
 // GENERAL
 
-%sln-textsize--bigger {font-size: 1.75em;}
-%sln-textsize--big {font-size: 1.5em;}
-%sln-textsize--medium {font-size: 1.25em;}
+%sln-textsize--bigger {font-size: 1.6em;}
+%sln-textsize--big {font-size: 1.4em;}
+%sln-textsize--medium {font-size: 1.2em;}
 %sln-textsize--base {font-size: 1em;}
 %sln-textsize--small {font-size: .75em;}
 %sln-textsize--smaller {font-size: .5em;}
@@ -84,8 +84,9 @@ $fontfamily--main:"Open sans", serif;
   h1 {@extend %sln-textsize--bigger;}
   h2 {@extend %sln-textsize--big;}
   h3 {@extend %sln-textsize--medium;}
-
   p {@extend %sln-textsize--base;}
+  .sln-salon-title, .salon-step-title {@extend %text-color--contrast;}
+  .salon-step-title {@extend %sln-textsize--base; font-weight: normal;}
 }
 //%sln-title--medium {font-size: rem(30px);}
 %sln-title--medium {font-size: 2em;}

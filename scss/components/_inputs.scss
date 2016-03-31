@@ -1,21 +1,25 @@
 .sln-input {
-	margin-bottom: rem(16px);
+	margin-bottom: .8em;
 	input, textarea {
 		width: 100%;
 		border-radius: 0;
 		-webkit-box-shadow: none;
 		box-shadow: none;
 		border: none;
-		padding: rem(11px) rem(16px);
-		@include font-bigger(30, 60);
+		padding: .5em .8em;
+		@extend %sln-textsize--base;
+		line-height: 1.8em;
 		height: auto;
 		border-width: 1px;
 		border-style: solid;
 		@extend %bd-color--contrast--alpha;
 	}
-	label {padding: rem(11px) rem(16px);}
+	label {
+		padding: .5em 1.2em;
+		@extend %sln-textsize--small;
+	}
 	.help-block {
-		padding: 0 rem(16px);
+		padding: 0 .8em;
 		margin-bottom: 0;
 		@extend %text-color--contrast;
 		a {
@@ -25,7 +29,7 @@
 }
 #sln-salon.sln-salon--s .sln-input {
   input {
-  	&[type="text"] {margin-bottom: rem(40);}
+  	&[type="text"] {margin-bottom: 2em;}
   }
 }
 
@@ -40,30 +44,28 @@
 	label {
 		@extend %sln-textsize--small;
 		font-weight: 400;
-		padding: rem(16px) rem(24px) rem(16px) 0;
+		padding: .8em 1.2em .8em 0;
 		margin-bottom: 0;
 	}
 }
 .sln-checkbox {
 	@extend %sln-input-label--big;
-	//@extend %sln-input-help;
-	//margin-bottom: rem(40px);
 	input {
 		position: absolute;
 		margin-left: -9999px;
 		visibility: hidden;
 	}
 	input + label {
+		margin: .2em 0;
 		display: block;
 		position: relative;
 		cursor: pointer;
 		outline: none;
 		user-select: none;
 		padding: 0;
-		height: rem(30);
+		height: 1.6em;
 		display: table-cell;
 		vertical-align: middle;
-		font-size: 0;
 		@include bp(tablet) {
 			//line-height: rem(74px);
 			//display: inline-block;
@@ -81,8 +83,8 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			width: rem(24);
-			height: rem(24);
+			width: 1.8em;
+			height: 1.76em;
 			//border-radius: rem(4);
 		}
 		&:before {
@@ -90,7 +92,7 @@
 			transition: transform 0.5s;
 			backface-visibility: hidden;
 			border-style: solid;
-			border-width: rem(2);
+			border-width: .2em;
 			@extend %bd-color--emphasis;
 			@extend %bgc-color--main;
 		}
@@ -100,10 +102,13 @@
 			transition: all 0.15s;
 			backface-visibility: hidden;
 			opacity: 0;
-			@include font-icon(18);
-			line-height: rem(24);
+			@include font-icon(1.4em);
+			line-height: 1.2em;
+			top: .05em;
+			left: .15em;
+			width: 1em;
+			height: 1em;
 			text-align: center;
-			color: #fff;
 		}
 		&:hover:before {
 			@extend %bd-color--emphasis--hover;
@@ -126,3 +131,74 @@
 	}
 }
 // CHECKBOXES // END
+// RADIOBOXES
+.sln-radiobox {
+	@extend %sln-input-label--big;
+	input {
+		position: absolute;
+		margin-left: -9999px;
+		visibility: hidden;
+	}
+	input + label {
+		display: block;
+		position: relative;
+		cursor: pointer;
+		outline: none;
+		user-select: none;
+		padding: 0;
+		display: inline-block;
+		@extend %sln-big-border--onhover;
+		@include bp(tablet) {
+			//line-height: rem(74px);
+			//display: inline-block;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			-webkit-box-align: center;
+			align-items: center;
+		}
+		&:before, &:after  {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 1.8em;
+			height: 1.8em;
+			border-radius: 50%;
+		}
+		&:before {
+			content: "";
+			transition: transform 0.5s;
+			backface-visibility: hidden;
+			border-style: solid;
+			border-width: .2em;
+			@extend %bd-color--emphasis;
+			@extend %bgc-color--main;
+		}
+		&:after {
+			content: "";
+			width: 1.16em;
+			height: 1.16em;
+			top: .35em;
+			left: .35em;
+			transition: background 0.15s;
+			backface-visibility: hidden;
+			text-align: center;
+			opacity: 0;
+			@extend %bgc-color--main;
+		}
+		&:hover:after {
+			opacity: 1;
+			@extend %bgc-color--emphasis--hover;
+		}
+	}
+	input:checked + label:after,
+	input:checked + label:hover:after {
+		opacity: 1;
+		@extend %bgc-color--emphasis;
+	}
+}
+
+// RADIOBOXES // END

@@ -10,7 +10,7 @@ $bb = $plugin->getBookingBuilder();
 $attendants = $step->getAttendants();
 ?>
 <form id="salon-step-secondary" method="post" action="<?php echo $formAction ?>" role="form">
-<h2><?php _e($isMultipleAttSelection && count($bb->getServices()) > 1 ? 'Select your assistants' : 'Select your assistant','salon-booking-system')?></h2>
+<h2 class="salon-step-title"><?php _e($isMultipleAttSelection && count($bb->getServices()) > 1 ? 'Select your assistants' : 'Select your assistant','salon-booking-system')?></h2>
 <?php
 	$size = $_SESSION["size"];
 	if ($size == '900') { ?>

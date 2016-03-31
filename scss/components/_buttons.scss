@@ -28,23 +28,25 @@
 }
 
 // SIZES
+.sln-btn--big {
+  @extend %sln-textsize--small;
+}
 .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
   display: inline-block;
-  padding: 0 rem(10px);
-  @include font-bigger(14, 60);
-  height:  rem(60);
+  padding: 0 .5em;
+  line-height: 4em;
+  height:  4em;
   text-transform: uppercase;
-  @include bp(phone) {font-size: rem(18px);}
   &.sln-btn--block {display: block;}
 }
-.sln-btn--minwidth {min-width: rem(240);}
+.sln-btn--minwidth {min-width: 10em;}
 .sln-btn--fullwidth {width: 100%;}
 
 #sln-salon.sln-salon--m {
   .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
-    padding: 0 rem(10px);
-    @include font-bigger(14, 60);
-    height:  rem(60);
+    padding: 0 .5em;
+    line-height: 4em;
+    height:  4em;
   }
 }
 // COLORS

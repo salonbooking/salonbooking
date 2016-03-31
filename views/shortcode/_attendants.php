@@ -23,8 +23,7 @@ $hasAttendants = false;
     $size = $_SESSION["size"];
     if ($size == '900') { ?>
         <div class="row sln-attendant">
-        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check">
-            <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
+        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
             if ( $validateErrors && $validateAttServicesErrors) {
@@ -46,13 +45,13 @@ $hasAttendants = false;
             }
             ?>
 
-            <?php SLN_Form::fieldRadiobox(
+            <?php SLN_Form::fieldRadioboxForGroup(
                 'sln[attendants][]',
+                'sln[attendant]',
                 $attendant->getId(),
                 $bb->hasAttendant($attendant),
                 $settings
             ) ?>
-            </span>
         <!-- .sln-attendant-check // END -->
         </div>
         <div class="col-lg-3 col-md-3 col-xs-4 sln-steps-thumb sln-attendant-thumb">
@@ -92,8 +91,7 @@ $hasAttendants = false;
     // IF SIZE 900 // END
     } else if ($size == '600') { ?>
     <div class="row sln-attendant">
-        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check">
-            <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
+        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
             if ( $validateErrors && $validateAttServicesErrors) {
@@ -115,13 +113,13 @@ $hasAttendants = false;
             }
             ?>
 
-            <?php SLN_Form::fieldRadiobox(
+            <?php SLN_Form::fieldRadioboxForGroup(
                 'sln[attendants][]',
+                'sln[attendant]',
                 $attendant->getId(),
                 $bb->hasAttendant($attendant),
                 $settings
             ) ?>
-            </span>
         <!-- .sln-attendant-check // END -->
         </div>
         <div class="col-lg-3 col-md-3 col-xs-4 sln-steps-thumb sln-attendant-thumb">
@@ -161,8 +159,7 @@ $hasAttendants = false;
     // IF SIZE 600 // END
     } else if ($size == '400') { ?>
     <div class="row sln-attendant">
-        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check">
-            <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
+        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
             if ( $validateErrors && $validateAttServicesErrors) {
@@ -184,13 +181,13 @@ $hasAttendants = false;
             }
             ?>
 
-            <?php SLN_Form::fieldRadiobox(
+            <?php SLN_Form::fieldRadioboxForGroup(
                 'sln[attendants][]',
+                'sln[attendant]',
                 $attendant->getId(),
                 $bb->hasAttendant($attendant),
                 $settings
             ) ?>
-            </span>
         <!-- .sln-attendant-check // END -->
         </div>
         <div class="col-xs-11">

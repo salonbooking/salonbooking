@@ -42,7 +42,7 @@ else:
 ?>
     <form method="post" action="<?php echo $formAction ?>" id="salon-step-date" 
           data-intervals="<?php echo esc_attr(json_encode($intervals->toArray()));?>">
-    <h2><?php _e('When do you want to come?', 'salon-booking-system') ?></h2>
+    <h2 class="salon-step-title"><?php _e('When do you want to come?', 'salon-booking-system') ?></h2>
         <?php
         $size = $_SESSION["size"];
         if ($size == '900') {

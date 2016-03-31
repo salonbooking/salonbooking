@@ -191,6 +191,16 @@ class SLN_Form
     <?php
     }
 
+    static public function fieldRadioboxForGroup($groupname, $radiosuffix, $value, $checked = false, $settings = array())
+    {
+        ?>
+        <input type="radio" name="<?php echo $groupname ?>" id="<?php echo self::makeID($radiosuffix.'['.$value.']') ?>"
+               value="<?php echo $value?>"  <?php echo $checked ? 'checked="checked"' : '' ?>
+        <?php echo self::attrs($settings) ?>/>
+        <label for="<?php echo self::makeID($radiosuffix.'['.$value.']') ?>"></label>
+    <?php
+    }
+
     static public function fieldRadioboxGroup($name, $items, $value, $settings = array(), $map = false)
     {
         if (isset($settings['map'])) {

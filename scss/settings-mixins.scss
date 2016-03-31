@@ -7,7 +7,7 @@
   &:focus {outline:0 !important;}
 }
 
-$browser-context: 16px;
+$browser-context: 18px;
 
 @function rem($pixels, $context: $browser-context) {
   @if (unitless($pixels)) {

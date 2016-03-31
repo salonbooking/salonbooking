@@ -9,7 +9,7 @@ $bb = $plugin->getBookingBuilder();
 $services = $step->getServices();
 ?>
 <form id="salon-step-secondary" method="post" action="<?php echo $formAction ?>" role="form">
-<h2><?php _e('Something more?','salon-booking-system')?></h2>
+<h2 class="salon-step-title"><?php _e('Something more?','salon-booking-system')?></h2>
 <?php
 	$size = $_SESSION["size"];
 	if ($size == '900') { ?>

@@ -20,7 +20,7 @@ $customsize = $_GET["size"];
 if (isset($customsize)) {
     $_SESSION["size"] = $customsize;
 } else {
-  $_SESSION["size"] = "600";
+  $_SESSION["size"] = "900";
 }
 ?>
 <div id="sln-salon" class="sln-bootstrap container-fluid <?php
@@ -35,7 +35,7 @@ if (isset($customsize)) {
         echo '<h2 class="sln_notice">' . __('Your free version is expired - upgrade to PRO', 'salon-booking-system') . '</h2>';
 
     ?>
-        <h1><?php _e('Book an appointment', 'salon-booking-system'); ?></h1>
+        <h1 class="sln-salon-title"><?php _e('Book an appointment', 'salon-booking-system'); ?></h1>
 <?php echo $content ?>
 
         <?php
@@ -51,6 +51,7 @@ if (isset($customsize)) {
 
         ?>
 <?php /*
+*/ ?>
 <div class="sln-stepper">
 <?php $i = 0;
           foreach ($salon->getSteps() as $step) : $i++; ?>
@@ -58,6 +59,5 @@ if (isset($customsize)) {
     <span class="step-number"><?php echo $i ?></span> <span class="step-label"><?php echo $step; ?></span>
   </div>
 <?php endforeach ?>
-<div id="sln-notifications"></div>
 </div>
-*/ ?>
+<div id="sln-notifications"></div>

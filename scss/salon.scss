@@ -10,9 +10,6 @@
 	border-width: 1px;
 	border-style: solid;
 	@extend %bd-color--contrast--alpha;
-	h2 {
-		@include font-bigger();
-	}
 	padding: rem(40px);
 	position: relative;
 	//margin-right: auto;
@@ -25,8 +22,8 @@
 	&.sln-salon--s {max-width: 400px;}
 
 	> form {
-		margin-top: rem(60);
-		h2 {margin-bottom: rem(20);}
+		margin-top: 2em;
+		h2 {margin-bottom: 1em;}
 	}
 
 	// TEMP
@@ -44,13 +41,19 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 .sln-steps {
-	margin-bottom: rem(40);
+	margin-bottom: 2em;
 }
 .sln-steps-name, .sln-steps-price {
-	@extend %text-color--contrast;
 	@extend %sln-title--medium;
 	margin-top: 0;
 	margin-bottom: 0;
+}
+.sln-steps-name {
+	@extend %text-color--emphasis;
+	&:hover {@extend %text-color--emphasis--hover;}
+}
+.sln-steps-price {
+	@extend %text-color--contrast;
 }
 .sln-steps-info,
 .sln-steps-description {
@@ -59,9 +62,9 @@ h1, h2, h3, h4, h5, h6 {
 .sln-steps-description {
 	@extend %text-color--dark;
 	border-top-style: dashed;
-	border-top-width: rem(1);
-	margin-top: rem(10);
-	padding-top: rem(10);
+	border-top-width: .05em;
+	margin-top: .5em;
+	padding-top: .5em;
 	@extend %bd-color--contrast;
 }
 .sln-steps-price {
@@ -74,14 +77,14 @@ h1, h2, h3, h4, h5, h6 {
 .sln-list--dashed {
 	list-style: none;
 	display: inline-block;
-	margin-bottom: rem(20);
+	margin-bottom: 1em;
 	margin-left: 0;
     padding-left: 0;
 	li {
-		padding-bottom: rem(7);
-		margin-bottom: rem(14);
+		padding-bottom: .4em;
+		margin-bottom: .75em;
 		border-bottom-style: dotted;
-		border-bottom-width: rem(1);
+		border-bottom-width: .05em;
 		@extend %bd-color--contrast--alpha;
 		&:last-child {
 			padding-bottom: 0;
@@ -97,19 +100,22 @@ h1, h2, h3, h4, h5, h6 {
 
 // SERVICES
 .sln-service {
-	margin-bottom: rem(40);
+	margin-bottom: 2em;
 }
 // SERVICES // END
 
 // ATTENDANTS
-.sln-attendant {margin-bottom: rem(80);}
+.sln-attendant {
+	margin-bottom: 4em;
+	&:last-child {margin-bottom: 0;}
+}
 // ATTENDANTS // END
 
 // SUMMARY
-.sln-summary {margin-top: rem(20);}
+.sln-summary {margin-top: 2em;}
 .sln-summary-row {
-	padding: 0 0 rem(20) 0;
-	margin-bottom: rem(20);
+	padding: 0 0 1em 0;
+	margin-bottom: 1em;
 	.label {
 		@extend %text-color--dark;
 		font-weight: normal;
@@ -117,10 +123,10 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	.sln-steps-name, .sln-steps-price{margin-bottom: 0;}
 	hr {
-		margin: rem(10) 0 0 0;
+		margin: .5em 0 0 0;
 		border: 0;
 		border-bottom-style: solid;
-		border-bottom-width: rem(1);
+		border-bottom-width: .05em;
 		@extend %bd-color--contrast--alpha;
 	}
 	&:last-child {
@@ -130,27 +136,27 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 .sln-step-summary {
-	.sln-total {margin-bottom: rem(40);}
+	.sln-total {margin-bottom: 2em;}
 }
 #sln-salon.sln-salon--s .sln-summary-row {
 	margin-bottom: 0;
 	.sln-steps-price {
 		text-align: left;
-		margin: rem(10) 0;
+		margin: .5em 0;
 	}
 }
 // SUMMARY // END
 
 // THANK YOU
 .sln-thankyou {
-	margin-top: rem(40);
+	margin-top: 2em;
 	.sln-form-actions-wrapper {
-		margin-top: rem(50);
+		margin-top: 2.5em;
 	}
 }
 #sln-salon .sln-thankyou--okbox {
-	margin-top: rem(20);
-	padding: rem(80) 0 rem(60) 0;
+	margin-top: 1em;
+	padding: 4em 0 3em 0;
 	@extend %bgc-color--ok;
 	//> div {text-align: center;}
 	h1 {
@@ -159,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
 		@extend %text-color--contrast;
 	}
 	h2 {
-		padding: 0 rem(10) 0 rem(70);
+		padding: 0 .5em 0 3em;
 		@extend %text-color--contrast;
 	}
 	h3 {
@@ -170,38 +176,38 @@ h1, h2, h3, h4, h5, h6 {
 		display: inline-block;
 	}
 	hr {
-		margin: rem(20) 0 rem(10) 0;
+		margin: 1em 0 .5em 0;
 		border: 0;
 		border-bottom-style: solid;
-		border-bottom-width: rem(1);
+		border-bottom-width: .05em;
 		@extend %bd-color--contrast--alpha;
 	}
 	.sln-icon {@extend %text-color--contrast;}
 }
 .sln-form-actions {
-	margin-bottom: rem(20);
+	margin-bottom: 1em;
 }
 .sln-payment-actions {
 	h4 {
 		@extend %text-color--contrast;
-		margin-top: rem(20);
+		margin-top: 1em;
 	}
 }
 
 #sln-salon.sln-salon--s .sln-thankyou {
 	.sln-thankyou--okbox {
-		margin-top: rem(20);
-		padding: rem(60) 0;
+		margin-top: 1em;
+		padding: 3em 0;
 		h1, h2, h3 {text-align: center;}
 		h2, h3 {
 			display: block;
 		}
 		hr {
-			margin: rem(30) 0 rem(20) 0;
+			margin: 1.5em 0 1em 0;
 		}
 	}
 	.sln-icon-wrapper {
-		padding-top: rem(80);
+		padding-top: 4em;
 		padding-left: 0;
 		text-align: center;
 		.sln-icon {
@@ -215,7 +221,7 @@ h1, h2, h3, h4, h5, h6 {
 // ICONS // END
 .sln-icon-wrapper {
 	position: relative;
-	padding-left: rem(70);
+	padding-left: 3.5em;
 	.sln-icon {
 		position: absolute;
 		left: 0;
@@ -232,10 +238,10 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	.sln-attendants-wrapper {
 		border-bottom-style: solid;
-		border-bottom-width: rem(3);
+		border-bottom-width: .16em;
 		@extend %bd-color--contrast;
-		padding-bottom: rem(10);
-		margin-bottom: rem(30);
+		padding-bottom: .5em;
+		margin-bottom: 1.5em;
 	}
 }
 // MOD AND OVERRIDES BY SIZE // END
@@ -247,23 +253,13 @@ h1, h2, h3, h4, h5, h6 {
 .sln-total-price {text-align: right;}
 .sln-total-label, .sln-total-price {
 	border-top-style: solid;
-	border-top-width: rem(3);
+	border-top-width: .16em;
 	@extend %bd-color--contrast;
 	@extend %text-color--dark;
-	padding-top: rem(10);
-	margin-top: rem(30);
+	padding-top: .5em;
+	margin-top: 1.5em;
 }
 // TOTAL ROW // END
-%testextend {background-color: red;}
-@mixin testmixin () {background-color: blue;}
-:matches(#sln-salon--admin, .sln-calendar--wrapper) {
-	.test1 {@extend %testextend;}
-	.test2 {@extend %testextend;}
-	.test3 {@extend %testextend;}
-	.test4 {@include testmixin;}
-	.test5 {@include testmixin;}
-	.test6 {@include testmixin;}
-}
 
 #sln-notifications {
 	@include transition(background 250ms, opacity 200ms);
@@ -281,8 +277,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sln-box--main {
-	margin-top: rem(40px);
-	margin-bottom: rem(60px);
+	margin-top: 2em;
+	margin-bottom: 3em;
 }
 
 
