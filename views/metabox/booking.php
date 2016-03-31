@@ -23,7 +23,8 @@ $helper->showNonce($postType);
 <span id="salon-step-date"
       data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>"
       data-isnew="<?php echo $booking->isNew() ? 1 : 0 ?>"
-      data-deposit="<?php echo $settings->get('pay_deposit') ?>">
+      data-deposit="<?php echo $settings->get('pay_deposit') ?>"
+      data-m_attendant_enabled="<?php echo $settings->get('m_attendant_enabled') ?>">
     <div class="row form-inline">
         <div class="col-md-3 col-sm-6">
             <div class="form-group">
@@ -159,13 +160,20 @@ $helper->showNonce($postType);
 
         <?php ob_start(); ?>
         <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-line">
-            <div class="col-xs-6 col-sm-1 col-md-1">
-                <label class="time"></label>
-            </div>
-            <div class="col-xs-6 col-sm-1 col-md-1">
-                <label class="time"></label>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
+            <?php if ($settings->get('m_attendant_enabled')): ?>
+                <div class="col-xs-6 col-sm-1 col-md-1">
+                    <label class="time"></label>
+                </div>
+                <div class="col-xs-6 col-sm-1 col-md-1">
+                    <label class="time"></label>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($settings->get('m_attendant_enabled')): ?>
+                <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
+            <?php else: ?>
+                <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
+            <?php endif; ?>
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[services][]',
                     array('__service_id__' => '__service_title__'),
@@ -220,8 +228,10 @@ $helper->showNonce($postType);
         $lineItem = preg_replace("/\r\n|\n/", ' ', $lineItem);
         ?>
         <div class="row col-xs-12 col-sm-12 col-md-12">
-            <div class="col-xs-6 col-sm-1 col-md-1"><h4><?php _e('Start at', 'salon-booking-system') ?></h4></div>
-            <div class="col-xs-6 col-sm-1 col-md-1"><h4><?php _e('End at', 'salon-booking-system') ?></h4></div>
+            <?php if ($settings->get('m_attendant_enabled')): ?>
+                <div class="col-xs-6 col-sm-1 col-md-1"><h4><?php _e('Start at', 'salon-booking-system') ?></h4></div>
+                <div class="col-xs-6 col-sm-1 col-md-1"><h4><?php _e('End at', 'salon-booking-system') ?></h4></div>
+            <?php endif; ?>
             <div class="col-xs-12 col-sm-4 col-md-4"><h4><?php _e('Service', 'salon-booking-system') ?></h4></div>
             <div class="col-xs-12 col-sm-2 col-md-2"><h4><?php _e('Attendant', 'salon-booking-system') ?></h4></div>
             <div class="col-xs-12 col-sm-4 col-md-4"><h4><?php _e('', 'salon-booking-system') ?></h4></div>
@@ -231,13 +241,20 @@ $helper->showNonce($postType);
         $servicesData = array();
         foreach($booking->getBookingServices()->getItems() as $bookingService): ?>
         <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-line">
-            <div class="col-xs-6 col-sm-1 col-md-1">
-                <label class="time"><?php echo SLN_Plugin::getInstance()->format()->time($bookingService->getStartsAt()) ?></label>
-            </div>
-            <div class="col-xs-6 col-sm-1 col-md-1">
-                <label class="time"><?php echo SLN_Plugin::getInstance()->format()->time($bookingService->getEndsAt()) ?></label>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
+            <?php if ($settings->get('m_attendant_enabled')): ?>
+                <div class="col-xs-6 col-sm-1 col-md-1">
+                    <label class="time"><?php echo SLN_Plugin::getInstance()->format()->time($bookingService->getStartsAt()) ?></label>
+                </div>
+                <div class="col-xs-6 col-sm-1 col-md-1">
+                    <label class="time"><?php echo SLN_Plugin::getInstance()->format()->time($bookingService->getEndsAt()) ?></label>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($settings->get('m_attendant_enabled')): ?>
+                <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
+            <?php else: ?>
+                <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
+            <?php endif; ?>
                 <?php
                 $servicesData[ $bookingService->getService()->getId()] = array(
                     'old_price'    => $bookingService->getPrice(),
@@ -299,7 +316,11 @@ $helper->showNonce($postType);
         <div class="clearfix"></div>
         <?php endforeach ?>
         <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-action">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2 col-md-offset-2 sln-select-wrapper sln-select-wrapper-no-search">
+            <?php if ($settings->get('m_attendant_enabled')): ?>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2 col-md-offset-2 sln-select-wrapper sln-select-wrapper-no-search">
+            <?php else: ?>
+                <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper sln-select-wrapper-no-search">
+            <?php endif; ?>
                 <select class="sln-select" name="_sln_booking_service_select" id="_sln_booking_service_select">
                     <option value=""><?php _e('Select a service','salon-booking-system') ?></option>
                 <?php
