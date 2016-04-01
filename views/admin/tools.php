@@ -3,6 +3,24 @@
 </div>
 <div class="clearfix"></div>
 <div id="sln-salon--admin" class="container-fluid wpcontent">
+	<?php if (!empty($versionToRollback)): ?>
+	<form>
+		<div class="sln-tab" id="sln-tab-general">
+			<div class="sln-box sln-box--main">
+				<h2 class="sln-box-title"><?php _e('Rollback','salon-booking-system') ?></h2>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<h6 class="sln-fake-label"><?php echo __('Rollback Plugin Data to version ','salon-booking-system') . $versionToRollback ?></h6>
+					</div>
+					<div class="col-sm-8 form-group sln-input--simple">
+						<input type="hidden" name="page" value="salon-tools">
+						<button id="tools-rollback-btn" class='sln-btn sln-btn--main sln-btn--big' name="do_rollback_sln" value="true"><?php _e('Apply','salon-booking-system'); ?></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<?php endif ?>
 	<form>
 		<div class="sln-tab" id="sln-tab-general">
 			<div class="sln-box sln-box--main">
