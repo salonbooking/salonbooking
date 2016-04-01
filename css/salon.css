@@ -291,7 +291,8 @@ th {
   color: #5bc24c; }
 
 .sln-alert--problem:after,
-#sln-salon .alert-danger:after {
+#sln-salon .alert-danger:after,
+#sln-salon .alert-warning:after {
   color: #D22221; }
 
 .sln-checkbox input + label:before, .sln-radiobox input + label:before, .sln-radiobox input + label:after, #sln-salon {
@@ -319,15 +320,11 @@ th {
 #sln-salon .sln-thankyou--okbox {
   background-color: #5bc24c; }
 
-.sln-alert,
-#sln-salon .alert {
-  background-color: #fff; }
-
 .sln-steps-description, #sln-salon.sln-salon--m .sln-attendants-wrapper,
 #sln-salon.sln-salon--s .sln-attendants-wrapper, .sln-total-label, .sln-total-price {
   border-color: #004258 !important; }
 
-.sln-input input, .sln-input textarea, #sln-salon, .sln-list--dashed li, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
+.sln-input input, .sln-input textarea, .snl-error-list-item, #sln-salon, .sln-list--dashed li, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
 .sln-checkbox input + label:before, .sln-radiobox input + label:before {
@@ -347,11 +344,11 @@ th {
   font-size: 1.2em; }
 
 #sln-salon p, #sln-salon .salon-step-title, .sln-input input, .sln-input textarea, .sln-alert,
-#sln-salon .alert, .sln-stepper .step .step-number {
+#sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration {
   font-size: 1em; }
 
-.sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-stepper .step {
-  font-size: .75em; }
+.sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-steps-duration small {
+  font-size: .8em; }
 
 #sln-salon {
   font-size: 18px; }
@@ -1002,11 +999,11 @@ th {
 
 .sln-alert,
 #sln-salon .alert {
+  display: inline-block;
   position: relative;
   border: none;
-  padding: 1rem 1rem 1rem 3rem;
-  position: relative;
-  margin: 1rem 0;
+  padding: .6rem 1.6rem .6rem 3.6rem;
+  margin: 1rem 0 .4rem 0;
   border-radius: 0; }
   .sln-alert:after,
   #sln-salon .alert:after {
@@ -1014,15 +1011,36 @@ th {
     font-size: 2em;
     display: inline-block;
     content: "\f05a";
-    left: .2em;
+    left: .4em;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%; }
 
+.sln-alert.sln-alert-medium {
+  display: block;
+  padding: .5rem 1.6rem .5rem 3.2rem;
+  margin: .4rem 0;
+  font-weight: bold; }
+  .sln-alert.sln-alert-medium:after {
+    left: .6em; }
+
 .sln-alert--problem:after,
-#sln-salon .alert-danger:after {
+#sln-salon .alert-danger:after,
+#sln-salon .alert-warning:after {
   content: "\f06a"; }
+
+.snl-error-list-item {
+  display: block;
+  font-weight: bold;
+  border-bottom-style: solid;
+  border-bottom-width: .05em;
+  padding-bottom: .5em;
+  margin-bottom: .5em; }
+  .snl-error-list-item:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0; }
 
 .sln-stepper {
   width: 100%;
@@ -1103,7 +1121,9 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 
 .sln-steps-info label,
 .sln-steps-description label {
-  font-weight: normal; }
+  font-weight: normal;
+  width: 100%;
+  display: block; }
 
 .sln-steps-description {
   border-top-style: dashed;
@@ -1136,6 +1156,11 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 
 .sln-service {
   margin-bottom: 2em; }
+
+.sln-steps-duration {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold; }
 
 .sln-attendant {
   margin-bottom: 4em; }

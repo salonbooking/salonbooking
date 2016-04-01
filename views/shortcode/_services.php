@@ -79,11 +79,14 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
             </div>
         </div>
         <?php if ($serviceErrors) : ?>
-            <div class="col-md-12 alert alert-warning">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
                 <?php foreach ($serviceErrors as $error): ?>
-                    <p><?php echo $error ?></p>
+                  <div class="sln-alert sln-alert-medium sln-alert--problem"><?php echo $error ?></div>
                 <?php endforeach ?>
             </div>
+        </div>
         <?php endif ?>
     </div>
     <?php
@@ -134,7 +137,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
                         <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                             <p><?php echo $service->getContent() ?></p>
                             <?php if ($service->getDuration()->format('H:i') != '00:00'): ?>
-                                <span class="sln-steps-duration sln-service-duration"><?php echo __('Duration', 'salon-booking-system')?>: <?php echo $service->getDuration()->format(
+                                <span class="sln-steps-duration sln-service-duration"><small><?php echo __('Duration', 'salon-booking-system')?>:</small> <?php echo $service->getDuration()->format(
                                         'H:i'
                                     ) ?></span>
                             <?php endif ?>
@@ -144,11 +147,14 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
             </div>
         </div>
         <?php if ($serviceErrors) : ?>
-            <div class="col-md-12 alert alert-warning">
+            <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
                 <?php foreach ($serviceErrors as $error): ?>
-                    <p><?php echo $error ?></p>
+                  <div class="sln-alert sln-alert-medium sln-alert--problem"><?php echo $error ?></div>
                 <?php endforeach ?>
             </div>
+        </div>
         <?php endif ?>
     </div>
 
@@ -209,10 +215,12 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
             </div>
         </div>
         <?php if ($serviceErrors) : ?>
-            <div class="col-md-12 alert alert-warning">
-                <?php foreach ($serviceErrors as $error): ?>
-                    <p><?php echo $error ?></p>
-                <?php endforeach ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <?php foreach ($serviceErrors as $error): ?>
+                      <div class="sln-alert sln-alert-medium sln-alert--problem"><?php echo $error ?></div>
+                    <?php endforeach ?>
+                </div>
             </div>
         <?php endif ?>
     </div>

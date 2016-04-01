@@ -77,8 +77,8 @@ $fontfamily--main:"Open sans", serif;
 %sln-textsize--big {font-size: 1.4em;}
 %sln-textsize--medium {font-size: 1.2em;}
 %sln-textsize--base {font-size: 1em;}
-%sln-textsize--small {font-size: .75em;}
-%sln-textsize--smaller {font-size: .5em;}
+%sln-textsize--small {font-size: .8em;}
+%sln-textsize--smaller {font-size: .6em;}
 #sln-salon {
   font-size: $browser-context;
   h1 {@extend %sln-textsize--bigger;}

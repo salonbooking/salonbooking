@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .sln-steps-info,
 .sln-steps-description {
-	label {font-weight: normal;}
+	label {font-weight: normal; width: 100%; display: block;}
 }
 .sln-steps-description {
 	@extend %text-color--dark;
@@ -103,6 +103,13 @@ h1, h2, h3, h4, h5, h6 {
 // SERVICES
 .sln-service {
 	margin-bottom: 2em;
+}
+.sln-steps-duration {
+	display: block;
+	@extend %sln-textsize--base;
+	text-transform: uppercase;
+	font-weight: bold;
+	small {@extend %sln-textsize--small;}
 }
 // SERVICES // END
 

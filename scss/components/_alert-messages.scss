@@ -1,20 +1,20 @@
 .sln-alert,
 #sln-salon .alert {
+  display: inline-block;
   position: relative;
   border: none;
-  padding: 1rem 1rem 1rem 3rem;
-  position: relative;
-  margin: 1rem 0;
+  padding: .6rem 1.6rem .6rem 3.6rem;
+  margin: 1rem 0 .4rem 0;
   @extend %sln-textsize--base;
   @extend %text-color--contrast;
-  @extend %bgc-color--white;
+  //@extend %bgc-color--white;
   border-radius: 0;
   &:after {
     @include font-icon(2em);
     display: inline-block;
     content: "\f05a";
     @extend %absolute-vertical-centering;
-    left: .2em;
+    left: .4em;
     @extend %sln-textsize--bigger;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
@@ -22,11 +22,39 @@
     border-radius: 50%;
   }
 }
+.sln-alert.sln-alert-medium {
+  display: block;
+  padding: .5rem 1.6rem .5rem 3.2rem;
+  margin: .4rem 0;
+  @extend %sln-textsize--small;
+  font-weight: bold;
+  &:after {
+    left: .6em;
+  }
+}
 
 .sln-alert--problem,
-#sln-salon .alert-danger {
+#sln-salon .alert-danger,
+#sln-salon .alert-warning {
+  //@extend %text-color--problem;
   &:after {
     content: "\f06a";
     @extend %text-color--problem;
+  }
+}
+
+.snl-error-list-item {
+  display: block;
+  @extend %sln-textsize--small;
+  font-weight: bold;
+  border-bottom-style: solid;
+  border-bottom-width: .05em;
+  @extend %bd-color--contrast--alpha;
+  padding-bottom: .5em;
+  margin-bottom: .5em;
+  &:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
   }
 }
