@@ -1003,7 +1003,7 @@ th {
   position: relative;
   border: none;
   padding: .6rem 1.6rem .6rem 3.6rem;
-  margin: 1rem 0 .4rem 0;
+  margin: 1rem 0;
   border-radius: 0; }
   .sln-alert:after,
   #sln-salon .alert:after {

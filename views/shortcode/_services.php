@@ -153,6 +153,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
                 <?php foreach ($serviceErrors as $error): ?>
                   <div class="sln-alert sln-alert-medium sln-alert--problem"><?php echo $error ?></div>
                 <?php endforeach ?>
+                <div class="sln-alert sln-alert-medium sln-alert--problem" style="display: none" id="availabilityerror"><?php _e('Not enough time for this service','salon-booking-system') ?></div>
             </div>
         </div>
         <?php endif ?>
@@ -231,7 +232,6 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
     <?php
     // ELSE // END
     }  ?>
-        
     <?php endforeach ?>
     <?php if($group['term'] !== false): ?>
     <!-- panel END -->
@@ -240,7 +240,6 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
     <!-- panel END -->
     <?php endif ?>
     <?php endforeach ?>
-    <div class="alert alert-danger" style="display: none" id="availabilityerror"><p><?php echo __('not enough time for this service','salon-booking-system') ?></p></div>
 	<?php if ($showPrices){ ?>
     <div class="row sln-total">
     <?php
