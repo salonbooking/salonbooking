@@ -1,0 +1,32 @@
+.sln-alert,
+#sln-salon .alert {
+  position: relative;
+  border: none;
+  padding: 1rem 1rem 1rem 3rem;
+  position: relative;
+  margin: 1rem 0;
+  @extend %sln-textsize--base;
+  @extend %text-color--contrast;
+  @extend %bgc-color--white;
+  border-radius: 0;
+  &:after {
+    @include font-icon(2em);
+    display: inline-block;
+    content: "\f05a";
+    @extend %absolute-vertical-centering;
+    left: .2em;
+    @extend %sln-textsize--bigger;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-radius: 50%;
+  }
+}
+
+.sln-alert--problem,
+#sln-salon .alert-danger {
+  &:after {
+    content: "\f06a";
+    @extend %text-color--problem;
+  }
+}

@@ -190,7 +190,8 @@ th {
   -ms-transform: translateX(-50%) translateY(0);
   transform: translateX(-50%) translateY(0); }
 
-.sln-icon-wrapper .sln-icon {
+.sln-alert:after,
+#sln-salon .alert:after, .sln-icon-wrapper .sln-icon {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -264,7 +265,8 @@ th {
   color: white; }
 
 #sln-salon .sln-salon-title, #sln-salon .salon-step-title, .sln-text--contrast, .sln-input .help-block, .sln-input .help-block a, .sln-btn--nobkg,
-.sln-bootstrap .sln-btn--nobkg, .sln-stepper .step.step--active .step-label, #sln-salon, .sln-steps-price, #sln-salon .sln-thankyou--okbox h1, #sln-salon .sln-thankyou--okbox h2, #sln-salon .sln-thankyou--okbox h3, #sln-salon .sln-thankyou--okbox .sln-icon, .sln-payment-actions h4 {
+.sln-bootstrap .sln-btn--nobkg, .sln-alert,
+#sln-salon .alert, .sln-stepper .step.step--active .step-label, #sln-salon, .sln-steps-price, #sln-salon .sln-thankyou--okbox h1, #sln-salon .sln-thankyou--okbox h2, #sln-salon .sln-thankyou--okbox h3, #sln-salon .sln-thankyou--okbox .sln-icon, .sln-payment-actions h4 {
   color: #004258; }
 
 .sln-text--contrast--alpha {
@@ -287,6 +289,10 @@ th {
 
 .sln-text--ok {
   color: #5bc24c; }
+
+.sln-alert--problem:after,
+#sln-salon .alert-danger:after {
+  color: #D22221; }
 
 .sln-checkbox input + label:before, .sln-radiobox input + label:before, .sln-radiobox input + label:after, #sln-salon {
   background-color: rgba(255, 255, 255, 0.75); }
@@ -313,6 +319,10 @@ th {
 #sln-salon .sln-thankyou--okbox {
   background-color: #5bc24c; }
 
+.sln-alert,
+#sln-salon .alert {
+  background-color: #fff; }
+
 .sln-steps-description, #sln-salon.sln-salon--m .sln-attendants-wrapper,
 #sln-salon.sln-salon--s .sln-attendants-wrapper, .sln-total-label, .sln-total-price {
   border-color: #004258 !important; }
@@ -326,7 +336,8 @@ th {
 .sln-checkbox input + label:hover:before {
   border-color: #0091EA !important; }
 
-#sln-salon h1 {
+#sln-salon h1, .sln-alert:after,
+#sln-salon .alert:after {
   font-size: 1.6em; }
 
 #sln-salon h2 {
@@ -335,7 +346,8 @@ th {
 #sln-salon h3 {
   font-size: 1.2em; }
 
-#sln-salon p, #sln-salon .salon-step-title, .sln-input input, .sln-input textarea, .sln-stepper .step .step-number {
+#sln-salon p, #sln-salon .salon-step-title, .sln-input input, .sln-input textarea, .sln-alert,
+#sln-salon .alert, .sln-stepper .step .step-number {
   font-size: 1em; }
 
 .sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-stepper .step {
@@ -987,6 +999,30 @@ th {
 .sln-bootstrap .sln-btn--emphasis:focus button,
 .sln-bootstrap .sln-btn--emphasis:focus a {
   text-decoration: none; }
+
+.sln-alert,
+#sln-salon .alert {
+  position: relative;
+  border: none;
+  padding: 1rem 1rem 1rem 3rem;
+  position: relative;
+  margin: 1rem 0;
+  border-radius: 0; }
+  .sln-alert:after,
+  #sln-salon .alert:after {
+    font-family: "FontAwesome";
+    font-size: 2em;
+    display: inline-block;
+    content: "\f05a";
+    left: .2em;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-radius: 50%; }
+
+.sln-alert--problem:after,
+#sln-salon .alert-danger:after {
+  content: "\f06a"; }
 
 .sln-stepper {
   width: 100%;

@@ -1,15 +1,15 @@
-$cl_main: rgb(0,53,83);
-$cl_main--medium: #4c7186;
-$cl_main--light: rgb(199,223,243);
-$cl_main--light--border: #c5cfd4;
-$cl_main--white: #fff;
-$cl_main--grey: #888;
-$cl_main--emphasis: #0C6EB6;
-$cl_problem: #D22221;
-$cl_problem--light: #e63f24;
-$cl_warning: #f5b025;
-$cl_warning--light: #f7c65f;
-$cl_ok: #5bc24c;
+//$sln-color--main: rgb(0,53,83);
+//$sln-color--main--medium: #4c7186;
+//$sln-color--main--light: rgb(199,223,243);
+//$sln-color--main--light--border: #c5cfd4;
+$sln-color--white: #fff;
+$sln-color--main--grey: #888;
+$sln-color--main--emphasis: #0C6EB6;
+$sln-color--problem: #D22221;
+$sln-color--problem--light: #e63f24;
+$sln-color--warning: #f5b025;
+$sln-color--warning--light: #f7c65f;
+$sln-color--ok: #5bc24c;
 
 $sln-color--main: rgba(255, 255, 255, .75);
 $sln-color--contrast: rgba(0, 66, 88, 1);
@@ -28,8 +28,10 @@ $sln-color--emphasis--hover: #0091EA;
 %text-color--dark {color: $sln-color--dark;}
 %text-color--emphasis {color: $sln-color--emphasis;}
 %text-color--emphasis--hover {color: $sln-color--emphasis--hover;}
-%text-color--grey {color: $cl_main--grey;}
-%text-color--ok {color: $cl_ok;}
+%text-color--grey {color: $sln-color--main--grey;}
+%text-color--ok {color: $sln-color--ok;}
+%text-color--problem {color: $sln-color--problem;}
+%text-color--problem--light {color: $sln-color--problem--light;}
 
 // BACKGORUNDS
 %bgc-color--main {background-color: $sln-color--main;}
@@ -39,8 +41,9 @@ $sln-color--emphasis--hover: #0091EA;
 %bgc-color--emphasis {background-color: $sln-color--emphasis;}
 %bgc-color--emphasis--hover {background-color: $sln-color--emphasis--hover;}
 %bgc-color--transparent {background-color: transparent;}
-%bgc-color--grey {background-color: $cl_main--grey;}
-%bgc-color--ok {background-color: $cl_ok;}
+%bgc-color--grey {background-color: $sln-color--main--grey;}
+%bgc-color--ok {background-color: $sln-color--ok;}
+%bgc-color--white {background-color: $sln-color--white;}
 
 // BORDERS
 %bd-color--main {border-color: $sln-color--main !important;}
@@ -51,5 +54,5 @@ $sln-color--emphasis--hover: #0091EA;
 %bd-color--emphasis--hover {border-color: $sln-color--emphasis--hover !important;}
 %bd-color--transparent {border-color: transparent !important;}
 %bd-color--main--noalpha {border-color: $sln-color--main--noalpha !important;}
-%bd-color--grey {border-color: $cl_main--grey !important;}
-%bd-color--ok {border-color: $cl_ok !important;}
+%bd-color--grey {border-color: $sln-color--main--grey !important;}
+%bd-color--ok {border-color: $sln-color--ok !important;}
