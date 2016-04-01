@@ -9,21 +9,23 @@
 
 $ah = $plugin->getAvailabilityHelper();
 $ah->setDate($plugin->getBookingBuilder()->getDateTime());
-$selectedServices = $bb->getServices();
 
-foreach ($selectedServices as $service) :
+$bookingServices = SLN_Wrapper_Booking_Services::build($bb->getAttendantsIds(), $bb->getDateTime());
+
+foreach ($bookingServices->getItems() as $bookingService) :
+    $service = $bookingService->getService();
     $hasAttendants = false;
 ?>
 <div class="sln-attendant-list">
     <h3><?php echo $service->getName() ?></h3>
     <?php foreach ($attendants as $attendant) : ?>
         <?php
-        $validateAttServicesErrors = $ah->validateAttendantService($attendant, $service);
-        if (!empty($validateAttServicesErrors)) {
+        $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);
+        if (!empty($validateAttServiceErrors)) {
             continue;
         }
 
-        $errors   = $ah->validateAttendant($attendant, $bb->getDuration());
+        $errors   = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getDuration());
         $settings = array();
         if ($errors) {
             $settings['attrs']['disabled'] = 'disabled';
@@ -70,11 +72,11 @@ foreach ($selectedServices as $service) :
         </div>
         <div class="clearfix"></div>
         <?php if ($errors) : ?>
-            <div class="alert alert-warning">
+            <div><div class="col-xs-offset-2 col-lg-offset-1"><div class="alert alert-danger alert-no-spacing">
                 <?php foreach ($errors as $error): ?>
                     <p><?php echo $error ?></p>
                 <?php endforeach ?>
-            </div>
+            </div></div></div>
         <?php endif ?>
         <?php $hasAttendants = true ?>
     <?php endforeach ?>

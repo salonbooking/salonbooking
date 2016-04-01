@@ -13,7 +13,7 @@ class SLN_Plugin
     const F = 'slnc';
     const F1 = 30;
     const F2 = 20;
-    const DEBUG_ENABLED = false;
+    const DEBUG_ENABLED = 0;
     const CATEGORY_ORDER = 'sln_service_category_order';
     const SERVICE_ORDER = '_sln_service_order';
 
@@ -156,7 +156,7 @@ class SLN_Plugin
             'ajax_url' => admin_url('admin-ajax.php') . '?lang=' . (defined('ICL_LANGUAGE_CODE') ? 'ICL_LANGUAGE_CODE' : $lang),
             'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
             'loading' => SLN_PLUGIN_URL . '/img/preloader.gif',
-            'txt_validating' => __('checking availability'),
+            'txt_validating' => __('checking availability','salon-booking-system'),
             'images_folder' => SLN_PLUGIN_URL . '/img', // algolplus
             'confirm_cancellation_text' => __('Do you really want to cancel?', 'salon-booking-system'), // algolplus
             'time_format' => SLN_Enum_TimeFormat::getJSFormat($this->getSettings()->get('time_format'))
@@ -185,8 +185,8 @@ class SLN_Plugin
 
     public function createAttendant($attendant)
     {
-        if (is_int($attendant)) {
-            $service = get_post($attendant);
+        if (!empty($attendant) && is_int($attendant)) {
+            $attendant = get_post($attendant);
         }
 
         return new SLN_Wrapper_Attendant($attendant);
@@ -258,6 +258,46 @@ class SLN_Plugin
         }
 
         return $this->services;
+    }
+
+    /**
+     * @return SLN_Wrapper_Service[]
+     */
+    public function getServicesOrderByExec()
+    {
+        $services = $this->getServices();
+        usort($services, array($this, 'serviceCmp'));
+
+        return $services;
+    }
+
+    public function serviceCmp($a, $b) {
+        /** @var SLN_Wrapper_Service $a */
+        /** @var SLN_Wrapper_Service $b */
+        // ids passed during sort inside single booking 
+        if(is_int($a))
+				$a = SLN_Plugin::getInstance()->createService($a);
+        if(is_int($b))
+				$b = SLN_Plugin::getInstance()->createService($b);
+				
+        $aExecOrder = $a->getExecOrder();
+        $bExecOrder = $b->getExecOrder();
+        if ($aExecOrder != $bExecOrder) {
+            return $aExecOrder > $bExecOrder ? 1 : -1;
+        }
+        else {
+            $aPosOrder = $a->getPosOrder();
+            $bPosOrder = $b->getPosOrder();
+            if ($aPosOrder != $bPosOrder) {
+                return $aPosOrder > $bPosOrder ? 1 : -1;
+            }
+            elseif ($a->getId() > $b->getId()) {
+                return 1;
+            }
+            else {
+                return -1;
+            }
+        }
     }
 
     /**

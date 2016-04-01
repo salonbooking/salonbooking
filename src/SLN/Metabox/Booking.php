@@ -43,7 +43,6 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             'address'   => '',
             'date'      => 'date',
             'time'      => 'time',
-            'attendant'  => '',
             'services'  => 'nofilter',
             'note' => '',
             'admin_note' => '',
@@ -58,16 +57,31 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
 
         if(!isset($_POST['_sln_booking_status']))
             return;
-        if(isset($_POST['_sln_booking_services']))
-        foreach($_POST['_sln_booking_services'] as $k => $v){
-            $_POST['_sln_booking_services'][$k] = str_replace('sln_booking_services_','', $v);
+
+        $services = array();
+        foreach($_POST['_sln_booking']['service'] as $serviceId) {
+            $minutes = intval($_POST['_sln_booking']['duration'][$serviceId]);
+            $h = intval($minutes/60);
+            $i = intval($minutes%60);
+            $h = $h < 10 ? '0'.$h : $h;
+            $i = $i < 10 ? '0'.$i : $i;
+            $duration =  $h.':'.$i;
+
+            $services[$serviceId]            = array(
+                'attendant' => $_POST['_sln_booking']['attendants'][$serviceId],
+                'price' => $_POST['_sln_booking']['price'][$serviceId],
+                'duration' => $duration,
+            );
         }
+        $_POST['_sln_booking_services'] = $services;
+
         parent::save_post($post_id, $post);
         $this->validate($_POST);
         if(isset($_SESSION['_sln_booking_user_errors']))
             return;
 
         $booking = new SLN_Wrapper_Booking($post_id);
+        $booking->evalBookingServices();
         $booking->evalDuration();
         $s = $booking->getStatus();
         $new =  $_POST['_sln_booking_status'];

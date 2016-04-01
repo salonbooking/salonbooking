@@ -39,6 +39,16 @@ else:
     $bb        = $plugin->getBookingBuilder();
     $intervals = $plugin->getIntervals($bb->getDateTime());
     $date      = $intervals->getSuggestedDate();
+    $intervalsArray = $intervals->toArray();
+
+if (!$intervalsArray['times']):
+    $hb = $plugin->getAvailabilityHelper()->getHoursBeforeHelper()->getToDate();
+    ?>
+    <div class="alert alert-danger">
+        <p><?php echo __('No more slots available until', 'salon-booking-system') ?> <?php echo $plugin->format()->datetime($hb) ?></p>
+    </div>
+<?php
+else:
 ?>
     <form method="post" action="<?php echo $formAction ?>" id="salon-step-date" 
           data-intervals="<?php echo esc_attr(json_encode($intervals->toArray()));?>">
@@ -145,4 +155,4 @@ else:
         include '_errors.php'; ?>
     </form>
 <?php endif ?>
-
+<?php endif ?>

@@ -9,6 +9,7 @@
 
 $ah = $plugin->getAvailabilityHelper();
 $ah->setDate($plugin->getBookingBuilder()->getDateTime());
+$duration = new SLN_DateTime('1970-01-01 '.$bb->getDuration());
 $hasAttendants = false;
 ?>
 <div class="sln-attendant-list">
@@ -25,15 +26,9 @@ $hasAttendants = false;
         <div class="row sln-attendant">
         <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
-            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
-            if ( $validateErrors && $validateAttServicesErrors) {
-                $errors = array_merge($validateErrors, $validateAttServicesErrors);
-            }
-            elseif ($validateErrors) {
+            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDateTime(), $duration);
+            if ($validateErrors) {
                 $errors = $validateErrors;
-            }
-            elseif ($validateAttServicesErrors) {
-                $errors = $validateAttServicesErrors;
             }
             else {
                 $errors = false;
@@ -79,7 +74,7 @@ $hasAttendants = false;
                     </div>
             </div>
         </div>
-        <?php if ($attendantErrors) : ?>
+        <?php if ($errors) : ?>
             <div class="col-md-12 alert alert-warning">
                 <?php foreach ($errors as $error): ?>
                     <p><?php echo $error ?></p>
@@ -215,12 +210,13 @@ $hasAttendants = false;
                     </div>
             </div>
         </div>
-        <?php if ($attendantErrors) : ?>
-            <div class="col-md-12 alert alert-warning">
+        <div class="clearfix"></div>
+        <?php if ($errors) : ?>
+            <div><div class="col-xs-offset-2 col-lg-offset-1"><div class="alert alert-danger alert-no-spacing">
                 <?php foreach ($errors as $error): ?>
                     <p><?php echo $error ?></p>
                 <?php endforeach ?>
-            </div>
+            </div></div></div>
         <?php endif ?>
     </div>
     <?php

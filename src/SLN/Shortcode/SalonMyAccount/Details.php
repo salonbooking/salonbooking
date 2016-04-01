@@ -64,11 +64,10 @@ class SLN_Shortcode_SalonMyAccount_Details
 	}
 
 	private function prepareBooking($booking) {
-		$attendant = $booking->getAttendant();
-                $serviceNames = array();
-                foreach($booking->getServices() as $s){
-                    $serviceNames[] = $s->getName();
-                }
+        $serviceNames = array();
+        foreach($booking->getServices() as $s){
+            $serviceNames[] = $s->getName();
+        }
 
 		$total = $this->plugin->format()->money($booking->getAmount());
         if (SLN_Enum_BookingStatus::PAID == $booking->getStatus() && $deposit = $booking->getDeposit()) {
@@ -80,7 +79,7 @@ class SLN_Shortcode_SalonMyAccount_Details
 			'date' => $booking->getStartsAt()->format('M, j Y g:ia'),
 			'timestamp' => strtotime($booking->getStartsAt()),
 			'services' => implode("<br>", $serviceNames),
-			'assistant' => !empty($attendant) ? $attendant->getName() : '',
+			'assistant' => $booking->getAttendantsString(),
 			'total' => $total,
 			'status' => SLN_Enum_BookingStatus::getLabel($booking->getStatus()),
 			'status_code' => $booking->getStatus(),

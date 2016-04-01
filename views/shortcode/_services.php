@@ -15,8 +15,20 @@ $symbolLeft = $isSymbolLeft ? $plugin->getSettings()->getCurrencySymbol() : '';
 $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 $grouped = SLN_Func::groupServicesByCategory($services);
-$minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMinutes();
+
+$servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds(), $services);
+
  ?>
+<?php SLN_Form::fieldText(
+    'sln[date]',
+    $bb->getDate(),
+    array('type' => 'hidden')
+) ?>
+<?php SLN_Form::fieldText(
+    'sln[time]',
+    $bb->getTime(),
+    array('type' => 'hidden')
+) ?>
 <div class="sln-service-list">
     <?php foreach ($grouped as $group): ?>
         <?php if($group['term'] !== false): ?>
@@ -34,7 +46,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
     <div class="row sln-service">
         <div class="col-md-1 sln-checkbox sln-steps-check sln-service-check <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
             <?php
-            $serviceErrors   = $ah->validateService($service);
+            $serviceErrors = isset($servicesErrors[$service->getId()]) ? $servicesErrors[$service->getId()] : array();
             $settings = array('attrs' => array(
                 'data-price' => $service->getPrice(),
                 'data-duration' => SLN_Func::getMinutesFromDuration($service->getDuration())
@@ -213,7 +225,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
                 <?php foreach ($serviceErrors as $error): ?>
                     <p><?php echo $error ?></p>
                 <?php endforeach ?>
-            </div>
+            </div></div></div>
         <?php endif ?>
     </div>
     <?php

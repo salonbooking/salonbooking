@@ -63,6 +63,10 @@ class SLN_Form
                 else if($interval % 10 == 0) $interval = 10;
                 else if($interval % 5 == 0) $interval = 5;
             }
+        $minutes = $value->format('i');
+        $diff = ($interval - $minutes % $interval) % $interval;
+        $value = clone $value;
+        $value->modify("+$diff minutes");
 
         ?><span class="sln-jstime">
         <div class="sln_timepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 

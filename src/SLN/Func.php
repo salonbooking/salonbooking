@@ -254,6 +254,25 @@ class SLN_Func
         return $items;
     }
 
+	/**
+     * @param $times
+     * @param $startDate
+     * @param $endDate
+     *
+     * @return SLN_DateTime[]
+     */
+    public static function filterTimes($times, DateTime $startDate, DateTime $endDate){
+        $ret = array();
+        foreach($times as $t){
+            $t = new SLN_DateTime($startDate->format('Y-m-d').' '.$t);
+            if($t->format('YmdHi') >= $startDate->format('YmdHi') && $t->format('YmdHi') < $endDate->format('YmdHi') || $t->format('YmdHi') == $startDate->format('YmdHi') ){
+//                SLN_Plugin::addLog(__CLASS__.'->'.__METHOD__.' '.$t->format('YmdHi'));
+                $ret[] = $t;
+            }
+        }
+        return $ret;
+    }
+
     public static function getMinutesFromDuration($duration)
     {
         if ($duration instanceof DateTime) {

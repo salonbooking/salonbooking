@@ -42,11 +42,46 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         return $ret;
     }
 
+    function getPosOrder()
+    {
+        $post_id = $this->getId();
+        $ret     = apply_filters('sln_service_order', get_post_meta($post_id, '_sln_service_order', true));
+        $ret     = empty($ret) ? 0 : $ret;
+
+        return $ret;
+    }
+
     function getExecOrder()
     {
         $post_id = $this->getId();
         $ret     = apply_filters('sln_service_exec_order', get_post_meta($post_id, '_sln_service_exec_order', true));
         $ret     = empty($ret) || 1 > $ret || 10 < $ret ? 1 : $ret;
+
+        return $ret;
+    }
+
+    public function getAttendantsIds()
+    {
+        $ret = array();
+        foreach($this->getAttendants() as $attendant) {
+            $ret[] = $attendant->getId();
+        }
+
+        return $ret;
+    }
+
+	/**
+     * @return SLN_Wrapper_Attendant[]
+     */
+    public function getAttendants()
+    {
+        $ret = array();
+        foreach(SLN_Plugin::getInstance()->getAttendants() as $attendant) {
+            $attendantServicesIds = $attendant->getServicesIds();
+            if (empty($attendantServicesIds) || in_array($this->getId(), $attendantServicesIds)) {
+                $ret[] = $attendant;
+            }
+        }
 
         return $ret;
     }
@@ -124,7 +159,10 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
 
     public function getName()
     {
+        if($this->object)
         return $this->object->post_title;
+        else
+        return 'n.d.';
     }
 
     public function getContent()

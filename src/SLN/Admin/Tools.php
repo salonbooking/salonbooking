@@ -9,11 +9,12 @@ class SLN_Admin_Tools {
 	public $settings_page = '';
 
 	public function __construct( SLN_Plugin $plugin ) {
+		$this->plugin   = $plugin;
+		$this->settings	= $plugin->getSettings();
+
 		if ( isset( $_POST ) && $_POST )
 			$this->save_settings( $_POST );
 
-		$this->plugin	 = $plugin;
-		$this->settings	 = $plugin->getSettings();
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 	}
 
@@ -44,6 +45,7 @@ class SLN_Admin_Tools {
 		$import_data = json_decode( $data[ 'tools-import' ], 1 );
 		if (is_array($import_data)) {
 			update_option( SLN_Settings::KEY, $import_data );
+			$this->settings->load();
 			add_action( 'admin_notices', array( $this, 'tool_admin_notice' ) );
 		} else {
 			add_action( 'admin_notices', array( $this, 'tool_admin_error_notice' ) );

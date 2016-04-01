@@ -20,30 +20,21 @@ $helper->showNonce($postType);
                          <?php SLN_Form::fieldCheckbox($helper->getFieldName($postType, 'secondary'), $service->isSecondary()) ?>
             <label for="_sln_service_secondary"><?php _e('Secondary', 'salon-booking-system'); ?></label>
                     <p><?php _e('Select this if you want this service considered as secondary level service','salon-booking-system'); ?></p>
-            </div>
-    <div class="sln-clear"></div>
-</div>
-<?php /*
-<?php $m_attendant_enabled = $settings->get('m_attendant_enabled'); ?>
-<?php if($m_attendant_enabled): ?>
-<div class="row sln-service-price-time">
-    <div class="col-xs-6 col-md-6 col-sm-4 col-lg-4">
-        <div class="form-group">
-            <?php $attrs = $m_attendant_enabled ? array() : array('disabled'=>'disabled') ?>
-            <label><?php _e('Execution Order', 'salon-booking-system'); ?></label>
-            <?php SLN_Form::fieldNumeric($helper->getFieldName($postType, 'exec_order'), $service->getExecOrder(), array('min' => 1, 'max' => 10, 'attrs' => $attrs)) ?>
-            <?php if (!$m_attendant_enabled) {
-                SLN_Form::fieldText($helper->getFieldName($postType, 'exec_order'), $service->getExecOrder(), array('type' => 'hidden'));
-            } ?>
-?>
-            <br/><em><?php _e('Set this option if you have enabled "Multiple assistants selection". Use a number to give this service an order of execution compared to the other services.','salon-booking-system'); ?></em>
-            <br/><em><?php _e('Consider that this option will affect the availability of your staff members that you have associated th this service.','salon-booking-system'); ?></em>
-        </div>
     </div>
     <div class="sln-clear"></div>
 </div>
-<?php endif ?>
-*/?>
+<div class="row">
+    <div class="col-sm-6 col-md-3 form-group sln-select">
+        <label><?php _e('Execution Order', 'salon-booking-system'); ?></label>
+        <?php SLN_Form::fieldNumeric($helper->getFieldName($postType, 'exec_order'), $service->getExecOrder(), array('min' => 1, 'max' => 10, 'attrs' => array())) ?>
+    </div>
+    <div class="col-sm-6 col-md-9 form-group sln-box-maininfo align-top">
+        <p class="sln-input-help"><?php _e('Use a number to give this service an order of execution compared to the other services.','salon-booking-system'); ?></p>
+        <p class="sln-input-help"><?php _e('Consider that this option will affect the availability of your staff members that you have associated with this service.','salon-booking-system'); ?></p>
+    </div>
+    <div class="sln-clear"></div>
+</div>
+
 <div class="sln-box--sub sln-booking-rules row">
     <div class="col-xs-6">
         <h2 class="sln-box-title"><?php _e('Not available on','salon-booking-system'); ?></h2>

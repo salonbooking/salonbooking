@@ -75,6 +75,7 @@ class SLN_Helper_Intervals
         $this->years  = array();
         $this->months = array();
         $this->days   = array();
+        $this->dates  = array();
         $checkDay     = $this->suggestedDate->format('Y-m-');
         $checkMonth   = $this->suggestedDate->format('Y-');
         foreach ($dates as $date) {

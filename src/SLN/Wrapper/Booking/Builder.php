@@ -50,7 +50,7 @@ class SLN_Wrapper_Booking_Builder
         }
     }
 
-    protected function getEmptyValue()
+    public function getEmptyValue()
     {
         $from = $this->plugin->getSettings()->getHoursBeforeFrom();
         $d = new SLN_DateTime(date('Y-m-d H:i:00'));
@@ -64,7 +64,7 @@ class SLN_Wrapper_Booking_Builder
             'date'     => $d->format('Y-m-d'),
             'time'     => $d->format('H:i'),
             'services' => array(),
-            'attendants' => array(),
+//            'attendants' => array(),
         );
     }
 
@@ -115,33 +115,38 @@ class SLN_Wrapper_Booking_Builder
     public function setAttendant(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service)
     {
         if ($this->hasService($service)) {
-            $this->data['attendants'][$service->getId()] = $attendant->getId();
+            $this->data['services'][$service->getId()] = $attendant->getId();
         }
     }
 
     public function hasAttendant(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service = null)
     {
-        if (!isset($this->data['attendants'])) {
+        if (!isset($this->data['services'])) {
             return false;
         }
 
         if (is_null($service)) {
-            return in_array($attendant->getId(), $this->data['attendants']);
+            return in_array($attendant->getId(), $this->data['services']);
         }
         else {
-            return isset($this->data['attendants'][$service->getId()]) && $this->data['attendants'][$service->getId()] == $attendant->getId();
+            return isset($this->data['services'][$service->getId()]) && $this->data['services'][$service->getId()] == $attendant->getId();
         }
     }
 
     public function removeAttendants()
     {
-        $this->data['attendants'] = array();
+        $this->data['services'] = array_fill_keys(array_keys($this->data['services']), 0);
     }
 
 
     public function hasService(SLN_Wrapper_Service $service)
     {
-        return in_array($service->getId(), $this->data['services']);
+        return in_array($service->getId(), array_keys($this->data['services']));
+    }
+
+    public function getAttendantsIds()
+    {
+        return $this->data['services'];
     }
 
 	/**
@@ -157,49 +162,76 @@ class SLN_Wrapper_Booking_Builder
      */
     public function getAttendants()
     {
-        $ids = $this->data['attendants'];
+        $ids = $this->getAttendantsIds();
         $ret = array();
-        foreach ($this->plugin->getAttendants() as $attendant) {
-            $service_id = array_search($attendant->getId(), $ids);
-            if ($service_id !== false) {
-                $ret[$service_id] = $attendant;
-            }
+        foreach ($ids as $service_id => $attendant_id) {
+            $ret[$service_id] = $this->plugin->createAttendant($attendant_id);
         }
         return $ret;
     }
     
     public function addService(SLN_Wrapper_Service $service)
     {
-        if((!isset($this->data['services'])) || (!in_array($service->getId(), $this->data['services']))){
-            $this->data['services'][] = $service->getId();
+        if((!isset($this->data['services'])) || (!in_array($service->getId(), array_keys($this->data['services'])))){
+            $this->data['services'][$service->getId()] = 0;
+            uksort($this->data['services'], array($this->plugin, 'serviceCmp'));
         }
     }
 
     public function removeService(SLN_Wrapper_Service $service)
     {
-        $k = array_search($service->getId(), $this->data['services']);
-        if ($k !== false) {
-            unset($this->data['services'][$k]);
+        if (isset($this->data['services'])) {
+            unset($this->data['services'][$service->getId()]);
         }
     }
     public function clearServices(){
         $this->data['services'] = array();
     }
 
+    public function getServicesIds() {
+        return array_keys($this->getServices());
+    }
+
+    public function getPrimaryServicesIds() {
+        return array_keys($this->getPrimaryServices());
+    }
+
+    public function getSecondaryServicesIds() {
+        return array_keys($this->getSecondaryServices());
+    }
+
     /**
+     * @param bool $primary
+     * @param bool $secondary
+     *
      * @return SLN_Wrapper_Service[]
      */
-    public function getServices()
+    public function getServices($primary = true, $secondary = true)
     {
-        $ids = $this->data['services'];
+        $ids = array_keys($this->data['services']);
         $ret = array();
         foreach ($this->plugin->getServices() as $service) {
             if (in_array($service->getId(), $ids)) {
-                $ret[$service->getId()] = $service;
+                if ($secondary && $service->isSecondary()) {
+                    $ret[$service->getId()] = $service;
+                }
+                elseif ($primary && !$service->isSecondary()) {
+                    $ret[$service->getId()] = $service;
+                }
             }
         }
 
         return $ret;
+    }
+
+    public function getPrimaryServices()
+    {
+        return $this->getServices(true, false);
+    }
+
+    public function getSecondaryServices()
+    {
+        return $this->getServices(false, true);
     }
     
     public function getTotal()
@@ -231,10 +263,11 @@ class SLN_Wrapper_Booking_Builder
             $this->data['deposit'] = ($this->data['amount'] / 100) * $deposit;
         }
         foreach ($this->data as $k => $v) {
-            add_post_meta($id, '_' . SLN_Plugin::POST_TYPE_BOOKING . '_' . $k, $v, true);
+            update_post_meta($id, '_' . SLN_Plugin::POST_TYPE_BOOKING . '_' . $k, $v);
         }
         $this->clear($id);
-        $this->getLastBooking()->evalDuration($status);
+        $this->getLastBooking()->evalBookingServices();
+        $this->getLastBooking()->evalDuration();
         $this->getLastBooking()->setStatus($status);
 
         $userid = $this->getLastBooking()->getUserId();
@@ -256,11 +289,16 @@ class SLN_Wrapper_Booking_Builder
                     : SLN_Enum_BookingStatus::PAY_LATER ));
     }
 
+    public function getEndsAt()
+    {
+        $endsAt = clone $this->getDateTime();
+        $endsAt->modify("+".SLN_Func::getMinutesFromDuration($this->getDuration())."minutes");
+        return $endsAt;
+    }
+
     public function getDuration()
     {
         $i = $this->getServicesDurationMinutes();
-        if($i == 0)
-            $i = 60;
         $str = SLN_Func::convertToHoursMins($i);
         return $str;
     }

@@ -83,7 +83,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
     opacity: 1;
     transform: scale(1); } }
 
-.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-checkbutton input + label, .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
+.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-checkbutton input + label, #sln-salon--admin .col-time, .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
 #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
   font-family: "Open sans", serif;
   font-size: 0.83333rem;
@@ -91,7 +91,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   line-height: 1.41667rem;
   font-weight: normal; }
   @media only screen and (min-width: 768px) {
-    .sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-checkbutton input + label, .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
+    .sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-checkbutton input + label, #sln-salon--admin .col-time, .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
     #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
       font-size: 1rem; } }
 
@@ -115,7 +115,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   line-height: 0.91667rem;
   font-weight: normal; }
 
-#time-range p {
+#sln-salon--admin #time-range p, .sln-calendar--wrapper #time-range p {
   font-family: "Open sans", serif;
   font-size: 0.58333rem;
   line-height: 0.83333rem;
@@ -138,7 +138,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
 .sln-input--simple input:focus, #titlewrap-- input:focus, #postexcerpt .inside input:focus, .sln-select:not(.sln-select--multiple) input:focus, .sln-input--simple input.form-control:focus, .sln-input--simple textarea:focus, #titlewrap-- textarea:focus, #postexcerpt .inside textarea:focus, .sln-select:not(.sln-select--multiple) textarea:focus {
   color: #0C6EB6; }
 
-.sln-checkbox input + label:after, .sln-radiobox input + label:after, .sln-checkbutton input + label:after, .ui-slider .ui-slider-handle:before, .ui-slider .ui-slider-handle:after, .sln-btn--icon:after, #sln-salon--admin p.submit:after, .sln-calendar--wrapper p.submit:after, .sln-paneltrigger.sln-btn:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab:after, .sln-admin-nav a.sln-paneltrigger:after, .sln-tab-nav li a.sln-paneltrigger:after, #sln_shop-details .handlediv.button-link .toggle-indicator:after,
+.sln-checkbox input + label:after, .sln-radiobox input + label:after, .sln-checkbutton input + label:after, #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper .ui-slider .ui-slider-handle:after, .sln-btn--icon:after, #sln-salon--admin p.submit:after, .sln-calendar--wrapper p.submit:after, .sln-paneltrigger.sln-btn:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab:after, .sln-admin-nav a.sln-paneltrigger:after, .sln-tab-nav li a.sln-paneltrigger:after, #sln_shop-details .handlediv.button-link .toggle-indicator:after,
 #sln_attendant-details .handlediv.button-link .toggle-indicator:after,
 #postexcerpt .handlediv.button-link .toggle-indicator:after, #sln_service-details .handlediv.button-link .toggle-indicator:after, .select2-container.select2-container--sln .select2-selection--single .select2-selection__arrow:before, .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick:after, .salon_page_salon-calendar .sln-calendar--wrapper #cal-slide-tick:after,
 .sln-calendar--wrapper #cal-day-tick:after,
@@ -571,7 +571,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   width: 100%; }
 
 /* TIME RANGE */
-.ui-slider-horizontal {
+#sln-salon--admin .ui-slider-horizontal, .sln-calendar--wrapper .ui-slider-horizontal {
   height: 8px;
   background: #D7D7D7;
   border: 1px solid #BABABA;
@@ -584,20 +584,20 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   -o-border-radius: 6px;
   border-radius: 6px; }
 
-.ui-slider {
+#sln-salon--admin .ui-slider, .sln-calendar--wrapper .ui-slider {
   position: relative;
   text-align: left; }
 
-.ui-slider-horizontal .ui-slider-range {
+#sln-salon--admin .ui-slider-horizontal .ui-slider-range, .sln-calendar--wrapper .ui-slider-horizontal .ui-slider-range {
   top: -1px;
   height: 100%; }
 
-.ui-slider .ui-slider-range {
+#sln-salon--admin .ui-slider .ui-slider-range, .sln-calendar--wrapper .ui-slider .ui-slider-range {
   position: absolute;
   z-index: 1;
   display: block; }
 
-.ui-slider .ui-slider-handle {
+#sln-salon--admin .ui-slider .ui-slider-handle, .sln-calendar--wrapper .ui-slider .ui-slider-handle {
   position: absolute;
   z-index: 2;
   width: 22px;
@@ -606,13 +606,13 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   border: none;
   cursor: pointer; }
 
-.ui-slider a:focus {
+#sln-salon--admin .ui-slider a:focus, .sln-calendar--wrapper .ui-slider a:focus {
   outline: none; }
 
-#time-range {
+#sln-salon--admin #time-range, .sln-calendar--wrapper #time-range {
   width: 100%; }
 
-.ui-slider-horizontal {
+#sln-salon--admin .ui-slider-horizontal, .sln-calendar--wrapper .ui-slider-horizontal {
   height: auto;
   background: transparent;
   border: none;
@@ -620,7 +620,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   clear: both;
   margin: 3px 4px 3px 6px; }
 
-.ui-slider .ui-slider-range {
+#sln-salon--admin .ui-slider .ui-slider-range, .sln-calendar--wrapper .ui-slider .ui-slider-range {
   height: 2.5rem;
   border: none;
   border-radius: 0;
@@ -632,7 +632,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   border-bottom-right-radius: 1.25rem;
   top: 0; }
 
-.ui-slider .ui-slider-handle {
+#sln-salon--admin .ui-slider .ui-slider-handle, .sln-calendar--wrapper .ui-slider .ui-slider-handle {
   height: 2.5rem;
   width: 2.5rem;
   top: 0;
@@ -646,11 +646,11 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   margin-right: 2.5rem;
   border: 2px solid #003553;
   border-radius: 100%; }
-  .ui-slider .ui-slider-handle:nth-child(2) {
+  #sln-salon--admin .ui-slider .ui-slider-handle:nth-child(2), .sln-calendar--wrapper .ui-slider .ui-slider-handle:nth-child(2) {
     margin-left: -2px; }
-  .ui-slider .ui-slider-handle:nth-child(3) {
+  #sln-salon--admin .ui-slider .ui-slider-handle:nth-child(3), .sln-calendar--wrapper .ui-slider .ui-slider-handle:nth-child(3) {
     margin-left: -40px; }
-  .ui-slider .ui-slider-handle:before, .ui-slider .ui-slider-handle:after {
+  #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper .ui-slider .ui-slider-handle:after {
     content: "";
     display: block;
     position: absolute;
@@ -659,28 +659,28 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
     height: 0.41667rem;
     line-height: 0.83333rem;
     color: #003553; }
-  .ui-slider .ui-slider-handle:before {
+  #sln-salon--admin .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper .ui-slider .ui-slider-handle:before {
     content: "\f053";
     left: 0.25rem; }
-  .ui-slider .ui-slider-handle:after {
+  #sln-salon--admin .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper .ui-slider .ui-slider-handle:after {
     content: "\f054";
     right: 0.45833rem; }
-  .ui-slider .ui-slider-handle:hover, .ui-slider .ui-slider-handle:focus {
+  #sln-salon--admin .ui-slider .ui-slider-handle:hover, #sln-salon--admin .ui-slider .ui-slider-handle:focus, .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover, .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus {
     background-color: #0C6EB6; }
-    .ui-slider .ui-slider-handle:hover:before, .ui-slider .ui-slider-handle:hover:after, .ui-slider .ui-slider-handle:focus:before, .ui-slider .ui-slider-handle:focus:after {
+    #sln-salon--admin .ui-slider .ui-slider-handle:hover:before, #sln-salon--admin .ui-slider .ui-slider-handle:hover:after, #sln-salon--admin .ui-slider .ui-slider-handle:focus:before, #sln-salon--admin .ui-slider .ui-slider-handle:focus:after, .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover:before, .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover:after, .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus:before, .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus:after {
       color: #fff; }
 
-.sln-slider {
+#sln-salon--admin .sln-slider, .sln-calendar--wrapper .sln-slider {
   height: 3.125rem;
   margin-bottom: 1.66667rem; }
 
-.col {
+#sln-salon--admin .col, .sln-calendar--wrapper .col {
   float: left; }
 
-.col-time {
+#sln-salon--admin .col-time, .sln-calendar--wrapper .col-time {
   width: 30%; }
 
-.col-slider {
+#sln-salon--admin .col-slider, .sln-calendar--wrapper .col-slider {
   width: 70%;
   height: 3.125rem;
   border: 2px solid #c7dff3;
@@ -690,14 +690,14 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   border-top-right-radius: 1.58333rem;
   border-bottom-right-radius: 1.58333rem; }
 
-.col-time {
+#sln-salon--admin .col-time, .sln-calendar--wrapper .col-time {
   color: #003553;
   line-height: 3.125rem;
   text-align: center; }
-  .col-time span {
+  #sln-salon--admin .col-time span, .sln-calendar--wrapper .col-time span {
     font-weight: 700; }
 
-.col.col-time, .col.col-slider {
+#sln-salon--admin .col.col-time, #sln-salon--admin .col.col-slider, .sln-calendar--wrapper .col.col-time, .sln-calendar--wrapper .col.col-slider {
   padding: 0; }
 
 /* TIME RANGE // END */
@@ -2499,6 +2499,11 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
     #sln_attendant-details,
     #postexcerpt, #sln_service-details {
       padding: 1.66667rem 1.66667rem 0 1.66667rem; } }
+  @media only screen and (min-width: 992px) {
+    .sln-box.sln-calendar-view, .sln-calendar-view#sln_shop-details,
+    .sln-calendar-view#sln_attendant-details,
+    .sln-calendar-view#postexcerpt, .sln-calendar-view#sln_service-details {
+      padding: 1.66667rem; } }
   .sln-box p, #sln_shop-details p,
   #sln_attendant-details p,
   #postexcerpt p, #sln_service-details p {
@@ -3522,6 +3527,18 @@ body {
       width: 2.66667rem;
       height: 2.66667rem;
       line-height: 2.5rem; } }
+  @media only screen and (min-width: 768px) {
+    .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box span[data-cal-date],
+    .sln-calendar--wrapper .cal-year-box span[data-cal-date] {
+      width: initial;
+      height: 1.83333rem;
+      line-height: 1.66667rem;
+      padding: 0 0.83333rem;
+      border: 1px solid #c7dff3;
+      border-top-left-radius: 0%;
+      border-top-right-radius: 0%;
+      border-bottom-left-radius: 0%;
+      border-bottom-right-radius: 0%; } }
   .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box [class*="span"],
   .sln-calendar--wrapper .cal-year-box [class*="span"] {
     border-bottom: 1px solid #e1e1e1; }

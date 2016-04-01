@@ -75,6 +75,41 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return apply_filters('sln_booking_date', new SLN_DateTime(get_post_meta($post_id, '_sln_booking_date', true)));
     }
 
+    function getBookingServices()
+    {
+        $this->maybeProcessBookingServices();
+
+        $post_id = $this->getId();
+        $data = apply_filters('sln_booking_services', get_post_meta($post_id, '_sln_booking_services', true));
+        $data = empty($data) ? array() : $data;
+        $ret = new SLN_Wrapper_Booking_Services($data);
+
+        return $ret;
+    }
+
+    function maybeProcessBookingServices()
+    {
+        $post_id = $this->getId();
+        $servicesProcessed = apply_filters('sln_booking_services_processed', get_post_meta($post_id, '_sln_booking_services_processed', true));
+
+        if(empty($servicesProcessed)){
+            $this->evalBookingServices();
+        }
+    }
+
+    function evalBookingServices()
+    {
+        $post_id = $this->getId();
+        $data    = get_post_meta($post_id, '_sln_booking_services', true);
+        $data    = empty($data) ? array() : $data;
+
+        $bookingServices = SLN_Wrapper_Booking_Services::build($data, $this->getStartsAt());
+        $ret = $bookingServices->toArrayRecursive();
+
+        update_post_meta($post_id, '_sln_booking_services', $ret);
+        update_post_meta($post_id, '_sln_booking_services_processed', 1);
+    }
+
     function getDuration()
     {
         $post_id = $this->getId();
@@ -94,11 +129,11 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $h = 0;
         $i = 0;
         SLN_Plugin::addLog(__CLASS__.' eval duration of'.$this->getId());
-        foreach($this->getServices() as $s){
-            $d = $s->getDuration();
+        foreach($this->getBookingServices()->getItems() as $bookingService){
+            $d = $bookingService->getDuration();
             $h = $h + intval($d->format('H'));
             $i = $i + intval($d->format('i'));
-            SLN_Plugin::addLog(' - service '.$s.' +'.$d->format('H:i'));
+            SLN_Plugin::addLog(' - service '.$bookingService.' +'.$d->format('H:i'));
         }
         $i += $h*60;
         if($i == 0)
@@ -131,13 +166,21 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return in_array($service->getId(), $this->getServicesIds());
     }
 
-    function getAttendantsIds(){
+	/**
+     * @param bool|false $unique
+     *
+     * @return array
+     */
+    function getAttendantsIds($unique = false){
         $post_id = $this->getId();
-        $ret     = apply_filters('sln_booking_attendants', get_post_meta($post_id, '_sln_booking_attendants', true));
-        if(empty($ret)){
-            $ret     = array(apply_filters('sln_booking_attendant', get_post_meta($post_id, '_sln_booking_attendant', true)));
+        $data     = apply_filters('sln_booking_attendants', get_post_meta($post_id, '_sln_booking_services', true));
+        $ret = array();
+        if(is_array($data)) {
+            foreach($data as $item) {
+                $ret[$item['service']] = $item['attendant'];
+            }
         }
-        return empty($ret) ? array() : $ret;
+        return $unique ? array_unique($ret) : $ret;
     }
 
     /**
@@ -147,7 +190,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $atts_ids = $this->getAttendantsIds();
         $att = reset($atts_ids);
         if ($att !== false) {
-            $tmp = new SLN_Wrapper_Attendant($att);
+            $tmp = SLN_Plugin::getInstance()->createAttendant($att);
             if(!$tmp->isEmpty()){
                 return $tmp;
             }
@@ -155,10 +198,16 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return false;
     }
 
-    function getAttendants(){
+    /**
+     * @param bool $unique
+     *
+     * @return SLN_Wrapper_Attendant[]
+     */
+    function getAttendants($unique = false){
         $ret = array();
-        foreach($this->getAttendantsIds() as $service_id => $id){
-            $tmp = new SLN_Wrapper_Attendant($id);
+        $attIds = $this->getAttendantsIds($unique);
+        foreach($attIds as $service_id => $id){
+            $tmp = SLN_Plugin::getInstance()->createAttendant($id);
             if(!$tmp->isEmpty()){
                 $ret[$service_id] = $tmp;
             }
@@ -166,13 +215,31 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return $ret;
     }
 
+    function getAttendantsString(){
+        $attendants = $this->getAttendants(true);
+        if (!empty($attendants)) {
+            $ret = array();
+            foreach($attendants as $attendant) {
+                $ret[] = $attendant->getName();
+            }
+            return implode(', ', $ret);
+        }
+        else {
+            return SLN_Plugin::getInstance()->createAttendant(null)->getName();
+        }
+    }
+
     function getServicesIds()
     {
         $post_id = $this->getId();
-        $ret     = apply_filters('sln_booking_services', get_post_meta($post_id, '_sln_booking_services', true));
-        if(is_array($ret))
-            $ret = array_unique($ret); 
-        return empty($ret) ? array() : $ret;
+        $data     = apply_filters('sln_booking_services', get_post_meta($post_id, '_sln_booking_services', true));
+        $ret = array();
+        if(is_array($data)) {
+            foreach($data as $item) {
+                $ret[] = $item['service'];
+            }
+        }
+        return $ret;
     }
 
 	/**

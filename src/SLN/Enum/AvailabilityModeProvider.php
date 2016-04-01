@@ -26,13 +26,15 @@ class SLN_Enum_AvailabilityModeProvider
     /**
      * @param $key
      * @param DateTime $date
+     * @param SLN_Wrapper_Booking $booking
+     *
      * @return SLN_Helper_Availability_AbstractDayBookings
      * @throws Exception
      */
-    public static function getService($key,DateTime $date)
+    public static function getService($key,DateTime $date,SLN_Wrapper_Booking $booking = null)
     {
         $name = self::getServiceName($key);
-        return new $name($date);
+        return new $name($date, $booking);
     }
 
     public static function getServiceName($key){

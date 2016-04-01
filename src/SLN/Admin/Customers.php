@@ -12,10 +12,6 @@ class SLN_Admin_Customers {
 		$this->settings = $plugin->getSettings();
 		add_action('admin_menu', array($this, 'admin_menu'), 10);
 
-		if (!isset($_REQUEST['id'])) {
-			add_filter('manage_salon_page_salon-customers_columns', array($this, 'users_columns'));
-		}
-
 	}
 
 	public function admin_menu() {
@@ -27,6 +23,9 @@ class SLN_Admin_Customers {
 			'salon-customers',
 			array($this, 'show')
 		);
+		if (!isset($_REQUEST['id'])) {
+			add_filter('manage_' . get_plugin_page_hookname( 'salon-customers', 'salon' ) . '_columns', array($this, 'users_columns'));
+		}
 	}
 
 	public function show() {

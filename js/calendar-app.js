@@ -24,7 +24,7 @@ function calendarGetTimeFormat(){
     if(!salon.moment_time_format)
         salon.moment_time_format = salon.time_format
         .replace('ii','mm')
-        .replace('h','{|}')
+        .replace('hh','{|}')
         .replace('H','h')
         .replace('{|}','H')
         .replace('p','a')

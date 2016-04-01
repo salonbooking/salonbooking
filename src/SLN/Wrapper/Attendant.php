@@ -2,6 +2,12 @@
 
 class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
 {
+    public function __construct($object) {
+        if (!empty($object)) {
+            parent::__construct($object);
+        }
+    }
+
     function getNotAvailableOn($key)
     {
         $post_id = $this->getId();
@@ -121,12 +127,32 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
 
     public function getName()
     {
-        return $this->object->post_title;
+        if (!$this->isEmpty()) {
+            return $this->object->post_title;
+        }
+        else {
+            return 'n.d.';
+        }
     }
 
     public function getContent()
     {
-        return $this->object->post_excerpt;
+        if (!$this->isEmpty()) {
+            return $this->object->post_excerpt;
+        }
+        else {
+            return 'n.d.';
+        }
+    }
+
+    function getId()
+    {
+        if (!$this->isEmpty()) {
+            return $this->object->ID;
+        }
+        else {
+            return null;
+        }
     }
 
     public function __toString(){

@@ -7,6 +7,11 @@ class SLN_Settings
 
     public function __construct()
     {
+        $this->load();
+    }
+
+    public function load()
+    {
         $this->settings = get_option(self::KEY);
     }
 

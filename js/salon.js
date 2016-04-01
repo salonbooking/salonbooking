@@ -39,8 +39,14 @@ function sln_init($) {
 
     // CHECKBOXES
     $('#sln-salon input:checkbox').each(function () {
-        $(this).click(function () {
-            $(this).parent().toggleClass("is-checked");
+        $(this).change(function () {
+            if($(this).is(':checked')) {
+                $(this).parent().addClass("is-checked");
+            }
+            else {
+                $(this).parent().removeClass("is-checked");
+            }
+
         })
     });
     // RADIOBOXES
@@ -182,7 +188,6 @@ function sln_stepDate($) {
 function sln_serviceTotal($) {
     var $checkboxes = $('.sln-service-list input[type="checkbox"]');
     var $totalbox = $('#services-total');
-    var freeMinutes = parseInt($totalbox.data('minutes'));
     function evalTot() {
         var tot = 0;
         $checkboxes.each(function () {
@@ -193,26 +198,55 @@ function sln_serviceTotal($) {
         $totalbox.text($totalbox.data('symbol-left') + tot.formatMoney(2) + $totalbox.data('symbol-right'));
     }
 
-    function evalDuration(obj){
-        var minutes = parseInt($(obj).data('duration'));
-        if($(obj).is(':checked')){
-            freeMinutes -=  minutes;
-        }else{
-            freeMinutes +=  minutes;
+    function checkServices($) {
+        var form, data;
+        if ($('#salon-step-services').size()) {
+            form = $('#salon-step-services');
+            data = form.serialize() + "&action=salon&method=CheckServices&part=primaryServices&security=" + salon.ajax_nonce;
         }
-        if(freeMinutes < 0){
-            $('#availabilityerror').show();
-            $('#sln-step-submit').attr('disabled', true);
-        }else{
-            $('#availabilityerror').hide();
-            $('#sln-step-submit').attr('disabled', false);
+        else {
+            form = $('#salon-step-secondary');
+            data = form.serialize() + "&action=salon&method=CheckServices&part=secondaryServices&security=" + salon.ajax_nonce;
         }
+
+        $.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (!data.success) {
+                    var alertBox = $('<div class="alert alert-danger"></div>');
+                    $.each(data.errors, function () {
+                        alertBox.append('<p>').html(this);
+                    });
+                }
+                else {
+                    $('.alert').remove();
+                    $.each(data.services, function(index, value) {
+                        var checkbox = $('#sln_services_' + index);
+                        if (value.status == -1) {
+                            var alertBox = $('<div><div class="col-xs-offset-2 col-lg-offset-1"><div class="alert alert-danger alert-no-spacing"><p>' + value.error + '</p></div></div></div>');
+                            checkbox.attr('checked', false).attr('disabled', 'disabled').change();
+                            checkbox.parent().parent().parent().next().after(alertBox);
+                        }
+                        else if (value.status == 0) {
+                            checkbox.attr('checked', false).attr('disabled', false).change();
+                        }
+                        else if (value.status == 1) {
+                            checkbox.attr('checked', true).change();
+                        }
+                    });
+                    evalTot();
+                }
+            }
+        });
     }
 
     $checkboxes.click(function () {
-        evalTot();
-        evalDuration(this);
+        checkServices($);
     });
+    checkServices($);
     evalTot();
 }
 

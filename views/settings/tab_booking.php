@@ -2,8 +2,11 @@
 /**
  * @param $this SLN_Admin_Settings
  */
-function sln_availability_row($prefix, $row, $rulenumber = 'New')
+function sln_availability_row($prefix, $row = array(), $rulenumber = 'New')
 {
+    if(empty($row) || !isset($row['from'])){
+        $row = array('from' => array('9:00','14:00'), 'to' => array('13:00','19:00'));
+    }
     ?>
     <div class="col-xs-12 sln-booking-rule">
     <h2 class="sln-box-title"><?php _e('Rule','salon-booking-system');?> <strong><?php echo $rulenumber; ?></strong></h2>
@@ -71,7 +74,7 @@ function sln_holiday_row($prefix, $row, $rulenumber = 'New') {
 	<div class="row">
 		<div class="col-xs-12 col-md-4 sln-slider-wrapper">
 			<h6 class="sln-fake-label"><?php _e('Start on', 'salon-booking-system') ?></h6>
-			<?php $dateFormat = SLN_Enum_DateFormat::getPhpFormat(SLN_Plugin::getInstance()->getSettings()->get('date_format')); ?>
+			<?php $dateFormat = SLN_Enum_DateFormat::getPhpFormat(SLN_Enum_DateFormat::_MYSQL); ?>
 			<?php $dateFrom = isset($row['from_date']) ? $row['from_date'] : date($dateFormat); ?>
             <?php $dateFrom = sln_date_create_from_format($dateFormat, $dateFrom); ?>
 
@@ -91,7 +94,7 @@ function sln_holiday_row($prefix, $row, $rulenumber = 'New') {
     <div class="row">
         <div class="col-xs-12 col-md-4 sln-slider-wrapper">
             <h6 class="sln-fake-label"><?php _e('at', 'salon-booking-system') ?></h6>
-            <?php $timeFormat = SLN_Enum_TimeFormat::getPhpFormat(SLN_Plugin::getInstance()->getSettings()->get('time_format')); ?>
+            <?php $timeFormat = SLN_Enum_TimeFormat::getPhpFormat(SLN_Enum_TimeFormat::_DEFAULT); ?>
             <?php $timeFrom = isset($row['from_time']) ? $row['from_time'] : date($timeFormat); ?>
             <?php $timeFrom = sln_date_create_from_format($timeFormat, $timeFrom); ?>
             <div class="sln_timepicker"><?php SLN_Form::fieldJSTime($prefix."[from_time]", $timeFrom, array('interval' => SLN_Plugin::getInstance()->getSettings()->get('interval'))) ?></div>
@@ -336,7 +339,6 @@ function sln_date_create_from_format( $dformat, $dvalue )
         ?>
         <?php sln_availability_row("salon_settings[availabilities][$k]", $row, $n); ?>
         <?php endforeach ?>
-        <?php endid ?>
     </div>
     <div class="col-xs-12">
     <button data-collection="addnew" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file"><?php _e(
@@ -345,7 +347,7 @@ function sln_date_create_from_format( $dformat, $dvalue )
                 </button>
     </div>
     <div data-collection="prototype" data-count="<?php echo count($availabilities) ?>">
-        <?php sln_availability_row("salon_settings[availabilities][__new__]", $row); ?>
+        <?php sln_availability_row("salon_settings[availabilities][__new__]"); ?>
     </div>
     </div>
 
@@ -377,7 +379,7 @@ function sln_date_create_from_format( $dformat, $dvalue )
             </button>
         </div>
         <div data-collection="prototype" data-count="<?php echo count($holidays) ?>">
-            <?php sln_holiday_row("salon_settings[holidays][__new__]", $row); ?>
+            <?php sln_holiday_row("salon_settings[holidays][__new__]", array()); ?>
         </div>
     </div>
 

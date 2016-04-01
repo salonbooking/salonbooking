@@ -570,6 +570,16 @@ body {
             line-height: rem(60px);
         }
     }
+    .cal-year-box span[data-cal-date] {
+        @include bp(tablet) {
+            width: initial;
+            height: rem(44px);
+            line-height: rem(40px);
+            padding: 0 rem(20px);
+            border: 1px solid $cl_main--light;
+            @include b-radius(0%);
+        }
+    }
     .cal-year-box [class*="span"] {
         border-bottom: 1px solid #e1e1e1;
         @include bp(phone) {

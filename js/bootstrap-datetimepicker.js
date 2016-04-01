@@ -601,7 +601,7 @@
 					$.inArray(prevMonth.getUTCDay(), this.daysOfWeekDisabled) !== -1) {
 					clsName += ' disabled';
 				}
-                                var ymdm = (prevMonth.getMonth()+1);
+                                var ymdm = (prevMonth.getUTCMonth()+1);
                                 var ymd = prevMonth.getUTCFullYear()+'-'+(parseInt(ymdm) < 10 ? '0' : '')+ymdm+'-'+ (parseInt(prevMonth.getUTCDate()) < 10 ? '0' : '') + prevMonth.getUTCDate();
 				html.push('<td data-ymd="'+ymd+ '" class="day ' + clsName + '">' + prevMonth.getUTCDate() + '</td>');
 				if (prevMonth.getUTCDay() == this.weekEnd) {
