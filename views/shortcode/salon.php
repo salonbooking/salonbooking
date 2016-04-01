@@ -20,7 +20,7 @@ $customsize = $_GET["size"];
 if (isset($customsize)) {
     $_SESSION["size"] = $customsize;
 } else {
-  $_SESSION["size"] = "900";
+  $_SESSION["size"] = "400";
 }
 ?>
 <div id="sln-salon" class="sln-bootstrap container-fluid <?php
@@ -51,7 +51,6 @@ if (isset($customsize)) {
 
         ?>
 <?php /*
-*/ ?>
 <div class="sln-stepper">
 <?php $i = 0;
           foreach ($salon->getSteps() as $step) : $i++; ?>
@@ -60,4 +59,5 @@ if (isset($customsize)) {
   </div>
 <?php endforeach ?>
 </div>
+*/ ?>
 <div id="sln-notifications"></div>

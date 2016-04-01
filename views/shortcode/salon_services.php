@@ -25,8 +25,7 @@ $services = $step->getServices();
 		<div class="row sln-box--main"><div class="col-md-12"><?php include "_services.php"; ?></div></div>
 		<div class="row sln-box--main">
             <div class="col-md-6">&nbsp;</div>
-           <div class="col-md-6">
-           <?php include "_form_actions.php" ?></div>
+           <div class="col-md-6"><?php include "_form_actions.php" ?></div>
         </div>
 	<?php
 	// IF SIZE 600 // END
