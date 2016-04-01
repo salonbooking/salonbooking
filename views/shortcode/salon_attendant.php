@@ -9,7 +9,7 @@
 $bb = $plugin->getBookingBuilder();
 $attendants = $step->getAttendants();
 ?>
-<h1><?php _e($isMultipleAttSelection && count($bb->getServices()) > 1 ? 'Select your assistants' : 'Select your assistant','salon-booking-system')?></h1>
+<h1><?php if ($isMultipleAttSelection && count($bb->getServices()) > 1) _e('Select your assistants','salon-booking-system'); else _e('Select your assistant','salon-booking-system'); ?></h1>
 <form id="salon-step-attendant" method="post" action="<?php echo $formAction ?>" role="form">
     <?php if ($isMultipleAttSelection) {
         include "_m_attendants.php";
