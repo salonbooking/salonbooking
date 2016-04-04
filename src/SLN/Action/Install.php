@@ -41,8 +41,12 @@ class SLN_Action_Install
             self::rollback();
         }
 
-        if (version_compare(SLN_Plugin::getInstance()->getSettings()->getDbVersion(), max(array_keys(self::getDbUpdates())), '<')) {
-            echo SLN_Plugin::getInstance()->loadView('notice/html_notice_update', array('version' => SLN_Plugin::getInstance()->getSettings()->getDbVersion()));
+        $max = max(array_keys(self::getDbUpdates()));
+        $version = SLN_Plugin::getInstance()->getSettings()->getDbVersion();
+        if (version_compare($version, $max, '<')) {
+            if($version == '0.0.0')
+                $version = '2.3.2';
+            echo SLN_Plugin::getInstance()->loadView('notice/html_notice_update', compact('version'));
         } else {
             SLN_Plugin::getInstance()->getSettings()->setDbVersion()->save();
         }
