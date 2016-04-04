@@ -6,7 +6,7 @@ class SLN_Action_Install
     private static $dbUpdates = array(
         '2.3' => 'Updates/sln-update-2.3.php',
         '2.3.1' => 'Updates/sln-update-2.3.1.php',
-        '2.3.2' => 'Updates/sln-update-2.3.2.php',
+        '2.3.3' => 'Updates/sln-update-2.3.3.php',
     );
 
     private static function getDbUpdates()
