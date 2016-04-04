@@ -6,11 +6,11 @@ class SLN_Action_Install
     private static $dbUpdates = array(
         '2.3'    => 'sln-update-for-2.3.php',
         '2.3.1'  => 'sln-update-for-2.3.1.php',
-        '2.3.3'  => 'sln-update-for-2.3.3.php',
+        '2.4'  => 'sln-update-for-2.4.php',
     );
 
     private static $dbRollbacks = array(
-        '2.3.3'  => 'sln-rollback-to-2.3.2.php',
+        '2.4'  => 'sln-rollback-to-2.3.2.php',
     );
 
     public static function getDbUpdates()

@@ -1,7 +1,7 @@
 <div id="sln-setting-success" class="updated settings-success success">
 	<p>
 		<strong><?php _e('Salon Data Update Required','salon-booking-system') ?></strong> -
-		<?php echo __('The database version does not match the version of the plugin. You just need to perform a database upgrade or install a plugin version ','salon-booking-system') . $version ?>
+		<?php echo __('An update is required for this version. In case of problems you can use a “Rollback” option','salon-booking-system') ?>
 	</p>
 
 	<p>
