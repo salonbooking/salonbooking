@@ -190,8 +190,9 @@ th {
   -ms-transform: translateX(-50%) translateY(0);
   transform: translateX(-50%) translateY(0); }
 
-.sln-alert:after,
-#sln-salon .alert:after, .sln-icon-wrapper .sln-icon {
+.sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
+#sln-salon .alert:after, .sln-alert--warning:before,
+#sln-salon .alert-warning:before, .sln-icon-wrapper .sln-icon {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -202,7 +203,9 @@ th {
 .sln-bootstrap .sln-btn--emphasis:hover,
 .sln-bootstrap .sln-btn--emphasis:focus, .sln-btn--nobkg:hover, .sln-btn--nobkg:focus,
 .sln-bootstrap .sln-btn--nobkg:hover,
-.sln-bootstrap .sln-btn--nobkg:focus {
+.sln-bootstrap .sln-btn--nobkg:focus, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--borderonly:hover,
+.sln-bootstrap .sln-btn--borderonly:focus {
   -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23);
   -moz-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23); }
@@ -261,80 +264,158 @@ th {
 .sln-bootstrap .sln-btn--nobkg:hover input,
 .sln-bootstrap .sln-btn--nobkg:hover button,
 .sln-bootstrap .sln-btn--nobkg:focus input,
-.sln-bootstrap .sln-btn--nobkg:focus button, .sln-stepper .step .step-number, .sln-stepper .step.step--active .step-number {
+.sln-bootstrap .sln-btn--nobkg:focus button, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--borderonly:hover,
+.sln-bootstrap .sln-btn--borderonly:focus, .sln-btn--borderonly:hover input, .sln-btn--borderonly:hover button, .sln-btn--borderonly:focus input, .sln-btn--borderonly:focus button,
+.sln-bootstrap .sln-btn--borderonly:hover input,
+.sln-bootstrap .sln-btn--borderonly:hover button,
+.sln-bootstrap .sln-btn--borderonly:focus input,
+.sln-bootstrap .sln-btn--borderonly:focus button, .sln-stepper .step .step-number, .sln-stepper .step.step--active .step-number {
   color: white; }
 
-#sln-salon .sln-salon-title, #sln-salon .salon-step-title, .sln-text--contrast, .sln-input .help-block, .sln-input .help-block a, .sln-btn--nobkg,
-.sln-bootstrap .sln-btn--nobkg, .sln-alert,
+#sln-salon .sln-salon-title, #sln-salon .salon-step-title, .sln-text--contrast, .sln_datepicker:after, .sln_timepicker:after, .sln-input .help-block, .sln-input .help-block a, .sln-btn--nobkg,
+.sln-bootstrap .sln-btn--nobkg, .sln-btn--nobkg input, .sln-btn--nobkg button,
+.sln-bootstrap .sln-btn--nobkg input,
+.sln-bootstrap .sln-btn--nobkg button, .sln-btn--borderonly,
+.sln-bootstrap .sln-btn--borderonly, .sln-alert,
 #sln-salon .alert, .sln-stepper .step.step--active .step-label, #sln-salon, .sln-steps-price, #sln-salon .sln-thankyou--okbox h1, #sln-salon .sln-thankyou--okbox h2, #sln-salon .sln-thankyou--okbox h3, #sln-salon .sln-thankyou--okbox .sln-icon, .sln-payment-actions h4 {
   color: #004258; }
 
 .sln-text--contrast--alpha {
   color: rgba(0, 66, 88, 0.3); }
 
-.sln-text--dark, .sln-btn--nobkg input, .sln-btn--nobkg button,
-.sln-bootstrap .sln-btn--nobkg input,
-.sln-bootstrap .sln-btn--nobkg button, .sln-steps-description, .sln-summary-row .label, .sln-total-label, .sln-total-price {
+.sln-text--dark, .sln-btn--borderonly input, .sln-btn--borderonly button,
+.sln-bootstrap .sln-btn--borderonly input,
+.sln-bootstrap .sln-btn--borderonly button, .sln-steps-description, .sln-data-desc, .sln-summary-row .label, .sln-total-label, .sln-total-price {
   color: black; }
 
-.sln-text--emphasis, .sln-checkbox input:checked + label:after,
-.sln-checkbox input:checked + label:hover:after, .sln-steps-name {
+.sln-text--emphasis, .sln_datepicker:hover:after, .sln_timepicker:hover:after, .sln-checkbox input:checked + label:after,
+.sln-checkbox input:checked + label:hover:after, .sln-alert a,
+#sln-salon .alert a, .sln-steps-name {
   color: #0277BD; }
 
-.sln-text--emphasis--hoverk, .sln-checkbox input + label:hover:after, .sln-steps-name:hover {
+.sln-text--emphasis--hoverk, .sln-checkbox input + label:hover:after, .sln-alert a:hover,
+#sln-salon .alert a:hover, .sln-steps-name:hover {
   color: #0091EA; }
 
 .sln-text--grey, .sln-stepper .step .step-label {
   color: #888; }
 
+.sln-text--grey, .sln-stepper .step .step-label {
+  color: #e4e7e7; }
+
+.datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
+.datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active), .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled):hover,
+.datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active):hover,
+.datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active):hover, .datetimepicker.sln-datetimepicker table tr td.day.active:not(.disabled):hover,
+.datetimepicker.sln-datetimepicker table tr td span.hour.active:not(.disabled):hover,
+.datetimepicker.sln-datetimepicker table tr td span.minute.active:not(.disabled):hover, .datetimepicker.sln-datetimepicker .switch:hover, .datetimepicker.sln-datetimepicker .prev:hover, .datetimepicker.sln-datetimepicker .next:hover, .datetimepicker.sln-datetimepicker .today:hover {
+  color: #fff; }
+
 .sln-text--ok {
   color: #5bc24c; }
 
 .sln-alert--problem:after,
-#sln-salon .alert-danger:after,
-#sln-salon .alert-warning:after {
+#sln-salon .alert-danger:after {
   color: #D22221; }
+
+.sln-alert--warning:after,
+#sln-salon .alert-warning:after {
+  color: #f5b025; }
 
 .sln-checkbox input + label:before, .sln-radiobox input + label:before, .sln-radiobox input + label:after, #sln-salon {
   background-color: rgba(255, 255, 255, 0.75); }
 
+.datetimepicker.sln-datetimepicker table tr td.active:hover,
+.datetimepicker.sln-datetimepicker table tr td.active.disabled:hover,
+.datetimepicker.sln-datetimepicker table tr td.active:active,
+.datetimepicker.sln-datetimepicker table tr td.active:hover:active,
+.datetimepicker.sln-datetimepicker table tr td.active.disabled:active,
+.datetimepicker.sln-datetimepicker table tr td.active.disabled:hover:active,
+.datetimepicker.sln-datetimepicker table tr td.active,
+.datetimepicker.sln-datetimepicker table tr td.active.disabled,
+.datetimepicker.sln-datetimepicker table tr td.active[disabled],
+.datetimepicker.sln-datetimepicker table tr td.active[disabled]:hover,
+.datetimepicker.sln-datetimepicker table tr td.active.disabled[disabled],
+.datetimepicker.sln-datetimepicker table tr td.active.disabled[disabled]:hover,
+.datetimepicker.sln-datetimepicker table tr td span.active:hover,
+.datetimepicker.sln-datetimepicker table tr td span.active.disabled:hover,
+.datetimepicker.sln-datetimepicker table tr td span.active:active,
+.datetimepicker.sln-datetimepicker table tr td span.active:hover:active,
+.datetimepicker.sln-datetimepicker table tr td span.active.disabled:active,
+.datetimepicker.sln-datetimepicker table tr td span.active.disabled:hover:active,
+.datetimepicker.sln-datetimepicker table tr td span.active,
+.datetimepicker.sln-datetimepicker table tr td span.active.disabled,
+.datetimepicker.sln-datetimepicker table tr td span.active[disabled],
+.datetimepicker.sln-datetimepicker table tr td span.active[disabled]:hover,
+.datetimepicker.sln-datetimepicker table tr td span.active.disabled[disabled],
+.datetimepicker.sln-datetimepicker table tr td span.active.disabled[disabled]:hover, .sln-alert--warning:before,
+#sln-salon .alert-warning:before {
+  background-color: #004258; }
+
 .sln-stepper .step .step-number {
   background-color: rgba(0, 66, 88, 0.3); }
 
-.sln-radiobox input:checked + label:after,
+.datetimepicker.sln-datetimepicker table tr td.day.active:not(.disabled),
+.datetimepicker.sln-datetimepicker table tr td span.hour.active:not(.disabled),
+.datetimepicker.sln-datetimepicker table tr td span.minute.active:not(.disabled), .sln-radiobox input:checked + label:after,
 .sln-radiobox input:checked + label:hover:after, .sln-btn--emphasis,
 .sln-bootstrap .sln-btn--emphasis, .sln-stepper .step.step--active .step-number {
   background-color: #0277BD; }
 
-.sln-radiobox input + label:hover:after, .sln-btn--emphasis:hover, .sln-btn--emphasis:focus,
+.datetimepicker.sln-datetimepicker table tr td.day:not(.disabled):hover,
+.datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active):hover,
+.datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active):hover, .datetimepicker.sln-datetimepicker table tr td.day.active:not(.disabled):hover,
+.datetimepicker.sln-datetimepicker table tr td span.hour.active:not(.disabled):hover,
+.datetimepicker.sln-datetimepicker table tr td span.minute.active:not(.disabled):hover, .datetimepicker.sln-datetimepicker .switch:hover, .datetimepicker.sln-datetimepicker .prev:hover, .datetimepicker.sln-datetimepicker .next:hover, .datetimepicker.sln-datetimepicker .today:hover, .sln-radiobox input + label:hover:after, .sln-btn--emphasis:hover, .sln-btn--emphasis:focus,
 .sln-bootstrap .sln-btn--emphasis:hover,
 .sln-bootstrap .sln-btn--emphasis:focus, .sln-btn--nobkg:hover, .sln-btn--nobkg:focus,
 .sln-bootstrap .sln-btn--nobkg:hover,
-.sln-bootstrap .sln-btn--nobkg:focus {
+.sln-bootstrap .sln-btn--nobkg:focus, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--borderonly:hover,
+.sln-bootstrap .sln-btn--borderonly:focus {
   background-color: #0091EA; }
 
 .sln-btn--nobkg,
-.sln-bootstrap .sln-btn--nobkg {
+.sln-bootstrap .sln-btn--nobkg, .sln-btn--borderonly,
+.sln-bootstrap .sln-btn--borderonly {
   background-color: transparent; }
 
-#sln-salon .sln-thankyou--okbox {
+.datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
+.datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active), #sln-salon .sln-thankyou--okbox {
   background-color: #5bc24c; }
 
 .sln-steps-description, #sln-salon.sln-salon--m .sln-attendants-wrapper,
 #sln-salon.sln-salon--s .sln-attendants-wrapper, .sln-total-label, .sln-total-price {
   border-color: #004258 !important; }
 
-.sln-input input, .sln-input textarea, .snl-error-list-item, #sln-salon, .sln-list--dashed li, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
+.sln-input input, .sln-input textarea, .sln-btn--borderonly,
+.sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-list--dashed li, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
 .sln-checkbox input + label:before, .sln-radiobox input + label:before {
   border-color: #0277BD !important; }
 
-.sln-checkbox input + label:hover:before {
+.sln-checkbox input + label:hover:before, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--borderonly:hover,
+.sln-bootstrap .sln-btn--borderonly:focus, .sln-alert a:hover,
+#sln-salon .alert a:hover {
   border-color: #0091EA !important; }
 
-#sln-salon h1, .sln-alert:after,
-#sln-salon .alert:after {
+.sln-alert a,
+#sln-salon .alert a {
+  border-color: transparent !important; }
+
+.datetimepicker.sln-datetimepicker table tr td.day,
+.datetimepicker.sln-datetimepicker table tr td span.hour,
+.datetimepicker.sln-datetimepicker table tr td span.minute, .datetimepicker.sln-datetimepicker .switch, .datetimepicker.sln-datetimepicker .prev, .datetimepicker.sln-datetimepicker .next, .datetimepicker.sln-datetimepicker .today {
+  border-color: #e4e7e7 !important; }
+
+#sln-salon h1, .sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
+#sln-salon .alert:after, .sln-alert--warning:before,
+#sln-salon .alert-warning:before, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
   font-size: 1.6em; }
 
 #sln-salon h2 {
@@ -343,11 +424,11 @@ th {
 #sln-salon h3 {
   font-size: 1.2em; }
 
-#sln-salon p, #sln-salon .salon-step-title, .sln-input input, .sln-input textarea, .sln-alert,
-#sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration {
+#sln-salon p, #sln-salon .salon-step-title, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, .sln-alert,
+#sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   font-size: 1em; }
 
-.sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-steps-duration small {
+.sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
   font-size: .8em; }
 
 #sln-salon {
@@ -357,30 +438,6 @@ th {
 
 .sln-steps-name, .sln-steps-price {
   font-size: 2em; }
-
-.sln-icon {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-family: "FontAwesome";
-  font-size: 60;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 3.33333rem;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-  .sln-icon:after {
-    content: "\f111";
-    display: inline-block;
-    text-align: center;
-    -webkit-transition: background-color 200ms, color 300ms;
-    -moz-transition: background-color 200ms, color 300ms;
-    -o-transition: background-color 200ms, color 300ms;
-    transition: background-color 200ms, color 300ms;
-    z-index: 200; }
-
-.sln-icon--checked--square:after {
-  content: "\f046"; }
 
 @font-face {
   font-family: 'FontAwesome';
@@ -722,26 +779,54 @@ th {
   width: 14px;
   height: 14px; }
 
-.datetimepicker.sln-datetimepicker td, .datetimepicker.sln-datetimepicker th, .datetimepicker.sln-datetimepicker table tr td span {
-  border-radius: 0;
-  padding: 3px 5px; }
-
 .datetimepicker.sln-datetimepicker {
-  max-width: 590px; }
+  border-radius: 0;
+  width: 360px;
+  padding: 20px; }
   .datetimepicker.sln-datetimepicker table {
-    border-top: none; }
-  .datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
-    display: block;
     width: 100%;
-    height: 40px;
-    background-color: red;
-    text-align: center;
-    line-height: 40px;
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
-    font-style: normal;
-    margin: 20px 0 10px 0; }
+    line-height: 3em; }
+  .datetimepicker.sln-datetimepicker td, .datetimepicker.sln-datetimepicker th, .datetimepicker.sln-datetimepicker table tr td span {
+    border-radius: 0;
+    padding: 0; }
+
+.datetimepicker.sln-datetimepicker table {
+  border-top: none; }
+
+.datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
+  display: none;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  font-style: normal;
+  margin: 20px 0 10px 0;
+  background-color: red; }
+
+@media only screen and (max-width: 767px) {
+  .datetimepicker.sln-datetimepicker {
+    left: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-top: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; }
+    .datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
+      display: block;
+      height: 60px;
+      line-height: 60px; } }
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .datetimepicker.sln-datetimepicker {
+    left: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 200px; } }
 
 .datetimepicker.sln-datetimepicker table tr td.today,
 .datetimepicker.sln-datetimepicker table tr td.today:hover,
@@ -762,11 +847,7 @@ th {
 .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
 .datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active) {
-  color: #33CC33; }
-  .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled):hover,
-  .datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active):hover,
-  .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active):hover {
-    background-color: #33CC33; }
+  font-weight: bold; }
 
 .datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active),
@@ -781,9 +862,115 @@ th {
   color: white !important;
   background-color: red !important; }
 
+.datetimepicker.sln-datetimepicker table tr td.day,
+.datetimepicker.sln-datetimepicker table tr td span.hour,
+.datetimepicker.sln-datetimepicker table tr td span.minute {
+  border-style: solid;
+  border-width: .05em;
+  min-width: 3em; }
+
+.datetimepicker.sln-datetimepicker table tr td span.hour,
+.datetimepicker.sln-datetimepicker table tr td span.minute {
+  width: 25%;
+  height: initial;
+  margin: 0;
+  line-height: 3em;
+  border-top: 0;
+  margin: 0 -.05em; }
+
 .sln_datepicker #sln_date.form-control[readonly],
 .sln_timepicker #sln_time.form-control[readonly] {
   cursor: pointer; }
+
+.datetimepicker.sln-datetimepicker .switch, .datetimepicker.sln-datetimepicker .prev, .datetimepicker.sln-datetimepicker .next, .datetimepicker.sln-datetimepicker .today {
+  border-style: solid;
+  border-width: .05em; }
+
+.datetimepicker.sln-datetimepicker .prev, .datetimepicker.sln-datetimepicker .next {
+  position: relative;
+  padding: 0;
+  min-width: 3em; }
+  .datetimepicker.sln-datetimepicker .prev:before, .datetimepicker.sln-datetimepicker .next:before {
+    display: block;
+    font-family: "FontAwesome";
+    font-size: 60; }
+  .datetimepicker.sln-datetimepicker .prev i, .datetimepicker.sln-datetimepicker .next i {
+    display: none; }
+
+.datetimepicker.sln-datetimepicker .prev:before {
+  content: '\f060'; }
+
+.datetimepicker.sln-datetimepicker .next:before {
+  content: '\f061'; }
+
+#sln-salon.sln-salon--m .sln-input.sln-input--datepicker input[type="text"],
+#sln-salon.sln-salon--s .sln-input.sln-input--datepicker input[type="text"] {
+  margin-bottom: 0;
+  cursor: pointer; }
+
+.sln_datepicker, .sln_timepicker {
+  margin-bottom: 2em;
+  position: relative;
+  cursor: pointer; }
+  .sln_datepicker:after, .sln_timepicker:after {
+    font-family: "FontAwesome";
+    font-size: 1.6em;
+    display: inline-block;
+    right: .4em;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-radius: 50%;
+    -webkit-transition: color 250ms;
+    -moz-transition: color 250ms;
+    -o-transition: color 250ms;
+    transition: color 250ms; }
+
+#sln-salon.sln-salon--m .sln_datepicker, #sln-salon.sln-salon--m .sln_timepicker {
+  margin-bottom: 0; }
+
+.sln-icon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: "FontAwesome";
+  font-size: 60;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 3.33333rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  .sln-icon:after {
+    content: "\f111";
+    display: inline-block;
+    text-align: center;
+    -webkit-transition: background-color 200ms, color 300ms;
+    -moz-transition: background-color 200ms, color 300ms;
+    -o-transition: background-color 200ms, color 300ms;
+    transition: background-color 200ms, color 300ms;
+    z-index: 200; }
+
+.sln-icon--checked--square:after {
+  content: "\f046"; }
+
+.sln-icon--calendar:after, .sln_datepicker:after {
+  content: "\f073"; }
+
+.sln-icon--booking:after, .sln_timepicker:after {
+  content: "\f017"; }
+
+.sln-icon--back:after,
+.sln-icon--left:after,
+.sln-icon--prev:after,
+.sln-btn--icon.sln-icon--back:after,
+.sln-btn--icon.sln-icon--left:after,
+.sln-btn--icon.sln-icon--prev:after {
+  content: "\f060"; }
+
+.sln-icon--forward:after,
+.sln-icon--right:after,
+.sln-icon--next:after {
+  content: "\f061"; }
 
 .sln-input {
   margin-bottom: .8em; }
@@ -987,6 +1174,9 @@ th {
   padding: 0 .5em;
   line-height: 4em;
   height: 4em; }
+  #sln-salon.sln-salon--m .sln-btn--big.sln-btn--icon--left, #sln-salon.sln-salon--m .sln-btn--big input.sln-btn--icon--left, #sln-salon.sln-salon--m .sln-btn--big button.sln-btn--icon--left, #sln-salon.sln-salon--m .sln-btn--big a.sln-btn--icon--left {
+    padding-right: 1em;
+    padding-left: 4em; }
 
 .sln-btn--emphasis:hover input, .sln-btn--emphasis:hover button, .sln-btn--emphasis:hover a, .sln-btn--emphasis:focus input, .sln-btn--emphasis:focus button, .sln-btn--emphasis:focus a,
 .sln-bootstrap .sln-btn--emphasis:hover input,
@@ -996,6 +1186,57 @@ th {
 .sln-bootstrap .sln-btn--emphasis:focus button,
 .sln-bootstrap .sln-btn--emphasis:focus a {
   text-decoration: none; }
+
+.sln-btn--borderonly,
+.sln-bootstrap .sln-btn--borderonly {
+  border-style: solid;
+  border-width: .05em; }
+
+.sln-btn--icon {
+  text-align: left;
+  position: relative;
+  background-color: #fff; }
+  .sln-btn--icon input, .sln-btn--icon button {
+    text-align: left; }
+  .sln-btn--icon:after {
+    content: "\f111";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    font-family: "FontAwesome";
+    font-size: 1em;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 4em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition: background-color 200ms;
+    -moz-transition: background-color 200ms;
+    -o-transition: background-color 200ms;
+    transition: background-color 200ms;
+    z-index: 200; }
+  .sln-btn--icon.sln-btn--big {
+    padding-right: 3.55556rem; }
+    .sln-btn--icon.sln-btn--big:after {
+      font-family: "FontAwesome";
+      font-size: 1.2em;
+      padding: 0 1em;
+      line-height: 3.4em; }
+  .sln-btn--icon.sln-btn--icon--left {
+    text-align: right; }
+    .sln-btn--icon.sln-btn--icon--left button {
+      text-align: right; }
+    .sln-btn--icon.sln-btn--icon--left:after {
+      top: 0;
+      right: initial;
+      bottom: 0;
+      left: 0; }
+    .sln-btn--icon.sln-btn--icon--left.sln-btn--big {
+      padding-right: 4em;
+      padding-left: 4em; }
 
 .sln-alert,
 #sln-salon .alert {
@@ -1016,6 +1257,30 @@ th {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%; }
+  .sln-alert a,
+  #sln-salon .alert a {
+    display: inline-block;
+    font-weight: bold;
+    border-bottom-style: solid;
+    border-bottom-width: .15em; }
+    .sln-alert a:hover,
+    #sln-salon .alert a:hover {
+      text-decoration: none; }
+
+#sln-salon .sln-alert p:only-of-type, #sln-salon .sln-alert p:last-of-type {
+  margin-bottom: 0; }
+
+.sln-alert--warning:before,
+#sln-salon .alert-warning:before {
+  display: inline-block;
+  content: "";
+  left: .6em;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border-radius: 50%;
+  width: .9em;
+  height: .9em; }
 
 .sln-alert.sln-alert-medium {
   display: block;
@@ -1026,7 +1291,10 @@ th {
     left: .6em; }
 
 .sln-alert--problem:after,
-#sln-salon .alert-danger:after,
+#sln-salon .alert-danger:after {
+  content: "\f06a"; }
+
+.sln-alert--warning:after,
 #sln-salon .alert-warning:after {
   content: "\f06a"; }
 
@@ -1154,6 +1422,14 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 #sln-salon.sln-salon--s .sln-list--dashed {
   display: block; }
 
+.sln-data-val {
+  text-align: right; }
+
+#sln-salon.sln-salon--s .sln-data-val {
+  text-align: left;
+  padding-top: .2em;
+  padding-bottom: .6em; }
+
 .sln-service {
   margin-bottom: 2em; }
 
@@ -1171,7 +1447,7 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   margin-top: 2em; }
 
 .sln-summary-row {
-  padding: 0 0 1em 0;
+  padding: 0;
   margin-bottom: 1em; }
   .sln-summary-row .label {
     font-weight: normal;
@@ -1179,7 +1455,7 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   .sln-summary-row .sln-steps-name, .sln-summary-row .sln-steps-price {
     margin-bottom: 0; }
   .sln-summary-row hr {
-    margin: .5em 0 0 0;
+    margin: 1em 0 0 0;
     border: 0;
     border-bottom-style: solid;
     border-bottom-width: .05em; }
@@ -1192,7 +1468,12 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 .sln-step-summary .sln-total {
   margin-bottom: 2em; }
 
+#sln-salon.sln-salon--m .sln-summary-row hr,
+#sln-salon.sln-salon--s .sln-summary-row hr {
+  margin-top: 1em; }
+
 #sln-salon.sln-salon--s .sln-summary-row {
+  padding: 0 0 1em 0;
   margin-bottom: 0; }
   #sln-salon.sln-salon--s .sln-summary-row .sln-steps-price {
     text-align: left;
@@ -1230,15 +1511,20 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     text-align: center; }
   #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h2, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
     display: block; }
+  #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h2 {
+    padding-left: 0; }
   #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox hr {
     margin: 1.5em 0 1em 0; }
 
 #sln-salon.sln-salon--s .sln-thankyou .sln-icon-wrapper {
-  padding-top: 4em;
+  padding-top: 3em;
   padding-left: 0;
   text-align: center; }
   #sln-salon.sln-salon--s .sln-thankyou .sln-icon-wrapper .sln-icon {
     top: 0; }
+
+#sln-salon.sln-salon--m .sln-box--formactions {
+  text-align: right; }
 
 .sln-icon-wrapper {
   position: relative;
@@ -1246,6 +1532,9 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   .sln-icon-wrapper .sln-icon {
     position: absolute;
     left: 0; }
+  .sln-icon-wrapper .sln-icon-wrapper--right {
+    padding-right: 3.5em;
+    padding-left: 0; }
 
 #sln-salon.sln-salon--m .sln-attendants-wrapper,
 #sln-salon.sln-salon--s .sln-attendants-wrapper {

@@ -21,6 +21,39 @@
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%;
   }
+  a {
+    display: inline-block;
+    @extend %text-color--emphasis;
+    font-weight: bold;
+    border-bottom-style: solid;
+    border-bottom-width: .15em;
+    @extend %bd-color--transparent;
+    &:hover {
+      @extend %bd-color--emphasis--hover;
+      @extend %text-color--emphasis--hover;
+      text-decoration: none;
+    }
+  }
+}
+
+#sln-salon .sln-alert {
+  p:only-of-type, p:last-of-type {margin-bottom: 0;}
+}
+%sln-alert-icon-bgc {
+  &:before {
+    display: inline-block;
+    content: "";
+    @extend %absolute-vertical-centering;
+    left: .6em;
+    @extend %sln-textsize--bigger;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-radius: 50%;
+    @extend %bgc-color--contrast;
+    width: .9em;
+    height: .9em;
+  }
 }
 .sln-alert.sln-alert-medium {
   display: block;
@@ -34,12 +67,19 @@
 }
 
 .sln-alert--problem,
-#sln-salon .alert-danger,
-#sln-salon .alert-warning {
+#sln-salon .alert-danger {
   //@extend %text-color--problem;
   &:after {
     content: "\f06a";
     @extend %text-color--problem;
+  }
+}
+.sln-alert--warning,
+#sln-salon .alert-warning {
+  @extend %sln-alert-icon-bgc;
+  &:after {
+    content: "\f06a";
+    @extend %text-color--warning;
   }
 }
 

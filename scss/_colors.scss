@@ -3,7 +3,6 @@
 //$sln-color--main--light: rgb(199,223,243);
 //$sln-color--main--light--border: #c5cfd4;
 $sln-color--white: #fff;
-$sln-color--main--grey: #888;
 $sln-color--main--emphasis: #0C6EB6;
 $sln-color--problem: #D22221;
 $sln-color--problem--light: #e63f24;
@@ -17,10 +16,11 @@ $sln-color--contrast--alpha: rgba(0, 66, 88, .3);
 $sln-color--dark: rgba(0, 0, 0, 1);
 
 $sln-color--main--noalpha: rgba(255, 255, 255, 1);
-//$sln-color--emphasis: rgba(139, 195, 74, 1);
-//$sln-color--emphasis: #607D8B;
 $sln-color--emphasis: #0277BD;
 $sln-color--emphasis--hover: #0091EA;
+
+$sln-color--grey--main: #888;
+$sln-color--grey--light: #e4e7e7;
 
 %text-color--main {color: $sln-color--main--noalpha;}
 %text-color--contrast {color: $sln-color--contrast;}
@@ -28,10 +28,13 @@ $sln-color--emphasis--hover: #0091EA;
 %text-color--dark {color: $sln-color--dark;}
 %text-color--emphasis {color: $sln-color--emphasis;}
 %text-color--emphasis--hover {color: $sln-color--emphasis--hover;}
-%text-color--grey {color: $sln-color--main--grey;}
+%text-color--grey {color: $sln-color--grey--main;}
+%text-color--grey {color: $sln-color--grey--light;}
+%text-color--white {color: $sln-color--white;}
 %text-color--ok {color: $sln-color--ok;}
 %text-color--problem {color: $sln-color--problem;}
 %text-color--problem--light {color: $sln-color--problem--light;}
+%text-color--warning {color: $sln-color--warning;}
 
 // BACKGORUNDS
 %bgc-color--main {background-color: $sln-color--main;}
@@ -41,9 +44,11 @@ $sln-color--emphasis--hover: #0091EA;
 %bgc-color--emphasis {background-color: $sln-color--emphasis;}
 %bgc-color--emphasis--hover {background-color: $sln-color--emphasis--hover;}
 %bgc-color--transparent {background-color: transparent;}
-%bgc-color--grey {background-color: $sln-color--main--grey;}
+%bgc-color--grey {background-color: $sln-color--grey--main;}
+%bgc-color--grey--light {background-color: $sln-color--grey--light;}
 %bgc-color--ok {background-color: $sln-color--ok;}
 %bgc-color--white {background-color: $sln-color--white;}
+%bgc-color--warning {background-color: $sln-color--warning;}
 
 // BORDERS
 %bd-color--main {border-color: $sln-color--main !important;}
@@ -54,5 +59,7 @@ $sln-color--emphasis--hover: #0091EA;
 %bd-color--emphasis--hover {border-color: $sln-color--emphasis--hover !important;}
 %bd-color--transparent {border-color: transparent !important;}
 %bd-color--main--noalpha {border-color: $sln-color--main--noalpha !important;}
-%bd-color--grey {border-color: $sln-color--main--grey !important;}
+%bd-color--grey {border-color: $sln-color--grey--main !important;}
+%bd-color--grey--light {border-color: $sln-color--grey--light !important;}
 %bd-color--ok {border-color: $sln-color--ok !important;}
+%bd-color--warning {border-color: $sln-color--warning !important;}
