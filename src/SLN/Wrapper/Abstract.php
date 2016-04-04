@@ -14,7 +14,8 @@ abstract class SLN_Wrapper_Abstract
 
     function getId()
     {
-        return $this->object->ID;
+        if($this->object)
+            return $this->object->ID;
     }
     public function isEmpty(){
         return empty($this->object);

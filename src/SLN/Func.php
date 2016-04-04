@@ -322,23 +322,6 @@ class SLN_Func
                 }
             }
         }
-        //die();
-//        foreach ($services as $s) {
-//            var_dump($s);
-//            var_dump($s->getId());
-//            $post_terms = get_the_terms($s->getId(), SLN_Plugin::TAXONOMY_SERVICE_CATEGORY);
-//            $nu_post_terms = array();
-//            var_dump($post_terms);
-//            die();
-//            if (!empty($post_terms)) {
-//                foreach ($post_terms as $post_term) {
-//                    $ret[$post_term->term_id]['term'] = $post_term;
-//                    $ret[$post_term->term_id]['services'][] = $s;
-//                }
-//            } else {
-//                $ret[0]['services'][] = $s;
-//            }
-//        }
         if (empty($categories)) {
             $ret[0]['services'] = $services;
         }

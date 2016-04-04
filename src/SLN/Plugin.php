@@ -276,10 +276,13 @@ class SLN_Plugin
         /** @var SLN_Wrapper_Service $b */
         // ids passed during sort inside single booking 
         if(is_int($a))
-				$a = SLN_Plugin::getInstance()->createService($a);
+		$a = SLN_Plugin::getInstance()->createService($a);
         if(is_int($b))
-				$b = SLN_Plugin::getInstance()->createService($b);
-				
+		$b = SLN_Plugin::getInstance()->createService($b);
+	if(!$b)
+            return $a;
+        if(!$a)
+            return $b;		
         $aExecOrder = $a->getExecOrder();
         $bExecOrder = $b->getExecOrder();
         if ($aExecOrder != $bExecOrder) {
