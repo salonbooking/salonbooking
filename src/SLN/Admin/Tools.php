@@ -30,10 +30,25 @@ class SLN_Admin_Tools {
 		} else {
 			$info = json_encode( get_option( SLN_Settings::KEY ), JSON_PRETTY_PRINT );
 		}
+
+		$current_version = $this->settings->getDbVersion();
+
+		$versionToRollback = '';
+		$rollbacks = SLN_Action_Install::getDbRollbacks();
+		krsort($rollbacks);
+		foreach ($rollbacks as $version => $rollback) {
+			if (version_compare($current_version, $version, '>=')) {
+				if (preg_match('/sln-rollback-to-(\d+[\.\d+]*).php$/', $rollback, $matches)) {
+					$versionToRollback = $matches[1];
+					break;
+				}
+			}
+		}
 		
 		echo $this->plugin->loadView(
 		'admin/tools', array(
-			'info' => $info
+			'info' => $info,
+			'versionToRollback' => $versionToRollback
 		)
 		);
 	}
