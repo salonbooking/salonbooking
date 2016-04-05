@@ -36,7 +36,7 @@ $browser-context: 18px;
     @media only screen and (min-width: 768px) and (max-width: 1023px) { @content; }
   }
   @else if $point == tablet-max-port {
-    @media only screen and (min-width: 768px) and (max-width: 1200px) { @content; }
+    @media only screen and (min-width: 768px) and (max-width: 991px) { @content; }
   }
   @else if $point == tablet-la {
     @media all 

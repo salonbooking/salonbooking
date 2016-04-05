@@ -31,23 +31,23 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         <div class="row">
             <div class="col-md-12">
             <div class="row sln-summary-row">
-                <div class="col-md-6 sln-data-desc"><span class="label"><?php _e('Date and time booked', 'salon-booking-system') ?></span></div>
-                <div class="col-md-6 sln-data-val">
+                <div class="col-sm-6 col-md-6 sln-data-desc"><span class="label"><?php _e('Date and time booked', 'salon-booking-system') ?></span></div>
+                <div class="col-sm-6 col-md-6 sln-data-val">
                     <?php echo $plugin->format()->date($datetime); ?> / <?php echo $plugin->format()->time($datetime) ?>
                 </div>
-                <div class="col-md-12"><hr></div>
+                <div class="col-sm-12 col-md-12"><hr></div>
             </div>
             <?php if($attendant = $bb->getAttendant()) :  ?>
             <div class="row sln-summary-row">
-                <div class="col-md-6 sln-data-desc"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
-                <div class="col-md-6 sln-data-val"><?php echo $attendant->getName(); ?></div>
-                <div class="col-md-12"><hr></div>
+                <div class="col-sm-6 col-md-6 sln-data-desc"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
+                <div class="col-sm-6 col-md-6 sln-data-val"><?php echo $attendant->getName(); ?></div>
+                <div class="col-sm-12 col-md-12"><hr></div>
             </div>
             <?php // IF ASSISTANT
              endif ?>
              <div class="row sln-summary-row">
-                <div class="col-md-6 sln-data-desc"><span class="label"><?php _e('Services booked', 'salon-booking-system') ?></span></div>
-                <div class="col-md-6 sln-data-val">
+                <div class="col-sm-6 col-md-6 sln-data-desc"><span class="label"><?php _e('Services booked', 'salon-booking-system') ?></span></div>
+                <div class="col-sm-6 col-md-6 sln-data-val">
                     <ul class="sln-list--dashed">
                 <?php foreach ($bb->getServices() as $service): ?>
                     <li> <span class="service-label"><?php echo $service->getName(); ?></span>
@@ -58,11 +58,12 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                 <?php endforeach ?>
             </ul>
                 </div>
-                <div class="col-md-12"><hr></div>
+                <div class="col-sm-12 col-md-12"><hr></div>
             </div>
             </div>
         </div>
         <div class="row sln-total">
+            <div class="col-md-12"><hr></div>
             <div class="col-md-12">
                 <?php if($showPrices){?>
                 <h3 class="col-xs-6 sln-total-label"><?php _e('Total amount', 'salon-booking-system') ?></h3>
@@ -105,23 +106,23 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     <div class="row sln-summary">
     <div class="col-md-12">
     <div class="row sln-summary-row">
-        <div class="col-md-6 sln-data-desc"><?php _e('Date and time booked', 'salon-booking-system') ?></div>
-        <div class="col-md-6 sln-data-val">
+        <div class="col-sm-6 col-md-6 sln-data-desc"><?php _e('Date and time booked', 'salon-booking-system') ?></div>
+        <div class="col-sm-6 col-md-6 sln-data-val">
             <?php echo $plugin->format()->date($datetime); ?> / <?php echo $plugin->format()->time($datetime) ?>
         </div>
-        <div class="col-md-12"><hr></div>
+        <div class="col-sm-12 col-md-12"><hr></div>
     </div>
     <?php if($attendant = $bb->getAttendant()) :  ?>
     <div class="row sln-summary-row">
-        <div class="col-md-6 sln-data-desc"><?php _e('Assistant', 'salon-booking-system') ?></div>
-        <div class="col-md-6 sln-data-val"><?php echo $attendant->getName(); ?></div>
-        <div class="col-md-12"><hr></div>
+        <div class="col-sm-6 col-md-6 sln-data-desc"><?php _e('Assistant', 'salon-booking-system') ?></div>
+        <div class="col-sm-6 col-md-6 sln-data-val"><?php echo $attendant->getName(); ?></div>
+        <div class="col-sm-12 col-md-12"><hr></div>
     </div>
     <?php // IF ASSISTANT
      endif ?>
      <div class="row sln-summary-row">
-        <div class="col-md-6 sln-data-desc"><?php _e('Services booked', 'salon-booking-system') ?></div>
-        <div class="col-md-6 sln-data-val">
+        <div class="col-sm-6 col-md-6 sln-data-desc"><?php _e('Services booked', 'salon-booking-system') ?></div>
+        <div class="col-sm-6 col-md-6 sln-data-val">
             <ul class="sln-list--dashed">
         <?php foreach ($bb->getServices() as $service): ?>
             <li><?php echo $service->getName(); ?>
@@ -132,10 +133,11 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         <?php endforeach ?>
     </ul>
         </div>
-        <div class="col-md-12"><hr></div>
+        <div class="col-sm-12 col-md-12"><hr></div>
     </div>
     </div>
     <div class="col-md-12 sln-total">
+    <hr>
         <?php if($showPrices){?>
         <h3 class="col-xs-6 sln-total-label"><?php _e('Total amount', 'salon-booking-system') ?></h3>
         <h3 class="col-xs-6 sln-total-price"><?php echo $plugin->format()->money(

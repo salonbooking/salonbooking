@@ -278,7 +278,7 @@ th {
 .sln-bootstrap .sln-btn--nobkg input,
 .sln-bootstrap .sln-btn--nobkg button, .sln-btn--borderonly,
 .sln-bootstrap .sln-btn--borderonly, .sln-alert,
-#sln-salon .alert, .sln-stepper .step.step--active .step-label, #sln-salon, .sln-steps-price, #sln-salon .sln-thankyou--okbox h1, #sln-salon .sln-thankyou--okbox h2, #sln-salon .sln-thankyou--okbox h3, #sln-salon .sln-thankyou--okbox .sln-icon, .sln-payment-actions h4 {
+#sln-salon .alert, .sln-stepper .step.step--active .step-label, #sln-salon, .sln-steps-price, #sln-salon .sln-thankyou--okbox h1, #sln-salon .sln-thankyou--okbox h2, #sln-salon .sln-thankyou--okbox h3, #sln-salon .sln-thankyou--okbox .sln-icon-wrapper .sln-icon, .sln-payment-actions h4 {
   color: #004258; }
 
 .sln-text--contrast--alpha {
@@ -387,12 +387,12 @@ th {
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active), #sln-salon .sln-thankyou--okbox {
   background-color: #5bc24c; }
 
-#sln-salon.sln-salon--m .sln-attendants-wrapper,
+#sln-salon.sln-salon--l .sln-attendants-wrapper .sln-box--formactions > div, #sln-salon.sln-salon--m .sln-attendants-wrapper,
 #sln-salon.sln-salon--s .sln-attendants-wrapper, .sln-total hr {
   border-color: #004258 !important; }
 
 .sln-input input, .sln-input textarea, .sln-btn--borderonly,
-.sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li, #sln-salon.sln-salon--l .sln-attendants-wrapper .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
+.sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
 .sln-checkbox input + label:before, .sln-radiobox input + label:before {
@@ -425,7 +425,7 @@ th {
   font-size: 1.2em; }
 
 #sln-salon p, #sln-salon .salon-step-title, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, .sln-alert,
-#sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
+#sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   font-size: 1em; }
 
 .sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
@@ -820,7 +820,7 @@ th {
       height: 60px;
       line-height: 60px; } }
 
-@media only screen and (min-width: 768px) and (max-width: 1200px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
   .datetimepicker.sln-datetimepicker {
     left: 0 !important;
     width: 100%;
@@ -1456,23 +1456,29 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   text-transform: uppercase;
   font-weight: bold; }
 
-#sln-salon.sln-salon--l .sln-attendants-wrapper .sln-attendant {
-  margin-bottom: 2em; }
-  #sln-salon.sln-salon--l .sln-attendants-wrapper .sln-attendant:last-child {
-    margin-bottom: 2em; }
-  #sln-salon.sln-salon--l .sln-attendants-wrapper .sln-attendant hr {
+#sln-salon.sln-salon--l .sln-attendants-wrapper .sln-box--formactions > div {
+  border-top-style: solid;
+  border-top-width: .16em;
+  margin-top: 2em;
+  padding-top: 2em; }
+
+.sln-attendant {
+  margin-bottom: 4em; }
+  .sln-attendant hr {
     margin: 2em 0 0 0;
     border: 0;
     border-top-style: dashed;
     border-top-width: .05em; }
-  @media only screen and (min-width: 992px) {
-    #sln-salon.sln-salon--l .sln-attendants-wrapper .sln-attendant {
-      margin-bottom: 4em; } }
-
-.sln-attendant {
-  margin-bottom: 4em; }
   .sln-attendant:last-child {
     margin-bottom: 0; }
+    .sln-attendant:last-child hr {
+      display: none; }
+  @media only screen and (min-width: 768px) {
+    .sln-attendant {
+      margin-bottom: 2em; } }
+  @media only screen and (min-width: 992px) {
+    .sln-attendant {
+      margin-bottom: 4em; } }
 
 .sln-summary {
   margin-top: 2em; }
@@ -1517,7 +1523,7 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 
 #sln-salon .sln-thankyou--okbox {
   margin-top: 1em;
-  padding: 4em 0 3em 0; }
+  padding: 4em 1em 3em 1em; }
   #sln-salon .sln-thankyou--okbox h2 {
     padding: 0 .5em 0 3em; }
   #sln-salon .sln-thankyou--okbox h2, #sln-salon .sln-thankyou--okbox h3 {
@@ -1528,6 +1534,11 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     border: 0;
     border-bottom-style: solid;
     border-bottom-width: .05em; }
+  #sln-salon .sln-thankyou--okbox .sln-icon-wrapper {
+    padding-left: 3em; }
+  #sln-salon .sln-thankyou--okbox .sln-icon-wrapper .sln-icon {
+    font-size: 2em;
+    line-height: 2em; }
 
 .sln-form-actions {
   margin-bottom: 1em; }
