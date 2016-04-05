@@ -8,11 +8,12 @@
  */
 $bb = $plugin->getBookingBuilder();
 $attendants = $step->getAttendants();
+$style = $step->getShortcode()->getStyleShortcode();
+$size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
 <form id="salon-step-secondary" method="post" action="<?php echo $formAction ?>" role="form">
 <h2 class="salon-step-title"><?php _e($isMultipleAttSelection && count($bb->getServices()) > 1 ? 'Select your assistants' : 'Select your assistant','salon-booking-system')?></h2>
 <?php
-	$size = $_SESSION["size"];
 	if ($size == '900') { ?>
 		<div class="row sln-box--main sln-attendants-wrapper">
 			<div class="col-md-8">

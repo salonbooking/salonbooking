@@ -17,7 +17,8 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
 $grouped = SLN_Func::groupServicesByCategory($services);
 
 $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds(), $services);
-
+$style = $step->getShortcode()->getStyleShortcode();
+$size = SLN_Enum_ShortcodeStyle::getSize($style);
  ?>
 <?php SLN_Form::fieldText(
     'sln[date]',
@@ -41,7 +42,6 @@ $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds()
         <?php endif ?>
     <?php foreach ($group['services'] as $service) : ?>
          <?php
-    $size = $_SESSION["size"];
     if ($size == '900') { ?>
     <div class="row sln-service">
         <div class="col-md-1 sln-checkbox sln-steps-check sln-service-check <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
@@ -257,7 +257,6 @@ $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds()
 	<?php if ($showPrices){ ?>
     <div class="row sln-total">
     <?php
-    $size = $_SESSION["size"];
     if ($size == '900') { ?>
         <div class="col-md-1">&nbsp;</div>
         <h3 class="col-xs-5 sln-total-label">

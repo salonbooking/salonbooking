@@ -13,11 +13,12 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 $paymentMethod = $plugin->getSettings()->get('pay_enabled') ? 
 SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMethod(), $plugin)
 : false;
+$style = $step->getShortcode()->getStyleShortcode();
+$size = SLN_Enum_ShortcodeStyle::getSize($style);
 
 ?>
 <div id="salon-step-thankyou" class="row sln-thankyou">
 <?php
-    $size = $_SESSION["size"];
     if ($size == '900') { ?>
     <div class="col-md-8">
             <?php if($confirmation) : ?>

@@ -6,6 +6,8 @@
  * @var SLN_Shortcode_Salon_Step $step
  */
 $bb = $plugin->getBookingBuilder();
+$style = $step->getShortcode()->getStyleShortcode();
+$size = SLN_Enum_ShortcodeStyle::getSize($style);
 global $current_user;
 get_currentuserinfo();
 $values = array(
@@ -19,7 +21,6 @@ $values = array(
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <h2 class="salon-step-title"><?php _e('Returning customer?', 'salon-booking-system') ?> <?php _e('Please, log-in.', 'salon-booking-system') ?> </h2>
     <?php
-    $size = $_SESSION["size"];
     if ($size == '900') { ?>
         <div class="row">
             <div class="col-md-4 sln-input sln-input--simple">
@@ -107,7 +108,6 @@ $values = array(
     <h2 class="salon-step-title"><?php _e('Checkout as a guest', 'salon-booking-system') ?>, <?php _e('An account will be automatically created', 'salon-booking-system') ?>
     </h2>
     <?php
-    $size = $_SESSION["size"];
     if ($size == '900') { ?>
     <div class="row">
     <div class="col-md-8">
@@ -240,7 +240,6 @@ $values = array(
     <form method="post" action="<?php echo $formAction ?>" role="form">
     <h2 class="salon-step-title"><?php _e('Checkout', 'salon-booking-system') ?></h2>
     <?php
-    $size = $_SESSION["size"];
     if ($size == '900') { ?>
     <div class="row">
     <div class="col-md-8">

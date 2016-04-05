@@ -7,11 +7,13 @@
  */
 $bb = $plugin->getBookingBuilder();
 $services = $step->getServices();
+
+$style = $step->getShortcode()->getStyleShortcode();
+$size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
 <form id="salon-step-secondary" method="post" action="<?php echo $formAction ?>" role="form">
 <h2 class="salon-step-title"><?php _e('Something more?','salon-booking-system')?></h2>
 <?php
-	$size = $_SESSION["size"];
 	if ($size == '900') { ?>
 		<div class="row sln-box--main">
 			<div class="col-md-8"><?php include "_services.php"; ?></div>

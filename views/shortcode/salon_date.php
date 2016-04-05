@@ -23,8 +23,9 @@ function salon_date_hoursbefore($hoursBefore)
     <?php endif;
 }
 }
-?>
-<?php
+$style = $step->getShortcode()->getStyleShortcode();
+$size = SLN_Enum_ShortcodeStyle::getSize($style);
+
 if ($plugin->getSettings()->isDisabled()):
     $message =  $plugin->getSettings()->getDisabledMessage(); 
     ?>
@@ -55,7 +56,6 @@ else:
           data-intervals="<?php echo esc_attr(json_encode($intervals->toArray()));?>">
     <h2 class="salon-step-title"><?php _e('When do you want to come?', 'salon-booking-system') ?></h2>
         <?php
-        $size = $_SESSION["size"];
         if ($size == '900') {
         ?>
         <div class="row sln-box--main">

@@ -21,7 +21,6 @@ foreach ($steps as $step) {
 $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 ?>
 <?php
-        $size = $_SESSION["size"];
         if ($size == '600') {
         ?>
         <div class="form-actions row">

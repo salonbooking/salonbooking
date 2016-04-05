@@ -11,6 +11,8 @@ $ah = $plugin->getAvailabilityHelper();
 $ah->setDate($plugin->getBookingBuilder()->getDateTime());
 $duration = new SLN_DateTime('1970-01-01 '.$bb->getDuration());
 $hasAttendants = false;
+$style = $step->getShortcode()->getStyleShortcode();
+$size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
 <div class="sln-attendant-list">
     <?php foreach ($attendants as $attendant) : ?>
@@ -21,7 +23,6 @@ $hasAttendants = false;
             }
         ?>
     <?php
-    $size = $_SESSION["size"];
     if ($size == '900') { ?>
         <div class="row sln-attendant">
         <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
@@ -88,7 +89,7 @@ $hasAttendants = false;
     <div class="row sln-attendant">
         <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
-            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
+            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDateTime(), $duration);
             if ( $validateErrors && $validateAttServicesErrors) {
                 $errors = array_merge($validateErrors, $validateAttServicesErrors);
             }
@@ -156,7 +157,7 @@ $hasAttendants = false;
     <div class="row sln-attendant">
         <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
-            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDuration());
+            $validateErrors            = $ah->validateAttendant($attendant, $bb->getDateTime(), $duration);
             if ( $validateErrors && $validateAttServicesErrors) {
                 $errors = array_merge($validateErrors, $validateAttServicesErrors);
             }

@@ -8,6 +8,8 @@ class SLN_Enum_ShortcodeStyle
     const _DEFAULT = self::_MEDIUM;
 
     private static $labels;
+    private static $classes;
+    private static $sizes;
     private static $descriptions;
     private static $images = array();
 
@@ -24,6 +26,21 @@ class SLN_Enum_ShortcodeStyle
 
         return self::$labels[$key];
     }
+
+    public static function getClass($key)
+    {
+        self::init();
+
+        return self::$classes[$key];
+    }
+
+    public static function getSize($key)
+    {
+        self::init();
+
+        return self::$sizes[$key];
+    }
+
 
     public static function getDescription($key)
     {
@@ -53,6 +70,16 @@ class SLN_Enum_ShortcodeStyle
             self::_SMALL => __('Small', 'salon-booking-system'),
             self::_MEDIUM => __('Medium', 'salon-booking-system'),
             self::_LARGE => __('Large', 'salon-booking-system'),
+        );
+        self::$classes = array(
+            self::_SMALL => 'sln-salon--s',
+            self::_MEDIUM => 'sln-salon--m',
+            self::_LARGE => 'sln-salon--l',
+        );
+        self::$sizes = array(
+            self::_SMALL => 400,
+            self::_MEDIUM => 600,
+            self::_LARGE => 900,
         );
         foreach (self::$labels as $k => $v) {
             self::$images[$k] = SLN_PLUGIN_URL.'/img/shortcode_style/'.$k.'.png';

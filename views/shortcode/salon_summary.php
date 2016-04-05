@@ -10,6 +10,8 @@ $currencySymbol = $plugin->getSettings()->getCurrencySymbol();
 $datetime       = $bb->getDateTime();
 $confirmation = $plugin->getSettings()->get('confirmation'); 
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
+$style = $step->getShortcode()->getStyleShortcode();
+$size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
 <form method="post" action="<?php echo $formAction ?>" role="form"  id="salon-step-summary">
 <h2 class="salon-step-title"><?php _e('Booking summary', 'salon-booking-system') ?></h2>
@@ -23,7 +25,6 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
     </div>
 </div>
 <?php
-    $size = $_SESSION["size"];
     if ($size == '900') { ?>
 <div class="row sln-summary">
     <div class="col-md-8">

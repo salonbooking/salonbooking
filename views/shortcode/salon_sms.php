@@ -10,7 +10,8 @@ $valid = isset($_SESSION['sln_sms_valid']) ? $_SESSION['sln_sms_valid'] : false;
 $currentStep = $step->getShortcode()->getCurrentStep();
 $ajaxData = "sln_step_page=$currentStep&submit_$currentStep=1";
 $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
-
+$style = $step->getShortcode()->getStyleShortcode();
+$size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
 <?php if (isset($_GET['resend'])): ?>
     <div class="alert alert-success">

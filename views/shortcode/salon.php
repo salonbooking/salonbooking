@@ -11,24 +11,11 @@
 //    'summary'   => __('summary', 'salon-booking-system'),
 //    'thankyou'  => __('thankyou', 'salon-booking-system'),
 //);
-?>
-
-<?php
-// Start the session
-session_start();
-$customsize = $_GET["size"];
-if (isset($customsize)) {
-    $_SESSION["size"] = $customsize;
-} else {
-  $_SESSION["size"] = "400";
-}
+$style = $salon->getStyleShortcode();
+$class = SLN_Enum_ShortcodeStyle::getClass($style);
 ?>
 <div id="sln-salon" class="sln-bootstrap container-fluid <?php
-            $size = $_SESSION["size"];
-            if ($size == '900') { echo 'sln-salon--l'; }
-            else if ($size == '600') { echo 'sln-salon--m'; }
-            else if ($size == '400') { echo 'sln-salon--s'; }
-            else { echo 'sln-salon--s'; }
+            echo $class;
             echo ' sln-step-' . $salon->getCurrentStep(); ?>">
     <?php
     if ($trial_exp)
