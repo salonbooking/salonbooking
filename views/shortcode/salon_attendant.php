@@ -22,7 +22,10 @@ $attendants = $step->getAttendants();
 			        include "_attendants.php";
 			    } ?>
 		    </div>
-			<div class="col-md-4"><?php include "_form_actions.php" ?></div>
+			<div class="col-md-4 sln-box--formactions">
+	           <div class="col-md-12">
+	           <?php include "_form_actions.php" ?></div>
+	        </div>
 		</div>
 	<?php
 	// IF SIZE 900 // END
@@ -34,9 +37,8 @@ $attendants = $step->getAttendants();
 			        include "_attendants.php";
 			    } ?>
 		</div></div>
-		<div class="row sln-box--main">
-            <div class="col-md-6">&nbsp;</div>
-           <div class="col-md-6">
+		<div class="row sln-box--main sln-box--formactions">
+           <div class="col-md-12">
            <?php include "_form_actions.php" ?></div>
         </div>
 	<?php
@@ -49,7 +51,7 @@ $attendants = $step->getAttendants();
 			        include "_attendants.php";
 			    } ?>
 		</div></div>
-		<div class="row sln-box--main"><div class="col-md-12"><?php include "_form_actions.php" ?></div></div>
+		<div class="row sln-box--main sln-box--formactions"><div class="col-md-12"><?php include "_form_actions.php" ?></div></div>
 	<?php
 	// IF SIZE 400 // END
 	} else  { ?>

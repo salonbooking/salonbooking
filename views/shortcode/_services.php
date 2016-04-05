@@ -32,7 +32,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
     $size = $_SESSION["size"];
     if ($size == '900') { ?>
     <div class="row sln-service">
-        <div class="col-md-1 sln-checkbox sln-steps-check sln-service-check <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
+        <div class="col-sm-1 col-md-1 sln-checkbox sln-steps-check sln-service-check <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
             <?php
             $serviceErrors   = $ah->validateService($service);
             $settings = array('attrs' => array(
@@ -51,31 +51,35 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
             <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"></label>
         <!-- .sln-service-check // END -->
         </div>
-        <div class="col-md-11">
+        <div class="col-sm-11 col-md-11">
             <div class="row sln-steps-info sln-service-info">
-                <div class="col-md-9">
+                <div class="col-sm-9 col-md-9">
                     <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                         <h3 class="sln-steps-name sln-service-name"><?php echo $service->getName(); ?></h3>
                     </label>
                 <!-- .sln-service-info // END -->
                 </div>
-                <h3 class="col-md-3  sln-steps-price  sln-service-price">
+                <h3 class="col-sm-3 col-md-3  sln-steps-price  sln-service-price">
                     <?php echo $plugin->format()->money($service->getPrice())?>
                 <!-- .sln-service-price // END -->
                 </h3>
             </div>
+        </div>
+        <div class="col-sm-12 col-md-12">
             <div class="row sln-steps-description sln-service-description">
-                    <div class="col-md-9">
-                        <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
-                            <p><?php echo $service->getContent() ?></p>
-                            <?php if ($service->getDuration()->format('H:i') != '00:00'): ?>
-                                <span class="sln-steps-durationsln-service-duration"><?php echo __('Duration', 'salon-booking-system')?>: <?php echo $service->getDuration()->format(
-                                        'H:i'
-                                    ) ?></span>
-                            <?php endif ?>
-                        </label>
-                    <!-- .sln-service-info // END -->
-                    </div>
+                <div class="col-md-12"><hr></div>
+                <div class="col-sm-1 col-md-1 hidden-xs hidden-sm">&nbsp;</div>
+                <div class="col-md-9">
+                    <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
+                        <p><?php echo $service->getContent() ?></p>
+                        <?php if ($service->getDuration()->format('H:i') != '00:00'): ?>
+                            <span class="sln-steps-duration sln-service-duration"><small><?php echo __('Duration', 'salon-booking-system')?>:</small> <?php echo $service->getDuration()->format(
+                                    'H:i'
+                                ) ?></span>
+                        <?php endif ?>
+                    </label>
+                <!-- .sln-service-info // END -->
+                </div>
             </div>
         </div>
         <?php if ($serviceErrors) : ?>
@@ -133,6 +137,7 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
                 </h3>
             </div>
             <div class="row sln-steps-description sln-service-description">
+                <div class="col-md-12"><hr></div>
                     <div class="col-md-1">&nbsp;</div>
                     <div class="col-md-9">
                         <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
@@ -203,11 +208,12 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
                 </h3>
             </div>
             <div class="row sln-steps-description sln-service-description">
+                <div class="col-md-12"><hr></div>
                     <div class="col-md-12">
                         <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                             <p><?php echo $service->getContent() ?></p>
                             <?php if ($service->getDuration()->format('H:i') != '00:00'): ?>
-                                <span class="sln-steps-duration sln-service-duration"><?php echo __('Duration', 'salon-booking-system')?>: <?php echo $service->getDuration()->format(
+                                <span class="sln-steps-duration sln-service-duration"><small><?php echo __('Duration', 'salon-booking-system')?>:</small> <?php echo $service->getDuration()->format(
                                         'H:i'
                                     ) ?></span>
                             <?php endif ?>
@@ -244,14 +250,14 @@ $minutes = $ah->getFreeMinutes($bb->getDateTime()) - $bb->getServicesDurationMin
     <?php endforeach ?>
 	<?php if ($showPrices){ ?>
     <div class="row sln-total">
+    <div class="col-md-12"><hr></div>
     <?php
     $size = $_SESSION["size"];
     if ($size == '900') { ?>
-        <div class="col-md-1">&nbsp;</div>
-        <h3 class="col-xs-5 sln-total-label">
+        <h3 class="col-xs-6 col-sm-6 col-md-6 sln-total-label">
             <?php _e('Subtotal', 'salon-booking-system') ?>
         </h3>
-        <h3 class="col-xs-6 sln-total-price" id="services-total" 
+        <h3 class="col-xs-6 col-sm-6 col-md-6 sln-total-price" id="services-total" 
               data-minutes="<?php echo $minutes ?>"
               data-symbol-left="<?php echo $symbolLeft ?>"
               data-symbol-right="<?php echo $symbolRight ?>">

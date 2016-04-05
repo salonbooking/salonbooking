@@ -39,6 +39,17 @@
   text-transform: uppercase;
   &.sln-btn--block {display: block;}
 }
+.sln-btn--medium {
+  @extend %sln-textsize--small;
+}
+.sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-btn--big a {
+  display: inline-block;
+  padding: 0 .5em;
+  line-height: 3.6em;
+  height:  3.6em;
+  text-transform: uppercase;
+  &.sln-btn--block {display: block;}
+}
 .sln-btn--minwidth {min-width: 10em;}
 .sln-btn--fullwidth {width: 100%;}
 
@@ -124,6 +135,15 @@
         @include font-icon(1.2em);
         padding: 0 1em;
         line-height: 3.4em;
+      }
+    }
+    &.sln-btn--medium {
+      padding-right: 1em;
+      padding-left: 2em;
+      &:after {
+        @include font-icon(1em);
+        padding: 0 .5em;
+        line-height: 3.6em;
       }
     }
     &.sln-btn--icon--left {

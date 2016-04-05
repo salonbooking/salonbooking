@@ -17,15 +17,14 @@ $services = $step->getServices();
 	if ($size == '900') { ?>
 		<div class="row sln-box--main">
 			<div class="col-md-8"><?php include "_services.php"; ?></div>
-			<div class="col-md-4"><?php include "_form_actions.php" ?></div>
+			<div class="col-sm-12 col-md-4 sln-box--formactions"><?php include "_form_actions.php" ?></div>
 		</div>
 	<?php
 	// IF SIZE 900 // END
 	} else if ($size == '600') { ?>
 		<div class="row sln-box--main"><div class="col-md-12"><?php include "_services.php"; ?></div></div>
-		<div class="row sln-box--main">
-            <div class="col-md-6">&nbsp;</div>
-           <div class="col-md-6">
+		<div class="row sln-box--main sln-box--formactions">
+           <div class="col-md-12">
            <?php include "_form_actions.php" ?></div>
         </div>
 	<?php
