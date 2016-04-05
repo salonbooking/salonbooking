@@ -17,7 +17,6 @@
 
 if (!class_exists('Google_Client')) {
   require_once dirname(__FILE__) . '/autoload.php';
-}
 
 /**
  * The Google API Client
@@ -712,4 +711,6 @@ class Google_Client
     return (isset($_SERVER['SERVER_SOFTWARE']) &&
         strpos($_SERVER['SERVER_SOFTWARE'], 'Google App Engine') !== false);
   }
+}
+
 }
