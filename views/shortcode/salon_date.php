@@ -24,9 +24,6 @@ function salon_date_hoursbefore($hoursBefore)
 }
 }
 ?>
-    <div class="sln-alert sln-alert--problem">
-        <?php echo empty($message) ? __('On-line booking is disabled', 'salon-booking-system') : $message ?>
-    </div>
 <?php
 if ($plugin->getSettings()->isDisabled()):
     $message =  $plugin->getSettings()->getDisabledMessage(); 

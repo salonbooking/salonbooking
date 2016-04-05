@@ -225,7 +225,7 @@ $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds()
                 <?php foreach ($serviceErrors as $error): ?>
                     <p><?php echo $error ?></p>
                 <?php endforeach ?>
-            </div></div></div>
+            </div>
         <?php endif ?>
     </div>
     <?php
