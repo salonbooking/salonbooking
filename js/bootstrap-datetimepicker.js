@@ -464,14 +464,16 @@
 
 			top = top - containerOffset.top;
 			left = left - containerOffset.left;
+			width = '24em';
 
 			this.picker.css({
 				top:    top,
 				left:   left,
 				zIndex: zIndex
+				//width: this.element.outerWidth()
 			});
-                        //fix marino
-                        this.element.trigger({
+            //fix marino
+            this.element.trigger({
 				type: 'place',
 				date: this.date
 			});
@@ -1737,5 +1739,4 @@
 	$(function () {
 		$('[data-provide="datetimepicker-inline"]').datetimepicker();
 	});
-
 }(window.jQuery);

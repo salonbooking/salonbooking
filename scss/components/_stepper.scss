@@ -1,0 +1,60 @@
+.sln-stepper {
+  width: 100%;
+  margin-bottom: - 2em;
+  display: flex;
+  .step {
+    padding: 1em .5em;
+    flex-grow: 1;
+    @extend %sln-textsize--small;
+    //opacity: .5;
+    .step-number {
+    	display: inline-block;
+    	width: 1.8em;
+    	height: 1.8em;
+    	//font-size: rem(18);
+    	line-height: 1.9em;
+    	font-weight: bold;
+    	text-align: center;
+    	@include b-radius(50%);
+      @extend %sln-textsize--base;
+    	@extend %bgc-color--contrast--alpha;
+    	@extend %text-color--main;
+    	// TEMP
+    	font-family: Arial;
+    }
+    .step-label {
+      text-transform: capitalize;
+      padding-left: .5em;
+      @extend %text-color--grey;
+    }
+    &.step--active {
+    	opacity: 1;
+      .step-number {
+        @extend %bgc-color--emphasis;
+        @extend %text-color--main;
+      }
+      .step-label {
+        @extend %text-color--contrast;
+      }
+    }
+  }
+}
+#sln-salon.sln-salon--m .sln-stepper,
+#sln-salon.sln-salon--s .sln-stepper {
+  width: calc(100% + 4em);
+  margin: - 2em;
+  margin-top: - 1em;
+  margin-bottom: - 2em;
+  .step-label {display: none;}
+  .step--active .step-label {display: inline-block;}
+}
+#sln-salon.sln-salon--s .sln-stepper {
+  .step {
+    padding: 1em 0 1em 1em;
+  }
+}
+#sln-salon.sln-step-details .sln-stepper,
+#sln-salon.sln-step-summary .sln-stepper,
+#sln-salon.sln-step-thankyou .sln-stepper {
+  margin-top: 1em;
+}

@@ -11,25 +11,22 @@
 //    'summary'   => __('summary', 'salon-booking-system'),
 //    'thankyou'  => __('thankyou', 'salon-booking-system'),
 //);
+$style = $salon->getStyleShortcode();
+$class = SLN_Enum_ShortcodeStyle::getClass($style);
 ?>
-<div id="sln-salon" class="sln-bootstrap">
+<div id="sln-salon" class="sln-bootstrap container-fluid <?php
+            echo $class;
+            echo ' sln-step-' . $salon->getCurrentStep(); ?>">
     <?php
     if ($trial_exp)
         echo '<h2 class="sln_notice">' . __('Your free version is expired - upgrade to PRO', 'salon-booking-system') . '</h2>';
 
     ?>
-    <div>
-        <h1><?php _e('Book an appointment', 'salon-booking-system'); ?>
-            <svg class="icocal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"
-                 preserveAspectRatio="xMinYMin meet" width="100%" height="100%"
-                 style="width: 24px; height: 24px;">
-                <path
-                    d="M0 916.021l0 -738.234q0 -35.154 24.413 -59.567t59.567 -24.413l134.757 0l0 -62.496q0 -13.671 8.789 -22.46t22.46 -8.789 22.46 8.789 8.789 22.46l0 62.496l187.488 0l0 -62.496q0 -13.671 8.789 -22.46t22.46 -8.789 22.46 8.789 8.789 22.46l0 62.496l187.488 0l0 -62.496q0 -13.671 8.789 -22.46t22.46 -8.789 22.46 8.789 8.789 22.46l0 62.496l134.757 0q35.154 0 59.567 24.413t24.413 59.567l0 738.234q0 35.154 -24.413 59.567t-59.567 24.413l-831.978 0q-35.154 0 -59.567 -24.413t-24.413 -59.567zm62.496 0q0 9.765 5.859 15.624t15.624 5.859l831.978 0q9.765 0 15.624 -5.859t5.859 -15.624l0 -738.234q0 -9.765 -5.859 -15.624t-15.624 -5.859l-134.757 0l0 62.496q0 13.671 -8.789 22.46t-22.46 8.789 -22.46 -8.789 -8.789 -22.46l0 -62.496l-187.488 0l0 62.496q0 13.671 -8.789 22.46t-22.46 8.789 -22.46 -8.789 -8.789 -22.46l0 -62.496l-187.488 0l0 62.496q0 13.671 -8.789 22.46t-22.46 8.789 -22.46 -8.789 -8.789 -22.46l0 -62.496l-134.757 0q-9.765 0 -15.624 5.859t-5.859 15.624l0 738.234zm156.24 -134.757l0 -93.744l124.992 0l0 93.744l-124.992 0zm0 -156.24l0 -93.744l124.992 0l0 93.744l-124.992 0zm0 -156.24l0 -93.744l124.992 0l0 93.744l-124.992 0zm218.736 312.48l0 -93.744l124.992 0l0 93.744l-124.992 0zm0 -156.24l0 -93.744l124.992 0l0 93.744l-124.992 0zm0 -156.24l0 -93.744l124.992 0l0 93.744l-124.992 0zm218.736 312.48l0 -93.744l124.992 0l0 93.744l-124.992 0zm0 -156.24l0 -93.744l124.992 0l0 93.744l-124.992 0zm0 -156.24l0 -93.744l124.992 0l0 93.744l-124.992 0z"></path>
-            </svg>
-        </h1>
+        <h1 class="sln-salon-title"><?php _e('Book an appointment', 'salon-booking-system'); ?></h1>
+<?php echo $content ?>
+
         <?php
-        /*
-          <ul class="salon-bar nav nav-pills nav-justified thumbnail">
+        /* <ul class="salon-bar nav nav-pills nav-justified thumbnail">
           <?php $i = 0;
           foreach ($salon->getSteps() as $step) : $i++; ?>
           <li <?php echo $step == $salon->getCurrentStep() ? 'class="active"' : ''?>>
@@ -40,6 +37,14 @@
          */
 
         ?>
-<?php echo $content ?>
-    </div>
+<?php /*
+<div class="sln-stepper">
+<?php $i = 0;
+          foreach ($salon->getSteps() as $step) : $i++; ?>
+  <div class="step <?php echo $step == $salon->getCurrentStep() ? 'step--active' : ''?>">
+    <span class="step-number"><?php echo $i ?></span> <span class="step-label"><?php echo $step; ?></span>
+  </div>
+<?php endforeach ?>
 </div>
+*/ ?>
+<div id="sln-notifications"></div>

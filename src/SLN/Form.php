@@ -46,7 +46,7 @@ class SLN_Form
  
         ?><span class="sln-jsdate">
         <div class="sln_datepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 
-            required="required" data-format="<?php echo $jsFormat?>" data-weekstart="<?php echo $weekStart ?>" class="form-control"
+            required="required" data-format="<?php echo $jsFormat?>" data-weekstart="<?php echo $weekStart ?>" class="sln-input"
             value="<?php echo ucwords(date_i18n($phpFormat, $value->format('U'))) ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
         </span><?php
     }
@@ -71,7 +71,7 @@ class SLN_Form
         ?><span class="sln-jstime">
         <div class="sln_timepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 
             data-meridian="<?php echo strpos($phpFormat,'a') !== false ? 'true' : 'false' ?>"
-            required="required" data-format="<?php echo $jsFormat ?>" class="form-control"
+            required="required" data-format="<?php echo $jsFormat ?>" class="sln-input"
             value="<?php echo $value->format($phpFormat) ?>" data-interval="<?php echo $interval ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
         </span><?php
     }
@@ -144,7 +144,7 @@ class SLN_Form
         if (isset($settings['map'])) {
             $map = $settings['map'];
         }
-        $settings['attrs']['class'] = "form-control";
+        $settings['attrs']['class'] = "";
         ?>
         <select name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" <?php echo self::attrs($settings) ?>>
             <?php
@@ -195,12 +195,22 @@ class SLN_Form
     <?php
     }
 
+    static public function fieldRadioboxForGroup($groupname, $radiosuffix, $value, $checked = false, $settings = array())
+    {
+        ?>
+        <input type="radio" name="<?php echo $groupname ?>" id="<?php echo self::makeID($radiosuffix.'['.$value.']') ?>"
+               value="<?php echo $value?>"  <?php echo $checked ? 'checked="checked"' : '' ?>
+        <?php echo self::attrs($settings) ?>/>
+        <label for="<?php echo self::makeID($radiosuffix.'['.$value.']') ?>"></label>
+    <?php
+    }
+
     static public function fieldRadioboxGroup($name, $items, $value, $settings = array(), $map = false)
     {
         if (isset($settings['map'])) {
             $map = $settings['map'];
         }
-        $settings['attrs']['class'] = "form-control";
+        $settings['attrs']['class'] = "";
         ?>
 
         <!--<select name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" <?php echo self::attrs($settings) ?>>-->
@@ -225,7 +235,7 @@ class SLN_Form
             $settings['required'] = false;
         }
         if(!(isset($settings['attrs']) && isset($settings['attrs']['class'])))
-            $settings['attrs']['class'] = "form-control";
+            $settings['attrs']['class'] = "sln-input sln-input--text";
         ?>
         <input type="<?php echo isset($settings['type']) ? $settings['type'] : 'text' ?>" name="<?php echo $name ?>"
                id="<?php echo self::makeID($name) ?>"
@@ -238,7 +248,7 @@ class SLN_Form
         if (!isset($settings['required'])) {
             $settings['required'] = false;
         }
-        $settings['attrs']['class'] = "form-control";
+        $settings['attrs']['class'] = "sln-input sln-input--textarea";
         ?>
         <textarea name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" <?php echo self::attrs(
             $settings

@@ -1,0 +1,163 @@
+.sln-btn,
+.sln-bootstrap .sln-btn {
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  @include transition(background-color 200ms, color 250ms);
+  text-decoration: none;
+  position: relative;
+  @extend %zi-navigazione;
+  input, button, a {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    z-index: 500;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    @include transition(background-color 200ms, color 250ms);
+  }
+  &:hover, &:focus {
+    text-decoration: none;
+    text-shadow: none;
+  }
+}
+
+// SIZES
+.sln-btn--big {
+  @extend %sln-textsize--small;
+}
+.sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
+  display: inline-block;
+  padding: 0 .5em;
+  line-height: 4em;
+  height:  4em;
+  text-transform: uppercase;
+  &.sln-btn--block {display: block;}
+}
+.sln-btn--medium {
+  @extend %sln-textsize--small;
+}
+.sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-btn--big a {
+  display: inline-block;
+  padding: 0 .5em;
+  line-height: 3.6em;
+  height:  3.6em;
+  text-transform: uppercase;
+  &.sln-btn--block {display: block;}
+}
+.sln-btn--minwidth {min-width: 10em;}
+.sln-btn--fullwidth {width: 100%;}
+
+#sln-salon.sln-salon--m {
+  .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
+    padding: 0 .5em;
+    line-height: 4em;
+    height:  4em;
+    &.sln-btn--icon--left {
+      padding-right: 1em;
+      padding-left: 4em;
+    }
+  }
+}
+// COLORS
+.sln-btn--emphasis,
+.sln-bootstrap .sln-btn--emphasis {
+  @extend %bgc-color--emphasis;
+  @extend %text-color--main;
+  input, button, a {@extend %text-color--main;}
+  &:hover, &:focus {
+    @extend %bgc-color--emphasis--hover;
+    @extend %text-color--main;
+    input, button, a {@extend %text-color--main; text-decoration: none;}
+    @extend %zDepth-2;
+  }
+}
+.sln-btn--nobkg,
+.sln-bootstrap .sln-btn--nobkg {
+  @extend %bgc-color--transparent;
+  @extend %text-color--contrast;
+  input, button {@extend %text-color--contrast;}
+  &:hover, &:focus {
+    @extend %bgc-color--emphasis--hover;
+    @extend %text-color--main;
+    input, button {@extend %text-color--main;}
+    @extend %zDepth-2;
+  }
+}
+.sln-btn--borderonly,
+.sln-bootstrap .sln-btn--borderonly {
+  @extend %bgc-color--transparent;
+  @extend %text-color--contrast;
+  border-style: solid;
+  border-width: .05em;
+  @extend %bd-color--contrast--alpha;
+  input, button {@extend %text-color--dark;}
+  &:hover, &:focus {
+    @extend %bgc-color--emphasis--hover;
+    @extend %text-color--main;
+    @extend %bd-color--emphasis--hover;
+    input, button {@extend %text-color--main;}
+    @extend %zDepth-2;
+  }
+}
+
+// ICONS
+.sln-btn--icon {
+    text-align: left;
+    position: relative;
+    input, button {text-align: left;}
+    background-color: #fff;
+    &:after {
+      content: "\f111";
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      @include font-icon(1em);
+      font-style: normal;
+      font-weight: normal;
+      line-height: 4em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      @include transition(background-color 200ms);
+      z-index: 200;
+    }
+    &.sln-btn--big {
+      padding-right: rem(64px);
+      &:after {
+        @include font-icon(1.2em);
+        padding: 0 1em;
+        line-height: 3.4em;
+      }
+    }
+    &.sln-btn--medium {
+      padding-right: 1em;
+      padding-left: 2em;
+      &:after {
+        @include font-icon(1em);
+        padding: 0 .5em;
+        line-height: 3.6em;
+      }
+    }
+    &.sln-btn--icon--left {
+      text-align: right;
+      button {text-align: right;}
+      &:after {
+        top: 0;
+        right: initial;
+        bottom: 0;
+        left: 0;
+      }
+      &.sln-btn--big {
+        padding-right: 4em;
+        padding-left: 4em;
+      }
+    }
+}

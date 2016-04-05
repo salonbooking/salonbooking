@@ -12,6 +12,7 @@ class SLN_Admin_Settings {
         'general' => 'General',
         'booking' => 'Booking Rules',
         'payments' => 'Payments',
+        'style' => 'Style',
         'gcalendar' => 'Google Calendar',
         'documentation' => 'Support'
     );
@@ -351,6 +352,20 @@ class SLN_Admin_Settings {
             <p><?php echo $txt ?></p>
         </div> 
         <?php
+    }
+
+    public function processTabStyle()
+    {
+        $items = array(
+            'style_shortcode'
+        );
+
+        foreach ($items as $k) {
+            $old_value[$k] = $this->settings->get($k);
+            $data = isset($_POST['salon_settings'][$k]) ? trim($_POST['salon_settings'][$k]) : '';
+            $this->settings->set($k, $data);
+        }
+        $this->settings->save();
     }
 
     public function showTabGcalendar() {

@@ -15,8 +15,9 @@
 
 @import 'settings-mixins';
 @import 'admin_config';
-@import 'typo';
+@import 'typo-admin';
 #sln-salon--admin, .sln-calendar--wrapper {
+//:matches(#sln-salon--admin, .sln-calendar--wrapper) {
     //@import 'bootstrap';
 }
 @import 'admin_components/inputs';
@@ -25,6 +26,7 @@
 @import 'admin_components/panels';
 @import 'admin_components/shop-details';
 @import 'admin_components/service-details';
+
 
 .sln_meta_field {
     display: block;

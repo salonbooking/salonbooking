@@ -14,7 +14,7 @@ class SLN_Settings
     {
         $this->settings = get_option(self::KEY);
     }
-    
+
     public function get($k)
     {
         return isset($this->settings[$k]) ? $this->settings[$k] : null;
@@ -22,7 +22,9 @@ class SLN_Settings
 
     public function set($key, $val)
     {
-        if(is_string($val)) $val = trim($val);
+        if (is_string($val)) {
+            $val = trim($val);
+        }
         if (empty($val)) {
             unset($this->settings[$key]);
         } else {
@@ -111,51 +113,75 @@ class SLN_Settings
         return nl2br(htmlentities($this->get('disabled_message')));
     }
 
-    public function isAjaxEnabled(){
-        return $this->get('ajax_enabled') ? true: false;
+    public function isAjaxEnabled()
+    {
+        return $this->get('ajax_enabled') ? true : false;
     }
 
-    public function getDateFormat(){
+    public function getDateFormat()
+    {
         return $this->get('date_format');
     }
 
-    public function getTimeFormat(){
+    public function getTimeFormat()
+    {
         return $this->get('time_format');
     }
-    public function getSalonName(){
+
+    public function getSalonName()
+    {
         $ret = $this->get('gen_name');
-        if(!$ret)
+        if (!$ret) {
             $ret = get_bloginfo('name');
+        }
+
         return $ret;
-    }
-    public function getSalonEmail(){
-        $ret = $this->get('gen_email');
-        if(!$ret)
-            $ret = get_bloginfo('admin_email');
-        return $ret;
- 
     }
 
-    public function getHoursBeforeFrom(){
+    public function getSalonEmail()
+    {
+        $ret = $this->get('gen_email');
+        if (!$ret) {
+            $ret = get_bloginfo('admin_email');
+        }
+
+        return $ret;
+
+    }
+
+    public function getHoursBeforeFrom()
+    {
         $ret = $this->get('hours_before_from');
+
         return $ret ? $ret : '+30 minutes';
     }
 
-    public function getHoursBeforeTo(){
+    public function getHoursBeforeTo()
+    {
         $ret = $this->get('hours_before_to');
+
         return $ret ? $ret : '+1 month';
     }
-    public function getAvailabilityMode(){
+
+    public function getAvailabilityMode()
+    {
         $ret = $this->get('availability_mode');
+
         return $ret ? $ret : 'basic';
     }
-    
+
     public function getPaymentMethod()
     {
         return isset($this->settings['pay_method']) ? $this->settings['pay_method'] : 'paypal';
     }
 
-    public function isHidePrices(){
+    public function getStyleShortcode()
+    {
+        return isset($this->settings['style_shortcode']) ? $this->settings['style_shortcode'] : SLN_Enum_ShortcodeStyle::_DEFAULT;
+    }
+
+    public function isHidePrices()
+    {
         return $this->get('hide_prices') == 1 ? true : false;
     }
 }

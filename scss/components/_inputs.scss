@@ -1,0 +1,204 @@
+.sln-input {
+	margin-bottom: .8em;
+	input, textarea {
+		width: 100%;
+		border-radius: 0;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		border: none;
+		padding: .5em .8em;
+		@extend %sln-textsize--base;
+		line-height: 1.8em;
+		height: auto;
+		border-width: 1px;
+		border-style: solid;
+		@extend %bd-color--contrast--alpha;
+	}
+	label {
+		padding: .5em 1.2em;
+		@extend %sln-textsize--small;
+	}
+	.help-block {
+		padding: 0 .8em;
+		margin-bottom: 0;
+		@extend %text-color--contrast;
+		a {
+			@extend %text-color--contrast;
+		}
+	}
+}
+#sln-salon.sln-salon--s .sln-input {
+  input {
+  	&[type="text"] {margin-bottom: 2em;}
+  }
+}
+
+// LABELS GENERAL
+#sln-salon label {
+	cursor: pointer;
+}
+// LABELS GENERAL // END
+
+// CHECKBOXES
+%sln-input-label--big {
+	label {
+		@extend %sln-textsize--small;
+		font-weight: 400;
+		padding: .8em 1.2em .8em 0;
+		margin-bottom: 0;
+	}
+}
+.sln-checkbox {
+	@extend %sln-input-label--big;
+	input {
+		position: absolute;
+		margin-left: -9999px;
+		visibility: hidden;
+	}
+	input + label {
+		margin: .2em 0;
+		display: block;
+		position: relative;
+		cursor: pointer;
+		outline: none;
+		user-select: none;
+		padding: 0;
+		height: 1.6em;
+		display: table-cell;
+		vertical-align: middle;
+		@include bp(tablet) {
+			//line-height: rem(74px);
+			//display: inline-block;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			-webkit-box-align: center;
+			align-items: center;
+		}
+		@extend %sln-big-border--onhover;
+		&:before, &:after  {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 1.8em;
+			height: 1.76em;
+			//border-radius: rem(4);
+		}
+		&:before {
+			content: "";
+			transition: transform 0.5s;
+			backface-visibility: hidden;
+			border-style: solid;
+			border-width: .2em;
+			@extend %bd-color--emphasis;
+			@extend %bgc-color--main;
+		}
+		&:after {
+			background-color: transparent;
+			content: " \f00c";
+			transition: all 0.15s;
+			backface-visibility: hidden;
+			opacity: 0;
+			@include font-icon(1.4em);
+			line-height: 1.2em;
+			top: .05em;
+			left: .15em;
+			width: 1em;
+			height: 1em;
+			text-align: center;
+		}
+		&:hover:before {
+			@extend %bd-color--emphasis--hover;
+		}
+		&:hover:after {
+			opacity: 1;
+			@extend %text-color--emphasis--hover;
+		}
+	}
+	input:checked + label:after,
+	input:checked + label:hover:after {
+	  opacity: 1;
+	  @extend %text-color--emphasis;
+	}
+	label span {
+		// USED FOR EMPHASIS
+		display: inline-block;
+		padding-left: rem(10px);
+		font-weight: 700;
+	}
+}
+// CHECKBOXES // END
+// RADIOBOXES
+.sln-radiobox {
+	@extend %sln-input-label--big;
+	input {
+		position: absolute;
+		margin-left: -9999px;
+		visibility: hidden;
+	}
+	input + label {
+		display: block;
+		position: relative;
+		cursor: pointer;
+		outline: none;
+		user-select: none;
+		padding: 0;
+		display: inline-block;
+		@extend %sln-big-border--onhover;
+		@include bp(tablet) {
+			//line-height: rem(74px);
+			//display: inline-block;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			-webkit-box-align: center;
+			align-items: center;
+		}
+		&:before, &:after  {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 1.8em;
+			height: 1.8em;
+			border-radius: 50%;
+		}
+		&:before {
+			content: "";
+			transition: transform 0.5s;
+			backface-visibility: hidden;
+			border-style: solid;
+			border-width: .2em;
+			@extend %bd-color--emphasis;
+			@extend %bgc-color--main;
+		}
+		&:after {
+			content: "";
+			width: 1.16em;
+			height: 1.16em;
+			top: .35em;
+			left: .35em;
+			transition: background 0.15s;
+			backface-visibility: hidden;
+			text-align: center;
+			opacity: 0;
+			@extend %bgc-color--main;
+		}
+		&:hover:after {
+			opacity: 1;
+			@extend %bgc-color--emphasis--hover;
+		}
+	}
+	input:checked + label:after,
+	input:checked + label:hover:after {
+		opacity: 1;
+		@extend %bgc-color--emphasis;
+	}
+}
+
+// RADIOBOXES // END

@@ -1,0 +1,100 @@
+.sln-alert,
+#sln-salon .alert {
+  display: inline-block;
+  position: relative;
+  border: none;
+  padding: .6rem 1.6rem .6rem 3.6rem;
+  margin: 1rem 0;
+  @extend %sln-textsize--base;
+  @extend %text-color--contrast;
+  //@extend %bgc-color--white;
+  border-radius: 0;
+  &:after {
+    @include font-icon(2em);
+    display: inline-block;
+    content: "\f05a";
+    @extend %absolute-vertical-centering;
+    left: .4em;
+    @extend %sln-textsize--bigger;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-radius: 50%;
+  }
+  a {
+    display: inline-block;
+    @extend %text-color--emphasis;
+    font-weight: bold;
+    border-bottom-style: solid;
+    border-bottom-width: .15em;
+    @extend %bd-color--transparent;
+    &:hover {
+      @extend %bd-color--emphasis--hover;
+      @extend %text-color--emphasis--hover;
+      text-decoration: none;
+    }
+  }
+}
+
+#sln-salon .sln-alert {
+  p:only-of-type, p:last-of-type {margin-bottom: 0;}
+}
+%sln-alert-icon-bgc {
+  &:before {
+    display: inline-block;
+    content: "";
+    @extend %absolute-vertical-centering;
+    left: .6em;
+    @extend %sln-textsize--bigger;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-radius: 50%;
+    @extend %bgc-color--contrast;
+    width: .9em;
+    height: .9em;
+  }
+}
+.sln-alert.sln-alert-medium {
+  display: block;
+  padding: .5rem 1.6rem .5rem 3.2rem;
+  margin: .4rem 0;
+  @extend %sln-textsize--small;
+  font-weight: bold;
+  &:after {
+    left: .6em;
+  }
+}
+
+.sln-alert--problem,
+#sln-salon .alert-danger {
+  //@extend %text-color--problem;
+  &:after {
+    content: "\f06a";
+    @extend %text-color--problem;
+  }
+}
+.sln-alert--warning,
+#sln-salon .alert-warning {
+  @extend %sln-alert-icon-bgc;
+  &:after {
+    content: "\f06a";
+    @extend %text-color--warning;
+  }
+}
+
+.snl-error-list-item {
+  display: block;
+  @extend %sln-textsize--small;
+  font-weight: bold;
+  border-bottom-style: solid;
+  border-bottom-width: .05em;
+  @extend %bd-color--contrast--alpha;
+  padding-bottom: .5em;
+  margin-bottom: .5em;
+  &:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+}

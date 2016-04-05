@@ -25,15 +25,18 @@ class SLN_Shortcode_Salon
 
     public static function create($attrs)
     {
-        if($timezone = get_option('timezone_string'))
+        if ($timezone = get_option('timezone_string')) {
             date_default_timezone_set($timezone);
+        }
 
 
         $obj = new self(SLN_Plugin::getInstance(), $attrs);
 
         $ret = $obj->execute();
-        if($timezone = get_option('timezone_string'))
+        if ($timezone = get_option('timezone_string')) {
             date_default_timezone_set('UTC');
+        }
+
         return $ret;
     }
 
@@ -64,23 +67,24 @@ class SLN_Shortcode_Salon
      */
     private function getStepObject($step)
     {
-        $class = __CLASS__ . '_' . ucwords($step) . 'Step';
+        $class = __CLASS__.'_'.ucwords($step).'Step';
         $obj = new $class($this->plugin, $this, $step);
         if ($obj instanceof SLN_Shortcode_Salon_Step) {
             return $obj;
         } else {
-            throw new Exception('bad object ' . $class);
+            throw new Exception('bad object '.$class);
         }
     }
 
     protected function render($content)
     {
         $salon = $this;
-        
+
         if (get_option(SLN_Plugin::F) > SLN_Plugin::F1 and !current_user_can('activate_plugins')) {
             return $this->plugin->loadView('trial/shortcode', compact('salon'));
         } else {
             $trial_exp = get_option(SLN_Plugin::F) > SLN_Plugin::F1;
+
             return $this->plugin->loadView('shortcode/salon', compact('content', 'salon', 'trial_exp'));
         }
     }
@@ -146,7 +150,7 @@ class SLN_Shortcode_Salon
                 'details',
                 'sms',
                 'summary',
-                'thankyou'
+                'thankyou',
             );
             if (!$this->needSecondary()) {
                 unset($this->steps[array_search('secondary', $this->steps)]);
@@ -164,5 +168,12 @@ class SLN_Shortcode_Salon
         }
 
         return $this->steps;
+    }
+
+    public function getStyleShortcode()
+    {
+        return isset($this->attrs['style']) ?
+            $this->attrs['style']
+            : $this->plugin->getSettings()->getStyleShortcode();
     }
 }

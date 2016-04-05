@@ -1,0 +1,84 @@
+$fontfamily--main:"Open sans", serif;
+
+// SIZES
+%font-bigger {
+  font-family: $fontfamily--main;
+  font-size: rem(20px);
+  line-height: rem(34px);
+  line-height: rem(34px);
+  font-weight: normal;
+  @include bp(tablet) {
+    font-size: rem(24px);
+  }
+}
+%font-big {
+  font-family: $fontfamily--main;
+  font-size: rem(18px);
+  font-weight: normal;
+  line-height: rem(28px);
+  font-weight: normal;
+}
+
+%font-medium {
+  font-family: $fontfamily--main;
+  font-size: rem(16px);
+  line-height: rem(22px);
+  font-weight: normal;
+}
+
+%font-small {
+  font-family: $fontfamily--main;
+  font-size: rem(14px);
+  line-height: rem(20px);
+  font-weight: normal;
+}
+
+// SIZES // END
+
+// COLORS
+%font-cl_standard {color: #444;}
+%font-cl_standard--medium {color: #888;}
+%font-cl_standard--light {color: #ccc;}
+%font-cl_main {color: $cl_main;}
+%font-cl_main--medium {color: $cl_main--medium;}
+%font-cl_main--light {color: $cl_main--light;}
+%font-cl_main--emphasis {color: $cl_main--emphasis;}
+%font-cl_problem {color: $cl_main;}
+%font-cl_problem--light {color: $cl_problem--light;}
+%font-cl_warning {color: $cl_warning;}
+%font-cl_warning--light {color: $cl_warning--light;}
+%font-cl_ok {color: $cl_ok;}
+// COLORS // END
+
+%font-icon {
+  //color: white;
+  font-family: "FontAwesome";
+  font-size: rem(22px);
+}
+
+
+// /// /// /// /// /// /// /// //
+// /// FONT AWESOME
+// /// /// /// /// /// /// /// //
+$fa-font-path:        "//netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts" !default;
+$fa-version:          "4.4.0" !default;
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('#{$fa-font-path}/fontawesome-webfont.eot?v=#{$fa-version}');
+  src: url('#{$fa-font-path}/fontawesome-webfont.eot?#iefix&v=#{$fa-version}') format('embedded-opentype'),
+    url('#{$fa-font-path}/fontawesome-webfont.woff2?v=#{$fa-version}') format('woff2'),
+    url('#{$fa-font-path}/fontawesome-webfont.woff?v=#{$fa-version}') format('woff'),
+    url('#{$fa-font-path}/fontawesome-webfont.ttf?v=#{$fa-version}') format('truetype'),
+    url('#{$fa-font-path}/fontawesome-webfont.svg?v=#{$fa-version}#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+// /// FONT AWESOME // END
+
+// /// /// /// /// /// /// /// //
+// /// WORDPRESS OVERRIDES
+// /// /// /// /// /// /// /// //
+.wrap h2.nav-tab-wrapper {
+  font-size: 1em;
+}
+// /// WORDPRESS OVERRIDES // END

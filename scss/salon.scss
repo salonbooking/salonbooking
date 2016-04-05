@@ -1,0 +1,380 @@
+@import 'normalize';
+@import 'settings-mixins';
+@import 'colors';
+@import 'typo';
+@import 'components/utilities';
+@import 'components/datepicker';
+@import 'components/icons';
+@import 'components/inputs';
+@import 'components/buttons';
+@import 'components/alert-messages';
+@import 'components/stepper';
+#sln-salon {
+	border-width: 1px;
+	border-style: solid;
+	@extend %bd-color--contrast--alpha;
+	padding: rem(40px);
+	position: relative;
+	//margin-right: auto;
+	//margin-left: auto;
+	@extend %bgc-color--main;
+	@extend %text-color--contrast;
+	// SIZES
+	&.sln-salon--l {max-width: 900px;}
+	&.sln-salon--m {max-width: 600px;}
+	&.sln-salon--s {max-width: 400px;}
+
+	> form {
+		margin-top: 2em;
+		h2 {margin-bottom: 1em;}
+	}
+
+	// TEMP
+	//h1 {font-size: 1.4em;}
+	//h1, h2{@extend %text-color--contrast;}
+// // // #sln-salon // END
+}
+// GENERAL
+h1, h2, h3, h4, h5, h6 {
+	&[class^="col-"] {
+		clear: none;
+		margin-top: 0;
+		margin-bottom: 0;
+		word-wrap: initial;
+	}
+}
+.sln-steps {
+	margin-bottom: 2em;
+}
+.sln-steps-name, .sln-steps-price {
+	@extend %sln-title--medium;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.sln-steps-name {
+	@extend %text-color--emphasis;
+	&:hover {@extend %text-color--emphasis--hover;}
+}
+.sln-steps-price {
+	@extend %text-color--contrast;
+}
+.sln-steps-info,
+.sln-steps-description {
+	label {font-weight: normal; width: 100%; display: block;}
+}
+.sln-steps-description {
+	@extend %text-color--dark;
+	hr {
+		margin: .6em 0;
+		border: 0;
+		border-top-style: dashed;
+		border-top-width: .05em;
+		@extend %bd-color--contrast--alpha;
+	}
+}
+.sln-steps-price {
+	display: block;
+	text-align: right;
+}
+
+.sln-steps-name, .sln-steps-price {
+}
+.sln-list--dashed {
+	list-style: none;
+	display: inline-block;
+	margin-bottom: 1em;
+	margin-left: 0;
+    padding-left: 0;
+	li {
+		padding-bottom: .4em;
+		margin-bottom: .75em;
+		border-bottom-style: dotted;
+		border-bottom-width: .05em;
+		@extend %bd-color--contrast--alpha;
+		&:last-child {
+			padding-bottom: 0;
+			margin-bottom: 0;
+			border-bottom: 0;
+		}
+	}
+}
+#sln-salon.sln-salon--s .sln-list--dashed  {
+	display: block;
+}
+.sln-data-desc {
+	@extend %sln-textsize--small;
+	@extend %text-color--dark;
+}
+.sln-data-val {text-align: right;}
+#sln-salon.sln-salon--s .sln-data-val {text-align: left; padding-top: .2em; padding-bottom: .6em;}
+// GENERAL // END
+
+// SERVICES
+.sln-service {
+	margin-bottom: 2em;
+}
+.sln-steps-duration {
+	display: block;
+	@extend %sln-textsize--base;
+	text-transform: uppercase;
+	font-weight: bold;
+	small {@extend %sln-textsize--small;}
+}
+// SERVICES // END
+
+// ATTENDANTS
+#sln-salon.sln-salon--l .sln-attendants-wrapper {
+	.sln-box--formactions > div {
+		border-top-style: solid;
+		border-top-width: .16em;
+		@extend %bd-color--contrast;
+		margin-top: 2em;
+		padding-top: 2em;
+	}
+}
+.sln-attendant {
+	margin-bottom: 4em;
+	hr {
+		margin: 2em 0 0 0;
+		border: 0;
+		border-top-style: dashed;
+		border-top-width: .05em;
+		@extend %bd-color--contrast--alpha;
+	}
+	&:last-child {
+		margin-bottom: 0;
+		hr {display: none;}
+	}
+	@include bp(tablet) {
+		margin-bottom: 2em;
+	}
+	@include bp(desktop) {
+		margin-bottom: 4em;
+	}
+}
+// ATTENDANTS // END
+
+// SUMMARY
+.sln-summary {margin-top: 2em;}
+.sln-summary-row {
+	padding: 0;
+	margin-bottom: 1em;
+	.label {
+		@extend %sln-textsize--base;
+		@extend %text-color--dark;
+		font-weight: normal;
+		padding: 0;
+	}
+	.sln-steps-name, .sln-steps-price{margin-bottom: 0;}
+	hr {
+		margin: 1em 0 0 0;
+		border: 0;
+		border-bottom-style: solid;
+		border-bottom-width: .05em;
+		@extend %bd-color--contrast--alpha;
+	}
+	&:last-child {
+		margin-bottom: 0;
+		padding-bottom: 0;
+		hr {display: none;}
+	}
+}
+.sln-step-summary {
+	.sln-total {margin-bottom: 2em;}
+}
+#sln-salon.sln-salon--m .sln-summary-row,
+#sln-salon.sln-salon--s .sln-summary-row {
+	hr {margin-top: 1em;}
+}
+#sln-salon.sln-salon--s .sln-summary-row {
+	padding: 0 0 1em 0;
+	margin-bottom: 0;
+	.sln-steps-price {
+		text-align: left;
+		margin: .5em 0;
+	}
+}
+// SUMMARY // END
+
+// THANK YOU
+.sln-thankyou {
+	margin-top: 2em;
+	.sln-form-actions-wrapper {
+		margin-top: 2.5em;
+	}
+}
+#sln-salon .sln-thankyou--okbox {
+	margin-top: 1em;
+	padding: 4em 1em 3em 1em;
+	@extend %bgc-color--ok;
+	//> div {text-align: center;}
+	h1 {
+		@extend %sln-textsize--base;
+	}
+	h1 {
+		@extend %text-color--contrast;
+	}
+	h2 {
+		padding: 0 .5em 0 3em;
+		@extend %text-color--contrast;
+	}
+	h3 {
+		@extend %text-color--contrast;
+	}
+	h2, h3 {
+		font-weight: bold;
+		display: inline-block;
+	}
+	hr {
+		margin: 1em 0 .5em 0;
+		border: 0;
+		border-bottom-style: solid;
+		border-bottom-width: .05em;
+		@extend %bd-color--contrast--alpha;
+	}
+	.sln-icon-wrapper {padding-left: 3em;}
+	.sln-icon-wrapper .sln-icon {
+		@extend %text-color--contrast;
+		font-size: 2em;
+		line-height: 2em;
+	}
+}
+.sln-form-actions {
+	margin-bottom: 1em;
+}
+.sln-payment-actions {
+	h4 {
+		@extend %text-color--contrast;
+		margin-top: 1em;
+	}
+}
+
+#sln-salon.sln-salon--s .sln-thankyou {
+	.sln-thankyou--okbox {
+		margin-top: 1em;
+		padding: 3em 0;
+		h1, h2, h3 {text-align: center;}
+		h2, h3 {
+			display: block;
+		}
+		h1 {
+			@extend %sln-textsize--base;
+			.sln-icon {@extend %sln-textsize--bigger;}
+		}
+		h2 {padding-left: 0;}
+		h3 {@extend %sln-textsize--bigger;}
+		hr {
+			margin: 1.5em 0 1em 0;
+		}
+	}
+	.sln-icon-wrapper {
+		padding-top: 3em;
+		padding-left: 0;
+		text-align: center;
+		.sln-icon {
+			top: 0;
+			@extend %absolute-horizontal-centering;
+		}
+	}
+}
+// THANK YOU // END
+
+// FORM ACTIONS
+.sln-box--formactions {
+	text-align: right;
+	margin-bottom: 0;
+	&.sln-box--main{margin-bottom: 0; margin-top: 0;}
+	.sln-icon--back {float: right;}
+}
+#sln-salon.sln-salon--m .sln-box--formactions {
+	text-align: right;
+}
+// FORM ACTIONS // END
+
+// ICONS // END
+.sln-icon-wrapper {
+	position: relative;
+	padding-left: 3.5em;
+	.sln-icon {
+		position: absolute;
+		left: 0;
+		@extend %absolute-vertical-centering;
+	}
+	.sln-icon-wrapper--right {
+		padding-right: 3.5em;
+		padding-left: 0;
+	}
+}
+// ICONS // END
+// MOD AND OVERRIDES BY SIZE
+#sln-salon.sln-salon--l {
+	.sln-attendants-wrapper {
+		margin-bottom: 0;
+		@include bp(desktop) {margin-bottom: 1.5em;}
+	}
+}
+#sln-salon.sln-salon--m,
+#sln-salon.sln-salon--s {
+	.sln-steps-description {
+		//border: none;
+		//margin-top: 0;
+	}
+	.sln-attendants-wrapper {
+		border-bottom-style: solid;
+		border-bottom-width: .16em;
+		@extend %bd-color--contrast;
+		padding-bottom: .5em;
+		margin-bottom: 1.5em;
+	}
+}
+// MOD AND OVERRIDES BY SIZE // END
+
+// TOTAL ROW
+.sln-total {
+	margin-bottom: 3em;
+	@include bp(desktop) {margin-bottom: 0;}
+	hr {
+		margin: 0 0 .6em 0;
+		border: 0;
+		border-top-style: solid;
+		border-top-width: .16em;
+		@extend %bd-color--contrast;
+	}
+}
+.sln-total-price {text-align: right;}
+.sln-total-label, .sln-total-price {
+	@extend %text-color--dark;
+}
+// TOTAL ROW // END
+
+#sln-notifications {
+	@include transition(background 250ms, opacity 200ms);
+	background: rgba(255, 0, 0, 0);
+	opacity: 0;
+	&.sln-notifications--active {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: $sln-color--main--noalpha;
+		opacity: .75;
+	}
+}
+
+.sln-box--main {
+	margin-top: 2em;
+	margin-bottom: 3em;
+}
+
+
+// TEMPORARY STUFF
+.title_outer.title_without_animation {display: none;}
+.content .content_inner > .container {
+	padding-top: 10rem;
+	padding-bottom: 20rem;
+	background-color: none !important;
+	//background-image: url('http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg');
+	background-size: cover;
+	background-image: url('https://85ideas.com/wp-content/uploads/2016/03/salon-booking-plugin-barbershop.jpg');
+}
