@@ -1,5 +1,5 @@
 <div class="cal-row-fluid">
-    <% _.each([1,2,3,4,5,6,7], function(index) { %>
+    <% _.each([0,1,2,3,4,5,6], function(index) { %>
         <div class="weekday<%= index %> cal-cell1">
             <% _.each(events, function(event){ if(event.start_day == index) { %>
 	<div class="day-highlight dh-<%= event['class'] %>" data-event-class="<%= event['class'] %>"  data-toggle="tooltip" data-html="true" title="<%= event.title %>">

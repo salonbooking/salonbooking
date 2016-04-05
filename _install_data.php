@@ -41,6 +41,7 @@ return array(
 //        'confirmation'     => true,
 //        'pay_enabled'      => true,
 //        'pay_cash'         => true
+        'sln_db_version' => SLN_VERSION
     ),
     'posts'    => array(
         array(

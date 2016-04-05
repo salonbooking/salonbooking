@@ -4,16 +4,27 @@ class SLN_Action_Install
 {
     /** @var array DB updates that need to be run */
     private static $dbUpdates = array(
-        '2.3' => 'Updates/sln-update-2.3.php',
-        '2.3.1' => 'Updates/sln-update-2.3.1.php',
-        '2.3.2' => 'Updates/sln-update-2.3.2.php',
+        '2.3'    => 'sln-update-for-2.3.php',
+        '2.3.1'  => 'sln-update-for-2.3.1.php',
+        '2.4'  => 'sln-update-for-2.4.php',
     );
 
-    private static function getDbUpdates()
+    private static $dbRollbacks = array(
+        '2.4'  => 'sln-rollback-to-2.3.2.php',
+    );
+
+    public static function getDbUpdates()
     {
         return array_map(function($elem) {
-            return plugin_dir_path(__FILE__) . $elem;
+            return plugin_dir_path(__FILE__) . 'Updates/' . $elem;
         }, self::$dbUpdates);
+    }
+
+    public static function getDbRollbacks()
+    {
+        return array_map(function($elem) {
+            return plugin_dir_path(__FILE__) . 'Rollbacks/' . $elem;
+        }, self::$dbRollbacks);
     }
 
     public static function initActions()
@@ -26,8 +37,16 @@ class SLN_Action_Install
             self::update();
         }
 
-        if (version_compare(SLN_Plugin::getInstance()->getSettings()->getDbVersion(), max(array_keys(self::getDbUpdates())), '<')) {
-            echo SLN_Plugin::getInstance()->loadView('notice/html_notice_update');
+        if (!empty($_GET['do_rollback_sln'])) {
+            self::rollback();
+        }
+
+        $max = max(array_keys(self::getDbUpdates()));
+        $version = SLN_Plugin::getInstance()->getSettings()->getDbVersion();
+        if (version_compare($version, $max, '<')) {
+            if($version == '0.0.0')
+                $version = '2.3.2';
+            echo SLN_Plugin::getInstance()->loadView('notice/html_notice_update', compact('version'));
         } else {
             SLN_Plugin::getInstance()->getSettings()->setDbVersion()->save();
         }
@@ -68,7 +87,9 @@ class SLN_Action_Install
     {
         $current_version = SLN_Plugin::getInstance()->getSettings()->getDbVersion();
 
-        foreach (self::getDbUpdates() as $version => $updater) {
+        $updates = self::getDbUpdates();
+        ksort($updates);
+        foreach ($updates as $version => $updater) {
             if (version_compare($current_version, $version, '<')) {
                 include($updater);
                 SLN_Plugin::getInstance()->getSettings()->setDbVersion($version)->save();
@@ -76,6 +97,24 @@ class SLN_Action_Install
         }
 
         SLN_Plugin::getInstance()->getSettings()->setDbVersion()->save();
+    }
+
+    private static function rollback()
+    {
+        $current_version = SLN_Plugin::getInstance()->getSettings()->getDbVersion();
+
+        $rollbacks = self::getDbRollbacks();
+        krsort($rollbacks);
+        foreach ($rollbacks as $version => $rollback) {
+            if (version_compare($current_version, $version, '>=')) {
+                if (preg_match('/sln-rollback-to-(\d+[\.\d+]*).php$/', $rollback, $matches)) {
+                    $versionToRollback = $matches[1];
+                    include($rollback);
+                    SLN_Plugin::getInstance()->getSettings()->setDbVersion($versionToRollback)->save();
+                    break;
+                }
+            }
+        }
     }
 
     private static function checkPost($title, $post_type)
