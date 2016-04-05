@@ -687,6 +687,7 @@ class SLN_GoogleScope {
         //if (!$this->is_connected())
         //  return;
         try {
+            if(!$this->service) return;
             $this->service->events->delete($this->google_client_calendar, $event_id);
             sln_my_wp_log($event_id);
             sln_my_wp_log($this->google_client_calendar);
