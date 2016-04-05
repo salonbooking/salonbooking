@@ -4,7 +4,7 @@
 <div class="clearfix"></div>
 <div id="sln-salon--admin" class="container-fluid wpcontent">
 	<?php if (!empty($versionToRollback)): ?>
-            <?php echo $plugin->loadView('admin/_tools_rollback', compact('versionToRollback')) ?>
+            <?php echo $plugin->loadView('admin/_tools_rollback', compact('versionToRollback', 'currentVersion', 'isFree')) ?>
 	<?php endif ?>
 	<form>
 		<div class="sln-tab" id="sln-tab-general">

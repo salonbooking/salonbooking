@@ -48,7 +48,9 @@ class SLN_Admin_Tools {
 		echo $this->plugin->loadView(
 		'admin/tools', array(
 			'info' => $info,
-			'versionToRollback' => $versionToRollback
+			'versionToRollback' => $versionToRollback,
+			'currentVersion'    => $current_version,
+			'isFree'            => defined('SLN_Plugin::F1'),
 		)
 		);
 	}
