@@ -25,7 +25,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     <?php
     if ($size == '900') { ?>
         <div class="row sln-attendant">
-        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
+        <div class="col-sm-1 col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDateTime(), $duration);
             if ($validateErrors) {
@@ -50,14 +50,14 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             ) ?>
         <!-- .sln-attendant-check // END -->
         </div>
-        <div class="col-lg-3 col-md-3 col-xs-4 sln-steps-thumb sln-attendant-thumb">
+        <div class="col-xs-4 col-sm-3 col-md-3 sln-steps-thumb sln-attendant-thumb">
             <?php
             if ( has_post_thumbnail($attendant->getId())) {
                 echo get_the_post_thumbnail($attendant->getId(), 'thumbnail');
             }
             ?>
         </div>
-        <div class="col-md-8">
+        <div class="col-sm-8 col-md-8">
             <div class="row sln-steps-info sln-attendant-info">
                 <div class="col-md-12">
                     <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
@@ -82,6 +82,8 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                 <?php endforeach ?>
             </div>
         <?php endif ?>
+        <div class="clearfix"></div>
+        <div class="col-md-12"><hr></div>
     </div>
     <?php
     // IF SIZE 900 // END

@@ -64,11 +64,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 .sln-steps-description {
 	@extend %text-color--dark;
-	border-top-style: dashed;
-	border-top-width: .05em;
-	margin-top: .5em;
-	padding-top: .5em;
-	@extend %bd-color--contrast;
+	hr {
+		margin: .6em 0;
+		border: 0;
+		border-top-style: dashed;
+		border-top-width: .05em;
+		@extend %bd-color--contrast--alpha;
+	}
 }
 .sln-steps-price {
 	display: block;
@@ -121,6 +123,22 @@ h1, h2, h3, h4, h5, h6 {
 // SERVICES // END
 
 // ATTENDANTS
+#sln-salon.sln-salon--l .sln-attendants-wrapper {
+	.sln-attendant {
+		margin-bottom: 2em;
+		&:last-child {margin-bottom: 2em;}
+		hr {
+			margin: 2em 0 0 0;
+			border: 0;
+			border-top-style: dashed;
+			border-top-width: .05em;
+			@extend %bd-color--contrast--alpha;
+		}
+		@include bp(desktop) {
+			margin-bottom: 4em;
+		}
+	}
+}
 .sln-attendant {
 	margin-bottom: 4em;
 	&:last-child {margin-bottom: 0;}
@@ -247,6 +265,12 @@ h1, h2, h3, h4, h5, h6 {
 // THANK YOU // END
 
 // FORM ACTIONS
+.sln-box--formactions {
+	text-align: right;
+	margin-bottom: 0;
+	&.sln-box--main{margin-bottom: 0; margin-top: 0;}
+	.sln-icon--back {float: right;}
+}
 #sln-salon.sln-salon--m .sln-box--formactions {
 	text-align: right;
 }
@@ -268,6 +292,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 // ICONS // END
 // MOD AND OVERRIDES BY SIZE
+#sln-salon.sln-salon--l {
+	.sln-attendants-wrapper {
+		margin-bottom: 0;
+		@include bp(desktop) {margin-bottom: 1.5em;}
+	}
+}
 #sln-salon.sln-salon--m,
 #sln-salon.sln-salon--s {
 	.sln-steps-description {
@@ -286,16 +316,19 @@ h1, h2, h3, h4, h5, h6 {
 
 // TOTAL ROW
 .sln-total {
-
+	margin-bottom: 3em;
+	@include bp(desktop) {margin-bottom: 0;}
+	hr {
+		margin: 0 0 .6em 0;
+		border: 0;
+		border-top-style: solid;
+		border-top-width: .16em;
+		@extend %bd-color--contrast;
+	}
 }
 .sln-total-price {text-align: right;}
 .sln-total-label, .sln-total-price {
-	border-top-style: solid;
-	border-top-width: .16em;
-	@extend %bd-color--contrast;
 	@extend %text-color--dark;
-	padding-top: .5em;
-	margin-top: 1.5em;
 }
 // TOTAL ROW // END
 
@@ -326,6 +359,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding-top: 10rem;
 	padding-bottom: 20rem;
 	background-color: none !important;
-	background-image: url('http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg');
+	//background-image: url('http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg');
 	background-size: cover;
+	background-image: url('https://85ideas.com/wp-content/uploads/2016/03/salon-booking-plugin-barbershop.jpg');
 }

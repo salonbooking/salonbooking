@@ -387,12 +387,12 @@ th {
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active), #sln-salon .sln-thankyou--okbox {
   background-color: #5bc24c; }
 
-.sln-steps-description, #sln-salon.sln-salon--m .sln-attendants-wrapper,
-#sln-salon.sln-salon--s .sln-attendants-wrapper, .sln-total-label, .sln-total-price {
+#sln-salon.sln-salon--m .sln-attendants-wrapper,
+#sln-salon.sln-salon--s .sln-attendants-wrapper, .sln-total hr {
   border-color: #004258 !important; }
 
 .sln-input input, .sln-input textarea, .sln-btn--borderonly,
-.sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-list--dashed li, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
+.sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li, #sln-salon.sln-salon--l .sln-attendants-wrapper .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
 .sln-checkbox input + label:before, .sln-radiobox input + label:before {
@@ -428,7 +428,7 @@ th {
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   font-size: 1em; }
 
-.sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
+.sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
   font-size: .8em; }
 
 #sln-salon {
@@ -903,6 +903,7 @@ th {
 .datetimepicker.sln-datetimepicker .next:before {
   content: '\f061'; }
 
+#sln-salon.sln-salon--l .sln-input.sln-input--datepicker input[type="text"],
 #sln-salon.sln-salon--m .sln-input.sln-input--datepicker input[type="text"],
 #sln-salon.sln-salon--s .sln-input.sln-input--datepicker input[type="text"] {
   margin-bottom: 0;
@@ -1164,6 +1165,15 @@ th {
   .sln-btn--big.sln-btn--block, .sln-btn--big input.sln-btn--block, .sln-btn--big button.sln-btn--block, .sln-btn--big a.sln-btn--block {
     display: block; }
 
+.sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-btn--big a {
+  display: inline-block;
+  padding: 0 .5em;
+  line-height: 3.6em;
+  height: 3.6em;
+  text-transform: uppercase; }
+  .sln-btn--medium.sln-btn--block, .sln-btn--medium input.sln-btn--block, .sln-btn--medium button.sln-btn--block, .sln-btn--big a.sln-btn--block {
+    display: block; }
+
 .sln-btn--minwidth {
   min-width: 10em; }
 
@@ -1225,6 +1235,14 @@ th {
       font-size: 1.2em;
       padding: 0 1em;
       line-height: 3.4em; }
+  .sln-btn--icon.sln-btn--medium {
+    padding-right: 1em;
+    padding-left: 2em; }
+    .sln-btn--icon.sln-btn--medium:after {
+      font-family: "FontAwesome";
+      font-size: 1em;
+      padding: 0 .5em;
+      line-height: 3.6em; }
   .sln-btn--icon.sln-btn--icon--left {
     text-align: right; }
     .sln-btn--icon.sln-btn--icon--left button {
@@ -1393,11 +1411,11 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   width: 100%;
   display: block; }
 
-.sln-steps-description {
+.sln-steps-description hr {
+  margin: .6em 0;
+  border: 0;
   border-top-style: dashed;
-  border-top-width: .05em;
-  margin-top: .5em;
-  padding-top: .5em; }
+  border-top-width: .05em; }
 
 .sln-steps-price {
   display: block;
@@ -1437,6 +1455,19 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   display: block;
   text-transform: uppercase;
   font-weight: bold; }
+
+#sln-salon.sln-salon--l .sln-attendants-wrapper .sln-attendant {
+  margin-bottom: 2em; }
+  #sln-salon.sln-salon--l .sln-attendants-wrapper .sln-attendant:last-child {
+    margin-bottom: 2em; }
+  #sln-salon.sln-salon--l .sln-attendants-wrapper .sln-attendant hr {
+    margin: 2em 0 0 0;
+    border: 0;
+    border-top-style: dashed;
+    border-top-width: .05em; }
+  @media only screen and (min-width: 992px) {
+    #sln-salon.sln-salon--l .sln-attendants-wrapper .sln-attendant {
+      margin-bottom: 4em; } }
 
 .sln-attendant {
   margin-bottom: 4em; }
@@ -1523,6 +1554,15 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   #sln-salon.sln-salon--s .sln-thankyou .sln-icon-wrapper .sln-icon {
     top: 0; }
 
+.sln-box--formactions {
+  text-align: right;
+  margin-bottom: 0; }
+  .sln-box--formactions.sln-box--main {
+    margin-bottom: 0;
+    margin-top: 0; }
+  .sln-box--formactions .sln-icon--back {
+    float: right; }
+
 #sln-salon.sln-salon--m .sln-box--formactions {
   text-align: right; }
 
@@ -1536,6 +1576,12 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     padding-right: 3.5em;
     padding-left: 0; }
 
+#sln-salon.sln-salon--l .sln-attendants-wrapper {
+  margin-bottom: 0; }
+  @media only screen and (min-width: 992px) {
+    #sln-salon.sln-salon--l .sln-attendants-wrapper {
+      margin-bottom: 1.5em; } }
+
 #sln-salon.sln-salon--m .sln-attendants-wrapper,
 #sln-salon.sln-salon--s .sln-attendants-wrapper {
   border-bottom-style: solid;
@@ -1543,14 +1589,19 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   padding-bottom: .5em;
   margin-bottom: 1.5em; }
 
+.sln-total {
+  margin-bottom: 3em; }
+  @media only screen and (min-width: 992px) {
+    .sln-total {
+      margin-bottom: 0; } }
+  .sln-total hr {
+    margin: 0 0 .6em 0;
+    border: 0;
+    border-top-style: solid;
+    border-top-width: .16em; }
+
 .sln-total-price {
   text-align: right; }
-
-.sln-total-label, .sln-total-price {
-  border-top-style: solid;
-  border-top-width: .16em;
-  padding-top: .5em;
-  margin-top: 1.5em; }
 
 #sln-notifications {
   -webkit-transition: background 250ms, opacity 200ms;
@@ -1579,5 +1630,5 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   padding-top: 10rem;
   padding-bottom: 20rem;
   background-color: none !important;
-  background-image: url("http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg");
-  background-size: cover; }
+  background-size: cover;
+  background-image: url("https://85ideas.com/wp-content/uploads/2016/03/salon-booking-plugin-barbershop.jpg"); }

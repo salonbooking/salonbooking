@@ -23,16 +23,16 @@ $values = array(
     <?php
     if ($size == '900') { ?>
         <div class="row">
-            <div class="col-md-4 sln-input sln-input--simple">
+            <div class="col-sm-6 col-md-4 sln-input sln-input--simple">
                 <label for="login_name"><?php _e('E-mail') ?></label>
                 <input name="login_name" type="text" class="sln-input sln-input--text"/>
                 <span class="help-block"><a href=" <?php echo wp_lostpassword_url($formAction) ?>" class="tec-link"><?php _e('Forgot password?', 'salon-booking-system') ?></a></span>
             </div>
-            <div class="col-md-4 sln-input sln-input--simple">
+            <div class="col-sm-6 col-md-4 sln-input sln-input--simple">
                 <label for="login_password"><?php _e('Password') ?></label>
                 <input name="login_password" type="password" class="sln-input sln-input--text"/>
             </div>
-            <div class="col-md-4 sln-input sln-input--simple">
+            <div class="col-sm-6 col-md-4 pull-right sln-input sln-input--simple">
                 <label for="login_name">&nbsp;</label>
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
                 <button type="submit" data-salon-data="<?php echo "sln_step_page=".$step->getShortcode()->getCurrentStep()."&$submitName=next" ?>" data-salon-toggle="next" name="<?php echo $submitName ?>"
@@ -121,7 +121,7 @@ $values = array(
                                'password'  => __('Password', 'salon-booking-system'),
                                'password_confirm' => __('Confirm your password', 'salon-booking-system')
                            ) as $field => $label):  ?>
-                <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
+                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group">
@@ -142,7 +142,7 @@ $values = array(
             <?php endforeach ?>
         </div>
     </div>
-    <div class="col-md-4 sln-input sln-input--action">
+    <div class="col-md-4 sln-input sln-input--action  sln-box--main sln-box--formactions">
         <label for="login_name">&nbsp;</label>
         <?php include "_form_actions.php" ?>
     </div>
@@ -183,10 +183,10 @@ $values = array(
 
             <?php endforeach ?>
     </div>
-    <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-9"><label for="login_name">&nbsp;</label><?php include "_form_actions.php" ?></div>
-    </div>
+    <div class="row sln-box--main sln-box--formactions">
+           <div class="col-md-12">
+           <?php include "_form_actions.php" ?></div>
+        </div>
     <div class="row">
         <div class="col-xs-12"><?php include '_errors.php'; ?></div>
     </div>
@@ -222,7 +222,7 @@ $values = array(
                 </div>
 
             <?php endforeach ?>
-            <div class="col-xs-12"><label for="login_name">&nbsp;</label><?php include "_form_actions.php" ?></div>
+            <div class="col-xs-12  sln-box--formactions"><label for="login_name">&nbsp;</label><?php include "_form_actions.php" ?></div>
     </div>
     <div class="row">
         <div class="col-xs-12"><?php include '_errors.php'; ?></div>
@@ -251,7 +251,7 @@ $values = array(
                                'phone'     => __('Mobile phone', 'salon-booking-system'),
                                'address'     => __('Address', 'salon-booking-system'),
                            ) as $field => $label): ?>
-                <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
+                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group">
@@ -266,7 +266,7 @@ $values = array(
             <?php endforeach ?>
         </div>
     </div>
-    <div class="col-md-4 sln-input sln-input--action">
+    <div class="col-md-4 sln-input sln-input--action sln-box--formactions">
         <label for="login_name">&nbsp;</label>
         <?php include "_form_actions.php" ?>
     </div>
@@ -299,10 +299,10 @@ $values = array(
 
             <?php endforeach ?>
         </div>
-    <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-9"><label for="login_name">&nbsp;</label><?php include "_form_actions.php" ?></div>
-    </div>
+    <div class="row sln-box--formactions">
+           <div class="col-md-12">
+           <?php include "_form_actions.php" ?></div>
+        </div>
     <div class="row">
         <div class="col-xs-12"><?php include '_errors.php'; ?></div>
     </div>
@@ -329,7 +329,7 @@ $values = array(
                             <?php endif ?>
                 </div>
             <?php endforeach ?>
-            <div class="col-xs-12"><label for="login_name">&nbsp;</label><?php include "_form_actions.php" ?></div>
+            <div class="col-xs-12 sln-box--formactions"><label for="login_name">&nbsp;</label><?php include "_form_actions.php" ?></div>
     </div>
     <div class="row">
         <div class="col-xs-12"><?php include '_errors.php'; ?></div>
@@ -362,7 +362,7 @@ $values = array(
             <?php endforeach ?>
         </div>
     </div>
-    <div class="col-md-4 sln-input sln-input--action">
+    <div class="col-md-4 sln-input sln-input--action sln-box--formactions">
         <label for="login_name">&nbsp;</label>
         <?php include "_form_actions.php" ?>
     </div>

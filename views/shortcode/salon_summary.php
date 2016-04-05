@@ -161,14 +161,14 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     )*/ ?></p>
     </div>
 </div>
-<div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-9 sln-input sln-input--action">
-        <label for="login_name">&nbsp;</label>
+<div class="row sln-box--main sln-box--formactions">
+    <div class="col-md-12">
+    <label for="login_name">&nbsp;</label>
         <?php $nextLabel = __('Finalise', 'salon-booking-system');
         include "_form_actions.php" ?>
     </div>
 </div>
+
     <?php
     // IF SIZE 600 // END
     } else if ($size == '400') { ?>
