@@ -37,7 +37,7 @@ return array(
         'pay_currency_pos' => 'right',
         'pay_paypal_email' => 'test@test.com',
         'pay_paypal_test'  => true,
-        'parallels_hour'   => 1 
+        'parallels_hour'   => 1, 
 //        'confirmation'     => true,
 //        'pay_enabled'      => true,
 //        'pay_cash'         => true
