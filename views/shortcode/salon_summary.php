@@ -30,23 +30,23 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
         <div class="row">
             <div class="col-md-12">
             <div class="row sln-summary-row">
-                <div class="col-md-6 sln-steps-name"><span class="label"><?php _e('Date and time booked', 'salon-booking-system') ?></span></div>
-                <div class="col-md-6 sln-steps-price">
+                <div class="col-md-6 sln-data-desc"><span class="label"><?php _e('Date and time booked', 'salon-booking-system') ?></span></div>
+                <div class="col-md-6 sln-data-val">
                     <?php echo $plugin->format()->date($datetime); ?> / <?php echo $plugin->format()->time($datetime) ?>
                 </div>
                 <div class="col-md-12"><hr></div>
             </div>
             <?php if($attendant = $bb->getAttendant()) :  ?>
             <div class="row sln-summary-row">
-                <div class="col-md-6 sln-steps-name"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
-                <div class="col-md-6 sln-steps-price"><?php echo $attendant->getName(); ?></div>
+                <div class="col-md-6 sln-data-desc"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
+                <div class="col-md-6 sln-data-val"><?php echo $attendant->getName(); ?></div>
                 <div class="col-md-12"><hr></div>
             </div>
             <?php // IF ASSISTANT
              endif ?>
              <div class="row sln-summary-row">
-                <div class="col-md-6 sln-steps-name"><span class="label"><?php _e('Services booked', 'salon-booking-system') ?></span></div>
-                <div class="col-md-6 sln-steps-price">
+                <div class="col-md-6 sln-data-desc"><span class="label"><?php _e('Services booked', 'salon-booking-system') ?></span></div>
+                <div class="col-md-6 sln-data-val">
                     <ul class="sln-list--dashed">
                 <?php foreach ($bb->getServices() as $service): ?>
                     <li> <span class="service-label"><?php echo $service->getName(); ?></span>
@@ -104,26 +104,26 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
     <div class="row sln-summary">
     <div class="col-md-12">
     <div class="row sln-summary-row">
-        <div class="col-md-6 sln-steps-name"><span class="label"><?php _e('Date and time booked', 'salon-booking-system') ?></span></div>
-        <div class="col-md-6 sln-steps-price">
+        <div class="col-md-6 sln-data-desc"><?php _e('Date and time booked', 'salon-booking-system') ?></div>
+        <div class="col-md-6 sln-data-val">
             <?php echo $plugin->format()->date($datetime); ?> / <?php echo $plugin->format()->time($datetime) ?>
         </div>
         <div class="col-md-12"><hr></div>
     </div>
     <?php if($attendant = $bb->getAttendant()) :  ?>
     <div class="row sln-summary-row">
-        <div class="col-md-6 sln-steps-name"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
-        <div class="col-md-6 sln-steps-price"><?php echo $attendant->getName(); ?></div>
+        <div class="col-md-6 sln-data-desc"><?php _e('Assistant', 'salon-booking-system') ?></div>
+        <div class="col-md-6 sln-data-val"><?php echo $attendant->getName(); ?></div>
         <div class="col-md-12"><hr></div>
     </div>
     <?php // IF ASSISTANT
      endif ?>
      <div class="row sln-summary-row">
-        <div class="col-md-6 sln-steps-name"><span class="label"><?php _e('Services booked', 'salon-booking-system') ?></span></div>
-        <div class="col-md-6 sln-steps-price">
+        <div class="col-md-6 sln-data-desc"><?php _e('Services booked', 'salon-booking-system') ?></div>
+        <div class="col-md-6 sln-data-val">
             <ul class="sln-list--dashed">
         <?php foreach ($bb->getServices() as $service): ?>
-            <li> <span class="service-label"><?php echo $service->getName(); ?></span>
+            <li><?php echo $service->getName(); ?>
             <?php if($showPrices){?>
             <small> (<?php echo $plugin->format()->money($service->getPrice()) ?>)</small>
             <?php } ?>
@@ -174,23 +174,23 @@ $showPrices = ($plugin->getSettings()->get('hide_prices') != '1')? true : false;
     <div class="row sln-summary">
     <div class="col-md-12">
     <div class="row sln-summary-row">
-        <div class="col-xs-12 sln-steps-name"><span class="label"><?php _e('Date and time booked', 'salon-booking-system') ?></span></div>
-        <div class="col-xs-12 sln-steps-price">
+        <div class="col-xs-12 sln-data-desc"><span class="label"><?php _e('Date and time booked', 'salon-booking-system') ?></span></div>
+        <div class="col-xs-12 sln-data-val">
             <?php echo $plugin->format()->date($datetime); ?> / <?php echo $plugin->format()->time($datetime) ?>
         </div>
         <div class="col-xs-12"><hr></div>
     </div>
     <?php if($attendant = $bb->getAttendant()) :  ?>
     <div class="row sln-summary-row">
-        <div class="col-xs-12 sln-steps-name"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
-        <div class="col-xs-12 sln-steps-price"><?php echo $attendant->getName(); ?></div>
+        <div class="col-xs-12 sln-data-desc"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
+        <div class="col-xs-12 sln-data-val"><?php echo $attendant->getName(); ?></div>
         <div class="col-xs-12"><hr></div>
     </div>
-    <?php // IF ASSISTANT
+    <?php // IF ASSISTANT // END
      endif ?>
      <div class="row sln-summary-row">
-        <div class="col-xs-12 sln-steps-name"><span class="label"><?php _e('Services booked', 'salon-booking-system') ?></span></div>
-        <div class="col-xs-12 sln-steps-price">
+        <div class="col-xs-12 sln-data-desc"><span class="label"><?php _e('Services booked', 'salon-booking-system') ?></span></div>
+        <div class="col-xs-12 sln-data-val">
             <ul class="sln-list--dashed">
         <?php foreach ($bb->getServices() as $service): ?>
             <li> <span class="service-label"><?php echo $service->getName(); ?></span>

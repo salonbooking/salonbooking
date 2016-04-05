@@ -117,7 +117,7 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
     <div class="col-md-12">
             <?php if($confirmation) : ?>
         <h2 class="salon-step-title"><?php _e('Booking status', 'salon-booking-system') ?></h2>
-    <?php else : ?> 
+    <?php else : ?>
         <h2 class="salon-step-title"><?php _e('Booking Confirmation', 'salon-booking-system') ?></h2>
     <?php endif ?>
 
@@ -213,7 +213,7 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
     <div class="col-md-12">
             <?php if($confirmation) : ?>
         <h2 class="salon-step-title"><?php _e('Booking status', 'salon-booking-system') ?></h2>
-    <?php else : ?> 
+    <?php else : ?>
         <h2 class="salon-step-title"><?php _e('Booking Confirmation', 'salon-booking-system') ?></h2>
     <?php endif ?>
 
@@ -243,7 +243,7 @@ SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMet
         </div>
     </div>
 <?php $ppl = false; ?>
-<div class="alert ty">
+<div class="sln-alert sln-alert--warning">
 <?php if($confirmation) : ?>
         <p><strong><?php _e('You will receive a confirmation of your booking by email.','salon-booking-system' )?></strong></p>
         <p><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'salon-booking-system'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>

@@ -1,0 +1,57 @@
+// ICONS
+.sln-icon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  @include font-icon(60);
+  font-style: normal;
+  font-weight: normal;
+  line-height: rem(60);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &:after {
+    content: "\f111";
+    display: inline-block;
+    //position: absolute;
+    //top: 0;
+    //right: 0;
+    //bottom: 0;
+    text-align: center;
+    @include transition(background-color 200ms, color 300ms);
+    z-index: 200;
+  }
+}
+.sln-icon--checked--square {
+  &:after {
+    content: "\f046";
+  }
+}
+
+.sln-icon--calendar {
+  &:after {
+    content: "\f073";
+  }
+}
+.sln-icon--booking {
+  &:after {
+    content: "\f017";
+  }
+}
+.sln-icon--back,
+.sln-icon--left,
+.sln-icon--prev,
+.sln-btn--icon.sln-icon--back,
+.sln-btn--icon.sln-icon--left,
+.sln-btn--icon.sln-icon--prev {
+  &:after {
+    content: "\f060";
+  }
+}
+.sln-icon--forward,
+.sln-icon--right,
+.sln-icon--next {
+  &:after {
+    content: "\f061";
+  }
+}
+// ICONS // END

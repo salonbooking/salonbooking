@@ -4,6 +4,7 @@
 @import 'typo';
 @import 'components/utilities';
 @import 'components/datepicker';
+@import 'components/icons';
 @import 'components/inputs';
 @import 'components/buttons';
 @import 'components/alert-messages';
@@ -59,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .sln-steps-info,
 .sln-steps-description {
-	label {font-weight: normal;}
+	label {font-weight: normal; width: 100%; display: block;}
 }
 .sln-steps-description {
 	@extend %text-color--dark;
@@ -98,11 +99,24 @@ h1, h2, h3, h4, h5, h6 {
 #sln-salon.sln-salon--s .sln-list--dashed  {
 	display: block;
 }
+.sln-data-desc {
+	@extend %sln-textsize--small;
+	@extend %text-color--dark;
+}
+.sln-data-val {text-align: right;}
+#sln-salon.sln-salon--s .sln-data-val {text-align: left; padding-top: .2em; padding-bottom: .6em;}
 // GENERAL // END
 
 // SERVICES
 .sln-service {
 	margin-bottom: 2em;
+}
+.sln-steps-duration {
+	display: block;
+	@extend %sln-textsize--base;
+	text-transform: uppercase;
+	font-weight: bold;
+	small {@extend %sln-textsize--small;}
 }
 // SERVICES // END
 
@@ -116,16 +130,17 @@ h1, h2, h3, h4, h5, h6 {
 // SUMMARY
 .sln-summary {margin-top: 2em;}
 .sln-summary-row {
-	padding: 0 0 1em 0;
+	padding: 0;
 	margin-bottom: 1em;
 	.label {
+		@extend %sln-textsize--base;
 		@extend %text-color--dark;
 		font-weight: normal;
 		padding: 0;
 	}
 	.sln-steps-name, .sln-steps-price{margin-bottom: 0;}
 	hr {
-		margin: .5em 0 0 0;
+		margin: 1em 0 0 0;
 		border: 0;
 		border-bottom-style: solid;
 		border-bottom-width: .05em;
@@ -140,7 +155,12 @@ h1, h2, h3, h4, h5, h6 {
 .sln-step-summary {
 	.sln-total {margin-bottom: 2em;}
 }
+#sln-salon.sln-salon--m .sln-summary-row,
 #sln-salon.sln-salon--s .sln-summary-row {
+	hr {margin-top: 1em;}
+}
+#sln-salon.sln-salon--s .sln-summary-row {
+	padding: 0 0 1em 0;
 	margin-bottom: 0;
 	.sln-steps-price {
 		text-align: left;
@@ -204,12 +224,18 @@ h1, h2, h3, h4, h5, h6 {
 		h2, h3 {
 			display: block;
 		}
+		h1 {
+			@extend %sln-textsize--base;
+			.sln-icon {@extend %sln-textsize--bigger;}
+		}
+		h2 {padding-left: 0;}
+		h3 {@extend %sln-textsize--bigger;}
 		hr {
 			margin: 1.5em 0 1em 0;
 		}
 	}
 	.sln-icon-wrapper {
-		padding-top: 4em;
+		padding-top: 3em;
 		padding-left: 0;
 		text-align: center;
 		.sln-icon {
@@ -220,6 +246,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 // THANK YOU // END
 
+// FORM ACTIONS
+#sln-salon.sln-salon--m .sln-box--formactions {
+	text-align: right;
+}
+// FORM ACTIONS // END
+
 // ICONS // END
 .sln-icon-wrapper {
 	position: relative;
@@ -228,6 +260,10 @@ h1, h2, h3, h4, h5, h6 {
 		position: absolute;
 		left: 0;
 		@extend %absolute-vertical-centering;
+	}
+	.sln-icon-wrapper--right {
+		padding-right: 3.5em;
+		padding-left: 0;
 	}
 }
 // ICONS // END

@@ -28,8 +28,8 @@ function salon_date_hoursbefore($hoursBefore)
 if ($plugin->getSettings()->isDisabled()):
     $message =  $plugin->getSettings()->getDisabledMessage(); 
     ?>
-    <div class="alert alert-danger">
-        <p><?php echo empty($message) ? __('On-line booking is disabled', 'salon-booking-system') : $message ?></p>
+    <div class="sln-alert sln-alert--problem">
+        <?php echo empty($message) ? __('On-line booking is disabled', 'salon-booking-system') : $message ?>
     </div>
 <?php
 else:
@@ -73,7 +73,7 @@ else:
                         ) ?></label>
                     <?php SLN_Form::fieldJSTime('sln[time]', $date, array('interval' =>  $plugin->getSettings()->get('interval') )) ?>
             </div>
-           <div class="col-md-4 sln-input">
+           <div class="col-md-4 sln-input sln-box--formactions">
            <label for="">&nbsp;</label>
            <?php include "_form_actions.php" ?></div>
         </div>
@@ -97,9 +97,8 @@ else:
                     <?php SLN_Form::fieldJSTime('sln[time]', $date, array('interval' =>  $plugin->getSettings()->get('interval') )) ?>
             </div>
         </div>
-        <div class="row sln-box--main">
-            <div class="col-md-6">&nbsp;</div>
-           <div class="col-md-6">
+        <div class="row sln-box--main sln-box--formactions">
+           <div class="col-md-12">
            <?php include "_form_actions.php" ?></div>
         </div>
         <?php
@@ -122,7 +121,7 @@ else:
                     <?php SLN_Form::fieldJSTime('sln[time]', $date, array('interval' =>  $plugin->getSettings()->get('interval') )) ?>
             </div>
         </div>
-        <div class="row sln-box--main">
+        <div class="row sln-box--main sln-box--formactions">
            <div class="col-md-12">
            <?php include "_form_actions.php" ?></div>
         </div>

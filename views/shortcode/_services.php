@@ -91,11 +91,15 @@ $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds()
             </div>
         </div>
         <?php if ($serviceErrors) : ?>
-            <div class="col-md-12 alert alert-warning">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
                 <?php foreach ($serviceErrors as $error): ?>
-                    <p><?php echo $error ?></p>
+                  <div class="sln-alert sln-alert-medium sln-alert--problem"><?php echo $error ?></div>
                 <?php endforeach ?>
+                <div class="sln-alert sln-alert-medium sln-alert--problem" style="display: none" id="availabilityerror"><?php _e('Not enough time for this service','salon-booking-system') ?></div>
             </div>
+        </div>
         <?php endif ?>
     </div>
     <?php
@@ -146,7 +150,7 @@ $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds()
                         <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                             <p><?php echo $service->getContent() ?></p>
                             <?php if ($service->getDuration()->format('H:i') != '00:00'): ?>
-                                <span class="sln-steps-duration sln-service-duration"><?php echo __('Duration', 'salon-booking-system')?>: <?php echo $service->getDuration()->format(
+                                <span class="sln-steps-duration sln-service-duration"><small><?php echo __('Duration', 'salon-booking-system')?>:</small> <?php echo $service->getDuration()->format(
                                         'H:i'
                                     ) ?></span>
                             <?php endif ?>
@@ -156,11 +160,15 @@ $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds()
             </div>
         </div>
         <?php if ($serviceErrors) : ?>
-            <div class="col-md-12 alert alert-warning">
+            <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
                 <?php foreach ($serviceErrors as $error): ?>
-                    <p><?php echo $error ?></p>
+                  <div class="sln-alert sln-alert-medium sln-alert--problem"><?php echo $error ?></div>
                 <?php endforeach ?>
+                <div class="sln-alert sln-alert-medium sln-alert--problem" style="display: none" id="availabilityerror"><?php _e('Not enough time for this service','salon-booking-system') ?></div>
             </div>
+        </div>
         <?php endif ?>
     </div>
 
@@ -221,10 +229,13 @@ $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds()
             </div>
         </div>
         <?php if ($serviceErrors) : ?>
-            <div class="col-md-12 alert alert-warning">
-                <?php foreach ($serviceErrors as $error): ?>
-                    <p><?php echo $error ?></p>
-                <?php endforeach ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <?php foreach ($serviceErrors as $error): ?>
+                      <div class="sln-alert sln-alert-medium sln-alert--problem"><?php echo $error ?></div>
+                    <?php endforeach ?>
+                <div class="sln-alert sln-alert-medium sln-alert--problem" style="display: none" id="availabilityerror"><?php _e('Not enough time for this service','salon-booking-system') ?></div>
+                </div>
             </div>
         <?php endif ?>
     </div>
@@ -235,7 +246,6 @@ $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds()
     <?php
     // ELSE // END
     }  ?>
-        
     <?php endforeach ?>
     <?php if($group['term'] !== false): ?>
     <!-- panel END -->
@@ -244,7 +254,6 @@ $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds()
     <!-- panel END -->
     <?php endif ?>
     <?php endforeach ?>
-    <div class="alert alert-danger" style="display: none" id="availabilityerror"><p><?php echo __('not enough time for this service','salon-booking-system') ?></p></div>
 	<?php if ($showPrices){ ?>
     <div class="row sln-total">
     <?php

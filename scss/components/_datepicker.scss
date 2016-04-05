@@ -10,20 +10,27 @@
 
 .datetimepicker.sln-datetimepicker {
   //font-family: @font-family;
+  border-radius: 0;
+  width: 360px;
+  padding: 20px;
+  table {
+    width: 100%;
+    @extend %sln-textsize--base;
+    line-height: 3em;
+  }
   td, th, table tr td span {
     border-radius: 0;
-    padding: 3px 5px;
+    padding: 0;
   }
 }
 
 .datetimepicker.sln-datetimepicker {
-  max-width: 590px;
+  //max-width: 590px;
   table {border-top: none;}
   .sln-datetimepicker-close {
-    display: block;
+    display: none;
     width: 100%;
     height: 40px;
-    background-color: red;
     text-align: center;
     line-height: 40px;
     text-decoration: none;
@@ -31,32 +38,34 @@
     cursor: pointer;
     font-style: normal;
     margin: 20px 0 10px 0;
+    background-color: red;
     &:hover {}
   }
-  //@media @phone {
-  //    //position: fixed !important;
-  //    //top: 0 !important;
-  //    left: 0 !important;
-  //    width: 100%;
-  //    max-width: 100%;
-  //    height: auto;
-  //    margin-top: 0;
-  //    -webkit-backface-visibility: hidden;
-  //    backface-visibility: hidden;
-  //  .sln-datetimepicker-close {
-  //    height: 60px;
-  //    line-height: 60px;
-  //  }
-  //}
-  //@media @tablet-max-port  {
-  //    //position: fixed;
-  //    //top: 0 !important;
-  //    left: 0 !important;
-  //    width: 100%;
-  //    max-width: 100%;
-  //    height: auto;
-  //    min-height: 200px;
-  //}
+  @include bp(phone) {
+      //position: fixed !important;
+      //top: 0 !important;
+      left: 0 !important;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin-top: 0;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    .sln-datetimepicker-close {
+      display: block;
+      height: 60px;
+      line-height: 60px;
+    }
+  }
+  @include bp(tablet-max-port) {
+      //position: fixed;
+      //top: 0 !important;
+      left: 0 !important;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      min-height: 200px;
+  }
 }
 .datetimepicker.sln-datetimepicker table tr td.today,
 .datetimepicker.sln-datetimepicker table tr td.today:hover,
@@ -115,15 +124,26 @@
 .datetimepicker.sln-datetimepicker table tr td span.active.disabled[disabled],
 .datetimepicker.sln-datetimepicker table tr td span.active.disabled:hover[disabled] {
   //background-color: @color-high;
+  @extend %bgc-color--contrast;
 }
 .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
 .datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active) {
-  color: #33CC33;
-  //background-color: #D6FDD6;
+  @extend %text-color--white;
+  @extend %bgc-color--ok;
+  font-weight: bold;
   &:hover {
-    //color: @color-white;
-    background-color: #33CC33;
+    @extend %text-color--white;
+    @extend %bgc-color--emphasis--hover;
+  }
+}
+.datetimepicker.sln-datetimepicker table tr td.day.active:not(.disabled),
+.datetimepicker.sln-datetimepicker table tr td span.hour.active:not(.disabled),
+.datetimepicker.sln-datetimepicker table tr td span.minute.active:not(.disabled) {
+  @extend %bgc-color--emphasis;
+  &:hover {
+    @extend %text-color--white;
+    @extend %bgc-color--emphasis--hover;
   }
 }
 
@@ -145,6 +165,10 @@
 .datetimepicker.sln-datetimepicker table tr td.day,
 .datetimepicker.sln-datetimepicker table tr td span.hour,
 .datetimepicker.sln-datetimepicker table tr td span.minute {
+    border-style: solid;
+    border-width: .05em;
+    @extend %bd-color--grey--light;
+    min-width: 3em;
     //@media @phone {
     //  background: #eee;
     //  font-size: 1.4em;
@@ -175,6 +199,12 @@
 }
 .datetimepicker.sln-datetimepicker table tr td span.hour,
 .datetimepicker.sln-datetimepicker table tr td span.minute {
+  width: 25%;
+  height: initial;
+  margin: 0;
+  line-height: 3em;
+  border-top: 0;
+  margin: 0 -.05em;
     //@media @phone {
     //  width: 25% !important;
     //  height: 60px;
@@ -192,3 +222,66 @@
 
 .sln_datepicker #sln_date.form-control[readonly],
 .sln_timepicker #sln_time.form-control[readonly] {cursor: pointer;}
+.datetimepicker.sln-datetimepicker table tr td.disabled {@extend %text-color--grey--light;}
+/////
+
+.datetimepicker.sln-datetimepicker {
+  .switch, .prev, .next, .today {
+    border-style: solid;
+    border-width: .05em;
+    @extend %bd-color--grey--light;
+    &:hover {
+      @extend %text-color--white;
+      @extend %bgc-color--emphasis--hover;
+    }
+  }
+  .prev, .next {
+    position: relative;
+    padding: 0;
+    min-width: 3em;
+    &:before {
+      display: block;
+      @include font-icon(60);
+    }
+    i {display: none;}
+  }
+  .prev:before {content: '\f060';}
+  .next:before {content: '\f061';}
+}
+
+#sln-salon.sln-salon--m .sln-input.sln-input--datepicker input[type="text"],
+#sln-salon.sln-salon--s .sln-input.sln-input--datepicker input[type="text"]
+ {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.sln_datepicker, .sln_timepicker {
+  margin-bottom: 2em;
+  position: relative;
+  cursor: pointer;
+  &:after {
+    @include font-icon(1.6em);
+    display: inline-block;
+    @extend %absolute-vertical-centering;
+    right: .4em;
+    @extend %sln-textsize--bigger;
+    @extend %text-color--contrast;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-radius: 50%;
+    @include transition(color 250ms);
+  }
+  &:hover:after {@extend %text-color--emphasis;}
+}
+.sln_datepicker {@extend .sln-icon--calendar;}
+.sln_timepicker {@extend .sln-icon--booking;}
+
+#sln-salon.sln-salon--m  {
+  .sln_datepicker, .sln_timepicker {
+    margin-bottom: 0;
+  }
+}
+
+
+
