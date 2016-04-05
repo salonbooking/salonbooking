@@ -124,24 +124,33 @@ h1, h2, h3, h4, h5, h6 {
 
 // ATTENDANTS
 #sln-salon.sln-salon--l .sln-attendants-wrapper {
-	.sln-attendant {
-		margin-bottom: 2em;
-		&:last-child {margin-bottom: 2em;}
-		hr {
-			margin: 2em 0 0 0;
-			border: 0;
-			border-top-style: dashed;
-			border-top-width: .05em;
-			@extend %bd-color--contrast--alpha;
-		}
-		@include bp(desktop) {
-			margin-bottom: 4em;
-		}
+	.sln-box--formactions > div {
+		border-top-style: solid;
+		border-top-width: .16em;
+		@extend %bd-color--contrast;
+		margin-top: 2em;
+		padding-top: 2em;
 	}
 }
 .sln-attendant {
 	margin-bottom: 4em;
-	&:last-child {margin-bottom: 0;}
+	hr {
+		margin: 2em 0 0 0;
+		border: 0;
+		border-top-style: dashed;
+		border-top-width: .05em;
+		@extend %bd-color--contrast--alpha;
+	}
+	&:last-child {
+		margin-bottom: 0;
+		hr {display: none;}
+	}
+	@include bp(tablet) {
+		margin-bottom: 2em;
+	}
+	@include bp(desktop) {
+		margin-bottom: 4em;
+	}
 }
 // ATTENDANTS // END
 
@@ -196,10 +205,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 #sln-salon .sln-thankyou--okbox {
 	margin-top: 1em;
-	padding: 4em 0 3em 0;
+	padding: 4em 1em 3em 1em;
 	@extend %bgc-color--ok;
 	//> div {text-align: center;}
 	h1 {
+		@extend %sln-textsize--base;
 	}
 	h1 {
 		@extend %text-color--contrast;
@@ -222,7 +232,12 @@ h1, h2, h3, h4, h5, h6 {
 		border-bottom-width: .05em;
 		@extend %bd-color--contrast--alpha;
 	}
-	.sln-icon {@extend %text-color--contrast;}
+	.sln-icon-wrapper {padding-left: 3em;}
+	.sln-icon-wrapper .sln-icon {
+		@extend %text-color--contrast;
+		font-size: 2em;
+		line-height: 2em;
+	}
 }
 .sln-form-actions {
 	margin-bottom: 1em;

@@ -79,6 +79,21 @@ $fontfamily--main:"Open sans", serif;
 %sln-textsize--base {font-size: 1em;}
 %sln-textsize--small {font-size: .8em;}
 %sln-textsize--smaller {font-size: .6em;}
+@mixin textsize($textsize: null) {
+  @if $textsize == bigger {
+    @extend %sln-textsize--bigger;
+  } @else if $textsize == big {
+    @extend %sln-textsize--big;
+  } @else if $textsize == medium {
+    @extend %sln-textsize--medium;
+  } @else if $textsize == base {
+    @extend %sln-textsize--base;
+  } @else if $textsize == small {
+    @extend %sln-textsize--small;
+  } @else if $textsize == smaller {
+    @extend %sln-textsize--smaller;
+  }
+}
 #sln-salon {
   font-size: $browser-context;
   h1 {@extend %sln-textsize--bigger;}

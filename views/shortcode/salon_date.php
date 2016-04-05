@@ -72,14 +72,14 @@ else:
         } else if ($size == '600') {
         ?>
         <div class="row sln-box--main">
-            <div class="col-md-6 sln-input sln-input--datepicker">
+            <div class="col-sm-6 col-md-6 sln-input sln-input--datepicker">
                     <label for="<?php echo SLN_Form::makeID('sln[date][day]') ?>"><?php _e(
                             'select a day',
                             'salon-booking-system'
                         ) ?></label>
                     <?php SLN_Form::fieldJSDate('sln[date]', $date) ?>
             </div>
-           <div class="col-md-6 sln-input sln-input--datepicker">
+           <div class="col-sm-6 col-md-6 sln-input sln-input--datepicker">
                     <label for="<?php echo SLN_Form::makeID('sln[date][time]') ?>"><?php _e(
                             'select an hour',
                             'salon-booking-system'
