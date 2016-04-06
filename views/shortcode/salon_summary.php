@@ -208,6 +208,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     </div>
     </div>
     <div class="col-md-12 sln-total">
+    <hr>
         <?php if($showPrices){?>
         <h3 class="col-xs-6 sln-total-label"><?php _e('Total amount', 'salon-booking-system') ?></h3>
         <h3 class="col-xs-6 sln-total-price"><?php echo $plugin->format()->money(

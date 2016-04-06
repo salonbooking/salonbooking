@@ -73,7 +73,10 @@ $fontfamily--main:"Open sans", serif;
 // SIZES // END
 // GENERAL
 
-%sln-textsize--bigger {font-size: 1.6em;}
+%sln-textsize--bigger {
+  font-size: 1.4em;
+  @include bp(desktop) {font-size: 1.6em;}
+}
 %sln-textsize--big {font-size: 1.4em;}
 %sln-textsize--medium {font-size: 1.2em;}
 %sln-textsize--base {font-size: 1em;}

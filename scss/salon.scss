@@ -123,17 +123,8 @@ h1, h2, h3, h4, h5, h6 {
 // SERVICES // END
 
 // ATTENDANTS
-#sln-salon.sln-salon--l .sln-attendants-wrapper {
-	.sln-box--formactions > div {
-		border-top-style: solid;
-		border-top-width: .16em;
-		@extend %bd-color--contrast;
-		margin-top: 2em;
-		padding-top: 2em;
-	}
-}
 .sln-attendant {
-	margin-bottom: 4em;
+	margin-bottom: 2em;
 	hr {
 		margin: 2em 0 0 0;
 		border: 0;
@@ -145,13 +136,29 @@ h1, h2, h3, h4, h5, h6 {
 		margin-bottom: 0;
 		hr {display: none;}
 	}
-	@include bp(tablet) {
-		margin-bottom: 2em;
-	}
 	@include bp(desktop) {
 		margin-bottom: 4em;
+		&:last-child {
+		margin-bottom: 2em;
+		hr {display: none;}
+	}
 	}
 }
+#sln-salon.sln-salon--l .sln-attendants-wrapper {
+	.sln-box--formactions > div {
+		border-top-style: solid;
+		border-top-width: .16em;
+		@extend %bd-color--contrast;
+		margin-top: 2em;
+		padding-top: 2em;
+	}
+}
+#sln-salon.sln-salon--s .sln-attendants-wrapper {
+	.sln-attendant-description {
+		margin-top: 1em;
+	}
+}
+
 // ATTENDANTS // END
 
 // SUMMARY
@@ -200,7 +207,7 @@ h1, h2, h3, h4, h5, h6 {
 .sln-thankyou {
 	margin-top: 2em;
 	.sln-form-actions-wrapper {
-		margin-top: 2.5em;
+		margin-top: 2.2em;
 	}
 }
 #sln-salon .sln-thankyou--okbox {
@@ -243,9 +250,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 1em;
 }
 .sln-payment-actions {
+	.sln-btn.sln-btn--noheight {margin-bottom: 1em;}
 	h4 {
 		@extend %text-color--contrast;
-		margin-top: 1em;
+		margin-top: 1.6em;
 	}
 }
 

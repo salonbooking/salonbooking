@@ -199,13 +199,16 @@ th {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
 
-.sln-btn--emphasis:hover, .sln-btn--emphasis:focus,
+.sln-btn--emphasis:hover, .sln-btn--emphasis:focus, .sln-btn--emphasis:active,
 .sln-bootstrap .sln-btn--emphasis:hover,
-.sln-bootstrap .sln-btn--emphasis:focus, .sln-btn--nobkg:hover, .sln-btn--nobkg:focus,
+.sln-bootstrap .sln-btn--emphasis:focus,
+.sln-bootstrap .sln-btn--emphasis:active, .sln-btn--nobkg:hover, .sln-btn--nobkg:focus, .sln-btn--nobkg:active,
 .sln-bootstrap .sln-btn--nobkg:hover,
-.sln-bootstrap .sln-btn--nobkg:focus, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--nobkg:focus,
+.sln-bootstrap .sln-btn--nobkg:active, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus, .sln-btn--borderonly:active,
 .sln-bootstrap .sln-btn--borderonly:hover,
-.sln-bootstrap .sln-btn--borderonly:focus {
+.sln-bootstrap .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--borderonly:active {
   -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23);
   -moz-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23); }
@@ -250,27 +253,37 @@ th {
 .sln-bootstrap .sln-btn--emphasis, .sln-btn--emphasis input, .sln-btn--emphasis button, .sln-btn--emphasis a,
 .sln-bootstrap .sln-btn--emphasis input,
 .sln-bootstrap .sln-btn--emphasis button,
-.sln-bootstrap .sln-btn--emphasis a, .sln-btn--emphasis:hover, .sln-btn--emphasis:focus,
+.sln-bootstrap .sln-btn--emphasis a, .sln-btn--emphasis:hover, .sln-btn--emphasis:focus, .sln-btn--emphasis:active,
 .sln-bootstrap .sln-btn--emphasis:hover,
-.sln-bootstrap .sln-btn--emphasis:focus, .sln-btn--emphasis:hover input, .sln-btn--emphasis:hover button, .sln-btn--emphasis:hover a, .sln-btn--emphasis:focus input, .sln-btn--emphasis:focus button, .sln-btn--emphasis:focus a,
+.sln-bootstrap .sln-btn--emphasis:focus,
+.sln-bootstrap .sln-btn--emphasis:active, .sln-btn--emphasis:hover input, .sln-btn--emphasis:hover button, .sln-btn--emphasis:hover a, .sln-btn--emphasis:focus input, .sln-btn--emphasis:focus button, .sln-btn--emphasis:focus a, .sln-btn--emphasis:active input, .sln-btn--emphasis:active button, .sln-btn--emphasis:active a,
 .sln-bootstrap .sln-btn--emphasis:hover input,
 .sln-bootstrap .sln-btn--emphasis:hover button,
 .sln-bootstrap .sln-btn--emphasis:hover a,
 .sln-bootstrap .sln-btn--emphasis:focus input,
 .sln-bootstrap .sln-btn--emphasis:focus button,
-.sln-bootstrap .sln-btn--emphasis:focus a, .sln-btn--nobkg:hover, .sln-btn--nobkg:focus,
+.sln-bootstrap .sln-btn--emphasis:focus a,
+.sln-bootstrap .sln-btn--emphasis:active input,
+.sln-bootstrap .sln-btn--emphasis:active button,
+.sln-bootstrap .sln-btn--emphasis:active a, .sln-btn--nobkg:hover, .sln-btn--nobkg:focus, .sln-btn--nobkg:active,
 .sln-bootstrap .sln-btn--nobkg:hover,
-.sln-bootstrap .sln-btn--nobkg:focus, .sln-btn--nobkg:hover input, .sln-btn--nobkg:hover button, .sln-btn--nobkg:focus input, .sln-btn--nobkg:focus button,
+.sln-bootstrap .sln-btn--nobkg:focus,
+.sln-bootstrap .sln-btn--nobkg:active, .sln-btn--nobkg:hover input, .sln-btn--nobkg:hover button, .sln-btn--nobkg:focus input, .sln-btn--nobkg:focus button, .sln-btn--nobkg:active input, .sln-btn--nobkg:active button,
 .sln-bootstrap .sln-btn--nobkg:hover input,
 .sln-bootstrap .sln-btn--nobkg:hover button,
 .sln-bootstrap .sln-btn--nobkg:focus input,
-.sln-bootstrap .sln-btn--nobkg:focus button, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--nobkg:focus button,
+.sln-bootstrap .sln-btn--nobkg:active input,
+.sln-bootstrap .sln-btn--nobkg:active button, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus, .sln-btn--borderonly:active,
 .sln-bootstrap .sln-btn--borderonly:hover,
-.sln-bootstrap .sln-btn--borderonly:focus, .sln-btn--borderonly:hover input, .sln-btn--borderonly:hover button, .sln-btn--borderonly:focus input, .sln-btn--borderonly:focus button,
+.sln-bootstrap .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--borderonly:active, .sln-btn--borderonly:hover input, .sln-btn--borderonly:hover button, .sln-btn--borderonly:focus input, .sln-btn--borderonly:focus button, .sln-btn--borderonly:active input, .sln-btn--borderonly:active button,
 .sln-bootstrap .sln-btn--borderonly:hover input,
 .sln-bootstrap .sln-btn--borderonly:hover button,
 .sln-bootstrap .sln-btn--borderonly:focus input,
-.sln-bootstrap .sln-btn--borderonly:focus button, .sln-stepper .step .step-number, .sln-stepper .step.step--active .step-number {
+.sln-bootstrap .sln-btn--borderonly:focus button,
+.sln-bootstrap .sln-btn--borderonly:active input,
+.sln-bootstrap .sln-btn--borderonly:active button, .sln-stepper .step .step-number, .sln-stepper .step.step--active .step-number {
   color: white; }
 
 #sln-salon .sln-salon-title, #sln-salon .salon-step-title, .sln-text--contrast, .sln_datepicker:after, .sln_timepicker:after, .sln-input .help-block, .sln-input .help-block a, .sln-btn--nobkg,
@@ -368,13 +381,16 @@ th {
 .datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active):hover,
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active):hover, .datetimepicker.sln-datetimepicker table tr td.day.active:not(.disabled):hover,
 .datetimepicker.sln-datetimepicker table tr td span.hour.active:not(.disabled):hover,
-.datetimepicker.sln-datetimepicker table tr td span.minute.active:not(.disabled):hover, .datetimepicker.sln-datetimepicker .switch:hover, .datetimepicker.sln-datetimepicker .prev:hover, .datetimepicker.sln-datetimepicker .next:hover, .datetimepicker.sln-datetimepicker .today:hover, .sln-radiobox input + label:hover:after, .sln-btn--emphasis:hover, .sln-btn--emphasis:focus,
+.datetimepicker.sln-datetimepicker table tr td span.minute.active:not(.disabled):hover, .datetimepicker.sln-datetimepicker .switch:hover, .datetimepicker.sln-datetimepicker .prev:hover, .datetimepicker.sln-datetimepicker .next:hover, .datetimepicker.sln-datetimepicker .today:hover, .sln-radiobox input + label:hover:after, .sln-btn--emphasis:hover, .sln-btn--emphasis:focus, .sln-btn--emphasis:active,
 .sln-bootstrap .sln-btn--emphasis:hover,
-.sln-bootstrap .sln-btn--emphasis:focus, .sln-btn--nobkg:hover, .sln-btn--nobkg:focus,
+.sln-bootstrap .sln-btn--emphasis:focus,
+.sln-bootstrap .sln-btn--emphasis:active, .sln-btn--nobkg:hover, .sln-btn--nobkg:focus, .sln-btn--nobkg:active,
 .sln-bootstrap .sln-btn--nobkg:hover,
-.sln-bootstrap .sln-btn--nobkg:focus, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--nobkg:focus,
+.sln-bootstrap .sln-btn--nobkg:active, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus, .sln-btn--borderonly:active,
 .sln-bootstrap .sln-btn--borderonly:hover,
-.sln-bootstrap .sln-btn--borderonly:focus {
+.sln-bootstrap .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--borderonly:active {
   background-color: #0091EA; }
 
 .sln-btn--nobkg,
@@ -398,9 +414,10 @@ th {
 .sln-checkbox input + label:before, .sln-radiobox input + label:before {
   border-color: #0277BD !important; }
 
-.sln-checkbox input + label:hover:before, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus,
+.sln-checkbox input + label:hover:before, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus, .sln-btn--borderonly:active,
 .sln-bootstrap .sln-btn--borderonly:hover,
-.sln-bootstrap .sln-btn--borderonly:focus, .sln-alert a:hover,
+.sln-bootstrap .sln-btn--borderonly:focus,
+.sln-bootstrap .sln-btn--borderonly:active, .sln-alert a:hover,
 #sln-salon .alert a:hover {
   border-color: #0091EA !important; }
 
@@ -416,7 +433,12 @@ th {
 #sln-salon h1, .sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
 #sln-salon .alert:after, .sln-alert--warning:before,
 #sln-salon .alert-warning:before, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
-  font-size: 1.6em; }
+  font-size: 1.4em; }
+  @media only screen and (min-width: 992px) {
+    #sln-salon h1, .sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
+    #sln-salon .alert:after, .sln-alert--warning:before,
+    #sln-salon .alert-warning:before, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
+      font-size: 1.6em; } }
 
 #sln-salon h2 {
   font-size: 1.4em; }
@@ -428,7 +450,7 @@ th {
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   font-size: 1em; }
 
-.sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
+.sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-btn--noheight, .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
   font-size: .8em; }
 
 #sln-salon {
@@ -1079,6 +1101,7 @@ th {
   outline: none;
   user-select: none;
   padding: 0;
+  height: 1.6em;
   display: inline-block; }
   @media only screen and (min-width: 768px) {
     .sln-radiobox input + label {
@@ -1150,9 +1173,10 @@ th {
     -moz-transition: background-color 200ms, color 250ms;
     -o-transition: background-color 200ms, color 250ms;
     transition: background-color 200ms, color 250ms; }
-  .sln-btn:hover, .sln-btn:focus,
+  .sln-btn:hover, .sln-btn:focus, .sln-btn:active,
   .sln-bootstrap .sln-btn:hover,
-  .sln-bootstrap .sln-btn:focus {
+  .sln-bootstrap .sln-btn:focus,
+  .sln-bootstrap .sln-btn:active {
     text-decoration: none;
     text-shadow: none; }
 
@@ -1163,6 +1187,24 @@ th {
   height: 4em;
   text-transform: uppercase; }
   .sln-btn--big.sln-btn--block, .sln-btn--big input.sln-btn--block, .sln-btn--big button.sln-btn--block, .sln-btn--big a.sln-btn--block {
+    display: block; }
+
+a.sln-btn.sln-btn--noheight,
+.sln-btn.sln-btn--noheight input,
+.sln-btn.sln-btn--noheight button,
+.sln-btn.sln-btn--noheight a {
+  display: inline-block;
+  position: relative;
+  top: initial;
+  right: initial;
+  bottom: initial;
+  left: initial;
+  padding: 1em .5em;
+  text-transform: uppercase; }
+  a.sln-btn.sln-btn--noheight.sln-btn--block,
+  .sln-btn.sln-btn--noheight input.sln-btn--block,
+  .sln-btn.sln-btn--noheight button.sln-btn--block,
+  .sln-btn.sln-btn--noheight a.sln-btn--block {
     display: block; }
 
 .sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-btn--big a {
@@ -1188,13 +1230,16 @@ th {
     padding-right: 1em;
     padding-left: 4em; }
 
-.sln-btn--emphasis:hover input, .sln-btn--emphasis:hover button, .sln-btn--emphasis:hover a, .sln-btn--emphasis:focus input, .sln-btn--emphasis:focus button, .sln-btn--emphasis:focus a,
+.sln-btn--emphasis:hover input, .sln-btn--emphasis:hover button, .sln-btn--emphasis:hover a, .sln-btn--emphasis:focus input, .sln-btn--emphasis:focus button, .sln-btn--emphasis:focus a, .sln-btn--emphasis:active input, .sln-btn--emphasis:active button, .sln-btn--emphasis:active a,
 .sln-bootstrap .sln-btn--emphasis:hover input,
 .sln-bootstrap .sln-btn--emphasis:hover button,
 .sln-bootstrap .sln-btn--emphasis:hover a,
 .sln-bootstrap .sln-btn--emphasis:focus input,
 .sln-bootstrap .sln-btn--emphasis:focus button,
-.sln-bootstrap .sln-btn--emphasis:focus a {
+.sln-bootstrap .sln-btn--emphasis:focus a,
+.sln-bootstrap .sln-btn--emphasis:active input,
+.sln-bootstrap .sln-btn--emphasis:active button,
+.sln-bootstrap .sln-btn--emphasis:active a {
   text-decoration: none; }
 
 .sln-btn--borderonly,
@@ -1456,14 +1501,8 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   text-transform: uppercase;
   font-weight: bold; }
 
-#sln-salon.sln-salon--l .sln-attendants-wrapper .sln-box--formactions > div {
-  border-top-style: solid;
-  border-top-width: .16em;
-  margin-top: 2em;
-  padding-top: 2em; }
-
 .sln-attendant {
-  margin-bottom: 4em; }
+  margin-bottom: 2em; }
   .sln-attendant hr {
     margin: 2em 0 0 0;
     border: 0;
@@ -1473,12 +1512,22 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     margin-bottom: 0; }
     .sln-attendant:last-child hr {
       display: none; }
-  @media only screen and (min-width: 768px) {
-    .sln-attendant {
-      margin-bottom: 2em; } }
   @media only screen and (min-width: 992px) {
     .sln-attendant {
-      margin-bottom: 4em; } }
+      margin-bottom: 4em; }
+      .sln-attendant:last-child {
+        margin-bottom: 2em; }
+        .sln-attendant:last-child hr {
+          display: none; } }
+
+#sln-salon.sln-salon--l .sln-attendants-wrapper .sln-box--formactions > div {
+  border-top-style: solid;
+  border-top-width: .16em;
+  margin-top: 2em;
+  padding-top: 2em; }
+
+#sln-salon.sln-salon--s .sln-attendants-wrapper .sln-attendant-description {
+  margin-top: 1em; }
 
 .sln-summary {
   margin-top: 2em; }
@@ -1519,7 +1568,7 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 .sln-thankyou {
   margin-top: 2em; }
   .sln-thankyou .sln-form-actions-wrapper {
-    margin-top: 2.5em; }
+    margin-top: 2.2em; }
 
 #sln-salon .sln-thankyou--okbox {
   margin-top: 1em;
@@ -1543,8 +1592,11 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 .sln-form-actions {
   margin-bottom: 1em; }
 
+.sln-payment-actions .sln-btn.sln-btn--noheight {
+  margin-bottom: 1em; }
+
 .sln-payment-actions h4 {
-  margin-top: 1em; }
+  margin-top: 1.6em; }
 
 #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox {
   margin-top: 1em;

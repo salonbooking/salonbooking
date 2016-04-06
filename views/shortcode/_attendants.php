@@ -159,7 +159,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     // IF SIZE 600 // END
     } else if ($size == '400') { ?>
     <div class="row sln-attendant">
-        <div class="col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
+        <div class="col-xs-2 col-sm-2 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDateTime(), $duration);
             if ( $validateErrors && $validateAttServicesErrors) {
@@ -190,31 +190,29 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             ) ?>
         <!-- .sln-attendant-check // END -->
         </div>
-        <div class="col-xs-11">
+        <div class="col-xs-10 col-sm-10">
             <div class="row sln-steps-info sln-attendant-info">
-                <div class="col-xs-4 sln-steps-thumb sln-attendant-thumb">
+                <div class="col-sm-4 col-xs-6 sln-steps-thumb sln-attendant-thumb">
                     <?php
                     if ( has_post_thumbnail($attendant->getId())) {
                         echo get_the_post_thumbnail($attendant->getId(), 'thumbnail');
                     }
                     ?>
                 </div>
-                <div class="col-xs-7">
+                <div class="col-sm-7 col-xs-6">
                     <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
                         <h3 class="sln-steps-name sln-attendant-name"><?php echo $attendant->getName(); ?></h3>
                     </label>
                 <!-- .sln-attendant-info // END -->
                 </div>
             </div>
-            <div class="row sln-steps-description sln-attendant-description">
-                    <div class="col-md-12">
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12 sln-steps-description sln-attendant-description">
                         <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
                             <p><?php echo $attendant->getContent() ?></p>
                         </label>
-                    <!-- .sln-attendant-info // END -->
-                    </div>
             </div>
-        </div>
         <div class="clearfix"></div>
         <?php if ($errors) : ?>
             <div><div class="col-xs-offset-2 col-lg-offset-1"><div class="alert alert-danger alert-no-spacing">
@@ -223,6 +221,8 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                 <?php endforeach ?>
             </div></div></div>
         <?php endif ?>
+        <div class="clearfix"></div>
+        <div class="col-md-12"><hr></div>
     </div>
     <?php
     // IF SIZE 400 // END
