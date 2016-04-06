@@ -23,6 +23,7 @@ class SLN_Enum_SmsProvider
         if (isset(self::$labels[$key])) {
             throw new Exception('label not found');
         }
+
         return self::$labels[$key];
     }
 
@@ -35,13 +36,16 @@ class SLN_Enum_SmsProvider
     public static function getService($key, SLN_Plugin $plugin)
     {
         $name = self::getServiceName($key);
+
         return new $name($plugin);
     }
 
-    public static function getServiceName($key){
+    public static function getServiceName($key)
+    {
         if (!isset(self::$classes[$key])) {
-            throw new Exception(sprintf('provider "%s" not found',$key));
+            throw new Exception(sprintf('provider "%s" not found', $key));
         }
+
         return self::$classes[$key];
     }
 
@@ -51,7 +55,7 @@ class SLN_Enum_SmsProvider
             'fake' => __('test (sms code is sent by mail to the admin)', 'salon-booking-system'),
             'ip1smswebservice' => 'ip1sms',
             'twilio' => 'Twilio',
-            'plivo' => 'Plivo'
+            'plivo' => 'Plivo',
         );
     }
 }

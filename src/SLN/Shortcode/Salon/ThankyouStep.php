@@ -15,7 +15,6 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
         $bb = $plugin->getBookingBuilder();
         if(isset($_GET['sln_booking_id']) && $_GET['sln_booking_id']){
             $bb->clear($_GET['sln_booking_id']);
-           
         }
         $booking = $bb->getLastBooking();
         $paymentMethod = SLN_Enum_PaymentMethodProvider::getService($settings->getPaymentMethod(), $plugin);

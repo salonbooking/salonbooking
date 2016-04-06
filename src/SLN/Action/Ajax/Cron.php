@@ -37,7 +37,7 @@ class SLN_Action_Ajax_Cron extends SLN_Action_Ajax_Abstract
             $booking = $plugin->createBooking($p);
             $d = $booking->getStartsAt();
             if($d >= $now && $d <= $date){
-                $plugin->sendSms($booking->getPhone(), $plugin->loadView('sms/remind', compact('booking'))); 
+                $plugin->sms()->send($booking->getPhone(), $plugin->loadView('sms/remind', compact('booking'))); 
             }
         }
         wp_reset_query();
