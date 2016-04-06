@@ -15,16 +15,20 @@ class SLN_Action_Install
 
     public static function getDbUpdates()
     {
-        return array_map(function($elem) {
-            return plugin_dir_path(__FILE__) . 'Updates/' . $elem;
-        }, self::$dbUpdates);
+	    $updates = self::$dbUpdates;
+	    foreach($updates as $k => $update) {
+		    $updates[$k] = plugin_dir_path(__FILE__) . 'Updates/' . $update;
+	    }
+	    return $updates;
     }
 
     public static function getDbRollbacks()
     {
-        return array_map(function($elem) {
-            return plugin_dir_path(__FILE__) . 'Rollbacks/' . $elem;
-        }, self::$dbRollbacks);
+        $rollbacks = self::$dbRollbacks;
+        foreach($rollbacks as $k => $rollback) {
+	        $rollbacks[$k] = plugin_dir_path(__FILE__) . 'Rollbacks/' . $rollback;
+        }
+	    return $rollbacks;
     }
 
     public static function initActions()
