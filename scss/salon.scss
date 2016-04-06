@@ -13,7 +13,7 @@
 	border-width: 1px;
 	border-style: solid;
 	@extend %bd-color--contrast--alpha;
-	padding: rem(40px);
+	padding: 1.2em;
 	position: relative;
 	//margin-right: auto;
 	//margin-left: auto;
@@ -27,6 +27,9 @@
 	> form {
 		margin-top: 2em;
 		h2 {margin-bottom: 1em;}
+	}
+	@include bp(tablet) {
+		padding: 2em;
 	}
 
 	// TEMP
@@ -74,7 +77,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .sln-steps-price {
 	display: block;
-	text-align: right;
+	@include bp(tablet) {text-align: right;}
 }
 
 .sln-steps-name, .sln-steps-price {
@@ -111,7 +114,8 @@ h1, h2, h3, h4, h5, h6 {
 
 // SERVICES
 .sln-service {
-	margin-bottom: 2em;
+	margin-bottom: 4em;
+	@include bp(tablet) {margin-bottom: 2em;}
 }
 .sln-steps-duration {
 	display: block;
@@ -123,6 +127,13 @@ h1, h2, h3, h4, h5, h6 {
 // SERVICES // END
 
 // ATTENDANTS
+.sln-attendants-wrapper {
+	@include bp(phone) {
+		.sln-attendant-description {
+			margin-top: 1em;
+		}
+	}
+}
 .sln-attendant {
 	margin-bottom: 2em;
 	hr {
@@ -139,9 +150,9 @@ h1, h2, h3, h4, h5, h6 {
 	@include bp(desktop) {
 		margin-bottom: 4em;
 		&:last-child {
-		margin-bottom: 2em;
-		hr {display: none;}
-	}
+			margin-bottom: 2em;
+			hr {display: none;}
+		}
 	}
 }
 #sln-salon.sln-salon--l .sln-attendants-wrapper {
@@ -187,7 +198,10 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 .sln-step-summary {
-	.sln-total {margin-bottom: 2em;}
+	.sln-total {
+		margin-bottom: 2em;
+		@include bp(phone) {margin-top: 2em;}
+	}
 }
 #sln-salon.sln-salon--m .sln-summary-row,
 #sln-salon.sln-salon--s .sln-summary-row {
@@ -285,6 +299,38 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 }
+#sln-salon .sln-thankyou {
+	@include bp(phone) {
+		.sln-thankyou--okbox {
+			margin-top: 1em;
+			padding: 1em 0 2em 0;
+			h1, h2, h3 {text-align: center;}
+			h2, h3 {
+				display: block;
+			}
+			h1 {
+				font-size: .9em;
+				.sln-icon {font-size: 2em;}
+			}
+			h2 {padding-left: 0; font-size: .8em;}
+			h3 {font-size: 2em;}
+			hr {
+				margin: 1.5em 0 1em 0;
+			}
+		}
+		.sln-icon-wrapper {
+			padding-top: 4em;
+			padding-left: 0;
+			text-align: center;
+			.sln-icon {
+				top: 0;
+				@extend %absolute-horizontal-centering;
+			}
+		}
+	}
+}
+
+
 // THANK YOU // END
 
 // FORM ACTIONS
@@ -292,7 +338,12 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: right;
 	margin-bottom: 0;
 	&.sln-box--main{margin-bottom: 0; margin-top: 0;}
-	.sln-icon--back {float: right;}
+	.sln-icon--back {float: left;}
+	.sln-btn {margin-bottom: 1em;}
+	@include bp(tablet) {
+		.sln-icon--back {float: right;}
+		.sln-btn {margin-bottom: 0;}
+	}
 }
 #sln-salon.sln-salon--m .sln-box--formactions {
 	text-align: right;

@@ -139,10 +139,12 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     <div class="col-md-12 sln-total">
     <hr>
         <?php if($showPrices){?>
+        <div class="row">
         <h3 class="col-xs-6 sln-total-label"><?php _e('Total amount', 'salon-booking-system') ?></h3>
         <h3 class="col-xs-6 sln-total-price"><?php echo $plugin->format()->money(
                 $plugin->getBookingBuilder()->getTotal()
             ) ?> </h3>
+        </div>
         <?php }; ?>
     </div>
     <div class="col-md-12 sln-input sln-input--simple">

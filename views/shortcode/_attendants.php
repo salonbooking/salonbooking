@@ -25,7 +25,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     <?php
     if ($size == '900') { ?>
         <div class="row sln-attendant">
-        <div class="col-sm-1 col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
+        <div class="col-xs-1 col-sm-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDateTime(), $duration);
             if ($validateErrors) {
@@ -89,7 +89,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     // IF SIZE 900 // END
     } else if ($size == '600') { ?>
     <div class="row sln-attendant">
-        <div class="col-sm-1 col-md-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
+        <div class="col-xs-2 col-sm-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo  $bb->hasAttendant($attendant) ? 'is-checked' : '' ?>">
             <?php
             $validateErrors            = $ah->validateAttendant($attendant, $bb->getDateTime(), $duration);
             if ( $validateErrors && $validateAttServicesErrors) {
@@ -127,9 +127,15 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             }
             ?>
         </div>
-        <div class="col-sm-8 col-md-8">
+        <div class="col-xs-6 visible-xs-block">
+            <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
+                <h3 class="sln-steps-name sln-attendant-name"><?php echo $attendant->getName(); ?></h3>
+            </label>
+        <!-- .sln-attendant-info // END -->
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-8">
             <div class="row sln-steps-info sln-attendant-info">
-                <div class="col-md-12">
+                <div class="col-md-12 hidden-xs">
                     <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
                         <h3 class="sln-steps-name sln-attendant-name"><?php echo $attendant->getName(); ?></h3>
                     </label>
