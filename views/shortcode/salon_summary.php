@@ -39,7 +39,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             </div>
             <?php if($attendants = $bb->getAttendants()) :  ?>
             <div class="row sln-summary-row">
-                <div class="col-sm-6 col-md-6 sln-data-desc"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
+                <div class="col-sm-6 col-md-6 sln-data-desc"><span class="label"><?php _e('Assistants', 'salon-booking-system') ?></span></div>
                 <div class="col-sm-6 col-md-6 sln-data-val"><?php $names = array(); foreach(array_unique($attendants) as $att) { $names[] = $att->getName(); } echo implode(', ', $names); ?></div>
                 <div class="col-sm-12 col-md-12"><hr></div>
             </div>
@@ -112,10 +112,10 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         </div>
         <div class="col-sm-12 col-md-12"><hr></div>
     </div>
-    <?php if($attendant = $bb->getAttendant()) :  ?>
+    <?php if($attendants = $bb->getAttendants()) :  ?>
     <div class="row sln-summary-row">
-        <div class="col-sm-6 col-md-6 sln-data-desc"><?php _e('Assistant', 'salon-booking-system') ?></div>
-        <div class="col-sm-6 col-md-6 sln-data-val"><?php echo $attendant->getName(); ?></div>
+        <div class="col-sm-6 col-md-6 sln-data-desc"><?php _e('Assistants', 'salon-booking-system') ?></div>
+        <div class="col-sm-6 col-md-6 sln-data-val"><?php $names = array(); foreach(array_unique($attendants) as $att) { $names[] = $att->getName(); } echo implode(', ', $names); ?></div>
         <div class="col-sm-12 col-md-12"><hr></div>
     </div>
     <?php // IF ASSISTANT
@@ -183,10 +183,10 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         </div>
         <div class="col-xs-12"><hr></div>
     </div>
-    <?php if($attendant = $bb->getAttendant()) :  ?>
+    <?php if($attendants = $bb->getAttendants()) :  ?>
     <div class="row sln-summary-row">
-        <div class="col-xs-12 sln-data-desc"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
-        <div class="col-xs-12 sln-data-val"><?php echo $attendant->getName(); ?></div>
+        <div class="col-xs-12 sln-data-desc"><span class="label"><?php _e('Assistants', 'salon-booking-system') ?></span></div>
+        <div class="col-xs-12 sln-data-val"><?php $names = array(); foreach(array_unique($attendants) as $att) { $names[] = $att->getName(); } echo implode(', ', $names); ?></div>
         <div class="col-xs-12"><hr></div>
     </div>
     <?php // IF ASSISTANT // END
