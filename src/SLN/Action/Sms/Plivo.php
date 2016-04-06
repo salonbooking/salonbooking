@@ -18,7 +18,8 @@ class SLN_Action_Sms_Plivo extends SLN_Action_Sms_Abstract
         $response = @$p->send_message($params);
         $tmp = array_values($response);
         if (array_shift($tmp) != "202") {
-            $this->createException('Plivo: Please ensure that From number is a valid and sms feature enabled Plivo DID number');
+            $this->createException(__('Plivo: Please check your settings'));
+            //$this->createException('Plivo: Please ensure that From number is a valid and sms feature enabled Plivo DID number');
         }
     }
 /*
