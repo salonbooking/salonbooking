@@ -37,10 +37,10 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                 </div>
                 <div class="col-sm-12 col-md-12"><hr></div>
             </div>
-            <?php if($attendant = $bb->getAttendant()) :  ?>
+            <?php if($attendants = $bb->getAttendants()) :  ?>
             <div class="row sln-summary-row">
                 <div class="col-sm-6 col-md-6 sln-data-desc"><span class="label"><?php _e('Assistant', 'salon-booking-system') ?></span></div>
-                <div class="col-sm-6 col-md-6 sln-data-val"><?php echo $attendant->getName(); ?></div>
+                <div class="col-sm-6 col-md-6 sln-data-val"><?php $names = array(); foreach(array_unique($attendants) as $att) { $names[] = $att->getName(); } echo implode(', ', $names); ?></div>
                 <div class="col-sm-12 col-md-12"><hr></div>
             </div>
             <?php // IF ASSISTANT
@@ -87,7 +87,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             <div class="col-md-12">
             <p><strong><?php _e('Terms & conditions','salon-booking-system')?></strong></p>
 
-            <p><?php echo $plugin->getSettings()->get('gen_timetable') 
+            <p><?php echo $plugin->getSettings()->get('gen_timetable')
             /*_e(
                 'In case of delay of arrival. we will wait a maximum of 10 minutes from booking time. Then we will release your reservation',
                 'salon-booking-system'
@@ -156,7 +156,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     <div class="col-md-12">
     <p><strong><?php _e('Terms & conditions','salon-booking-system')?></strong></p>
 
-    <p><?php echo $plugin->getSettings()->get('gen_timetable') 
+    <p><?php echo $plugin->getSettings()->get('gen_timetable')
     /*_e(
         'In case of delay of arrival. we will wait a maximum of 10 minutes from booking time. Then we will release your reservation',
         'salon-booking-system'
@@ -227,7 +227,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     <div class="col-md-12">
     <p><strong><?php _e('Terms & conditions','salon-booking-system')?></strong></p>
 
-    <p><?php echo $plugin->getSettings()->get('gen_timetable') 
+    <p><?php echo $plugin->getSettings()->get('gen_timetable')
     /*_e(
         'In case of delay of arrival. we will wait a maximum of 10 minutes from booking time. Then we will release your reservation',
         'salon-booking-system'

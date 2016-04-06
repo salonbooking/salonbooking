@@ -135,6 +135,7 @@ class SLN_Plugin
         SLN_Shortcode_Salon::init($this);
         SLN_Shortcode_SalonMyAccount::init($this); // algolplus
         SLN_Shortcode_SalonMyAccount_Details::init($this); // algolplus
+        add_action( 'in_plugin_update_message-salon-booking-system/salon.php', array( 'SLN_Action_Install', 'inPluginUpdateMessage' ) );
     }
 
     private function preloadFrontendScripts()
