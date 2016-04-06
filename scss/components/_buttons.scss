@@ -21,7 +21,7 @@
     cursor: pointer;
     @include transition(background-color 200ms, color 250ms);
   }
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     text-decoration: none;
     text-shadow: none;
   }
@@ -36,6 +36,25 @@
   padding: 0 .5em;
   line-height: 4em;
   height:  4em;
+  text-transform: uppercase;
+  &.sln-btn--block {display: block;}
+}
+.sln-btn--noheight {
+  @extend %sln-textsize--small;
+}
+a.sln-btn.sln-btn--noheight,
+.sln-btn.sln-btn--noheight input,
+.sln-btn.sln-btn--noheight button,
+.sln-btn.sln-btn--noheight a {
+  display: inline-block;
+  position: relative;
+  top: initial;
+  right: initial;
+  bottom: initial;
+  left: initial;
+  padding: 1em .5em;
+  //line-height: 4em;
+  //height:  4em;
   text-transform: uppercase;
   &.sln-btn--block {display: block;}
 }
@@ -70,7 +89,7 @@
   @extend %bgc-color--emphasis;
   @extend %text-color--main;
   input, button, a {@extend %text-color--main;}
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     @extend %bgc-color--emphasis--hover;
     @extend %text-color--main;
     input, button, a {@extend %text-color--main; text-decoration: none;}
@@ -82,7 +101,7 @@
   @extend %bgc-color--transparent;
   @extend %text-color--contrast;
   input, button {@extend %text-color--contrast;}
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     @extend %bgc-color--emphasis--hover;
     @extend %text-color--main;
     input, button {@extend %text-color--main;}
@@ -97,7 +116,7 @@
   border-width: .05em;
   @extend %bd-color--contrast--alpha;
   input, button {@extend %text-color--dark;}
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     @extend %bgc-color--emphasis--hover;
     @extend %text-color--main;
     @extend %bd-color--emphasis--hover;

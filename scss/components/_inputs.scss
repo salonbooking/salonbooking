@@ -146,6 +146,7 @@
 		outline: none;
 		user-select: none;
 		padding: 0;
+		height: 1.6em;
 		display: inline-block;
 		@extend %sln-big-border--onhover;
 		@include bp(tablet) {

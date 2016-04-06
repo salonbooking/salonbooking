@@ -23,7 +23,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 <?php
         if ($size == '900') {
         ?>
-        <div class="form-actions row">
+        <div class="sln-box--formactions form-actions row">
     <div class="col-sm-6 col-md-6 pull-right">
         <div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth">
             <button
@@ -55,8 +55,8 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
         // IF SIZE == 900 // END
         } else if ($size == '600') {
         ?>
-        <div class="form-actions row">
-    <div class="col-sm-6 col-md-6 pull-right">
+        <div class="sln-box--formactions form-actions row">
+    <div class="col-xs-12 col-sm-6 col-md-6 pull-right">
         <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
             <button
                 <?php if($ajaxEnabled): ?>
@@ -67,7 +67,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
             </button>
         </div>
     </div>
-        <div class="col-sm-6 col-md-6 pull-right">
+        <div class="col-xs-12 col-sm-6 col-md-6 pull-right">
             <a class="sln-btn sln-btn--borderonly sln-btn--big sln-btn--icon sln-btn--icon--left sln-icon--back"
                 <?php if($ajaxEnabled): ?>
                     data-salon-data="<?php echo "sln_step_page=".$salon->getPrevStep() ?>" data-salon-toggle="direct"
@@ -86,8 +86,8 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
         // IF SIZE == 600 // END
         } else if ($size == '400') {
         ?>
-<div class="form-actions row">
-    <div class="col-md-7 pull-right">
+<div class="sln-box--formactions form-actions row">
+    <div class="col-sm-6 col-md-7 pull-right">
         <div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth">
             <button
                 <?php if($ajaxEnabled): ?>
@@ -98,7 +98,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
             </button>
         </div>
     </div>
-        <div class="col-md-5 pull-right">
+        <div class="col-sm-6 col-md-5 pull-right">
             <a class="sln-btn sln-btn--borderonly sln-btn--medium sln-btn--icon sln-btn--icon--left sln-icon--back"
                 <?php if($ajaxEnabled): ?>
                     data-salon-data="<?php echo "sln_step_page=".$salon->getPrevStep() ?>" data-salon-toggle="direct"

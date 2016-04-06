@@ -3,18 +3,23 @@
   display: inline-block;
   position: relative;
   border: none;
-  padding: .6rem 1.6rem .6rem 3.6rem;
+  padding: 4rem 1rem .6rem 1rem;
   margin: 1rem 0;
   @extend %sln-textsize--base;
   @extend %text-color--contrast;
+  text-align: center;
   //@extend %bgc-color--white;
   border-radius: 0;
   &:after {
     @include font-icon(2em);
     display: inline-block;
     content: "\f05a";
-    @extend %absolute-vertical-centering;
-    left: .4em;
+    position: absolute;
+    top: .6em;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(0);
+    -ms-transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0);
     @extend %sln-textsize--bigger;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
@@ -34,6 +39,26 @@
       text-decoration: none;
     }
   }
+  @include bp(tablet) {
+    padding: .6rem 1.6rem .6rem 3.6rem;
+    text-align: left;
+    &:after {
+      @include font-icon(2em);
+      display: inline-block;
+      content: "\f05a";
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      left: .4em;
+      @extend %sln-textsize--bigger;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      border-radius: 50%;
+    }
+  }
 }
 
 #sln-salon .sln-alert {
@@ -43,8 +68,12 @@
   &:before {
     display: inline-block;
     content: "";
-    @extend %absolute-vertical-centering;
-    left: .6em;
+    position: absolute;
+    top: .8em;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(0);
+    -ms-transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0);
     @extend %sln-textsize--bigger;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
@@ -53,6 +82,15 @@
     @extend %bgc-color--contrast;
     width: .9em;
     height: .9em;
+  }
+  @include bp(tablet) {
+    &:before {
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      left: .6em;
+    }
   }
 }
 .sln-alert.sln-alert-medium {

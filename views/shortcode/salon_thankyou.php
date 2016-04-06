@@ -53,7 +53,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         </div>
     </div>
 <?php $ppl = false; ?>
-<div class="alert ty">
+<div class="sln-alert sln-alert--warning">
 <?php if($confirmation) : ?>
         <p><strong><?php _e('You will receive a confirmation of your booking by email.','salon-booking-system' )?></strong></p>
         <p><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'salon-booking-system'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
@@ -76,18 +76,16 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
 <?php endif ?>
     </div>
     <div class="col-md-4 sln-form-actions-wrapper sln-input--action">
-        <?php if($paymentMethod): ?>
         <div class="sln-form-actions sln-payment-actions row">
-            <div class="col-md-12">
-                <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
+        <?php if($paymentMethod): ?>
+            <div class="col-sm-6 col-md-12">
+                <div class="sln-btn sln-btn--emphasis sln-btn--noheight sln-btn--fullwidth">
                     <?php echo $paymentMethod->renderPayButton(compact('booking', 'paymentMethod', 'ajaxData', 'payUrl')); ?>
                 </div>
             </div>
-        </div>
         <?php endif; ?>
         <?php if($paymentMethod && $plugin->getSettings()->get('pay_cash')): ?>
-        <div class="sln-form-actions sln-payment-actions row">
-            <div class="col-md-8 pull-right">
+            <div class="col-sm-4 col-md-8 pull-right">
                 <a  href="<?php echo $laterUrl ?>" class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth"
                     <?php if($ajaxEnabled): ?>
                         data-salon-data="<?php echo $ajaxData.'&mode=later' ?>" data-salon-toggle="direct"
@@ -95,12 +93,10 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                     <?php _e('I\'ll pay later', 'salon-booking-system') ?>
                 </a>
             </div>
-            <div class="col-md-4 pull-right">
+            <div class="col-sm-2 col-md-4 pull-right">
                 <h4><?php _e('Or', 'salon-booking-system') ?></h4>
             </div>
-        </div>
         <?php elseif(!$paymentMethod) : ?>
-        <div class="form-actions row">
             <div class="col-md-8 pull-right">
                 <a  href="<?php echo $laterUrl ?>" class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth"
                     <?php if($ajaxEnabled): ?>
@@ -109,8 +105,8 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                     <?php _e('Confirm', 'salon-booking-system') ?>
                 </a>
             </div>
-        </div>
         <?php endif ?>
+        </div>
     </div>
     <?php
     // IF SIZE 900 // END
@@ -148,7 +144,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         </div>
     </div>
 <?php $ppl = false; ?>
-<div class="alert ty">
+<div class="sln-alert sln-alert--warning">
 <?php if($confirmation) : ?>
         <p><strong><?php _e('You will receive a confirmation of your booking by email.','salon-booking-system' )?></strong></p>
         <p><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'salon-booking-system'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
@@ -173,14 +169,14 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     <div class="col-md-12 sln-form-actions-wrapper sln-input--action">
         <div class="sln-form-actions sln-payment-actions row">
         <?php if($paymentMethod): ?>
-            <div class="col-md-6">
-                <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
+            <div class="col-sm-6 col-md-6">
+                <div class="sln-btn sln-btn--emphasis sln-btn--noheight sln-btn--fullwidth">
                     <?php echo $paymentMethod->renderPayButton(compact('booking', 'paymentMethod', 'ajaxData', 'payUrl')); ?>
                 </div>
             </div>
         <?php endif; ?>
         <?php if($paymentMethod && $plugin->getSettings()->get('pay_cash')): ?>
-            <div class="col-md-6">
+            <div class="col-sm-6 col-md-6">
                 <div class="row">
                     <div class="col-md-8 pull-right">
                         <a  href="<?php echo $laterUrl ?>" class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth"
@@ -270,7 +266,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         <?php if($paymentMethod): ?>
         <div class="sln-form-actions sln-payment-actions row">
             <div class="col-md-12">
-                <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
+                <div class="sln-btn sln-btn--emphasis sln-btn--noheight sln-btn--fullwidth">
                     <?php echo $paymentMethod->renderPayButton(compact('booking', 'paymentMethod', 'ajaxData', 'payUrl')); ?>
                 </div>
             </div>
