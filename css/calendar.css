@@ -256,7 +256,7 @@
 .cal-week-box .cal-column {
   position: absolute;
   height: 100%;
-  z-index: -1;
+  z-index: 1;
 }
 .cal-week-box .arrow-before,
 .cal-week-box .arrow-after {
@@ -534,7 +534,7 @@ span[data-cal-date]:hover {
   padding-left: 5px;
 }
 .cal-column {
-  border-left: 1px solid #e1e1e1;
+  border-right: 1px solid #dedede;
 }
 a.cal-event-week {
   text-decoration: none;

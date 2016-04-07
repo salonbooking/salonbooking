@@ -24,7 +24,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
         if ($size == '900') {
         ?>
         <div class="sln-box--formactions form-actions row">
-    <div class="col-sm-6 col-md-6 pull-right">
+    <div class="col-xs-12 col-sm-6 pull-right">
         <div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth">
             <button
                 <?php if($ajaxEnabled): ?>
@@ -35,7 +35,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
             </button>
         </div>
     </div>
-        <div class="col-sm-5 col-md-5 pull-right">
+        <div class="col-xs-12 col-sm-5 pull-right">
             <a class="sln-btn sln-btn--nobkg sln-btn--medium sln-btn--icon sln-btn--icon--left sln-icon--back"
                 <?php if($ajaxEnabled): ?>
                     data-salon-data="<?php echo "sln_step_page=".$salon->getPrevStep() ?>" data-salon-toggle="direct"

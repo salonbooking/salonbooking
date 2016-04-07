@@ -44,7 +44,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
          <?php
     if ($size == '900') { ?>
     <div class="row sln-service">
-        <div class="col-sm-1 col-md-1 sln-checkbox sln-steps-check sln-service-check <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
+        <div class="col-xs-2 col-sm-1 sln-checkbox sln-steps-check sln-service-check <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
             <?php
             $serviceErrors = isset($servicesErrors[$service->getId()]) ? $servicesErrors[$service->getId()] : array();
             $settings = array('attrs' => array(
@@ -63,7 +63,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"></label>
         <!-- .sln-service-check // END -->
         </div>
-        <div class="col-sm-11 col-md-11">
+        <div class="col-xs-10 col-sm-11 col-md-10">
             <div class="row sln-steps-info sln-service-info">
                 <div class="col-sm-9 col-md-9">
                     <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
@@ -77,7 +77,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                 </h3>
             </div>
         </div>
-        <div class="col-sm-12 col-md-12">
+        <div class="col-xs-12">
             <div class="row sln-steps-description sln-service-description">
                 <div class="col-md-12"><hr></div>
                 <div class="col-sm-1 col-md-1 hidden-xs hidden-sm">&nbsp;</div>
@@ -95,13 +95,15 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             </div>
         </div>
         <?php if ($serviceErrors) : ?>
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-11">
-                <?php foreach ($serviceErrors as $error): ?>
-                  <div class="sln-alert sln-alert-medium sln-alert--problem"><?php echo $error ?></div>
-                <?php endforeach ?>
-                <div class="sln-alert sln-alert-medium sln-alert--problem" style="display: none" id="availabilityerror"><?php _e('Not enough time for this service','salon-booking-system') ?></div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-11">
+                    <?php foreach ($serviceErrors as $error): ?>
+                      <div class="sln-alert sln-alert-medium sln-alert--problem"><?php echo $error ?></div>
+                    <?php endforeach ?>
+                    <div class="sln-alert sln-alert-medium sln-alert--problem" style="display: none" id="availabilityerror"><?php _e('Not enough time for this service','salon-booking-system') ?></div>
+                </div>
             </div>
         </div>
         <?php endif ?>

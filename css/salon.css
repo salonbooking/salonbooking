@@ -401,8 +401,7 @@ th {
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active), #sln-salon .sln-thankyou--okbox {
   background-color: #5bc24c; }
 
-#sln-salon.sln-salon--l .sln-attendants-wrapper .sln-box--formactions > div, #sln-salon.sln-salon--m .sln-attendants-wrapper,
-#sln-salon.sln-salon--s .sln-attendants-wrapper, .sln-total hr {
+.sln-attendant:last-child hr, .sln-total hr {
   border-color: #004258 !important; }
 
 .sln-input input, .sln-input textarea, .sln-btn--borderonly,
@@ -1388,13 +1387,14 @@ a.sln-btn.sln-btn--noheight,
   display: block;
   padding: .5rem 1.6rem .5rem 3.2rem;
   margin: .4rem 0;
-  font-weight: bold; }
+  font-weight: bold;
+  text-align: left; }
   .sln-alert.sln-alert-medium:after {
     left: .6em; }
 
 .sln-alert--problem:after,
 #sln-salon .alert-danger:after {
-  content: "\f06a"; }
+  content: "\f05e"; }
 
 .sln-alert--warning:after,
 #sln-salon .alert-warning:after {
@@ -1559,23 +1559,24 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     border: 0;
     border-top-style: dashed;
     border-top-width: .05em; }
-  .sln-attendant:last-child {
-    margin-bottom: 0; }
-    .sln-attendant:last-child hr {
-      display: none; }
+  .sln-attendant:last-child hr {
+    border-top-style: solid;
+    border-top-width: .16em;
+    padding-top: .5em;
+    margin-top: 1.5em; }
   @media only screen and (min-width: 992px) {
     .sln-attendant {
-      margin-bottom: 4em; }
+      margin-bottom: 3em; }
       .sln-attendant:last-child {
-        margin-bottom: 2em; }
-        .sln-attendant:last-child hr {
-          display: none; } }
+        margin-bottom: 2em; } }
 
-#sln-salon.sln-salon--l .sln-attendants-wrapper .sln-box--formactions > div {
-  border-top-style: solid;
-  border-top-width: .16em;
-  margin-top: 2em;
-  padding-top: 2em; }
+@media only screen and (min-width: 992px) {
+  #sln-salon.sln-salon--l .sln-attendant {
+    margin-bottom: 2em; }
+    #sln-salon.sln-salon--l .sln-attendant:last-child {
+      margin-bottom: 2em; }
+      #sln-salon.sln-salon--l .sln-attendant:last-child hr {
+        display: none; } }
 
 #sln-salon.sln-salon--s .sln-attendants-wrapper .sln-attendant-description {
   margin-top: 1em; }
@@ -1731,13 +1732,6 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   @media only screen and (min-width: 992px) {
     #sln-salon.sln-salon--l .sln-attendants-wrapper {
       margin-bottom: 1.5em; } }
-
-#sln-salon.sln-salon--m .sln-attendants-wrapper,
-#sln-salon.sln-salon--s .sln-attendants-wrapper {
-  border-bottom-style: solid;
-  border-bottom-width: .16em;
-  padding-bottom: .5em;
-  margin-bottom: 1.5em; }
 
 .sln-total {
   margin-bottom: 3em; }

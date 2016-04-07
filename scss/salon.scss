@@ -144,24 +144,28 @@ h1, h2, h3, h4, h5, h6 {
 		@extend %bd-color--contrast--alpha;
 	}
 	&:last-child {
-		margin-bottom: 0;
-		hr {display: none;}
+		hr {
+			border-top-style: solid;
+			border-top-width: .16em;
+			@extend %bd-color--contrast;
+			padding-top: .5em;
+			margin-top: 1.5em;
+		}
 	}
 	@include bp(desktop) {
-		margin-bottom: 4em;
+		margin-bottom: 3em;
+		&:last-child {
+			margin-bottom: 2em;
+		}
+	}
+}
+#sln-salon.sln-salon--l .sln-attendant {
+	@include bp(desktop) {
+		margin-bottom: 2em;
 		&:last-child {
 			margin-bottom: 2em;
 			hr {display: none;}
 		}
-	}
-}
-#sln-salon.sln-salon--l .sln-attendants-wrapper {
-	.sln-box--formactions > div {
-		border-top-style: solid;
-		border-top-width: .16em;
-		@extend %bd-color--contrast;
-		margin-top: 2em;
-		padding-top: 2em;
 	}
 }
 #sln-salon.sln-salon--s .sln-attendants-wrapper {
@@ -377,13 +381,6 @@ h1, h2, h3, h4, h5, h6 {
 	.sln-steps-description {
 		//border: none;
 		//margin-top: 0;
-	}
-	.sln-attendants-wrapper {
-		border-bottom-style: solid;
-		border-bottom-width: .16em;
-		@extend %bd-color--contrast;
-		padding-bottom: .5em;
-		margin-bottom: 1.5em;
 	}
 }
 // MOD AND OVERRIDES BY SIZE // END
