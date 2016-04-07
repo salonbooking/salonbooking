@@ -46,6 +46,10 @@
     background-color: red;
     &:hover {}
   }
+  .datetimepicker-hours,
+  .datetimepicker-minutes {
+    thead {display: none;}
+  }
   @include bp(phone) {
     //position: fixed !important;
     //top: 0 !important;
@@ -70,20 +74,6 @@
         left: 20%;
       }
     }
-  }
-  @include bp(tablet-max-port) {
-      //position: fixed;
-      //top: 0 !important;
-      left: 0 !important;
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      min-height: 200px;
-      &.datetimepicker-dropdown-bottom-right {
-        &:before, &:after {
-          left: 20%;
-        }
-      }
   }
 }
 .datetimepicker.sln-datetimepicker table tr td.today,

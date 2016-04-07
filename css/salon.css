@@ -842,6 +842,9 @@ th {
     font-style: normal;
     margin: 20px 0 10px 0;
     background-color: red; }
+  .datetimepicker.sln-datetimepicker .datetimepicker-hours thead,
+  .datetimepicker.sln-datetimepicker .datetimepicker-minutes thead {
+    display: none; }
   @media only screen and (max-width: 767px) {
     .datetimepicker.sln-datetimepicker {
       left: 0 !important;
@@ -861,15 +864,6 @@ th {
         border-top-width: 10px; }
         .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right:before, .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right:after {
           left: 20%; } }
-  @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .datetimepicker.sln-datetimepicker {
-      left: 0 !important;
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      min-height: 200px; }
-      .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right:before, .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right:after {
-        left: 20%; } }
 
 .datetimepicker.sln-datetimepicker table tr td.today,
 .datetimepicker.sln-datetimepicker table tr td.today:hover,
@@ -1144,25 +1138,25 @@ th {
       -webkit-box-align: center;
       align-items: center; } }
   .sln-radiobox input + label:before, .sln-radiobox input + label:after {
+    content: " ";
     display: block;
     position: absolute;
     top: 0;
     left: 0;
-    width: 1.8em;
-    height: 1.8em;
+    padding: 1px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%; }
   .sln-radiobox input + label:before {
-    content: "";
     transition: transform 0.5s;
     backface-visibility: hidden;
     border-style: solid;
     border-width: .2em; }
   .sln-radiobox input + label:after {
-    content: "";
-    width: 1.16em;
-    height: 1.16em;
-    top: .35em;
-    left: .35em;
+    width: 18px;
+    height: 18px;
+    top: 5px;
+    left: 5px;
     transition: background 0.15s;
     backface-visibility: hidden;
     text-align: center;

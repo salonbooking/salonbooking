@@ -131,6 +131,7 @@
 	}
 }
 // CHECKBOXES // END
+
 // RADIOBOXES
 .sln-radiobox {
 	@extend %sln-input-label--big;
@@ -161,16 +162,19 @@
 			align-items: center;
 		}
 		&:before, &:after  {
+			content: " ";
 			display: block;
 			position: absolute;
 			top: 0;
 			left: 0;
-			width: 1.8em;
-			height: 1.8em;
+			padding: 1px;
+			width: 28px;
+			height: 28px;
 			border-radius: 50%;
 		}
 		&:before {
-			content: "";
+			//@include font-icon(32px);
+			//content: "\f1db";
 			transition: transform 0.5s;
 			backface-visibility: hidden;
 			border-style: solid;
@@ -179,11 +183,12 @@
 			@extend %bgc-color--main;
 		}
 		&:after {
-			content: "";
-			width: 1.16em;
-			height: 1.16em;
-			top: .35em;
-			left: .35em;
+			//@include font-icon(20px);
+			//content: "\f111";
+			width: 18px;
+			height: 18px;
+			top: 5px;
+			left: 5px;
 			transition: background 0.15s;
 			backface-visibility: hidden;
 			text-align: center;
