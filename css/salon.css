@@ -315,7 +315,7 @@ th {
 .sln-text--grey, .sln-stepper .step .step-label {
   color: #e4e7e7; }
 
-.datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
+.datetimepicker.sln-datetimepicker .sln-datetimepicker-close:hover, .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
 .datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td span.month:not(.disabled):not(.active),
@@ -333,7 +333,7 @@ th {
 .sln-text--ok {
   color: #5bc24c; }
 
-.sln-alert--problem:after,
+.datetimepicker.sln-datetimepicker .sln-datetimepicker-close, .sln-alert--problem:after,
 #sln-salon .alert-danger:after {
   color: #D22221; }
 
@@ -343,6 +343,9 @@ th {
 
 .sln-checkbox input + label:before, .sln-radiobox input + label:before, .sln-radiobox input + label:after, #sln-salon {
   background-color: rgba(255, 255, 255, 0.75); }
+
+.datetimepicker.sln-datetimepicker, .datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
+  background-color: white; }
 
 .datetimepicker.sln-datetimepicker table tr td.active:hover,
 .datetimepicker.sln-datetimepicker table tr td.active.disabled:hover,
@@ -415,6 +418,9 @@ th {
 .datetimepicker.sln-datetimepicker table tr td span.year:not(.disabled):not(.active), #sln-salon .sln-thankyou--okbox {
   background-color: #5bc24c; }
 
+.datetimepicker.sln-datetimepicker .sln-datetimepicker-close:hover {
+  background-color: #e63f24; }
+
 .sln-attendant:last-child hr, .sln-total hr {
   border-color: #004258 !important; }
 
@@ -436,7 +442,7 @@ th {
 #sln-salon .alert a {
   border-color: transparent !important; }
 
-.datetimepicker.sln-datetimepicker table tr td.day,
+.datetimepicker.sln-datetimepicker .sln-datetimepicker-close, .datetimepicker.sln-datetimepicker table tr td.day,
 .datetimepicker.sln-datetimepicker table tr td span.hour,
 .datetimepicker.sln-datetimepicker table tr td span.minute,
 .datetimepicker.sln-datetimepicker table tr td span.month,
@@ -831,17 +837,22 @@ th {
     .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right:before, .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right:after {
       left: 10%; }
   .datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
-    display: none;
+    display: block;
     width: 100%;
     height: 40px;
     text-align: center;
     line-height: 40px;
     text-decoration: none;
-    color: white;
     cursor: pointer;
     font-style: normal;
+    font-weight: bold;
     margin: 20px 0 10px 0;
-    background-color: red; }
+    border-style: solid;
+    border-width: 1px;
+    -webkit-transition: background-color 200ms, color 250ms;
+    -moz-transition: background-color 200ms, color 250ms;
+    -o-transition: background-color 200ms, color 250ms;
+    transition: background-color 200ms, color 250ms; }
   .datetimepicker.sln-datetimepicker .datetimepicker-hours thead,
   .datetimepicker.sln-datetimepicker .datetimepicker-minutes thead {
     display: none; }

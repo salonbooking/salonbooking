@@ -38,6 +38,7 @@ $sln-color--grey--light: #e4e7e7;
 
 // BACKGORUNDS
 %bgc-color--main {background-color: $sln-color--main;}
+%bgc-color--main--noalpha {background-color: $sln-color--main--noalpha;}
 %bgc-color--contrast {background-color: $sln-color--contrast;}
 %bgc-color--contrast--alpha {background-color: $sln-color--contrast--alpha;}
 %bgc-color--dark {background-color: $sln-color--dark;}
@@ -49,6 +50,8 @@ $sln-color--grey--light: #e4e7e7;
 %bgc-color--ok {background-color: $sln-color--ok;}
 %bgc-color--white {background-color: $sln-color--white;}
 %bgc-color--warning {background-color: $sln-color--warning;}
+%bgc-color--problem {background-color: $sln-color--problem;}
+%bgc-color--problem--light {background-color: $sln-color--problem--light;}
 
 // BORDERS
 %bd-color--main {border-color: $sln-color--main !important;}
@@ -63,3 +66,5 @@ $sln-color--grey--light: #e4e7e7;
 %bd-color--grey--light {border-color: $sln-color--grey--light !important;}
 %bd-color--ok {border-color: $sln-color--ok !important;}
 %bd-color--warning {border-color: $sln-color--warning !important;}
+%bd-color--problem {border-color: $sln-color--problem !important;}
+%bd-color--problem--light {border-color: $sln-color--problem--light !important;}

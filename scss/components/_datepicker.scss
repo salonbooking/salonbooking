@@ -10,6 +10,7 @@
 
 .datetimepicker.sln-datetimepicker {
   //font-family: @font-family;
+  @extend %bgc-color--main--noalpha;
   border-radius: 0;
   width: 360px;
   padding: 20px;
@@ -33,18 +34,26 @@
     }
   }
   .sln-datetimepicker-close {
-    display: none;
+    display: block;
     width: 100%;
     height: 40px;
     text-align: center;
     line-height: 40px;
     text-decoration: none;
-    color: white;
     cursor: pointer;
     font-style: normal;
+    font-weight: bold;
     margin: 20px 0 10px 0;
-    background-color: red;
-    &:hover {}
+    @extend %text-color--problem;
+    @extend %bgc-color--main--noalpha;
+    border-style: solid;
+    border-width: 1px;
+    @extend %bd-color--grey--light;
+    @include transition(background-color 200ms, color 250ms);
+    &:hover {
+      @extend %text-color--white;
+      @extend %bgc-color--problem--light;
+    }
   }
   .datetimepicker-hours,
   .datetimepicker-minutes {
