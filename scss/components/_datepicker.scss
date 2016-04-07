@@ -185,7 +185,7 @@
 .datetimepicker.sln-datetimepicker table tr td span.month,
 .datetimepicker.sln-datetimepicker table tr td span.year {
     border-style: solid;
-    border-width: .05em;
+    border-width: 1px;
     @extend %bd-color--grey--light;
     min-width: 3em;
     //@media @phone {
@@ -249,7 +249,7 @@
 .datetimepicker.sln-datetimepicker {
   .switch, .prev, .next, .today {
     border-style: solid;
-    border-width: .05em;
+    border-width: 1px;
     @extend %bd-color--grey--light;
     &:hover {
       @extend %text-color--white;

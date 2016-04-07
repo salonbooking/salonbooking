@@ -328,7 +328,10 @@ h1, h2, h3, h4, h5, h6 {
 			text-align: center;
 			.sln-icon {
 				top: 0;
-				@extend %absolute-horizontal-centering;
+				left: 50%;
+  				-webkit-transform: translateX(-50%) translateY(0);
+  				-ms-transform: translateX(-50%) translateY(0);
+  				transform: translateX(-50%) translateY(0);
 			}
 		}
 	}
