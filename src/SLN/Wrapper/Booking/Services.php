@@ -61,7 +61,7 @@ final class SLN_Wrapper_Booking_Services {
 	 *
 	 * @return SLN_Wrapper_Booking_Services
 	 */
-	public static function build($data, $startsAt, $offset = 0) {
+	public static function build($data, SLN_DateTime $startsAt, $offset = 0) {
 		$startsAt = clone $startsAt;
 		uksort($data, array(SLN_Plugin::getInstance(), 'serviceCmp'));
 		$services = array();
@@ -109,7 +109,7 @@ final class SLN_Wrapper_Booking_Services {
 			$h = intval($durationParts[0]);
 			$i = intval($durationParts[1]);
 			$minutes = $h*60 + $i + $offset;
-			$startsAt = $startsAt->modify('+'.$minutes.' minutes');
+			$startsAt->modify('+'.$minutes.' minutes');
 		}
 		$ret = new SLN_Wrapper_Booking_Services($services);
 
