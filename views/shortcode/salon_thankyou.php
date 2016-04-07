@@ -53,7 +53,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         </div>
     </div>
 <?php $ppl = false; ?>
-<div class="sln-alert sln-alert--warning">
+<div class="sln-alert sln-alert--warning <?php if($confirmation) : ?> sln-alert--topicon<?php endif ?>">
 <?php if($confirmation) : ?>
         <p><strong><?php _e('You will receive a confirmation of your booking by email.','salon-booking-system' )?></strong></p>
         <p><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'salon-booking-system'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
@@ -143,7 +143,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         </div>
     </div>
 <?php $ppl = false; ?>
-<div class="sln-alert sln-alert--warning">
+<div class="sln-alert sln-alert--warning <?php if($confirmation) : ?> sln-alert--topicon<?php endif ?>">
 <?php if($confirmation) : ?>
         <p><strong><?php _e('You will receive a confirmation of your booking by email.','salon-booking-system' )?></strong></p>
         <p><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'salon-booking-system'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
