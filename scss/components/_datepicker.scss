@@ -14,6 +14,7 @@
   width: 360px;
   padding: 20px;
   table {
+    border-top: none;
     width: 100%;
     @extend %sln-textsize--base;
     line-height: 3em;
@@ -22,11 +23,15 @@
     border-radius: 0;
     padding: 0;
   }
-}
-
-.datetimepicker.sln-datetimepicker {
-  //max-width: 590px;
-  table {border-top: none;}
+  &.datetimepicker-dropdown-bottom-right {
+    border-width: 0;
+    border-width: 10px;
+    @extend %bd-color--contrast--alpha;
+    @extend %zDepth-2;
+    &:before, &:after {
+      left: 10%;
+    }
+  }
   .sln-datetimepicker-close {
     display: none;
     width: 100%;
@@ -42,19 +47,28 @@
     &:hover {}
   }
   @include bp(phone) {
-      //position: fixed !important;
-      //top: 0 !important;
-      left: 0 !important;
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      margin-top: 0;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
+    //position: fixed !important;
+    //top: 0 !important;
+    left: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 20px 10px;
+    margin-top: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     .sln-datetimepicker-close {
       display: block;
       height: 60px;
       line-height: 60px;
+    }
+    &.datetimepicker-dropdown-bottom-right {
+      border-width: 0;
+      border-top-width: 10px;
+      @extend %bd-color--contrast--alpha;
+      &:before, &:after {
+        left: 20%;
+      }
     }
   }
   @include bp(tablet-max-port) {
@@ -65,6 +79,11 @@
       max-width: 100%;
       height: auto;
       min-height: 200px;
+      &.datetimepicker-dropdown-bottom-right {
+        &:before, &:after {
+          left: 20%;
+        }
+      }
   }
 }
 .datetimepicker.sln-datetimepicker table tr td.today,
@@ -128,7 +147,9 @@
 }
 .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
 .datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active),
-.datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active) {
+.datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td span.month:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td span.year:not(.disabled):not(.active) {
   @extend %text-color--white;
   @extend %bgc-color--ok;
   font-weight: bold;
@@ -139,7 +160,9 @@
 }
 .datetimepicker.sln-datetimepicker table tr td.day.active:not(.disabled),
 .datetimepicker.sln-datetimepicker table tr td span.hour.active:not(.disabled),
-.datetimepicker.sln-datetimepicker table tr td span.minute.active:not(.disabled) {
+.datetimepicker.sln-datetimepicker table tr td span.minute.active:not(.disabled),
+.datetimepicker.sln-datetimepicker table tr td span.month.active:not(.disabled),
+.datetimepicker.sln-datetimepicker table tr td span.year.active:not(.disabled) {
   @extend %bgc-color--emphasis;
   &:hover {
     @extend %text-color--white;
@@ -149,6 +172,8 @@
 
 .datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active),
+.datetimepicker.sln-datetimepicker table tr td span.month.red:not(.disabled):not(.active),,
+.datetimepicker.sln-datetimepicker table tr td span.year.red:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled),
 .select2-results__option.red {
     color: red !important;
@@ -156,6 +181,8 @@
 
 .datetimepicker.sln-datetimepicker table tr td span.hour.red:not(.disabled):not(.active):hover,
 .datetimepicker.sln-datetimepicker table tr td span.minute.red:not(.disabled):not(.active):hover,
+.datetimepicker.sln-datetimepicker table tr td span.month.red:not(.disabled):not(.active):hover,,
+.datetimepicker.sln-datetimepicker table tr td span.year.red:not(.disabled):not(.active):hover,
 .datetimepicker.sln-datetimepicker table tr td.day.red:not(.disabled):hover,
 .select2-results__option.red:hover {
     color: white !important;
@@ -164,7 +191,9 @@
 
 .datetimepicker.sln-datetimepicker table tr td.day,
 .datetimepicker.sln-datetimepicker table tr td span.hour,
-.datetimepicker.sln-datetimepicker table tr td span.minute {
+.datetimepicker.sln-datetimepicker table tr td span.minute,
+.datetimepicker.sln-datetimepicker table tr td span.month,
+.datetimepicker.sln-datetimepicker table tr td span.year {
     border-style: solid;
     border-width: .05em;
     @extend %bd-color--grey--light;
@@ -198,7 +227,9 @@
     //}
 }
 .datetimepicker.sln-datetimepicker table tr td span.hour,
-.datetimepicker.sln-datetimepicker table tr td span.minute {
+.datetimepicker.sln-datetimepicker table tr td span.minute,
+.datetimepicker.sln-datetimepicker table tr td span.month,
+.datetimepicker.sln-datetimepicker table tr td span.year {
   width: 25%;
   height: initial;
   margin: 0;
