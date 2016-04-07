@@ -99,6 +99,7 @@
   margin: .4rem 0;
   @extend %sln-textsize--small;
   font-weight: bold;
+  text-align: left;
   &:after {
     left: .6em;
   }
@@ -108,7 +109,8 @@
 #sln-salon .alert-danger {
   //@extend %text-color--problem;
   &:after {
-    content: "\f06a";
+    //content: "\f06a";
+    content: "\f05e";
     @extend %text-color--problem;
   }
 }
