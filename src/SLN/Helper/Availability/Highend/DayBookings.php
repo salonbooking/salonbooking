@@ -1,6 +1,6 @@
 <?php
 
-class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availability_Highend_DayBookings
+class SLN_Helper_Availability_Highend_DayBookings extends SLN_Helper_Availability_AbstractDayBookings
 {
     /**
      * @return DateTime
@@ -34,8 +34,8 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
             foreach ($bookingServices->getItems() as $bookingService) {
                 $times = SLN_Func::filterTimes(
                     SLN_Func::getMinutesIntervals($interval),
-                    $booking->getStartsAt(),
-                    $booking->getEndsAt()
+                    $bookingService->getStartsAt(),
+                    $bookingService->getEndsAt()
                 );
                 foreach ($times as $time) {
                     $time = $time->format('H:i');
@@ -45,9 +45,9 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
                 }
 
                 if ($bookingServices->isLast($bookingService) && $bookingOffsetEnabled) {
-                    $offsetStart = $booking->getEndsAt();
-                    $offsetEnd = clone $booking->getEndsAt();
-                    $offsetEnd->modify('+'.$bookingOffset.' minutes');
+                    $offsetStart = $bookingService->getEndsAt();
+                    $offsetEnd = clone  $bookingService->getEndsAt();
+                    $offsetEnd = $offsetEnd->modify('+'.$bookingOffset.' minutes');
                     $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $offsetStart, $offsetEnd);
                     foreach ($times as $time) {
                         $time = $time->format('H:i');
