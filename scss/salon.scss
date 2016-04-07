@@ -230,9 +230,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 #sln-salon .sln-thankyou--okbox {
 	margin-top: 1em;
-	padding: 4em 1em 3em 1em;
-	@extend %bgc-color--ok;
-	//> div {text-align: center;}
+	padding: 3em 1em;
+	&.sln-bkg--ok {@extend %bgc-color--ok;}
+	&.sln-bkg--attention {@extend %bgc-color--warning;}
 	h1 {
 		@extend %sln-textsize--base;
 	}

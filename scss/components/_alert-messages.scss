@@ -42,7 +42,7 @@
   @include bp(tablet) {
     padding: .6rem 1.6rem .6rem 3.6rem;
     text-align: left;
-    &:after {
+    &:not(.sln-alert--topicon):after {
       @include font-icon(2em);
       display: inline-block;
       content: "\f05a";
@@ -51,13 +51,13 @@
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
-      left: .4em;
       @extend %sln-textsize--bigger;
       font-style: normal;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       border-radius: 50%;
     }
+    &:after {left: .4em;}
   }
 }
 
@@ -80,17 +80,20 @@
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%;
     @extend %bgc-color--contrast;
-    width: .9em;
-    height: .9em;
+    width: 1.1em;
+    height: 1.1em;
   }
   @include bp(tablet) {
-    &:before {
+    &:not(.sln-alert--topicon):before {
       top: 50%;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
-      left: .6em;
     }
+    &:before {left: .6em;}
+  }
+  @include bp(desktop) {
+    &:before {width: .9em; height: .9em;}
   }
 }
 .sln-alert.sln-alert-medium {

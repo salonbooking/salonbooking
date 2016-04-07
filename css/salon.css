@@ -415,8 +415,11 @@ th {
 .datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td span.month:not(.disabled):not(.active),
-.datetimepicker.sln-datetimepicker table tr td span.year:not(.disabled):not(.active), #sln-salon .sln-thankyou--okbox {
+.datetimepicker.sln-datetimepicker table tr td span.year:not(.disabled):not(.active), #sln-salon .sln-thankyou--okbox.sln-bkg--ok {
   background-color: #5bc24c; }
+
+#sln-salon .sln-thankyou--okbox.sln-bkg--attention {
+  background-color: #f5b025; }
 
 .datetimepicker.sln-datetimepicker .sln-datetimepicker-close:hover {
   background-color: #e63f24; }
@@ -450,12 +453,14 @@ th {
   border-color: #e4e7e7 !important; }
 
 #sln-salon h1, .sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
-#sln-salon .alert:after, .sln-alert--warning:before,
+#sln-salon .alert:after, .sln-alert:not(.sln-alert--topicon):after,
+#sln-salon .alert:not(.sln-alert--topicon):after, .sln-alert--warning:before,
 #sln-salon .alert-warning:before, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
   font-size: 1.4em; }
   @media only screen and (min-width: 992px) {
     #sln-salon h1, .sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
-    #sln-salon .alert:after, .sln-alert--warning:before,
+    #sln-salon .alert:after, .sln-alert:not(.sln-alert--topicon):after,
+    #sln-salon .alert:not(.sln-alert--topicon):after, .sln-alert--warning:before,
     #sln-salon .alert-warning:before, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
       font-size: 1.6em; } }
 
@@ -1015,7 +1020,8 @@ th {
 .sln-icon--calendar:after, .sln_datepicker:after {
   content: "\f073"; }
 
-.sln-icon--booking:after, .sln_timepicker:after {
+.sln-icon--booking:after, .sln_timepicker:after,
+.sln-icon--time:after {
   content: "\f017"; }
 
 .sln-icon--back:after,
@@ -1376,8 +1382,8 @@ a.sln-btn.sln-btn--noheight,
     #sln-salon .alert {
       padding: .6rem 1.6rem .6rem 3.6rem;
       text-align: left; }
-      .sln-alert:after,
-      #sln-salon .alert:after {
+      .sln-alert:not(.sln-alert--topicon):after,
+      #sln-salon .alert:not(.sln-alert--topicon):after {
         font-family: "FontAwesome";
         font-size: 2em;
         display: inline-block;
@@ -1387,11 +1393,13 @@ a.sln-btn.sln-btn--noheight,
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
-        left: .4em;
         font-style: normal;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        border-radius: 50%; } }
+        border-radius: 50%; }
+      .sln-alert:after,
+      #sln-salon .alert:after {
+        left: .4em; } }
 
 #sln-salon .sln-alert p:only-of-type, #sln-salon .sln-alert p:last-of-type {
   margin-bottom: 0; }
@@ -1410,17 +1418,25 @@ a.sln-btn.sln-btn--noheight,
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   border-radius: 50%;
-  width: .9em;
-  height: .9em; }
+  width: 1.1em;
+  height: 1.1em; }
 
 @media only screen and (min-width: 768px) {
-  .sln-alert--warning:before,
-  #sln-salon .alert-warning:before {
+  .sln-alert--warning:not(.sln-alert--topicon):before,
+  #sln-salon .alert-warning:not(.sln-alert--topicon):before {
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .sln-alert--warning:before,
+  #sln-salon .alert-warning:before {
     left: .6em; } }
+
+@media only screen and (min-width: 992px) {
+  .sln-alert--warning:before,
+  #sln-salon .alert-warning:before {
+    width: .9em;
+    height: .9em; } }
 
 .sln-alert.sln-alert-medium {
   display: block;
@@ -1666,7 +1682,7 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 
 #sln-salon .sln-thankyou--okbox {
   margin-top: 1em;
-  padding: 4em 1em 3em 1em; }
+  padding: 3em 1em; }
   #sln-salon .sln-thankyou--okbox h2 {
     padding: 0 .5em 0 3em; }
   #sln-salon .sln-thankyou--okbox h2, #sln-salon .sln-thankyou--okbox h3 {
