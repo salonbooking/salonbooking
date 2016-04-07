@@ -32,6 +32,10 @@
   	&[type="text"] {margin-bottom: 2em;}
   }
 }
+.sln-input-group {
+	padding-bottom: .8em;
+	.sln-input {margin-bottom: 0;}
+}
 
 // LABELS GENERAL
 #sln-salon label {
@@ -208,3 +212,30 @@
 }
 
 // RADIOBOXES // END
+
+// UTILITIES
+#sln-salon .sln-input {
+	.sln-input--addon {
+		padding: .5em .8em;
+		border-radius: 0;
+		border: 0;
+		@extend %sln-textsize--base;
+		font-weight: bold;
+		line-height: 1.8em;
+		@extend %text-color--contrast;
+		background: transparent;
+		position: relative;
+		&:after {
+			content: ' ';
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			@extend %bgc-color--contrast;
+			opacity: .25;
+		}
+	}
+}
+// UTILITIES // END

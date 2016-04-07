@@ -124,8 +124,8 @@ $values = array(
                 <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
-                        <div class="input-group">
-                            <span class="input-group-addon"><?php echo $prefix?></span>
+                        <div class="input-group sln-input-group">
+                            <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                             <?php endif ?>
                         <?php 
                             if(strpos($field, 'password') === 0){
@@ -166,8 +166,8 @@ $values = array(
                 <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
-                        <div class="input-group">
-                            <span class="input-group-addon"><?php echo $prefix?></span>
+                        <div class="input-group sln-input-group">
+                            <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                             <?php endif ?>
                         <?php 
                             if(strpos($field, 'password') === 0){
@@ -206,8 +206,8 @@ $values = array(
                 <div class="col-xs-12 <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
-                        <div class="input-group">
-                            <span class="input-group-addon"><?php echo $prefix?></span>
+                        <div class="input-group sln-input-group">
+                            <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                             <?php endif ?>
                         <?php 
                             if(strpos($field, 'password') === 0){
@@ -254,8 +254,8 @@ $values = array(
                 <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
-                        <div class="input-group">
-                            <span class="input-group-addon"><?php echo $prefix?></span>
+                        <div class="input-group sln-input-group">
+                            <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                         <?php endif ?>
                         <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address'))) ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
@@ -288,8 +288,8 @@ $values = array(
                 <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
-                        <div class="input-group">
-                            <span class="input-group-addon"><?php echo $prefix?></span>
+                        <div class="input-group sln-input-group">
+                            <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                         <?php endif ?>
                         <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address'))) ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
@@ -320,8 +320,8 @@ $values = array(
                 <div class="col-xs-12 <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
-                        <div class="input-group">
-                            <span class="input-group-addon"><?php echo $prefix?></span>
+                        <div class="input-group sln-input-group">
+                            <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                         <?php endif ?>
                         <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address'))) ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
@@ -350,8 +350,8 @@ $values = array(
                 <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
-                        <div class="input-group">
-                            <span class="input-group-addon"><?php echo $prefix?></span>
+                        <div class="input-group sln-input-group">
+                            <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                         <?php endif ?>
                         <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address'))) ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>

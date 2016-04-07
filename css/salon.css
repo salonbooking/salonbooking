@@ -284,7 +284,7 @@ th {
 .sln-bootstrap .sln-btn--borderonly:active button, .sln-stepper .step .step-number, .sln-stepper .step.step--active .step-number {
   color: white; }
 
-#sln-salon .sln-salon-title, #sln-salon .salon-step-title, .sln-text--contrast, .sln_datepicker:after, .sln_timepicker:after, .sln-input .help-block, .sln-input .help-block a, .sln-btn--nobkg,
+#sln-salon .sln-salon-title, #sln-salon .salon-step-title, .sln-text--contrast, .sln_datepicker:after, .sln_timepicker:after, .sln-input .help-block, .sln-input .help-block a, #sln-salon .sln-input .sln-input--addon, .sln-btn--nobkg,
 .sln-bootstrap .sln-btn--nobkg, .sln-btn--nobkg input, .sln-btn--nobkg button,
 .sln-bootstrap .sln-btn--nobkg input,
 .sln-bootstrap .sln-btn--nobkg button, .sln-btn--borderonly,
@@ -370,7 +370,7 @@ th {
 .datetimepicker.sln-datetimepicker table tr td span.active[disabled],
 .datetimepicker.sln-datetimepicker table tr td span.active[disabled]:hover,
 .datetimepicker.sln-datetimepicker table tr td span.active.disabled[disabled],
-.datetimepicker.sln-datetimepicker table tr td span.active.disabled[disabled]:hover, .sln-alert--warning:before,
+.datetimepicker.sln-datetimepicker table tr td span.active.disabled[disabled]:hover, #sln-salon .sln-input .sln-input--addon:after, .sln-alert--warning:before,
 #sln-salon .alert-warning:before {
   background-color: #004258; }
 
@@ -470,7 +470,7 @@ th {
 #sln-salon h3 {
   font-size: 1.2em; }
 
-#sln-salon p, #sln-salon .salon-step-title, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, .sln-alert,
+#sln-salon p, #sln-salon .salon-step-title, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, .sln-alert,
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   font-size: 1em; }
 
@@ -1059,6 +1059,11 @@ th {
 #sln-salon.sln-salon--s .sln-input input[type="text"] {
   margin-bottom: 2em; }
 
+.sln-input-group {
+  padding-bottom: .8em; }
+  .sln-input-group .sln-input {
+    margin-bottom: 0; }
+
 #sln-salon label {
   cursor: pointer; }
 
@@ -1184,6 +1189,24 @@ th {
 .sln-radiobox input:checked + label:after,
 .sln-radiobox input:checked + label:hover:after {
   opacity: 1; }
+
+#sln-salon .sln-input .sln-input--addon {
+  padding: .5em .8em;
+  border-radius: 0;
+  border: 0;
+  font-weight: bold;
+  line-height: 1.8em;
+  background: transparent;
+  position: relative; }
+  #sln-salon .sln-input .sln-input--addon:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: .25; }
 
 .sln-btn,
 .sln-bootstrap .sln-btn {

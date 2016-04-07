@@ -35,6 +35,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
             </button>
         </div>
     </div>
+        <?php if ($backUrl && $currentNum > 1) : ?>
         <div class="col-xs-12 col-sm-5 pull-right">
             <a class="sln-btn sln-btn--nobkg sln-btn--medium sln-btn--icon sln-btn--icon--left sln-icon--back"
                 <?php if($ajaxEnabled): ?>
@@ -45,7 +46,6 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
             </a>
         </div>
         <div class="hidden-xs hidden-sm col-md-1 pull-right"></div>
-        <?php if ($backUrl && $currentNum > 1) : ?>
         <?php endif ?>
             <?php /* if ($currentNum > 1): ?>
                 <span class="sln-step-num"><?php echo sprintf(__('step %s of %s', 'salon-booking-system'), $currentNum, $count) ?></span>
@@ -67,6 +67,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
             </button>
         </div>
     </div>
+        <?php if ($backUrl && $currentNum > 1) : ?>
         <div class="col-xs-12 col-sm-6 col-md-6 pull-right">
             <a class="sln-btn sln-btn--borderonly sln-btn--big sln-btn--icon sln-btn--icon--left sln-icon--back"
                 <?php if($ajaxEnabled): ?>
@@ -76,7 +77,6 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
                 <i class="glyphicon glyphicon-chevron-left"></i> <?php _e('Back', 'salon-booking-system') ?>
             </a>
         </div>
-        <?php if ($backUrl && $currentNum > 1) : ?>
         <?php endif ?>
             <?php /* if ($currentNum > 1): ?>
                 <span class="sln-step-num"><?php echo sprintf(__('step %s of %s', 'salon-booking-system'), $currentNum, $count) ?></span>
@@ -98,6 +98,7 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
             </button>
         </div>
     </div>
+        <?php if ($backUrl && $currentNum > 1) : ?>
         <div class="col-sm-6 col-md-5 pull-right">
             <a class="sln-btn sln-btn--borderonly sln-btn--medium sln-btn--icon sln-btn--icon--left sln-icon--back"
                 <?php if($ajaxEnabled): ?>
@@ -108,7 +109,6 @@ $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
             </a>
         </div>
         <div class="col-md-1 pull-right"></div>
-        <?php if ($backUrl && $currentNum > 1) : ?>
         <?php endif ?>
             <?php /* if ($currentNum > 1): ?>
                 <span class="sln-step-num"><?php echo sprintf(__('step %s of %s', 'salon-booking-system'), $currentNum, $count) ?></span>
