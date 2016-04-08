@@ -65,7 +65,7 @@ function sln_init($) {
 
 }
 function sln_loadStep($, data) {
-    var loadingMessage = '<div class="sln-loader">Loading...</div>';
+    var loadingMessage = '<div class="sln-loader-wrapper"><div class="sln-loader">Loading...</div></div>';
     data += "&action=salon&method=salonStep&security=" + salon.ajax_nonce;
     $('#sln-notifications').html(loadingMessage).addClass('sln-notifications--active');
     $.ajax({
@@ -128,7 +128,7 @@ function sln_stepDate($) {
             dataType: 'json',
             success: function (data) {
                 if (!data.success) {
-                    var alertBox = $('<div class="alert alert-danger"></div>');
+                    var alertBox = $('<div class="sln-alert sln-alert--problem"></div>');
                     $(data.errors).each(function () {
                         alertBox.append('<p>').html(this);
                     });
@@ -216,7 +216,7 @@ function sln_serviceTotal($) {
             dataType: 'json',
             success: function (data) {
                 if (!data.success) {
-                    var alertBox = $('<div class="alert alert-danger"></div>');
+                    var alertBox = $('<div class="sln-alert sln-alert--problem"></div>');
                     $.each(data.errors, function () {
                         alertBox.append('<p>').html(this);
                     });
@@ -226,7 +226,7 @@ function sln_serviceTotal($) {
                     $.each(data.services, function(index, value) {
                         var checkbox = $('#sln_services_' + index);
                         if (value.status == -1) {
-                            var alertBox = $('<div><div class="col-xs-offset-2 col-lg-offset-1"><div class="alert alert-danger alert-no-spacing"><p>' + value.error + '</p></div></div></div>');
+                            var alertBox = $('<div class="sln-alert sln-alert--problem"><p>' + value.error + '</p></div>');
                             checkbox.attr('checked', false).attr('disabled', 'disabled').change();
                             checkbox.parent().parent().parent().next().after(alertBox);
                         }

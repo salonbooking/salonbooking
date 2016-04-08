@@ -183,6 +183,14 @@ th {
   *:focus, *:before:focus, *:after:focus {
     outline: 0 !important; }
 
+.sln-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%); }
+
 #sln-salon.sln-salon--s .sln-thankyou .sln-icon-wrapper .sln-icon {
   position: absolute;
   left: 50%;
@@ -522,14 +530,10 @@ th {
 .sln-loader {
   font-size: 11px;
   text-indent: -99999em;
-  margin: 55px auto;
-  position: relative;
+  margin: auto;
   width: 10em;
   height: 10em;
-  box-shadow: inset 0 0 0 1em #004258;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0); }
+  box-shadow: inset 0 0 0 1em #0091EA; }
 
 .sln-loader:after {
   width: 5.2em;
@@ -1881,21 +1885,15 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 .sln-total-price {
   text-align: right; }
 
-#sln-notifications {
-  -webkit-transition: background 250ms, opacity 200ms;
-  -moz-transition: background 250ms, opacity 200ms;
-  -o-transition: background 250ms, opacity 200ms;
-  transition: background 250ms, opacity 200ms;
-  background: rgba(255, 0, 0, 0);
-  opacity: 0; }
-  #sln-notifications.sln-notifications--active {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: white;
-    opacity: .75; }
+#sln-notifications .sln-loader-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  opacity: .75;
+  z-index: 999999; }
 
 .sln-box--main {
   margin-top: 2em;

@@ -46,7 +46,7 @@ else:
 if (!$intervalsArray['times']):
     $hb = $plugin->getAvailabilityHelper()->getHoursBeforeHelper()->getToDate();
     ?>
-    <div class="alert alert-danger">
+    <div class="sln-alert sln-alert--problem">
         <p><?php echo __('No more slots available until', 'salon-booking-system') ?> <?php echo $plugin->format()->datetime($hb) ?></p>
     </div>
 <?php

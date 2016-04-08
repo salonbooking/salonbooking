@@ -24,14 +24,11 @@
 .sln-loader {
   font-size: 11px;
   text-indent: -99999em;
-  margin: 55px auto;
-  position: relative;
+  margin: auto;
   width: 10em;
   height: 10em;
-  box-shadow: inset 0 0 0 1em $sln-color--contrast;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
+  @extend %absolute-centering;
+  box-shadow: inset 0 0 0 1em $sln-color--emphasis--hover;
 }
 .sln-loader:after {
   width: 5.2em;
