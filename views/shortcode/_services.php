@@ -33,11 +33,11 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
 <div class="sln-service-list">
     <?php foreach ($grouped as $group): ?>
         <?php if($group['term'] !== false): ?>
-        <div class="panel panel-salon">
-            <h3 class="panel-heading"><a class="collapsed" role="button" data-toggle="collapse" href="#collapse<?php echo $group['term']->slug ?>" aria-expanded="false" aria-controls="collapse<?php echo $group['term']->slug ?>">
-            <?php echo $group['term']->name ?>
-            <span class="icon icon-plus"></span></a></h3>
-        <div id="collapse<?php echo $group['term']->slug ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse<?php echo $group['term']->slug ?>Heading" aria-expanded="false" style="height: 0px;">
+        <div class="row sln-panel">
+            <a class="col-xs-12 sln-panel-heading collapsed" role="button" data-toggle="collapse" href="#collapse<?php echo $group['term']->slug ?>" aria-expanded="false" aria-controls="collapse<?php echo $group['term']->slug ?>">
+            <h2 class="sln-btn sln-btn--borderonly sln-btn--medium sln-btn--icon sln-btn--icon--left sln-btn--fullwidth"><?php echo $group['term']->name ?></h2>
+            </a>
+        <div id="collapse<?php echo $group['term']->slug ?>" class="col-xs-12 sln-panel-content panel-collapse collapse" role="tabpanel" aria-labelledby="collapse<?php echo $group['term']->slug ?>Heading" aria-expanded="false" style="height: 0px;">
 
         <?php endif ?>
     <?php foreach ($group['services'] as $service) : ?>

@@ -300,7 +300,7 @@ th {
 .sln-bootstrap .sln-btn--borderonly button, .sln-steps-description, .sln-data-desc, .sln-summary-row .label, .sln-total-label, .sln-total-price {
   color: black; }
 
-.sln-text--emphasis, .sln_datepicker:hover:after, .sln_timepicker:hover:after, .sln-checkbox input:checked + label:after,
+.sln-text--emphasis, #sln-salon .sln-panel .sln-panel-heading, .sln_datepicker:hover:after, .sln_timepicker:hover:after, .sln-checkbox input:checked + label:after,
 .sln-checkbox input:checked + label:hover:after, .sln-alert a,
 #sln-salon .alert a, .sln-steps-name {
   color: #0277BD; }
@@ -427,7 +427,7 @@ th {
 .sln-attendant:last-child hr, .sln-total hr {
   border-color: #004258 !important; }
 
-.datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right, .sln-input input, .sln-input textarea, .sln-btn--borderonly,
+#sln-salon .sln-panel .sln-panel-content, .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right, .sln-input input, .sln-input textarea, .sln-btn--borderonly,
 .sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
@@ -470,7 +470,7 @@ th {
 #sln-salon h3 {
   font-size: 1.2em; }
 
-#sln-salon p, #sln-salon .salon-step-title, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, .sln-alert,
+#sln-salon p, #sln-salon .salon-step-title, #sln-salon .sln-panel .sln-panel-heading, #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, .sln-alert,
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   font-size: 1em; }
 
@@ -556,6 +556,36 @@ th {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
+
+#sln-salon .sln-panel .sln-panel-heading {
+  margin-bottom: 0; }
+  #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium {
+    display: block;
+    margin-bottom: 0;
+    font-weight: bold; }
+    #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium:after {
+      content: '\f068'; }
+    #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium:hover:after {
+      content: '\f077'; }
+  #sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly {
+    border-bottom-width: 0; }
+  #sln-salon .sln-panel .sln-panel-heading:hover, #sln-salon .sln-panel .sln-panel-heading:focus, #sln-salon .sln-panel .sln-panel-heading:active {
+    text-decoration: none; }
+  #sln-salon .sln-panel .sln-panel-heading.collapsed {
+    margin-bottom: 1em; }
+    #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn.sln-btn--medium:after {
+      content: '\f067'; }
+    #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn.sln-btn--medium:hover:after {
+      content: '\f078'; }
+    #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly {
+      border-bottom-width: 1px; }
+
+#sln-salon .sln-panel .sln-panel-content {
+  width: calc(100% - 30px);
+  margin: 0 15px 2em 15px;
+  padding-top: 1em;
+  border-style: solid;
+  border-width: 1px; }
 
 /*!
  * Datetimepicker for Bootstrap
@@ -1310,7 +1340,7 @@ a.sln-btn.sln-btn--noheight,
 .sln-btn--borderonly,
 .sln-bootstrap .sln-btn--borderonly {
   border-style: solid;
-  border-width: .05em; }
+  border-width: 1px; }
 
 .sln-btn--icon {
   text-align: left;
@@ -1355,6 +1385,10 @@ a.sln-btn.sln-btn--noheight,
       line-height: 3.6em; }
   .sln-btn--icon.sln-btn--icon--left {
     text-align: right; }
+    .sln-btn--icon.sln-btn--icon--left.sln-btn--fullwidth {
+      text-align: left; }
+      .sln-btn--icon.sln-btn--icon--left.sln-btn--fullwidth button {
+        text-align: left; }
     .sln-btn--icon.sln-btn--icon--left button {
       text-align: right; }
     .sln-btn--icon.sln-btn--icon--left:after {

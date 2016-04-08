@@ -113,7 +113,7 @@ a.sln-btn.sln-btn--noheight,
   @extend %bgc-color--transparent;
   @extend %text-color--contrast;
   border-style: solid;
-  border-width: .05em;
+  border-width: 1px;
   @extend %bd-color--contrast--alpha;
   input, button {@extend %text-color--dark;}
   &:hover, &:focus, &:active {
@@ -166,6 +166,10 @@ a.sln-btn.sln-btn--noheight,
       }
     }
     &.sln-btn--icon--left {
+      &.sln-btn--fullwidth {
+        text-align: left;
+        button {text-align: left;}
+      }
       text-align: right;
       button {text-align: right;}
       &:after {
