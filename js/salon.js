@@ -117,7 +117,8 @@ function sln_stepDate($) {
 
     function validate(obj, autosubmit) {
         var form = $(obj).closest('form');
-        var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> '+salon.txt_validating;
+        //var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> '+salon.txt_validating;
+        var validatingMessage = '<div class="sln-alert sln-alert--wait">'+salon.txt_validating+'</div>';
         var data = form.serialize();
         data += "&action=salon&method=checkDate&security=" + salon.ajax_nonce;
         $('#sln-notifications').addClass('sln-notifications--active').html(validatingMessage);

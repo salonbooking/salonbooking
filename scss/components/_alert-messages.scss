@@ -125,7 +125,26 @@
     @extend %text-color--warning;
   }
 }
-
+.sln-alert.sln-alert--wait,
+.sln-alert--wait {
+  &:after {
+    top: initial;
+    content: "\f013";
+    @extend %text-color--emphasis;
+    -webkit-animation: wait 1s infinite linear;
+    animation: wait 1s infinite linear;
+  }
+}
+@-webkit-keyframes wait {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 .snl-error-list-item {
   display: block;
   @extend %sln-textsize--small;

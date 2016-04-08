@@ -418,6 +418,10 @@ h1, h2, h3, h4, h5, h6 {
 		z-index: 999999;
 	}
 }
+#sln-salon.sln-step-date #sln-notifications .sln-alert.sln-alert--wait {
+	position: absolute;
+	bottom: 0;
+}
 
 .sln-box--main {
 	margin-top: 2em;
