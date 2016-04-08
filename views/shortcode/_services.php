@@ -186,7 +186,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     <div class="row sln-service">
         <div class="col-md-12">
             <div class="row sln-steps-info sln-service-info">
-                <div class="col-sm-2 col-md-2 sln-checkbox sln-steps-check sln-service-check">
+                <div class="col-xs-2 col-sm-2 sln-checkbox sln-steps-check sln-service-check">
                     <?php /*
             <span class="service-checkbox <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
             </span>
@@ -211,13 +211,14 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             </div>
         <!-- .sln-service-check // END -->
                 </div>
-                <div class="col-sm-7 col-md-7">
+                <div class="col-xs-10 col-sm-7">
                     <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                         <h3 class="sln-steps-name sln-service-name"><?php echo $service->getName(); ?></h3>
                     </label>
                 <!-- .sln-service-info // END -->
                 </div>
-                <h3 class="col-sm-3 col-md-3 sln-steps-price sln-service-price">
+                <div class="col-xs-2 visible-xs-block"></div>
+                <h3 class="col-xs-10 col-sm-3 sln-steps-price sln-service-price">
                     <?php echo $plugin->format()->money($service->getPrice())?>
                 <!-- .sln-service-price // END -->
                 </h3>
@@ -263,6 +264,8 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     <!-- panel END -->
     <?php endif ?>
     <?php endforeach ?>
+    <!-- .sln-service-list // END -->
+</div>
 	<?php if ($showPrices){ ?>
     <div class="row sln-total">
     <div class="col-md-12"><hr></div>
@@ -320,4 +323,3 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
     </div>
 	<?php } ?>
-</div>

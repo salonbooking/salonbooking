@@ -110,7 +110,7 @@
 
 .sln-alert--problem,
 #sln-salon .alert-danger {
-  //@extend %text-color--problem;
+  @extend %bgc-color--transparent;
   &:after {
     //content: "\f06a";
     content: "\f05e";
