@@ -1,0 +1,388 @@
+#sln-salon-my-account {
+    padding: 1.6em 10px !important;
+    .btn:hover {
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
+
+    .btn.btn-confirm:hover {
+      background-color: @ca-red;
+    }
+
+    td {
+      font-size: 13px !important;
+    }
+    .table-bordered {
+      border-width: 1px;
+      border: none;
+      border-top: 1px solid @bg-contrast-high;
+    }
+    .table-striped > tbody > tr:nth-of-type(even) {
+      background-color: @bg-high;
+    }
+    .table thead tr {
+      border-bottom: 2px solid @color-high;
+      color: @color-high;
+    }
+    .table {
+      margin-bottom: 4em;
+    }
+    .table thead tr th {
+      text-align: center;
+      text-transform: uppercase;
+      background-color: @color-white;
+    }
+
+    .table tbody tr td {
+      color: @text-medium;
+      text-align: center;
+    }
+
+    .table tbody tr td strong {
+      color: @text-medium;
+    }
+
+    .table tbody tr td:nth-child(2),
+    .table tbody tr td:nth-child(3) {
+      text-align: left;
+    }
+
+    .table thead tr th {
+      padding: 8px;
+      font-size: .7em;
+      border-bottom: 1px solid transparent;
+    }
+    .table tbody tr td {
+      padding: 16px 8px;
+    }
+
+    .table tbody tr td:nth-child(2) {
+      max-width: 100px;
+    }
+
+    .table tbody tr td:last-child {
+      //width: 170px;
+    }
+
+    .table tbody tr td:nth-child(2),
+    .table tbody tr td:last-child {
+      text-transform: uppercase;
+    }
+    h3 {
+      color: black;
+      margin: 20px 0px;
+    }
+
+    .status {
+      display: inline-block;
+    }
+
+    .success {
+      color: @cl_ok;
+    }
+
+    .warning,
+    .info {
+      color: @cl_warning;
+    }
+    .danger {
+      color: red;
+    }
+
+    button {
+      border-radius: 4px !important;
+      text-transform: uppercase;
+    }
+
+    .tooltip-inner {
+      background-color: #919FA7 !important;
+      max-width: 160px;
+      text-transform: none;
+      text-align: left;
+    }
+    .tooltip-arrow {
+      border-top-color: #919FA7 !important;
+    }
+    .tooltip.in {
+      opacity: 1;
+    }
+
+    .btn {
+      background-color: silver;
+    }
+
+    .btn .glyphicon {
+      opacity:  1       !important;
+      position: initial !important;
+      top:      1px     !important;
+      color:    inherit !important;
+      font-size: 11px;
+      vertical-align: inherit !important;
+      -webkit-transition: inherit !important;
+      -moz-transition: inherit !important;
+      -o-transition: inherit !important;
+      transition: inherit !important;
+    }
+
+    .btn {
+      padding:          4px 8px 6px !important;
+      font-variant:     small-caps  !important;
+      text-transform:   lowercase   !important;
+      color:            @color-white        !important;
+      width:            auto        !important;
+    }
+
+    .sln-rate-service {
+      background-color: @cl_warning     !important;
+    }
+    .btn {
+      margin-top: 1em;
+    }
+
+    .rating {
+      width:            auto;
+      background-color: @bg-high;
+      padding:          4px 8px 6px;
+      border-radius:    3px;
+      font-size:        16px;
+      font-variant:     small-caps;
+      text-transform:   lowercase;
+      font-size:        14px;
+      white-space:      nowrap;
+    }
+
+    .rating img {
+      vertical-align: text-bottom;
+    }
+
+    .rating i {
+      vertical-align: initial;
+      font-size: 11px;
+      color: red;
+    }
+    .sln-my-account-message {
+      display: block;
+      border: solid 1px @bg-contrast-high;
+      min-height: 52px;
+      line-height: 52px;
+      padding: 0 1em;
+      margin: 1em 0 0 0;
+      text-transform: uppercase;
+      font-size: .7em;
+      color: @color-high;
+    }
+    &.mobile-version {
+      .sln-my-account-message {
+        margin: 1em 0 0 0;
+      }
+      > div:first-child {margin-bottom: 2em;}
+      thead {
+        display: none;
+      }
+      .table-striped > tbody > tr:nth-of-type(even) {
+        background-color: @color-white;
+      }
+      .table tr {
+        display: block;
+        margin: 1em 0 2em 0;
+      }
+      .table tbody tr td {
+        width:        100%;
+        display:      block;
+        text-align:   left;
+        border:       none;
+        padding-right: 10px;
+        padding-left: 10em;
+        position:     relative;
+        min-height: 52px;
+        border-bottom: solid 1px @bg-contrast-high;
+        &:last-child {border-bottom: none;}
+      }
+      .table tbody tr {
+        border: solid 1px @bg-contrast-high;
+      }
+      td:nth-child(2),
+      td:last-child {
+        max-width:  initial !important;
+        width:      100% !important;
+      }
+      td:before {
+        content:        attr(data-th) ": ";
+        font-weight:    bold;
+        text-transform: uppercase;
+        color:          #0073a4;
+        max-width:          10em;
+        display:        inline-block;
+        position:       absolute;
+        left:           1em;
+      }
+      .status {
+        margin-right: 80% !important;
+      }
+      .status ~ div {
+        display: inline-block;
+      }
+       div {
+        padding: 0;
+      }
+      .table-bordered {
+        border: none;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      &:extend(.mobile-version all);
+      h1 .icocal {display: none;}
+    }
+  }
+// Bootstrap Modal Dialog // Start
+
+#sln-salon #sln-salon-my-account {
+
+	@media (min-width: 768px) {
+		.modal-dialog {
+			width: 560px;
+		}
+	}
+
+	.modal-dialog {
+		margin: 20% auto;
+	}
+
+	.modal-header {
+		border-bottom: none;
+	}
+
+	.modal-footer {
+		border-top: none;
+	}
+
+	.modal-content {
+		border: none;
+		border-radius: 2px;
+		box-shadow: 0 2px 8px rgba(150, 150, 150, 0.3);
+	}
+
+	#step1 {
+		margin-top: 40px;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	#step2 {
+		padding-top: 100px;
+
+		p {
+			margin: 0;
+		}
+
+		p:first-child {
+			color: #0083C3;
+		}
+
+		p:last-child {
+			margin-top: 20px;
+		}
+	}
+
+	.modal-body {
+	    padding: 0 50px;
+	    height:  400px;
+
+		button {
+
+			display: block;
+		    margin: 0 auto;
+		    border-radius: 0 !important;
+		    padding: 8px 24px !important;
+			font-variant: normal !important;
+			text-transform: initial !important;
+			font-size: 18px;
+
+			&.btn-primary {
+			    background: #0083C3;
+			    margin-top: 50px;
+		    }
+
+			&.btn-default {
+				background: none;
+				color: #0083C3 !important;
+				text-decoration: underline;
+				margin-bottom: 20px;
+			}
+		}
+
+	}
+
+	.modal {
+		background-color: rgba(220, 220, 220, 0.4);
+
+		button.close,
+		button.close:hover {
+		    background:    none;
+		    border:        none;
+		    position: relative;
+		    color:         @color-white;
+			opacity:       initial;
+			text-shadow:   none;
+			margin: 10px 20px 0 0;
+
+			&:before {
+				content: "\00d7";
+				border-radius: 50%;
+				background: @text-medium;
+				border: none;
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 0;
+				line-height: 16px;
+				font-size: 20px;
+			}
+		}
+
+
+
+		textarea {
+			width: 100%;
+			resize: none;
+			margin: 20px 0;
+			border: none;
+			background: #D2E5F6;
+			padding: 16px;
+			color: #36AEE8;
+			border-radius: 2px;
+			height: 140px;
+
+				&::-webkit-input-placeholder { color: #36AEE8; }
+				&::-moz-placeholder          { color: #36AEE8; }
+				&:-moz-placeholder           { color: #36AEE8; }
+				&:-ms-input-placeholder      { color: #36AEE8; }
+				&::placeholder               { color: #36AEE8; }
+				&::input-placeholder         { color: #36AEE8; }
+		}
+
+		.rating {
+			display: inline-block !important;
+			background: none;
+
+			i {
+				vertical-align: bottom;
+				font-size:      24px;
+				color:          #0083C3;
+			}
+
+			span {
+				font-size: .9em;
+			}
+		}
+
+	}
+
+}
+
+// Bootstrap Modal Dialog // Start

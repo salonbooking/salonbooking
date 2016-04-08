@@ -9,6 +9,7 @@
 @import 'components/buttons';
 @import 'components/alert-messages';
 @import 'components/stepper';
+@import 'components/myaccount';
 #sln-salon {
 	border-width: 1px;
 	border-style: solid;
@@ -421,6 +422,10 @@ h1, h2, h3, h4, h5, h6 {
 #sln-salon.sln-step-date #sln-notifications .sln-alert.sln-alert--wait {
 	position: absolute;
 	bottom: 0;
+}
+#sln-salon.sln-step-date.sln-salon--s #sln-notifications .sln-alert.sln-alert--wait {
+	position: absolute;
+	bottom: 6em;
 }
 
 .sln-box--main {

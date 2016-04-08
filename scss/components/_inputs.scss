@@ -36,6 +36,14 @@
 	padding-bottom: .8em;
 	.sln-input {margin-bottom: 0;}
 }
+#sln-salon.sln-salon--s .sln-input {
+  .sln-input-group {
+  	padding-bottom: 2em;
+  	input {
+	  	&[type="text"] {margin-bottom: 0;}
+	  }
+  }
+}
 
 // LABELS GENERAL
 #sln-salon label {

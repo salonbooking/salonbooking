@@ -3,9 +3,9 @@
   font-size: 1px;
   @extend %absolute-centering;
   &:after {
-    @include font-icon(100em);
+    @include font-icon(75em);
     display: block;
-    content: "\f013";
+    content: "\f1ce";
     @extend %text-color--emphasis;
     -webkit-animation: wait 2s infinite linear;
     animation: wait 2s infinite linear;
