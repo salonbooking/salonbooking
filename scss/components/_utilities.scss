@@ -14,10 +14,25 @@
 
 @-webkit-keyframes wait {
   0% {
+    -moz-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wait {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
@@ -33,13 +48,14 @@
     @extend %text-color--emphasis;
     margin-bottom: 0;
     .sln-btn.sln-btn--big,
-    .sln-btn.sln-btn--medium {
+    .sln-btn.sln-btn--medium,
+    .sln-btn--noheight {
       display: block;
       margin-bottom: 0;
       font-weight: bold;
       text-align: left;
-      line-height: 2.9em;
-      height: 2.9em;
+      //line-height: 2.9em;
+      //height: 2.9em;
       @extend %sln-textsize--base;
       padding-left: calc(16.66666667% + 15px);
       @include bp(tablet) {
@@ -47,7 +63,8 @@
       }
       &:after {
         //@extend %sln-textsize--base;
-        line-height: 3em;
+        @extend %absolute-vertical-centering;
+        bottom: initial;
         content: '\f068';
         left: 12px;
       }
@@ -70,7 +87,8 @@
     }
     &.collapsed {
       margin-bottom: 1em;
-      .sln-btn.sln-btn--medium {
+      .sln-btn.sln-btn--medium,
+      .sln-btn--noheight {
         &:after {content: '\f067';}
         &:hover {
           &:after {content: '\f078';}

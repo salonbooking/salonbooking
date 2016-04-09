@@ -42,12 +42,13 @@
   @include bp(tablet) {
     padding: .6rem 1.6rem .6rem 3.6rem;
     text-align: left;
-    &:not(.sln-alert--topicon):after {
+    &:after {
       @include font-icon(2em);
       display: inline-block;
       content: "\f05a";
       position: absolute;
       top: 50%;
+      left: .4em;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
@@ -57,7 +58,14 @@
       -moz-osx-font-smoothing: grayscale;
       border-radius: 50%;
     }
-    &:after {left: .4em;}
+  }
+  &.sln-alert--topicon {
+    @include bp(tablet) {
+      &:after {
+        top: .8em;
+        left: .4em;
+      }
+    }
   }
 }
 
@@ -84,16 +92,30 @@
     height: 1.1em;
   }
   @include bp(tablet) {
-    &:not(.sln-alert--topicon):before {
+    &:before {
       top: 50%;
+      left: .6em;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
     }
-    &:before {left: .6em;}
   }
   @include bp(desktop) {
     &:before {width: .9em; height: .9em;}
+  }
+  &.sln-alert--topicon {
+    @include bp(tablet) {
+      &:before {
+        top: 1.2em;
+        left: .65em;
+      }
+    }
+    @include bp(desktop) {
+      &:before {
+        top: 1em;
+        left: .6em;
+      }
+    }
   }
 }
 .sln-alert.sln-alert-medium {
@@ -138,10 +160,25 @@
 }
 @-webkit-keyframes wait {
   0% {
+    -moz-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wait {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }

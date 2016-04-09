@@ -42,6 +42,7 @@
 .sln-btn--noheight {
   @extend %sln-textsize--small;
 }
+.sln-btn.sln-btn--noheight,
 a.sln-btn.sln-btn--noheight,
 .sln-btn.sln-btn--noheight input,
 .sln-btn.sln-btn--noheight button,
@@ -53,6 +54,7 @@ a.sln-btn.sln-btn--noheight,
   bottom: initial;
   left: initial;
   padding: 1em .5em;
+  @extend %sln-textsize--small;
   //line-height: 4em;
   //height:  4em;
   text-transform: uppercase;
@@ -157,6 +159,15 @@ a.sln-btn.sln-btn--noheight,
       }
     }
     &.sln-btn--medium {
+      padding-right: 1em;
+      padding-left: 2em;
+      &:after {
+        @include font-icon(1em);
+        padding: 0 .5em;
+        line-height: 3.6em;
+      }
+    }
+    &.sln-btn--noheight {
       padding-right: 1em;
       padding-left: 2em;
       &:after {
