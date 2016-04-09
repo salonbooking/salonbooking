@@ -474,7 +474,8 @@ th {
   #sln-salon h5,
   #sln-salon h6 {
     font-family: "Open sans", serif;
-    box-shadow: none; }
+    box-shadow: none;
+    font-style: normal; }
   #sln-salon p,
   #sln-salon ul,
   #sln-salon li {
