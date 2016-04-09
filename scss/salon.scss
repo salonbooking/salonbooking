@@ -74,6 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 		border-top-style: dashed;
 		border-top-width: .05em;
 		@extend %bd-color--contrast--alpha;
+		background-image: none;
 	}
 }
 .sln-steps-price {
@@ -143,6 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 		border-top-style: dashed;
 		border-top-width: .05em;
 		@extend %bd-color--contrast--alpha;
+		background-image: none;
 	}
 	&:last-child {
 		hr {

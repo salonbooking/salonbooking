@@ -1,4 +1,5 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -463,6 +464,31 @@ th {
 .datetimepicker.sln-datetimepicker table tr td span.month,
 .datetimepicker.sln-datetimepicker table tr td span.year, .datetimepicker.sln-datetimepicker .switch, .datetimepicker.sln-datetimepicker .prev, .datetimepicker.sln-datetimepicker .next, .datetimepicker.sln-datetimepicker .today {
   border-color: #e4e7e7 !important; }
+
+#sln-salon {
+  font-family: "Open sans", serif; }
+  #sln-salon h1,
+  #sln-salon h2,
+  #sln-salon h3,
+  #sln-salon h4,
+  #sln-salon h5,
+  #sln-salon h6 {
+    font-family: "Open sans", serif;
+    box-shadow: none; }
+  #sln-salon p,
+  #sln-salon ul,
+  #sln-salon li {
+    font-family: "Open sans", serif;
+    box-shadow: none; }
+  #sln-salon button,
+  #sln-salon input,
+  #sln-salon optgroup,
+  #sln-salon select,
+  #sln-salon textarea {
+    font-family: "Open sans", serif;
+    box-shadow: none; }
+  #sln-salon a {
+    box-shadow: none; }
 
 #sln-salon h1, .sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
 #sln-salon .alert:after, .sln-alert--warning:before,
@@ -1992,7 +2018,8 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   margin: .6em 0;
   border: 0;
   border-top-style: dashed;
-  border-top-width: .05em; }
+  border-top-width: .05em;
+  background-image: none; }
 
 .sln-steps-price {
   display: block; }
@@ -2048,7 +2075,8 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     margin: 2em 0 0 0;
     border: 0;
     border-top-style: dashed;
-    border-top-width: .05em; }
+    border-top-width: .05em;
+    background-image: none; }
   .sln-attendant:last-child hr {
     border-top-style: solid;
     border-top-width: .16em;

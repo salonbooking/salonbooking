@@ -1,4 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
 $fontfamily--main:"Open sans", serif;
+#sln-salon  {
+  font-family: $fontfamily--main;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $fontfamily--main;
+    box-shadow: none;
+  }
+  p,
+  ul,
+  li  {
+    font-family: $fontfamily--main;
+    box-shadow: none;
+  }
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: $fontfamily--main;
+    box-shadow: none;
+  }
+  a {box-shadow: none;}
+}
 // SIZES
 @mixin font-bigger($fontSize: null, $linHeight: null) {
   font-family: $fontfamily--main;
