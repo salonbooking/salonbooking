@@ -28,46 +28,44 @@
 }
 
 // SIZES
-#sln-salon .sln-btn--big {@extend %sln-textsize--base;}
-.sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
-  display: inline-block;
-  padding: 0 .5em;
-  line-height: 4em;
-  height:  4em;
-  text-transform: uppercase;
-  @extend %sln-textsize--base;
-  &.sln-btn--block {display: block;}
-}
-.sln-btn--noheight {
-  @extend %sln-textsize--small;
-}
-.sln-btn.sln-btn--noheight,
-a.sln-btn.sln-btn--noheight,
-.sln-btn.sln-btn--noheight input,
-.sln-btn.sln-btn--noheight button,
-.sln-btn.sln-btn--noheight a {
-  display: inline-block;
-  position: relative;
-  top: initial;
-  right: initial;
-  bottom: initial;
-  left: initial;
-  padding: 1em .5em;
-  @extend %sln-textsize--small;
-  //line-height: 4em;
-  //height:  4em;
-  text-transform: uppercase;
-  &.sln-btn--block {display: block;}
-}
-#sln-salon .sln-btn--medium {@extend %sln-textsize--small;}
-.sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-btn--big a {
-  display: inline-block;
-  padding: 0 .5em;
-  line-height: 3.6em;
-  height:  3.6em;
-  text-transform: uppercase;
-  @extend %sln-textsize--base;
-  &.sln-btn--block {display: block;}
+#sln-salon {
+  .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
+    display: inline-block;
+    padding: 0 .5em;
+    line-height: 4em;
+    height:  4em;
+    text-transform: uppercase;
+    @extend %sln-textsize--base;
+    &.sln-btn--block {display: block;}
+  }
+  .sln-btn.sln-btn--noheight,
+  a.sln-btn.sln-btn--noheight,
+  .sln-btn.sln-btn--noheight input,
+  .sln-btn.sln-btn--noheight button,
+  .sln-btn.sln-btn--noheight a {
+    display: inline-block;
+    position: relative;
+    top: initial;
+    right: initial;
+    bottom: initial;
+    left: initial;
+    padding: 1em .5em;
+    @extend %sln-textsize--small;
+    //line-height: 4em;
+    //height:  4em;
+    text-transform: uppercase;
+    &.sln-btn--block {display: block;}
+  }
+  .sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-btn--big a {
+    display: inline-block;
+    padding: 0 .5em;
+    line-height: 3.6em;
+    height:  3.6em;
+    text-transform: uppercase;
+    @extend %sln-textsize--small;
+    &.sln-btn--block {display: block;}
+  }
+// #sln-salon // END
 }
 .sln-btn--minwidth {min-width: 10em;}
 .sln-btn--fullwidth {width: 100%;}

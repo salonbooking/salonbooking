@@ -24,15 +24,13 @@
 	&.sln-salon--l {max-width: 900px;}
 	&.sln-salon--m {max-width: 600px;}
 	&.sln-salon--s {max-width: 400px;}
-
+	h1, h2, h3, h4, h5, h6 {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
 	> form {
 		margin-top: 2em;
 		h2 {margin-bottom: 1em;}
-		.sln-service-list h3,
-		.sln-attendant-list h3 {
-			margin-top: 0;
-			margin-bottom: 0;
-		}
 	}
 	@include bp(tablet) {
 		padding: 2em;
