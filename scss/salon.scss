@@ -28,6 +28,11 @@
 	> form {
 		margin-top: 2em;
 		h2 {margin-bottom: 1em;}
+		.sln-service-list h3,
+		.sln-attendant-list h3 {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
 	}
 	@include bp(tablet) {
 		padding: 2em;
@@ -113,6 +118,13 @@ h1, h2, h3, h4, h5, h6 {
 .sln-data-val {text-align: right;}
 #sln-salon.sln-salon--s .sln-data-val {text-align: left; padding-top: .2em; padding-bottom: .6em;}
 // GENERAL // END
+
+// DATE
+.sln-salon--l.sln-step-date {
+	.sln-box--main:last-child {margin-bottom: 0;}
+}
+
+// DATE // END
 
 // SERVICES
 .sln-service {
@@ -439,8 +451,8 @@ h1, h2, h3, h4, h5, h6 {
 // TEMPORARY STUFF
 .title_outer.title_without_animation {display: none;}
 .content .content_inner > .container {
-	padding-top: 10rem;
-	padding-bottom: 20rem;
+	padding-top: 10em;
+	padding-bottom: 20em;
 	background-color: none !important;
 	background-image: url('http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg');
 	background-size: cover;

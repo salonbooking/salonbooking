@@ -3,8 +3,8 @@
   display: inline-block;
   position: relative;
   border: none;
-  padding: 4rem 1rem .6rem 1rem;
-  margin: 1rem 0;
+  padding: 2.6em 1em .6em 1em;
+  margin: 1em 0;
   @extend %sln-textsize--base;
   @extend %text-color--contrast;
   text-align: center;
@@ -40,7 +40,7 @@
     }
   }
   @include bp(tablet) {
-    padding: .6rem 1.6rem .6rem 3.6rem;
+    padding: .6em 1.6em .6em 3em;
     text-align: left;
     &:after {
       @include font-icon(2em);
@@ -120,8 +120,8 @@
 }
 .sln-alert.sln-alert-medium {
   display: block;
-  padding: .5rem 1.6rem .5rem 3.2rem;
-  margin: .4rem 0;
+  padding: .5em 1.6em .5em 3.2em;
+  margin: .4em 0;
   @extend %sln-textsize--small;
   font-weight: bold;
   text-align: left;

@@ -228,7 +228,6 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             </div></div></div>
         <?php endif ?>
         <div class="clearfix"></div>
-        <div class="col-md-12"><hr></div>
     </div>
     <?php
     // IF SIZE 400 // END

@@ -47,6 +47,7 @@
     @extend %sln-textsize--base;
     @extend %text-color--emphasis;
     margin-bottom: 0;
+    border: none;
     .sln-btn.sln-btn--big,
     .sln-btn.sln-btn--medium,
     .sln-btn--noheight {

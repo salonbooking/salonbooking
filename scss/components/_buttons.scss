@@ -28,15 +28,14 @@
 }
 
 // SIZES
-.sln-btn--big {
-  @extend %sln-textsize--small;
-}
+#sln-salon .sln-btn--big {@extend %sln-textsize--base;}
 .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a {
   display: inline-block;
   padding: 0 .5em;
   line-height: 4em;
   height:  4em;
   text-transform: uppercase;
+  @extend %sln-textsize--base;
   &.sln-btn--block {display: block;}
 }
 .sln-btn--noheight {
@@ -60,15 +59,14 @@ a.sln-btn.sln-btn--noheight,
   text-transform: uppercase;
   &.sln-btn--block {display: block;}
 }
-.sln-btn--medium {
-  @extend %sln-textsize--small;
-}
+#sln-salon .sln-btn--medium {@extend %sln-textsize--small;}
 .sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-btn--big a {
   display: inline-block;
   padding: 0 .5em;
   line-height: 3.6em;
   height:  3.6em;
   text-transform: uppercase;
+  @extend %sln-textsize--base;
   &.sln-btn--block {display: block;}
 }
 .sln-btn--minwidth {min-width: 10em;}
@@ -151,7 +149,7 @@ a.sln-btn.sln-btn--noheight,
       z-index: 200;
     }
     &.sln-btn--big {
-      padding-right: rem(64px);
+      padding-right: 2.6em;
       &:after {
         @include font-icon(1.2em);
         padding: 0 1em;
