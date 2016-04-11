@@ -211,14 +211,14 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             </div>
         <!-- .sln-service-check // END -->
                 </div>
-                <div class="col-xs-10 col-sm-7">
+                <div class="col-xs-10 col-sm-6">
                     <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>">
                         <h3 class="sln-steps-name sln-service-name"><?php echo $service->getName(); ?></h3>
                     </label>
                 <!-- .sln-service-info // END -->
                 </div>
                 <div class="col-xs-2 visible-xs-block"></div>
-                <h3 class="col-xs-10 col-sm-3 sln-steps-price sln-service-price">
+                <h3 class="col-xs-10 col-sm-4 sln-steps-price sln-service-price">
                     <?php echo $plugin->format()->money($service->getPrice())?>
                 <!-- .sln-service-price // END -->
                 </h3>

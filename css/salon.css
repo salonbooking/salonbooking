@@ -502,23 +502,27 @@ th {
       font-size: 1.6em; } }
 
 #sln-salon h2 {
-  font-size: 1.4em; }
+  font-size: 1.4em;
+  line-height: 1.8em; }
 
 #sln-salon h3 {
-  font-size: 1.2em; }
+  font-size: 1.2em;
+  line-height: 1.6em; }
 
 #sln-salon p, #sln-salon .salon-step-title, #sln-salon .sln-panel .sln-panel-heading, #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--big,
 #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium,
-#sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, .sln-alert,
+#sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, #sln-salon .sln-btn--big, .sln-btn--big, .sln-btn--big input, .sln-btn--big button, .sln-btn--big a, .sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-alert,
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
-  font-size: 1em; }
+  font-size: 1em;
+  line-height: 1.4em; }
 
-.sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--big, .sln-btn--noheight, .sln-btn.sln-btn--noheight,
+.sln-input label, .sln-checkbox label, .sln-radiobox label, .sln-btn--noheight, .sln-btn.sln-btn--noheight,
 a.sln-btn.sln-btn--noheight,
 .sln-btn.sln-btn--noheight input,
 .sln-btn.sln-btn--noheight button,
-.sln-btn.sln-btn--noheight a, .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
-  font-size: .8em; }
+.sln-btn.sln-btn--noheight a, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
+  font-size: .8em;
+  line-height: 4em; }
 
 #sln-salon {
   font-size: 18px; }
@@ -543,6 +547,7 @@ a.sln-btn.sln-btn--noheight,
   .sln-loader:after {
     font-family: "FontAwesome";
     font-size: 75em;
+    line-height: 0;
     display: block;
     content: "\f1ce";
     -webkit-animation: wait 2s infinite linear;
@@ -572,7 +577,8 @@ a.sln-btn.sln-btn--noheight,
   margin-bottom: 2em; }
 
 #sln-salon .sln-panel .sln-panel-heading {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  border: none; }
   #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--big,
   #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium,
   #sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight {
@@ -1017,7 +1023,8 @@ a.sln-btn.sln-btn--noheight,
   .datetimepicker.sln-datetimepicker .prev:before, .datetimepicker.sln-datetimepicker .next:before {
     display: block;
     font-family: "FontAwesome";
-    font-size: 60; }
+    font-size: 60;
+    line-height: 0; }
   .datetimepicker.sln-datetimepicker .prev i, .datetimepicker.sln-datetimepicker .next i {
     display: none; }
 
@@ -1040,6 +1047,7 @@ a.sln-btn.sln-btn--noheight,
   .sln_datepicker:after, .sln_timepicker:after {
     font-family: "FontAwesome";
     font-size: 1.6em;
+    line-height: 0;
     display: inline-block;
     right: .4em;
     font-style: normal;
@@ -1060,6 +1068,7 @@ a.sln-btn.sln-btn--noheight,
   display: inline-block;
   font-family: "FontAwesome";
   font-size: 60;
+  line-height: 0;
   font-style: normal;
   font-weight: normal;
   line-height: 3.33333rem;
@@ -1184,6 +1193,7 @@ a.sln-btn.sln-btn--noheight,
     opacity: 0;
     font-family: "FontAwesome";
     font-size: 1.4em;
+    line-height: 0;
     line-height: 1.2em;
     top: .05em;
     left: .15em;
@@ -1199,7 +1209,7 @@ a.sln-btn.sln-btn--noheight,
 
 .sln-checkbox label span {
   display: inline-block;
-  padding-left: 0.55556rem;
+  padding-left: .6em;
   font-weight: 700; }
 
 .sln-radiobox input {
@@ -1396,6 +1406,7 @@ a.sln-btn.sln-btn--noheight,
     text-align: center;
     font-family: "FontAwesome";
     font-size: 1em;
+    line-height: 0;
     font-style: normal;
     font-weight: normal;
     line-height: 4em;
@@ -1407,10 +1418,11 @@ a.sln-btn.sln-btn--noheight,
     transition: background-color 200ms;
     z-index: 200; }
   .sln-btn--icon.sln-btn--big {
-    padding-right: 3.55556rem; }
+    padding-right: 2.6em; }
     .sln-btn--icon.sln-btn--big:after {
       font-family: "FontAwesome";
       font-size: 1.2em;
+      line-height: 0;
       padding: 0 1em;
       line-height: 3.4em; }
   .sln-btn--icon.sln-btn--medium {
@@ -1419,6 +1431,7 @@ a.sln-btn.sln-btn--noheight,
     .sln-btn--icon.sln-btn--medium:after {
       font-family: "FontAwesome";
       font-size: 1em;
+      line-height: 0;
       padding: 0 .5em;
       line-height: 3.6em; }
   .sln-btn--icon.sln-btn--noheight {
@@ -1427,6 +1440,7 @@ a.sln-btn.sln-btn--noheight,
     .sln-btn--icon.sln-btn--noheight:after {
       font-family: "FontAwesome";
       font-size: 1em;
+      line-height: 0;
       padding: 0 .5em;
       line-height: 3.6em; }
   .sln-btn--icon.sln-btn--icon--left {
@@ -1451,14 +1465,15 @@ a.sln-btn.sln-btn--noheight,
   display: inline-block;
   position: relative;
   border: none;
-  padding: 4rem 1rem .6rem 1rem;
-  margin: 1rem 0;
+  padding: 2.6em 1em .6em 1em;
+  margin: 1em 0;
   text-align: center;
   border-radius: 0; }
   .sln-alert:after,
   #sln-salon .alert:after {
     font-family: "FontAwesome";
     font-size: 2em;
+    line-height: 0;
     display: inline-block;
     content: "\f05a";
     position: absolute;
@@ -1483,12 +1498,13 @@ a.sln-btn.sln-btn--noheight,
   @media only screen and (min-width: 768px) {
     .sln-alert,
     #sln-salon .alert {
-      padding: .6rem 1.6rem .6rem 3.6rem;
+      padding: .6em 1.6em .6em 3em;
       text-align: left; }
       .sln-alert:after,
       #sln-salon .alert:after {
         font-family: "FontAwesome";
         font-size: 2em;
+        line-height: 0;
         display: inline-block;
         content: "\f05a";
         position: absolute;
@@ -1556,8 +1572,8 @@ a.sln-btn.sln-btn--noheight,
 
 .sln-alert.sln-alert-medium {
   display: block;
-  padding: .5rem 1.6rem .5rem 3.2rem;
-  margin: .4rem 0;
+  padding: .5em 1.6em .5em 3.2em;
+  margin: .4em 0;
   font-weight: bold;
   text-align: left; }
   .sln-alert.sln-alert-medium:after {
@@ -1992,6 +2008,10 @@ a.sln-btn.sln-btn--noheight,
     margin-top: 2em; }
     #sln-salon > form h2 {
       margin-bottom: 1em; }
+    #sln-salon > form .sln-service-list h3,
+    #sln-salon > form .sln-attendant-list h3 {
+      margin-top: 0;
+      margin-bottom: 0; }
   @media only screen and (min-width: 768px) {
     #sln-salon {
       padding: 2em; } }
@@ -2054,6 +2074,9 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   text-align: left;
   padding-top: .2em;
   padding-bottom: .6em; }
+
+.sln-salon--l.sln-step-date .sln-box--main:last-child {
+  margin-bottom: 0; }
 
 .sln-service {
   margin-bottom: 4em; }
@@ -2296,8 +2319,8 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   display: none; }
 
 .content .content_inner > .container {
-  padding-top: 10rem;
-  padding-bottom: 20rem;
+  padding-top: 10em;
+  padding-bottom: 20em;
   background-color: none !important;
   background-image: url("http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg");
   background-size: cover; }
