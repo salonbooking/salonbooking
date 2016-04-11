@@ -108,11 +108,33 @@ $fontfamily--main:"Open sans", serif;
   font-size: 1.4em;
   @include bp(desktop) {font-size: 1.6em;}
 }
-%sln-textsize--big {font-size: 1.4em; line-height: 1.8em;}
-%sln-textsize--medium {font-size: 1.2em; line-height: 1.6em;}
-%sln-textsize--base {font-size: 1em; line-height: 1.4em;}
-%sln-textsize--small {font-size: .8em; line-height: 4em;}
-%sln-textsize--smaller {font-size: .6em; line-height: 1.4em;}
+%sln-textsize--big--noheight {font-size: 1.4em;}
+%sln-textsize--medium--noheight {font-size: 1.2em;}
+%sln-textsize--base--noheight {font-size: 1em;}
+%sln-textsize--small--noheight {font-size: .8em;}
+%sln-textsize--smaller--noheight {font-size: .6em;}
+
+%sln-textsize--big {
+  @extend %sln-textsize--big--noheight;
+  line-height: 1.8em;
+}
+%sln-textsize--medium {
+  @extend %sln-textsize--medium--noheight;
+  line-height: 1.6em;
+}
+%sln-textsize--base {
+  @extend %sln-textsize--base--noheight;
+  line-height: 1.4em;
+}
+%sln-textsize--small {
+  @extend %sln-textsize--small--noheight;
+  line-height: 4em;
+}
+%sln-textsize--smaller {
+  @extend %sln-textsize--smaller--noheight;
+  line-height: 1.4em;
+}
+
 @mixin textsize($textsize: null) {
   @if $textsize == bigger {
     @extend %sln-textsize--bigger;

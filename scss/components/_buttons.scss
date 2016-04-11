@@ -56,14 +56,19 @@
     text-transform: uppercase;
     &.sln-btn--block {display: block;}
   }
-  .sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-btn--big a {
+  .sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-btn--medium a {
     display: inline-block;
     padding: 0 .5em;
-    line-height: 3.6em;
+    @extend %sln-textsize--small--noheight;
+    line-height: 4.6em;
+    font-weight: normal;
     height:  3.6em;
     text-transform: uppercase;
-    @extend %sln-textsize--small;
     &.sln-btn--block {display: block;}
+    &.sln-btn--icon--left {
+      padding-right: 1em;
+      padding-left: 2em;
+    }
   }
 // #sln-salon // END
 }
