@@ -4,6 +4,8 @@ abstract class SLN_Wrapper_Abstract
 {
     protected $object;
 
+    abstract public function getPostType();
+
     function __construct($object)
     {
         if (!is_object($object)) {
@@ -14,10 +16,57 @@ abstract class SLN_Wrapper_Abstract
 
     function getId()
     {
-        if($this->object)
+        if ($this->object) {
             return $this->object->ID;
+        }
     }
-    public function isEmpty(){
+
+    public function isEmpty()
+    {
         return empty($this->object);
+    }
+
+    public function getMeta($key)
+    {
+        $pt = $this->getPostType();
+
+        return apply_filters("$pt.$key.get", get_post_meta($this->getId(), "_{$pt}_$key", true));
+    }
+
+    public function setMeta($key, $value)
+    {
+        $pt = $this->getPostType();
+        update_post_meta($this->getId(), "_{$pt}_$key", apply_filters("$pt.$key.set", $value));
+    }
+
+    public function getStatus()
+    {
+        return $this->object->post_status;
+    }
+
+    public function hasStatus($status)
+    {
+        return SLN_Func::has($this->getStatus(), $status);
+    }
+
+    /**
+     * @param $status
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $post = array();
+        $post['ID'] = $this->getId();
+        $post['post_status'] = $status;
+        wp_update_post($post);
+
+        return $this;
+    }
+
+    public function getTitle()
+    {
+        if ($this->object) {
+            return $this->object->post_title;
+        }
     }
 }

@@ -25,7 +25,7 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
             'sln_services' => __('Skills', 'salon-booking-system'),
             'sln_email' => __('Email', 'salon-booking-system'),
             'sln_phone' => __('Telephone', 'salon-booking-system'),
-            'sln_days_off' => __('Days off', 'salon-booking-system'),
+            'sln_days_off' => __('Availability', 'salon-booking-system'),
         );
 //        return array_merge(
 //            $columns,
@@ -37,25 +37,18 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
 
     public function manage_column($column, $post_id)
     {
+        $obj = $this->getPlugin()->createAttendant($post_id);
         switch ($column) {
             case 'sln_email':
-                echo get_post_meta($post_id, '_sln_attendant_email', true);
+                echo $obj->getEmail();
                 break;
             case 'sln_phone':
-                echo get_post_meta($post_id, '_sln_attendant_phone', true);
+                echo $obj->getPhone();
                 break;
             case 'sln_days_off':
-                $days = SLN_Func::getDays();
-                $new_days = array();
-                foreach (get_post_meta($post_id) as $key => $meta) {
-                    preg_match('#^_sln_attendant_notav_([0-9]+)$#', $key, $matches);
-                    if (isset($matches[1]))
-                        $new_days[] = $days[$matches[1]];
-                }
-                echo implode(', ', $new_days);
+                echo implode('<br/>',$obj->getAvailabilityItems()->toArray());
                 break;
             case 'sln_services':
-                $obj = $this->getPlugin()->createAttendant($post_id);
                 if($obj->hasAllServices()){
                     echo __("All", 'salon-booking-system');
                 }else{

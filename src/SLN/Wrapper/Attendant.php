@@ -2,115 +2,78 @@
 
 class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
 {
-    public function __construct($object) {
-        if (!empty($object)) {
-            parent::__construct($object);
-        }
+    const _CLASS = 'SLN_Wrapper_Attendant';
+    private $availabilityItems;
+
+    public function getPostType()
+    {
+        return SLN_Plugin::POST_TYPE_ATTENDANT;
     }
 
     function getNotAvailableOn($key)
     {
         $post_id = $this->getId();
-        $ret     = apply_filters(
-            'sln_attendant_notav_' . $key,
-            get_post_meta($post_id, '_sln_attendant_notav_' . $key, true)
+        $ret = apply_filters(
+            'sln_attendant_notav_'.$key,
+            get_post_meta($post_id, '_sln_attendant_notav_'.$key, true)
         );
-        $ret     = empty($ret) ? false : ($ret ? true : false);
+        $ret = empty($ret) ? false : ($ret ? true : false);
 
         return $ret;
     }
 
-    function getEmail(){
-        return apply_filters(
-            'sln_attendant_email',
-            get_post_meta($this->getId(), '_sln_attendant_email', true)
-        );
-    }
-
-    function getPhone(){
-        return apply_filters(
-            'sln_attendant_phone',
-            get_post_meta($this->getId(), '_sln_attendant_phone', true)
-        );
-    }
-
-
-    function getNotAvailableFrom()
+    function getEmail()
     {
-        return $this->getNotAvailableTime('from');
+        return $this->getMeta('email');
     }
 
-    function getNotAvailableTo()
+    function getPhone()
     {
-        return $this->getNotAvailableTime('to');
+        return $this->getMeta('phone');
     }
+
 
     function isNotAvailableOnDate(SLN_DateTime $date)
     {
-        $key              = array_search(SLN_Func::getDateDayName($date), SLN_Func::getDays());
-        $notAvailableDay  = $this->getNotAvailableOn($key);
-        $time             = new SLN_DateTime('1970-01-01 ' . $date->format('H:i'));
-        $notAvailableTime = $this->getNotAvailableFrom()
-            && $this->getNotAvailableFrom() <= $time
-            && $this->getNotAvailableTo()
-            && $this->getNotAvailableTo() >= $time;
-
-        return $notAvailableDay && $notAvailableTime;
+        return !$this->getAvailabilityItems()->isValidDatetime($date);
     }
 
-    function getNotAvailableTime($key)
+    /**
+     * @return SLN_Helper_AvailabilityItems
+     */
+    function getAvailabilityItems()
     {
-        $post_id = $this->getId();
-        $ret     = apply_filters(
-            'sln_attendant_notav_' . $key,
-            get_post_meta($post_id, '_sln_attendant_notav_' . $key, true)
-        );
-        if($key == 'to' && $ret == '00:00')
-            $ret = '23:59';
-        $ret     = SLN_Func::filter($ret, 'time');
-
-        return new DateTime('1970-01-01 ' . $ret);
+        if (!isset($this->availabilityItems)) {
+            $this->availabilityItems = new SLN_Helper_AvailabilityItems($this->getMeta('availabilities'));
+        }
+        return $this->availabilityItems;
     }
 
     public function getNotAvailableString()
     {
-        $ret = array();
-        foreach (SLN_Func::getDays() as $k => $day) {
-            if ($this->getNotAvailableOn($k)) {
-                $ret[] = $day;
-            }
-        }
-        $ret  = $ret ? __('on ', 'salon-booking-system') . implode(', ', $ret) : '';
-        $from = $this->getNotAvailableFrom()->format('H:i');
-        $to   = $this->getNotAvailableTo()->format('H:i');
-        if ($from != '00:00') {
-            $ret .= __(' from ', 'salon-booking-system') . $from;
-        }
-        if ($to != '00:00') {
-            $ret .= __(' to ', 'salon-booking-system') . $to;
-        }
-
-        return $ret;
+        return '(Available '.implode('-', $this->getAvailabilityItems()->toArray()).')';
     }
 
     public function getServicesIds()
     {
-        $post_id = $this->getId();
-        $ret     = apply_filters('sln_attendant_services', get_post_meta($post_id, '_sln_attendant_services', true));
-        if(is_array($ret))
+        $ret = $this->getMeta('services');
+        if (is_array($ret)) {
             $ret = array_unique($ret);
+        }
+
         return empty($ret) ? array() : $ret;
     }
 
     public function getServices()
     {
         $ret = array();
-        foreach($this->getServicesIds() as $id){
+        foreach ($this->getServicesIds() as $id) {
             $tmp = new SLN_Wrapper_Service($id);
-            if(!$tmp->isEmpty()){
+            if (!$tmp->isEmpty()) {
                 $ret[] = $tmp;
             }
         }
+
         return $ret;
     }
 
@@ -127,35 +90,16 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
 
     public function getName()
     {
-        if (!$this->isEmpty()) {
-            return $this->object->post_title;
-        }
-        else {
-            return 'n.d.';
-        }
+        return $this->getTitle();
     }
 
     public function getContent()
     {
-        if (!$this->isEmpty()) {
-            return $this->object->post_excerpt;
-        }
-        else {
-            return 'n.d.';
-        }
+        return $this->object->post_excerpt;
     }
 
-    function getId()
+    public function __toString()
     {
-        if (!$this->isEmpty()) {
-            return $this->object->ID;
-        }
-        else {
-            return null;
-        }
-    }
-
-    public function __toString(){
         return $this->getName();
     }
 }

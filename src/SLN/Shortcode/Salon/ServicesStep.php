@@ -6,7 +6,7 @@ class SLN_Shortcode_Salon_ServicesStep extends SLN_Shortcode_Salon_Step
 
     protected function dispatchForm()
     {
-        $bb     = $this->getPlugin()->getBookingBuilder();
+        $bb = $this->getPlugin()->getBookingBuilder();
         $values = isset($_POST['sln']) ? $_POST['sln'] : array();
         foreach ($this->getServices() as $service) {
             if (isset($values['services']) && isset($values['services'][$service->getId()])) {
@@ -31,12 +31,9 @@ class SLN_Shortcode_Salon_ServicesStep extends SLN_Shortcode_Salon_Step
     public function getServices()
     {
         if (!isset($this->services)) {
-            $this->services = array();
-            foreach ($this->getPlugin()->getServicesOrderByExec() as $service) {
-                if (!$service->isSecondary()) {
-                    $this->services[] = $service;
-                }
-            }
+            /** @var SLN_Repository_ServiceRepository $repo */
+            $repo = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+            $this->services = $repo->getAllPrimary();
         }
 
         return $this->services;

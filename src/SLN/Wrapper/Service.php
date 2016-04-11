@@ -2,11 +2,19 @@
 
 class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
 {
+    const _CLASS = 'SLN_Wrapper_Service';
+
+    private $availabilityItems;
+    
+    public function getPostType()
+    {
+        return SLN_Plugin::POST_TYPE_SERVICE;
+    }
+
     function getPrice()
     {
-        $post_id = $this->getId();
-        $ret     = apply_filters('sln_service_price', get_post_meta($post_id, '_sln_service_price', true));
-        $ret     = empty($ret) ? 0 : floatval($ret);
+        $ret = $this->getMeta('price');
+        $ret = empty($ret) ? 0 : floatval($ret);
 
         return $ret;
     }
@@ -14,38 +22,35 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
 
     function getUnitPerHour()
     {
-        $post_id = $this->getId();
-        $ret     = apply_filters('sln_service_unit', get_post_meta($post_id, '_sln_service_unit', true));
-        $ret     = empty($ret) ? 0 : intval($ret);
+        $ret = $this->getMeta('unit');
+        $ret = empty($ret) ? 0 : intval($ret);
 
         return $ret;
     }
 
     function getDuration()
     {
-        $post_id = $this->getId();
-        $ret     = apply_filters('sln_service_duration', get_post_meta($post_id, '_sln_service_duration', true));
-        if(empty($ret)){
+        $ret = $this->getMeta('duration');
+        if (empty($ret)) {
             $ret = '00:00';
         }
-        $ret     = SLN_Func::filter($ret, 'time');
-        return new SLN_DateTime('1970-01-01 ' . $ret);
+        $ret = SLN_Func::filter($ret, 'time');
+
+        return new SLN_DateTime('1970-01-01 '.$ret);
     }
 
 
     function isSecondary()
     {
-        $post_id = $this->getId();
-        $ret     = apply_filters('sln_service_secondary', get_post_meta($post_id, '_sln_service_secondary', true));
-        $ret     = empty($ret) ? false : ($ret ? true : false);
+        $ret = $this->getMeta('secondary');
+        $ret = empty($ret) ? false : ($ret ? true : false);
 
         return $ret;
     }
 
     function getPosOrder()
     {
-        $post_id = $this->getId();
-        $ret     = apply_filters('sln_service_order', get_post_meta($post_id, '_sln_service_order', true));
+        $ret = $this->getMeta('order');
         $ret     = empty($ret) ? 0 : $ret;
 
         return $ret;
@@ -53,9 +58,8 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
 
     function getExecOrder()
     {
-        $post_id = $this->getId();
-        $ret     = apply_filters('sln_service_exec_order', get_post_meta($post_id, '_sln_service_exec_order', true));
-        $ret     = empty($ret) || 1 > $ret || 10 < $ret ? 1 : $ret;
+        $ret = $this->getMeta('exec_order');
+        $ret = empty($ret) || 1 > $ret || 10 < $ret ? 1 : $ret;
 
         return $ret;
     }
@@ -63,37 +67,32 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
     public function getAttendantsIds()
     {
         $ret = array();
-        foreach($this->getAttendants() as $attendant) {
+        foreach ($this->getAttendants() as $attendant) {
             $ret[] = $attendant->getId();
         }
 
         return $ret;
     }
 
-	/**
+    /**
      * @return SLN_Wrapper_Attendant[]
      */
     public function getAttendants()
     {
-        $ret = array();
-        foreach(SLN_Plugin::getInstance()->getAttendants() as $attendant) {
-            $attendantServicesIds = $attendant->getServicesIds();
-            if (empty($attendantServicesIds) || in_array($this->getId(), $attendantServicesIds)) {
-                $ret[] = $attendant;
-            }
-        }
+        /** @var SLN_Repository_AttendantRepository $repo */
+        $repo = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
 
-        return $ret;
+        return $repo->findByService($this);
     }
 
     function getNotAvailableOn($key)
     {
         $post_id = $this->getId();
-        $ret     = apply_filters(
-            'sln_service_notav_' . $key,
-            get_post_meta($post_id, '_sln_service_notav_' . $key, true)
+        $ret = apply_filters(
+            'sln_service_notav_'.$key,
+            get_post_meta($post_id, '_sln_service_notav_'.$key, true)
         );
-        $ret     = empty($ret) ? false : ($ret ? true : false);
+        $ret = empty($ret) ? false : ($ret ? true : false);
 
         return $ret;
     }
@@ -111,29 +110,33 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
 
     function isNotAvailableOnDate(SLN_DateTime $date)
     {
-        $key              = array_search(SLN_Func::getDateDayName($date), SLN_Func::getDays());
-        $notAvailableDay  = $this->getNotAvailableOn($key);
-        $time             = new SLN_DateTime('1970-01-01 ' . $date->format('H:i'));
+        return !$this->getAvailabilityItems()->isValidDatetime($date);
+/*
+        $key = array_search(SLN_Func::getDateDayName($date), SLN_Func::getDays());
+        $notAvailableDay = $this->getNotAvailableOn($key);
+        $time = new SLN_DateTime('1970-01-01 '.$date->format('H:i'));
         $notAvailableTime = $this->getNotAvailableFrom()
             && $this->getNotAvailableFrom() <= $time
             && $this->getNotAvailableTo()
             && $this->getNotAvailableTo() >= $time;
 
         return $notAvailableDay && $notAvailableTime;
+*/
     }
 
     function getNotAvailableTime($key)
     {
         $post_id = $this->getId();
-        $ret     = apply_filters(
-            'sln_service_notav_' . $key,
-            get_post_meta($post_id, '_sln_service_notav_' . $key, true)
+        $ret = apply_filters(
+            'sln_service_notav_'.$key,
+            get_post_meta($post_id, '_sln_service_notav_'.$key, true)
         );
-        if($key == 'to' && $ret == '00:00')
+        if ($key == 'to' && $ret == '00:00') {
             $ret = '23:59';
-        $ret     = SLN_Func::filter($ret, 'time');
+        }
+        $ret = SLN_Func::filter($ret, 'time');
 
-        return new SLN_DateTime('1970-01-01 ' . $ret);
+        return new SLN_DateTime('1970-01-01 '.$ret);
     }
 
     public function getNotAvailableString()
@@ -144,14 +147,14 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
                 $ret[] = $day;
             }
         }
-        $ret  = $ret ? ' '.__('on ', 'salon-booking-system') .' '. implode(', ', $ret) : '';
+        $ret = $ret ? ' '.__('on ', 'salon-booking-system').' '.implode(', ', $ret) : '';
         $from = $this->getNotAvailableFrom()->format('H:i');
-        $to   = $this->getNotAvailableTo()->format('H:i');
+        $to = $this->getNotAvailableTo()->format('H:i');
         if ($from != '00:00') {
-            $ret .= ' '.__(' from ', 'salon-booking-system') . ' ' . $from;
+            $ret .= ' '.__(' from ', 'salon-booking-system').' '.$from;
         }
         if ($to != '23:59') {
-            $ret .= ' '.__(' to ', 'salon-booking-system') . ' ' . $to;
+            $ret .= ' '.__(' to ', 'salon-booking-system').' '.$to;
         }
 
         return $ret;
@@ -159,10 +162,11 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
 
     public function getName()
     {
-        if($this->object)
-        return $this->object->post_title;
-        else
-        return 'n.d.';
+        if ($this->object) {
+            return $this->object->post_title;
+        } else {
+            return 'n.d.';
+        }
     }
 
     public function getContent()
@@ -170,7 +174,19 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         return $this->object->post_excerpt;
     }
 
-    public function __toString(){
+    public function __toString()
+    {
         return $this->getName();
+    }
+
+    /**
+     * @return SLN_Helper_AvailabilityItems
+     */
+    function getAvailabilityItems()
+    {
+        if (!isset($this->availabilityItems)) {
+            $this->availabilityItems = new SLN_Helper_AvailabilityItems($this->getMeta('availability'));
+        }
+        return $this->availabilityItems;
     }
 }

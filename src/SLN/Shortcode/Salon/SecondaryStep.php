@@ -25,11 +25,10 @@ class SLN_Shortcode_Salon_SecondaryStep extends SLN_Shortcode_Salon_Step
     public function getServices()
     {
         if (!isset($this->services)) {
-            $this->services = array();
-            foreach ($this->getPlugin()->getServices() as $service) {
-                if ($service->isSecondary()) {
-                    $this->services[] = $service;
-                }
+            if (!isset($this->services)) {
+                /** @var SLN_Repository_ServiceRepository $repo */
+                $repo = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+                $this->services = $repo->getAllSecondary();
             }
         }
 

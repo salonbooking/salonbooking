@@ -308,8 +308,7 @@ class SLN_Func
         foreach ($categories as $cat) {
             foreach ($services as $s) {
                 $post_terms = get_the_terms($s->getId(), SLN_Plugin::TAXONOMY_SERVICE_CATEGORY);
-                $nu_post_terms = array();
-
+                
                 if (!empty($post_terms)) {
                     foreach ($post_terms as $post_term) {
                         if ($post_term->term_id == $cat->term_id) {

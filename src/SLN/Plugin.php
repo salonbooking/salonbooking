@@ -2,7 +2,6 @@
 
 class SLN_Plugin
 {
-
     const POST_TYPE_SERVICE = 'sln_service';
     const POST_TYPE_ATTENDANT = 'sln_attendant';
     const POST_TYPE_BOOKING = 'sln_booking';
@@ -15,14 +14,12 @@ class SLN_Plugin
     const F2 = 20;
     const DEBUG_ENABLED = 0;
     const CATEGORY_ORDER = 'sln_service_category_order';
-    const SERVICE_ORDER = '_sln_service_order';
 
     private static $instance;
     private $settings;
-    private $services;
-    private $attendants;
     private $formatter;
     private $availabilityHelper;
+    private $repositories;
     private $phpServices = array();
 
     public static function getInstance()
@@ -36,66 +33,10 @@ class SLN_Plugin
 
     public function __construct()
     {
-        $this->init();
-        if (is_admin()) {
-            $this->initAdmin();
-        }
+        $obj = new SLN_Action_Init($this);
     }
 
-    private function init()
-    {
-        add_action('init', array($this, 'action_init'));
-        add_action('admin_init', array($this, 'add_admin_caps'));
-        add_action('admin_init', array('SLN_Action_Install', 'initActions'));
-        add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
-
-        add_action('sln_sms_reminder', 'sln_sms_reminder');
-        add_action('sln_email_reminder', 'sln_email_reminder');
-        register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
-        new SLN_PostType_Booking($this, self::POST_TYPE_BOOKING);
-        new SLN_PostType_Service($this, self::POST_TYPE_SERVICE);
-        new SLN_PostType_Attendant($this, self::POST_TYPE_ATTENDANT);
-        new SLN_TaxonomyType_ServiceCategory($this, self::TAXONOMY_SERVICE_CATEGORY, array(self::POST_TYPE_SERVICE));
-    }
-
-    private function initAdmin()
-    {
-        new SLN_Metabox_Service($this, self::POST_TYPE_SERVICE);
-        new SLN_Metabox_Attendant($this, self::POST_TYPE_ATTENDANT);
-        new SLN_Metabox_Booking($this, self::POST_TYPE_BOOKING);
-        new SLN_Metabox_BookingActions($this, self::POST_TYPE_BOOKING);
-        new SLN_Admin_Customers($this);
-        new SLN_Admin_Settings($this);
-        new SLN_Admin_Calendar($this);
-        new SLN_Admin_Tools($this);
-        add_action('admin_notices', array($this, 'admin_notices'));
-        //http://codex.wordpress.org/AJAX_in_Plugins
-        add_action('wp_ajax_salon', array($this, 'ajax'));
-        add_action('wp_ajax_nopriv_salon', array($this, 'ajax'));
-        add_action('wp_ajax_saloncalendar', array($this, 'ajax'));
-        new SLN_Action_InitComments();
-    }
-    
-    public function add_admin_caps()
-    {
-        $role = get_role('administrator');
-        $role->add_cap('manage_salon');
-    }
-
-    public function action_init()
-    {
-        if (!session_id()) {
-            session_start();
-        }
-        load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME).'/languages');
-        $this->preloadFrontendScripts();
-        SLN_Shortcode_Salon::init($this);
-        SLN_Shortcode_SalonMyAccount::init($this); // algolplus
-        SLN_Shortcode_SalonMyAccount_Details::init($this); // algolplus
-        add_action( 'in_plugin_update_message-salon-booking-system/salon.php', array( 'SLN_Action_Install', 'inPluginUpdateMessage' ) );
-    }
-
-    private function preloadFrontendScripts()
+    public function preloadFrontendScripts()
     {
         if (!$this->getSettings()->get('no_bootstrap')) {
             wp_enqueue_style('salon-bootstrap', SLN_PLUGIN_URL.'/css/sln-bootstrap.css', array(), SLN_VERSION, 'all');
@@ -160,7 +101,7 @@ class SLN_Plugin
         );
     }
 
-    public function admin_enqueue_scripts()
+    public function preloadAdminScripts()
     {
         wp_enqueue_script('jqueryUi', SLN_PLUGIN_URL.'/js/select2.min.js', array('jquery'), true);
         wp_enqueue_script(
@@ -184,22 +125,24 @@ class SLN_Plugin
         return $this->settings;
     }
 
+    /**
+     * @param $attendant
+     * @return SLN_Wrapper_Attendant
+     * @throws Exception
+     */
     public function createAttendant($attendant)
     {
-        if (!empty($attendant) && is_int($attendant)) {
-            $attendant = get_post($attendant);
-        }
-
-        return new SLN_Wrapper_Attendant($attendant);
+        return $this->getRepository(self::POST_TYPE_ATTENDANT)->create($attendant);
     }
 
+    /**
+     * @param $service
+     * @return SLN_Wrapper_Service
+     * @throws Exception
+     */
     public function createService($service)
     {
-        if (is_int($service)) {
-            $service = get_post($service);
-        }
-
-        return new SLN_Wrapper_Service($service);
+        return $this->getRepository(self::POST_TYPE_SERVICE)->create($service);
     }
 
     public function createBooking($booking)
@@ -222,139 +165,6 @@ class SLN_Plugin
     public function getBookingBuilder()
     {
         return new SLN_Wrapper_Booking_Builder($this);
-    }
-
-    /**
-     * @return SLN_Wrapper_Service[]
-     */
-    public function getServices()
-    {
-        if (!isset($this->services)) {
-            $query = new WP_Query(
-                array(
-                    'post_type' => self::POST_TYPE_SERVICE,
-                    'nopaging' => true,
-                    'meta_query' => array(
-                        'relation' => 'OR',
-                        array(
-                            'key' => self::SERVICE_ORDER,
-                            'compare' => 'EXISTS',
-                        ),
-                        array(
-                            'key' => self::SERVICE_ORDER,
-                            'compare' => 'NOT EXISTS',
-                        ),
-                    ),
-                    'orderby' => self::SERVICE_ORDER,
-                    'order' => 'ASC',
-                )
-            );
-            //echo "Last SQL-Query: {$query->request}";
-            $ret = array();
-            foreach ($query->get_posts() as $p) {
-                $ret[] = $this->createService($p);
-            }
-            wp_reset_query();
-            wp_reset_postdata();
-            $this->services = $ret;
-        }
-
-        return $this->services;
-    }
-
-    /**
-     * @return SLN_Wrapper_Service[]
-     */
-    public function getServicesOrderByExec()
-    {
-        $services = $this->getServices();
-        usort($services, array($this, 'serviceCmp'));
-
-        return $services;
-    }
-
-    public function serviceCmp($a, $b)
-    {
-        /** @var SLN_Wrapper_Service $a */
-        /** @var SLN_Wrapper_Service $b */
-        // ids passed during sort inside single booking 
-        if (is_int($a)) {
-            $a = SLN_Plugin::getInstance()->createService($a);
-        }
-        if (is_int($b)) {
-            $b = SLN_Plugin::getInstance()->createService($b);
-        }
-        if (!$b) {
-            return $a;
-        }
-        if (!$a) {
-            return $b;
-        }
-        $aExecOrder = $a->getExecOrder();
-        $bExecOrder = $b->getExecOrder();
-        if ($aExecOrder != $bExecOrder) {
-            return $aExecOrder > $bExecOrder ? 1 : -1;
-        } else {
-            $aPosOrder = $a->getPosOrder();
-            $bPosOrder = $b->getPosOrder();
-            if ($aPosOrder != $bPosOrder) {
-                return $aPosOrder > $bPosOrder ? 1 : -1;
-            } elseif ($a->getId() > $b->getId()) {
-                return 1;
-            } else {
-                return -1;
-            }
-        }
-    }
-
-    /**
-     * @return SLN_Wrapper_Attendant[]
-     */
-    public function getAttendants()
-    {
-        if (!isset($this->attendants)) {
-            $query = new WP_Query(
-                array(
-                    'post_type' => self::POST_TYPE_ATTENDANT,
-                    'nopaging' => true,
-                )
-            );
-            $ret = array();
-            foreach ($query->get_posts() as $p) {
-                $ret[] = $this->createAttendant($p);
-            }
-            wp_reset_query();
-            wp_reset_postdata();
-            $this->attendants = $ret;
-        }
-
-        return $this->attendants;
-    }
-
-    public function admin_notices()
-    {
-        if (current_user_can('install_plugins')) {
-            if (isset($_GET['sln-dismiss']) && $_GET['sln-dismiss'] == 'dismiss_admin_notices') {
-                $this->getSettings()
-                    ->setNoticesDisabled(true)
-                    ->save();
-            }
-            if (!$this->getSettings()->getNoticesDisabled()) {
-                $dismissUrl = add_query_arg(array('sln-dismiss' => 'dismiss_admin_notices'));
-                echo $this->loadView('admin_notices', compact('dismissUrl'));
-            }
-            $cnt = get_option(SLN_PLUGIN::F);
-            if ($cnt > self::F1) {
-                echo $this->loadView('trial/admin_end');
-            } elseif ($cnt > self::F2) {
-                echo $this->loadView('trial/admin_near');
-            }
-        }
-    }
-
-    public function getTextDomain()
-    {
-        return self::TEXT_DOMAIN;
     }
 
     public function getViewFile($view)
@@ -463,6 +273,40 @@ class SLN_Plugin
                 FILE_APPEND | LOCK_EX
             );
         }
+    }
+
+    public function createFromPost($post)
+    {
+        if (!is_object($post)) {
+            $post = get_post($post);
+            if (!$post) {
+                throw new Exception('post not found');
+            }
+        }
+
+        return $this->getRepository($post->post_type)->create($post);
+    }
+
+    public function addRepository(SLN_Repository_AbstractRepository $repo)
+    {
+        foreach ($repo->getBindings() as $k) {
+            $this->repositories[$k] = $repo;
+        }
+    }
+
+    /**
+     * @param $binding
+     * @return AbstractRepository
+     * @throws \Exception
+     */
+    public function getRepository($binding)
+    {
+        $ret = $this->repositories[$binding];
+        if (!$ret) {
+            throw new Exception(sprintf('repository for "%s" not found', $binding));
+        }
+
+        return $ret;
     }
 
     /**

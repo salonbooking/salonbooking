@@ -4,16 +4,17 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
 {
     private $op;
 
-    public function setOp($op){
+    public function setOp($op)
+    {
         $this->op = $op;
     }
 
     protected function dispatchForm()
     {
         $plugin = $this->getPlugin();
-        $settings = $plugin->getSettings(); 
+        $settings = $plugin->getSettings();
         $bb = $plugin->getBookingBuilder();
-        if(isset($_GET['sln_booking_id']) && $_GET['sln_booking_id']){
+        if (isset($_GET['sln_booking_id']) && $_GET['sln_booking_id']) {
             $bb->clear($_GET['sln_booking_id']);
         }
         $booking = $bb->getLastBooking();
@@ -22,15 +23,16 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
         if ($mode == 'confirm') {
             $this->goToThankyou();
         } elseif ($mode == 'later') {
-            if($settings->isHidePrices())
+            if ($settings->isHidePrices()) {
                 $booking->setStatus(SLN_Enum_BookingStatus::CONFIRMED);
-            else
+            } else {
                 $booking->setStatus(SLN_Enum_BookingStatus::PAY_LATER);
+            }
             $this->goToThankyou();
         } elseif (isset($_GET['op']) || $mode) {
-            if($error = $paymentMethod->dispatchThankyou($this, $booking)){
-                $this->addError($error); 
-            }else{
+            if ($error = $paymentMethod->dispatchThankyou($this, $booking)) {
+                $this->addError($error);
+            } else {
                 $this->goToThankyou();
             }
         }
@@ -55,20 +57,23 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
             $ret,
             array(
                 'formAction' => $formAction,
-                'booking'    => $this->getPlugin()->getBookingBuilder()->getLastBooking(),
-                'confirmUrl'   => add_query_arg(
-                    array('mode' => 'confirm', 'submit_' . $this->getStep() => 1),
+                'booking' => $this->getPlugin()->getBookingBuilder()->getLastBooking(),
+                'confirmUrl' => add_query_arg(
+                    array('mode' => 'confirm', 'submit_'.$this->getStep() => 1),
                     $formAction
                 ),
-                'laterUrl'   => add_query_arg(
-                    array('mode' => 'later', 'submit_' . $this->getStep() => 1),
+                'laterUrl' => add_query_arg(
+                    array('mode' => 'later', 'submit_'.$this->getStep() => 1),
                     $formAction
                 ),
-                'payUrl'  => add_query_arg(
-                    array('mode' => $this->getPlugin()->getSettings()->getPaymentMethod(), 'submit_' . $this->getStep() => 1),
+                'payUrl' => add_query_arg(
+                    array(
+                        'mode' => $this->getPlugin()->getSettings()->getPaymentMethod(),
+                        'submit_'.$this->getStep() => 1,
+                    ),
                     $formAction
                 ),
-                'payOp'   => $this->op,
+                'payOp' => $this->op,
             )
         );
     }
@@ -84,6 +89,6 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
 
     public function isAjax()
     {
-        return defined( 'DOING_AJAX' ) && DOING_AJAX;
+        return defined('DOING_AJAX') && DOING_AJAX;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
-class SLN_Helper_AvailabilityItem
+class
+SLN_Helper_AvailabilityItem
 {
     private $data;
     private $times = array();
@@ -8,7 +9,7 @@ class SLN_Helper_AvailabilityItem
     function __construct($data)
     {
         $this->data = $data;
-        if($data){
+        if ($data) {
             if ($data['from'][0] != '00:00') {
                 $this->times[] = array(
                     strtotime($data['from'][0]),
@@ -64,13 +65,23 @@ class SLN_Helper_AvailabilityItem
     public function __toString()
     {
         $days = SLN_Func::getDays();
-        $ret  = array();
-        foreach ($this->data['days'] as $d => $v) {
-            $ret[] = $days[$d];
+        $ret = array();
+        if (isset($this->data['days'])) {
+            foreach ($this->data['days'] as $d => $v) {
+                $ret[] = $days[$d];
+            }
         }
+        $allDays = empty($ret);
         $ret = implode('-', $ret);
+        $format = SLN_Plugin::getInstance()->format();
         foreach ($this->times as $t) {
-            $ret .= sprintf(' %s/%s', $t[0], $t[1]);
+            $ret .= sprintf(' %s/%s', $format->time($t[0]), $format->time($t[1]));
+        }
+        if (empty($ret)) {
+            $ret = __('Always', 'salon-booking-system');
+        }
+        if ($allDays) {
+            $ret = __('All days', 'salon-booking-system').$ret;
         }
 
         return $ret;

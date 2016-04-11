@@ -12,7 +12,9 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
      * @return array
      */
     abstract protected function buildTimeslots();
-
+    /**
+     * @return DateTime
+     */
     abstract public function getTime($hour = null, $minutes = null);
 
 

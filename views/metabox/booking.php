@@ -5,6 +5,13 @@
  * @var SLN_Wrapper_Booking $booking
  */
 $helper->showNonce($postType);
+/** @var SLN_Repository_ServiceRepository $sRepo */
+$sRepo =  $plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+$allServices = $sRepo->getAll();
+/** @var SLN_Repository_AttendantRepository $sRepo */
+$sRepo =  $plugin->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
+$allAttendants = $sRepo->getAll();
+
 ?>
 <?php if(isset($_SESSION['_sln_booking_user_errors'])): ?>
     <div class="error">
@@ -324,7 +331,8 @@ $helper->showNonce($postType);
                 <select class="sln-select" name="_sln_booking_service_select" id="_sln_booking_service_select">
                     <option value=""><?php _e('Select a service','salon-booking-system') ?></option>
                 <?php
-                foreach ($plugin->getServicesOrderByExec() as $service) {
+
+                foreach ($allServices as $service) {
                     $servicesData[ $service->getId()] = array_merge(
                         isset($servicesData[ $service->getId() ]) ? $servicesData[ $service->getId() ] : array(),
                         array(
@@ -346,7 +354,7 @@ $helper->showNonce($postType);
                 </select>
                 <?php
                 $attendantsData = array();
-                foreach ($plugin->getAttendants() as $attendant) {
+                foreach ($allAttendants as $attendant) {
                     $attendantsData[ $attendant->getId()] = array($attendant->getName());
                 }
                 ?>

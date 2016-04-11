@@ -4,6 +4,7 @@ class SLN_Currency
 {
     private static $currencies = array(
         'AUD' => array('name' => 'Australian Dollar', 'symbol' => 'A$', 'ASCII' => 'A&#36;'),
+        'UAH' => array('name' => 'Ukrainian Hryvnia', 'symbol' => '₴', 'ASCII' => '&#8372;'),
         'BRL' => array('name' => 'Brazilian Real', 'symbol' => 'R$', 'ASCII' => 'B&#36;'),
         'CAD' => array('name' => 'Canadian Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
         'CZK' => array('name' => 'Czech Koruna', 'symbol' => 'Kč', 'ASCII' => ''),
@@ -29,7 +30,8 @@ class SLN_Currency
         'THB' => array('name' => 'Thai Baht', 'symbol' => '฿', 'ASCII' => '&#3647;'),
         'USD' => array('name' => 'U.S. Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
         'LKR' => array('name' => 'Sri Lankan Rupee', 'symbol' => '₹', 'ASCII' => '&#8377;'),
-        'INR' => array('name' => 'Indian Rupee', 'symbol' => '₹', 'ASCII' => '&#8377;')
+        'INR' => array('name' => 'Indian Rupee', 'symbol' => '₹', 'ASCII' => '&#8377;'),
+        'RUB' => array('name' => 'Russian Ruble', 'symbol' => '₽', 'ASCII' => '&#8381;'),
     );
 
     public static function getSymbol($code = 'USD')
