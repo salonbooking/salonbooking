@@ -7,7 +7,7 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
     protected $plugin;
     protected $postType;
 
-    public function __construct(SLN_Plugin $plugin, \SLN_PostType_Abstract $postType)
+    public function __construct(SLN_Plugin $plugin, SLN_PostType_Abstract $postType)
     {
         $this->plugin = $plugin;
         $this->postType = $postType;
