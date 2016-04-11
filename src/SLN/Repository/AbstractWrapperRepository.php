@@ -26,7 +26,7 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
 
     public function getBindings()
     {
-        return [$this->getWrapperClass(), $this->getPostType()];
+        return array($this->getWrapperClass(), $this->getPostType());
     }
 
     public function getPostType()
