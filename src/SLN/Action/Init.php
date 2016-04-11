@@ -41,6 +41,8 @@ class SLN_Action_Init
         );
         add_action('sln_sms_reminder', 'sln_sms_reminder');
         add_action('sln_email_reminder', 'sln_email_reminder');
+
+        new SLN_Action_InitScripts($this->plugin, is_admin());
     }
 
 
@@ -56,7 +58,6 @@ class SLN_Action_Init
         new SLN_Admin_Calendar($p);
         new SLN_Admin_Tools($p);
 
-        add_action('admin_enqueue_scripts', array($p, 'preloadAdminScripts'));
         add_action('admin_init', array($this, 'hook_admin_init'));
         add_action('admin_notices', array($this, 'hook_admin_notices'));
         $this->initAjax();
@@ -65,7 +66,6 @@ class SLN_Action_Init
 
     private function initFrontend()
     {
-        add_action('wp_enqueue_scripts', array($this->plugin, 'preloadFrontendScripts'));
     }
 
     private function initAjax()
@@ -84,7 +84,6 @@ class SLN_Action_Init
         }
         $p = $this->plugin;
         load_plugin_textdomain(SLN_Plugin::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME).'/languages');
-        $p->preloadFrontendScripts();
         SLN_Shortcode_Salon::init($p);
         SLN_Shortcode_SalonMyAccount::init($p);
         SLN_Shortcode_SalonMyAccount_Details::init($p);

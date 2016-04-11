@@ -273,21 +273,21 @@ jQuery(function ($) {
     initTimepickers($);
     bindRemove();
 
-    $('button[data-collection="addnew"]').click(function () {
+    $('button[data-collection="addnew"]').click(function (e) {
+        e.preventDefault();
         $('#sln-booking-rules-wrapper').append('<div class="sln-booking-rule">' + html.replace(/__new__/g, count) + '</div>');
         count++;
         bindRemove();
         customSliderRange($, $('.slider-range'))
-        return false;
     });
 
-    $('button[data-collection="addnewholiday"]').click(function () {
+    $('button[data-collection="addnewholiday"]').click(function (e) {
+        e.preventDefault();
         $('#sln-booking-holiday-rules-wrapper').append(htmlHoliday.replace(/__new__/g, countHoliday) );
         countHoliday++;
         initDatepickers($);
         initTimepickers($);
         bindRemove();
-        return false;
     });
 /*
     $('#booking-accept, #booking-refuse').click(function(){
