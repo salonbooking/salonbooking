@@ -60,7 +60,7 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
 
     protected function processCriteria($criteria)
     {
-        $ret = ['post_type' => $this->getPostType()];
+        $ret = array('post_type' => $this->getPostType());
 
         if (isset($criteria['@limit'])) {
             $ret['posts_per_page'] = $criteria['@limit'];
