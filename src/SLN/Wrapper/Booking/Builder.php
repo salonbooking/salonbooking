@@ -165,7 +165,8 @@ class SLN_Wrapper_Booking_Builder
         $ids = $this->getAttendantsIds();
         $ret = array();
         foreach ($ids as $service_id => $attendant_id) {
-            $ret[$service_id] = $this->plugin->createAttendant($attendant_id);
+            if($attendant_id)
+                $ret[$service_id] = $this->plugin->createAttendant($attendant_id);
         }
         return $ret;
     }
@@ -210,7 +211,11 @@ class SLN_Wrapper_Booking_Builder
     {
         $ids = array_keys($this->data['services']);
         $ret = array();
-        foreach ($this->plugin->getServices() as $service) {
+        /** @var SLN_Repository_ServiceRepository $repo */
+        $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+        $services = $repo->getAll();
+
+        foreach ($services as $service) {
             if (in_array($service->getId(), $ids)) {
                 if ($secondary && $service->isSecondary()) {
                     $ret[$service->getId()] = $service;
@@ -257,7 +262,7 @@ class SLN_Wrapper_Booking_Builder
                 'post_title'  => $name . ' - ' . $datetime,
             )
         );
-        $deposit              = $this->plugin->getSettings()->get('pay_deposit');
+        $deposit              = $settings->get('pay_deposit');
         $this->data['amount'] = $this->getTotal();
         if($deposit > 0) {
             $this->data['deposit'] = ($this->data['amount'] / 100) * $deposit;

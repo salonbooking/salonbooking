@@ -2,6 +2,11 @@
 
 class SLN_Wrapper_Customer extends SLN_Wrapper_Abstract {
 
+	public function getPostType()
+	{
+		return false;
+	}
+
 	/**
 	 * SLN_Wrapper_Customer constructor.
 	 *

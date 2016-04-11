@@ -52,6 +52,39 @@ foreach ($query->get_posts() as $p) {
 	update_post_meta($post_id, '_sln_booking_services', $ret);
 	update_post_meta($post_id, '_sln_booking_services_processed', 1);
 }
+
+foreach(array(SLN_Plugin::POST_TYPE_SERVICE, SLN_Plugin::POST_TYPE_ATTENDANT) as $postType) {
+	/** @var SLN_Wrapper_Service|SLN_Wrapper_Attendant $item */
+	foreach (SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE) as $item) {
+		$from = $item->getMeta('notav_from');
+		$to = $item->getMeta('notav_to');
+		$int1 = array('00:00', '00:00');
+		$int2 = array('00:00', '00:00');
+		$days = array();
+		$allFalse = true;
+		for ($i = 1; $i <= 7; $i++) {
+			$days[$i] = !$item->getMeta('notav_'.$i);
+			if ($allFalse && $days[$i]) {
+				$allFalse = false;
+			}
+		}
+		$item->getMeta('notav_1');
+		if ($from != '00:00') {
+			$int1 = array('00:00', $from);
+		}
+		if ($to != '00:00' && $to != '23:59') {
+			$int2 = array($to, '23:59');
+		}
+		if ($int1 || $int2 || !$allFalse) {
+			$data = array(
+				'days' => $days,
+				'from' => array($int1[0], $int2[0]),
+				'to' => array($int1[1], $int2[1])
+			);
+			$item->setMeta('availabilities', array($data));
+		}
+	}
+}
 //wp_reset_query();
 //wp_reset_postdata();
 // END UPDATE SERVICES & ATTENDANTS FOR BOOKINGS BEFORE 110 feature

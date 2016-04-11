@@ -114,7 +114,9 @@ class SLN_Shortcode_Salon
 
     private function needSecondary()
     {
-        foreach ($this->plugin->getServices() as $service) {
+        /** @var SLN_Repository_ServiceRepository $repo */
+        $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+        foreach ($repo->getAll() as $service) {
             if ($service->isSecondary()) {
                 return true;
             }

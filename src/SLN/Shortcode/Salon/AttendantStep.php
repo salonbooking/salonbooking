@@ -91,10 +91,9 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
     public function getAttendants()
     {
         if (!isset($this->attendants)) {
-            $this->attendants = array();
-            foreach ($this->getPlugin()->getAttendants() as $attendant) {
-                $this->attendants[] = $attendant;
-            }
+            /** @var SLN_Repository_AttendantRepository $repo */
+            $repo = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
+            $this->attendants = $repo->getAll();
         }
 
         return $this->attendants;

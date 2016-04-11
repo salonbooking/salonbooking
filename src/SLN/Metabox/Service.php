@@ -55,19 +55,11 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
     protected function getFieldList()
     {
         return array(
+            'availabilities' => '',
             'price'      => 'float',
             'duration'   => 'time',
             'secondary'  => 'bool',
             'unit'       => 'int',
-            'notav_from' => 'time',
-            'notav_to'   => 'time',
-            'notav_1'    => 'bool',
-            'notav_2'    => 'bool',
-            'notav_3'    => 'bool',
-            'notav_4'    => 'bool',
-            'notav_5'    => 'bool',
-            'notav_6'    => 'bool',
-            'notav_7'    => 'bool',
             'exec_order' => 'int',
         );
     }

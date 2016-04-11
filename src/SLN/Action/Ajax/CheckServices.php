@@ -179,7 +179,10 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
     private function getServices($primary = true, $secondary = false)
     {
         $services = array();
-        foreach (SLN_Plugin::getInstance()->getServicesOrderByExec() as $service) {
+        /** @var SLN_Repository_ServiceRepository $repo */
+        $repo = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+        
+        foreach ($repo->sortByExec($repo->getAll()) as $service) {
             if ($secondary && $service->isSecondary()) {
                 $services[] = $service;
             }
