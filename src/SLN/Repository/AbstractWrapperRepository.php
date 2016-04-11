@@ -42,7 +42,7 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
         wp_reset_query();
         wp_reset_postdata();
 
-        $ret = [];
+        $ret = array();
         foreach ($posts as $post) {
             $ret[] = $this->create($post);
         }
