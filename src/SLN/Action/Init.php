@@ -111,7 +111,7 @@ class SLN_Action_Init
             }
             if (!$s->getNoticesDisabled()) {
                 $dismissUrl = add_query_arg(array('sln-dismiss' => 'dismiss_admin_notices'));
-                echo $this->loadView('admin_notices', compact('dismissUrl'));
+                echo $this->plugin->loadView('admin_notices', compact('dismissUrl'));
             }
             $cnt = get_option(SLN_PLUGIN::F);
             if ($cnt > SLN_Plugin::F1) {
