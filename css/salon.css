@@ -509,15 +509,13 @@ th {
 
 #sln-salon p, #sln-salon .salon-step-title, #sln-salon .sln-panel .sln-panel-heading, #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--big,
 #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium,
-#sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, #sln-salon .sln-btn--big, #sln-salon .sln-btn--big input, #sln-salon .sln-btn--big button, #sln-salon .sln-btn--big a, .sln-alert,
+#sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, #sln-salon .sln-btn--big, #sln-salon .sln-btn--big input, #sln-salon .sln-btn--big button, #sln-salon .sln-btn--big a, #sln-salon .sln-btn.sln-btn--noheight input,
+#sln-salon .sln-btn.sln-btn--noheight button,
+#sln-salon .sln-btn.sln-btn--noheight a, #sln-salon .sln-btn--medium input, #sln-salon .sln-btn--medium button, #sln-salon .sln-btn--medium a, .sln-alert,
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   font-size: 1em; }
 
-.sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight,
-#sln-salon a.sln-btn.sln-btn--noheight,
-#sln-salon .sln-btn.sln-btn--noheight input,
-#sln-salon .sln-btn.sln-btn--noheight button,
-#sln-salon .sln-btn.sln-btn--noheight a, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small, #sln-salon .sln-btn--medium, #sln-salon .sln-btn--medium input, #sln-salon .sln-btn--medium button, #sln-salon .sln-btn--medium a {
+.sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
   font-size: .8em; }
 
 #sln-salon h2 {
@@ -528,15 +526,13 @@ th {
 
 #sln-salon p, #sln-salon .salon-step-title, #sln-salon .sln-panel .sln-panel-heading, #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--big,
 #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium,
-#sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, #sln-salon .sln-btn--big, #sln-salon .sln-btn--big input, #sln-salon .sln-btn--big button, #sln-salon .sln-btn--big a, .sln-alert,
+#sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, #sln-salon .sln-btn--big, #sln-salon .sln-btn--big input, #sln-salon .sln-btn--big button, #sln-salon .sln-btn--big a, #sln-salon .sln-btn.sln-btn--noheight input,
+#sln-salon .sln-btn.sln-btn--noheight button,
+#sln-salon .sln-btn.sln-btn--noheight a, #sln-salon .sln-btn--medium input, #sln-salon .sln-btn--medium button, #sln-salon .sln-btn--medium a, .sln-alert,
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   line-height: 1.4em; }
 
-.sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight,
-#sln-salon a.sln-btn.sln-btn--noheight,
-#sln-salon .sln-btn.sln-btn--noheight input,
-#sln-salon .sln-btn.sln-btn--noheight button,
-#sln-salon .sln-btn.sln-btn--noheight a, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
+.sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
   line-height: 4em; }
 
 #sln-salon {
@@ -1341,12 +1337,23 @@ th {
   padding: 0 .5em;
   line-height: 4em;
   height: 4em;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-weight: normal; }
   #sln-salon .sln-btn--big.sln-btn--block, #sln-salon .sln-btn--big input.sln-btn--block, #sln-salon .sln-btn--big button.sln-btn--block, #sln-salon .sln-btn--big a.sln-btn--block {
     display: block; }
 
-#sln-salon .sln-btn.sln-btn--noheight,
-#sln-salon a.sln-btn.sln-btn--noheight,
+#sln-salon .sln-btn.sln-btn--noheight {
+  display: inline-block;
+  position: relative;
+  top: initial;
+  right: initial;
+  bottom: initial;
+  left: initial;
+  padding: 1em .5em;
+  text-transform: uppercase; }
+  #sln-salon .sln-btn.sln-btn--noheight.sln-btn--block {
+    display: block; }
+
 #sln-salon .sln-btn.sln-btn--noheight input,
 #sln-salon .sln-btn.sln-btn--noheight button,
 #sln-salon .sln-btn.sln-btn--noheight a {
@@ -1358,23 +1365,32 @@ th {
   left: initial;
   padding: 1em .5em;
   text-transform: uppercase; }
-  #sln-salon .sln-btn.sln-btn--noheight.sln-btn--block,
-  #sln-salon a.sln-btn.sln-btn--noheight.sln-btn--block,
   #sln-salon .sln-btn.sln-btn--noheight input.sln-btn--block,
   #sln-salon .sln-btn.sln-btn--noheight button.sln-btn--block,
   #sln-salon .sln-btn.sln-btn--noheight a.sln-btn--block {
     display: block; }
 
-#sln-salon .sln-btn--medium, #sln-salon .sln-btn--medium input, #sln-salon .sln-btn--medium button, #sln-salon .sln-btn--medium a {
+#sln-salon .sln-btn--medium {
   display: inline-block;
   padding: 0 .5em;
-  line-height: 4.6em;
+  line-height: 3.6em;
+  height: 3.6em;
+  font-weight: normal;
+  text-transform: uppercase; }
+  #sln-salon .sln-btn--medium.sln-btn--icon--left {
+    padding-right: 1em;
+    padding-left: 2em; }
+
+#sln-salon .sln-btn--medium input, #sln-salon .sln-btn--medium button, #sln-salon .sln-btn--medium a {
+  display: inline-block;
+  padding: 0 .5em;
+  line-height: 3.6em;
   font-weight: normal;
   height: 3.6em;
   text-transform: uppercase; }
-  #sln-salon .sln-btn--medium.sln-btn--block, #sln-salon .sln-btn--medium input.sln-btn--block, #sln-salon .sln-btn--medium button.sln-btn--block, #sln-salon .sln-btn--medium a.sln-btn--block {
+  #sln-salon .sln-btn--medium input.sln-btn--block, #sln-salon .sln-btn--medium button.sln-btn--block, #sln-salon .sln-btn--medium a.sln-btn--block {
     display: block; }
-  #sln-salon .sln-btn--medium.sln-btn--icon--left, #sln-salon .sln-btn--medium input.sln-btn--icon--left, #sln-salon .sln-btn--medium button.sln-btn--icon--left, #sln-salon .sln-btn--medium a.sln-btn--icon--left {
+  #sln-salon .sln-btn--medium input.sln-btn--icon--left, #sln-salon .sln-btn--medium button.sln-btn--icon--left, #sln-salon .sln-btn--medium a.sln-btn--icon--left {
     padding-right: 1em;
     padding-left: 2em; }
 

@@ -35,14 +35,11 @@
     line-height: 4em;
     height:  4em;
     text-transform: uppercase;
+    font-weight: normal;
     @extend %sln-textsize--base;
     &.sln-btn--block {display: block;}
   }
-  .sln-btn.sln-btn--noheight,
-  a.sln-btn.sln-btn--noheight,
-  .sln-btn.sln-btn--noheight input,
-  .sln-btn.sln-btn--noheight button,
-  .sln-btn.sln-btn--noheight a {
+  .sln-btn.sln-btn--noheight {
     display: inline-block;
     position: relative;
     top: initial;
@@ -56,14 +53,41 @@
     text-transform: uppercase;
     &.sln-btn--block {display: block;}
   }
-  .sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button, .sln-btn--medium a {
+  .sln-btn.sln-btn--noheight input,
+  .sln-btn.sln-btn--noheight button,
+  .sln-btn.sln-btn--noheight a {
+    display: inline-block;
+    position: relative;
+    top: initial;
+    right: initial;
+    bottom: initial;
+    left: initial;
+    padding: 1em .5em;
+    @extend %sln-textsize--base;
+    text-transform: uppercase;
+    &.sln-btn--block {display: block;}
+  }
+  .sln-btn--medium {
+    @extend %sln-textsize--small;
     display: inline-block;
     padding: 0 .5em;
-    @extend %sln-textsize--small--noheight;
-    line-height: 4.6em;
+    line-height: 3.6em;
+    height:  3.6em;
+    font-weight: normal;
+    text-transform: uppercase;
+    &.sln-btn--icon--left {
+      padding-right: 1em;
+      padding-left: 2em;
+    }
+  }
+  .sln-btn--medium input, .sln-btn--medium button, .sln-btn--medium a {
+    display: inline-block;
+    padding: 0 .5em;
+    line-height: 3.6em;
     font-weight: normal;
     height:  3.6em;
     text-transform: uppercase;
+    @extend %sln-textsize--base;
     &.sln-btn--block {display: block;}
     &.sln-btn--icon--left {
       padding-right: 1em;
