@@ -311,7 +311,7 @@ th {
 .sln-bootstrap .sln-btn--borderonly button, .sln-steps-description, .sln-data-desc, .sln-summary-row .label, .sln-total-label, .sln-total-price {
   color: black; }
 
-.sln-text--emphasis, .sln-loader:after, #sln-salon .sln-panel .sln-panel-heading, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly, .sln_datepicker:hover:after, .sln_timepicker:hover:after, .sln-checkbox input:checked + label:after,
+.sln-text--emphasis, .sln-loader:after, #sln-salon .sln-panel .sln-panel-heading, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--nobkg, .sln_datepicker:hover:after, .sln_timepicker:hover:after, .sln-checkbox input:checked + label:after,
 .sln-checkbox input:checked + label:hover:after, .sln-alert a,
 #sln-salon .alert a, .sln-alert.sln-alert--wait:after,
 .sln-alert--wait:after, .sln-steps-name {
@@ -327,7 +327,7 @@ th {
 .sln-text--grey, .sln-stepper .step .step-label {
   color: #e4e7e7; }
 
-#sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly:hover, .datetimepicker.sln-datetimepicker .sln-datetimepicker-close:hover, .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
+#sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly, #sln-salon .sln-panel .sln-panel-heading .sln-btn--nobkg, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly:hover, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--nobkg:hover, .datetimepicker.sln-datetimepicker .sln-datetimepicker-close:hover, .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
 .datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active),
 .datetimepicker.sln-datetimepicker table tr td span.month:not(.disabled):not(.active),
@@ -389,7 +389,7 @@ th {
 .sln-stepper .step .step-number {
   background-color: rgba(0, 66, 88, 0.3); }
 
-#sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly, .datetimepicker.sln-datetimepicker table tr td.day.active:not(.disabled),
+#sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly, #sln-salon .sln-panel .sln-panel-heading .sln-btn--nobkg, .datetimepicker.sln-datetimepicker table tr td.day.active:not(.disabled),
 .datetimepicker.sln-datetimepicker table tr td span.hour.active:not(.disabled),
 .datetimepicker.sln-datetimepicker table tr td span.minute.active:not(.disabled),
 .datetimepicker.sln-datetimepicker table tr td span.month.active:not(.disabled),
@@ -398,7 +398,7 @@ th {
 .sln-bootstrap .sln-btn--emphasis, .sln-stepper .step.step--active .step-number {
   background-color: #0277BD; }
 
-#sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly:hover, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly:hover, .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled):hover,
+#sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly:hover, #sln-salon .sln-panel .sln-panel-heading .sln-btn--nobkg:hover, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly:hover, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--nobkg:hover, .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled):hover,
 .datetimepicker.sln-datetimepicker table tr td span.hour:not(.disabled):not(.active):hover,
 .datetimepicker.sln-datetimepicker table tr td span.minute:not(.disabled):not(.active):hover,
 .datetimepicker.sln-datetimepicker table tr td span.month:not(.disabled):not(.active):hover,
@@ -418,7 +418,7 @@ th {
 .sln-bootstrap .sln-btn--borderonly:active {
   background-color: #0091EA; }
 
-#sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly, .sln-btn--nobkg,
+#sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--nobkg, .sln-btn--nobkg,
 .sln-bootstrap .sln-btn--nobkg, .sln-btn--borderonly,
 .sln-bootstrap .sln-btn--borderonly, .sln-alert--problem,
 #sln-salon .alert-danger {
@@ -440,7 +440,7 @@ th {
 .sln-attendant:last-child hr, .sln-total hr {
   border-color: #004258 !important; }
 
-#sln-salon .sln-panel .sln-panel-content, .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right, .sln-input input, .sln-input textarea, .sln-btn--borderonly,
+.datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right, .sln-input input, .sln-input textarea, .sln-btn--borderonly,
 .sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
@@ -619,6 +619,8 @@ th {
       content: '\f077'; }
   #sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly {
     border-bottom-width: 0; }
+  #sln-salon .sln-panel .sln-panel-heading .sln-btn--nobkg {
+    font-weight: normal; }
   #sln-salon .sln-panel .sln-panel-heading:hover, #sln-salon .sln-panel .sln-panel-heading:focus, #sln-salon .sln-panel .sln-panel-heading:active {
     text-decoration: none; }
   #sln-salon .sln-panel .sln-panel-heading.collapsed {
@@ -635,9 +637,7 @@ th {
 #sln-salon .sln-panel .sln-panel-content {
   width: calc(100% - 30px);
   margin: 0 15px 2em 15px;
-  padding-top: 1em;
-  border-style: solid;
-  border-width: 1px; }
+  padding-top: 1em; }
 
 /*!
  * Datetimepicker for Bootstrap
@@ -2013,10 +2013,14 @@ th {
   font-style: normal; }
 
 #sln-salon {
-  border-width: 1px;
-  border-style: solid;
-  padding: 1.2em;
-  position: relative; }
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 2em; }
+  @media only screen and (min-width: 768px) {
+    #sln-salon {
+      border-width: 1px;
+      border-style: solid;
+      padding: 1.2em; } }
   #sln-salon.sln-salon--l {
     max-width: 900px; }
   #sln-salon.sln-salon--m {

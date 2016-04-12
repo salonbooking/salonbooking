@@ -11,13 +11,16 @@
 @import 'components/stepper';
 @import 'components/myaccount';
 #sln-salon {
-	border-width: 1px;
-	border-style: solid;
-	@extend %bd-color--contrast--alpha;
-	padding: 1.2em;
 	position: relative;
-	//margin-right: auto;
-	//margin-left: auto;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	@include bp(tablet) {
+		border-width: 1px;
+		border-style: solid;
+		@extend %bd-color--contrast--alpha;
+		padding: 1.2em;
+	}
+	// GEN TYPO
 	@extend %bgc-color--main;
 	@extend %text-color--contrast;
 	// SIZES
