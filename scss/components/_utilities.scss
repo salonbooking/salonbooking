@@ -83,6 +83,14 @@
         @extend %bd-color--emphasis--hover;
       }
     }
+    .sln-btn--nobkg {
+      @extend %bgc-color--emphasis;
+      @extend %text-color--white;
+      font-weight: normal;
+      &:hover {
+        @extend %bgc-color--emphasis--hover;
+      }
+    }
     &:hover, &:focus, &:active {
       text-decoration: none;
     }
@@ -104,15 +112,23 @@
           @extend %text-color--white;
         }
       }
+      .sln-btn--nobkg {
+        @extend %bgc-color--transparent;
+        @extend %text-color--emphasis;
+        &:hover {
+          @extend %bgc-color--emphasis--hover;
+          @extend %text-color--white;
+        }
+      }
     }
   }
   .sln-panel-content {
     width: calc(100% - 30px);
     margin: 0 15px 2em 15px;
     padding-top: 1em;
-    border-style: solid;
-    border-width: 1px;
-    @extend %bd-color--contrast--alpha;
+    //border-style: solid;
+    //border-width: 1px;
+    //@extend %bd-color--contrast--alpha;
   }
 }
 // PANELS // END
