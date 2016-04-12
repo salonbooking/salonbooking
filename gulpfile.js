@@ -23,7 +23,7 @@ var sassOptions = {
 //    .pipe( livereload() );
 //});
 gulp.task('sass', function () {
-  gulp.src('./scss/salon.scss')
+  gulp.src('./scss/admin.scss')
     //.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     //.pipe(sourcemaps.write())
@@ -33,6 +33,15 @@ gulp.task('sass', function () {
 
 gulp.task('less', function () {
   return gulp.src('less/salon.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
+    .pipe(gulp.dest('css'))
+    .pipe( livereload() );
+});
+
+gulp.task('admindtepicker', function () {
+  return gulp.src('less/datepicker_admin.less')
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ]
     }))

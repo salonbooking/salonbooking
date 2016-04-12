@@ -20,6 +20,8 @@
 //:matches(#sln-salon--admin, .sln-calendar--wrapper) {
     //@import 'bootstrap';
 }
+@import 'admin_components/datepicker_admin';
+//@import 'admin_components/datepicker';
 @import 'admin_components/inputs';
 @import 'admin_components/buttons';
 @import 'admin_components/boxes';
