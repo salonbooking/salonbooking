@@ -63,7 +63,7 @@ final class SLN_Wrapper_Booking_Services {
 	 */
 	public static function build($data, SLN_DateTime $startsAt, $offset = 0) {
 		$startsAt = clone $startsAt;
-		uksort($data, array(SLN_Plugin::getInstance(), 'serviceCmp'));
+		uksort($data, array('SLN_Repository_ServiceRepository', 'serviceCmp'));
 		$services = array();
 		foreach($data as $sId => $item) {
 

@@ -8,7 +8,9 @@ $alert = __(
 if (empty($row) || !isset($row['from'])) {
     $row = array('from' => array('9:00', '14:00'), 'to' => array('13:00', '19:00'));
 }
-
+if (empty($rulenumber)) {
+    $rulenumber = 'New';
+}
 ?>
 <div class="col-xs-12 sln-booking-rule">
     <h2 class="sln-box-title"><?php _e('Rule', 'salon-booking-system'); ?> <strong><?php echo $rulenumber; ?></strong>

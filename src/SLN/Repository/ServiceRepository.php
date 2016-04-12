@@ -94,7 +94,7 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
         return $services;
     }
 
-    public function serviceExecCmp(SLN_Wrapper_Service $a, SLN_Wrapper_Service $b)
+    public static function serviceExecCmp(SLN_Wrapper_Service $a, SLN_Wrapper_Service $b)
     {
         /** @var SLN_Wrapper_Service $a */
         /** @var SLN_Wrapper_Service $b */
@@ -107,7 +107,7 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
         }
     }
 
-    public function serviceCmp(SLN_Wrapper_Service $a, SLN_Wrapper_Service $b)
+    public static function serviceCmp(SLN_Wrapper_Service $a, SLN_Wrapper_Service $b)
     {
         if (!$b) {
             return $a;

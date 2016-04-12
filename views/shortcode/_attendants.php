@@ -1,4 +1,4 @@
-<?php
+\<?php
 /**
  * @var SLN_Plugin                        $plugin
  * @var string                            $formAction
@@ -151,7 +151,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                     </div>
             </div>
         </div>
-        <?php if ($attendantErrors) : ?>
+        <?php if ($errors) : ?>
             <div class="col-md-12 alert alert-warning">
                 <?php foreach ($errors as $error): ?>
                     <p><?php echo $error ?></p>
