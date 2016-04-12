@@ -175,7 +175,7 @@ class SLN_Wrapper_Booking_Builder
     {
         if((!isset($this->data['services'])) || (!in_array($service->getId(), array_keys($this->data['services'])))){
             $this->data['services'][$service->getId()] = 0;
-            uksort($this->data['services'], array($this->plugin, 'serviceCmp'));
+            uksort($this->data['services'], array('SLN_Repository_ServiceRepository', 'serviceCmp'));
         }
     }
 
