@@ -23,7 +23,7 @@ var sassOptions = {
 //    .pipe( livereload() );
 //});
 gulp.task('sass', function () {
-  gulp.src('./scss/admin.scss')
+  gulp.src('./scss/salon.scss')
     //.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     //.pipe(sourcemaps.write())
@@ -31,6 +31,14 @@ gulp.task('sass', function () {
     .pipe( livereload() );
 });
 
+gulp.task('adminsass', function () {
+  gulp.src('./scss/admin.scss')
+    //.pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    //.pipe(sourcemaps.write())
+    .pipe(gulp.dest('./css'))
+    .pipe( livereload() );
+});
 gulp.task('less', function () {
   return gulp.src('less/salon.less')
     .pipe(less({
