@@ -56,7 +56,16 @@ $fontfamily--main:"Open sans", serif;
   font-size: rem(22px);
 }
 
-
+@mixin font-icon($fontSize: null) {
+  font-family: "FontAwesome";
+  @if ($fontSize) {
+    font-size: $fontSize;
+    line-height: 0;
+  } @else {
+    font-size: 1em;
+    line-height: 0;
+  }
+}
 // /// /// /// /// /// /// /// //
 // /// FONT AWESOME
 // /// /// /// /// /// /// /// //
