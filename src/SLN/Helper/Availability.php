@@ -242,7 +242,8 @@ class SLN_Helper_Availability
                 );
 
                 return array(
-                    __('This service is unavailable ', 'salon-booking-system').$service->getNotAvailableString(),
+                    __('This service is unavailable ', 'salon-booking-system').'<br/>'.
+                    __('Availability: ', 'salon-booking-system').$service->getNotAvailableString(),
                 );
             }
 

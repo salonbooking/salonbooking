@@ -104,8 +104,8 @@ function sln_stepDate($) {
         });
 
         $.each(items.times, function(key, value) {
-           $('.hour[data-ymd="'+value+'"]').removeClass('disabled'); 
-           $('.minute[data-ymd="'+value+'"]').removeClass('disabled'); 
+           $('.hour[data-ymd="'+value+'"]').removeClass('disabled');
+           $('.minute[data-ymd="'+value+'"]').removeClass('disabled');
            $('.hour[data-ymd="'+value.split(':')[0]+':00"]').removeClass('disabled');
         });
             doingFunc = false;
@@ -226,10 +226,11 @@ function sln_serviceTotal($) {
                     $('.alert').remove();
                     $.each(data.services, function(index, value) {
                         var checkbox = $('#sln_services_' + index);
+                        var errorsArea = $('#sln_services_' + index+ ' .errors-area');
                         if (value.status == -1) {
-                            var alertBox = $('<div class="sln-alert sln-alert--problem"><p>' + value.error + '</p></div>');
+                            var alertBox = $('<div class="sln-alert sln-alert-medium sln-alert--problem"><p>' + value.error + '</p></div>');
                             checkbox.attr('checked', false).attr('disabled', 'disabled').change();
-                            checkbox.parent().parent().parent().next().after(alertBox);
+                            errorsArea.html(alertBox);
                         }
                         else if (value.status == 0) {
                             checkbox.attr('checked', false).attr('disabled', false).change();
@@ -309,7 +310,7 @@ function initTimepickers($) {
                 .on('place', function () {
                     $('body').trigger('sln_date');
                 })
- 
+
                .data('datetimepicker').picker;
             picker.addClass('timepicker');
         }

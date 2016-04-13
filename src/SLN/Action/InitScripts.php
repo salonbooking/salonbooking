@@ -2,6 +2,7 @@
 
 class SLN_Action_InitScripts
 {
+    const ASSETS_VERSION = '20160404';
     private $isAdmin;
     private $plugin;
 
@@ -30,7 +31,13 @@ class SLN_Action_InitScripts
     private function preloadScripts()
     {
         if (!$this->plugin->getSettings()->get('no_bootstrap')) {
-            wp_enqueue_style('salon-bootstrap', SLN_PLUGIN_URL.'/css/sln-bootstrap.css', array(), SLN_VERSION, 'all');
+            wp_enqueue_style(
+                'salon-bootstrap',
+                SLN_PLUGIN_URL.'/css/sln-bootstrap.css',
+                array(),
+                self::ASSETS_VERSION,
+                'all'
+            );
         }
 
         //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
@@ -52,26 +59,26 @@ class SLN_Action_InitScripts
                 true
             );
         }
-        wp_enqueue_script('salon', SLN_PLUGIN_URL.'/js/salon.js', array('jquery'), '20140711', true);
+        wp_enqueue_script('salon', SLN_PLUGIN_URL.'/js/salon.js', array('jquery'), self::ASSETS_VERSION, true);
         wp_enqueue_script(
             'salon-bootstrap',
             SLN_PLUGIN_URL.'/js/bootstrap.min.js',
             array('jquery'),
-            '20140711',
+            self::ASSETS_VERSION,
             true
         );
         wp_enqueue_script(
             'salon-my-account',
             SLN_PLUGIN_URL.'/js/salon-my-account.js',
             array('jquery'),
-            '20140711',
+            self::ASSETS_VERSION,
             true
         );
         wp_enqueue_script(
             'salon-raty',
             SLN_PLUGIN_URL.'/js/jquery.raty.js',
             array('jquery'),
-            '20140711',
+            self::ASSETS_VERSION,
             true
         );
         wp_localize_script(
@@ -100,13 +107,13 @@ class SLN_Action_InitScripts
             array('jquery'),
             true
         );
-        wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL.'/js/admin.js', array('jquery'), '20140711', true);
+        wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL.'/js/admin.js', array('jquery'), self::ASSETS_VERSION, true);
         wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL.'/css/admin.css', array(), SLN_VERSION, 'all');
         wp_enqueue_style('salon-admin-select2-css', SLN_PLUGIN_URL.'/css/select2.min.css', array(), SLN_VERSION, 'all');
     }
 
     private function preloadFrontendScripts()
     {
-        wp_enqueue_style('salon', SLN_PLUGIN_URL.'/css/salon.css', array(), SLN_VERSION, 'all');
+        wp_enqueue_style('salon', SLN_PLUGIN_URL.'/css/salon.css', array(), self::ASSETS_VERSION, 'all');
     }
 }

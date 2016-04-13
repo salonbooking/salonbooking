@@ -5,6 +5,7 @@ SLN_Helper_AvailabilityItem
 {
     private $data;
     private $times = array();
+    private $timesTxt = array();
 
     function __construct($data)
     {
@@ -15,11 +16,20 @@ SLN_Helper_AvailabilityItem
                     strtotime($data['from'][0]),
                     strtotime($data['to'][0]),
                 );
+                $this->timesTxt[] = array(
+                    $data['from'][0],
+                    $data['to'][0],
+                );
+
             }
             if ($data['from'][1] != '00:00') {
                 $this->times[] = array(
                     strtotime($data['from'][1]),
                     strtotime($data['to'][1]),
+                );
+                $this->timesTxt[] = array(
+                    $data['from'][1],
+                    $data['to'][1],
                 );
             }
         }
@@ -74,8 +84,8 @@ SLN_Helper_AvailabilityItem
         $allDays = empty($ret);
         $ret = implode('-', $ret);
         $format = SLN_Plugin::getInstance()->format();
-        foreach ($this->times as $t) {
-            $ret .= sprintf(' %s/%s', $format->time($t[0]), $format->time($t[1]));
+        foreach ($this->timesTxt as $t) {
+            $ret .= sprintf(' %s/%s', $format->time(new DateTime('1970-01-01 '.$t[0])), $format->time(new DateTime('1970-01-01 '.$t[1])));
         }
         if (empty($ret)) {
             $ret = __('Always', 'salon-booking-system');
