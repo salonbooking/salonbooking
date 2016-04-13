@@ -354,7 +354,7 @@ th {
   color: #f5b025; }
 
 .sln-checkbox input + label:before, .sln-radiobox input + label:before, .sln-radiobox input + label:after, #sln-salon {
-  background-color: rgba(255, 255, 255, 0.75); }
+  background-color: white; }
 
 .datetimepicker.sln-datetimepicker, .datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
   background-color: white; }
