@@ -133,7 +133,7 @@
     </div>
 </div>
 <div class="sln-box sln-box--main">
-    <?php echo $plugin->loadView('settings/_tab_general_sms', array('helper' => $this)); ?>
+    <?php echo SLN_Plugin::getInstance()->loadView('settings/_tab_general_sms', array('helper' => $this)); ?>
 </div>
 
 <div class="sln-box sln-box--main">
