@@ -94,8 +94,21 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
         return $services;
     }
 
-    public static function serviceExecCmp(SLN_Wrapper_Service $a, SLN_Wrapper_Service $b)
+    public static function serviceExecCmp($a, $b)
     {
+        if (!$b) {
+            return $a;
+        }
+        if (!$a) {
+            return $b;
+        }
+        if (!$a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
+            $a = SLN_Plugin::getInstance()->createService($a);
+        }
+        if (!$b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
+            $b = SLN_Plugin::getInstance()->createService($b);
+        }
+
         /** @var SLN_Wrapper_Service $a */
         /** @var SLN_Wrapper_Service $b */
         $aExecOrder = $a->getExecOrder();
@@ -107,13 +120,19 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
         }
     }
 
-    public static function serviceCmp(SLN_Wrapper_Service $a, SLN_Wrapper_Service $b)
+    public static function serviceCmp($a, $b)
     {
         if (!$b) {
             return $a;
         }
         if (!$a) {
             return $b;
+        }
+        if (!$a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
+            $a = SLN_Plugin::getInstance()->createService($a);
+        }
+        if (!$b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
+            $b = SLN_Plugin::getInstance()->createService($b);
         }
         $aExecOrder = $a->getExecOrder();
         $bExecOrder = $b->getExecOrder();
