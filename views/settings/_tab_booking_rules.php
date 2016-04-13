@@ -6,7 +6,7 @@
 
 $label = __('On-line booking available days', 'salon-booking-system');
 $block = __(
-    'The following rules, should represent your real timetable. <br />Leave blank if you want bookings available everydays at every hour',
+    'Create one or more rules to limit online reservation to specific days and time range. <br />Leave blank if you want bookings available everydays at every hour',
     'salon-booking-system'
     );
 if (!is_array($availabilities)) {
