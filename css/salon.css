@@ -2354,13 +2354,3 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 .sln-box--main {
   margin-top: 2em;
   margin-bottom: 3em; }
-
-.title_outer.title_without_animation {
-  display: none; }
-
-.content .content_inner > .container {
-  padding-top: 10em;
-  padding-bottom: 20em;
-  background-color: none !important;
-  background-image: url("http://salon.wordpresschef.it/wp-content/uploads/2016/01/salon-booking-plugin-booking-form-background.jpg");
-  background-size: cover; }
