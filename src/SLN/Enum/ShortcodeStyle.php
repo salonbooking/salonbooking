@@ -62,9 +62,9 @@ class SLN_Enum_ShortcodeStyle
             return;
         }
         self::$descriptions = array(
-            self::_SMALL => __('Lorem ipsum', 'salon-booking-system'),
-            self::_MEDIUM => __('Medium Lorem ipsum', 'salon-booking-system'),
-            self::_LARGE => __('Large Lorem ipsum', 'salon-booking-system'),
+            self::_SMALL => __('Use this if your column is at least 400px width', 'salon-booking-system'),
+            self::_MEDIUM => __('Use this if your column is at least 600px width', 'salon-booking-system'),
+            self::_LARGE => __('Use this if your column is at least 900px width', 'salon-booking-system'),
         );
         self::$labels = array(
             self::_SMALL => __('Small', 'salon-booking-system'),
