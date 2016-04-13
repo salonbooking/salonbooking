@@ -966,6 +966,19 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
 .sln_timepicker #sln_time.form-control[readonly] {
   cursor: pointer; }
 
+.datetimepicker.sln-datetimepicker.timepicker .datetimepicker-minutes table thead tr th,
+.datetimepicker.sln-datetimepicker.timepicker .datetimepicker-hours table thead tr th,
+.datetimepicker.sln-datetimepicker.timepicker .datetimepicker-days table thead tr th,
+.datetimepicker.sln-datetimepicker.timepicker .datetimepicker-months table thead tr th,
+.datetimepicker.sln-datetimepicker.timepicker .datetimepicker-years table thead tr th {
+  height: 1px;
+  padding: 0;
+  font-size: 1px;
+  line-height: 1px;
+  text-indent: -9999px;
+  opacity: 0;
+  pointer-events: none; }
+
 .sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, #titlewrap-- input.form-control, #postexcerpt .inside input.form-control, .sln-select:not(.sln-select--multiple) input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea {
   width: 100%;
   border-radius: 0;
@@ -1032,7 +1045,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   line-height: 1.66667rem;
   margin-top: 0; }
 
-body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input {
+body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input--oldstyle {
   display: block;
   width: 100%;
   padding: 6px 12px;

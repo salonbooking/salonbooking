@@ -34,7 +34,7 @@ $allAttendants = $sRepo->getAll();
       data-m_attendant_enabled="<?php echo $settings->get('m_attendant_enabled') ?>">
     <div class="row form-inline">
         <div class="col-md-3 col-sm-6">
-            <div class="form-group">
+            <div class="form-group sln-input--simple">
                 <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'date')) ?>"><?php _e(
                         'Select a day',
                         'salon-booking-system'
@@ -43,7 +43,7 @@ $allAttendants = $sRepo->getAll();
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
-            <div class="form-group">
+            <div class="form-group sln-input--simple">
                 <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'time')) ?>"><?php _e(
                         'Select an hour',
                         'salon-booking-system'
@@ -56,7 +56,7 @@ $allAttendants = $sRepo->getAll();
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
-            <div class="form-group sln_meta_field sln-select-wrapper">
+            <div class="form-group sln_meta_field sln-select">
                 <label><?php _e('Status', 'salon-booking-system'); ?></label>
                 <?php SLN_Form::fieldSelect(
                     $helper->getFieldName($postType, 'status'),
@@ -96,8 +96,8 @@ $allAttendants = $sRepo->getAll();
     </div>
 
 <div class="row">
-        <div class="col-md-12"><label for="sln-update-user-field"><?php _e('Search for existing users', 'salon-booking-system') ?></label></div>
-        <div class="col-md-6 col-sm-6">
+        <div class="col-md-6 col-sm-6 sln-select">
+        <label for="sln-update-user-field"><?php _e('Search for existing users', 'salon-booking-system') ?></label>
             <select id="sln-update-user-field"
                  data-nomatches="<?php _e('no users found','salon-booking-system')?>"
                  data-placeholder="<?php _e('Start typing the name or email')?>"
@@ -110,7 +110,7 @@ $allAttendants = $sRepo->getAll();
         <div class="clearfix"></div>
 <div class="sln-separator"></div>
     <div class="row">
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3 col-sm-6 form-group sln-input--simple">
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'firstname'),
@@ -119,7 +119,7 @@ $allAttendants = $sRepo->getAll();
             );
             ?>
         </div>
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3 col-sm-6 sln-input--simple">
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'lastname'),
@@ -128,7 +128,7 @@ $allAttendants = $sRepo->getAll();
             );
             ?>
         </div>
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3 col-sm-6 sln-input--simple">
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'email'),
@@ -136,7 +136,7 @@ $allAttendants = $sRepo->getAll();
                 $booking->getEmail()
             ); ?>
         </div>
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3 col-sm-6 sln-input--simple">
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'phone'),
@@ -145,7 +145,7 @@ $allAttendants = $sRepo->getAll();
             );
             ?>
         </div>
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12 sln-input--simple">
             <?php
             $helper->showFieldTextArea(
                 $helper->getFieldName($postType, 'address'),
@@ -154,8 +154,12 @@ $allAttendants = $sRepo->getAll();
             );
             ?>
         </div>
+        <div class="clearfix"></div>
         <div class="col-md-6 col-sm-12">
-            <label><input type="checkbox" name="_sln_booking_createuser" <?php if($booking->isNew()){ ?>checked="checked"<?php } ?>/><?php _e('Create a new user') ?></label>
+        <div class="sln-checkbox">
+            <input type="checkbox" id="_sln_booking_createuser" name="_sln_booking_createuser" <?php if($booking->isNew()){ ?>checked="checked"<?php } ?>/>
+            <label for="_sln_booking_createuser"><?php _e('Create a new user') ?></label>
+        </div>
         </div>
     </div>
 
@@ -177,9 +181,9 @@ $allAttendants = $sRepo->getAll();
             <?php endif; ?>
 
             <?php if ($settings->get('m_attendant_enabled')): ?>
-                <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
+                <div class="col-xs-12 col-sm-4 col-md-4  sln-select">
             <?php else: ?>
-                <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
+                <div class="col-xs-12 col-sm-6 col-md-6  sln-select">
             <?php endif; ?>
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[services][]',
@@ -214,7 +218,7 @@ $allAttendants = $sRepo->getAll();
                 )
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper sln-select-wrapper-no-search">
+            <div class="col-xs-12 col-sm-2 col-md-2 sln-select">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][__service_id__]',
                     array('__attendant_id__' => '__attendant_name__'),
@@ -258,9 +262,9 @@ $allAttendants = $sRepo->getAll();
             <?php endif; ?>
 
             <?php if ($settings->get('m_attendant_enabled')): ?>
-                <div class="col-xs-12 col-sm-4 col-md-4 sln-select-wrapper">
+                <div class="col-xs-12 col-sm-4 col-md-4 sln-select">
             <?php else: ?>
-                <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper">
+                <div class="col-xs-12 col-sm-4 col-md-4 sln-select">
             <?php endif; ?>
                 <?php
                 $servicesData[ $bookingService->getService()->getId()] = array(
@@ -305,7 +309,7 @@ $allAttendants = $sRepo->getAll();
                 )
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper sln-select-wrapper-no-search">
+            <div class="col-xs-12 col-sm-2 col-md-2 sln-select">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][' . $bookingService->getService()->getId() . ']',
                     array($bookingService->getAttendant()->getId() => $bookingService->getAttendant()->getName()),
@@ -324,9 +328,9 @@ $allAttendants = $sRepo->getAll();
         <?php endforeach ?>
         <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-action">
             <?php if ($settings->get('m_attendant_enabled')): ?>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2 col-md-offset-2 sln-select-wrapper sln-select-wrapper-no-search">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2 col-md-offset-2 sln-select">
             <?php else: ?>
-                <div class="col-xs-12 col-sm-6 col-md-6 sln-select-wrapper sln-select-wrapper-no-search">
+                <div class="col-xs-12 col-sm-4 col-md-4 sln-select">
             <?php endif; ?>
                 <select class="sln-select" name="_sln_booking_service_select" id="_sln_booking_service_select">
                     <option value=""><?php _e('Select a service','salon-booking-system') ?></option>
@@ -359,7 +363,7 @@ $allAttendants = $sRepo->getAll();
                 }
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 sln-select-wrapper sln-select-wrapper-no-search">
+            <div class="col-xs-12 col-sm-2 col-md-2 sln-select">
                 <select class="sln-select" name="_sln_booking_attendant_select" id="_sln_booking_attendant_select">
                     <option value=""><?php _e('Select an assistant','salon-booking-system') ?></option>
                 </select>
@@ -380,12 +384,12 @@ $allAttendants = $sRepo->getAll();
     <div class="sln-separator"></div>
     <div class="row">
         <div class="col-md-3 col-sm-4">
-            <div class="form-group sln_meta_field sln-select-wrapper">
+            <div class="form-group sln_meta_field sln-select">
                 <label><?php _e('Duration', 'salon-booking-system'); ?></label>
                 <input type="text" value="<?php echo $booking->getDuration()->format('H:i') ?>" class="form-control" readonly="readonly"/>
             </div>
         </div>
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-3 col-sm-4 sln-input--simple">
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'amount'),
@@ -393,9 +397,9 @@ $allAttendants = $sRepo->getAll();
                 $booking->getAmount()
             );
             ?>
-            <button class="btn btn-block btn-primary" id="calculate-total"><?php _e('Calculate total', 'salon-booking-system') ?></button>
+            <button class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--settings" id="calculate-total"><?php _e('Calculate total', 'salon-booking-system') ?></button>
         </div>
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-3 col-sm-4 sln-input--simple">
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'deposit'),
@@ -406,7 +410,7 @@ $allAttendants = $sRepo->getAll();
         </div>
 
         <div class="col-md-3 col-sm-4">
-            <div class="form-group">
+            <div class="form-group sln-input--simple">
                 <label for="">Transaction</label>
 
                 <p><?php echo $booking->getTransactionId() ? $booking->getTransactionId() : __(
@@ -419,7 +423,7 @@ $allAttendants = $sRepo->getAll();
     <div class="sln-separator"></div>
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group sln_meta_field ">
+            <div class="form-group sln_meta_field sln-input--simple">
                 <label><?php _e('Personal message', 'salon-booking-system'); ?></label>
                 <?php SLN_Form::fieldTextarea(
                     $helper->getFieldName($postType, 'note'),
@@ -430,7 +434,7 @@ $allAttendants = $sRepo->getAll();
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group sln_meta_field ">
+            <div class="form-group sln_meta_field sln-input--simple">
                 <label><?php _e('Administration notes', 'salon-booking-system'); ?></label>
                 <?php SLN_Form::fieldTextarea(
                     $helper->getFieldName($postType, 'admin_note'),

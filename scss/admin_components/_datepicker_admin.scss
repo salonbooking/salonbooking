@@ -817,3 +817,17 @@
 .sln_timepicker #sln_time.form-control[readonly] {
   cursor: pointer;
 }
+
+.datetimepicker.sln-datetimepicker.timepicker .datetimepicker-minutes table thead tr th,
+.datetimepicker.sln-datetimepicker.timepicker .datetimepicker-hours table thead tr th,
+.datetimepicker.sln-datetimepicker.timepicker .datetimepicker-days table thead tr th,
+.datetimepicker.sln-datetimepicker.timepicker .datetimepicker-months table thead tr th,
+.datetimepicker.sln-datetimepicker.timepicker .datetimepicker-years table thead tr th {
+  height: 1px;
+  padding: 0;
+  font-size: 1px;
+  line-height: 1px;
+  text-indent: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
