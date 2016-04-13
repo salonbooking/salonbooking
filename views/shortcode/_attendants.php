@@ -1,4 +1,4 @@
-\<?php
+<?php
 /**
  * @var SLN_Plugin                        $plugin
  * @var string                            $formAction
