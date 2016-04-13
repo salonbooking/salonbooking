@@ -8,8 +8,8 @@ $curr = $this->settings->getStyleShortcode();
 <div class="sln-tab" id="sln-tab-style">
     <div class="sln-box sln-box--main">
         <h2 class="sln-box-title">
-            <?php _e('Select your favorite layout', 'salon-booking-system'); ?>
-            <span><?php _e('Choose the layout that best fit your page', 'salon-booking-system'); ?></span>
+            <?php _e('Select your favorite booking form layout', 'salon-booking-system'); ?>
+            <span><?php _e('Choose the one that best fits your page', 'salon-booking-system'); ?></span>
         </h2>
         <div class="row">
             <?php foreach ($enum->toArray() as $key => $label):
