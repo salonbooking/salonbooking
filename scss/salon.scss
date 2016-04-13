@@ -143,6 +143,16 @@ h1, h2, h3, h4, h5, h6 {
 // SERVICES // END
 
 // ATTENDANTS
+#sln-salon .sln-attendant-list--multiple {
+	.sln-steps-name.sln-service-name {
+		@extend %text-color--contrast;
+		border-bottom-style: solid;
+		border-bottom-width: 2px;
+		@extend %bd-color--contrast--alpha;
+		@extend %bgc-color--transparent;
+		margin-bottom: 1em;
+	}
+}
 .sln-attendants-wrapper {
 	@include bp(phone) {
 		.sln-attendant-description {
@@ -156,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
 		margin: 2em 0 0 0;
 		border: 0;
 		border-top-style: dashed;
-		border-top-width: .05em;
+		border-top-width: 1px;
 		@extend %bd-color--contrast--alpha;
 		@extend %bgc-color--transparent;
 		background-image: none;

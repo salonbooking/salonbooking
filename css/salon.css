@@ -300,7 +300,7 @@ th {
 .sln-bootstrap .sln-btn--nobkg input,
 .sln-bootstrap .sln-btn--nobkg button, .sln-btn--borderonly,
 .sln-bootstrap .sln-btn--borderonly, .sln-alert,
-#sln-salon .alert, .sln-stepper .step.step--active .step-label, #sln-salon, .sln-steps-price, #sln-salon .sln-thankyou--okbox h1, #sln-salon .sln-thankyou--okbox h2, #sln-salon .sln-thankyou--okbox h3, #sln-salon .sln-thankyou--okbox .sln-icon-wrapper .sln-icon, .sln-payment-actions h4 {
+#sln-salon .alert, .sln-stepper .step.step--active .step-label, #sln-salon, .sln-steps-price, #sln-salon .sln-attendant-list--multiple .sln-steps-name.sln-service-name, #sln-salon .sln-thankyou--okbox h1, #sln-salon .sln-thankyou--okbox h2, #sln-salon .sln-thankyou--okbox h3, #sln-salon .sln-thankyou--okbox .sln-icon-wrapper .sln-icon, .sln-payment-actions h4 {
   color: #004258; }
 
 .sln-text--contrast--alpha {
@@ -421,7 +421,7 @@ th {
 #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--nobkg, .sln-btn--nobkg,
 .sln-bootstrap .sln-btn--nobkg, .sln-btn--borderonly,
 .sln-bootstrap .sln-btn--borderonly, .sln-alert--problem,
-#sln-salon .alert-danger, .sln-steps-description hr, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr, .sln-total hr {
+#sln-salon .alert-danger, .sln-steps-description hr, #sln-salon .sln-attendant-list--multiple .sln-steps-name.sln-service-name, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr, .sln-total hr {
   background-color: transparent; }
 
 .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
@@ -441,7 +441,7 @@ th {
   border-color: #004258 !important; }
 
 .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right, #sln-salon .sln-input input, #sln-salon .sln-input textarea, .sln-btn--borderonly,
-.sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
+.sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li, #sln-salon .sln-attendant-list--multiple .sln-steps-name.sln-service-name, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
 #sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly, .sln-checkbox input + label:before, .sln-radiobox input + label:before {
@@ -1143,9 +1143,9 @@ th {
 #sln-salon.sln-salon--s .sln-input input[type="text"] {
   margin-bottom: 2em; }
 
-.sln-input-group {
+#sln-salon .sln-input-group {
   padding-bottom: .8em; }
-  .sln-input-group .sln-input {
+  #sln-salon .sln-input-group .sln-input {
     margin-bottom: 0; }
 
 #sln-salon.sln-salon--s .sln-input .sln-input-group {
@@ -2145,6 +2145,11 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   text-transform: uppercase;
   font-weight: bold; }
 
+#sln-salon .sln-attendant-list--multiple .sln-steps-name.sln-service-name {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  margin-bottom: 1em; }
+
 @media only screen and (max-width: 767px) {
   .sln-attendants-wrapper .sln-attendant-description {
     margin-top: 1em; } }
@@ -2155,7 +2160,7 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     margin: 2em 0 0 0;
     border: 0;
     border-top-style: dashed;
-    border-top-width: .05em;
+    border-top-width: 1px;
     background-image: none; }
   .sln-attendant:last-child hr {
     border-top-style: solid;

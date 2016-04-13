@@ -16,8 +16,12 @@ foreach ($bookingServices->getItems() as $bookingService) :
     $service = $bookingService->getService();
     $hasAttendants = false;
 ?>
-<div class="sln-attendant-list">
-    <h3><?php echo $service->getName() ?></h3>
+<div class="sln-attendant-list sln-attendant-list--multiple">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="sln-steps-name sln-service-name"><?php echo $service->getName() ?></h3>
+        </div>
+    </div>
     <?php foreach ($attendants as $attendant) : ?>
         <?php
         $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);
@@ -30,46 +34,17 @@ foreach ($bookingServices->getItems() as $bookingService) :
         if ($errors) {
             $settings['attrs']['disabled'] = 'disabled';
         }
+        if ($size == '900') {
+            include '_m_attendants_item_900.php';
+        } elseif ($size == '600') {
+            include '_m_attendants_item_600.php';
+        } elseif ($size == '400') {
+            include '_m_attendants_item_400.php';
+        } else {
+            throw new Exception('size not supported');
+        }
         ?>
-        <div class="row">
-            <div class="col-lg-1 col-md-3 col-xs-2">
-            <span class="attendant-radio <?php echo  $bb->hasAttendant($attendant, $service) ? 'is-checked' : '' ?>">
-
-            <?php SLN_Form::fieldRadiobox(
-                'sln[attendants][' . $service->getId() . ']',
-                $attendant->getId(),
-                $bb->hasAttendant($attendant, $service),
-                $settings
-            ) ?>
-            </span>
-            </div>
-
-            <div class="col-lg-3 col-md-3 col-xs-4">
-
-                <div class="attendant_thumb">
-                <?php   if ( has_post_thumbnail($attendant->getId())) { 
-
-                echo get_the_post_thumbnail($attendant->getId(), 'thumbnail'); 
-
-                 }
-                ?>
-                </div>
-
-
-            </div>
-
-
-
-
-            <div class="col-lg-8 col-md-6 col-xs-6">
-
-
-                <label for="<?php echo SLN_Form::makeID('sln[attendant][' . $attendant->getId() . ']') ?>">
-                    <strong class="attendant-name"><?php echo $attendant->getName(); ?></strong>
-                    <span class="attendant-description"><?php echo $attendant->getContent() ?></span>
-                </label>
-            </div>
-        </div>
+        
         <div class="clearfix"></div>
         <?php if ($errors) : ?>
             <div><div class="col-xs-offset-2 col-lg-offset-1"><div class="alert alert-danger alert-no-spacing">
