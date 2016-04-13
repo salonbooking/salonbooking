@@ -295,7 +295,7 @@ th {
 .sln-bootstrap .sln-btn--borderonly:active button, .sln-stepper .step .step-number, .sln-stepper .step.step--active .step-number {
   color: white; }
 
-#sln-salon .sln-salon-title, #sln-salon .salon-step-title, .sln-text--contrast, .sln_datepicker:after, .sln_timepicker:after, .sln-input .help-block, .sln-input .help-block a, #sln-salon .sln-input .sln-input--addon, .sln-btn--nobkg,
+#sln-salon .sln-salon-title, #sln-salon .salon-step-title, .sln-text--contrast, .sln_datepicker:after, .sln_timepicker:after, #sln-salon .sln-input .help-block, #sln-salon .sln-input .help-block a, #sln-salon .sln-input .sln-input--addon, .sln-btn--nobkg,
 .sln-bootstrap .sln-btn--nobkg, .sln-btn--nobkg input, .sln-btn--nobkg button,
 .sln-bootstrap .sln-btn--nobkg input,
 .sln-bootstrap .sln-btn--nobkg button, .sln-btn--borderonly,
@@ -440,7 +440,7 @@ th {
 .sln-attendant:last-child hr, .sln-total hr {
   border-color: #004258 !important; }
 
-.datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right, .sln-input input, .sln-input textarea, .sln-btn--borderonly,
+.datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right, #sln-salon .sln-input input, #sln-salon .sln-input textarea, .sln-btn--borderonly,
 .sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
@@ -509,13 +509,13 @@ th {
 
 #sln-salon p, #sln-salon .salon-step-title, #sln-salon .sln-panel .sln-panel-heading, #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--big,
 #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium,
-#sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, #sln-salon .sln-btn--big, #sln-salon .sln-btn--big input, #sln-salon .sln-btn--big button, #sln-salon .sln-btn--big a, #sln-salon .sln-btn.sln-btn--noheight input,
+#sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight, .datetimepicker.sln-datetimepicker table, #sln-salon .sln-input input, #sln-salon .sln-input textarea, #sln-salon .sln-input .sln-input--addon, #sln-salon .sln-btn--big, #sln-salon .sln-btn--big input, #sln-salon .sln-btn--big button, #sln-salon .sln-btn--big a, #sln-salon .sln-btn.sln-btn--noheight input,
 #sln-salon .sln-btn.sln-btn--noheight button,
 #sln-salon .sln-btn.sln-btn--noheight a, #sln-salon .sln-btn--medium input, #sln-salon .sln-btn--medium button, #sln-salon .sln-btn--medium a, .sln-alert,
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   font-size: 1em; }
 
-.sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
+#sln-salon .sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
   font-size: .8em; }
 
 #sln-salon h2 {
@@ -526,14 +526,14 @@ th {
 
 #sln-salon p, #sln-salon .salon-step-title, #sln-salon .sln-panel .sln-panel-heading, #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--big,
 #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium,
-#sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight, .datetimepicker.sln-datetimepicker table, .sln-input input, .sln-input textarea, #sln-salon .sln-input .sln-input--addon, #sln-salon .sln-btn--big, #sln-salon .sln-btn--big input, #sln-salon .sln-btn--big button, #sln-salon .sln-btn--big a, #sln-salon .sln-btn.sln-btn--noheight input,
+#sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight, .datetimepicker.sln-datetimepicker table, #sln-salon .sln-input input, #sln-salon .sln-input textarea, #sln-salon .sln-input .sln-input--addon, #sln-salon .sln-btn--big, #sln-salon .sln-btn--big input, #sln-salon .sln-btn--big button, #sln-salon .sln-btn--big a, #sln-salon .sln-btn.sln-btn--noheight input,
 #sln-salon .sln-btn.sln-btn--noheight button,
 #sln-salon .sln-btn.sln-btn--noheight a, #sln-salon .sln-btn--medium input, #sln-salon .sln-btn--medium button, #sln-salon .sln-btn--medium a, .sln-alert,
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   line-height: 1.4em; }
 
-.sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
-  line-height: 4em; }
+#sln-salon .sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
+  line-height: 1.4em; }
 
 #sln-salon {
   font-size: 18px; }
@@ -1118,9 +1118,9 @@ th {
 .sln-icon--next:after {
   content: "\f061"; }
 
-.sln-input {
+#sln-salon .sln-input {
   margin-bottom: .8em; }
-  .sln-input input, .sln-input textarea {
+  #sln-salon .sln-input input, #sln-salon .sln-input textarea {
     width: 100%;
     border-radius: 0;
     -webkit-box-shadow: none;
@@ -1131,9 +1131,9 @@ th {
     height: auto;
     border-width: 1px;
     border-style: solid; }
-  .sln-input label {
+  #sln-salon .sln-input label {
     padding: .5em 1.2em; }
-  .sln-input .help-block {
+  #sln-salon .sln-input .help-block {
     padding: 0 .8em;
     margin-bottom: 0; }
 
@@ -1624,7 +1624,6 @@ th {
 
 .sln-alert.sln-alert--wait:after,
 .sln-alert--wait:after {
-  top: initial;
   content: "\f1ce";
   font-size: 1.9em;
   -webkit-animation: wait 2s infinite linear;

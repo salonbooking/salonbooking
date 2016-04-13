@@ -150,7 +150,7 @@
 .sln-alert.sln-alert--wait,
 .sln-alert--wait {
   &:after {
-    top: initial;
+    //top: initial;
     content: "\f1ce";
     font-size: 1.9em;
     @extend %text-color--emphasis;

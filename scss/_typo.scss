@@ -128,7 +128,7 @@ $fontfamily--main:"Open sans", serif;
 }
 %sln-textsize--small {
   @extend %sln-textsize--small--noheight;
-  line-height: 4em;
+  line-height: 1.4em;
 }
 %sln-textsize--smaller {
   @extend %sln-textsize--smaller--noheight;
