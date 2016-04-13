@@ -353,7 +353,7 @@ th {
 #sln-salon .alert-warning:after {
   color: #f5b025; }
 
-.sln-checkbox input + label:before, .sln-radiobox input + label:before, .sln-radiobox input + label:after, #sln-salon {
+.sln-checkbox input + label:before, .sln-checkbox input[type="checkbox"][disabled] + label:before, .sln-radiobox input + label:before, .sln-radiobox input + label:after, .sln-radiobox input[type="radio"][disabled] + label:before, #sln-salon {
   background-color: white; }
 
 .datetimepicker.sln-datetimepicker, .datetimepicker.sln-datetimepicker .sln-datetimepicker-close {
@@ -457,6 +457,9 @@ th {
 .sln-alert a,
 #sln-salon .alert a {
   border-color: transparent !important; }
+
+.sln-checkbox input[type="checkbox"][disabled] + label:before, .sln-radiobox input[type="radio"][disabled] + label:before {
+  border-color: #888 !important; }
 
 .datetimepicker.sln-datetimepicker .sln-datetimepicker-close, .datetimepicker.sln-datetimepicker table tr td.day,
 .datetimepicker.sln-datetimepicker table tr td span.hour,
@@ -1223,6 +1226,14 @@ th {
   padding-left: .6em;
   font-weight: 700; }
 
+.sln-checkbox input[type="checkbox"][disabled] + label {
+  cursor: not-allowed; }
+  .sln-checkbox input[type="checkbox"][disabled] + label:before {
+    cursor: not-allowed; }
+  .sln-checkbox input[type="checkbox"][disabled] + label:hover:after {
+    cursor: not-allowed;
+    opacity: 0; }
+
 .sln-radiobox input {
   position: absolute;
   margin-left: -9999px;
@@ -1276,6 +1287,14 @@ th {
 .sln-radiobox input:checked + label:after,
 .sln-radiobox input:checked + label:hover:after {
   opacity: 1; }
+
+.sln-radiobox input[type="radio"][disabled] + label {
+  cursor: not-allowed; }
+  .sln-radiobox input[type="radio"][disabled] + label:before {
+    cursor: not-allowed; }
+  .sln-radiobox input[type="radio"][disabled] + label:hover:after {
+    cursor: not-allowed;
+    opacity: 0; }
 
 #sln-salon .sln-input .sln-input--addon {
   padding: .5em .8em;

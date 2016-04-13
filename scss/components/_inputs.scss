@@ -141,6 +141,18 @@
 		padding-left: .6em;
 		font-weight: 700;
 	}
+	input[type="checkbox"][disabled] + label {
+	  cursor: not-allowed;
+		&:before {
+	  		cursor: not-allowed;
+			@extend %bd-color--grey;
+			@extend %bgc-color--main;
+		}
+		&:hover:after {
+	  		cursor: not-allowed;
+			opacity: 0;
+		}
+  	}
 }
 // CHECKBOXES // END
 
@@ -217,6 +229,18 @@
 		opacity: 1;
 		@extend %bgc-color--emphasis;
 	}
+	input[type="radio"][disabled] + label {
+	  cursor: not-allowed;
+		&:before {
+	  		cursor: not-allowed;
+			@extend %bd-color--grey;
+			@extend %bgc-color--main;
+		}
+		&:hover:after {
+	  		cursor: not-allowed;
+			opacity: 0;
+		}
+  	}
 }
 
 // RADIOBOXES // END
