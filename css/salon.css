@@ -421,7 +421,7 @@ th {
 #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--nobkg, .sln-btn--nobkg,
 .sln-bootstrap .sln-btn--nobkg, .sln-btn--borderonly,
 .sln-bootstrap .sln-btn--borderonly, .sln-alert--problem,
-#sln-salon .alert-danger {
+#sln-salon .alert-danger, .sln-steps-description hr, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr, .sln-total hr {
   background-color: transparent; }
 
 .datetimepicker.sln-datetimepicker table tr td.day:not(.disabled),
@@ -2175,7 +2175,8 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     margin: 1em 0 0 0;
     border: 0;
     border-bottom-style: solid;
-    border-bottom-width: .05em; }
+    border-bottom-width: .05em;
+    background-image: none; }
   .sln-summary-row:last-child {
     margin-bottom: 0;
     padding-bottom: 0; }
@@ -2216,7 +2217,8 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     margin: 1em 0 .5em 0;
     border: 0;
     border-bottom-style: solid;
-    border-bottom-width: .05em; }
+    border-bottom-width: .05em;
+    background-image: none; }
   #sln-salon .sln-thankyou--okbox .sln-icon-wrapper {
     padding-left: 3em; }
   #sln-salon .sln-thankyou--okbox .sln-icon-wrapper .sln-icon {
@@ -2325,7 +2327,8 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     margin: 0 0 .6em 0;
     border: 0;
     border-top-style: solid;
-    border-top-width: .16em; }
+    border-top-width: .16em;
+    background-image: none; }
 
 .sln-total-price {
   text-align: right; }
