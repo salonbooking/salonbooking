@@ -24,7 +24,11 @@ abstract class SLN_Action_Sms_Abstract
     }
 
     protected function processTo($to){
-        $prefix = $this->plugin->getSettings()->get('sms_prefix');
+        $s = $this->plugin->getSettings();
+        $prefix = $s->get('sms_prefix');
+        if($s->get('sms_trunk_prefix') && strpos($to,'0') === 0){
+            $to = substr($to,1);
+        }
         //$prefix = str_replace('+','',$prefix);
         $to = str_replace(' ','',$to);
         return $prefix . $to;

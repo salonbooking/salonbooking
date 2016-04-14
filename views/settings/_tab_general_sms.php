@@ -54,6 +54,14 @@
                         <?php $helper->row_input_text('sms_from', __('Sender\'s number', 'salon-booking-system')); ?>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group sln-checkbox">
+                        <?php $helper->row_input_checkbox(
+                            'sms_trunk_prefix',
+                            __('Trunk trailing 0 prefix', 'salon-booking-system')
+                        ); ?>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-4 form-group sln-box-maininfo align-top">
                 <p class="sln-input-help"><?php _e(
