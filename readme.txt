@@ -2,8 +2,8 @@
 Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
-Tested up to: 4.4
-Stable tag: 2.3.2
+Tested up to: 4.5
+Stable tag: 2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,15 +48,19 @@ Salon booking works with double booking algorithms:
 
 **Recently added**: 
 
+* High End booking algorithm - controls availability of service and assigned assistant during a specific time frame
+* Multiple assistants selection
+* Weekly scheduling multiple rules even for assistants and services
+* Front-end booking form layout style
+
+
+**With Salon Booking you can also..**
+
 * Customers management archive
 * Holidays rules hourly range added
 * Week start on..
 * Email booking reminder 
 * Filter assistants by services
-
-
-**With Salon Booking you can also..**
-
 * Import / Export settings tool
 * More intervals available for "Session average duration" option
 * Auto hide columns on Booking my Account page when Assistant selection is not active and when "Hide price" is active
@@ -199,17 +203,20 @@ The plugin can be translated in any languages  creating a .po file or using WPML
 
 NOTE: Put your own translation files inside wp-content/languages/plugins
 
+Languages available:
+
+*Russian
+*Turkish
+*French
+*Italian
+*Spanish
+*Danish
+*German
+*Swedish
+
 If you want to contribuite to plugin translation please visit:
 
 https://www.transifex.com/projects/p/salon-booking-system/
-
-Languages available:
-
-*English
-*German
-*French
-*Italian
-*Dutch
 
  
 = Are there any conflicts with other plugins? =
@@ -254,6 +261,19 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+14.04.2016
+
+* Salon staff role bug fix
+* Parallel booking bug fix
+* Time format inside Booking My Account page
+* Resend SMS verification code bug fix
+* Wrong time format inside Calendar daily view
+* Google Calendar syncronization legal time bug fix
+* Improvement back-end calendar weekly view
+* Front-end booking form restyling
+* Blank page after reservation approval from back-end bug fix
+
 
 11.03.2016
 
@@ -396,5 +416,22 @@ Date-picker multi-languages support fix
 
 == Upgrade Notice ==
 
-= 2.0 =
-This new version brings a lot of new features, back-end settings redesign and some bug fixes. Probably you'll need to update your translations.
+= 2.4 =
+Read Carefully before update: <br />
+This is a major update of Salon Booking. <br /><br />
+
+We highly suggest you to: <br /><br />
+
+1 - back-up your files ( even Salon Booking 2.3.2 version )<br />
+2 - back-up your database<br />
+3 - back-up your translations<br />
+4 - back-up your CSS customisations<br /><br />
+
+The 2.4 version has changed the front-end booking form layout and some CSS classes has been changed too. Be prepared to update your CSS customisations once the update of Salon Booking has been completed.<br /><br />
+
+The 2.4 version has a new algorithm, more precise, and require a “Database updater” to be launched once the new version has been installed.<br /><br />
+
+In case of doubts you could install this new version on a development website first and check what’s new.<br />
+If you feel confident with the new version you can proceed with the plugin update on your production webiste.<br /><br />
+
+You could also contact us on support@wordpresschef.it
