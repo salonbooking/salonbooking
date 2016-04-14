@@ -31,26 +31,7 @@
             </div>
         </div>
         <?php $ppl = false; ?>
-    <div class="sln-alert sln-alert--warning <?php if($confirmation) : ?> sln-alert--topicon<?php endif ?>">
-        <?php if($confirmation) : ?>
-            <p><strong><?php _e('You will receive a confirmation of your booking by email.','salon-booking-system' )?></strong></p>
-            <p><?php echo sprintf(__('If you don\'t receive any news from us or you need to change your reservation please call the %s or send an e-mail to %s', 'salon-booking-system'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
-                <?php echo $plugin->getSettings()->get('gen_phone') ?></p>
-            <?php /*     <p class="aligncenter"><a href="<?php echo $confirmUrl ?>"
-             data-salon-toggle="direct" data-salon-data="<?php echo $ajaxData.'&mode=confirm' ?>"
-             class="btn btn-primary"><?php _e('Complete','salon-booking-system') ?></a></p>
-
-        <p class="aligncenter"><a href="<?php echo home_url() ?>" class="btn btn-primary"><?php _e('Back to home','salon-booking-system') ?></a></p>
-*/ ?>
-        <?php else : ?>
-            <p><?php echo sprintf(__('If you need to change your reservation please call the <strong>%s</strong> or send an e-mail to <strong>%s</strong>', 'salon-booking-system'), $plugin->getSettings()->get('gen_phone'),  $plugin->getSettings()->get('gen_email') ? $plugin->getSettings()->get('gen_email') : get_option('admin_email') ); ?>
-                <?php echo $plugin->getSettings()->get('phone') ?>
-            </p>
-            </div>
-
-            <div id="sln-notifications"></div>
-            <!-- form actions -->
-        <?php endif ?>
+        <?php include '_salon_thankyou_alert.php' ?>
     <?php endif ?>
 </div>
 <div class="col-md-12 sln-form-actions-wrapper sln-input--action">
