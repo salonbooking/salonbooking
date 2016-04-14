@@ -34,7 +34,7 @@ class SLN_Admin_Tools {
 		$current_version = $this->settings->getDbVersion();
 
 		$versionToRollback = '';
-		$rollbacks = SLN_Action_Install::getDbRollbacks();
+		$rollbacks = SLN_Action_Update::getDbRollbacks();
 		krsort($rollbacks);
 		foreach ($rollbacks as $version => $rollback) {
 			if (version_compare($current_version, $version, '>=')) {

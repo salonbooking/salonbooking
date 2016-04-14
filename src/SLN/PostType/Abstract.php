@@ -9,7 +9,7 @@ abstract class SLN_PostType_Abstract
     {
         $this->plugin   = $plugin;
         $this->postType = $postType;
-        add_action('init', array($this, 'init'));
+        $this->init();
         add_filter('post_updated_messages', array($this, 'updated_messages'));
         add_filter('enter_title_here', array($this, 'enter_title_here'), 10, 2);
     }

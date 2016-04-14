@@ -39,6 +39,7 @@ class SLN_Action_Init
             SLN_Plugin::TAXONOMY_SERVICE_CATEGORY,
             array(SLN_Plugin::POST_TYPE_SERVICE)
         );
+        
         add_action('sln_sms_reminder', 'sln_sms_reminder');
         add_action('sln_email_reminder', 'sln_email_reminder');
 

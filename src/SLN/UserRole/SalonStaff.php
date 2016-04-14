@@ -7,21 +7,26 @@ class SLN_UserRole_SalonStaff
     private $role;
     private $displayName;
     private $capabilities = array(
-               'read' => true,
-               'edit_posts' => true,
-               'delete_posts' => true,
-               'publish_posts' => false,
-               'upload_files' => true,
-               'manage_salon' => true
+        'manage_salon' => true,
     );
 
     public function __construct(SLN_Plugin $plugin, $role, $displayName)
     {
+        foreach (array(
+                     SLN_Plugin::POST_TYPE_ATTENDANT,
+                     SLN_Plugin::POST_TYPE_SERVICE,
+                     SLN_Plugin::POST_TYPE_BOOKING,
+                 ) as $k) {
+
+            foreach(get_post_type_object($k)->cap as $v){
+                $this->capabilities[$v] = true;
+            }
+        }
         $this->plugin = $plugin;
         $this->role = $role;
         $this->displayName = $displayName;
         remove_role($this->role);
-        add_role( $this->role, $this->displayName, $this->capabilities);
+        add_role($this->role, $this->displayName, $this->capabilities);
     }
 
     /**

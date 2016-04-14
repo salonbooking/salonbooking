@@ -204,6 +204,8 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
                 'not_found_in_trash' => __('No services found in trash', 'salon-booking-system'),
                 'archive_title' => __('Services Archive', 'salon-booking-system'),
             ),
+            'capability_type' => array($this->getPostType(), $this->getPostType().'s'),
+            'map_meta_cap' => true
         );
     }
 

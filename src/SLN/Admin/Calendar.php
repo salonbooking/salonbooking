@@ -17,7 +17,7 @@ class SLN_Admin_Calendar
     public function admin_menu()
     {
         add_menu_page(
-                __('Salon', 'salon-booking-system'), __('Salon', 'salon-booking-system'), 'manage_options', 'salon', array($this, 'show'), SLN_PLUGIN_URL . '/img/admin_icon.png'
+                __('Salon', 'salon-booking-system'), __('Salon', 'salon-booking-system'), 'manage_salon', 'salon', array($this, 'show'), SLN_PLUGIN_URL . '/img/admin_icon.png'
         );
         $this->settings_page = add_submenu_page(
             'salon',
