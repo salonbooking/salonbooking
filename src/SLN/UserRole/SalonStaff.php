@@ -12,13 +12,15 @@ class SLN_UserRole_SalonStaff
 
     public function __construct(SLN_Plugin $plugin, $role, $displayName)
     {
+        $role = get_role('administrator');
+        $role->add_cap('manage_salon');
         foreach (array(
                      SLN_Plugin::POST_TYPE_ATTENDANT,
                      SLN_Plugin::POST_TYPE_SERVICE,
                      SLN_Plugin::POST_TYPE_BOOKING,
                  ) as $k) {
-
             foreach(get_post_type_object($k)->cap as $v){
+                $role->add_cap($v);
                 $this->capabilities[$v] = true;
             }
         }

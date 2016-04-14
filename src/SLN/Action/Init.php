@@ -93,15 +93,7 @@ class SLN_Action_Init
     public function hook_admin_init()
     {
         new SLN_Action_Update($this->plugin);
-        $this->addAdminCaps();
     }
-
-    private function addAdminCaps()
-    {
-        $role = get_role('administrator');
-        $role->add_cap('manage_salon');
-    }
-
 
     public function hook_admin_notices()
     {
