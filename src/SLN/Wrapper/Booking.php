@@ -27,7 +27,8 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
     function getToPayAmount()
     {
-        return $this->getDeposit() > 0 ? $this->getDeposit() : $this->getAmount();
+        $ret = $this->getDeposit() > 0 ? $this->getDeposit() : $this->getAmount();
+        return number_format($ret, 2);
     }
 
     function getFirstname()

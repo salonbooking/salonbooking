@@ -10,7 +10,7 @@ class SLN_PaymentMethod_Paypal extends SLN_PaymentMethod_Abstract
         );
     }
 
-    public function dispatchThankYou(SLN_Shortcode_Salon_ThankyouStep $shortcode, $booking = null){
+    public function dispatchThankYou(SLN_Shortcode_Salon_ThankyouStep $shortcode, SLN_Wrapper_Booking $booking = null){
         if (isset($_GET['op'])) {
             $op = explode('-', $_GET['op']);
             $action = $op[0];
