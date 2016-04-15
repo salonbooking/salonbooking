@@ -17,11 +17,11 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
 <div class="sln-attendant-list">
     <?php foreach ($attendants as $attendant) {
         $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $bb->getServices());
-        /*
+
         if (!empty($validateAttServicesErrors)) {
             continue;
         }
-        */
+        
         $validateErrors = $ah->validateAttendant($attendant, $bb->getDateTime(), $duration);
         if ($validateErrors && $validateAttServicesErrors) {
             $errors = array_merge($validateErrors, $validateAttServicesErrors);
