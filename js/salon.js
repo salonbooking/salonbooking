@@ -205,9 +205,12 @@ function sln_serviceTotal($) {
             form = $('#salon-step-services');
             data = form.serialize() + "&action=salon&method=CheckServices&part=primaryServices&security=" + salon.ajax_nonce;
         }
-        else {
+        else if ($('#salon-step-secondary').size()) {
             form = $('#salon-step-secondary');
             data = form.serialize() + "&action=salon&method=CheckServices&part=secondaryServices&security=" + salon.ajax_nonce;
+        }
+        else {
+            return;
         }
 
         $.ajax({

@@ -11,7 +11,7 @@ $attendants = $step->getAttendants();
 $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
-<form id="salon-step-secondary" method="post" action="<?php echo $formAction ?>" role="form">
+<form id="salon-step-attendant" method="post" action="<?php echo $formAction ?>" role="form">
 <h2 class="salon-step-title"><?php _e($isMultipleAttSelection && count($bb->getServices()) > 1 ? 'Select your assistants' : 'Select your assistant','salon-booking-system')?></h2>
 <?php
 	if ($size == '900') { ?>
