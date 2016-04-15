@@ -100,8 +100,7 @@ $plugin = SLN_Plugin::getInstance();
     </div>
 
     <div class="sln-box sln-box--main">
-        <?php echo $plugin->loadView('settings/_tab_booking_timing'); ?>
+        <?php echo $plugin->loadView('settings/_tab_booking_status'); ?>
     </div>
-
 
 </div>

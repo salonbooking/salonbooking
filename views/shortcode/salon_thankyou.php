@@ -10,9 +10,10 @@ $currentStep = $step->getShortcode()->getCurrentStep();
 $ajaxData = "sln_step_page=$currentStep&submit_$currentStep=1";
 $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
 
-$paymentMethod = $plugin->getSettings()->get('pay_enabled') ? 
+$paymentMethod = ((!$confirmation) && $plugin->getSettings()->get('pay_enabled')) ?
 SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMethod(), $plugin)
 : false;
+
 $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
 
