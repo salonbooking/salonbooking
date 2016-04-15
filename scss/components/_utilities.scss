@@ -132,3 +132,9 @@
   }
 }
 // PANELS // END
+// VALIDATION
+#sln-salon .sln-invalid,
+#sln-salon .sln-input .sln-invalid {
+  @extend %bd-color--problem;
+}
+// VALIDATION // END

@@ -468,6 +468,10 @@ th {
 .datetimepicker.sln-datetimepicker table tr td span.year, .datetimepicker.sln-datetimepicker .switch, .datetimepicker.sln-datetimepicker .prev, .datetimepicker.sln-datetimepicker .next, .datetimepicker.sln-datetimepicker .today {
   border-color: #e4e7e7 !important; }
 
+#sln-salon .sln-invalid,
+#sln-salon .sln-input .sln-invalid {
+  border-color: #D22221 !important; }
+
 #sln-salon {
   font-family: "Open sans", serif; }
   #sln-salon h1,
