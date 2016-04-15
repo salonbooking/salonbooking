@@ -2167,6 +2167,13 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     border-top-width: .16em;
     padding-top: .5em;
     margin-top: 1.5em; }
+  .sln-attendant .sln-attendant-thumb img {
+    border-radius: 50%;
+    border-radius: 9999px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%; }
   @media only screen and (min-width: 992px) {
     .sln-attendant {
       margin-bottom: 3em; }

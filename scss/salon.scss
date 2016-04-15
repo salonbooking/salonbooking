@@ -180,6 +180,9 @@ h1, h2, h3, h4, h5, h6 {
 			margin-top: 1.5em;
 		}
 	}
+	.sln-attendant-thumb img {
+		@include b-radius(50%);
+	}
 	@include bp(desktop) {
 		margin-bottom: 3em;
 		&:last-child {
