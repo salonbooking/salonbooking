@@ -184,4 +184,9 @@ class SLN_Settings
     {
         return $this->get('hide_prices') == 1 ? true : false;
     }
+
+    public function isAttendantsEnabled()
+    {
+        return $this->get('attendants_enabled') ? true : false;
+    }
 }

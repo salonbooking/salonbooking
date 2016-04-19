@@ -10,11 +10,13 @@ class SLN_Helper_Availability
     private $dayBookings;
     /** @var  SLN_Helper_HoursBefore */
     private $hoursBefore;
+    private $attendantsEnabled;
 
     public function __construct(SLN_Plugin $plugin)
     {
         $this->settings = $plugin->getSettings();
         $this->initialDate = $plugin->getBookingBuilder()->getEmptyValue();
+        $this->attendantsEnabled = $this->settings->isAttendantsEnabled();
     }
 
     public function getHoursBeforeHelper()
@@ -219,7 +221,6 @@ class SLN_Helper_Availability
         $endAt = clone $date;
         $endAt->modify('+'.SLN_Func::getMinutesFromDuration($duration).'minutes');
 
-        $attendants = $service->getAttendants();
         $interval = min(SLN_Enum_Interval::toArray());
         $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $startAt, $endAt);
         foreach ($times as $time) {
@@ -247,26 +248,9 @@ class SLN_Helper_Availability
                 );
             }
 
-            foreach ($attendants as $k => $attendant) {
-                if ($this->validateAttendant($attendant, $time)) {
-                    unset($attendants[$k]);
-                }
+            if ($ret = $this->checkServiceAttendants($service, $time)) {
+                return $ret;
             }
-
-            if (empty($attendants)) {
-                SLN_Plugin::addLog(
-                    __CLASS__.sprintf(
-                        ' - all of the assistants for service %s by date(%s) are busy',
-                        $service,
-                        $time->format('Ymd H:i')
-                    )
-                );
-
-                return array(
-                    __('No assistants available for this service at ', 'salon-booking-system').$time->format('H:i'),
-                );
-            }
-
             $ids = $this->getDayBookings()->countServicesByHour($time->format('H'), $time->format('i'));
             if (
                 $service->getUnitPerHour() > 0
@@ -281,6 +265,33 @@ class SLN_Helper_Availability
                     sprintf(__('The service for %s is currently full', 'salon-booking-system'), $time->format('H:i')),
                 );
             }
+        }
+    }
+
+    private function checkServiceAttendants(SLN_Wrapper_Service $service, DateTime $time)
+    {
+        if (!$this->attendantsEnabled) {
+            return;
+        }
+        $attendants = $service->getAttendants();
+        foreach ($attendants as $k => $attendant) {
+            if ($this->validateAttendant($attendant, $time)) {
+                unset($attendants[$k]);
+            }
+        }
+
+        if (empty($attendants)) {
+            SLN_Plugin::addLog(
+                __CLASS__.sprintf(
+                    ' - all of the assistants for service %s by date(%s) are busy',
+                    $service,
+                    $time->format('Ymd H:i')
+                )
+            );
+
+            return array(
+                __('No assistants available for this service at ', 'salon-booking-system').$time->format('H:i'),
+            );
         }
     }
 
@@ -317,9 +328,10 @@ class SLN_Helper_Availability
         $ret = array();
         $date = $this->date;
 
-        $bookingOffsetEnabled = SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled');
-        $bookingOffset = SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation');
-        $isMultipleAttSelection = SLN_Plugin::getInstance()->getSettings()->get('m_attendant_enabled');
+        $s = $this->settings;
+        $bookingOffsetEnabled = $s->get('reservation_interval_enabled');
+        $bookingOffset = $s->get('minutes_between_reservation');
+        $isMultipleAttSelection = $s->get('m_attendant_enabled');
         $interval = min(SLN_Enum_Interval::toArray());
 
         foreach ($newServices as $service) {
@@ -343,22 +355,8 @@ class SLN_Helper_Availability
                             $bookingService->getStartsAt()
                         );
                     }
-                    if (empty($serviceErrors) && !$isMultipleAttSelection) {
-                        if (is_null($availAtts)) {
-                            $availAtts = $this->getAvailableAttsIdsForServiceOnTime(
-                                $bookingService->getService(),
-                                $bookingService->getEndsAt(),
-                                $bookingService->getDuration()
-                            );
-                        }
-                        $availAtts = array_intersect(
-                            $availAtts,
-                            $this->getAvailableAttsIdsForServiceOnTime(
-                                $bookingService->getService(),
-                                $bookingService->getEndsAt(),
-                                $bookingService->getDuration()
-                            )
-                        );
+                    if (empty($serviceErrors) && $this->attendantsEnabled &&  !$isMultipleAttSelection) {
+                        $availAtts = $this->getAvailableAttendantForService($availAtts, $bookingService);
                         if (empty($availAtts)) {
                             $errorMsg = __(
                                 'An assistant for selected services can\'t perform this service',
@@ -369,16 +367,12 @@ class SLN_Helper_Availability
                     }
 
                     if (!empty($serviceErrors)) {
-                        if ($bookingService->getService()->getId() == $service->getId()) {
-                            $error = $serviceErrors[0];
-                        } else {
-                            $tmp = $bookingServices->findByService($service->getId());
-                            $error = !empty($errorMsg) ? $errorMsg : __(
-                                    'You already selected service at',
-                                    'salon-booking-system'
-                                ).($tmp ? ' '.$tmp->getStartsAt()->format('H:i') : '');
-                        }
-                        $ret[$service->getId()] = array($error);
+                        $ret[$service->getId()] = $this->processServiceErrors(
+                            $bookingServices,
+                            $bookingService,
+                            $service,
+                            $serviceErrors
+                        );
                         break;
                     }
                 }
@@ -390,6 +384,46 @@ class SLN_Helper_Availability
         }
 
         return $ret;
+    }
+
+    private function processServiceErrors(
+        SLN_Wrapper_Booking_Services $bookingServices,
+        SLN_Wrapper_Booking_Service $bookingService,
+        SLN_Wrapper_Service $service,
+        $serviceErrors
+    ) {
+        if ($bookingService->getService()->getId() == $service->getId()) {
+            $error = $serviceErrors[0];
+        } else {
+            $tmp = $bookingServices->findByService($service->getId());
+            $error = !empty($errorMsg) ? $errorMsg : __(
+                    'You already selected service at',
+                    'salon-booking-system'
+                ).($tmp ? ' '.$tmp->getStartsAt()->format('H:i') : '');
+        }
+
+        return array($error);
+    }
+
+    private function getAvailableAttendantForService($availAtts = null, SLN_Wrapper_Booking_Service $bookingService)
+    {
+        if (is_null($availAtts)) {
+            $availAtts = $this->getAvailableAttsIdsForServiceOnTime(
+                $bookingService->getService(),
+                $bookingService->getEndsAt(),
+                $bookingService->getDuration()
+            );
+        }
+        $availAtts = array_intersect(
+            $availAtts,
+            $this->getAvailableAttsIdsForServiceOnTime(
+                $bookingService->getService(),
+                $bookingService->getEndsAt(),
+                $bookingService->getDuration()
+            )
+        );
+
+        return $availAtts;
     }
 
     public function getAvailableAttsIdsForServiceOnTime(
