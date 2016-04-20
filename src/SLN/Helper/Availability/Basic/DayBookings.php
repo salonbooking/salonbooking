@@ -13,8 +13,7 @@ class SLN_Helper_Availability_Basic_DayBookings extends SLN_Helper_Availability_
 
     protected function buildTimeslots() {
         $ret = array();
-        $interval = min(SLN_Enum_Interval::toArray());
-        foreach(SLN_Func::getMinutesIntervals($interval) as $t) {
+        foreach($this->minutesIntervals as $t) {
             $ret[$t] = array('booking' => array(), 'service' => array(), 'attendant' => array());
         }
 

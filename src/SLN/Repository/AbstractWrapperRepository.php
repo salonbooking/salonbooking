@@ -6,6 +6,7 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
 
     protected $plugin;
     protected $postType;
+    protected $cache = array();
 
     public function __construct(SLN_Plugin $plugin, SLN_PostType_Abstract $postType)
     {
@@ -17,11 +18,16 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
     public function create($data = null)
     {
         if (is_int($data)) {
+            if (isset($this->cache[$data])) {
+                return $this->cache[$data];
+            }
             $data = get_post($data);
         }
         $class = $this->getWrapperClass();
 
-        return new $class($data);
+        $ret = new $class($data);
+        $this->cache[$ret->getId()] = $ret;
+        return $ret;
     }
 
     public function getBindings()

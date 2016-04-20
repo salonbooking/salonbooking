@@ -7,6 +7,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
     protected $bookings;
     protected $timeslots;
     protected $date;
+    protected $minutesIntervals;
 
     /**
      * @return array
@@ -20,6 +21,8 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
 
     public function __construct(DateTime $date, SLN_Wrapper_Booking $booking = null)
     {
+        $interval = min(SLN_Enum_Interval::toArray());
+        $this->minutesIntervals = SLN_Func::getMinutesIntervals($interval);
         $this->date = $date;
         $this->currentBooking = $booking;
         $this->bookings = $this->buildBookings();
@@ -129,5 +132,9 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
     protected function getBookings()
     {
         return $this->bookings;
+    }
+
+    public function getMinutesIntervals(){
+        return $this->minutesIntervals;
     }
 }

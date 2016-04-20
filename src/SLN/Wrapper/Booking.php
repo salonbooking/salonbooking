@@ -2,6 +2,9 @@
 
 class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 {
+    private $bookingServices;
+    private $attendants;
+
     const _CLASS = 'SLN_Wrapper_Booking';
 
     public function getPostType()
@@ -28,6 +31,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     function getToPayAmount()
     {
         $ret = $this->getDeposit() > 0 ? $this->getDeposit() : $this->getAmount();
+
         return number_format($ret, 2);
     }
 
@@ -82,10 +86,12 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
     function getBookingServices()
     {
-        $this->maybeProcessBookingServices();
-        $ret = new SLN_Wrapper_Booking_Services($this->getServicesMeta());
+        if (!$this->bookingServices) {
+            $this->maybeProcessBookingServices();
+            $this->bookingServices = new SLN_Wrapper_Booking_Services($this->getServicesMeta());
+        }
 
-        return $ret;
+        return $this->bookingServices;
     }
 
     function maybeProcessBookingServices()
@@ -189,18 +195,10 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     /**
      * @return SLN_Wrapper_Attendant|false
      */
-    function getAttendant()
+    public function getAttendant()
     {
-        $atts_ids = $this->getAttendantsIds();
-        $att = reset($atts_ids);
-        if ($att !== false) {
-            $tmp = new SLN_Wrapper_Attendant($att);
-            if (!$tmp->isEmpty()) {
-                return $tmp;
-            }
-        }
-
-        return false;
+        $ret = $this->getAttendants();
+        return empty($ret) ? $ret[0] : false;
     }
 
     /**
@@ -208,18 +206,22 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
      *
      * @return SLN_Wrapper_Attendant[]
      */
-    function getAttendants($unique = false)
+    public function getAttendants($unique = false)
     {
-        $ret = array();
-        $attIds = $this->getAttendantsIds($unique);
-        foreach ($attIds as $service_id => $id) {
-            $tmp = new SLN_Wrapper_Attendant($id);
-            if (!$tmp->isEmpty()) {
-                $ret[$service_id] = $tmp;
+        if (!$this->attendants) {
+            $repo = SLN_Plugin::getInstance()->getRepository(SLN_Wrapper_Attendant::class);
+            $this->attendants = array();
+            $attIds = $this->getAttendantsIds($unique);
+            foreach ($attIds as $service_id => $id) {
+                /** @var SLN_Wrapper_Attendant $tmp */
+                $tmp = $repo->create($id);
+                if (!$tmp->isEmpty()) {
+                    $this->attendants[$service_id] = $tmp;
+                }
             }
         }
 
-        return $ret;
+        return $this->attendants;
     }
 
     function getAttendantsString()

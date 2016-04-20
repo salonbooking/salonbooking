@@ -124,6 +124,10 @@ class SLN_Helper_Availability
         return $this->getDayBookings()->countBookingsByHour($hour, $minutes);
     }
 
+    public function getMinutesIntervals(){
+        return $this->getDayBookings()->getMinutesIntervals();
+    }
+
     public function validateAttendantService(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service)
     {
         if (!$attendant->hasAllServices()) {
@@ -172,34 +176,28 @@ class SLN_Helper_Availability
         $endAt = clone $date;
         $endAt->modify('+'.SLN_Func::getMinutesFromDuration($duration).'minutes');
 
-        $interval = min(SLN_Enum_Interval::toArray());
-        $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $startAt, $endAt);
+        $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $startAt, $endAt);
         foreach ($times as $time) {
-            SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
-            $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
-            if ($attendant->isNotAvailableOnDate($time)) {
-                SLN_Plugin::addLog(
-                    __CLASS__.sprintf(' - attendant %s by date(%s) not available', $attendant, $time->format('Ymd H:i'))
-                );
-
-                return array(
-                    __('This attendant is unavailable ', 'salon-booking-system').$attendant->getNotAvailableString(),
-                );
+            if ($ret = $this->validateAttendantOnTime($attendant, $time)) {
+                return $ret;
             }
+        }
+    }
 
-            $ids = $this->getDayBookings()->countAttendantsByHour($time->format('H'), $time->format('i'));
-            if (
-                isset($ids[$attendant->getId()])
-                && $ids[$attendant->getId()] >= 0
-            ) {
-                SLN_Plugin::addLog(
-                    __CLASS__.sprintf(' - attendant %s by date(%s) busy', $attendant, $time->format('Ymd H:i'))
-                );
+    private function validateAttendantOnTime(SLN_Wrapper_Attendant $attendant, DateTime $time)
+    {
+        SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
+        $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
+        if ($attendant->isNotAvailableOnDate($time)) {
+            return SLN_Helper_Availability_ErrorHelper::doAttendantNotAvailable($attendant, $time);
+        }
 
-                return array(
-                    sprintf(__('This assistant is full at %s', 'salon-booking-system'), $time->format('H:i')),
-                );
-            }
+        $ids = $this->getDayBookings()->countAttendantsByHour($time->format('H'), $time->format('i'));
+        if (
+            isset($ids[$attendant->getId()])
+            && $ids[$attendant->getId()] >= 0
+        ) {
+            return SLN_Helper_Availability_ErrorHelper::doAttendantBusy($attendant, $time);
         }
     }
 
@@ -221,54 +219,42 @@ class SLN_Helper_Availability
         $endAt = clone $date;
         $endAt->modify('+'.SLN_Func::getMinutesFromDuration($duration).'minutes');
 
-        $interval = min(SLN_Enum_Interval::toArray());
-        $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $startAt, $endAt);
+        $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $startAt, $endAt);
         foreach ($times as $time) {
-            SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
-            $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
-
-            if (!$this->isValidOnlyTime($time)) {
-                SLN_Plugin::addLog(
-                    __CLASS__.sprintf(' - limit of parallels bookings at date(%s)', $time->format('Ymd H:i'))
-                );
-
-                return array(
-                    __('Limit of parallels bookings at ', 'salon-booking-system').$time->format('H:i'),
-                );
-            }
-
-            if ($service->isNotAvailableOnDate($time)) {
-                SLN_Plugin::addLog(
-                    __CLASS__.sprintf(' - service %s by date(%s) not available', $service, $time->format('Ymd H:i'))
-                );
-
-                return array(
-                    __('This service is unavailable ', 'salon-booking-system').'<br/>'.
-                    __('Availability: ', 'salon-booking-system').$service->getNotAvailableString(),
-                );
-            }
-
-            if ($ret = $this->checkServiceAttendants($service, $time)) {
+            if ($ret = $this->validateServiceOnTime($service, $time)) {
                 return $ret;
             }
-            $ids = $this->getDayBookings()->countServicesByHour($time->format('H'), $time->format('i'));
-            if (
-                $service->getUnitPerHour() > 0
-                && isset($ids[$service->getId()])
-                && $ids[$service->getId()] >= $service->getUnitPerHour()
-            ) {
-                SLN_Plugin::addLog(
-                    __CLASS__.sprintf(' - service %s by date(%s) busy', $service, $time->format('Ymd H:i'))
-                );
 
-                return array(
-                    sprintf(__('The service for %s is currently full', 'salon-booking-system'), $time->format('H:i')),
-                );
-            }
         }
     }
 
-    private function checkServiceAttendants(SLN_Wrapper_Service $service, DateTime $time)
+    private function validateServiceOnTime(SLN_Wrapper_Service $service, DateTime $time)
+    {
+        SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
+        $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
+
+        if (!$this->isValidOnlyTime($time)) {
+            return SLN_Helper_Availability_ErrorHelper::doLimitParallelBookings($time);
+        }
+
+        if ($service->isNotAvailableOnDate($time)) {
+            return SLN_Helper_Availability_ErrorHelper::doServiceNotAvailableOnDate($service, $time);
+        }
+
+        if ($ret = $this->validateServiceAttendantsOnTime($service, $time)) {
+            return $ret;
+        }
+        $ids = $this->getDayBookings()->countServicesByHour($time->format('H'), $time->format('i'));
+        if (
+            $service->getUnitPerHour() > 0
+            && isset($ids[$service->getId()])
+            && $ids[$service->getId()] >= $service->getUnitPerHour()
+        ) {
+            return SLN_Helper_Availability_ErrorHelper::doServiceFull($service);
+        }
+    }
+
+    private function validateServiceAttendantsOnTime(SLN_Wrapper_Service $service, DateTime $time)
     {
         if (!$this->attendantsEnabled) {
             return;
@@ -281,17 +267,7 @@ class SLN_Helper_Availability
         }
 
         if (empty($attendants)) {
-            SLN_Plugin::addLog(
-                __CLASS__.sprintf(
-                    ' - all of the assistants for service %s by date(%s) are busy',
-                    $service,
-                    $time->format('Ymd H:i')
-                )
-            );
-
-            return array(
-                __('No assistants available for this service at ', 'salon-booking-system').$time->format('H:i'),
-            );
+            return SLN_Helper_Availability_ErrorHelper::doServiceAllAttendantsBusy($service, $time);
         }
     }
 
@@ -355,7 +331,7 @@ class SLN_Helper_Availability
                             $bookingService->getStartsAt()
                         );
                     }
-                    if (empty($serviceErrors) && $this->attendantsEnabled &&  !$isMultipleAttSelection) {
+                    if (empty($serviceErrors) && $this->attendantsEnabled && !$isMultipleAttSelection) {
                         $availAtts = $this->getAvailableAttendantForService($availAtts, $bookingService);
                         if (empty($availAtts)) {
                             $errorMsg = __(
@@ -441,7 +417,7 @@ class SLN_Helper_Availability
 
         $attendants = $service->getAttendants();
         $interval = min(SLN_Enum_Interval::toArray());
-        $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $startAt, $endAt);
+        $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $startAt, $endAt);
         foreach ($times as $time) {
             foreach ($attendants as $k => $attendant) {
                 if ($this->validateAttendant($attendant, $time)) {
@@ -458,7 +434,7 @@ class SLN_Helper_Availability
 
     public function validateTimePeriod($interval, $start, $end)
     {
-        $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $start, $end);
+        $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $start, $end);
         foreach ($times as $time) {
             $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
             if (!$this->isValidOnlyTime($time)) {

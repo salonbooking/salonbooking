@@ -19,13 +19,12 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
     protected function buildTimeslots()
     {
         $ret = array();
-        $interval = min(SLN_Enum_Interval::toArray());
-        foreach (SLN_Func::getMinutesIntervals($interval) as $t) {
+        foreach ($this->minutesIntervals as $t) {
             $ret[$t] = array('booking' => array(), 'service' => array(), 'attendant' => array());
         }
-
-        $bookingOffsetEnabled = SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled');
-        $bookingOffset = SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation');
+        $settings = SLN_Plugin::getInstance()->getSettings();
+        $bookingOffsetEnabled = $settings->get('reservation_interval_enabled');
+        $bookingOffset = $settings->get('minutes_between_reservation');
 
         /** @var SLN_Wrapper_Booking[] $bookings */
         $bookings = $this->bookings;
@@ -33,7 +32,7 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
             $bookingServices = $booking->getBookingServices();
             foreach ($bookingServices->getItems() as $bookingService) {
                 $times = SLN_Func::filterTimes(
-                    SLN_Func::getMinutesIntervals($interval),
+                    $this->minutesIntervals,
                     $booking->getStartsAt(),
                     $booking->getEndsAt()
                 );
@@ -48,7 +47,7 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
                     $offsetStart = $booking->getEndsAt();
                     $offsetEnd = clone $booking->getEndsAt();
                     $offsetEnd->modify('+'.$bookingOffset.' minutes');
-                    $times = SLN_Func::filterTimes(SLN_Func::getMinutesIntervals($interval), $offsetStart, $offsetEnd);
+                    $times = SLN_Func::filterTimes($this->minutesIntervals, $offsetStart, $offsetEnd);
                     foreach ($times as $time) {
                         $time = $time->format('H:i');
                         $ret[$time]['booking'][] = $booking->getId();
