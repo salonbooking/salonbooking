@@ -209,7 +209,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     public function getAttendants($unique = false)
     {
         if (!$this->attendants) {
-            $repo = SLN_Plugin::getInstance()->getRepository(SLN_Wrapper_Attendant::class);
+            $repo = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
             $this->attendants = array();
             $attIds = $this->getAttendantsIds($unique);
             foreach ($attIds as $service_id => $id) {
