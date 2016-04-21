@@ -68,14 +68,11 @@ $depositText = ($booking->getDeposit() && $booking->hasStatus(SLN_Enum_BookingSt
             <tr>
                 <td height="30" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Services','salon-booking-system') ?></td>
             </tr>
-            <?php foreach ($plugin->getServices() as $service) : ?>
-                <?php if ($booking->hasService($service)): ?>
+            <?php foreach ($booking->getServices() as $service) : ?>
                     <tr>
                         <td height="20" align="left" valign="top"
-                            style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $service->getName(
-                            ); ?></td>
+                            style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $service->getName(); ?></td>
                     </tr>
-                <?php endif; ?>
             <?php endforeach; ?>
             <tr>
                 <td align="left" valign="top">&nbsp;</td>

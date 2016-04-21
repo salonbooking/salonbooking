@@ -250,7 +250,7 @@ class SLN_Helper_Availability
             && isset($ids[$service->getId()])
             && $ids[$service->getId()] >= $service->getUnitPerHour()
         ) {
-            return SLN_Helper_Availability_ErrorHelper::doServiceFull($service);
+            return SLN_Helper_Availability_ErrorHelper::doServiceFull($service, $time);
         }
     }
 

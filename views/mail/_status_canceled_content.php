@@ -66,7 +66,7 @@
                                         <td height="22">&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $plugin->settings->get('gen_phone') ?></td>
+                                        <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $plugin->getSettings()->get('gen_phone') ?></td>
                                     </tr>
                                     <tr>
                                         <td height="35">&nbsp;</td>
