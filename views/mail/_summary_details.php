@@ -1,7 +1,7 @@
 <?php
 $showPrices = !$plugin->getSettings()->isHidePrices();
 /** @var SLN_Wrapper_Booking $booking */
-$isMultipleAttSelection = $plugin->getSettings->get('m_attendant_enabled');
+$isMultipleAttSelection = $plugin->getSettings()->get('m_attendant_enabled');
 ?>
 <table width="502" border="0" align="left" cellpadding="0" cellspacing="0">
     <tbody>
