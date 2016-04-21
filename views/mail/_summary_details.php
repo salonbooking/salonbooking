@@ -14,15 +14,15 @@ $isMultipleAttSelection = $plugin->getSettings()->get('m_attendant_enabled');
         </tr>
         <tr>
             <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Date', 'salon-booking-system')?></td>
-            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Time','salon-booking-system') ?></td>
+            <?php /* <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Time','salon-booking-system') ?></td> */ ?>
             <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Service','salon-booking-system') ?></td>
             <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Attendant','salon-booking-system') ?></td>
         </tr>
         <?php $printDate = true; ?>
         <?php foreach($booking->getBookingServices()->getItems() as $bookingService): ?>
             <tr>
-                <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#666666; font-weight:bold;"><?php if ($printDate) {$printDate = false; echo $plugin->format()->date($bookingService->getStartsAt());} ?></td>
-                <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#666666; font-weight:bold;"><?php echo $plugin->format()->time($bookingService->getStartsAt()) ?></td>
+                <td height="36" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#666666; font-weight:bold;"><?php if ($printDate) {$printDate = false; echo $plugin->format()->datetime($bookingService->getStartsAt());} ?></td>
+                <?php /* <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#666666; font-weight:bold;"><?php echo $plugin->format()->time($bookingService->getStartsAt()) ?></td> */?>
                 <td height="20" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $bookingService->getService()->getName(); ?></td>
                 <td height="20" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $bookingService->getAttendant()->getName(); ?></td>
             </tr>
