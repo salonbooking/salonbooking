@@ -94,7 +94,7 @@ if(!isset($forAdmin)) {
             </tr>
             <tr>
                 <td align="left" valign="top" bgcolor="#ffffff">
-                    <?php include('_summary_details.php') ?>
+                    <?php echo $plugin->loadView('mail/_summary_details',compact('booking')) ?>
                 </td>
             </tr>
             <?php if($booking->hasStatus(SLN_Enum_BookingStatus::PENDING_PAYMENT)){ ?>
