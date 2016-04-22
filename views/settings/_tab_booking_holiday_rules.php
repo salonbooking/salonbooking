@@ -25,7 +25,7 @@ if (!is_array($holidays)) {
             <?php echo $plugin->loadView(
                 'settings/_holiday_row',
                 array(
-                    'prefix' => "salon_settings[holiday][$k]",
+                    'prefix' => "salon_settings[holidays][$k]",
                     'row' => $row,
                     'rulenumber' => $n,
                 )
