@@ -23,10 +23,12 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
         if ($mode == 'confirm') {
             $this->goToThankyou();
         } elseif ($mode == 'later') {
-            if ($settings->isHidePrices()) {
-                $booking->setStatus(SLN_Enum_BookingStatus::CONFIRMED);
-            } else {
-                $booking->setStatus(SLN_Enum_BookingStatus::PAY_LATER);
+            if(!$settings->get('confirmation')){
+                if ($settings->isHidePrices()) {
+                    $booking->setStatus(SLN_Enum_BookingStatus::CONFIRMED);
+                } else {
+                    $booking->setStatus(SLN_Enum_BookingStatus::PAY_LATER);
+                }
             }
             $this->goToThankyou();
         } elseif (isset($_GET['op']) || $mode) {
