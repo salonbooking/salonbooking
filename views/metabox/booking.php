@@ -373,7 +373,7 @@ jQuery(function($){ customBookingUser($); });
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <button data-collection="addnewserviceline"class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file">
-                    <?php _e('Add new','salon-booking-system') ?>
+                    <?php _e('Add service','salon-booking-system') ?>
                 </button>
             </div>
         </div>

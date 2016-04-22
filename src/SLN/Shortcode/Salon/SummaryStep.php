@@ -9,7 +9,6 @@ class SLN_Shortcode_Salon_SummaryStep extends SLN_Shortcode_Salon_Step
         if (!$bb->getLastBooking()) {
             $bb->set('note', SLN_Func::filter($values['note']));
             $bb->create();
-            /* fix double mail 
             if($this->getPlugin()->getSettings()->get('confirmation')){
                 $this->getPlugin()->sendMail(
                     'mail/summary',
@@ -20,7 +19,6 @@ class SLN_Shortcode_Salon_SummaryStep extends SLN_Shortcode_Salon_Step
                     array('booking' => $bb->getLastBooking())
                 );
             }
-            */
         }
 
         return true;
