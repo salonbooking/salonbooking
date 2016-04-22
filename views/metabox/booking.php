@@ -11,8 +11,11 @@ $allServices = $sRepo->getAll();
 /** @var SLN_Repository_AttendantRepository $sRepo */
 $sRepo =  $plugin->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
 $allAttendants = $sRepo->getAll();
-
 ?>
+<script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/customBookingUser.js?20160224"></script>
+<script type="text/javascript">
+jQuery(function($){ customBookingUser($); });
+</script>
 <?php if(isset($_SESSION['_sln_booking_user_errors'])): ?>
     <div class="error">
     <?php foreach($_SESSION['_sln_booking_user_errors'] as $error): ?>
@@ -96,7 +99,7 @@ $allAttendants = $sRepo->getAll();
     </div>
 
 <div class="row">
-        <div class="col-md-6 col-sm-6 sln-select">
+        <div class="col-md-6 col-sm-6">
         <label for="sln-update-user-field"><?php _e('Search for existing users', 'salon-booking-system') ?></label>
             <select id="sln-update-user-field"
                  data-nomatches="<?php _e('no users found','salon-booking-system')?>"
