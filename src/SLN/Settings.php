@@ -100,7 +100,7 @@ class SLN_Settings
 
     public function getThankyouPageId()
     {
-        return $this->settings['thankyou'];
+        return $this->get('thankyou');
     }
 
     public function isDisabled()

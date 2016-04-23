@@ -47,6 +47,8 @@ class SLN_Shortcode_Salon_ThankyouStep extends SLN_Shortcode_Salon_Step
         $id = $this->getPlugin()->getSettings()->getThankyouPageId();
         if ($id) {
             $this->redirect(get_permalink($id));
+        }else{
+            $this->redirect(home_url());
         }
     }
 
