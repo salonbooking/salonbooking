@@ -40,19 +40,19 @@ $depositText = ($booking->getDeposit() && $booking->hasStatus(SLN_Enum_BookingSt
         </td>
         <td width="194" align="center" valign="top" style="border-right:2px solid #f2f2f2;">
 <?php if ($isMultipleAttSelection) : ?>
-    <table width="206" border="0" align="center" cellpadding="0" cellspacing="0">
+    <table width="160" border="0" align="center" cellpadding="0" cellspacing="0">
         <tbody><tr>
             <td align="left" valign="top">&nbsp;</td>
         </tr>
         <tr>
-            <td height="25" align="center" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Service','salon-booking-system') ?></td>
-            <td height="25" align="center" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Attendant','salon-booking-system') ?></td>
+            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Service','salon-booking-system') ?></td>
+            <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php _e('Attendant','salon-booking-system') ?></td>
         </tr>
         <?php $printDate = true; ?>
         <?php foreach($booking->getBookingServices()->getItems() as $bookingService): ?>
             <tr>
-                <td height="20" align="center" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $bookingService->getService()->getName(); ?></td>
-                <td height="20" align="center" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $bookingService->getAttendant()->getName(); ?></td>
+                <td height="20" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $bookingService->getService()->getName(); ?></td>
+                <td height="20" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $bookingService->getAttendant()->getName(); ?></td>
             </tr>
         <?php endforeach ?>
         <tr>
