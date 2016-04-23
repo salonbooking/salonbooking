@@ -366,12 +366,12 @@ jQuery(function($){ customBookingUser($); });
                 }
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 sln-select">
+            <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
                 <select class="sln-select" name="_sln_booking_attendant_select" id="_sln_booking_attendant_select">
                     <option value=""><?php _e('Select an assistant','salon-booking-system') ?></option>
                 </select>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="col-xs-12 col-sm-2 col-md-2">
                 <button data-collection="addnewserviceline"class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file">
                     <?php _e('Add service','salon-booking-system') ?>
                 </button>
