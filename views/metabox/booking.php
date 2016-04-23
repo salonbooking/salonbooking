@@ -69,8 +69,15 @@ jQuery(function($){ customBookingUser($); });
                 ); ?>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6" id="sln-notifications"  data-valid-message="<?php _e('OK! the date and time slot you selected is available','salon-booking-system'); ?>"></div>
+       
     </div>
+
+ <div class="row form-inline">
+
+     <div class="col-md-6 col-sm-6" id="sln-notifications"  data-valid-message="<?php _e('OK! the date and time slot you selected is available','salon-booking-system'); ?>"></div>
+
+ </div>
+
 </span>
 
     <div class="sln_booking-topbuttons">
