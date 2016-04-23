@@ -198,7 +198,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     public function getAttendant()
     {
         $ret = $this->getAttendants();
-        return empty($ret) ? $ret[0] : false;
+        return empty($ret) ? false : $ret[0];
     }
 
     /**
@@ -336,7 +336,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $id = $this->getMeta('uniqid');
         if (!$id) {
             $id = md5(uniqid().$this->getId());
-            $this->setMeta('uniqid');
+            $this->setMeta('uniqid', $id);
         }
 
         return $this->getId().'-'.$id;
