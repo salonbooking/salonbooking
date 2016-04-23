@@ -247,8 +247,8 @@ jQuery(function($){ customBookingUser($); });
                 <div class="col-xs-6 col-sm-1 col-md-1"><h4><?php _e('End at', 'salon-booking-system') ?></h4></div>
             <?php endif; ?>
             <div class="col-xs-12 col-sm-4 col-md-4"><h4><?php _e('Service', 'salon-booking-system') ?></h4></div>
-            <div class="col-xs-12 col-sm-2 col-md-2"><h4><?php _e('Attendant', 'salon-booking-system') ?></h4></div>
-            <div class="col-xs-12 col-sm-4 col-md-4"><h4><?php _e('', 'salon-booking-system') ?></h4></div>
+            <div class="col-xs-12 col-sm-3 col-md-3"><h4><?php _e('Attendant', 'salon-booking-system') ?></h4></div>
+            <div class="col-xs-12 col-sm-2 col-md-2"><h4><?php _e('', 'salon-booking-system') ?></h4></div>
         </div>
         <?php
 
@@ -312,7 +312,7 @@ jQuery(function($){ customBookingUser($); });
                 )
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 sln-select">
+            <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][' . $bookingService->getService()->getId() . ']',
                     array($bookingService->getAttendant()->getId() => $bookingService->getAttendant()->getName()),
@@ -321,7 +321,7 @@ jQuery(function($){ customBookingUser($); });
                     true
                 ) ?>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="col-xs-12 col-sm-2 col-md-2">
                 <div>
                     <button class="sln-btn sln-btn--problem sln-btn--big sln-btn--icon sln-icon--trash" data-collection="remove"><?php echo __('Remove', 'salon-booking-system')?></button>
                 </div>
