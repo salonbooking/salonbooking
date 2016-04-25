@@ -1811,6 +1811,9 @@ th {
     opacity: 1; }
   #sln-salon-my-account .btn {
     background-color: silver; }
+  #sln-salon-my-account .btn.btn-primary {
+    background-color: #428bca;
+    color: #fff; }
   #sln-salon-my-account .btn.btn-confirm {
     background-color: #d51e26;
     color: #fff; }

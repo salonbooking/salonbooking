@@ -41,6 +41,11 @@
 							</div>
 
 							<div>
+							<?php if ($item['status_code'] == SLN_Enum_BookingStatus::PENDING_PAYMENT && $data['pay_enabled']): ?>
+								<a href="<?php echo SLN_Plugin::getInstance()->createBooking($item['id'])->getPayUrl(); ?>" class="btn btn-primary">
+									<?php _e('Pay Now','salon-booking-system');?>
+								</a>
+							<?php endif; ?>
 							<?php if ($item['status_code'] != SLN_Enum_BookingStatus::CANCELED
 							    && $data['cancellation_enabled']): ?>
 									<?php if ($item['timestamp']-current_time('timestamp') > $data['seconds_before_cancellation']): ?>
