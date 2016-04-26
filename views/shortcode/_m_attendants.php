@@ -46,13 +46,6 @@ foreach ($bookingServices->getItems() as $bookingService) :
         ?>
         
         <div class="clearfix"></div>
-        <?php if ($errors) : ?>
-            <div><div class="col-xs-offset-2 col-lg-offset-1"><div class="alert alert-danger alert-no-spacing">
-                <?php foreach ($errors as $error): ?>
-                    <p><?php echo $error ?></p>
-                <?php endforeach ?>
-            </div></div></div>
-        <?php endif ?>
         <?php $hasAttendants = true ?>
     <?php endforeach ?>
     <?php if(!$hasAttendants) : ?>
