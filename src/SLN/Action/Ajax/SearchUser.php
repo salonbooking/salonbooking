@@ -5,7 +5,10 @@ class SLN_Action_Ajax_SearchUser extends SLN_Action_Ajax_Abstract
     public function execute()
     {
        if(!current_user_can( 'manage_options' )) throw new Exception('now allowed');
-       $result = $this->getResult($_GET['s']);
+       $result = array();
+       if(isset($_GET['s'])){
+           $result = $this->getResult($_GET['s']);
+       }
        if(!$result){
            $ret = array(
                'success' => 0,
@@ -46,7 +49,7 @@ class SLN_Action_Ajax_SearchUser extends SLN_Action_Ajax_Abstract
             global $wpdb;
 
             $uids=array();			
-
+            if(isset($_GET['s'])){
 			$flsiwa_add = "";
 			// Escaped query string
 			$qstr = addslashes($_GET["s"]);
@@ -74,6 +77,7 @@ class SLN_Action_Ajax_SearchUser extends SLN_Action_Ajax_Abstract
                     array_push($uids,$maf->ID);
                 }
             }
+        }
         return $uids;
     }
 }

@@ -198,7 +198,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     public function getAttendant()
     {
         $ret = $this->getAttendants();
-        return empty($ret) ? false : $ret[0];
+        return empty($ret) ? false : array_pop($ret);
     }
 
     /**
