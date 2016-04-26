@@ -39,16 +39,6 @@ class SLN_Shortcode_SalonMyAccount_Details
 		}
 		$accountBookings = new SLN_Helper_Availability_MyAccountBookings();
 
-		$args=array(
-				'name'           => 'booking',
-				'post_type'      => 'page',
-				'post_status'    => 'publish',
-				'posts_per_page' => 1,
-		);
-		$query = new WP_Query($args);
-		$post = $query->get_queried_object();
-		wp_reset_query();
-
 		return $this->render(array(
 				'upcoming' => $this->prepareBookings($accountBookings->getBookings(get_current_user_id(), 'future')),
 				'history' => $this->prepareBookings($accountBookings->getBookings(get_current_user_id())),
@@ -60,7 +50,6 @@ class SLN_Shortcode_SalonMyAccount_Details
 				'gen_name' => $this->plugin->getSettings()->get('gen_name'),
 				'hide_prices' => $this->plugin->getSettings()->get('hide_prices'),
 				'attendant_enabled' => $this->plugin->getSettings()->get('attendant_enabled'),
-				'booking_url' => get_post_permalink($post->ID),
 		));
 	}
 

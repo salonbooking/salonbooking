@@ -1,7 +1,4 @@
 <!-- algolplus -->
-	<a class="btn" href="<?php echo $data['booking_url'] ?>">
-		<?php _e('New Booking', 'salon-booking-system') ?>
-	</a>
 	<div>
 		<h1><?php _e('Upcoming booking','salon-booking-system');?></h1>
 		<?php if($data['cancelled']): ?>
