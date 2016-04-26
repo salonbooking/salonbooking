@@ -40,7 +40,7 @@ $depositText = ($booking->getDeposit() && $booking->hasStatus(SLN_Enum_BookingSt
         </td>
         <td width="194" align="center" valign="top" style="border-right:2px solid #f2f2f2;">
 <?php if ($isMultipleAttSelection) : ?>
-    <table width="306" border="0" align="center" cellpadding="0" cellspacing="0">
+    <table width="160" border="0" align="center" cellpadding="0" cellspacing="0">
         <tbody><tr>
             <td align="left" valign="top">&nbsp;</td>
         </tr>

@@ -69,8 +69,15 @@ jQuery(function($){ customBookingUser($); });
                 ); ?>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6" id="sln-notifications"  data-valid-message="<?php _e('OK! the date and time slot you selected is available','salon-booking-system'); ?>"></div>
+       
     </div>
+
+ <div class="row form-inline">
+
+     <div class="col-md-6 col-sm-6" id="sln-notifications"  data-valid-message="<?php _e('OK! the date and time slot you selected is available','salon-booking-system'); ?>"></div>
+
+ </div>
+
 </span>
 
     <div class="sln_booking-topbuttons">
@@ -247,8 +254,8 @@ jQuery(function($){ customBookingUser($); });
                 <div class="col-xs-6 col-sm-1 col-md-1"><h4><?php _e('End at', 'salon-booking-system') ?></h4></div>
             <?php endif; ?>
             <div class="col-xs-12 col-sm-4 col-md-4"><h4><?php _e('Service', 'salon-booking-system') ?></h4></div>
-            <div class="col-xs-12 col-sm-2 col-md-2"><h4><?php _e('Attendant', 'salon-booking-system') ?></h4></div>
-            <div class="col-xs-12 col-sm-4 col-md-4"><h4><?php _e('', 'salon-booking-system') ?></h4></div>
+            <div class="col-xs-12 col-sm-3 col-md-3"><h4><?php _e('Attendant', 'salon-booking-system') ?></h4></div>
+            <div class="col-xs-12 col-sm-2 col-md-2"><h4><?php _e('', 'salon-booking-system') ?></h4></div>
         </div>
         <?php
 
@@ -312,7 +319,7 @@ jQuery(function($){ customBookingUser($); });
                 )
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 sln-select">
+            <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][' . $bookingService->getService()->getId() . ']',
                     array($bookingService->getAttendant()->getId() => $bookingService->getAttendant()->getName()),
@@ -321,7 +328,7 @@ jQuery(function($){ customBookingUser($); });
                     true
                 ) ?>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="col-xs-12 col-sm-2 col-md-2">
                 <div>
                     <button class="sln-btn sln-btn--problem sln-btn--big sln-btn--icon sln-icon--trash" data-collection="remove"><?php echo __('Remove', 'salon-booking-system')?></button>
                 </div>
@@ -366,12 +373,12 @@ jQuery(function($){ customBookingUser($); });
                 }
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-2 col-md-2 sln-select">
+            <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
                 <select class="sln-select" name="_sln_booking_attendant_select" id="_sln_booking_attendant_select">
                     <option value=""><?php _e('Select an assistant','salon-booking-system') ?></option>
                 </select>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="col-xs-12 col-sm-2 col-md-2">
                 <button data-collection="addnewserviceline"class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file">
                     <?php _e('Add service','salon-booking-system') ?>
                 </button>
