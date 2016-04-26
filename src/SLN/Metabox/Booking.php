@@ -29,9 +29,9 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
 
     public function hookLoadPost()
     {
-        if ($_GET['post_type'] != $this->getPostType()) {
+        if (isset($_GET['post_type']) && $_GET['post_type'] != $this->getPostType()) {
             $this->getPlugin()->messages()->setDisabled(true);
-            if ($_GET['post']) {
+            if (isset($_GET['post'])) {
                 $this->booking = $this->getPlugin()->createFromPost($_GET['post']);
                 $this->prevStatus = $this->booking->getStatus();
             }
