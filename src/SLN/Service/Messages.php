@@ -25,11 +25,16 @@ class SLN_Service_Messages
     {
         if ($this->disabled) {
             $this->deferred[] = compact('booking', 'status');
+
             return;
         }
         $p = $this->plugin;
         if ($status == SLN_Enum_BookingStatus::CONFIRMED) {
-            $p->sendMail('mail/status_confirmed', compact('booking'));
+            if ($this->plugin->getSettings()->get('confirmation')) {
+                $p->sendMail('mail/status_confirmed', compact('booking'));
+            } else {
+                $this->sendSummaryMail($booking);
+            }
             $this->sendSmsBooking($booking);
         } elseif ($status == SLN_Enum_BookingStatus::CANCELED) {
             $p->sendMail('mail/status_canceled', compact('booking'));
@@ -65,7 +70,8 @@ class SLN_Service_Messages
     }
 
 
-    public function sendSummaryMail($booking){
+    public function sendSummaryMail($booking)
+    {
         $p = $this->plugin;
         $p->sendMail('mail/summary', compact('booking'));
         $p->sendMail('mail/summary_admin', compact('booking'));
