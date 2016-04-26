@@ -24,7 +24,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
     protected function init()
     {
         parent::init();
-        add_action('load-post.php', [$this, 'hookLoadPost']);
+        add_action('load-post.php', array($this, 'hookLoadPost'));
     }
 
     public function hookLoadPost()
