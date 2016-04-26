@@ -242,6 +242,18 @@ class SLN_Plugin
 
         return $this->phpServices['sms'];
     }
+
+    /**
+     * @return SLN_Service_Messages
+     */
+    public function messages()
+    {
+        if (!isset($this->phpServices['messages'])) {
+            $this->phpServices['messages'] = new SLN_Service_Messages($this);
+        }
+
+        return $this->phpServices['messages'];
+    }
 }
 
 function sln_sms_reminder()

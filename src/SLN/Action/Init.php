@@ -20,7 +20,13 @@ class SLN_Action_Init
         $p = $this->plugin;
         add_action('init', array($this, 'hook_action_init'));
         register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
-        new SLN_PostType_Booking($p, SLN_Plugin::POST_TYPE_BOOKING);
+        $this->plugin->addRepository(
+            new SLN_Repository_BookingRepository(
+                $this->plugin,
+                new SLN_PostType_Booking($p, SLN_Plugin::POST_TYPE_BOOKING)
+            )
+        );
+
         $this->plugin->addRepository(
             new SLN_Repository_ServiceRepository(
                 $this->plugin,

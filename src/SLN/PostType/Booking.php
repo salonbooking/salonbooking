@@ -190,7 +190,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                 'archive_title' => __('Booking Archive', 'salon-booking-system'),
             ),
             'capability_type' => array($this->getPostType(), $this->getPostType().'s'),
-            'map_meta_cap' => true
+            'map_meta_cap' => true,
         );
     }
 
@@ -217,50 +217,17 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
 
     public function transitionPostStatus($new_status, $old_status, $post)
     {
-        if ($post->post_type == SLN_Plugin::POST_TYPE_BOOKING) {
+        if (
+            $post->post_type == SLN_Plugin::POST_TYPE_BOOKING
+            && $old_status != $new_status
+        ) {
             $p = $this->getPlugin();
             $booking = $p->createBooking($post);
-            if ($new_status == SLN_Enum_BookingStatus::CONFIRMED && $old_status != $new_status) {
-                $p->sendMail('mail/status_confirmed', compact('booking'));
-                $this->sendSmsBooking($booking);
-            } elseif ($new_status == SLN_Enum_BookingStatus::CANCELED && $old_status != $new_status) {
-                $p->sendMail('mail/status_canceled', compact('booking'));
-            } elseif ($new_status == SLN_Enum_BookingStatus::PENDING_PAYMENT && $old_status != $new_status) {
-                $p->sendMail('mail/status_pending_payment', compact('booking'));
-            } elseif (
-                in_array($new_status, array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::PAY_LATER))
-                && $old_status != $new_status
-            ) {
-                $p->sendMail('mail/summary', compact('booking'));
-                $p->sendMail('mail/summary_admin', compact('booking'));
-                $this->sendSmsBooking($booking);
-            }
-
+            $p->messages()->sendByStatus($booking, $new_status);
             //$ret = $GLOBALS['sln_googlescope']->create_event_from_booking($booking);
         }
     }
 
-    public function sendSmsBooking($booking)
-    {
-        $p = $this->getPlugin();
-        $sms = $p->sms();
-        if ($p->getSettings()->get('sms_new')) {
-            $phone = $p->getSettings()->get('sms_new_number');
-            if ($phone) {
-                $sms->send($phone, $p->loadView('sms/summary', compact('booking')));
-            }
-            $phone = $booking->getPhone();
-            if ($phone) {
-                $sms->send($phone, $p->loadView('sms/summary', compact('booking')));
-            }
-        }
-        if ($p->getSettings()->get('sms_new_attendant') && $booking->getAttendant()) {
-            $phone = $booking->getAttendant()->getPhone();
-            if ($phone) {
-                $sms->send($phone, $p->loadView('sms/summary', compact('booking')));
-            }
-        }
-    }
 
     public function bulkAdminFooterNew()
     {
