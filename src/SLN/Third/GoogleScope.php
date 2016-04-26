@@ -797,11 +797,9 @@ function synch_a_booking($post_id, $post, $sync = false) {
                         update_post_meta($booking->getId(), '_sln_calendar_event_id', '');
                     } catch (Exception $e) {
                         sln_my_wp_log($e);
-                        return;
                     }
                 } else {
                     sln_my_wp_log("do nothing");
-                    return;
                 }
             } else {
                 if (isset($b_event_id) && !empty($b_event_id)) {
@@ -820,11 +818,73 @@ function synch_a_booking($post_id, $post, $sync = false) {
                         update_post_meta($booking->getId(), '_sln_calendar_event_id', $event_id);
                     } catch (Exception $e) {
                         sln_my_wp_log($e);
-                        return;
                     }
                 }
                 sln_my_wp_log($event_id);
             }
+
+            $main_calendar = $GLOBALS['sln_googlescope']->google_client_calendar;
+
+            $events = get_post_meta($booking->getId(), '_sln_calendar_attendants_events_id', true);
+            if (!is_array($events)) {
+                $events = array();
+            }
+            $booking_attendants_ids = $booking->getAttendantsIds();
+            $all_attendants = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT)->getAll();
+            /** @var SLN_Wrapper_Attendant $attendant */
+            foreach($all_attendants as $attendant) {
+                $att_google_calendar = $attendant->getGoogleCalendar();
+                if (empty($att_google_calendar)) {
+                    continue;
+                }
+                $GLOBALS['sln_googlescope']->google_client_calendar = $att_google_calendar;
+
+                $att_id = $attendant->getId();
+                if ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED) {
+                    if (isset($events[$att_id]) && !empty($events[$att_id])) {
+                        sln_my_wp_log("delete");
+                        try {
+                            $GLOBALS['sln_googlescope']->delete_event_from_booking($events[$att_id]);
+                            unset($events[$att_id]);
+                        } catch (Exception $e) {
+                            sln_my_wp_log($e);
+                        }
+                    }
+                } else {
+                    if (!in_array($att_id, $booking_attendants_ids)) {
+                        if (isset($events[$att_id]) && !empty($events[$att_id])) {
+                            sln_my_wp_log("delete");
+                            try {
+                                $GLOBALS['sln_googlescope']->delete_event_from_booking($events[$att_id]);
+                                unset($events[$att_id]);
+                            } catch (Exception $e) {
+                                sln_my_wp_log($e);
+                            }
+                        }
+                    }
+                    else {
+                        if (isset($events[$att_id]) && !empty($events[$att_id])) {
+                            sln_my_wp_log("update");
+                            try {
+                                $events[$att_id] = $GLOBALS['sln_googlescope']->update_event_from_booking($booking, $events[$att_id], ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED));
+                            } catch (Exception $e) {
+                                $events[$att_id] = "";
+                            }
+                        }
+                        if (!(isset($events[$att_id]) && !empty($events[$att_id]))) {
+                            sln_my_wp_log("create");
+                            try {
+                                $events[$att_id] = $GLOBALS['sln_googlescope']->create_event_from_booking($booking, ($booking->getStatus() === SLN_Enum_BookingStatus::CANCELED));
+                            } catch (Exception $e) {
+                                sln_my_wp_log($e);
+                            }
+                        }
+                        sln_my_wp_log($events[$att_id]);
+                    }
+                }
+            }
+            $GLOBALS['sln_googlescope']->google_client_calendar = $main_calendar;
+            update_post_meta($booking->getId(), '_sln_calendar_attendants_events_id', $events);
             break;
 
         default:
