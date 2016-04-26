@@ -29,10 +29,17 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
 
     public function hookLoadPost()
     {
-        if (isset($_GET['post_type']) && $_GET['post_type'] != $this->getPostType()) {
+        if (
+            (isset($_GET['post_type']) && $_GET['post_type'] == $this->getPostType())
+            || (isset($_POST['post_type']) && $_POST['post_type'] == $this->getPostType())
+        ) {
             $this->getPlugin()->messages()->setDisabled(true);
             if (isset($_GET['post'])) {
                 $this->booking = $this->getPlugin()->createFromPost($_GET['post']);
+                $this->prevStatus = $this->booking->getStatus();
+            }
+            if (isset($_POST['post_ID'])) {
+                $this->booking = $this->getPlugin()->createFromPost($_POST['post_ID']);
                 $this->prevStatus = $this->booking->getStatus();
             }
 
@@ -132,7 +139,8 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             $this->disabledSavePost = false;
         }
         $this->addCustomerRole($booking);
-        if (!$this->booking || ($this->prevStatus != $booking->getStatus())) {
+
+        if ($this->prevStatus != $booking->getStatus()) {
             $m = $this->getPlugin()->messages();
             $m->setDisabled(false);
             $m->sendByStatus($booking, $booking->getStatus());

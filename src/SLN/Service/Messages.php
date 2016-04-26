@@ -9,7 +9,6 @@ class SLN_Service_Messages
         SLN_Enum_BookingStatus::PAID,
         SLN_Enum_BookingStatus::PAY_LATER,
     );
-    public $deferred = array();
 
     public function __construct(SLN_Plugin $plugin)
     {
@@ -24,8 +23,6 @@ class SLN_Service_Messages
     public function sendByStatus(SLN_Wrapper_Booking $booking, $status)
     {
         if ($this->disabled) {
-            $this->deferred[] = compact('booking', 'status');
-
             return;
         }
         $p = $this->plugin;
