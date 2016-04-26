@@ -59,6 +59,7 @@ abstract class SLN_Wrapper_Abstract
         $post['ID'] = $this->getId();
         $post['post_status'] = $status;
         wp_update_post($post);
+        $this->object->post_status = $status;
 
         return $this;
     }
