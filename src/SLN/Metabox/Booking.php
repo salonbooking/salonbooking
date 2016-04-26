@@ -139,7 +139,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             $this->disabledSavePost = false;
         }
         $this->addCustomerRole($booking);
-        if($booking->getStatus() == 'draft') $booking->setStatus(SLN_Enum_BookingStatus::PENDING_PAYMENT);
+        $booking->reload();
         if ($this->prevStatus != $booking->getStatus()) {
             $m = $this->getPlugin()->messages();
             $m->setDisabled(false);

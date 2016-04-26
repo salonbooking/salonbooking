@@ -13,6 +13,9 @@ abstract class SLN_Wrapper_Abstract
         }
         $this->object = $object;
     }
+    public function reload(){
+        $this->object = get_post($this->getId());
+    }
 
     function getId()
     {
