@@ -373,7 +373,7 @@ class SLN_GoogleScope {
      * get_calendar_list
      * @return type
      */
-    public function get_calendar_list() {
+    public function get_calendar_list($accessRole = '') {
         $cal_list = array();
 
         if (!$this->is_connected())
@@ -385,6 +385,9 @@ class SLN_GoogleScope {
         $cal_list['']['label'] = __("Choose among your Calendars", 'salon-booking-system');
         while (true) {
             foreach ($calendarList->getItems() as $calendarListEntry) {
+                if (!empty($accessRole) && $calendarListEntry->accessRole != $accessRole) {
+                    continue;
+                }
                 if (!isset($cal_list[$calendarListEntry->getId()]))
                     $cal_list[$calendarListEntry->getId()] = array();
                 $cal_list[$calendarListEntry->getId()]['id'] = $calendarListEntry->getId();

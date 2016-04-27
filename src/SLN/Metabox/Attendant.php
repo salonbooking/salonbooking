@@ -46,7 +46,7 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
     public function gcalendar_meta_box($object)
     {
         try {
-            $_calendar_list = $GLOBALS['sln_googlescope']->get_calendar_list();
+            $_calendar_list = $GLOBALS['sln_googlescope']->get_calendar_list('writer');
         } catch (Exception $e) {
             _e('Calendar is not configured', 'salon-booking-system');
             return;
