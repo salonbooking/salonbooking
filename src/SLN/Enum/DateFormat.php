@@ -17,7 +17,7 @@ class SLN_Enum_DateFormat
         self::_MYSQL => 'Y-m-d',
     );
     private static $jsFormats = array(
-        self::_DEFAULT => 'd M yyyy',
+        self::_DEFAULT => 'dd M yyyy',
         self::_SHORT => 'dd/mm/yyyy',
         self::_SHORT_COMMA => 'dd-mm-yyyy',
         self::_MDY => 'mm/dd/yyyy',
