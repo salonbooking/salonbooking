@@ -88,6 +88,11 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
         return $this->getServicesIds() ? false : true;
     }
 
+    public function getGoogleCalendar()
+    {
+        return $this->getMeta('google_calendar');
+    }
+
     public function getName()
     {
         return $this->getTitle();
