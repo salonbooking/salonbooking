@@ -13,7 +13,18 @@ $services = $step->getServices();
 ?>
     <?php include '_errors.php'; ?>
 <form id="salon-step-services" method="post" action="<?php echo $formAction ?>" role="form">
-<h2 class="salon-step-title"><?php _e('What do you need?','salon-booking-system') ?></h2>
+	<?php
+	if(current_user_can('manage_options')) {
+	?>
+	<input class="sln-edit-text" id="<?php _e('What do you need?', 'salon-booking-system') ?>"
+	       value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('What do you need?', 'salon-booking-system')); ?>" />
+	<?php
+	} else {
+		?>
+		<h2 class="sln-step-title"><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('What do you need?', 'salon-booking-system')); ?></h2>
+		<?php
+	}
+	?>
 <?php
 	if ($size == '900') { ?>
 		<div class="row sln-box--main">

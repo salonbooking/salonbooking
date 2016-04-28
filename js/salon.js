@@ -63,6 +63,20 @@ function sln_init($) {
         });
     });
 
+    $('.sln-edit-text').change(function() {
+        var data = "key=" + $(this).attr('id') + "&value=" + $(this).val() + "&action=salon&method=SetCustomText&security=" + salon.ajax_nonce;
+        $.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+
+            },
+            error: function(data){alert('error'); console.log(data);}
+        });
+    });
+
 }
 function sln_loadStep($, data) {
     var loadingMessage = '<div class="sln-loader-wrapper"><div class="sln-loader">Loading...</div></div>';

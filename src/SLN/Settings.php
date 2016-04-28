@@ -189,4 +189,21 @@ class SLN_Settings
     {
         return $this->get('attendants_enabled') ? true : false;
     }
+
+    public function getCustomText($key) {
+        $custom_texts = $this->get('custom_texts');
+        if (isset($custom_texts[$key]) && !empty($custom_texts[$key])) {
+            return $custom_texts[$key];
+        }
+
+        return $key;
+    }
+
+    public function setCustomText($key, $value) {
+        $custom_texts = $this->get('custom_texts');
+        $custom_texts[$key] = $value;
+        $this->set('custom_texts', $custom_texts);
+
+        return true;
+    }
 }

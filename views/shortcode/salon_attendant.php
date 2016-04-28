@@ -12,7 +12,31 @@ $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
 <form id="salon-step-attendant" method="post" action="<?php echo $formAction ?>" role="form">
-<h2 class="salon-step-title"><?php _e($isMultipleAttSelection && count($bb->getServices()) > 1 ? 'Select your assistants' : 'Select your assistant','salon-booking-system')?></h2>
+	<?php
+	if ($isMultipleAttSelection && count($bb->getServices()) > 1) {
+		if(current_user_can('manage_options')) {
+			?>
+			<input class="sln-edit-text" id="<?php _e('Select your assistants', 'salon-booking-system') ?>"
+			       value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Select your assistants', 'salon-booking-system')); ?>" />
+			<?php
+		} else {
+			?>
+			<h2 class="sln-step-title"><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Select your assistants', 'salon-booking-system')); ?></h2>
+			<?php
+		}
+	} else {
+		if(current_user_can('manage_options')) {
+			?>
+			<input class="sln-edit-text" id="<?php _e('Select your assistant', 'salon-booking-system') ?>"
+			       value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Select your assistant', 'salon-booking-system')); ?>" />
+			<?php
+		} else {
+			?>
+			<h2 class="sln-step-title"><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Select your assistant', 'salon-booking-system')); ?></h2>
+			<?php
+		}
+	}
+	?>
 <?php
 	if ($size == '900') { ?>
 		<div class="row sln-box--main sln-attendants-wrapper">

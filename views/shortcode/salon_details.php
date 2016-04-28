@@ -105,7 +105,18 @@ $values = array(
     }  ?>
     </form>
     <form method="post" action="<?php echo $formAction ?>" role="form">
-    <h2 class="salon-step-title"><?php _e('Checkout as a guest', 'salon-booking-system') ?>, <?php _e('An account will be automatically created', 'salon-booking-system') ?>
+        <?php
+        if(current_user_can('manage_options')) {
+            ?>
+            <input class="sln-edit-text" id="<?php _e('Checkout as a guest, an account will be automatically created', 'salon-booking-system') ?>"
+                   value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Checkout as a guest, an account will be automatically created', 'salon-booking-system')); ?>" />
+            <?php
+        } else {
+            ?>
+            <h2 class="sln-step-title"><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Checkout as a guest, an account will be automatically created', 'salon-booking-system')); ?></h2>
+            <?php
+        }
+        ?>
     </h2>
     <?php
     if ($size == '900') { ?>
@@ -238,7 +249,18 @@ $values = array(
 <?php else: ?>
 
     <form method="post" action="<?php echo $formAction ?>" role="form">
-    <h2 class="salon-step-title"><?php _e('Checkout', 'salon-booking-system') ?></h2>
+        <?php
+        if(current_user_can('manage_options')) {
+            ?>
+            <input class="sln-edit-text" id="<?php _e('Checkout', 'salon-booking-system') ?>"
+                   value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Checkout', 'salon-booking-system')); ?>" />
+            <?php
+        } else {
+            ?>
+            <h2 class="sln-step-title"><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Checkout', 'salon-booking-system')); ?></h2>
+            <?php
+        }
+        ?>
     <?php
     if ($size == '900') { ?>
     <div class="row">

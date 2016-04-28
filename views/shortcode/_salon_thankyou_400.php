@@ -2,7 +2,18 @@
     <?php if($confirmation) : ?>
         <h2 class="salon-step-title"><?php _e('Booking status', 'salon-booking-system') ?></h2>
     <?php else : ?>
-        <h2 class="salon-step-title"><?php _e('Booking Confirmation', 'salon-booking-system') ?></h2>
+        <?php
+        if(current_user_can('manage_options')) {
+            ?>
+            <input class="sln-edit-text" id="<?php _e('Booking Confirmation', 'salon-booking-system') ?>"
+                   value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Booking Confirmation', 'salon-booking-system')); ?>" />
+            <?php
+        } else {
+            ?>
+            <h2 class="sln-step-title"><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Booking Confirmation', 'salon-booking-system')); ?></h2>
+            <?php
+        }
+        ?>
     <?php endif ?>
 
     <?php include '_errors.php'; ?>
