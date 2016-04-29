@@ -19,9 +19,9 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
 	if(current_user_can('manage_options')) {
 	?>
 		<div class="editable">
-			<div class="text">
+			<h2 class="sln-step-title text">
 				<?php echo $value; ?>
-			</div>
+			</h2>
 			<div class="input">
 				<input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
 			</div>

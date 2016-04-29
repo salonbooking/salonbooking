@@ -2443,6 +2443,7 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   width: 90%;
 }
 
-.editable .text-min {
+.editable .text-min,
+.editable .input-min {
   width: 85%;
 }
