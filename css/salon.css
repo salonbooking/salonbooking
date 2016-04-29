@@ -2392,3 +2392,8 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 .sln-box--main {
   margin-top: 2em;
   margin-bottom: 3em; }
+
+.sln-edit-text{
+  display: none;
+}
+

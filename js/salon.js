@@ -64,6 +64,9 @@ function sln_init($) {
     });
 
     $('.sln-edit-text').change(function() {
+        var $input = $(this);
+        $input.attr('data-processing', true);
+
         var data = "key=" + $(this).attr('id') + "&value=" + $(this).val() + "&action=salon&method=SetCustomText&security=" + salon.ajax_nonce;
         $.ajax({
             url: salon.ajax_url,
@@ -71,10 +74,28 @@ function sln_init($) {
             method: 'POST',
             dataType: 'json',
             success: function (data) {
-
+                if (data.success) {
+                    $input.prev().text($input.val());
+                    $input.attr('data-processing', '');
+                    $input.focusout();
+                }
             },
             error: function(data){alert('error'); console.log(data);}
         });
+        return false;
+    });
+
+    $('.sln-edit-text').focusout(function() {
+        if (!$(this).attr('data-processing')) {
+            $(this).css('display', 'none');
+            $(this).prev().css('display', 'block');
+        }
+    });
+
+    $('.sln-edit-label-text').click(function() {
+        $(this).css('display', 'none');
+        $(this).next().css('display', 'block');
+        $(this).next().focus();
     });
 
 }

@@ -30,14 +30,17 @@ if ($plugin->getSettings()->isDisabled()) {
         <form method="post" action="<?php echo $formAction ?>" id="salon-step-date"
               data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>">
             <?php
+            $label = __('When do you want to come?', 'salon-booking-system');
+            $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
+
             if(current_user_can('manage_options')) {
             ?>
-            <input class="sln-edit-text" id="<?php _e('When do you want to come?', 'salon-booking-system') ?>"
-                   value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('When do you want to come?', 'salon-booking-system')); ?>" />
+                <h2 class="sln-step-title sln-edit-label-text"><?php echo $value; ?></h2>
+                <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
             <?php
             } else {
             ?>
-                <h2 class="sln-step-title"><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('When do you want to come?', 'salon-booking-system')); ?></h2>
+                <h2 class="sln-step-title"><?php echo $value; ?></h2>
             <?php
             }
             ?>

@@ -10,14 +10,17 @@
                 <div class="row sln-summary-row">
                     <div class="col-sm-6 col-md-6 sln-data-desc">
                         <?php
+                        $label = __('Date and time booked', 'salon-booking-system');
+                        $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
+
                         if(current_user_can('manage_options')) {
                             ?>
-                            <input class="sln-edit-text" id="<?php _e('Date and time booked', 'salon-booking-system') ?>"
-                                   value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Date and time booked', 'salon-booking-system')); ?>" />
+                            <span class="label sln-edit-label-text"><?php echo $value; ?></span>
+                            <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
                             <?php
                         } else {
                             ?>
-                            <span class="label"><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Date and time booked', 'salon-booking-system')); ?></span>
+                            <span class="label"><?php echo $value; ?></span>
                             <?php
                         }
                         ?>
@@ -31,14 +34,17 @@
                     <div class="row sln-summary-row">
                         <div class="col-sm-6 col-md-6 sln-data-desc">
                             <?php
+                            $label = __('Assistants', 'salon-booking-system');
+                            $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
+
                             if(current_user_can('manage_options')) {
                                 ?>
-                                <input class="sln-edit-text" id="<?php _e('Assistants', 'salon-booking-system') ?>"
-                                       value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Assistants', 'salon-booking-system')); ?>" />
+                                <span class="label sln-edit-label-text"><?php echo $value; ?></span>
+                                <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
                                 <?php
                             } else {
                                 ?>
-                                <span class="label"><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Assistants', 'salon-booking-system')); ?></span>
+                                <span class="label"><?php echo $value; ?></span>
                                 <?php
                             }
                             ?>
@@ -51,14 +57,17 @@
                 <div class="row sln-summary-row">
                     <div class="col-sm-6 col-md-6 sln-data-desc">
                         <?php
+                        $label = __('Services booked', 'salon-booking-system');
+                        $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
+
                         if(current_user_can('manage_options')) {
                             ?>
-                            <input class="sln-edit-text" id="<?php _e('Services booked', 'salon-booking-system') ?>"
-                                   value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Services booked', 'salon-booking-system')); ?>" />
+                            <span class="label sln-edit-label-text"><?php echo $value; ?></span>
+                            <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
                             <?php
                         } else {
                             ?>
-                            <span class="label"><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Services booked', 'salon-booking-system')); ?></span>
+                            <span class="label"><?php echo $value; ?></span>
                             <?php
                         }
                         ?>
@@ -92,14 +101,17 @@
         <div class="row">
             <div class="col-md-12 sln-input sln-input--simple">
                 <?php
+                $label = __('Do you have any message for us?', 'salon-booking-system');
+                $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
+
                 if(current_user_can('manage_options')) {
                     ?>
-                    <input class="sln-edit-text" id="<?php _e('Do you have any message for us?', 'salon-booking-system') ?>"
-                           value="<?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Do you have any message for us?', 'salon-booking-system')); ?>" />
+                    <label class="sln-edit-label-text"><?php echo $value; ?></label>
+                    <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
                     <?php
                 } else {
                     ?>
-                    <label><?php echo SLN_Plugin::getInstance()->getSettings()->getCustomText(__('Do you have any message for us?', 'salon-booking-system')); ?></label>
+                    <label><?php echo $value; ?></label>
                     <?php
                 }
                 ?>
