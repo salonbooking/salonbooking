@@ -9,7 +9,7 @@
         if(current_user_can('manage_options')) {
             ?>
             <div class="editable">
-                <h2 class="sln-step-title text">
+                <h2 class="salon-step-title text">
                     <?php echo $value; ?>
                 </h2>
                 <div class="input">
@@ -20,7 +20,7 @@
             <?php
         } else {
             ?>
-            <h2 class="sln-step-title"><?php echo $value; ?></h2>
+            <h2 class="salon-step-title"><?php echo $value; ?></h2>
             <?php
         }
         ?>
