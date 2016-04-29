@@ -26,8 +26,15 @@ $class = SLN_Enum_ShortcodeStyle::getClass($style);
 
     if(current_user_can('manage_options')) {
     ?>
-        <h1 class="sln-salon-title sln-edit-label-text"><?php echo $value; ?></h1>
-        <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>"/>
+        <div class="editable">
+            <div class="text">
+                <?php echo $value; ?>
+            </div>
+            <div class="input">
+                <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+            </div>
+            <i class="fa fa-gear fa-fw"></i>
+        </div>
     <?php
     }
     else {

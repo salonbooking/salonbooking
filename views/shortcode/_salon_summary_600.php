@@ -8,8 +8,15 @@
 
                 if(current_user_can('manage_options')) {
                     ?>
-                    <span class="sln-edit-label-text"><?php echo $value; ?></span>
-                    <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+                    <div class="editable">
+                        <div class="text text-min">
+                            <?php echo $value; ?>
+                        </div>
+                        <div class="input">
+                            <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+                        </div>
+                        <i class="fa fa-gear fa-fw"></i>
+                    </div>
                     <?php
                 } else {
                     ?>
@@ -32,8 +39,15 @@
 
                     if(current_user_can('manage_options')) {
                         ?>
-                        <span class="sln-edit-label-text"><?php echo $value; ?></span>
-                        <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+                        <div class="editable">
+                            <div class="text text-min">
+                                <?php echo $value; ?>
+                            </div>
+                            <div class="input">
+                                <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+                            </div>
+                            <i class="fa fa-gear fa-fw"></i>
+                        </div>
                         <?php
                     } else {
                         ?>
@@ -55,8 +69,15 @@
 
                 if(current_user_can('manage_options')) {
                     ?>
-                    <span class="sln-edit-label-text"><?php echo $value; ?></span>
-                    <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+                    <div class="editable">
+                        <div class="text text-min">
+                            <?php echo $value; ?>
+                        </div>
+                        <div class="input">
+                            <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+                        </div>
+                        <i class="fa fa-gear fa-fw"></i>
+                    </div>
                     <?php
                 } else {
                     ?>
@@ -97,8 +118,15 @@
 
         if(current_user_can('manage_options')) {
             ?>
-            <label class="sln-edit-label-text"><?php echo $value; ?></label>
-            <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+            <div class="editable">
+                <div class="text">
+                    <?php echo $value; ?>
+                </div>
+                <div class="input">
+                    <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+                </div>
+                <i class="fa fa-gear fa-fw"></i>
+            </div>
             <?php
         } else {
             ?>

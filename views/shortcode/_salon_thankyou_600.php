@@ -8,8 +8,15 @@
 
         if(current_user_can('manage_options')) {
             ?>
-            <h2 class="sln-step-title sln-edit-label-text"><?php echo $value; ?></h2>
-            <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+            <div class="editable">
+                <div class="text">
+                    <?php echo $value; ?>
+                </div>
+                <div class="input">
+                    <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+                </div>
+                <i class="fa fa-gear fa-fw"></i>
+            </div>
             <?php
         } else {
             ?>

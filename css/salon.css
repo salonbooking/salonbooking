@@ -1,5 +1,6 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -2393,7 +2394,55 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   margin-top: 2em;
   margin-bottom: 3em; }
 
-.sln-edit-text{
+.editable input {
+  background-color: white;
+  border: medium none;
+  padding: 10px 0 10px 5px;
+}
+
+.editable .text {
+  padding: 5px 0 5px 5px;
+}
+
+.editable:hover,
+.editable.focus {
+  border: 1px solid orange;
+}
+
+.editable .fa-gear {
+  font-size: 25px;
+  vertical-align: middle;
+  color: orange;
+}
+
+.editable .fa-gear,
+.editable.focus .text,
+.editable .input {
   display: none;
 }
 
+.editable.focus .fa-gear,
+.editable:hover .fa-gear,
+.editable .text,
+.editable.focus .input {
+  display: inline-block;
+}
+
+.editable.focus,
+.editable.focus .input,
+.editable.focus .input input {
+  background-color: #ccc;
+}
+
+.editable.focus .input input {
+  width: 100%;
+}
+
+.editable .text,
+.editable .input {
+  width: 90%;
+}
+
+.editable .text-min {
+  width: 85%;
+}
