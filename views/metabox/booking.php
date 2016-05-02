@@ -385,8 +385,8 @@ jQuery(function($){ customBookingUser($); });
             </div>
         </div>
         <script>
-            var servicesData = '<?php echo json_encode($servicesData); ?>';
-            var attendantsData = '<?php echo json_encode($attendantsData); ?>';
+            var servicesData = '<?php echo addslashes(json_encode($servicesData)); ?>';
+            var attendantsData = '<?php echo addslashes(json_encode($attendantsData)); ?>';
             var lineItem = '<?php echo $lineItem; ?>';
         </script>
     </div>
