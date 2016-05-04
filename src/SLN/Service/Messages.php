@@ -80,5 +80,6 @@ class SLN_Service_Messages
         $args = compact('booking');
         $args['updated'] = true;
         $p->sendMail('mail/summary', $args);
+        $p->sendMail('mail/summary_admin', $args);
     }
 }
