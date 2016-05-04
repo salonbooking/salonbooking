@@ -16,6 +16,7 @@ abstract class SLN_Metabox_Abstract
     {
         add_action('add_meta_boxes', array($this, 'add_meta_boxes'));
         add_action('save_post', array($this, 'save_post'), 10, 2);
+        add_filter('wp_insert_post_data', array($this, 'wp_insert_post_data'), 99, 2);
     }
 
     abstract public function add_meta_boxes();
@@ -30,6 +31,11 @@ abstract class SLN_Metabox_Abstract
             return;
         }
         $h->updateMetas($post_id, $h->processRequest($pt, $this->getFieldList()));
+    }
+
+    public function wp_insert_post_data($data, $postarr)
+    {
+        return $data;
     }
 
     /**  @return SLN_Plugin */

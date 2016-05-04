@@ -73,4 +73,12 @@ class SLN_Service_Messages
         $p->sendMail('mail/summary', compact('booking'));
         $p->sendMail('mail/summary_admin', compact('booking'));
     }
+
+    public function sendUpdatedMail($booking)
+    {
+        $p = $this->plugin;
+        $args = compact('booking');
+        $args['updated'] = true;
+        $p->sendMail('mail/summary', $args);
+    }
 }
