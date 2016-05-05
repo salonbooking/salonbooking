@@ -22,6 +22,9 @@ class SLN_Action_Install
             if (isset($ids['thankyou'])) {
                 $data['settings']['thankyou'] = $ids['thankyou'];
             }
+            if (isset($ids['bookingmyaccount'])) {
+                $data['settings']['bookingmyaccount'] = $ids['bookingmyaccount'];
+            }
             if (isset($ids['booking'])) {
                 $data['settings']['booking'] = $ids['booking'];
                 if(isset($data['settings']['pay']))

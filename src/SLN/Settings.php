@@ -102,6 +102,12 @@ class SLN_Settings
     {
         return $this->get('thankyou');
     }
+    
+    public function getBookingmyaccountPageId()
+    {
+        return $this->get('bookingmyaccount');
+    }
+
 
     public function isDisabled()
     {
