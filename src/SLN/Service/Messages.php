@@ -80,6 +80,9 @@ class SLN_Service_Messages
         $args = compact('booking');
         $args['updated'] = true;
         $p->sendMail('mail/summary', $args);
-        $p->sendMail('mail/summary_admin', $args);
+        
+		// send email only if we must notify attendants
+		if( $p->getSettings()->get('attendant_email') )
+			$p->sendMail('mail/summary_admin', $args);
     }
 }
