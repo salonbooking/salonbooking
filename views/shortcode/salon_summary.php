@@ -14,7 +14,28 @@ $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
 <form method="post" action="<?php echo $formAction ?>" role="form" id="salon-step-summary">
-    <h2 class="salon-step-title"><?php _e('Booking summary', 'salon-booking-system') ?></h2>
+    <?php
+    $label = __('Booking summary', 'salon-booking-system');
+    $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
+
+    if(current_user_can('manage_options')) {
+    ?>
+        <div class="editable">
+            <h2 class="salon-step-title text">
+                <?php echo $value; ?>
+            </h2>
+            <div class="input">
+                <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+            </div>
+            <i class="fa fa-gear fa-fw"></i>
+        </div>
+    <?php
+    } else {
+    ?>
+        <h2 class="salon-step-title"><?php echo $value; ?></h2>
+    <?php
+    }
+    ?>
     <div class="row">
         <div class="col-md-8">
             <p class="sln-text--dark"><?php _e('Dear', 'salon-booking-system') ?>

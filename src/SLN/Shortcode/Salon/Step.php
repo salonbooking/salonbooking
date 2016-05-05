@@ -35,7 +35,8 @@ abstract class SLN_Shortcode_Salon_Step
             'backUrl'    => add_query_arg(array('sln_step_page' => $this->shortcode->getPrevStep())),
             'submitName' => 'submit_' . $step,
             'step'       => $this,
-            'errors'     => $this->errors
+            'errors'     => $this->errors,
+            'settings'   => $this->plugin->getSettings(),
         );
     }
 

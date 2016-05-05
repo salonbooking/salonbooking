@@ -21,9 +21,29 @@ $class = SLN_Enum_ShortcodeStyle::getClass($style);
     if ($trial_exp)
         echo '<h2 class="sln_notice">' . __('Your free version is expired - upgrade to PRO', 'salon-booking-system') . '</h2>';
 
+    $label = __('Book an appointment', 'salon-booking-system');
+    $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
+
+    if(current_user_can('manage_options')) {
     ?>
-        <h1 class="sln-salon-title"><?php _e('Book an appointment', 'salon-booking-system'); ?></h1>
-<?php echo $content ?>
+        <div class="editable">
+            <h1 class="sln-salon-title text">
+                <?php echo $value; ?>
+            </h1>
+            <div class="input">
+                <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
+            </div>
+            <i class="fa fa-gear fa-fw"></i>
+        </div>
+    <?php
+    }
+    else {
+    ?>
+        <h1 class="sln-salon-title"><?php echo $value; ?></h1>
+    <?php
+    }
+    echo $content;
+    ?>
 
         <?php
         /* <ul class="salon-bar nav nav-pills nav-justified thumbnail">

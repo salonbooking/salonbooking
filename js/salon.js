@@ -63,6 +63,40 @@ function sln_init($) {
         });
     });
 
+    $('.sln-edit-text').change(function() {
+        var data = "key=" + $(this).attr('id') + "&value=" + $(this).val() + "&action=salon&method=SetCustomText&security=" + salon.ajax_nonce;
+        $.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+            },
+            error: function(data){alert('error'); console.log(data);}
+        });
+        return false;
+    });
+
+    $('div.editable').on('click', function() {
+        $(this).addClass('focus');
+    });
+
+    $('div.editable').on('click', function() {
+        var self = $(this);
+        self.addClass('focus');
+        var text  = self.find('.text');
+        var input = self.find('input');
+        input.val(text.text().trim()).trigger('focus');
+    });
+
+    $('div.editable .input input').on('blur', function() {
+        var self = $(this);
+        var div  = self.closest('.editable');
+        div.removeClass('focus');
+        var text = div.find('.text');
+        text.html(self.val());
+    });
+
 }
 function sln_loadStep($, data) {
     var loadingMessage = '<div class="sln-loader-wrapper"><div class="sln-loader">Loading...</div></div>';
