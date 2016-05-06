@@ -82,6 +82,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
     }
 
     private $disabledSavePost = false;
+    private $editPost = false;
 
     public function save_post($post_id, $post)
     {
@@ -91,6 +92,12 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             || !isset($_POST['_sln_booking_status'])
         ) {
             return;
+        }
+
+        if ($this->editPost) {
+            /** @var SLN_Wrapper_Booking $oldBooking */
+            $oldBooking = $this->getPlugin()->createFromPost($post_id);
+            $oldBookingServicesItems = $oldBooking->getBookingServices()->getItems();
         }
 
         $_POST['_sln_booking_services'] = $this->processServicesSubmission($_POST['_sln_booking']);
@@ -144,8 +151,40 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             $m = $this->getPlugin()->messages();
             $m->setDisabled(false);
             $m->sendByStatus($booking, $booking->getStatus());
+        } elseif ($this->editPost) {
+            $needSendUpdatedMsg = false;
+            $newBookingServicesItems = $booking->getBookingServices()->getItems();
+
+            if (count($newBookingServicesItems) != count($oldBookingServicesItems)) {
+                $needSendUpdatedMsg = true;
+            }
+            else {
+                foreach($newBookingServicesItems as $i => $bookingService) {
+                    if ($bookingService != $oldBookingServicesItems[$i]) {
+                        $needSendUpdatedMsg = true;
+                        break;
+                    }
+                }
+            }
+
+            if ($needSendUpdatedMsg) {
+                $m = $this->getPlugin()->messages();
+                $m->setDisabled(false);
+                $m->sendUpdatedMail($booking);
+            }
+
+            $this->editPost = false;
         }
 
+    }
+
+    public function wp_insert_post_data($data, $postarr)
+    {
+        if (SLN_Plugin::POST_TYPE_BOOKING === $postarr['post_type'] && !empty($postarr['ID']) && isset($postarr['action']) && 'editpost' === $postarr['action']) {
+            $this->editPost = true;
+        }
+
+        return $data;
     }
 
     private function addCustomerRole($booking)

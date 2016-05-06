@@ -22,6 +22,13 @@ if(isset($remind) && $remind) {
         ),
         $plugin->getSettings()->get('email_subject')
     );
+} elseif(isset($updated) && $updated) {
+    $data['subject'] = str_replace(
+        '[SALON NAME]',
+        $plugin->getSettings()->get('gen_name') ?
+            $plugin->getSettings()->get('gen_name') : get_bloginfo('name'),
+        __('Your reservation at [SALON NAME] has been modified', 'salon-booking-system')
+    );
 } else {
     $data['subject'] = __('New booking ','salon-booking-system')
                        .' '. $plugin->format()->date($booking->getDate())
