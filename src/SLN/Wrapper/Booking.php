@@ -351,4 +351,29 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $this->setMeta('rating', $rating);
     }
+    
+    public function getEmailCancellationDetails(&$cancellationText, &$bookingMyAccountUrl)
+    {
+		$cancellationText = $bookingMyAccountUrl = '';
+		$plugin = SLN_Plugin::getInstance();
+		
+		$cancellationEnabled = $plugin->getSettings()->get('cancellation_enabled');
+		if( !$cancellationEnabled )
+			return false;
+		
+		$cancellationHours = $plugin->getSettings()->get('hours_before_cancellation');
+		$outOfTime = (strtotime($this->getStartsAt())-current_time('timestamp')) < $cancellationHours * 3600;
+		if( $outOfTime )
+			return false;
+			
+		$bookingMyAccountPageId = $plugin->getSettings()->getBookingmyaccountPageId();
+		if( !$bookingMyAccountPageId )
+			return false;
+		
+		// have time and know page ?
+		$cancellationText = $cancellationHours<24 ? $cancellationHours . __(" hours", 'salon-booking-system') : 
+							$cancellationHours==24? __("1 day", 'salon-booking-system') : round($cancellationHours/24) . __("days", 'salon-booking-system');
+		$bookingMyAccountUrl = get_permalink($bookingMyAccountPageId);
+		return true;
+	}	
 }
