@@ -260,6 +260,7 @@ class SLN_Admin_Settings
         foreach (array(
                      'confirmation',
                      'thankyou',
+                     'bookingmyaccount',
                      'pay',
                      'reservation_interval_enabled', // algolplus
                      'minutes_between_reservation',  // algolplus
