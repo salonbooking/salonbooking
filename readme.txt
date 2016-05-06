@@ -2,8 +2,8 @@
 Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
-Tested up to: 4.5
-Stable tag: 3.0.1
+Tested up to: 4.5.1
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,14 +48,19 @@ Salon booking works with double booking algorithms:
 
 **Recently added**: 
 
-* High End booking algorithm - controls availability of service and assigned assistant during a specific time frame
-* Multiple assistants selection
-* Weekly scheduling multiple rules even for assistants and services
-* Front-end booking form layout style
+* Custom texts on front-end booking form
+* Google Calendar synchronisation for assistants
+* Email notifications after bookings updates
+* Booking cancellation button inside email notification
+* Block bookings that exceed the salon closing time
 
 
 **With Salon Booking you can also..**
 
+* High End booking algorithm - controls availability of service and assigned assistant during a specific time frame
+* Multiple assistants selection
+* Weekly scheduling multiple rules even for assistants and services
+* Front-end booking form layout style
 * Customers management archive
 * Holidays rules hourly range added
 * Week start on..
@@ -265,8 +270,8 @@ http://salon.wordpresschef.it
 22.04.2016
 
 * Bug fixed on customer search inside back-end booking details 
-* Bug fixed on doulbe email notification
-* Bug fixed on addind services to a booking from back-end
+* Bug fixed on double email notification
+* Bug fixed on adding services to a booking from back-end
 * Bug fixed on wrong status for booking with "manual confirmation" option enabled
 
 14.04.2016
@@ -291,7 +296,7 @@ http://salon.wordpresschef.it
 
 03.03.2016
 
-* Fixed italian strings inside Assistant and Service detail page
+* Fixed Italian strings inside Assistant and Service detail page
 
 19.02.2016
 
@@ -439,6 +444,6 @@ The 2.4 version has changed the front-end booking form layout and some CSS class
 The 2.4 version has a new algorithm, more precise, and require a “Database updater” to be launched once the new version has been installed.<br /><br />
 
 In case of doubts you could install this new version on a development website first and check what’s new.<br />
-If you feel confident with the new version you can proceed with the plugin update on your production webiste.<br /><br />
+If you feel confident with the new version you can proceed with the plugin update on your production website.<br /><br />
 
 You could also contact us on support@wordpresschef.it
