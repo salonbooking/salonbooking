@@ -60,3 +60,4 @@ function customBookingUser($) {
         return false;
     });
 }
+jQuery(function($){ customBookingUser($); });

@@ -11,11 +11,8 @@ $allServices = $sRepo->getAll();
 /** @var SLN_Repository_AttendantRepository $sRepo */
 $sRepo =  $plugin->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
 $allAttendants = $sRepo->getAll();
+SLN_Action_InitScripts::enqueueCustomBookingUser()
 ?>
-<script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/customBookingUser.js?20160224"></script>
-<script type="text/javascript">
-jQuery(function($){ customBookingUser($); });
-</script>
 <?php if(isset($_SESSION['_sln_booking_user_errors'])): ?>
     <div class="error">
     <?php foreach($_SESSION['_sln_booking_user_errors'] as $error): ?>

@@ -209,19 +209,11 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
         );
     }
 
-    function posttype_admin_css()
+    public function posttype_admin_css()
     {
         global $post_type;
         if ($post_type == $this->getPostType()) {
-
-            ?>
-            <style type="text/css">
-                #post-preview, #view-post-btn,
-                #edit-slug-box {
-                    display: none;
-                }
-            </style>
-            <?php
+            $this->getPlugin()->loadView('metabox/_service_head');
         }
     }
 }

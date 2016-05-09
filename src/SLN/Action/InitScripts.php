@@ -116,4 +116,24 @@ class SLN_Action_InitScripts
     {
         wp_enqueue_style('salon', SLN_PLUGIN_URL.'/css/salon.css', array(), self::ASSETS_VERSION, 'all');
     }
+    
+    public static function enqueueCustomSliderRange(){
+        wp_enqueue_script(
+            'salon-customSliderRange',
+            SLN_PLUGIN_URL.'/js/customSliderRange.js',
+            array('jquery'),
+            self::ASSETS_VERSION,
+            true
+        );
+    }
+
+    public static function enqueueCustomBookingUser(){
+        wp_enqueue_script(
+            'salon-customBookingUser',
+            SLN_PLUGIN_URL.'/js/customBookingUser.js',
+            array('jquery'),
+            self::ASSETS_VERSION,
+            true
+        );
+    }
 }

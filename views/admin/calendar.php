@@ -1,17 +1,8 @@
-<link rel="stylesheet" href="<?php echo SLN_PLUGIN_URL ?>/css/calendar.css">
 <script type="text/javascript">
     var salon;
     var calendar_translations = {
         'Go to daily view': '<?php _e('Go to daily view', 'salon-booking-system') ?>'
     };
-</script>
-<script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/calendar_language/<?php echo str_replace('_','-',get_locale())?>.js"></script>
-<script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/underscore-min.js"></script>
-<script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/moment.min.js"></script>
-<script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/calendar-app.js?20160224"></script>
-<script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/calendar.js?20160224"></script>
-<script>
 <?php $today = new DateTime()?>
 jQuery(function($){
     initSalonCalendar(

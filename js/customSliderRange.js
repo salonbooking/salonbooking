@@ -80,3 +80,7 @@ function customSliderRange($, $elements) {
         });
     });
 }
+
+jQuery(function ($) {
+    customSliderRange($, $('.slider-range'));
+});

@@ -13,13 +13,8 @@ if (!is_array($availabilities)) {
     $availabilities = array();
 }
 $n = 0;
+SLN_Action_InitScripts::enqueueCustomSliderRange();
 ?>
-<script type="text/javascript" src="<?php echo SLN_PLUGIN_URL ?>/js/customSliderRange.js?20160224"></script>
-<script type="text/javascript">
-    jQuery(function ($) {
-        customSliderRange($, $('.slider-range'));
-    });
-</script>
 <div class="sln-box--sub sln-booking-rules row">
     <div class="col-xs-12">
         <h2 class="sln-box-title"><?php echo $label ?>

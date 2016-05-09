@@ -290,27 +290,11 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
         return null;
     }
 
-    function posttype_admin_css()
+    public function posttype_admin_css()
     {
         global $post_type;
         if ($post_type == SLN_Plugin::POST_TYPE_BOOKING) {
-            ?>
-            <style type="text/css">
-                #post-preview, #view-post-btn, #misc-publishing-actions #visibility,
-                #major-publishing-actions,
-                #post-body-content {
-                    display: none;
-                }
-            </style>
-            <script type="text/javascript">
-                jQuery(function () {
-                    jQuery('#_sln_booking_status, #post_status').change(function () {
-                        jQuery('#_sln_booking_status, #post_status').val(jQuery(this).val());
-                    });
-                });
-            </script>
-            <?php
+            $this->getPlugin()->loadView('metabox/_booking_head');
         }
     }
-
 }

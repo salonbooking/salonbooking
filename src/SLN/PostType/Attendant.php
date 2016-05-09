@@ -8,8 +8,8 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
         parent::init();
 
         if (is_admin()) {
-            add_action('manage_' . $this->getPostType() . '_posts_custom_column', array($this, 'manage_column'), 10, 2);
-            add_filter('manage_' . $this->getPostType() . '_posts_columns', array($this, 'manage_columns'));
+            add_action('manage_'.$this->getPostType().'_posts_custom_column', array($this, 'manage_column'), 10, 2);
+            add_filter('manage_'.$this->getPostType().'_posts_columns', array($this, 'manage_columns'));
             add_action('admin_head-post-new.php', array($this, 'posttype_admin_css'));
             add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
         }
@@ -46,22 +46,22 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
                 echo $obj->getPhone();
                 break;
             case 'sln_days_off':
-                echo implode('<br/>',$obj->getAvailabilityItems()->toArray());
+                echo implode('<br/>', $obj->getAvailabilityItems()->toArray());
                 break;
             case 'sln_services':
-                if($obj->hasAllServices()){
+                if ($obj->hasAllServices()) {
                     echo __("All", 'salon-booking-system');
-                }else{
+                } else {
                     $tmp = array();
-                    foreach($obj->getServices() as $s){
-                         $tmp[] = sprintf('<a href="%s">%s</a>', get_edit_post_link($s->getId()), $s->getName());
+                    foreach ($obj->getServices() as $s) {
+                        $tmp[] = sprintf('<a href="%s">%s</a>', get_edit_post_link($s->getId()), $s->getName());
                     }
-                    echo implode(', ',$tmp);
+                    echo implode(', ', $tmp);
                 }
                 break;
             case 'sln_thumb':
-                echo get_the_post_thumbnail( $post_id, array(70, 70) );
-                break; 
+                echo get_the_post_thumbnail($post_id, array(70, 70));
+                break;
         }
     }
 
@@ -88,8 +88,9 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
             3 => '',
             4 => __('Assistant updated.', 'salon-booking-system'),
             5 => isset($_GET['revision']) ? sprintf(
-                    __('Assistant restored to revision from %s', 'salon-booking-system'), wp_post_revision_title((int) $_GET['revision'], false)
-                ) : false,
+                __('Assistant restored to revision from %s', 'salon-booking-system'),
+                wp_post_revision_title((int)$_GET['revision'], false)
+            ) : false,
             6 => sprintf(
                 __('Assistant published.', 'salon-booking-system')
             ),
@@ -99,8 +100,10 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
             ),
             9 => sprintf(
                 __(
-                    'Assistant scheduled for: <strong>%1$s</strong>. ', 'salon-booking-system'
-                ), date_i18n(__('M j, Y @ G:i', 'restaurant'), strtotime($post->post_date))
+                    'Assistant scheduled for: <strong>%1$s</strong>. ',
+                    'salon-booking-system'
+                ),
+                date_i18n(__('M j, Y @ G:i', 'restaurant'), strtotime($post->post_date))
             ),
             10 => sprintf(
                 __('Assistant draft updated.', 'salon-booking-system')
@@ -142,24 +145,15 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
                 'archive_title' => __('Assistants Archive', 'salon-booking-system'),
             ),
             'capability_type' => array($this->getPostType(), $this->getPostType().'s'),
-            'map_meta_cap' => true
+            'map_meta_cap' => true,
         );
     }
 
-    function posttype_admin_css()
+    public function posttype_admin_css()
     {
         global $post_type;
         if ($post_type == SLN_Plugin::POST_TYPE_SERVICE) {
-
-            ?>
-            <style type="text/css">
-                #post-preview, #view-post-btn,
-                #edit-slug-box
-                {
-                    display: none;
-                }
-            </style>
-            <?php
+            $this->getPlugin()->loadView('metabox/_attendant_head');
         }
     }
 }
