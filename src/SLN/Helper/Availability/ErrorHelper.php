@@ -25,6 +25,17 @@ class SLN_Helper_Availability_ErrorHelper
         );
     }
 
+    public static function doServiceNotEnoughTime(SLN_Wrapper_Service $service, DateTime $time)
+    {
+        SLN_Plugin::addLog(
+            __CLASS__.sprintf(' - not enough time for service %s by date(%s)', $service, $time->format('Ymd H:i'))
+        );
+
+        return array(
+            __('Not enough time for this service', 'salon-booking-system')
+        );
+    }
+
     public static function doServiceFull(SLN_Wrapper_Service $service, DateTime $time)
     {
         SLN_Plugin::addLog(

@@ -4,11 +4,11 @@ class SLN_Helper_AvailabilityItems
 {
     private $items;
 
-    public function __construct($availabilities)
+    public function __construct($availabilities, $offset = 0)
     {
         if($availabilities){
             foreach ($availabilities as $item) {
-                $this->items[] = new SLN_Helper_AvailabilityItem($item);
+                $this->items[] = new SLN_Helper_AvailabilityItem($item, $offset);
             }
         }
         if (empty($this->items)) {

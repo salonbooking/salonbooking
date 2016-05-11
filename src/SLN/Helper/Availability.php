@@ -233,6 +233,11 @@ class SLN_Helper_Availability
         SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
         $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
 
+        $avItems = $this->getItemsWithoutServiceOffset();
+        if (!$avItems->isValidDatetime($time)) {
+            return SLN_Helper_Availability_ErrorHelper::doServiceNotEnoughTime($service, $time);
+        }
+
         if (!$this->isValidOnlyTime($time)) {
             return SLN_Helper_Availability_ErrorHelper::doLimitParallelBookings($time);
         }
@@ -451,10 +456,24 @@ class SLN_Helper_Availability
     public function getItems()
     {
         if (!isset($this->items)) {
-            $this->items = new SLN_Helper_AvailabilityItems($this->settings->get('availabilities'));
+            $duration = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE)->getMinServiceDuration();
+            $offset = SLN_Func::getMinutesFromDuration($duration)*60;
+            $this->items = new SLN_Helper_AvailabilityItems($this->settings->get('availabilities'), $offset);
         }
 
         return $this->items;
+    }
+
+    /**
+     * @return SLN_Helper_AvailabilityItems
+     */
+    public function getItemsWithoutServiceOffset()
+    {
+        if (!isset($this->itemsWithoutServiceOffset)) {
+            $this->itemsWithoutServiceOffset = new SLN_Helper_AvailabilityItems($this->settings->get('availabilities'));
+        }
+
+        return $this->itemsWithoutServiceOffset;
     }
 
     /**

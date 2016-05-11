@@ -4,10 +4,11 @@ class
 SLN_Helper_AvailabilityItem
 {
     private $data;
+    private $offset;
     private $times = array();
     private $timesTxt = array();
 
-    function __construct($data)
+    function __construct($data, $offset = 0)
     {
         $this->data = $data;
         if ($data) {
@@ -36,6 +37,7 @@ SLN_Helper_AvailabilityItem
         if (empty($this->times)) {
             $this->times[] = array(strtotime('00:00'), strtotime('23:59'));
         }
+        $this->offset = $offset;
     }
 
     public function isValidDate($date)
@@ -64,7 +66,8 @@ SLN_Helper_AvailabilityItem
         }
         $time = strtotime($time);
         foreach ($this->times as $t) {
-            if ($t[0] <= $time && $t[1] >= $time) {
+            $temp = $t[1] - $this->offset;
+            if ($t[0] <= $time && $temp >= $time) {
                 return true;
             }
         }
