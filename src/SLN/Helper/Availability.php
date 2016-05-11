@@ -456,7 +456,7 @@ class SLN_Helper_Availability
     public function getItems()
     {
         if (!isset($this->items)) {
-            $duration = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE)->getMinServiceDuration();
+            $duration = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE)->getMinPrimaryServiceDuration();
             $offset = SLN_Func::getMinutesFromDuration($duration)*60;
             $this->items = new SLN_Helper_AvailabilityItems($this->settings->get('availabilities'), $offset);
         }

@@ -86,9 +86,9 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
     /**
      * @return SLN_DateTime
      */
-    public function getMinServiceDuration() {
+    public function getMinPrimaryServiceDuration() {
         $min = false;
-        $services = self::getAll();
+        $services = self::getAllPrimary();
         foreach ( $services as $service ) {
             $duration = $service->getDuration();
             if (!$min) {
