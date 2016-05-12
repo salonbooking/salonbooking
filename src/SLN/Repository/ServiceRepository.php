@@ -84,6 +84,24 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
     }
 
     /**
+     * @return SLN_DateTime
+     */
+    public function getMinPrimaryServiceDuration() {
+        $min = false;
+        $services = self::getAllPrimary();
+        foreach ( $services as $service ) {
+            $duration = $service->getDuration();
+            if (!$min) {
+                $min = $duration;
+            } elseif ($min > $duration) {
+                $min = $duration;
+            }
+        }
+
+        return ($min ? $min : new SLN_DateTime('1970-01-01 00:00'));
+    }
+
+    /**
      * @param SLN_Wrapper_Service[] $services
      * @return SLN_Wrapper_Service[]
      */
