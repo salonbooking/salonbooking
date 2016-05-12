@@ -267,6 +267,12 @@ http://salon.wordpresschef.it
 
 == Changelog ==
 
+
+12.05.2016
+
+* Bug with Polish language
+
+
 22.04.2016
 
 * Bug fixed on customer search inside back-end booking details 
