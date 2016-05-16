@@ -3,7 +3,7 @@
         $attendant
     ) ? 'is-checked' : '' ?>">
         <?php SLN_Form::fieldRadioboxForGroup(
-            'sln[attendants][]',
+            'sln[attendant]',
             'sln[attendant]',
             $attendant->getId(),
             $bb->hasAttendant($attendant),

@@ -15,9 +15,11 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
 
         if ($isMultipleAttSelection) {
-            $ret = $this->dispatchMultiple($values['attendants']);
+            $ids = isset($values['attendants']) ? $values['attendants'] : array();
+            $ret = $this->dispatchMultiple($ids);
         } else {
-            $ret = $this->dispatchSingle($values['attendant']);
+            $id = isset($values['attendant']) ? $values['attendant'] : null;
+            $ret = $this->dispatchSingle($id);
         }
         if ($ret) {
             $bb->save();
@@ -69,7 +71,6 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
                 }
             }
 
-            return true;
         }
 
         foreach ($bb->getServices() as $service) {
@@ -81,6 +82,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
             }
             $bb->setAttendant($this->getPlugin()->createAttendant($attId), $service);
         }
+        return true;
     }
 
     private function dispatchSingle($selected)
@@ -89,7 +91,6 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         $bb = $this->getPlugin()->getBookingBuilder();
 
         $availAtts = null;
-        $attId = null;
         foreach ($bb->getBookingServices()->getItems() as $bookingService) {
             if (is_null($availAtts)) {
                 $availAtts = $ah->getAvailableAttsIdsForBookingService($bookingService);
@@ -103,17 +104,14 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
                 return false;
             }
         }
-        if ($selected && in_array($selected[$availAtts])) {
-            $attId = $selected;
-        } else {
+        if (!$selected) {
             $index = mt_rand(0, count($availAtts) - 1);
-            $attId = $availAtts[$index];
+            $selected = $availAtts[$index];
         }
-        $attendant = $this->getPlugin()->createAttendant($attId);
+        $attendant = $this->getPlugin()->createAttendant($selected);
         foreach ($bb->getServices() as $service) {
             $bb->setAttendant($attendant, $service);
         }
-
         return true;
     }
 
@@ -137,13 +135,5 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         $tmp = $this->getAttendants();
 
         return (!empty($tmp)) && parent::isValid();
-    }
-
-    public function getViewData()
-    {
-        $ret = parent::getViewData();
-        $ret['isMultipleAttSelection'] = $this->getPlugin()->getSettings()->isMultipleAttendantsEnabled();
-
-        return $ret;
     }
 }

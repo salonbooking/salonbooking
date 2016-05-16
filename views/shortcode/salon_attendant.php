@@ -10,6 +10,7 @@ $bb = $plugin->getBookingBuilder();
 $attendants = $step->getAttendants();
 $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
+$isMultipleAttSelection = $plugin->getSettings()->isMultipleAttendantsEnabled();
 ?>
 <form id="salon-step-attendant" method="post" action="<?php echo $formAction ?>" role="form">
 	<?php

@@ -204,7 +204,7 @@ class SLN_Settings
      */
     public function isMultipleAttendantsEnabled()
     {
-        return $this->get('m_attendants_enabled') ? true : false;
+        return $this->get('m_attendant_enabled') ? true : false;
     }
 
 

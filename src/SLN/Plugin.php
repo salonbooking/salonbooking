@@ -89,7 +89,10 @@ class SLN_Plugin
      */
     public function getBookingBuilder()
     {
-        return new SLN_Wrapper_Booking_Builder($this);
+        if(!isset($this->phpServices['bookingBuilder'])){
+            $this->phpServices['bookingBuilder'] = new SLN_Wrapper_Booking_Builder($this);
+        }
+        return $this->phpServices['bookingBuilder'];
     }
 
     public function getViewFile($view)
@@ -145,11 +148,11 @@ class SLN_Plugin
      */
     public function getAvailabilityHelper()
     {
-        if (!isset($this->availabilityHelper)) {
-            $this->availabilityHelper = new SLN_Helper_Availability($this);
+        if (!isset($this->phpServices['availabilityHelper'])) {
+            $this->phpServices['availabilityHelper'] = new SLN_Helper_Availability($this);
         }
 
-        return $this->availabilityHelper;
+        return $this->phpServices['availabilityHelper'];
     }
 
     /**
