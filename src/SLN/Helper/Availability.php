@@ -124,7 +124,8 @@ class SLN_Helper_Availability
         return $this->getDayBookings()->countBookingsByHour($hour, $minutes);
     }
 
-    public function getMinutesIntervals(){
+    public function getMinutesIntervals()
+    {
         return $this->getDayBookings()->getMinutesIntervals();
     }
 
@@ -407,6 +408,15 @@ class SLN_Helper_Availability
         return $availAtts;
     }
 
+    public function getAvailableAttsIdsForBookingService(SLN_Wrapper_Booking_Service $bs)
+    {
+        return $this->getAvailableAttsIdsForServiceOnTime(
+            $bs->getService(),
+            $bs->getStartsAt(),
+            $bs->getDuration()
+        );
+    }
+
     public function getAvailableAttsIdsForServiceOnTime(
         SLN_Wrapper_Service $service,
         DateTime $date = null,
@@ -456,8 +466,10 @@ class SLN_Helper_Availability
     public function getItems()
     {
         if (!isset($this->items)) {
-            $duration = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE)->getMinPrimaryServiceDuration();
-            $offset = SLN_Func::getMinutesFromDuration($duration)*60;
+            $duration = SLN_Plugin::getInstance()->getRepository(
+                SLN_Plugin::POST_TYPE_SERVICE
+            )->getMinPrimaryServiceDuration();
+            $offset = SLN_Func::getMinutesFromDuration($duration) * 60;
             $this->items = new SLN_Helper_AvailabilityItems($this->settings->get('availabilities'), $offset);
         }
 

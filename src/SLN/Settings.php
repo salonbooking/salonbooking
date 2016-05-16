@@ -191,10 +191,22 @@ class SLN_Settings
         return $this->get('hide_prices') == 1 ? true : false;
     }
 
+    /**
+     * @return bool
+     */
     public function isAttendantsEnabled()
     {
         return $this->get('attendants_enabled') ? true : false;
     }
+
+    /**
+     * @return bool
+     */
+    public function isMultipleAttendantsEnabled()
+    {
+        return $this->get('m_attendants_enabled') ? true : false;
+    }
+
 
     public function getCustomText($key) {
         $custom_texts = $this->get('custom_texts');

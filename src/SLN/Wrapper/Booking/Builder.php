@@ -12,19 +12,19 @@ class SLN_Wrapper_Booking_Builder
             session_start();
         }
         $this->plugin = $plugin;
-        $this->data   = isset($_SESSION[__CLASS__]) ? $_SESSION[__CLASS__] : $this->getEmptyValue();
-        $this->lastId = isset($_SESSION[__CLASS__ . 'last_id']) ? $_SESSION[__CLASS__ . 'last_id'] : null;
+        $this->data = isset($_SESSION[__CLASS__]) ? $_SESSION[__CLASS__] : $this->getEmptyValue();
+        $this->lastId = isset($_SESSION[__CLASS__.'last_id']) ? $_SESSION[__CLASS__.'last_id'] : null;
     }
 
     public function save()
     {
-        $_SESSION[__CLASS__]             = $this->data;
-        $_SESSION[__CLASS__ . 'last_id'] = $this->lastId;
+        $_SESSION[__CLASS__] = $this->data;
+        $_SESSION[__CLASS__.'last_id'] = $this->lastId;
     }
 
     public function clear($id = null)
     {
-        $this->data   = $this->getEmptyValue();
+        $this->data = $this->getEmptyValue();
         $this->lastId = $id;
         $this->save();
     }
@@ -34,7 +34,7 @@ class SLN_Wrapper_Booking_Builder
      */
     public function removeLastId()
     {
-        unset($_SESSION[__CLASS__ . 'last_id']);
+        unset($_SESSION[__CLASS__.'last_id']);
         $this->lastId = null;
 
         return $this;
@@ -56,13 +56,15 @@ class SLN_Wrapper_Booking_Builder
         $d = new SLN_DateTime(date('Y-m-d H:i:00'));
         $d->modify($from);
         $tmp = $d->format('i');
-        $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
+        $i = SLN_Plugin::getInstance()->getSettings()->getInterval();
         $diff = $tmp % $i;
-        if($diff > 0)
-            $d->modify('+'.( $i - $diff).' minutes');
+        if ($diff > 0) {
+            $d->modify('+'.($i - $diff).' minutes');
+        }
+
         return array(
-            'date'     => $d->format('Y-m-d'),
-            'time'     => $d->format('H:i'),
+            'date' => $d->format('Y-m-d'),
+            'time' => $d->format('H:i'),
             'services' => array(),
 //            'attendants' => array(),
         );
@@ -94,7 +96,8 @@ class SLN_Wrapper_Booking_Builder
 
     public function getDateTime()
     {
-        $ret =  new SLN_DateTime($this->getDate() . ' ' . $this->getTime());
+        $ret = new SLN_DateTime($this->getDate().' '.$this->getTime());
+
         return $ret;
     }
 
@@ -127,9 +130,9 @@ class SLN_Wrapper_Booking_Builder
 
         if (is_null($service)) {
             return in_array($attendant->getId(), $this->data['services']);
-        }
-        else {
-            return isset($this->data['services'][$service->getId()]) && $this->data['services'][$service->getId()] == $attendant->getId();
+        } else {
+            return isset($this->data['services'][$service->getId()]) && $this->data['services'][$service->getId(
+            )] == $attendant->getId();
         }
     }
 
@@ -149,14 +152,16 @@ class SLN_Wrapper_Booking_Builder
         return $this->data['services'];
     }
 
-	/**
+    /**
      * @return SLN_Wrapper_Attendant|false
      */
     public function getAttendant()
     {
         $atts = $this->getAttendants();
+
         return reset($atts);
     }
+
     /**
      * @return SLN_Wrapper_Attendant[]
      */
@@ -165,15 +170,17 @@ class SLN_Wrapper_Booking_Builder
         $ids = $this->getAttendantsIds();
         $ret = array();
         foreach ($ids as $service_id => $attendant_id) {
-            if($attendant_id)
+            if ($attendant_id) {
                 $ret[$service_id] = $this->plugin->createAttendant($attendant_id);
+            }
         }
+
         return $ret;
     }
-    
+
     public function addService(SLN_Wrapper_Service $service)
     {
-        if((!isset($this->data['services'])) || (!in_array($service->getId(), array_keys($this->data['services'])))){
+        if ((!isset($this->data['services'])) || (!in_array($service->getId(), array_keys($this->data['services'])))) {
             $this->data['services'][$service->getId()] = 0;
             uksort($this->data['services'], array('SLN_Repository_ServiceRepository', 'serviceCmp'));
         }
@@ -185,19 +192,24 @@ class SLN_Wrapper_Booking_Builder
             unset($this->data['services'][$service->getId()]);
         }
     }
-    public function clearServices(){
+
+    public function clearServices()
+    {
         $this->data['services'] = array();
     }
 
-    public function getServicesIds() {
+    public function getServicesIds()
+    {
         return array_keys($this->getServices());
     }
 
-    public function getPrimaryServicesIds() {
+    public function getPrimaryServicesIds()
+    {
         return array_keys($this->getPrimaryServices());
     }
 
-    public function getSecondaryServicesIds() {
+    public function getSecondaryServicesIds()
+    {
         return array_keys($this->getSecondaryServices());
     }
 
@@ -219,8 +231,7 @@ class SLN_Wrapper_Booking_Builder
             if (in_array($service->getId(), $ids)) {
                 if ($secondary && $service->isSecondary()) {
                     $ret[$service->getId()] = $service;
-                }
-                elseif ($primary && !$service->isSecondary()) {
+                } elseif ($primary && !$service->isSecondary()) {
                     $ret[$service->getId()] = $service;
                 }
             }
@@ -238,7 +249,7 @@ class SLN_Wrapper_Booking_Builder
     {
         return $this->getServices(false, true);
     }
-    
+
     public function getTotal()
     {
         $ret = 0;
@@ -251,24 +262,24 @@ class SLN_Wrapper_Booking_Builder
 
     public function create()
     {
-        update_option(SLN_Plugin::F, intval(get_option(SLN_Plugin::F))+1);
-        $settings             = $this->plugin->getSettings();
-        $datetime             = $this->plugin->format()->datetime($this->getDateTime());
-        $name                 = $this->get('firstname') . ' ' . $this->get('lastname');
-        $status               = $this->getCreateStatus();
-        $id                   = wp_insert_post(
+        update_option(SLN_Plugin::F, intval(get_option(SLN_Plugin::F)) + 1);
+        $settings = $this->plugin->getSettings();
+        $datetime = $this->plugin->format()->datetime($this->getDateTime());
+        $name = $this->get('firstname').' '.$this->get('lastname');
+        $status = $this->getCreateStatus();
+        $id = wp_insert_post(
             array(
-                'post_type'   => SLN_Plugin::POST_TYPE_BOOKING,
-                'post_title'  => $name . ' - ' . $datetime,
+                'post_type' => SLN_Plugin::POST_TYPE_BOOKING,
+                'post_title' => $name.' - '.$datetime,
             )
         );
-        $deposit              = $settings->get('pay_deposit');
+        $deposit = $settings->get('pay_deposit');
         $this->data['amount'] = $this->getTotal();
-        if($deposit > 0) {
+        if ($deposit > 0) {
             $this->data['deposit'] = ($this->data['amount'] / 100) * $deposit;
         }
         foreach ($this->data as $k => $v) {
-            update_post_meta($id, '_' . SLN_Plugin::POST_TYPE_BOOKING . '_' . $k, $v);
+            update_post_meta($id, '_'.SLN_Plugin::POST_TYPE_BOOKING.'_'.$k, $v);
         }
         $this->clear($id);
         $this->getLastBooking()->evalBookingServices();
@@ -277,27 +288,37 @@ class SLN_Wrapper_Booking_Builder
 
         $userid = $this->getLastBooking()->getUserId();
         $user = new WP_User($userid);
-        if (array_search('administrator', $user->roles) === false && array_search('subscriber', $user->roles) !== false) {
-            wp_update_user(array(
-                'ID' => $userid,
-                'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
-            ));
+        if (array_search('administrator', $user->roles) === false && array_search(
+                'subscriber',
+                $user->roles
+            ) !== false
+        ) {
+            wp_update_user(
+                array(
+                    'ID' => $userid,
+                    'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
+                )
+            );
         }
     }
-    private function getCreateStatus(){
+
+    private function getCreateStatus()
+    {
         $settings = $this->plugin->getSettings();
+
         return $settings->get('confirmation') ?
             SLN_Enum_BookingStatus::PENDING
             : ($settings->get('pay_enabled') ?
                 SLN_Enum_BookingStatus::PENDING
                 : ($settings->isHidePrices() ? SLN_Enum_BookingStatus::CONFIRMED
-                    : SLN_Enum_BookingStatus::PAY_LATER ));
+                    : SLN_Enum_BookingStatus::PAY_LATER));
     }
 
     public function getEndsAt()
     {
         $endsAt = clone $this->getDateTime();
         $endsAt->modify("+".SLN_Func::getMinutesFromDuration($this->getDuration())."minutes");
+
         return $endsAt;
     }
 
@@ -305,18 +326,32 @@ class SLN_Wrapper_Booking_Builder
     {
         $i = $this->getServicesDurationMinutes();
         $str = SLN_Func::convertToHoursMins($i);
+
         return $str;
     }
 
-    public function getServicesDurationMinutes(){
+    public function getServicesDurationMinutes()
+    {
         $h = 0;
         $i = 0;
-        foreach($this->getServices() as $s){
+        foreach ($this->getServices() as $s) {
             $d = $s->getDuration();
             $h = $h + intval($d->format('H'));
             $i = $i + intval($d->format('i'));
         }
-        $i += $h*60;
+        $i += $h * 60;
+
         return $i;
+    }
+
+    /**
+     * @return SLN_Wrapper_Booking_Services
+     */
+    public function getBookingServices()
+    {
+        return SLN_Wrapper_Booking_Services::build(
+            array_fill_keys($this->getServicesIds(), 0),
+            $this->getDateTime()
+        );
     }
 }

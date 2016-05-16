@@ -84,6 +84,9 @@ class SLN_Plugin
         return $ret;
     }
 
+    /**
+     * @return SLN_Wrapper_Booking_Builder
+     */
     public function getBookingBuilder()
     {
         return new SLN_Wrapper_Booking_Builder($this);
@@ -137,6 +140,9 @@ class SLN_Plugin
         return $this->formatter;
     }
 
+    /**
+     * @return SLN_Helper_Availability
+     */
     public function getAvailabilityHelper()
     {
         if (!isset($this->availabilityHelper)) {
