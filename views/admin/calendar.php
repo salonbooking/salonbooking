@@ -30,18 +30,18 @@ jQuery(function($){
 
 <div class="row">
     <div class="col-md-12 btn-group nav-tab-wrapper sln-nav-tab-wrapper">
-        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new">Add new booking</a>
+        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new"><?php _e('Add new booking', 'salon-booking-system') ?></a>
         <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="day">
-        <button class="" data-calendar-view="day"><?php _e('Day')?></button>
+        <button class="" data-calendar-view="day"><?php _e('Day', 'salon-booking-system')?></button>
         </div>
         <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="week">
-        <button class="" data-calendar-view="week"><?php _e('Week')?></button>
+        <button class="" data-calendar-view="week"><?php _e('Week', 'salon-booking-system')?></button>
         </div>
         <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="month">
-        <button class=" active" data-calendar-view="month"><?php _e('Month')?></button>
+        <button class=" active" data-calendar-view="month"><?php _e('Month', 'salon-booking-system')?></button>
         </div>
         <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="year">
-        <button class="" data-calendar-view="year"><?php _e('Year')?></button>
+        <button class="" data-calendar-view="year"><?php _e('Year', 'salon-booking-system')?></button>
         </div>
     </div>
 </div>
@@ -51,13 +51,13 @@ jQuery(function($){
     <div class="col-xs-12 col-md-6 form-inline">
             <div class="sln-calendar-viewnav btn-group">
     <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-btn--icon--left sln-icon--arrow--left" data-calendar-view="day">
-        <button class="f-row" data-calendar-nav="prev"><?php _e('Previous') ?></button>
+        <button class="f-row" data-calendar-nav="prev"><?php _e('Previous', 'salon-booking-system') ?></button>
     </div>
     <div class="sln-btn sln-btn--light sln-btn--medium" data-calendar-view="day">
-        <button class="f-row" data-calendar-nav="today"><?php _e('Today')?></button>
+        <button class="f-row" data-calendar-nav="today"><?php _e('Today', 'salon-booking-system')?></button>
     </div>
     <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-icon--arrow--right" data-calendar-view="day">
-        <button class="f-row f-row--end" data-calendar-nav="next"><?php _e('Next') ?></button>
+        <button class="f-row f-row--end" data-calendar-nav="next"><?php _e('Next', 'salon-booking-system') ?></button>
     </div>
     </div>
     </div>
@@ -70,7 +70,7 @@ jQuery(function($){
 </div>
 <div class="row">
     <div class="col-md-6 pull-right">
-     <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new">Add new booking</a>
+     <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new"><?php _e('Add new booking', 'salon-booking-system') ?></a>
     </div>
 </div>
 <div class="row">
