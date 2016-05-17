@@ -15,24 +15,23 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
     {
         if (isset($criteria['@sort'])) {
             $criteria['@wp_query'] = array(
-                '@wp_query' => array(
-                    'meta_query' => array(
-                        'relation' => 'OR',
-                        array(
-                            'key' => self::SERVICE_ORDER,
-                            'compare' => 'EXISTS',
-                        ),
-                        array(
-                            'key' => self::SERVICE_ORDER,
-                            'compare' => 'NOT EXISTS',
-                        ),
+                'meta_query' => array(
+                    'relation' => 'OR',
+                     array(
+                        'key' => self::SERVICE_ORDER,
+                        'compare' => 'EXISTS',
                     ),
-                    'orderby' => self::SERVICE_ORDER,
-                    'order' => 'ASC',
+                    array(
+                        'key' => self::SERVICE_ORDER,
+                        'compare' => 'NOT EXISTS',
+                    ),
                 ),
+                'orderby' => self::SERVICE_ORDER,
+                'order' => 'ASC',
             );
+            $criteria['@query'] = true;
+            unset($criteria['@sort']);
         }
-
         return parent::processCriteria($criteria);
     }
 
