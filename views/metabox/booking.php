@@ -252,7 +252,7 @@ SLN_Action_InitScripts::enqueueCustomBookingUser()
             <?php endif; ?>
             <div class="col-xs-12 col-sm-4 col-md-4"><h4><?php _e('Service', 'salon-booking-system') ?></h4></div>
             <div class="col-xs-12 col-sm-3 col-md-3"><h4><?php _e('Attendant', 'salon-booking-system') ?></h4></div>
-            <div class="col-xs-12 col-sm-2 col-md-2"><h4><?php _e('', 'salon-booking-system') ?></h4></div>
+            <div class="col-xs-12 col-sm-2 col-md-2"><h4></h4></div>
         </div>
         <?php
 
