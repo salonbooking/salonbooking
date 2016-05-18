@@ -32,6 +32,10 @@ class SLN_Settings
         }
     }
 
+    public function all(){
+        return $this->settings;
+    }
+
     public function save()
     {
         update_option(self::KEY, $this->settings);

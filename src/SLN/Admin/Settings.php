@@ -18,6 +18,85 @@ class SLN_Admin_Settings
         'documentation' => 'Support',
     );
 
+    private static $fieldsTabBooking = array(
+        'confirmation',
+        'thankyou',
+        'bookingmyaccount',
+        'pay',
+        'reservation_interval_enabled', // algolplus
+        'minutes_between_reservation',  // algolplus
+        'availabilities',
+        'holidays',                     // algolplus
+        'availability_mode',
+        'cancellation_enabled',         // algolplus
+        'hours_before_cancellation',    // algolplus
+        'disabled',
+        'disabled_message',
+        'confirmation',
+        'parallels_day',
+        'parallels_hour',
+        'hours_before_from',
+        'hours_before_to',
+        'interval',
+    );
+
+    private static $fieldsTabGeneral = array(
+        'gen_name',
+        'gen_email',
+        'gen_phone',
+        'gen_address',
+        'gen_timetable',
+        'ajax_enabled',
+        'attendant_enabled',
+        'm_attendant_enabled',
+        'attendant_email',
+        'sms_enabled',
+        'sms_account',
+        'sms_password',
+        'sms_prefix',
+        'sms_provider',
+        'sms_from',
+        'sms_new',
+        'sms_new_number',
+        'sms_new_attendant',
+        'sms_remind',
+        'sms_remind_interval',
+        'email_remind',
+        'email_remind_interval',
+        'email_subject',
+        'soc_facebook',
+        'soc_twitter',
+        'soc_google',
+        'date_format',
+        'time_format',
+        'week_start',
+        'no_bootstrap',
+    );
+
+    private static $fieldsTabPayment = array(
+        'hide_prices',
+        'pay_method',
+        'pay_currency',
+        'pay_currency_pos',
+        'pay_paypal_email',
+        'pay_paypal_test',
+        'pay_cash',
+        'pay_enabled',
+        'pay_deposit',
+    );
+
+    private static $fieldsTabStyle = array(
+        'style_shortcode',
+    );
+
+    private static $fieldsTabGCalendar = array(
+        'google_calendar_enabled',
+        'google_outh2_client_id',
+        'google_outh2_client_secret',
+        'google_outh2_redirect_uri',
+        'google_client_calendar',
+    );
+
     public function __construct(SLN_Plugin $plugin)
     {
         $this->plugin = $plugin;
@@ -142,7 +221,7 @@ class SLN_Admin_Settings
         include $this->plugin->getViewFile('admin/utilities/settings-sidebar');
         include $this->plugin->getViewFile('settings/tab_'.$tab);
     }
-    
+
     public function processTabHomepage()
     {
         if ($_POST['reset-settings'] == 'reset') {
@@ -163,50 +242,20 @@ class SLN_Admin_Settings
 
     public function processTabGeneral()
     {
-        $_POST['salon_settings']['email_subject'] = !empty($_POST['salon_settings']['email_subject']) ?
-            $_POST['salon_settings']['email_subject'] :
+        $submitted = $_POST['salon_settings'];
+        $submitted['email_subject'] = !empty($submitted['email_subject']) ?
+            $submitted['email_subject'] :
             'Your booking reminder for [DATE] at [TIME] at [SALON NAME]';
-        foreach (array(
-                     'gen_name',
-                     'gen_email',
-                     'gen_phone',
-                     'gen_address',
-                     'gen_timetable',
-                     'ajax_enabled',
-                     'attendant_enabled',
-                     'm_attendant_enabled',
-                     'attendant_email',
-                     'sms_enabled',
-                     'sms_account',
-                     'sms_password',
-                     'sms_prefix',
-                     'sms_provider',
-                     'sms_from',
-                     'sms_new',
-                     'sms_new_number',
-                     'sms_new_attendant',
-                     'sms_remind',
-                     'sms_remind_interval',
-                     'email_remind',
-                     'email_remind_interval',
-                     'email_subject',
-                     'soc_facebook',
-                     'soc_twitter',
-                     'soc_google',
-                     'date_format',
-                     'time_format',
-                     'week_start',
-                     'no_bootstrap',
-                 ) as $k) {
-            $val = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
+        foreach (self::$fieldsTabGeneral as $k) {
+            $val = isset($submitted[$k]) ? $submitted[$k] : '';
             $this->settings->set($k, stripcslashes($val));
         }
         wp_clear_scheduled_hook('sln_sms_reminder');
-        if (isset($_POST['salon_settings']['sms_remind']) && $_POST['salon_settings']['sms_remind']) {
+        if (isset($submitted['sms_remind']) && $submitted['sms_remind']) {
             wp_schedule_event(time(), 'hourly', 'sln_sms_reminder');
         }
         wp_clear_scheduled_hook('sln_email_reminder');
-        if (isset($_POST['salon_settings']['email_remind']) && $_POST['salon_settings']['email_remind']) {
+        if (isset($submitted['email_remind']) && $submitted['email_remind']) {
             wp_schedule_event(time(), 'hourly', 'sln_email_reminder');
         }
         $this->settings->save();
@@ -215,10 +264,10 @@ class SLN_Admin_Settings
             __('general settings are updated', 'salon-booking-system'),
             __('Update completed with success', 'salon-booking-system')
         );
-        if ($_POST['salon_settings']['sms_test_number'] && $_POST['salon_settings']['sms_test_message']) {
+        if ($submitted['sms_test_number'] && $submitted['sms_test_message']) {
             $this->sendTestSms(
-                $_POST['salon_settings']['sms_test_number'],
-                $_POST['salon_settings']['sms_test_message']
+                $submitted['sms_test_number'],
+                $submitted['sms_test_message']
             );
         }
     }
@@ -238,48 +287,35 @@ class SLN_Admin_Settings
         }
     }
 
+    private function bindSettings($fields, $submitted)
+    {
+        foreach ($fields as $k) {
+            $data = isset($submitted[$k]) ? $submitted[$k] : '';
+            $this->settings->set($k, $data);
+        }
+    }
+
     public function processTabBooking()
     {
+        $submitted = $_POST['salon_settings'];
         $tmp = array();
-        if ($_POST['salon_settings']['availabilities']) {
-            foreach ($_POST['salon_settings']['availabilities'] as $row) {
+        if ($submitted['availabilities']) {
+            foreach ($submitted['availabilities'] as $row) {
                 $tmp[] = $row;
             }
         }
-        $_POST['salon_settings']['availabilities'] = $tmp;
-        $_POST['salon_settings']['holidays'] = isset($_POST['salon_settings']['holidays']) ? array_values(
-            $_POST['salon_settings']['holidays']
+        $submitted['availabilities'] = $tmp;
+        $submitted['holidays'] = isset($submitted['holidays']) ? array_values(
+            $submitted['holidays']
         ) : array();
-        foreach ($_POST['salon_settings']['holidays'] as &$holidayData) {
+        foreach ($submitted['holidays'] as &$holidayData) {
             $holidayData['from_date'] = SLN_Func::evalPickedDate($holidayData['from_date']);
             $holidayData['to_date'] = SLN_Func::evalPickedDate($holidayData['to_date']);
             $holidayData['from_time'] = date('H:i', strtotime($holidayData['from_time']));
             $holidayData['to_time'] = date('H:i', strtotime($holidayData['to_time']));
         }
 
-        foreach (array(
-                     'confirmation',
-                     'thankyou',
-                     'bookingmyaccount',
-                     'pay',
-                     'reservation_interval_enabled', // algolplus
-                     'minutes_between_reservation',  // algolplus
-                     'availabilities',
-                     'holidays',                     // algolplus
-                     'availability_mode',
-                     'cancellation_enabled',         // algolplus
-                     'hours_before_cancellation',    // algolplus
-                     'disabled',
-                     'disabled_message',
-                     'confirmation',
-                     'parallels_day',
-                     'parallels_hour',
-                     'hours_before_from',
-                     'hours_before_to',
-                     'interval',
-                 ) as $k) {
-            $this->settings->set($k, isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '');
-        }
+        $this->bindSettings(self::$fieldsTabBooking, $submitted);
         $this->settings->save();
         $this->showAlert(
             'success',
@@ -290,30 +326,19 @@ class SLN_Admin_Settings
 
     public function processTabPayments()
     {
-        $fields = array(
-            'hide_prices',
-            'pay_method',
-            'pay_currency',
-            'pay_currency_pos',
-            'pay_paypal_email',
-            'pay_paypal_test',
-            'pay_cash',
-            'pay_enabled',
-            'pay_deposit',
-        );
+
         foreach (SLN_Enum_PaymentMethodProvider::toArray() as $k => $v) {
-            $fields = array_merge($fields, SLN_Enum_PaymentMethodProvider::getService($k, $this->plugin)->getFields());
+            $fields = array_merge(
+                self::$fieldsTabPayment,
+                SLN_Enum_PaymentMethodProvider::getService($k, $this->plugin)->getFields()
+            );
         }
 
-        foreach ($fields as $k) {
-            $data = isset($_POST['salon_settings'][$k]) ? $_POST['salon_settings'][$k] : '';
-            $this->settings->set($k, $data);
-        }
-
-        if (isset($_POST['salon_settings']['hide_prices'])) {
+        $submitted = $_POST['salon_settings'];
+        $this->bindSettings($fields, $submitted);
+        if (isset($submitted['hide_prices'])) {
             $this->settings->set('pay_enabled', '');
         }
-
 
         $this->settings->save();
         $this->showAlert(
@@ -403,45 +428,32 @@ class SLN_Admin_Settings
 
     public function processTabStyle()
     {
-        $items = array(
-            'style_shortcode',
-        );
+        $submitted = $_POST['salon_settings'];
+        $this->bindSettings(self::$fieldsTabStyle,$submitted);
 
-        foreach ($items as $k) {
-            $old_value[$k] = $this->settings->get($k);
-            $data = isset($_POST['salon_settings'][$k]) ? trim($_POST['salon_settings'][$k]) : '';
-            $this->settings->set($k, $data);
-        }
         $this->settings->save();
+        $this->showAlert(
+            'success',
+            __('style settings are updated', 'salon-booking-system'),
+            __('Update completed with success', 'salon-booking-system')
+        );
     }
 
     public function processTabGcalendar()
     {
-        $gcalendar_array = array(
-            'google_calendar_enabled',
-            'google_outh2_client_id',
-            'google_outh2_client_secret',
-            'google_outh2_redirect_uri',
-            'google_client_calendar',
-        );
-
-        foreach ($gcalendar_array as $k) {
-            $old_value[$k] = $this->settings->get($k);
-            $data = isset($_POST['salon_settings'][$k]) ? trim($_POST['salon_settings'][$k]) : '';
-            $this->settings->set($k, $data);
-        }
+        $submitted = $_POST['salon_settings'];
+        $oldSettings = $this->settings->all();
+        $this->bindSettings(self::$fieldsTabGCalendar, $submitted);
         $this->settings->save();
+
         $params = array();
-        foreach ($gcalendar_array as $k) {
+        foreach (self::$fieldsTabGCalendar as $k) {
             $v = $this->settings->get($k);
             $k = str_replace('google_', '', $k);
             $params[$k] = $v;
         }
 
-        if ($old_value['google_calendar_enabled'] != $this->settings->get('google_calendar_enabled') ||
-            $old_value['google_outh2_client_id'] != $this->settings->get('google_outh2_client_id') ||
-            $old_value['google_outh2_client_secret'] != $this->settings->get('google_outh2_client_secret')
-        ) {
+        if ($this->needsGCalendarRevokeToken($oldSettings)) {
             header("Location: ".admin_url('admin.php?page=salon-settings&tab=gcalendar&revoketoken=1'));
         }
 
@@ -454,6 +466,15 @@ class SLN_Admin_Settings
             __('Google Calendar settings are updated', 'salon-booking-system'),
             __('Update completed with success', 'salon-booking-system')
         );
+    }
+
+    private function needsGCalendarRevokeToken($old)
+    {
+        $s = $this->settings;
+
+        return $old['google_calendar_enabled'] != $s->get('google_calendar_enabled')
+        || $old['google_outh2_client_id'] != $s->get('google_outh2_client_id')
+        || $old['google_outh2_client_secret'] != $s->get('google_outh2_client_secret');
     }
 
     function getCurrentTab()
