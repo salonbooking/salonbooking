@@ -45,11 +45,12 @@ class SLN_Action_Init
             SLN_Plugin::TAXONOMY_SERVICE_CATEGORY,
             array(SLN_Plugin::POST_TYPE_SERVICE)
         );
-        
+
         add_action('sln_sms_reminder', 'sln_sms_reminder');
         add_action('sln_email_reminder', 'sln_email_reminder');
 
         new SLN_Action_InitScripts($this->plugin, is_admin());
+        $this->initPolylangSupport();
     }
 
 
@@ -121,4 +122,18 @@ class SLN_Action_Init
         }
     }
 
+    public function initPolylangSupport()
+    {
+        add_filter('pll_get_post_types', array($this, 'hook_pll_get_post_types'));
+    }
+
+    public function hook_pll_get_post_types($types)
+    {
+        unset ($types['sln_booking']);
+        //decomment this to have "single language services and attendant
+        //unset($types['sln_service']);
+        //unset($types['sln_attendant']);
+
+        return $types;
+    }
 }
