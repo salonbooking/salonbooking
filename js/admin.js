@@ -148,15 +148,13 @@ function sln_adminDate($) {
                 } else {
                     $('#sln-notifications').html('').append('<div class="alert alert-success">'+ $('#sln-notifications').data('valid-message')+'</div>');
                 }
+                bindIntervals(data.intervals);
                 sln_checkServices($);
             }
         });
     }
 
     function bindIntervals(intervals) {
-//        putOptions($('#sln_date_day'), intervals.days, intervals.suggestedDay);
-//        putOptions($('#sln_date_month'), intervals.months, intervals.suggestedMonth);
-//        putOptions($('#sln_date_year'), intervals.years, intervals.suggestedYear);
         items = intervals;
         func();
         putOptions($('#sln_date'), intervals.suggestedDate);
