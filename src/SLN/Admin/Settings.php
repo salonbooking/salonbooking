@@ -253,10 +253,12 @@ class SLN_Admin_Settings
         wp_clear_scheduled_hook('sln_sms_reminder');
         if (isset($submitted['sms_remind']) && $submitted['sms_remind']) {
             wp_schedule_event(time(), 'hourly', 'sln_sms_reminder');
+            wp_schedule_event(time()+1800, 'hourly', 'sln_sms_reminder');
         }
         wp_clear_scheduled_hook('sln_email_reminder');
         if (isset($submitted['email_remind']) && $submitted['email_remind']) {
             wp_schedule_event(time(), 'hourly', 'sln_email_reminder');
+            wp_schedule_event(time()+1800, 'hourly', 'sln_email_reminder');
         }
         $this->settings->save();
         $this->showAlert(
