@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @method SLN_Wrapper_Booking getOne($criteria = [])
+ * @method SLN_Wrapper_Booking[] get($criteria = [])
+ * @method SLN_Wrapper_Booking create($data = null)
+ */
 class SLN_Repository_BookingRepository extends SLN_Repository_AbstractWrapperRepository
 {
     public function getWrapperClass()

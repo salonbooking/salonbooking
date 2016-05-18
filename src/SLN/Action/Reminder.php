@@ -3,72 +3,108 @@
 class SLN_Action_Reminder
 {
     const EMAIL = 'email';
-    const SMS   = 'sms';
+    const SMS = 'sms';
 
+    /** @var SLN_Plugin */
     private $plugin;
-    private $date;
-    private $time;
-    private $errors = array();
+    private $mode;
 
-    public function executeEmail() {
-        $this->execute(self::EMAIL);
-    }
-
-    public function executeSms() {
-        $this->execute(self::SMS);
-    }
-
-    private function execute($type)
+    public function __construct(SLN_Plugin $plugin)
     {
-        $this->plugin = SLN_Plugin::getInstance();
-        $remind = $this->plugin->getSettings()->get($type.'_remind');
-        if($remind){
-            $this->plugin->addLog($type.' reminder execution');
-            $this->dispatchAdvice($type);
-            $this->plugin->addLog($type.' reminder execution ended');
+        $this->plugin = $plugin;
+    }
+
+    public function executeSms()
+    {
+        $this->mode = self::SMS;
+
+        return $this->execute();
+    }
+
+    public function executeEmail()
+    {
+        $this->mode = self::EMAIL;
+
+        return $this->execute();
+    }
+
+    private function execute()
+    {
+        $type = $this->mode;
+        $p = $this->plugin;
+        $remind = $p->getSettings()->get($type.'_remind');
+        if (!$remind) {
+            return;
+        }
+        $p->addLog($type.' reminder execution');
+        foreach ($this->getBookings() as $booking) {
+            $this->send($booking);
+            $p->addLog($type.' reminder sent to '.$booking->getId());
+            $booking->setMeta($type.'_remind', true);
+        }
+        $p->addLog($type.' reminder execution ended');
+    }
+
+    /**
+     * @param SLN_Wrapper_Booking $booking
+     * @throws Exception
+     */
+    private function send(SLN_Wrapper_Booking $booking)
+    {
+        $p = $this->plugin;
+        if (self::EMAIL == $this->mode) {
+            $args = compact('booking');
+            $args['remind'] = true;
+            $p->sendMail('mail/summary', $args);
+        } else {
+            $p->sms()->send(
+                $booking->getPhone(),
+                $p->loadView('sms/remind', compact('booking'))
+            );
         }
     }
 
-    private function dispatchAdvice($type){
-        $plugin = $this->plugin;
-        $interval = $plugin->getSettings()->get($type.'_remind_interval');
-        $date = new DateTime();
-        $date->modify($interval);
-        $now = new DateTime(); 
-        $args = array(
-            'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
-            'nopaging'   => true,
-            'meta_query' => array(
-                array(
-                    'key'     => '_sln_booking_date',
-                    'value'   => $date->format('Y-m-d'),
-                    'compare' => '=',
-                )
-            )
-        );
-        $query = new WP_Query($args);
+    /**
+     * @return SLN_Wrapper_Booking[]
+     * @throws Exception
+     */
+    private function getBookings()
+    {
+        $min = $this->getMin();
+        $max = $this->getMax();
+        /** @var SLN_Repository_BookingRepository $repo */
+        $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_BOOKING);
+        $tmp = $repo->get(array('day' => $max));
         $ret = array();
-        foreach ($query->get_posts() as $p) {
-            $booking = $plugin->createBooking($p);
+        foreach ($tmp as $booking) {
             $d = $booking->getStartsAt();
-            if($d >= $now && $d <= $date){
-                $methodGetRemind = 'get'.(self::EMAIL == $type ? 'Email' : '').'Remind';
-                $methodSetRemind = 'set'.(self::EMAIL == $type ? 'Email' : '').'Remind';
-                if(!$booking->$methodGetRemind()){
-                    $this->plugin->addLog($type.' reminder sent to '.$booking->getId());
-                    if (self::EMAIL == $type) {
-                        $args = compact('booking');
-                        $args['remind'] = true;
-
-                        $plugin->sendMail('mail/summary', $args);
-                    } else {
-                        $plugin->sendSms($booking->getPhone(), $plugin->loadView('sms/remind', compact('booking')));
-                    }
-                    $booking->$methodSetRemind(true);
-                }
+            $done = $booking->getMeta($this->mode.'_remind');
+            if ($d >= $min && $d <= $max && !$done) {
+                $ret[] = $booking;
             }
         }
-        wp_reset_query();
-        wp_reset_postdata();
+
+        return $ret;
+    }
+
+
+    /**
+     * @return DateTime
+     */
+    private function getMin()
+    {
+        return new DateTime();
+    }
+
+    /**
+     * @return DateTime
+     */
+    private function getMax()
+    {
+        $interval = $this->plugin->getSettings()->get($this->mode.'_remind_interval');
+        $date = new DateTime();
+        $date->modify($interval);
+
+        return $date;
     }
 }
