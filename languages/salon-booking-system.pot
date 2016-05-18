@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-18 10:53+0200\n"
+"POT-Creation-Date: 2016-05-18 19:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,52 +76,57 @@ msgstr ""
 msgid "You have entered the wrong data"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:32 src/SLN/Admin/Settings.php:348
+#: src/SLN/Admin/Settings.php:111 src/SLN/Admin/Settings.php:375
 msgid "Salon Settings"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:33
+#: src/SLN/Admin/Settings.php:112
 msgid "Settings"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:153
+#: src/SLN/Admin/Settings.php:232
 msgid "remember to customize your settings"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:154
+#: src/SLN/Admin/Settings.php:233
 msgid "Reset completed with success"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:215
+#: src/SLN/Admin/Settings.php:266
 msgid "general settings are updated"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:216 src/SLN/Admin/Settings.php:287
-#: src/SLN/Admin/Settings.php:322 src/SLN/Admin/Settings.php:455
+#: src/SLN/Admin/Settings.php:267 src/SLN/Admin/Settings.php:325
+#: src/SLN/Admin/Settings.php:349 src/SLN/Admin/Settings.php:440
+#: src/SLN/Admin/Settings.php:469
 msgid "Update completed with success"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:235
+#: src/SLN/Admin/Settings.php:286
 msgid "Test sms sent with success"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:286
+#: src/SLN/Admin/Settings.php:324
 msgid "booking settings are updated"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:321
+#: src/SLN/Admin/Settings.php:348
 msgid "payments settings are updated"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:339
+#: src/SLN/Admin/Settings.php:366
 msgid "try again"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:340
+#: src/SLN/Admin/Settings.php:367
 msgid "Page verification failed"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:454
+#: src/SLN/Admin/Settings.php:439
+msgid "style settings are updated"
+msgstr ""
+
+#: src/SLN/Admin/Settings.php:468
 msgid "Google Calendar settings are updated"
 msgstr ""
 
@@ -1344,28 +1349,33 @@ msgid ""
 "{email}"
 msgstr ""
 
-#: views/sms/remind.php:7
-msgid "Hi "
+#: views/sms/remind.php:7 views/shortcode/salon_my_account_details.php:143
+msgid "Hi"
 msgstr ""
 
 #: views/sms/remind.php:9
-msgid "don't forget your reservation at "
+msgid "don't forget your reservation at"
 msgstr ""
 
 #: views/sms/remind.php:10 views/sms/summary.php:8
-msgid " on "
+msgid "on"
 msgstr ""
 
-#: views/sms/remind.php:11
-msgid " at "
+#: views/sms/remind.php:11 views/sms/summary.php:10
+#: views/settings/_holiday_row.php:293 views/settings/_holiday_row.php:301
+msgid "at"
 msgstr ""
 
 #: views/sms/remind.php:12
-msgid " Booking ID "
+msgid "| Booking ID "
 msgstr ""
 
 #: views/sms/summary.php:8
-msgid " has booked at "
+msgid "has booked at"
+msgstr ""
+
+#: views/sms/summary.php:11
+msgid "BOOKING ID"
 msgstr ""
 
 #: views/notice/html_notice_update.php:3
@@ -2110,10 +2120,6 @@ msgstr ""
 msgid "End on"
 msgstr ""
 
-#: views/settings/_holiday_row.php:293 views/settings/_holiday_row.php:301
-msgid "at"
-msgstr ""
-
 #: views/settings/tab_documentation.php:4
 msgid "Support"
 msgstr ""
@@ -2570,10 +2576,6 @@ msgstr ""
 
 #: views/shortcode/salon_my_account_details.php:118
 msgid "Rate our service"
-msgstr ""
-
-#: views/shortcode/salon_my_account_details.php:143
-msgid "Hi"
 msgstr ""
 
 #: views/shortcode/salon_my_account_details.php:144
