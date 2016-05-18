@@ -270,12 +270,12 @@ class SLN_Plugin
 
 function sln_sms_reminder()
 {
-    $obj = new SLN_Action_Reminder();
+    $obj = new SLN_Action_Reminder(SLN_Plugin::getInstance());
     $obj->executeSms();
 }
 
 function sln_email_reminder()
 {
-    $obj = new SLN_Action_Reminder();
+    $obj = new SLN_Action_Reminder(SLN_Plugin::getInstance());
     $obj->executeEmail();
 }
