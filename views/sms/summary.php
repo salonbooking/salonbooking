@@ -5,7 +5,7 @@
  */
 echo
     $booking->getFirstname() . ' ' . $booking->getLastname()
-    . __(' has booked at ','salon-booking-system') . $plugin->getSettings()->getSalonName() . __(' on ','salon-booking-system')
+    . __('&nbsp;has booked at&nbsp;','salon-booking-system') . $plugin->getSettings()->getSalonName() . __('&nbsp;on&nbsp;','salon-booking-system')
     . ' ' . $plugin->format()->date($booking->getDate()) 
     . ' ' . $plugin->format()->time($booking->getTime())
     . ' - ' .$booking->getId();
