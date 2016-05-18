@@ -37,7 +37,7 @@ class SLN_Helper_Availability
     {
         $interval = $this->getHoursBeforeHelper();
         $from = $interval->getFromDate();
-        $count = SLN_Func::countDaysBetweenDatetimes($from, $interval->getToDate());
+        $count = $interval->getCountDays();
         $ret = array();
         $avItems = $this->getItems();
         $hItems = $this->getHolidaysItems();

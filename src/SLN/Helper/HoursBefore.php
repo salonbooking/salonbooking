@@ -136,4 +136,8 @@ class SLN_Helper_HoursBefore
     }
 */
 
+    public function getCountDays()
+    {
+        return SLN_Func::countDaysBetweenDatetimes($this->getFromDate(), $this->getToDate());
+    }
 }

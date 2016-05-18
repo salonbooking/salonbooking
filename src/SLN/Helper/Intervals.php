@@ -26,26 +26,26 @@ class SLN_Helper_Intervals
         $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
         $times             = $ah->getTimes($date);
-        $i                 = 0;
-        while (empty($times) && $i < 100) {
+        $interval = $ah->getHoursBeforeHelper();
+        $to = $interval->getToDate();
+        $clone = clone $date;
+        while (empty($times) && $date <= $to) {
             $date->modify('+1 days');
             $times = $ah->getTimes($date);
-            $i++;
         }
         if (empty($times)) {
-            $date->modify('-99 days');
-            while (empty($times) && $i > 0) {
+            $date = $clone;
+            $from = $interval->getFromDate();
+            while (empty($times) && $date >= $from) {
                 $date->modify('-1 days');
                 $times = $ah->getTimes($date);
-                $i--;
             }
         }
         $this->times   = $times;
         $suggestedTime = $date->format('H:i');
         $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
         $timeout = 0;
-
-        while ($timeout < 86400 && !isset($times[$suggestedTime])) {
+        while ($timeout < 86400 && !isset($times[$suggestedTime]) && $date <= $to ) {
             $date->modify("+$i minutes");
             $suggestedTime = $date->format('H:i');
             $timeout++;
