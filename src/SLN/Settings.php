@@ -200,7 +200,7 @@ class SLN_Settings
      */
     public function isAttendantsEnabled()
     {
-        return $this->get('attendants_enabled') ? true : false;
+        return $this->get('attendant_enabled') ? true : false;
     }
 
     /**
@@ -227,5 +227,10 @@ class SLN_Settings
         $this->set('custom_texts', $custom_texts);
 
         return true;
+    }
+    
+    public function isChangeFormSteps()
+    {
+        return $this->get('change_form_steps') ? true : false;
     }
 }

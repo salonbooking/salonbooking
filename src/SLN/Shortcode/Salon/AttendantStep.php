@@ -21,6 +21,11 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
             $id = isset($values['attendant']) ? $values['attendant'] : null;
             $ret = $this->dispatchSingle($id);
         }
+        
+        if ( $this->getPlugin()->getSettings()->isChangeFormSteps() ) {
+            $ret = true;
+        }
+        
         if ($ret) {
             $bb->save();
 
@@ -39,7 +44,6 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
         foreach ($bb->getBookingServices()->getItems() as $bookingService) {
             $service = $bookingService->getService();
-            $attendantId = $selected[$service->getId()];
             $tmp = $ah->getAvailableAttsIdsForBookingService($bookingService);
             $availAttsForEachService[$service->getId()] = $tmp;
             if (empty($tmp)) {
@@ -52,6 +56,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
                 return false;
             } elseif (isset($selected[$service->getId()])) {
+                $attendantId = $selected[$service->getId()];
                 $hasAttendant = in_array($attendantId, $availAttsForEachService[$service->getId()]);
                 if (!$hasAttendant) {
                     $attendant = $this->getPlugin()->createAttendant($attendantId);

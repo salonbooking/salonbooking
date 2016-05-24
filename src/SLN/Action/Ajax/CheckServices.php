@@ -24,72 +24,118 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
         $ret = array();
 
         if (isset($_POST['part']) && $_POST['part'] == 'primaryServices') { // for frontend user
-            $services = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
-            $bb = SLN_Plugin::getInstance()->getBookingBuilder();
-            $bbSecServices = $bb->getSecondaryServicesIds();
-            $services = array_merge(array_keys($services), $bbSecServices); // merge primary services from form & secondary services from booking builder
+            
+            if ( ! SLN_Plugin::getInstance()->getSettings()->isChangeFormSteps() ) {
+                
+                $services       = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
 
-            $date = $bb->getDateTime();
+                $bb             = SLN_Plugin::getInstance()->getBookingBuilder();
 
-            $ah = SLN_Plugin::getInstance()->getAvailabilityHelper();
-            $ah->setDate($date);
-            $validated = $ah->returnValidatedServices($services); // return ids for validated services
-            $validatedPrimary = array_intersect($this->getPrimaryServicesIds(), $validated);
+                $bbSecServices  = $bb->getSecondaryServicesIds();
+                $services       = array_merge(array_keys($services), $bbSecServices); // merge primary services from form & secondary services from booking builder
+                $ah = SLN_Plugin::getInstance()->getAvailabilityHelper();
 
-            $bb->clearServices();
-            if (!empty($validatedPrimary)) { // if order primary services count > 0  --->  set validated services
-                foreach($validated as $sId) {
+                $ah->setDate($bb->getDateTime());
+
+                $validated = $ah->returnValidatedServices($services);
+
+                $validatedPrimary   = array_intersect($this->getPrimaryServicesIds(), $validated);
+
+                $bb->clearServices();
+
+                if (!empty($validatedPrimary)) { // if order primary services count > 0  --->  set validated services
+                    foreach($validated as $sId) {
+                        $bb->addService(new SLN_Wrapper_Service($sId));
+                        $ret[$sId] = array('status' => 1, 'error' => '');
+                    }
+                }
+                else {
+                    $validated = array();
+                }
+                $bb->save();
+
+                $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($validated, $this->getPrimaryServices());
+                foreach($servicesErrors as $sId => $error) {
+                    if (empty($error)) {
+                        $ret[$sId] = array('status' => 0, 'error' => '');
+                    }
+                    else {
+                        $ret[$sId] = array('status' => -1, 'error' => $error[0]);
+                    }
+                } 
+            }
+            else {
+                
+                $services       = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
+                $bb             = SLN_Plugin::getInstance()->getBookingBuilder();
+                
+                $bbSecServices  = $bb->getSecondaryServicesIds();
+                $services       = array_merge(array_keys($services), $bbSecServices); 
+                
+                $bb->clearServices();
+                
+                foreach($services as $sId) {
                     $bb->addService(new SLN_Wrapper_Service($sId));
                     $ret[$sId] = array('status' => 1, 'error' => '');
                 }
-            }
-            else {
-                $validated = array();
-            }
-            $bb->save();
-
-            $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($validated, $this->getPrimaryServices());
-            foreach($servicesErrors as $sId => $error) {
-                if (empty($error)) {
-                    $ret[$sId] = array('status' => 0, 'error' => '');
-                }
-                else {
-                    $ret[$sId] = array('status' => -1, 'error' => $error[0]);
-                }
+                
+                $bb->save();
             }
         } elseif (isset($_POST['part']) && $_POST['part'] == 'secondaryServices') { // for frontend user
-            $services = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
-            $bb = SLN_Plugin::getInstance()->getBookingBuilder();
-            $bbPrimServices = $bb->getPrimaryServicesIds();
-            $bbSecServices = $bb->getSecondaryServicesIds();
-            $services = array_merge(array_keys($services), $bbPrimServices);
+           
+            if ( ! SLN_Plugin::getInstance()->getSettings()->isChangeFormSteps() ) {
+                
+                $services = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
+                $bb = SLN_Plugin::getInstance()->getBookingBuilder();
+                $bbPrimServices = $bb->getPrimaryServicesIds();
+                $bbSecServices = $bb->getSecondaryServicesIds();
+                $services = array_merge(array_keys($services), $bbPrimServices);
 
-            $date = $bb->getDateTime();
+                $date = $bb->getDateTime();
 
-            $ah = SLN_Plugin::getInstance()->getAvailabilityHelper();
-            $ah->setDate($date);
-            $validated = $ah->returnValidatedServices($services);
-            $validatedPrimary = array_intersect($this->getPrimaryServicesIds(), $validated);
-            $bb->clearServices();
-            if (!empty($validatedPrimary)) { // if order primary services count > 0  --->  set validated services
-                foreach($validated as $sId) {
-                    $bb->addService(new SLN_Wrapper_Service($sId));
-                    $ret[$sId] = array('status' => 1, 'error' => '');
+                $ah = SLN_Plugin::getInstance()->getAvailabilityHelper();
+
+                $ah->setDate($date);
+
+                $validated = $ah->returnValidatedServices($services);
+                $validatedPrimary = array_intersect($this->getPrimaryServicesIds(), $validated);
+                $bb->clearServices();
+                if (!empty($validatedPrimary)) { // if order primary services count > 0  --->  set validated services
+                    foreach($validated as $sId) {
+                        $bb->addService(new SLN_Wrapper_Service($sId));
+                        $ret[$sId] = array('status' => 1, 'error' => '');
+                    }
+                }
+                else {
+                    $validated = array();
+                }
+                $bb->save();
+
+                $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($validated, $this->getSecondaryServices());
+                foreach($servicesErrors as $sId => $error) {
+                    if (empty($error)) {
+                        $ret[$sId] = array('status' => 0, 'error' => '');
+                    }
+                    else {
+                        $ret[$sId] = array('status' => -1, 'error' => $error[0]);
+                    }
                 }
             }
             else {
-                $validated = array();
-            }
-            $bb->save();
-
-            $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($validated, $this->getSecondaryServices());
-            foreach($servicesErrors as $sId => $error) {
-                if (empty($error)) {
-                    $ret[$sId] = array('status' => 0, 'error' => '');
+                $services       = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
+                $bb             = SLN_Plugin::getInstance()->getBookingBuilder();
+                
+                $bbPrimServices = $bb->getPrimaryServicesIds();
+                $services       = array_merge(array_keys($services), $bbPrimServices);
+                
+                $bb->clearServices();
+                
+                foreach($services as $sId) {
+                    $bb->addService(new SLN_Wrapper_Service($sId));
+                    $ret[$sId] = array('status' => 1, 'error' => '');
                 }
-                else {
-                    $ret[$sId] = array('status' => -1, 'error' => $error[0]);
-                }
+                
+                $bb->save();
             }
         } elseif (isset($_POST['part']) && $_POST['part'] == 'allServices' && !empty($_POST['_sln_booking']['service'])) { // for admin
             $services = $_POST['_sln_booking']['service'];

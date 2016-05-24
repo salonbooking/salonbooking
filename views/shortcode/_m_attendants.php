@@ -24,12 +24,19 @@ foreach ($bookingServices->getItems() as $bookingService) :
     </div>
     <?php foreach ($attendants as $attendant) : ?>
         <?php
-        $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);
-        if (!empty($validateAttServiceErrors)) {
-            continue;
+        
+        if ( $plugin->getSettings()->isChangeFormSteps() ) {
+            $errors = false;
         }
+        else {
+            $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);
+            if (!empty($validateAttServiceErrors)) {
+                continue;
+            }
 
-        $errors   = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getDuration());
+            $errors   = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getDuration());
+        }
+        
         $settings = array();
         if ($errors) {
             $settings['attrs']['disabled'] = 'disabled';

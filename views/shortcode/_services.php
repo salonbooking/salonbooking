@@ -16,7 +16,14 @@ $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1') ? true : false;
 $grouped = SLN_Func::groupServicesByCategory($services);
 
-$servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds(), $services);
+if ( $plugin->getSettings()->isChangeFormSteps() ) {
+
+    $servicesErrors = array();
+}
+else {
+    $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds(), $services);
+} 
+    
 $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
