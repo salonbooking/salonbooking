@@ -25,7 +25,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
 
         if (isset($_POST['part']) && $_POST['part'] == 'primaryServices') { // for frontend user
             
-            if ( ! SLN_Plugin::getInstance()->getSettings()->isChangeFormSteps() ) {
+            if (!SLN_Plugin::getInstance()->getSettings()->isFormStepsAltOrder()) {
                 
                 $services       = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
 
@@ -48,8 +48,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                         $bb->addService(new SLN_Wrapper_Service($sId));
                         $ret[$sId] = array('status' => 1, 'error' => '');
                     }
-                }
-                else {
+                } else {
                     $validated = array();
                 }
                 $bb->save();
@@ -58,13 +57,11 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 foreach($servicesErrors as $sId => $error) {
                     if (empty($error)) {
                         $ret[$sId] = array('status' => 0, 'error' => '');
-                    }
-                    else {
+                    } else {
                         $ret[$sId] = array('status' => -1, 'error' => $error[0]);
                     }
                 } 
-            }
-            else {
+            } else {
                 
                 $services       = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
                 $bb             = SLN_Plugin::getInstance()->getBookingBuilder();
@@ -83,7 +80,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
             }
         } elseif (isset($_POST['part']) && $_POST['part'] == 'secondaryServices') { // for frontend user
            
-            if ( ! SLN_Plugin::getInstance()->getSettings()->isChangeFormSteps() ) {
+            if (!SLN_Plugin::getInstance()->getSettings()->isFormStepsAltOrder()) {
                 
                 $services = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
                 $bb = SLN_Plugin::getInstance()->getBookingBuilder();
@@ -105,8 +102,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                         $bb->addService(new SLN_Wrapper_Service($sId));
                         $ret[$sId] = array('status' => 1, 'error' => '');
                     }
-                }
-                else {
+                } else {
                     $validated = array();
                 }
                 $bb->save();
@@ -115,13 +111,11 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 foreach($servicesErrors as $sId => $error) {
                     if (empty($error)) {
                         $ret[$sId] = array('status' => 0, 'error' => '');
-                    }
-                    else {
+                    } else {
                         $ret[$sId] = array('status' => -1, 'error' => $error[0]);
                     }
                 }
-            }
-            else {
+            } else {
                 $services       = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
                 $bb             = SLN_Plugin::getInstance()->getBookingBuilder();
                 
@@ -231,8 +225,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
         foreach ($repo->sortByExec($repo->getAll()) as $service) {
             if ($secondary && $service->isSecondary()) {
                 $services[] = $service;
-            }
-            elseif ($primary && !$service->isSecondary()) {
+            } elseif ($primary && !$service->isSecondary()) {
                 $services[] = $service;
             }
         }

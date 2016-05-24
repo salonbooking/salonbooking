@@ -229,8 +229,8 @@ class SLN_Settings
         return true;
     }
     
-    public function isChangeFormSteps()
+    public function isFormStepsAltOrder()
     {
-        return $this->get('change_form_steps') ? true : false;
+        return $this->get('form_steps_alt_order') ? true : false;
     }
 }

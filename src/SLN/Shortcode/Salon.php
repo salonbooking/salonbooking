@@ -93,9 +93,8 @@ class SLN_Shortcode_Salon
     public function getCurrentStep()
     {
         if (!isset($this->currentStep)) {
-            
-            $steps              = $this->getSteps();
-            $stepDefault        = array_shift($steps);
+            $steps       = $this->getSteps();
+            $stepDefault = array_shift($steps);
             
             if (!$stepDefault) {
                 $stepDefault = self::STEP_DEFAULT;
@@ -156,29 +155,29 @@ class SLN_Shortcode_Salon
         if (!isset($this->steps)) {
             
             $this->steps = array(
-                            'date',
-                            'services',
-                            'secondary',
-                            'attendant',
-                            'details',
-                            'sms',
-                            'summary',
-                            'thankyou',
-                        );
+                'date',
+                'services',
+                'secondary',
+                'attendant',
+                'details',
+                'sms',
+                'summary',
+                'thankyou',
+            );
             
-            if ($this->plugin->getSettings()->isChangeFormSteps())
+            if ($this->plugin->getSettings()->isFormStepsAltOrder()) {
                 $this->steps = array(
-                                'services',
-                                'secondary',
-                                'attendant',
-                                'date',
-                                'details',
-                                'sms',
-                                'summary',
-                                'thankyou',
-                            );
-            
-            
+                    'services',
+                    'secondary',
+                    'attendant',
+                    'date',
+                    'details',
+                    'sms',
+                    'summary',
+                    'thankyou',
+                );
+            }
+
             if (!$this->needSecondary()) {
                 unset($this->steps[array_search('secondary', $this->steps)]);
             }

@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 form-group sln-checkbox">
                 <?php $helper->row_input_checkbox(
-                    'change_form_steps',
+                    'form_steps_alt_order',
                     __('Change order', 'salon-booking-system'),
                     array('help' => __(
                                         'Selecting this option the booking process will follow this order: A - Services B - Assistants C - Date/Time',

@@ -22,7 +22,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
             $ret = $this->dispatchSingle($id);
         }
         
-        if ( $this->getPlugin()->getSettings()->isChangeFormSteps() ) {
+        if ($this->getPlugin()->getSettings()->isFormStepsAltOrder()) {
             $ret = true;
         }
         

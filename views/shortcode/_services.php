@@ -16,11 +16,9 @@ $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1') ? true : false;
 $grouped = SLN_Func::groupServicesByCategory($services);
 
-if ( $plugin->getSettings()->isChangeFormSteps() ) {
-
+if ($plugin->getSettings()->isFormStepsAltOrder()) {
     $servicesErrors = array();
-}
-else {
+} else {
     $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds(), $services);
 } 
     

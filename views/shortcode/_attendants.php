@@ -17,10 +17,9 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
 <div class="sln-attendant-list">
     <?php foreach ($attendants as $attendant) {
         
-        if ( $plugin->getSettings()->isChangeFormSteps() ) {
+        if ($plugin->getSettings()->isFormStepsAltOrder()) {
             $errors = false;
-        }
-        else {
+        } else {
             $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $bb->getServices());
 
             if (!empty($validateAttServicesErrors)) {

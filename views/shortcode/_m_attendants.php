@@ -25,16 +25,15 @@ foreach ($bookingServices->getItems() as $bookingService) :
     <?php foreach ($attendants as $attendant) : ?>
         <?php
         
-        if ( $plugin->getSettings()->isChangeFormSteps() ) {
+        if ($plugin->getSettings()->isFormStepsAltOrder()) {
             $errors = false;
-        }
-        else {
+        } else {
             $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);
             if (!empty($validateAttServiceErrors)) {
                 continue;
             }
 
-            $errors   = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getDuration());
+            $errors = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getDuration());
         }
         
         $settings = array();
