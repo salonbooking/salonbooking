@@ -18,6 +18,11 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     <?php foreach ($attendants as $attendant) {
         
         if ($plugin->getSettings()->isFormStepsAltOrder()) {
+            $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $bb->getServices());
+
+            if (!empty($validateAttServicesErrors)) {
+                continue;
+            }
             $errors = false;
         } else {
             $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $bb->getServices());

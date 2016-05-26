@@ -67,6 +67,72 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
                         'salon-booking-system'
                     )
                 );
+            } else {
+                if ($plugin->getSettings()->isFormStepsAltOrder()) {
+                    $errors = array();
+
+                    $bb   = $plugin->getBookingBuilder();
+                    $bb->setDate(SLN_Func::filter($date, 'date'))->setTime(SLN_Func::filter($date, 'time'));
+                    $isMultipleAttSelection = SLN_Plugin::getInstance()->getSettings()->get('m_attendant_enabled');
+
+                    $obj = new SLN_Shortcode_Salon_AttendantStep($plugin, new SLN_Shortcode_Salon($plugin, array()),'');
+                    if ($isMultipleAttSelection) {
+                        $ret = $obj->dispatchMultiple($bb->getAttendantsIds());
+                    } else {
+                        $ret = $obj->dispatchSingle($bb->getAttendantsIds());
+                    }
+
+                    $bookingServices =  $bb->getBookingServices();
+
+                    $bookingOffsetEnabled   = SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled');
+                    $bookingOffset          = SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation');
+                    $interval               = min(SLN_Enum_Interval::toArray());
+
+                    $firstSelectedAttendant = null;
+
+
+                    foreach($bookingServices->getItems() as $bookingService) {
+                        $serviceErrors   = array();
+                        $attendantErrors = array();
+
+                        if ($bookingServices->isLast($bookingService) && $bookingOffsetEnabled) {
+                            $offsetStart   = $bookingService->getEndsAt();
+                            $offsetEnd     = $bookingService->getEndsAt()->modify('+'.$bookingOffset.' minutes');
+                            $serviceErrors = $ah->validateTimePeriod($interval, $offsetStart, $offsetEnd);
+                        }
+                        if (empty($serviceErrors)) {
+                            $serviceErrors = $ah->validateService($bookingService->getService(), $bookingService->getStartsAt(), $bookingService->getDuration());
+                        }
+                        if (!empty($serviceErrors)) {
+                            $errors[] = $serviceErrors[0];
+                            continue;
+                        }
+
+                        if (!$isMultipleAttSelection) {
+                            if (!$firstSelectedAttendant) {
+                                $firstSelectedAttendant = $bookingService->getAttendant()->getId();
+                            }
+                            if ($bookingService->getAttendant()->getId() != $firstSelectedAttendant) {
+                                $attendantErrors = array(__('Multiple attendants selection is disabled. You must select one attendant for all services.', 'salon-booking-system'));
+                            }
+                        }
+                        if (empty($attendantErrors)) {
+                            $attendantErrors = $ah->validateAttendantService($bookingService->getAttendant(), $bookingService->getService());
+                            if (empty($attendantErrors)) {
+                                $attendantErrors = $ah->validateAttendant($bookingService->getAttendant(), $bookingService->getStartsAt(), $bookingService->getDuration());
+                            }
+                        }
+
+                        if (!empty($attendantErrors)) {
+                            $errors[] = $attendantErrors[0];
+                        }
+                    }
+
+                    foreach($errors as $error) {
+                        $this->addError($error);
+                    }
+                }
+
             }
         }
     }

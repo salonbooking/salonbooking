@@ -26,6 +26,10 @@ foreach ($bookingServices->getItems() as $bookingService) :
         <?php
         
         if ($plugin->getSettings()->isFormStepsAltOrder()) {
+            $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);
+            if (!empty($validateAttServiceErrors)) {
+                continue;
+            }
             $errors = false;
         } else {
             $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);
