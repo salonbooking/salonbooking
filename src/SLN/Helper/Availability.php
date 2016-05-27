@@ -36,7 +36,7 @@ class SLN_Helper_Availability
     public function getDays()
     {
         $interval = $this->getHoursBeforeHelper();
-        $from = $interval->getFromDate();
+        $from = clone $interval->getFromDate();
         $count = $interval->getCountDays();
         $ret = array();
         $avItems = $this->getItems();

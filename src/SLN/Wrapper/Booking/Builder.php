@@ -178,6 +178,10 @@ class SLN_Wrapper_Booking_Builder
         return $ret;
     }
 
+    public function setServicesAndAttendants($date) {
+        $this->data['services'] = $date;
+    }
+
     public function addService(SLN_Wrapper_Service $service)
     {
         if ((!isset($this->data['services'])) || (!in_array($service->getId(), array_keys($this->data['services'])))) {
