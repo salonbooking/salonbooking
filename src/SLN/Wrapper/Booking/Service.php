@@ -14,7 +14,7 @@ final class SLN_Wrapper_Booking_Service
     {
         $this->data = array(
             'service' => SLN_Plugin::getInstance()->createService($data['service']),
-            'attendant' => SLN_Plugin::getInstance()->createAttendant($data['attendant']),
+            'attendant' => !empty($data['attendant']) ? SLN_Plugin::getInstance()->createAttendant($data['attendant']) : false,
             'starts_at' => new SLN_DateTime(
                 SLN_Func::filter($data['start_date'], 'date').' '.SLN_Func::filter($data['start_time'], 'time')
             ),
@@ -49,7 +49,7 @@ final class SLN_Wrapper_Booking_Service
     }
 
     /**
-     * @return SLN_Wrapper_Attendant
+     * @return SLN_Wrapper_Attendant|bool
      */
     public function getAttendant()
     {
@@ -85,7 +85,7 @@ final class SLN_Wrapper_Booking_Service
     public function toArray()
     {
         return array(
-            'attendant' => @$this->data['attendant']->getId(),
+            'attendant' => @is_object($this->data['attendant']) ? $this->data['attendant']->getId() : $this->data['attendant'],
             'service' => $this->data['service']->getId(),
             'duration' => $this->data['duration']->format('H:i'),
             'start_date' => $this->data['starts_at']->format('Y-m-d'),

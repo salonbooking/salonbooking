@@ -39,6 +39,9 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
         foreach ($bb->getBookingServices()->getItems() as $bookingService) {
             $service = $bookingService->getService();
+            if (!$service->isAttendantsEnabled()) {
+                continue;
+            }
             $attendantId = $selected[$service->getId()];
             $tmp = $ah->getAvailableAttsIdsForBookingService($bookingService);
             $availAttsForEachService[$service->getId()] = $tmp;
@@ -74,6 +77,9 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         }
 
         foreach ($bb->getServices() as $service) {
+            if (!$service->isAttendantsEnabled()) {
+                continue;
+            }
             if (isset($selected[$service->getId()])) {
                 $attId = $selected[$service->getId()];
             } else {
@@ -92,6 +98,9 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
         $availAtts = null;
         foreach ($bb->getBookingServices()->getItems() as $bookingService) {
+            if (!$bookingService->getService()->isAttendantsEnabled()) {
+                continue;
+            }
             if (is_null($availAtts)) {
                 $availAtts = $ah->getAvailableAttsIdsForBookingService($bookingService);
             }
@@ -105,11 +114,22 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
             }
         }
         if (!$selected) {
-            $index = mt_rand(0, count($availAtts) - 1);
-            $selected = $availAtts[$index];
+            if (count($availAtts)) {
+                $index = mt_rand(0, count($availAtts) - 1);
+                $attendant = $this->getPlugin()->createAttendant($availAtts[$index]);
+            }
+            else {
+                $attendant = 0;
+            }
         }
-        $attendant = $this->getPlugin()->createAttendant($selected);
+        else {
+            $attendant = $this->getPlugin()->createAttendant($selected);
+        }
+
         foreach ($bb->getServices() as $service) {
+            if (!$service->isAttendantsEnabled()) {
+                continue;
+            }
             $bb->setAttendant($attendant, $service);
         }
         return true;

@@ -22,6 +22,12 @@ foreach ($bookingServices->getItems() as $bookingService) :
             <h3 class="sln-steps-name sln-service-name"><?php echo $service->getName() ?></h3>
         </div>
     </div>
+    <?php if (!$service->isAttendantsEnabled()) : ?>
+        <div class="row sln-attendant">
+            <?php SLN_Form::fieldText('sln[attendants]['. $service->getId() .']', 0, array('type' => 'hidden')) ?>
+            <p><?php echo __('The choice of assistant is not provided for this service', 'salon-booking-system') ?></p>
+        </div>
+    <?php continue; endif; ?>
     <?php foreach ($attendants as $attendant) : ?>
         <?php
         $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);

@@ -167,6 +167,18 @@ class SLN_Shortcode_Salon
                 unset($this->steps[array_search('sms', $this->steps)]);
             }
 
+            $needAttendant = false;
+            $bb = $this->plugin->getBookingBuilder();
+            foreach($bb->getServices() as $service) {
+                if ($service->isAttendantsEnabled()) {
+                    $needAttendant = true;
+                    break;
+                }
+            }
+            if (!$needAttendant) {
+                unset($this->steps[array_search('attendant', $this->steps)]);
+            }
+
         }
 
         return $this->steps;
