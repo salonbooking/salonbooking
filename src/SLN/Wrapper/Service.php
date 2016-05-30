@@ -85,6 +85,13 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         return $repo->findByService($this);
     }
 
+    public function isAttendantsEnabled() {
+        $ret = $this->getMeta('attendants');
+        $ret     = empty($ret) ? 1 : !$ret;
+
+        return $ret;
+    }
+
     function getNotAvailableOn($key)
     {
         $post_id = $this->getId();
