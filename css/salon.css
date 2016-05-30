@@ -2456,3 +2456,4 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 .datetimepicker.sln-datetimepicker table tr td span.year {
   font-size: 1em;
 }
+.datetimepicker.sln-datetimepicker td, .datetimepicker.sln-datetimepicker th {font-size: 1em;}

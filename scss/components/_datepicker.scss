@@ -211,8 +211,16 @@
     //  text-align: center;
     //  padding: 0;
     //}
-    font-size: 1em;
 }
+/////
+.datetimepicker.sln-datetimepicker table tr td.day,
+.datetimepicker.sln-datetimepicker table tr td span.hour,
+.datetimepicker.sln-datetimepicker table tr td span.minute,
+.datetimepicker.sln-datetimepicker table tr td span.month,
+.datetimepicker.sln-datetimepicker table tr td span.year {
+  font-size: 1em;
+}
+.datetimepicker.sln-datetimepicker td, .datetimepicker.sln-datetimepicker th {font-size: 1em;}
 
 .datetimepicker.sln-datetimepicker table tr td.day{
     //@media @phone {
