@@ -36,10 +36,9 @@ class SLN_Func
         $timestamp = strtotime("1970-01-01");
         $ret = array();
         for ($i = 1; $i <= 12; $i++) {
-            $ret[$i] = date_i18n('M', $timestamp);
+            $ret[$i] = substr(date_i18n('M', $timestamp), 0, 3);
             $timestamp = strtotime('+1 month', $timestamp);
         }
-
         return $ret;
     }
 
@@ -121,14 +120,13 @@ class SLN_Func
         if (strpos($date, '-'))
             return $date;
         $initial = $date;
-        $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
+        $f = SLN_Plugin::getInstance()->getSettings()->getDateFormat();
         if ($f == SLN_Enum_DateFormat::_DEFAULT) {
             if(!strpos($date, ' ')) throw new Exception('bad date format');
             $date = explode(' ', $date);
             foreach (SLN_Func::getMonths() as $k => $v) {
-//                var_dump([$date[1], $v, self::removeAccents($date[1]) == self::removeAccents($v)]);
 //                if (strcasecmp($date[1], $v) == 0) {
-                if (self::removeAccents($date[1]) == self::removeAccents($v)) {
+                if (self::removeAccents($date[1]) == self::removeAccents($v),0,3) {
                     $ret = $date[2] . '-' . ($k < 10 ? '0' . $k : $k) . '-' . $date[0];
                     return $ret;
                 }

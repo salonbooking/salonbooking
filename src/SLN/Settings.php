@@ -130,12 +130,12 @@ class SLN_Settings
 
     public function getDateFormat()
     {
-        return $this->get('date_format');
+        return $this->get('date_format') ? $this->get('date_format') : SLN_Enum_DateFormat::_DEFAULT; 
     }
 
     public function getTimeFormat()
     {
-        return $this->get('time_format');
+        return $this->get('time_format') ? $this->get('time_format') : SLN_Enum_TimeFormat::_DEFAULT; 
     }
 
     public function getSalonName()

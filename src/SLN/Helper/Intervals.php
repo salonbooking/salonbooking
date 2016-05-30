@@ -109,9 +109,10 @@ class SLN_Helper_Intervals
 
     public function toArray()
     {
-       $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
+       $s = SLN_Plugin::getInstance()->getSettings();
+       $f = $s->getDateFormat();
        $dateFormat = SLN_Enum_DateFormat::getPhpFormat($f);
-       $f = SLN_Plugin::getInstance()->getSettings()->get('time_format');
+       $f = $s->getTimeFormat();
        $timeFormat = SLN_Enum_TimeFormat::getPhpFormat($f);
  
         return array(

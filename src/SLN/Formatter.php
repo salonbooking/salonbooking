@@ -35,14 +35,14 @@ class SLN_Formatter
             $val = strtotime($val);
         }
 
-        $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
+        $f = SLN_Plugin::getInstance()->getSettings()->getDateFormat();
         $phpFormat = SLN_Enum_DateFormat::getPhpFormat($f);
         return date_i18n($phpFormat, strtotime($val));
     }
 
     public function time($val)
     {
-        $f = SLN_Plugin::getInstance()->getSettings()->get('time_format');
+        $f = SLN_Plugin::getInstance()->getSettings()->getTimeFormat();
         $phpFormat = SLN_Enum_TimeFormat::getPhpFormat($f);
         if ($val instanceof DateTime) {
             $val = $val->format('Y-m-d H:i');
