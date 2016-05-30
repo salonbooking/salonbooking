@@ -143,8 +143,7 @@ if(!isset($forAdmin)) {
               else {
                   $title = __('Contacts', 'salon-booking-system');
                   $text = '';
-                  $m = $plugin->getSettings()->get('gen_email') ?
-                      $plugin->getSettings()->get('gen_email') : get_bloginfo('admin_email');
+                  $m = $plugin->getSettings()->getSalonEmail();
                   $phone = $plugin->getSettings()->get('gen_phone');
               }
               ?>

@@ -4,7 +4,7 @@
  * @var SLN_Wrapper_Booking       $booking
  */
 if(!isset($data['to'])){
-	$data['to'] = get_option('admin_email');
+	$data['to'] = $plugin->getSettings()->getSalonEmail();
 }
 
 $data['subject'] = __('Booking was rated','salon-booking-system');

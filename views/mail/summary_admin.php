@@ -5,7 +5,7 @@
  */
 $recipients = array();
 
-$adminEmail           = get_option('admin_email');
+$adminEmail           = $plugin->getSettings()->getSalonEmail();
 $attendantEmailOption = $plugin->getSettings()->get('attendant_email');
 
 if(isset($updated) && $updated) {

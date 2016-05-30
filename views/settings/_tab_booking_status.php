@@ -27,7 +27,7 @@ $disabledMessage = $plugin->getSettings()->get('disabled_message');
                 'salon-booking-system'
             ) ?></label>
         <?php
-        $admin_email = get_bloginfo('admin_email');
+        $admin_email = $plugin->getSettings()->getSalonEmail();
         SLN_Form::fieldTextarea(
             "salon_settings[disabled_message]",
             $disabledMessage,
