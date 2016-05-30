@@ -25,7 +25,7 @@ $depositText = ($booking->getDeposit() && $booking->hasStatus(SLN_Enum_BookingSt
                 <tr>
                     <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"> <?php echo $plugin->format()->time($booking->getTime()) ?></td>
                 </tr>
-                <?php if((!$isMultipleAttSelection) && $attendant = $booking->getAttendant() && $attendant) :  ?>
+                <?php if((!$isMultipleAttSelection) && $attendant = $booking->getAttendant()) :  ?>
                     <tr>
                         <td height="25" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo _e('Attendant','salon-booking-system') ?></td>
                     </tr>
