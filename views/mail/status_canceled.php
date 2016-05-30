@@ -8,6 +8,7 @@ if(!isset($data['to'])){    // algolplus fix
 }
 if ($plugin->getSettings()->get('attendant_email')
     && ($attendant = $booking->getAttendant())
+    && $attendant
     && ($email = $attendant->getEmail())
 ) {
     $data['to'] = array($data['to'], $email);

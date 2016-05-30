@@ -7,7 +7,7 @@ $format = SLN_Plugin::getInstance()->format();
     <br>
     <?php
     echo $bookingService->getService()->getName() .'<br /><span>'. 
-         $bookingService->getAttendant()->getName().'&nbsp;'.
+         ($bookingService->getAttendant() ? $bookingService->getAttendant()->getName() : '').'&nbsp;'.
          $format->time($bookingService->getStartsAt()) . ' &#8594; ' .
          $format->time($bookingService->getEndsAt()).'<br /></span>';
          

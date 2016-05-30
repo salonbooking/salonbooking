@@ -25,7 +25,9 @@ class SLN_Helper_Availability_Basic_DayBookings extends SLN_Helper_Availability_
             $bookingServices = $booking->getBookingServices();
             foreach ($bookingServices->getItems() as $bookingService) {
                 @$ret[$time]['service'][$bookingService->getService()->getId()] ++;
-                @$ret[$time]['attendant'][$bookingService->getAttendant()->getId()] ++;
+                if ($bookingService->getAttendant()) {
+                    @$ret[$time]['attendant'][$bookingService->getAttendant()->getId()]++;
+                }
             }
         }
 

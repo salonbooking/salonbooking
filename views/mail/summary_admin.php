@@ -31,6 +31,7 @@ if(isset($updated) && $updated) {
     $data['to'] = $adminEmail;
     if ($attendantEmailOption
          && ($attendant = $booking->getAttendant())
+         && $attendant
          && ($email = $attendant->getEmail())
     ) {
         $data['to'] = array($data['to'], $email);

@@ -40,7 +40,9 @@ class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availabili
                     $time = $time->format('H:i');
                     $ret[$time]['booking'][] = $booking->getId();
                     @$ret[$time]['service'][$bookingService->getService()->getId()]++;
-                    @$ret[$time]['attendant'][$bookingService->getAttendant()->getId()]++;
+                    if ($bookingService->getAttendant()) {
+                        @$ret[$time]['attendant'][$bookingService->getAttendant()->getId()]++;
+                    }
                 }
 
                 if ($bookingServices->isLast($bookingService) && $bookingOffsetEnabled) {
