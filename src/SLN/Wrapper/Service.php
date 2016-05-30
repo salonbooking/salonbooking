@@ -79,10 +79,14 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
      */
     public function getAttendants()
     {
-        /** @var SLN_Repository_AttendantRepository $repo */
-        $repo = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
+        if ($this->isAttendantsEnabled()) {
+            /** @var SLN_Repository_AttendantRepository $repo */
+            $repo = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
 
-        return $repo->findByService($this);
+            return $repo->findByService($this);
+        }
+
+        return array();
     }
 
     public function isAttendantsEnabled() {

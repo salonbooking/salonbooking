@@ -238,7 +238,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
             return implode(', ', $ret);
         } else {
-            return SLN_Plugin::getInstance()->createAttendant(null)->getName();
+            return '';
         }
     }
 

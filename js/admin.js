@@ -538,7 +538,7 @@ jQuery(function ($) {
         var serviceVal = $(this).attr('data-service');
         var attendantVal = $(this).val();
         var selectHtml = '';
-        if (attendantVal == '') {
+        if (jQuery.inArray(attendantVal, ['','0']) !== false) {
             selectHtml += '<option value="" selected >n.d.</option>';
         }
         $.each(servicesData[serviceVal].attendants, function( index, value ) {
@@ -551,7 +551,7 @@ jQuery(function ($) {
     $('button[data-collection="addnewserviceline"]').click(function () {
         var serviceVal = $('#_sln_booking_service_select').val();
         var attendantVal = $('#_sln_booking_attendant_select').val();
-        if (attendantVal == undefined || attendantVal == '' ||
+        if (((attendantVal == undefined || attendantVal == '') && $('#_sln_booking_attendant_select option').size() > 1) ||
             $('[name=_sln_booking\\[services\\]\\[\\]] option[value=' + serviceVal + ']:selected').size()
         ) {
             return false;
@@ -572,9 +572,15 @@ jQuery(function ($) {
         }
 
         var selectHtml = '';
-        $.each(servicesData[serviceVal].attendants, function( index, value ) {
-            selectHtml += '<option value="'+ value +'" ' + (value == attendantVal ? 'selected' : '') + ' >' + attendantsData[value] + '</option>';
-        });
+        if (servicesData[serviceVal].attendants.length) {
+            $.each(servicesData[serviceVal].attendants, function( index, value ) {
+                selectHtml += '<option value="'+ value +'" ' + (value == attendantVal ? 'selected' : '') + ' >' + attendantsData[value] + '</option>';
+            });
+        }
+        else {
+            selectHtml += '<option value="" selected >n.d.</option>';
+        }
+
         $('#_sln_booking_attendants_' + serviceVal).html(selectHtml).change();
 
         if($('#salon-step-date').data('isnew'))
