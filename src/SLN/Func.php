@@ -126,7 +126,7 @@ class SLN_Func
             $date = explode(' ', $date);
             foreach (SLN_Func::getMonths() as $k => $v) {
 //                if (strcasecmp($date[1], $v) == 0) {
-                if (self::removeAccents($date[1]) == self::removeAccents($v),0,3) {
+                if (self::removeAccents($date[1]) == self::removeAccents($v)) {
                     $ret = $date[2] . '-' . ($k < 10 ? '0' . $k : $k) . '-' . $date[0];
                     return $ret;
                 }
