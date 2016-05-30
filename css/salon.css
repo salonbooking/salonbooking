@@ -2457,3 +2457,6 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   font-size: 1em;
 }
 .datetimepicker.sln-datetimepicker td, .datetimepicker.sln-datetimepicker th {font-size: 1em;}
+.sln_timepicker:after, .sln_datepicker:after {
+  pointer-events: none;
+}
