@@ -295,38 +295,6 @@ class SLN_Func
         return sprintf($format, $hours, $minutes);
     }
 
-    public static function groupServicesByCategory($services)
-    {
-        global $wpdb;
-        $ret = array(0 => array('term' => false, 'services' => array()));
-        $order = get_option(SLN_Plugin::CATEGORY_ORDER, '""');
-        $sql = "SELECT * FROM {$wpdb->term_taxonomy} tt, {$wpdb->terms} t WHERE tt.term_id = t.term_id AND tt.taxonomy = '" . SLN_Plugin::TAXONOMY_SERVICE_CATEGORY . "' ORDER BY FIELD(t.term_id, $order)";
-        $categories = $wpdb->get_results($sql);
-        foreach ($categories as $cat) {
-            foreach ($services as $s) {
-                $post_terms = get_the_terms($s->getId(), SLN_Plugin::TAXONOMY_SERVICE_CATEGORY);
-                
-                if (!empty($post_terms)) {
-                    foreach ($post_terms as $post_term) {
-                        if ($post_term->term_id == $cat->term_id) {
-                            $ret[$post_term->term_id]['term'] = $post_term;
-                            $ret[$post_term->term_id]['services'][] = $s;
-                        }
-                    }
-                } else {
-                    $ret[0]['services'][$s->getId()] = $s;
-                }
-            }
-        }
-        if (empty($categories)) {
-            $ret[0]['services'] = $services;
-        }
-        if (empty($ret['0']['services'])) {
-            unset($ret['0']);
-        }
-        return $ret;
-    }
-
     /**
      * @param string       $k
      * @param string|array $data

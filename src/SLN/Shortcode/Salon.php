@@ -25,17 +25,13 @@ class SLN_Shortcode_Salon
 
     public static function create($attrs)
     {
-        if ($timezone = get_option('timezone_string')) {
-            date_default_timezone_set($timezone);
-        }
-
+        SLN_TimeFunc::startRealTimezone();
 
         $obj = new self(SLN_Plugin::getInstance(), $attrs);
 
         $ret = $obj->execute();
-        if ($timezone = get_option('timezone_string')) {
-            date_default_timezone_set('UTC');
-        }
+
+        SLN_TimeFunc::endRealTimezone();
 
         return $ret;
     }

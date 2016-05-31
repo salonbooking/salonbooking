@@ -8,8 +8,6 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
 
     public function execute()
     {
-        if($timezone = get_option('timezone_string'))
-            date_default_timezone_set($timezone);
 
         if (!isset($this->date)) {
             if(isset($_POST['sln'])){

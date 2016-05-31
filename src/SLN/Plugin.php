@@ -169,11 +169,7 @@ class SLN_Plugin
 
     public function ajax()
     {
-        if ($timezone = get_option('timezone_string')) {
-            date_default_timezone_set($timezone);
-        }
-
-
+        SLN_TimeFunc::startRealTimezone();
         //check_ajax_referer('ajax_post_validation', 'security');
         $method = $_REQUEST['method'];
         $className = 'SLN_Action_Ajax_'.ucwords($method);

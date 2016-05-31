@@ -30,19 +30,22 @@ class SLN_Action_Reminder
 
     private function execute()
     {
+        SLN_TimeFunc::startRealTimezone();
+
         $type = $this->mode;
         $p = $this->plugin;
         $remind = $p->getSettings()->get($type.'_remind');
-        if (!$remind) {
-            return;
+        if ($remind) {
+            $p->addLog($type.' reminder execution');
+            foreach ($this->getBookings() as $booking) {
+                $this->send($booking);
+                $p->addLog($type.' reminder sent to '.$booking->getId());
+                $booking->setMeta($type.'_remind', true);
+            }
+            $p->addLog($type.' reminder execution ended');
         }
-        $p->addLog($type.' reminder execution');
-        foreach ($this->getBookings() as $booking) {
-            $this->send($booking);
-            $p->addLog($type.' reminder sent to '.$booking->getId());
-            $booking->setMeta($type.'_remind', true);
-        }
-        $p->addLog($type.' reminder execution ended');
+
+        SLN_TimeFunc::endRealTimezone();
     }
 
     /**

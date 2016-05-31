@@ -14,7 +14,7 @@ $isSymbolLeft = $plugin->getSettings()->get('pay_currency_pos') == 'left';
 $symbolLeft = $isSymbolLeft ? $plugin->getSettings()->getCurrencySymbol() : '';
 $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1') ? true : false;
-$grouped = SLN_Func::groupServicesByCategory($services);
+$grouped = SLN_Repository_ServiceRepository::groupServicesByCategory($services);
 
 $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds(), $services);
 $style = $step->getShortcode()->getStyleShortcode();
