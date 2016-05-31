@@ -200,7 +200,7 @@ class SLN_Settings
      */
     public function isAttendantsEnabled()
     {
-        return $this->get('attendants_enabled') ? true : false;
+        return $this->get('attendant_enabled') ? true : false;
     }
 
     /**

@@ -147,6 +147,9 @@ class SLN_Form
         $settings['attrs']['class'] = "";
         ?>
         <select name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" <?php echo self::attrs($settings) ?>>
+            <?php if(isset($settings['empty_value'])): ?>
+                <option value="" <?php echo empty($value) ? 'selected="selected"' : '' ?>><?php echo $settings['empty_value'] ?></option>
+            <?php endif ?>
             <?php
             foreach ($items as $key => $label) {
                 $key      = $map ? $key : $label;

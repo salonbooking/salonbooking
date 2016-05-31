@@ -185,7 +185,8 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $ret = array();
         if (is_array($data)) {
             foreach ($data as $item) {
-                $ret[$item['service']] = $item['attendant'];
+                if($item['attendant'])
+                    $ret[$item['service']] = $item['attendant'];
             }
         }
 
@@ -219,23 +220,25 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
                     $this->attendants[$service_id] = $tmp;
                 }
             }
+            if(empty($this->attendants)){
+                $tmp = $repo->create();
+            }
         }
-
         return $this->attendants;
     }
 
     function getAttendantsString()
     {
         $attendants = $this->getAttendants(true);
-        if (!empty($attendants)) {
+        if (empty($attendants)) {
+            return '';
+        } else {
             $ret = array();
             foreach ($attendants as $attendant) {
                 $ret[] = $attendant->getName();
             }
 
             return implode(', ', $ret);
-        } else {
-            return SLN_Plugin::getInstance()->createAttendant(null)->getName();
         }
     }
 

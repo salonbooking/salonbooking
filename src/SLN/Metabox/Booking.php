@@ -212,14 +212,13 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             $h = $h < 10 ? '0'.$h : $h;
             $i = $i < 10 ? '0'.$i : $i;
             $duration = $h.':'.$i;
-
+            $attendant = isset($data['attendants']) ? $data['attendants'][$serviceId] : (isset($data['attendant']) ? $data['attendant'] : null);
             $services[$serviceId] = array(
-                'attendant' => $data['attendants'][$serviceId],
+                'attendant' => $attendant,
                 'price' => $data['price'][$serviceId],
                 'duration' => $duration,
             );
         }
-
         return $services;
     }
 
