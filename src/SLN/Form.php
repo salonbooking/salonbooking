@@ -41,13 +41,11 @@ class SLN_Form
     static public function fieldJSDate($name, $value = null, $settings = array()){
        $f = SLN_Plugin::getInstance()->getSettings()->get('date_format');
        $weekStart = SLN_Plugin::getInstance()->getSettings()->get('week_start');
-       $jsFormat = SLN_Enum_DateFormat::getJsFormat($f);
-       $phpFormat = SLN_Enum_DateFormat::getPhpFormat($f);
- 
-        ?><span class="sln-jsdate">
+       $jsFormat = SLN_Enum_DateFormat::getJsFormat($f); 
+       ?><span class="sln-jsdate">
         <div class="sln_datepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 
             required="required" data-format="<?php echo $jsFormat?>" data-weekstart="<?php echo $weekStart ?>" class="sln-input"
-            value="<?php echo ucwords(date_i18n($phpFormat, $value->format('U'))) ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
+            value="<?php echo SLN_plugin::getInstance()->format()->date($value) ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
         </span><?php
     }
 
@@ -72,7 +70,7 @@ class SLN_Form
         <div class="sln_timepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 
             data-meridian="<?php echo strpos($phpFormat,'a') !== false ? 'true' : 'false' ?>"
             required="required" data-format="<?php echo $jsFormat ?>" class="sln-input"
-            value="<?php echo $value->format($phpFormat) ?>" data-interval="<?php echo $interval ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
+            value="<?php echo SLN_plugin::getInstance()->format()->time($value) ?>" data-interval="<?php echo $interval ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"/></div>
         </span><?php
     }
 

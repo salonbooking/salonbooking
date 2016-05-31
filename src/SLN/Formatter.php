@@ -37,7 +37,7 @@ class SLN_Formatter
 
         $f = SLN_Plugin::getInstance()->getSettings()->getDateFormat();
         $phpFormat = SLN_Enum_DateFormat::getPhpFormat($f);
-        return date_i18n($phpFormat, strtotime($val));
+        return ucwords(date_i18n($phpFormat, strtotime($val)));
     }
 
     public function time($val)
