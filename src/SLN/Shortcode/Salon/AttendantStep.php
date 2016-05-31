@@ -27,7 +27,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
             } else {
                 $id = isset($values['attendant']) ? $values['attendant'] : null;
                 foreach($bb->getServices() as $service) {
-                    if (isset($ids[$service->getId()])) {
+                    if ($id) {
                         $bb->setAttendant($this->getPlugin()->createAttendant($id), $service);
                     } else {
                         $bb->clearService($service);
