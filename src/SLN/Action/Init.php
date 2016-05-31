@@ -91,7 +91,6 @@ class SLN_Action_Init
             session_start();
         }
         $p = $this->plugin;
-        load_plugin_textdomain(SLN_Plugin::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME).'/languages');
         SLN_Shortcode_Salon::init($p);
         SLN_Shortcode_SalonMyAccount::init($p);
         SLN_Shortcode_SalonMyAccount_Details::init($p);

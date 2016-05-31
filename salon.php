@@ -31,6 +31,7 @@ if (is_admin())
     add_action('in_plugin_update_message-' . plugin_basename(__FILE__), 'my_update_notice');
 
 spl_autoload_register('sln_autoload');
+load_plugin_textdomain(SLN_Plugin::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME).'/languages');
 $sln_plugin = SLN_Plugin::getInstance();
 
 //TODO[feature-gcalendar]: move this require in the right place
