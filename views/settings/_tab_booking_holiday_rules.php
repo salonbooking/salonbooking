@@ -10,7 +10,6 @@ $block = __(
     'Set one or more rules for your holidays.<br /> Users will not be able to make reservation during these periods',
     'salon-booking-system'
 );
-$holidays = $plugin->getSettings()->get('holidays');
 if (!is_array($holidays)) {
     $holidays = array();
 }
@@ -25,7 +24,7 @@ if (!is_array($holidays)) {
             <?php echo $plugin->loadView(
                 'settings/_holiday_row',
                 array(
-                    'prefix' => "salon_settings[holidays][$k]",
+                    'prefix' => $base."[$k]",
                     'row' => $row,
                     'rulenumber' => $n,
                 )
@@ -44,7 +43,7 @@ if (!is_array($holidays)) {
         <?php echo $plugin->loadView(
             'settings/_holiday_row',
             array(
-                'prefix' => "salon_settings[holidays][__new__]",
+                'prefix' => $base."[__new__]",
                 'row' => array(),
                 'rulenumber' => 'New',
             )

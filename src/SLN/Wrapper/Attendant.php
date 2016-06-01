@@ -4,6 +4,7 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
 {
     const _CLASS = 'SLN_Wrapper_Attendant';
     private $availabilityItems;
+    private $holidayItems;
 
     public function getPostType()
     {
@@ -35,18 +36,29 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
 
     function isNotAvailableOnDate(SLN_DateTime $date)
     {
-        return !$this->getAvailabilityItems()->isValidDatetime($date);
+        return !($this->getAvailabilityItems()->isValidDatetime($date) && $this->getHolidayItems()->isValidDatetime($date));
     }
 
     /**
      * @return SLN_Helper_AvailabilityItems
      */
-    function getAvailabilityItems()
+    public function getAvailabilityItems()
     {
         if (!isset($this->availabilityItems)) {
             $this->availabilityItems = new SLN_Helper_AvailabilityItems($this->getMeta('availabilities'));
         }
         return $this->availabilityItems;
+    }
+
+    /**
+     * @return SLN_Helper_HolidayItems
+     */
+    public function getHolidayItems()
+    {
+        if (!isset($this->holidayItems)) {
+            $this->holidayItems = new SLN_Helper_HolidayItems($this->getMeta('holidays'));
+        }
+        return $this->holidayItems;
     }
 
     public function getNotAvailableString()

@@ -87,7 +87,13 @@ $plugin = SLN_Plugin::getInstance();
                 'base' => 'salon_settings[availabilities]'
             )
         ); ?>
-        <?php echo $plugin->loadView('settings/_tab_booking_holiday_rules'); ?>
+        <?php echo $plugin->loadView(
+            'settings/_tab_booking_holiday_rules'
+            array(
+                'holidays' => $plugin->getSettings()->get('holidays'),
+                'base' => 'salon_settings[holidays]'
+            )
+        ); ?>
         <div class="clearfix"></div>
     </div>
 

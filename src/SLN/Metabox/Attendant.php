@@ -4,6 +4,7 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
 {
     protected $fields = array(
         'availabilities'  => '',
+        'holidays'        => '',
         'email'           => 'text',
         'phone'           => 'text',
         'services'        => 'nofilter',

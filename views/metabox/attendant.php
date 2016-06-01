@@ -38,4 +38,12 @@ $services = $sRepo->getAll();
         'base' => '_sln_attendant_availabilities',
     )
 ); ?>
+<?php echo $plugin->loadView(
+    'settings/_tab_booking_holiday_rules',
+    array(
+        'holidays' => $attendant->getMeta('holidays'),
+        'base' => '_sln_attendant_holidays',
+    )
+); ?>
+
 <div class="sln-clear"></div>

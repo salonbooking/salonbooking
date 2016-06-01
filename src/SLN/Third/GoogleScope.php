@@ -728,8 +728,10 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
             $desc .= "\n";
             $desc .= $bookingService->getService()->getName() . ': ' .
                      $bookingService->getStartsAt()->format('H:i') . ' ➝ ' .
-                     $bookingService->getEndsAt()->format('H:i') . ' - ' .
-                     $bookingService->getAttendant()->getName();
+                     $bookingService->getEndsAt()->format('H:i');
+            if($bookingService->getAttendant()){
+                $desc .= ' - ' . $bookingService->getAttendant()->getName();
+            }
         }
         $notes = $booking->getNote();
         $desc .= "\n\n" . __('Booking notes', 'salon-booking-system') . ":\n" . (empty($notes) ? __("None", 'salon-booking-system') : $notes);
