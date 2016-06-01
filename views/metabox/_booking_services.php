@@ -223,6 +223,16 @@ foreach ($allAttendants as $attendant) {
                     <option value=""><?php _e('Select an assistant','salon-booking-system') ?></option>
                 </select>
             </div>
+            <?php elseif($isAttendants) : ?>
+            <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
+                <?php SLN_Form::fieldSelect(
+                    '_sln_booking[attendant]',
+                    $attendantsData,
+                    $booking->getAttendant() ? $booking->getAttendant()->getId() : '',
+                    array('empty_value' => __('Select an assistant','salon-booking-system')),
+                    true
+                ) ?>
+            </div>
             <?php endif ?>
             <div class="col-xs-12 col-sm-2 col-md-2">
                 <button data-collection="addnewserviceline"class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file">
@@ -236,19 +246,4 @@ foreach ($allAttendants as $attendant) {
             var lineItem = '<?php echo $lineItem; ?>';
         </script>
     </div>
-<?php if($isAttendants && !$isMultipleAttendants) : ?>
-    <div id="sln_booking_services" class="form-group sln_meta_field row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <h3><?php _e('Attendant', 'salon-booking-system'); ?></h3>
-        </div>
-        <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
-                <?php SLN_Form::fieldSelect(
-                    '_sln_booking[attendant]',
-                    $attendantsData,
-                    $booking->getAttendant() ? $booking->getAttendant()->getId() : '',
-                    array('empty_value' => __('Select an assistant','salon-booking-system')),
-                    true
-                ) ?>
-        </div>
-    </div>   
- <?php endif ?>
+
