@@ -22,12 +22,15 @@ if ($plugin->getSettings()->isDisabled()) {
 
     if ($plugin->getSettings()->isFormStepsAltOrder()) {
         foreach($intervalsArray['times'] as $k => $t) {
-            $date = new SLN_DateTime($intervalsArray['suggestedYear'].'-'.$intervalsArray['suggestedMonth'].'-'.$intervalsArray['suggestedDay'].' '.$t);
+            $tempDate = new SLN_DateTime($intervalsArray['suggestedYear'].'-'.$intervalsArray['suggestedMonth'].'-'.$intervalsArray['suggestedDay'].' '.$t);
             $obj = new SLN_Action_Ajax_CheckDate($plugin);
-            $errors = $obj->checkDateTimeServicesAndAttendants($date);
-            if (!empty($errors)) {
+            $tempErrors = $obj->checkDateTimeServicesAndAttendants($tempDate);
+            if (!empty($tempErrors)) {
                 unset($intervalsArray['times'][$k]);
             }
+        }
+        if (!isset($intervalsArray['times'][$date->format('H:i')]) && !empty($intervalsArray['times'])) {
+            $date = new SLN_DateTime($intervalsArray['suggestedYear'].'-'.$intervalsArray['suggestedMonth'].'-'.$intervalsArray['suggestedDay'].' '.reset($intervalsArray['times']));
         }
     }
 

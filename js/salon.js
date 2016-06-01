@@ -162,6 +162,7 @@ function sln_stepDate($) {
             method: 'POST',
             dataType: 'json',
             success: function (data) {
+                $('.sln-alert').remove();
                 if (!data.success) {
                     var alertBox = $('<div class="sln-alert sln-alert--problem"></div>');
                     $(data.errors).each(function () {
@@ -260,7 +261,7 @@ function sln_serviceTotal($) {
                     });
                 }
                 else {
-                    $('.alert').remove();
+                    $('.sln-alert').remove();
                     $.each(data.services, function(index, value) {
                         var checkbox = $('#sln_services_' + index);
                         var errorsArea = $('#sln_services_' + index+ ' .errors-area');
