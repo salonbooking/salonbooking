@@ -63,7 +63,7 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
 
     public function getNotAvailableString()
     {
-        return '(Available '.implode('-', $this->getAvailabilityItems()->toArray()).')';
+        return ''; //'(Available '.implode('-', $this->getAvailabilityItems()->toArray()).')';
     }
 
     public function getServicesIds()
