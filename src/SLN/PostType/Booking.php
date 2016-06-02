@@ -250,7 +250,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
                         $isNew ? "Add booking" : 'Update booking',
                         'salon-booking-system'
                     ) ?>').addClass('sln-btn sln-btn--main');
-                    $('#misc-publishing-actions > *').css('display', 'none');
+                    $('#major-publishing-actions').css('display', 'none');
                     $('#submitdiv h3 span').text('<?php echo __('Booking', 'salon-booking-system') ?>');
                     <?php
                     foreach (SLN_Enum_BookingStatus::toArray() as $k => $v) {
