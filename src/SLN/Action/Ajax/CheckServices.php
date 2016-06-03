@@ -38,7 +38,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
 
                 $validatedPrimary   = array_intersect($this->getPrimaryServicesIds(), $validated);
 
-                $bb->clearServices();
+                $bb->removeServices();
 
                 if (!empty($validatedPrimary)) { // if order primary services count > 0  --->  set validated services
                     foreach($validated as $sId) {
@@ -66,11 +66,13 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 $bbSecServices  = $bb->getSecondaryServicesIds();
                 $services       = array_merge(array_keys($services), $bbSecServices); 
                 
-                $bb->clearServices();
-                
-                foreach($services as $sId) {
-                    $bb->addService(new SLN_Wrapper_Service($sId));
-                    $ret[$sId] = array('status' => 1, 'error' => '');
+                $bb->removeServices();
+
+                foreach($this->getServices() as $service) {
+                    if (in_array($service->getId(), $services)) {
+                        $bb->addService($service);
+                    }
+                    $ret[$service->getId()] = array('status' => 1, 'error' => '');
                 }
                 
                 $bb->save();
@@ -93,7 +95,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
 
                 $validated = $ah->returnValidatedServices($services);
                 $validatedPrimary = array_intersect($this->getPrimaryServicesIds(), $validated);
-                $bb->clearServices();
+                $bb->removeServices();
                 if (!empty($validatedPrimary)) { // if order primary services count > 0  --->  set validated services
                     foreach($validated as $sId) {
                         $bb->addService(new SLN_Wrapper_Service($sId));
@@ -119,7 +121,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 $bbPrimServices = $bb->getPrimaryServicesIds();
                 $services       = array_merge(array_keys($services), $bbPrimServices);
                 
-                $bb->clearServices();
+                $bb->removeServices();
                 
                 foreach($services as $sId) {
                     $bb->addService(new SLN_Wrapper_Service($sId));

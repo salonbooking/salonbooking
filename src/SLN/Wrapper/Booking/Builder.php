@@ -204,7 +204,7 @@ class SLN_Wrapper_Booking_Builder
         }
     }
 
-    public function clearServices()
+    public function removeServices()
     {
         $this->data['services'] = array();
     }
