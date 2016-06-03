@@ -75,6 +75,10 @@ $plugin = SLN_Plugin::getInstance();
     </div>
 
     <div class="row">
+        <?php echo $plugin->loadView('settings/_tab_booking_form_steps_alt_order', array('helper' => $this)); ?>
+    </div>
+    
+    <div class="row">
         <?php echo $plugin->loadView('settings/_tab_booking_offset', array('helper' => $this)); ?>
     </div>
 

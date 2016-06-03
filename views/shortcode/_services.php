@@ -16,7 +16,12 @@ $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1') ? true : false;
 $grouped = SLN_Repository_ServiceRepository::groupServicesByCategory($services);
 
-$servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds(), $services);
+if ($plugin->getSettings()->isFormStepsAltOrder()) {
+    $servicesErrors = array();
+} else {
+    $servicesErrors = $ah->checkEachOfNewServicesForExistOrder($bb->getServicesIds(), $services);
+} 
+    
 $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
@@ -77,7 +82,6 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                 <?php _e('Subtotal', 'salon-booking-system') ?>
             </h3>
             <h3 class="col-xs-6 col-sm-6 col-md-6 sln-total-price" id="services-total"
-                data-minutes="<?php echo $minutes ?>"
                 data-symbol-left="<?php echo $symbolLeft ?>"
                 data-symbol-right="<?php echo $symbolRight ?>">
                 <?php echo $plugin->format()->money(0, false) ?>
@@ -87,7 +91,6 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                 <?php _e('Subtotal', 'salon-booking-system') ?>
             </h3>
             <h3 class="col-xs-6 sln-total-price" id="services-total"
-                data-minutes="<?php echo $minutes ?>"
                 data-symbol-left="<?php echo $symbolLeft ?>"
                 data-symbol-right="<?php echo $symbolRight ?>">
                 <?php echo $plugin->format()->money(0, false) ?>
@@ -97,7 +100,6 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
                 <?php _e('Subtotal', 'salon-booking-system') ?>
             </h3>
             <h3 class="col-xs-6 sln-total-price" id="services-total"
-                data-minutes="<?php echo $minutes ?>"
                 data-symbol-left="<?php echo $symbolLeft ?>"
                 data-symbol-right="<?php echo $symbolRight ?>">
                 <?php echo $plugin->format()->money(0, false) ?>

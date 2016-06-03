@@ -50,7 +50,7 @@ final class SLN_Wrapper_Booking_Service
     }
 
     /**
-     * @return SLN_Wrapper_Attendant
+     * @return SLN_Wrapper_Attendant|bool
      */
     public function getAttendant()
     {
@@ -86,7 +86,11 @@ final class SLN_Wrapper_Booking_Service
     public function toArray()
     {
         return array(
+<<<<<<< HEAD
             'attendant' => $this->data['attendant'] ? $this->data['attendant']->getId() : null,
+=======
+            'attendant' => @is_object($this->data['attendant']) ? $this->data['attendant']->getId() : $this->data['attendant'],
+>>>>>>> SBP-209-change-booking-form-steps-order
             'service' => $this->data['service']->getId(),
             'duration' => $this->data['duration']->format('H:i'),
             'start_date' => $this->data['starts_at']->format('Y-m-d'),

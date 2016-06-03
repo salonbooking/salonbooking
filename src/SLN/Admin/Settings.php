@@ -38,6 +38,7 @@ class SLN_Admin_Settings
         'hours_before_from',
         'hours_before_to',
         'interval',
+        'form_steps_alt_order',
     );
 
     private static $fieldsTabGeneral = array(

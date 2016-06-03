@@ -53,7 +53,7 @@ class SLN_Wrapper_Booking_Builder
     public function getEmptyValue()
     {
         $from = $this->plugin->getSettings()->getHoursBeforeFrom();
-        $d = new SLN_DateTime(date('Y-m-d H:i:00'));
+        $d = new SLN_DateTime(date('Y-m-d H:i:00', current_time('timestamp')));
         $d->modify($from);
         $tmp = $d->format('i');
         $i = SLN_Plugin::getInstance()->getSettings()->getInterval();
@@ -178,6 +178,10 @@ class SLN_Wrapper_Booking_Builder
         return $ret;
     }
 
+    public function setServicesAndAttendants($date) {
+        $this->data['services'] = $date;
+    }
+
     public function addService(SLN_Wrapper_Service $service)
     {
         if ((!isset($this->data['services'])) || (!in_array($service->getId(), array_keys($this->data['services'])))) {
@@ -190,6 +194,13 @@ class SLN_Wrapper_Booking_Builder
     {
         if (isset($this->data['services'])) {
             unset($this->data['services'][$service->getId()]);
+        }
+    }
+
+    public function clearService(SLN_Wrapper_Service $service)
+    {
+        if (isset($this->data['services'][$service->getId()])) {
+            $this->data['services'][$service->getId()] = 0;
         }
     }
 
@@ -350,7 +361,7 @@ class SLN_Wrapper_Booking_Builder
     public function getBookingServices()
     {
         return SLN_Wrapper_Booking_Services::build(
-            array_fill_keys($this->getServicesIds(), 0),
+            $this->getAttendantsIds(),
             $this->getDateTime()
         );
     }

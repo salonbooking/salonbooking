@@ -89,7 +89,16 @@ class SLN_Shortcode_Salon
     public function getCurrentStep()
     {
         if (!isset($this->currentStep)) {
-            $this->currentStep = isset($_GET[self::STEP_KEY]) ? $_GET[self::STEP_KEY] : self::STEP_DEFAULT;
+            $steps       = $this->getSteps();
+            $stepDefault = array_shift($steps);
+            
+            if (!$stepDefault) {
+                $stepDefault = self::STEP_DEFAULT;
+            }
+            
+            $this->currentStep  = isset($_GET[self::STEP_KEY]) ? $_GET[self::STEP_KEY] : $stepDefault;
+            
+            unset($steps);
         }
 
         return $this->currentStep;
@@ -140,6 +149,7 @@ class SLN_Shortcode_Salon
     public function getSteps()
     {
         if (!isset($this->steps)) {
+            
             $this->steps = array(
                 'date',
                 'services',
@@ -150,6 +160,20 @@ class SLN_Shortcode_Salon
                 'summary',
                 'thankyou',
             );
+            
+            if ($this->plugin->getSettings()->isFormStepsAltOrder()) {
+                $this->steps = array(
+                    'services',
+                    'secondary',
+                    'attendant',
+                    'date',
+                    'details',
+                    'sms',
+                    'summary',
+                    'thankyou',
+                );
+            }
+
             if (!$this->needSecondary()) {
                 unset($this->steps[array_search('secondary', $this->steps)]);
             }

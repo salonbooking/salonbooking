@@ -2,6 +2,9 @@
 
 class SLN_Func
 {
+    private static $cachedTimes = array();
+    private static $cachedTs = array();
+    private static $cachedDate;
 
     public static function getDays()
     {
@@ -261,10 +264,24 @@ class SLN_Func
      */
     public static function filterTimes($times, DateTime $startDate, DateTime $endDate){
         $ret = array();
+        $startT = $startDate->getTimestamp();
+        $endT = $endDate->getTimestamp();
+
+        $date = $startDate->format('Y-m-d');
+        if (self::$cachedDate !== $date) {
+            self::$cachedDate  = $date;
+            self::$cachedTimes = array();
+            self::$cachedTs    = array();
+        }
         foreach($times as $t){
-            $t = new SLN_DateTime($startDate->format('Y-m-d').' '.$t);
-            if($t->format('YmdHi') >= $startDate->format('YmdHi') && $t->format('YmdHi') < $endDate->format('YmdHi') || $t->format('YmdHi') == $startDate->format('YmdHi') ){
-                $ret[] = $t;
+            $key = $date.' '.$t;
+            if (!isset(self::$cachedTimes[$key])) {
+                self::$cachedTimes[$key] = new SLN_DateTime($key);
+                self::$cachedTs[$key]    = self::$cachedTimes[$key]->getTimestamp();
+            }
+            $tT = self::$cachedTs[$key];
+            if($tT >= $startT && $tT < $endT || $tT == $startT ){
+                $ret[] = self::$cachedTimes[$key];
             }
         }
         return $ret;

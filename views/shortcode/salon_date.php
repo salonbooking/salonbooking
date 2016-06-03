@@ -19,6 +19,21 @@ if ($plugin->getSettings()->isDisabled()) {
     $intervals = $plugin->getIntervals($bb->getDateTime());
     $date = $intervals->getSuggestedDate();
     $intervalsArray = $intervals->toArray();
+
+    if ($plugin->getSettings()->isFormStepsAltOrder()) {
+        foreach($intervalsArray['times'] as $k => $t) {
+            $tempDate = new SLN_DateTime($intervalsArray['suggestedYear'].'-'.$intervalsArray['suggestedMonth'].'-'.$intervalsArray['suggestedDay'].' '.$t);
+            $obj = new SLN_Action_Ajax_CheckDate($plugin);
+            $tempErrors = $obj->checkDateTimeServicesAndAttendants($tempDate);
+            if (!empty($tempErrors)) {
+                unset($intervalsArray['times'][$k]);
+            }
+        }
+        if (!isset($intervalsArray['times'][$date->format('H:i')]) && !empty($intervalsArray['times'])) {
+            $date = new SLN_DateTime($intervalsArray['suggestedYear'].'-'.$intervalsArray['suggestedMonth'].'-'.$intervalsArray['suggestedDay'].' '.reset($intervalsArray['times']));
+        }
+    }
+
     if (!$intervalsArray['times']):
         $hb = $plugin->getAvailabilityHelper()->getHoursBeforeHelper()->getToDate();
         ?>
@@ -28,7 +43,7 @@ if ($plugin->getSettings()->isDisabled()) {
         </div>
     <?php else: ?>
         <form method="post" action="<?php echo $formAction ?>" id="salon-step-date"
-              data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>">
+              data-intervals="<?php echo esc_attr(json_encode($intervalsArray)); ?>">
             <?php
             $label = __('When do you want to come?', 'salon-booking-system');
             $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
