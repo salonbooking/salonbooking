@@ -118,7 +118,8 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         if ($isMultipleAttSelection) {
             $ret = $obj->dispatchMultiple($bb->getAttendantsIds());
         } else {
-            $ret = $obj->dispatchSingle($bb->getAttendantsIds());
+            $tmp = $bb->getAttendantsIds();
+            $ret = $obj->dispatchSingle(reset($tmp));
         }
 
         $bookingServices =  $bb->getBookingServices();
