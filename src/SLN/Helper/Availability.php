@@ -265,6 +265,9 @@ class SLN_Helper_Availability
         if (!$this->attendantsEnabled) {
             return;
         }
+        if (!$service->isAttendantsEnabled()) {
+            return;
+        }
         $attendants = $service->getAttendants();
         foreach ($attendants as $k => $attendant) {
             if ($this->validateAttendant($attendant, $time)) {

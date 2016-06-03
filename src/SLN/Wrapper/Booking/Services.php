@@ -83,6 +83,8 @@ final class SLN_Wrapper_Booking_Services {
 				if (isset($item['duration'])) {
 					$duration = $item['duration'];
 				}
+			} else {
+				$atId = intval($item);
 			}
 
 			if (empty($price)) {

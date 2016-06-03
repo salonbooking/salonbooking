@@ -169,8 +169,9 @@ foreach ($allAttendants as $attendant) {
             <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][' . $serviceId . ']',
-                    array($bookingService->getAttendant()->getId() => $bookingService->getAttendant()->getName()),
-                    $bookingService->getAttendant()->getId(),
+                    ($bookingService->getAttendant() ?
+                        array($bookingService->getAttendant()->getId() => $bookingService->getAttendant()->getName()) : array('')),
+                    ($bookingService->getAttendant() ? $bookingService->getAttendant()->getId() : ''),
                     array('attrs' => array('data-service' => $serviceId, 'data-attendant' => '')),
                     true
                 ) ?>
