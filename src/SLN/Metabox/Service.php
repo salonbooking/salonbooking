@@ -59,6 +59,7 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
             'price'      => 'float',
             'duration'   => 'time',
             'secondary'  => 'bool',
+            'attendants' => 'bool',
             'unit'       => 'int',
             'exec_order' => 'int',
         );

@@ -538,7 +538,7 @@ jQuery(function ($) {
         var serviceVal = $(this).attr('data-service');
         var attendantVal = $(this).val();
         var selectHtml = '';
-        if (attendantVal == '') {
+        if (jQuery.inArray(attendantVal, ['','0']) !== false) {
             selectHtml += '<option value="" selected >n.d.</option>';
         }
         $.each(servicesData[serviceVal].attendants, function( index, value ) {
@@ -550,14 +550,11 @@ jQuery(function ($) {
 
     $('button[data-collection="addnewserviceline"]').click(function () {
         var serviceVal = $('#_sln_booking_service_select').val();
-        var isMultipleAttendants = $('#_sln_booking_attendant_select').length > 0;
-        if(isMultipleAttendants){        
-            var attendantVal = $('#_sln_booking_attendant_select').val();
-            if (attendantVal == undefined || attendantVal == '' ||
-                $('[name=_sln_booking\\[services\\]\\[\\]] option[value=' + serviceVal + ']:selected').size()
-            ) {
-                return false;
-            }
+        var attendantVal = $('#_sln_booking_attendant_select').val();
+        if (((attendantVal == undefined || attendantVal == '') && $('#_sln_booking_attendant_select option').size() > 1) ||
+            $('[name=_sln_booking\\[services\\]\\[\\]] option[value=' + serviceVal + ']:selected').size()
+        ) {
+            return false;
         }
         $('.sln-booking-service-line label.time').html('');
 
@@ -573,22 +570,26 @@ jQuery(function ($) {
         if (!added) {
             $('.sln-booking-service-action').before(line);
         }
-        if(isMultipleAttendants){
-            var selectHtml = '';
+
+        var selectHtml = '';
+        if (servicesData[serviceVal].attendants.length) {
             $.each(servicesData[serviceVal].attendants, function( index, value ) {
                 selectHtml += '<option value="'+ value +'" ' + (value == attendantVal ? 'selected' : '') + ' >' + attendantsData[value] + '</option>';
             });
-            $('#_sln_booking_attendants_' + serviceVal).html(selectHtml).change();
         }
+        else {
+            selectHtml += '<option value="" selected >n.d.</option>';
+        }
+
+        $('#_sln_booking_attendants_' + serviceVal).html(selectHtml).change();
+
         if($('#salon-step-date').data('isnew'))
             calculateTotal();
 
         createSelect2();
         createSelect2NoSearch();
         bindRemoveBookingsServices();
-        if(isMultipleAttendants) {
-            bindChangeAttendantSelects();
-        }
+        bindChangeAttendantSelects();
         sln_checkServices($);
         return false;
     });

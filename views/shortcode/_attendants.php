@@ -13,19 +13,26 @@ $duration = new SLN_DateTime('1970-01-01 '.$bb->getDuration());
 $hasAttendants = false;
 $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
+
+$services = $bb->getServices();
+foreach($services as $k => $service) {
+    if (!$service->isAttendantsEnabled()) {
+        unset($services[$k]);
+    }
+}
 ?>
 <div class="sln-attendant-list">
     <?php foreach ($attendants as $attendant) {
-        
+
         if ($plugin->getSettings()->isFormStepsAltOrder()) {
-            $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $bb->getServices());
+            $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $services);
 
             if (!empty($validateAttServicesErrors)) {
                 continue;
             }
             $errors = false;
         } else {
-            $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $bb->getServices());
+            $validateAttServicesErrors = $ah->validateAttendantServices($attendant, $services);
 
             if (!empty($validateAttServicesErrors)) {
                 continue;

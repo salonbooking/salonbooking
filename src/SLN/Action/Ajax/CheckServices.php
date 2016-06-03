@@ -169,13 +169,13 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
 
                 if (!$isMultipleAttSelection) {
                     if (!$firstSelectedAttendant) {
-                        $firstSelectedAttendant = $bookingService->getAttendant()->getId();
+                        $firstSelectedAttendant = ($bookingService->getAttendant() ? $bookingService->getAttendant()->getId() : false);
                     }
-                    if ($bookingService->getAttendant()->getId() != $firstSelectedAttendant) {
+                    if ($bookingService->getAttendant() && $bookingService->getAttendant()->getId() != $firstSelectedAttendant) {
                         $attendantErrors = array(__('Multiple attendants selection is disabled. You must select one attendant for all services.', 'salon-booking-system'));
                     }
                 }
-                if (empty($attendantErrors)) {
+                if (empty($attendantErrors) && $bookingService->getAttendant()) {
                     $attendantErrors = $ah->validateAttendantService($bookingService->getAttendant(), $bookingService->getService());
                     if (empty($attendantErrors)) {
                         $attendantErrors = $ah->validateAttendant($bookingService->getAttendant(), $bookingService->getStartsAt(), $bookingService->getDuration());

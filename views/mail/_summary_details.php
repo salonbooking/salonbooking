@@ -52,7 +52,7 @@ $depositText = ($booking->getDeposit() && $booking->hasStatus(SLN_Enum_BookingSt
         <?php foreach($booking->getBookingServices()->getItems() as $bookingService): ?>
             <tr>
                 <td height="20" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $bookingService->getService()->getName(); ?></td>
-                <td height="20" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo $bookingService->getAttendant()->getName(); ?></td>
+                <td height="20" align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:bold;"><?php echo ($bookingService->getAttendant() ? $bookingService->getAttendant()->getName() : ''); ?></td>
             </tr>
         <?php endforeach ?>
         <tr>

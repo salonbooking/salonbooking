@@ -15,7 +15,7 @@ final class SLN_Wrapper_Booking_Service
         $hasAttendant = isset($data['attendant']) && !empty($data['attendant']);
         $this->data = array(
             'service' => SLN_Plugin::getInstance()->createService($data['service']),
-            'attendant' => $hasAttendant ? SLN_Plugin::getInstance()->createAttendant($data['attendant']) : null,
+            'attendant' => $hasAttendant ? SLN_Plugin::getInstance()->createAttendant($data['attendant']) : false,
             'starts_at' => new SLN_DateTime(
                 SLN_Func::filter($data['start_date'], 'date').' '.SLN_Func::filter($data['start_time'], 'time')
             ),
@@ -86,11 +86,7 @@ final class SLN_Wrapper_Booking_Service
     public function toArray()
     {
         return array(
-<<<<<<< HEAD
-            'attendant' => $this->data['attendant'] ? $this->data['attendant']->getId() : null,
-=======
             'attendant' => @is_object($this->data['attendant']) ? $this->data['attendant']->getId() : $this->data['attendant'],
->>>>>>> SBP-209-change-booking-form-steps-order
             'service' => $this->data['service']->getId(),
             'duration' => $this->data['duration']->format('H:i'),
             'start_date' => $this->data['starts_at']->format('Y-m-d'),

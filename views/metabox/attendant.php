@@ -19,6 +19,7 @@ $services = $sRepo->getAll();
             <select class="sln-select select2-hidden-accessible" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
                     name="_sln_attendant_services[]" id="_sln_attendant_services" tabindex="-1" aria-hidden="true">
                 <?php foreach ($services as $service) : ?>
+                    <?php if (!$service->isAttendantsEnabled()) continue; ?>
                     <option
                         class="red"
                         value="sln_attendant_services_<?php echo $service->getId() ?>"

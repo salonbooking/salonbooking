@@ -214,16 +214,17 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
             $this->attendants = array();
             $attIds = $this->getAttendantsIds($unique);
             foreach ($attIds as $service_id => $id) {
+                if (!$id) {
+                    continue;
+                }
                 /** @var SLN_Wrapper_Attendant $tmp */
                 $tmp = $repo->create($id);
                 if (!$tmp->isEmpty()) {
                     $this->attendants[$service_id] = $tmp;
                 }
             }
-            if(empty($this->attendants)){
-                $tmp = $repo->create();
-            }
         }
+
         return $this->attendants;
     }
 
