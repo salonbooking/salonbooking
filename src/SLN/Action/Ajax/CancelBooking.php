@@ -25,7 +25,7 @@ class SLN_Action_Ajax_CancelBooking extends SLN_Action_Ajax_Abstract
 			$args = compact('booking');
 
 			$args['forAdmin'] = true;
-			$args['to'] = get_option('admin_email');
+			$args['to'] = $plugin->getSettings()->getSalonEmail();
 			$plugin->sendMail('mail/status_canceled', $args);
 		} elseif (!$available) {
 			$this->addError(__("You don't have access", 'salon-booking-system'));

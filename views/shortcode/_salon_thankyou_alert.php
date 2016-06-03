@@ -4,10 +4,7 @@
  * @var $plugin SLN_Plugin
  */
 $genPhone = $plugin->getSettings()->get('gen_phone');
-$genMail = $plugin->getSettings()->get('gen_email');
-if (!$genMail) {
-    $genMail = get_option('admin_email');
-}
+$genMail = $plugin->getSettings()->getSalonEmail();
 ?>
 <div class="sln-alert sln-alert--warning <?php if ($confirmation) : ?> sln-alert--topicon<?php endif ?>">
     <?php if ($confirmation) : ?>
