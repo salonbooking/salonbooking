@@ -3,7 +3,7 @@ Contributors: wordpresschef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.5.1
-Stable tag: 3.1.1
+Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,15 +48,17 @@ Salon booking works with double booking algorithms:
 
 **Recently added**: 
 
+* Change booking form steps order
+* “No assistant required” new service option
+* Holidays rules for assistants
+
+**With Salon Booking you can also..**
+
 * Custom texts on front-end booking form
 * Google Calendar synchronisation for assistants
 * Email notifications after bookings updates
 * Booking cancellation button inside email notification
 * Block bookings that exceed the salon closing time
-
-
-**With Salon Booking you can also..**
-
 * High End booking algorithm - controls availability of service and assigned assistant during a specific time frame
 * Multiple assistants selection
 * Weekly scheduling multiple rules even for assistants and services
@@ -266,6 +268,14 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+03.06.2015
+
+* Bug fixed on date and time picker for French language
+* Bug fixed on add booking from back-end when “Assistant selection” option is not active
+* Improvement: date and time picker icons now clickable
+* Improvement: added the booking review inside the back-end calendar tool-tip
+
 
 18.05.2015
 
