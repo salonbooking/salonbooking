@@ -2460,3 +2460,11 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 .sln_timepicker:after, .sln_datepicker:after {
   pointer-events: none;
 }
+
+#sln-salon .sln-btn--medium input, #sln-salon .sln-btn--medium button, #sln-salon .sln-btn--medium a {
+  padding: 0 !important;
+}
+.sln-text--dark, .sln-btn--borderonly input, .sln-btn--borderonly button, .sln-bootstrap .sln-btn--borderonly input, .sln-bootstrap .sln-btn--borderonly button, .sln-steps-description, .sln-data-desc, .sln-summary-row .label, .sln-total-label, .sln-total-price {
+  color: #000 !important;
+}
+.alert > p, .alert > ul {padding-bottom: 0;}
