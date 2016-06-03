@@ -68,11 +68,15 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 
                 $bb->removeServices();
 
-                foreach($this->getServices() as $service) {
+                foreach($this->getServices(true, true) as $service) {
                     if (in_array($service->getId(), $services)) {
                         $bb->addService($service);
+                        $status = 1;
                     }
-                    $ret[$service->getId()] = array('status' => 1, 'error' => '');
+                    else {
+                        $status = 0;
+                    }
+                    $ret[$service->getId()] = array('status' => $status, 'error' => '');
                 }
                 
                 $bb->save();
@@ -122,10 +126,16 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 $services       = array_merge(array_keys($services), $bbPrimServices);
                 
                 $bb->removeServices();
-                
-                foreach($services as $sId) {
-                    $bb->addService(new SLN_Wrapper_Service($sId));
-                    $ret[$sId] = array('status' => 1, 'error' => '');
+
+                foreach($this->getServices(true, true) as $service) {
+                    if (in_array($service->getId(), $services)) {
+                        $bb->addService($service);
+                        $status = 1;
+                    }
+                    else {
+                        $status = 0;
+                    }
+                    $ret[$service->getId()] = array('status' => $status, 'error' => '');
                 }
                 
                 $bb->save();
