@@ -73,7 +73,7 @@ foreach ($allAttendants as $attendant) {
                 )
                 ?>
             </div>
-            <?php if($isMultipleAttendants): ?>
+            <?php if($isMultipleAttendants || $isAttendants): ?>
             <div class="col-xs-12 col-sm-2 col-md-2 sln-select">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][__service_id__]',
@@ -165,7 +165,7 @@ foreach ($allAttendants as $attendant) {
                 )
                 ?>
             </div>
-            <?php if ($isMultipleAttendants): ?>
+            <?php if ($isMultipleAttendants || $isAttendants): ?>
             <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[attendants][' . $serviceId . ']',
@@ -218,12 +218,13 @@ foreach ($allAttendants as $attendant) {
                 </select>
             </div>
 
-            <?php if ($isMultipleAttendants): ?>
+            <?php if ($isMultipleAttendants || $isAttendants): ?>
             <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
                 <select class="sln-select" name="_sln_booking_attendant_select" id="_sln_booking_attendant_select">
                     <option value=""><?php _e('Select an assistant','salon-booking-system') ?></option>
                 </select>
             </div>
+                <?php /*
             <?php elseif($isAttendants) : ?>
             <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
                 <?php SLN_Form::fieldSelect(
@@ -233,7 +234,7 @@ foreach ($allAttendants as $attendant) {
                     array('empty_value' => __('Select an assistant','salon-booking-system')),
                     true
                 ) ?>
-            </div>
+            </div> */ ?>
             <?php endif ?>
             <div class="col-xs-12 col-sm-2 col-md-2">
                 <button data-collection="addnewserviceline"class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file">

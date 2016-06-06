@@ -16,7 +16,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
             }
             if(isset($_POST['_sln_booking_date'])) {
                 $this->date = $_POST['_sln_booking_date'];
-                $this->time = $_POST['_sln_booking_time']; 
+                $this->time = $_POST['_sln_booking_time'];
             }
         }
         $ret = array();
