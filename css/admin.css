@@ -3242,6 +3242,43 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
       .sln-tab-nav li:not(.active):not(:last-of-type) a {
         border-right-color: transparent; } }
 
+#sln-graphs-filter label {
+  vertical-align: inherit
+}
+
+#sln-graphs-filter .graph-option-section {
+  float: left;
+  line-height: 2.5em;
+  padding-right: 5px
+}
+
+#sln-date-range-options,#sln-graphs-date-options {
+  float: left
+}
+
+#sln-date-range-options,#sln-graphs-date-options {
+  float: left
+}
+
+#sln-date-range-options span {
+  float: left;
+  margin-right: 6px;
+  height: 24px;
+  line-height: 24px
+}
+
+#sln-dashboard-widgets-wrap .postbox h3 {
+  cursor: default
+}
+
+.sln-graph .y1Axis {
+  color: #edc240 !important
+}
+
+.sln-graph .y2Axis {
+  color: #afd8f8 !important
+}
+
 .sln-toolbox {
   background-color: rgba(0, 53, 83, 0.9);
   max-width: 100%;
