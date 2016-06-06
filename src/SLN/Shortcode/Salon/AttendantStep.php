@@ -102,6 +102,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
         foreach ($bb->getServices() as $service) {
             if (!$service->isAttendantsEnabled()) {
+                $bb->clearService($service);
                 continue;
             }
             if (!empty($selected[$service->getId()])) {
@@ -152,6 +153,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
         foreach ($bb->getServices() as $service) {
             if (!$service->isAttendantsEnabled()) {
+                $bb->clearService($service);
                 continue;
             }
             $bb->setAttendant($attendant, $service);
