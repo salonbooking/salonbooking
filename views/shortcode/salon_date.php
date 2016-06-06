@@ -34,7 +34,7 @@ if ($plugin->getSettings()->isDisabled()) {
         }
     }
 
-    if (!$intervalsArray['times']):
+    if (!$plugin->getSettings()->isFormStepsAltOrder() && !$intervalsArray['times']):
         $hb = $plugin->getAvailabilityHelper()->getHoursBeforeHelper()->getToDate();
         ?>
         <div class="sln-alert sln-alert--problem">
