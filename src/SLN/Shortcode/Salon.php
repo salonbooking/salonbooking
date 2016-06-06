@@ -89,15 +89,13 @@ class SLN_Shortcode_Salon
     public function getCurrentStep()
     {
         if (!isset($this->currentStep)) {
-            $steps       = $this->getSteps();
+            $steps = $this->getSteps();
             $stepDefault = array_shift($steps);
-            
+
             if (!$stepDefault) {
                 $stepDefault = self::STEP_DEFAULT;
             }
-            
-            $this->currentStep  = isset($_GET[self::STEP_KEY]) ? $_GET[self::STEP_KEY] : $stepDefault;
-            
+            $this->currentStep = isset($_GET[self::STEP_KEY]) ? $_GET[self::STEP_KEY] : $stepDefault;
             unset($steps);
         }
 
@@ -135,7 +133,15 @@ class SLN_Shortcode_Salon
 
     private function needAttendant()
     {
-        return $this->plugin->getSettings()->get('attendant_enabled') ? true : false;
+        if(!$this->plugin->getSettings()->isAttendantsEnabled())
+            return false;
+        $bb = $this->plugin->getBookingBuilder();
+        foreach ($bb->getServices() as $service) {
+            if ($service->isAttendantsEnabled()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public function needSms()
@@ -149,59 +155,52 @@ class SLN_Shortcode_Salon
     public function getSteps()
     {
         if (!isset($this->steps)) {
-            
-            $this->steps = array(
-                'date',
+            $this->steps = $this->initSteps();
+        }
+
+        return $this->steps;
+    }
+
+    protected function initSteps()
+    {
+        $ret = array(
+            'date',
+            'services',
+            'secondary',
+            'attendant',
+            'details',
+            'sms',
+            'summary',
+            'thankyou',
+        );
+
+        if ($this->plugin->getSettings()->isFormStepsAltOrder()) {
+            $ret = array(
                 'services',
                 'secondary',
                 'attendant',
+                'date',
                 'details',
                 'sms',
                 'summary',
                 'thankyou',
             );
-            
-            if ($this->plugin->getSettings()->isFormStepsAltOrder()) {
-                $this->steps = array(
-                    'services',
-                    'secondary',
-                    'attendant',
-                    'date',
-                    'details',
-                    'sms',
-                    'summary',
-                    'thankyou',
-                );
-            }
-
-            if (!$this->needSecondary()) {
-                unset($this->steps[array_search('secondary', $this->steps)]);
-            }
-            if (!$this->needPayment()) {
-                unset($this->steps[array_search('thankyou', $this->steps)]);
-            }
-            if (!$this->needAttendant()) {
-                unset($this->steps[array_search('attendant', $this->steps)]);
-            }
-            if (!$this->needSms()) {
-                unset($this->steps[array_search('sms', $this->steps)]);
-            }
-
-            $needAttendant = false;
-            $bb = $this->plugin->getBookingBuilder();
-            foreach($bb->getServices() as $service) {
-                if ($service->isAttendantsEnabled()) {
-                    $needAttendant = true;
-                    break;
-                }
-            }
-            if (!$needAttendant) {
-                unset($this->steps[array_search('attendant', $this->steps)]);
-            }
-
         }
 
-        return $this->steps;
+        if (!$this->needSecondary()) {
+            unset($ret[array_search('secondary', $ret)]);
+        }
+
+        if (!$this->needPayment()) {
+            unset($ret[array_search('thankyou', $ret)]);
+        }
+        if (!$this->needAttendant()) {
+            unset($ret[array_search('attendant', $ret)]);
+        }
+        if (!$this->needSms()) {
+            unset($ret[array_search('sms', $ret)]);
+        }
+        return $ret;
     }
 
     public function getStyleShortcode()
