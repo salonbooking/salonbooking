@@ -56,8 +56,7 @@
 			$month = $dates['m_start'];
 			while ($hour <= 23) {
 
-				$bookings = $report->getCountOfBookingsByDate($dates['day'], $month, $dates['year'], $hour);
-				$earnings = $report->getBookingEarningsByDate($dates['day'], $month, $dates['year'], $hour);
+				$report->getBookingsSalesByDate($bookings, $earnings, $dates['day'], $month, $dates['year'], $hour);
 
 				foreach($bookings as $k => $v) {
 					$bookings_totals[$k] += $v;
@@ -99,8 +98,7 @@
 			}
 
 			foreach ($report_dates as $report_date) {
-				$bookings = $report->getCountOfBookingsByDate($report_date['day'], $report_date['month'], $report_date['year']);
-				$earnings = $report->getBookingEarningsByDate($report_date['day'], $report_date['month'], $report_date['year']);
+				$report->getBookingsSalesByDate($bookings, $earnings, $report_date['day'], $report_date['month'], $report_date['year']);
 
 				foreach($bookings as $k => $v) {
 					$bookings_totals[$k] += $v;
@@ -168,8 +166,7 @@
 
 						while ($d <= $num_of_days) {
 
-							$bookings = $report->getCountOfBookingsByDate($d, $i, $y);
-							$earnings = $report->getBookingEarningsByDate($d, $i, $y);
+							$report->getBookingsSalesByDate($bookings, $earnings, $d, $i, $y);
 
 							foreach($bookings as $k => $v) {
 								$bookings_totals[$k] += $v;
@@ -187,8 +184,7 @@
 
 					} else {
 
-						$bookings = $report->getCountOfBookingsByDate(null, $i, $y);
-						$earnings = $report->getBookingEarningsByDate(null, $i, $y);
+						$report->getBookingsSalesByDate($bookings, $earnings, null, $i, $y);
 
 						foreach($bookings as $k => $v) {
 							$bookings_totals[$k] += $v;

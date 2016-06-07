@@ -319,7 +319,7 @@ class SLN_Admin_Reports_Report {
 		return $this->attr['view'];
 	}
 
-	public function getCountOfBookingsByDate($day = null, $month_num = null, $year = null, $hour = null) {
+	public function getBookingsSalesByDate(&$counts, &$earnings, $day = null, $month_num = null, $year = null, $hour = null) {
 
 		$year = $year ? $year : '*';
 		$month_num = ($month_num ? ($month_num >= 10 ?  $month_num : '0'.$month_num) : '*');
@@ -338,8 +338,6 @@ class SLN_Admin_Reports_Report {
 
 			)
 		);
-
-
 		if ($hour) {
 			$hour = ($hour >= 10 ? "$hour:" : "0$hour:");
 			$args['meta_query'][] = array(
@@ -350,77 +348,24 @@ class SLN_Admin_Reports_Report {
 			);
 		}
 
-		$bookings = new WP_Query($args);
-
-		$ret = array(
+		$counts = $earnings = array(
 				'all'                                   => 0,
 				SLN_Enum_BookingStatus::PAID            => 0,
 				SLN_Enum_BookingStatus::PAY_LATER       => 0,
 				SLN_Enum_BookingStatus::PENDING_PAYMENT => 0,
 				SLN_Enum_BookingStatus::CANCELED        => 0,
 		);
-
-		foreach($bookings->get_posts() as $p) {
-			$booking = SLN_Plugin::getInstance()->createBooking($p->ID);
-			if (in_array($booking->getStatus(), array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PENDING_PAYMENT, SLN_Enum_BookingStatus::CANCELED))) {
-				$ret[$booking->getStatus()]++;
-			}
-		}
-
-		$ret['all'] = (int) $bookings->post_count;
-
-		return $ret;
-	}
-
-	public function getBookingEarningsByDate($day = null, $month_num, $year = null, $hour = null) {
-
-		$year = $year ? $year : '*';
-		$month_num = ($month_num ? (10 <= $month_num ? (int)$month_num : '0'.(int)$month_num) : '*');
-		$day = ($day ? (10 <= $day ?  (int)$day : '0'.(int)$day) : '*');
-
-		$args = array(
-			'post_type'      => SLN_Plugin::POST_TYPE_BOOKING,
-			'nopaging'       => true,
-			'meta_query' => array(
-				array(
-					'key' => '_sln_booking_date',
-					'value' => "$year-$month_num-$day",
-					'compare' => 'LIKE',
-					'type' => 'STRING',
-				),
-
-			)
-		);
-
-
-		if ($hour) {
-			$hour = (10 <= $hour ? "$hour:" : "0".(int)$hour.":");
-			$args['meta_query'][] = array(
-				'key' => '_sln_booking_time',
-				'value' => $hour,
-				'compare' => 'LIKE',
-				'type' => 'STRING',
-			);
-		}
-
+		
 		$bookings = new WP_Query($args);
-
-		$ret = array(
-			'all'                                   => 0,
-			SLN_Enum_BookingStatus::PAID            => 0,
-			SLN_Enum_BookingStatus::PAY_LATER       => 0,
-			SLN_Enum_BookingStatus::PENDING_PAYMENT => 0,
-			SLN_Enum_BookingStatus::CANCELED        => 0,
-		);
-
 		foreach($bookings->get_posts() as $p) {
 			$booking = SLN_Plugin::getInstance()->createBooking($p->ID);
-			$ret['all'] += $booking->getAmount();
+			$earnings['all'] += $booking->getAmount();
 			if (in_array($booking->getStatus(), array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PENDING_PAYMENT, SLN_Enum_BookingStatus::CANCELED))) {
-				$ret[$booking->getStatus()] = $booking->getAmount();
+				$counts[$booking->getStatus()]++;
+				$earnings[$booking->getStatus()] += $booking->getAmount();
 			}
 		}
 
-		return $ret;
+		$counts['all'] = (int) $bookings->post_count;
 	}
 }
