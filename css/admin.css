@@ -3279,6 +3279,11 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
   color: #afd8f8 !important
 }
 
+p.sln_graph_totals, p.sln_graph_notes {
+  font-size: 0.8rem;
+  color: #555;
+}
+
 .sln-toolbox {
   background-color: rgba(0, 53, 83, 0.9);
   max-width: 100%;
