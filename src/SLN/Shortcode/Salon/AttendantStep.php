@@ -13,13 +13,21 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         $ah->setDate($bb->getDateTime());
         $bb->removeAttendants();
 
+        $bservices = $bb->getAttendantsIds();
+        $date = $bb->getDateTime();
 
         if ($isMultipleAttSelection) {
             $ids = isset($values['attendants']) ? $values['attendants'] : array();
-            $ret = $this->dispatchMultiple($ids);
+
+            $ret = $this->dispatchMultiple($bservices, $date, $ids);
         } else {
             $id = isset($values['attendant']) ? $values['attendant'] : null;
-            $ret = $this->dispatchSingle($id);
+
+            $ret = $this->dispatchSingle($bservices, $date, $id);
+        }
+
+        if (is_array($ret)) {
+            $bb->setServicesAndAttendants($ret);
         }
 
         if ($ret) {
@@ -31,14 +39,16 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         }
     }
 
-    public function dispatchMultiple($selected)
+    public function dispatchMultiple($services, $date, $selected)
     {
         $ah = $this->getPlugin()->getAvailabilityHelper();
-        $bb = $this->getPlugin()->getBookingBuilder();
+        $ah->setDate($date);
+        $bookingServices = SLN_Wrapper_Booking_Services::build($services, $date);
+
         $availAtts = null;
         $availAttsForEachService = array();
 
-        foreach ($bb->getBookingServices()->getItems() as $bookingService) {
+        foreach ($bookingServices->getItems() as $bookingService) {
             $service = $bookingService->getService();
             if (!$service->isAttendantsEnabled()) {
                 continue;
@@ -77,29 +87,36 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
         }
 
-        foreach ($bb->getServices() as $service) {
+        $ret = array();
+
+        foreach ($bookingServices->getItems() as $bookingService) {
+            $service = $bookingService->getService();
+
             if (!$service->isAttendantsEnabled()) {
-                $bb->clearService($service);
+                $ret[$service->getId()] = 0;
                 continue;
             }
+
             if (!empty($selected[$service->getId()])) {
                 $attId = $selected[$service->getId()];
             } else {
                 $index = mt_rand(0, count($availAttsForEachService[$service->getId()]) - 1);
                 $attId = $availAttsForEachService[$service->getId()][$index];
             }
-            $bb->setAttendant($this->getPlugin()->createAttendant($attId), $service);
+
+            $ret[$service->getId()] = $attId;
         }
-        return true;
+        return $ret;
     }
 
-    public function dispatchSingle($selected)
+    public function dispatchSingle($services, $date, $selected)
     {
         $ah = $this->getPlugin()->getAvailabilityHelper();
-        $bb = $this->getPlugin()->getBookingBuilder();
+        $ah->setDate($date);
+        $bookingServices = SLN_Wrapper_Booking_Services::build($services, $date);
 
         $availAtts = null;
-        foreach ($bb->getBookingServices()->getItems() as $bookingService) {
+        foreach ($bookingServices->getItems() as $bookingService) {
             if (!$bookingService->getService()->isAttendantsEnabled()) {
                 continue;
             }
@@ -118,24 +135,28 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         if (!$selected) {
             if (count($availAtts)) {
                 $index = mt_rand(0, count($availAtts) - 1);
-                $attendant = $this->getPlugin()->createAttendant($availAtts[$index]);
+                $attId = $availAtts[$index];
             }
             else {
-                $attendant = 0;
+                $attId = 0;
             }
         }
         else {
-            $attendant = $this->getPlugin()->createAttendant($selected);
+            $attId = $selected;
         }
 
-        foreach ($bb->getServices() as $service) {
+        $ret = array();
+        foreach ($bookingServices->getItems() as $bookingService) {
+            $service = $bookingService->getService();
+
             if (!$service->isAttendantsEnabled()) {
-                $bb->clearService($service);
+                $ret[$service->getId()] = 0;
                 continue;
             }
-            $bb->setAttendant($attendant, $service);
+
+            $ret[$service->getId()] = $attId;
         }
-        return true;
+        return $ret;
     }
 
 

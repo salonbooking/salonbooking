@@ -2,53 +2,40 @@
 
 class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
 {
-    public function execute()
-    {
-
-        if (!isset($this->date)) {
-            if(isset($_POST['sln'])){
-                $this->date = $_POST['sln']['date'];
-                $this->time = $_POST['sln']['time'];
-            }
-            if(isset($_POST['_sln_booking_date'])) {
-                $this->date = $_POST['_sln_booking_date'];
-                $this->time = $_POST['_sln_booking_time'];
-            }
-        }
-        $ret = array();
-
-        $bb = $this->plugin->getBookingBuilder();
+    public function getIntervalsArray() {
+        $plugin = $this->plugin;
+        $bb = $plugin->getBookingBuilder();
         $bservices = $bb->getAttendantsIds();
 
-        $ret['intervals'] = $this->plugin->getIntervals($this->getDateTime())->toArray();
-        foreach($ret['intervals']['times'] as $k => $t) {
-            $date = new SLN_DateTime($ret['intervals']['suggestedYear'].'-'.$ret['intervals']['suggestedMonth'].'-'.$ret['intervals']['suggestedDay'].' '.$t);
-            $errors = $this->checkDateTimeServicesAndAttendants($date);
+        $intervals = $plugin->getIntervals($this->getDateTime())->toArray();
+        foreach($intervals['times'] as $k => $t) {
+            $date = new SLN_DateTime($intervals['suggestedYear'].'-'.$intervals['suggestedMonth'].'-'.$intervals['suggestedDay'].' '.$t);
+            $errors = $this->checkDateTimeServicesAndAttendants($bservices, $date);
             if (!empty($errors)) {
-                unset($ret['intervals']['times'][$k]);
+                unset($intervals['times'][$k]);
             }
         }
-        $bb->setServicesAndAttendants($bservices);
 
-        $this->checkDateTime();
-        $bb->save();
-        if ($errors = $this->getErrors()) {
-            $ret['errors'] = $errors;
-        } else {
-            $ret['success'] = 1;
+        if (!isset($intervalsArray['times'][$intervals['suggestedTime']]) && !empty($intervalsArray['times'])) {
+            $intervals['suggestedTime'] = reset($intervalsArray['times']);
         }
 
-        return $ret;
+        return $intervals;
     }
 
     public function checkDateTime()
     {
+        $plugin = $this->plugin;
         parent::checkDateTime();
         $errors = $this->getErrors();
 
         if (empty($errors)) {
             $date   = $this->getDateTime();
-            $errors = $this->checkDateTimeServicesAndAttendants($date);
+
+            $bb = $plugin->getBookingBuilder();
+            $bservices = $bb->getAttendantsIds();
+
+            $errors = $this->checkDateTimeServicesAndAttendants($bservices, $date);
 
             foreach($errors as $error) {
                 $this->addError($error);
@@ -57,29 +44,19 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
 
     }
 
-    public function checkDateTimeServicesAndAttendants($date) {
+    public function checkDateTimeServicesAndAttendants($services, $date) {
         $errors = array();
 
         $plugin = $this->plugin;
         $ah     = $plugin->getAvailabilityHelper();
         $ah->setDate($date);
 
-        $bb   = $plugin->getBookingBuilder();
-        $bb->setDate(SLN_Func::filter($date, 'date'))->setTime(SLN_Func::filter($date, 'time'));
         $isMultipleAttSelection = SLN_Plugin::getInstance()->getSettings()->get('m_attendant_enabled');
-
-        $obj = new SLN_Shortcode_Salon_AttendantStep($plugin, new SLN_Shortcode_Salon($plugin, array()),'');
-        if ($isMultipleAttSelection) {
-            $ret = $obj->dispatchMultiple($bb->getAttendantsIds());
-        } else {
-            $tmp = $bb->getAttendantsIds();
-            $ret = $obj->dispatchSingle(reset($tmp));
-        }
-
-        $bookingServices =  $bb->getBookingServices();
-
         $bookingOffsetEnabled   = SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled');
         $bookingOffset          = SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation');
+
+        $bookingServices = SLN_Wrapper_Booking_Services::build($services, $date);
+
         $interval               = min(SLN_Enum_Interval::toArray());
 
         $firstSelectedAttendant = null;

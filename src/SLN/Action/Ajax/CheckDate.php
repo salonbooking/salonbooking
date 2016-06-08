@@ -26,9 +26,13 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         } else {
             $ret = array('success' => 1);
         }
-        $ret['intervals'] = $this->plugin->getIntervals($this->getDateTime())->toArray();
+        $ret['intervals'] = $this->getIntervalsArray();
 
         return $ret;
+    }
+
+    public function getIntervalsArray() {
+        return $this->plugin->getIntervals($this->getDateTime())->toArray();
     }
 
     public function checkDateTime()
