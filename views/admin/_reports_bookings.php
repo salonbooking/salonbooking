@@ -8,14 +8,10 @@
 
 		// Determine graph options
 		switch ($dates['range']) :
-			case 'today' :
-			case 'yesterday' :
-				$day_by_day = true;
-				break;
-			case 'last_year' :
-			case 'this_year' :
 			case 'last_quarter' :
 			case 'this_quarter' :
+			case 'last_year' :
+			case 'this_year' :
 				$day_by_day = false;
 				break;
 			case 'other' :
@@ -142,7 +138,6 @@
 
 				$i = $month_start;
 				while ($i <= $month_end) {
-
 					if ($day_by_day) {
 
 						$d = $dates['day'];

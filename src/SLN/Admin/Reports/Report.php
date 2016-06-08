@@ -126,28 +126,26 @@ class SLN_Admin_Reports_Report {
 				if ($month_now <= 3) {
 
 					$dates['m_start'] = 1;
-					$dates['m_end']   = 4;
-					$dates['year']    = current_time('Y');
+					$dates['m_end']   = 3;
+					$dates['year_end'] = $dates['year']    = current_time('Y');
 
 				} else if ($month_now <= 6) {
 
 					$dates['m_start'] = 4;
-					$dates['m_end']   = 7;
-					$dates['year']    = current_time('Y');
+					$dates['m_end']   = 6;
+					$dates['year_end'] = $dates['year']    = current_time('Y');
 
 				} else if ($month_now <= 9) {
 
 					$dates['m_start'] = 7;
-					$dates['m_end']   = 10;
-					$dates['year']    = current_time('Y');
+					$dates['m_end']   = 9;
+					$dates['year_end'] = $dates['year']    = current_time('Y');
 
 				} else {
 
 					$dates['m_start']  = 10;
-					$dates['m_end']    = 1;
-					$dates['year']     = current_time('Y');
-					$dates['year_end'] = current_time('Y') + 1;
-
+					$dates['m_end']    = 12;
+					$dates['year_end'] = $dates['year']     = current_time('Y');
 				}
 				break;
 
@@ -165,19 +163,19 @@ class SLN_Admin_Reports_Report {
 
 					$dates['m_start'] = 1;
 					$dates['m_end']   = 3;
-					$dates['year']    = current_time('Y');
+					$dates['year_end'] = $dates['year']    = current_time('Y');
 
 				} else if ($month_now <= 9) {
 
 					$dates['m_start'] = 4;
 					$dates['m_end']   = 6;
-					$dates['year']    = current_time('Y');
+					$dates['year_end'] = $dates['year']    = current_time('Y');
 
 				} else {
 
 					$dates['m_start'] = 7;
 					$dates['m_end']   = 9;
-					$dates['year']    = current_time('Y');
+					$dates['year_end'] = $dates['year']    = current_time('Y');
 
 				}
 				break;
@@ -185,18 +183,16 @@ class SLN_Admin_Reports_Report {
 			case 'this_year' :
 				$dates['m_start'] = 1;
 				$dates['m_end']   = 12;
-				$dates['year']    = current_time('Y');
+				$dates['year_end'] = $dates['year']    = current_time('Y');
 				break;
 
 			case 'last_year' :
 				$dates['m_start']  = 1;
 				$dates['m_end']    = 12;
-				$dates['year']     = current_time('Y') - 1;
-				$dates['year_end'] = current_time('Y') - 1;
+				$dates['year_end'] = $dates['year']     = current_time('Y') - 1;
 				break;
 
 		endswitch;
-
 		return $dates;
 	}
 
@@ -321,10 +317,12 @@ class SLN_Admin_Reports_Report {
 
 	public function getBookingsSalesByDate(&$counts, &$earnings, $day = null, $month_num = null, $year = null, $hour = null) {
 
-		$year = $year ? $year : '*';
-		$month_num = ($month_num ? ($month_num >= 10 ?  $month_num : '0'.$month_num) : '*');
-		$day = ($day ? (10 <= $day ?  (int) $day : '0'.(int)$day) : '*');
+		$year = $year ? $year : '';
+		$month_num = ($month_num ? ($month_num >= 10 ?  $month_num : '0'.$month_num) : '');
+		$day = ($day ? (10 <= $day ?  (int) $day : '0'.(int)$day) : '');
 
+//		echo "$year-$month_num-$day<br>";
+		
 		$args = array(
 			'post_type'      => SLN_Plugin::POST_TYPE_BOOKING,
 			'nopaging'       => true,
