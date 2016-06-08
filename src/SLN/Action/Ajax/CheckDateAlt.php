@@ -18,15 +18,15 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
         $year = $intervalsArray['suggestedYear'];
         $month = $intervalsArray['suggestedMonth'];
         $day = $intervalsArray['suggestedDay'];
-        foreach($intervalsArray['days'] as $k => $v) {
+        foreach($intervalsArray['dates'] as $k => $v) {
             $free = false;
-            $tmpDate = new SLN_DateTime("$year-$month-$v");
+            $tmpDate = new SLN_DateTime($v);
 
             $ah->setDate($tmpDate);
             $times = $ah->getTimes($tmpDate);
 
             foreach ($times as $time) {
-                $tmpDateTime = new SLN_DateTime("$year-$month-$v $time");
+                $tmpDateTime = new SLN_DateTime("$v $time");
                 $errors = $this->checkDateTimeServicesAndAttendants($bservices, $tmpDateTime);
                 if (empty($errors)) {
                     $free = true;
@@ -35,11 +35,7 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
             }
 
             if (!$free) {
-                unset($intervalsArray['days'][$k]);
-                $pos = array_search("$year-$month-$k", $intervalsArray['dates']);
-                if ($pos !== false) {
-                    unset($intervalsArray['dates'][$pos]);
-                }
+                unset($intervalsArray['dates'][$k]);
             }
         }
 
