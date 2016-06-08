@@ -64,7 +64,15 @@ class SLN_Shortcode_Salon
     private function getStepObject($step)
     {
         $class = __CLASS__.'_'.ucwords($step).'Step';
-        $obj = new $class($this->plugin, $this, $step);
+        $class_alt = __CLASS__.'_'.ucwords($step).'AltStep';
+
+        if ($this->plugin->getSettings()->isFormStepsAltOrder() && class_exists($class_alt)) {
+            $obj = new $class_alt($this->plugin, $this, $step);
+        }
+        else {
+            $obj = new $class($this->plugin, $this, $step);
+        }
+
         if ($obj instanceof SLN_Shortcode_Salon_Step) {
             return $obj;
         } else {

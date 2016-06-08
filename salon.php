@@ -18,7 +18,10 @@ define('SLN_VERSION', '3.2');
 
 function sln_autoload($className) {
     if (strpos($className, 'SLN_') === 0) {
-        include_once(SLN_PLUGIN_DIR . "/src/" . str_replace("_", "/", $className) . '.php');
+        $filename = SLN_PLUGIN_DIR . "/src/" . str_replace("_", "/", $className) . '.php';
+        if (file_exists($filename)) {
+            include_once($filename);
+        }
     }
 }
 

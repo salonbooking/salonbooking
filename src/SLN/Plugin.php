@@ -173,7 +173,14 @@ class SLN_Plugin
         //check_ajax_referer('ajax_post_validation', 'security');
         $method = $_REQUEST['method'];
         $className = 'SLN_Action_Ajax_'.ucwords($method);
-        if (class_exists($className)) {
+        $classAltName = 'SLN_Action_Ajax_'.ucwords($method).'Alt';
+
+        $isAlt = $this->getSettings()->isFormStepsAltOrder() && class_exists($classAltName);
+
+        if ($isAlt || class_exists($className)) {
+            if ($isAlt) {
+                $className = $classAltName;
+            }
             SLN_Plugin::addLog('calling ajax '.$className);
             //SLN_Plugin::addLog(print_r($_POST,true));
             /** @var SLN_Action_Ajax_Abstract $obj */

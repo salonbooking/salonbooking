@@ -23,7 +23,7 @@ if ($plugin->getSettings()->isDisabled()) {
     if ($plugin->getSettings()->isFormStepsAltOrder()) {
         foreach($intervalsArray['times'] as $k => $t) {
             $tempDate = new SLN_DateTime($intervalsArray['suggestedYear'].'-'.$intervalsArray['suggestedMonth'].'-'.$intervalsArray['suggestedDay'].' '.$t);
-            $obj = new SLN_Action_Ajax_CheckDate($plugin);
+            $obj = new SLN_Action_Ajax_CheckDateAlt($plugin);
             $tempErrors = $obj->checkDateTimeServicesAndAttendants($tempDate);
             if (!empty($tempErrors)) {
                 unset($intervalsArray['times'][$k]);

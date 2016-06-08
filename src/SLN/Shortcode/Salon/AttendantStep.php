@@ -14,35 +14,12 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         $bb->removeAttendants();
 
 
-        if ($this->getPlugin()->getSettings()->isFormStepsAltOrder()) {
-            if ($isMultipleAttSelection) {
-                $ids = isset($values['attendants']) ? $values['attendants'] : array();
-                foreach($bb->getServices() as $service) {
-                    if (isset($ids[$service->getId()])) {
-                        $bb->setAttendant($this->getPlugin()->createAttendant($ids[$service->getId()]), $service);
-                    } else {
-                        $bb->clearService($service);
-                    }
-                }
-            } else {
-                $id = isset($values['attendant']) ? $values['attendant'] : null;
-                foreach($bb->getServices() as $service) {
-                    if ($id) {
-                        $bb->setAttendant($this->getPlugin()->createAttendant($id), $service);
-                    } else {
-                        $bb->clearService($service);
-                    }
-                }
-            }
-            $ret = true;
+        if ($isMultipleAttSelection) {
+            $ids = isset($values['attendants']) ? $values['attendants'] : array();
+            $ret = $this->dispatchMultiple($ids);
         } else {
-            if ($isMultipleAttSelection) {
-                $ids = isset($values['attendants']) ? $values['attendants'] : array();
-                $ret = $this->dispatchMultiple($ids);
-            } else {
-                $id = isset($values['attendant']) ? $values['attendant'] : null;
-                $ret = $this->dispatchSingle($id);
-            }
+            $id = isset($values['attendant']) ? $values['attendant'] : null;
+            $ret = $this->dispatchSingle($id);
         }
 
         if ($ret) {
