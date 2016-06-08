@@ -25,6 +25,7 @@ if ($plugin->getSettings()->isDisabled()) {
         $obj->setDate(SLN_Func::filter($date, 'date'))->setTime(SLN_Func::filter($date, 'time'));
         $intervalsArray = $obj->getIntervalsArray();
         $date = new SLN_DateTime($intervalsArray['suggestedYear'].'-'.$intervalsArray['suggestedMonth'].'-'.$intervalsArray['suggestedDay'].' '.$intervalsArray['suggestedTime']);
+        $errors = $obj->checkDateTimeServicesAndAttendants($bb->getAttendantsIds(), $date);
     }
 
     if (!$plugin->getSettings()->isFormStepsAltOrder() && !$intervalsArray['times']):
