@@ -8,6 +8,7 @@ class SLN_UserRole_SalonStaff
     private $displayName;
     private $capabilities = array(
         'manage_salon' => true,
+        'edit_posts' => true
     );
 
     public function __construct(SLN_Plugin $plugin, $role, $displayName)
