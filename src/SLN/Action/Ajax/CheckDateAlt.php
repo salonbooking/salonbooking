@@ -27,6 +27,7 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
 
             foreach ($times as $time) {
                 $tmpDateTime = new SLN_DateTime("$v $time");
+                $ah->setDate($tmpDateTime);
                 $errors = $this->checkDateTimeServicesAndAttendants($bservices, $tmpDateTime);
                 if (empty($errors)) {
                     $free = true;
