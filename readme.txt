@@ -472,4 +472,4 @@ The 2.4 version has a new algorithm, more precise, and require a “Database upd
 In case of doubts you could install this new version on a development website first and check what’s new.<br />
 If you feel confident with the new version you can proceed with the plugin update on your production website.<br /><br />
 
-You could also contact us on support@wordpresschef.it
+You could also contact us on support@wpchef.it
