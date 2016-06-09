@@ -51,6 +51,7 @@ Salon booking works with double booking algorithms:
 * Change booking form steps order
 * “No assistant required” new service option
 * Holidays rules for assistants
+* New "Reports" section
 
 **With Salon Booking you can also..**
 
