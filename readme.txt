@@ -276,6 +276,8 @@ http://salon.wordpresschef.it
 * Bug fixed on add booking from back-end when “Assistant selection” option is not active
 * Improvement: date and time picker icons now clickable
 * Improvement: added the booking review inside the back-end calendar tool-tip
+* Fixed bug on reservation position on calendar daily view
+* Fixed bug on booking added from back-end by the Salon staff 
 
 
 18.05.2015
