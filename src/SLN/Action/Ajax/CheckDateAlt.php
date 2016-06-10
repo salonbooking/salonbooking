@@ -15,9 +15,6 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
 
         $intervalsArray = parent::getIntervalsArray();
 
-        $year = $intervalsArray['suggestedYear'];
-        $month = $intervalsArray['suggestedMonth'];
-        $day = $intervalsArray['suggestedDay'];
         foreach($intervalsArray['dates'] as $k => $v) {
             $free = false;
             $tmpDate = new SLN_DateTime($v);
@@ -40,9 +37,24 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
             }
         }
 
-        foreach($intervalsArray['times'] as $k => $t) {
-            $date = new SLN_DateTime("$year-$month-$day $t");
-            $errors = $this->checkDateTimeServicesAndAttendants($bservices, $date);
+        if(empty($intervalsArray['dates'])) {
+            return $intervalsArray;
+        }
+
+        $date = reset($intervalsArray['dates']);
+        $tmpDate = new SLN_DateTime($date);
+
+        $intervalsArray['suggestedYear']  = $tmpDate->format('Y');
+        $intervalsArray['suggestedMonth'] = $tmpDate->format('m');
+        $intervalsArray['suggestedDay']   = $tmpDate->format('d');
+
+        $ah->setDate($tmpDate);
+        $intervalsArray['times'] = $ah->getTimes($tmpDate);
+
+        foreach ($intervalsArray['times'] as $k => $t) {
+            $tmpDateTime = new SLN_DateTime("$date $t");
+            $ah->setDate($tmpDateTime);
+            $errors = $this->checkDateTimeServicesAndAttendants($bservices, $tmpDateTime);
             if (!empty($errors)) {
                 unset($intervalsArray['times'][$k]);
             }

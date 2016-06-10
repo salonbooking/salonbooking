@@ -462,6 +462,8 @@ if(!String.prototype.formatNum) {
 		data.after_time = [];
 		data.before_time = [];
 		$.each(data.events, function(k, e) {
+			e.start = e.start + (new Date).getTimezoneOffset()*60*1000;
+			e.end = e.end + (new Date).getTimezoneOffset()*60*1000;
 			var s = new Date(parseInt(e.start));
 			var f = new Date(parseInt(e.end));
 
