@@ -63,7 +63,7 @@ abstract class SLN_Shortcode_Salon_Step
         $this->errors[] = $err;
     }
 
-    protected function getErrors()
+    public function getErrors()
     {
         return $this->errors;
     }

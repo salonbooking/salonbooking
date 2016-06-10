@@ -100,7 +100,7 @@ class SLN_Helper_Availability
             SLN_Plugin::addLog(__CLASS__.sprintf(' - started %s', get_class($obj)));
             $this->dayBookings = $obj;
         }
-
+        $this->dayBookings->setTime($date->format('H'), $date->format('i'));
         $this->date = $date;
 
         return $this;

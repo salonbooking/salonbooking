@@ -72,7 +72,11 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
      */
     public function getBookingsByHour($hour = null, $minutes = null)
     {
-        $now = $this->getTime($hour, $minutes);
+        if (!isset($hour)) {
+            $hour = $this->getDate()->format('H');
+        }
+        $now = clone $this->getDate();
+        $now->setTime($hour, $minutes ? $minutes : 0);
         $time = $now->format('H:i');
         $ret = array();
         $bookings = $this->timeslots[$time]['booking'];
@@ -124,6 +128,10 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
     protected function getDate()
     {
         return $this->date;
+    }
+
+    public function setTime($hour, $minutes) {
+        $this->getDate()->setTime($hour, $minutes);
     }
 
     /**
