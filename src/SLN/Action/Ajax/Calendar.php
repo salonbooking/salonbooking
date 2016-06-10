@@ -32,8 +32,8 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
     "customer" => $booking->getDisplayName(),
 	"url" => get_edit_post_link($booking->getId()),
 	"class" => "event-".SLN_Enum_BookingStatus::getColor($booking->getStatus()),
-	"start" => ($booking->getStartsAt()->format('U') - get_option('gmt_offset') * HOUR_IN_SECONDS) * 1000,
-	"end" => ($booking->getEndsAt()->format('U') - get_option('gmt_offset') * HOUR_IN_SECONDS) * 1000,
+    "start" => $booking->getStartsAt()->format('U') * 1000,
+    "end" => $booking->getEndsAt()->format('U') * 1000,
     "event_html" => $this->getEventHtml($booking)
 	);
     }
