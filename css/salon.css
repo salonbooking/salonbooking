@@ -441,7 +441,10 @@ th {
   border-color: #004258 !important; }
 
 .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right, #sln-salon .sln-input input, #sln-salon .sln-input textarea, .sln-btn--borderonly,
-.sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li, #sln-salon .sln-attendant-list--multiple .sln-steps-name.sln-service-name, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
+.sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li,
+ul.sln-list--dashed li,
+#sln-salon .sln-list--dashed li,
+#sln-salon ul.sln-list--dashed li, #sln-salon .sln-attendant-list--multiple .sln-steps-name.sln-service-name, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
 #sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly, .sln-checkbox input + label:before, .sln-radiobox input + label:before {
@@ -1026,6 +1029,15 @@ th {
   border-top: 0;
   margin: 0 -.05em; }
 
+.datetimepicker.sln-datetimepicker table tr td span.hour,
+.datetimepicker.sln-datetimepicker table tr td span.minute,
+.datetimepicker.sln-datetimepicker table tr td span.month,
+.datetimepicker.sln-datetimepicker table tr td span.year,
+.datetimepicker.sln-datetimepicker td,
+.datetimepicker.sln-datetimepicker th,
+.datetimepicker.sln-datetimepicker table tr td.day {
+  font-size: 1em; }
+
 .sln_datepicker #sln_date.form-control[readonly],
 .sln_timepicker #sln_time.form-control[readonly] {
   cursor: pointer; }
@@ -1419,7 +1431,7 @@ th {
 
 #sln-salon .sln-btn--medium input, #sln-salon .sln-btn--medium button, #sln-salon .sln-btn--medium a {
   display: inline-block;
-  padding: 0 .5em;
+  padding: 0 .5em !important;
   line-height: 3.6em;
   font-weight: normal;
   height: 3.6em;
@@ -2121,21 +2133,33 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
     .sln-steps-price {
       text-align: right; } }
 
-.sln-list--dashed {
+.sln-list--dashed,
+ul.sln-list--dashed,
+#sln-salon .sln-list--dashed,
+#sln-salon ul.sln-list--dashed {
   list-style: none;
   display: inline-block;
   margin-bottom: 1em;
   margin-left: 0;
   padding-left: 0; }
-  .sln-list--dashed li {
+  .sln-list--dashed li,
+  ul.sln-list--dashed li,
+  #sln-salon .sln-list--dashed li,
+  #sln-salon ul.sln-list--dashed li {
     padding-bottom: .4em;
     margin-bottom: .75em;
     border-bottom-style: dotted;
     border-bottom-width: .05em; }
-    .sln-list--dashed li:last-child {
+    .sln-list--dashed li:last-child,
+    ul.sln-list--dashed li:last-child,
+    #sln-salon .sln-list--dashed li:last-child,
+    #sln-salon ul.sln-list--dashed li:last-child {
       padding-bottom: 0;
       margin-bottom: 0;
       border-bottom: 0; }
+
+#sln-salon ul li {
+  list-style: none; }
 
 #sln-salon.sln-salon--s .sln-list--dashed {
   display: block; }
@@ -2447,27 +2471,6 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
 .editable .text-min {
   width: 85%; }
 
-.datetimepicker.sln-datetimepicker table tr td span.hour,
-.datetimepicker.sln-datetimepicker table tr td span.minute,
-.datetimepicker.sln-datetimepicker table tr td span.month,
-.datetimepicker.sln-datetimepicker table tr td span.year,
-.datetimepicker.sln-datetimepicker td,
-.datetimepicker.sln-datetimepicker th,
-.datetimepicker.sln-datetimepicker table tr td.day {
-  font-size: 1em; }
-
-#sln-salon .sln-btn--medium a,
-#sln-salon .sln-btn--medium button,
-#sln-salon .sln-btn--medium input {
-  padding: 0 !important; }
-
 .alert > p,
 .alert > ul {
   padding-bottom: 0; }
-
-#sln-salon .sln-list--dashed,
-#sln-salon ul.sln-list--dashed {
-  margin-left: 0; }
-
-#sln-salon ul li {
-  list-style: none; }

@@ -91,12 +91,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .sln-steps-name, .sln-steps-price {
 }
-.sln-list--dashed {
+.sln-list--dashed,
+ul.sln-list--dashed,
+#sln-salon .sln-list--dashed,
+#sln-salon ul.sln-list--dashed  {
 	list-style: none;
 	display: inline-block;
 	margin-bottom: 1em;
 	margin-left: 0;
-    padding-left: 0;
+    	padding-left: 0;
 	li {
 		padding-bottom: .4em;
 		margin-bottom: .75em;
@@ -109,6 +112,9 @@ h1, h2, h3, h4, h5, h6 {
 			border-bottom: 0;
 		}
 	}
+}
+#sln-salon ul li {
+    list-style: none
 }
 #sln-salon.sln-salon--s .sln-list--dashed  {
 	display: block;
@@ -515,28 +521,7 @@ h1, h2, h3, h4, h5, h6 {
 .editable .text-min {
     width: 85%
 }
-.datetimepicker.sln-datetimepicker table tr td span.hour,
-.datetimepicker.sln-datetimepicker table tr td span.minute,
-.datetimepicker.sln-datetimepicker table tr td span.month,
-.datetimepicker.sln-datetimepicker table tr td span.year,
-.datetimepicker.sln-datetimepicker td,
-.datetimepicker.sln-datetimepicker th,
-.datetimepicker.sln-datetimepicker table tr td.day {
-    font-size: 1em
-}
-#sln-salon .sln-btn--medium a,
-#sln-salon .sln-btn--medium button,
-#sln-salon .sln-btn--medium input {
-    padding: 0!important
-}
 .alert>p,
 .alert>ul {
     padding-bottom: 0
-}
-#sln-salon .sln-list--dashed,
-#sln-salon ul.sln-list--dashed {
-    margin-left: 0
-}
-#sln-salon ul li {
-    list-style: none
 }

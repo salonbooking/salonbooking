@@ -249,6 +249,15 @@
     //}
 }
 
+.datetimepicker.sln-datetimepicker table tr td span.hour,
+.datetimepicker.sln-datetimepicker table tr td span.minute,
+.datetimepicker.sln-datetimepicker table tr td span.month,
+.datetimepicker.sln-datetimepicker table tr td span.year,
+.datetimepicker.sln-datetimepicker td,
+.datetimepicker.sln-datetimepicker th,
+.datetimepicker.sln-datetimepicker table tr td.day {
+    font-size: 1em
+}
 
 .sln_datepicker #sln_date.form-control[readonly],
 .sln_timepicker #sln_time.form-control[readonly] {cursor: pointer;}
