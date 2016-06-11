@@ -78,7 +78,7 @@
     &.datetimepicker-dropdown-bottom-right {
       border-width: 0;
       border-top-width: 10px;
-      @extend %bd-color--contrast--alpha;
+      //@extend %bd-color--contrast--alpha;
       &:before, &:after {
         left: 20%;
       }

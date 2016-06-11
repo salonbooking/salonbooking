@@ -17,9 +17,9 @@
 	@include bp(tablet) {
 		border-width: 1px;
 		border-style: solid;
-		@extend %bd-color--contrast--alpha;
 		padding: 1.2em;
 	}
+	@extend %bd-color--contrast--alpha;
 	// GEN TYPO
 	@extend %bgc-color--main;
 	@extend %text-color--contrast;
@@ -467,4 +467,76 @@ h1, h2, h3, h4, h5, h6 {
 .sln-box--main {
 	margin-top: 2em;
 	margin-bottom: 3em;
+}
+
+// TEMP
+
+.editable input {
+    background-color: #fff;
+    border: none;
+    padding: 10px 0 10px 5px
+}
+.editable .text {
+    padding: 5px 0 5px 5px
+}
+.editable.focus,
+.editable:hover {
+    border: 1px solid orange
+}
+.editable .fa-gear {
+    font-size: 25px;
+    vertical-align: middle;
+    color: orange
+}
+.editable .fa-gear,
+.editable .input,
+.editable.focus .text {
+    display: none
+}
+.editable .text,
+.editable.focus .fa-gear,
+.editable.focus .input,
+.editable:hover .fa-gear {
+    display: inline-block
+}
+.editable.focus,
+.editable.focus .input,
+.editable.focus .input input {
+    background-color: #ccc
+}
+.editable.focus .input input {
+    width: 100%
+}
+.editable .input,
+.editable .text {
+    width: 90%
+}
+.editable .input-min,
+.editable .text-min {
+    width: 85%
+}
+.datetimepicker.sln-datetimepicker table tr td span.hour,
+.datetimepicker.sln-datetimepicker table tr td span.minute,
+.datetimepicker.sln-datetimepicker table tr td span.month,
+.datetimepicker.sln-datetimepicker table tr td span.year,
+.datetimepicker.sln-datetimepicker td,
+.datetimepicker.sln-datetimepicker th,
+.datetimepicker.sln-datetimepicker table tr td.day {
+    font-size: 1em
+}
+#sln-salon .sln-btn--medium a,
+#sln-salon .sln-btn--medium button,
+#sln-salon .sln-btn--medium input {
+    padding: 0!important
+}
+.alert>p,
+.alert>ul {
+    padding-bottom: 0
+}
+#sln-salon .sln-list--dashed,
+#sln-salon ul.sln-list--dashed {
+    margin-left: 0
+}
+#sln-salon ul li {
+    list-style: none
 }

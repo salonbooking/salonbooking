@@ -89,7 +89,7 @@
 			-webkit-box-align: center;
 			align-items: center;
 		}
-		@extend %sln-big-border--onhover;
+		//@extend %sln-big-border--onhover;
 		&:before, &:after  {
 			display: block;
 			position: absolute;
@@ -173,7 +173,7 @@
 		padding: 0;
 		height: 1.6em;
 		display: inline-block;
-		@extend %sln-big-border--onhover;
+		//@extend %sln-big-border--onhover;
 		@include bp(tablet) {
 			//line-height: rem(74px);
 			//display: inline-block;
