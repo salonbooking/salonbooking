@@ -50,6 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 		clear: none;
 		margin-top: 0;
 		margin-bottom: 0;
+		word-wrap: auto;
 		word-wrap: initial;
 	}
 }
@@ -484,6 +485,9 @@ ul.sln-list--dashed,
 }
 .editable .text {
     padding: 5px 0 5px 5px
+}
+.editable {
+    border: 1px solid transparent
 }
 .editable.focus,
 .editable:hover {

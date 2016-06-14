@@ -502,13 +502,11 @@ ul.sln-list--dashed li,
     box-shadow: none; }
 
 #sln-salon h1, .sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
-#sln-salon .alert:after, .sln-alert--warning:before,
-#sln-salon .alert-warning:before, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
+#sln-salon .alert:after, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
   font-size: 1.4em; }
   @media only screen and (min-width: 992px) {
     #sln-salon h1, .sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
-    #sln-salon .alert:after, .sln-alert--warning:before,
-    #sln-salon .alert-warning:before, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
+    #sln-salon .alert:after, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
       font-size: 1.6em; } }
 
 #sln-salon h2 {
@@ -567,7 +565,7 @@ ul.sln-list--dashed li,
   font-size: 1px; }
   .sln-loader:after {
     font-family: "FontAwesome";
-    font-size: 75em;
+    font-size: 5rem;
     line-height: 0;
     display: block;
     content: "\f1ce";
@@ -616,6 +614,7 @@ ul.sln-list--dashed li,
     #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--big:after,
     #sln-salon .sln-panel .sln-panel-heading .sln-btn.sln-btn--medium:after,
     #sln-salon .sln-panel .sln-panel-heading .sln-btn--noheight:after {
+      bottom: auto;
       bottom: initial;
       content: '\f068';
       left: 12px; }
@@ -1023,6 +1022,7 @@ ul.sln-list--dashed li,
 .datetimepicker.sln-datetimepicker table tr td span.month,
 .datetimepicker.sln-datetimepicker table tr td span.year {
   width: 25%;
+  height: auto;
   height: initial;
   margin: 0;
   line-height: 3em;
@@ -1073,13 +1073,14 @@ ul.sln-list--dashed li,
 .sln_datepicker, .sln_timepicker {
   margin-bottom: 2em;
   position: relative;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 1em; }
   .sln_datepicker:after, .sln_timepicker:after {
     font-family: "FontAwesome";
-    font-size: 1.6em;
+    font-size: 1.6rem;
     line-height: 0;
     display: inline-block;
-    right: .4em;
+    right: .4rem;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1220,8 +1221,8 @@ ul.sln-list--dashed li,
     position: absolute;
     top: 0;
     left: 0;
-    width: 1.8em;
-    height: 1.76em; }
+    width: 1.8rem;
+    height: 1.76rem; }
   .sln-checkbox input + label:before {
     content: "";
     transition: transform 0.5s;
@@ -1235,13 +1236,13 @@ ul.sln-list--dashed li,
     backface-visibility: hidden;
     opacity: 0;
     font-family: "FontAwesome";
-    font-size: 1.4em;
+    font-size: 1.4rem;
     line-height: 0;
-    line-height: 1.2em;
-    top: .05em;
-    left: .15em;
-    width: 1em;
-    height: 1em;
+    line-height: 1.2rem;
+    top: .25rem;
+    left: .15rem;
+    width: 1rem;
+    height: 1rem;
     text-align: center; }
   .sln-checkbox input + label:hover:after {
     opacity: 1; }
@@ -1300,7 +1301,7 @@ ul.sln-list--dashed li,
     transition: transform 0.5s;
     backface-visibility: hidden;
     border-style: solid;
-    border-width: .2em; }
+    border-width: .2rem; }
   .sln-radiobox input + label:after {
     width: 18px;
     height: 18px;
@@ -1326,7 +1327,7 @@ ul.sln-list--dashed li,
     opacity: 0; }
 
 #sln-salon .sln-input .sln-input--addon {
-  padding: .5em .8em;
+  padding: .36rem .8rem;
   border-radius: 0;
   border: 0;
   font-weight: bold;
@@ -1393,9 +1394,13 @@ ul.sln-list--dashed li,
 #sln-salon .sln-btn.sln-btn--noheight {
   display: inline-block;
   position: relative;
+  top: auto;
   top: initial;
+  right: auto;
   right: initial;
+  bottom: auto;
   bottom: initial;
+  left: auto;
   left: initial;
   padding: 1em .5em;
   text-transform: uppercase; }
@@ -1407,9 +1412,13 @@ ul.sln-list--dashed li,
 #sln-salon .sln-btn.sln-btn--noheight a {
   display: inline-block;
   position: relative;
+  top: auto;
   top: initial;
+  right: auto;
   right: initial;
+  bottom: auto;
   bottom: initial;
+  left: auto;
   left: initial;
   padding: 1em .5em;
   text-transform: uppercase; }
@@ -1488,11 +1497,11 @@ ul.sln-list--dashed li,
     bottom: 0;
     text-align: center;
     font-family: "FontAwesome";
-    font-size: 1em;
+    font-size: 1rem;
     line-height: 0;
     font-style: normal;
     font-weight: normal;
-    line-height: 4em;
+    line-height: 4rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-transition: background-color 200ms;
@@ -1504,28 +1513,28 @@ ul.sln-list--dashed li,
     padding-right: 2.6em; }
     .sln-btn--icon.sln-btn--big:after {
       font-family: "FontAwesome";
-      font-size: 1.2em;
+      font-size: 1.2rem;
       line-height: 0;
-      padding: 0 1em;
-      line-height: 3.4em; }
+      padding: 0 1rem;
+      line-height: 3.4rem; }
   .sln-btn--icon.sln-btn--medium {
     padding-right: 1em;
     padding-left: 2em; }
     .sln-btn--icon.sln-btn--medium:after {
       font-family: "FontAwesome";
-      font-size: 1em;
+      font-size: 1rem;
       line-height: 0;
-      padding: 0 .5em;
-      line-height: 3.6em; }
+      padding: 0 .5rem;
+      line-height: 3.2rem; }
   .sln-btn--icon.sln-btn--noheight {
     padding-right: 1em;
     padding-left: 2em; }
     .sln-btn--icon.sln-btn--noheight:after {
       font-family: "FontAwesome";
-      font-size: 1em;
+      font-size: 1rem;
       line-height: 0;
-      padding: 0 .5em;
-      line-height: 3.6em; }
+      padding: 0 .5rem;
+      line-height: 3.6rem; }
   .sln-btn--icon.sln-btn--icon--left {
     text-align: right; }
     .sln-btn--icon.sln-btn--icon--left.sln-btn--fullwidth {
@@ -1536,6 +1545,7 @@ ul.sln-list--dashed li,
       text-align: right; }
     .sln-btn--icon.sln-btn--icon--left:after {
       top: 0;
+      right: auto;
       right: initial;
       bottom: 0;
       left: 0; }
@@ -1555,12 +1565,12 @@ ul.sln-list--dashed li,
   .sln-alert:after,
   #sln-salon .alert:after {
     font-family: "FontAwesome";
-    font-size: 2em;
+    font-size: 2rem;
     line-height: 0;
     display: inline-block;
     content: "\f05a";
     position: absolute;
-    top: .6em;
+    top: .6rem;
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(0);
     -ms-transform: translateX(-50%) translateY(0);
@@ -1586,13 +1596,13 @@ ul.sln-list--dashed li,
       .sln-alert:after,
       #sln-salon .alert:after {
         font-family: "FontAwesome";
-        font-size: 2em;
+        font-size: 2rem;
         line-height: 0;
         display: inline-block;
         content: "\f05a";
         position: absolute;
         top: 50%;
-        left: .4em;
+        left: .4rem;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
@@ -1603,8 +1613,8 @@ ul.sln-list--dashed li,
   @media only screen and (min-width: 768px) {
     .sln-alert.sln-alert--topicon:after,
     #sln-salon .alert.sln-alert--topicon:after {
-      top: .8em;
-      left: .4em; } }
+      top: .8rem;
+      left: .4rem; } }
 
 #sln-salon .sln-alert p:only-of-type, #sln-salon .sln-alert p:last-of-type {
   margin-bottom: 0; }
@@ -1614,23 +1624,28 @@ ul.sln-list--dashed li,
   display: inline-block;
   content: "";
   position: absolute;
-  top: .8em;
+  top: .8rem;
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(0);
   -ms-transform: translateX(-50%) translateY(0);
   transform: translateX(-50%) translateY(0);
+  font-size: 1.4rem;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   border-radius: 50%;
-  width: 1.1em;
-  height: 1.1em; }
+  width: 1.1rem;
+  height: 1.1rem; }
+  @media only screen and (min-width: 992px) {
+    .sln-alert--warning:before,
+    #sln-salon .alert-warning:before {
+      font-size: 1.6rem; } }
 
 @media only screen and (min-width: 768px) {
   .sln-alert--warning:before,
   #sln-salon .alert-warning:before {
     top: 50%;
-    left: .6em;
+    left: .5rem;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%); } }
@@ -1638,20 +1653,20 @@ ul.sln-list--dashed li,
 @media only screen and (min-width: 992px) {
   .sln-alert--warning:before,
   #sln-salon .alert-warning:before {
-    width: .9em;
-    height: .9em; } }
+    width: 1.5rem;
+    height: 1.5rem; } }
 
 @media only screen and (min-width: 768px) {
   .sln-alert--topicon.sln-alert--warning:before,
   #sln-salon .sln-alert--topicon.alert-warning:before {
-    top: 1.2em;
-    left: .65em; } }
+    top: 1.2rem;
+    left: .65rem; } }
 
 @media only screen and (min-width: 992px) {
   .sln-alert--topicon.sln-alert--warning:before,
   #sln-salon .sln-alert--topicon.alert-warning:before {
-    top: 1em;
-    left: .6em; } }
+    top: 1rem;
+    left: .6rem; } }
 
 .sln-alert.sln-alert-medium {
   display: block;
@@ -1660,7 +1675,7 @@ ul.sln-list--dashed li,
   font-weight: bold;
   text-align: left; }
   .sln-alert.sln-alert-medium:after {
-    left: .6em; }
+    left: .6rem; }
 
 .sln-alert--problem:after,
 #sln-salon .alert-danger:after {
@@ -1670,12 +1685,15 @@ ul.sln-list--dashed li,
 #sln-salon .alert-warning:after {
   content: "\f06a"; }
 
-.sln-alert.sln-alert--wait:after,
-.sln-alert--wait:after {
-  content: "\f1ce";
-  font-size: 1.9em;
-  -webkit-animation: wait 2s infinite linear;
-  animation: wait 2s infinite linear; }
+.sln-alert.sln-alert--wait,
+.sln-alert--wait {
+  font-size: 1em; }
+  .sln-alert.sln-alert--wait:after,
+  .sln-alert--wait:after {
+    content: "\f1ce";
+    font-size: 1.9rem;
+    -webkit-animation: wait 2s infinite linear;
+    animation: wait 2s infinite linear; }
 
 @-webkit-keyframes wait {
   0% {
@@ -1843,6 +1861,7 @@ ul.sln-list--dashed li,
       background-color: #ff000b; }
   #sln-salon-my-account .btn .glyphicon {
     opacity: 1       !important;
+    position: auto !important;
     position: initial !important;
     top: 1px     !important;
     color: inherit !important;
@@ -1875,6 +1894,7 @@ ul.sln-list--dashed li,
   #sln-salon-my-account .rating img {
     vertical-align: text-bottom; }
   #sln-salon-my-account .rating i {
+    vertical-align: auto;
     vertical-align: initial;
     font-size: 11px;
     color: red; }
@@ -1915,6 +1935,7 @@ ul.sln-list--dashed li,
     border: solid 1px #ddd; }
   #sln-salon-my-account.mobile-version td:nth-child(2),
   #sln-salon-my-account.mobile-version td:last-child {
+    max-width: auto !important;
     max-width: initial !important;
     width: 100% !important; }
   #sln-salon-my-account.mobile-version td:before {
@@ -1986,6 +2007,7 @@ ul.sln-list--dashed li,
     border-radius: 0 !important;
     padding: 8px 24px !important;
     font-variant: normal !important;
+    text-transform: auto !important;
     text-transform: initial !important;
     font-size: 18px; }
     #sln-salon #sln-salon-my-account .modal-body button.btn-primary {
@@ -2005,6 +2027,7 @@ ul.sln-list--dashed li,
     border: none;
     position: relative;
     color: #fff;
+    opacity: auto;
     opacity: initial;
     text-shadow: none;
     margin: 10px 20px 0 0; }
@@ -2105,6 +2128,7 @@ h1[class^="col-"], h2[class^="col-"], h3[class^="col-"], h4[class^="col-"], h5[c
   clear: none;
   margin-top: 0;
   margin-bottom: 0;
+  word-wrap: auto;
   word-wrap: initial; }
 
 .sln-steps {
@@ -2434,6 +2458,9 @@ ul.sln-list--dashed,
 
 .editable .text {
   padding: 5px 0 5px 5px; }
+
+.editable {
+  border: 1px solid transparent; }
 
 .editable.focus,
 .editable:hover {

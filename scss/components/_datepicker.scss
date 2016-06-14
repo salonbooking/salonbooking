@@ -230,6 +230,7 @@
 .datetimepicker.sln-datetimepicker table tr td span.month,
 .datetimepicker.sln-datetimepicker table tr td span.year {
   width: 25%;
+  height: auto;
   height: initial;
   margin: 0;
   line-height: 3em;
@@ -299,11 +300,12 @@
   margin-bottom: 2em;
   position: relative;
   cursor: pointer;
+  font-size: 1em;
   &:after {
-    @include font-icon(1.6em);
+    @include font-icon(1.6rem);
     display: inline-block;
     @extend %absolute-vertical-centering;
-    right: .4em;
+    right: .4rem;
     @extend %sln-textsize--bigger;
     @extend %text-color--contrast;
     font-style: normal;

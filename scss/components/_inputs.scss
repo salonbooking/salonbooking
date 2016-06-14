@@ -95,8 +95,8 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			width: 1.8em;
-			height: 1.76em;
+			width: 1.8rem;
+			height: 1.76rem;
 			//border-radius: rem(4);
 		}
 		&:before {
@@ -114,12 +114,12 @@
 			transition: all 0.15s;
 			backface-visibility: hidden;
 			opacity: 0;
-			@include font-icon(1.4em);
-			line-height: 1.2em;
-			top: .05em;
-			left: .15em;
-			width: 1em;
-			height: 1em;
+			@include font-icon(1.4rem);
+			line-height: 1.2rem;
+			top: .25rem;
+			left: .15rem;
+			width: 1rem;
+			height: 1rem;
 			text-align: center;
 		}
 		&:hover:before {
@@ -202,7 +202,7 @@
 			transition: transform 0.5s;
 			backface-visibility: hidden;
 			border-style: solid;
-			border-width: .2em;
+			border-width: .2rem;
 			@extend %bd-color--emphasis;
 			@extend %bgc-color--main;
 		}
@@ -248,7 +248,7 @@
 // UTILITIES
 #sln-salon .sln-input {
 	.sln-input--addon {
-		padding: .5em .8em;
+		padding: .36rem .8rem;
 		border-radius: 0;
 		border: 0;
 		@extend %sln-textsize--base;

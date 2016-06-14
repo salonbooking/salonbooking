@@ -97,21 +97,21 @@ gulp.task('mini', function() {
 
 gulp.task( 'watch', function() {
   livereload.listen();
-  gulp.watch( './less/salon.less', [ 'less' ] );
-  gulp.watch( './less/admin.less', [ 'adm' ] );
+  //gulp.watch( './less/salon.less', [ 'less' ] );
+  //gulp.watch( './less/admin.less', [ 'adm' ] );
   gulp.watch( './scss/**/*.scss', [ 'sass' ] );
-  gulp.watch( './css/admin.css' ).on( 'change', function( file ) {
-    livereload.changed( file );
-  } );
-  gulp.watch( './**/*.js' ).on( 'change', function( file ) {
-    livereload.changed( file );
-  } );
-  gulp.watch( './**/*.php' ).on( 'change', function( file ) {
-    livereload.changed( file );
-  } );
-  gulp.watch( './**/*.html' ).on( 'change', function( file ) {
-    livereload.changed( file );
-  } );
+  //gulp.watch( './css/admin.css' ).on( 'change', function( file ) {
+  //  livereload.changed( file );
+  //} );
+ //gulp.watch( './**/*.js' ).on( 'change', function( file ) {
+ //  livereload.changed( file );
+ //} );
+ //gulp.watch( './**/*.php' ).on( 'change', function( file ) {
+ //  livereload.changed( file );
+ //} );
+ //gulp.watch( './**/*.html' ).on( 'change', function( file ) {
+ //  livereload.changed( file );
+ //} );
 } );
 // create a default task and just log a message
 gulp.task( 'default', [ 'sass', 'less', 'watch', 'boot', 'sbs' ], function() {

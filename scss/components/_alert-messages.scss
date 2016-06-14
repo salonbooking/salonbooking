@@ -11,11 +11,11 @@
   //@extend %bgc-color--white;
   border-radius: 0;
   &:after {
-    @include font-icon(2em);
+    @include font-icon(2rem);
     display: inline-block;
     content: "\f05a";
     position: absolute;
-    top: .6em;
+    top: .6rem;
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(0);
     -ms-transform: translateX(-50%) translateY(0);
@@ -43,12 +43,12 @@
     padding: .6em 1.6em .6em 3em;
     text-align: left;
     &:after {
-      @include font-icon(2em);
+      @include font-icon(2rem);
       display: inline-block;
       content: "\f05a";
       position: absolute;
       top: 50%;
-      left: .4em;
+      left: .4rem;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
@@ -61,8 +61,8 @@
   &.sln-alert--topicon {
     @include bp(tablet) {
       &:after {
-        top: .8em;
-        left: .4em;
+        top: .8rem;
+        left: .4rem;
       }
     }
   }
@@ -76,43 +76,44 @@
     display: inline-block;
     content: "";
     position: absolute;
-    top: .8em;
+    top: .8rem;
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(0);
     -ms-transform: translateX(-50%) translateY(0);
     transform: translateX(-50%) translateY(0);
-    @extend %sln-textsize--bigger;
+    font-size: 1.4rem;
+    @include bp(desktop) {font-size: 1.6rem;}
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%;
     @extend %bgc-color--contrast;
-    width: 1.1em;
-    height: 1.1em;
+    width: 1.1rem;
+    height: 1.1rem;
   }
   @include bp(tablet) {
     &:before {
       top: 50%;
-      left: .6em;
+      left: .5rem;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
     }
   }
   @include bp(desktop) {
-    &:before {width: .9em; height: .9em;}
+    &:before {width: 1.5rem; height: 1.5rem;}
   }
   &.sln-alert--topicon {
     @include bp(tablet) {
       &:before {
-        top: 1.2em;
-        left: .65em;
+        top: 1.2rem;
+        left: .65rem;
       }
     }
     @include bp(desktop) {
       &:before {
-        top: 1em;
-        left: .6em;
+        top: 1rem;
+        left: .6rem;
       }
     }
   }
@@ -125,7 +126,7 @@
   font-weight: bold;
   text-align: left;
   &:after {
-    left: .6em;
+    left: .6rem;
   }
 }
 
@@ -148,10 +149,11 @@
 }
 .sln-alert.sln-alert--wait,
 .sln-alert--wait {
+  font-size: 1em;
   &:after {
     //top: initial;
     content: "\f1ce";
-    font-size: 1.9em;
+    font-size: 1.9rem;
     @extend %text-color--emphasis;
     -webkit-animation: wait 2s infinite linear;
     animation: wait 2s infinite linear;
