@@ -592,7 +592,7 @@ class SLN_GoogleScope {
      * @return string
      */
     public static function date3339($timestamp = 0, $offset = 0) {
-        $timezone = get_option('timezone_string');
+        $timezone = SLN_DateTime::getWpTimezoneString();
         $date = new DateTime(date('Y-m-d H:i:s', $timestamp), new DateTimeZone($timezone));
         return $date->format(DateTime::RFC3339);
 /*
