@@ -41,9 +41,13 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
             return $intervalsArray;
         }
 
-        $date = reset($intervalsArray['dates']);
-        $tmpDate = new SLN_DateTime($date);
+        $suggestedDate = $intervalsArray['suggestedYear'].'-'.$intervalsArray['suggestedMonth'].'-'.$intervalsArray['suggestedDay'];
+        if (array_search($suggestedDate, $intervalsArray['dates']) === false) {
+            $suggestedDate = reset($intervalsArray['dates']);
+        }
+        $tmpDate = new SLN_DateTime($suggestedDate);
 
+        $intervalsArray['suggestedDate']  = $plugin->format()->date($tmpDate);
         $intervalsArray['suggestedYear']  = $tmpDate->format('Y');
         $intervalsArray['suggestedMonth'] = $tmpDate->format('m');
         $intervalsArray['suggestedDay']   = $tmpDate->format('d');
@@ -52,7 +56,7 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
         $intervalsArray['times'] = $ah->getTimes($tmpDate);
 
         foreach ($intervalsArray['times'] as $k => $t) {
-            $tmpDateTime = new SLN_DateTime("$date $t");
+            $tmpDateTime = new SLN_DateTime("$suggestedDate $t");
             $ah->setDate($tmpDateTime);
             $errors = $this->checkDateTimeServicesAndAttendants($bservices, $tmpDateTime);
             if (!empty($errors)) {
@@ -60,7 +64,7 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
             }
         }
 
-        if (!isset($intervalsArray['times'][$intervalsArray['suggestedTime']]) && !empty($intervalsArray['times'])) {
+        if (!isset($intervalsArray['times'][$intervalsArray['suggestedTime']])) {
             $intervalsArray['suggestedTime'] = reset($intervalsArray['times']);
         }
 
