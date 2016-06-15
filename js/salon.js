@@ -264,7 +264,7 @@ function sln_serviceTotal($) {
                     $('.sln-alert').remove();
                     $.each(data.services, function(index, value) {
                         var checkbox = $('#sln_services_' + index);
-                        var errorsArea = $('#sln_services_' + index+ ' .errors-area');
+                        var errorsArea = $('#sln_services_' + index).closest('.sln-service').find('.errors-area');
                         if (value.status == -1) {
                             var alertBox = $('<div class="sln-alert sln-alert-medium sln-alert--problem"><p>' + value.error + '</p></div>');
                             checkbox.attr('checked', false).attr('disabled', 'disabled').change();
