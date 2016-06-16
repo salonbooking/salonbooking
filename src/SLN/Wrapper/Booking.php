@@ -296,7 +296,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 			return new SLN_DateTime($this->getDate()->format('Y-m-d').' '.$this->getTime()->format('H:i'));
     }
 
-    function getEndsAt( $timezone )
+    function getEndsAt( $timezone='' )
     {
         $start = $this->getStartsAt( $timezone );
         //SLN_Plugin::addLog($this->getId().' duration '.$this->getDuration()->format('H:i'));
