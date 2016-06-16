@@ -288,14 +288,17 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return $this->getMeta('transaction_id');
     }
 
-    function getStartsAt()
+    function getStartsAt( $timezone='' )
     {
-        return new SLN_DateTime($this->getDate()->format('Y-m-d').' '.$this->getTime()->format('H:i'));
+		if($timezone)
+			return new SLN_DateTime($this->getDate()->format('Y-m-d').' '.$this->getTime()->format('H:i'), new DateTimeZone($timezone) );
+		else	
+			return new SLN_DateTime($this->getDate()->format('Y-m-d').' '.$this->getTime()->format('H:i'));
     }
 
-    function getEndsAt()
+    function getEndsAt( $timezone )
     {
-        $start = $this->getStartsAt();
+        $start = $this->getStartsAt( $timezone );
         //SLN_Plugin::addLog($this->getId().' duration '.$this->getDuration()->format('H:i'));
         $minutes = SLN_Func::getMinutesFromDuration($this->getDuration());
         //SLN_Plugin::addLog($this->getId().' duration '.$minutes.' minutes');
