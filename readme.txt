@@ -275,6 +275,7 @@ http://salon.wordpresschef.it
 * Bug fixed on booking rules
 * Bug fixed with Google Calendar sync.
 * Bug fixed with Holidays rules for assistants
+* Restored alert message when select a service that overlaps the closing time 
 
 
 
