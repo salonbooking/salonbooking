@@ -117,11 +117,24 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
         if (!$this->getPlugin()->getSettings()->get('google_calendar_enabled')) {
             unset($this->fields['google_calendar']);
         }
+        $_POST['_sln_attendant_holidays'] = $this->processHolidays($_POST['_sln_attendant_holidays']);
         if(isset($_POST['_sln_attendant_services'])) {
             foreach($_POST['_sln_attendant_services'] as $k => $v){
                 $_POST['_sln_attendant_services'][$k] = str_replace('sln_attendant_services_','', $v);
             }
         }
         parent::save_post($post_id, $post);
+    }
+
+    public function processHolidays($data = null)
+    {
+        if(!$data) return $data;
+        foreach ($data as &$holidayData) {
+            $holidayData['from_date'] = SLN_Func::evalPickedDate($holidayData['from_date']);
+            $holidayData['to_date'] = SLN_Func::evalPickedDate($holidayData['to_date']);
+            $holidayData['from_time'] = date('H:i', strtotime($holidayData['from_time']));
+            $holidayData['to_time'] = date('H:i', strtotime($holidayData['to_time']));
+        }
+        return $data;
     }
 }
