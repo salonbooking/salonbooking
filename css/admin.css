@@ -84,7 +84,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
     opacity: 1;
     transform: scale(1); } }
 
-.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-checkbutton input + label, #sln-salon--admin .col-time, .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
+.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-checkbutton input + label, .sln-colorpicker .sln-colorpicker-addon i, #sln-salon--admin .col-time, .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
 #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
   font-family: "Open sans", serif;
   font-size: 0.83333rem;
@@ -92,7 +92,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   line-height: 1.41667rem;
   font-weight: normal; }
   @media only screen and (min-width: 768px) {
-    .sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-checkbutton input + label, #sln-salon--admin .col-time, .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
+    .sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-checkbutton input + label, .sln-colorpicker .sln-colorpicker-addon i, #sln-salon--admin .col-time, .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
     #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
       font-size: 1rem; } }
 
@@ -148,6 +148,12 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   font-family: "FontAwesome";
   font-size: 0.91667rem; }
 
+.sln-colors-sample h1 {
+  font-size: 1.4em; }
+  @media only screen and (min-width: 992px) {
+    .sln-colors-sample h1 {
+      font-size: 1.6em; } }
+
 @font-face {
   font-family: 'FontAwesome';
   src: url("//netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts/fontawesome-webfont.eot?v=4.4.0");
@@ -157,6 +163,27 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
 
 .wrap h2.nav-tab-wrapper {
   font-size: 1em; }
+
+.sln-colors-sample button, .sln-colors-sample button:hover, .sln-colors-sample button:focus, .sln-colors-sample button:active {
+  color: white; }
+
+.sln-colors-sample input, .sln-colors-sample p {
+  color: black; }
+
+.sln-colors-sample h1, .sln-colors-sample label {
+  color: #0277BD; }
+
+.sln-colors-sample .wrapper {
+  background-color: white; }
+
+.sln-colors-sample button {
+  background-color: #0277BD; }
+
+.sln-colors-sample button:hover, .sln-colors-sample button:focus, .sln-colors-sample button:active {
+  background-color: #0091EA; }
+
+.sln-colors-sample input {
+  border-color: #0277BD; }
 
 /*!
  * Datetimepicker for Bootstrap
@@ -1409,6 +1436,102 @@ body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input
 .sln-input-bigborder label {
   width: 100%; }
 
+.sln-colorpicker .sln-colorpicker--subwrapper {
+  border: 0.16667rem solid #c7dff3; }
+
+.sln-colorpicker .sln-colorpicker-addon {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 0;
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+  background-image: -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+  background-image: -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+  background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px; }
+  .sln-colorpicker .sln-colorpicker-addon i {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    background-color: #ccc;
+    padding: 1rem 0.66667rem;
+    text-indent: -9999px; }
+
+.sln-colorpicker.sln-input--simple input, .sln-colorpicker#titlewrap-- input, #postexcerpt .sln-colorpicker.inside input {
+  border: none;
+  margin: 0;
+  margin-bottom: -1px; }
+
+.sln-colorpicker-widget .colorpicker-saturation {
+  width: 160px;
+  height: 160px; }
+
+.sln-colorpicker-widget .colorpicker-hue,
+.sln-colorpicker-widget .colorpicker-alpha {
+  width: 24px;
+  height: 160px; }
+
+.sln-colorpicker-widget .colorpicker-color,
+.sln-colorpicker-widget .colorpicker-color div,
+.sln-colorpicker-widget .colorpicker-selectors,
+.sln-colorpicker-widget .colorpicker-selectors i {
+  height: 24px; }
+
+.sln-colorpicker-widget .colorpicker-selectors i {
+  width: 24px; }
+
+.sln-colors-sample {
+  font-size: 1rem;
+  padding: 2rem;
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+  background-image: -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+  background-image: -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+  background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px; }
+  .sln-colors-sample .wrapper {
+    padding: 2rem; }
+  .sln-colors-sample h1 {
+    font-weight: bold;
+    margin-bottom: 2rem; }
+  .sln-colors-sample label {
+    font-size: 1rem;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    opacity: .75; }
+  .sln-colors-sample input {
+    width: 100%;
+    max-width: 240px;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: .5em .8em;
+    line-height: 1.8em;
+    height: auto;
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: 1rem; }
+  .sln-colors-sample button {
+    display: inline-block;
+    padding: 0 1rem !important;
+    line-height: 3.6rem;
+    font-weight: normal;
+    height: 3.6rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    border: none;
+    cursor: pointer; }
+  .sln-colors-sample p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    max-width: 360px; }
+
 /* TIME RANGE */
 #sln-salon--admin .ui-slider-horizontal, .sln-calendar--wrapper .ui-slider-horizontal {
   height: 8px;
@@ -2482,8 +2605,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-tab-nav li a,
   .sln-bootstrap #sln_service-details .handlediv.button-link .sln-btn--borderonly.toggle-indicator:after, #sln_service-details .handlediv.button-link
   .sln-bootstrap .sln-btn--borderonly.toggle-indicator:after {
     color: #003553; }
-  .sln-btn--borderonly.sln-btn--active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--active.nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active,
-  h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-admin-nav a.nav-tab.current, .sln-admin-nav .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab.current, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-tab-nav li.active a.nav-tab, .sln-tab-nav li.active .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab, .sln-admin-nav a.sln-btn--borderonly.current, .sln-admin-nav .sln-tab-nav li a.current, .sln-tab-nav li .sln-admin-nav a.current, .sln-tab-nav li a.sln-btn--active, .sln-tab-nav li.active a,
+  .sln-btn--borderonly.sln-btn--active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--active.nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active, h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-admin-nav a.nav-tab.current, .sln-admin-nav .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab.current, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-tab-nav li.active a.nav-tab, .sln-tab-nav li.active .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab, .sln-admin-nav a.sln-btn--borderonly.current, .sln-admin-nav .sln-tab-nav li a.current, .sln-tab-nav li .sln-admin-nav a.current, .sln-tab-nav li a.sln-btn--active, .sln-tab-nav li.active a,
   .sln-bootstrap .sln-btn--borderonly.sln-btn--active,
   .sln-bootstrap .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--active.nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper
   .sln-bootstrap .sln-btn--active.nav-tab,
@@ -3055,6 +3177,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-tab-nav li a,
   #sln_attendant-details .handlediv.button-link .sln-btn--icon--left.toggle-indicator:after,
   #postexcerpt .handlediv.button-link .sln-btn--icon--left.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-btn--icon--left.toggle-indicator:after {
     top: 0;
+    right: auto;
     right: initial;
     bottom: 0;
     left: 0; }
@@ -3242,48 +3365,6 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
       .sln-tab-nav li:not(.active):not(:last-of-type) a {
         border-right-color: transparent; } }
 
-#sln-graphs-filter label {
-  vertical-align: inherit
-}
-
-#sln-graphs-filter .graph-option-section {
-  float: left;
-  line-height: 2.5em;
-  padding-right: 5px
-}
-
-#sln-date-range-options,#sln-graphs-date-options {
-  float: left
-}
-
-#sln-date-range-options,#sln-graphs-date-options {
-  float: left
-}
-
-#sln-date-range-options span {
-  float: left;
-  margin-right: 6px;
-  height: 24px;
-  line-height: 24px
-}
-
-#sln-dashboard-widgets-wrap .postbox h3 {
-  cursor: default
-}
-
-.sln-graph .y1Axis {
-  color: #edc240 !important
-}
-
-.sln-graph .y2Axis {
-  color: #afd8f8 !important
-}
-
-p.sln_graph_totals, p.sln_graph_notes {
-  font-size: 0.8rem;
-  color: #555;
-}
-
 .sln-toolbox {
   background-color: rgba(0, 53, 83, 0.9);
   max-width: 100%;
@@ -3347,6 +3428,7 @@ p.sln_graph_totals, p.sln_graph_notes {
     .sln-toolbox {
       float: none;
       position: relative;
+      bottom: auto;
       bottom: initial;
       margin-top: 0.83333rem;
       max-height: 2.45833rem;
@@ -3874,9 +3956,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
   padding-bottom: 2em; }
   #sln_service-details em, #sln_attendant-details em {
     color: #aaa; }
-  #sln_service-details s
-h3:nth-child(3), #sln_attendant-details s
-h3:nth-child(3) {
+  #sln_service-details s h3:nth-child(3), #sln_attendant-details s h3:nth-child(3) {
     padding-left: 0; }
   #sln_service-details .sln-service-price-time input[type='text'], #sln_attendant-details .sln-service-price-time input[type='text'] {
     height: auto; }
@@ -4051,7 +4131,9 @@ body {
     #sln-salon--admin .sln-tab, .sln-calendar--wrapper .sln-tab {
       margin-right: 14.16667rem; } }
   #sln-salon--admin .sln-tab .form-group label input, .sln-calendar--wrapper .sln-tab .form-group label input {
+    display: auto;
     display: initial;
+    margin-top: auto;
     margin-top: initial; }
 
 #sln-salon--admin .sln-message, .sln-calendar--wrapper .sln-message {
@@ -4082,6 +4164,7 @@ body {
     #sln-salon--admin .sln-admin-sidebar, .sln-calendar--wrapper .sln-admin-sidebar {
       width: 14.16667rem;
       right: 0.41667rem;
+      bottom: auto;
       bottom: initial;
       background-color: rgba(0, 53, 83, 0); }
       #sln-salon--admin .sln-admin-sidebar .sln-update-settings, .sln-calendar--wrapper .sln-admin-sidebar .sln-update-settings {
@@ -4411,6 +4494,7 @@ body {
   @media only screen and (min-width: 768px) {
     .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box span[data-cal-date],
     .sln-calendar--wrapper .cal-year-box span[data-cal-date] {
+      width: auto;
       width: initial;
       height: 1.83333rem;
       line-height: 1.66667rem;
@@ -4462,6 +4546,7 @@ body {
       text-align: center; }
   .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick,
   .sln-calendar--wrapper #cal-day-tick {
+    top: auto;
     top: initial;
     bottom: 0.41667rem; }
     .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick:after,

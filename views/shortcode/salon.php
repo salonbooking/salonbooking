@@ -67,4 +67,4 @@ $class = SLN_Enum_ShortcodeStyle::getClass($style);
 <?php endforeach ?>
 </div>
 */ ?>
-<div class="sln-notifications--active" id="sln-notifications"><div class="sln-loader-wrapper"><div class="sln-loader">Loading...</div></div></div>
+<div id="sln-notifications"></div>

@@ -60,6 +60,22 @@ class SLN_Action_InitScripts
             );
         }
         wp_enqueue_script('salon', SLN_PLUGIN_URL.'/js/salon.js', array('jquery'), self::ASSETS_VERSION, true);
+        // COLOR PICKER
+        wp_enqueue_script(
+            'salon-colorpicker-js',
+            SLN_PLUGIN_URL.'/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js',
+            array('jquery'),
+            self::ASSETS_VERSION,
+            true
+        );
+        wp_enqueue_style(
+            'salon-colorpicker-css',
+            SLN_PLUGIN_URL.'/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css',
+            array(),
+            self::ASSETS_VERSION,
+            'all'
+        );
+        // COLOR PICKER // END
         wp_enqueue_script(
             'salon-bootstrap',
             SLN_PLUGIN_URL.'/js/bootstrap.min.js',

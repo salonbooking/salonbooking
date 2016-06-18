@@ -99,7 +99,7 @@ gulp.task( 'watch', function() {
   livereload.listen();
   //gulp.watch( './less/salon.less', [ 'less' ] );
   //gulp.watch( './less/admin.less', [ 'adm' ] );
-  gulp.watch( './scss/**/*.scss', [ 'sass' ] );
+  gulp.watch( './scss/**/*.scss', [ 'adminsass' ] );
   //gulp.watch( './css/admin.css' ).on( 'change', function( file ) {
   //  livereload.changed( file );
   //} );
@@ -114,6 +114,6 @@ gulp.task( 'watch', function() {
  //} );
 } );
 // create a default task and just log a message
-gulp.task( 'default', [ 'sass', 'less', 'watch', 'boot', 'sbs' ], function() {
+gulp.task( 'default', [ 'sass', 'adminsass', 'watch', 'boot', 'sbs' ], function() {
 
 } );

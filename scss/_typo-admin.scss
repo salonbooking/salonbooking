@@ -55,7 +55,10 @@ $fontfamily--main:"Open sans", serif;
   font-family: "FontAwesome";
   font-size: rem(22px);
 }
-
+%sln-textsize--bigger {
+  font-size: 1.4em;
+  @include bp(desktop) {font-size: 1.6em;}
+}
 @mixin font-icon($fontSize: null) {
   font-family: "FontAwesome";
   @if ($fontSize) {

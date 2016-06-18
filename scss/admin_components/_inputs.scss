@@ -513,6 +513,137 @@
 }
 
 
+
+// COLORPICKER
+.sln-colorpicker {
+	.sln-colorpicker--subwrapper {
+		border: rem(4px) solid $cl_main--light;
+	}
+	.sln-colorpicker-addon {
+		display: block;
+		width: 100%;
+		border: none;
+		padding: 0;
+		@include sqared_bg();
+		i {
+			display: block;
+			width: 100%;
+			height: auto;
+			padding: 10px;
+			background-color: #ccc;
+			@extend %font-bigger;
+			padding: rem(24px) rem(16px);
+			text-indent: -9999px;
+		}
+	}
+	&.sln-input--simple {
+		input {
+			border: none;
+			margin: 0;
+			margin-bottom: -1px;
+			//margin-top: rem(10px);
+			//border-color: transparent;
+			//background-color: transparent;
+			//&:hover{
+			//	border-color: $cl_main--light;
+			//	background-color: $cl_main--light;
+			//}
+			//&:focus {
+			//	border-color: $cl_main--emphasis;
+			//	background-color: $cl_main;
+			//}
+		}
+	}
+}
+
+.sln-colorpicker-widget {
+	.colorpicker-saturation {
+        width: 160px;
+        height: 160px;
+    }
+    .colorpicker-hue,
+    .colorpicker-alpha {
+        width: 24px;
+        height: 160px;
+    }
+    .colorpicker-color,
+    .colorpicker-color div,
+    .colorpicker-selectors,
+    .colorpicker-selectors i {
+        height: 24px;
+    }
+    .colorpicker-selectors i {
+        width: 24px;
+    }
+}
+
+.sln-colors-sample {
+	font-size: 1rem;
+	padding: 2rem;
+	@include sqared_bg();
+	.wrapper {
+		@extend %bgc-color--main;
+		padding: 2rem;
+	}
+	h1 {
+		font-weight: bold;
+		@extend %sln-textsize--bigger;
+		@extend %text-color--emphasis;
+		margin-bottom: 2rem;
+	}
+	label {
+		font-size: 1rem;
+		display: inline-block;
+		max-width: 100%;
+		margin-bottom: 5px;
+		font-weight: bold;
+		@extend %text-color--emphasis;
+		// color > ridurre alpha in proporzione 1/.75
+		opacity: .75;
+	}
+	input {
+		width: 100%;
+		max-width: 240px;
+	    border-radius: 0;
+	    -webkit-box-shadow: none;
+	    box-shadow: none;
+	    padding: .5em .8em;
+	    line-height: 1.8em;
+	    height: auto;
+	    border-width: 1px;
+	    border-style: solid;
+	    @extend %bd-color--emphasis;
+		// coborder-color > ridurre alpha in proporzione 1/.35
+		@extend %text-color--dark;
+		// color > ridurre alpha in proporzione 1/.75
+	    margin-bottom: 1rem;
+	}
+	button {
+		display: inline-block;
+    	padding: 0 1rem !important;
+    	line-height: 3.6rem;
+    	font-weight: normal;
+    	height: 3.6rem;
+    	text-transform: uppercase;
+	    margin-bottom: 1rem;
+	    border: none;
+	    cursor: pointer;
+	    @extend %bgc-color--emphasis;
+	    @extend %text-color--main;
+	    &:hover, &:focus, &:active {
+		    @extend %bgc-color--emphasis--hover;
+		    @extend %text-color--main;
+		}
+	}
+	p {
+		font-size: 1rem;
+		line-height: 1.4rem;
+		@extend %text-color--dark;
+		max-width: 360px;
+	}
+}
+
+// COLORPICKER // END
 /* TIME RANGE */
 #sln-salon--admin, .sln-calendar--wrapper {
  #time-range p {
