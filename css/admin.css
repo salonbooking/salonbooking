@@ -1492,7 +1492,8 @@ body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input
   background-image: -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
   background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
   background-size: 16px 16px;
-  background-position: 0 0, 8px 8px; }
+  background-position: 0 0, 8px 8px;
+  margin-bottom: 4rem; }
   .sln-colors-sample .wrapper {
     padding: 2rem; }
   .sln-colors-sample h1 {

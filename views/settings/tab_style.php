@@ -69,7 +69,7 @@ $curr = $this->settings->getStyleShortcode();
                             <input type="text" value="rgba(68,68,68,1)" class="sln-input sln-input--text  sln-colorpicker--trigger" />
                         </div>
                     </div>
-                    <div class="col-sm-4  col-lg-12 form-group sln-box-maininfo">
+                    <div class="col-sm-6  col-lg-12 form-group sln-box-maininfo">
                         <p class="sln-input-help">Morbi non erat elementum neque lacinia finibus. Sed rutrum viverra tortor. Sed laoreet, quam vestibulum molestie laoreet, dui justo egestas.</p>
                     </div>
                 </div>

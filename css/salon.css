@@ -448,7 +448,7 @@ ul.sln-list--dashed li,
   border-color: rgba(0, 66, 88, 0.3) !important; }
 
 #sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly, .sln-checkbox input + label:before, .sln-radiobox input + label:before {
-  border-color: #0277BD !important; }
+  border-color: #0277BD; }
 
 #sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly:hover, .sln-checkbox input + label:hover:before, .sln-btn--borderonly:hover, .sln-btn--borderonly:focus, .sln-btn--borderonly:active,
 .sln-bootstrap .sln-btn--borderonly:hover,
