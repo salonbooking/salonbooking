@@ -12,9 +12,9 @@ class SLN_Action_Ajax_ResendNotification extends SLN_Action_Ajax_Abstract
                 'mail/summary',
                 compact('booking','to')
             );
-            return ['success' => __('E-mail sent')];
+            return array('success' => __('E-mail sent'));
         }else{
-            return ['error' => __('Please specify an email')];
+            return array('error' => __('Please specify an email'));
         }
  
        return $ret;
