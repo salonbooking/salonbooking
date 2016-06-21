@@ -105,7 +105,27 @@ $values = array(
     }  ?>
     </form>
     <form method="post" action="<?php echo $formAction ?>" role="form">
-        <h2 class="salon-step-title"><?php _e('Checkout as a guest', 'salon-booking-system') ?>, <?php _e('An account will be automatically created', 'salon-booking-system') ?></h2>
+        <div class="row">
+            <div>
+	        <?php if($plugin->getSettings()->get('enabled_guest_checkout')): ?>
+	            <div class="col-xs-2 col-sm-1 sln-checkbox">
+	                <div class="sln-checkbox">
+	                    <?php SLN_Form::fieldCheckbox(
+	                        'sln[no_user_account]',
+	                        $bb->get('no_user_account'),
+	                        array()
+	                    ) ?>
+	                    <label for="<?php echo SLN_Form::makeID('sln[no_user_account]') ?>"></label>
+	                </div>
+	            </div>
+	            <div class="col-md-11">
+	                <label for="<?php echo SLN_Form::makeID('sln[no_user_account]') ?>"><h3><?php _e('checkout as a guest', 'salon-booking-system') ?>, <?php _e('no account will be created', 'salon-booking-system') ?></h3></label>
+	            </div>
+	        <?php else: ?>
+	            <h2 class="salon-step-title"><?php _e('Checkout as a guest', 'salon-booking-system') ?>, <?php _e('An account will be automatically created', 'salon-booking-system') ?></h2>
+	        <?php endif; ?>
+            </div>
+        </div>
     <?php
     if ($size == '900') { ?>
     <div class="row">

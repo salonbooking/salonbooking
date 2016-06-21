@@ -97,6 +97,16 @@ function sln_init($) {
         text.html(self.val());
     });
 
+    $('#sln_no_user_account').on('change', function() {
+        if ($(this).is(':checked')) {
+            $('#sln_password').attr('disabled', 'disabled').parent().css('display', 'none');
+            $('#sln_password_confirm').attr('disabled', 'disabled').parent().css('display', 'none');
+        }
+        else {
+            $('#sln_password').attr('disabled', false).parent().css('display', 'block');
+            $('#sln_password_confirm').attr('disabled', false).parent().css('display', 'block');
+        }
+    }).change();
 }
 function sln_loadStep($, data) {
     var loadingMessage = '<div class="sln-loader-wrapper"><div class="sln-loader">Loading...</div></div>';
