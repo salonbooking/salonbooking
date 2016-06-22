@@ -43,9 +43,13 @@
     display: inline-block;
     position: relative;
     top: initial;
+    top: auto;
     right: initial;
+    right: auto;
     bottom: initial;
+    bottom: auto;
     left: initial;
+    left: auto;
     padding: 1em .5em;
     @extend %sln-textsize--small;
     //line-height: 4em;
@@ -59,9 +63,13 @@
     display: inline-block;
     position: relative;
     top: initial;
+    top: auto;
     right: initial;
+    right: auto;
     bottom: initial;
+    bottom: auto;
     left: initial;
+    left: auto;
     padding: 1em .5em;
     @extend %sln-textsize--base;
     text-transform: uppercase;
@@ -190,6 +198,11 @@
         @include font-icon(1em);
         padding: 0 .5em;
         line-height: 3.6em;
+        @include ie11() {
+          font-size: 16px;
+          padding: 0 9px;
+          line-height: 50px;
+        }
       }
     }
     &.sln-btn--noheight {
@@ -210,6 +223,7 @@
       button {text-align: right;}
       &:after {
         top: 0;
+        right: auto;
         right: initial;
         bottom: 0;
         left: 0;

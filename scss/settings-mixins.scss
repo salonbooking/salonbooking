@@ -56,6 +56,9 @@ $browser-context: 18px;
   }
 }
 
+@mixin ie11() {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {@content;}
+}
 
 
 // MIXINS

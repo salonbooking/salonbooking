@@ -65,6 +65,7 @@
       &:after {
         //@extend %sln-textsize--base;
         @extend %absolute-vertical-centering;
+        bottom: auto;
         bottom: initial;
         content: '\f068';
         left: 12px;

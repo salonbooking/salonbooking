@@ -25,6 +25,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%;
+    @include ie11() {
+      font-size: 18px;
+      left: 16px;
+    }
   }
   a {
     display: inline-block;
@@ -97,10 +101,20 @@
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
+      @include ie11() {
+        left: 16px;
+      }
     }
   }
   @include bp(desktop) {
-    &:before {width: .9em; height: .9em;}
+    &:before {
+      width: .9em;
+      height: .9em;
+      @include ie11() {
+        width: 30px;
+        height: 30px;
+      }
+    }
   }
   &.sln-alert--topicon {
     @include bp(tablet) {
