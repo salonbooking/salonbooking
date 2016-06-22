@@ -302,10 +302,10 @@
   cursor: pointer;
   font-size: 1em;
   &:after {
-    @include font-icon(1.6rem);
+    @include font-icon(1.6em);
     display: inline-block;
     @extend %absolute-vertical-centering;
-    right: .4rem;
+    right: .4em;
     @extend %sln-textsize--bigger;
     @extend %text-color--contrast;
     font-style: normal;
@@ -313,6 +313,10 @@
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%;
     @include transition(color 250ms);
+    @include ie11() {  
+      @include font-icon(24px);
+      right: 10px;
+    }
   }
   &:hover:after {@extend %text-color--emphasis;}
 }

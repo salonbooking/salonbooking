@@ -195,9 +195,14 @@
       padding-right: 1em;
       padding-left: 2em;
       &:after {
-        @include font-icon(1rem);
-        padding: 0 .5rem;
-        line-height: 3.2rem;
+        @include font-icon(1em);
+        padding: 0 .5em;
+        line-height: 3.6em;
+        @include ie11() {
+          font-size: 16px;
+          padding: 0 9px;
+          line-height: 50px;
+        }
       }
     }
     &.sln-btn--noheight {

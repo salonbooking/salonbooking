@@ -1077,10 +1077,10 @@ ul.sln-list--dashed li,
   font-size: 1em; }
   .sln_datepicker:after, .sln_timepicker:after {
     font-family: "FontAwesome";
-    font-size: 1.6rem;
+    font-size: 1.6em;
     line-height: 0;
     display: inline-block;
-    right: .4rem;
+    right: .4em;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1089,6 +1089,12 @@ ul.sln-list--dashed li,
     -moz-transition: color 250ms;
     -o-transition: color 250ms;
     transition: color 250ms; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .sln_datepicker:after, .sln_timepicker:after {
+        font-family: "FontAwesome";
+        font-size: 24px;
+        line-height: 0;
+        right: 10px; } }
 
 #sln-salon.sln-salon--m .sln_datepicker, #sln-salon.sln-salon--m .sln_timepicker {
   margin-bottom: 0; }
@@ -1522,10 +1528,15 @@ ul.sln-list--dashed li,
     padding-left: 2em; }
     .sln-btn--icon.sln-btn--medium:after {
       font-family: "FontAwesome";
-      font-size: 1rem;
+      font-size: 1em;
       line-height: 0;
-      padding: 0 .5rem;
-      line-height: 3.2rem; }
+      padding: 0 .5em;
+      line-height: 3.6em; }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .sln-btn--icon.sln-btn--medium:after {
+          font-size: 16px;
+          padding: 0 9px;
+          line-height: 50px; } }
   .sln-btn--icon.sln-btn--noheight {
     padding-right: 1em;
     padding-left: 2em; }
