@@ -114,7 +114,6 @@
 
     .btn .glyphicon {
       opacity:  1       !important;
-      position: auto;
       position: initial !important;
       top:      1px     !important;
       color:    inherit !important;
@@ -158,7 +157,6 @@
     }
 
     .rating i {
-      vertical-align: auto;
       vertical-align: initial;
       font-size: 11px;
       color: red;
@@ -206,7 +204,6 @@
       }
       td:nth-child(2),
       td:last-child {
-        max-width: auto;
         max-width:  initial !important;
         width:      100% !important;
       }
@@ -301,7 +298,6 @@
 		    border-radius: 0 !important;
 		    padding: 8px 24px !important;
 			font-variant: normal !important;
-      text-transform: auto;
 			text-transform: initial !important;
 			font-size: 18px;
 
@@ -329,7 +325,6 @@
 		    border:        none;
 		    position: relative;
 		    color:         @color-white;
-        opacity: auto;
 			opacity:       initial;
 			text-shadow:   none;
 			margin: 10px 20px 0 0;

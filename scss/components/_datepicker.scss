@@ -230,7 +230,6 @@
 .datetimepicker.sln-datetimepicker table tr td span.month,
 .datetimepicker.sln-datetimepicker table tr td span.year {
   width: 25%;
-  height: auto;
   height: initial;
   margin: 0;
   line-height: 3em;
@@ -300,7 +299,6 @@
   margin-bottom: 2em;
   position: relative;
   cursor: pointer;
-  font-size: 1em;
   &:after {
     @include font-icon(1.6em);
     display: inline-block;
@@ -313,10 +311,6 @@
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%;
     @include transition(color 250ms);
-    @include ie11() {  
-      @include font-icon(24px);
-      right: 10px;
-    }
   }
   &:hover:after {@extend %text-color--emphasis;}
 }

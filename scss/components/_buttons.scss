@@ -42,13 +42,9 @@
   .sln-btn.sln-btn--noheight {
     display: inline-block;
     position: relative;
-    top: auto;
     top: initial;
-    right: auto;
     right: initial;
-    bottom: auto;
     bottom: initial;
-    left: auto;
     left: initial;
     padding: 1em .5em;
     @extend %sln-textsize--small;
@@ -62,13 +58,9 @@
   .sln-btn.sln-btn--noheight a {
     display: inline-block;
     position: relative;
-    top: auto;
     top: initial;
-    right: auto;
     right: initial;
-    bottom: auto;
     bottom: initial;
-    left: auto;
     left: initial;
     padding: 1em .5em;
     @extend %sln-textsize--base;
@@ -174,10 +166,10 @@
       right: 0;
       bottom: 0;
       text-align: center;
-      @include font-icon(1rem);
+      @include font-icon(1em);
       font-style: normal;
       font-weight: normal;
-      line-height: 4rem;
+      line-height: 4em;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       @include transition(background-color 200ms);
@@ -186,9 +178,9 @@
     &.sln-btn--big {
       padding-right: 2.6em;
       &:after {
-        @include font-icon(1.2rem);
-        padding: 0 1rem;
-        line-height: 3.4rem;
+        @include font-icon(1.2em);
+        padding: 0 1em;
+        line-height: 3.4em;
       }
     }
     &.sln-btn--medium {
@@ -198,20 +190,15 @@
         @include font-icon(1em);
         padding: 0 .5em;
         line-height: 3.6em;
-        @include ie11() {
-          font-size: 16px;
-          padding: 0 9px;
-          line-height: 50px;
-        }
       }
     }
     &.sln-btn--noheight {
       padding-right: 1em;
       padding-left: 2em;
       &:after {
-        @include font-icon(1rem);
-        padding: 0 .5rem;
-        line-height: 3.6rem;
+        @include font-icon(1em);
+        padding: 0 .5em;
+        line-height: 3.6em;
       }
     }
     &.sln-btn--icon--left {
@@ -223,7 +210,6 @@
       button {text-align: right;}
       &:after {
         top: 0;
-        right: auto;
         right: initial;
         bottom: 0;
         left: 0;

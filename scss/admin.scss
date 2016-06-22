@@ -459,9 +459,7 @@ body {
         padding: 0 0 rem(80px) 0;
         @include bp(desktop) {margin-right: rem(340px);}
         .form-group label input {
-            display: auto;
             display: initial;
-            margin-top: auto;
             margin-top: initial;
         }
     }
@@ -499,7 +497,6 @@ body {
         @include bp(desktop) {
             width: rem(340px);
             right: rem(10px);
-            bottom: auto;
             bottom: initial;
             background-color: alpha-tones($cl_main, 0);
             .sln-update-settings {
@@ -577,7 +574,6 @@ body {
     }
     .cal-year-box span[data-cal-date] {
         @include bp(tablet) {
-            width: auto;
             width: initial;
             height: rem(44px);
             line-height: rem(40px);
@@ -620,7 +616,6 @@ body {
         }
     }
     #cal-day-tick {
-        top: auto;
         top: initial;
         bottom: rem(10px);
         &:after {
