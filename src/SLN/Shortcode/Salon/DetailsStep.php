@@ -26,27 +26,35 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
             }
         } else {
             $values = $_POST['sln'];
+            $this->bindValues($values);
             if (!is_user_logged_in()) {
                 $this->validate($values);
                 if ($this->getErrors()) {
-                    $this->bindValues($values);
                     return false;
                 }
 
                 if (email_exists($values['email'])) {
                     $this->addError(__('E-mail exists', 'salon-booking-system'));
+                    if ($this->getErrors()) {
+                        return false;
+                    }
                 }
-                if ($values['password'] != $values['password_confirm']) {
-                    $this->addError(__('Passwords are different', 'salon-booking-system'));
-                }
-                if ($this->getErrors()) {
-                    $this->bindValues($values);
-                    return false;
-                }
-                if(!$this->getShortcode()->needSms()) {
-                    $this->successRegistration($values);
-                }else{
+
+                if ($this->getPlugin()->getSettings()->get('enabled_guest_checkout') && isset($values['no_user_account']) && $values['no_user_account']) {
                     $_SESSION['sln_detail_step'] = $values;
+                } else {
+                    if ($values['password'] != $values['password_confirm']) {
+                        $this->addError(__('Passwords are different', 'salon-booking-system'));
+                        if ($this->getErrors()) {
+                            return false;
+                        }
+                    }
+
+                    if(!$this->getShortcode()->needSms()) {
+                        $this->successRegistration($values);
+                    }else{
+                        $_SESSION['sln_detail_step'] = $values;
+                    }
                 }
             }else{
                 wp_update_user(
