@@ -9,6 +9,9 @@
     @extend %text-color--emphasis;
     -webkit-animation: wait 2s infinite linear;
     animation: wait 2s infinite linear;
+    @include ie11() {
+      @include font-icon(75px);
+    }
   }
 }
 

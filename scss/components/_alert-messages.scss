@@ -111,8 +111,8 @@
       width: .9em;
       height: .9em;
       @include ie11() {
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
       }
     }
   }
@@ -127,6 +127,10 @@
       &:before {
         top: 1em;
         left: .6em;
+        @include ie11() {
+          top: 1rem;
+          left: .6rem;
+        }
       }
     }
   }
@@ -169,6 +173,9 @@
     @extend %text-color--emphasis;
     -webkit-animation: wait 2s infinite linear;
     animation: wait 2s infinite linear;
+    @include ie11() {
+      font-size: 30px;
+    }
   }
 }
 @-webkit-keyframes wait {
