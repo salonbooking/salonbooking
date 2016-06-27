@@ -148,9 +148,15 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
   font-family: "FontAwesome";
   font-size: 0.91667rem; }
 
+.sln-box .sln-colors-sample h1, #sln_shop-details .sln-colors-sample h1,
+#sln_attendant-details .sln-colors-sample h1,
+#postexcerpt .sln-colors-sample h1, #sln_service-details .sln-colors-sample h1,
 .sln-colors-sample h1 {
   font-size: 1.4em; }
   @media only screen and (min-width: 992px) {
+    .sln-box .sln-colors-sample h1, #sln_shop-details .sln-colors-sample h1,
+    #sln_attendant-details .sln-colors-sample h1,
+    #postexcerpt .sln-colors-sample h1, #sln_service-details .sln-colors-sample h1,
     .sln-colors-sample h1 {
       font-size: 1.6em; } }
 
@@ -164,24 +170,63 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-admin-nav a, .sln-tab-nav 
 .wrap h2.nav-tab-wrapper {
   font-size: 1em; }
 
-.sln-colors-sample button, .sln-colors-sample button:hover, .sln-colors-sample button:focus, .sln-colors-sample button:active {
+.sln-box .sln-colors-sample button, #sln_shop-details .sln-colors-sample button,
+#sln_attendant-details .sln-colors-sample button,
+#postexcerpt .sln-colors-sample button, #sln_service-details .sln-colors-sample button,
+.sln-colors-sample button, .sln-box .sln-colors-sample button:hover, .sln-box .sln-colors-sample button:focus, .sln-box .sln-colors-sample button:active,
+.sln-colors-sample button:hover,
+.sln-colors-sample button:focus,
+.sln-colors-sample button:active {
   color: white; }
 
-.sln-colors-sample input, .sln-colors-sample p {
+.sln-box .sln-colors-sample input, #sln_shop-details .sln-colors-sample input,
+#sln_attendant-details .sln-colors-sample input,
+#postexcerpt .sln-colors-sample input, #sln_service-details .sln-colors-sample input,
+.sln-colors-sample input, .sln-box .sln-colors-sample p, #sln_shop-details .sln-colors-sample p,
+#sln_attendant-details .sln-colors-sample p,
+#postexcerpt .sln-colors-sample p, #sln_service-details .sln-colors-sample p,
+.sln-colors-sample p, .sln-box .sln-colors-sample small, #sln_shop-details .sln-colors-sample small,
+#sln_attendant-details .sln-colors-sample small,
+#postexcerpt .sln-colors-sample small, #sln_service-details .sln-colors-sample small,
+.sln-colors-sample small {
   color: black; }
 
-.sln-colors-sample h1, .sln-colors-sample label {
+.sln-box .sln-colors-sample h1, #sln_shop-details .sln-colors-sample h1,
+#sln_attendant-details .sln-colors-sample h1,
+#postexcerpt .sln-colors-sample h1, #sln_service-details .sln-colors-sample h1,
+.sln-colors-sample h1, .sln-box .sln-colors-sample label, #sln_shop-details .sln-colors-sample label,
+#sln_attendant-details .sln-colors-sample label,
+#postexcerpt .sln-colors-sample label, #sln_service-details .sln-colors-sample label,
+.sln-colors-sample label {
   color: #0277BD; }
 
+.sln-box .sln-colors-sample .wrapper, #sln_shop-details .sln-colors-sample .wrapper,
+#sln_attendant-details .sln-colors-sample .wrapper,
+#postexcerpt .sln-colors-sample .wrapper, #sln_service-details .sln-colors-sample .wrapper,
 .sln-colors-sample .wrapper {
   background-color: white; }
 
+.sln-box .sln-colors-sample button, #sln_shop-details .sln-colors-sample button,
+#sln_attendant-details .sln-colors-sample button,
+#postexcerpt .sln-colors-sample button, #sln_service-details .sln-colors-sample button,
 .sln-colors-sample button {
   background-color: #0277BD; }
 
-.sln-colors-sample button:hover, .sln-colors-sample button:focus, .sln-colors-sample button:active {
+.sln-box .sln-colors-sample button:hover, #sln_shop-details .sln-colors-sample button:hover,
+#sln_attendant-details .sln-colors-sample button:hover,
+#postexcerpt .sln-colors-sample button:hover, #sln_service-details .sln-colors-sample button:hover, .sln-box .sln-colors-sample button:focus, #sln_shop-details .sln-colors-sample button:focus,
+#sln_attendant-details .sln-colors-sample button:focus,
+#postexcerpt .sln-colors-sample button:focus, #sln_service-details .sln-colors-sample button:focus, .sln-box .sln-colors-sample button:active, #sln_shop-details .sln-colors-sample button:active,
+#sln_attendant-details .sln-colors-sample button:active,
+#postexcerpt .sln-colors-sample button:active, #sln_service-details .sln-colors-sample button:active,
+.sln-colors-sample button:hover,
+.sln-colors-sample button:focus,
+.sln-colors-sample button:active {
   background-color: #0091EA; }
 
+.sln-box .sln-colors-sample input, #sln_shop-details .sln-colors-sample input,
+#sln_attendant-details .sln-colors-sample input,
+#postexcerpt .sln-colors-sample input, #sln_service-details .sln-colors-sample input,
 .sln-colors-sample input {
   border-color: #0277BD; }
 
@@ -1483,6 +1528,9 @@ body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input
 .sln-colorpicker-widget .colorpicker-selectors i {
   width: 24px; }
 
+.sln-box .sln-colors-sample, #sln_shop-details .sln-colors-sample,
+#sln_attendant-details .sln-colors-sample,
+#postexcerpt .sln-colors-sample, #sln_service-details .sln-colors-sample,
 .sln-colors-sample {
   font-size: 1rem;
   padding: 2rem;
@@ -1494,18 +1542,29 @@ body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input
   background-size: 16px 16px;
   background-position: 0 0, 8px 8px;
   margin-bottom: 4rem; }
+  .sln-box .sln-colors-sample .wrapper, #sln_shop-details .sln-colors-sample .wrapper,
+  #sln_attendant-details .sln-colors-sample .wrapper,
+  #postexcerpt .sln-colors-sample .wrapper, #sln_service-details .sln-colors-sample .wrapper,
   .sln-colors-sample .wrapper {
     padding: 2rem; }
+  .sln-box .sln-colors-sample h1, #sln_shop-details .sln-colors-sample h1,
+  #sln_attendant-details .sln-colors-sample h1,
+  #postexcerpt .sln-colors-sample h1, #sln_service-details .sln-colors-sample h1,
   .sln-colors-sample h1 {
     font-weight: bold;
     margin-bottom: 2rem; }
+  .sln-box .sln-colors-sample label, #sln_shop-details .sln-colors-sample label,
+  #sln_attendant-details .sln-colors-sample label,
+  #postexcerpt .sln-colors-sample label, #sln_service-details .sln-colors-sample label,
   .sln-colors-sample label {
-    font-size: 1rem;
+    font-size: .8em;
     display: inline-block;
     max-width: 100%;
     margin-bottom: 5px;
-    font-weight: bold;
-    opacity: .75; }
+    font-weight: bold; }
+  .sln-box .sln-colors-sample input, #sln_shop-details .sln-colors-sample input,
+  #sln_attendant-details .sln-colors-sample input,
+  #postexcerpt .sln-colors-sample input, #sln_service-details .sln-colors-sample input,
   .sln-colors-sample input {
     width: 100%;
     max-width: 240px;
@@ -1517,7 +1576,11 @@ body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input
     height: auto;
     border-width: 1px;
     border-style: solid;
+    font-size: 1em;
     margin-bottom: 1rem; }
+  .sln-box .sln-colors-sample button, #sln_shop-details .sln-colors-sample button,
+  #sln_attendant-details .sln-colors-sample button,
+  #postexcerpt .sln-colors-sample button, #sln_service-details .sln-colors-sample button,
   .sln-colors-sample button {
     display: inline-block;
     padding: 0 1rem !important;
@@ -1528,9 +1591,20 @@ body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input
     margin-bottom: 1rem;
     border: none;
     cursor: pointer; }
+  .sln-box .sln-colors-sample p, #sln_shop-details .sln-colors-sample p,
+  #sln_attendant-details .sln-colors-sample p,
+  #postexcerpt .sln-colors-sample p, #sln_service-details .sln-colors-sample p,
   .sln-colors-sample p {
     font-size: 1rem;
     line-height: 1.4rem;
+    max-width: 360px;
+    padding: 0;
+    margin-bottom: 1em; }
+  .sln-box .sln-colors-sample small, #sln_shop-details .sln-colors-sample small,
+  #sln_attendant-details .sln-colors-sample small,
+  #postexcerpt .sln-colors-sample small, #sln_service-details .sln-colors-sample small,
+  .sln-colors-sample small {
+    display: block;
     max-width: 360px; }
 
 /* TIME RANGE */

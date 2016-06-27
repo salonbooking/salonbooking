@@ -577,6 +577,7 @@
     }
 }
 
+.sln-box .sln-colors-sample,
 .sln-colors-sample {
 	font-size: 1rem;
 	padding: 2rem;
@@ -593,14 +594,14 @@
 		margin-bottom: 2rem;
 	}
 	label {
-		font-size: 1rem;
+		font-size: .8em;
 		display: inline-block;
 		max-width: 100%;
 		margin-bottom: 5px;
 		font-weight: bold;
 		@extend %text-color--emphasis;
 		// color > ridurre alpha in proporzione 1/.75
-		opacity: .75;
+		//opacity: .75;
 	}
 	input {
 		width: 100%;
@@ -613,6 +614,7 @@
 	    height: auto;
 	    border-width: 1px;
 	    border-style: solid;
+	    font-size: 1em;
 	    @extend %bd-color--emphasis;
 		// coborder-color > ridurre alpha in proporzione 1/.35
 		@extend %text-color--dark;
@@ -639,6 +641,13 @@
 	p {
 		font-size: 1rem;
 		line-height: 1.4rem;
+		@extend %text-color--dark;
+		max-width: 360px;
+		padding: 0;
+		margin-bottom: 1em;
+	}
+	small {
+		display: block;
 		@extend %text-color--dark;
 		max-width: 360px;
 	}

@@ -23,7 +23,7 @@ var sassOptions = {
 //    .pipe( livereload() );
 //});
 gulp.task('sass', function () {
-  gulp.src('./scss/salon.scss')
+  gulp.src('./scss/admin.scss')
     //.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     //.pipe(sourcemaps.write())

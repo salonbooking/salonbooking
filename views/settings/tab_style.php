@@ -43,6 +43,7 @@ $curr = $this->settings->getStyleShortcode();
                     <p>
                         Sample text. Pellentesque viverra dictum lectus eu fringilla. Nam metus sapien, pharetra id nunc sit amet, feugiat auctor ipsum. Proin volutpat, ipsum a laoreet tristique, dui tortor.
                     </p>
+                    <small class="sln-input-help">Morbi non erat elementum neque lacinia finibus. Sed rutrum viverra tortor. Sed laoreet, quam vestibulum molestie laoreet, dui justo egestas.</small>
 
                 </div>
             </div>
@@ -59,7 +60,7 @@ $curr = $this->settings->getStyleShortcode();
                         <label for="salon_settings_gen_name"><?php _e('Main color', 'salon-booking-system'); ?></label>
                         <div class="sln-colorpicker--subwrapper">
                             <span id="thisone" class="input-group-addon sln-colorpicker-addon""><i>color sample</i></span>
-                            <input type="text" value="rgba(2, 119, 189, 1)" class="sln-input sln-input--text  sln-colorpicker--trigger" />
+                            <input type="text" value="rgba(2,119,189,1)" class="sln-input sln-input--text  sln-colorpicker--trigger" />
                         </div>
                     </div>
                     <div id="color-text" class="col-sm-4  col-lg-12 sln-input--simple sln-colorpicker">
@@ -70,6 +71,12 @@ $curr = $this->settings->getStyleShortcode();
                         </div>
                     </div>
                     <div class="col-sm-6  col-lg-12 form-group sln-box-maininfo">
+                        <input id="color-main-a" type="text">
+                        <input id="color-main-b" type="text">
+                        <input id="color-main-c" type="text">
+                        <input id="color-text-a" type="text">
+                        <input id="color-text-b" type="text">
+                        <input id="color-text-c" type="text">
                         <p class="sln-input-help">Morbi non erat elementum neque lacinia finibus. Sed rutrum viverra tortor. Sed laoreet, quam vestibulum molestie laoreet, dui justo egestas.</p>
                     </div>
                 </div>

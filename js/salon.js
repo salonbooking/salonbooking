@@ -63,66 +63,6 @@ function sln_init($) {
         });
     });
 
-    // COLOR PICKER
-    $(function() {
-        $('.sln-colorpicker').colorpicker({
-            //color: 'transparent',
-            //color: 'rgba(0, 66, 88, 1)',
-            format: 'rgba',
-            customClass: 'sln-colorpicker-widget',
-            sliders: {
-                saturation: {
-                    maxLeft: 160,
-                    maxTop: 160
-                },
-                hue: {
-                    maxTop: 160
-                },
-                alpha: {
-                    maxTop: 160
-                }
-            },
-            colorSelectors: {
-                'default': '#777777',
-                'primary': '#337ab7',
-                'success': '#5cb85c',
-                'info': '#5bc0de',
-                'warning': '#f0ad4e',
-                'danger': '#d9534f'
-            }
-        });
-    });
-    $(function() {
-        var color_backgroud = $('#color-backgroud input').val(),
-            color_main = $('#color-main input').val(),
-            color_text = $('#color-text input').val();
-        $('.sln-colors-sample .wrapper').css('background-color', color_backgroud);
-        $('.sln-colors-sample h1, .sln-colors-sample label').css('color', color_main);
-        $('.sln-colors-sample input').css('border-color', color_main);
-        $('.sln-colors-sample button').css('background-color', color_main);
-        $('.sln-colors-sample input, .sln-colors-sample p').css('color', color_text);
-        $('.sln-colorpicker').colorpicker().on('changeColor', function(e) {
-            //$(this)[0].style.backgroundColor = e.color;
-        });
-        //$(document).on('click', '.sln-colorpicker--trigger', function(event) { 
-        //    event.preventDefault();
-        //    $(".sln-colorpicker--trigger").prev().click();
-        //});
-        $('#color-backgroud').colorpicker().on('changeColor', function(e) {
-            $('.sln-colors-sample .wrapper')[0].style.backgroundColor = e.color;
-        });
-        $('#color-main').colorpicker().on('changeColor', function(e) {
-            $('.sln-colors-sample h1')[0].style.color = e.color;
-            $('.sln-colors-sample label')[0].style.color = e.color;
-            $('.sln-colors-sample input')[0].style.borderColor = e.color;
-            $('.sln-colors-sample button')[0].style.backgroundColor = e.color;
-        });
-        $('#color-text').colorpicker().on('changeColor', function(e) {
-            $('.sln-colors-sample input')[0].style.color = e.color;
-            $('.sln-colors-sample p')[0].style.color = e.color;
-        });
-    });
-
     $('.sln-edit-text').change(function() {
         var data = "key=" + $(this).attr('id') + "&value=" + $(this).val() + "&action=salon&method=SetCustomText&security=" + salon.ajax_nonce;
         $.ajax({
