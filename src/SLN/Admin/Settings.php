@@ -346,10 +346,10 @@ class SLN_Admin_Settings
 
     public function processTabPayments()
     {
-
+		$fields = self::$fieldsTabPayment;
         foreach (SLN_Enum_PaymentMethodProvider::toArray() as $k => $v) {
             $fields = array_merge(
-                self::$fieldsTabPayment,
+                $fields,
                 SLN_Enum_PaymentMethodProvider::getService($k, $this->plugin)->getFields()
             );
         }
