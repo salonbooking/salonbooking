@@ -1,30 +1,18 @@
 <?php
 
-if (empty($tag)) {
-	$tag = 'h2';
-}
+$args = array(
+    'label'        => '',
+    'value'        => '',
+    'tag'          => 'h2',
+    'textClasses'  => 'salon-step-title',
+    'inputClasses' => '',
+    'tagClasses'   => 'salon-step-title',
+);
 
-switch ($tag) {
-	case 'span':
-		$textClasses = 'text-min label';
-		$inputClasses = 'input-min';
-		$classes = 'label';
-		break;
-	case 'label':
-		$textClasses = '';
-		$inputClasses = '';
-		$classes = '';
-		break;
-	case 'h1':
-		$textClasses = 'sln-salon-title';
-		$inputClasses = '';
-		$classes = 'sln-salon-title';
-		break;
-	case 'h2':
-	default:
-		$textClasses = 'salon-step-title';
-		$inputClasses = '';
-		$classes = 'salon-step-title';
+foreach($args as $k => $v) {
+	if (!isset($$k)) {
+		$$k = $v;
+	}
 }
 
 if(current_user_can('manage_options')) {
@@ -41,7 +29,6 @@ if(current_user_can('manage_options')) {
 	<?php
 } else {
 	?>
-	<<?php echo $tag; ?> class="<?php echo $classes ?>"><?php echo $value; ?></<?php echo $tag; ?>>
+	<<?php echo $tag; ?> class="<?php echo $tagClasses ?>"><?php echo $value; ?></<?php echo $tag; ?>>
 	<?php
 }
-unset($tag, $textClasses, $inputClasses, $classes);
