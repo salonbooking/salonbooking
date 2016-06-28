@@ -5,24 +5,8 @@
                 <?php
                 $label = __('Date and time booked', 'salon-booking-system');
                 $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-
-                if(current_user_can('manage_options')) {
-                    ?>
-                    <div class="editable">
-                        <span class="text text-min">
-                            <?php echo $value; ?>
-                        </span>
-                        <div class="input input-min">
-                            <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
-                        </div>
-                        <i class="fa fa-gear fa-fw"></i>
-                    </div>
-                    <?php
-                } else {
-                    ?>
-                    <span><?php echo $value; ?></span>
-                    <?php
-                }
+                $tag = 'span';
+                include '_editable_snippet.php';
                 ?>
             </div>
             <div class="col-sm-6 col-md-6 sln-data-val">
@@ -36,24 +20,8 @@
                     <?php
                     $label = __('Assistants', 'salon-booking-system');
                     $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-
-                    if(current_user_can('manage_options')) {
-                        ?>
-                        <div class="editable">
-                            <span class="text text-min">
-                                <?php echo $value; ?>
-                            </span>
-                            <div class="input input-min">
-                                <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
-                            </div>
-                            <i class="fa fa-gear fa-fw"></i>
-                        </div>
-                        <?php
-                    } else {
-                        ?>
-                        <span><?php echo $value; ?></span>
-                        <?php
-                    }
+                    $tag = 'span';
+                    include '_editable_snippet.php';
                     ?>
                 </div>
                 <div class="col-sm-6 col-md-6 sln-data-val"><?php $names = array(); foreach(array_unique($attendants) as $att) { $names[] = $att->getName(); } echo implode(', ', $names); ?></div>
@@ -66,24 +34,8 @@
                 <?php
                 $label = __('Services booked', 'salon-booking-system');
                 $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-
-                if(current_user_can('manage_options')) {
-                    ?>
-                    <div class="editable">
-                        <span class="text text-min">
-                            <?php echo $value; ?>
-                        </span>
-                        <div class="input input-min">
-                            <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
-                        </div>
-                        <i class="fa fa-gear fa-fw"></i>
-                    </div>
-                    <?php
-                } else {
-                    ?>
-                    <span><?php echo $value; ?></span>
-                    <?php
-                }
+                $tag = 'span';
+                include '_editable_snippet.php';
                 ?>
             </div>
             <div class="col-sm-6 col-md-6 sln-data-val">
@@ -115,24 +67,8 @@
         <?php
         $label = __('Do you have any message for us?', 'salon-booking-system');
         $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-
-        if(current_user_can('manage_options')) {
-            ?>
-            <div class="editable">
-                <label class="text">
-                    <?php echo $value; ?>
-                </label>
-                <div class="input">
-                    <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
-                </div>
-                <i class="fa fa-gear fa-fw"></i>
-            </div>
-            <?php
-        } else {
-            ?>
-            <label><?php echo $value; ?></label>
-            <?php
-        }
+        $tag = 'label';
+        include '_editable_snippet.php';
         ?>
         <?php SLN_Form::fieldTextarea(
             'sln[note]',

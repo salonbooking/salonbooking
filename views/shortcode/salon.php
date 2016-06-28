@@ -23,25 +23,8 @@ $class = SLN_Enum_ShortcodeStyle::getClass($style);
 
     $label = __('Book an appointment', 'salon-booking-system');
     $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-
-    if(current_user_can('manage_options')) {
-    ?>
-        <div class="editable">
-            <h1 class="sln-salon-title text">
-                <?php echo $value; ?>
-            </h1>
-            <div class="input">
-                <input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
-            </div>
-            <i class="fa fa-gear fa-fw"></i>
-        </div>
-    <?php
-    }
-    else {
-    ?>
-        <h1 class="sln-salon-title"><?php echo $value; ?></h1>
-    <?php
-    }
+    $tag = 'h1';
+    include '_editable_snippet.php';
     echo $content;
     ?>
 
