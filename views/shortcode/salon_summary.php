@@ -15,9 +15,14 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
 ?>
 <form method="post" action="<?php echo $formAction ?>" role="form" id="salon-step-summary">
     <?php
-    $label = __('Booking summary', 'salon-booking-system');
-    $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-    include '_editable_snippet.php';
+    $args = array(
+        'label'        => __('Booking summary', 'salon-booking-system'),
+        'tag'          => 'h2',
+        'textClasses'  => 'salon-step-title',
+        'inputClasses' => '',
+        'tagClasses'   => 'salon-step-title',
+    );
+    echo $plugin->loadView('shortcode/_editable_snippet', $args);
     ?>
     <div class="row">
         <div class="col-md-8">

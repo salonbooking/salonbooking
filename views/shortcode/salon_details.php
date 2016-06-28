@@ -258,9 +258,14 @@ $values = array(
 
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <?php
-        $label = __('Checkout', 'salon-booking-system');
-        $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-        include '_editable_snippet.php';
+        $args = array(
+            'label'        => __('Checkout', 'salon-booking-system'),
+            'tag'          => 'h2',
+            'textClasses'  => 'salon-step-title',
+            'inputClasses' => '',
+            'tagClasses'   => 'salon-step-title',
+        );
+        echo $plugin->loadView('shortcode/_editable_snippet', $args);
         ?>
     <?php
     if ($size == '900') { ?>

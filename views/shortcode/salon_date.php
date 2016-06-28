@@ -39,16 +39,14 @@ if ($plugin->getSettings()->isDisabled()) {
         <form method="post" action="<?php echo $formAction ?>" id="salon-step-date"
               data-intervals="<?php echo esc_attr(json_encode($intervalsArray)); ?>">
             <?php
-            $label = __('When do you want to come?', 'salon-booking-system');
             $args = array(
-                'label'        => $label,
-                'value'        => SLN_Plugin::getInstance()->getSettings()->getCustomText($label),
+                'label'        => __('When do you want to come?', 'salon-booking-system'),
                 'tag'          => 'h2',
                 'textClasses'  => 'salon-step-title',
                 'inputClasses' => '',
                 'tagClasses'   => 'salon-step-title',
             );
-            $plugin->loadView('shortcode/_editable_snippet', $args);
+            echo $plugin->loadView('shortcode/_editable_snippet', $args);
             ?>
             <?php include '_salon_date_pickers.php' ?>
             <?php include '_errors.php'; ?>

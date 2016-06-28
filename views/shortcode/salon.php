@@ -21,10 +21,14 @@ $class = SLN_Enum_ShortcodeStyle::getClass($style);
     if ($trial_exp)
         echo '<h2 class="sln_notice">' . __('Your free version is expired - upgrade to PRO', 'salon-booking-system') . '</h2>';
 
-    $label = __('Book an appointment', 'salon-booking-system');
-    $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-    $tag = 'h1';
-    include '_editable_snippet.php';
+    $args = array(
+        'label'        => __('Book an appointment', 'salon-booking-system'),
+        'tag'          => 'h1',
+        'textClasses'  => 'sln-salon-title',
+        'inputClasses' => '',
+        'tagClasses'   => 'sln-salon-title',
+    );
+    echo $plugin->loadView('shortcode/_editable_snippet', $args);
     echo $content;
     ?>
 

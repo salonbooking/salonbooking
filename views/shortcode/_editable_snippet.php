@@ -2,7 +2,6 @@
 
 $args = array(
     'label'        => '',
-    'value'        => '',
     'tag'          => 'h2',
     'textClasses'  => 'salon-step-title',
     'inputClasses' => '',
@@ -14,6 +13,7 @@ foreach($args as $k => $v) {
 		$$k = $v;
 	}
 }
+$value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
 
 if(current_user_can('manage_options')) {
 	?>

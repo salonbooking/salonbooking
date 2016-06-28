@@ -14,9 +14,14 @@ $services = $step->getServices();
     <?php include '_errors.php'; ?>
 <form id="salon-step-services" method="post" action="<?php echo $formAction ?>" role="form">
 	<?php
-	$label = __('What do you need?', 'salon-booking-system');
-	$value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-	include '_editable_snippet.php';
+	$args = array(
+			'label'        => __('What do you need?', 'salon-booking-system'),
+			'tag'          => 'h2',
+			'textClasses'  => 'salon-step-title',
+			'inputClasses' => '',
+			'tagClasses'   => 'salon-step-title',
+	);
+	echo $plugin->loadView('shortcode/_editable_snippet', $args);
 	?>
 <?php
 	if ($size == '900') { ?>

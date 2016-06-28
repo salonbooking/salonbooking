@@ -17,12 +17,17 @@ $isMultipleAttSelection = $plugin->getSettings()->isMultipleAttendantsEnabled();
 	<?php
 	if ($isMultipleAttSelection && count($bb->getServices()) > 1) {
 		$label = __('Select your assistants', 'salon-booking-system');
-		$value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
 	} else {
 		$label = __('Select your assistant', 'salon-booking-system');
-		$value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
 	}
-	include '_editable_snippet.php';
+	$args = array(
+			'label'        => $label,
+			'tag'          => 'h2',
+			'textClasses'  => 'salon-step-title',
+			'inputClasses' => '',
+			'tagClasses'   => 'salon-step-title',
+	);
+	echo $plugin->loadView('shortcode/_editable_snippet', $args);
 	?>
 <?php
 	if ($size == '900') { ?>

@@ -10,10 +10,14 @@
                 <div class="row sln-summary-row">
                     <div class="col-sm-6 col-md-6 sln-data-desc">
                         <?php
-                        $label = __('Date and time booked', 'salon-booking-system');
-                        $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-                        $tag = 'span';
-                        include '_editable_snippet.php';
+                        $args = array(
+                            'label'        => __('Date and time booked', 'salon-booking-system'),
+                            'tag'          => 'span',
+                            'textClasses'  => 'text-min label',
+                            'inputClasses' => 'input-min',
+                            'tagClasses'   => 'label',
+                        );
+                        echo $plugin->loadView('shortcode/_editable_snippet', $args);
                         ?>
                     </div>
                     <div class="col-sm-6 col-md-6 sln-data-val">
@@ -25,10 +29,14 @@
                     <div class="row sln-summary-row">
                         <div class="col-sm-6 col-md-6 sln-data-desc">
                             <?php
-                            $label = __('Assistants', 'salon-booking-system');
-                            $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-                            $tag = 'span';
-                            include '_editable_snippet.php';
+                            $args = array(
+                                'label'        => __('Assistants', 'salon-booking-system'),
+                                'tag'          => 'span',
+                                'textClasses'  => 'text-min label',
+                                'inputClasses' => 'input-min',
+                                'tagClasses'   => 'label',
+                            );
+                            echo $plugin->loadView('shortcode/_editable_snippet', $args);
                             ?>
                         </div>
                         <div class="col-sm-6 col-md-6 sln-data-val"><?php $names = array(); foreach(array_unique($attendants) as $att) { $names[] = $att->getName(); } echo implode(', ', $names); ?></div>
@@ -39,10 +47,14 @@
                 <div class="row sln-summary-row">
                     <div class="col-sm-6 col-md-6 sln-data-desc">
                         <?php
-                        $label = __('Services booked', 'salon-booking-system');
-                        $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-                        $tag = 'span';
-                        include '_editable_snippet.php';
+                        $args = array(
+                            'label'        => __('Services booked', 'salon-booking-system'),
+                            'tag'          => 'span',
+                            'textClasses'  => 'text-min label',
+                            'inputClasses' => 'input-min',
+                            'tagClasses'   => 'label',
+                        );
+                        echo $plugin->loadView('shortcode/_editable_snippet', $args);
                         ?>
                     </div>
                     <div class="col-sm-6 col-md-6 sln-data-val">
@@ -74,10 +86,14 @@
         <div class="row">
             <div class="col-md-12 sln-input sln-input--simple">
                 <?php
-                $label = __('Do you have any message for us?', 'salon-booking-system');
-                $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-                $tag = 'label';
-                include '_editable_snippet.php';
+                $args = array(
+                    'label'        => __('Do you have any message for us?', 'salon-booking-system'),
+                    'tag'          => 'label',
+                    'textClasses'  => '',
+                    'inputClasses' => '',
+                    'tagClasses'   => '',
+                );
+                echo $plugin->loadView('shortcode/_editable_snippet', $args);
                 ?>
                 <?php SLN_Form::fieldTextarea(
                     'sln[note]',

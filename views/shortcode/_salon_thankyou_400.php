@@ -3,9 +3,14 @@
         <h2 class="salon-step-title"><?php _e('Booking status', 'salon-booking-system') ?></h2>
     <?php else : ?>
         <?php
-        $label = __('Booking Confirmation', 'salon-booking-system');
-        $value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-        include '_editable_snippet.php';
+        $args = array(
+            'label'        => __('Booking Confirmation', 'salon-booking-system'),
+            'tag'          => 'h2',
+            'textClasses'  => 'salon-step-title',
+            'inputClasses' => '',
+            'tagClasses'   => 'salon-step-title',
+        );
+        echo $plugin->loadView('shortcode/_editable_snippet', $args);
         ?>
     <?php endif ?>
 
