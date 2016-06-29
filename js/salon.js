@@ -11,6 +11,10 @@ Number.prototype.formatMoney = function (c, d, t) {
 
 jQuery(function ($) {
     sln_init($);
+    if(salon.has_stockholm_transition == 'yes'){
+        console.log('works');
+        $('body').on("click",'a[target!="_blank"]:not(.no_ajax):not(.no_link)', function(){setTimeout(function(){sln_init(jQuery);}, 2000)});
+    }
 });
 
 function sln_init($) {
