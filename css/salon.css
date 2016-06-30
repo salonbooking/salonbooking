@@ -913,6 +913,9 @@ ul.sln-list--dashed li,
   height: 14px; }
 
 .datetimepicker.sln-datetimepicker {
+  display: none; }
+
+.datetimepicker.sln-datetimepicker {
   border-radius: 0;
   width: 360px;
   padding: 20px; }

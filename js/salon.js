@@ -337,6 +337,12 @@ function initDatepickers($) {
             ;
         }
     });
+    var elementExists = document.getElementById('sln-salon');
+    if( elementExists){
+        setTimeout(function(){
+        $('.datetimepicker.sln-datetimepicker').wrap( "<div class='sln-salon-bs-wrap'></div>" );
+        }, 50);
+    }
 }
 
 function initTimepickers($) {
