@@ -49,7 +49,7 @@ $curr = $this->settings->getStyleShortcode();
             </div>
             <div class="col-md-12 col-lg-4">
                 <div class="row">
-                    <div id="color-backgroud" class="col-sm-4  col-lg-12 sln-input--simple sln-colorpicker">
+                    <div id="color-background" class="col-sm-4  col-lg-12 sln-input--simple sln-colorpicker">
                         <label><?php _e('Background color', 'salon-booking-system'); ?></label>
                         <div class="sln-colorpicker--subwrapper">
                             <span id="thisone" class="input-group-addon sln-colorpicker-addon""><i>color sample</i></span>
