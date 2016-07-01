@@ -11,7 +11,8 @@
 #sln-salon .sln-input textarea,
 #sln-salon .sln-input .sln-input--addon:after,
 #sln-notifications .sln-loader-wrapper {
-	background-color: $sln-color--background;
+	// background-color: $sln-color--background;
+	background-color: #color-backgroud;
 }
 #sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly,
 #sln-salon .sln-panel .sln-panel-heading .sln-btn--nobkg,
@@ -25,7 +26,8 @@
 .sln-btn--emphasis,
 .sln-bootstrap .sln-btn--emphasis,
 .sln-stepper .step.step--active .step-number {
-	background-color: $sln-color--main;
+	// background-color: $sln-color--main;
+	background-color: #color-main-a;
 }
 #sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly:hover,
 #sln-salon .sln-panel .sln-panel-heading .sln-btn--nobkg:hover,
@@ -64,7 +66,8 @@
 .sln-bootstrap .sln-btn--borderonly:hover,
 .sln-bootstrap .sln-btn--borderonly:focus,
 .sln-bootstrap .sln-btn--borderonly:active {
-	background-color: $sln-color--main--alpha75;
+	// background-color: $sln-color--main--alpha75;
+	background-color: #color-main-b;
 }
 #sln-salon .sln-salon-title,
 .sln-text--contrast,
@@ -108,11 +111,13 @@
 .sln-alert.sln-alert--wait:after,
 .sln-alert--wait:after,
 .sln-steps-name {
-	color: $sln-color--main;
+	// color: $sln-color--main;
+	color: #color-main-a;
 }
 #sln-salon .sln-input input,
 #sln-salon .sln-input textarea {
-	@include placeholder-color($sln-color--main--alpha50);
+	// @include placeholder-color($sln-color--main--alpha50);
+	@include placeholder-color(#color-main-c);
 }
 #sln-salon .sln-input label,
 .sln-text--emphasis--hoverk,
@@ -120,7 +125,8 @@
 .sln-alert a:hover,
 #sln-salon .alert a:hover,
 .sln-steps-name:hover {
-	color: $sln-color--main--alpha75;
+	// color: $sln-color--main--alpha75;
+	color: #color-main-b;
 }
 .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right,
 #sln-salon .sln-input input,
@@ -136,14 +142,7 @@ ul.sln-list--dashed li,
 #sln-salon .sln-attendant-list--multiple .sln-steps-name.sln-service-name,
 .sln-attendant hr,
 .sln-summary-row hr,
-#sln-salon .sln-thankyou--okbox hr {
-	border-color: $sln-color--main--alpha50;
-}
-#sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly,
-.sln-checkbox input + label:before,
-.sln-radiobox input + label:before {
-	border-color: $sln-color--main;
-}
+#sln-salon .sln-thankyou--okbox hr,
 #sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly:hover,
 .sln-checkbox input + label:hover:before,
 .sln-btn--borderonly:hover,
@@ -154,11 +153,19 @@ ul.sln-list--dashed li,
 .sln-bootstrap .sln-btn--borderonly:active,
 .sln-alert a:hover,
 #sln-salon .alert a:hover {
-	border-color: $sln-color--main--alpha50;
+	// border-color: $sln-color--main--alpha50;
+	border-color: #color-main-c;
+}
+#sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly,
+.sln-checkbox input + label:before,
+.sln-radiobox input + label:before {
+	// border-color: $sln-color--main;
+	border-color: #color-main-a;
 }
 .sln-checkbox input[type="checkbox"][disabled] + label:before,
 .sln-radiobox input[type="radio"][disabled] + label:before {
-	border-color: $sln-color--text--alpha50;
+	// border-color: $sln-color--text--alpha50;
+	border-color: #color-text-c;
 }
 #sln-salon {
 	border-color: transparent;
@@ -176,7 +183,8 @@ ul.sln-list--dashed li,
 .sln-total-label,
 .sln-total-price,
 .sln-steps-price {
-	color: $sln-color--text;
+	// color: $sln-color--text;
+	color: #color-text-a;
 }
 .sln-text--main,
 .sln-btn--emphasis,
@@ -249,5 +257,6 @@ ul.sln-list--dashed li,
 .sln-bootstrap .sln-btn--borderonly:active button,
 .sln-stepper .step .step-number,
 .sln-stepper .step.step--active .step-number {
-	color: $sln-color--background;
+	// color: $sln-color--background;
+	color: #color-backgroud;
 }

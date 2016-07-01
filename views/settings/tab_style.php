@@ -71,11 +71,11 @@ $curr = $this->settings->getStyleShortcode();
                         </div>
                     </div>
                     <div class="col-sm-6  col-lg-12 form-group sln-box-maininfo">
-                        <input id="color-main-a" type="text">
-                        <input id="color-main-b" type="text">
-                        <input id="color-main-c" type="text">
-                        <input id="color-text-a" type="text">
-                        <input id="color-text-b" type="text">
+                        <input id="color-main-a" type="text"><br>
+                        <input id="color-main-b" type="text"><br>
+                        <input id="color-main-c" type="text"><br>
+                        <input id="color-text-a" type="text"><br>
+                        <input id="color-text-b" type="text"><br>
                         <input id="color-text-c" type="text">
                         <p class="sln-input-help">Morbi non erat elementum neque lacinia finibus. Sed rutrum viverra tortor. Sed laoreet, quam vestibulum molestie laoreet, dui justo egestas.</p>
                     </div>
