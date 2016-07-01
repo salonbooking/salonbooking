@@ -131,6 +131,7 @@ class SLN_Action_InitScripts
     private function preloadFrontendScripts()
     {
         wp_enqueue_style('salon', SLN_PLUGIN_URL.'/css/salon.css', array(), self::ASSETS_VERSION, 'all');
+        wp_enqueue_style('sln-custom', SLN_PLUGIN_URL.'/css/sln-colors--custom.css', array(), self::ASSETS_VERSION, 'all');
     }
     
     public static function enqueueCustomSliderRange(){

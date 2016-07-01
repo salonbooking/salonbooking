@@ -10,7 +10,7 @@ $sln-color--warning: #f5b025;
 $sln-color--warning--light: #f7c65f;
 $sln-color--ok: #5bc24c;
 
-$sln-color--main: rgba(255, 255, 255, 1);
+$sln-color--main--o: rgba(255, 255, 255, 1);
 $sln-color--contrast: rgba(0, 66, 88, 1);
 $sln-color--contrast--alpha: rgba(0, 66, 88, .3);
 $sln-color--dark: rgba(0, 0, 0, 1);
@@ -21,6 +21,15 @@ $sln-color--emphasis--hover: #0091EA;
 
 $sln-color--grey--main: #888;
 $sln-color--grey--light: #e4e7e7;
+
+// NEW COLORS
+$sln-color--background: rgba(60,60,60,.75);
+$sln-color--main: rgba(92,184,92,1);
+$sln-color--main--alpha75: rgba(92,184,92,.75);
+$sln-color--main--alpha50: rgba(92,184,92,.5);
+$sln-color--text: rgba(255,255,255,1);
+$sln-color--text--alpha75: rgba(255,255,255,.75);
+$sln-color--text--alpha50: rgba(255,255,255,.5);
 
 %text-color--main {color: $sln-color--main--noalpha;}
 %text-color--contrast {color: $sln-color--contrast;}
@@ -37,7 +46,7 @@ $sln-color--grey--light: #e4e7e7;
 %text-color--warning {color: $sln-color--warning;}
 
 // BACKGORUNDS
-%bgc-color--main {background-color: $sln-color--main;}
+%bgc-color--main {background-color: $sln-color--main--o;}
 %bgc-color--main--noalpha {background-color: $sln-color--main--noalpha;}
 %bgc-color--contrast {background-color: $sln-color--contrast;}
 %bgc-color--contrast--alpha {background-color: $sln-color--contrast--alpha;}
@@ -55,17 +64,17 @@ $sln-color--grey--light: #e4e7e7;
 %bgc-color--problem--light {background-color: $sln-color--problem--light;}
 
 // BORDERS
-%bd-color--main {border-color: $sln-color--main !important;}
-%bd-color--contrast {border-color: $sln-color--contrast !important;}
-%bd-color--contrast--alpha {border-color: $sln-color--contrast--alpha !important;}
-%bd-color--dark {border-color: $sln-color--dark !important;}
+%bd-color--main {border-color: $sln-color--main--o;}
+%bd-color--contrast {border-color: $sln-color--contrast;}
+%bd-color--contrast--alpha {border-color: $sln-color--contrast--alpha;}
+%bd-color--dark {border-color: $sln-color--dark;}
 %bd-color--emphasis {border-color: $sln-color--emphasis;}
-%bd-color--emphasis--hover {border-color: $sln-color--emphasis--hover !important;}
-%bd-color--transparent {border-color: transparent !important;}
-%bd-color--main--noalpha {border-color: $sln-color--main--noalpha !important;}
-%bd-color--grey {border-color: $sln-color--grey--main !important;}
-%bd-color--grey--light {border-color: $sln-color--grey--light !important;}
-%bd-color--ok {border-color: $sln-color--ok !important;}
-%bd-color--warning {border-color: $sln-color--warning !important;}
-%bd-color--problem {border-color: $sln-color--problem !important;}
-%bd-color--problem--light {border-color: $sln-color--problem--light !important;}
+%bd-color--emphasis--hover {border-color: $sln-color--emphasis--hover;}
+%bd-color--transparent {border-color: transparent;}
+%bd-color--main--noalpha {border-color: $sln-color--main--noalpha;}
+%bd-color--grey {border-color: $sln-color--grey--main;}
+%bd-color--grey--light {border-color: $sln-color--grey--light;}
+%bd-color--ok {border-color: $sln-color--ok;}
+%bd-color--warning {border-color: $sln-color--warning;}
+%bd-color--problem {border-color: $sln-color--problem;}
+%bd-color--problem--light {border-color: $sln-color--problem--light;}

@@ -438,14 +438,14 @@ th {
   background-color: #e63f24; }
 
 .sln-attendant:last-child hr, .sln-total hr {
-  border-color: #004258 !important; }
+  border-color: #004258; }
 
 .datetimepicker.sln-datetimepicker.datetimepicker-dropdown-bottom-right, #sln-salon .sln-input input, #sln-salon .sln-input textarea, .sln-btn--borderonly,
 .sln-bootstrap .sln-btn--borderonly, .snl-error-list-item, #sln-salon, .sln-steps-description hr, .sln-list--dashed li,
 ul.sln-list--dashed li,
 #sln-salon .sln-list--dashed li,
 #sln-salon ul.sln-list--dashed li, #sln-salon .sln-attendant-list--multiple .sln-steps-name.sln-service-name, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr {
-  border-color: rgba(0, 66, 88, 0.3) !important; }
+  border-color: rgba(0, 66, 88, 0.3); }
 
 #sln-salon .sln-panel .sln-panel-heading .sln-btn--borderonly, .sln-checkbox input + label:before, .sln-radiobox input + label:before {
   border-color: #0277BD; }
@@ -455,25 +455,25 @@ ul.sln-list--dashed li,
 .sln-bootstrap .sln-btn--borderonly:focus,
 .sln-bootstrap .sln-btn--borderonly:active, .sln-alert a:hover,
 #sln-salon .alert a:hover {
-  border-color: #0091EA !important; }
+  border-color: #0091EA; }
 
 .sln-alert a,
 #sln-salon .alert a {
-  border-color: transparent !important; }
+  border-color: transparent; }
 
 .sln-checkbox input[type="checkbox"][disabled] + label:before, .sln-radiobox input[type="radio"][disabled] + label:before {
-  border-color: #888 !important; }
+  border-color: #888; }
 
 .datetimepicker.sln-datetimepicker .sln-datetimepicker-close, .datetimepicker.sln-datetimepicker table tr td.day,
 .datetimepicker.sln-datetimepicker table tr td span.hour,
 .datetimepicker.sln-datetimepicker table tr td span.minute,
 .datetimepicker.sln-datetimepicker table tr td span.month,
 .datetimepicker.sln-datetimepicker table tr td span.year, .datetimepicker.sln-datetimepicker .switch, .datetimepicker.sln-datetimepicker .prev, .datetimepicker.sln-datetimepicker .next, .datetimepicker.sln-datetimepicker .today {
-  border-color: #e4e7e7 !important; }
+  border-color: #e4e7e7; }
 
 #sln-salon .sln-invalid,
 #sln-salon .sln-input .sln-invalid {
-  border-color: #D22221 !important; }
+  border-color: #D22221; }
 
 #sln-salon {
   font-family: "Open sans", serif; }

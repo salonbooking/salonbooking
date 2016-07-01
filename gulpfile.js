@@ -23,7 +23,16 @@ var sassOptions = {
 //    .pipe( livereload() );
 //});
 gulp.task('sass', function () {
-  gulp.src('./scss/admin.scss')
+  gulp.src('./scss/salon.scss')
+    //.pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    //.pipe(sourcemaps.write())
+    .pipe(gulp.dest('./css'))
+    .pipe( livereload() );
+});
+
+gulp.task('colors', function () {
+  gulp.src('./scss/sln-colors--custom.scss')
     //.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     //.pipe(sourcemaps.write())
@@ -99,7 +108,8 @@ gulp.task( 'watch', function() {
   livereload.listen();
   //gulp.watch( './less/salon.less', [ 'less' ] );
   //gulp.watch( './less/admin.less', [ 'adm' ] );
-  gulp.watch( './scss/**/*.scss', [ 'adminsass' ] );
+  gulp.watch( './scss/**/*.scss', [ 'sass' ] );
+  gulp.watch( './scss/**/*.scss', [ 'colors' ] );
   //gulp.watch( './css/admin.css' ).on( 'change', function( file ) {
   //  livereload.changed( file );
   //} );
