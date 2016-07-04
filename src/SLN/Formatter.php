@@ -31,26 +31,31 @@ class SLN_Formatter
     {
         if ($val instanceof DateTime) {
             $val = $val->format('Y-m-d H:i');
-        } else {
-            $val = strtotime($val);
         }
 
-        $f = SLN_Plugin::getInstance()->getSettings()->getDateFormat();
+        $f = $this->plugin->getSettings()->getDateFormat();
         $phpFormat = SLN_Enum_DateFormat::getPhpFormat($f);
         return ucwords(date_i18n($phpFormat, strtotime($val)));
     }
 
     public function time($val)
     {
-        $f = SLN_Plugin::getInstance()->getSettings()->getTimeFormat();
+        $f = $this->plugin->getSettings()->getTimeFormat();
         $phpFormat = SLN_Enum_TimeFormat::getPhpFormat($f);
         if ($val instanceof DateTime) {
             $val = $val->format('Y-m-d H:i');
-        } else {
-            $val = strtotime($val);
         }
 
-
         return date_i18n($phpFormat, strtotime($val));
+    }
+
+    public function phone($val){
+        $s = $this->plugin->getSettings();
+        $prefix = $s->get('sms_prefix');
+        if($s->get('sms_trunk_prefix') && strpos($val,'0') === 0){
+            $val = substr($val,1);
+        }
+        $val = str_replace(' ','',$val);
+        return $prefix . $val;
     }
 }

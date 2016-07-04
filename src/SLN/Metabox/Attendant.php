@@ -117,7 +117,8 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
         if (!$this->getPlugin()->getSettings()->get('google_calendar_enabled')) {
             unset($this->fields['google_calendar']);
         }
-        $_POST['_sln_attendant_holidays'] = $this->processHolidays($_POST['_sln_attendant_holidays']);
+        if(isset($_POST['_sln_attendant_holidays']))
+            $_POST['_sln_attendant_holidays'] = $this->processHolidays($_POST['_sln_attendant_holidays']);
         if(isset($_POST['_sln_attendant_services'])) {
             foreach($_POST['_sln_attendant_services'] as $k => $v){
                 $_POST['_sln_attendant_services'][$k] = str_replace('sln_attendant_services_','', $v);

@@ -11,6 +11,10 @@ Number.prototype.formatMoney = function (c, d, t) {
 
 jQuery(function ($) {
     sln_init($);
+    if(salon.has_stockholm_transition == 'yes'){
+        console.log('works');
+        $('body').on("click",'a[target!="_blank"]:not(.no_ajax):not(.no_link)', function(){setTimeout(function(){sln_init(jQuery);}, 2000)});
+    }
 });
 
 function sln_init($) {
@@ -97,6 +101,16 @@ function sln_init($) {
         text.html(self.val());
     });
 
+    $('#sln_no_user_account').on('change', function() {
+        if ($(this).is(':checked')) {
+            $('#sln_password').attr('disabled', 'disabled').parent().css('display', 'none');
+            $('#sln_password_confirm').attr('disabled', 'disabled').parent().css('display', 'none');
+        }
+        else {
+            $('#sln_password').attr('disabled', false).parent().css('display', 'block');
+            $('#sln_password_confirm').attr('disabled', false).parent().css('display', 'block');
+        }
+    }).change();
 }
 function sln_loadStep($, data) {
     var loadingMessage = '<div class="sln-loader-wrapper"><div class="sln-loader">Loading...</div></div>';
@@ -323,6 +337,12 @@ function initDatepickers($) {
             ;
         }
     });
+    var elementExists = document.getElementById('sln-salon');
+    if( elementExists){
+        setTimeout(function(){
+        $('.datetimepicker.sln-datetimepicker').wrap( "<div class='sln-salon-bs-wrap'></div>" );
+        }, 50);
+    }
 }
 
 function initTimepickers($) {

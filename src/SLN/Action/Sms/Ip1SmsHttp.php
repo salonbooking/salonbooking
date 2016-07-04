@@ -1,14 +1,12 @@
 <?php
 
-class SLN_Action_Sms_Ip1SmsHttp extends SLN_Action_Sms_Fake
+class SLN_Action_Sms_Ip1SmsHttp extends SLN_Action_Sms_Abstract
 {
     const API_URL = 'https://web.smscom.se/sendsms.aspx';
 
     public function send($to, $message)
     {
-        $settings = $this->plugin->getSettings();
-        $prefix = str_replace('+','',$settings->get('sms_prefix'));
-        $to = str_replace(' ','',$to);
+        $to = $this->processTo($to);
         // Set parameters
         $data = http_build_query(
             array(

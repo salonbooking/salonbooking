@@ -15,13 +15,21 @@ abstract class SLN_Metabox_Abstract
     protected function init()
     {
         add_action('add_meta_boxes', array($this, 'add_meta_boxes'));
-        add_action('save_post', array($this, 'save_post'), 10, 2);
+        add_action('save_post', array($this, 'may_save_post'), 10, 2);
         add_filter('wp_insert_post_data', array($this, 'wp_insert_post_data'), 99, 2);
     }
 
     abstract public function add_meta_boxes();
 
     abstract protected function getFieldList();
+
+    public function may_save_post($post_id, $post){
+        $pt = $this->getPostType();
+
+        if(is_admin() && $pt == $post->post_type) {
+            return $this->save_post($post_id, $post);
+        }
+    }
 
     public function save_post($post_id, $post)
     {
