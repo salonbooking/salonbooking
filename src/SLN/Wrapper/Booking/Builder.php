@@ -298,18 +298,20 @@ class SLN_Wrapper_Booking_Builder
         $this->getLastBooking()->setStatus($status);
 
         $userid = $this->getLastBooking()->getUserId();
-        $user = new WP_User($userid);
-        if (array_search('administrator', $user->roles) === false && array_search(
-                'subscriber',
-                $user->roles
-            ) !== false
-        ) {
-            wp_update_user(
-                array(
-                    'ID' => $userid,
-                    'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
-                )
-            );
+        if ($userid) {
+            $user = new WP_User($userid);
+            if (array_search('administrator', $user->roles) === false && array_search(
+	                'subscriber',
+	                $user->roles
+	            ) !== false
+            ) {
+                wp_update_user(
+                    array(
+                        'ID' => $userid,
+                        'role' => SLN_Plugin::USER_ROLE_CUSTOMER,
+                    )
+                );
+            }
         }
     }
 

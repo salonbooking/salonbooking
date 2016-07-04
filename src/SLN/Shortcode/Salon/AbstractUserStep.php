@@ -73,11 +73,12 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
     {
         $bb     = $this->getPlugin()->getBookingBuilder();
         $fields = array(
-            'firstname' => '',
-            'lastname'  => '',
-            'email'     => '',
-            'phone'     => '',
-            'address'     => ''
+            'firstname'       => '',
+            'lastname'        => '',
+            'email'           => '',
+            'phone'           => '',
+            'address'         => '',
+            'no_user_account' => '',
         );
         foreach ($fields as $field => $filter) {
             $data = isset($values[$field]) ? $values[$field] : '';

@@ -12,6 +12,7 @@ class SLN_Admin_Settings
         'homepage' => 'Home',
         'general' => 'General',
         'booking' => 'Booking Rules',
+        'checkout' => 'Checkout',
         'payments' => 'Payments',
         'style' => 'Style',
         'gcalendar' => 'Google Calendar',
@@ -72,6 +73,10 @@ class SLN_Admin_Settings
         'time_format',
         'week_start',
         'no_bootstrap',
+    );
+
+    private static $fieldsTabCheckout = array(
+        'enabled_guest_checkout',
     );
 
     private static $fieldsTabPayment = array(
@@ -327,12 +332,24 @@ class SLN_Admin_Settings
         );
     }
 
+    public function processTabCheckout()
+    {
+		$submitted = isset($_POST['salon_settings']) ? $_POST['salon_settings'] : array();
+		$this->bindSettings(self::$fieldsTabCheckout, $submitted);
+        $this->settings->save();
+        $this->showAlert(
+            'success',
+            __('checkout settings are updated', 'salon-booking-system'),
+            __('Update completed with success', 'salon-booking-system')
+        );
+    }
+
     public function processTabPayments()
     {
-
+		$fields = self::$fieldsTabPayment;
         foreach (SLN_Enum_PaymentMethodProvider::toArray() as $k => $v) {
             $fields = array_merge(
-                self::$fieldsTabPayment,
+                $fields,
                 SLN_Enum_PaymentMethodProvider::getService($k, $this->plugin)->getFields()
             );
         }
