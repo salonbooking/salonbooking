@@ -42,18 +42,16 @@
         <?php $ppl = false; ?>
         <?php include '_salon_thankyou_alert.php' ?>
     <?php endif ?>
+    <?php if($paymentMethod): ?>
+        <div class="sln-btn sln-btn--emphasis sln-btn--noheight sln-btn--fullwidth">
+            <?php echo $paymentMethod->renderPayButton(compact('booking', 'paymentMethod', 'ajaxData', 'payUrl')); ?>
+        </div>
+    <?php endif; ?>
 </div>
 <div class="col-md-4 sln-form-actions-wrapper sln-input--action">
     <div class="sln-form-actions sln-payment-actions row">
-        <?php if($paymentMethod): ?>
-            <div class="col-sm-6 col-md-12">
-                <div class="sln-btn sln-btn--emphasis sln-btn--noheight sln-btn--fullwidth">
-                    <?php echo $paymentMethod->renderPayButton(compact('booking', 'paymentMethod', 'ajaxData', 'payUrl')); ?>
-                </div>
-            </div>
-        <?php endif; ?>
         <?php if($paymentMethod && $plugin->getSettings()->get('pay_cash')): ?>
-            <div class="col-sm-4 col-md-8 pull-right">
+            <div class="col-sm-10 col-md-8 pull-right">
                 <a  href="<?php echo $laterUrl ?>" class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth"
                     <?php if($ajaxEnabled): ?>
                         data-salon-data="<?php echo $ajaxData.'&mode=later' ?>" data-salon-toggle="direct"
