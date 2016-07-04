@@ -3,12 +3,15 @@
   font-size: 1px;
   @extend %absolute-centering;
   &:after {
-    @include font-icon(5rem);
+    @include font-icon(75em);
     display: block;
     content: "\f1ce";
     @extend %text-color--emphasis;
     -webkit-animation: wait 2s infinite linear;
     animation: wait 2s infinite linear;
+    @include ie11() {
+      @include font-icon(75px);
+    }
   }
 }
 

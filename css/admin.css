@@ -2482,8 +2482,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-tab-nav li a,
   .sln-bootstrap #sln_service-details .handlediv.button-link .sln-btn--borderonly.toggle-indicator:after, #sln_service-details .handlediv.button-link
   .sln-bootstrap .sln-btn--borderonly.toggle-indicator:after {
     color: #003553; }
-  .sln-btn--borderonly.sln-btn--active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--active.nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active,
-  h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-admin-nav a.nav-tab.current, .sln-admin-nav .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab.current, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-tab-nav li.active a.nav-tab, .sln-tab-nav li.active .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab, .sln-admin-nav a.sln-btn--borderonly.current, .sln-admin-nav .sln-tab-nav li a.current, .sln-tab-nav li .sln-admin-nav a.current, .sln-tab-nav li a.sln-btn--active, .sln-tab-nav li.active a,
+  .sln-btn--borderonly.sln-btn--active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--active.nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active, h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-admin-nav a.nav-tab.current, .sln-admin-nav .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab.current, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-tab-nav li.active a.nav-tab, .sln-tab-nav li.active .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab, .sln-admin-nav a.sln-btn--borderonly.current, .sln-admin-nav .sln-tab-nav li a.current, .sln-tab-nav li .sln-admin-nav a.current, .sln-tab-nav li a.sln-btn--active, .sln-tab-nav li.active a,
   .sln-bootstrap .sln-btn--borderonly.sln-btn--active,
   .sln-bootstrap .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--active.nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper
   .sln-bootstrap .sln-btn--active.nav-tab,
@@ -3055,6 +3054,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-tab-nav li a,
   #sln_attendant-details .handlediv.button-link .sln-btn--icon--left.toggle-indicator:after,
   #postexcerpt .handlediv.button-link .sln-btn--icon--left.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-btn--icon--left.toggle-indicator:after {
     top: 0;
+    right: auto;
     right: initial;
     bottom: 0;
     left: 0; }
@@ -3242,48 +3242,6 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
       .sln-tab-nav li:not(.active):not(:last-of-type) a {
         border-right-color: transparent; } }
 
-#sln-graphs-filter label {
-  vertical-align: inherit
-}
-
-#sln-graphs-filter .graph-option-section {
-  float: left;
-  line-height: 2.5em;
-  padding-right: 5px
-}
-
-#sln-date-range-options,#sln-graphs-date-options {
-  float: left
-}
-
-#sln-date-range-options,#sln-graphs-date-options {
-  float: left
-}
-
-#sln-date-range-options span {
-  float: left;
-  margin-right: 6px;
-  height: 24px;
-  line-height: 24px
-}
-
-#sln-dashboard-widgets-wrap .postbox h3 {
-  cursor: default
-}
-
-.sln-graph .y1Axis {
-  color: #edc240 !important
-}
-
-.sln-graph .y2Axis {
-  color: #afd8f8 !important
-}
-
-p.sln_graph_totals, p.sln_graph_notes {
-  font-size: 0.8rem;
-  color: #555;
-}
-
 .sln-toolbox {
   background-color: rgba(0, 53, 83, 0.9);
   max-width: 100%;
@@ -3347,6 +3305,7 @@ p.sln_graph_totals, p.sln_graph_notes {
     .sln-toolbox {
       float: none;
       position: relative;
+      bottom: auto;
       bottom: initial;
       margin-top: 0.83333rem;
       max-height: 2.45833rem;
@@ -3548,6 +3507,11 @@ p.sln_graph_totals, p.sln_graph_notes {
   #sln_attendant-details .handlediv.button-link .sln-paneltrigger.toggle-indicator:after,
   #postexcerpt .handlediv.button-link .sln-paneltrigger.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-paneltrigger.toggle-indicator:after {
     font-size: 1em; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .sln-paneltrigger.sln-btn:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab:after, .sln-admin-nav a.sln-paneltrigger:after, .sln-tab-nav li a.sln-paneltrigger:after, #sln-salon--admin p.sln-paneltrigger.submit:after, .sln-calendar--wrapper p.sln-paneltrigger.submit:after, #sln_shop-details .handlediv.button-link .sln-paneltrigger.toggle-indicator:after,
+      #sln_attendant-details .handlediv.button-link .sln-paneltrigger.toggle-indicator:after,
+      #postexcerpt .handlediv.button-link .sln-paneltrigger.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-paneltrigger.toggle-indicator:after {
+        font-size: 1.4rem; } }
   .sln-paneltrigger.sln-btn.sln-btn--active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.sln-btn--active.nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active, .sln-nav-tab-wrapper.nav-tab-wrapper #sln-salon--admin p.sln-paneltrigger.nav-tab.nav-tab-active.submit, #sln-salon--admin .sln-nav-tab-wrapper.nav-tab-wrapper p.sln-paneltrigger.nav-tab.nav-tab-active.submit, .sln-nav-tab-wrapper.nav-tab-wrapper #sln_shop-details .handlediv.button-link .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator, #sln_shop-details .handlediv.button-link .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator, .sln-nav-tab-wrapper.nav-tab-wrapper
   #sln_attendant-details .handlediv.button-link .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator,
   #sln_attendant-details .handlediv.button-link .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator, .sln-nav-tab-wrapper.nav-tab-wrapper
@@ -3584,6 +3548,23 @@ p.sln_graph_totals, p.sln_graph_notes {
     #postexcerpt .handlediv.button-link .sln-paneltrigger.sln-btn--active.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-paneltrigger.sln-btn--active.toggle-indicator:after {
       color: #fff;
       font-size: 1em; }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .sln-paneltrigger.sln-btn.sln-btn--active:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.sln-btn--active.nav-tab:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active:after, .sln-nav-tab-wrapper.nav-tab-wrapper #sln-salon--admin p.sln-paneltrigger.nav-tab.nav-tab-active.submit:after, #sln-salon--admin .sln-nav-tab-wrapper.nav-tab-wrapper p.sln-paneltrigger.nav-tab.nav-tab-active.submit:after, .sln-nav-tab-wrapper.nav-tab-wrapper #sln_shop-details .handlediv.button-link .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:after, #sln_shop-details .handlediv.button-link .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:after, .sln-nav-tab-wrapper.nav-tab-wrapper
+        #sln_attendant-details .handlediv.button-link .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:after,
+        #sln_attendant-details .handlediv.button-link .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:after, .sln-nav-tab-wrapper.nav-tab-wrapper
+        #postexcerpt .handlediv.button-link .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:after,
+        #postexcerpt .handlediv.button-link .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:after, .sln-nav-tab-wrapper.nav-tab-wrapper #sln_service-details .handlediv.button-link .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:after, .sln-admin-nav a.sln-paneltrigger.sln-btn--active:after, .sln-admin-nav a.sln-paneltrigger.current:after, .sln-admin-nav #sln_shop-details .handlediv.button-link a.sln-paneltrigger.current.toggle-indicator:after, #sln_shop-details .handlediv.button-link .sln-admin-nav a.sln-paneltrigger.current.toggle-indicator:after, .sln-admin-nav
+        #sln_attendant-details .handlediv.button-link a.sln-paneltrigger.current.toggle-indicator:after,
+        #sln_attendant-details .handlediv.button-link .sln-admin-nav a.sln-paneltrigger.current.toggle-indicator:after, .sln-admin-nav
+        #postexcerpt .handlediv.button-link a.sln-paneltrigger.current.toggle-indicator:after,
+        #postexcerpt .handlediv.button-link .sln-admin-nav a.sln-paneltrigger.current.toggle-indicator:after, .sln-admin-nav #sln_service-details .handlediv.button-link a.sln-paneltrigger.current.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-admin-nav a.sln-paneltrigger.current.toggle-indicator:after, .sln-tab-nav li a.sln-paneltrigger.sln-btn--active:after, .sln-tab-nav li.active a.sln-paneltrigger:after, .sln-tab-nav li.active #sln_shop-details .handlediv.button-link a.sln-paneltrigger.toggle-indicator:after, #sln_shop-details .handlediv.button-link .sln-tab-nav li.active a.sln-paneltrigger.toggle-indicator:after, .sln-tab-nav li.active
+        #sln_attendant-details .handlediv.button-link a.sln-paneltrigger.toggle-indicator:after,
+        #sln_attendant-details .handlediv.button-link .sln-tab-nav li.active a.sln-paneltrigger.toggle-indicator:after, .sln-tab-nav li.active
+        #postexcerpt .handlediv.button-link a.sln-paneltrigger.toggle-indicator:after,
+        #postexcerpt .handlediv.button-link .sln-tab-nav li.active a.sln-paneltrigger.toggle-indicator:after, .sln-tab-nav li.active #sln_service-details .handlediv.button-link a.sln-paneltrigger.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-tab-nav li.active a.sln-paneltrigger.toggle-indicator:after, #sln-salon--admin p.sln-paneltrigger.sln-btn--active.submit:after, .sln-calendar--wrapper p.sln-paneltrigger.sln-btn--active.submit:after, #sln_shop-details .handlediv.button-link .sln-paneltrigger.sln-btn--active.toggle-indicator:after,
+        #sln_attendant-details .handlediv.button-link .sln-paneltrigger.sln-btn--active.toggle-indicator:after,
+        #postexcerpt .handlediv.button-link .sln-paneltrigger.sln-btn--active.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-paneltrigger.sln-btn--active.toggle-indicator:after {
+          font-size: 1.4rem; } }
     .sln-paneltrigger.sln-btn.sln-btn--active:hover, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.sln-btn--active.nav-tab:hover, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active:hover, .sln-nav-tab-wrapper.nav-tab-wrapper #sln-salon--admin p.sln-paneltrigger.nav-tab.nav-tab-active.submit:hover, #sln-salon--admin .sln-nav-tab-wrapper.nav-tab-wrapper p.sln-paneltrigger.nav-tab.nav-tab-active.submit:hover, .sln-nav-tab-wrapper.nav-tab-wrapper #sln_shop-details .handlediv.button-link .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:hover, #sln_shop-details .handlediv.button-link .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:hover, .sln-nav-tab-wrapper.nav-tab-wrapper
     #sln_attendant-details .handlediv.button-link .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:hover,
     #sln_attendant-details .handlediv.button-link .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab.nav-tab-active.toggle-indicator:hover, .sln-nav-tab-wrapper.nav-tab-wrapper
@@ -3874,9 +3855,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
   padding-bottom: 2em; }
   #sln_service-details em, #sln_attendant-details em {
     color: #aaa; }
-  #sln_service-details s
-h3:nth-child(3), #sln_attendant-details s
-h3:nth-child(3) {
+  #sln_service-details s h3:nth-child(3), #sln_attendant-details s h3:nth-child(3) {
     padding-left: 0; }
   #sln_service-details .sln-service-price-time input[type='text'], #sln_attendant-details .sln-service-price-time input[type='text'] {
     height: auto; }
@@ -4051,7 +4030,9 @@ body {
     #sln-salon--admin .sln-tab, .sln-calendar--wrapper .sln-tab {
       margin-right: 14.16667rem; } }
   #sln-salon--admin .sln-tab .form-group label input, .sln-calendar--wrapper .sln-tab .form-group label input {
+    display: auto;
     display: initial;
+    margin-top: auto;
     margin-top: initial; }
 
 #sln-salon--admin .sln-message, .sln-calendar--wrapper .sln-message {
@@ -4082,6 +4063,7 @@ body {
     #sln-salon--admin .sln-admin-sidebar, .sln-calendar--wrapper .sln-admin-sidebar {
       width: 14.16667rem;
       right: 0.41667rem;
+      bottom: auto;
       bottom: initial;
       background-color: rgba(0, 53, 83, 0); }
       #sln-salon--admin .sln-admin-sidebar .sln-update-settings, .sln-calendar--wrapper .sln-admin-sidebar .sln-update-settings {
@@ -4411,6 +4393,7 @@ body {
   @media only screen and (min-width: 768px) {
     .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box span[data-cal-date],
     .sln-calendar--wrapper .cal-year-box span[data-cal-date] {
+      width: auto;
       width: initial;
       height: 1.83333rem;
       line-height: 1.66667rem;
@@ -4462,6 +4445,7 @@ body {
       text-align: center; }
   .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick,
   .sln-calendar--wrapper #cal-day-tick {
+    top: auto;
     top: initial;
     bottom: 0.41667rem; }
     .salon_page_salon-calendar .sln-calendar--wrapper #cal-day-tick:after,

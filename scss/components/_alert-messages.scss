@@ -11,11 +11,11 @@
   //@extend %bgc-color--white;
   border-radius: 0;
   &:after {
-    @include font-icon(2rem);
+    @include font-icon(2em);
     display: inline-block;
     content: "\f05a";
     position: absolute;
-    top: .6rem;
+    top: .6em;
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(0);
     -ms-transform: translateX(-50%) translateY(0);
@@ -25,6 +25,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%;
+    @include ie11() {
+      font-size: 18px;
+      left: 16px;
+    }
   }
   a {
     display: inline-block;
@@ -43,12 +47,12 @@
     padding: .6em 1.6em .6em 3em;
     text-align: left;
     &:after {
-      @include font-icon(2rem);
+      @include font-icon(2em);
       display: inline-block;
       content: "\f05a";
       position: absolute;
       top: 50%;
-      left: .4rem;
+      left: .4em;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
@@ -61,8 +65,8 @@
   &.sln-alert--topicon {
     @include bp(tablet) {
       &:after {
-        top: .8rem;
-        left: .4rem;
+        top: .8em;
+        left: .4em;
       }
     }
   }
@@ -76,44 +80,57 @@
     display: inline-block;
     content: "";
     position: absolute;
-    top: .8rem;
+    top: .8em;
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(0);
     -ms-transform: translateX(-50%) translateY(0);
     transform: translateX(-50%) translateY(0);
-    font-size: 1.4rem;
-    @include bp(desktop) {font-size: 1.6rem;}
+    @extend %sln-textsize--bigger;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%;
     @extend %bgc-color--contrast;
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1.1em;
+    height: 1.1em;
   }
   @include bp(tablet) {
     &:before {
       top: 50%;
-      left: .5rem;
+      left: .6em;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
+      @include ie11() {
+        left: 16px;
+      }
     }
   }
   @include bp(desktop) {
-    &:before {width: 1.5rem; height: 1.5rem;}
+    &:before {
+      width: .9em;
+      height: .9em;
+      @include ie11() {
+        width: 28px;
+        height: 28px;
+      }
+    }
   }
   &.sln-alert--topicon {
     @include bp(tablet) {
       &:before {
-        top: 1.2rem;
-        left: .65rem;
+        top: 1.2em;
+        left: .65em;
       }
     }
     @include bp(desktop) {
       &:before {
-        top: 1rem;
-        left: .6rem;
+        top: 1em;
+        left: .6em;
+        @include ie11() {
+          top: 1rem;
+          left: .6rem;
+        }
       }
     }
   }
@@ -126,7 +143,7 @@
   font-weight: bold;
   text-align: left;
   &:after {
-    left: .6rem;
+    left: .6em;
   }
 }
 
@@ -149,14 +166,16 @@
 }
 .sln-alert.sln-alert--wait,
 .sln-alert--wait {
-  font-size: 1em;
   &:after {
     //top: initial;
     content: "\f1ce";
-    font-size: 1.9rem;
+    font-size: 1.9em;
     @extend %text-color--emphasis;
     -webkit-animation: wait 2s infinite linear;
     animation: wait 2s infinite linear;
+    @include ie11() {
+      font-size: 30px;
+    }
   }
 }
 @-webkit-keyframes wait {

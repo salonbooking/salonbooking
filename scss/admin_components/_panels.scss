@@ -41,7 +41,12 @@
         @extend .sln-btn--icon;
         @extend .sln-icon--arrow--down;
         margin-bottom: 0;
-        &:after {font-size: 1em;}
+        &:after {
+            font-size: 1em;
+            @include ie11() {
+              font-size: 1.4rem;
+            }
+        }
         @include transition(background-color 200ms);
         &.sln-btn--active {
             @extend .sln-icon--arrow--up;
@@ -49,7 +54,13 @@
             background-color: $cl_main--emphasis;
             color: $cl_main--white;
             margin-bottom: rem(40px);
-            &:after {color: $cl_main--white; font-size: 1em;}
+            &:after {
+                color: $cl_main--white;
+                font-size: 1em;
+                @include ie11() {
+                  font-size: 1.4rem;
+                }
+            }
             &:hover {background-color: $cl_main;}
         }
         @include bp(tablet) {

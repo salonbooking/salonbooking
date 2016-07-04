@@ -256,7 +256,7 @@ $cl_ok: #5bc24c;
       }
       td:nth-child(2),
       td:last-child {
-        max-width: auto !important;
+        max-width: auto;
         max-width:  initial !important;
         width:      100% !important;
       }
@@ -269,6 +269,10 @@ $cl_ok: #5bc24c;
         display:        inline-block;
         position:       absolute;
         left:           1em;
+        @include ie11() {
+          max-width: 12rem;
+          left: 1.4rem;
+        }
       }
       .status {
         margin-right: 80% !important;
@@ -356,7 +360,7 @@ $cl_ok: #5bc24c;
 		    border-radius: 0 !important;
 		    padding: 8px 24px !important;
 			font-variant: normal !important;
-      text-transform: auto !important;
+      text-transform: auto;
 			text-transform: initial !important;
 			font-size: 18px;
 
@@ -384,7 +388,7 @@ $cl_ok: #5bc24c;
 		    border:        none;
 		    position: relative;
 		    color:         $color-white;
-        opacity: auto;
+      opacity: auto;
 			opacity:       initial;
 			text-shadow:   none;
 			margin: 10px 20px 0 0;
