@@ -4,6 +4,7 @@
  */
 $enum = new SLN_Enum_ShortcodeStyle();
 $curr = $this->settings->getStyleShortcode();
+$colors = $this->settings->get('style_colors') ? $this->settings->get('style_colors') : array();
 ?>
 <div class="sln-tab" id="sln-tab-style">
     <div class="sln-box sln-box--main">
@@ -29,6 +30,23 @@ $curr = $this->settings->getStyleShortcode();
         </div>
     </div>
     <div class="sln-box sln-box--main">
+<div class="sln-box sln-box--main">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-switch">
+            <?php $this->row_input_checkbox_switch(
+                'style_colors_enabled',
+                'Custom colors',
+                array(
+                    'help' => __('customize colors of the salon shortcode.','salon-booking-system'),
+                    'bigLabelOn' => 'enabled',
+                    'bigLabelOff' => 'disabled'
+                    )
+            ); ?>
+        </div>
+    </div>
+</div>
+
+
         <h2 class="sln-box-title">
             <?php _e('Select your favorite booking form layout', 'salon-booking-system'); ?>
             <span><?php _e('Choose the one that best fits your page', 'salon-booking-system'); ?></span>
@@ -52,31 +70,28 @@ $curr = $this->settings->getStyleShortcode();
                     <div id="color-background" class="col-sm-4  col-lg-12 sln-input--simple sln-colorpicker">
                         <label><?php _e('Background color', 'salon-booking-system'); ?></label>
                         <div class="sln-colorpicker--subwrapper">
-                            <span id="thisone" class="input-group-addon sln-colorpicker-addon""><i>color sample</i></span>
-                            <input type="text" value="rgba(255, 255, 255, 1)" class="sln-input sln-input--text  sln-colorpicker--trigger" />
+                            <span id="thisone" class="input-group-addon sln-colorpicker-addon"><i>color sample</i></span>
+                            <input type="text" value="<?php echo isset($colors['background-a']) ? $colors['background-a'] : 'rgba(255, 255, 255, 1)' ?>" class="sln-input sln-input--text  sln-colorpicker--trigger" />
                         </div>
                     </div>
                     <div id="color-main" class="col-sm-4  col-lg-12 sln-input--simple sln-colorpicker">
                         <label for="salon_settings_gen_name"><?php _e('Main color', 'salon-booking-system'); ?></label>
                         <div class="sln-colorpicker--subwrapper">
-                            <span id="thisone" class="input-group-addon sln-colorpicker-addon""><i>color sample</i></span>
-                            <input type="text" value="rgba(2,119,189,1)" class="sln-input sln-input--text  sln-colorpicker--trigger" />
+                            <span id="thisone" class="input-group-addon sln-colorpicker-addon"><i>color sample</i></span>
+                            <input type="text" value="<?php echo isset($colors['main-a']) ? $colors['main-a'] : 'rgba(2,119,189,1)' ?>" class="sln-input sln-input--text  sln-colorpicker--trigger" />
                         </div>
                     </div>
                     <div id="color-text" class="col-sm-4  col-lg-12 sln-input--simple sln-colorpicker">
                         <label for="salon_settings_gen_name"><?php _e('Text color', 'salon-booking-system'); ?></label>
                         <div class="sln-colorpicker--subwrapper">
-                            <span id="thisone" class="input-group-addon sln-colorpicker-addon""><i>color sample</i></span>
-                            <input type="text" value="rgba(68,68,68,1)" class="sln-input sln-input--text  sln-colorpicker--trigger" />
+                            <span id="thisone" class="input-group-addon sln-colorpicker-addon"><i>color sample</i></span>
+                            <input type="text" value="<?php echo isset($colors['text-a']) ? $colors['text-a'] : 'rgba(68,68,68,1)' ?>" class="sln-input sln-input--text  sln-colorpicker--trigger" />
                         </div>
                     </div>
                     <div class="col-sm-6  col-lg-12 form-group sln-box-maininfo">
-                        <input id="color-main-a" type="text"><br>
-                        <input id="color-main-b" type="text"><br>
-                        <input id="color-main-c" type="text"><br>
-                        <input id="color-text-a" type="text"><br>
-                        <input id="color-text-b" type="text"><br>
-                        <input id="color-text-c" type="text">
+                        <?php foreach(array('background-a', 'main-a', 'main-b','main-c','text-a', 'text-b', 'text-c') as $k): ?>
+                            <input name="salon_settings[style_colors][<?php echo $k ?>]" id="color-<?php echo $k ?>" type="text" value="<?php echo isset($colors[$k]) ? $colors[$k] : '' ?>"><br>
+                        <?php endforeach ?>
                         <p class="sln-input-help">Morbi non erat elementum neque lacinia finibus. Sed rutrum viverra tortor. Sed laoreet, quam vestibulum molestie laoreet, dui justo egestas.</p>
                     </div>
                 </div>

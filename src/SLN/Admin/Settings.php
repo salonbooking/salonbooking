@@ -88,6 +88,8 @@ class SLN_Admin_Settings
 
     private static $fieldsTabStyle = array(
         'style_shortcode',
+        'style_colors_enabled',
+        'style_colors',
     );
 
     private static $fieldsTabGCalendar = array(
@@ -435,11 +437,24 @@ class SLN_Admin_Settings
         $this->bindSettings(self::$fieldsTabStyle,$submitted);
 
         $this->settings->save();
+        if($this->settings->get('style_colors_enabled')) {
+            $this->saveCustomCss();
+        }
         $this->showAlert(
             'success',
             __('style settings are updated', 'salon-booking-system'),
             __('Update completed with success', 'salon-booking-system')
         );
+    }
+    private function saveCustomCss(){
+        $css = file_get_contents(SLN_PLUGIN_DIR.'/css/sln-colors--custom.css');
+        $colors = $this->settings->get('style_colors');
+
+        if($colors)
+        foreach($colors as $k => $v){
+            $css = str_replace("{color-$k}", $v, $css);
+        }
+        file_put_contents(SLN_PLUGIN_DIR.'/css/sln-colors--custom-saved.css', $css); 
     }
 
     public function processTabGcalendar()

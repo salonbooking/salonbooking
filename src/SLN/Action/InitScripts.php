@@ -63,14 +63,14 @@ class SLN_Action_InitScripts
         // COLOR PICKER
         wp_enqueue_script(
             'salon-colorpicker-js',
-            SLN_PLUGIN_URL.'/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js',
+            SLN_PLUGIN_URL.'/js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js',
             array('jquery'),
             self::ASSETS_VERSION,
             true
         );
         wp_enqueue_style(
             'salon-colorpicker-css',
-            SLN_PLUGIN_URL.'/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css',
+            SLN_PLUGIN_URL.'/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css',
             array(),
             self::ASSETS_VERSION,
             'all'
@@ -131,7 +131,9 @@ class SLN_Action_InitScripts
     private function preloadFrontendScripts()
     {
         wp_enqueue_style('salon', SLN_PLUGIN_URL.'/css/salon.css', array(), self::ASSETS_VERSION, 'all');
-        wp_enqueue_style('sln-custom', SLN_PLUGIN_URL.'/css/sln-colors--custom.css', array(), self::ASSETS_VERSION, 'all');
+        if($this->plugin->getSettings()->get('style_colors_enabled')){
+            wp_enqueue_style('sln-custom', SLN_PLUGIN_URL.'/css/sln-colors--custom-saved.css', array(), self::ASSETS_VERSION, 'all');
+        }
     }
     
     public static function enqueueCustomSliderRange(){

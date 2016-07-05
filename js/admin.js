@@ -236,7 +236,7 @@ function sln_validateBooking($){
 // COLOR PICKER
 jQuery(function ($) {
     $(function() {
-        $('#color-backgroud').colorpicker({
+        $('#color-background').colorpicker({
             //color: 'transparent',
             //color: 'rgba(0, 66, 88, 1)',
             format: 'rgba',
@@ -316,7 +316,7 @@ jQuery(function ($) {
         });
     });
     $(function() {
-        var color_backgroud = $('#color-backgroud input').val(),
+        var color_background = $('#color-background input').val(),
             color_main = $('#color-main input').val(),
             color_text = $('#color-text input').val();
         $('#color-main-a').val(color_main);
@@ -337,7 +337,7 @@ jQuery(function ($) {
             textShadeC = 'rgba(' + b[0] + ',' + parseInt(b[1]) + ',' + parseInt(b[2]) + ',' + textAlphaC + ')';
         $('#color-text-b').val(textShadeB);
         $('#color-text-c').val(textShadeC);
-        $('.sln-colors-sample .wrapper').css('background-color', color_backgroud);
+        $('.sln-colors-sample .wrapper').css('background-color', color_background);
         $('.sln-colors-sample h1').css('color', color_main);
         $('.sln-colors-sample input').css('border-color', color_main);
         $('.sln-colors-sample button').css('background-color', color_main);
@@ -345,10 +345,12 @@ jQuery(function ($) {
         $('.sln-colors-sample p').css('color', color_text);
         $('.sln-colors-sample label').css('color', mainShadeB);
         $('.sln-colors-sample small').css('color', textShadeB);
-        $('#color-backgroud').colorpicker().on('changeColor', function(e) {
+        $('#color-background').colorpicker().on('changeColor', function(e) {
             $('.sln-colors-sample .wrapper')[0].style.backgroundColor = e.color;
             $('.sln-colors-sample input')[0].style.backgroundColor = e.color;
+            $('#color-background-a').val(e.color);
         });
+
         $('#color-main').colorpicker().on('changeColor', function(e) {
             var mainAlphaB = .75,
                 mainAlphaC = .5,
