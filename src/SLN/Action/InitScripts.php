@@ -132,7 +132,9 @@ class SLN_Action_InitScripts
     {
         wp_enqueue_style('salon', SLN_PLUGIN_URL.'/css/salon.css', array(), self::ASSETS_VERSION, 'all');
         if($this->plugin->getSettings()->get('style_colors_enabled')){
-            wp_enqueue_style('sln-custom', SLN_PLUGIN_URL.'/css/sln-colors--custom-saved.css', array(), self::ASSETS_VERSION, 'all');
+            $dir = wp_upload_dir();
+            $dir = $dir['baseurl'];
+            wp_enqueue_style('sln-custom', $dir.'/sln-colors.css', array(), self::ASSETS_VERSION, 'all');
         }
     }
     

@@ -454,7 +454,9 @@ class SLN_Admin_Settings
         foreach($colors as $k => $v){
             $css = str_replace("{color-$k}", $v, $css);
         }
-        file_put_contents(SLN_PLUGIN_DIR.'/css/sln-colors--custom-saved.css', $css); 
+        $dir = wp_upload_dir();
+        $dir = $dir['basedir'];
+        file_put_contents($dir.'/sln-colors.css', $css); 
     }
 
     public function processTabGcalendar()
