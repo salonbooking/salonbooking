@@ -72,7 +72,7 @@ $fontfamily--main:"Open sans", serif;
 // /// /// /// /// /// /// /// //
 // /// FONT AWESOME
 // /// /// /// /// /// /// /// //
-$fa-font-path:        "//netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts" !default;
+$fa-font-path:        "../fonts" !default;
 $fa-version:          "4.4.0" !default;
 @font-face {
   font-family: 'FontAwesome';
