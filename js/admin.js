@@ -254,12 +254,9 @@ jQuery(function ($) {
                 }
             },
             colorSelectors: {
-                'default': '#777777',
-                'primary': '#337ab7',
-                'success': '#5cb85c',
-                'info': '#5bc0de',
-                'warning': '#f0ad4e',
-                'danger': '#d9534f'
+                'rgba(255,255,255,1)': 'rgba(255,255,255,1)',
+                'rgba(0,0,0,1)': 'rgba(0,0,0,1)',
+                'rgba(2,119,189,1)': 'rgba(2,119,189,1)'
             }
         });
         $('#color-main').colorpicker({
@@ -280,12 +277,7 @@ jQuery(function ($) {
                 }
             },
             colorSelectors: {
-                'default': '#777777',
-                'primary': '#337ab7',
-                'success': '#5cb85c',
-                'info': '#5bc0de',
-                'warning': '#f0ad4e',
-                'danger': '#d9534f'
+                'rgba(2,119,189,1)': 'rgba(2,119,189,1)'
             }
         });
         $('#color-text').colorpicker({
@@ -306,12 +298,9 @@ jQuery(function ($) {
                 }
             },
             colorSelectors: {
-                '#777777': '#777777',
-                'primary': '#337ab7',
-                'success': '#5cb85c',
-                'info': '#5bc0de',
-                'warning': '#f0ad4e',
-                'danger': '#d9534f'
+                'rgba(68,68,68,1)': 'rgba(68,68,68,1)',
+                'rgba(0,0,0,1)': 'rgba(0,0,0,1)',
+                'rgba(255,255,255,1)': 'rgba(255,255,255,1)'
             }
         });
     });
@@ -345,6 +334,7 @@ jQuery(function ($) {
         $('.sln-colors-sample p').css('color', color_text);
         $('.sln-colors-sample label').css('color', mainShadeB);
         $('.sln-colors-sample small').css('color', textShadeB);
+
         $('#color-background').colorpicker().on('changeColor', function(e) {
             $('.sln-colors-sample .wrapper')[0].style.backgroundColor = e.color;
             $('.sln-colors-sample input')[0].style.backgroundColor = e.color;
