@@ -392,6 +392,8 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active {
     @extend .sln-btn--ok;
 }
 
+#sln-salon--admin .col-sm-12.sln-admin-nav,
+#sln-salon--admin .col-md-12.sln-admin-nav,
 .sln-admin-nav {
   //@extend %display-flex;
   display: block;
@@ -453,7 +455,13 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active {
           border-right-color: transparent;
         }
       }
+<<<<<<< HEAD
       //&.active a {@extend .sln-btn--active;}
+=======
+      &.active a {
+        //@extend .sln-btn--active;
+      }
+>>>>>>> master
     }
   }
 }

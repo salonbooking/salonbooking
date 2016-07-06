@@ -502,11 +502,13 @@ ul.sln-list--dashed li,
     box-shadow: none; }
 
 #sln-salon h1, .sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
-#sln-salon .alert:after, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
+#sln-salon .alert:after, .sln-alert--warning:before,
+#sln-salon .alert-warning:before, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
   font-size: 1.4em; }
   @media only screen and (min-width: 992px) {
     #sln-salon h1, .sln_datepicker:after, .sln_timepicker:after, .sln-alert:after,
-    #sln-salon .alert:after, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
+    #sln-salon .alert:after, .sln-alert--warning:before,
+    #sln-salon .alert-warning:before, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 .sln-icon, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h3 {
       font-size: 1.6em; } }
 
 #sln-salon h2 {
@@ -565,12 +567,17 @@ ul.sln-list--dashed li,
   font-size: 1px; }
   .sln-loader:after {
     font-family: "FontAwesome";
-    font-size: 5rem;
+    font-size: 75em;
     line-height: 0;
     display: block;
     content: "\f1ce";
     -webkit-animation: wait 2s infinite linear;
     animation: wait 2s infinite linear; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .sln-loader:after {
+        font-family: "FontAwesome";
+        font-size: 75px;
+        line-height: 0; } }
 
 @-webkit-keyframes wait {
   0% {
@@ -913,6 +920,9 @@ ul.sln-list--dashed li,
   height: 14px; }
 
 .datetimepicker.sln-datetimepicker {
+  display: none; }
+
+.datetimepicker.sln-datetimepicker {
   border-radius: 0;
   width: 360px;
   padding: 20px; }
@@ -1055,6 +1065,11 @@ ul.sln-list--dashed li,
     font-family: "FontAwesome";
     font-size: 60;
     line-height: 0; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .datetimepicker.sln-datetimepicker .prev:before, .datetimepicker.sln-datetimepicker .next:before {
+        font-family: "FontAwesome";
+        font-size: 18px;
+        line-height: 0; } }
   .datetimepicker.sln-datetimepicker .prev i, .datetimepicker.sln-datetimepicker .next i {
     display: none; }
 
@@ -1073,14 +1088,13 @@ ul.sln-list--dashed li,
 .sln_datepicker, .sln_timepicker {
   margin-bottom: 2em;
   position: relative;
-  cursor: pointer;
-  font-size: 1em; }
+  cursor: pointer; }
   .sln_datepicker:after, .sln_timepicker:after {
     font-family: "FontAwesome";
-    font-size: 1.6rem;
+    font-size: 1.6em;
     line-height: 0;
     display: inline-block;
-    right: .4rem;
+    right: .4em;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1089,6 +1103,10 @@ ul.sln-list--dashed li,
     -moz-transition: color 250ms;
     -o-transition: color 250ms;
     transition: color 250ms; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .sln_datepicker:after, .sln_timepicker:after {
+        font-size: 30px;
+        right: 16px; } }
 
 #sln-salon.sln-salon--m .sln_datepicker, #sln-salon.sln-salon--m .sln_timepicker {
   margin-bottom: 0; }
@@ -1221,14 +1239,21 @@ ul.sln-list--dashed li,
     position: absolute;
     top: 0;
     left: 0;
-    width: 1.8rem;
-    height: 1.76rem; }
+    width: 1.8em;
+    height: 1.76em; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .sln-checkbox input + label:before, .sln-checkbox input + label:after {
+        width: 24px;
+        height: 24px; } }
   .sln-checkbox input + label:before {
     content: "";
     transition: transform 0.5s;
     backface-visibility: hidden;
     border-style: solid;
     border-width: .2em; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .sln-checkbox input + label:before {
+        border-width: 3px; } }
   .sln-checkbox input + label:after {
     background-color: transparent;
     content: " \f00c";
@@ -1236,14 +1261,24 @@ ul.sln-list--dashed li,
     backface-visibility: hidden;
     opacity: 0;
     font-family: "FontAwesome";
-    font-size: 1.4rem;
+    font-size: 1.4em;
     line-height: 0;
-    line-height: 1.2rem;
-    top: .25rem;
-    left: .15rem;
-    width: 1rem;
-    height: 1rem;
+    line-height: 1.2em;
+    top: .05em;
+    left: .15em;
+    width: 1em;
+    height: 1em;
     text-align: center; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .sln-checkbox input + label:after {
+        font-family: "FontAwesome";
+        font-size: 18px;
+        line-height: 0;
+        line-height: 0;
+        top: 12px;
+        left: 3px;
+        width: 16px;
+        height: 16px; } }
   .sln-checkbox input + label:hover:after {
     opacity: 1; }
 
@@ -1301,7 +1336,10 @@ ul.sln-list--dashed li,
     transition: transform 0.5s;
     backface-visibility: hidden;
     border-style: solid;
-    border-width: .2rem; }
+    border-width: .2em; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .sln-radiobox input + label:before {
+        border-width: .2em; } }
   .sln-radiobox input + label:after {
     width: 18px;
     height: 18px;
@@ -1327,13 +1365,17 @@ ul.sln-list--dashed li,
     opacity: 0; }
 
 #sln-salon .sln-input .sln-input--addon {
-  padding: .36rem .8rem;
+  padding: .5em .8em;
   border-radius: 0;
   border: 0;
   font-weight: bold;
   line-height: 1.8em;
   background: transparent;
   position: relative; }
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    #sln-salon .sln-input .sln-input--addon {
+      padding: 7px .8em;
+      line-height: 32px; } }
   #sln-salon .sln-input .sln-input--addon:after {
     content: ' ';
     display: block;
@@ -1394,14 +1436,14 @@ ul.sln-list--dashed li,
 #sln-salon .sln-btn.sln-btn--noheight {
   display: inline-block;
   position: relative;
-  top: auto;
   top: initial;
-  right: auto;
+  top: auto;
   right: initial;
-  bottom: auto;
+  right: auto;
   bottom: initial;
-  left: auto;
+  bottom: auto;
   left: initial;
+  left: auto;
   padding: 1em .5em;
   text-transform: uppercase; }
   #sln-salon .sln-btn.sln-btn--noheight.sln-btn--block {
@@ -1412,14 +1454,14 @@ ul.sln-list--dashed li,
 #sln-salon .sln-btn.sln-btn--noheight a {
   display: inline-block;
   position: relative;
-  top: auto;
   top: initial;
-  right: auto;
+  top: auto;
   right: initial;
-  bottom: auto;
+  right: auto;
   bottom: initial;
-  left: auto;
+  bottom: auto;
   left: initial;
+  left: auto;
   padding: 1em .5em;
   text-transform: uppercase; }
   #sln-salon .sln-btn.sln-btn--noheight input.sln-btn--block,
@@ -1497,11 +1539,11 @@ ul.sln-list--dashed li,
     bottom: 0;
     text-align: center;
     font-family: "FontAwesome";
-    font-size: 1rem;
+    font-size: 1em;
     line-height: 0;
     font-style: normal;
     font-weight: normal;
-    line-height: 4rem;
+    line-height: 4em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-transition: background-color 200ms;
@@ -1509,32 +1551,53 @@ ul.sln-list--dashed li,
     -o-transition: background-color 200ms;
     transition: background-color 200ms;
     z-index: 200; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .sln-btn--icon:after {
+        font-family: "FontAwesome";
+        font-size: 16px;
+        line-height: 0;
+        line-height: 50px; } }
   .sln-btn--icon.sln-btn--big {
     padding-right: 2.6em; }
     .sln-btn--icon.sln-btn--big:after {
       font-family: "FontAwesome";
-      font-size: 1.2rem;
+      font-size: 1.2em;
       line-height: 0;
-      padding: 0 1rem;
-      line-height: 3.4rem; }
+      padding: 0 1em;
+      line-height: 3.4em; }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .sln-btn--icon.sln-btn--big:after {
+          font-size: 20px;
+          padding: 0 18px;
+          line-height: 50px; } }
   .sln-btn--icon.sln-btn--medium {
     padding-right: 1em;
     padding-left: 2em; }
     .sln-btn--icon.sln-btn--medium:after {
       font-family: "FontAwesome";
-      font-size: 1rem;
+      font-size: 1em;
       line-height: 0;
-      padding: 0 .5rem;
-      line-height: 3.2rem; }
+      padding: 0 .5em;
+      line-height: 3.6em; }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .sln-btn--icon.sln-btn--medium:after {
+          font-size: 16px;
+          padding: 0 9px;
+          line-height: 50px; } }
   .sln-btn--icon.sln-btn--noheight {
     padding-right: 1em;
     padding-left: 2em; }
     .sln-btn--icon.sln-btn--noheight:after {
       font-family: "FontAwesome";
-      font-size: 1rem;
+      font-size: 1em;
       line-height: 0;
-      padding: 0 .5rem;
-      line-height: 3.6rem; }
+      padding: 0 .5em;
+      line-height: 3.6em; }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .sln-btn--icon.sln-btn--noheight:after {
+          font-size: 16px;
+          padding: 0 9px;
+          line-height: 50px; } }
   .sln-btn--icon.sln-btn--icon--left {
     text-align: right; }
     .sln-btn--icon.sln-btn--icon--left.sln-btn--fullwidth {
@@ -1565,12 +1628,12 @@ ul.sln-list--dashed li,
   .sln-alert:after,
   #sln-salon .alert:after {
     font-family: "FontAwesome";
-    font-size: 2rem;
+    font-size: 2em;
     line-height: 0;
     display: inline-block;
     content: "\f05a";
     position: absolute;
-    top: .6rem;
+    top: .6em;
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(0);
     -ms-transform: translateX(-50%) translateY(0);
@@ -1579,6 +1642,11 @@ ul.sln-list--dashed li,
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     border-radius: 50%; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      .sln-alert:after,
+      #sln-salon .alert:after {
+        font-size: 18px;
+        left: 16px; } }
   .sln-alert a,
   #sln-salon .alert a {
     display: inline-block;
@@ -1596,13 +1664,13 @@ ul.sln-list--dashed li,
       .sln-alert:after,
       #sln-salon .alert:after {
         font-family: "FontAwesome";
-        font-size: 2rem;
+        font-size: 2em;
         line-height: 0;
         display: inline-block;
         content: "\f05a";
         position: absolute;
         top: 50%;
-        left: .4rem;
+        left: .4em;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
@@ -1613,8 +1681,8 @@ ul.sln-list--dashed li,
   @media only screen and (min-width: 768px) {
     .sln-alert.sln-alert--topicon:after,
     #sln-salon .alert.sln-alert--topicon:after {
-      top: .8rem;
-      left: .4rem; } }
+      top: .8em;
+      left: .4em; } }
 
 #sln-salon .sln-alert p:only-of-type, #sln-salon .sln-alert p:last-of-type {
   margin-bottom: 0; }
@@ -1624,49 +1692,58 @@ ul.sln-list--dashed li,
   display: inline-block;
   content: "";
   position: absolute;
-  top: .8rem;
+  top: .8em;
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(0);
   -ms-transform: translateX(-50%) translateY(0);
   transform: translateX(-50%) translateY(0);
-  font-size: 1.4rem;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   border-radius: 50%;
-  width: 1.1rem;
-  height: 1.1rem; }
-  @media only screen and (min-width: 992px) {
-    .sln-alert--warning:before,
-    #sln-salon .alert-warning:before {
-      font-size: 1.6rem; } }
+  width: 1.1em;
+  height: 1.1em; }
 
 @media only screen and (min-width: 768px) {
   .sln-alert--warning:before,
   #sln-salon .alert-warning:before {
     top: 50%;
-    left: .5rem;
+    left: .6em;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%); } }
+  @media only screen and (min-width: 768px) and (-ms-high-contrast: active), only screen and (min-width: 768px) and (-ms-high-contrast: none) {
+    .sln-alert--warning:before,
+    #sln-salon .alert-warning:before {
+      left: 16px; } }
 
 @media only screen and (min-width: 992px) {
   .sln-alert--warning:before,
   #sln-salon .alert-warning:before {
-    width: 1.5rem;
-    height: 1.5rem; } }
+    width: .9em;
+    height: .9em; } }
+  @media only screen and (min-width: 992px) and (-ms-high-contrast: active), only screen and (min-width: 992px) and (-ms-high-contrast: none) {
+    .sln-alert--warning:before,
+    #sln-salon .alert-warning:before {
+      width: 28px;
+      height: 28px; } }
 
 @media only screen and (min-width: 768px) {
   .sln-alert--topicon.sln-alert--warning:before,
   #sln-salon .sln-alert--topicon.alert-warning:before {
-    top: 1.2rem;
-    left: .65rem; } }
+    top: 1.2em;
+    left: .65em; } }
 
 @media only screen and (min-width: 992px) {
   .sln-alert--topicon.sln-alert--warning:before,
   #sln-salon .sln-alert--topicon.alert-warning:before {
-    top: 1rem;
-    left: .6rem; } }
+    top: 1em;
+    left: .6em; } }
+  @media only screen and (min-width: 992px) and (-ms-high-contrast: active), only screen and (min-width: 992px) and (-ms-high-contrast: none) {
+    .sln-alert--topicon.sln-alert--warning:before,
+    #sln-salon .sln-alert--topicon.alert-warning:before {
+      top: 1rem;
+      left: .6rem; } }
 
 .sln-alert.sln-alert-medium {
   display: block;
@@ -1675,7 +1752,7 @@ ul.sln-list--dashed li,
   font-weight: bold;
   text-align: left; }
   .sln-alert.sln-alert-medium:after {
-    left: .6rem; }
+    left: .6em; }
 
 .sln-alert--problem:after,
 #sln-salon .alert-danger:after {
@@ -1685,15 +1762,16 @@ ul.sln-list--dashed li,
 #sln-salon .alert-warning:after {
   content: "\f06a"; }
 
-.sln-alert.sln-alert--wait,
-.sln-alert--wait {
-  font-size: 1em; }
-  .sln-alert.sln-alert--wait:after,
-  .sln-alert--wait:after {
-    content: "\f1ce";
-    font-size: 1.9rem;
-    -webkit-animation: wait 2s infinite linear;
-    animation: wait 2s infinite linear; }
+.sln-alert.sln-alert--wait:after,
+.sln-alert--wait:after {
+  content: "\f1ce";
+  font-size: 1.9em;
+  -webkit-animation: wait 2s infinite linear;
+  animation: wait 2s infinite linear; }
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .sln-alert.sln-alert--wait:after,
+    .sln-alert--wait:after {
+      font-size: 30px; } }
 
 @-webkit-keyframes wait {
   0% {
@@ -1935,7 +2013,7 @@ ul.sln-list--dashed li,
     border: solid 1px #ddd; }
   #sln-salon-my-account.mobile-version td:nth-child(2),
   #sln-salon-my-account.mobile-version td:last-child {
-    max-width: auto !important;
+    max-width: auto;
     max-width: initial !important;
     width: 100% !important; }
   #sln-salon-my-account.mobile-version td:before {
@@ -1947,6 +2025,10 @@ ul.sln-list--dashed li,
     display: inline-block;
     position: absolute;
     left: 1em; }
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      #sln-salon-my-account.mobile-version td:before {
+        max-width: 12rem;
+        left: 1.4rem; } }
   #sln-salon-my-account.mobile-version .status {
     margin-right: 80% !important; }
   #sln-salon-my-account.mobile-version .status ~ div {
@@ -2007,7 +2089,7 @@ ul.sln-list--dashed li,
     border-radius: 0 !important;
     padding: 8px 24px !important;
     font-variant: normal !important;
-    text-transform: auto !important;
+    text-transform: auto;
     text-transform: initial !important;
     font-size: 18px; }
     #sln-salon #sln-salon-my-account .modal-body button.btn-primary {
@@ -2458,9 +2540,6 @@ ul.sln-list--dashed,
 
 .editable .text {
   padding: 5px 0 5px 5px; }
-
-.editable {
-  border: 1px solid transparent; }
 
 .editable.focus,
 .editable:hover {

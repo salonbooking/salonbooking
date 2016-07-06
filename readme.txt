@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.5.1
-Stable tag: 3.2
+Stable tag: 3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,134 +35,89 @@ Take a look at this video:
 https://www.youtube.com/watch?v=YdZ_-WPBOlc
 
 
-Salon booking works with double booking algorithms:
-
-* Basic - fixed booking duration
-* Advanced - booking duration is based on the sum of the services booked
+**LIST OF MAIN FEATURES**
 
 
+**Salon general settings**
+
+* Email notifications on new reservation
+* Email notification to selected assistant
+* Email reminder for the customers
+
+* SMS notification on new reservation
+* SMS notification to selected assistant
+* SMS reminder for the customers
+* SMS verification code against spam
+
+* Twilio, Plivo and 1p1sms providers supported
+
+* set you favourite date and time format
+* set when your week starts
+
+**Salon booking rules**
+
+* Three bookings methods BASIC / ADVANCED / HIGH END
+* Booking time range ( from a minimum of .. to a maximum of  in advance )
+* Multiple weekly timetable rules
+* Multiple holidays rules
+* Offset between reservation 
+* Change booking form steps order ( Date&time - Services - Assistants - Checkout - Payment or reverse )
+* Manual booking confirmation
+* Users booking cancellation
+* Pause online booking form
+
+**Salon payments options**
+
+* Enable online payments
+* Pay later option
+* Enable % deposit
+* Hide prices
+* PayPal
+* Stripe
+* Custom payment methods supported
+
+**Google Calendar synchronisation** 
+
+* Synchronise reservations on your Google Calendar account
+
+**Front-end booking form styling**
+
+* Choose among three different booking form sizes according to your page layout
+
+**Assistants settings**
+
+* Multiple weekly timetable rules
+* Multiple holidays rules
+* Limit reservations to specific services
+* Google Calendar synchronisation 
+* SMS notification when he’s booked
+* Email notification when he’s booked
 
 
-**LIST OF THE FEATURES**
+**Services settings**
+
+* Price
+* Duration
+* Unit per hour
+* Category grouping
+* Multiple weekly timetable rules
+* No assistant required option
+
+**Customers archive**
+
+* List of customers
+* Detail page of each customer with list of his reservations and feedbacks
+
+**Reports**
+
+* Stats on reservations and revenues
+
+**Frontend pages**
+
+* Booking form page
+* Private customers reservations management page
 
 
-**Recently added**: 
-
-* Change booking form steps order
-* “No assistant required” new service option
-* Holidays rules for assistants
-* New "Reports" section
-
-**With Salon Booking you can also..**
-
-* Custom texts on front-end booking form
-* Google Calendar synchronisation for assistants
-* Email notifications after bookings updates
-* Booking cancellation button inside email notification
-* Block bookings that exceed the salon closing time
-* High End booking algorithm - controls availability of service and assigned assistant during a specific time frame
-* Multiple assistants selection
-* Weekly scheduling multiple rules even for assistants and services
-* Front-end booking form layout style
-* Customers management archive
-* Holidays rules hourly range added
-* Week start on..
-* Email booking reminder 
-* Filter assistants by services
-* Import / Export settings tool
-* More intervals available for "Session average duration" option
-* Auto hide columns on Booking my Account page when Assistant selection is not active and when "Hide price" is active
-* Holidays rules - set your days off during the year
-* Offset between reservations - if you need to add an extra OFF interval between two sequential reservations
-* New section added "Tool" where you can get debugging infos
-* Customer reviews - let your customers submit a feedback after each reservation
-* Back-end settings pages full redesign
-* Bookings cancelation from front-end ( a new page MY BOOKING ACCOUNT )
-* Stripe as new payment method
-* Guidelines for custom alternative payment methods
-* Custom services order with drag&drop
-* Full front-end access to administrator even when the free-version is expired
-* New "Payment pending" status for bookings taken from back-end that require a payment from customers
-
-
-**GOOGLE CALENDAR INTEGRATION**
-Synchronise all your reservations inside your own Google Calendar and share the information with your staff members
-
-**ADD BOOKINGS FROM BACK-END**
-If you need to add a manual reservations, that ones received by phone for example, use the back-end interface with a real time
-control of your available date/time slots.
-
-* SMS Booking notifications
-* SMS Booking reminder
-* SMS Notification to selected assistant
-
-* Pay a deposit
-* Group services by category
-
-
-
-
-* Custom date format
-
-* Advanced booking algorithm - calculate the sum of the duration of the services booked
-
-* Hide prices option - if you don't want to show-up services prices
-
-* Ajax loading option
-
-* Assistant selection
-
-If you want you can give your customers the possibility to choose their favourite assistant during the booking process.
-
-
-* Assistant e-mail notification
-
-When a new booking is made the selected assistant will be notified by e-mail
-
-
-* SMS user verification
-
-Avoid spam and verify your customers identity using an SMS verification process during the first time registration. The SMS verification process supports TWILIO, PLIVO and IP1SMS providers 
-
-
-* Staff user role
-
-You can give access to the back-end to your salon staff limiting them to manage only the booking and calendar settings pages using the custom Salon staff user role. 
-
-
-* Intuitive bookings calendar
-
-Administrator has a full overview of the upcoming bookings for every single day of the month. Clicking on a single calendar day a list with all reservations will be displayed. Every single booking is linked to its own details page.
-
-
-* Booking rules
-
-Administrator can set how many people can book for the same date/time and how long last on average a single slot (time/session). This setting should represent the capacity of your salon of attending people one or more people at same time.
-
-
-* Set your salon timetable
-
-Administrator can set the open and closing days and the time slots using our multiple rules system. This will be reflected on front-end bookings calendar.
-
-
-* Accept online Payments
-Salon booking is ready to accept online payments with Paypal. You can decide if user can pay in advance using credit cards or pay later once arrived at the salon.
-
-
-* Create as many services as you want
-Easily create as many services as you need, edit or delete them as a simple post.
-
-
-* Full control of every single service
-Set  its price, duration, days of non availability, and a brief description. You can even make a difference between main and optional services.
-
-
-* Full control of every single booking
-When you receive a reservation you can view and eventually edit its own details. You can easily Add a new booking manually as you should for a post.
-
-
-* Nice emails confirmation
-When you receive a new reservation an email will be sent to you and to your client with all booking details.
 
 
 More information at [Salon booking](http://salon.wpchef.it/).
@@ -269,6 +224,15 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+15.06.2015
+
+* Bug fixed on booking rules
+* Bug fixed with Google Calendar sync.
+* Bug fixed with Holidays rules for assistants
+* Restored alert message when select a service that overlaps the closing time 
+
+
 
 03.06.2015
 

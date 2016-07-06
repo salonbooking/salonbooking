@@ -17,47 +17,17 @@ $isMultipleAttSelection = $plugin->getSettings()->isMultipleAttendantsEnabled();
 	<?php
 	if ($isMultipleAttSelection && count($bb->getServices()) > 1) {
 		$label = __('Select your assistants', 'salon-booking-system');
-		$value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-
-		if(current_user_can('manage_options')) {
-		?>
-			<div class="editable">
-				<h2 class="salon-step-title text">
-					<?php echo $value; ?>
-				</h2>
-				<div class="input">
-					<input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
-				</div>
-				<i class="fa fa-gear fa-fw"></i>
-			</div>
-		<?php
-		} else {
-		?>
-			<h2 class="salon-step-title"><?php echo $value; ?></h2>
-		<?php
-		}
 	} else {
 		$label = __('Select your assistant', 'salon-booking-system');
-		$value = SLN_Plugin::getInstance()->getSettings()->getCustomText($label);
-
-		if(current_user_can('manage_options')) {
-		?>
-			<div class="editable">
-				<h2 class="salon-step-title text">
-					<?php echo $value; ?>
-				</h2>
-				<div class="input">
-					<input class="sln-edit-text" id="<?php echo $label; ?>" value="<?php echo $value; ?>" />
-				</div>
-				<i class="fa fa-gear fa-fw"></i>
-			</div>
-		<?php
-		} else {
-		?>
-			<h2 class="salon-step-title"><?php echo $value; ?></h2>
-		<?php
-		}
 	}
+	$args = array(
+			'label'        => $label,
+			'tag'          => 'h2',
+			'textClasses'  => 'salon-step-title',
+			'inputClasses' => '',
+			'tagClasses'   => 'salon-step-title',
+	);
+	echo $plugin->loadView('shortcode/_editable_snippet', $args);
 	?>
 <?php
 	if ($size == '900') { ?>

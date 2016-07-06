@@ -95,9 +95,12 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			width: 1.8rem;
-			height: 1.76rem;
-			//border-radius: rem(4);
+			width: 1.8em;
+			height: 1.76em;
+			@include ie11() {
+				width: 24px;
+				height: 24px;
+			}
 		}
 		&:before {
 			content: "";
@@ -107,6 +110,9 @@
 			border-width: .2em;
 			@extend %bd-color--emphasis;
 			@extend %bgc-color--main;
+			@include ie11() {
+				border-width: 3px;
+			}
 		}
 		&:after {
 			background-color: transparent;
@@ -114,13 +120,21 @@
 			transition: all 0.15s;
 			backface-visibility: hidden;
 			opacity: 0;
-			@include font-icon(1.4rem);
-			line-height: 1.2rem;
-			top: .25rem;
-			left: .15rem;
-			width: 1rem;
-			height: 1rem;
+			@include font-icon(1.4em);
+			line-height: 1.2em;
+			top: .05em;
+			left: .15em;
+			width: 1em;
+			height: 1em;
 			text-align: center;
+      		@include ie11() {
+				@include font-icon(18px);
+				line-height: 0;
+				top: 12px;
+				left: 3px;
+				width: 16px;
+				height: 16px;
+      		}
 		}
 		&:hover:before {
 			@extend %bd-color--emphasis--hover;
@@ -202,9 +216,12 @@
 			transition: transform 0.5s;
 			backface-visibility: hidden;
 			border-style: solid;
-			border-width: .2rem;
+			border-width: .2em;
 			@extend %bd-color--emphasis;
 			@extend %bgc-color--main;
+			@include ie11() {
+				border-width: .2em;
+			}
 		}
 		&:after {
 			//@include font-icon(20px);
@@ -248,7 +265,7 @@
 // UTILITIES
 #sln-salon .sln-input {
 	.sln-input--addon {
-		padding: .36rem .8rem;
+		padding: .5em .8em;
 		border-radius: 0;
 		border: 0;
 		@extend %sln-textsize--base;
@@ -257,6 +274,10 @@
 		@extend %text-color--contrast;
 		background: transparent;
 		position: relative;
+		@include ie11() {
+			padding: 7px .8em;
+			line-height: 32px;
+		}
 		&:after {
 			content: ' ';
 			display: block;

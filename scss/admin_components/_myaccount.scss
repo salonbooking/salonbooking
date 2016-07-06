@@ -219,6 +219,10 @@
         display:        inline-block;
         position:       absolute;
         left:           1em;
+        @include ie11() {
+          max-width: 12rem;
+          left: 1.4rem;
+        }
       }
       .status {
         margin-right: 80% !important;

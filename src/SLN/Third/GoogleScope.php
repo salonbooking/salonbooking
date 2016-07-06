@@ -592,7 +592,7 @@ class SLN_GoogleScope {
      * @return string
      */
     public static function date3339($timestamp = 0, $offset = 0) {
-        $timezone = get_option('timezone_string');
+        $timezone = SLN_DateTime::getWpTimezoneString();
         $date = new DateTime(date('Y-m-d H:i:s', $timestamp), new DateTimeZone($timezone));
         return $date->format(DateTime::RFC3339);
 /*
@@ -736,7 +736,7 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
         $notes = $booking->getNote();
         $desc .= "\n\n" . __('Booking notes', 'salon-booking-system') . ":\n" . (empty($notes) ? __("None", 'salon-booking-system') : $notes);
         $desc .= "\n\n" . __('Booking status', 'salon-booking-system') . ": " . SLN_Enum_BookingStatus::getLabel($booking->getStatus());
-        $desc .= "\n\n" . __('Booking URL', 'salon-booking-system') . ": " . get_permalink($booking->getId());
+        $desc .= "\n\n" . __('Booking URL', 'salon-booking-system') . ": " . get_edit_post_link($booking->getId());
 
         $title = $booking->getDisplayName() . " - " . $booking->getStartsAt()->format('d/m/Y h:iA');
         sln_my_wp_log($title);

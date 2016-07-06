@@ -110,8 +110,15 @@ class SLN_Action_InitScripts
                 'images_folder' => SLN_PLUGIN_URL.'/img',
                 'confirm_cancellation_text' => __('Do you really want to cancel?', 'salon-booking-system'),
                 'time_format' => SLN_Enum_TimeFormat::getJSFormat($this->plugin->getSettings()->get('time_format')),
+                'has_stockholm_transition' => $this->hasStockholmTransition() ? 'yes' : 'no'
             )
         );
+    }
+
+    private function hasStockholmTransition()
+    {
+        global $qode_options;
+        return $qode_options && $qode_options['page_transitions'] > 0; 
     }
 
     private function preloadAdminScripts()
