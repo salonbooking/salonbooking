@@ -32,25 +32,23 @@ $colors = $this->settings->get('style_colors') ? $this->settings->get('style_col
     <div class="sln-box sln-box--main">
 <div class="sln-box sln-box--main">
     <div class="row">
+    <h2 class="sln-box-title">
+            <?php _e('Custom colors', 'salon-booking-system'); ?>
+            <span><?php _e('Choose the one that best fits your page', 'salon-booking-system'); ?></span>
+        </h2>
         <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-switch">
             <?php $this->row_input_checkbox_switch(
                 'style_colors_enabled',
                 'Custom colors',
                 array(
                     'help' => __('customize colors of the salon shortcode.','salon-booking-system'),
-                    'bigLabelOn' => 'enabled',
-                    'bigLabelOff' => 'disabled'
+                    'bigLabelOn' => 'Custom colors are enabled',
+                    'bigLabelOff' => 'Custom colors are disabled'
                     )
             ); ?>
         </div>
     </div>
 </div>
-
-
-        <h2 class="sln-box-title">
-            <?php _e('Select your favorite booking form layout', 'salon-booking-system'); ?>
-            <span><?php _e('Choose the one that best fits your page', 'salon-booking-system'); ?></span>
-        </h2>
         <div class="row">
             <div class="col-md-12 col-lg-8 sln-colors-sample">
                 <div class="wrapper">
