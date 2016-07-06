@@ -75,14 +75,20 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * PayPal
 * Stripe
 * Custom payment methods supported
+* official add-on for "Mollie" and "Square"
+
+**Salon checkout options**
+
+* Enable guest checkout
 
 **Google Calendar synchronisation** 
 
-* Synchronise reservations on your Google Calendar account
+* Synchronise reservations on salon administrator's Google Calendar account
 
 **Front-end booking form styling**
 
 * Choose among three different booking form sizes according to your page layout
+* Custom colors palette generator
 
 **Assistants settings**
 
@@ -224,6 +230,20 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+06.07.2016
+
+* Ip1sms bug fix
+* Google Calendar booking URL fixed
+* Removed CDN links
+* Pages transition effect and date/time picker fixed
+* Resend email notification option fixed
+* Back-end calendar daily view fixed
+* Holiday rules for assistants not saved fixed
+* Checkout as a guest option ADDED
+* Booking form color customization settings ADDED
+
+
 
 15.06.2015
 
