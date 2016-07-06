@@ -557,6 +557,7 @@
 }
 
 .sln-colorpicker-widget {
+	background-color: rgba(255,255,255,.5);
 	.colorpicker-saturation {
         width: 160px;
         height: 160px;
@@ -574,6 +575,7 @@
     }
     .colorpicker-selectors i {
         width: 24px;
+        border: 1px solid #ccc;
     }
 }
 

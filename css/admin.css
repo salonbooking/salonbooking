@@ -1522,23 +1522,23 @@ body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input
   margin: 0;
   margin-bottom: -1px; }
 
-.sln-colorpicker-widget .colorpicker-saturation {
-  width: 160px;
-  height: 160px; }
-
-.sln-colorpicker-widget .colorpicker-hue,
-.sln-colorpicker-widget .colorpicker-alpha {
-  width: 24px;
-  height: 160px; }
-
-.sln-colorpicker-widget .colorpicker-color,
-.sln-colorpicker-widget .colorpicker-color div,
-.sln-colorpicker-widget .colorpicker-selectors,
-.sln-colorpicker-widget .colorpicker-selectors i {
-  height: 24px; }
-
-.sln-colorpicker-widget .colorpicker-selectors i {
-  width: 24px; }
+.sln-colorpicker-widget {
+  background-color: rgba(255, 255, 255, 0.5); }
+  .sln-colorpicker-widget .colorpicker-saturation {
+    width: 160px;
+    height: 160px; }
+  .sln-colorpicker-widget .colorpicker-hue,
+  .sln-colorpicker-widget .colorpicker-alpha {
+    width: 24px;
+    height: 160px; }
+  .sln-colorpicker-widget .colorpicker-color,
+  .sln-colorpicker-widget .colorpicker-color div,
+  .sln-colorpicker-widget .colorpicker-selectors,
+  .sln-colorpicker-widget .colorpicker-selectors i {
+    height: 24px; }
+  .sln-colorpicker-widget .colorpicker-selectors i {
+    width: 24px;
+    border: 1px solid #ccc; }
 
 .sln-box .sln-colors-sample, #sln_shop-details .sln-colors-sample,
 #sln_attendant-details .sln-colors-sample,

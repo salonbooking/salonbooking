@@ -32,25 +32,23 @@ $colors = $this->settings->get('style_colors') ? $this->settings->get('style_col
     <div class="sln-box sln-box--main">
 <div class="sln-box sln-box--main">
     <div class="row">
+    <h2 class="sln-box-title">
+            <?php _e('Custom colors', 'salon-booking-system'); ?>
+            <span><?php _e('Choose the one that best fits your page', 'salon-booking-system'); ?></span>
+        </h2>
         <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-switch">
             <?php $this->row_input_checkbox_switch(
                 'style_colors_enabled',
                 'Custom colors',
                 array(
                     'help' => __('customize colors of the salon shortcode.','salon-booking-system'),
-                    'bigLabelOn' => 'enabled',
-                    'bigLabelOff' => 'disabled'
+                    'bigLabelOn' => 'Custom colors are enabled',
+                    'bigLabelOff' => 'Custom colors are disabled'
                     )
             ); ?>
         </div>
     </div>
 </div>
-
-
-        <h2 class="sln-box-title">
-            <?php _e('Select your favorite booking form layout', 'salon-booking-system'); ?>
-            <span><?php _e('Choose the one that best fits your page', 'salon-booking-system'); ?></span>
-        </h2>
         <div class="row">
             <div class="col-md-12 col-lg-8 sln-colors-sample">
                 <div class="wrapper">
@@ -90,7 +88,7 @@ $colors = $this->settings->get('style_colors') ? $this->settings->get('style_col
                     </div>
                     <div class="col-sm-6  col-lg-12 form-group sln-box-maininfo">
                         <?php foreach(array('background-a', 'main-a', 'main-b','main-c','text-a', 'text-b', 'text-c') as $k): ?>
-                            <input name="salon_settings[style_colors][<?php echo $k ?>]" id="color-<?php echo $k ?>" type="text" value="<?php echo isset($colors[$k]) ? $colors[$k] : '' ?>"><br>
+                            <input class="hidden" name="salon_settings[style_colors][<?php echo $k ?>]" id="color-<?php echo $k ?>" type="text" value="<?php echo isset($colors[$k]) ? $colors[$k] : '' ?>"><br>
                         <?php endforeach ?>
                         <p class="sln-input-help">Morbi non erat elementum neque lacinia finibus. Sed rutrum viverra tortor. Sed laoreet, quam vestibulum molestie laoreet, dui justo egestas.</p>
                     </div>
