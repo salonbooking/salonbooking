@@ -88,7 +88,7 @@ $colors = $this->settings->get('style_colors') ? $this->settings->get('style_col
                     </div>
                     <div class="col-sm-6  col-lg-12 form-group sln-box-maininfo">
                         <?php foreach(array('background-a', 'main-a', 'main-b','main-c','text-a', 'text-b', 'text-c') as $k): ?>
-                            <input class="hidden--" name="salon_settings[style_colors][<?php echo $k ?>]" id="color-<?php echo $k ?>" type="text" value="<?php echo isset($colors[$k]) ? $colors[$k] : '' ?>"><br>
+                            <input class="hidden" name="salon_settings[style_colors][<?php echo $k ?>]" id="color-<?php echo $k ?>" type="text" value="<?php echo isset($colors[$k]) ? $colors[$k] : '' ?>"><br>
                         <?php endforeach ?>
                         <p class="sln-input-help">Morbi non erat elementum neque lacinia finibus. Sed rutrum viverra tortor. Sed laoreet, quam vestibulum molestie laoreet, dui justo egestas.</p>
                     </div>
