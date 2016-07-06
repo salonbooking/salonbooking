@@ -2974,9 +2974,6 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-tab-nav li a,
   .sln-bootstrap #sln_service-details .handlediv.button-link .sln-btn--borderonly.toggle-indicator:after, #sln_service-details .handlediv.button-link
   .sln-bootstrap .sln-btn--borderonly.toggle-indicator:after {
     color: #003553; }
-<<<<<<< HEAD
-  .sln-btn--borderonly.sln-btn--active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--active.nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active, h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-admin-nav a.nav-tab.current, .sln-admin-nav .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab.current, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-tab-nav li.active a.nav-tab, .sln-tab-nav li.active .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab, .sln-admin-nav a.sln-btn--borderonly.current, .sln-admin-nav .sln-tab-nav li a.current, .sln-tab-nav li .sln-admin-nav a.current, .sln-tab-nav li a.sln-btn--active, .sln-tab-nav li.active a,
-=======
   .sln-btn--borderonly.sln-btn--active, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--active.nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active, h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active, .sln-nav-tab-wrapper.nav-tab-wrapper #sln-salon--admin .col-sm-12.sln-admin-nav a.nav-tab.current, #sln-salon--admin .col-sm-12.sln-admin-nav .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab.current, .sln-nav-tab-wrapper.nav-tab-wrapper
   #sln-salon--admin .col-md-12.sln-admin-nav a.nav-tab.current,
   #sln-salon--admin .col-md-12.sln-admin-nav .sln-nav-tab-wrapper.nav-tab-wrapper a.nav-tab.current, .sln-nav-tab-wrapper.nav-tab-wrapper
@@ -2988,7 +2985,6 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-tab-nav li a,
   .sln-admin-nav a.sln-btn--borderonly.current,
   .sln-admin-nav .sln-tab-nav li a.current, .sln-tab-nav li
   .sln-admin-nav a.current, .sln-tab-nav li a.sln-btn--active, .sln-tab-nav li.active a,
->>>>>>> master
   .sln-bootstrap .sln-btn--borderonly.sln-btn--active,
   .sln-bootstrap .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--active.nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper
   .sln-bootstrap .sln-btn--active.nav-tab,
