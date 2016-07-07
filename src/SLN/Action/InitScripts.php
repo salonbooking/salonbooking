@@ -126,7 +126,7 @@ class SLN_Action_InitScripts
         wp_enqueue_script('jqueryUi', SLN_PLUGIN_URL.'/js/select2.min.js', array('jquery'), true);
         wp_enqueue_script(
             'salon-admin-select2',
-            SLN_PLUGIN_URL.'/js/query-ui.min.js',
+            SLN_PLUGIN_URL.'/js/jquery-ui.min.js',
             array('jquery'),
             true
         );
