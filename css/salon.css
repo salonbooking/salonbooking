@@ -1616,6 +1616,16 @@ ul.sln-list--dashed li,
       padding-right: 4em;
       padding-left: 4em; }
 
+#sln-salon .stripe-button-el {
+  background-color: transparent;
+  background-image: none; }
+  #sln-salon .stripe-button-el span {
+    background-color: transparent;
+    background-image: none;
+    height: auto;
+    line-height: auto;
+    min-height: auto !important; }
+
 .sln-alert,
 #sln-salon .alert {
   display: inline-block;
