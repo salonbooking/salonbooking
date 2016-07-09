@@ -308,7 +308,7 @@ th {
 
 .sln-text--dark, .sln-btn--borderonly input, .sln-btn--borderonly button,
 .sln-bootstrap .sln-btn--borderonly input,
-.sln-bootstrap .sln-btn--borderonly button, .sln-steps-description, .sln-data-desc, .sln-summary-row .label, .sln-total-label, .sln-total-price {
+.sln-bootstrap .sln-btn--borderonly button, .sln-steps-description, #sln-salon .sln-data-desc, #sln-salon .sln-data-desc .label, .sln-summary-row .label, .sln-total-label, .sln-total-price {
   color: black; }
 
 .sln-text--emphasis, .sln-loader:after, #sln-salon .sln-panel .sln-panel-heading, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--nobkg, .sln_datepicker:hover:after, .sln_timepicker:hover:after, .sln-checkbox input:checked + label:after,
@@ -525,7 +525,7 @@ ul.sln-list--dashed li,
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   font-size: 1em; }
 
-#sln-salon .sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
+#sln-salon .sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, #sln-salon .sln-data-desc, #sln-salon .sln-data-desc .label, .sln-steps-duration small {
   font-size: .8em; }
 
 #sln-salon h2 {
@@ -542,7 +542,7 @@ ul.sln-list--dashed li,
 #sln-salon .alert, .sln-stepper .step .step-number, .sln-steps-duration, .sln-summary-row .label, #sln-salon .sln-thankyou--okbox h1, #sln-salon.sln-salon--s .sln-thankyou .sln-thankyou--okbox h1 {
   line-height: 1.4em; }
 
-#sln-salon .sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, .sln-data-desc, .sln-steps-duration small {
+#sln-salon .sln-input label, .sln-checkbox label, .sln-radiobox label, #sln-salon .sln-btn.sln-btn--noheight, #sln-salon .sln-btn--medium, .sln-alert.sln-alert-medium, .snl-error-list-item, .sln-stepper .step, #sln-salon .sln-data-desc, #sln-salon .sln-data-desc .label, .sln-steps-duration small {
   line-height: 1.4em; }
 
 #sln-salon {
@@ -1623,8 +1623,10 @@ ul.sln-list--dashed li,
     background-color: transparent;
     background-image: none;
     height: auto;
-    line-height: auto;
-    min-height: auto !important; }
+    line-height: inherit;
+    min-height: auto !important;
+    text-shadow: none;
+    box-shadow: none; }
 
 .sln-alert,
 #sln-salon .alert {
@@ -2280,6 +2282,11 @@ ul.sln-list--dashed,
 #sln-salon.sln-salon--s .sln-list--dashed {
   display: block; }
 
+#sln-salon .sln-data-desc, #sln-salon .sln-data-desc .label {
+  font-weight: normal;
+  font-weight: normal;
+  text-align: left; }
+
 .sln-data-val {
   text-align: right; }
 
@@ -2550,6 +2557,9 @@ ul.sln-list--dashed,
 
 .editable .text {
   padding: 5px 0 5px 5px; }
+
+.editable {
+  border: 1px solid transparent; }
 
 .editable.focus,
 .editable:hover {

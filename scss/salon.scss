@@ -120,9 +120,12 @@ ul.sln-list--dashed,
 #sln-salon.sln-salon--s .sln-list--dashed  {
 	display: block;
 }
-.sln-data-desc {
+#sln-salon .sln-data-desc, #sln-salon .sln-data-desc .label {
 	@extend %sln-textsize--small;
 	@extend %text-color--dark;
+	font-weight: normal;
+	font-weight: normal;
+	text-align: left;
 }
 .sln-data-val {text-align: right;}
 #sln-salon.sln-salon--s .sln-data-val {text-align: left; padding-top: .2em; padding-bottom: .6em;}
@@ -486,9 +489,12 @@ ul.sln-list--dashed,
 .editable .text {
     padding: 5px 0 5px 5px
 }
+.editable {
+    border: 1px solid transparent;
+}
 .editable.focus,
 .editable:hover {
-    border: 1px solid orange
+    border: 1px solid orange;
 }
 .editable .fa-gear {
     font-size: 25px;
