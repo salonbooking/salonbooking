@@ -11,7 +11,7 @@
             <?php if($deposit > 0): ?>
                 <?php echo sprintf(__('Pay %s as a deposit with %s', 'salon-booking-system'), $plugin->format()->money($deposit), $paymentMethod->getMethodLabel()) ?>
             <?php else : ?>
-                <?php sprintf(__('Pay with %s', 'salon-booking-system'), $paymentMethod->getMethodLabel()) ?>
+                <?php echo sprintf(__('Pay with %s', 'salon-booking-system'), $paymentMethod->getMethodLabel()) ?>
             <?php endif ?>"
     data-email="<?php echo $booking->getEmail() ?>"
     data-currency="<?php echo $plugin->getSettings()->getCurrency() ?>"
