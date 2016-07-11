@@ -116,16 +116,10 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         if (strpos($new, 'sln-b-') !== 0) {
             $new = 'sln-b-pendingpayment';
         }
-        $postnew = array();
-        if (strpos($s, 'sln-b-') !== 0) {
-            $postnew = array_merge(
-                $postnew,
-                array(
-                    'ID' => $post_id,
-                    'post_status' => $new,
-                )
-            );
-        }
+        $postnew = array(
+            'ID' => $post_id,
+            'post_status' => $new,
+        );
         $createUser = isset($_POST['_sln_booking_createuser']) ? $_POST['_sln_booking_createuser'] : false;
         if ($createUser) {
             $userid = $this->registration($_POST);
