@@ -20,6 +20,7 @@ class SLN_Currency
         'NOK' => array('name' => 'Norwegian Krone', 'symbol' => 'Kr', 'ASCII' => ''),
         'NZD' => array('name' => 'New Zealand Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
         'NGN' => array('name' => 'Nigerian Naira', 'symbol' => '₦', 'ASCII' => '&#8358;'),
+        'PEN' => array('name' => 'Peruvian Nuevo Sol', 'symbol'=>'S/.', 'hex'=>''),
         'PKR' => array('name' => 'Pakistan Rupee', 'symbol'=>'₨', 'hex'=>'&#x20a8;'),
         'PHP' => array('name' => 'Philippine Peso', 'symbol' => '₱', 'ASCII' => ''),
         'PLN' => array('name' => 'Polish Zloty', 'symbol' => 'zł', 'ASCII' => ''),
