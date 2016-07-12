@@ -1523,6 +1523,7 @@ body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input
   margin-bottom: -1px; }
 
 .sln-colorpicker-widget {
+  position: absolute;
   background-color: rgba(255, 255, 255, 0.5); }
   .sln-colorpicker-widget .colorpicker-saturation {
     width: 160px;
