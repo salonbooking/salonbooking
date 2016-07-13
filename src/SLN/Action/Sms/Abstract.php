@@ -28,7 +28,7 @@ abstract class SLN_Action_Sms_Abstract
 
     protected function processTo($to)
     {
-        $this->plugin->format()->phone($to);
+        return $this->plugin->format()->phone($to);
     }
 
     protected function createException($message, $code = 1000, $previous = null)
