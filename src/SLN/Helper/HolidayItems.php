@@ -49,4 +49,15 @@ class SLN_Helper_HolidayItems
         return true;
     }
 
+    public static function processSubmission($data = null)
+    {
+        if(!$data) return $data;
+        foreach ($data as &$holidayData) {
+            $holidayData['from_date'] = SLN_TimeFunc::evalPickedDate($holidayData['from_date']);
+            $holidayData['to_date'] = SLN_TimeFunc::evalPickedDate($holidayData['to_date']);
+            $holidayData['from_time'] = SLN_TimeFunc::evalPickedTime($holidayData['from_time']);
+            $holidayData['to_time'] = SLN_TimeFunc::evalPickedTime($holidayData['to_time']);
+        }
+        return $data;
+    }
 }

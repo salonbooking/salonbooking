@@ -309,22 +309,13 @@ class SLN_Admin_Settings
     {
         $submitted = $_POST['salon_settings'];
         $tmp = array();
-        if ($submitted['availabilities']) {
+        if (isset($submitted['availabilities']) && $submitted['availabilities']) {
             foreach ($submitted['availabilities'] as $row) {
                 $tmp[] = $row;
             }
         }
         $submitted['availabilities'] = $tmp;
-        $submitted['holidays'] = isset($submitted['holidays']) ? array_values(
-            $submitted['holidays']
-        ) : array();
-        foreach ($submitted['holidays'] as &$holidayData) {
-            $holidayData['from_date'] = SLN_Func::evalPickedDate($holidayData['from_date']);
-            $holidayData['to_date'] = SLN_Func::evalPickedDate($holidayData['to_date']);
-            $holidayData['from_time'] = date('H:i', strtotime($holidayData['from_time']));
-            $holidayData['to_time'] = date('H:i', strtotime($holidayData['to_time']));
-        }
-
+        $submitted['holidays'] = SLN_Helper_HolidayItems::processSubmission($submitted['holidays']);
         $this->bindSettings(self::$fieldsTabBooking, $submitted);
         $this->settings->save();
         $this->showAlert(
