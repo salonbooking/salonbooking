@@ -53,14 +53,16 @@ class SLN_Admin_Reports_GoogleGraph {
 		}
 
 		$axes_js = array();
+		$axes_i = 0;
 		foreach ( $data['labels']['y'] as $label => $type ) {
-			$axes_js[] = "$label: {label: '$label'},";
+			$axes_js[] = "$axes_i: {label: '$label'},";
+			$axes_i++;
 		}
 
 		$series_js = array();
 		$series_i = 0;
 		foreach ( $data['labels']['y'] as $label => $type ) {
-			$series_js[] = "$series_i: {axis: '$label'},";
+			$series_js[] = "$series_i: {axis: '$series_i'},";
 			$series_i++;
 		}
 
@@ -117,23 +119,18 @@ class SLN_Admin_Reports_GoogleGraph {
 
 		$data = $this->get_data();
 
-		$labels_js = array();
-		foreach ( array_merge($data['labels']['x'], $data['labels']['y']) as $label => $type ) {
-			$labels_js[] = "data.addColumn('$type', '$label');";
-		}
-
 		$axes_js = array();
 		$axes_i = 0;
 		foreach ( $data['labels']['x'] as $label => $type ) {
 			$axes_options = $axes_i % 2 ? "" : "side: 'top'";
-			$axes_js[] = "$label: {label: '$label', $axes_options},";
+			$axes_js[] = "$axes_i: {label: '$label', $axes_options},";
 			$axes_i++;
 		}
 
 		$series_js = array();
 		$series_i = 0;
 		foreach ( $data['labels']['x'] as $label => $type ) {
-			$series_js[] = "$series_i: {axis: '$label'},";
+			$series_js[] = "$series_i: {axis: '$series_i'},";
 			$series_i++;
 		}
 

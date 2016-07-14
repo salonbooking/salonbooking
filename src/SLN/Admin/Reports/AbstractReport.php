@@ -267,9 +267,20 @@ abstract class SLN_Admin_Reports_AbstractReport {
 			$bookings[$p->ID] = $booking;
 		}
 
+		$format = 'M';
+		if ($day) {
+			$format = 'd ' . $format;
+		} else {
+			$format .= ' Y';
+		}
+		if ($hour) {
+			$format .= ' H:i';
+		}
+
 		$day = $day ? $day : 1;
 		$hour = $hour ? $hour . "00" : "";
-		$datetime = "$year-$month_num-$day $hour";
+
+		$datetime = date($format, strtotime("$year-$month_num-$day $hour"));
 		$this->bookings[$datetime] = $bookings;
 	}
 
@@ -447,8 +458,7 @@ abstract class SLN_Admin_Reports_AbstractReport {
 		);
 
 		$dates   = $this->getReportDates();
-		$display = $dates['range'] == 'other' ? '' : 'style="display:none;"';
-		$view    = $this->getReportingView();
+		$display = $dates['range'] == 'other' ? 'style="display:inline;"' : 'style="display:none;"';
 
 		if(empty($dates['day_end'])) {
 			$dates['day_end'] = cal_days_in_month(CAL_GREGORIAN, current_time('n'), current_time('Y'));
@@ -468,7 +478,7 @@ abstract class SLN_Admin_Reports_AbstractReport {
 					</select>
 
 					<div id="sln-date-range-options" <?php echo $display; ?>>
-						<span><?php _e('From', 'salon-booking-system'); ?>&nbsp;</span>
+						<span style="float: left;"><?php _e('From', 'salon-booking-system'); ?>&nbsp;</span>
 						<select id="sln-graphs-month-start" name="m_start">
 							<?php for ($i = 1; $i <= 12; $i++) : ?>
 								<option value="<?php echo absint($i); ?>" <?php selected($i, $dates['m_start']); ?>><?php echo $this->monthNumToName($i); ?></option>
@@ -484,7 +494,7 @@ abstract class SLN_Admin_Reports_AbstractReport {
 								<option value="<?php echo absint($i); ?>" <?php selected($i, $dates['year']); ?>><?php echo $i; ?></option>
 							<?php endfor; ?>
 						</select>
-						<span><?php _e('To', 'salon-booking-system'); ?>&nbsp;</span>
+						<span style="float: left;"><?php _e('To', 'salon-booking-system'); ?>&nbsp;</span>
 						<select id="sln-graphs-month-end" name="m_end">
 							<?php for ($i = 1; $i <= 12; $i++) : ?>
 								<option value="<?php echo absint($i); ?>" <?php selected($i, $dates['m_end']); ?>><?php echo $this->monthNumToName($i); ?></option>
@@ -502,12 +512,13 @@ abstract class SLN_Admin_Reports_AbstractReport {
 						</select>
 					</div>
 
-					<div class="sln-graph-filter-submit graph-option-section"style="display: inline-block">
+					<div class="sln-graph-filter-submit graph-option-section"style="display: inline">
 						<input type="hidden" name="sln_action" value="filter_reports" />
 						<input type="submit" class="button-secondary" value="<?php _e('Filter', 'salon-booking-system'); ?>" />
 					</div>
 				</div>
 			</div>
+		<br>
 		<script>
 			// Show hide extended date options
 			jQuery(window).ready(function() {
@@ -516,7 +527,7 @@ abstract class SLN_Admin_Reports_AbstractReport {
 					date_range_options = jQuery( '#sln-date-range-options' );
 
 					if ( 'other' === $this.val() ) {
-						date_range_options.show();
+						date_range_options.css('display', 'inline');
 					} else {
 						date_range_options.hide();
 					}
@@ -532,6 +543,11 @@ abstract class SLN_Admin_Reports_AbstractReport {
 		$timestamp = mktime(0, 0, 0, $n, 1, 2005);
 
 		return date_i18n("M", $timestamp);
+	}
+
+	protected function getCurrencySymbol() {
+		$currency = $this->plugin->getSettings()->getCurrency();
+		return $currency . ' ' . SLN_Currency::getSymbolAsIs($this->plugin->getSettings()->getCurrency()) . '';
 	}
 
 	protected function getReportingView() {

@@ -11,8 +11,8 @@ class SLN_Admin_Reports_RevenuesByAssistantsReport extends SLN_Admin_Reports_Abs
 		$ret['subtitle'] = '';
 
 		$ret['labels']['x'] = array(
-				__('Earnings', 'salon-booking-system') => 'number',
-				__('Bookings', 'salon-booking-system') => 'number',
+				sprintf(__('Earnings (%s)', 'salon-booking-system'), $this->getCurrencySymbol()) => 'number',
+				__('Bookings', 'salon-booking-system')                                           => 'number',
 		);
 		$ret['labels']['y'] = array(
 				''                                     => 'string',

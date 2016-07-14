@@ -13,8 +13,8 @@ class SLN_Admin_Reports_RevenuesReport extends SLN_Admin_Reports_AbstractReport 
 				''                                     => 'string',
 		);
 		$ret['labels']['y'] = array(
-				__('Earnings', 'salon-booking-system') => 'number',
-				__('Bookings', 'salon-booking-system') => 'number',
+				sprintf(__('Earnings (%s)', 'salon-booking-system'), $this->getCurrencySymbol()) => 'number',
+				__('Bookings', 'salon-booking-system')                                           => 'number',
 		);
 
 		$ret['data']   = array();
