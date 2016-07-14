@@ -11,7 +11,7 @@ class SLN_Admin_Reports_Graph {
 	 * @var array
 	 * @since 1.9
 	 */
-	private $data;
+	protected $data;
 
 	/**
 	 * Unique ID for the graph
@@ -19,7 +19,7 @@ class SLN_Admin_Reports_Graph {
 	 * @var string
 	 * @since 1.9
 	 */
-	private $id = '';
+	protected $id = '';
 
 	/**
 	 * Graph options
@@ -27,7 +27,7 @@ class SLN_Admin_Reports_Graph {
 	 * @var array
 	 * @since 1.9
 	 */
-	private $options = array();
+	protected $options = array();
 
 	/**
 	 * Get things started
@@ -100,7 +100,7 @@ class SLN_Admin_Reports_Graph {
 	 *
 	 * @since 1.9
 	 */
-	public function load_scripts() {
+	public static function load_scripts() {
 		wp_enqueue_script('jquery-flot', SLN_PLUGIN_URL.'/js/jquery.flot.js');
 	}
 
@@ -114,8 +114,6 @@ class SLN_Admin_Reports_Graph {
 	public function build_graph() {
 
 		$yaxis_count = 1;
-
-		$this->load_scripts();
 
 		$data = $this->get_data();
 //		print_r(array_map(function($elem) {
