@@ -6126,3 +6126,8 @@ body {
   .vertical-tabs li {
     display: block;
     width: 100%; } }
+
+.sln-box p.sln_graph_totals, .sln-box p.sln_graph_notes {
+  font-size: medium;
+  color: #444;
+}
