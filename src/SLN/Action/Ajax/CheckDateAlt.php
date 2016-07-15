@@ -64,8 +64,9 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
             }
         }
 
-        if (!isset($intervalsArray['times'][$intervalsArray['suggestedTime']])) {
-            $intervalsArray['suggestedTime'] = reset($intervalsArray['times']);
+        if (!isset($intervalsArray['times'][date('H:i', strtotime($intervalsArray['suggestedTime']))])) {
+            $tmpTime = new SLN_DateTime(reset($intervalsArray['times']));
+            $intervalsArray['suggestedTime'] = $plugin->format()->time($tmpTime);
         }
 
         return $intervalsArray;
