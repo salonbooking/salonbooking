@@ -47,6 +47,11 @@ class SLN_Currency
         return (string)self::$currencies[$code]['symbol'];
     }
 
+    public static function getSymbolAsIs($code = 'USD')
+    {
+        return (string)self::$currencies[$code]['symbol'];
+    }
+
     public static function toArray()
     {
         $ret = array();
