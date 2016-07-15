@@ -63,6 +63,7 @@ class SLN_Admin_Settings
         'sms_new_attendant',
         'sms_remind',
         'sms_remind_interval',
+        'sms_trunk_prefix',
         'email_remind',
         'email_remind_interval',
         'email_subject',
