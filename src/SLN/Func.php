@@ -73,24 +73,14 @@ class SLN_Func
         } elseif ($filter == 'float') {
             return floatval(str_replace(',', '.', $val));
         } elseif ($filter == 'time') {
-            if ($val instanceof DateTime) {
-                $val = $val->format('H:i');
-            }
-            if (empty($val)) {
-                return null;
-            }
-            if (strpos($val, ':') === false) {
-                $val .= ':00';
-            }
-
-            return date('H:i', strtotime('1970-01-01 ' . $val));
+            return SLN_TimeFunc::evalPickedTime($val);
         } elseif ($filter == 'date') {
             if (is_array($val)) {
                 $val = $val['year'] . '-' . $val['month'] . '-' . $val['day'];
             } elseif (strpos($val, ' ') !== false) {
-                $val = self::evalPickedDate($val);
+                $val = SLN_TimeFunc::evalPickedDate($val);
             } else {
-                $val = self::evalPickedDate($val);
+                $val = SLN_TimeFunc::evalPickedDate($val);
             }
             $ret = date('Y-m-d', strtotime($val));
             if ($ret == '1970-01-01')
@@ -114,42 +104,9 @@ class SLN_Func
             return $val;
         }
     }
+
     public static function removeAccents($string) {
         return strtolower(trim(preg_replace('~[^0-9a-z]+~i', '-', preg_replace('~&([a-z]{1,2})(acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', htmlentities($string, ENT_QUOTES, 'UTF-8'))), ' '));
-    }
-
-    public static function evalPickedDate($date)
-    {
-        if (strpos($date, '-'))
-            return $date;
-        $initial = $date;
-        $f = SLN_Plugin::getInstance()->getSettings()->getDateFormat();
-        if ($f == SLN_Enum_DateFormat::_DEFAULT) {
-            if(!strpos($date, ' ')) throw new Exception('bad date format');
-            $date = explode(' ', $date);
-            foreach (SLN_Func::getMonths() as $k => $v) {
-//                if (strcasecmp($date[1], $v) == 0) {
-                if (self::removeAccents($date[1]) == self::removeAccents($v)) {
-                    $ret = $date[2] . '-' . ($k < 10 ? '0' . $k : $k) . '-' . $date[0];
-                    return $ret;
-                }
-            }
-        } elseif ($f == SLN_Enum_DateFormat::_SHORT) {
-            $date = explode('/', $date);
-            if (count($date) == 3)
-                return sprintf('%04d-%02d-%02d', $date[2], $date[1], $date[0]);
-            else
-                throw new Exception('bad number of slashes');
-        }elseif ($f == SLN_Enum_DateFormat::_SHORT_COMMA) {
-            $date = explode('-', $date);
-            if (count($date) == 3)
-                return sprintf('%04d-%02d-%02d', $date[2], $date[1], $date[0]);
-            else
-                throw new Exception('bad number of commas');
-        }else {
-            return date('Y-m-d', strtotime($date));
-        }
-        throw new Exception('wrong date ' . $initial . ' format: ' . $f);
     }
 
     static function addUrlParam($url, $k, $v)

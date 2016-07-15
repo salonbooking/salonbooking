@@ -6127,6 +6127,20 @@ body {
     display: block;
     width: 100%; } }
 
+#sln-graphs-filter .graph-option-section {
+  float: left;
+  line-height: 2.5em;
+  padding-right: 5px;
+}
+#sln-graphs-date-options, #sln-date-range-options {
+  float: left;
+}
+#sln-date-range-options span {
+  float: left;
+  margin-right: 6px;
+  height: 24px;
+  line-height: 24px;
+}
 .sln-box p.sln_graph_totals, .sln-box p.sln_graph_notes {
   font-size: medium;
   color: #444;
