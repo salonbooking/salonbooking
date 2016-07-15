@@ -12,11 +12,26 @@ class SLN_Admin_Reports_TopCustomersReport extends SLN_Admin_Reports_AbstractRep
 		$ret['subtitle'] = '';
 
 		$ret['labels']['x'] = array(
-				sprintf(__('Earnings (%s)', 'salon-booking-system'), $this->getCurrencySymbol()) => 'number',
-				__('Bookings', 'salon-booking-system')                                           => 'number',
+				array(
+						'label'  => sprintf(__('Earnings (%s)', 'salon-booking-system'), $this->getCurrencyString()),
+						'type'   => 'number',
+						'format_axis' => array(
+								'pattern' => '####.##'.$this->getCurrencySymbol(),
+						),
+						'format_data' => array(
+								'pattern' => '####.##'.$this->getCurrencySymbol(),
+						),
+				),
+				array(
+						'label' => __('Bookings', 'salon-booking-system'),
+						'type'  => 'number',
+				),
 		);
 		$ret['labels']['y'] = array(
-				''                                     => 'string',
+				array(
+						'label' => '',
+						'type'  => 'string',
+				),
 		);
 
 		$ret['data'] = array();
@@ -42,6 +57,10 @@ class SLN_Admin_Reports_TopCustomersReport extends SLN_Admin_Reports_AbstractRep
 		uasort($ret['data'], array($this, 'sort'));
 
 		$ret['data'] = array_slice($ret['data'], 0, $this->countOfCustomers);
+
+		if (empty($ret['data'])) {
+			$ret['data'][] = array(__('No customers bookings', 'salon-booking-system'),0,0);
+		}
 
 		$this->data = $ret;
 	}

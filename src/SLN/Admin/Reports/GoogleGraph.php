@@ -48,22 +48,37 @@ class SLN_Admin_Reports_GoogleGraph {
 		$data = $this->get_data();
 
 		$labels_js = array();
-		foreach ( array_merge($data['labels']['x'], $data['labels']['y']) as $label => $type ) {
-			$labels_js[] = "data.addColumn('$type', '$label');";
+		foreach ( array_merge($data['labels']['x'], $data['labels']['y']) as $item ) {
+			$labels_js[] = "data.addColumn({type:'{$item['type']}', label:'{$item['label']}'});";
 		}
 
 		$axes_js = array();
-		$axes_i = 0;
-		foreach ( $data['labels']['y'] as $label => $type ) {
-			$axes_js[] = "$axes_i: {label: '$label'},";
-			$axes_i++;
+		foreach ( $data['labels']['y'] as $item_i => $item ) {
+			$axes_js[] = "$item_i: {label: '{$item['label']}', range: {min: 0}, format: {";
+			if (isset($item['format_axis']) && !empty($item['format_axis'])) {
+				foreach ( $item['format_axis'] as $k => $v ) {
+					$axes_js[] = "{$k}: '{$v}',";
+				}
+			}
+			$axes_js[] = "}},";
 		}
 
 		$series_js = array();
-		$series_i = 0;
-		foreach ( $data['labels']['y'] as $label => $type ) {
-			$series_js[] = "$series_i: {axis: '$series_i'},";
-			$series_i++;
+		foreach ( $data['labels']['y'] as $item_i => $item ) {
+			$series_js[] = "$item_i: {axis: $item_i},";
+		}
+
+		$format_data_js = array();
+		foreach ( $data['labels']['y'] as $item_i => $item ) {
+			if (isset($item['format_data']) && !empty($item['format_data'])) {
+				$type = ucfirst($item['type']);
+				$format_data_js[] = "var formatter{$item_i} = new google.visualization.{$type}Format({";
+				foreach ( $item['format_data'] as $k => $v ) {
+					$format_data_js[] = "{$k}: '{$v}',";
+				}
+				$format_data_js[] = "});";
+				$format_data_js[] = "formatter{$item_i}.format(data, {$item_i}+1);";
+			}
 		}
 
 		$data_js = array();
@@ -87,6 +102,7 @@ class SLN_Admin_Reports_GoogleGraph {
 				]);
 
 				var materialOptions = {
+					allowHtml: true,
 					chart: {
 						title: '<?php echo $data['title'] ?>',
 						subtitle: '<?php echo $data['subtitle'] ?>'
@@ -105,6 +121,8 @@ class SLN_Admin_Reports_GoogleGraph {
 					}
 				};
 
+				<?php echo implode(PHP_EOL, $format_data_js) ?>
+
 				var materialChart = new google.charts.Line(document.getElementById('chart_div'));
 				materialChart.draw(data, materialOptions);
 			}
@@ -120,24 +138,39 @@ class SLN_Admin_Reports_GoogleGraph {
 		$data = $this->get_data();
 
 		$axes_js = array();
-		$axes_i = 0;
-		foreach ( $data['labels']['x'] as $label => $type ) {
-			$axes_options = $axes_i % 2 ? "" : "side: 'top'";
-			$axes_js[] = "$axes_i: {label: '$label', $axes_options},";
-			$axes_i++;
+		foreach ( $data['labels']['x'] as $item_i => $item ) {
+			$axes_js[] = "$item_i: {label: '{$item['label']}', range: {min: 0}, format: {";
+			if (isset($item['format_axis']) && !empty($item['format_axis'])) {
+				foreach ( $item['format_axis'] as $k => $v ) {
+					$axes_js[] = "{$k}: '{$v}',";
+				}
+			}
+			$axes_options = $item_i % 2 ? "" : "side: 'top'";
+			$axes_js[] = "}, $axes_options},";
 		}
 
 		$series_js = array();
-		$series_i = 0;
-		foreach ( $data['labels']['x'] as $label => $type ) {
-			$series_js[] = "$series_i: {axis: '$series_i'},";
-			$series_i++;
+		foreach ( $data['labels']['x'] as $item_i => $item ) {
+			$series_js[] = "$item_i: {axis: '$item_i'},";
 		}
 
 
 		$labels_js = array();
-		foreach ( array_merge($data['labels']['y'], $data['labels']['x']) as $label => $type ) {
-			$labels_js[] = "'$label'";
+		foreach ( array_merge($data['labels']['y'], $data['labels']['x']) as $item ) {
+			$labels_js[] = "'{$item['label']}'";
+		}
+
+		$format_data_js = array();
+		foreach ( $data['labels']['x'] as $item_i => $item ) {
+			if (isset($item['format_data']) && !empty($item['format_data'])) {
+				$type = ucfirst($item['type']);
+				$format_data_js[] = "var formatter{$item_i} = new google.visualization.{$type}Format({";
+				foreach ( $item['format_data'] as $k => $v ) {
+					$format_data_js[] = "{$k}: '{$v}',";
+				}
+				$format_data_js[] = "});";
+				$format_data_js[] = "formatter{$item_i}.format(data, {$item_i}+1);";
+			}
 		}
 
 		$data_js = array();
@@ -172,6 +205,8 @@ class SLN_Admin_Reports_GoogleGraph {
 						}
 					}
 				};
+
+				<?php echo implode(PHP_EOL, $format_data_js) ?>
 
 				var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
 				chart.draw(data, options);

@@ -11,11 +11,26 @@ class SLN_Admin_Reports_RevenuesByServicesReport extends SLN_Admin_Reports_Abstr
 		$ret['subtitle'] = '';
 
 		$ret['labels']['x'] = array(
-				sprintf(__('Earnings (%s)', 'salon-booking-system'), $this->getCurrencySymbol()) => 'number',
-				__('Bookings', 'salon-booking-system')                                           => 'number',
+				array(
+						'label'  => sprintf(__('Earnings (%s)', 'salon-booking-system'), $this->getCurrencyString()),
+						'type'   => 'number',
+						'format_axis' => array(
+								'pattern' => '####.##'.$this->getCurrencySymbol(),
+						),
+						'format_data' => array(
+								'pattern' => '####.##'.$this->getCurrencySymbol(),
+						),
+				),
+				array(
+						'label' => __('Bookings', 'salon-booking-system'),
+						'type'  => 'number',
+				),
 		);
 		$ret['labels']['y'] = array(
-				''                                     => 'string',
+				array(
+						'label' => '',
+						'type'  => 'string',
+				),
 		);
 
 		$sRepo =  $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
@@ -28,8 +43,10 @@ class SLN_Admin_Reports_RevenuesByServicesReport extends SLN_Admin_Reports_Abstr
 			/** @var SLN_Wrapper_Booking $booking */
 			foreach($bookings as $booking) {
 				foreach($booking->getBookingServices()->getItems() as $bookingService) {
-					$ret['data'][$bookingService->getService()->getId()][1] += $bookingService->getPrice();
-					$ret['data'][$bookingService->getService()->getId()][2] ++;
+					if (array_key_exists($bookingService->getService()->getId(), $ret['data'])) {
+						$ret['data'][$bookingService->getService()->getId()][1] += $bookingService->getPrice();
+						$ret['data'][$bookingService->getService()->getId()][2] ++;
+					}
 				}
 			}
 		}

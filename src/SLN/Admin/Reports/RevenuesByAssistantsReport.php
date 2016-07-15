@@ -11,11 +11,26 @@ class SLN_Admin_Reports_RevenuesByAssistantsReport extends SLN_Admin_Reports_Abs
 		$ret['subtitle'] = '';
 
 		$ret['labels']['x'] = array(
-				sprintf(__('Earnings (%s)', 'salon-booking-system'), $this->getCurrencySymbol()) => 'number',
-				__('Bookings', 'salon-booking-system')                                           => 'number',
+				array(
+						'label'  => sprintf(__('Earnings (%s)', 'salon-booking-system'), $this->getCurrencyString()),
+						'type'   => 'number',
+						'format_axis' => array(
+								'pattern' => '####.##'.$this->getCurrencySymbol(),
+						),
+						'format_data' => array(
+								'pattern' => '####.##'.$this->getCurrencySymbol(),
+						),
+				),
+				array(
+						'label' => __('Bookings', 'salon-booking-system'),
+						'type'  => 'number',
+				),
 		);
 		$ret['labels']['y'] = array(
-				''                                     => 'string',
+				array(
+						'label' => '',
+						'type'  => 'string',
+				),
 		);
 
 		$sRepo =  $this->plugin->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);

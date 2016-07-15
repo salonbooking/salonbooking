@@ -10,11 +10,26 @@ class SLN_Admin_Reports_RevenuesReport extends SLN_Admin_Reports_AbstractReport 
 		$ret['subtitle'] = '';
 
 		$ret['labels']['x'] = array(
-				''                                     => 'string',
+				array(
+						'label' => '',
+						'type'  => 'string',
+				),
 		);
 		$ret['labels']['y'] = array(
-				sprintf(__('Earnings (%s)', 'salon-booking-system'), $this->getCurrencySymbol()) => 'number',
-				__('Bookings', 'salon-booking-system')                                           => 'number',
+				array(
+						'label'  => sprintf(__('Earnings (%s)', 'salon-booking-system'), $this->getCurrencyString()),
+						'type'   => 'number',
+						'format_axis' => array(
+								'pattern' => '####.##'.$this->getCurrencySymbol(),
+						),
+						'format_data' => array(
+								'pattern' => '####.##'.$this->getCurrencySymbol(),
+						),
+				),
+				array(
+						'label' => __('Bookings', 'salon-booking-system'),
+						'type'  => 'number',
+				),
 		);
 
 		$ret['data']   = array();

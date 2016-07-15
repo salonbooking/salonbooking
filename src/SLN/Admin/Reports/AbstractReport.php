@@ -545,9 +545,13 @@ abstract class SLN_Admin_Reports_AbstractReport {
 		return date_i18n("M", $timestamp);
 	}
 
-	protected function getCurrencySymbol() {
+	protected function getCurrencyString() {
 		$currency = $this->plugin->getSettings()->getCurrency();
-		return $currency . ' ' . SLN_Currency::getSymbolAsIs($this->plugin->getSettings()->getCurrency()) . '';
+		return $currency . ' ' . SLN_Currency::getSymbolAsIs($currency) . '';
+	}
+
+	protected function getCurrencySymbol() {
+		return SLN_Currency::getSymbolAsIs($this->plugin->getSettings()->getCurrency());
 	}
 
 	protected function getReportingView() {
