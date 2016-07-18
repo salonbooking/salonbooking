@@ -70,6 +70,7 @@ final class SLN_Wrapper_Booking_Services {
 			$atId     = null;
 			$price    = null;
 			$duration = null;
+			$break    = null;
 
 			$service = SLN_Plugin::getInstance()->createService($sId);
 
@@ -83,6 +84,9 @@ final class SLN_Wrapper_Booking_Services {
 				if (isset($item['duration'])) {
 					$duration = $item['duration'];
 				}
+				if (isset($item['break_duration'])) {
+					$break = $item['break_duration'];
+				}
 			} else {
 				$atId = intval($item);
 			}
@@ -95,20 +99,22 @@ final class SLN_Wrapper_Booking_Services {
 				$duration = $service->getDuration()->format('H:i');
 			}
 
+			if (empty($break)) {
+				$break = $service->getBreakDuration()->format('H:i');
+			}
+
 			$services[] = array(
 				'service'    => $sId,
 				'attendant'  => $atId,
 				'start_date' => $startsAt->format('Y-m-d'),
 				'start_time' => $startsAt->format('H:i'),
 				'duration'   => $duration,
+				'break_duration'   => $break,
 				'price'      => $price,
 				'exec_order' => $service->getExecOrder(),
 			);
 
-			$durationParts = explode(':', $duration);
-			$h = intval($durationParts[0]);
-			$i = intval($durationParts[1]);
-			$minutes = $h*60 + $i + $offset;
+			$minutes = SLN_Func::getMinutesFromDuration($duration) + $offset;
 			$startsAt->modify('+'.$minutes.' minutes');
 		}
 		$ret = new SLN_Wrapper_Booking_Services($services);

@@ -20,6 +20,7 @@ final class SLN_Wrapper_Booking_Service
                 SLN_Func::filter($data['start_date'], 'date').' '.SLN_Func::filter($data['start_time'], 'time')
             ),
             'duration' => new SLN_DateTime('1970-01-01 '.SLN_Func::filter($data['duration'], 'time')),
+            'break_duration' => new SLN_DateTime('1970-01-01 '.SLN_Func::filter($data['break_duration'], 'time')),
             'price' => $data['price'],
             'exec_order' => $data['exec_order'],
         );
@@ -31,6 +32,14 @@ final class SLN_Wrapper_Booking_Service
     public function getDuration()
     {
         return $this->data['duration'];
+    }
+
+    /**
+     * @return SLN_DateTime
+     */
+    public function getBreakDuration()
+    {
+        return $this->data['break_duration'];
     }
 
     /**
@@ -70,14 +79,52 @@ final class SLN_Wrapper_Booking_Service
      */
     public function getEndsAt()
     {
-        $durationParts = explode(':', $this->getDuration()->format('H:i'));
-        $h = intval($durationParts[0]);
-        $i = intval($durationParts[1]);
-        $minutes = $h * 60 + $i;
+        $minutes = SLN_Func::getMinutesFromDuration($this->getDuration());
         $endsAt = clone $this->getStartsAt();
         $endsAt->modify('+'.$minutes.' minutes');
 
         return $endsAt;
+    }
+
+    private function processBreakInfo() {
+        $minutes      = SLN_Func::getMinutesFromDuration($this->getDuration());
+        $breakMinutes = SLN_Func::getMinutesFromDuration($this->getBreakDuration());
+
+        $busyTime = $minutes - $breakMinutes;
+        $busyPart = (int) ceil($busyTime / 2);
+
+        $breakStartsAt = clone $this->getStartsAt();
+        $breakStartsAt->modify('+'.$busyPart.' minutes');
+
+        $breakEndsAt = clone $this->getEndsAt();
+        $breakEndsAt->modify('-'.$busyPart.' minutes');
+
+        $this->breakStartsAt = $breakStartsAt;
+        $this->breakEndsAt = $breakEndsAt;
+    }
+
+    /**
+     * @return SLN_DateTime
+     */
+    public function getBreakStartsAt()
+    {
+        if (!isset($this->breakStartsAt)) {
+            $this->processBreakInfo();
+
+        }
+        return $this->breakStartsAt;
+    }
+
+    /**
+     * @return SLN_DateTime
+     */
+    public function getBreakEndsAt()
+    {
+        if (!isset($this->breakEndsAt)) {
+            $this->processBreakInfo();
+
+        }
+        return $this->breakEndsAt;
     }
 
     /**
@@ -89,6 +136,7 @@ final class SLN_Wrapper_Booking_Service
             'attendant' => @is_object($this->data['attendant']) ? $this->data['attendant']->getId() : $this->data['attendant'],
             'service' => $this->data['service']->getId(),
             'duration' => $this->data['duration']->format('H:i'),
+            'break_duration' => $this->data['break_duration']->format('H:i'),
             'start_date' => $this->data['starts_at']->format('Y-m-d'),
             'start_time' => $this->data['starts_at']->format('H:i'),
             'price' => floatval($this->data['price']),
