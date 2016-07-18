@@ -49,6 +49,7 @@ foreach ($allAttendants as $attendant) {
                             'disabled'      => 'disabled',
                             'data-price'    => '__service_price__',
                             'data-duration' => '__service_duration__',
+                            'data-break'    => '__service_break_duration__',
                         )
                     ),
                     true
@@ -69,6 +70,12 @@ foreach ($allAttendants as $attendant) {
                 <?php SLN_Form::fieldText(
                     '_sln_booking[duration][__service_id__]',
                     '__service_duration__',
+                    array('type' => 'hidden')
+                )
+                ?>
+                <?php SLN_Form::fieldText(
+                    '_sln_booking[break_duration][__service_id__]',
+                    '__service_break_duration__',
                     array('type' => 'hidden')
                 )
                 ?>
@@ -114,7 +121,8 @@ foreach ($allAttendants as $attendant) {
  
                 $servicesData[ $serviceId] = array(
                     'old_price'    => $bookingService->getPrice(),
-                    'old_duration' => 60*$bookingService->getDuration()->format('H') + intval($bookingService->getDuration()->format('i')),
+                    'old_duration' => SLN_Func::getMinutesFromDuration($bookingService->getDuration()),
+                    'old_break_duration' => SLN_Func::getMinutesFromDuration($bookingService->getBreakDuration()),
                 );
                ?>
 
@@ -164,6 +172,12 @@ foreach ($allAttendants as $attendant) {
                     array('type' => 'hidden')
                 )
                 ?>
+                <?php SLN_Form::fieldText(
+                    '_sln_booking[break_duration]['.$serviceId.']',
+                    $servicesData[ $serviceId]['old_break_duration'],
+                    array('type' => 'hidden')
+                )
+                ?>
             </div>
             <?php if ($isMultipleAttendants || $isAttendants): ?>
             <div class="col-xs-12 col-sm-3 col-md-3 sln-select">
@@ -203,7 +217,8 @@ foreach ($allAttendants as $attendant) {
                             'title'      => $service->getName() . ' (' . $formatter->money($service->getPrice()) . ') - ' . $service->getDuration()->format('H:i'),
                             'name'       => $service->getName(),
                             'price'      => $service->getPrice(),
-                            'duration'   => 60*$service->getDuration()->format('H') + intval($service->getDuration()->format('i')),
+                            'duration'   => SLN_Func::getMinutesFromDuration($service->getDuration()),
+                            'break_duration' => SLN_Func::getMinutesFromDuration($service->getBreakDuration()),
                             'exec_order' => $service->getExecOrder(),
                             'attendants' => $service->getAttendantsIds()
                         )
