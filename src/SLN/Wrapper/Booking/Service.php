@@ -90,18 +90,70 @@ final class SLN_Wrapper_Booking_Service
         $minutes      = SLN_Func::getMinutesFromDuration($this->getDuration());
         $breakMinutes = SLN_Func::getMinutesFromDuration($this->getBreakDuration());
 
-        $busyTime = $minutes - $breakMinutes;
-        $busyPart = (int) ceil($busyTime / 2);
+        if ($breakMinutes) {
+            $busyTime = $minutes - $breakMinutes;
+            $busyPart = (int) ceil($busyTime / 2);
 
-        $breakStartsAt = clone $this->getStartsAt();
-        $breakStartsAt->modify('+'.$busyPart.' minutes');
+            $breakStartsAt = clone $this->getStartsAt();
+            $breakStartsAt->modify('+'.$busyPart.' minutes');
 
-        $breakEndsAt = clone $this->getEndsAt();
-        $breakEndsAt->modify('-'.$busyPart.' minutes');
+            $breakEndsAt = clone $this->getEndsAt();
+            $breakEndsAt->modify('-'.$busyPart.' minutes');
 
+//            $durationBeforeBreak = new SLN_DateTime('1970-1-1 '.SLN_Func::convertToHoursMins($busyPart));
+//            $durationAfterBreak  = new SLN_DateTime('1970-1-1 '.SLN_Func::convertToHoursMins($busyPart));
+//
+//            $break = true;
+        } else {
+//            $break = false;
+            $breakStartsAt = clone $this->getStartsAt();
+            $breakEndsAt = clone $this->getStartsAt();
+//            $durationBeforeBreak = clone $this->getDuration();
+//            $durationAfterBreak = clone $this->getDuration();
+        }
+
+//        $this->break = $break;
         $this->breakStartsAt = $breakStartsAt;
         $this->breakEndsAt = $breakEndsAt;
+//        $this->durationBeforeBreak = $durationBeforeBreak;
+//        $this->durationAfterBreak = $durationAfterBreak;
     }
+
+//    /**
+//     * @return SLN_DateTime
+//     */
+//    public function isNoBreak()
+//    {
+//        if (!isset($this->break)) {
+//            $this->processBreakInfo();
+//
+//        }
+//        return !$this->break;
+//    }
+//
+//    /**
+//     * @return SLN_DateTime
+//     */
+//    public function getDurationBeforeBreak()
+//    {
+//        if (!isset($this->durationBeforeBreak)) {
+//            $this->processBreakInfo();
+//
+//        }
+//        return $this->durationBeforeBreak;
+//    }
+//
+//    /**
+//     * @return SLN_DateTime
+//     */
+//    public function getDurationAfterBreak()
+//    {
+//        if (!isset($this->durationAfterBreak)) {
+//            $this->processBreakInfo();
+//
+//        }
+//        return $this->durationAfterBreak;
+//    }
 
     /**
      * @return SLN_DateTime
