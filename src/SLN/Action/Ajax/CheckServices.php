@@ -104,6 +104,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                     'attendant' => $_POST['_sln_booking']['attendants'][$sId],
                     'price'     => $_POST['_sln_booking']['price'][$sId],
                     'duration'  => SLN_Func::convertToHoursMins($_POST['_sln_booking']['duration'][$sId]),
+                    'break_duration'  => SLN_Func::convertToHoursMins($_POST['_sln_booking']['break_duration'][$sId]),
                 );
             }
 
@@ -127,7 +128,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                     $serviceErrors = $ah->validateTimePeriod($interval, $offsetStart, $offsetEnd);
                 }
                 if (empty($serviceErrors)) {
-                    $serviceErrors = $ah->validateService($bookingService->getService(), $bookingService->getStartsAt(), $bookingService->getDuration());
+                    $serviceErrors = $ah->validateService($bookingService->getService(), $bookingService->getStartsAt(), $bookingService->getDuration(), $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
                 }
 
                 if (!$isMultipleAttSelection) {
@@ -141,7 +142,18 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 if (empty($attendantErrors) && $bookingService->getAttendant()) {
                     $attendantErrors = $ah->validateAttendantService($bookingService->getAttendant(), $bookingService->getService());
                     if (empty($attendantErrors)) {
-                        $attendantErrors = $ah->validateAttendant($bookingService->getAttendant(), $bookingService->getStartsAt(), $bookingService->getDuration());
+                        $attendantErrors = $ah->validateAttendant($bookingService->getAttendant(), $bookingService->getStartsAt(), $bookingService->getDuration(),
+                            $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
+
+//                        if ($ah->getDayBookings()->isIgnoreServiceBreaks() || $bookingService->isNoBreak()) {
+//                            $attendantErrors = $ah->validateAttendant($bookingService->getAttendant(), $bookingService->getStartsAt(), $bookingService->getDuration());
+//                        } else {
+//                            $attendantErrors = $ah->validateAttendant($bookingService->getAttendant(), $bookingService->getStartsAt(), $bookingService->getDurationBeforeBreak());
+//                            if (empty($attendantErrors)) {
+//                                $attendantErrors = $ah->validateAttendant($bookingService->getAttendant(), $bookingService->getBreakEndsAt(), $bookingService->getDurationAfterBreak());
+//                            }
+//                        }
+
                     }
                 }
 

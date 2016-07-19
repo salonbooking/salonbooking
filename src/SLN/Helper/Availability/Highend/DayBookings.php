@@ -2,6 +2,7 @@
 
 class SLN_Helper_Availability_Highend_DayBookings extends SLN_Helper_Availability_AbstractDayBookings
 {
+    protected $ignoreServiceBreaks = false;
     /**
      * @return DateTime
      */
@@ -38,11 +39,13 @@ class SLN_Helper_Availability_Highend_DayBookings extends SLN_Helper_Availabilit
                     $bookingService->getEndsAt()
                 );
                 foreach ($times as $time) {
-                    $time = $time->format('H:i');
-                    $ret[$time]['booking'][] = $booking->getId();
-                    @$ret[$time]['service'][$bookingService->getService()->getId()]++;
-                    if ($bookingService->getAttendant()) {
-                        @$ret[$time]['attendant'][$bookingService->getAttendant()->getId()]++;
+                    $key = $time->format('H:i');
+                    $ret[$key]['booking'][] = $booking->getId();
+                    if ($time < $bookingService->getBreakStartsAt() || $time >= $bookingService->getBreakEndsAt()) {
+                        @$ret[$key]['service'][$bookingService->getService()->getId()]++;
+                        if ($bookingService->getAttendant()) {
+                            @$ret[$key]['attendant'][$bookingService->getAttendant()->getId()]++;
+                        }
                     }
                 }
 
