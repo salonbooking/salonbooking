@@ -6141,3 +6141,7 @@ body {
   height: 24px;
   line-height: 24px;
 }
+.sln-box p.sln_graph_totals, .sln-box p.sln_graph_notes {
+  font-size: medium;
+  color: #444;
+}

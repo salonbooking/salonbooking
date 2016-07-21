@@ -133,6 +133,7 @@ class SLN_Action_InitScripts
         wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL.'/js/admin.js', array('jquery'), self::ASSETS_VERSION, true);
         wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL.'/css/admin.css', array(), SLN_VERSION, 'all');
         wp_enqueue_style('salon-admin-select2-css', SLN_PLUGIN_URL.'/css/select2.min.css', array(), SLN_VERSION, 'all');
+        SLN_Admin_Reports_GoogleGraph::enqueue_scripts();
     }
 
     private function preloadFrontendScripts()

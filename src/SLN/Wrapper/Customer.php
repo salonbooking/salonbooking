@@ -16,7 +16,7 @@ class SLN_Wrapper_Customer extends SLN_Wrapper_Abstract {
 		if (!is_object($object)) {
 			$object = get_user_by('id', $object);
 		}
-		if (in_array(SLN_Plugin::USER_ROLE_CUSTOMER, $object->roles)) {
+		if (self::isCustomer($object)) {
 			$this->object = $object;
 		}
 		else {
@@ -26,6 +26,13 @@ class SLN_Wrapper_Customer extends SLN_Wrapper_Abstract {
 
 	public function get($key) {
 		return $this->object->get($key);
+	}
+
+	public function getName()
+	{
+		if (!$this->isEmpty()) {
+			return $this->get('first_name') . ' ' . $this->get('last_name');
+		}
 	}
 
 	public function getCountOfReservations() {
@@ -70,5 +77,21 @@ class SLN_Wrapper_Customer extends SLN_Wrapper_Abstract {
 
 	public function isEmpty(){
 		return empty($this->object->ID);
+	}
+
+	public static function isCustomer($object) {
+		if (!is_object($object)) {
+			$object = get_user_by('id', $object);
+			if (!$object) {
+				return false;
+			}
+		}
+
+		if (in_array(SLN_Plugin::USER_ROLE_CUSTOMER, $object->roles)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
