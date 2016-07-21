@@ -410,7 +410,7 @@ class SLN_Helper_Availability
         if (is_null($availAtts)) {
             $availAtts = $this->getAvailableAttsIdsForServiceOnTime(
                 $bookingService->getService(),
-                $bookingService->getEndsAt(),
+                $bookingService->getStartsAt(),
                 $bookingService->getDuration(),
                 $bookingService->getBreakStartsAt(),
                 $bookingService->getBreakEndsAt()
@@ -420,7 +420,7 @@ class SLN_Helper_Availability
             $availAtts,
             $this->getAvailableAttsIdsForServiceOnTime(
                 $bookingService->getService(),
-                $bookingService->getEndsAt(),
+                $bookingService->getStartsAt(),
                 $bookingService->getDuration(),
                 $bookingService->getBreakStartsAt(),
                 $bookingService->getBreakEndsAt()
