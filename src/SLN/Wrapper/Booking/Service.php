@@ -87,6 +87,9 @@ final class SLN_Wrapper_Booking_Service
     }
 
     private function processBreakInfo() {
+        if (isset($this->breakProcessed)) {
+            return;
+        }
         $minutes      = SLN_Func::getMinutesFromDuration($this->getDuration());
         $breakMinutes = SLN_Func::getMinutesFromDuration($this->getBreakDuration());
 
@@ -100,14 +103,29 @@ final class SLN_Wrapper_Booking_Service
             $breakEndsAt = clone $this->getEndsAt();
             $breakEndsAt->modify('-'.$busyPart.' minutes');
 
+            $bookingOffsetEnabled = SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled');
+            if ($bookingOffsetEnabled) {
+                $bookingOffset = SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation');
+            } else {
+                $bookingOffset = 0;
+            }
+
+            $breakWithOffsetStartsAt = clone $breakStartsAt;
+            $breakWithOffsetStartsAt->modify('+'.$bookingOffset.' minutes');
+
+            $breakWithOffsetEndsAt = clone $breakEndsAt;
+            $breakWithOffsetEndsAt->modify('-'.$bookingOffset.' minutes');
+
 //            $durationBeforeBreak = new SLN_DateTime('1970-1-1 '.SLN_Func::convertToHoursMins($busyPart));
 //            $durationAfterBreak  = new SLN_DateTime('1970-1-1 '.SLN_Func::convertToHoursMins($busyPart));
 //
 //            $break = true;
         } else {
 //            $break = false;
-            $breakStartsAt = clone $this->getStartsAt();
-            $breakEndsAt = clone $this->getStartsAt();
+            $breakStartsAt           = clone $this->getStartsAt();
+            $breakWithOffsetStartsAt = clone $this->getStartsAt();
+            $breakEndsAt             = clone $this->getStartsAt();
+            $breakWithOffsetEndsAt   = clone $this->getStartsAt();
 //            $durationBeforeBreak = clone $this->getDuration();
 //            $durationAfterBreak = clone $this->getDuration();
         }
@@ -115,8 +133,11 @@ final class SLN_Wrapper_Booking_Service
 //        $this->break = $break;
         $this->breakStartsAt = $breakStartsAt;
         $this->breakEndsAt = $breakEndsAt;
+        $this->breakWithOffsetStartsAt = $breakWithOffsetStartsAt;
+        $this->breakWithOffsetEndsAt = $breakWithOffsetEndsAt;
 //        $this->durationBeforeBreak = $durationBeforeBreak;
 //        $this->durationAfterBreak = $durationAfterBreak;
+        $this->breakProcessed = true;
     }
 
 //    /**
@@ -124,10 +145,8 @@ final class SLN_Wrapper_Booking_Service
 //     */
 //    public function isNoBreak()
 //    {
-//        if (!isset($this->break)) {
-//            $this->processBreakInfo();
+//        $this->processBreakInfo();
 //
-//        }
 //        return !$this->break;
 //    }
 //
@@ -136,10 +155,8 @@ final class SLN_Wrapper_Booking_Service
 //     */
 //    public function getDurationBeforeBreak()
 //    {
-//        if (!isset($this->durationBeforeBreak)) {
-//            $this->processBreakInfo();
+//        $this->processBreakInfo();
 //
-//        }
 //        return $this->durationBeforeBreak;
 //    }
 //
@@ -148,10 +165,8 @@ final class SLN_Wrapper_Booking_Service
 //     */
 //    public function getDurationAfterBreak()
 //    {
-//        if (!isset($this->durationAfterBreak)) {
-//            $this->processBreakInfo();
+//        $this->processBreakInfo();
 //
-//        }
 //        return $this->durationAfterBreak;
 //    }
 
@@ -160,10 +175,8 @@ final class SLN_Wrapper_Booking_Service
      */
     public function getBreakStartsAt()
     {
-        if (!isset($this->breakStartsAt)) {
-            $this->processBreakInfo();
+        $this->processBreakInfo();
 
-        }
         return $this->breakStartsAt;
     }
 
@@ -172,11 +185,29 @@ final class SLN_Wrapper_Booking_Service
      */
     public function getBreakEndsAt()
     {
-        if (!isset($this->breakEndsAt)) {
-            $this->processBreakInfo();
+        $this->processBreakInfo();
 
-        }
         return $this->breakEndsAt;
+    }
+
+    /**
+     * @return SLN_DateTime
+     */
+    public function getBreakWithOffsetStartsAt()
+    {
+        $this->processBreakInfo();
+
+        return $this->breakWithOffsetStartsAt;
+    }
+
+    /**
+     * @return SLN_DateTime
+     */
+    public function getBreakWithOffsetEndsAt()
+    {
+        $this->processBreakInfo();
+
+        return $this->breakWithOffsetEndsAt;
     }
 
     /**

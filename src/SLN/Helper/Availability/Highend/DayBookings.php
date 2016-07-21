@@ -40,7 +40,9 @@ class SLN_Helper_Availability_Highend_DayBookings extends SLN_Helper_Availabilit
                 );
                 foreach ($times as $time) {
                     $key = $time->format('H:i');
-                    $ret[$key]['booking'][] = $booking->getId();
+                    if ($time < $bookingService->getBreakWithOffsetStartsAt() || $time >= $bookingService->getBreakWithOffsetEndsAt()) {
+                        $ret[$key]['booking'][] = $booking->getId();
+                    }
                     if ($time < $bookingService->getBreakStartsAt() || $time >= $bookingService->getBreakEndsAt()) {
                         @$ret[$key]['service'][$bookingService->getService()->getId()]++;
                         if ($bookingService->getAttendant()) {
