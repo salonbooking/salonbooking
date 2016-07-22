@@ -39,6 +39,7 @@ $helper->showNonce($postType);
     </div>
     <div class="sln-clear"></div>
 </div>
+<?php if('highend' === $settings->getAvailabilityMode()): ?>
 <div class="row">
     <div class="col-sm-6 col-md-3 form-group sln-select">
         <label><?php _e('Service break', 'salon-booking-system'); ?></label>
@@ -48,6 +49,7 @@ $helper->showNonce($postType);
         <p class="sln-input-help"><?php _e('If you set a break this service duration will be splitted up into two equals parts. That means that the during its break other reservations will be available.','salon-booking-system'); ?></p>
     </div>
 </div>
+<?php endif; ?>
 <?php echo $plugin->loadView(
     'settings/_tab_booking_rules',
     array(
