@@ -13,6 +13,7 @@ final class SLN_Wrapper_Booking_Service
     public function __construct($data)
     {
         $hasAttendant = isset($data['attendant']) && !empty($data['attendant']);
+        $data['break_duration'] = isset($data['break_duration']) ? $data['break_duration'] : '00:00';
         $this->data = array(
             'service' => SLN_Plugin::getInstance()->createService($data['service']),
             'attendant' => $hasAttendant ? SLN_Plugin::getInstance()->createAttendant($data['attendant']) : false,
