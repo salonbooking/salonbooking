@@ -2,6 +2,9 @@
 
 class SLN_Helper_Availability_Highend_DayBookings extends SLN_Helper_Availability_AbstractDayBookings
 {
+
+    protected static $cachedTime = array();
+
     /**
      * @return DateTime
      */
@@ -10,8 +13,16 @@ class SLN_Helper_Availability_Highend_DayBookings extends SLN_Helper_Availabilit
         if (!isset($hour)) {
             $hour = $this->getDate()->format('H');
         }
+
+        $cachedTimeKey = "$hour:$minutes";
+        if (isset(self::$cachedTime[$cachedTimeKey])) {
+            return clone self::$cachedTime[$cachedTimeKey];
+        }
+
         $now = clone $this->getDate();
         $now->setTime($hour, $minutes ? $minutes : 0);
+
+        self::$cachedTime[$cachedTimeKey] = clone $now;
 
         return $now;
     }
