@@ -2,6 +2,7 @@
 
 class SLN_Func
 {
+    private static $cachedFilterTimes = array();
     private static $cachedTimes = array();
     private static $cachedTs = array();
     private static $cachedDate;
@@ -230,6 +231,12 @@ class SLN_Func
             self::$cachedTimes = array();
             self::$cachedTs    = array();
         }
+
+        $cachedFilterTimesKey = md5(json_encode($times).'#'.$startDate->format('Y-m-d H:i').'#'.$endDate->format('Y-m-d H:i'));
+        if (isset(self::$cachedFilterTimes[$cachedFilterTimesKey])) {
+            return self::$cachedFilterTimes[$cachedFilterTimesKey];
+        }
+
         foreach($times as $t){
             $key = $date.' '.$t;
             if (!isset(self::$cachedTimes[$key])) {
@@ -241,6 +248,9 @@ class SLN_Func
                 $ret[] = self::$cachedTimes[$key];
             }
         }
+
+        self::$cachedFilterTimes[$cachedFilterTimesKey] = $ret;
+
         return $ret;
     }
 
