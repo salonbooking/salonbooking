@@ -36,6 +36,8 @@ class SLN_Enum_BookingStatus
     public static $noTimeStatuses = array(
         self::ERROR,
         self::CANCELED,
+        self::PENDING_PAYMENT,
+        self::PENDING
     );
 
     public static function toArray()
