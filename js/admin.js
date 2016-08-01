@@ -584,6 +584,12 @@ jQuery(function ($) {
         }
     }).change();
 
+    $('#salon_settings_enabled_force_guest_checkout').change(function(){
+        if ($(this).is(':checked')) {
+            $('#salon_settings_enabled_guest_checkout').attr('checked', 'checked').change();
+        }
+    }).change();
+
    $('.sln-panel .collapse').on('shown.bs.collapse', function() {
         $(this).parent().find('.sln-paneltrigger').addClass('sln-btn--active');
         $(this).parent().addClass('sln-panel--active');

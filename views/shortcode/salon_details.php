@@ -18,6 +18,7 @@ $values = array(
 );
 ?>
 <?php if (!is_user_logged_in()): ?>
+    <?php if (!$plugin->getSettings()->get('enabled_force_guest_checkout')): ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <h2 class="salon-step-title"><?php _e('Returning customer?', 'salon-booking-system') ?> <?php _e('Please, log-in.', 'salon-booking-system') ?> </h2>
     <?php
@@ -104,10 +105,24 @@ $values = array(
     // ELSE // END
     }  ?>
     </form>
+    <?php endif; ?>
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <div class="row">
             <div>
-	        <?php if($plugin->getSettings()->get('enabled_guest_checkout')): ?>
+            <?php if($plugin->getSettings()->get('enabled_force_guest_checkout')): ?>
+                <h2 class="salon-step-title"><?php _e('Please fill out the form to checkout', 'salon-booking-system') ?></h2>
+                <?php SLN_Form::fieldCheckbox(
+                    'sln[no_user_account]',
+                    $bb->get('no_user_account'),
+                    array(
+                        'type' => 'hidden',
+                        'attrs' => array(
+                            'checked' => 'checked',
+                            'style' => 'display:none'
+                        )
+                    )
+                ) ?>
+            <?php elseif($plugin->getSettings()->get('enabled_guest_checkout')): ?>
 	            <div class="col-xs-2 col-sm-1 sln-checkbox">
 	                <div class="sln-checkbox">
 	                    <?php SLN_Form::fieldCheckbox(
