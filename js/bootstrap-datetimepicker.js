@@ -297,7 +297,6 @@
 		},
 
 		hide: function (e) {
-this.element.change();
 
 			if (!this.isVisible) return;
 			if (this.isInline) return;
@@ -308,6 +307,7 @@ this.element.change();
 			if (!this.isInput) {
 				$(document).off('mousedown', this.hide);
 			}
+                        /*
 			if (
 				this.forceParse &&
 					(
@@ -316,6 +316,7 @@ this.element.change();
 						)
 				)
 				this.setValue();
+                        */
 			this.isVisible = false;
 			this.element.trigger({
 				type: 'hide',
