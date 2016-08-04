@@ -44,7 +44,7 @@ foreach($services as $k => $service) {
                 if (!$bookingService->getService()->isAttendantsEnabled()) {
                     continue;
                 }
-                $validateErrors = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getDuration(), $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
+                $validateErrors = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getTotalDuration(), $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
                 if ($validateErrors) {
                     break;
                 }

@@ -50,6 +50,14 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
         return new SLN_DateTime('1970-01-01 '.$ret);
     }
 
+    function getTotalDuration()
+    {
+        $duration = $this->getDuration();
+        $break    = $this->getBreakDuration();
+
+        return new SLN_DateTime('1970-01-01 '.SLN_Func::convertToHoursMins(SLN_Func::getMinutesFromDuration($duration->format('H:i')) + SLN_Func::getMinutesFromDuration($break->format('H:i'))));
+    }
+
     function isSecondary()
     {
         $ret = $this->getMeta('secondary');

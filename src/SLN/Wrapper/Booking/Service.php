@@ -22,6 +22,7 @@ final class SLN_Wrapper_Booking_Service
             ),
             'duration' => new SLN_DateTime('1970-01-01 '.SLN_Func::filter($data['duration'], 'time')),
             'break_duration' => new SLN_DateTime('1970-01-01 '.SLN_Func::filter($data['break_duration'], 'time')),
+            'total_duration' => new SLN_DateTime('1970-01-01 '.SLN_Func::convertToHoursMins(SLN_Func::getMinutesFromDuration($data['duration']) + SLN_Func::getMinutesFromDuration($data['break_duration']))),
             'price' => $data['price'],
             'exec_order' => $data['exec_order'],
         );
@@ -41,6 +42,14 @@ final class SLN_Wrapper_Booking_Service
     public function getBreakDuration()
     {
         return $this->data['break_duration'];
+    }
+
+    /**
+     * @return SLN_DateTime
+     */
+    public function getTotalDuration()
+    {
+        return $this->data['total_duration'];
     }
 
     /**
@@ -80,7 +89,7 @@ final class SLN_Wrapper_Booking_Service
      */
     public function getEndsAt()
     {
-        $minutes = SLN_Func::getMinutesFromDuration($this->getDuration());
+        $minutes = SLN_Func::getMinutesFromDuration($this->getTotalDuration());
         $endsAt = clone $this->getStartsAt();
         $endsAt->modify('+'.$minutes.' minutes');
 
@@ -95,7 +104,7 @@ final class SLN_Wrapper_Booking_Service
         $breakMinutes = SLN_Func::getMinutesFromDuration($this->getBreakDuration());
 
         if ($breakMinutes) {
-            $busyTime = $minutes - $breakMinutes;
+            $busyTime = $minutes;
             $busyPart = (int) ceil($busyTime / 2);
 
             $breakStartsAt = clone $this->getStartsAt();

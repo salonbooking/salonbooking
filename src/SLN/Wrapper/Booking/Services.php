@@ -114,7 +114,7 @@ final class SLN_Wrapper_Booking_Services {
 				'exec_order' => $service->getExecOrder(),
 			);
 
-			$minutes = SLN_Func::getMinutesFromDuration($duration) + $offset;
+			$minutes = SLN_Func::getMinutesFromDuration($duration) + SLN_Func::getMinutesFromDuration($break) + $offset;
 			$startsAt->modify('+'.$minutes.' minutes');
 		}
 		$ret = new SLN_Wrapper_Booking_Services($services);

@@ -319,6 +319,14 @@ class SLN_Admin_Settings
         $submitted['holidays'] = SLN_Helper_HolidayItems::processSubmission($submitted['holidays']);
         $this->bindSettings(self::$fieldsTabBooking, $submitted);
         $this->settings->save();
+
+        if ($this->settings->getAvailabilityMode() != 'highend') {
+			$repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+	        foreach ($repo->getAll() as $service) {
+				$service->setMeta('break_duration', SLN_Func::convertToHoursMins(0));
+	        }
+        }
+
         $this->showAlert(
             'success',
             __('booking settings are updated', 'salon-booking-system'),

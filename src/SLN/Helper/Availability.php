@@ -212,7 +212,7 @@ class SLN_Helper_Availability
     public function validateService(SLN_Wrapper_Service $service, DateTime $date = null, DateTime $duration = null, DateTime $breakStartsAt = null, DateTime $breakEndsAt = null)
     {
         $date = empty($date) ? $this->date : $date;
-        $duration = empty($duration) ? $service->getDuration() : $duration;
+        $duration = empty($duration) ? $service->getTotalDuration() : $duration;
 
         $noBreak = $this->getDayBookings()->isIgnoreServiceBreaks() || $breakStartsAt == $breakEndsAt || !$breakStartsAt || !$breakEndsAt;
 
@@ -411,7 +411,7 @@ class SLN_Helper_Availability
             $availAtts = $this->getAvailableAttsIdsForServiceOnTime(
                 $bookingService->getService(),
                 $bookingService->getStartsAt(),
-                $bookingService->getDuration(),
+                $bookingService->getTotalDuration(),
                 $bookingService->getBreakStartsAt(),
                 $bookingService->getBreakEndsAt()
             );
@@ -421,7 +421,7 @@ class SLN_Helper_Availability
             $this->getAvailableAttsIdsForServiceOnTime(
                 $bookingService->getService(),
                 $bookingService->getStartsAt(),
-                $bookingService->getDuration(),
+                $bookingService->getTotalDuration(),
                 $bookingService->getBreakStartsAt(),
                 $bookingService->getBreakEndsAt()
             )
@@ -435,7 +435,7 @@ class SLN_Helper_Availability
         return $this->getAvailableAttsIdsForServiceOnTime(
             $bs->getService(),
             $bs->getStartsAt(),
-            $bs->getDuration(),
+            $bs->getTotalDuration(),
             $bs->getBreakStartsAt(),
             $bs->getBreakEndsAt()
         );
@@ -449,7 +449,7 @@ class SLN_Helper_Availability
         DateTime $breakEndsAt = null
     ) {
         $date = empty($date) ? $this->date : $date;
-        $duration = empty($duration) ? $service->getDuration() : $duration;
+        $duration = empty($duration) ? $service->getTotalDuration() : $duration;
         $ret = array();
 
         $startAt = clone $date;

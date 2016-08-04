@@ -348,7 +348,7 @@ class SLN_Wrapper_Booking_Builder
         $h = 0;
         $i = 0;
         foreach ($this->getServices() as $s) {
-            $d = $s->getDuration();
+            $d = $s->getTotalDuration();
             $h = $h + intval($d->format('H'));
             $i = $i + intval($d->format('i'));
         }
