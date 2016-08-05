@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.5.1
-Stable tag: 3.4
+Stable tag: 3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,11 +75,12 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * PayPal
 * Stripe
 * Custom payment methods supported
-* official add-on for "Mollie" and "Square"
+* official add-on for "Mollie", "Square" and "Worldpay"
 
 **Salon checkout options**
 
 * Enable guest checkout
+* Force guest checkout
 
 **Google Calendar synchronisation** 
 
@@ -108,6 +109,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Category grouping
 * Multiple weekly timetable rules
 * No assistant required option
+* Service break
 
 **Customers archive**
 
@@ -120,6 +122,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Stats on reservations and revenues by services
 * Stats on reservations and revenues by assistant
 * Stats on reservations and revenues by customers
+
 **Frontend pages**
 
 * Booking form page
@@ -232,6 +235,7 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
 
 25.07/2016
 
