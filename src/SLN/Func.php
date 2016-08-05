@@ -233,6 +233,7 @@ class SLN_Func
             self::$cachedFilterTimes    = array();
         }
 
+        // cache "self::$cachedFilterTimes" don't depend on $times arg!
         $cachedFilterTimesKey = md5($startDate->format('Y-m-d H:i').'#'.$endDate->format('Y-m-d H:i'));
         if (isset(self::$cachedFilterTimes[$cachedFilterTimesKey])) {
             return self::$cachedFilterTimes[$cachedFilterTimesKey];
