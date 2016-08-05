@@ -78,6 +78,7 @@ class SLN_Admin_Settings
 
     private static $fieldsTabCheckout = array(
         'enabled_guest_checkout',
+        'enabled_force_guest_checkout',
     );
 
     private static $fieldsTabPayment = array(

@@ -40,7 +40,7 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                     }
                 }
 
-                if ($this->getPlugin()->getSettings()->get('enabled_guest_checkout') && isset($values['no_user_account']) && $values['no_user_account']) {
+                if ($this->getPlugin()->getSettings()->get('enabled_force_guest_checkout') || $this->getPlugin()->getSettings()->get('enabled_guest_checkout') && isset($values['no_user_account']) && $values['no_user_account']) {
                     $_SESSION['sln_detail_step'] = $values;
                 } else {
                     if ($values['password'] != $values['password_confirm']) {
