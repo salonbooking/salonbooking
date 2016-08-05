@@ -2,9 +2,7 @@
 
 class SLN_Helper_Availability_Highend_DayBookings extends SLN_Helper_Availability_AbstractDayBookings
 {
-
-    protected static $cachedTime = array();
-
+    protected $ignoreServiceBreaks = false;
     /**
      * @return DateTime
      */
@@ -13,16 +11,8 @@ class SLN_Helper_Availability_Highend_DayBookings extends SLN_Helper_Availabilit
         if (!isset($hour)) {
             $hour = $this->getDate()->format('H');
         }
-
-        $cachedTimeKey = "$hour:$minutes";
-        if (isset(self::$cachedTime[$cachedTimeKey])) {
-            return clone self::$cachedTime[$cachedTimeKey];
-        }
-
         $now = clone $this->getDate();
         $now->setTime($hour, $minutes ? $minutes : 0);
-
-        self::$cachedTime[$cachedTimeKey] = clone $now;
 
         return $now;
     }
@@ -49,11 +39,15 @@ class SLN_Helper_Availability_Highend_DayBookings extends SLN_Helper_Availabilit
                     $bookingService->getEndsAt()
                 );
                 foreach ($times as $time) {
-                    $time = $time->format('H:i');
-                    $ret[$time]['booking'][] = $booking->getId();
-                    @$ret[$time]['service'][$bookingService->getService()->getId()]++;
-                    if ($bookingService->getAttendant()) {
-                        @$ret[$time]['attendant'][$bookingService->getAttendant()->getId()]++;
+                    $key = $time->format('H:i');
+                    if ($time < $bookingService->getBreakWithOffsetStartsAt() || $time >= $bookingService->getBreakWithOffsetEndsAt()) {
+                        $ret[$key]['booking'][] = $booking->getId();
+                    }
+                    if ($time < $bookingService->getBreakStartsAt() || $time >= $bookingService->getBreakEndsAt()) {
+                        @$ret[$key]['service'][$bookingService->getService()->getId()]++;
+                        if ($bookingService->getAttendant()) {
+                            @$ret[$key]['attendant'][$bookingService->getAttendant()->getId()]++;
+                        }
                     }
                 }
 

@@ -678,6 +678,7 @@ jQuery(function ($) {
         line = line.replace(/__attendant_name__/g, attendantsData[attendantId]);
         line = line.replace(/__service_price__/g, servicesData[serviceId].price);
         line = line.replace(/__service_duration__/g, servicesData[serviceId].duration);
+        line = line.replace(/__service_break_duration__/g, servicesData[serviceId].break_duration);
         return line;
     }
 

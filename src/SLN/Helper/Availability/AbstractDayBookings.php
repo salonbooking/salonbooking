@@ -8,6 +8,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
     protected $timeslots;
     protected $date;
     protected $minutesIntervals;
+    protected $ignoreServiceBreaks = true;
 
     /**
      * @return array
@@ -60,6 +61,11 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
         foreach($ret as $b)
             SLN_Plugin::addLog(' - '.$b->getId());
         return $ret;
+    }
+
+    public function isIgnoreServiceBreaks()
+    {
+        return $this->ignoreServiceBreaks;
     }
 
     public function countBookingsByDay()

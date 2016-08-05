@@ -159,10 +159,14 @@ class SLN_Helper_Availability
     public function validateAttendant(
         SLN_Wrapper_Attendant $attendant,
         DateTime $date = null,
-        DateTime $duration = null
+        DateTime $duration = null,
+        DateTime $breakStartsAt = null,
+        DateTime $breakEndsAt = null
     ) {
         $date = empty($date) ? $this->date : $date;
         $duration = empty($duration) ? new DateTime('1970-01-01 00:00:00') : $duration;
+
+        $noBreak = $this->getDayBookings()->isIgnoreServiceBreaks() || $breakStartsAt == $breakEndsAt || !$breakStartsAt || !$breakEndsAt;
 
         SLN_Plugin::addLog(
             __CLASS__.sprintf(
@@ -179,8 +183,11 @@ class SLN_Helper_Availability
 
         $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $startAt, $endAt);
         foreach ($times as $time) {
-            if ($ret = $this->validateAttendantOnTime($attendant, $time)) {
-                return $ret;
+            $bTime = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
+            if ($noBreak || ($bTime < $breakStartsAt || $bTime >= $breakEndsAt)) {
+                if ($ret = $this->validateAttendantOnTime($attendant, $time)) {
+                    return $ret;
+                }
             }
         }
     }
@@ -202,10 +209,12 @@ class SLN_Helper_Availability
         }
     }
 
-    public function validateService(SLN_Wrapper_Service $service, DateTime $date = null, DateTime $duration = null)
+    public function validateService(SLN_Wrapper_Service $service, DateTime $date = null, DateTime $duration = null, DateTime $breakStartsAt = null, DateTime $breakEndsAt = null)
     {
         $date = empty($date) ? $this->date : $date;
-        $duration = empty($duration) ? $service->getDuration() : $duration;
+        $duration = empty($duration) ? $service->getTotalDuration() : $duration;
+
+        $noBreak = $this->getDayBookings()->isIgnoreServiceBreaks() || $breakStartsAt == $breakEndsAt || !$breakStartsAt || !$breakEndsAt;
 
         SLN_Plugin::addLog(
             __CLASS__.sprintf(
@@ -222,8 +231,11 @@ class SLN_Helper_Availability
 
         $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $startAt, $endAt);
         foreach ($times as $time) {
-            if ($ret = $this->validateServiceOnTime($service, $time)) {
-                return $ret;
+            $bTime = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
+            if ($noBreak || ($bTime < $breakStartsAt || $bTime >= $breakEndsAt)) {
+                if ($ret = $this->validateServiceOnTime($service, $time)) {
+                    return $ret;
+                }
             }
 
         }
@@ -291,7 +303,7 @@ class SLN_Helper_Availability
         $bookingServices = SLN_Wrapper_Booking_Services::build(array_fill_keys($servicesIds, 0), $date);
         $validated = array();
         foreach ($bookingServices->getItems() as $bookingService) {
-            $serviceErrors = $this->validateService($bookingService->getService(), $bookingService->getStartsAt());
+            $serviceErrors = $this->validateService($bookingService->getService(), $bookingService->getStartsAt(), null, $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
             if (empty($serviceErrors)) {
                 $validated[] = $bookingService->getService()->getId();
             } else {
@@ -337,10 +349,13 @@ class SLN_Helper_Availability
                     if (empty($serviceErrors)) {
                         $serviceErrors = $this->validateService(
                             $bookingService->getService(),
-                            $bookingService->getStartsAt()
+                            $bookingService->getStartsAt(),
+                            null,
+                            $bookingService->getBreakStartsAt(),
+                            $bookingService->getBreakEndsAt()
                         );
                     }
-                    if (empty($serviceErrors) && $this->attendantsEnabled && !$isMultipleAttSelection) {
+                    if (empty($serviceErrors) && $this->attendantsEnabled && !$isMultipleAttSelection && $bookingService->getService()->isAttendantsEnabled()) {
                         $availAtts = $this->getAvailableAttendantForService($availAtts, $bookingService);
                         if (empty($availAtts)) {
                             $errorMsg = __(
@@ -395,16 +410,20 @@ class SLN_Helper_Availability
         if (is_null($availAtts)) {
             $availAtts = $this->getAvailableAttsIdsForServiceOnTime(
                 $bookingService->getService(),
-                $bookingService->getEndsAt(),
-                $bookingService->getDuration()
+                $bookingService->getStartsAt(),
+                $bookingService->getTotalDuration(),
+                $bookingService->getBreakStartsAt(),
+                $bookingService->getBreakEndsAt()
             );
         }
         $availAtts = array_intersect(
             $availAtts,
             $this->getAvailableAttsIdsForServiceOnTime(
                 $bookingService->getService(),
-                $bookingService->getEndsAt(),
-                $bookingService->getDuration()
+                $bookingService->getStartsAt(),
+                $bookingService->getTotalDuration(),
+                $bookingService->getBreakStartsAt(),
+                $bookingService->getBreakEndsAt()
             )
         );
 
@@ -416,17 +435,21 @@ class SLN_Helper_Availability
         return $this->getAvailableAttsIdsForServiceOnTime(
             $bs->getService(),
             $bs->getStartsAt(),
-            $bs->getDuration()
+            $bs->getTotalDuration(),
+            $bs->getBreakStartsAt(),
+            $bs->getBreakEndsAt()
         );
     }
 
     public function getAvailableAttsIdsForServiceOnTime(
         SLN_Wrapper_Service $service,
         DateTime $date = null,
-        DateTime $duration = null
+        DateTime $duration = null,
+        DateTime $breakStartsAt = null,
+        DateTime $breakEndsAt = null
     ) {
         $date = empty($date) ? $this->date : $date;
-        $duration = empty($duration) ? $service->getDuration() : $duration;
+        $duration = empty($duration) ? $service->getTotalDuration() : $duration;
         $ret = array();
 
         $startAt = clone $date;
@@ -438,7 +461,7 @@ class SLN_Helper_Availability
         $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $startAt, $endAt);
         foreach ($times as $time) {
             foreach ($attendants as $k => $attendant) {
-                if ($this->validateAttendant($attendant, $time)) {
+                if ($this->validateAttendant($attendant, $time, null, $breakStartsAt, $breakEndsAt)) {
                     unset($attendants[$k]);
                 }
             }

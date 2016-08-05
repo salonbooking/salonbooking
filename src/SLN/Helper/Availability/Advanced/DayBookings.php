@@ -1,6 +1,6 @@
 <?php
 
-class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availability_Highend_DayBookings
+class SLN_Helper_Availability_Advanced_DayBookings extends SLN_Helper_Availability_AbstractDayBookings
 {
     /**
      * @return DateTime

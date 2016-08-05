@@ -133,7 +133,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         $i = 0;
         SLN_Plugin::addLog(__CLASS__.' eval duration of'.$this->getId());
         foreach ($this->getBookingServices()->getItems() as $bookingService) {
-            $d = $bookingService->getDuration();
+            $d = $bookingService->getTotalDuration();
             $h = $h + intval($d->format('H'));
             $i = $i + intval($d->format('i'));
             SLN_Plugin::addLog(' - service '.$bookingService.' +'.$d->format('H:i'));

@@ -61,6 +61,7 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
             'secondary'  => 'bool',
             'attendants' => 'bool',
             'unit'       => 'int',
+            'break_duration'   => 'time',
             'exec_order' => 'int',
         );
     }
