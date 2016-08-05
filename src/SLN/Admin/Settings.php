@@ -316,7 +316,8 @@ class SLN_Admin_Settings
             }
         }
         $submitted['availabilities'] = $tmp;
-        $submitted['holidays'] = SLN_Helper_HolidayItems::processSubmission($submitted['holidays']);
+        if($submitted['holidays'])
+            $submitted['holidays'] = SLN_Helper_HolidayItems::processSubmission($submitted['holidays']);
         $this->bindSettings(self::$fieldsTabBooking, $submitted);
         $this->settings->save();
 

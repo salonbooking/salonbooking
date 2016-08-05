@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.5.1
-Stable tag: 3.3.1
+Stable tag: 3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,7 +117,9 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 **Reports**
 
 * Stats on reservations and revenues
-
+* Stats on reservations and revenues by services
+* Stats on reservations and revenues by assistant
+* Stats on reservations and revenues by customers
 **Frontend pages**
 
 * Booking form page
@@ -230,6 +232,15 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+25.07/2016
+
+* Bug fixed on timepicker when "change order" option was enabled
+* Bug fixed on Adding a reservation from back-end when no new customers option is selected
+* Bug fixed with French language
+* Compatibility issue with Purpose theme fixed
+* Booking process speed optimization
+
 
 13.07.2016
 
