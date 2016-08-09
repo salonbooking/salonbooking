@@ -207,7 +207,7 @@ class SLN_Func
         $items = array();
         do {
             $items[] = date("H:i", $curr);
-            $curr = strtotime('+' . $interval . ' minutes', $curr);
+            $curr += (int)60*$interval;
             $maxItems--;
         } while (date("H:i", $curr) != $start && $maxItems > 0);
         return $items;
@@ -230,9 +230,11 @@ class SLN_Func
             self::$cachedDate  = $date;
             self::$cachedTimes = array();
             self::$cachedTs    = array();
+            self::$cachedFilterTimes    = array();
         }
 
-        $cachedFilterTimesKey = md5(json_encode($times).'#'.$startDate->format('Y-m-d H:i').'#'.$endDate->format('Y-m-d H:i'));
+        // cache "self::$cachedFilterTimes" don't depend on $times arg!
+        $cachedFilterTimesKey = md5($startDate->format('Y-m-d H:i').'#'.$endDate->format('Y-m-d H:i'));
         if (isset(self::$cachedFilterTimes[$cachedFilterTimesKey])) {
             return self::$cachedFilterTimes[$cachedFilterTimesKey];
         }

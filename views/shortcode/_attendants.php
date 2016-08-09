@@ -14,6 +14,8 @@ $hasAttendants = false;
 $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
 
+$bookingServices = SLN_Wrapper_Booking_Services::build($bb->getAttendantsIds(), $bb->getDateTime());
+
 $services = $bb->getServices();
 foreach($services as $k => $service) {
     if (!$service->isAttendantsEnabled()) {
@@ -38,13 +40,18 @@ foreach($services as $k => $service) {
                 continue;
             }
 
-            $validateErrors = $ah->validateAttendant($attendant, $bb->getDateTime(), $duration);
-            if ($validateErrors && $validateAttServicesErrors) {
-                $errors = array_merge($validateErrors, $validateAttServicesErrors);
-            } elseif ($validateErrors) {
+            foreach ($bookingServices->getItems() as $bookingService) {
+                if (!$bookingService->getService()->isAttendantsEnabled()) {
+                    continue;
+                }
+                $validateErrors = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getTotalDuration(), $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
+                if ($validateErrors) {
+                    break;
+                }
+            }
+
+            if ($validateErrors) {
                 $errors = $validateErrors;
-            } elseif ($validateAttServicesErrors) {
-                $errors = $validateAttServicesErrors;
             } else {
                 $errors = false;
             }

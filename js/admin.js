@@ -584,6 +584,12 @@ jQuery(function ($) {
         }
     }).change();
 
+    $('#salon_settings_enabled_force_guest_checkout').change(function(){
+        if ($(this).is(':checked')) {
+            $('#salon_settings_enabled_guest_checkout').attr('checked', 'checked').change();
+        }
+    }).change();
+
    $('.sln-panel .collapse').on('shown.bs.collapse', function() {
         $(this).parent().find('.sln-paneltrigger').addClass('sln-btn--active');
         $(this).parent().addClass('sln-panel--active');
@@ -678,6 +684,7 @@ jQuery(function ($) {
         line = line.replace(/__attendant_name__/g, attendantsData[attendantId]);
         line = line.replace(/__service_price__/g, servicesData[serviceId].price);
         line = line.replace(/__service_duration__/g, servicesData[serviceId].duration);
+        line = line.replace(/__service_break_duration__/g, servicesData[serviceId].break_duration);
         return line;
     }
 

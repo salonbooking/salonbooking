@@ -89,7 +89,7 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
         $min = false;
         $services = self::getAllPrimary();
         foreach ( $services as $service ) {
-            $duration = $service->getDuration();
+            $duration = $service->getTotalDuration();
             if (!$min) {
                 $min = $duration;
             } elseif ($min > $duration) {

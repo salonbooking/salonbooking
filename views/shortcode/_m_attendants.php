@@ -43,7 +43,7 @@ foreach ($bookingServices->getItems() as $bookingService) :
                 continue;
             }
 
-            $errors = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getDuration());
+            $errors = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getTotalDuration(), $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
         }
         
         $settings = array();

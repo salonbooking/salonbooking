@@ -200,17 +200,15 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
     {
         $services = array();
         foreach ($data['service'] as $serviceId) {
-            $minutes = intval($data['duration'][$serviceId]);
-            $h = intval($minutes / 60);
-            $i = intval($minutes % 60);
-            $h = $h < 10 ? '0'.$h : $h;
-            $i = $i < 10 ? '0'.$i : $i;
-            $duration = $h.':'.$i;
+            $duration      = SLN_Func::convertToHoursMins($data['duration'][$serviceId]);
+            $breakDuration = SLN_Func::convertToHoursMins($data['break_duration'][$serviceId]);
+
             $attendant = isset($data['attendants']) ? $data['attendants'][$serviceId] : (isset($data['attendant']) ? $data['attendant'] : null);
             $services[$serviceId] = array(
                 'attendant' => $attendant,
                 'price' => $data['price'][$serviceId],
                 'duration' => $duration,
+                'break_duration' => $breakDuration,
             );
         }
         return $services;
