@@ -5,7 +5,7 @@ $holidays = SLN_Plugin::getInstance()->getSettings()->get('holidays');
 $holidays = !empty($holidays) ? $holidays : array();
 foreach($holidays as $k => &$holidayData) {
 	try {
-		$from_date = SLN_Func::evalPickedDate($holidayData['from_date']);
+		$from_date = SLN_TimeFunc::evalPickedDate($holidayData['from_date']);
 	} catch(Exception $e) {
 		if (!strtotime($holidayData['from_date'])) {
 			unset($holidays[$k]);
@@ -16,7 +16,7 @@ foreach($holidays as $k => &$holidayData) {
 	$holidayData['from_date'] = $from_date;
 
 	try {
-		$to_date = SLN_Func::evalPickedDate($holidayData['to_date']);
+		$to_date = SLN_TimeFunc::evalPickedDate($holidayData['to_date']);
 	} catch(Exception $e) {
 		if (!strtotime($holidayData['to_date'])) {
 			unset($holidays[$k]);
