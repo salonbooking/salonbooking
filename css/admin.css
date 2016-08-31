@@ -89,7 +89,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
     opacity: 1;
     transform: scale(1); } }
 
-.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-checkbutton input + label, .sln-colorpicker .sln-colorpicker-addon i, #sln-salon--admin .col-time, .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
+#sln-salon--admin .sln-input--simple input, #sln-salon--admin #titlewrap-- input, #sln-salon--admin #postexcerpt .inside input, #postexcerpt #sln-salon--admin .inside input, #sln-salon--admin .sln-select:not(.sln-select--multiple) input, #sln-salon--admin .sln-input--simple input.form-control, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin #titlewrap-- textarea, #sln-salon--admin #postexcerpt .inside textarea, #postexcerpt #sln-salon--admin .inside textarea, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea, .sln-calendar--wrapper .sln-input--simple input, .sln-calendar--wrapper #titlewrap-- input, .sln-calendar--wrapper #postexcerpt .inside input, #postexcerpt .sln-calendar--wrapper .inside input, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input, .sln-calendar--wrapper .sln-input--simple input.form-control, .sln-calendar--wrapper .sln-input--simple textarea, .sln-calendar--wrapper #titlewrap-- textarea, .sln-calendar--wrapper #postexcerpt .inside textarea, #postexcerpt .sln-calendar--wrapper .inside textarea, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, .sln-calendar--wrapper .sln-select.sln-select--info-label #sln-salon--admin .sln-label--big label, .sln-calendar--wrapper .sln-checkbox label, .sln-calendar--wrapper .sln-radiobox label, .sln-calendar--wrapper .sln-switch label, .sln-calendar--wrapper .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .sln-checkbutton input + label, .sln-calendar--wrapper .sln-checkbutton input + label, #sln-salon--admin .sln-colorpicker .sln-colorpicker-addon i, .sln-calendar--wrapper .sln-colorpicker .sln-colorpicker-addon i, #sln-salon--admin #sln-salon--admin .col-time, #sln-salon--admin .sln-calendar--wrapper .col-time, .sln-calendar--wrapper #sln-salon--admin .col-time, .sln-calendar--wrapper .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
 #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
   font-family: "Open sans", serif;
   font-size: 0.83333rem;
@@ -97,11 +97,11 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
   line-height: 1.41667rem;
   font-weight: normal; }
   @media only screen and (min-width: 768px) {
-    .sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-checkbutton input + label, .sln-colorpicker .sln-colorpicker-addon i, #sln-salon--admin .col-time, .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
+    #sln-salon--admin .sln-input--simple input, #sln-salon--admin #titlewrap-- input, #sln-salon--admin #postexcerpt .inside input, #postexcerpt #sln-salon--admin .inside input, #sln-salon--admin .sln-select:not(.sln-select--multiple) input, #sln-salon--admin .sln-input--simple input.form-control, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin #titlewrap-- textarea, #sln-salon--admin #postexcerpt .inside textarea, #postexcerpt #sln-salon--admin .inside textarea, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea, .sln-calendar--wrapper .sln-input--simple input, .sln-calendar--wrapper #titlewrap-- input, .sln-calendar--wrapper #postexcerpt .inside input, #postexcerpt .sln-calendar--wrapper .inside input, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input, .sln-calendar--wrapper .sln-input--simple input.form-control, .sln-calendar--wrapper .sln-input--simple textarea, .sln-calendar--wrapper #titlewrap-- textarea, .sln-calendar--wrapper #postexcerpt .inside textarea, #postexcerpt .sln-calendar--wrapper .inside textarea, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, .sln-calendar--wrapper .sln-select.sln-select--info-label #sln-salon--admin .sln-label--big label, .sln-calendar--wrapper .sln-checkbox label, .sln-calendar--wrapper .sln-radiobox label, .sln-calendar--wrapper .sln-switch label, .sln-calendar--wrapper .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .sln-checkbutton input + label, .sln-calendar--wrapper .sln-checkbutton input + label, #sln-salon--admin .sln-colorpicker .sln-colorpicker-addon i, .sln-calendar--wrapper .sln-colorpicker .sln-colorpicker-addon i, #sln-salon--admin #sln-salon--admin .col-time, #sln-salon--admin .sln-calendar--wrapper .col-time, .sln-calendar--wrapper #sln-salon--admin .col-time, .sln-calendar--wrapper .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
     #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
       font-size: 1rem; } }
 
-.sln-input--simple label, #titlewrap-- label, #postexcerpt .inside label, .sln-select label, .sln-fake-label, .sln-btn--big, #sln-salon--admin p.submit, .sln-calendar--wrapper p.submit, .sln-btn--big input, #sln-salon--admin p.submit input, .sln-calendar--wrapper p.submit input, .sln-btn--big button, #sln-salon--admin p.submit button, .sln-calendar--wrapper p.submit button, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
+#sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin #titlewrap-- label, #sln-salon--admin #postexcerpt .inside label, #postexcerpt #sln-salon--admin .inside label, .sln-calendar--wrapper .sln-input--simple label, .sln-calendar--wrapper .sln-select label, .sln-calendar--wrapper #titlewrap-- label, .sln-calendar--wrapper #postexcerpt .inside label, #postexcerpt .sln-calendar--wrapper .inside label, #sln-salon--admin .sln-fake-label, .sln-calendar--wrapper .sln-fake-label, .sln-btn--big, #sln-salon--admin p.submit, .sln-calendar--wrapper p.submit, .sln-btn--big input, #sln-salon--admin p.submit input, .sln-calendar--wrapper p.submit input, .sln-btn--big button, #sln-salon--admin p.submit button, .sln-calendar--wrapper p.submit button, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
 #poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5, #sln-salon--admin .sln-message, .sln-calendar--wrapper .sln-message, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto,
 .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto {
   font-family: "Open sans", serif;
@@ -110,7 +110,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
   line-height: 1.16667rem;
   font-weight: normal; }
 
-.sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p, .sln-btn--medium, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
+#sln-salon--admin .sln-input--simple p, #sln-salon--admin #titlewrap-- p, #sln-salon--admin #postexcerpt .inside p, #postexcerpt #sln-salon--admin .inside p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, .sln-calendar--wrapper .sln-input--simple p, .sln-calendar--wrapper #titlewrap-- p, .sln-calendar--wrapper #postexcerpt .inside p, #postexcerpt .sln-calendar--wrapper .inside p, .sln-calendar--wrapper .sln-checkbox p, .sln-calendar--wrapper .sln-radiobox p, .sln-calendar--wrapper .sln-switch p, .sln-calendar--wrapper .sln-select p, .sln-btn--medium, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
 h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sln-admin-nav a,
 #sln-salon--admin .col-md-12.sln-admin-nav a,
 .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medium input, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab input, #sln-salon--admin .col-sm-12.sln-admin-nav a input,
@@ -127,7 +127,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
   line-height: 0.91667rem;
   font-weight: normal; }
 
-#sln-salon--admin #time-range p, .sln-calendar--wrapper #time-range p {
+#sln-salon--admin #sln-salon--admin #time-range p, #sln-salon--admin .sln-calendar--wrapper #time-range p, .sln-calendar--wrapper #sln-salon--admin #time-range p, .sln-calendar--wrapper .sln-calendar--wrapper #time-range p {
   font-family: "Open sans", serif;
   font-size: 0.58333rem;
   line-height: 0.83333rem;
@@ -137,20 +137,20 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
 #poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5 {
   color: #444; }
 
-.sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p, .sln-box p, #sln_shop-details p,
+#sln-salon--admin .sln-input--simple p, #sln-salon--admin #titlewrap-- p, #sln-salon--admin #postexcerpt .inside p, #postexcerpt #sln-salon--admin .inside p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, .sln-calendar--wrapper .sln-input--simple p, .sln-calendar--wrapper #titlewrap-- p, .sln-calendar--wrapper #postexcerpt .inside p, #postexcerpt .sln-calendar--wrapper .inside p, .sln-calendar--wrapper .sln-checkbox p, .sln-calendar--wrapper .sln-radiobox p, .sln-calendar--wrapper .sln-switch p, .sln-calendar--wrapper .sln-select p, .sln-box p, #sln_shop-details p,
 #sln_attendant-details p,
 #postexcerpt p, #sln_service-details p {
   color: #888; }
 
-.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea, .sln-input--simple label, #titlewrap-- label, #postexcerpt .inside label, .sln-select label, .sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label, .sln-fake-label, .sln-box-title, #poststuff #sln_shop-details > h2,
+#sln-salon--admin .sln-input--simple input, #sln-salon--admin #titlewrap-- input, #sln-salon--admin #postexcerpt .inside input, #postexcerpt #sln-salon--admin .inside input, #sln-salon--admin .sln-select:not(.sln-select--multiple) input, #sln-salon--admin .sln-input--simple input.form-control, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin #titlewrap-- textarea, #sln-salon--admin #postexcerpt .inside textarea, #postexcerpt #sln-salon--admin .inside textarea, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea, .sln-calendar--wrapper .sln-input--simple input, .sln-calendar--wrapper #titlewrap-- input, .sln-calendar--wrapper #postexcerpt .inside input, #postexcerpt .sln-calendar--wrapper .inside input, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input, .sln-calendar--wrapper .sln-input--simple input.form-control, .sln-calendar--wrapper .sln-input--simple textarea, .sln-calendar--wrapper #titlewrap-- textarea, .sln-calendar--wrapper #postexcerpt .inside textarea, #postexcerpt .sln-calendar--wrapper .inside textarea, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea, #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin #titlewrap-- label, #sln-salon--admin #postexcerpt .inside label, #postexcerpt #sln-salon--admin .inside label, .sln-calendar--wrapper .sln-input--simple label, .sln-calendar--wrapper .sln-select label, .sln-calendar--wrapper #titlewrap-- label, .sln-calendar--wrapper #postexcerpt .inside label, #postexcerpt .sln-calendar--wrapper .inside label, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, .sln-calendar--wrapper .sln-select.sln-select--info-label #sln-salon--admin .sln-label--big label, .sln-calendar--wrapper .sln-checkbox label, .sln-calendar--wrapper .sln-radiobox label, .sln-calendar--wrapper .sln-switch label, .sln-calendar--wrapper .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .sln-fake-label, .sln-calendar--wrapper .sln-fake-label, .sln-box-title, #poststuff #sln_shop-details > h2,
 #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, #poststuff #sln_shop-details > h2 span,
 #poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span {
   color: #003553; }
 
-.sln-input--simple input:focus, #titlewrap-- input:focus, #postexcerpt .inside input:focus, .sln-select:not(.sln-select--multiple) input:focus, .sln-input--simple input.form-control:focus, .sln-input--simple textarea:focus, #titlewrap-- textarea:focus, #postexcerpt .inside textarea:focus, .sln-select:not(.sln-select--multiple) textarea:focus {
+#sln-salon--admin .sln-input--simple input:focus, #sln-salon--admin #titlewrap-- input:focus, #sln-salon--admin #postexcerpt .inside input:focus, #postexcerpt #sln-salon--admin .inside input:focus, #sln-salon--admin .sln-select:not(.sln-select--multiple) input:focus, #sln-salon--admin .sln-input--simple input.form-control:focus, #sln-salon--admin .sln-input--simple textarea:focus, #sln-salon--admin #titlewrap-- textarea:focus, #sln-salon--admin #postexcerpt .inside textarea:focus, #postexcerpt #sln-salon--admin .inside textarea:focus, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea:focus, .sln-calendar--wrapper .sln-input--simple input:focus, .sln-calendar--wrapper #titlewrap-- input:focus, .sln-calendar--wrapper #postexcerpt .inside input:focus, #postexcerpt .sln-calendar--wrapper .inside input:focus, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input:focus, .sln-calendar--wrapper .sln-input--simple input.form-control:focus, .sln-calendar--wrapper .sln-input--simple textarea:focus, .sln-calendar--wrapper #titlewrap-- textarea:focus, .sln-calendar--wrapper #postexcerpt .inside textarea:focus, #postexcerpt .sln-calendar--wrapper .inside textarea:focus, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea:focus {
   color: #0C6EB6; }
 
-.sln-checkbox input + label:after, .sln-radiobox input + label:after, .sln-checkbutton input + label:after, #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper .ui-slider .ui-slider-handle:after, .sln-btn--icon:after, #sln-salon--admin p.submit:after, .sln-calendar--wrapper p.submit:after, .sln-paneltrigger.sln-btn:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab:after, #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-paneltrigger:after,
+#sln-salon--admin .sln-checkbox input + label:after, .sln-calendar--wrapper .sln-checkbox input + label:after, #sln-salon--admin .sln-radiobox input + label:after, .sln-calendar--wrapper .sln-radiobox input + label:after, #sln-salon--admin .sln-checkbutton input + label:after, .sln-calendar--wrapper .sln-checkbutton input + label:after, #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:after, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:before, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:after, .sln-btn--icon:after, #sln-salon--admin p.submit:after, .sln-calendar--wrapper p.submit:after, .sln-paneltrigger.sln-btn:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-paneltrigger.nav-tab:after, #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-paneltrigger:after,
 #sln-salon--admin .col-md-12.sln-admin-nav a.sln-paneltrigger:after,
 .sln-admin-nav a.sln-paneltrigger:after, .sln-tab-nav li a.sln-paneltrigger:after, #sln_shop-details .handlediv.button-link .toggle-indicator:after,
 #sln_attendant-details .handlediv.button-link .toggle-indicator:after,
@@ -161,16 +161,22 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
   font-family: "FontAwesome";
   font-size: 0.91667rem; }
 
-.sln-box .sln-colors-sample h1, #sln_shop-details .sln-colors-sample h1,
-#sln_attendant-details .sln-colors-sample h1,
-#postexcerpt .sln-colors-sample h1, #sln_service-details .sln-colors-sample h1,
-.sln-colors-sample h1 {
+#sln-salon--admin .sln-box .sln-colors-sample h1, #sln-salon--admin #sln_shop-details .sln-colors-sample h1, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample h1, #sln-salon--admin
+#postexcerpt .sln-colors-sample h1, #sln-salon--admin #sln_service-details .sln-colors-sample h1,
+#sln-salon--admin .sln-colors-sample h1, .sln-calendar--wrapper .sln-box .sln-colors-sample h1, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample h1, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample h1, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample h1, .sln-calendar--wrapper #sln_service-details .sln-colors-sample h1,
+.sln-calendar--wrapper .sln-colors-sample h1 {
   font-size: 1.4em; }
   @media only screen and (min-width: 992px) {
-    .sln-box .sln-colors-sample h1, #sln_shop-details .sln-colors-sample h1,
-    #sln_attendant-details .sln-colors-sample h1,
-    #postexcerpt .sln-colors-sample h1, #sln_service-details .sln-colors-sample h1,
-    .sln-colors-sample h1 {
+    #sln-salon--admin .sln-box .sln-colors-sample h1, #sln-salon--admin #sln_shop-details .sln-colors-sample h1, #sln-salon--admin
+    #sln_attendant-details .sln-colors-sample h1, #sln-salon--admin
+    #postexcerpt .sln-colors-sample h1, #sln-salon--admin #sln_service-details .sln-colors-sample h1,
+    #sln-salon--admin .sln-colors-sample h1, .sln-calendar--wrapper .sln-box .sln-colors-sample h1, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample h1, .sln-calendar--wrapper
+    #sln_attendant-details .sln-colors-sample h1, .sln-calendar--wrapper
+    #postexcerpt .sln-colors-sample h1, .sln-calendar--wrapper #sln_service-details .sln-colors-sample h1,
+    .sln-calendar--wrapper .sln-colors-sample h1 {
       font-size: 1.6em; } }
 
 @font-face {
@@ -183,64 +189,103 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
 .wrap h2.nav-tab-wrapper {
   font-size: 1em; }
 
-.sln-box .sln-colors-sample button, #sln_shop-details .sln-colors-sample button,
-#sln_attendant-details .sln-colors-sample button,
-#postexcerpt .sln-colors-sample button, #sln_service-details .sln-colors-sample button,
-.sln-colors-sample button, .sln-box .sln-colors-sample button:hover, .sln-box .sln-colors-sample button:focus, .sln-box .sln-colors-sample button:active,
-.sln-colors-sample button:hover,
-.sln-colors-sample button:focus,
-.sln-colors-sample button:active {
+#sln-salon--admin .sln-box .sln-colors-sample button, #sln-salon--admin #sln_shop-details .sln-colors-sample button, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample button, #sln-salon--admin
+#postexcerpt .sln-colors-sample button, #sln-salon--admin #sln_service-details .sln-colors-sample button,
+#sln-salon--admin .sln-colors-sample button, .sln-calendar--wrapper .sln-box .sln-colors-sample button, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample button, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample button, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample button, .sln-calendar--wrapper #sln_service-details .sln-colors-sample button,
+.sln-calendar--wrapper .sln-colors-sample button, #sln-salon--admin .sln-box .sln-colors-sample button:hover, #sln-salon--admin .sln-box .sln-colors-sample button:focus, #sln-salon--admin .sln-box .sln-colors-sample button:active,
+#sln-salon--admin .sln-colors-sample button:hover,
+#sln-salon--admin .sln-colors-sample button:focus,
+#sln-salon--admin .sln-colors-sample button:active, .sln-calendar--wrapper .sln-box .sln-colors-sample button:hover, .sln-calendar--wrapper .sln-box .sln-colors-sample button:focus, .sln-calendar--wrapper .sln-box .sln-colors-sample button:active,
+.sln-calendar--wrapper .sln-colors-sample button:hover,
+.sln-calendar--wrapper .sln-colors-sample button:focus,
+.sln-calendar--wrapper .sln-colors-sample button:active {
   color: white; }
 
-.sln-box .sln-colors-sample input, #sln_shop-details .sln-colors-sample input,
-#sln_attendant-details .sln-colors-sample input,
-#postexcerpt .sln-colors-sample input, #sln_service-details .sln-colors-sample input,
-.sln-colors-sample input, .sln-box .sln-colors-sample p, #sln_shop-details .sln-colors-sample p,
-#sln_attendant-details .sln-colors-sample p,
-#postexcerpt .sln-colors-sample p, #sln_service-details .sln-colors-sample p,
-.sln-colors-sample p, .sln-box .sln-colors-sample small, #sln_shop-details .sln-colors-sample small,
-#sln_attendant-details .sln-colors-sample small,
-#postexcerpt .sln-colors-sample small, #sln_service-details .sln-colors-sample small,
-.sln-colors-sample small {
+#sln-salon--admin .sln-box .sln-colors-sample input, #sln-salon--admin #sln_shop-details .sln-colors-sample input, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample input, #sln-salon--admin
+#postexcerpt .sln-colors-sample input, #sln-salon--admin #sln_service-details .sln-colors-sample input,
+#sln-salon--admin .sln-colors-sample input, .sln-calendar--wrapper .sln-box .sln-colors-sample input, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample input, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample input, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample input, .sln-calendar--wrapper #sln_service-details .sln-colors-sample input,
+.sln-calendar--wrapper .sln-colors-sample input, #sln-salon--admin .sln-box .sln-colors-sample p, #sln-salon--admin #sln_shop-details .sln-colors-sample p, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample p, #sln-salon--admin
+#postexcerpt .sln-colors-sample p, #sln-salon--admin #sln_service-details .sln-colors-sample p,
+#sln-salon--admin .sln-colors-sample p, .sln-calendar--wrapper .sln-box .sln-colors-sample p, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample p, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample p, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample p, .sln-calendar--wrapper #sln_service-details .sln-colors-sample p,
+.sln-calendar--wrapper .sln-colors-sample p, #sln-salon--admin .sln-box .sln-colors-sample small, #sln-salon--admin #sln_shop-details .sln-colors-sample small, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample small, #sln-salon--admin
+#postexcerpt .sln-colors-sample small, #sln-salon--admin #sln_service-details .sln-colors-sample small,
+#sln-salon--admin .sln-colors-sample small, .sln-calendar--wrapper .sln-box .sln-colors-sample small, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample small, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample small, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample small, .sln-calendar--wrapper #sln_service-details .sln-colors-sample small,
+.sln-calendar--wrapper .sln-colors-sample small {
   color: black; }
 
-.sln-box .sln-colors-sample h1, #sln_shop-details .sln-colors-sample h1,
-#sln_attendant-details .sln-colors-sample h1,
-#postexcerpt .sln-colors-sample h1, #sln_service-details .sln-colors-sample h1,
-.sln-colors-sample h1, .sln-box .sln-colors-sample label, #sln_shop-details .sln-colors-sample label,
-#sln_attendant-details .sln-colors-sample label,
-#postexcerpt .sln-colors-sample label, #sln_service-details .sln-colors-sample label,
-.sln-colors-sample label {
+#sln-salon--admin .sln-box .sln-colors-sample h1, #sln-salon--admin #sln_shop-details .sln-colors-sample h1, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample h1, #sln-salon--admin
+#postexcerpt .sln-colors-sample h1, #sln-salon--admin #sln_service-details .sln-colors-sample h1,
+#sln-salon--admin .sln-colors-sample h1, .sln-calendar--wrapper .sln-box .sln-colors-sample h1, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample h1, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample h1, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample h1, .sln-calendar--wrapper #sln_service-details .sln-colors-sample h1,
+.sln-calendar--wrapper .sln-colors-sample h1, #sln-salon--admin .sln-box .sln-colors-sample label, #sln-salon--admin #sln_shop-details .sln-colors-sample label, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample label, #sln-salon--admin
+#postexcerpt .sln-colors-sample label, #sln-salon--admin #sln_service-details .sln-colors-sample label,
+#sln-salon--admin .sln-colors-sample label, .sln-calendar--wrapper .sln-box .sln-colors-sample label, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample label, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample label, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample label, .sln-calendar--wrapper #sln_service-details .sln-colors-sample label,
+.sln-calendar--wrapper .sln-colors-sample label {
   color: #0277BD; }
 
-.sln-box .sln-colors-sample .wrapper, #sln_shop-details .sln-colors-sample .wrapper,
-#sln_attendant-details .sln-colors-sample .wrapper,
-#postexcerpt .sln-colors-sample .wrapper, #sln_service-details .sln-colors-sample .wrapper,
-.sln-colors-sample .wrapper {
+#sln-salon--admin .sln-box .sln-colors-sample .wrapper, #sln-salon--admin #sln_shop-details .sln-colors-sample .wrapper, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample .wrapper, #sln-salon--admin
+#postexcerpt .sln-colors-sample .wrapper, #sln-salon--admin #sln_service-details .sln-colors-sample .wrapper,
+#sln-salon--admin .sln-colors-sample .wrapper, .sln-calendar--wrapper .sln-box .sln-colors-sample .wrapper, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample .wrapper, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample .wrapper, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample .wrapper, .sln-calendar--wrapper #sln_service-details .sln-colors-sample .wrapper,
+.sln-calendar--wrapper .sln-colors-sample .wrapper {
   background-color: white; }
 
-.sln-box .sln-colors-sample button, #sln_shop-details .sln-colors-sample button,
-#sln_attendant-details .sln-colors-sample button,
-#postexcerpt .sln-colors-sample button, #sln_service-details .sln-colors-sample button,
-.sln-colors-sample button {
+#sln-salon--admin .sln-box .sln-colors-sample button, #sln-salon--admin #sln_shop-details .sln-colors-sample button, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample button, #sln-salon--admin
+#postexcerpt .sln-colors-sample button, #sln-salon--admin #sln_service-details .sln-colors-sample button,
+#sln-salon--admin .sln-colors-sample button, .sln-calendar--wrapper .sln-box .sln-colors-sample button, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample button, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample button, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample button, .sln-calendar--wrapper #sln_service-details .sln-colors-sample button,
+.sln-calendar--wrapper .sln-colors-sample button {
   background-color: #0277BD; }
 
-.sln-box .sln-colors-sample button:hover, #sln_shop-details .sln-colors-sample button:hover,
-#sln_attendant-details .sln-colors-sample button:hover,
-#postexcerpt .sln-colors-sample button:hover, #sln_service-details .sln-colors-sample button:hover, .sln-box .sln-colors-sample button:focus, #sln_shop-details .sln-colors-sample button:focus,
-#sln_attendant-details .sln-colors-sample button:focus,
-#postexcerpt .sln-colors-sample button:focus, #sln_service-details .sln-colors-sample button:focus, .sln-box .sln-colors-sample button:active, #sln_shop-details .sln-colors-sample button:active,
-#sln_attendant-details .sln-colors-sample button:active,
-#postexcerpt .sln-colors-sample button:active, #sln_service-details .sln-colors-sample button:active,
-.sln-colors-sample button:hover,
-.sln-colors-sample button:focus,
-.sln-colors-sample button:active {
+#sln-salon--admin .sln-box .sln-colors-sample button:hover, #sln-salon--admin #sln_shop-details .sln-colors-sample button:hover, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample button:hover, #sln-salon--admin
+#postexcerpt .sln-colors-sample button:hover, #sln-salon--admin #sln_service-details .sln-colors-sample button:hover, #sln-salon--admin .sln-box .sln-colors-sample button:focus, #sln-salon--admin #sln_shop-details .sln-colors-sample button:focus, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample button:focus, #sln-salon--admin
+#postexcerpt .sln-colors-sample button:focus, #sln-salon--admin #sln_service-details .sln-colors-sample button:focus, #sln-salon--admin .sln-box .sln-colors-sample button:active, #sln-salon--admin #sln_shop-details .sln-colors-sample button:active, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample button:active, #sln-salon--admin
+#postexcerpt .sln-colors-sample button:active, #sln-salon--admin #sln_service-details .sln-colors-sample button:active,
+#sln-salon--admin .sln-colors-sample button:hover,
+#sln-salon--admin .sln-colors-sample button:focus,
+#sln-salon--admin .sln-colors-sample button:active, .sln-calendar--wrapper .sln-box .sln-colors-sample button:hover, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample button:hover, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample button:hover, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample button:hover, .sln-calendar--wrapper #sln_service-details .sln-colors-sample button:hover, .sln-calendar--wrapper .sln-box .sln-colors-sample button:focus, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample button:focus, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample button:focus, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample button:focus, .sln-calendar--wrapper #sln_service-details .sln-colors-sample button:focus, .sln-calendar--wrapper .sln-box .sln-colors-sample button:active, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample button:active, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample button:active, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample button:active, .sln-calendar--wrapper #sln_service-details .sln-colors-sample button:active,
+.sln-calendar--wrapper .sln-colors-sample button:hover,
+.sln-calendar--wrapper .sln-colors-sample button:focus,
+.sln-calendar--wrapper .sln-colors-sample button:active {
   background-color: #0091EA; }
 
-.sln-box .sln-colors-sample input, #sln_shop-details .sln-colors-sample input,
-#sln_attendant-details .sln-colors-sample input,
-#postexcerpt .sln-colors-sample input, #sln_service-details .sln-colors-sample input,
-.sln-colors-sample input {
+#sln-salon--admin .sln-box .sln-colors-sample input, #sln-salon--admin #sln_shop-details .sln-colors-sample input, #sln-salon--admin
+#sln_attendant-details .sln-colors-sample input, #sln-salon--admin
+#postexcerpt .sln-colors-sample input, #sln-salon--admin #sln_service-details .sln-colors-sample input,
+#sln-salon--admin .sln-colors-sample input, .sln-calendar--wrapper .sln-box .sln-colors-sample input, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample input, .sln-calendar--wrapper
+#sln_attendant-details .sln-colors-sample input, .sln-calendar--wrapper
+#postexcerpt .sln-colors-sample input, .sln-calendar--wrapper #sln_service-details .sln-colors-sample input,
+.sln-calendar--wrapper .sln-colors-sample input {
   border-color: #0277BD; }
 
 /*!
@@ -1064,102 +1109,158 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
   opacity: 0;
   pointer-events: none; }
 
-.sln-input--simple input, #titlewrap-- input, #postexcerpt .inside input, .sln-select:not(.sln-select--multiple) input, .sln-input--simple input.form-control, #titlewrap-- input.form-control, #postexcerpt .inside input.form-control, .sln-select:not(.sln-select--multiple) input.form-control, .sln-input--simple textarea, #titlewrap-- textarea, #postexcerpt .inside textarea, .sln-select:not(.sln-select--multiple) textarea {
-  width: 100%;
-  border-radius: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border-color: #c7dff3;
-  background-color: #c7dff3;
-  padding: 0.45833rem 0.66667rem;
-  transition: border-color 100ms, background-color 250ms; }
-  .sln-input--simple input::-webkit-input-placeholder, #titlewrap-- input::-webkit-input-placeholder, #postexcerpt .inside input::-webkit-input-placeholder, .sln-select:not(.sln-select--multiple) input::-webkit-input-placeholder, .sln-input--simple input.form-control::-webkit-input-placeholder, #titlewrap-- input.form-control::-webkit-input-placeholder, #postexcerpt .inside input.form-control::-webkit-input-placeholder, .sln-select:not(.sln-select--multiple) input.form-control::-webkit-input-placeholder, .sln-input--simple textarea::-webkit-input-placeholder, #titlewrap-- textarea::-webkit-input-placeholder, #postexcerpt .inside textarea::-webkit-input-placeholder, .sln-select:not(.sln-select--multiple) textarea::-webkit-input-placeholder {
-    color: #4c7186; }
-  .sln-input--simple input:-moz-placeholder, #titlewrap-- input:-moz-placeholder, #postexcerpt .inside input:-moz-placeholder, .sln-select:not(.sln-select--multiple) input:-moz-placeholder, .sln-input--simple input.form-control:-moz-placeholder, #titlewrap-- input.form-control:-moz-placeholder, #postexcerpt .inside input.form-control:-moz-placeholder, .sln-select:not(.sln-select--multiple) input.form-control:-moz-placeholder, .sln-input--simple textarea:-moz-placeholder, #titlewrap-- textarea:-moz-placeholder, #postexcerpt .inside textarea:-moz-placeholder, .sln-select:not(.sln-select--multiple) textarea:-moz-placeholder {
-    /* Firefox 18- */
-    color: #4c7186; }
-  .sln-input--simple input::-moz-placeholder, #titlewrap-- input::-moz-placeholder, #postexcerpt .inside input::-moz-placeholder, .sln-select:not(.sln-select--multiple) input::-moz-placeholder, .sln-input--simple input.form-control::-moz-placeholder, #titlewrap-- input.form-control::-moz-placeholder, #postexcerpt .inside input.form-control::-moz-placeholder, .sln-select:not(.sln-select--multiple) input.form-control::-moz-placeholder, .sln-input--simple textarea::-moz-placeholder, #titlewrap-- textarea::-moz-placeholder, #postexcerpt .inside textarea::-moz-placeholder, .sln-select:not(.sln-select--multiple) textarea::-moz-placeholder {
-    /* Firefox 19+ */
-    color: #4c7186; }
-  .sln-input--simple input:-ms-input-placeholder, #titlewrap-- input:-ms-input-placeholder, #postexcerpt .inside input:-ms-input-placeholder, .sln-select:not(.sln-select--multiple) input:-ms-input-placeholder, .sln-input--simple input.form-control:-ms-input-placeholder, #titlewrap-- input.form-control:-ms-input-placeholder, #postexcerpt .inside input.form-control:-ms-input-placeholder, .sln-select:not(.sln-select--multiple) input.form-control:-ms-input-placeholder, .sln-input--simple textarea:-ms-input-placeholder, #titlewrap-- textarea:-ms-input-placeholder, #postexcerpt .inside textarea:-ms-input-placeholder, .sln-select:not(.sln-select--multiple) textarea:-ms-input-placeholder {
-    color: #4c7186; }
-  .sln-input--simple input:focus, #titlewrap-- input:focus, #postexcerpt .inside input:focus, .sln-select:not(.sln-select--multiple) input:focus, .sln-input--simple input.form-control:focus, #titlewrap-- input.form-control:focus, #postexcerpt .inside input.form-control:focus, .sln-select:not(.sln-select--multiple) input.form-control:focus, .sln-input--simple textarea:focus, #titlewrap-- textarea:focus, #postexcerpt .inside textarea:focus, .sln-select:not(.sln-select--multiple) textarea:focus {
-    border-color: #0C6EB6;
-    background-color: #003553;
-    color: #fff;
-    outline: none;
+#sln-salon--admin, .sln-calendar--wrapper {
+  /* TIME RANGE */
+  /* TIME RANGE // END */ }
+  #sln-salon--admin .sln-input--simple input, #sln-salon--admin #titlewrap-- input, #sln-salon--admin #postexcerpt .inside input, #postexcerpt #sln-salon--admin .inside input, #sln-salon--admin .sln-select:not(.sln-select--multiple) input, #sln-salon--admin .sln-input--simple input.form-control, #sln-salon--admin #titlewrap-- input.form-control, #sln-salon--admin #postexcerpt .inside input.form-control, #postexcerpt #sln-salon--admin .inside input.form-control, #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin #titlewrap-- textarea, #sln-salon--admin #postexcerpt .inside textarea, #postexcerpt #sln-salon--admin .inside textarea, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input, .sln-calendar--wrapper .sln-input--simple input, .sln-calendar--wrapper #titlewrap-- input, .sln-calendar--wrapper #postexcerpt .inside input, #postexcerpt .sln-calendar--wrapper .inside input, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input.form-control, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input.form-control, .sln-calendar--wrapper .sln-input--simple input.form-control, .sln-calendar--wrapper #titlewrap-- input.form-control, .sln-calendar--wrapper #postexcerpt .inside input.form-control, #postexcerpt .sln-calendar--wrapper .inside input.form-control, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple textarea, .sln-calendar--wrapper .sln-input--simple textarea, .sln-calendar--wrapper #titlewrap-- textarea, .sln-calendar--wrapper #postexcerpt .inside textarea, #postexcerpt .sln-calendar--wrapper .inside textarea, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea {
+    width: 100%;
+    border-radius: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
-    border-color: #0C6EB6;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-    box-shadow: inset 0 1px 1px rgba(12, 110, 182, 0.06), 0 0 8px rgba(12, 110, 182, 0.1); }
-
-.sln-input--simple label, #titlewrap-- label, #postexcerpt .inside label, .sln-select label {
-  font-weight: 400;
-  padding: 0 0.66667rem;
-  margin-bottom: 0.41667rem;
-  line-height: 1rem; }
-
-.sln-checkbox label, .sln-radiobox label, .sln-switch label, .sln-select.sln-select--info-label .sln-label--big label {
-  font-weight: 400;
-  padding: 0.66667rem 1rem 0.66667rem 0;
-  margin-bottom: 0; }
-
-.sln-input--simple p, #titlewrap-- p, #postexcerpt .inside p, .sln-checkbox p, .sln-radiobox p, .sln-switch p, .sln-select p {
-  font-weight: 400;
-  padding: 0.41667rem 0.66667rem;
-  margin: 0; }
-
-.sln-input-bigborder label {
-  border: 0.125rem solid #c7dff3; }
-
-@media only screen and (min-width: 992px) {
-  .sln-checkbox input + label, .sln-radiobox input + label {
-    transition: border-color 250ms;
-    border: 0.125rem solid transparent; }
-    .sln-checkbox input + label:hover, .sln-radiobox input + label:hover {
-      border-color: #c7dff3; } }
-
-#sln-salon--admin .sln-booking-rule, .sln-calendar--wrapper .sln-booking-rule {
-  border: 0.08333rem solid #c7dff3; }
-
-.sln-fake-label {
-  font-weight: 400;
-  padding: 0 0.66667rem;
-  margin-bottom: 0;
-  line-height: 1.66667rem;
-  margin-top: 0; }
-
-body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input--oldstyle {
-  display: block;
-  width: 100%;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
-
-.sln-input-help {
-  max-width: 440px; }
-
-.sln-input--simple, #titlewrap--, #postexcerpt .inside {
-  margin-bottom: 1.66667rem; }
-
-.sln-checkbox {
-  margin-bottom: 1.66667rem; }
-  .sln-checkbox input {
+    border-color: #c7dff3;
+    background-color: #c7dff3;
+    padding: 0.45833rem 0.66667rem;
+    transition: border-color 100ms, background-color 250ms; }
+    #sln-salon--admin .sln-input--simple input::-webkit-input-placeholder, #sln-salon--admin #titlewrap-- input::-webkit-input-placeholder, #sln-salon--admin #postexcerpt .inside input::-webkit-input-placeholder, #postexcerpt #sln-salon--admin .inside input::-webkit-input-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) input::-webkit-input-placeholder, #sln-salon--admin .sln-input--simple input.form-control::-webkit-input-placeholder, #sln-salon--admin #titlewrap-- input.form-control::-webkit-input-placeholder, #sln-salon--admin #postexcerpt .inside input.form-control::-webkit-input-placeholder, #postexcerpt #sln-salon--admin .inside input.form-control::-webkit-input-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control::-webkit-input-placeholder, #sln-salon--admin .sln-input--simple textarea::-webkit-input-placeholder, #sln-salon--admin #titlewrap-- textarea::-webkit-input-placeholder, #sln-salon--admin #postexcerpt .inside textarea::-webkit-input-placeholder, #postexcerpt #sln-salon--admin .inside textarea::-webkit-input-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea::-webkit-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input::-webkit-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input::-webkit-input-placeholder, .sln-calendar--wrapper .sln-input--simple input::-webkit-input-placeholder, .sln-calendar--wrapper #titlewrap-- input::-webkit-input-placeholder, .sln-calendar--wrapper #postexcerpt .inside input::-webkit-input-placeholder, #postexcerpt .sln-calendar--wrapper .inside input::-webkit-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input::-webkit-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input::-webkit-input-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input::-webkit-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input.form-control::-webkit-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input.form-control::-webkit-input-placeholder, .sln-calendar--wrapper .sln-input--simple input.form-control::-webkit-input-placeholder, .sln-calendar--wrapper #titlewrap-- input.form-control::-webkit-input-placeholder, .sln-calendar--wrapper #postexcerpt .inside input.form-control::-webkit-input-placeholder, #postexcerpt .sln-calendar--wrapper .inside input.form-control::-webkit-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control::-webkit-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control::-webkit-input-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control::-webkit-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple textarea::-webkit-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple textarea::-webkit-input-placeholder, .sln-calendar--wrapper .sln-input--simple textarea::-webkit-input-placeholder, .sln-calendar--wrapper #titlewrap-- textarea::-webkit-input-placeholder, .sln-calendar--wrapper #postexcerpt .inside textarea::-webkit-input-placeholder, #postexcerpt .sln-calendar--wrapper .inside textarea::-webkit-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea::-webkit-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea::-webkit-input-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea::-webkit-input-placeholder {
+      color: #4c7186; }
+    #sln-salon--admin .sln-input--simple input:-moz-placeholder, #sln-salon--admin #titlewrap-- input:-moz-placeholder, #sln-salon--admin #postexcerpt .inside input:-moz-placeholder, #postexcerpt #sln-salon--admin .inside input:-moz-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) input:-moz-placeholder, #sln-salon--admin .sln-input--simple input.form-control:-moz-placeholder, #sln-salon--admin #titlewrap-- input.form-control:-moz-placeholder, #sln-salon--admin #postexcerpt .inside input.form-control:-moz-placeholder, #postexcerpt #sln-salon--admin .inside input.form-control:-moz-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control:-moz-placeholder, #sln-salon--admin .sln-input--simple textarea:-moz-placeholder, #sln-salon--admin #titlewrap-- textarea:-moz-placeholder, #sln-salon--admin #postexcerpt .inside textarea:-moz-placeholder, #postexcerpt #sln-salon--admin .inside textarea:-moz-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea:-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input:-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input:-moz-placeholder, .sln-calendar--wrapper .sln-input--simple input:-moz-placeholder, .sln-calendar--wrapper #titlewrap-- input:-moz-placeholder, .sln-calendar--wrapper #postexcerpt .inside input:-moz-placeholder, #postexcerpt .sln-calendar--wrapper .inside input:-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input:-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input:-moz-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input:-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input.form-control:-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input.form-control:-moz-placeholder, .sln-calendar--wrapper .sln-input--simple input.form-control:-moz-placeholder, .sln-calendar--wrapper #titlewrap-- input.form-control:-moz-placeholder, .sln-calendar--wrapper #postexcerpt .inside input.form-control:-moz-placeholder, #postexcerpt .sln-calendar--wrapper .inside input.form-control:-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control:-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control:-moz-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control:-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple textarea:-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple textarea:-moz-placeholder, .sln-calendar--wrapper .sln-input--simple textarea:-moz-placeholder, .sln-calendar--wrapper #titlewrap-- textarea:-moz-placeholder, .sln-calendar--wrapper #postexcerpt .inside textarea:-moz-placeholder, #postexcerpt .sln-calendar--wrapper .inside textarea:-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea:-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea:-moz-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea:-moz-placeholder {
+      /* Firefox 18- */
+      color: #4c7186; }
+    #sln-salon--admin .sln-input--simple input::-moz-placeholder, #sln-salon--admin #titlewrap-- input::-moz-placeholder, #sln-salon--admin #postexcerpt .inside input::-moz-placeholder, #postexcerpt #sln-salon--admin .inside input::-moz-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) input::-moz-placeholder, #sln-salon--admin .sln-input--simple input.form-control::-moz-placeholder, #sln-salon--admin #titlewrap-- input.form-control::-moz-placeholder, #sln-salon--admin #postexcerpt .inside input.form-control::-moz-placeholder, #postexcerpt #sln-salon--admin .inside input.form-control::-moz-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control::-moz-placeholder, #sln-salon--admin .sln-input--simple textarea::-moz-placeholder, #sln-salon--admin #titlewrap-- textarea::-moz-placeholder, #sln-salon--admin #postexcerpt .inside textarea::-moz-placeholder, #postexcerpt #sln-salon--admin .inside textarea::-moz-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea::-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input::-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input::-moz-placeholder, .sln-calendar--wrapper .sln-input--simple input::-moz-placeholder, .sln-calendar--wrapper #titlewrap-- input::-moz-placeholder, .sln-calendar--wrapper #postexcerpt .inside input::-moz-placeholder, #postexcerpt .sln-calendar--wrapper .inside input::-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input::-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input::-moz-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input::-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input.form-control::-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input.form-control::-moz-placeholder, .sln-calendar--wrapper .sln-input--simple input.form-control::-moz-placeholder, .sln-calendar--wrapper #titlewrap-- input.form-control::-moz-placeholder, .sln-calendar--wrapper #postexcerpt .inside input.form-control::-moz-placeholder, #postexcerpt .sln-calendar--wrapper .inside input.form-control::-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control::-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control::-moz-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control::-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple textarea::-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple textarea::-moz-placeholder, .sln-calendar--wrapper .sln-input--simple textarea::-moz-placeholder, .sln-calendar--wrapper #titlewrap-- textarea::-moz-placeholder, .sln-calendar--wrapper #postexcerpt .inside textarea::-moz-placeholder, #postexcerpt .sln-calendar--wrapper .inside textarea::-moz-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea::-moz-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea::-moz-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #4c7186; }
+    #sln-salon--admin .sln-input--simple input:-ms-input-placeholder, #sln-salon--admin #titlewrap-- input:-ms-input-placeholder, #sln-salon--admin #postexcerpt .inside input:-ms-input-placeholder, #postexcerpt #sln-salon--admin .inside input:-ms-input-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) input:-ms-input-placeholder, #sln-salon--admin .sln-input--simple input.form-control:-ms-input-placeholder, #sln-salon--admin #titlewrap-- input.form-control:-ms-input-placeholder, #sln-salon--admin #postexcerpt .inside input.form-control:-ms-input-placeholder, #postexcerpt #sln-salon--admin .inside input.form-control:-ms-input-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control:-ms-input-placeholder, #sln-salon--admin .sln-input--simple textarea:-ms-input-placeholder, #sln-salon--admin #titlewrap-- textarea:-ms-input-placeholder, #sln-salon--admin #postexcerpt .inside textarea:-ms-input-placeholder, #postexcerpt #sln-salon--admin .inside textarea:-ms-input-placeholder, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea:-ms-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input:-ms-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input:-ms-input-placeholder, .sln-calendar--wrapper .sln-input--simple input:-ms-input-placeholder, .sln-calendar--wrapper #titlewrap-- input:-ms-input-placeholder, .sln-calendar--wrapper #postexcerpt .inside input:-ms-input-placeholder, #postexcerpt .sln-calendar--wrapper .inside input:-ms-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input:-ms-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input:-ms-input-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input:-ms-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input.form-control:-ms-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input.form-control:-ms-input-placeholder, .sln-calendar--wrapper .sln-input--simple input.form-control:-ms-input-placeholder, .sln-calendar--wrapper #titlewrap-- input.form-control:-ms-input-placeholder, .sln-calendar--wrapper #postexcerpt .inside input.form-control:-ms-input-placeholder, #postexcerpt .sln-calendar--wrapper .inside input.form-control:-ms-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control:-ms-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control:-ms-input-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control:-ms-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple textarea:-ms-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple textarea:-ms-input-placeholder, .sln-calendar--wrapper .sln-input--simple textarea:-ms-input-placeholder, .sln-calendar--wrapper #titlewrap-- textarea:-ms-input-placeholder, .sln-calendar--wrapper #postexcerpt .inside textarea:-ms-input-placeholder, #postexcerpt .sln-calendar--wrapper .inside textarea:-ms-input-placeholder, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea:-ms-input-placeholder, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea:-ms-input-placeholder, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea:-ms-input-placeholder {
+      color: #4c7186; }
+    #sln-salon--admin .sln-input--simple input:focus, #sln-salon--admin #titlewrap-- input:focus, #sln-salon--admin #postexcerpt .inside input:focus, #postexcerpt #sln-salon--admin .inside input:focus, #sln-salon--admin .sln-select:not(.sln-select--multiple) input:focus, #sln-salon--admin .sln-input--simple input.form-control:focus, #sln-salon--admin #titlewrap-- input.form-control:focus, #sln-salon--admin #postexcerpt .inside input.form-control:focus, #postexcerpt #sln-salon--admin .inside input.form-control:focus, #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control:focus, #sln-salon--admin .sln-input--simple textarea:focus, #sln-salon--admin #titlewrap-- textarea:focus, #sln-salon--admin #postexcerpt .inside textarea:focus, #postexcerpt #sln-salon--admin .inside textarea:focus, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea:focus, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input:focus, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input:focus, .sln-calendar--wrapper .sln-input--simple input:focus, .sln-calendar--wrapper #titlewrap-- input:focus, .sln-calendar--wrapper #postexcerpt .inside input:focus, #postexcerpt .sln-calendar--wrapper .inside input:focus, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input:focus, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input:focus, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input:focus, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple input.form-control:focus, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple input.form-control:focus, .sln-calendar--wrapper .sln-input--simple input.form-control:focus, .sln-calendar--wrapper #titlewrap-- input.form-control:focus, .sln-calendar--wrapper #postexcerpt .inside input.form-control:focus, #postexcerpt .sln-calendar--wrapper .inside input.form-control:focus, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) input.form-control:focus, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control:focus, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input.form-control:focus, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple textarea:focus, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple textarea:focus, .sln-calendar--wrapper .sln-input--simple textarea:focus, .sln-calendar--wrapper #titlewrap-- textarea:focus, .sln-calendar--wrapper #postexcerpt .inside textarea:focus, #postexcerpt .sln-calendar--wrapper .inside textarea:focus, .sln-calendar--wrapper #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea:focus, #sln-salon--admin .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea:focus, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea:focus {
+      border-color: #0C6EB6;
+      background-color: #003553;
+      color: #fff;
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border-color: #0C6EB6;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+      box-shadow: inset 0 1px 1px rgba(12, 110, 182, 0.06), 0 0 8px rgba(12, 110, 182, 0.1); }
+  #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin #titlewrap-- label, #sln-salon--admin #postexcerpt .inside label, #postexcerpt #sln-salon--admin .inside label, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple label, .sln-calendar--wrapper .sln-input--simple label, .sln-calendar--wrapper #sln-salon--admin .sln-select label, #sln-salon--admin .sln-calendar--wrapper .sln-select label, .sln-calendar--wrapper .sln-select label, .sln-calendar--wrapper #titlewrap-- label, .sln-calendar--wrapper #postexcerpt .inside label, #postexcerpt .sln-calendar--wrapper .inside label {
+    font-weight: 400;
+    padding: 0 0.66667rem;
+    margin-bottom: 0.41667rem;
+    line-height: 1rem; }
+  #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, .sln-calendar--wrapper .sln-select.sln-select--info-label #sln-salon--admin .sln-label--big label, .sln-calendar--wrapper #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-calendar--wrapper .sln-checkbox label, .sln-calendar--wrapper .sln-checkbox label, .sln-calendar--wrapper #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-calendar--wrapper .sln-radiobox label, .sln-calendar--wrapper .sln-radiobox label, .sln-calendar--wrapper #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-calendar--wrapper .sln-switch label, .sln-calendar--wrapper .sln-switch label, .sln-calendar--wrapper #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .sln-select.sln-select--info-label .sln-calendar--wrapper .sln-label--big label, .sln-calendar--wrapper .sln-select.sln-select--info-label .sln-label--big label {
+    font-weight: 400;
+    padding: 0.66667rem 1rem 0.66667rem 0;
+    margin-bottom: 0; }
+  #sln-salon--admin .sln-input--simple p, #sln-salon--admin #titlewrap-- p, #sln-salon--admin #postexcerpt .inside p, #postexcerpt #sln-salon--admin .inside p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, .sln-calendar--wrapper #sln-salon--admin .sln-input--simple p, #sln-salon--admin .sln-calendar--wrapper .sln-input--simple p, .sln-calendar--wrapper .sln-input--simple p, .sln-calendar--wrapper #titlewrap-- p, .sln-calendar--wrapper #postexcerpt .inside p, #postexcerpt .sln-calendar--wrapper .inside p, .sln-calendar--wrapper #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-calendar--wrapper .sln-checkbox p, .sln-calendar--wrapper .sln-checkbox p, .sln-calendar--wrapper #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-calendar--wrapper .sln-radiobox p, .sln-calendar--wrapper .sln-radiobox p, .sln-calendar--wrapper #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-calendar--wrapper .sln-switch p, .sln-calendar--wrapper .sln-switch p, .sln-calendar--wrapper #sln-salon--admin .sln-select p, #sln-salon--admin .sln-calendar--wrapper .sln-select p, .sln-calendar--wrapper .sln-select p {
+    font-weight: 400;
+    padding: 0.41667rem 0.66667rem;
+    margin: 0; }
+  #sln-salon--admin .sln-input-bigborder label, .sln-calendar--wrapper .sln-input-bigborder #sln-salon--admin label, .sln-calendar--wrapper #sln-salon--admin .sln-input-bigborder label, #sln-salon--admin .sln-input-bigborder .sln-calendar--wrapper label, .sln-calendar--wrapper .sln-input-bigborder label {
+    border: 0.125rem solid #c7dff3; }
+  @media only screen and (min-width: 992px) {
+    #sln-salon--admin .sln-checkbox input + label, .sln-calendar--wrapper .sln-checkbox #sln-salon--admin input + label, #sln-salon--admin .sln-radiobox input + label, .sln-calendar--wrapper .sln-radiobox #sln-salon--admin input + label, .sln-calendar--wrapper #sln-salon--admin .sln-checkbox input + label, #sln-salon--admin .sln-checkbox .sln-calendar--wrapper input + label, .sln-calendar--wrapper .sln-checkbox input + label, .sln-calendar--wrapper #sln-salon--admin .sln-radiobox input + label, #sln-salon--admin .sln-radiobox .sln-calendar--wrapper input + label, .sln-calendar--wrapper .sln-radiobox input + label {
+      transition: border-color 250ms;
+      border: 0.125rem solid transparent; }
+      #sln-salon--admin .sln-checkbox input + label:hover, .sln-calendar--wrapper .sln-checkbox #sln-salon--admin input + label:hover, #sln-salon--admin .sln-radiobox input + label:hover, .sln-calendar--wrapper .sln-radiobox #sln-salon--admin input + label:hover, .sln-calendar--wrapper #sln-salon--admin .sln-checkbox input + label:hover, #sln-salon--admin .sln-checkbox .sln-calendar--wrapper input + label:hover, .sln-calendar--wrapper .sln-checkbox input + label:hover, .sln-calendar--wrapper #sln-salon--admin .sln-radiobox input + label:hover, #sln-salon--admin .sln-radiobox .sln-calendar--wrapper input + label:hover, .sln-calendar--wrapper .sln-radiobox input + label:hover {
+        border-color: #c7dff3; } }
+  #sln-salon--admin .sln-booking-rule, .sln-calendar--wrapper #sln-salon--admin .sln-booking-rule, #sln-salon--admin .sln-calendar--wrapper .sln-booking-rule, .sln-calendar--wrapper .sln-booking-rule {
+    border: 0.08333rem solid #c7dff3; }
+  #sln-salon--admin .sln-fake-label, .sln-calendar--wrapper .sln-fake-label {
+    font-weight: 400;
+    padding: 0 0.66667rem;
+    margin-bottom: 0;
+    line-height: 1.66667rem;
+    margin-top: 0; }
+  #sln-salon--admin body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input--oldstyle, .sln-calendar--wrapper body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input--oldstyle {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
+  #sln-salon--admin .sln-input-help, .sln-calendar--wrapper .sln-input-help {
+    max-width: 440px; }
+  #sln-salon--admin .sln-input--simple, #sln-salon--admin #titlewrap--, #sln-salon--admin #postexcerpt .inside, #postexcerpt #sln-salon--admin .inside, .sln-calendar--wrapper .sln-input--simple, .sln-calendar--wrapper #titlewrap--, .sln-calendar--wrapper #postexcerpt .inside, #postexcerpt .sln-calendar--wrapper .inside {
+    margin-bottom: 1.66667rem; }
+  #sln-salon--admin .sln-checkbox, .sln-calendar--wrapper .sln-checkbox {
+    margin-bottom: 1.66667rem; }
+    #sln-salon--admin .sln-checkbox input, .sln-calendar--wrapper .sln-checkbox input {
+      position: absolute;
+      margin-left: -9999px;
+      visibility: hidden; }
+    #sln-salon--admin .sln-checkbox input + label, .sln-calendar--wrapper .sln-checkbox input + label {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+      padding: 0 1.25rem 0 3.75rem;
+      height: 3.25rem;
+      display: table-cell;
+      vertical-align: middle; }
+      @media only screen and (min-width: 768px) {
+        #sln-salon--admin .sln-checkbox input + label, .sln-calendar--wrapper .sln-checkbox input + label {
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          -webkit-box-align: center;
+          align-items: center; } }
+      #sln-salon--admin .sln-checkbox input + label:nth-child(2), .sln-calendar--wrapper .sln-checkbox input + label:nth-child(2) {
+        margin-top: 1.25rem; }
+      #sln-salon--admin .sln-checkbox input + label:before, #sln-salon--admin .sln-checkbox input + label:after, .sln-calendar--wrapper .sln-checkbox input + label:before, .sln-calendar--wrapper .sln-checkbox input + label:after {
+        display: block;
+        position: absolute;
+        top: 0.16667rem;
+        left: 0.16667rem;
+        color: #fff;
+        width: 2.75rem;
+        height: 2.75rem; }
+      #sln-salon--admin .sln-checkbox input + label:before, .sln-calendar--wrapper .sln-checkbox input + label:before {
+        background-color: #fff;
+        content: "";
+        transition: transform 0.5s;
+        backface-visibility: hidden;
+        border: 0.33333rem solid #c7dff3; }
+      #sln-salon--admin .sln-checkbox input + label:after, .sln-calendar--wrapper .sln-checkbox input + label:after {
+        background-color: transparent;
+        content: " \f00c";
+        transition: all 0.15s;
+        backface-visibility: hidden;
+        opacity: 1;
+        font-size: 1.66667rem;
+        line-height: 2.75rem;
+        text-align: center;
+        color: #fff; }
+      #sln-salon--admin .sln-checkbox input + label:hover:after, .sln-calendar--wrapper .sln-checkbox input + label:hover:after {
+        color: #c7dff3;
+        opacity: 1; }
+    #sln-salon--admin .sln-checkbox input:checked + label:after,
+    #sln-salon--admin .sln-checkbox input:checked + label:hover:after, .sln-calendar--wrapper .sln-checkbox input:checked + label:after,
+    .sln-calendar--wrapper .sln-checkbox input:checked + label:hover:after {
+      opacity: 1;
+      color: #003553; }
+    #sln-salon--admin .sln-checkbox label span, .sln-calendar--wrapper .sln-checkbox label span {
+      display: inline-block;
+      padding-left: 0.41667rem;
+      font-weight: 700; }
+  @media only screen and (min-width: 768px) {
+    #sln-salon--admin .sln-radiobox, .sln-calendar--wrapper .sln-radiobox {
+      margin-bottom: 1.66667rem; } }
+  #sln-salon--admin .sln-radiobox input, .sln-calendar--wrapper .sln-radiobox input {
     position: absolute;
     margin-left: -9999px;
     visibility: hidden; }
-  .sln-checkbox input + label {
+  #sln-salon--admin .sln-radiobox input + label, .sln-calendar--wrapper .sln-radiobox input + label {
     display: block;
     position: relative;
     cursor: pointer;
@@ -1167,10 +1268,12 @@ body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input
     user-select: none;
     padding: 0 1.25rem 0 3.75rem;
     height: 3.25rem;
-    display: table-cell;
-    vertical-align: middle; }
+    display: inline-block;
+    border-top-left-radius: 1.625rem;
+    border-bottom-left-radius: 1.625rem;
+    margin-bottom: 0.83333rem; }
     @media only screen and (min-width: 768px) {
-      .sln-checkbox input + label {
+      #sln-salon--admin .sln-radiobox input + label, .sln-calendar--wrapper .sln-radiobox input + label {
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
@@ -1178,580 +1281,513 @@ body:not(.salone_page_salon-settings):not(.salon_page_salon-settings) .sln-input
         -webkit-align-items: center;
         -webkit-box-align: center;
         align-items: center; } }
-    .sln-checkbox input + label:nth-child(2) {
+    #sln-salon--admin .sln-radiobox input + label:nth-child(2), .sln-calendar--wrapper .sln-radiobox input + label:nth-child(2) {
       margin-top: 1.25rem; }
-    .sln-checkbox input + label:before, .sln-checkbox input + label:after {
+    #sln-salon--admin .sln-radiobox input + label:before, #sln-salon--admin .sln-radiobox input + label:after, .sln-calendar--wrapper .sln-radiobox input + label:before, .sln-calendar--wrapper .sln-radiobox input + label:after {
       display: block;
       position: absolute;
-      top: 0.16667rem;
+      top: 0.125rem;
       left: 0.16667rem;
       color: #fff;
       width: 2.75rem;
-      height: 2.75rem; }
-    .sln-checkbox input + label:before {
+      height: 2.75rem;
+      border-radius: 50%; }
+    #sln-salon--admin .sln-radiobox input + label:before, .sln-calendar--wrapper .sln-radiobox input + label:before {
       background-color: #fff;
       content: "";
       transition: transform 0.5s;
       backface-visibility: hidden;
       border: 0.33333rem solid #c7dff3; }
-    .sln-checkbox input + label:after {
-      background-color: transparent;
-      content: " \f00c";
-      transition: all 0.15s;
+    #sln-salon--admin .sln-radiobox input + label:after, .sln-calendar--wrapper .sln-radiobox input + label:after {
+      background: #fff;
+      content: " ";
+      width: 1.75rem;
+      height: 1.75rem;
+      top: 0.625rem;
+      left: 0.66667rem;
+      transition: background 0.15s;
       backface-visibility: hidden;
-      opacity: 1;
       font-size: 1.66667rem;
       line-height: 2.75rem;
-      text-align: center;
-      color: #fff; }
-    .sln-checkbox input + label:hover:after {
-      color: #c7dff3;
-      opacity: 1; }
-  .sln-checkbox input:checked + label:after,
-  .sln-checkbox input:checked + label:hover:after {
-    opacity: 1;
-    color: #003553; }
-  .sln-checkbox label span {
+      text-align: center; }
+    #sln-salon--admin .sln-radiobox input + label:hover:after, .sln-calendar--wrapper .sln-radiobox input + label:hover:after {
+      background: #c7dff3; }
+  #sln-salon--admin .sln-radiobox input:checked + label:after,
+  #sln-salon--admin .sln-radiobox input:checked + label:hover:after, .sln-calendar--wrapper .sln-radiobox input:checked + label:after,
+  .sln-calendar--wrapper .sln-radiobox input:checked + label:hover:after {
+    background: #003553; }
+  #sln-salon--admin .sln-radiobox.sln-radiobox--fullwidth label, .sln-calendar--wrapper .sln-radiobox.sln-radiobox--fullwidth label {
+    width: 100%; }
+  #sln-salon--admin .sln-radiobox label span, .sln-calendar--wrapper .sln-radiobox label span {
     display: inline-block;
     padding-left: 0.41667rem;
     font-weight: 700; }
-
-@media only screen and (min-width: 768px) {
-  .sln-radiobox {
-    margin-bottom: 1.66667rem; } }
-
-.sln-radiobox input {
-  position: absolute;
-  margin-left: -9999px;
-  visibility: hidden; }
-
-.sln-radiobox input + label {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  outline: none;
-  user-select: none;
-  padding: 0 1.25rem 0 3.75rem;
-  height: 3.25rem;
-  display: inline-block;
-  border-top-left-radius: 1.625rem;
-  border-bottom-left-radius: 1.625rem;
-  margin-bottom: 0.83333rem; }
-  @media only screen and (min-width: 768px) {
-    .sln-radiobox input + label {
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      -webkit-box-align: center;
-      align-items: center; } }
-  .sln-radiobox input + label:nth-child(2) {
-    margin-top: 1.25rem; }
-  .sln-radiobox input + label:before, .sln-radiobox input + label:after {
+  #sln-salon--admin .sln-checkbutton-group, .sln-calendar--wrapper .sln-checkbutton-group {
+    margin-bottom: 1.66667rem; }
+  #sln-salon--admin .sln-checkbutton, .sln-calendar--wrapper .sln-checkbutton {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: calc(50% - 10px);
     display: block;
-    position: absolute;
-    top: 0.125rem;
-    left: 0.16667rem;
-    color: #fff;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 50%; }
-  .sln-radiobox input + label:before {
-    background-color: #fff;
-    content: "";
-    transition: transform 0.5s;
-    backface-visibility: hidden;
-    border: 0.33333rem solid #c7dff3; }
-  .sln-radiobox input + label:after {
-    background: #fff;
-    content: " ";
-    width: 1.75rem;
-    height: 1.75rem;
-    top: 0.625rem;
-    left: 0.66667rem;
-    transition: background 0.15s;
-    backface-visibility: hidden;
-    font-size: 1.66667rem;
-    line-height: 2.75rem;
-    text-align: center; }
-  .sln-radiobox input + label:hover:after {
-    background: #c7dff3; }
-
-.sln-radiobox input:checked + label:after,
-.sln-radiobox input:checked + label:hover:after {
-  background: #003553; }
-
-.sln-radiobox.sln-radiobox--fullwidth label {
-  width: 100%; }
-
-.sln-radiobox label span {
-  display: inline-block;
-  padding-left: 0.41667rem;
-  font-weight: 700; }
-
-.sln-checkbutton-group {
-  margin-bottom: 1.66667rem; }
-
-.sln-checkbutton {
-  margin-right: 10px;
-  margin-bottom: 10px;
-  width: calc(50% - 10px);
-  display: block;
-  float: left; }
-  @media only screen and (min-width: 768px) {
-    .sln-checkbutton {
-      width: calc(25% - 10px); } }
-  @media only screen and (min-width: 992px) {
-    .sln-checkbutton {
-      width: calc(25% - 10px);
-      max-width: 8.33333rem; } }
-  .sln-checkbutton input {
-    position: absolute;
-    margin-left: -9999px;
-    visibility: hidden; }
-  .sln-checkbutton input + label {
-    display: block;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    user-select: none;
-    padding: 0 2.91667rem 0 0.625rem;
-    margin-bottom: 0;
-    width: 100%;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    transition: all 150ms;
-    position: relative;
-    text-align: left;
-    color: #003553;
-    background-color: #c7dff3; }
+    float: left; }
     @media only screen and (min-width: 768px) {
-      .sln-checkbutton input + label {
-        height: 3.33333rem;
-        line-height: 3.33333rem;
-        padding: 0 2.91667rem 0 0.83333rem; } }
-  .sln-checkbutton input + label:after {
-    content: "\f096";
-    display: inline-block;
-    position: absolute;
-    position: absolute;
-    top: 0;
-    right: 0.625rem;
-    bottom: 0;
-    text-align: center;
-    font-size: 1rem;
-    color: #003553;
-    transition: opacity 150ms,  color 150ms; }
-  .sln-checkbutton input + label:after {
-    content: "\f096"; }
-  .sln-checkbutton input + label:hover {
-    background-color: #003553;
-    color: #fff; }
-    .sln-checkbutton input + label:hover:after {
-      color: #fff; }
-  .sln-checkbutton input:checked + label {
-    background-color: #5bc24c;
-    color: #fff; }
-    .sln-checkbutton input:checked + label:after {
-      content: "\f14a";
-      color: #fff; }
-    .sln-checkbutton input:checked + label:hover {
+      #sln-salon--admin .sln-checkbutton, .sln-calendar--wrapper .sln-checkbutton {
+        width: calc(25% - 10px); } }
+    @media only screen and (min-width: 992px) {
+      #sln-salon--admin .sln-checkbutton, .sln-calendar--wrapper .sln-checkbutton {
+        width: calc(25% - 10px);
+        max-width: 8.33333rem; } }
+    #sln-salon--admin .sln-checkbutton input, .sln-calendar--wrapper .sln-checkbutton input {
+      position: absolute;
+      margin-left: -9999px;
+      visibility: hidden; }
+    #sln-salon--admin .sln-checkbutton input + label, .sln-calendar--wrapper .sln-checkbutton input + label {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+      padding: 0 2.91667rem 0 0.625rem;
+      margin-bottom: 0;
+      width: 100%;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      transition: all 150ms;
+      position: relative;
+      text-align: left;
+      color: #003553;
+      background-color: #c7dff3; }
+      @media only screen and (min-width: 768px) {
+        #sln-salon--admin .sln-checkbutton input + label, .sln-calendar--wrapper .sln-checkbutton input + label {
+          height: 3.33333rem;
+          line-height: 3.33333rem;
+          padding: 0 2.91667rem 0 0.83333rem; } }
+    #sln-salon--admin .sln-checkbutton input + label:after, .sln-calendar--wrapper .sln-checkbutton input + label:after {
+      content: "\f096";
+      display: inline-block;
+      position: absolute;
+      position: absolute;
+      top: 0;
+      right: 0.625rem;
+      bottom: 0;
+      text-align: center;
+      font-size: 1rem;
+      color: #003553;
+      transition: opacity 150ms,  color 150ms; }
+    #sln-salon--admin .sln-checkbutton input + label:after, .sln-calendar--wrapper .sln-checkbutton input + label:after {
+      content: "\f096"; }
+    #sln-salon--admin .sln-checkbutton input + label:hover, .sln-calendar--wrapper .sln-checkbutton input + label:hover {
       background-color: #003553;
       color: #fff; }
-      .sln-checkbutton input:checked + label:hover:after {
+      #sln-salon--admin .sln-checkbutton input + label:hover:after, .sln-calendar--wrapper .sln-checkbutton input + label:hover:after {
         color: #fff; }
-
-.sln-switch {
-  margin: 0 0 1.66667rem 0; }
-  .sln-switch input {
-    position: absolute;
-    margin-left: -9999px;
-    visibility: hidden; }
-  .sln-switch input + label {
-    display: block;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    user-select: none;
-    padding: 0 1.25rem 0 3.75rem;
-    height: 3.25rem;
-    line-height: 3.08333rem;
-    display: inline-block; }
-  .sln-switch input + label.sln-switch-btn {
-    padding: 2px;
-    width: 5rem;
-    height: 2.5rem;
-    background-color: #f7c65f;
-    border-radius: 2.5rem;
-    line-height: 2.5rem;
-    transition: background 0.4s;
-    color: #fff;
-    font-family: "Open Sans", serif;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    font-weight: 600; }
-  .sln-switch input + label.sln-switch-btn:before,
-  .sln-switch input + label.sln-switch-btn:after {
-    display: block;
-    position: absolute;
-    top: 0.20833rem;
-    left: 0.20833rem;
-    bottom: 0.20833rem;
-    content: ""; }
-  .sln-switch input + label.sln-switch-btn:before {
-    content: attr(data-off);
-    width: 2.20833rem;
-    border-radius: 100%;
-    text-align: center;
-    margin-left: 2.5rem;
-    line-height: 2.16667rem;
-    padding: 0 0.41667rem; }
-  .sln-switch input + label.sln-switch-btn:after {
-    width: 2.20833rem;
-    background-color: #fff;
-    border-radius: 100%;
-    transition: margin 0.4s; }
-  .sln-switch input:checked + label.sln-switch-btn {
-    background-color: #5bc24c; }
-  .sln-switch input:checked + label.sln-switch-btn:before {
-    content: attr(data-on);
-    margin-left: 0; }
-  .sln-switch input:checked + label.sln-switch-btn:after {
-    margin-left: 2.375rem; }
-  .sln-switch input + label.sln-switch-btn + label.sln-switch-text {
-    position: relative;
-    width: 70%;
-    max-width: 300px; }
-  .sln-switch input + label.sln-switch-btn + label.sln-switch-text:before,
-  .sln-switch input + label.sln-switch-btn + label.sln-switch-text:after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: opacity 0.25s; }
-    .sln-switch input + label.sln-switch-btn + label.sln-switch-text:before::last-word,
-    .sln-switch input + label.sln-switch-btn + label.sln-switch-text:after::last-word {
-      font-weight: bold; }
-  .sln-switch input + label.sln-switch-btn + label.sln-switch-text:before {
-    content: attr(data-off);
-    opacity: 1; }
-  .sln-switch input + label.sln-switch-btn + label.sln-switch-text:after {
-    content: attr(data-on);
-    opacity: 0; }
-  .sln-switch input:checked + label.sln-switch-btn + label.sln-switch-text:before {
-    opacity: 0; }
-  .sln-switch input:checked + label.sln-switch-btn + label.sln-switch-text:after {
-    opacity: 1; }
-
-.sln-select {
-  position: relative;
-  margin-bottom: 1.66667rem; }
-  .sln-select.sln-select--info-label .sln-label--big {
-    padding-left: 0; }
-    .sln-select.sln-select--info-label .sln-label--big label {
-      padding: 0;
+    #sln-salon--admin .sln-checkbutton input:checked + label, .sln-calendar--wrapper .sln-checkbutton input:checked + label {
+      background-color: #5bc24c;
+      color: #fff; }
+      #sln-salon--admin .sln-checkbutton input:checked + label:after, .sln-calendar--wrapper .sln-checkbutton input:checked + label:after {
+        content: "\f14a";
+        color: #fff; }
+      #sln-salon--admin .sln-checkbutton input:checked + label:hover, .sln-calendar--wrapper .sln-checkbutton input:checked + label:hover {
+        background-color: #003553;
+        color: #fff; }
+        #sln-salon--admin .sln-checkbutton input:checked + label:hover:after, .sln-calendar--wrapper .sln-checkbutton input:checked + label:hover:after {
+          color: #fff; }
+  #sln-salon--admin .sln-switch, .sln-calendar--wrapper .sln-switch {
+    margin: 0 0 1.66667rem 0; }
+    #sln-salon--admin .sln-switch input, .sln-calendar--wrapper .sln-switch input {
+      position: absolute;
+      margin-left: -9999px;
+      visibility: hidden; }
+    #sln-salon--admin .sln-switch input + label, .sln-calendar--wrapper .sln-switch input + label {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+      padding: 0 1.25rem 0 3.75rem;
+      height: 3.25rem;
+      line-height: 3.08333rem;
+      display: inline-block; }
+    #sln-salon--admin .sln-switch input + label.sln-switch-btn, .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn {
+      padding: 2px;
+      width: 5rem;
       height: 2.5rem;
-      display: table-cell;
-      vertical-align: middle; }
-  .sln-select.sln-select--multiple input {
-    background-color: transparent;
-    border: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none; }
-    .sln-select.sln-select--multiple input::-webkit-input-placeholder {
-      color: rgba(255, 255, 255, 0); }
-    .sln-select.sln-select--multiple input:-moz-placeholder {
-      /* Firefox 18- */
-      color: rgba(255, 255, 255, 0); }
-    .sln-select.sln-select--multiple input::-moz-placeholder {
-      /* Firefox 19+ */
-      color: rgba(255, 255, 255, 0); }
-    .sln-select.sln-select--multiple input:-ms-input-placeholder {
-      color: rgba(255, 255, 255, 0); }
-    .sln-select.sln-select--multiple input:focus {
+      background-color: #f7c65f;
+      border-radius: 2.5rem;
+      line-height: 2.5rem;
+      transition: background 0.4s;
+      color: #fff;
+      font-family: "Open Sans", serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 600; }
+    #sln-salon--admin .sln-switch input + label.sln-switch-btn:before,
+    #sln-salon--admin .sln-switch input + label.sln-switch-btn:after, .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn:before,
+    .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn:after {
+      display: block;
+      position: absolute;
+      top: 0.20833rem;
+      left: 0.20833rem;
+      bottom: 0.20833rem;
+      content: ""; }
+    #sln-salon--admin .sln-switch input + label.sln-switch-btn:before, .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn:before {
+      content: attr(data-off);
+      width: 2.20833rem;
+      border-radius: 100%;
+      text-align: center;
+      margin-left: 2.5rem;
+      line-height: 2.16667rem;
+      padding: 0 0.41667rem; }
+    #sln-salon--admin .sln-switch input + label.sln-switch-btn:after, .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn:after {
+      width: 2.20833rem;
+      background-color: #fff;
+      border-radius: 100%;
+      transition: margin 0.4s; }
+    #sln-salon--admin .sln-switch input:checked + label.sln-switch-btn, .sln-calendar--wrapper .sln-switch input:checked + label.sln-switch-btn {
+      background-color: #5bc24c; }
+    #sln-salon--admin .sln-switch input:checked + label.sln-switch-btn:before, .sln-calendar--wrapper .sln-switch input:checked + label.sln-switch-btn:before {
+      content: attr(data-on);
+      margin-left: 0; }
+    #sln-salon--admin .sln-switch input:checked + label.sln-switch-btn:after, .sln-calendar--wrapper .sln-switch input:checked + label.sln-switch-btn:after {
+      margin-left: 2.375rem; }
+    #sln-salon--admin .sln-switch input + label.sln-switch-btn + label.sln-switch-text, .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn + label.sln-switch-text {
+      position: relative;
+      width: 70%;
+      max-width: 300px; }
+    #sln-salon--admin .sln-switch input + label.sln-switch-btn + label.sln-switch-text:before,
+    #sln-salon--admin .sln-switch input + label.sln-switch-btn + label.sln-switch-text:after, .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn + label.sln-switch-text:before,
+    .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn + label.sln-switch-text:after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: opacity 0.25s; }
+      #sln-salon--admin .sln-switch input + label.sln-switch-btn + label.sln-switch-text:before::last-word,
+      #sln-salon--admin .sln-switch input + label.sln-switch-btn + label.sln-switch-text:after::last-word, .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn + label.sln-switch-text:before::last-word,
+      .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn + label.sln-switch-text:after::last-word {
+        font-weight: bold; }
+    #sln-salon--admin .sln-switch input + label.sln-switch-btn + label.sln-switch-text:before, .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn + label.sln-switch-text:before {
+      content: attr(data-off);
+      opacity: 1; }
+    #sln-salon--admin .sln-switch input + label.sln-switch-btn + label.sln-switch-text:after, .sln-calendar--wrapper .sln-switch input + label.sln-switch-btn + label.sln-switch-text:after {
+      content: attr(data-on);
+      opacity: 0; }
+    #sln-salon--admin .sln-switch input:checked + label.sln-switch-btn + label.sln-switch-text:before, .sln-calendar--wrapper .sln-switch input:checked + label.sln-switch-btn + label.sln-switch-text:before {
+      opacity: 0; }
+    #sln-salon--admin .sln-switch input:checked + label.sln-switch-btn + label.sln-switch-text:after, .sln-calendar--wrapper .sln-switch input:checked + label.sln-switch-btn + label.sln-switch-text:after {
+      opacity: 1; }
+  #sln-salon--admin .sln-select, .sln-calendar--wrapper .sln-select {
+    position: relative;
+    margin-bottom: 1.66667rem; }
+    #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big, .sln-calendar--wrapper .sln-select.sln-select--info-label .sln-label--big {
+      padding-left: 0; }
+      #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, .sln-calendar--wrapper .sln-select.sln-select--info-label .sln-label--big label {
+        padding: 0;
+        height: 2.5rem;
+        display: table-cell;
+        vertical-align: middle; }
+    #sln-salon--admin .sln-select.sln-select--multiple input, .sln-calendar--wrapper .sln-select.sln-select--multiple input {
+      background-color: transparent;
+      border: none;
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       box-shadow: none; }
-  .sln-select.sln-select--multiple .select2-container--sln.select2-container--below input {
-    color: #003553; }
-  .sln-select.sln-select--multiple .select2-container--sln.select2-container--below.select2-container--focus input {
-    color: #003553; }
-  .sln-select.sln-select--multiple:hover input {
-    color: #fff; }
-  .sln-select.sln-select--multiple:hover .select2-container--sln.select2-container--below.select2-container--focus input {
-    color: #fff; }
-  .sln-select.sln-select--multiple .select2-search--inline {
-    margin-bottom: 0; }
-    .sln-select.sln-select--multiple .select2-search--inline .select2-search__field {
-      line-height: 1.875rem;
-      padding: 0 2.08333rem 0 0.83333rem;
-      margin: 0 0.41667rem 0.20833rem 0;
-      margin-top: 0; }
-
-.sln-input-bigborder label {
-  width: 100%; }
-
-.sln-colorpicker .sln-colorpicker--subwrapper {
-  border: 0.16667rem solid #c7dff3; }
-
-.sln-colorpicker .sln-colorpicker-addon {
-  display: block;
-  width: 100%;
-  border: none;
-  padding: 0;
-  background-color: #fff;
-  background-image: -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
-  background-image: -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
-  background-image: -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
-  background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
-  background-size: 16px 16px;
-  background-position: 0 0, 8px 8px; }
-  .sln-colorpicker .sln-colorpicker-addon i {
+      #sln-salon--admin .sln-select.sln-select--multiple input::-webkit-input-placeholder, .sln-calendar--wrapper .sln-select.sln-select--multiple input::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0); }
+      #sln-salon--admin .sln-select.sln-select--multiple input:-moz-placeholder, .sln-calendar--wrapper .sln-select.sln-select--multiple input:-moz-placeholder {
+        /* Firefox 18- */
+        color: rgba(255, 255, 255, 0); }
+      #sln-salon--admin .sln-select.sln-select--multiple input::-moz-placeholder, .sln-calendar--wrapper .sln-select.sln-select--multiple input::-moz-placeholder {
+        /* Firefox 19+ */
+        color: rgba(255, 255, 255, 0); }
+      #sln-salon--admin .sln-select.sln-select--multiple input:-ms-input-placeholder, .sln-calendar--wrapper .sln-select.sln-select--multiple input:-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0); }
+      #sln-salon--admin .sln-select.sln-select--multiple input:focus, .sln-calendar--wrapper .sln-select.sln-select--multiple input:focus {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none; }
+    #sln-salon--admin .sln-select.sln-select--multiple .select2-container--sln.select2-container--below input, .sln-calendar--wrapper .sln-select.sln-select--multiple .select2-container--sln.select2-container--below input {
+      color: #003553; }
+    #sln-salon--admin .sln-select.sln-select--multiple .select2-container--sln.select2-container--below.select2-container--focus input, .sln-calendar--wrapper .sln-select.sln-select--multiple .select2-container--sln.select2-container--below.select2-container--focus input {
+      color: #003553; }
+    #sln-salon--admin .sln-select.sln-select--multiple:hover input, .sln-calendar--wrapper .sln-select.sln-select--multiple:hover input {
+      color: #fff; }
+    #sln-salon--admin .sln-select.sln-select--multiple:hover .select2-container--sln.select2-container--below.select2-container--focus input, .sln-calendar--wrapper .sln-select.sln-select--multiple:hover .select2-container--sln.select2-container--below.select2-container--focus input {
+      color: #fff; }
+    #sln-salon--admin .sln-select.sln-select--multiple .select2-search--inline, .sln-calendar--wrapper .sln-select.sln-select--multiple .select2-search--inline {
+      margin-bottom: 0; }
+      #sln-salon--admin .sln-select.sln-select--multiple .select2-search--inline .select2-search__field, .sln-calendar--wrapper .sln-select.sln-select--multiple .select2-search--inline .select2-search__field {
+        line-height: 1.875rem;
+        padding: 0 2.08333rem 0 0.83333rem;
+        margin: 0 0.41667rem 0.20833rem 0;
+        margin-top: 0; }
+  #sln-salon--admin .sln-input-bigborder label, .sln-calendar--wrapper .sln-input-bigborder label {
+    width: 100%; }
+  #sln-salon--admin .sln-colorpicker .sln-colorpicker--subwrapper, .sln-calendar--wrapper .sln-colorpicker .sln-colorpicker--subwrapper {
+    border: 0.16667rem solid #c7dff3; }
+  #sln-salon--admin .sln-colorpicker .sln-colorpicker-addon, .sln-calendar--wrapper .sln-colorpicker .sln-colorpicker-addon {
     display: block;
     width: 100%;
-    height: auto;
-    padding: 10px;
-    background-color: #ccc;
-    padding: 1rem 0.66667rem;
-    text-indent: -9999px; }
-
-.sln-colorpicker.sln-input--simple input, .sln-colorpicker#titlewrap-- input, #postexcerpt .sln-colorpicker.inside input {
-  border: none;
-  margin: 0;
-  margin-bottom: -1px; }
-
-.sln-colorpicker-widget {
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0.5); }
-  .sln-colorpicker-widget .colorpicker-saturation {
-    width: 160px;
-    height: 160px; }
-  .sln-colorpicker-widget .colorpicker-hue,
-  .sln-colorpicker-widget .colorpicker-alpha {
-    width: 24px;
-    height: 160px; }
-  .sln-colorpicker-widget .colorpicker-color,
-  .sln-colorpicker-widget .colorpicker-color div,
-  .sln-colorpicker-widget .colorpicker-selectors,
-  .sln-colorpicker-widget .colorpicker-selectors i {
-    height: 24px; }
-  .sln-colorpicker-widget .colorpicker-selectors i {
-    width: 24px;
-    border: 1px solid #ccc; }
-
-.sln-box .sln-colors-sample, #sln_shop-details .sln-colors-sample,
-#sln_attendant-details .sln-colors-sample,
-#postexcerpt .sln-colors-sample, #sln_service-details .sln-colors-sample,
-.sln-colors-sample {
-  font-size: 1rem;
-  padding: 2rem;
-  background-color: #fff;
-  background-image: -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
-  background-image: -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
-  background-image: -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
-  background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
-  background-size: 16px 16px;
-  background-position: 0 0, 8px 8px;
-  margin-bottom: 4rem; }
-  .sln-box .sln-colors-sample .wrapper, #sln_shop-details .sln-colors-sample .wrapper,
-  #sln_attendant-details .sln-colors-sample .wrapper,
-  #postexcerpt .sln-colors-sample .wrapper, #sln_service-details .sln-colors-sample .wrapper,
-  .sln-colors-sample .wrapper {
-    padding: 2rem; }
-  .sln-box .sln-colors-sample h1, #sln_shop-details .sln-colors-sample h1,
-  #sln_attendant-details .sln-colors-sample h1,
-  #postexcerpt .sln-colors-sample h1, #sln_service-details .sln-colors-sample h1,
-  .sln-colors-sample h1 {
-    font-weight: bold;
-    margin-bottom: 2rem; }
-  .sln-box .sln-colors-sample label, #sln_shop-details .sln-colors-sample label,
-  #sln_attendant-details .sln-colors-sample label,
-  #postexcerpt .sln-colors-sample label, #sln_service-details .sln-colors-sample label,
-  .sln-colors-sample label {
-    font-size: .8em;
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 5px;
-    font-weight: bold; }
-  .sln-box .sln-colors-sample input, #sln_shop-details .sln-colors-sample input,
-  #sln_attendant-details .sln-colors-sample input,
-  #postexcerpt .sln-colors-sample input, #sln_service-details .sln-colors-sample input,
-  .sln-colors-sample input {
-    width: 100%;
-    max-width: 240px;
-    border-radius: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    padding: .5em .8em;
-    line-height: 1.8em;
-    height: auto;
-    border-width: 1px;
-    border-style: solid;
-    font-size: 1em;
-    margin-bottom: 1rem; }
-  .sln-box .sln-colors-sample button, #sln_shop-details .sln-colors-sample button,
-  #sln_attendant-details .sln-colors-sample button,
-  #postexcerpt .sln-colors-sample button, #sln_service-details .sln-colors-sample button,
-  .sln-colors-sample button {
-    display: inline-block;
-    padding: 0 1rem !important;
-    line-height: 3.6rem;
-    font-weight: normal;
-    height: 3.6rem;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
+    border: none;
+    padding: 0;
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+    background-image: -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+    background-image: -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+    background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+    background-size: 16px 16px;
+    background-position: 0 0, 8px 8px; }
+    #sln-salon--admin .sln-colorpicker .sln-colorpicker-addon i, .sln-calendar--wrapper .sln-colorpicker .sln-colorpicker-addon i {
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 10px;
+      background-color: #ccc;
+      padding: 1rem 0.66667rem;
+      text-indent: -9999px; }
+  #sln-salon--admin .sln-colorpicker.sln-input--simple input, #sln-salon--admin .sln-colorpicker#titlewrap-- input, #sln-salon--admin #postexcerpt .sln-colorpicker.inside input, #postexcerpt #sln-salon--admin .sln-colorpicker.inside input, .sln-calendar--wrapper .sln-colorpicker.sln-input--simple input, .sln-calendar--wrapper .sln-colorpicker#titlewrap-- input, .sln-calendar--wrapper #postexcerpt .sln-colorpicker.inside input, #postexcerpt .sln-calendar--wrapper .sln-colorpicker.inside input {
+    border: none;
+    margin: 0;
+    margin-bottom: -1px; }
+  #sln-salon--admin .sln-colorpicker-widget, .sln-calendar--wrapper .sln-colorpicker-widget {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5); }
+    #sln-salon--admin .sln-colorpicker-widget .colorpicker-saturation, .sln-calendar--wrapper .sln-colorpicker-widget .colorpicker-saturation {
+      width: 160px;
+      height: 160px; }
+    #sln-salon--admin .sln-colorpicker-widget .colorpicker-hue,
+    #sln-salon--admin .sln-colorpicker-widget .colorpicker-alpha, .sln-calendar--wrapper .sln-colorpicker-widget .colorpicker-hue,
+    .sln-calendar--wrapper .sln-colorpicker-widget .colorpicker-alpha {
+      width: 24px;
+      height: 160px; }
+    #sln-salon--admin .sln-colorpicker-widget .colorpicker-color,
+    #sln-salon--admin .sln-colorpicker-widget .colorpicker-color div,
+    #sln-salon--admin .sln-colorpicker-widget .colorpicker-selectors,
+    #sln-salon--admin .sln-colorpicker-widget .colorpicker-selectors i, .sln-calendar--wrapper .sln-colorpicker-widget .colorpicker-color,
+    .sln-calendar--wrapper .sln-colorpicker-widget .colorpicker-color div,
+    .sln-calendar--wrapper .sln-colorpicker-widget .colorpicker-selectors,
+    .sln-calendar--wrapper .sln-colorpicker-widget .colorpicker-selectors i {
+      height: 24px; }
+    #sln-salon--admin .sln-colorpicker-widget .colorpicker-selectors i, .sln-calendar--wrapper .sln-colorpicker-widget .colorpicker-selectors i {
+      width: 24px;
+      border: 1px solid #ccc; }
+  #sln-salon--admin .sln-box .sln-colors-sample, #sln-salon--admin #sln_shop-details .sln-colors-sample, #sln-salon--admin
+  #sln_attendant-details .sln-colors-sample, #sln-salon--admin
+  #postexcerpt .sln-colors-sample, #sln-salon--admin #sln_service-details .sln-colors-sample,
+  #sln-salon--admin .sln-colors-sample, .sln-calendar--wrapper .sln-box .sln-colors-sample, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample, .sln-calendar--wrapper
+  #sln_attendant-details .sln-colors-sample, .sln-calendar--wrapper
+  #postexcerpt .sln-colors-sample, .sln-calendar--wrapper #sln_service-details .sln-colors-sample,
+  .sln-calendar--wrapper .sln-colors-sample {
+    font-size: 1rem;
+    padding: 2rem;
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -webkit-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+    background-image: -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -o-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+    background-image: -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), -moz-linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+    background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%, #cccccc);
+    background-size: 16px 16px;
+    background-position: 0 0, 8px 8px;
+    margin-bottom: 4rem; }
+    #sln-salon--admin .sln-box .sln-colors-sample .wrapper, #sln-salon--admin #sln_shop-details .sln-colors-sample .wrapper, #sln-salon--admin
+    #sln_attendant-details .sln-colors-sample .wrapper, #sln-salon--admin
+    #postexcerpt .sln-colors-sample .wrapper, #sln-salon--admin #sln_service-details .sln-colors-sample .wrapper,
+    #sln-salon--admin .sln-colors-sample .wrapper, .sln-calendar--wrapper .sln-box .sln-colors-sample .wrapper, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample .wrapper, .sln-calendar--wrapper
+    #sln_attendant-details .sln-colors-sample .wrapper, .sln-calendar--wrapper
+    #postexcerpt .sln-colors-sample .wrapper, .sln-calendar--wrapper #sln_service-details .sln-colors-sample .wrapper,
+    .sln-calendar--wrapper .sln-colors-sample .wrapper {
+      padding: 2rem; }
+    #sln-salon--admin .sln-box .sln-colors-sample h1, #sln-salon--admin #sln_shop-details .sln-colors-sample h1, #sln-salon--admin
+    #sln_attendant-details .sln-colors-sample h1, #sln-salon--admin
+    #postexcerpt .sln-colors-sample h1, #sln-salon--admin #sln_service-details .sln-colors-sample h1,
+    #sln-salon--admin .sln-colors-sample h1, .sln-calendar--wrapper .sln-box .sln-colors-sample h1, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample h1, .sln-calendar--wrapper
+    #sln_attendant-details .sln-colors-sample h1, .sln-calendar--wrapper
+    #postexcerpt .sln-colors-sample h1, .sln-calendar--wrapper #sln_service-details .sln-colors-sample h1,
+    .sln-calendar--wrapper .sln-colors-sample h1 {
+      font-weight: bold;
+      margin-bottom: 2rem; }
+    #sln-salon--admin .sln-box .sln-colors-sample label, #sln-salon--admin #sln_shop-details .sln-colors-sample label, #sln-salon--admin
+    #sln_attendant-details .sln-colors-sample label, #sln-salon--admin
+    #postexcerpt .sln-colors-sample label, #sln-salon--admin #sln_service-details .sln-colors-sample label,
+    #sln-salon--admin .sln-colors-sample label, .sln-calendar--wrapper .sln-box .sln-colors-sample label, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample label, .sln-calendar--wrapper
+    #sln_attendant-details .sln-colors-sample label, .sln-calendar--wrapper
+    #postexcerpt .sln-colors-sample label, .sln-calendar--wrapper #sln_service-details .sln-colors-sample label,
+    .sln-calendar--wrapper .sln-colors-sample label {
+      font-size: .8em;
+      display: inline-block;
+      max-width: 100%;
+      margin-bottom: 5px;
+      font-weight: bold; }
+    #sln-salon--admin .sln-box .sln-colors-sample input, #sln-salon--admin #sln_shop-details .sln-colors-sample input, #sln-salon--admin
+    #sln_attendant-details .sln-colors-sample input, #sln-salon--admin
+    #postexcerpt .sln-colors-sample input, #sln-salon--admin #sln_service-details .sln-colors-sample input,
+    #sln-salon--admin .sln-colors-sample input, .sln-calendar--wrapper .sln-box .sln-colors-sample input, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample input, .sln-calendar--wrapper
+    #sln_attendant-details .sln-colors-sample input, .sln-calendar--wrapper
+    #postexcerpt .sln-colors-sample input, .sln-calendar--wrapper #sln_service-details .sln-colors-sample input,
+    .sln-calendar--wrapper .sln-colors-sample input {
+      width: 100%;
+      max-width: 240px;
+      border-radius: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      padding: .5em .8em;
+      line-height: 1.8em;
+      height: auto;
+      border-width: 1px;
+      border-style: solid;
+      font-size: 1em;
+      margin-bottom: 1rem; }
+    #sln-salon--admin .sln-box .sln-colors-sample button, #sln-salon--admin #sln_shop-details .sln-colors-sample button, #sln-salon--admin
+    #sln_attendant-details .sln-colors-sample button, #sln-salon--admin
+    #postexcerpt .sln-colors-sample button, #sln-salon--admin #sln_service-details .sln-colors-sample button,
+    #sln-salon--admin .sln-colors-sample button, .sln-calendar--wrapper .sln-box .sln-colors-sample button, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample button, .sln-calendar--wrapper
+    #sln_attendant-details .sln-colors-sample button, .sln-calendar--wrapper
+    #postexcerpt .sln-colors-sample button, .sln-calendar--wrapper #sln_service-details .sln-colors-sample button,
+    .sln-calendar--wrapper .sln-colors-sample button {
+      display: inline-block;
+      padding: 0 1rem !important;
+      line-height: 3.6rem;
+      font-weight: normal;
+      height: 3.6rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      border: none;
+      cursor: pointer; }
+    #sln-salon--admin .sln-box .sln-colors-sample p, #sln-salon--admin #sln_shop-details .sln-colors-sample p, #sln-salon--admin
+    #sln_attendant-details .sln-colors-sample p, #sln-salon--admin
+    #postexcerpt .sln-colors-sample p, #sln-salon--admin #sln_service-details .sln-colors-sample p,
+    #sln-salon--admin .sln-colors-sample p, .sln-calendar--wrapper .sln-box .sln-colors-sample p, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample p, .sln-calendar--wrapper
+    #sln_attendant-details .sln-colors-sample p, .sln-calendar--wrapper
+    #postexcerpt .sln-colors-sample p, .sln-calendar--wrapper #sln_service-details .sln-colors-sample p,
+    .sln-calendar--wrapper .sln-colors-sample p {
+      font-size: 1rem;
+      line-height: 1.4rem;
+      max-width: 360px;
+      padding: 0;
+      margin-bottom: 1em; }
+    #sln-salon--admin .sln-box .sln-colors-sample small, #sln-salon--admin #sln_shop-details .sln-colors-sample small, #sln-salon--admin
+    #sln_attendant-details .sln-colors-sample small, #sln-salon--admin
+    #postexcerpt .sln-colors-sample small, #sln-salon--admin #sln_service-details .sln-colors-sample small,
+    #sln-salon--admin .sln-colors-sample small, .sln-calendar--wrapper .sln-box .sln-colors-sample small, .sln-calendar--wrapper #sln_shop-details .sln-colors-sample small, .sln-calendar--wrapper
+    #sln_attendant-details .sln-colors-sample small, .sln-calendar--wrapper
+    #postexcerpt .sln-colors-sample small, .sln-calendar--wrapper #sln_service-details .sln-colors-sample small,
+    .sln-calendar--wrapper .sln-colors-sample small {
+      display: block;
+      max-width: 360px; }
+  #sln-salon--admin #sln-salon--admin .ui-slider-horizontal, #sln-salon--admin .sln-calendar--wrapper .ui-slider-horizontal, .sln-calendar--wrapper #sln-salon--admin .ui-slider-horizontal, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider-horizontal {
+    height: 8px;
+    background: #D7D7D7;
+    border: 1px solid #BABABA;
+    box-shadow: 0 1px 0 #FFF, 0 1px 0 #CFCFCF inset;
+    clear: both;
+    margin: 8px 0;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px; }
+  #sln-salon--admin #sln-salon--admin .ui-slider, #sln-salon--admin .sln-calendar--wrapper .ui-slider, .sln-calendar--wrapper #sln-salon--admin .ui-slider, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider {
+    position: relative;
+    text-align: left; }
+  #sln-salon--admin #sln-salon--admin .ui-slider-horizontal .ui-slider-range, #sln-salon--admin .sln-calendar--wrapper .ui-slider-horizontal .ui-slider-range, .sln-calendar--wrapper #sln-salon--admin .ui-slider-horizontal .ui-slider-range, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider-horizontal .ui-slider-range {
+    top: -1px;
+    height: 100%; }
+  #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-range, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-range, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-range, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    display: block; }
+  #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 22px;
+    height: 22px;
+    cursor: default;
     border: none;
     cursor: pointer; }
-  .sln-box .sln-colors-sample p, #sln_shop-details .sln-colors-sample p,
-  #sln_attendant-details .sln-colors-sample p,
-  #postexcerpt .sln-colors-sample p, #sln_service-details .sln-colors-sample p,
-  .sln-colors-sample p {
-    font-size: 1rem;
-    line-height: 1.4rem;
-    max-width: 360px;
-    padding: 0;
-    margin-bottom: 1em; }
-  .sln-box .sln-colors-sample small, #sln_shop-details .sln-colors-sample small,
-  #sln_attendant-details .sln-colors-sample small,
-  #postexcerpt .sln-colors-sample small, #sln_service-details .sln-colors-sample small,
-  .sln-colors-sample small {
-    display: block;
-    max-width: 360px; }
+  #sln-salon--admin #sln-salon--admin .ui-slider a:focus, #sln-salon--admin .sln-calendar--wrapper .ui-slider a:focus, .sln-calendar--wrapper #sln-salon--admin .ui-slider a:focus, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider a:focus {
+    outline: none; }
+  #sln-salon--admin #sln-salon--admin #time-range, #sln-salon--admin .sln-calendar--wrapper #time-range, .sln-calendar--wrapper #sln-salon--admin #time-range, .sln-calendar--wrapper .sln-calendar--wrapper #time-range {
+    width: 100%; }
+  #sln-salon--admin #sln-salon--admin .ui-slider-horizontal, #sln-salon--admin .sln-calendar--wrapper .ui-slider-horizontal, .sln-calendar--wrapper #sln-salon--admin .ui-slider-horizontal, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider-horizontal {
+    height: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    clear: both;
+    margin: 3px 4px 3px 6px; }
+  #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-range, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-range, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-range, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-range {
+    height: 2.5rem;
+    border: none;
+    border-radius: 0;
+    background-color: #003553;
+    background-image: none;
+    border-top-left-radius: 1.25rem;
+    border-bottom-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+    top: 0; }
+  #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle {
+    height: 2.5rem;
+    width: 2.5rem;
+    top: 0;
+    border: none;
+    border-radius: 0;
+    background-color: #c7dff3;
+    background-image: none;
+    box-shadow: none;
+    outline: none;
+    margin-left: 0;
+    margin-right: 2.5rem;
+    border: 2px solid #003553;
+    border-radius: 100%; }
+    #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:nth-child(2), #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:nth-child(2), .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:nth-child(2), .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:nth-child(2) {
+      margin-left: -2px; }
+    #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:nth-child(3), #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:nth-child(3), .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:nth-child(3), .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:nth-child(3) {
+      margin-left: -40px; }
+    #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:after, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:before, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: calc(50% - 6px);
+      width: 0.41667rem;
+      height: 0.41667rem;
+      line-height: 0.83333rem;
+      color: #003553; }
+    #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:before {
+      content: "\f053";
+      left: 0.25rem; }
+    #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:after, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:after {
+      content: "\f054";
+      right: 0.45833rem; }
+    #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:hover, #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:focus, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:hover, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:focus, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus {
+      background-color: #0C6EB6; }
+      #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:hover:before, #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:hover:after, #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:focus:before, #sln-salon--admin #sln-salon--admin .ui-slider .ui-slider-handle:focus:after, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover:before, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover:after, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus:before, #sln-salon--admin .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus:after, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:hover:before, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:hover:after, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:focus:before, .sln-calendar--wrapper #sln-salon--admin .ui-slider .ui-slider-handle:focus:after, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover:before, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover:after, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus:before, .sln-calendar--wrapper .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus:after {
+        color: #fff; }
+  #sln-salon--admin #sln-salon--admin .sln-slider, #sln-salon--admin .sln-calendar--wrapper .sln-slider, .sln-calendar--wrapper #sln-salon--admin .sln-slider, .sln-calendar--wrapper .sln-calendar--wrapper .sln-slider {
+    height: 3.125rem;
+    margin-bottom: 1.66667rem; }
+  #sln-salon--admin #sln-salon--admin .col, #sln-salon--admin .sln-calendar--wrapper .col, .sln-calendar--wrapper #sln-salon--admin .col, .sln-calendar--wrapper .sln-calendar--wrapper .col {
+    float: left; }
+  #sln-salon--admin #sln-salon--admin .col-time, #sln-salon--admin .sln-calendar--wrapper .col-time, .sln-calendar--wrapper #sln-salon--admin .col-time, .sln-calendar--wrapper .sln-calendar--wrapper .col-time {
+    width: 30%; }
+  #sln-salon--admin #sln-salon--admin .col-slider, #sln-salon--admin .sln-calendar--wrapper .col-slider, .sln-calendar--wrapper #sln-salon--admin .col-slider, .sln-calendar--wrapper .sln-calendar--wrapper .col-slider {
+    width: 70%;
+    height: 3.125rem;
+    border: 2px solid #c7dff3;
+    background-color: #fff;
+    border-top-left-radius: 1.58333rem;
+    border-bottom-left-radius: 1.58333rem;
+    border-top-right-radius: 1.58333rem;
+    border-bottom-right-radius: 1.58333rem; }
+  #sln-salon--admin #sln-salon--admin .col-time, #sln-salon--admin .sln-calendar--wrapper .col-time, .sln-calendar--wrapper #sln-salon--admin .col-time, .sln-calendar--wrapper .sln-calendar--wrapper .col-time {
+    color: #003553;
+    line-height: 3.125rem;
+    text-align: center; }
+    #sln-salon--admin #sln-salon--admin .col-time span, #sln-salon--admin .sln-calendar--wrapper .col-time span, .sln-calendar--wrapper #sln-salon--admin .col-time span, .sln-calendar--wrapper .sln-calendar--wrapper .col-time span {
+      font-weight: 700; }
+  #sln-salon--admin #sln-salon--admin .col.col-time, #sln-salon--admin #sln-salon--admin .col.col-slider, #sln-salon--admin .sln-calendar--wrapper .col.col-time, #sln-salon--admin .sln-calendar--wrapper .col.col-slider, .sln-calendar--wrapper #sln-salon--admin .col.col-time, .sln-calendar--wrapper #sln-salon--admin .col.col-slider, .sln-calendar--wrapper .sln-calendar--wrapper .col.col-time, .sln-calendar--wrapper .sln-calendar--wrapper .col.col-slider {
+    padding: 0; }
 
-/* TIME RANGE */
-#sln-salon--admin .ui-slider-horizontal, .sln-calendar--wrapper .ui-slider-horizontal {
-  height: 8px;
-  background: #D7D7D7;
-  border: 1px solid #BABABA;
-  box-shadow: 0 1px 0 #FFF, 0 1px 0 #CFCFCF inset;
-  clear: both;
-  margin: 8px 0;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
-  -o-border-radius: 6px;
-  border-radius: 6px; }
-
-#sln-salon--admin .ui-slider, .sln-calendar--wrapper .ui-slider {
-  position: relative;
-  text-align: left; }
-
-#sln-salon--admin .ui-slider-horizontal .ui-slider-range, .sln-calendar--wrapper .ui-slider-horizontal .ui-slider-range {
-  top: -1px;
-  height: 100%; }
-
-#sln-salon--admin .ui-slider .ui-slider-range, .sln-calendar--wrapper .ui-slider .ui-slider-range {
-  position: absolute;
-  z-index: 1;
-  display: block; }
-
-#sln-salon--admin .ui-slider .ui-slider-handle, .sln-calendar--wrapper .ui-slider .ui-slider-handle {
-  position: absolute;
-  z-index: 2;
-  width: 22px;
-  height: 22px;
-  cursor: default;
-  border: none;
-  cursor: pointer; }
-
-#sln-salon--admin .ui-slider a:focus, .sln-calendar--wrapper .ui-slider a:focus {
-  outline: none; }
-
-#sln-salon--admin #time-range, .sln-calendar--wrapper #time-range {
-  width: 100%; }
-
-#sln-salon--admin .ui-slider-horizontal, .sln-calendar--wrapper .ui-slider-horizontal {
-  height: auto;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  clear: both;
-  margin: 3px 4px 3px 6px; }
-
-#sln-salon--admin .ui-slider .ui-slider-range, .sln-calendar--wrapper .ui-slider .ui-slider-range {
-  height: 2.5rem;
-  border: none;
-  border-radius: 0;
-  background-color: #003553;
-  background-image: none;
-  border-top-left-radius: 1.25rem;
-  border-bottom-left-radius: 1.25rem;
-  border-top-right-radius: 1.25rem;
-  border-bottom-right-radius: 1.25rem;
-  top: 0; }
-
-#sln-salon--admin .ui-slider .ui-slider-handle, .sln-calendar--wrapper .ui-slider .ui-slider-handle {
-  height: 2.5rem;
-  width: 2.5rem;
-  top: 0;
-  border: none;
-  border-radius: 0;
-  background-color: #c7dff3;
-  background-image: none;
-  box-shadow: none;
-  outline: none;
-  margin-left: 0;
-  margin-right: 2.5rem;
-  border: 2px solid #003553;
-  border-radius: 100%; }
-  #sln-salon--admin .ui-slider .ui-slider-handle:nth-child(2), .sln-calendar--wrapper .ui-slider .ui-slider-handle:nth-child(2) {
-    margin-left: -2px; }
-  #sln-salon--admin .ui-slider .ui-slider-handle:nth-child(3), .sln-calendar--wrapper .ui-slider .ui-slider-handle:nth-child(3) {
-    margin-left: -40px; }
-  #sln-salon--admin .ui-slider .ui-slider-handle:before, #sln-salon--admin .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper .ui-slider .ui-slider-handle:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: calc(50% - 6px);
-    width: 0.41667rem;
-    height: 0.41667rem;
-    line-height: 0.83333rem;
-    color: #003553; }
-  #sln-salon--admin .ui-slider .ui-slider-handle:before, .sln-calendar--wrapper .ui-slider .ui-slider-handle:before {
-    content: "\f053";
-    left: 0.25rem; }
-  #sln-salon--admin .ui-slider .ui-slider-handle:after, .sln-calendar--wrapper .ui-slider .ui-slider-handle:after {
-    content: "\f054";
-    right: 0.45833rem; }
-  #sln-salon--admin .ui-slider .ui-slider-handle:hover, #sln-salon--admin .ui-slider .ui-slider-handle:focus, .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover, .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus {
-    background-color: #0C6EB6; }
-    #sln-salon--admin .ui-slider .ui-slider-handle:hover:before, #sln-salon--admin .ui-slider .ui-slider-handle:hover:after, #sln-salon--admin .ui-slider .ui-slider-handle:focus:before, #sln-salon--admin .ui-slider .ui-slider-handle:focus:after, .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover:before, .sln-calendar--wrapper .ui-slider .ui-slider-handle:hover:after, .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus:before, .sln-calendar--wrapper .ui-slider .ui-slider-handle:focus:after {
-      color: #fff; }
-
-#sln-salon--admin .sln-slider, .sln-calendar--wrapper .sln-slider {
-  height: 3.125rem;
-  margin-bottom: 1.66667rem; }
-
-#sln-salon--admin .col, .sln-calendar--wrapper .col {
-  float: left; }
-
-#sln-salon--admin .col-time, .sln-calendar--wrapper .col-time {
-  width: 30%; }
-
-#sln-salon--admin .col-slider, .sln-calendar--wrapper .col-slider {
-  width: 70%;
-  height: 3.125rem;
-  border: 2px solid #c7dff3;
-  background-color: #fff;
-  border-top-left-radius: 1.58333rem;
-  border-bottom-left-radius: 1.58333rem;
-  border-top-right-radius: 1.58333rem;
-  border-bottom-right-radius: 1.58333rem; }
-
-#sln-salon--admin .col-time, .sln-calendar--wrapper .col-time {
-  color: #003553;
-  line-height: 3.125rem;
-  text-align: center; }
-  #sln-salon--admin .col-time span, .sln-calendar--wrapper .col-time span {
-    font-weight: 700; }
-
-#sln-salon--admin .col.col-time, #sln-salon--admin .col.col-slider, .sln-calendar--wrapper .col.col-time, .sln-calendar--wrapper .col.col-slider {
-  padding: 0; }
-
-/* TIME RANGE // END */
 .sln-btn, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
 h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sln-admin-nav a,
 #sln-salon--admin .col-md-12.sln-admin-nav a,
@@ -5322,6 +5358,12 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
 
 body {
   background-color: transparent; }
+
+body.salone_page_salon-settings,
+body.toplevel_page_salon,
+body.salone_page_salon-reports,
+body.salone_page_salon-tools {
+  background-color: #f1f1f1; }
 
 #sln-salon--admin.sln-salon--settings, .sln-calendar--wrapper.sln-salon--settings {
   font-size: 24px; }
