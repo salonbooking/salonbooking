@@ -284,3 +284,9 @@ function sln_email_reminder()
     $obj = new SLN_Action_Reminder(SLN_Plugin::getInstance());
     $obj->executeEmail();
 }
+
+function sln_cancel_bookings()
+{
+    $obj = new SLN_Action_CancelBookings(SLN_Plugin::getInstance());
+    $obj->execute();
+}

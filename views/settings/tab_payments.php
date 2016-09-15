@@ -58,6 +58,30 @@
                     )
             ); ?>
             </div>
+            <div class="col-xs-12 form-group sln-select  sln-select--info-label">
+                <label for="salon_settings_pay_offset"><?php _e('Offset time for payment','salon-booking-system') ?></label>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <?php echo SLN_Form::fieldSelect(
+                            'salon_settings[pay_offset]',
+                            array(
+                                '60'   => '1h',
+                                '120'  => '2h',
+                                '360'  => '6h',
+                                '720'  => '12h',
+                                '1440' => '24h',
+                                '2880' => '48h',
+                            ),
+                            $this->settings->get('pay_offset'),
+                            array(
+                                'help' => __('Time for payment.','salon-booking-system'),
+                            ),
+                            true
+                        ) ?>
+                    </div>
+                </div>
+                <p class="help-block"><?php _e('How many minutes lasts this Offset?', 'salon-booking-system') ?></p>
+            </div>
         </div>
         <div class="sln-box-info">
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
