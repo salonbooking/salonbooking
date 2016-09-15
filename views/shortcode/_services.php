@@ -84,7 +84,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             <h3 class="col-xs-6 col-sm-6 col-md-6 sln-total-price" id="services-total"
                 data-symbol-left="<?php echo $symbolLeft ?>"
                 data-symbol-right="<?php echo $symbolRight ?>">
-                <?php echo $plugin->format()->money(0, false) ?>
+                <?php echo $plugin->format()->money(0, false, false) ?>
             </h3>
         <?php elseif ($size == '600'): ?>
             <h3 class="col-xs-6 sln-total-label">
@@ -93,7 +93,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             <h3 class="col-xs-6 sln-total-price" id="services-total"
                 data-symbol-left="<?php echo $symbolLeft ?>"
                 data-symbol-right="<?php echo $symbolRight ?>">
-                <?php echo $plugin->format()->money(0, false) ?>
+                <?php echo $plugin->format()->money(0, false, false) ?>
             </h3>
         <?php elseif ($size == '400'): ?>
             <h3 class="col-xs-6 sln-total-label">
@@ -102,7 +102,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             <h3 class="col-xs-6 sln-total-price" id="services-total"
                 data-symbol-left="<?php echo $symbolLeft ?>"
                 data-symbol-right="<?php echo $symbolRight ?>">
-                <?php echo $plugin->format()->money(0, false) ?>
+                <?php echo $plugin->format()->money(0, false, false) ?>
             </h3>
         <?php else: throw new Exception('size not supported'); ?>
         <?php endif ?>
