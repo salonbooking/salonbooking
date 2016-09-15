@@ -52,7 +52,7 @@
                 </div>
             </div>
         <?php endif; ?>
-        <?php if($paymentMethod && $plugin->getSettings()->get('pay_cash')): ?>
+        <?php if($paymentMethod && $payLater): ?>
             <div class="col-sm-6 col-md-6">
                 <div class="row">
                     <div class="col-md-8 pull-right">

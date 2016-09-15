@@ -14,11 +14,11 @@ class SLN_Action_CancelBookings {
 		$p = $this->plugin;
 		$type = $this->type;
 
-		$offset = $this->plugin->getSettings()->get('pay_offset');
+		$payOffsetEnabled = $this->plugin->getSettings()->get('pay_offset_enabled');
 
-		if ($offset) {
+		if ($payOffsetEnabled) {
 			$p->addLog($type.' execution started');
-			$bookings = $this->getBookings($offset);
+			$bookings = $this->getBookings();
 			foreach ( $bookings as $booking ) {
 				$booking->setStatus(SLN_Enum_BookingStatus::CANCELED);
 			}
@@ -26,7 +26,8 @@ class SLN_Action_CancelBookings {
 		}
 	}
 
-	private function getBookings($offset) {
+	private function getBookings() {
+		$payOffset = $this->plugin->getSettings()->get('pay_offset');
 		/** @var SLN_Repository_BookingRepository $repo */
 		$repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_BOOKING);
 		$ret = $repo->get(
@@ -35,7 +36,7 @@ class SLN_Action_CancelBookings {
 				'date_query' => array(
 					array(
 						'column' => 'post_date',
-						'before' => "-$offset minutes",
+						'before' => "-$payOffset minutes",
 					),
 				)
 			)

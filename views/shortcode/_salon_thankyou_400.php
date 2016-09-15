@@ -53,7 +53,7 @@
             </div>
         </div>
     <?php endif; ?>
-    <?php if($paymentMethod && $plugin->getSettings()->get('pay_cash')): ?>
+    <?php if($paymentMethod && $payLater): ?>
         <div class="sln-form-actions sln-payment-actions row">
             <div class="col-md-8 pull-right">
                 <a  href="<?php echo $laterUrl ?>" class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth"

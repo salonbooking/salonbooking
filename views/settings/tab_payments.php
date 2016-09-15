@@ -58,30 +58,6 @@
                     )
             ); ?>
             </div>
-            <div class="col-xs-12 form-group sln-select  sln-select--info-label">
-                <label for="salon_settings_pay_offset"><?php _e('Offset time for payment','salon-booking-system') ?></label>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <?php echo SLN_Form::fieldSelect(
-                            'salon_settings[pay_offset]',
-                            array(
-                                '60'   => '1h',
-                                '120'  => '2h',
-                                '360'  => '6h',
-                                '720'  => '12h',
-                                '1440' => '24h',
-                                '2880' => '48h',
-                            ),
-                            $this->settings->get('pay_offset'),
-                            array(
-                                'help' => __('Time for payment.','salon-booking-system'),
-                            ),
-                            true
-                        ) ?>
-                    </div>
-                </div>
-                <p class="help-block"><?php _e('How many minutes lasts this Offset?', 'salon-booking-system') ?></p>
-            </div>
         </div>
         <div class="sln-box-info">
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
@@ -140,6 +116,39 @@
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
     </div>
+    </div>
+</div>
+
+<div class="sln-box sln-box--main">
+    <h2 class="sln-box-title"><?php _e('\'Pending\' bookings cancellation','salon-booking-system');?></h2>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 form-group sln-checkbox">
+            <?php $this->row_input_checkbox(
+                'pay_offset_enabled',
+                __('Bookings cancellation', 'salon-booking-system'),
+                array('help' => __('Select this option if you want system able to cancel a \'pending\' booking.','salon-booking-system'))
+            ); ?>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select ">
+            <label><?php _e('Offset duration','salon-booking-system');?></label>
+            <?php echo SLN_Form::fieldSelect(
+                'salon_settings[pay_offset]',
+                array(
+                    '60'   => '1h',
+                    '120'  => '2h',
+                    '360'  => '6h',
+                    '720'  => '12h',
+                    '1440' => '24h',
+                    '2880' => '48h',
+                ),
+                $this->settings->get('pay_offset'),
+                array(),
+                true
+            ) ?>
+            <p class="help-block"><?php _e('Time for payment', 'salon-booking-system') ?></p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
+        </div>
     </div>
 </div>
 

@@ -50,7 +50,7 @@
 </div>
 <div class="col-md-4 sln-form-actions-wrapper sln-input--action">
     <div class="sln-form-actions sln-payment-actions row">
-        <?php if($paymentMethod && $plugin->getSettings()->get('pay_cash')): ?>
+        <?php if($paymentMethod && $payLater): ?>
             <div class="col-sm-10 col-md-8 pull-right">
                 <a  href="<?php echo $laterUrl ?>" class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth"
                     <?php if($ajaxEnabled): ?>
