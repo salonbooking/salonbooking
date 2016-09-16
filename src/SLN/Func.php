@@ -169,7 +169,10 @@ class SLN_Func
             '+3 weeks' => '3 ' . __('weeks', 'salon-booking-system'),
             '+1 month' => '1 ' . __('month', 'salon-booking-system'),
             '+2 months' => '2 ' . __('months', 'salon-booking-system'),
-            '+3 months' => '3 ' . __('months', 'salon-booking-system')
+            '+3 months' => '3 ' . __('months', 'salon-booking-system'),
+            '+6 months' => '6 ' . __('months', 'salon-booking-system'),
+            '+1 year' => '1 ' . __('years', 'salon-booking-system'),
+            '+2 years' => '2 ' . __('years', 'salon-booking-system')
         );
 
         return array(
@@ -190,7 +193,10 @@ class SLN_Func
             'P3W' => '3 weeks',
             'P1M' => '1 month',
             'P2M' => '2 months',
-            'P3M' => '3 months'
+            'P3M' => '3 months',
+            'P6M' => '6 months',
+            'P12M' => '1 year',
+            'P24M' => '2 years'
         );
     }
 

@@ -2,6 +2,8 @@
 
 class SLN_Helper_HoursBefore
 {
+    const ALWAYS = '+10 years';
+
     private $settings;
     private $from;
     private $to;
@@ -45,7 +47,7 @@ class SLN_Helper_HoursBefore
         if ($this->to) {
             $now2->modify($this->to);
         } else {
-            $this->toDate = new DateTime('+1 year');
+            $this->toDate = new DateTime(self::ALWAYS);
         }
         $str = $this->getHoursBeforeString();
         SLN_Plugin::addLog(__CLASS__.'Initialized with'.print_r($str,true));

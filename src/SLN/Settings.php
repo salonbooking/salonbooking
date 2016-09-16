@@ -170,7 +170,7 @@ class SLN_Settings
     {
         $ret = $this->get('hours_before_to');
 
-        return $ret ? $ret : '+1 month';
+        return $ret ? $ret : '';
     }
 
     public function getAvailabilityMode()
