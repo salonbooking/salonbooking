@@ -245,7 +245,8 @@ function sln_serviceTotal($) {
                 tot += $(this).data('price');
             }
         });
-        $totalbox.text($totalbox.data('symbol-left') + tot.formatMoney(2) + $totalbox.data('symbol-right'));
+        var decimals = (parseFloat(tot) === parseFloat(parseInt(tot)) ? 0 : 2);
+        $totalbox.text($totalbox.data('symbol-left') + tot.formatMoney(decimals) + $totalbox.data('symbol-right'));
     }
 
     function checkServices($) {

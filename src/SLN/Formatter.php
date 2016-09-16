@@ -9,17 +9,22 @@ class SLN_Formatter
         $this->plugin = $plugin;
     }
 
-    public function money($val, $showFree = true)
+    public function money($val, $showFree = true, $necessarilyDecimals = true)
     {
         $s = $this->plugin->getSettings();
         $isLeft = $s->get('pay_currency_pos') == 'left';
         $rightSymbol = $isLeft ? '' : $s->getCurrencySymbol();
         $leftSymbol = $isLeft ? $s->getCurrencySymbol() : '';
         
-        if (!$showFree) {
-            return ($leftSymbol. number_format($val, 2) . $rightSymbol);
+        if ($showFree && $val <= 0) {
+            $money = __('free','salon-booking-system');
         }
-        return $val > 0 ? ($leftSymbol . number_format($val, 2) . $rightSymbol) : __('free','salon-booking-system');
+        else {
+            $decimals = !$necessarilyDecimals && floor($val) === floatval($val) ? 0 : 2;
+            $money = ($leftSymbol . number_format($val, $decimals) . $rightSymbol);
+        }
+
+        return $money;
     }
 
     public function datetime($val)
