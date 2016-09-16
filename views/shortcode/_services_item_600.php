@@ -25,7 +25,7 @@
 <?php if($showPrices): ?>
             <div class="col-xs-2 visible-xs-block"></div>
             <h3 class="col-xs-10 col-sm-3 sln-steps-price sln-service-price">
-                <?php echo $plugin->format()->money($service->getPrice())?>
+                <?php echo $plugin->format()->money($service->getPrice(), false, false)?>
                 <!-- .sln-service-price // END -->
             </h3>
 <?php endif ?>
