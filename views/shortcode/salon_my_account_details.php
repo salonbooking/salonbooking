@@ -46,7 +46,7 @@
 								$booking = SLN_Plugin::getInstance()->createBooking($item['id']);
 								if (SLN_Plugin::getInstance()->getSettings()->get('pay_offset_enabled')) : ?>
 									<div>
-									<?php echo sprintf(__('This booking will be canceled after %s','salon-booking-system'), $booking->getTimeStringToChangeStatusFromPending()); ?>
+									<?php echo sprintf(__('This booking will be canceled in %s','salon-booking-system'), $booking->getTimeStringToChangeStatusFromPending()); ?>
 									</div>
 								<?php endif ?>
 								<a href="<?php echo $booking->getPayUrl(); ?>" class="btn btn-primary">
