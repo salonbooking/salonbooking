@@ -41,8 +41,15 @@
 							</div>
 
 							<div>
-							<?php if ($item['status_code'] == SLN_Enum_BookingStatus::PENDING_PAYMENT && $data['pay_enabled']): ?>
-								<a href="<?php echo SLN_Plugin::getInstance()->createBooking($item['id'])->getPayUrl(); ?>" class="btn btn-primary">
+							<?php if (in_array($item['status_code'], array(SLN_Enum_BookingStatus::PENDING, SLN_Enum_BookingStatus::PENDING_PAYMENT)) && $data['pay_enabled']): ?>
+								<?php
+								$booking = SLN_Plugin::getInstance()->createBooking($item['id']);
+								if (SLN_Plugin::getInstance()->getSettings()->get('pay_offset_enabled')) : ?>
+									<div>
+									<?php echo sprintf(__('This booking will be canceled after %s','salon-booking-system'), $booking->getTimeStringToChangeStatusFromPending()); ?>
+									</div>
+								<?php endif ?>
+								<a href="<?php echo $booking->getPayUrl(); ?>" class="btn btn-primary">
 									<?php _e('Pay Now','salon-booking-system');?>
 								</a>
 							<?php endif; ?>

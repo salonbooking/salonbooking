@@ -5,8 +5,9 @@
  */
 $genPhone = $plugin->getSettings()->get('gen_phone');
 $genMail = $plugin->getSettings()->getSalonEmail();
+
 $payOffsetEnabled = $plugin->getSettings()->get('pay_offset_enabled');
-$payOffset = $payOffsetEnabled ? $plugin->getSettings()->get('pay_offset')/60 : null;
+$payLeftTime      = $plugin->getBookingBuilder()->getLastBooking()->getTimeStringToChangeStatusFromPending();
 ?>
 <div class="sln-alert sln-alert--warning <?php if ($confirmation) : ?> sln-alert--topicon<?php endif ?>">
     <?php if ($confirmation) : ?>
@@ -27,18 +28,18 @@ $payOffset = $payOffsetEnabled ? $plugin->getSettings()->get('pay_offset')/60 : 
             <?php if ($payLater) : ?>
                 <p><strong><?php echo sprintf(
                         __(
-                            'You should pay in %d hour(s) or press \'Pay later\' button',
+                            'You should pay in %s or press \'Pay later\' button',
                             'salon-booking-system'
                         ),
-                        $payOffset
+                        $payLeftTime
                     ); ?></strong></p>
             <?php else : ?>
                 <p><strong><?php echo sprintf(
                         __(
-                            'You should pay in %d hour(s)',
+                            'You should pay in %s',
                             'salon-booking-system'
                         ),
-                        $payOffset
+                        $payLeftTime
                         ); ?></strong></p>
             <?php endif ?>
         <?php endif ?>

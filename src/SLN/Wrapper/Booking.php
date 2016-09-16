@@ -338,6 +338,22 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         );
     }
 
+    public function getTimeStringToChangeStatusFromPending() {
+        $plugin = SLN_Plugin::getInstance();
+        $left   = '';
+
+        if (in_array($this->getStatus(), array(SLN_Enum_BookingStatus::PENDING, SLN_Enum_BookingStatus::PENDING_PAYMENT)) && $plugin->getSettings()->get('pay_offset_enabled')) {
+            $payOffset      = $plugin->getSettings()->get('pay_offset');
+            $checkTimestamp = strtotime("+$payOffset minutes", strtotime($this->object->post_date));
+            $leftSeconds    = $checkTimestamp - current_time('timestamp');
+            $leftMinutes    = $leftSeconds > 0 ? $leftSeconds/60 : 0;
+
+            $left = sprintf(__("%d hours %d minutes", 'salon-booking-system'), (int) $leftMinutes/60, (int) $leftMinutes%60);
+        }
+
+        return $left;
+    }
+
     public function getUniqueId()
     {
         $id = $this->getMeta('uniqid');
