@@ -55,7 +55,7 @@
                     <?php foreach ($bb->getServices() as $service): ?>
                         <li><?php echo $service->getName(); ?>
                             <?php if($showPrices){?>
-                                <small> (<?php echo $plugin->format()->money($service->getPrice()) ?>)</small>
+                                <small> (<?php echo $plugin->format()->moneyFormatted($service->getPrice()) ?>)</small>
                             <?php } ?>
                         </li>
                     <?php endforeach ?>
@@ -69,7 +69,7 @@
         <?php if($showPrices){?>
             <div class="row">
                 <h3 class="col-xs-6 sln-total-label"><?php _e('Total amount', 'salon-booking-system') ?></h3>
-                <h3 class="col-xs-6 sln-total-price"><?php echo $plugin->format()->money(
+                <h3 class="col-xs-6 sln-total-price"><?php echo $plugin->format()->moneyFormatted(
                         $plugin->getBookingBuilder()->getTotal()
                     ) ?> </h3>
             </div>

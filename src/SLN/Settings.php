@@ -233,4 +233,24 @@ class SLN_Settings
     {
         return $this->get('form_steps_alt_order') ? true : false;
     }
+
+    public function getDecimalSeparator()
+    {
+        return !is_null($this->get('pay_decimal_separator')) ? $this->get('pay_decimal_separator') : $this->getDecimalSeparatorDefault();
+    }
+
+    public function getDecimalSeparatorDefault()
+    {
+        return '.';
+    }
+
+    public function getThousandSeparator()
+    {
+        return !is_null($this->get('pay_thousand_separator')) ? $this->get('pay_thousand_separator') : $this->getThousandSeparatorDefault();
+    }
+
+    public function getThousandSeparatorDefault()
+    {
+        return ',';
+    }
 }

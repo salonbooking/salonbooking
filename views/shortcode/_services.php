@@ -13,6 +13,8 @@ $ah->setDate($bb->getDateTime());
 $isSymbolLeft = $plugin->getSettings()->get('pay_currency_pos') == 'left';
 $symbolLeft = $isSymbolLeft ? $plugin->getSettings()->getCurrencySymbol() : '';
 $symbolRight = $isSymbolLeft ? '' : $plugin->getSettings()->getCurrencySymbol();
+$decimalSeparator = $plugin->getSettings()->getDecimalSeparator();
+$thousandSeparator = $plugin->getSettings()->getThousandSeparator();
 $showPrices = ($plugin->getSettings()->get('hide_prices') != '1') ? true : false;
 $grouped = SLN_Repository_ServiceRepository::groupServicesByCategory($services);
 
@@ -83,8 +85,10 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             </h3>
             <h3 class="col-xs-6 col-sm-6 col-md-6 sln-total-price" id="services-total"
                 data-symbol-left="<?php echo $symbolLeft ?>"
-                data-symbol-right="<?php echo $symbolRight ?>">
-                <?php echo $plugin->format()->money(0, false, false) ?>
+                data-symbol-right="<?php echo $symbolRight ?>"
+                data-symbol-decimal="<?php echo $decimalSeparator ?>"
+                data-symbol-thousand="<?php echo $thousandSeparator ?>">
+                <?php echo $plugin->format()->money(0, false) ?>
             </h3>
         <?php elseif ($size == '600'): ?>
             <h3 class="col-xs-6 sln-total-label">
@@ -92,8 +96,10 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             </h3>
             <h3 class="col-xs-6 sln-total-price" id="services-total"
                 data-symbol-left="<?php echo $symbolLeft ?>"
-                data-symbol-right="<?php echo $symbolRight ?>">
-                <?php echo $plugin->format()->money(0, false, false) ?>
+                data-symbol-right="<?php echo $symbolRight ?>"
+                data-symbol-decimal="<?php echo $decimalSeparator ?>"
+                data-symbol-thousand="<?php echo $thousandSeparator ?>">
+                <?php echo $plugin->format()->money(0, false) ?>
             </h3>
         <?php elseif ($size == '400'): ?>
             <h3 class="col-xs-6 sln-total-label">
@@ -101,8 +107,10 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             </h3>
             <h3 class="col-xs-6 sln-total-price" id="services-total"
                 data-symbol-left="<?php echo $symbolLeft ?>"
-                data-symbol-right="<?php echo $symbolRight ?>">
-                <?php echo $plugin->format()->money(0, false, false) ?>
+                data-symbol-right="<?php echo $symbolRight ?>"
+                data-symbol-decimal="<?php echo $decimalSeparator ?>"
+                data-symbol-thousand="<?php echo $thousandSeparator ?>">
+                <?php echo $plugin->format()->money(0, false) ?>
             </h3>
         <?php else: throw new Exception('size not supported'); ?>
         <?php endif ?>

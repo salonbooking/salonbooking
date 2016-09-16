@@ -9,7 +9,7 @@ class SLN_Formatter
         $this->plugin = $plugin;
     }
 
-    public function money($val, $showFree = true, $necessarilyDecimals = true)
+    public function money($val, $showFree = true, $useDefaultSep = true, $removeDecimals = false)
     {
         $s = $this->plugin->getSettings();
         $isLeft = $s->get('pay_currency_pos') == 'left';
@@ -20,11 +20,24 @@ class SLN_Formatter
             $money = __('free','salon-booking-system');
         }
         else {
-            $decimals = !$necessarilyDecimals && floor($val) === floatval($val) ? 0 : 2;
-            $money = ($leftSymbol . number_format($val, $decimals) . $rightSymbol);
+            if ($useDefaultSep) {
+                $decimalSeparator  = $s->getDecimalSeparatorDefault();
+                $thousandSeparator = $s->getThousandSeparatorDefault();
+            }
+            else {
+                $decimalSeparator  = $s->getDecimalSeparator();
+                $thousandSeparator = $s->getThousandSeparator();
+            }
+
+            $decimals = $removeDecimals && floor($val) === floatval($val) ? 0 : 2;
+            $money = ($leftSymbol . number_format($val, $decimals, $decimalSeparator, $thousandSeparator) . $rightSymbol);
         }
 
         return $money;
+    }
+
+    public function moneyFormatted($val) {
+        return $this->money($val, true, false, true);
     }
 
     public function datetime($val)
