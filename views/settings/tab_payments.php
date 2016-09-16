@@ -143,6 +143,17 @@
                 <p class="sln-input-help"><?php _e('If you want a new currency to be added please send us an email to support@wpchef.it','salon-booking-system');?></p>
             </div>
             </div>
+
+    <div class="row">
+        <div class="col-xs-6 col-sm-3 col-md-2 sln-input--simple">
+            <?php $this->row_input_text('pay_decimal_separator', __('Decimal separator', 'salon-booking-system')); ?>
+            <p class="sln-input-help"><?php _e('-','salon-booking-system');?></p>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-2 sln-input--simple">
+            <?php $this->row_input_text('pay_thousand_separator', __('Thousand separator', 'salon-booking-system')); ?>
+            <p class="sln-input-help"><?php _e('-','salon-booking-system');?></p>
+        </div>
+    </div>
 </div>
 
 <div class="sln-box sln-box--main">

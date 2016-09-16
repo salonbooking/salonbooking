@@ -86,6 +86,8 @@ class SLN_Admin_Settings
         'pay_method',
         'pay_currency',
         'pay_currency_pos',
+        'pay_decimal_separator',
+        'pay_thousand_separator',
         'pay_paypal_email',
         'pay_paypal_test',
         'pay_cash',
