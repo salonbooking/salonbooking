@@ -23,7 +23,10 @@
 }
 @import 'admin_components/datepicker_admin';
 //@import 'admin_components/datepicker';
-@import 'admin_components/inputs';
+#sln-salon--admin, .sln-calendar--wrapper {
+
+}
+    @import 'admin_components/inputs';
 @import 'admin_components/buttons';
 @import 'admin_components/boxes';
 @import 'admin_components/panels';
@@ -434,6 +437,12 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
 // GENERL RULES
 body {
     background-color: transparent;
+}
+body.salone_page_salon-settings,
+body.toplevel_page_salon,
+body.salone_page_salon-reports,
+body.salone_page_salon-tools {
+    background-color: $cl_main--lighter;
 }
 // GENERL RULES // END
 

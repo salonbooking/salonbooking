@@ -1,3 +1,4 @@
+#sln-salon--admin, .sln-calendar--wrapper {
 %sln-input {
 	input, input.form-control, textarea {
 		width: 100%;
@@ -512,7 +513,7 @@
 	label {@extend %sln-big-border; width: 100%;}
 }
 
-
+}
 
 // COLORPICKER
 .sln-colorpicker {
