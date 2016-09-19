@@ -66,5 +66,10 @@ class SLN_Shortcode_Salon_SmsStep extends SLN_Shortcode_Salon_AbstractUserStep
             }
         }
     }
+    public function isValid() {
+        $check = isset($_SESSION['sln_sms_dontcheck']) && $_SESSION['sln_sms_dontcheck'];
+        unset($_SESSION['sln_sms_dontcheck']);
 
+        return $check || parent::isValid();
+    }
 }

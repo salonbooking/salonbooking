@@ -228,8 +228,8 @@ class SLN_Func
      */
     public static function filterTimes($times, DateTime $startDate, DateTime $endDate){
         $ret = array();
-        $startT = $startDate->getTimestamp();
-        $endT = $endDate->getTimestamp();
+        $startT = $startDate->format('U');
+        $endT = $endDate->format('U');
 
         $date = $startDate->format('Y-m-d');
         if (self::$cachedDate !== $date) {
@@ -249,7 +249,7 @@ class SLN_Func
             $key = $date.' '.$t;
             if (!isset(self::$cachedTimes[$key])) {
                 self::$cachedTimes[$key] = new SLN_DateTime($key);
-                self::$cachedTs[$key]    = self::$cachedTimes[$key]->getTimestamp();
+                self::$cachedTs[$key]    = self::$cachedTimes[$key]->format('U');
             }
             $tT = self::$cachedTs[$key];
             if($tT >= $startT && $tT < $endT || $tT == $startT ){

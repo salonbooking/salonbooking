@@ -23,6 +23,8 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
             if ($this->getErrors()) {
                 $this->bindValues($values);
                 return false;
+            }else{
+                $_SESSION['sln_sms_dontcheck'] = true;
             }
         } else {
             $values = $_POST['sln'];
