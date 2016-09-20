@@ -348,7 +348,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
             $leftSeconds    = $checkTimestamp - current_time('timestamp');
             $leftMinutes    = $leftSeconds > 0 ? $leftSeconds/60 : 0;
 
-            $left = sprintf(__("%d hours %d minutes", 'salon-booking-system'), (int) $leftMinutes/60, (int) $leftMinutes%60);
+            $left = sprintf(__("%d hours and %d minutes", 'salon-booking-system'), (int) $leftMinutes/60, (int) $leftMinutes%60);
         }
 
         return $left;

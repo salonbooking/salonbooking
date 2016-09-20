@@ -25,23 +25,13 @@ $payLeftTime      = $plugin->getBookingBuilder()->getLastBooking()->getTimeStrin
             ); ?></p>
     <?php else : ?>
         <?php if ($paymentMethod && $payOffsetEnabled) : ?>
-            <?php if ($payLater) : ?>
-                <p><strong><?php echo sprintf(
-                        __(
-                            'You should pay in %s or press \'Pay later\' button',
-                            'salon-booking-system'
-                        ),
-                        $payLeftTime
-                    ); ?></strong></p>
-            <?php else : ?>
-                <p><strong><?php echo sprintf(
-                        __(
-                            'You should pay in %s',
-                            'salon-booking-system'
-                        ),
-                        $payLeftTime
-                        ); ?></strong></p>
-            <?php endif ?>
+            <p><?php echo sprintf(
+                    __(
+                        'You have <strong>%s</strong> to complete your payment before this reservation being canceled',
+                        'salon-booking-system'
+                    ),
+                    $payLeftTime
+                ); ?></p>
         <?php endif ?>
         <p><?php echo sprintf(
                 __(
