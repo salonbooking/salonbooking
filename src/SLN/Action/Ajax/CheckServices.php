@@ -24,11 +24,11 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
             
             $services       = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
 
-            $bb             = SLN_Plugin::getInstance()->getBookingBuilder();
+            $bb             = $this->plugin->getBookingBuilder();
 
             $bbSecServices  = $bb->getSecondaryServicesIds();
             $services       = array_merge(array_keys($services), $bbSecServices); // merge primary services from form & secondary services from booking builder
-            $ah = SLN_Plugin::getInstance()->getAvailabilityHelper();
+            $ah = $this->plugin->getAvailabilityHelper();
 
             $ah->setDate($bb->getDateTime());
 
@@ -59,14 +59,13 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
         } elseif (isset($_POST['part']) && $_POST['part'] == 'secondaryServices') { // for frontend user
            
             $services = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
-            $bb = SLN_Plugin::getInstance()->getBookingBuilder();
+            $bb = $this->plugin->getBookingBuilder();
             $bbPrimServices = $bb->getPrimaryServicesIds();
-            $bbSecServices = $bb->getSecondaryServicesIds();
-            $services = array_merge(array_keys($services), $bbPrimServices);
+            $services = array_merge($bbPrimServices, array_keys($services));
 
             $date = $bb->getDateTime();
 
-            $ah = SLN_Plugin::getInstance()->getAvailabilityHelper();
+            $ah = $this->plugin->getAvailabilityHelper();
 
             $ah->setDate($date);
 
@@ -95,8 +94,8 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
             $services = $_POST['_sln_booking']['service'];
 
             $date = new SLN_DateTime($this->date.' '.$this->time);
-            $ah = SLN_Plugin::getInstance()->getAvailabilityHelper();
-            $ah->setDate($date, SLN_Plugin::getInstance()->createBooking($_POST['post_ID']));
+            $ah = $this->plugin->getAvailabilityHelper();
+            $ah->setDate($date, $this->plugin->createBooking($_POST['post_ID']));
 
             $data = array();
             foreach($services as $sId) {
@@ -111,9 +110,9 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
             $ret = array();
             $bookingServices = SLN_Wrapper_Booking_Services::build($data, $date);
 
-            $bookingOffsetEnabled   = SLN_Plugin::getInstance()->getSettings()->get('reservation_interval_enabled');
-            $bookingOffset          = SLN_Plugin::getInstance()->getSettings()->get('minutes_between_reservation');
-            $isMultipleAttSelection = SLN_Plugin::getInstance()->getSettings()->get('m_attendant_enabled');
+            $bookingOffsetEnabled   = $this->plugin->getSettings()->get('reservation_interval_enabled');
+            $bookingOffset          = $this->plugin->getSettings()->get('minutes_between_reservation');
+            $isMultipleAttSelection = $this->plugin->getSettings()->get('m_attendant_enabled');
             $interval               = min(SLN_Enum_Interval::toArray());
 
             $firstSelectedAttendant = null;
@@ -168,8 +167,8 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 $ret[$bookingService->getService()->getId()] = array(
                     'status' => empty($errors) ? 1 : -1,
                     'errors' => $errors,
-                    'startsAt' => SLN_Plugin::getInstance()->format()->time($bookingService->getStartsAt()),
-                    'endsAt' => SLN_Plugin::getInstance()->format()->time($bookingService->getEndsAt()),
+                    'startsAt' => $this->plugin->format()->time($bookingService->getStartsAt()),
+                    'endsAt' => $this->plugin->format()->time($bookingService->getEndsAt()),
                 );
             }
         }
@@ -192,7 +191,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
     {
         $services = array();
         /** @var SLN_Repository_ServiceRepository $repo */
-        $repo = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+        $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
         
         foreach ($repo->sortByExec($repo->getAll()) as $service) {
             if ($secondary && $service->isSecondary()) {
