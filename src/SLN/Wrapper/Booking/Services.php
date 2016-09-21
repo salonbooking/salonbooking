@@ -38,6 +38,17 @@ final class SLN_Wrapper_Booking_Services {
 		return false;
 	}
 
+	/**
+	 * @param SLN_Wrapper_Booking_Service $bookingService
+	 *
+	 * @return bool|int
+	 */
+	public function getPosInQueue(SLN_Wrapper_Booking_Service $bookingService) {
+		$pos = array_search($bookingService, $this->items);
+
+		return ($pos === false ? $pos : $pos + 1);
+	}
+
 	public function isLast(SLN_Wrapper_Booking_Service $bookingService) {
 		return count($this->items) && $this->items[count($this->items) - 1] === $bookingService;
 	}
