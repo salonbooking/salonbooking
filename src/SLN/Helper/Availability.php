@@ -302,7 +302,12 @@ class SLN_Helper_Availability
         $date = $this->date;
         $bookingServices = SLN_Wrapper_Booking_Services::build(array_fill_keys($servicesIds, 0), $date);
         $validated = array();
+        $servicesCount  = $this->settings->get('services_count');
+
         foreach ($bookingServices->getItems() as $bookingService) {
+            if($servicesCount && count($validated) >= $servicesCount) {
+                break;
+            }
             $serviceErrors = $this->validateService($bookingService->getService(), $bookingService->getStartsAt(), null, $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
             if (empty($serviceErrors)) {
                 $validated[] = $bookingService->getService()->getId();
@@ -330,10 +335,15 @@ class SLN_Helper_Availability
         $bookingOffset = $s->get('minutes_between_reservation');
         $isMultipleAttSelection = $s->get('m_attendant_enabled');
         $interval = min(SLN_Enum_Interval::toArray());
+        $servicesCount = $this->settings->get('services_count');
 
         foreach ($newServices as $service) {
             $services = $order;
             if (!in_array($service->getId(), $services)) {
+                if($servicesCount && count($services) >= $servicesCount) {
+                    $ret[$service->getId()] = array(sprintf(__('You can select up to %d items', 'salon-booking-system'), $servicesCount));
+                    continue;
+                }
                 $services[] = $service->getId();
                 $bookingServices = SLN_Wrapper_Booking_Services::build(array_fill_keys($services, 0), $date);
                 $availAtts = null;
