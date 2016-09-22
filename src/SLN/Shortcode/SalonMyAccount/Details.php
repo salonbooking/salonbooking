@@ -68,9 +68,9 @@ class SLN_Shortcode_SalonMyAccount_Details
             $serviceNames[] = $s->getName();
         }
 
-		$total = $format->money($booking->getAmount(), false, false);
+		$total = $format->moneyFormatted($booking->getAmount());
         if (SLN_Enum_BookingStatus::PAID == $booking->getStatus() && $deposit = $booking->getDeposit()) {
-	        $total .= ' (' . $format->money($deposit, false, false) . ' ' .
+	        $total .= ' (' . $format->moneyFormatted($deposit) . ' ' .
 	                  __('already paid as deposit','salon-booking-system') . ')';
         }
 		return array(

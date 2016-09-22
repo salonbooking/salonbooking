@@ -3,7 +3,7 @@ $showPrices = !$plugin->getSettings()->isHidePrices();
 /** @var SLN_Wrapper_Booking $booking */
 $isMultipleAttSelection = $plugin->getSettings()->get('m_attendant_enabled');
 $depositText = ($booking->getDeposit() && $booking->hasStatus(SLN_Enum_BookingStatus::PAID)) ?
-    $plugin->format()->money($booking->getDeposit()) : null;
+    $plugin->format()->moneyFormatted($booking->getDeposit()) : null;
 ?>
 <table width="502" border="0" align="left" cellpadding="0" cellspacing="0">
     <tbody>
@@ -96,7 +96,7 @@ $depositText = ($booking->getDeposit() && $booking->hasStatus(SLN_Enum_BookingSt
                 <tr>
                     <td height="36" align="left" valign="top"
                         style="font-family:Arial, Helvetica, sans-serif; font-size:18px; color:#666666; font-weight:bold;"><?php if ($showPrices) { ?><?php echo $plugin->format(
-                        )->money($booking->getAmount()) ?><?php } ?></td>
+                        )->moneyFormatted($booking->getAmount()) ?><?php } ?></td>
                 </tr>
                 <tr>
                     <td height="28" align="left" valign="top"
