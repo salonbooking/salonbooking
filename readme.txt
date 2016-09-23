@@ -2,8 +2,8 @@
 Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
-Tested up to: 4.5.1
-Stable tag: 3.5
+Tested up to: 4.6.1
+Stable tag: 3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * SMS notification to selected assistant
 * SMS reminder for the customers
 * SMS verification code against spam
+* SMS Aplhanumeric ID supported
 
 * Twilio, Plivo and 1p1sms providers supported
 
@@ -71,7 +72,9 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Enable online payments
 * Pay later option
 * Enable % deposit
+* Automatic cancellation option for unpaid reservations
 * Hide prices
+* Decimals and thousand separators option
 * PayPal
 * Stripe
 * Custom payment methods supported
@@ -81,6 +84,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 
 * Enable guest checkout
 * Force guest checkout
+* Limit the number of services bookable at the same time
 
 **Google Calendar synchronisation** 
 
@@ -125,9 +129,9 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 
 **Frontend pages**
 
-* Booking form page
-* Private customers reservations management page
-
+* Booking form page [salon/]
+* Private customers reservations management page [booking_myaccount]
+* Assistants bookings calendar [salon_booking_my_account]
 
 
 
