@@ -5,6 +5,9 @@
  */
 $genPhone = $plugin->getSettings()->get('gen_phone');
 $genMail = $plugin->getSettings()->getSalonEmail();
+
+$payOffsetEnabled = $plugin->getSettings()->get('pay_offset_enabled');
+$payLeftTime      = $plugin->getBookingBuilder()->getLastBooking()->getTimeStringToChangeStatusFromPending();
 ?>
 <div class="sln-alert sln-alert--warning <?php if ($confirmation) : ?> sln-alert--topicon<?php endif ?>">
     <?php if ($confirmation) : ?>
@@ -21,6 +24,15 @@ $genMail = $plugin->getSettings()->getSalonEmail();
                 $genMail
             ); ?></p>
     <?php else : ?>
+        <?php if ($paymentMethod && $payOffsetEnabled) : ?>
+            <p><?php echo sprintf(
+                    __(
+                        'You have <strong>%s</strong> to complete your payment before this reservation being canceled',
+                        'salon-booking-system'
+                    ),
+                    $payLeftTime
+                ); ?></p>
+        <?php endif ?>
         <p><?php echo sprintf(
                 __(
                     'If you need to change your reservation please call the <strong>%s</strong> or send an e-mail to <strong>%s</strong>',

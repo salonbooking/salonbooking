@@ -92,6 +92,8 @@ class SLN_Admin_Settings
         'pay_paypal_email',
         'pay_paypal_test',
         'pay_cash',
+        'pay_offset_enabled',
+        'pay_offset',
         'pay_enabled',
         'pay_deposit',
     );
@@ -365,6 +367,11 @@ class SLN_Admin_Settings
         $this->bindSettings($fields, $submitted);
         if (isset($submitted['hide_prices'])) {
             $this->settings->set('pay_enabled', '');
+        }
+        wp_clear_scheduled_hook('sln_cancel_bookings');
+        if (isset($submitted['pay_offset_enabled']) && $submitted['pay_offset_enabled']) {
+            wp_schedule_event(time(), 'hourly', 'sln_cancel_bookings');
+            wp_schedule_event(time()+1800, 'hourly', 'sln_cancel_bookings');
         }
 
         $this->settings->save();

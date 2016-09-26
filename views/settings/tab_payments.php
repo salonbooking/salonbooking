@@ -120,6 +120,39 @@
 </div>
 
 <div class="sln-box sln-box--main">
+    <h2 class="sln-box-title"><?php _e('Unpaid reservations','salon-booking-system');?></h2>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 form-group sln-checkbox">
+            <?php $this->row_input_checkbox(
+                'pay_offset_enabled',
+                __('Enable cancellation', 'salon-booking-system'),
+                array('help' => __('Select this option if you want to automatically cancel unpaid reservations.','salon-booking-system'))
+            ); ?>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 form-group sln-select ">
+            <label><?php _e('Delete unpaid reservations after','salon-booking-system');?></label>
+            <?php echo SLN_Form::fieldSelect(
+                'salon_settings[pay_offset]',
+                array(
+                    '60'   => '1h',
+                    '120'  => '2h',
+                    '360'  => '6h',
+                    '720'  => '12h',
+                    '1440' => '24h',
+                    '2880' => '48h',
+                ),
+                $this->settings->get('pay_offset'),
+                array(),
+                true
+            ) ?>
+            <p class="help-block"><?php _e('Set the time range to complete the online payment.', 'salon-booking-system') ?></p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
+        </div>
+    </div>
+</div>
+
+<div class="sln-box sln-box--main">
     <h2 class="sln-box-title"><?php _e('Currency','salon-booking-system');?></h2>
     <div class="row">
             <div class="col-sm-6 col-md-4 form-group sln-select ">

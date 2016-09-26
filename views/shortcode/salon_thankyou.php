@@ -6,6 +6,7 @@
  * @var SLN_Shortcode_Salon_ThankyouStep $step
  */
 $confirmation = $plugin->getSettings()->get('confirmation');
+$payLater = $plugin->getSettings()->get('pay_cash');
 $currentStep = $step->getShortcode()->getCurrentStep();
 $ajaxData = "sln_step_page=$currentStep&submit_$currentStep=1";
 $ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();

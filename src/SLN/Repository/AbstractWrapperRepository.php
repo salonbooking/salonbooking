@@ -76,6 +76,12 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
         if (isset($criteria['@query'])) {
             $ret = array_merge($ret, $criteria['@wp_query']);
         }
+        if (isset($criteria['post_status'])) {
+            $ret['post_status'] = $criteria['post_status'];
+        }
+        if (isset($criteria['date_query'])) {
+            $ret['date_query'] = $criteria['date_query'];
+        }
 
         return $ret;
     }
