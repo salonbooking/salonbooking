@@ -721,14 +721,33 @@
       text-transform: uppercase;
     }
 
-    .tooltip-inner {
-      background-color: #919FA7 !important;
-      max-width: 160px;
-      text-transform: none;
-      text-align: left;
+    .tooltip.right {
+      .tooltip-inner {
+        box-shadow: 1px 1px rgba(205, 205, 205,1), 2px 2px rgba(205, 205, 205,1), 3px 3px rgba(205, 205, 205,1), -1px -1px rgba(205, 205, 205,1);
+        color: black;
+        background-color: #ebebeb !important;
+        padding: 10px;
+        border: 3px;
+        min-width: 100px;
+        width: auto;
+      }
+      .tooltip-inner strong {
+        color: black;
+      }
+      .tooltip-arrow {
+        border-right-color: rgb(205, 205, 205) !important;
+      }
     }
-    .tooltip-arrow {
-      border-top-color: #919FA7 !important;
+    .tooltip.top {
+      .tooltip-inner {
+        background-color: #919FA7 !important;
+        max-width: 160px;
+        text-transform: none;
+        text-align: left;
+      }
+      .tooltip-arrow {
+        border-top-color: #919FA7 !important;
+      }
     }
     .tooltip.in {
       opacity: 1;

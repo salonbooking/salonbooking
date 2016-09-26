@@ -43,7 +43,7 @@ var slnMyAccount = {
                 if (typeof data.redirect != 'undefined') {
                     window.location.href = data.redirect;
                 } else {
-                    jQuery('#sln-salon-my-account').html(data.content);
+                    jQuery('#sln-salon-my-account-content').html(data.content);
                     slnMyAccount.createRatings();
                     jQuery("[data-toggle='tooltip']").tooltip();
                 }
@@ -125,7 +125,7 @@ var slnMyAccount = {
     },
 
     init: function () {
-        if (jQuery('#sln-salon-my-account').size()) {
+        if (jQuery('#sln-salon-my-account-content').size()) {
             this.loadContent();
         }
         else /*if (jQuery('[name=post_type]').val() == 'sln_booking')*/ {

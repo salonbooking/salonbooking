@@ -95,6 +95,7 @@ class SLN_Action_Init
         SLN_Shortcode_Salon::init($p);
         SLN_Shortcode_SalonMyAccount::init($p);
         SLN_Shortcode_SalonMyAccount_Details::init($p);
+        SLN_Shortcode_BookingCalendar::init($p);
     }
 
     public function hook_admin_init()
