@@ -6,15 +6,20 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Salon Booking 3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-29 09:28+0200\n"
+"POT-Creation-Date: 2016-09-26 12:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Wordpress Chef <contact@wordpresschef.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: js\n"
 
 #: src/SLN/Func.php:141 src/SLN/Func.php:157
 msgid "hour"
@@ -181,8 +186,8 @@ msgstr ""
 #: src/SLN/Admin/Reports/RevenuesByServicesReport.php:25
 #: src/SLN/Admin/Reports/RevenuesByAssistantsReport.php:25
 #: src/SLN/Admin/Reports/TopCustomersReport.php:26
-#: src/SLN/Admin/Reports/RevenuesReport.php:30
-#: src/SLN/PostType/Booking.php:177 src/SLN/PostType/Booking.php:181
+#: src/SLN/Admin/Reports/RevenuesReport.php:30 src/SLN/PostType/Booking.php:177
+#: src/SLN/PostType/Booking.php:181
 msgid "Bookings"
 msgstr ""
 
@@ -1347,8 +1352,7 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-#: views/mail/_summary_details.php:92
-#: views/shortcode/_salon_summary_600.php:71
+#: views/mail/_summary_details.php:92 views/shortcode/_salon_summary_600.php:71
 #: views/shortcode/_salon_summary_900.php:79
 #: views/shortcode/_salon_summary_400.php:70
 msgid "Total amount"
@@ -2851,14 +2855,12 @@ msgid ""
 "or send an e-mail to <strong>%s</strong>"
 msgstr ""
 
-#: views/payment_method/paypal/pay.php:5
-#: views/payment_method/stripe/pay.php:12
+#: views/payment_method/paypal/pay.php:5 views/payment_method/stripe/pay.php:12
 #, php-format
 msgid "Pay %s as a deposit with %s"
 msgstr ""
 
-#: views/payment_method/paypal/pay.php:7
-#: views/payment_method/stripe/pay.php:14
+#: views/payment_method/paypal/pay.php:7 views/payment_method/stripe/pay.php:14
 #, php-format
 msgid "Pay with %s"
 msgstr ""
