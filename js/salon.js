@@ -9,6 +9,10 @@ Number.prototype.formatMoney = function (c, d, t) {
     return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 };
 
+if (jQuery.widget !== undefined && jQuery.ui.tooltip !== undefined) {
+    jQuery.widget.bridge('uitooltip', jQuery.ui.tooltip); // Resolve name collision between jQuery UI and Twitter Bootstrap
+}
+
 jQuery(function ($) {
     sln_init($);
     if(salon.has_stockholm_transition == 'yes'){
