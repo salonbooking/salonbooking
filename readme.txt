@@ -130,8 +130,8 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 **Frontend pages**
 
 * Booking form page [salon/]
-* Private customers reservations management page [booking_myaccount]
-* Assistants bookings calendar [salon_booking_my_account]
+* Private customers reservations management page [salon_booking_my_account]
+* Assistants bookings calendar  [salon_booking_calendar]
 
 
 
