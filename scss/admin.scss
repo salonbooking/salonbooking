@@ -519,6 +519,19 @@ body.salone_page_salon-tools {
         }
         .sln-toolbox-trigger-mob {float: right;}
     }
+    // CUSTOMER STATISTICS START
+    .statistics_block {
+        background-color: #0088c9;
+        color: white;
+        .statistics_header_row {
+            border-bottom: 0.1rem solid white;
+        }
+        span {
+            font-size: larger;
+            font-weight: bold;
+        }
+    }
+    // CUSTOMER STATISTICS END
 }
 @import 'sln-select2';
 

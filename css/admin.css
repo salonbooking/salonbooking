@@ -5401,6 +5401,14 @@ body.salone_page_salon-tools {
         width: 100%; } }
   #sln-salon--admin .sln-admin-sidebar .sln-toolbox-trigger-mob, .sln-calendar--wrapper .sln-admin-sidebar .sln-toolbox-trigger-mob {
     float: right; }
+#sln-salon--admin .statistics_block, .sln-calendar--wrapper .statistics_block {
+  background-color: #0088c9;
+  color: white; }
+  #sln-salon--admin .statistics_block .statistics_header_row, .sln-calendar--wrapper .statistics_block .statistics_header_row {
+    border-bottom: 0.1rem solid white; }
+  #sln-salon--admin .statistics_block span, .sln-calendar--wrapper .statistics_block span {
+    font-size: larger;
+    font-weight: bold; }
 
 .select2-container.select2-container--sln {
   /* BIG SELECT // END */ }

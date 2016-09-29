@@ -71,27 +71,28 @@
 		<div class="row">
 			<div class="col-xs-10 col-md-10 col-lg-10 col-sm-10 postbox">
 				<h3><?php _e('Booking history', 'salon-booking-system') ?></h3>
-				<div class="row inside">
+				<div class="inside statistics_block">
+				<div class="row statistics_header_row">
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
-						<h4><?php _e('Reservations made and value', 'salon-booking-system') ?></h4>
+						<?php _e('Reservations made and value', 'salon-booking-system') ?>
 					</div>
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
-						<h4><?php _e('Reservations per month', 'salon-booking-system') ?></h4>
+						<?php _e('Reservations per month', 'salon-booking-system') ?>
 					</div>
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
-						<h4><?php _e('Reservations per week', 'salon-booking-system') ?></h4>
+						<?php _e('Reservations per week', 'salon-booking-system') ?>
 					</div>
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
-						<h4><?php _e('Services booked per single reservation', 'salon-booking-system') ?></h4>
+						<?php _e('Services booked per single reservation', 'salon-booking-system') ?>
 					</div>
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
-						<h4><?php _e('Favourite week days', 'salon-booking-system') ?></h4>
+						<?php _e('Favourite week days', 'salon-booking-system') ?>
 					</div>
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
-						<h4><?php _e('Favourite time', 'salon-booking-system') ?></h4>
+						<?php _e('Favourite time', 'salon-booking-system') ?>
 					</div>
 				</div>
-				<div class="row inside">
+				<div class="row">
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
 						<span>
 							<?php
@@ -161,6 +162,7 @@
 							?>
 						</span>
 					</div>
+				</div>
 				</div>
 			</div>
 		</div>
