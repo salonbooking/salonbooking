@@ -1924,14 +1924,15 @@ ul.sln-list--dashed li,
   #sln-salon-my-account .status {
     display: inline-block; }
   #sln-salon-my-account .success {
-    color: #5bc24c; }
+    background-color: #5bc24c; }
   #sln-salon-my-account .warning,
   #sln-salon-my-account .info {
-    color: #f5b025; }
+    background-color: #f5b025; }
   #sln-salon-my-account .danger {
-    color: red; }
+    background-color: red; }
+  #sln-salon-my-account .disabled {
+    background-color: grey; }
   #sln-salon-my-account button {
-    border-radius: 4px !important;
     text-transform: uppercase; }
   #sln-salon-my-account .tooltip.right .tooltip-inner {
     box-shadow: 1px 1px rgba(205, 205, 205,1), 2px 2px rgba(205, 205, 205,1), 3px 3px rgba(205, 205, 205,1), -1px -1px rgba(205, 205, 205,1);
@@ -1981,11 +1982,8 @@ ul.sln-list--dashed li,
     width: auto        !important; }
   #sln-salon-my-account .sln-rate-service {
     background-color: #f5b025 !important; }
-  #sln-salon-my-account .btn {
-    margin-top: 1em; }
   #sln-salon-my-account .rating {
     width: auto;
-    background-color: #eee;
     padding: 4px 8px 6px;
     border-radius: 3px;
     font-size: 16px;
@@ -1999,7 +1997,7 @@ ul.sln-list--dashed li,
     vertical-align: auto;
     vertical-align: initial;
     font-size: 11px;
-    color: red; }
+    color: #e8d826; }
   #sln-salon-my-account .sln-my-account-message {
     display: block;
     border: solid 1px #ddd;
@@ -2200,7 +2198,8 @@ ul.sln-list--dashed li,
     content: "\f005"; }
   #sln-salon #sln-salon-my-account .glyphicon.glyphicon-star-empty:before {
     content: "\f006"; }
-
+  #sln-salon #sln-salon-my-account .glyphicon.glyphicon-plus-sign:before {
+    content: "\f055"; }
 #sln-salon #sln-salon-my-account i.glyphicon {
   font-style: normal; }
 

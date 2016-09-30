@@ -122,19 +122,21 @@ $cl_ok: #5bc24c;
     }
 
     .success {
-      color: $cl_ok;
+      background-color: $cl_ok;
     }
 
     .warning,
     .info {
-      color: $cl_warning;
+      background-color: $cl_warning;
     }
     .danger {
-      color: red;
+      background-color: red;
+    }
+    .disabled {
+      background-color: grey;
     }
 
     button {
-      border-radius: 4px !important;
       text-transform: uppercase;
     }
 
@@ -206,13 +208,9 @@ $cl_ok: #5bc24c;
     .sln-rate-service {
       background-color: $cl_warning     !important;
     }
-    .btn {
-      margin-top: 1em;
-    }
 
     .rating {
       width:            auto;
-      background-color: $bg-high;
       padding:          4px 8px 6px;
       border-radius:    3px;
       font-size:        16px;
@@ -230,7 +228,7 @@ $cl_ok: #5bc24c;
       vertical-align: auto;
       vertical-align: initial;
       font-size: 11px;
-      color: red;
+      color: #e8d826;
     }
     .sln-my-account-message {
       display: block;
@@ -479,6 +477,7 @@ $cl_ok: #5bc24c;
     &.glyphicon-minus:before {content: "\f068";}
     &.glyphicon-star:before {content: "\f005";}
     &.glyphicon-star-empty:before {content: "\f006";}
+    &.glyphicon-plus-sign:before {content: "\f055";}
   }
   i.glyphicon {font-style: normal;}
 }
