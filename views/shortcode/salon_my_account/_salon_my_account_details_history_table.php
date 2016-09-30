@@ -1,17 +1,17 @@
-<table class="table table-bordered table-striped">
+<table class="table">
 	<thead>
 	<tr>
-		<th><?php _e('Booking','salon-booking-system');?></th>
-		<th><?php _e('Date','salon-booking-system');?></th>
-		<th><?php _e('Services','salon-booking-system');?></th>
+		<td><?php _e('ID','salon-booking-system');?></td>
+		<td><?php _e('When','salon-booking-system');?></td>
+		<td><?php _e('Services','salon-booking-system');?></td>
 		<?php if($data['attendant_enabled']): ?>
-			<th><?php _e('Assistant','salon-booking-system');?></th>
+			<td><?php _e('Assistants','salon-booking-system');?></td>
 		<?php endif; ?>
 		<?php if(!$data['hide_prices']): ?>
-			<th><?php _e('Total','salon-booking-system');?></th>
+			<td><?php _e('Price','salon-booking-system');?></td>
 		<?php endif; ?>
-		<th><?php _e('Status','salon-booking-system');?></th>
-		<th><?php _e('Action','salon-booking-system');?></th>
+		<td><?php _e('Status','salon-booking-system');?></td>
+		<td><?php _e('Action','salon-booking-system');?></td>
 	</tr>
 	</thead>
 	<tbody>

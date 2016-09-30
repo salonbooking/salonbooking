@@ -1865,8 +1865,6 @@ ul.sln-list--dashed li,
 #sln-salon.sln-step-thankyou .sln-stepper {
   margin-top: 1em; }
 
-#sln-salon-my-account {
-  padding: 1.6em 10px !important; }
   #sln-salon-my-account h1 {
     color: #333;
     text-align: center;
@@ -1882,41 +1880,42 @@ ul.sln-list--dashed li,
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; }
-  #sln-salon-my-account td {
-    font-size: 13px !important; }
-  #sln-salon-my-account .table-bordered {
-    border-width: 1px;
-    border: none;
-    border-top: 1px solid #ddd; }
-  #sln-salon-my-account .table-striped > tbody > tr:nth-of-type(even) {
-    background-color: #eee; }
-  #sln-salon-my-account .table thead tr {
-    border-bottom: 2px solid #076b9d;
-    color: #076b9d; }
-  #sln-salon-my-account .table {
-    margin-bottom: 4em; }
-  #sln-salon-my-account .table thead tr th {
+
+  #sln-salon-my-account ul[role=tablist] li {
+    padding: 0 !important; }
+  #sln-salon-my-account ul[role=tablist] li[role=presentation].active a {
+    background-color: #f4f4f4 !important; }
+  #sln-salon-my-account ul[role=tablist] li[role=presentation]:not(.active) a {
+    background-color: #d6d6d6 !important; }
+  #sln-salon-my-account ul[role=tablist] a {
+    font-weight: normal;
+    color: #555555 !important; }
+  #sln-salon-my-account .sln-salon-my-account-tab-content {
+    background-color: #f4f4f4 }
+  #sln-salon-my-account .sln-salon-my-account-tab-pane {
+    padding: 20px !important; }
+  #sln-salon-my-account .hint {
+    color: #b9b9b9;
     text-align: center;
-    text-transform: uppercase;
-    background-color: #fff; }
-  #sln-salon-my-account .table tbody tr td {
+    padding: 20px 20% 20px 20%; }
+  #sln-salon-my-account .table {
+    border: none !important; }
+  #sln-salon-my-account .table tr {
+    border: none !important; }
+  #sln-salon-my-account .table td {
     color: #555555;
     text-align: center; }
-  #sln-salon-my-account .table tbody tr td strong {
-    color: #555555; }
-  #sln-salon-my-account .table tbody tr td:nth-child(2),
-  #sln-salon-my-account .table tbody tr td:nth-child(3) {
-    text-align: left; }
-  #sln-salon-my-account .table thead tr th {
-    padding: 8px;
-    font-size: .7em;
-    border-bottom: 1px solid transparent; }
-  #sln-salon-my-account .table tbody tr td {
-    padding: 16px 8px; }
-  #sln-salon-my-account .table tbody tr td:nth-child(2) {
-    max-width: 100px; }
-  #sln-salon-my-account .table tbody tr td:nth-child(2),
-  #sln-salon-my-account .table tbody tr td:last-child {
+  #sln-salon-my-account .table thead td {
+    text-align: center;
+    text-transform: uppercase;
+    border: none !important;
+    border-bottom: 2px solid #4c4c4c !important;
+    font-size: .7em; }
+  #sln-salon-my-account .table tbody td {
+    border: none !important;
+    border-bottom: 2px solid #4c4c4c !important;
+    font-size: 13px !important; }
+  #sln-salon-my-account .table tbody tr td:nth-child(6) {
     text-transform: uppercase; }
   #sln-salon-my-account h3 {
     color: black;
@@ -1980,8 +1979,12 @@ ul.sln-list--dashed li,
     text-transform: lowercase   !important;
     color: #fff !important;
     width: auto        !important; }
-  #sln-salon-my-account .sln-rate-service {
-    background-color: #f5b025 !important; }
+  #sln-salon-my-account .sln-rate-service-on {
+    margin: 0 3px 0 3px;
+    color: #e8d826 !important; }
+  #sln-salon-my-account .sln-rate-service-off {
+    margin: 0 3px 0 3px;
+    color: #d6d6d6 !important; }
   #sln-salon-my-account .rating {
     width: auto;
     padding: 4px 8px 6px;

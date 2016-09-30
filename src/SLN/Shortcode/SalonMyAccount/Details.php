@@ -120,7 +120,8 @@ class SLN_Shortcode_SalonMyAccount_Details
         }
 		return array(
 			'id' => $booking->getId(),
-			'date' => $format->datetime($booking->getStartsAt()),
+			'date' => $format->date($booking->getStartsAt()),
+			'time' => $format->time($booking->getStartsAt()),
 			'timestamp' => strtotime($booking->getStartsAt()),
 			'services' => implode("<br>", $serviceNames),
 			'assistant' => $booking->getAttendantsString(),

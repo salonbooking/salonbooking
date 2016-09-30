@@ -92,6 +92,19 @@ var slnMyAccount = {
 
     createRaty: function ($rating, readOnly) {
         readOnly = readOnly == undefined ? false : readOnly;
+
+        var starOnClass  = 'glyphicon';
+        var starOffClass = 'glyphicon';
+
+        if (readOnly) {
+            starOnClass  += ' sln-rate-service-on';
+            starOffClass += ' sln-rate-service-off';
+        }
+        else {
+            starOnClass  += ' glyphicon-star';
+            starOffClass += ' glyphicon-star-empty';
+        }
+
         var $ratyElem = $rating.parent().find('.rating');
         $ratyElem.raty({
             score: jQuery($rating).val(),
@@ -99,8 +112,8 @@ var slnMyAccount = {
             path: salon.images_folder,
             readOnly: readOnly,
             starType : 'i',
-            starOff:"glyphicon glyphicon-star-empty",
-            starOn:"glyphicon glyphicon-star",
+            starOff: starOffClass,
+            starOn:  starOnClass,
         });
         $ratyElem.css('display', 'block');
     },
