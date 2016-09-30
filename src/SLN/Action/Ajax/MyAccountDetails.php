@@ -8,7 +8,18 @@ class SLN_Action_Ajax_MyAccountDetails extends SLN_Action_Ajax_Abstract
 			return array( 'redirect' => wp_login_url());
 		}
 
-		$ret['content'] = do_shortcode( '[' . SLN_Shortcode_SalonMyAccount_Details::NAME . ']');
+		$args = array();
+		if (isset($_POST['args'])) {
+			$args = $_POST['args'];
+		}
+
+		$shortcode  = "[" . SLN_Shortcode_SalonMyAccount_Details::NAME;
+		foreach($args as $k => $v) {
+			$shortcode .= " $k='" . addcslashes($v, "'") . "'";
+		}
+		$shortcode .= "]";
+
+		$ret['content'] = do_shortcode($shortcode);
 
 		return $ret;
 	}

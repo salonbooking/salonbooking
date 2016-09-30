@@ -3,7 +3,6 @@
 class SLN_Helper_Availability_MyAccountBookings
 {
 	private $date;
-	private $bookings;
 
 	public function __construct()
 	{
@@ -19,7 +18,7 @@ class SLN_Helper_Availability_MyAccountBookings
 				array(
 					'key'     => '_sln_booking_date',
 					'value'   => $this->date->format('Y-m-d'),
-					'compare' => $mode == 'past' ? '<' : '>=',
+					'compare' => $mode == 'history' ? '<' : '>=',
 				)
 			),
 			'author' => $user
@@ -33,7 +32,7 @@ class SLN_Helper_Availability_MyAccountBookings
 		wp_reset_postdata();
 		usort(
 				$ret,
-				$mode == 'past' ? array($this, 'sortDescByStartsAt') : array($this, 'sortAscByStartsAt')
+				$mode == 'history' ? array($this, 'sortDescByStartsAt') : array($this, 'sortAscByStartsAt')
 		);
 
 		SLN_Plugin::addLog(__CLASS__.' - buildBookings('.$this->date->format('Y-m-d').', ' . $mode . ')');
@@ -62,9 +61,8 @@ class SLN_Helper_Availability_MyAccountBookings
 		return (strtotime($a->getStartsAt()->format('Y-m-d H:i:s')) >= strtotime($b->getStartsAt()->format('Y-m-d H:i:s')) ? -1 : 1 );
 	}
 
-	public function getBookings($user, $mode = 'past')
+	public function getBookings($user, $mode = 'history')
 	{
-		$this->bookings = $this->buildBookings($user, $mode);
-		return $this->bookings;
+		return $this->buildBookings($user, $mode);
 	}
 }

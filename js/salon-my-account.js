@@ -52,6 +52,36 @@ var slnMyAccount = {
         });
     },
 
+    loadNextHistoryPage: function () {
+        var page = parseInt(jQuery('#sln-salon-my-account-history-content table tr:last').attr('data-page'))+1;
+        jQuery.ajax({
+            url: salon.ajax_url,
+            data: {
+                action: 'salon',
+                method: 'myAccountDetails',
+                args: {
+                    part: 'history',
+                    page: page,
+                }
+            },
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (typeof data.redirect != 'undefined') {
+                    window.location.href = data.redirect;
+                } else {
+                    jQuery('#sln-salon-my-account-history-content').html(data.content);
+                    if(jQuery('#sln-salon-my-account-history-content table tr:last').attr('data-end') == 1) {
+                        jQuery('#next_history_page_btn').remove();
+                    }
+                    slnMyAccount.createRatings();
+                    jQuery("[data-toggle='tooltip']").tooltip();
+                }
+            },
+            error: function(data){alert('error'); console.log(data);}
+        });
+    },
+
     createRatings: function () {
         jQuery('[name=sln-rating]').each(function() {
             if (jQuery(this).val()) {
