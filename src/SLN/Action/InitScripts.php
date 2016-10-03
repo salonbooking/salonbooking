@@ -14,7 +14,7 @@ class SLN_Action_InitScripts
         if ($isAdmin) {
             add_action('admin_enqueue_scripts', array($this, 'hook_enqueue_scripts'));
         }
-        add_action('wp_enqueue_scripts', array($this, 'hook_enqueue_scripts'));
+        add_action('wp_enqueue_scripts', array($this, 'hook_enqueue_scripts'), 99999);
     }
 
     public function hook_enqueue_scripts()
