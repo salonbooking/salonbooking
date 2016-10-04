@@ -19,28 +19,6 @@
 			$data['table_data']         = $data['new'];
 			$data['table_data']['mode'] = 'new';
 
-			$needLastOneInHistory = true;
-			foreach($data['table_data']['items'] as $item) {
-				if (in_array($item['status_code'], array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED))) {
-					$needLastOneInHistory = false;
-					break;
-				}
-			}
-
-			if ($needLastOneInHistory) {
-				$lastOneInHistory = false;
-				foreach($data['history']['items'] as $item) {
-					if (in_array($item['status_code'], array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED))) {
-						$lastOneInHistory = $item;
-						break;
-					}
-				}
-
-				if ($lastOneInHistory) {
-					$data['table_data']['items'][] = $lastOneInHistory;
-				}
-			}
-
 			include '_salon_my_account_details_table.php';
 			unset($data['table_data']);
 			?>
@@ -50,7 +28,8 @@
 			if (!empty($data['history']['items'])) {
 				$data['table_data']          = $data['history'];
 				$data['table_data']['items'] = array_slice($data['table_data']['items'], 0, 1);
-				$data['table_data']['mode']  = 'last_one_history';
+				$data['table_data']['mode']  = 'new';
+
 				include '_salon_my_account_details_table.php';
 				unset($data['table_data']);
 			}
@@ -73,6 +52,7 @@
 				<?php
 				$data['table_data']         = $data['history'];
 				$data['table_data']['mode'] = 'history';
+
 				include '_salon_my_account_details_table.php';
 				unset($data['table_data']);
 				?>

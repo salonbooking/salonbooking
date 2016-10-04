@@ -23,6 +23,11 @@ class SLN_Helper_Availability_MyAccountBookings
 			),
 			'author' => $user
 		);
+		if ($mode === 'new') {
+			$statuses = array_keys(SLN_Enum_BookingStatus::toArray());
+			unset($statuses[SLN_Enum_BookingStatus::CANCELED], $statuses[SLN_Enum_BookingStatus::ERROR]);
+			$args['post_status'] = $statuses;
+		}
 		$query = new WP_Query($args);
 		$ret = array();
 		foreach ($query->get_posts() as $p) {

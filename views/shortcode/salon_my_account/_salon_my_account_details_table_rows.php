@@ -20,12 +20,11 @@
 				</nobr>
 			</div>
 			<div>
-				<?php if($data['table_data']['mode'] === 'history'): ?>
+				<?php if($data['table_data']['mode'] === 'history' || $item['timestamp'] < current_time('timestamp')): ?>
 					<?php if(in_array($item['status_code'], array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED))): ?>
 						<input type="hidden" name="sln-rating" value="<?php echo $item['rating']; ?>">
 						<div class="rating" id="<?php echo $item['id']; ?>" style="display: none;"></div>
 					<?php endif; ?>
-				<?php elseif($data['table_data']['mode'] === 'new'): ?>
 				<?php endif; ?>
 			</div>
 		</td>
@@ -77,8 +76,7 @@
 							<br>
 						<?php endif ?>
 					<?php endif; ?>
-					<?php if ($item['status_code'] != SLN_Enum_BookingStatus::CANCELED
-					          && $data['cancellation_enabled']): ?>
+					<?php if ($data['cancellation_enabled']): ?>
 						<div class="col-xs-10 col-sm-6 col-md-12">
 							<?php if ($item['timestamp']-current_time('timestamp') > $data['seconds_before_cancellation']): ?>
 								<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth danger">
