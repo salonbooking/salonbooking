@@ -48,6 +48,15 @@
 					<!-- SECTION OLD END -->
 				<?php elseif($data['table_data']['mode'] === 'new'): ?>
 					<!-- SECTION NEW START -->
+					<?php if ($item['timestamp'] < current_time('timestamp')): ?>
+						<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth">
+							<a href="<?php echo $data['booking_url'] ?>"><?php _e('Book now', 'salon-booking-system') ?></a>
+						</div>
+					<?php
+						continue;
+						endif;
+					?>
+
 					<?php if (in_array($item['status_code'], array(SLN_Enum_BookingStatus::PENDING, SLN_Enum_BookingStatus::PENDING_PAYMENT)) && $data['pay_enabled']): ?>
 						<?php
 						$booking = SLN_Plugin::getInstance()->createBooking($item['id']); ?>
@@ -89,10 +98,6 @@
 						<div style="clear: both"></div>
 					<?php endif; ?>
 					<!-- SECTION NEW END -->
-				<?php elseif($data['table_data']['mode'] === 'last_one_history'): ?>
-					<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth">
-						<a href="<?php echo $data['booking_url'] ?>"><?php _e('Book now', 'salon-booking-system') ?></a>
-					</div>
 				<?php endif; ?>
 			</div>
 		</td>
