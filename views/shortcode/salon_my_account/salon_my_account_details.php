@@ -1,7 +1,7 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
 	<li class="col-xs-12 col-sm-4 col-md-4"><a><?php echo sprintf(__('Welcome back %s!','salon-booking-system'), $data['user_name']); ?></a></li>
-	<li class="col-xs-12 col-sm-4 col-md-4" role="presentation" class="active"><a href="#new" aria-controls="new" role="tab" data-toggle="tab"><?php _e('Next appointments', 'salon-booking-system') ?></a></li>
+	<li class="col-xs-12 col-sm-4 col-md-4 active" role="presentation"><a href="#new" aria-controls="new" role="tab" data-toggle="tab"><?php _e('Next appointments', 'salon-booking-system') ?></a></li>
 	<li class="col-xs-12 col-sm-4 col-md-4" role="presentation"><a href="#old" aria-controls="old" role="tab" data-toggle="tab"><?php _e('Reservations history', 'salon-booking-system') ?></a></li>
 </ul>
 
@@ -109,7 +109,7 @@
 		</div>
 		<div style="clear: both"></div>
 	</div>
-	<div role="tabpanel" class="tab-pane" id="old">
+	<div role="tabpanel" class="tab-pane sln-salon-my-account-tab-pane" id="old">
 		<?php if (!empty($data['history']['items'])):?>
 			<p class="hint"><?php _e('Here you have your past reservations, you can submit a review or re-schedule an appointment', 'salon-booking-system'); ?></p>
 
@@ -118,9 +118,7 @@
 			</div>
 
 			<div class="col-xs-1 col-sm-1 col-md-1 pull-right">
-				<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth disabled" id="next_history_page_btn">
-					<button type="button" onclick="slnMyAccount.loadNextHistoryPage();"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-				</div>
+				<a id="next_history_page_btn" href="load_more" onclick="slnMyAccount.loadNextHistoryPage(); return false;" style="color: #b6b6b6"><div class="glyphicon-ring"><span class="glyphicon glyphicon-plus glyphicon-bordered" aria-hidden="true"></span></div></a>
 			</div>
 		<?php else: ?>
 			<p class="hint"><?php _e('No bookings', 'salon-booking-system'); ?></p>

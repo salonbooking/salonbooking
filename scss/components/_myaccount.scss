@@ -52,19 +52,25 @@ $cl_ok: #5bc24c;
       box-shadow: none;
     }
 
-    ul[role=tablist] {
+    .nav {
       li {
         padding: 0 !important;
       }
-      li[role=presentation].active a {
+      li:not(:nth-child(1)).active a {
         background-color: #f4f4f4 !important;
       }
-      li[role=presentation]:not(.active) a {
+      li:not(:nth-child(1)):not(.active) a {
         background-color: #d6d6d6 !important;
       }
-      a {
+      li a {
+        border-radius: 0px;
+        padding: 20px 15px;
         font-weight: normal;
         color: #555555 !important;
+      }
+      li:nth-child(1) a {
+        padding: 10px 15px;
+        font-size: x-large;
       }
     }
     .sln-salon-my-account-tab-content {
@@ -74,6 +80,7 @@ $cl_ok: #5bc24c;
       padding: 20px !important;
     }
     .hint {
+      font-size: larger;
       color: #b9b9b9;
       text-align: center;
       padding: 20px 20% 20px 20%;
@@ -195,6 +202,21 @@ $cl_ok: #5bc24c;
       text-transform:   lowercase   !important;
       color:            $color-white        !important;
       width:            auto        !important;
+    }
+
+    .glyphicon-ring {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid #b6b6b6;
+      color: #b6b6b6;
+      display: inline-table;
+      text-align: center;
+    }
+    .glyphicon-ring .glyphicon-bordered {
+      font-size: 20px;
+      vertical-align: middle;
+      display: table-cell;
     }
 
     .sln-rate-service {
@@ -475,10 +497,10 @@ $cl_ok: #5bc24c;
     &.glyphicon-time:before {content: "\f017";}
     &.glyphicon-trash:before {content: "\f1f8";}
     &.glyphicon-ban-circle:before {content: "\f05e";}
+    &.glyphicon-plus:before {content: "\f067";}
     &.glyphicon-minus:before {content: "\f068";}
     &.glyphicon-star:before {content: "\f005";}
     &.glyphicon-star-empty:before {content: "\f006";}
-    &.glyphicon-plus-sign:before {content: "\f055";}
   }
   i.glyphicon {font-style: normal;}
 }

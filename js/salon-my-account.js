@@ -44,7 +44,7 @@ var slnMyAccount = {
                     window.location.href = data.redirect;
                 } else {
                     jQuery('#sln-salon-my-account-content').html(data.content);
-                    slnMyAccount.createRatings();
+                    slnMyAccount.createRatings(true, 'circle');
                     jQuery("[data-toggle='tooltip']").tooltip();
                 }
             },
@@ -74,7 +74,7 @@ var slnMyAccount = {
                     if(jQuery('#sln-salon-my-account-history-content table tr:last').attr('data-end') == 1) {
                         jQuery('#next_history_page_btn').remove();
                     }
-                    slnMyAccount.createRatings();
+                    slnMyAccount.createRatings(true, 'circle');
                     jQuery("[data-toggle='tooltip']").tooltip();
                 }
             },
@@ -82,21 +82,22 @@ var slnMyAccount = {
         });
     },
 
-    createRatings: function () {
+    createRatings: function (readOnly, view) {
         jQuery('[name=sln-rating]').each(function() {
             if (jQuery(this).val()) {
-                slnMyAccount.createRaty(jQuery(this), true);
+                slnMyAccount.createRaty(jQuery(this), readOnly, view);
             }
         });
     },
 
-    createRaty: function ($rating, readOnly) {
+    createRaty: function ($rating, readOnly, view) {
         readOnly = readOnly == undefined ? false : readOnly;
+        view = view == undefined ? 'star' : view;
 
         var starOnClass  = 'glyphicon';
         var starOffClass = 'glyphicon';
 
-        if (readOnly) {
+        if (view === 'circle') {
             starOnClass  += ' sln-rate-service-on';
             starOffClass += ' sln-rate-service-off';
         }
@@ -172,7 +173,7 @@ var slnMyAccount = {
             this.loadContent();
         }
         else /*if (jQuery('[name=post_type]').val() == 'sln_booking')*/ {
-            this.createRatings();
+            this.createRatings(true, 'star');
         }
     }
 };

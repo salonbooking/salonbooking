@@ -1881,20 +1881,26 @@ ul.sln-list--dashed li,
     -moz-box-shadow: none;
     box-shadow: none; }
 
-  #sln-salon-my-account ul[role=tablist] li {
+  #sln-salon-my-account .nav li {
     padding: 0 !important; }
-  #sln-salon-my-account ul[role=tablist] li[role=presentation].active a {
+  #sln-salon-my-account .nav li:not(:nth-child(1)).active a {
     background-color: #f4f4f4 !important; }
-  #sln-salon-my-account ul[role=tablist] li[role=presentation]:not(.active) a {
+  #sln-salon-my-account .nav li:not(:nth-child(1)):not(.active) a {
     background-color: #d6d6d6 !important; }
-  #sln-salon-my-account ul[role=tablist] a {
+  #sln-salon-my-account .nav li a {
+    border-radius: 0px;
+    padding: 20px 15px;
     font-weight: normal;
     color: #555555 !important; }
+  #sln-salon-my-account .nav li:nth-child(1) a {
+    padding: 10px 15px;
+    font-size: x-large; }
   #sln-salon-my-account .sln-salon-my-account-tab-content {
     background-color: #f4f4f4 }
   #sln-salon-my-account .sln-salon-my-account-tab-pane {
     padding: 20px !important; }
   #sln-salon-my-account .hint {
+    font-size: larger;
     color: #b9b9b9;
     text-align: center;
     padding: 20px 20% 20px 20%; }
@@ -1979,6 +1985,18 @@ ul.sln-list--dashed li,
     text-transform: lowercase   !important;
     color: #fff !important;
     width: auto        !important; }
+  .glyphicon-ring {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #b6b6b6;
+    color: #b6b6b6;
+    display: inline-table;
+    text-align: center; }
+  .glyphicon-ring .glyphicon-bordered {
+    font-size: 20px;
+    vertical-align: middle;
+    display: table-cell; }
   #sln-salon-my-account .sln-rate-service-on {
     margin: 0 3px 0 3px;
     color: #e8d826 !important; }
@@ -2195,14 +2213,14 @@ ul.sln-list--dashed li,
     content: "\f1f8"; }
   #sln-salon #sln-salon-my-account .glyphicon.glyphicon-ban-circle:before {
     content: "\f05e"; }
+  #sln-salon #sln-salon-my-account .glyphicon.glyphicon-plus:before {
+    content: "\f067"; }
   #sln-salon #sln-salon-my-account .glyphicon.glyphicon-minus:before {
     content: "\f068"; }
   #sln-salon #sln-salon-my-account .glyphicon.glyphicon-star:before {
     content: "\f005"; }
   #sln-salon #sln-salon-my-account .glyphicon.glyphicon-star-empty:before {
     content: "\f006"; }
-  #sln-salon #sln-salon-my-account .glyphicon.glyphicon-plus-sign:before {
-    content: "\f055"; }
 #sln-salon #sln-salon-my-account i.glyphicon {
   font-style: normal; }
 
