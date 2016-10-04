@@ -71,25 +71,103 @@
 		<div class="row">
 			<div class="col-xs-10 col-md-10 col-lg-10 col-sm-10 postbox">
 				<h3><?php _e('Booking history', 'salon-booking-system') ?></h3>
-				<div class="row inside">
+				<div class="inside statistics_block">
+				<div class="row statistics_row">
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
-						<h4><?php _e('Total reservations', 'salon-booking-system') ?></h4>
-					<span>
-						<?php
-						$count = $customer->getCountOfReservations();
-						echo $count;
-						?>
-					</span>
+						<?php _e('Reservations made and value', 'salon-booking-system') ?>
 					</div>
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
-						<h4><?php _e('Customer value', 'salon-booking-system') ?></h4>
-						<span><?php echo SLN_Plugin::getInstance()->getSettings()->getCurrencySymbol() . ' ' . $customer->getCustomerValue(); ?></span>
+						<?php _e('Reservations per month', 'salon-booking-system') ?>
 					</div>
+					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+						<?php _e('Reservations per week', 'salon-booking-system') ?>
+					</div>
+					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+						<?php _e('Services booked per single reservation', 'salon-booking-system') ?>
+					</div>
+					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+						<?php _e('Favourite week days', 'salon-booking-system') ?>
+					</div>
+					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+						<?php _e('Favourite time', 'salon-booking-system') ?>
+					</div>
+				</div>
+				<div class="row statistics_row">
+					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+						<span>
+							<?php
+							$count  = $customer->getCountOfReservations();
+							$amount = SLN_Plugin::getInstance()->format()->money($customer->getAmountOfReservations(), false);
+
+							echo "$count ($amount)";
+							?>
+						</span>
+					</div>
+					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+						<span>
+							<?php
+							$countPerMonth  = $customer->getCountOfReservations(MONTH_IN_SECONDS);
+							$amountPerMonth = SLN_Plugin::getInstance()->format()->money($customer->getAmountOfReservations(MONTH_IN_SECONDS), false);
+
+							echo "$countPerMonth ($amountPerMonth)";
+							?>
+						</span>
+					</div>
+					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+						<span>
+							<?php
+							$countPerWeek  = $customer->getCountOfReservations(WEEK_IN_SECONDS);
+							$amountPerWeek = SLN_Plugin::getInstance()->format()->money($customer->getAmountOfReservations(WEEK_IN_SECONDS), false);
+
+							echo "$countPerWeek ($amountPerWeek)";
+							?>
+						</span>
+					</div>
+					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+						<span>
+							<?php echo $customer->getAverageCountOfServices(); ?>
+						</span>
+					</div>
+					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+						<span>
+							<?php
+							$favDays = $customer->getFavouriteWeekDays();
+							if ($favDays) {
+								foreach($favDays as &$favDay) {
+									$favDay = SLN_Enum_DaysOfWeek::getLabel($favDay);
+								}
+
+								$favDaysText = implode(', ', $favDays);
+							}
+							else {
+								$favDaysText = __('not avalable yet', 'salon-booking-system');
+							}
+
+							echo $favDaysText;
+							?>
+						</span>
+					</div>
+					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+						<span>
+							<?php
+							$favTimes = $customer->getFavouriteTimes();
+							if ($favTimes) {
+								$favTimesText = implode(', ', $favTimes);
+							}
+							else {
+								$favTimesText = __('not avalable yet', 'salon-booking-system');
+							}
+
+							echo $favTimesText;
+							?>
+						</span>
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>
 
-		<?php if ($count): ?>
+		<?php if ($customer->getBookings()): ?>
 			<div class="row">
 				<div class="col-xs-10 col-md-10 col-lg-10 col-sm-10 postbox">
 				<?php
