@@ -521,14 +521,18 @@ body.salone_page_salon-tools {
     }
     // CUSTOMER STATISTICS START
     .statistics_block {
+        text-align: center;
         background-color: #0088c9;
         color: white;
-        .statistics_header_row {
+        .statistics_row:nth-child(1) {
             border-bottom: 0.1rem solid white;
         }
-        span {
-            font-size: larger;
-            font-weight: bold;
+        .statistics_row {
+            padding: 10px 0px;
+            span {
+                font-size: larger;
+                font-weight: bold;
+            }
         }
     }
     // CUSTOMER STATISTICS END

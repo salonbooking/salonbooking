@@ -72,7 +72,7 @@
 			<div class="col-xs-10 col-md-10 col-lg-10 col-sm-10 postbox">
 				<h3><?php _e('Booking history', 'salon-booking-system') ?></h3>
 				<div class="inside statistics_block">
-				<div class="row statistics_header_row">
+				<div class="row statistics_row">
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
 						<?php _e('Reservations made and value', 'salon-booking-system') ?>
 					</div>
@@ -92,7 +92,7 @@
 						<?php _e('Favourite time', 'salon-booking-system') ?>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row statistics_row">
 					<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
 						<span>
 							<?php

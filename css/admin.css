@@ -5402,11 +5402,14 @@ body.salone_page_salon-tools {
   #sln-salon--admin .sln-admin-sidebar .sln-toolbox-trigger-mob, .sln-calendar--wrapper .sln-admin-sidebar .sln-toolbox-trigger-mob {
     float: right; }
 #sln-salon--admin .statistics_block, .sln-calendar--wrapper .statistics_block {
+  text-align: center;
   background-color: #0088c9;
   color: white; }
-  #sln-salon--admin .statistics_block .statistics_header_row, .sln-calendar--wrapper .statistics_block .statistics_header_row {
+  #sln-salon--admin .statistics_block .statistics_row:nth-child(1), .sln-calendar--wrapper .statistics_block .statistics_row:nth-child(1) {
     border-bottom: 0.1rem solid white; }
-  #sln-salon--admin .statistics_block span, .sln-calendar--wrapper .statistics_block span {
+  #sln-salon--admin .statistics_block .statistics_row, .sln-calendar--wrapper .statistics_block .statistics_row {
+    padding: 10px 0px; }
+  #sln-salon--admin .statistics_block .statistics_row span, .sln-calendar--wrapper .statistics_block .statistics_row span {
     font-size: larger;
     font-weight: bold; }
 
