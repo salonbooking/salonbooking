@@ -44,12 +44,13 @@ class SLN_Shortcode_SalonMyAccount_Details
 			$historyEnds  = count($historyItems) <= ($this->perPage*$page);
 			$historyItems = array_slice($historyItems, 0, $this->perPage*$page);
 
-			return $this->render('shortcode/salon_my_account/_salon_my_account_details_history_table',
+			return $this->render('shortcode/salon_my_account/_salon_my_account_details_table',
 					array(
-						'history' => array(
+						'table_data' => array(
 							'page'  => $page,
 							'items' => $historyItems,
 							'end'   => $historyEnds,
+							'mode'  => 'history',
 						),
 						'hide_prices' => $this->plugin->getSettings()->get('hide_prices'),
 						'attendant_enabled' => $this->plugin->getSettings()->get('attendant_enabled'),

@@ -15,6 +15,6 @@
 	</tr>
 	</thead>
 	<tbody>
-	<?php include '_salon_my_account_details_history_table_rows.php' ?>
+	<?php include '_salon_my_account_details_table_rows.php' ?>
 	</tbody>
 </table>

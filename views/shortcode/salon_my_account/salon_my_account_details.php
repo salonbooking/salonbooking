@@ -15,92 +15,23 @@
 			<p class="hint">
 				<?php _e('Here you have your next reservations with us, pay attention to the \'pending\' reservations', 'salon-booking-system'); ?>
 			</p>
-			<table class="table">
-				<thead>
-				<tr>
-					<td><?php _e('ID','salon-booking-system');?></td>
-					<td><?php _e('When','salon-booking-system');?></td>
-					<td><?php _e('Services','salon-booking-system');?></td>
-					<?php if($data['attendant_enabled']): ?>
-						<td><?php _e('Assistants','salon-booking-system');?></td>
-					<?php endif; ?>
-					<?php if(!$data['hide_prices']): ?>
-						<td><?php _e('Price','salon-booking-system');?></td>
-					<?php endif; ?>
-					<td><?php _e('Status','salon-booking-system');?></td>
-					<td><?php _e('Action','salon-booking-system');?></td>
-				</tr>
-				</thead>
-				<tbody>
-				<?php foreach ( $data['new']['items'] as $item ): ?>
-					<tr>
-						<td data-th="<?php _e('ID','salon-booking-system');?>"><?php echo $item['id'] ?></td>
-						<td data-th="<?php _e('When','salon-booking-system');?>"><div><?php echo $item['date'] ?></div><div><?php echo $item['time'] ?></div></td>
-						<td data-th="<?php _e('Services','salon-booking-system');?>"><?php echo $item['services']; ?></td>
-						<?php if($data['attendant_enabled']): ?>
-							<td data-th="<?php _e('Assistants','salon-booking-system');?>"><?php echo $item['assistant'] ?></td>
-						<?php endif; ?>
-						<?php if(!$data['hide_prices']): ?>
-							<td data-th="<?php _e('Price','salon-booking-system');?>"><nobr><?php echo $item['total'] ?></nobr></td>
-						<?php endif; ?>
-						<td data-th="<?php _e('Status','salon-booking-system');?>">
-							<div class="status">
-								<nobr>
-									<span class="glyphicon <?php echo SLN_Enum_BookingStatus::getIcon($item['status_code']); ?>" aria-hidden="true"></span>
-									<span class="glyphicon-class"><strong><?php echo $item['status']; ?></strong></span>
-								</nobr>
-							</div>
-						</td>
-						<td data-th="<?php _e('Action','salon-booking-system');?>" class="col-md-3">
-							<div>
-								<?php if (in_array($item['status_code'], array(SLN_Enum_BookingStatus::PENDING, SLN_Enum_BookingStatus::PENDING_PAYMENT)) && $data['pay_enabled']): ?>
-									<?php
-									$booking = SLN_Plugin::getInstance()->createBooking($item['id']); ?>
-									<div class="col-xs-10 col-sm-6 col-md-12">
-										<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth">
-											<a href="<?php echo $booking->getPayUrl(); ?>">
-												<?php _e('Pay Now','salon-booking-system');?>
-											</a>
-										</div>
-									</div>
-									<div style="clear: both"></div>
-
-									<?php if (SLN_Plugin::getInstance()->getSettings()->get('pay_offset_enabled')) : ?>
-										<div>
-											<?php echo sprintf(__('You have <strong>%s</strong> to complete your payment before this reservation being canceled','salon-booking-system'), $booking->getTimeStringToChangeStatusFromPending()); ?>
-										</div>
-										<div style="clear: both"></div>
-										<br>
-									<?php endif ?>
-								<?php endif; ?>
-								<?php if ($item['status_code'] != SLN_Enum_BookingStatus::CANCELED
-								          && $data['cancellation_enabled']): ?>
-									<div class="col-xs-10 col-sm-6 col-md-12">
-										<?php if ($item['timestamp']-current_time('timestamp') > $data['seconds_before_cancellation']): ?>
-											<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth danger">
-												<button onclick="slnMyAccount.cancelBooking(<?php echo $item['id']; ?>);">
-													<?php _e('Cancel booking','salon-booking-system');?>
-												</button>
-											</div>
-										<?php else: ?>
-											<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth disabled">
-												<button data-toggle="tooltip" data-placement="top" style="cursor: not-allowed;"
-												        title="<?php _e('Sorry, you cannot cancel this booking online. Please call ' . $data['gen_phone'], 'salon-booking-system'); ?>">
-													<?php _e('Cancel booking','salon-booking-system');?>
-												</button>
-											</div>
-										<?php endif ?>
-									</div>
-									<div style="clear: both"></div>
-								<?php endif; ?>
-							</div>
-						</td>
-					</tr>
-				<?php endforeach; ?>
-				</tbody>
-			</table>
+			<?php
+			$data['table_data']         = $data['new'];
+			$data['table_data']['mode'] = 'new';
+			include '_salon_my_account_details_table.php';
+			unset($data['table_data']);
+			?>
 		<?php else: ?>
 			<p class="hint"><?php _e('You don\'t have upcoming reservations, do you want to re-schedule your last appointment with us?', 'salon-booking-system'); ?></p>
+			<?php
+			if (!empty($data['history']['items'])) {
+				$data['table_data']          = $data['history'];
+				$data['table_data']['items'] = array_slice($data['table_data']['items'], 0, 1);
+				$data['table_data']['mode']  = 'last_one_history';
+				include '_salon_my_account_details_table.php';
+				unset($data['table_data']);
+			}
+			?>
 		<?php endif; ?>
 		<br>
 		<div class="row">
@@ -116,7 +47,12 @@
 			<p class="hint"><?php _e('Here you have your past reservations, you can submit a review or re-schedule an appointment', 'salon-booking-system'); ?></p>
 
 			<div id="sln-salon-my-account-history-content">
-				<?php include '_salon_my_account_details_history_table.php' ?>
+				<?php
+				$data['table_data']         = $data['history'];
+				$data['table_data']['mode'] = 'history';
+				include '_salon_my_account_details_table.php';
+				unset($data['table_data']);
+				?>
 			</div>
 
 			<div class="row">
