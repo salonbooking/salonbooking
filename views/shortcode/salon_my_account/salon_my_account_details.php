@@ -102,12 +102,14 @@
 		<?php else: ?>
 			<p class="hint"><?php _e('You don\'t have upcoming reservations, do you want to re-schedule your last appointment with us?', 'salon-booking-system'); ?></p>
 		<?php endif; ?>
-		<div class="col-xs-10 col-sm-6 col-md-4">
-			<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth">
-				<a href="<?php echo $data['booking_url'] ?>"><?php _e('MAKE A NEW RESERVATION', 'salon-booking-system') ?></a>
+		<br>
+		<div class="row">
+			<div class="col-xs-10 col-sm-6 col-md-4">
+				<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth">
+					<a href="<?php echo $data['booking_url'] ?>"><?php _e('MAKE A NEW RESERVATION', 'salon-booking-system') ?></a>
+				</div>
 			</div>
 		</div>
-		<div style="clear: both"></div>
 	</div>
 	<div role="tabpanel" class="tab-pane sln-salon-my-account-tab-pane" id="old">
 		<?php if (!empty($data['history']['items'])):?>
@@ -117,18 +119,21 @@
 				<?php include '_salon_my_account_details_history_table.php' ?>
 			</div>
 
-			<div class="col-xs-1 col-sm-1 col-md-1 pull-right">
-				<a id="next_history_page_btn" href="load_more" onclick="slnMyAccount.loadNextHistoryPage(); return false;" style="color: #b6b6b6"><div class="glyphicon-ring"><span class="glyphicon glyphicon-plus glyphicon-bordered" aria-hidden="true"></span></div></a>
+			<div class="row">
+				<div class="col-xs-1 col-sm-1 col-md-1 pull-right">
+					<a id="next_history_page_btn" href="load_more" onclick="slnMyAccount.loadNextHistoryPage(); return false;" style="color: #b6b6b6"><div class="glyphicon-ring"><span class="glyphicon glyphicon-plus glyphicon-bordered" aria-hidden="true"></span></div></a>
+				</div>
 			</div>
 		<?php else: ?>
 			<p class="hint"><?php _e('No bookings', 'salon-booking-system'); ?></p>
 		<?php endif; ?>
-		<div class="col-xs-10 col-sm-6 col-md-4">
-			<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth">
-				<a href="<?php echo $data['booking_url'] ?>"><?php _e('MAKE A NEW RESERVATION', 'salon-booking-system') ?></a>
+		<div class="row">
+			<div class="col-xs-10 col-sm-6 col-md-4">
+				<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth">
+					<a href="<?php echo $data['booking_url'] ?>"><?php _e('MAKE A NEW RESERVATION', 'salon-booking-system') ?></a>
+				</div>
 			</div>
 		</div>
-		<div style="clear: both"></div>
 	</div>
 
 
