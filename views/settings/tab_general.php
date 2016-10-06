@@ -148,7 +148,7 @@
                     <?php $this->row_input_checkbox('email_remind', __('Remind the appointment to the client with an Email', 'salon-booking-system')); ?>
                 </div>
                 <div class="col-sm-4 col-md-4 form-group sln-select  sln-select--info-label">
-                    <label for="salon_settings_email_remind_interval"><?php __('Email Timing','salon-booking-system') ?></label>
+                    <label for="salon_settings_email_remind_interval"><?php _e('Email Timing','salon-booking-system') ?></label>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6">
                             <?php $field = "salon_settings[email_remind_interval]"; ?>
@@ -172,6 +172,88 @@
                 </div>
                 <div class="col-sm-4 col-md-4 sln-box-maininfo  align-top">
                     <p class="sln-input-help"><?php _e('You can use [DATE], [TIME], [SALON NAME]','salon-booking-system') ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sln-box-info">
+        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
+        <div class="sln-box-info-content row">
+            <div class="col-md-4 col-sm-8 col-xs-12">
+                <h5><?php _e('-','salon-booking-system') ?></h5>
+            </div>
+        </div>
+        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
+    </div>
+</div>
+
+<div class="sln-box sln-box--main">
+    <h2 class="sln-box-title"><?php _e('Automatic follow-up','salon-booking-system') ?></h2>
+    <div class="sln-box--sub row">
+        <div class="col-xs-12">
+            <h2 class="sln-box-title"><?php _e('Enable reservation follow-up','salon-booking-system') ?></h2>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3 col-md-3 form-group sln-checkbox">
+                    <?php $this->row_input_checkbox('follow_up_email', __('by Email', 'salon-booking-system')); ?>
+                </div>
+                <div class="col-xs-6 col-sm-3 col-md-3 form-group sln-checkbox">
+                    <?php $this->row_input_checkbox('follow_up_sms', __('by SMS', 'salon-booking-system')); ?>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 form-group sln-select  sln-select--info-label">
+                    <label for="salon_settings_follow_up_interval"><?php _e('Timing','salon-booking-system') ?></label>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-8 col-lg-6">
+                            <?php SLN_Form::fieldSelect(
+                                'salon_settings[follow_up_interval]',
+                                array(
+                                    '+1 days'   => '1 ' . __('day', 'salon-booking-system'),
+                                    '+2 days'   => '2 ' . __('days', 'salon-booking-system'),
+                                    '+3 days'   => '3 ' . __('days', 'salon-booking-system'),
+                                    '+4 days'   => '4 ' . __('days', 'salon-booking-system'),
+                                    '+5 days'   => '5 ' . __('days', 'salon-booking-system'),
+                                    '+1 weeks'  => '1 ' . __('week', 'salon-booking-system'),
+                                    '+2 weeks'  => '2 ' . __('weeks', 'salon-booking-system'),
+                                    '+3 weeks'  => '3 ' . __('weeks', 'salon-booking-system'),
+                                    '+1 months' => '1 ' . __('month', 'salon-booking-system'),
+                                    'custom'    => __('Customer habit', 'salon-booking-system'),
+                                ),
+                                $this->getOpt('follow_up_interval'),
+                                array(),
+                                true
+                            ) ?>
+                            <div class="row">
+                                <div class="col-xs-offset-1 col-md-offset-1">
+                                    <p id="salon_settings_follow_up_interval_custom_hint" class="help-block"><?php _e('We\'ll send a message two days before the <strong>next estimated booking</strong>','salon-booking-system') ?></p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-6 sln-label--big">
+                            <label id="salon_settings_follow_up_interval_hint" for="salon_settings_follow_up_interval"><?php _e('After the last appointment','salon-booking-system') ?></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 form-group sln-input--simple">
+                    <?php $this->row_input_textarea(
+                        'follow_up_message',
+                        __('Custom message (max 150 characters)', 'salon-booking-system'),
+                        array(
+                            'textarea' => array(
+                                'attrs' => array(
+                                    'style'       => 'height: 140px;',
+                                    'maxlength'   => 150,
+                                    'placeholder' => 'write message'
+                                )
+                            )
+                        )
+                    ); ?>
+                </div>
+                <div class="col-sm-4 col-md-4 sln-box-maininfo  align-top">
+                    <p class="sln-input-help"><?php _e('You can use this dynamic tags: [NAME], [SALON NAME]','salon-booking-system') ?></p>
                 </div>
             </div>
         </div>

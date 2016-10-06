@@ -590,6 +590,11 @@ jQuery(function ($) {
         }
     }).change();
 
+    $('#salon_settings_follow_up_interval').change(function(){
+        $('#salon_settings_follow_up_interval_custom_hint').css('display', $(this).val() === 'custom' ? '' : 'none');
+        $('#salon_settings_follow_up_interval_hint').css('display', $(this).val() !== 'custom' ? '' : 'none');
+    }).change();
+
    $('.sln-panel .collapse').on('shown.bs.collapse', function() {
         $(this).parent().find('.sln-paneltrigger').addClass('sln-btn--active');
         $(this).parent().addClass('sln-panel--active');
