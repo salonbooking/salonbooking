@@ -33,7 +33,6 @@ $cl_ok: #5bc24c;
 
 
 #sln-salon-my-account {
-    padding: 1.6em 10px !important;
     h1 {
       color: #333;
       text-align: center;
@@ -53,65 +52,65 @@ $cl_ok: #5bc24c;
       box-shadow: none;
     }
 
-    td {
-      font-size: 13px !important;
+    .nav {
+      li {
+        padding: 0 !important;
+      }
+      li:not(:nth-child(1)).active a {
+        background-color: #f4f4f4 !important;
+      }
+      li:not(:nth-child(1)):not(.active) a {
+        background-color: #d6d6d6 !important;
+      }
+      li a {
+        border-radius: 0px;
+        padding: 20px 15px;
+        font-weight: normal;
+        color: #555555 !important;
+      }
+      li:nth-child(1) a {
+        padding: 10px 15px;
+        font-size: x-large;
+      }
     }
-    .table-bordered {
-      border-width: 1px;
-      border: none;
-      border-top: 1px solid $bg-contrast-high;
+    .sln-salon-my-account-tab-content {
+      background-color: #f4f4f4
     }
-    .table-striped > tbody > tr:nth-of-type(even) {
-      background-color: $bg-high;
+    .sln-salon-my-account-tab-pane {
+      padding: 20px !important;
     }
-    .table thead tr {
-      border-bottom: 2px solid $color-high;
-      color: $color-high;
+    .hint {
+      font-size: larger;
+      color: #b9b9b9;
+      text-align: center;
+      padding: 20px 20% 20px 20%;
     }
     .table {
-      margin-bottom: 4em;
-    }
-    .table thead tr th {
-      text-align: center;
-      text-transform: uppercase;
-      background-color: $color-white;
-    }
-
-    .table tbody tr td {
-      color: $text-medium;
-      text-align: center;
-    }
-
-    .table tbody tr td strong {
-      color: $text-medium;
-    }
-
-    .table tbody tr td:nth-child(2),
-    .table tbody tr td:nth-child(3) {
-      text-align: left;
-    }
-
-    .table thead tr th {
-      padding: 8px;
-      font-size: .7em;
-      border-bottom: 1px solid transparent;
-    }
-    .table tbody tr td {
-      padding: 16px 8px;
+      border: none !important;
+      tr {
+        border: none !important;
+      }
+      td {
+        color: #555555;
+        text-align: center;
+      }
+      thead td {
+        text-align: center;
+        text-transform: uppercase;
+        border: none !important;
+        border-bottom: 2px solid #4c4c4c !important;
+        font-size: .7em;
+      }
+      tbody td {
+        border: none !important;
+        border-bottom: 2px solid #4c4c4c !important;
+        font-size: 13px !important;
+      }
+      tbody tr td:nth-child(6) {
+        text-transform: uppercase;
+      }
     }
 
-    .table tbody tr td:nth-child(2) {
-      max-width: 100px;
-    }
-
-    .table tbody tr td:last-child {
-      //width: 170px;
-    }
-
-    .table tbody tr td:nth-child(2),
-    .table tbody tr td:last-child {
-      text-transform: uppercase;
-    }
     h3 {
       color: black;
       margin: 20px 0px;
@@ -122,19 +121,21 @@ $cl_ok: #5bc24c;
     }
 
     .success {
-      color: $cl_ok;
+      background-color: $cl_ok;
     }
 
     .warning,
     .info {
-      color: $cl_warning;
+      background-color: $cl_warning;
     }
     .danger {
-      color: red;
+      background-color: red;
+    }
+    .disabled {
+      background-color: grey;
     }
 
     button {
-      border-radius: 4px !important;
       text-transform: uppercase;
     }
 
@@ -203,16 +204,36 @@ $cl_ok: #5bc24c;
       width:            auto        !important;
     }
 
+    .glyphicon-ring {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid #b6b6b6;
+      color: #b6b6b6;
+      display: inline-table;
+      text-align: center;
+    }
+    .glyphicon-ring .glyphicon-bordered {
+      font-size: 20px;
+      vertical-align: middle;
+      display: table-cell;
+    }
+
     .sln-rate-service {
       background-color: $cl_warning     !important;
     }
-    .btn {
-      margin-top: 1em;
+
+    .sln-rate-service-on {
+      margin: 0 3px 0 3px;
+      color: #e8d826 !important;
+    }
+    .sln-rate-service-off {
+      margin: 0 3px 0 3px;
+      color: #d6d6d6 !important;
     }
 
     .rating {
       width:            auto;
-      background-color: $bg-high;
       padding:          4px 8px 6px;
       border-radius:    3px;
       font-size:        16px;
@@ -230,7 +251,7 @@ $cl_ok: #5bc24c;
       vertical-align: auto;
       vertical-align: initial;
       font-size: 11px;
-      color: red;
+      color: #e8d826;
     }
     .sln-my-account-message {
       display: block;
@@ -476,6 +497,7 @@ $cl_ok: #5bc24c;
     &.glyphicon-time:before {content: "\f017";}
     &.glyphicon-trash:before {content: "\f1f8";}
     &.glyphicon-ban-circle:before {content: "\f05e";}
+    &.glyphicon-plus:before {content: "\f067";}
     &.glyphicon-minus:before {content: "\f068";}
     &.glyphicon-star:before {content: "\f005";}
     &.glyphicon-star-empty:before {content: "\f006";}

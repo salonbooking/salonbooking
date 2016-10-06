@@ -44,7 +44,7 @@ var slnMyAccount = {
                     window.location.href = data.redirect;
                 } else {
                     jQuery('#sln-salon-my-account-content').html(data.content);
-                    slnMyAccount.createRatings();
+                    slnMyAccount.createRatings(true, 'circle');
                     jQuery("[data-toggle='tooltip']").tooltip();
                 }
             },
@@ -52,16 +52,60 @@ var slnMyAccount = {
         });
     },
 
-    createRatings: function () {
+    loadNextHistoryPage: function () {
+        var page = parseInt(jQuery('#sln-salon-my-account-history-content table tr:last').attr('data-page'))+1;
+        jQuery.ajax({
+            url: salon.ajax_url,
+            data: {
+                action: 'salon',
+                method: 'myAccountDetails',
+                args: {
+                    part: 'history',
+                    page: page,
+                }
+            },
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (typeof data.redirect != 'undefined') {
+                    window.location.href = data.redirect;
+                } else {
+                    jQuery('#sln-salon-my-account-history-content').html(data.content);
+                    if(jQuery('#sln-salon-my-account-history-content table tr:last').attr('data-end') == 1) {
+                        jQuery('#next_history_page_btn').remove();
+                    }
+                    slnMyAccount.createRatings(true, 'circle');
+                    jQuery("[data-toggle='tooltip']").tooltip();
+                }
+            },
+            error: function(data){alert('error'); console.log(data);}
+        });
+    },
+
+    createRatings: function (readOnly, view) {
         jQuery('[name=sln-rating]').each(function() {
             if (jQuery(this).val()) {
-                slnMyAccount.createRaty(jQuery(this), true);
+                slnMyAccount.createRaty(jQuery(this), readOnly, view);
             }
         });
     },
 
-    createRaty: function ($rating, readOnly) {
+    createRaty: function ($rating, readOnly, view) {
         readOnly = readOnly == undefined ? false : readOnly;
+        view = view == undefined ? 'star' : view;
+
+        var starOnClass  = 'glyphicon';
+        var starOffClass = 'glyphicon';
+
+        if (view === 'circle') {
+            starOnClass  += ' sln-rate-service-on';
+            starOffClass += ' sln-rate-service-off';
+        }
+        else {
+            starOnClass  += ' glyphicon-star';
+            starOffClass += ' glyphicon-star-empty';
+        }
+
         var $ratyElem = $rating.parent().find('.rating');
         $ratyElem.raty({
             score: jQuery($rating).val(),
@@ -69,8 +113,8 @@ var slnMyAccount = {
             path: salon.images_folder,
             readOnly: readOnly,
             starType : 'i',
-            starOff:"glyphicon glyphicon-star-empty",
-            starOn:"glyphicon glyphicon-star",
+            starOff: starOffClass,
+            starOn:  starOnClass,
         });
         $ratyElem.css('display', 'block');
     },
@@ -129,7 +173,7 @@ var slnMyAccount = {
             this.loadContent();
         }
         else /*if (jQuery('[name=post_type]').val() == 'sln_booking')*/ {
-            this.createRatings();
+            this.createRatings(true, 'star');
         }
     }
 };
