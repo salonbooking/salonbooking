@@ -51,6 +51,8 @@ class SLN_TaxonomyType_ServiceCategory extends SLN_TaxonomyType_Abstract
             $order = get_option(SLN_Plugin::CATEGORY_ORDER, '""');
             return "FIELD(t.term_id, $order)";
         }
+
+        return $terms;
     }
 
     function terms_radiolist($post_id, $taxonomy, $echo = true)
