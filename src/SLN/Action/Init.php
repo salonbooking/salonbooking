@@ -48,6 +48,8 @@ class SLN_Action_Init
 
         add_action('sln_sms_reminder', 'sln_sms_reminder');
         add_action('sln_email_reminder', 'sln_email_reminder');
+        add_action('sln_sms_followup', 'sln_sms_followup');
+        add_action('sln_email_followup', 'sln_email_followup');
         add_action('sln_cancel_bookings', 'sln_cancel_bookings');
 
         new SLN_Action_InitScripts($this->plugin, is_admin());

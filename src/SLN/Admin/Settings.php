@@ -283,6 +283,22 @@ class SLN_Admin_Settings
             wp_schedule_event(time(), 'hourly', 'sln_email_reminder');
             wp_schedule_event(time()+1800, 'hourly', 'sln_email_reminder');
         }
+        if (isset($submitted['follow_up_sms']) && $submitted['follow_up_sms']) {
+            if (!wp_get_schedule('sln_sms_followup')) {
+                wp_schedule_event(time(), 'daily', 'sln_sms_followup');
+            }
+        }
+        else {
+            wp_clear_scheduled_hook('sln_sms_followup');
+        }
+        if (isset($submitted['follow_up_email']) && $submitted['follow_up_email']) {
+            if (!wp_get_schedule('sln_email_followup')) {
+                wp_schedule_event(time(), 'daily', 'sln_email_followup');
+            }
+        }
+        else {
+            wp_clear_scheduled_hook('sln_email_followup');
+        }
         $this->settings->save();
         $this->showAlert(
             'success',

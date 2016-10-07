@@ -22,10 +22,6 @@ class SLN_Wrapper_Customer {
 		}
 	}
 
-	public function getUserType() {
-		return SLN_Plugin::USER_ROLE_CUSTOMER;
-	}
-
 	public function isEmpty() {
 		return empty($this->object->ID);
 	}
@@ -41,14 +37,13 @@ class SLN_Wrapper_Customer {
 	}
 
 	public function getMeta($key) {
-		$ut = $this->getUserType();
-
-		return apply_filters("$ut.$key.get", get_user_meta($this->getId(), "_{$ut}_$key", true));
+		$key = "_sln_{$key}";
+		return apply_filters("$key.get", get_user_meta($this->getId(), $key, true));
 	}
 
 	public function setMeta($key, $value) {
-		$ut = $this->getUserType();
-		update_user_meta($this->getId(), "_{$ut}_$key", apply_filters("$ut.$key.set", $value));
+		$key = "_sln_{$key}";
+		update_user_meta($this->getId(), $key, apply_filters("$key.set", $value));
 	}
 
 	public function getName() {

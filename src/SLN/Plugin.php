@@ -285,6 +285,18 @@ function sln_email_reminder()
     $obj->executeEmail();
 }
 
+function sln_sms_followup()
+{
+    $obj = new SLN_Action_FollowUp(SLN_Plugin::getInstance());
+    $obj->executeSms();
+}
+
+function sln_email_followup()
+{
+    $obj = new SLN_Action_FollowUp(SLN_Plugin::getInstance());
+    $obj->executeEmail();
+}
+
 function sln_cancel_bookings()
 {
     $obj = new SLN_Action_CancelBookings(SLN_Plugin::getInstance());
