@@ -1,18 +1,14 @@
 <?php
 
-class SLN_Wrapper_Customer extends SLN_Wrapper_Abstract {
+class SLN_Wrapper_Customer {
 
 	private $bookings = array();
-
-	public function getPostType()
-	{
-		return false;
-	}
+	private $countOfBookingsForEstimateNextBooking = 7;
 
 	/**
 	 * SLN_Wrapper_Customer constructor.
 	 *
-	 * @param WP_User $object
+	 * @param WP_User|int $object
 	 */
 	public function __construct($object) {
 		if (!is_object($object)) {
@@ -26,12 +22,36 @@ class SLN_Wrapper_Customer extends SLN_Wrapper_Abstract {
 		}
 	}
 
+	public function getUserType() {
+		return SLN_Plugin::USER_ROLE_CUSTOMER;
+	}
+
+	public function isEmpty() {
+		return empty($this->object->ID);
+	}
+
+	function getId() {
+		if (!$this->isEmpty()) {
+			return $this->object->ID;
+		}
+	}
+
 	public function get($key) {
 		return $this->object->get($key);
 	}
 
-	public function getName()
-	{
+	public function getMeta($key) {
+		$ut = $this->getUserType();
+
+		return apply_filters("$ut.$key.get", get_user_meta($this->getId(), "_{$ut}_$key", true));
+	}
+
+	public function setMeta($key, $value) {
+		$ut = $this->getUserType();
+		update_user_meta($this->getId(), "_{$ut}_$key", apply_filters("$ut.$key.set", $value));
+	}
+
+	public function getName() {
 		if (!$this->isEmpty()) {
 			return $this->get('first_name') . ' ' . $this->get('last_name');
 		}
@@ -84,7 +104,7 @@ class SLN_Wrapper_Customer extends SLN_Wrapper_Abstract {
 			}
 		}
 
-		return number_format(empty($amount) ? 0 : floatval($amount), 2);
+		return floatval($amount);
 	}
 
 	public function getAverageCountOfServices() {
@@ -156,32 +176,33 @@ class SLN_Wrapper_Customer extends SLN_Wrapper_Abstract {
 	}
 
 	/**
+	 * @param array $args
+	 *
 	 * @return SLN_Wrapper_Booking[]
 	 */
-	public function getCompletedBookings() {
-		$bookings = $this->getBookings();
+	public function getCompletedBookings($args = array()) {
+		$args['post_status'] = array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED);
 
-		foreach($bookings as $k => $booking) {
-			if (!in_array($booking->getStatus(), array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED))) {
-				unset($bookings[$k]);
-			}
-		}
+		$bookings            = $this->getBookings($args);
 
 		return $bookings;
 	}
 
 	/**
+	 * @param array $args
+	 *
 	 * @return SLN_Wrapper_Booking[]
+	 * @throws Exception
 	 */
-	public function getBookings() {
+	public function getBookings($args = array()) {
 		if (!$this->isEmpty() && empty($this->bookings)) {
+			$args['author'] = $this->object->ID;
+
 			$repo           = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_BOOKING);
 			$this->bookings = $repo->get(
 				array(
 					'@query' => '',
-					'@wp_query' => array(
-							'author' => $this->object->ID,
-					),
+					'@wp_query' => $args,
 				)
 			);
 		}
@@ -189,8 +210,118 @@ class SLN_Wrapper_Customer extends SLN_Wrapper_Abstract {
 		return $this->bookings;
 	}
 
-	public function isEmpty(){
-		return empty($this->object->ID);
+	/**
+	 * @return string|false 'Y-m-d H:i'
+	 */
+	public function getLastBookingTime() {
+		$date = $this->getMeta('last_booking_time');
+
+		if (!$date) {
+			$date = $this->calcLastBookingTime();
+		}
+
+		return $date;
+	}
+
+	/**
+	 * @return string|false 'Y-m-d H:i'
+	 */
+	public function calcLastBookingTime() {
+		$date = false;
+		$args = array(
+			'meta_key' => '_sln_booking_date',
+			'orderby'  => 'meta_value',
+			'order'    => 'DESC'
+		);
+		$bookings = $this->getCompletedBookings($args);
+
+		if (!empty($bookings)) {
+			usort($bookings, array($this, 'sortDescByStartsAt'));
+			/** @var SLN_Wrapper_Booking $last */
+			$last = reset($bookings);
+			$date = $last->getStartsAt()->format('Y-m-d H:i');
+		}
+
+		return $date;
+	}
+
+	/**
+	 * @return string|false 'Y-m-d'
+	 */
+	public function getNextBookingTime() {
+		$date = $this->getMeta('next_booking_time');
+
+		if (!$date) {
+			$date = $this->calcNextBookingTime();
+		}
+
+		return $date;
+	}
+
+	/**
+	 * @return string|false 'Y-m-d'
+	 */
+	public function calcNextBookingTime() {
+		$lastDate = $this->getLastBookingTime();
+		if (!$lastDate) {
+			return false;
+		}
+
+		$date = false;
+
+		$args = array(
+			'meta_key' => '_sln_booking_date',
+			'orderby'  => 'meta_value',
+			'order'    => 'DESC',
+		);
+		$bookings = $this->getCompletedBookings($args);
+
+		if (!empty($bookings)) {
+			usort($bookings, array($this, 'sortDescByStartsAt'));
+			/** @var SLN_Wrapper_Booking[] $bookings */
+			$bookings = array_slice($bookings, 0, $this->countOfBookingsForEstimateNextBooking);
+
+			$lastId = count($bookings) - 1;
+			$days = 0;
+			foreach($bookings as $k => $b) {
+				if ($k < $lastId) {
+					// interval in days between bookings
+					$interval = (strtotime($b->getStartsAt()->format('Y-m-d').' 00:00:00') - strtotime($bookings[$k+1]->getStartsAt()->format('Y-m-d').' 00:00:00'))/(60*60*24) - 1;
+					$interval = $interval > 0 ? $interval : 0;
+					$days    += $interval;
+				}
+			}
+
+			$value = round($days / count($bookings)) + 1;
+
+			$date  = date('Y-m-d', strtotime("+$value days", strtotime($lastDate)));
+		}
+
+		return $date;
+	}
+
+	/**
+	 * @param SLN_Wrapper_Booking $a
+	 * @param SLN_Wrapper_Booking $b
+	 *
+	 * @return int
+	 */
+	private function sortDescByStartsAt($a, $b) {
+		return (strtotime($a->getStartsAt()->format('Y-m-d H:i:s')) >= strtotime($b->getStartsAt()->format('Y-m-d H:i:s')) ? -1 : 1 );
+	}
+
+	public function setLastBookingTime($date) {
+		if ($date instanceof DateTime) {
+			$date = $date->format('Y-m-d H:i');
+		}
+		$this->setMeta('last_booking_time', $date);
+	}
+
+	public function setNextBookingTime($date) {
+		if ($date instanceof DateTime) {
+			$date = $date->format('Y-m-d');
+		}
+		$this->setMeta('next_booking_time', $date);
 	}
 
 	public static function isCustomer($object) {

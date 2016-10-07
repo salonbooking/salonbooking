@@ -111,6 +111,9 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         $booking = $this->getPlugin()->createFromPost($post_id);
         $booking->evalBookingServices();
         $booking->evalDuration();
+        $this->disabledSavePost = true;
+        $booking->setStatus($booking->getStatus());
+        $this->disabledSavePost = false;
         $s = $booking->getStatus();
         $new = $_POST['_sln_booking_status'];
         if (strpos($new, 'sln-b-') !== 0) {
