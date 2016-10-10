@@ -39,15 +39,7 @@ include dirname(__FILE__).'/_header.php';
 
 					<td width="147" align="right" valign="top">
 						<p style="padding-left: 20px;">
-							<?php
-							$id = $plugin->getSettings()->get('pay');
-							if ($id) {
-								$url = get_permalink($id);
-							}else{
-								$url = home_url();
-							}
-							?>
-							<a href="<?php echo $url; ?>"style="
+							<a href="<?php echo home_url().'/'.$customer->generateHash(); ?>"style="
 										text-transform: uppercase;
 										display: inline-block;
 									    padding: 10px 20px;

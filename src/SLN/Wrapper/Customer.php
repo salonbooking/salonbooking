@@ -319,6 +319,24 @@ class SLN_Wrapper_Customer {
 		$this->setMeta('next_booking_time', $date);
 	}
 
+	public function generateHash() {
+		do {
+			$hash = substr(md5($this->getId().':'.current_time('timestamp')), 0, 8);
+		} while(self::getCustomerIdByHash($hash));
+
+		$this->setMeta('hash', $hash);
+
+		return $hash;
+	}
+
+	public static function getCustomerIdByHash($hash) {
+		global $wpdb;
+
+		$userid = $wpdb->get_var("SELECT user_id FROM {$wpdb->usermeta} WHERE meta_key='_sln_hash' AND meta_value='{$hash}' ");
+
+		return $userid;
+	}
+
 	public static function isCustomer($object) {
 		if (!is_object($object)) {
 			$object = get_user_by('id', $object);

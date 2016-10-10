@@ -52,6 +52,8 @@ class SLN_Action_Init
         add_action('sln_email_followup', 'sln_email_followup');
         add_action('sln_cancel_bookings', 'sln_cancel_bookings');
 
+        add_action('template_redirect', array($this, 'template_redirect'));
+
         new SLN_Action_InitScripts($this->plugin, is_admin());
         $this->initPolylangSupport();
     }
@@ -139,5 +141,36 @@ class SLN_Action_Init
         //unset($types['sln_attendant']);
 
         return $types;
+    }
+
+    public function template_redirect() {
+        global $wp_query;
+
+        $name = $wp_query->get('name');
+
+        if (!empty($name)) {
+            $userid = SLN_Wrapper_Customer::getCustomerIdByHash($name);
+            if ($userid) {
+                $user = get_user_by('id', (int) $userid);
+                if ($user) {
+                    $customer = new SLN_Wrapper_Customer($user);
+                    if (!$customer->isEmpty()) {
+                        wp_set_auth_cookie($user->ID, false);
+                        do_action('wp_login', $user->user_login, $user);
+
+                        // Create redirect URL without autologin code
+                        $id = $this->plugin->getSettings()->get('pay');
+                        if ($id) {
+                            $url = get_permalink($id);
+                        }else{
+                            $url = home_url();
+                        }
+
+                        wp_redirect($url);
+                        exit;
+                    }
+                }
+            }
+        }
     }
 }
