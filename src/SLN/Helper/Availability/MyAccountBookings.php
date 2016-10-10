@@ -11,6 +11,8 @@ class SLN_Helper_Availability_MyAccountBookings
 
 	private function buildBookings($user, $mode)
 	{
+		$timestamp = current_time('timestamp');
+
 		$args = array(
 			'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
 			'nopaging'   => true,
@@ -18,7 +20,7 @@ class SLN_Helper_Availability_MyAccountBookings
 				array(
 					'key'     => '_sln_booking_date',
 					'value'   => $this->date->format('Y-m-d'),
-					'compare' => $mode == 'history' ? '<' : '>=',
+					'compare' => $mode == 'history' ? '<=' : '>=',
 				)
 			),
 			'author' => $user
@@ -32,7 +34,11 @@ class SLN_Helper_Availability_MyAccountBookings
 		$query = new WP_Query($args);
 		$ret = array();
 		foreach ($query->get_posts() as $p) {
-			$ret[] = SLN_Plugin::getInstance()->createBooking($p);
+			$b     = SLN_Plugin::getInstance()->createBooking($p);
+			$bTime = strtotime($b->getStartsAt()->format('Y-m-d H:i'));
+			if ($mode === 'new' && $bTime >= $timestamp || $mode === 'history' && $bTime < $timestamp ) {
+				$ret[] = $b;
+			}
 		}
 		wp_reset_query();
 		wp_reset_postdata();
