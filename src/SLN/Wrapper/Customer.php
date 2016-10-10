@@ -46,6 +46,11 @@ class SLN_Wrapper_Customer {
 		update_user_meta($this->getId(), $key, apply_filters("$key.set", $value));
 	}
 
+	public function deleteMeta($key) {
+		$key = "_sln_{$key}";
+		delete_user_meta($this->getId(), $key);
+	}
+
 	public function getName() {
 		if (!$this->isEmpty()) {
 			return $this->get('first_name') . ' ' . $this->get('last_name');
