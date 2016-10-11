@@ -476,7 +476,8 @@ ul.sln-list--dashed li,
   border-color: #D22221; }
 
 #sln-salon {
-  font-family: "Open sans", serif; }
+  font-family: "Open sans", serif;
+  font-weight: 400; }
   #sln-salon h1,
   #sln-salon h2,
   #sln-salon h3,
@@ -485,12 +486,14 @@ ul.sln-list--dashed li,
   #sln-salon h6 {
     font-family: "Open sans", serif;
     box-shadow: none;
-    font-style: normal; }
+    font-style: normal;
+    font-weight: 400; }
   #sln-salon p,
   #sln-salon ul,
   #sln-salon li {
     font-family: "Open sans", serif;
-    box-shadow: none; }
+    box-shadow: none;
+    font-weight: 400; }
   #sln-salon button,
   #sln-salon input,
   #sln-salon optgroup,
@@ -1183,7 +1186,8 @@ ul.sln-list--dashed li,
     border-width: 1px;
     border-style: solid; }
   #sln-salon .sln-input label {
-    padding: .5em 1.2em; }
+    padding: .5em 1.2em;
+    font-weight: 400; }
   #sln-salon .sln-input .help-block {
     padding: 0 .8em;
     margin-bottom: 0; }
@@ -1934,7 +1938,7 @@ ul.sln-list--dashed li,
     border-radius: 4px !important;
     text-transform: uppercase; }
   #sln-salon-my-account .tooltip.right .tooltip-inner {
-    box-shadow: 1px 1px rgba(205, 205, 205,1), 2px 2px rgba(205, 205, 205,1), 3px 3px rgba(205, 205, 205,1), -1px -1px rgba(205, 205, 205,1);
+    box-shadow: 1px 1px #cdcdcd, 2px 2px #cdcdcd, 3px 3px #cdcdcd, -1px -1px #cdcdcd;
     color: black;
     background-color: #ebebeb !important;
     padding: 10px;
@@ -1944,7 +1948,7 @@ ul.sln-list--dashed li,
   #sln-salon-my-account .tooltip.right .tooltip-inner strong {
     color: black; }
   #sln-salon-my-account .tooltip.right .tooltip-arrow {
-    border-right-color: rgb(205, 205, 205) !important; }
+    border-right-color: #cdcdcd !important; }
   #sln-salon-my-account .tooltip.top .tooltip-inner {
     background-color: #919FA7 !important;
     max-width: 160px;

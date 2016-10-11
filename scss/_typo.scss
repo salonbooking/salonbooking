@@ -2,6 +2,7 @@
 $fontfamily--main:"Open sans", serif;
 #sln-salon  {
   font-family: $fontfamily--main;
+  font-weight: 400;
   h1,
   h2,
   h3,
@@ -11,12 +12,14 @@ $fontfamily--main:"Open sans", serif;
     font-family: $fontfamily--main;
     box-shadow: none;
     font-style: normal;
+    font-weight: 400;
   }
   p,
   ul,
   li  {
     font-family: $fontfamily--main;
     box-shadow: none;
+    font-weight: 400;
   }
   button,
   input,
