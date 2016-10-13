@@ -442,7 +442,7 @@ body.salone_page_salon-settings,
 body.toplevel_page_salon,
 body.salone_page_salon-reports,
 body.salone_page_salon-tools {
-    background-color: $cl_main--lighter;
+    #wpwrap {background-color: $cl_main--lighter;}
 }
 // GENERL RULES // END
 
@@ -507,6 +507,7 @@ body.salone_page_salon-tools {
             }
         }
         @include bp(desktop) {
+            position: absolute;
             width: rem(340px);
             right: rem(10px);
             bottom: auto;
@@ -515,6 +516,10 @@ body.salone_page_salon-tools {
             .sln-update-settings {
                 float: none;
                 width: 100%;
+            }
+            &.affix {
+                position: fixed;
+                top: 40px;
             }
         }
         .sln-toolbox-trigger-mob {float: right;}

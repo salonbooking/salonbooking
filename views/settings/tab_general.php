@@ -1,6 +1,6 @@
 <div class="sln-tab" id="sln-tab-general">
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php _e('Salon\'s informations','salon-booking-system'); ?> <span>-</span></h2>
+    <h2 class="sln-box-title"><?php _e('Salon\'s informations','salon-booking-system'); ?></h2>
     <div class="row">
         <div class="col-sm-4 form-group sln-input--simple">
             <?php
@@ -53,15 +53,22 @@
             <p class="sln-input-help"><?php __('Provide the full address of your Salon','salon-booking-system') ?></p>
         </div>
     </div>
-    <div class="sln-box-info">
-       <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
-       <div class="sln-box-info-content row">
-       <div class="col-md-4 col-sm-8 col-xs-12">
-       <h5><?php __('-','salon-booking-system') ?></h5>
-        </div>
-        </div>
-        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
+    <!--
+THIS BOX MUST BE HIDDEN IF NOT IN USE
+<div class="sln-box-info">
+    <div class="sln-box-info-trigger">
+        <button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button>
     </div>
+    <div class="sln-box-info-content row">
+        <div class="col-md-4 col-sm-8 col-xs-12">
+            <h5><?php _e('-', 'salon-booking-system') ?></h5>
+        </div>
+    </div>
+    <div class="sln-box-info-trigger">
+        <button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button>
+    </div>
+</div>
+-->
 </div>
 
 <div class="sln-box sln-box--main">
@@ -100,29 +107,37 @@
 </div>
 
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php _e('Assistant selection <span> - </span>','salon-booking-system') ?></h2>
+    <h2 class="sln-box-title"><?php _e('Assistant selection','salon-booking-system') ?></h2>
     <div class="row">
-        <div class="col-sm-10 col-md-10 form-group">
+        <div class="col-sm-8 col-md-6 form-group">
         <div class="sln-checkbox">
             <?php $this->row_input_checkbox('attendant_enabled', __('Enable assistant selection', 'salon-booking-system')); ?>
-            <p class="sln-input-help"><?php _e('Let your customers choose their favourite staff member.', 'salon-booking-system') ?></p>
+            <p class="sln-input-help"></p>
         </div>
         </div>
-        <div class="col-sm-10 col-md-10 form-group">
+        <div class="col-sm-4 form-group sln-box-maininfo align-top">
+                <p class="sln-box-info"><?php _e('Let your customers choose their favourite staff member.', 'salon-booking-system') ?></p>
+            </div>
+    <!-- .row // END -->
+    </div>
+    <div class="row">
+    <div class="col-sm-10 col-md-6 form-group">
             <div class="sln-checkbox">
                 <?php $this->row_input_checkbox('m_attendant_enabled', __('Enable multiple assistants selection', 'salon-booking-system')); ?>
                 <p class="sln-input-help"><?php _e('Users can select more than one assistants for their booked services. Please set with care the "execution order" inside your services section.', 'salon-booking-system') ?></p>
             </div>
         </div>
-        <div class="col-sm-10 col-md-10 form-group">
+    <div class="col-sm-10 col-md-6 form-group">
         <div class="sln-checkbox">
             <?php $this->row_input_checkbox('attendant_email', __('Enable assistant email on new bookings', 'salon-booking-system')); ?>
             <p><?php _e('Assistants will receive an e-mail when selected for a new booking.', 'salon-booking-system') ?></p>
         </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 form-group">
+        <!-- .row // END -->
+        </div>
+
+        <div class="row">
+        <div class="col-sm-6 col-md-6 form-group">
             <a href="<?php echo get_admin_url() . 'edit.php?post_type=sln_attendant'; ?> "
             class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--assistants"><?php _e('Manage staff','salon-booking-system') ?></a>
             <p><?php _e('If you need to add or manage your staff members.','salon-booking-system'); ?></p>
@@ -147,8 +162,8 @@
                 <div class="col-sm-8 col-md-6 form-group sln-checkbox">
                     <?php $this->row_input_checkbox('email_remind', __('Remind the appointment to the client with an Email', 'salon-booking-system')); ?>
                 </div>
-                <div class="col-sm-4 col-md-4 form-group sln-select  sln-select--info-label">
-                    <label for="salon_settings_email_remind_interval"><?php __('Email Timing','salon-booking-system') ?></label>
+                <div class="col-sm-4 col-md-6 form-group sln-select  sln-select--info-label">
+                    <label for="salon_settings_email_remind_interval"><?php _e('Email Timing','salon-booking-system') ?></label>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6">
                             <?php $field = "salon_settings[email_remind_interval]"; ?>
@@ -169,22 +184,27 @@
             <div class="row">
                 <div class="col-sm-8 form-group sln-input--simple">
                     <?php $this->row_input_text('email_subject', __('Email Subject', 'salon-booking-system')); ?>
-                </div>
-                <div class="col-sm-4 col-md-4 sln-box-maininfo  align-top">
                     <p class="sln-input-help"><?php _e('You can use [DATE], [TIME], [SALON NAME]','salon-booking-system') ?></p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="sln-box-info">
-        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
-        <div class="sln-box-info-content row">
-            <div class="col-md-4 col-sm-8 col-xs-12">
-                <h5><?php _e('-','salon-booking-system') ?></h5>
-            </div>
-        </div>
-        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
+<!--
+THIS BOX MUST BE HIDDEN IF NOT IN USE
+<div class="sln-box-info">
+    <div class="sln-box-info-trigger">
+        <button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button>
     </div>
+    <div class="sln-box-info-content row">
+        <div class="col-md-4 col-sm-8 col-xs-12">
+            <h5><?php _e('-', 'salon-booking-system') ?></h5>
+        </div>
+    </div>
+    <div class="sln-box-info-trigger">
+        <button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button>
+    </div>
+</div>
+-->
 </div>
 
 
@@ -213,8 +233,8 @@
                         true
                     ) ?>
             </div>
-            <div class="col-sm-6 col-md-4 sln-box-maininfo  align-top">
-                <p class="sln-input-help"><?php _e('Select your favourite date and time format. Do you need another format? Send an email to support@wpchef.it','salon-booking-system') ?></p>
+            <div class="col-sm-6 col-md-4 sln-box-maininfo align-top">
+                <p class="sln-box-info"><?php _e('Select your favourite date and time format. Do you need another format? Send an email to support@wpchef.it','salon-booking-system') ?></p>
             </div>
             </div>
     <div class="row">

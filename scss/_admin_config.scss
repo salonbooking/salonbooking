@@ -19,17 +19,7 @@ $cl_ok: #5bc24c;
 
 $browser-context: 24;
 
-@function rem($pixels, $context: $browser-context) {
-  @if (unitless($pixels)) {
-    $pixels: $pixels * 1px;
-  }
 
-  @if (unitless($context)) {
-    $context: $context * 1px;
-  }
-
-  @return $pixels / $context * 1rem;
-}
 
 @mixin placeholder-color($color) {
   &::-webkit-input-placeholder {
