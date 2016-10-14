@@ -1476,6 +1476,8 @@ p.sln-box-info .sln-box-info-content h5 {
     opacity: 0; }
   #sln-salon--admin .sln-switch input:checked + label.sln-switch-btn + label.sln-switch-text:after, .sln-calendar--wrapper .sln-switch input:checked + label.sln-switch-btn + label.sln-switch-text:after {
     opacity: 1; }
+  #sln-salon--admin .sln-switch.sln-switch--smaller input + label.sln-switch-btn + label.sln-switch-text, .sln-calendar--wrapper .sln-switch.sln-switch--smaller input + label.sln-switch-btn + label.sln-switch-text {
+    width: 60%; }
 
 #sln-salon--admin .sln-select, .sln-calendar--wrapper .sln-select {
   position: relative;
@@ -1525,6 +1527,10 @@ p.sln-box-info .sln-box-info-content h5 {
 
 #sln-salon--admin .sln-input-bigborder label, .sln-calendar--wrapper .sln-input-bigborder label {
   width: 100%; }
+
+@media only screen and (min-width: 768px) {
+  #sln-salon--admin .sln-moremargin--bottom, .sln-calendar--wrapper .sln-moremargin--bottom {
+    margin-bottom: 3.33333rem; } }
 
 .sln-colorpicker .sln-colorpicker--subwrapper {
   border: 0.16667rem solid #c7dff3; }
@@ -1988,7 +1994,8 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
   .sln-bootstrap #sln_service-details .handlediv.button-link .toggle-indicator:focus, #sln_service-details .handlediv.button-link
   .sln-bootstrap .toggle-indicator:focus {
     text-decoration: none;
-    text-shadow: none; }
+    text-shadow: none;
+    outline: none; }
 
 .sln-btn--fullwidth {
   width: 100%; }
@@ -4465,9 +4472,10 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
   font-size: 0.75rem;
   font-weight: normal;
   margin: 0; }
-  .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type),
-  h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type) {
-    border-right: none; }
+  @media only screen and (min-width: 768px) {
+    .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type),
+    h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type) {
+      border-right: none; } }
   @media only screen and (max-width: 767px) {
     .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
     h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
@@ -4675,7 +4683,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
     clear: both; }
 
 .sln-box--main--small {
-  min-height: 240px; }
+  min-height: 260px; }
 
 .sln-box--sub, #sln_shop-details > .row,
 #sln_attendant-details > .row,
@@ -5231,8 +5239,10 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
         margin-right: 0;
         font-size: 12px;
         line-height: 12px;
-        padding: 10px; } }
-  @media only screen and (min-width: 568px) {
+        padding: 10px;
+        width: 48%;
+        margin: 1%; } }
+  @media only screen and (min-width: 568px) and (max-width: 767px) {
     .sln-nav-tab-wrapper.nav-tab-wrapper,
     h2.sln-nav-tab-wrapper.nav-tab-wrapper {
       padding-right: 0;
@@ -5248,7 +5258,9 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
         margin-right: 0;
         font-size: 12px;
         line-height: 12px;
-        padding: 10px; } }
+        padding: 10px;
+        width: 20%;
+        margin: .2%; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .sln-tab #sln-availabilities .items .item .btn.btn-block.btn-danger {
@@ -5662,6 +5674,9 @@ body.salone_page_salon-tools #wpwrap {
 .select2-container--default .select2-results > .select2-results__options {
   max-height: 200px;
   overflow-y: auto; }
+
+.wp-admin.salone_page_salon-settings .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
+  padding-right: 2em; }
 
 .salon_page_salon-calendar .sln-calendar--wrapper,
 .sln-calendar--wrapper {

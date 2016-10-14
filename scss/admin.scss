@@ -186,12 +186,14 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
             font-size: 12px;
             line-height: 12px;
             padding: 10px;
+            width: 48%;
+            margin: 1%;
         }
         // TABS SU SMARTPHONE IN PORT. END
     }
 
-    @media only screen and (min-width: 568px) {
-        // TABS SU SMARTPHONE IN PORT.
+    @media only screen and (min-width: 568px) and (max-width: 767px) {
+        // TABS SU SMARTPHONE IN LAND.
         padding-right: 0;
         padding-left: 0;
         padding-top: 10px;
@@ -205,8 +207,10 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
             font-size: 12px;
             line-height: 12px;
             padding: 10px;
+            width: 20%;
+            margin: .2%;
         }
-        // TABS SU SMARTPHONE IN PORT. END
+        // TABS SU SMARTPHONE IN LAND. END
     }
 
 }

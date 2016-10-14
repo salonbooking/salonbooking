@@ -50,7 +50,7 @@
             ); ?>
         </div>
         <div class="col-sm-4 form-group sln-box-maininfo align-top">
-            <p class="sln-input-help"><?php __('Provide the full address of your Salon','salon-booking-system') ?></p>
+            <p class="sln-input-help"><?php _('Provide the full address of your Salon','salon-booking-system') ?></p>
         </div>
     </div>
     <!--

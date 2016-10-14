@@ -9,6 +9,6 @@
         <p class="sln-input-help"><?php _e('-','salon-booking-system');?></p>
         </div>
         <div class="col-xs-12 col-sm-4 sln-box-maininfo  align-top">
-            <p class="sln-input-help"><?php _e('To use this payment method you need an account with Stripe.','salon-booking-system');?></p>
+            <p class="sln-box-info"><?php _e('To use this payment method you need an account with Stripe.','salon-booking-system');?></p>
         </div>
 

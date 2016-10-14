@@ -24,6 +24,7 @@
   &:hover, &:focus {
     text-decoration: none;
     text-shadow: none;
+    outline: none;
   }
 }
 // SIZES
@@ -395,7 +396,9 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
     font-weight: normal;
     margin: 0;
     &:not(.nav-tab-active):not(:last-of-type)  {
-      border-right: none;
+      @include bp(tablet) {
+        border-right: none;
+      }
     }
     @include bp(phone) {
       display: block;

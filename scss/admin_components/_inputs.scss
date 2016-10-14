@@ -459,6 +459,9 @@
 	}
 	input:checked + label.sln-switch-btn + label.sln-switch-text {
 	}
+	&.sln-switch--smaller {
+		input + label.sln-switch-btn + label.sln-switch-text {width: 60%;}
+	}
 }
 
 .sln-select {
@@ -514,6 +517,12 @@
 }
 .sln-input-bigborder {
 	label {@extend %sln-big-border; width: 100%;}
+}
+
+.sln-moremargin--bottom {
+	@include bp(tablet) {
+		margin-bottom: rem(80px);
+    	}
 }
 
 }

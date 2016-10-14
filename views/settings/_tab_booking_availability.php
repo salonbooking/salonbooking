@@ -19,7 +19,7 @@ $mode = $plugin->getSettings()->get('availability_mode');
         </div>
     </div>
     <div class="col-xs-12 col-sm-4 form-group sln-box-maininfo align-top">
-        <p class="sln-input-help"><?php _e('You need to choose which kind of booking algorithm want to use for your salon. Click over "i" icon to get more information about this option.','salon-booking-system');?></p>
+        <p class="sln-box-info"><?php _e('You need to choose which kind of booking algorithm want to use for your salon. Click over "i" icon to get more information about this option.','salon-booking-system');?></p>
     </div>
 </div>
 <div class="sln-box-info">
