@@ -27,7 +27,7 @@ class SLN_Enum_BookingStatus
 	        self::PENDING_PAYMENT => 'glyphicon-clock',
 	        self::PENDING   => 'glyphicon-clock',
 	        self::PAID      => 'glyphicon-thumbs-up',
-	        self::PAY_LATER => 'glyphicon-coins',
+	        self::PAY_LATER => 'glyphicon-hourglass',
 	        self::CANCELED  => 'glyphicon-ban-circle',
 	        self::CONFIRMED => 'glyphicon-ok-sign',
 	        self::ERROR     => 'glyphicon-warning-sign',

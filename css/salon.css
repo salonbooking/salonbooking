@@ -2227,8 +2227,8 @@ ul.sln-list--dashed li,
     content: "\f071"; }
   #sln-salon #sln-salon-my-account .glyphicon-ok-sign:before {
     content: "\f058"; }
-  #sln-salon #sln-salon-my-account .glyphicon-coins:before {
-    content: "\f111"; }
+  #sln-salon #sln-salon-my-account .glyphicon-hourglass:before {
+    content: "\f250"; }
 #sln-salon #sln-salon-my-account i.glyphicon {
   font-style: normal; }
 
