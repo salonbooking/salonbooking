@@ -6,6 +6,7 @@
 
 $data['to']      = $customer->get('user_email');
 $data['subject'] = $plugin->getSettings()->getSalonName();
+$manageBookingsLink = true;
 
 include dirname(__FILE__).'/_header.php';
 ?>
@@ -20,54 +21,6 @@ include dirname(__FILE__).'/_header.php';
 				echo $msg;
 				?>
 			</p>
-			<hr style="border: solid 1px #fff; margin: 0 16px;">
-		</td>
-	</tr>
-
-	<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
-		<td height="105" valign="middle" bgcolor="#f2f2f2">
-			<table width="502" border="0" align="left" cellpadding="0" cellspacing="0"  style="margin-left: 49px; margin-right: 49px;">
-				<tbody>
-				<tr>
-					<td width="120" valign="top">
-						<p>
-							<?php
-							_e('To make a new reservation click on this button.', 'salon-booking-system');
-							?>
-						</p>
-					</td>
-
-					<td width="147" align="right" valign="top">
-						<p style="padding-left: 20px;">
-							<a href="<?php echo home_url().'/'.$customer->generateHash(); ?>"style="
-										text-transform: uppercase;
-										display: inline-block;
-									    padding: 10px 20px;
-									    margin-bottom: 0;
-									    font-size: 12px;
-									    font-weight: 400;
-									    line-height: 1.42857143;
-									    text-align: center;
-									    white-space: nowrap;
-									    vertical-align: middle;
-									    -ms-touch-action: manipulation;
-									    touch-action: manipulation;
-									    cursor: pointer;
-									    -webkit-user-select: none;
-									    -moz-user-select: none;
-									    -ms-user-select: none;
-									    user-select: none;
-									    background-image: none;
-									    border: 1px solid transparent;
-									    border-radius: 5px;
-									    color: #fff;
-									    background-color: #0083d0;
-									    text-decoration: none;"><?php _e('Book now','salon-booking-system'); ?></a>
-						</p>
-					</td>
-				</tr>
-				</tbody>
-			</table>
 			<hr style="border: solid 1px #fff; margin: 0 16px;">
 		</td>
 	</tr>
@@ -142,12 +95,6 @@ include dirname(__FILE__).'/_header.php';
 				?>
 			</p>
 			<hr style="border: solid 1px #fff; margin: 0 16px;">
-		</td>
-	</tr>
-
-	<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
-		<td height="60" align="middle" valign="middle" bgcolor="#f2f2f2">
-			<p style="margin-left: 49px; margin-right: 49px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666;"><?php _e('Booking system is provided by <b>Salon Booking Wordpress Plugin</b>','salon-booking-system'); ?></p>
 		</td>
 	</tr>
 

@@ -315,6 +315,21 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return $this->object->post_author;
     }
 
+	/**
+     * @return null|SLN_Wrapper_Customer
+     */
+    public function getCustomer()
+    {
+        if (SLN_Wrapper_Customer::isCustomer($this->getUserId())) {
+            $customer = new SLN_Wrapper_Customer($this->getUserId());
+        }
+        else {
+            $customer = null;
+        }
+
+        return $customer;
+    }
+
     function isNew()
     {
         return strpos($this->object->post_status, 'sln-b-') !== 0;
