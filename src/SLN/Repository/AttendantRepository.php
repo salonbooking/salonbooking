@@ -12,10 +12,10 @@ class SLN_Repository_AttendantRepository extends SLN_Repository_AbstractWrapperR
     /**
      * @return SLN_Wrapper_Attendant[]
      */
-    public function getAll()
+    public function getAll($criteria = array())
     {
         if (!isset($this->attendants)) {
-            $this->attendants = $this->get();
+            $this->attendants = $this->get($criteria);
         }
 
         return $this->attendants;
