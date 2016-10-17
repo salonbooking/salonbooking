@@ -15,7 +15,7 @@ include dirname(__FILE__).'/_header.php';
 			<p style="margin-left: 49px; margin-right: 49px;">
 				<?php
 				$msg = $plugin->getSettings()->get('follow_up_message');
-				$msg = str_replace(array('[NAME]', '[SALON NAME]'), array($customer->getName(), $plugin->getSettings()->get('follow_up_message')), $msg);
+				$msg = str_replace(array('[NAME]', '[SALON NAME]'), array($customer->getName(), $plugin->getSettings()->getSalonName()), $msg);
 				$msg = nl2br($msg);
 				echo $msg;
 				?>
