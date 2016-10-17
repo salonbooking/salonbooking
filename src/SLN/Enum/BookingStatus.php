@@ -24,11 +24,12 @@ class SLN_Enum_BookingStatus
 
     // algolplus start
     private static $icons  = array(
-	        self::PENDING   => 'glyphicon-time',
+	        self::PENDING_PAYMENT => 'glyphicon-clock',
+	        self::PENDING   => 'glyphicon-clock',
 	        self::PAID      => 'glyphicon-thumbs-up',
-	        self::PAY_LATER => 'glyphicon-minus',
+	        self::PAY_LATER => 'glyphicon-coins',
 	        self::CANCELED  => 'glyphicon-ban-circle',
-	        self::CONFIRMED => 'glyphicon-flag',
+	        self::CONFIRMED => 'glyphicon-ok-sign',
 	        self::ERROR     => 'glyphicon-warning-sign',
     );
     // algolplus end

@@ -494,13 +494,17 @@ $cl_ok: #5bc24c;
     &:before {
       content: "\f111";
     }
-    &.glyphicon-time:before {content: "\f017";}
+    &.glyphicon-clock:before {content: "\f017";}
     &.glyphicon-trash:before {content: "\f1f8";}
     &.glyphicon-ban-circle:before {content: "\f05e";}
     &.glyphicon-plus:before {content: "\f067";}
     &.glyphicon-minus:before {content: "\f068";}
     &.glyphicon-star:before {content: "\f005";}
     &.glyphicon-star-empty:before {content: "\f006";}
+    &.glyphicon-thumbs-up:before {content: "\f164";}
+    &.glyphicon-warning-sign:before {content: "\f071";}
+    &.glyphicon-ok-sign:before {content: "\f058";}
+    &.glyphicon-coins:before {content: "\f111";}
   }
   i.glyphicon {font-style: normal;}
 }
