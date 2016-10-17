@@ -5433,9 +5433,6 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
     display: none !important;
     visibility: hidden !important; } }
 
-body {
-  background-color: transparent; }
-
 body.salone_page_salon-settings #wpwrap,
 body.toplevel_page_salon #wpwrap,
 body.salone_page_salon-reports #wpwrap,
