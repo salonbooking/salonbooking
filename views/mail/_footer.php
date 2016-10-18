@@ -17,7 +17,7 @@
 </tr>
 <?php endif;?>
 
-<?php if(isset($manageBookingsLink) && $manageBookingsLink): ?>
+<?php if(isset($manageBookingsLink) && $manageBookingsLink && $plugin->getSettings()->getBookingmyaccountPageId()): ?>
     <?php if(isset($customer) || (isset($booking) && ($customer = $booking->getCustomer()))): ?>
         <tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
             <td height="105" valign="middle" bgcolor="#f2f2f2">
