@@ -14,7 +14,7 @@
             ); ?>
         </div>
         <div class="col-md-4 col-sm-4 form-group sln-box-maininfo align-top">
-            <p class="sln-input-help"><?php _e('If enabled you need to setup one of the available payments methods.','salon-booking-system');?></p>
+            <p class="sln-box-info"><?php _e('If enabled you need to setup one of the available payments methods.','salon-booking-system');?></p>
         </div>
     </div>
     <div class="sln-box-info">
@@ -27,27 +27,26 @@
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
 </div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="sln-box sln-box--main sln-box--main--small">
+            <h2 class="sln-box-title"><?php _e('Prices visibility','salon-booking-system') ?></h2>
+            <div class="row">
+                <div class="col-xs-12 form-group sln-checkbox">
+                    <?php $this->row_input_checkbox('hide_prices', __('Hide Prices', 'salon-booking-system')); ?>
 
-<div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php _e('Prices visibility','salon-booking-system') ?></h2>
-    <div class="row">
-        <div class="col-sm-6 form-group">
-        <div class="sln-checkbox">
-            <?php $this->row_input_checkbox('hide_prices', __('Hide Prices', 'salon-booking-system')); ?>
-        </div>
-        </div>
-        <div class="col-md-4 col-sm-4 form-group sln-box-maininfo align-top">
-            <p class="sln-input-help"><?php _e('Select this Option if you want to hide all prices from the front end.<br/>Note: Online Payment will be disabled.', 'salon-booking-system') ?></p>
+                <div class="sln-box-maininfo">
+                    <p class="sln-box-info"><?php _e('Select this Option if you want to hide all prices from the front end.<br/>Note: Online Payment will be disabled.', 'salon-booking-system') ?></p>
+                </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="sln-box sln-box--main sln-box--main--small">
     <h2 class="sln-box-title"><?php _e('Pay later','salon-booking-system');?></span></h2>
     <div class="row">
-            <div class="col-xs-12 form-group sln-switch">
+            <div class="col-xs-12 form-group sln-switch sln-switch--smaller ">
                 <?php $this->row_input_checkbox_switch(
                 'pay_cash',
                 'Pay later status',
@@ -59,6 +58,8 @@
             ); ?>
             </div>
         </div>
+        <!--
+        THIS BOX MUST BE HIDDEN IF NOT IN USE
         <div class="sln-box-info">
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
        <div class="sln-box-info-content row">
@@ -68,16 +69,17 @@
         </div>
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
+        -->
     </div>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="sln-box sln-box--main sln-box--main--small">
     <h2 class="sln-box-title"><?php _e('Pay a deposit','salon-booking-system');?></h2>
     <div class="row">
             <div class="col-xs-12 form-group sln-select  sln-select--info-label">
             <label for="salon_settings_pay_deposit"><?php _e('Pay a deposit of ','salon-booking-system') ?></label>
             <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="col-xs-8">
             <?php echo SLN_Form::fieldSelect(
                         'salon_settings[pay_deposit]',
                         array(
@@ -100,12 +102,14 @@
                         true
                     ) ?>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 sln-label--big">
+            <div class="col-xs-4 sln-label--big">
             <label for="salon_settings_pay_deposit"><?php _e('of the total','salon-booking-system');?></label>
             </div>
             </div>
         </div>
         </div>
+                <!--
+        THIS BOX MUST BE HIDDEN IF NOT IN USE
         <div class="sln-box-info">
        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
        <div class="sln-box-info-content row">
@@ -115,6 +119,7 @@
         </div>
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
+        -->
     </div>
     </div>
 </div>
@@ -172,20 +177,21 @@
                         true
                     ) ?>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
-                <p class="sln-input-help"><?php _e('If you want a new currency to be added please send us an email to support@wpchef.it','salon-booking-system');?></p>
-            </div>
-            </div>
 
-    <div class="row">
         <div class="col-xs-6 col-sm-3 col-md-2 sln-input--simple">
             <?php $this->row_input_text('pay_decimal_separator', __('Decimal separator', 'salon-booking-system')); ?>
-            <p class="sln-input-help"><?php _e('-','salon-booking-system');?></p>
         </div>
         <div class="col-xs-6 col-sm-3 col-md-2 sln-input--simple">
             <?php $this->row_input_text('pay_thousand_separator', __('Thousand separator', 'salon-booking-system')); ?>
-            <p class="sln-input-help"><?php _e('-','salon-booking-system');?></p>
         </div>
+    
+            
+            </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo">
+                <p class="sln-box-info"><?php _e('If you want a new currency to be added please send us an email to support@wpchef.it','salon-booking-system');?></p>
+            </div>
     </div>
 </div>
 
@@ -204,7 +210,7 @@ foreach(SLN_Enum_PaymentMethodProvider::toArray() as $method => $name){
 <?php } ?>
 
         <div class="col-sm-4 sln-box-maininfo  align-top">
-            <p class="sln-input-help"><?php _e('If you want to integrate a new custom payment gateway please refere to <strong>custom_payment_gateway.txt</strong> file inside our plugin folder.','salon-booking-system');?></p>
+            <p class="sln-box-info"><?php _e('If you want to integrate a new custom payment gateway please refere to <strong>custom_payment_gateway.txt</strong> file inside our plugin folder.','salon-booking-system');?></p>
         </div>
     </div>
     <?php

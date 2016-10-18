@@ -186,12 +186,14 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
             font-size: 12px;
             line-height: 12px;
             padding: 10px;
+            width: 48%;
+            margin: 1%;
         }
         // TABS SU SMARTPHONE IN PORT. END
     }
 
-    @media only screen and (min-width: 568px) {
-        // TABS SU SMARTPHONE IN PORT.
+    @media only screen and (min-width: 568px) and (max-width: 767px) {
+        // TABS SU SMARTPHONE IN LAND.
         padding-right: 0;
         padding-left: 0;
         padding-top: 10px;
@@ -205,8 +207,10 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
             font-size: 12px;
             line-height: 12px;
             padding: 10px;
+            width: 20%;
+            margin: .2%;
         }
-        // TABS SU SMARTPHONE IN PORT. END
+        // TABS SU SMARTPHONE IN LAND. END
     }
 
 }
@@ -435,14 +439,11 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
 // /// /// /// /// /// /// /// //
 
 // GENERL RULES
-body {
-    background-color: transparent;
-}
 body.salone_page_salon-settings,
 body.toplevel_page_salon,
 body.salone_page_salon-reports,
 body.salone_page_salon-tools {
-    background-color: $cl_main--lighter;
+    #wpwrap {background-color: $cl_main--lighter;}
 }
 // GENERL RULES // END
 
@@ -507,6 +508,7 @@ body.salone_page_salon-tools {
             }
         }
         @include bp(desktop) {
+            position: absolute;
             width: rem(340px);
             right: rem(10px);
             bottom: auto;
@@ -516,9 +518,36 @@ body.salone_page_salon-tools {
                 float: none;
                 width: 100%;
             }
+            &.affix {
+                position: fixed;
+                top: 40px;
+            }
         }
         .sln-toolbox-trigger-mob {float: right;}
     }
+    // CUSTOMER STATISTICS START
+    .statistics_block {
+        text-align: center;
+        background-color: #0088c9;
+        color: white;
+        @extend %font-big;
+        .statistics_row:nth-child(1) {
+            border-bottom: 0.1rem solid white;
+        }
+        .statistics_row {
+            padding: 10px 0px;
+            span {
+                font-size: larger;
+                font-weight: bold;
+            }
+        }
+    }
+    // TEMPORARY
+    .sln-table {
+        .displaying-num {@extend %font-medium;}
+    }
+
+    // CUSTOMER STATISTICS END
 }
 @import 'sln-select2';
 

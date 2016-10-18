@@ -54,7 +54,7 @@ $minutesBetweenReservation = $plugin->getSettings()->get('minutes_between_reserv
                 <p class="help-block"><?php _e('How many minutes lasts this Offset?', 'salon-booking-system') ?></p>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
-                <p class="sln-input-help"><?php _e('Note that during the Offset interval new reservations will not be available.','salon-booking-system');?></p>
+                <p class="sln-box-info"><?php _e('Note that during the Offset interval new reservations will not be available.','salon-booking-system');?></p>
             </div>
         </div>
     </div>

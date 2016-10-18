@@ -168,7 +168,12 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         if (!isset($this->attendants)) {
             /** @var SLN_Repository_AttendantRepository $repo */
             $repo = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
-            $this->attendants = $repo->getAll();
+            $criteria['@wp_query'] = array(
+                'orderby' => 'title',
+                'order'   => 'DESC',
+            );
+            $criteria['@query'] = true;
+            $this->attendants = $repo->getAll($criteria);
         }
 
         return $this->attendants;

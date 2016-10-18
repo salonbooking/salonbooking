@@ -12,13 +12,29 @@
     @import 'admin_components/service-details';
 }
 */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700';
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
   *:focus, *:before:focus, *:after:focus {
     outline: 0 !important; }
+
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before, .clearfix:after, .clear:before, .clear:after {
+  content: " ";
+  display: table; }
+
+.clearfix:after, .clear:after {
+  clear: both; }
 
 #wpwrap {
   z-index: 0; }
@@ -91,9 +107,8 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
 
 #sln-salon--admin .sln-input--simple input, #sln-salon--admin #titlewrap-- input, #sln-salon--admin #postexcerpt .inside input, #postexcerpt #sln-salon--admin .inside input, #sln-salon--admin .sln-select:not(.sln-select--multiple) input, #sln-salon--admin .sln-input--simple input.form-control, #sln-salon--admin .sln-input--simple textarea, #sln-salon--admin #titlewrap-- textarea, #sln-salon--admin #postexcerpt .inside textarea, #postexcerpt #sln-salon--admin .inside textarea, #sln-salon--admin .sln-select:not(.sln-select--multiple) textarea, .sln-calendar--wrapper .sln-input--simple input, .sln-calendar--wrapper #titlewrap-- input, .sln-calendar--wrapper #postexcerpt .inside input, #postexcerpt .sln-calendar--wrapper .inside input, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) input, .sln-calendar--wrapper .sln-input--simple input.form-control, .sln-calendar--wrapper .sln-input--simple textarea, .sln-calendar--wrapper #titlewrap-- textarea, .sln-calendar--wrapper #postexcerpt .inside textarea, #postexcerpt .sln-calendar--wrapper .inside textarea, .sln-calendar--wrapper .sln-select:not(.sln-select--multiple) textarea, #sln-salon--admin .sln-checkbox label, #sln-salon--admin .sln-radiobox label, #sln-salon--admin .sln-switch label, #sln-salon--admin .sln-select.sln-select--info-label .sln-label--big label, .sln-calendar--wrapper .sln-select.sln-select--info-label #sln-salon--admin .sln-label--big label, .sln-calendar--wrapper .sln-checkbox label, .sln-calendar--wrapper .sln-radiobox label, .sln-calendar--wrapper .sln-switch label, .sln-calendar--wrapper .sln-select.sln-select--info-label .sln-label--big label, #sln-salon--admin .sln-checkbutton input + label, .sln-calendar--wrapper .sln-checkbutton input + label, .sln-colorpicker .sln-colorpicker-addon i, #sln-salon--admin .col-time, .sln-calendar--wrapper .col-time, .sln-box-title, #poststuff #sln_shop-details > h2,
 #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
-  font-family: "Open sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 0.83333rem;
-  line-height: 1.41667rem;
   line-height: 1.41667rem;
   font-weight: normal; }
   @media only screen and (min-width: 768px) {
@@ -102,15 +117,17 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
       font-size: 1rem; } }
 
 #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin #titlewrap-- label, #sln-salon--admin #postexcerpt .inside label, #postexcerpt #sln-salon--admin .inside label, .sln-calendar--wrapper .sln-input--simple label, .sln-calendar--wrapper .sln-select label, .sln-calendar--wrapper #titlewrap-- label, .sln-calendar--wrapper #postexcerpt .inside label, #postexcerpt .sln-calendar--wrapper .inside label, #sln-salon--admin .sln-fake-label, .sln-calendar--wrapper .sln-fake-label, .sln-btn--big, #sln-salon--admin p.submit, .sln-calendar--wrapper p.submit, .sln-btn--big input, #sln-salon--admin p.submit input, .sln-calendar--wrapper p.submit input, .sln-btn--big button, #sln-salon--admin p.submit button, .sln-calendar--wrapper p.submit button, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
-#poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5, #sln-salon--admin .sln-message, .sln-calendar--wrapper .sln-message, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto,
+#poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content,
+p.sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5,
+p.sln-box-info .sln-box-info-content h5, #sln-salon--admin .sln-message, .sln-calendar--wrapper .sln-message, #sln-salon--admin .statistics_block, .sln-calendar--wrapper .statistics_block, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto,
 .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto {
-  font-family: "Open sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 0.75rem;
   font-weight: normal;
   line-height: 1.16667rem;
   font-weight: normal; }
 
-#sln-salon--admin .sln-input--simple p, #sln-salon--admin #titlewrap-- p, #sln-salon--admin #postexcerpt .inside p, #postexcerpt #sln-salon--admin .inside p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, .sln-calendar--wrapper .sln-input--simple p, .sln-calendar--wrapper #titlewrap-- p, .sln-calendar--wrapper #postexcerpt .inside p, #postexcerpt .sln-calendar--wrapper .inside p, .sln-calendar--wrapper .sln-checkbox p, .sln-calendar--wrapper .sln-radiobox p, .sln-calendar--wrapper .sln-switch p, .sln-calendar--wrapper .sln-select p, .sln-btn--medium, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
+#sln-salon--admin .sln-input--simple p, #sln-salon--admin #titlewrap-- p, #sln-salon--admin #postexcerpt .inside p, #postexcerpt #sln-salon--admin .inside p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, .sln-calendar--wrapper .sln-input--simple p, .sln-calendar--wrapper #titlewrap-- p, .sln-calendar--wrapper #postexcerpt .inside p, #postexcerpt .sln-calendar--wrapper .inside p, .sln-calendar--wrapper .sln-checkbox p, .sln-calendar--wrapper .sln-radiobox p, .sln-calendar--wrapper .sln-switch p, .sln-calendar--wrapper .sln-select p, #sln-salon--admin .sln-input-help, .sln-calendar--wrapper .sln-input-help, .sln-btn--medium, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
 h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sln-admin-nav a,
 #sln-salon--admin .col-md-12.sln-admin-nav a,
 .sln-admin-nav a, .sln-tab-nav li a, .sln-btn--medium input, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab input, #sln-salon--admin .col-sm-12.sln-admin-nav a input,
@@ -121,20 +138,30 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
 #sln_attendant-details .handlediv.button-link .toggle-indicator,
 #postexcerpt .handlediv.button-link .toggle-indicator, #sln_service-details .handlediv.button-link .toggle-indicator, .sln-btn--small--round, .sln-box p, #sln_shop-details p,
 #sln_attendant-details p,
-#postexcerpt p, #sln_service-details p, .sln-box-maininfo, .vertical-tabs {
-  font-family: "Open sans", serif;
+#postexcerpt p, #sln_service-details p, .sln-box-maininfo, #sln-salon--admin .sln-table .displaying-num, .sln-calendar--wrapper .sln-table .displaying-num, .vertical-tabs {
+  font-family: "Open Sans", sans-serif;
   font-size: 0.66667rem;
   line-height: 0.91667rem;
   font-weight: normal; }
 
 #sln-salon--admin #time-range p, .sln-calendar--wrapper #time-range p {
-  font-family: "Open sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 0.58333rem;
   line-height: 0.83333rem;
   font-weight: normal; }
 
+.sln-box-info,
+p.sln-box-info {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2em;
+  font-weight: normal;
+  line-height: 1.8em;
+  font-weight: normal; }
+
 .sln-box-maininfo, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
-#poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5 {
+#poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content,
+p.sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5,
+p.sln-box-info .sln-box-info-content h5 {
   color: #444; }
 
 #sln-salon--admin .sln-input--simple p, #sln-salon--admin #titlewrap-- p, #sln-salon--admin #postexcerpt .inside p, #postexcerpt #sln-salon--admin .inside p, #sln-salon--admin .sln-checkbox p, #sln-salon--admin .sln-radiobox p, #sln-salon--admin .sln-switch p, #sln-salon--admin .sln-select p, .sln-calendar--wrapper .sln-input--simple p, .sln-calendar--wrapper #titlewrap-- p, .sln-calendar--wrapper #postexcerpt .inside p, #postexcerpt .sln-calendar--wrapper .inside p, .sln-calendar--wrapper .sln-checkbox p, .sln-calendar--wrapper .sln-radiobox p, .sln-calendar--wrapper .sln-switch p, .sln-calendar--wrapper .sln-select p, .sln-box p, #sln_shop-details p,
@@ -1449,6 +1476,8 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
     opacity: 0; }
   #sln-salon--admin .sln-switch input:checked + label.sln-switch-btn + label.sln-switch-text:after, .sln-calendar--wrapper .sln-switch input:checked + label.sln-switch-btn + label.sln-switch-text:after {
     opacity: 1; }
+  #sln-salon--admin .sln-switch.sln-switch--smaller input + label.sln-switch-btn + label.sln-switch-text, .sln-calendar--wrapper .sln-switch.sln-switch--smaller input + label.sln-switch-btn + label.sln-switch-text {
+    width: 60%; }
 
 #sln-salon--admin .sln-select, .sln-calendar--wrapper .sln-select {
   position: relative;
@@ -1498,6 +1527,10 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
 
 #sln-salon--admin .sln-input-bigborder label, .sln-calendar--wrapper .sln-input-bigborder label {
   width: 100%; }
+
+@media only screen and (min-width: 768px) {
+  #sln-salon--admin .sln-moremargin--bottom, .sln-calendar--wrapper .sln-moremargin--bottom {
+    margin-bottom: 3.33333rem; } }
 
 .sln-colorpicker .sln-colorpicker--subwrapper {
   border: 0.16667rem solid #c7dff3; }
@@ -1961,7 +1994,8 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
   .sln-bootstrap #sln_service-details .handlediv.button-link .toggle-indicator:focus, #sln_service-details .handlediv.button-link
   .sln-bootstrap .toggle-indicator:focus {
     text-decoration: none;
-    text-shadow: none; }
+    text-shadow: none;
+    outline: none; }
 
 .sln-btn--fullwidth {
   width: 100%; }
@@ -2046,20 +2080,12 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
   border-top-right-radius: 50%;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%; }
-  .sln-btn--small--round.sln-btn--icon, #sln-salon--admin p.sln-btn--small--round.submit, .sln-calendar--wrapper p.sln-btn--small--round.submit, .sln-btn--small--round.sln-paneltrigger.sln-btn, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--small--round.sln-paneltrigger.nav-tab, #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-btn--small--round.sln-paneltrigger,
-  #sln-salon--admin .col-md-12.sln-admin-nav a.sln-btn--small--round.sln-paneltrigger,
-  .sln-admin-nav a.sln-btn--small--round.sln-paneltrigger, .sln-tab-nav li a.sln-btn--small--round.sln-paneltrigger, #sln_shop-details .handlediv.button-link .sln-btn--small--round.toggle-indicator,
-  #sln_attendant-details .handlediv.button-link .sln-btn--small--round.toggle-indicator,
-  #postexcerpt .handlediv.button-link .sln-btn--small--round.toggle-indicator, #sln_service-details .handlediv.button-link .sln-btn--small--round.toggle-indicator {
+  .sln-btn--small--round.sln-btn--icon--old {
     width: 1.25rem;
     height: 1.25rem;
     font-size: 0.08333rem;
     overflow: hidden; }
-    .sln-btn--small--round.sln-btn--icon:after, #sln-salon--admin p.sln-btn--small--round.submit:after, .sln-calendar--wrapper p.sln-btn--small--round.submit:after, .sln-btn--small--round.sln-paneltrigger.sln-btn:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--small--round.sln-paneltrigger.nav-tab:after, #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-btn--small--round.sln-paneltrigger:after,
-    #sln-salon--admin .col-md-12.sln-admin-nav a.sln-btn--small--round.sln-paneltrigger:after,
-    .sln-admin-nav a.sln-btn--small--round.sln-paneltrigger:after, .sln-tab-nav li a.sln-btn--small--round.sln-paneltrigger:after, #sln_shop-details .handlediv.button-link .sln-btn--small--round.toggle-indicator:after,
-    #sln_attendant-details .handlediv.button-link .sln-btn--small--round.toggle-indicator:after,
-    #postexcerpt .handlediv.button-link .sln-btn--small--round.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-btn--small--round.toggle-indicator:after {
+    .sln-btn--small--round.sln-btn--icon--old:after {
       width: 1.25rem;
       height: 1.25rem;
       line-height: 1.25rem;
@@ -2067,6 +2093,29 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
       left: 0;
       top: 0;
       font-size: 1.08333rem; }
+    .sln-btn--small--round.sln-btn--icon--old:hover:after, .sln-btn--small--round.sln-btn--icon--old:focus:after {
+      background-color: #003553; }
+  .sln-btn--small--round.sln-btn--icon, #sln-salon--admin p.sln-btn--small--round.submit, .sln-calendar--wrapper p.sln-btn--small--round.submit, .sln-btn--small--round.sln-paneltrigger.sln-btn, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--small--round.sln-paneltrigger.nav-tab, #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-btn--small--round.sln-paneltrigger,
+  #sln-salon--admin .col-md-12.sln-admin-nav a.sln-btn--small--round.sln-paneltrigger,
+  .sln-admin-nav a.sln-btn--small--round.sln-paneltrigger, .sln-tab-nav li a.sln-btn--small--round.sln-paneltrigger, #sln_shop-details .handlediv.button-link .sln-btn--small--round.toggle-indicator,
+  #sln_attendant-details .handlediv.button-link .sln-btn--small--round.toggle-indicator,
+  #postexcerpt .handlediv.button-link .sln-btn--small--round.toggle-indicator, #sln_service-details .handlediv.button-link .sln-btn--small--round.toggle-indicator {
+    width: 40px;
+    height: 40px;
+    font-size: 0.08333rem;
+    overflow: hidden; }
+    .sln-btn--small--round.sln-btn--icon:after, #sln-salon--admin p.sln-btn--small--round.submit:after, .sln-calendar--wrapper p.sln-btn--small--round.submit:after, .sln-btn--small--round.sln-paneltrigger.sln-btn:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--small--round.sln-paneltrigger.nav-tab:after, #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-btn--small--round.sln-paneltrigger:after,
+    #sln-salon--admin .col-md-12.sln-admin-nav a.sln-btn--small--round.sln-paneltrigger:after,
+    .sln-admin-nav a.sln-btn--small--round.sln-paneltrigger:after, .sln-tab-nav li a.sln-btn--small--round.sln-paneltrigger:after, #sln_shop-details .handlediv.button-link .sln-btn--small--round.toggle-indicator:after,
+    #sln_attendant-details .handlediv.button-link .sln-btn--small--round.toggle-indicator:after,
+    #postexcerpt .handlediv.button-link .sln-btn--small--round.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-btn--small--round.toggle-indicator:after {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      background-color: #0C6EB6;
+      left: 0;
+      top: 0;
+      font-size: 18px; }
     .sln-btn--small--round.sln-btn--icon:hover:after, #sln-salon--admin p.sln-btn--small--round.submit:hover:after, .sln-calendar--wrapper p.sln-btn--small--round.submit:hover:after, .sln-btn--small--round.sln-paneltrigger.sln-btn:hover:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--small--round.sln-paneltrigger.nav-tab:hover:after, #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-btn--small--round.sln-paneltrigger:hover:after,
     #sln-salon--admin .col-md-12.sln-admin-nav a.sln-btn--small--round.sln-paneltrigger:hover:after,
     .sln-admin-nav a.sln-btn--small--round.sln-paneltrigger:hover:after, .sln-tab-nav li a.sln-btn--small--round.sln-paneltrigger:hover:after, #sln_shop-details .handlediv.button-link .sln-btn--small--round.toggle-indicator:hover:after,
@@ -4423,9 +4472,10 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
   font-size: 0.75rem;
   font-weight: normal;
   margin: 0; }
-  .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type),
-  h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type) {
-    border-right: none; }
+  @media only screen and (min-width: 768px) {
+    .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type),
+    h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab:not(.nav-tab-active):not(:last-of-type) {
+      border-right: none; } }
   @media only screen and (max-width: 767px) {
     .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
     h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
@@ -4527,7 +4577,8 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
     #postexcerpt .handlediv.button-link .sln-toolbox.open .toggle-indicator, .sln-toolbox.open #sln_service-details .handlediv.button-link .toggle-indicator, #sln_service-details .handlediv.button-link .sln-toolbox.open .toggle-indicator {
       opacity: 1; }
     .sln-toolbox.open .sln-toolbox-trigger {
-      opacity: .75; }
+      opacity: .75;
+      text-align: left; }
       .sln-toolbox.open .sln-toolbox-trigger:hover {
         opacity: 1; }
   .sln-toolbox:not(.open) {
@@ -4568,6 +4619,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
         max-height: 2.45833rem; }
       .sln-toolbox .sln-toolbox-trigger {
         opacity: 1;
+        text-align: left;
         -webkit-transition: opacity 250ms;
         -moz-transition: opacity 250ms;
         -o-transition: opacity 250ms;
@@ -4582,7 +4634,8 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
   padding: 0.83333rem;
   margin-bottom: 1.66667rem;
   margin-left: 0;
-  margin-right: 0; }
+  margin-right: 0;
+  font-size: 30px; }
   @media only screen and (min-width: 768px) {
     .sln-box, #sln_shop-details,
     #sln_attendant-details,
@@ -4617,9 +4670,20 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
   .sln-box--info-visible#sln_attendant-details,
   .sln-box--info-visible#postexcerpt, .sln-box--info-visible#sln_service-details {
     background-color: #f7c65f; }
+  .sln-box--main:before, #sln_shop-details:before,
+  #sln_attendant-details:before,
+  #postexcerpt:before, #sln_service-details:before, .sln-box--main:after, #sln_shop-details:after,
+  #sln_attendant-details:after,
+  #postexcerpt:after, #sln_service-details:after {
+    content: " ";
+    display: table; }
+  .sln-box--main:after, #sln_shop-details:after,
+  #sln_attendant-details:after,
+  #postexcerpt:after, #sln_service-details:after {
+    clear: both; }
 
 .sln-box--main--small {
-  min-height: 240px; }
+  min-height: 260px; }
 
 .sln-box--sub, #sln_shop-details > .row,
 #sln_attendant-details > .row,
@@ -4641,7 +4705,11 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
     margin-top: 0; }
   @media only screen and (min-width: 768px) {
     .sln-box-maininfo.align-top {
-      padding-top: 1.58333rem; } }
+      padding-top: 1.25em; } }
+
+@media only screen and (min-width: 768px) {
+  .align-top--input {
+    padding-top: 0.83333em; } }
 
 .sln-box-title, #poststuff #sln_shop-details > h2,
 #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle {
@@ -4663,7 +4731,8 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
     #poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span {
       display: block; } }
 
-.sln-box-info {
+.sln-box-info,
+p.sln-box-info {
   padding-bottom: 0.83333rem; }
   .sln-box-info .sln-box-info-trigger .sln-btn--small.sln-btn--icon:after, .sln-box-info .sln-box-info-trigger #sln-salon--admin p.sln-btn--small.submit:after, #sln-salon--admin .sln-box-info .sln-box-info-trigger p.sln-btn--small.submit:after, .sln-box-info .sln-box-info-trigger .sln-calendar--wrapper p.sln-btn--small.submit:after, .sln-calendar--wrapper .sln-box-info .sln-box-info-trigger p.sln-btn--small.submit:after, .sln-box-info .sln-box-info-trigger .sln-btn--small.sln-paneltrigger.sln-btn:after, .sln-box-info .sln-box-info-trigger .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--small.sln-paneltrigger.nav-tab:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-box-info .sln-box-info-trigger .sln-btn--small.sln-paneltrigger.nav-tab:after, .sln-box-info .sln-box-info-trigger #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-btn--small.sln-paneltrigger:after, #sln-salon--admin .col-sm-12.sln-admin-nav .sln-box-info .sln-box-info-trigger a.sln-btn--small.sln-paneltrigger:after, .sln-box-info .sln-box-info-trigger
   #sln-salon--admin .col-md-12.sln-admin-nav a.sln-btn--small.sln-paneltrigger:after,
@@ -4673,18 +4742,53 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
   #sln_attendant-details .handlediv.button-link .toggle-indicator:after,
   #sln_attendant-details .handlediv.button-link .sln-box-info .sln-box-info-trigger .toggle-indicator:after, .sln-box-info .sln-box-info-trigger
   #postexcerpt .handlediv.button-link .toggle-indicator:after,
-  #postexcerpt .handlediv.button-link .sln-box-info .sln-box-info-trigger .toggle-indicator:after, .sln-box-info .sln-box-info-trigger #sln_service-details .handlediv.button-link .toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-box-info .sln-box-info-trigger .toggle-indicator:after {
+  #postexcerpt .handlediv.button-link .sln-box-info .sln-box-info-trigger .toggle-indicator:after, .sln-box-info .sln-box-info-trigger #sln_service-details .handlediv.button-link .toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-box-info .sln-box-info-trigger .toggle-indicator:after,
+  p.sln-box-info .sln-box-info-trigger .sln-btn--small.sln-btn--icon:after,
+  p.sln-box-info .sln-box-info-trigger #sln-salon--admin p.sln-btn--small.submit:after, #sln-salon--admin
+  p.sln-box-info .sln-box-info-trigger p.sln-btn--small.submit:after,
+  p.sln-box-info .sln-box-info-trigger .sln-calendar--wrapper p.sln-btn--small.submit:after, .sln-calendar--wrapper
+  p.sln-box-info .sln-box-info-trigger p.sln-btn--small.submit:after,
+  p.sln-box-info .sln-box-info-trigger .sln-btn--small.sln-paneltrigger.sln-btn:after,
+  p.sln-box-info .sln-box-info-trigger .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--small.sln-paneltrigger.nav-tab:after, .sln-nav-tab-wrapper.nav-tab-wrapper
+  p.sln-box-info .sln-box-info-trigger .sln-btn--small.sln-paneltrigger.nav-tab:after,
+  p.sln-box-info .sln-box-info-trigger #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-btn--small.sln-paneltrigger:after, #sln-salon--admin .col-sm-12.sln-admin-nav
+  p.sln-box-info .sln-box-info-trigger a.sln-btn--small.sln-paneltrigger:after,
+  p.sln-box-info .sln-box-info-trigger
+  #sln-salon--admin .col-md-12.sln-admin-nav a.sln-btn--small.sln-paneltrigger:after,
+  #sln-salon--admin .col-md-12.sln-admin-nav
+  p.sln-box-info .sln-box-info-trigger a.sln-btn--small.sln-paneltrigger:after,
+  p.sln-box-info .sln-box-info-trigger
+  .sln-admin-nav a.sln-btn--small.sln-paneltrigger:after,
+  .sln-admin-nav
+  p.sln-box-info .sln-box-info-trigger a.sln-btn--small.sln-paneltrigger:after,
+  p.sln-box-info .sln-box-info-trigger .sln-tab-nav li a.sln-btn--small.sln-paneltrigger:after, .sln-tab-nav li
+  p.sln-box-info .sln-box-info-trigger a.sln-btn--small.sln-paneltrigger:after,
+  p.sln-box-info .sln-box-info-trigger #sln_shop-details .handlediv.button-link .toggle-indicator:after, #sln_shop-details .handlediv.button-link
+  p.sln-box-info .sln-box-info-trigger .toggle-indicator:after,
+  p.sln-box-info .sln-box-info-trigger
+  #sln_attendant-details .handlediv.button-link .toggle-indicator:after,
+  #sln_attendant-details .handlediv.button-link
+  p.sln-box-info .sln-box-info-trigger .toggle-indicator:after,
+  p.sln-box-info .sln-box-info-trigger
+  #postexcerpt .handlediv.button-link .toggle-indicator:after,
+  #postexcerpt .handlediv.button-link
+  p.sln-box-info .sln-box-info-trigger .toggle-indicator:after,
+  p.sln-box-info .sln-box-info-trigger #sln_service-details .handlediv.button-link .toggle-indicator:after, #sln_service-details .handlediv.button-link
+  p.sln-box-info .sln-box-info-trigger .toggle-indicator:after {
     font-size: 1.25rem;
     line-height: 1.25rem; }
-  .sln-box-info .sln-box-info-trigger .sln-icon--close {
+  .sln-box-info .sln-box-info-trigger .sln-icon--close,
+  p.sln-box-info .sln-box-info-trigger .sln-icon--close {
     display: none; }
-  .sln-box-info .sln-box-info-trigger .sln-icon--info {
+  .sln-box-info .sln-box-info-trigger .sln-icon--info,
+  p.sln-box-info .sln-box-info-trigger .sln-icon--info {
     margin-top: 0;
     -webkit-transition: margin-top 300ms;
     -moz-transition: margin-top 300ms;
     -o-transition: margin-top 300ms;
     transition: margin-top 300ms; }
-  .sln-box-info .sln-box-info-content {
+  .sln-box-info .sln-box-info-content,
+  p.sln-box-info .sln-box-info-content {
     max-height: 0;
     overflow: hidden;
     position: relative;
@@ -5135,8 +5239,10 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
         margin-right: 0;
         font-size: 12px;
         line-height: 12px;
-        padding: 10px; } }
-  @media only screen and (min-width: 568px) {
+        padding: 10px;
+        width: 48%;
+        margin: 1%; } }
+  @media only screen and (min-width: 568px) and (max-width: 767px) {
     .sln-nav-tab-wrapper.nav-tab-wrapper,
     h2.sln-nav-tab-wrapper.nav-tab-wrapper {
       padding-right: 0;
@@ -5152,7 +5258,9 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
         margin-right: 0;
         font-size: 12px;
         line-height: 12px;
-        padding: 10px; } }
+        padding: 10px;
+        width: 20%;
+        margin: .2%; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .sln-tab #sln-availabilities .items .item .btn.btn-block.btn-danger {
@@ -5325,13 +5433,10 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
     display: none !important;
     visibility: hidden !important; } }
 
-body {
-  background-color: transparent; }
-
-body.salone_page_salon-settings,
-body.toplevel_page_salon,
-body.salone_page_salon-reports,
-body.salone_page_salon-tools {
+body.salone_page_salon-settings #wpwrap,
+body.toplevel_page_salon #wpwrap,
+body.salone_page_salon-reports #wpwrap,
+body.salone_page_salon-tools #wpwrap {
   background-color: #f1f1f1; }
 
 #sln-salon--admin.sln-salon--settings, .sln-calendar--wrapper.sln-salon--settings {
@@ -5391,6 +5496,7 @@ body.salone_page_salon-tools {
         max-width: 260px; } }
   @media only screen and (min-width: 992px) {
     #sln-salon--admin .sln-admin-sidebar, .sln-calendar--wrapper .sln-admin-sidebar {
+      position: absolute;
       width: 14.16667rem;
       right: 0.41667rem;
       bottom: auto;
@@ -5398,9 +5504,24 @@ body.salone_page_salon-tools {
       background-color: rgba(0, 53, 83, 0); }
       #sln-salon--admin .sln-admin-sidebar .sln-update-settings, .sln-calendar--wrapper .sln-admin-sidebar .sln-update-settings {
         float: none;
-        width: 100%; } }
+        width: 100%; }
+      #sln-salon--admin .sln-admin-sidebar.affix, .sln-calendar--wrapper .sln-admin-sidebar.affix {
+        position: fixed;
+        top: 40px; } }
   #sln-salon--admin .sln-admin-sidebar .sln-toolbox-trigger-mob, .sln-calendar--wrapper .sln-admin-sidebar .sln-toolbox-trigger-mob {
     float: right; }
+
+#sln-salon--admin .statistics_block, .sln-calendar--wrapper .statistics_block {
+  text-align: center;
+  background-color: #0088c9;
+  color: white; }
+  #sln-salon--admin .statistics_block .statistics_row:nth-child(1), .sln-calendar--wrapper .statistics_block .statistics_row:nth-child(1) {
+    border-bottom: 0.1rem solid white; }
+  #sln-salon--admin .statistics_block .statistics_row, .sln-calendar--wrapper .statistics_block .statistics_row {
+    padding: 10px 0px; }
+    #sln-salon--admin .statistics_block .statistics_row span, .sln-calendar--wrapper .statistics_block .statistics_row span {
+      font-size: larger;
+      font-weight: bold; }
 
 .select2-container.select2-container--sln {
   /* BIG SELECT // END */ }
@@ -5550,6 +5671,9 @@ body.salone_page_salon-tools {
 .select2-container--default .select2-results > .select2-results__options {
   max-height: 200px;
   overflow-y: auto; }
+
+.wp-admin.salone_page_salon-settings .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
+  padding-right: 2em; }
 
 .salon_page_salon-calendar .sln-calendar--wrapper,
 .sln-calendar--wrapper {

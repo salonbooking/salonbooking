@@ -43,7 +43,7 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 				$html = $customer_object->getCountOfReservations();
 				break;
 			case 'total_amount':
-				$html = SLN_Plugin::getInstance()->getSettings()->getCurrencySymbol().' '.$customer_object->getCustomerValue();
+				$html = SLN_Plugin::getInstance()->format()->money($customer_object->getAmountOfReservations(), false);
 				break;
 			case 'first_name':
 			case 'last_name':
