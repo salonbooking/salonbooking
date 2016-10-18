@@ -8,7 +8,7 @@ $disabledMessage = $plugin->getSettings()->get('disabled_message');
 
 <h2 class="sln-box-title"><?php _e('Pause online booking service <span class="block">If ON the online booking form will be disabled and your users will see a message.</span>','salon-booking-system');?></h2>
 <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-switch">
+    <div class="col-xs-12 form-group sln-switch sln-moremargin--bottom">
         <h6 class="sln-fake-label"><?php _e('Online Booking status','salon-booking-system');?></h6>
         <!--<input type="checkbox" name="salon_settings[disabled]" id="salon_settings_disabled" value="1">
             <label class="sln-switch-btn" for="salon_settings_disabled"  data-on="On" data-off="Off"></label>

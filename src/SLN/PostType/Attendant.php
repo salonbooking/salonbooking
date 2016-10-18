@@ -10,9 +10,17 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
         if (is_admin()) {
             add_action('manage_'.$this->getPostType().'_posts_custom_column', array($this, 'manage_column'), 10, 2);
             add_filter('manage_'.$this->getPostType().'_posts_columns', array($this, 'manage_columns'));
+            add_filter('manage_edit-'.$this->getPostType().'_sortable_columns', array($this, 'custom_columns_sort'));
             add_action('admin_head-post-new.php', array($this, 'posttype_admin_css'));
             add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
         }
+    }
+
+    public function custom_columns_sort( $columns ) {
+        $custom = array(
+            'title' => 'title',
+        );
+        return $custom;
     }
 
     public function manage_columns($columns)

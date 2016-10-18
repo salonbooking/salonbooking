@@ -3,6 +3,7 @@
         margin-bottom:  rem(40px);
         margin-left: 0;
         margin-right: 0;
+        font-size: 30px;
         @include bp(tablet) {padding: rem(30px);}
         @include bp(desktop) {padding: rem(40px) rem(40px) 0 rem(40px);}
         &.sln-calendar-view {
@@ -20,9 +21,10 @@
         background-color: #fff;
         @include transition(background-color 250ms);
         &.sln-box--info-visible {background-color: $cl_warning--light;}
+        @include clearfix();
     }
     .sln-box--main--small {
-        min-height: 240px;
+        min-height: 260px;
     }
     .sln-box--sub {
         padding-top: rem(20px);
@@ -37,9 +39,12 @@
         padding-bottom: rem(20px);
         p {@extend %font-big; @extend %font-cl_standard; margin-top: 0;}
         &.align-top {
-            @include bp(tablet) {padding-top: rem(38px);}
+            @include bp(tablet) {padding-top: em(30px);}
         }
     }
+    .align-top--input {
+            @include bp(tablet) {padding-top: em(20px);}
+        }
     .sln-box-title {
         @extend %font-cl_main;
         padding: 0 0 rem(20px);
@@ -56,8 +61,10 @@
             @include bp(phone) {display: block;}
         }
     }
-    .sln-box-info {
+    .sln-box-info,
+    p.sln-box-info {
         padding-bottom:  rem(20px);
+        @extend %font-big-n ;
         .sln-box-info-trigger {
             .sln-btn--small.sln-btn--icon:after {font-size: rem(30px); line-height: rem(30px);}
             .sln-icon--close {display: none;}

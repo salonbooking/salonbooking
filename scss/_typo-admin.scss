@@ -1,11 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
-$fontfamily--main:"Open sans", serif;
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700';
+$fontfamily--main: 'Open Sans', sans-serif;
 
 // SIZES
 %font-bigger {
   font-family: $fontfamily--main;
   font-size: rem(20px);
-  line-height: rem(34px);
   line-height: rem(34px);
   font-weight: normal;
   @include bp(tablet) {
@@ -31,6 +30,37 @@ $fontfamily--main:"Open sans", serif;
   font-family: $fontfamily--main;
   font-size: rem(14px);
   line-height: rem(20px);
+  font-weight: normal;
+}
+
+%font-bigger-n {
+  font-family: $fontfamily--main;
+  font-size: em(20px);
+  line-height: em(34px);
+   font-weight: normal;
+  @include bp(tablet) {
+    font-size: em(24px);
+  }
+}
+%font-big-n {
+  font-family: $fontfamily--main;
+  font-size: 1.2em;
+  font-weight: normal;
+  line-height: 1.8em;
+  font-weight: normal;
+}
+
+%font-medium-n {
+  font-family: $fontfamily--main;
+  font-size: em(16px);
+  line-height: em(22px);
+  font-weight: normal;
+}
+
+%font-small-n {
+  font-family: $fontfamily--main;
+  font-size: em(14px);
+  line-height: em(20px);
   font-weight: normal;
 }
 

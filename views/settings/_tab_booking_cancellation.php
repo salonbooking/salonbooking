@@ -8,7 +8,7 @@ $hoursBeforeCancellation = $plugin->getSettings()->get('hours_before_cancellatio
 
 <h2 class="sln-box-title"><?php _e('User booking cancellation','salon-booking-system');?></h2>
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-4 form-group sln-checkbox">
+    <div class="col-xs-12 col-sm-8 col-md-4 form-group sln-checkbox">
         <?php $helper->row_input_checkbox(
             'cancellation_enabled',
             __('Booking cancellation', 'salon-booking-system'),
@@ -35,6 +35,6 @@ $hoursBeforeCancellation = $plugin->getSettings()->get('hours_before_cancellatio
         <p class="help-block"><?php _e('How many hours before the appointment the cancellation is still allowed', 'salon-booking-system') ?></p>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
-        <p class="sln-input-help"><?php _e('Users once logged in inside the MY ACCOUNT BOOKING page will be able to see the list of their upcoming reservations and eventually Cancel them. An email notification will be sent to you and to the customers.','salon-booking-system');?></p>
+        <p class="sln-box-info"><?php _e('Users once logged in inside the MY ACCOUNT BOOKING page will be able to see the list of their upcoming reservations and eventually Cancel them. An email notification will be sent to you and to the customers.','salon-booking-system');?></p>
     </div>
 </div>
