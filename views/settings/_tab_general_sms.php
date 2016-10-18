@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="col-sm-4 form-group sln-box-maininfo align-top">
-                <p class="sln-input-help"><?php _e(
+                <p class="sln-box-info"><?php _e(
                         'To use all the SMS features you need an active account with Plivo o Twilio providers. <br /><br />Please read carefully their documentation about how to properly set the options.',
                         'salon-booking-system'
                     ) ?></p>
@@ -138,9 +138,6 @@
                 ); ?>
                 <p><?php _e('Remember to set the mobile number of your staff members', 'salon-booking-system'); ?></p>
             </div>
-            <div class="col-xs-12 col-sm-6 sln-box-maininfo  align-top">
-                <p class="sln-input-help"><?php _e('-', 'salon-booking-system') ?></p>
-            </div>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -158,13 +155,16 @@
     <div class="col-sm-4 form-group sln-input--simple">
         <?php $helper->row_input_text('sms_test_message', __('Message', 'salon-booking-system')); ?>
     </div>
-    <div class="col-sm-6 col-md-4 sln-box-maininfo  align-top">
-        <p class="sln-input-help"><?php _e(
+    <div class="col-sm-6 col-md-4 sln-box-maininfo align-top">
+        <p class="sln-box-info"><?php _e(
                 'Use this console just to test your SMS services. Fill the destination number without the country code, write a text message and click "Update settings" to send an SMS.',
                 'salon-booking-system'
             ); ?></p>
     </div>
 </div>
+
+<!--
+THIS BOX MUST BE HIDDEN IF NOT IN USE
 <div class="sln-box-info">
     <div class="sln-box-info-trigger">
         <button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button>
@@ -178,3 +178,4 @@
         <button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button>
     </div>
 </div>
+-->

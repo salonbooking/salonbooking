@@ -749,4 +749,9 @@ jQuery(function ($) {
         sln_checkServices($);
         return false;
     });
+    $('.sln-admin-sidebar').affix({
+    offset: {
+        top: $('.sln-admin-sidebar').offset().top - 40
+    }
+});
 });

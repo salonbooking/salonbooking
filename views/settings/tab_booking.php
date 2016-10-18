@@ -27,7 +27,7 @@ $plugin = SLN_Plugin::getInstance();
                             <div class="col-xs-8 sln-label--big"><label for="salon_settings_sms_remind_interval">Customers
                                     per session</label></div>
                             <div class="col-xs-12">
-                                <p class="help-block"><?php _e(
+                                <p class="help-block sln-input-help"><?php _e(
                                         'Set these options carefully because it will affect the number of bookings you can accept for the same <strong>time/session</strong>.',
                                         'salon-booking-system'
                                     ) ?></p>
@@ -62,7 +62,7 @@ $plugin = SLN_Plugin::getInstance();
                                         'salon-booking-system'
                                     ); ?></label></div>
                             <div class="col-xs-12">
-                                <p class="help-block"><?php _e(
+                                <p class="help-block sln-input-help"><?php _e(
                                         'Set these options carefully because it will affect the number of bookings you can accept for the same <strong>time/session</strong>.',
                                         'salon-booking-system'
                                     ) ?></p>

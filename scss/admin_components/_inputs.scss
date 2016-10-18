@@ -105,7 +105,10 @@
 	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-.sln-input-help {max-width: 440px}
+.sln-input-help {
+	max-width: 440px;
+	@extend %font-medium;
+}
 .sln-input--simple {
 	@extend %sln-input;
 	@extend %sln-input-label;
@@ -456,6 +459,9 @@
 	}
 	input:checked + label.sln-switch-btn + label.sln-switch-text {
 	}
+	&.sln-switch--smaller {
+		input + label.sln-switch-btn + label.sln-switch-text {width: 60%;}
+	}
 }
 
 .sln-select {
@@ -511,6 +517,12 @@
 }
 .sln-input-bigborder {
 	label {@extend %sln-big-border; width: 100%;}
+}
+
+.sln-moremargin--bottom {
+	@include bp(tablet) {
+		margin-bottom: rem(80px);
+    	}
 }
 
 }

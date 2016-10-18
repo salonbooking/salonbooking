@@ -24,6 +24,7 @@
   &:hover, &:focus {
     text-decoration: none;
     text-shadow: none;
+    outline: none;
   }
 }
 // SIZES
@@ -77,7 +78,7 @@
   line-height: rem(40px);
   padding: 0 10px;
   @include b-radius(50%);
-  &.sln-btn--icon {
+  &.sln-btn--icon--old {
     width: rem(30px);
     height: rem(30px);
     font-size: rem(2px);
@@ -90,6 +91,24 @@
       left: 0;
       top: 0;
       font-size: rem(26px);
+    }
+    &:hover:after, &:focus:after {
+      background-color: $cl_main;
+    }
+  }
+  &.sln-btn--icon {
+    width: 40px;
+    height: 40px;
+    font-size: rem(2px);
+    overflow: hidden;
+    &:after {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      background-color: $cl_main--emphasis;
+      left: 0;
+      top: 0;
+      font-size: 18px;
     }
     &:hover:after, &:focus:after {
       background-color: $cl_main;
@@ -377,7 +396,9 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
     font-weight: normal;
     margin: 0;
     &:not(.nav-tab-active):not(:last-of-type)  {
-      border-right: none;
+      @include bp(tablet) {
+        border-right: none;
+      }
     }
     @include bp(phone) {
       display: block;
@@ -480,6 +501,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active {
       .sln-btn {opacity: 1;}
       .sln-toolbox-trigger {
         opacity: .75;
+        text-align: left;
         &:hover {opacity: 1;}
       }
     }
@@ -506,6 +528,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab.nav-tab-active {
     &:not(.open) {max-height: rem(59px);}
     .sln-toolbox-trigger {
       opacity: 1;
+      text-align: left;
       @include transition(opacity 250ms);
     }
   }

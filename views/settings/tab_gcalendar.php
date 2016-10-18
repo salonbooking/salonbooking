@@ -14,7 +14,7 @@
             ); ?>
         </div>
         <div class="hidden-xs col-md-4 col-sm-4 form-group sln-box-maininfo align-top">
-            <p class="sln-input-help"><?php _e('To use this feature you need to generate an OAuth Client ID on Google Developers Console. Click on "i" icon to get more information on this feature.','salon-booking-system');?></p>
+            <p class="sln-box-info"><?php _e('To use this feature you need to generate an OAuth Client ID on Google Developers Console. Click on "i" icon to get more information on this feature.','salon-booking-system');?></p>
         </div>
         </div>
           <div class="row">
