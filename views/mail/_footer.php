@@ -6,13 +6,12 @@
 
         <table width="502" border="0" align="center" cellpadding="0" cellspacing="0">
           <tbody><tr>
-            <td width="272" align="center" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:normal;"><?php echo sprintf(__('Booking cancellation is allowed <b>until %s</b> <br> before the reservation','salon-booking-system'), $cancellationText); ?></td>
-            <td align="right" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;">
-            <a href="<?php echo $bookingMyAccountUrl?>" style="display:inline-block; background: #EE0707; font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#fff;font-weight:bold; text-decoration: none; text-transform: uppercase; padding: 10px 30px; margin: 20px 0; text-align: center; border-radius: 4px; letter-spacing: 1px;"><?php echo __('Cancel booking','salon-booking-system') ?></a>
-            </td>
+            <td width="272" align="center" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:normal; padding: 20px 0px;"><?php echo sprintf(__('Booking cancellation is allowed <b>until %s</b> <br> before the reservation','salon-booking-system'), $cancellationText); ?></td>
+            <td align="right" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"></td>
           </tr>
         </tbody>
         </table>
+        <hr style="border: solid 1px #fff; margin: 0 16px;">
         </td>
 </tr>
 <?php endif;?>
@@ -20,19 +19,19 @@
 <?php if(isset($manageBookingsLink) && $manageBookingsLink && $plugin->getSettings()->getBookingmyaccountPageId()): ?>
     <?php if(isset($customer) || (isset($booking) && ($customer = $booking->getCustomer()))): ?>
         <tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
-            <td height="105" valign="middle" bgcolor="#f2f2f2">
+            <td height="80" valign="middle" bgcolor="#f2f2f2">
                 <table width="502" border="0" align="left" cellpadding="0" cellspacing="0"  style="margin-left: 49px; margin-right: 49px;">
                     <tbody>
                     <tr>
-                        <td width="120" valign="top">
-                            <p style="text-align: center; font-size: 14px;">
+                        <td width="272" align="center" valign="middle">
+                            <p style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:normal;">
                                 <?php
                                 _e('Manage your reservations accessing your personal page', 'salon-booking-system');
                                 ?>
                             </p>
                         </td>
 
-                        <td width="147" align="right" valign="top">
+                        <td align="right" valign="top">
                             <p style="padding-left: 20px;">
                                 <a href="<?php echo home_url().'/'.$customer->generateHash(); ?>"style="
                                                 text-transform: uppercase;
