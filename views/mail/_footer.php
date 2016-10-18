@@ -1,25 +1,8 @@
-<?php if(isset($booking) && (!isset($forAdmin) || !$forAdmin) && $booking->getEmailCancellationDetails($cancellationText,$bookingMyAccountUrl) ):?>
-<tr>
-    <td height="73" align="center" valign="top" bgcolor="#f2f2f2"
-        style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666; font-weight:normal;">
-        <hr style="border: solid 1px #fff; margin: 0 16px;">
-
-        <table width="502" border="0" align="center" cellpadding="0" cellspacing="0">
-          <tbody><tr>
-            <td width="272" align="center" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666; font-weight:normal; padding: 20px 0px;"><?php echo sprintf(__('Booking cancellation is allowed <b>until %s</b> <br> before the reservation','salon-booking-system'), $cancellationText); ?></td>
-            <td align="right" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"></td>
-          </tr>
-        </tbody>
-        </table>
-        <hr style="border: solid 1px #fff; margin: 0 16px;">
-        </td>
-</tr>
-<?php endif;?>
-
 <?php if(isset($manageBookingsLink) && $manageBookingsLink && $plugin->getSettings()->getBookingmyaccountPageId()): ?>
     <?php if(isset($customer) || (isset($booking) && ($customer = $booking->getCustomer()))): ?>
         <tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
             <td height="80" valign="middle" bgcolor="#f2f2f2">
+                <hr style="border: solid 1px #fff; margin: 0 16px;">
                 <table width="502" border="0" align="left" cellpadding="0" cellspacing="0"  style="margin-left: 49px; margin-right: 49px;">
                     <tbody>
                     <tr>
@@ -62,7 +45,6 @@
                     </tr>
                     </tbody>
                 </table>
-                <hr style="border: solid 1px #fff; margin: 0 16px;">
             </td>
         </tr>
     <?php endif; ?>
@@ -70,6 +52,7 @@
 
 <tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
     <td height="60" align="middle" valign="middle" bgcolor="#f2f2f2">
+        <hr style="border: solid 1px #fff; margin: 0 16px;">
         <p style="margin-left: 49px; margin-right: 49px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666;"><?php _e('Booking system is provided by <b>Salon Booking Wordpress Plugin</b>','salon-booking-system'); ?></p>
     </td>
 </tr>

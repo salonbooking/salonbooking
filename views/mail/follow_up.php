@@ -94,7 +94,6 @@ include dirname(__FILE__).'/_header.php';
 				echo $plugin->getSettings()->get('gen_timetable');
 				?>
 			</p>
-			<hr style="border: solid 1px #fff; margin: 0 16px;">
 		</td>
 	</tr>
 
