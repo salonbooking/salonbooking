@@ -14,7 +14,7 @@ class SLN_Wrapper_Customer {
 		if (!is_object($object)) {
 			$object = get_user_by('id', $object);
 		}
-		if (self::isCustomer($object)) {
+		if (self::isCustomer($object) || self::isAdmin($object)) {
 			$this->object = $object;
 		}
 		else {
@@ -351,6 +351,22 @@ class SLN_Wrapper_Customer {
 		}
 
 		if (in_array(SLN_Plugin::USER_ROLE_CUSTOMER, $object->roles)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public static function isAdmin($object) {
+		if (!is_object($object)) {
+			$object = get_user_by('id', $object);
+			if (!$object) {
+				return false;
+			}
+		}
+
+		if (in_array('administrator', $object->roles)) {
 			return true;
 		}
 		else {
