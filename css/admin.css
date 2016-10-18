@@ -119,7 +119,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
 #sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin #titlewrap-- label, #sln-salon--admin #postexcerpt .inside label, #postexcerpt #sln-salon--admin .inside label, .sln-calendar--wrapper .sln-input--simple label, .sln-calendar--wrapper .sln-select label, .sln-calendar--wrapper #titlewrap-- label, .sln-calendar--wrapper #postexcerpt .inside label, #postexcerpt .sln-calendar--wrapper .inside label, #sln-salon--admin .sln-fake-label, .sln-calendar--wrapper .sln-fake-label, .sln-btn--big, #sln-salon--admin p.submit, .sln-calendar--wrapper p.submit, .sln-btn--big input, #sln-salon--admin p.submit input, .sln-calendar--wrapper p.submit input, .sln-btn--big button, #sln-salon--admin p.submit button, .sln-calendar--wrapper p.submit button, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
 #poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content,
 p.sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5,
-p.sln-box-info .sln-box-info-content h5, #sln-salon--admin .sln-message, .sln-calendar--wrapper .sln-message, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto,
+p.sln-box-info .sln-box-info-content h5, #sln-salon--admin .sln-message, .sln-calendar--wrapper .sln-message, #sln-salon--admin .statistics_block, .sln-calendar--wrapper .statistics_block, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto,
 .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto {
   font-family: "Open Sans", sans-serif;
   font-size: 0.75rem;
@@ -138,7 +138,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
 #sln_attendant-details .handlediv.button-link .toggle-indicator,
 #postexcerpt .handlediv.button-link .toggle-indicator, #sln_service-details .handlediv.button-link .toggle-indicator, .sln-btn--small--round, .sln-box p, #sln_shop-details p,
 #sln_attendant-details p,
-#postexcerpt p, #sln_service-details p, .sln-box-maininfo, .vertical-tabs {
+#postexcerpt p, #sln_service-details p, .sln-box-maininfo, #sln-salon--admin .sln-table .displaying-num, .sln-calendar--wrapper .sln-table .displaying-num, .vertical-tabs {
   font-family: "Open Sans", sans-serif;
   font-size: 0.66667rem;
   line-height: 0.91667rem;

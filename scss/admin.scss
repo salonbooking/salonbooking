@@ -530,6 +530,7 @@ body.salone_page_salon-tools {
         text-align: center;
         background-color: #0088c9;
         color: white;
+        @extend %font-big;
         .statistics_row:nth-child(1) {
             border-bottom: 0.1rem solid white;
         }
@@ -541,6 +542,11 @@ body.salone_page_salon-tools {
             }
         }
     }
+    // TEMPORARY
+    .sln-table {
+        .displaying-num {@extend %font-medium;}
+    }
+
     // CUSTOMER STATISTICS END
 }
 @import 'sln-select2';

@@ -54,9 +54,12 @@
 				</div>
 				</div>
 			</div>
-		<div class="postbox sln-box sln-box--main">
-			<h2 class="sln-box-title"><?php _e('Booking history', 'salon-booking-system') ?></h2>
-			<div class="inside statistics_block">
+		<div class="sln-box sln-box--main">
+			<h2 class="sln-box-title"><?php _e('Customer\'s bookings', 'salon-booking-system') ?></h2>
+			<div class="sln-box--sub row">
+				<div class="col-xs-12"><h2 class="sln-box-title"><?php _e('Booking statistics', 'salon-booking-system') ?></h2></div>
+				<div class="col-xs-12">
+				<div class="statistics_block sln-table">
 			<div class="row statistics_row">
 				<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
 					<?php _e('Reservations made and value', 'salon-booking-system') ?>
@@ -148,12 +151,16 @@
 					</span>
 				</div>
 			</div>
+			
+					</div>
+				</div>
+			<!-- .sln-box-sub.row END-->
 			</div>
-		</div>
-
+			
 		<?php if ($customer->getBookings()): ?>
-			<div class="row">
-				<div class="col-xs-10 col-md-10 col-lg-10 col-sm-10 postbox">
+			<div class="sln-box--sub row">
+				<div class="col-xs-12"><h2 class="sln-box-title"><?php _e('Booking history', 'salon-booking-system') ?></h2></div>
+				<div class="col-xs-12 sln-table">
 				<?php
 
 				$_GET['post_type'] = SLN_Plugin::POST_TYPE_BOOKING;
@@ -172,7 +179,8 @@
 				</div>
 			</div>
 		<?php endif; ?>
-	
+		<!-- sln-box-main END -->
+		</div>
 	</div>
 	</form>
 
