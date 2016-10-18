@@ -12,6 +12,7 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
             add_action('wp_insert_post', array($this, 'wp_insert_post'));
             add_action('manage_'.$this->getPostType().'_posts_custom_column', array($this, 'manage_column'), 10, 2);
             add_filter('manage_'.$this->getPostType().'_posts_columns', array($this, 'manage_columns'));
+            add_filter('manage_edit-'.$this->getPostType().'_sortable_columns', array($this, 'custom_columns_sort'));
             add_action('admin_head-post-new.php', array($this, 'posttype_admin_css'));
             add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
             add_action('admin_enqueue_scripts', array($this, 'load_scripts'));
@@ -19,11 +20,18 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
         }
     }
 
+    public function custom_columns_sort( $columns ) {
+        $custom = array(
+            'title' => 'title',
+        );
+        return $custom;
+    }
+
     function admin_posts_sort($query)
     {
         global $pagenow, $post_type;
 
-        if (is_admin() && 'edit.php' == $pagenow && $post_type == $this->getPostType()) {
+        if (is_admin() && 'edit.php' == $pagenow && $post_type == $this->getPostType() && $query->get('orderby') !== 'title') {
             /** @var SLN_Repository_ServiceRepository $repo */
             $repo = $this->getPlugin()->getRepository($this->getPostType());
             foreach ($repo->getStandardCriteria() as $k => $v) {

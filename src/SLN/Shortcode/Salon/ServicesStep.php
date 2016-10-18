@@ -33,7 +33,7 @@ class SLN_Shortcode_Salon_ServicesStep extends SLN_Shortcode_Salon_Step
         if (!isset($this->services)) {
             /** @var SLN_Repository_ServiceRepository $repo */
             $repo = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
-            $this->services = $repo->getAllPrimary();
+            $this->services = $repo->sortByExecAndTitleDESC($repo->getAllPrimary());
         }
 
         return $this->services;
