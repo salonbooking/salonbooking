@@ -315,6 +315,19 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return $this->object->post_author;
     }
 
+	/**
+     * @return null|SLN_Wrapper_Customer
+     */
+    public function getCustomer()
+    {
+        $customer = new SLN_Wrapper_Customer($this->getUserId());
+        if ($customer->isEmpty()) {
+            $customer = null;
+        }
+
+        return $customer;
+    }
+
     function isNew()
     {
         return strpos($this->object->post_status, 'sln-b-') !== 0;
@@ -374,7 +387,44 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $this->setMeta('rating', $rating);
     }
-    
+
+    /**
+     * @param $status
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $ret = parent::setStatus($status);
+
+        $this->evalCustomerDetails();
+
+        return $ret;
+    }
+
+    public function evalCustomerDetails()
+    {
+        if (SLN_Wrapper_Customer::isCustomer($this->getUserId())) {
+            $customer = new SLN_Wrapper_Customer($this->getUserId());
+
+            $thisBookingTime = $this->getStartsAt()->format('Y-m-d H:i');
+            $lastBookingTime = $customer->getLastBookingTime();
+
+            $allStatuses          = array_keys(SLN_Enum_BookingStatus::toArray());
+            $completedStatuses    = array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED);
+            $nonCompletedStatuses = array_diff($allStatuses, $completedStatuses);
+
+
+            if (in_array($this->getStatus(), $nonCompletedStatuses) && $thisBookingTime === $lastBookingTime) {
+                $customer->setLastBookingTime($customer->calcLastBookingTime());
+            }
+            elseif (in_array($this->getStatus(), $completedStatuses) && ($thisBookingTime > $lastBookingTime || !$lastBookingTime)) {
+                $customer->setLastBookingTime($thisBookingTime);
+            }
+
+            $customer->setNextBookingTime($customer->calcNextBookingTime());
+        }
+    }
+
     public function getEmailCancellationDetails(&$cancellationText, &$bookingMyAccountUrl)
     {
 		$cancellationText = $bookingMyAccountUrl = '';

@@ -22,6 +22,7 @@ if(isset($remind) && $remind) {
         ),
         $plugin->getSettings()->get('email_subject')
     );
+    $manageBookingsLink = true;
 } elseif(isset($updated) && $updated) {
     $data['subject'] = str_replace(
         '[SALON NAME]',
@@ -29,10 +30,12 @@ if(isset($remind) && $remind) {
             $plugin->getSettings()->get('gen_name') : get_bloginfo('name'),
         __('Your reservation at [SALON NAME] has been modified', 'salon-booking-system')
     );
+    $manageBookingsLink = true;
 } else {
     $data['subject'] = __('New booking ','salon-booking-system')
                        .' '. $plugin->format()->date($booking->getDate())
                        . ' - ' . $plugin->format()->time($booking->getTime());
+    $manageBookingsLink = true;
 }
 $forAdmin = false;
 include dirname(__FILE__) . '/_header.php';

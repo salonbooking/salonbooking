@@ -67,6 +67,10 @@ class SLN_Admin_Settings
         'email_remind',
         'email_remind_interval',
         'email_subject',
+        'follow_up_email',
+        'follow_up_sms',
+        'follow_up_interval',
+        'follow_up_message',
         'soc_facebook',
         'soc_twitter',
         'soc_google',
@@ -261,6 +265,10 @@ class SLN_Admin_Settings
         $submitted['email_subject'] = !empty($submitted['email_subject']) ?
             $submitted['email_subject'] :
             'Your booking reminder for [DATE] at [TIME] at [SALON NAME]';
+        $submitted['follow_up_message'] = !empty($submitted['follow_up_message']) ?
+	        $submitted['follow_up_message'] :
+	        'Hi [NAME],\r\nIt\'s been a while since your last visit, would you like to book a new appointment with us?\r\n\r\nWe look forward to seeing you again.';
+        $submitted['follow_up_message'] = substr($submitted['follow_up_message'], 0, 150);
         foreach (self::$fieldsTabGeneral as $k) {
             $val = isset($submitted[$k]) ? $submitted[$k] : '';
             $this->settings->set($k, stripcslashes($val));
@@ -274,6 +282,22 @@ class SLN_Admin_Settings
         if (isset($submitted['email_remind']) && $submitted['email_remind']) {
             wp_schedule_event(time(), 'hourly', 'sln_email_reminder');
             wp_schedule_event(time()+1800, 'hourly', 'sln_email_reminder');
+        }
+        if (isset($submitted['follow_up_sms']) && $submitted['follow_up_sms']) {
+            if (!wp_get_schedule('sln_sms_followup')) {
+                wp_schedule_event(time(), 'daily', 'sln_sms_followup');
+            }
+        }
+        else {
+            wp_clear_scheduled_hook('sln_sms_followup');
+        }
+        if (isset($submitted['follow_up_email']) && $submitted['follow_up_email']) {
+            if (!wp_get_schedule('sln_email_followup')) {
+                wp_schedule_event(time(), 'daily', 'sln_email_followup');
+            }
+        }
+        else {
+            wp_clear_scheduled_hook('sln_email_followup');
         }
         $this->settings->save();
         $this->showAlert(
