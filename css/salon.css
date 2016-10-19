@@ -2292,14 +2292,15 @@ ul.sln-list--dashed li,
     content: "\f005"; }
   #sln-salon #sln-salon-my-account .glyphicon.glyphicon-star-empty:before {
     content: "\f006"; }
-  #sln-salon #sln-salon-my-account .glyphicon-thumbs-up:before {
+  #sln-salon #sln-salon-my-account .glyphicon.glyphicon-thumbs-up:before {
     content: "\f164"; }
-  #sln-salon #sln-salon-my-account .glyphicon-warning-sign:before {
+  #sln-salon #sln-salon-my-account .glyphicon.glyphicon-warning-sign:before {
     content: "\f071"; }
-  #sln-salon #sln-salon-my-account .glyphicon-ok-sign:before {
+  #sln-salon #sln-salon-my-account .glyphicon.glyphicon-ok-sign:before {
     content: "\f058"; }
-  #sln-salon #sln-salon-my-account .glyphicon-hourglass:before {
+  #sln-salon #sln-salon-my-account .glyphicon.glyphicon-hourglass:before {
     content: "\f250"; }
+
 #sln-salon #sln-salon-my-account i.glyphicon {
   font-style: normal; }
 

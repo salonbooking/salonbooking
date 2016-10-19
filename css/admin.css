@@ -4635,7 +4635,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
   margin-bottom: 1.66667rem;
   margin-left: 0;
   margin-right: 0;
-  font-size: 30px; }
+  font-size: 14px; }
   @media only screen and (min-width: 768px) {
     .sln-box, #sln_shop-details,
     #sln_attendant-details,
@@ -5032,7 +5032,7 @@ p.sln-box-info {
 #sln_attendant-details,
 #postexcerpt {
   border: none;
-  font-size: 24px;
+  font-size: 14px;
   padding-bottom: 0.83333rem; }
   #sln_shop-details.postbox .inside, #sln_shop-details.stuffbox .inside,
   #sln_attendant-details.postbox .inside,
@@ -5087,7 +5087,7 @@ p.sln-box-info {
 
 #sln_service-details {
   border: none;
-  font-size: 24px;
+  font-size: 14px;
   padding-bottom: 0.83333rem; }
   #sln_service-details.postbox .inside, #sln_service-details.stuffbox .inside {
     padding: 0;
@@ -5440,7 +5440,7 @@ body.salone_page_salon-tools #wpwrap {
   background-color: #f1f1f1; }
 
 #sln-salon--admin.sln-salon--settings, .sln-calendar--wrapper.sln-salon--settings {
-  font-size: 24px; }
+  font-size: 14px; }
 
 #sln-salon--admin .sln-booking-rule, .sln-calendar--wrapper .sln-booking-rule {
   margin: 1.66667rem 0;
