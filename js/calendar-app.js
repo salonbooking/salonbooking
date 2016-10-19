@@ -20,7 +20,6 @@ function calendar_getTransFunc(){
 function calendarGetTimeFormat(){
     // http://momentjs.com/docs/#/displaying/format/
     // vs http://www.malot.fr/bootstrap-datetimepicker/#options
-   console.log(salon);
     if(!salon.moment_time_format)
         salon.moment_time_format = salon.time_format
         .replace('ii','mm')

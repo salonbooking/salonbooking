@@ -442,7 +442,7 @@ jQuery(function ($) {
        $('#save-post').click();
 */
     $('#booking-accept, #booking-refuse').click(function () {
-        $('#post_status').val($(this).data('status'));
+        $('#_sln_booking_status').val($(this).data('status'));
         $('#save-post').click();
     });
 
