@@ -4,7 +4,7 @@ class SLN_Action_Ajax_UpdateUser extends SLN_Action_Ajax_Abstract
 {
     public function execute()
     {
-       if(!current_user_can( 'manage_options' )) throw new Exception('now allowed');
+       if(!current_user_can( 'manage_salon' )) throw new Exception('not allowed');
        $result = $this->getResult($_POST['s']);
        if(!$result){
            $ret = array(
