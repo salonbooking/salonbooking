@@ -1391,6 +1391,12 @@ p.sln-box-info .sln-box-info-content h5 {
       #sln-salon--admin .sln-checkbutton input:checked + label:hover:after, .sln-calendar--wrapper .sln-checkbutton input:checked + label:hover:after {
         color: #fff; }
 
+#sln-salon--admin .sln-switch-wrapper, .sln-calendar--wrapper .sln-switch-wrapper {
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+  justify-content: center; }
+
 #sln-salon--admin .sln-switch, .sln-calendar--wrapper .sln-switch {
   margin: 0 0 1.66667rem 0; }
   #sln-salon--admin .sln-switch input, .sln-calendar--wrapper .sln-switch input {
@@ -4635,7 +4641,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab {
   margin-bottom: 1.66667rem;
   margin-left: 0;
   margin-right: 0;
-  font-size: 30px; }
+  font-size: 14px; }
   @media only screen and (min-width: 768px) {
     .sln-box, #sln_shop-details,
     #sln_attendant-details,
@@ -5440,7 +5446,7 @@ body.salone_page_salon-tools #wpwrap {
   background-color: #f1f1f1; }
 
 #sln-salon--admin.sln-salon--settings, .sln-calendar--wrapper.sln-salon--settings {
-  font-size: 24px; }
+  font-size: 14px; }
 
 #sln-salon--admin .sln-booking-rule, .sln-calendar--wrapper .sln-booking-rule {
   margin: 1.66667rem 0;
@@ -6038,7 +6044,8 @@ body.salone_page_salon-tools #wpwrap {
   .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view,
   .sln-calendar--wrapper .sln-calendar-view {
     background-color: #fff;
-    margin: 0; }
+    margin: 0;
+    font-size: 14px; }
     .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view .btn-group,
     .sln-calendar--wrapper .sln-calendar-view .btn-group {
       margin-top: 0; }

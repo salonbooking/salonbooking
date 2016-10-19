@@ -2,6 +2,7 @@
 	background-color: #fff;
 	margin: 0;
 	@extend %zi-base;
+	font-size: $font-size-base;
 	.btn-group {margin-top: 0;}
 	#calendar {
 		@extend %zi-fondo;

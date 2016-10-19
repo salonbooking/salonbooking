@@ -146,6 +146,7 @@ class SLN_Admin_Settings
     function row_input_checkbox_switch($key, $label, $settings = array())
     { ?>
         <h6 class="sln-fake-label"><?php echo $label ?></h6>
+        <div class="sln-switch-wrapper">
         <?php SLN_Form::fieldCheckbox(
         "salon_settings[{$key}]",
         $this->getOpt($key),
@@ -159,6 +160,7 @@ class SLN_Admin_Settings
                    data-on="<?php echo $settings['bigLabelOn'] ?>"
                    data-off="<?php echo $settings['bigLabelOff'] ?>"></label>
         <?php }
+        echo '</div>';
         if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
     }
 

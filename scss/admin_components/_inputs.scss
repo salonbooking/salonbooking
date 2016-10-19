@@ -359,6 +359,12 @@
 	}
 }
 
+.sln-switch-wrapper {
+	display: flex;
+	align-items: center;
+	align-content: space-between;
+	justify-content: center;
+}
 .sln-switch  {
 	@extend %sln-input-label--big;
 	@extend %sln-input-help;

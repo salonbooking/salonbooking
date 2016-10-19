@@ -1,5 +1,8 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700';
 $fontfamily--main: 'Open Sans', sans-serif;
+$font-size-base:          14px !default;
+$font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
 // SIZES
 %font-bigger {
