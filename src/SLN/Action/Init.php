@@ -160,7 +160,7 @@ class SLN_Action_Init
                         do_action('wp_login', $user->user_login, $user);
 
                         // Create redirect URL without autologin code
-                        $id = $this->plugin->getSettings()->get('pay');
+                        $id = $this->plugin->getSettings()->getBookingmyaccountPageId();
                         if ($id) {
                             $url = get_permalink($id);
                         }else{
