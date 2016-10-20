@@ -466,7 +466,6 @@ if(!String.prototype.formatNum) {
 			e.end = e.end + (new Date).getTimezoneOffset()*60*1000;
 			var s = new Date(parseInt(e.start));
 			var f = new Date(parseInt(e.end));
-
 			e.start_hour = s.getHours().toString().formatNum(2) + ':' + s.getMinutes().toString().formatNum(2);
 			e.end_hour = f.getHours().toString().formatNum(2) + ':' + f.getMinutes().toString().formatNum(2);
 
@@ -552,9 +551,8 @@ if(!String.prototype.formatNum) {
 		var events = [];
 		var self = this;
 		var first_day = getExtentedOption(this, 'first_day');
-
 		$.each(this.getEventsBetween(start, end), function(k, event) {
-			event.start_day = new Date(parseInt(event.start)).getDay();
+      			event.start_day = new Date(parseInt(event.start)).getDay();
 			if(first_day == 1) {
 				event.start_day = (event.start_day + 6) % 7;
 			}
@@ -1125,12 +1123,17 @@ if(!String.prototype.formatNum) {
 
 	Calendar.prototype.getEventsBetween = function(start, end) {
 		var events = [];
+                
 		$.each(this.options.events, function() {
+	            var s = this.start + (new Date).getTimezoneOffset()*60*1000;
+                    var e = this.end + (new Date).getTimezoneOffset()*60*1000;
+
 			if(this.start == null) {
 				return true;
 			}
-			var event_end = this.end || this.start;
-			if((parseInt(this.start) < end) && (parseInt(event_end) >= start)) {
+			var event_end = e || s;
+			if((parseInt(s) < end) && (parseInt(event_end) >= start)) {
+
 				events.push(this);
 			}
 		});
