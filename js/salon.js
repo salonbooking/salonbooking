@@ -86,10 +86,6 @@ function sln_init($) {
     });
 
     $('div.editable').on('click', function() {
-        $(this).addClass('focus');
-    });
-
-    $('div.editable').on('click', function() {
         var self = $(this);
         self.addClass('focus');
         var text  = self.find('.text');
@@ -281,6 +277,7 @@ function sln_serviceTotal($) {
                 }
                 else {
                     $('.sln-alert').remove();
+                    if(data.services)
                     $.each(data.services, function(index, value) {
                         var checkbox = $('#sln_services_' + index);
                         var errorsArea = $('#sln_services_' + index).closest('.sln-service').find('.errors-area');
