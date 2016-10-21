@@ -5038,7 +5038,7 @@ p.sln-box-info {
 #sln_attendant-details,
 #postexcerpt {
   border: none;
-  font-size: 24px;
+  font-size: 14px;
   padding-bottom: 0.83333rem; }
   #sln_shop-details.postbox .inside, #sln_shop-details.stuffbox .inside,
   #sln_attendant-details.postbox .inside,
@@ -5093,7 +5093,7 @@ p.sln-box-info {
 
 #sln_service-details {
   border: none;
-  font-size: 24px;
+  font-size: 14px;
   padding-bottom: 0.83333rem; }
   #sln_service-details.postbox .inside, #sln_service-details.stuffbox .inside {
     padding: 0;

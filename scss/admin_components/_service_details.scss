@@ -2,7 +2,7 @@
     @extend .sln-box;
     @extend .sln-box--main;
     border: none;
-    font-size: $browser-context + px;
+    font-size: $font-size-base;
     padding-bottom: rem(20px);
     &.postbox .inside, &.stuffbox .inside {
         padding: 0;

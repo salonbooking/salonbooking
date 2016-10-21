@@ -442,7 +442,7 @@ jQuery(function ($) {
        $('#save-post').click();
 */
     $('#booking-accept, #booking-refuse').click(function () {
-        $('#post_status').val($(this).data('status'));
+        $('#_sln_booking_status').val($(this).data('status'));
         $('#save-post').click();
     });
 
@@ -588,6 +588,11 @@ jQuery(function ($) {
         if ($(this).is(':checked')) {
             $('#salon_settings_enabled_guest_checkout').attr('checked', 'checked').change();
         }
+    }).change();
+
+    $('#salon_settings_follow_up_interval').change(function(){
+        $('#salon_settings_follow_up_interval_custom_hint').css('display', $(this).val() === 'custom' ? '' : 'none');
+        $('#salon_settings_follow_up_interval_hint').css('display', $(this).val() !== 'custom' ? '' : 'none');
     }).change();
 
    $('.sln-panel .collapse').on('shown.bs.collapse', function() {
@@ -749,9 +754,11 @@ jQuery(function ($) {
         sln_checkServices($);
         return false;
     });
-    $('.sln-admin-sidebar').affix({
-    offset: {
-        top: $('.sln-admin-sidebar').offset().top - 40
+    if($('.sln-admin-sidebar').length) {
+        $('.sln-admin-sidebar').affix({
+        offset: {
+            top: $('.sln-admin-sidebar').offset().top - 40
+        }
+        });
     }
-});
 });

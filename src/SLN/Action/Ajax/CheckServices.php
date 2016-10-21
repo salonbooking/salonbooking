@@ -31,7 +31,8 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
             } elseif ($part == 'secondaryServices') { // for frontend user
                 $ret = $this->initSecondaryServices($services);
             } elseif ($part == 'allServices' && ! empty($_POST['_sln_booking']['service'])) { // for admin
-                $this->initAllServicesForAdmin($services,$_POST['_sln_booking']);
+                $services = $_POST['_sln_booking']['service'];
+                $ret = $this->initAllServicesForAdmin($services,$_POST['_sln_booking']);
             }
         }
 
@@ -126,7 +127,6 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 'break_duration' => SLN_Func::convertToHoursMins($bookingData['break_duration'][$sId]),
             );
         }
-
         $ret             = array();
         $bookingServices = SLN_Wrapper_Booking_Services::build($data, $date);
         $settings = $this->plugin->getSettings();
@@ -137,7 +137,6 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
         $interval               = min(SLN_Enum_Interval::toArray());
 
         $firstSelectedAttendant = null;
-
         foreach ($bookingServices->getItems() as $bookingService) {
             $serviceErrors   = array();
             $attendantErrors = array();
@@ -208,7 +207,6 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 'endsAt'   => $this->plugin->format()->time($bookingService->getEndsAt()),
             );
         }
-
         return $ret;
     }
 

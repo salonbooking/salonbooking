@@ -111,6 +111,48 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
         return $services;
     }
 
+    /**
+     * @param SLN_Wrapper_Service[] $services
+     * @return SLN_Wrapper_Service[]
+     */
+    public function sortByExecAndTitleDESC($services)
+    {
+        usort($services, array($this, 'serviceExecAndTitleDescCmp'));
+
+        return $services;
+    }
+
+    public static function serviceExecAndTitleDescCmp($a, $b)
+    {
+        if (!$b) {
+            return $a;
+        }
+        if (!$a) {
+            return $b;
+        }
+        if (!$a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
+            $a = SLN_Plugin::getInstance()->createService($a);
+        }
+        if (!$b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
+            $b = SLN_Plugin::getInstance()->createService($b);
+        }
+        $aExecOrder = $a->getExecOrder();
+        $bExecOrder = $b->getExecOrder();
+        if ($aExecOrder != $bExecOrder) {
+            return $aExecOrder > $bExecOrder ? 1 : -1;
+        } else {
+            $aPosOrder = $a->getPosOrder();
+            $bPosOrder = $b->getPosOrder();
+            if ($aPosOrder != $bPosOrder) {
+                return $aPosOrder > $bPosOrder ? 1 : -1;
+            } elseif ($a->getName() > $b->getName()) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }
+    }
+
     public static function serviceExecCmp($a, $b)
     {
         if (!$b) {

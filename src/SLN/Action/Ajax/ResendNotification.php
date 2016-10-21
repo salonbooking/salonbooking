@@ -4,7 +4,7 @@ class SLN_Action_Ajax_ResendNotification extends SLN_Action_Ajax_Abstract
 {
     public function execute()
     {
-       if(!current_user_can( 'manage_options' )) throw new Exception('now allowed');
+       if(!current_user_can( 'manage_salon' )) throw new Exception('not allowed');
         $booking = new SLN_Wrapper_Booking($_POST['post_id']);
         if(isset($_POST['emailto'])){
             $to = $_POST['emailto'];

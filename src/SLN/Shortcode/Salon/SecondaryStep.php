@@ -28,7 +28,7 @@ class SLN_Shortcode_Salon_SecondaryStep extends SLN_Shortcode_Salon_Step
             if (!isset($this->services)) {
                 /** @var SLN_Repository_ServiceRepository $repo */
                 $repo = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
-                $this->services = $repo->getAllSecondary();
+                $this->services = $repo->sortByExecAndTitleDESC($repo->getAllSecondary());
             }
         }
 

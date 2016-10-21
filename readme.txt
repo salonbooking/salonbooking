@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.6.1
-Stable tag: 3.6
+Stable tag: 3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,10 +43,12 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Email notifications on new reservation
 * Email notification to selected assistant
 * Email reminder for the customers
+* Email followup 
 
 * SMS notification on new reservation
 * SMS notification to selected assistant
 * SMS reminder for the customers
+* SMS followup
 * SMS verification code against spam
 * SMS Aplhanumeric ID supported
 
@@ -118,7 +120,8 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 **Customers archive**
 
 * List of customers
-* Detail page of each customer with list of his reservations and feedbacks
+* Details page of each customer with list of his reservations and feedbacks
+* Customer's bookings statistics
 
 **Reports**
 
@@ -164,7 +167,7 @@ The plugin has been tested on WordPress 4.0
  
 = Which version of php is supported? =
 
-The plugin supports php 5.2 and above version.
+The plugin supports php 5.3 and above version.
 
  
 = Is it possible to accept online payments? =
@@ -204,8 +207,7 @@ At the moment we didn’t spot any conflicts with other plugins.
  
 = Is it possible to customise the look and feel of the plugin front-end? =
 
-Every front-end element of the booking process has its own css class, so you can easily customise it.
-
+Yes, go to "Settings > Style > Color combination" options
 
 = What is the limit of the free version? =
 
@@ -239,6 +241,16 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+21.10.2016
+
+* Bug with Woocommerce categories fixed
+* Bug with "Accept reservation" button fixed
+* Bug with "Email address missing" when "Force guest checkout" option is active fixed
+* Selection of customers on back-end booking creation for Salon Staff user fixed
+* Timezone +9 on back-end calendar fixed
+* Booking my account page redesigned
+* Settings pages layout improved
 
 
 25.07/2016
