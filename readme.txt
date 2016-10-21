@@ -247,10 +247,10 @@ http://salon.wordpresschef.it
 * Bug with Woocommerce categories fixed
 * Bug with "Accept reservation" button fixed
 * Bug with "Email address missing" when "Force guest checkout" option is active fixed
-* Selection of customers on back-end booking creation for Salon Staff user
+* Selection of customers on back-end booking creation for Salon Staff user fixed
+* Timezone +9 on back-end calendar fixed
 * Booking my account page redesigned
 * Settings pages layout improved
-
 
 
 25.07/2016
