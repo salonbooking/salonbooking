@@ -9,12 +9,11 @@ class SLN_Action_Ajax_CheckServicesAlt extends SLN_Action_Ajax_CheckServices
         foreach($merged as $s){
             $mergeIds[] = $s->getId();
         }
-        $services      = array_merge(array_keys($services), $merged);
+        $services      = array_merge(array_keys($services), $mergeIds);
         $servicesCount = $this->plugin->getSettings()->get('services_count');
         if ($servicesCount) {
             $services = array_slice($services, 0, $servicesCount);
         }
-
         $builder->removeServices();
 
         foreach ($this->getServices(true, true) as $service) {
