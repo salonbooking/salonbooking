@@ -8,7 +8,6 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
 
     public function execute()
     {
-
         if (!isset($this->date)) {
             if(isset($_POST['sln'])){
                 $this->date = $_POST['sln']['date'];
@@ -19,7 +18,6 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
                 $this->time = $_POST['_sln_booking_time'];
             }
         }
-
         $this->checkDateTime();
         if ($errors = $this->getErrors()) {
             $ret = compact('errors');
@@ -46,7 +44,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         $from = $hb->getFromDate();
         $to   = $hb->getToDate();
         if (!$hb->isValidFrom($date)) {
-            $txt = $plugin->format()->datetime(new SLN_DateTime($from));
+            $txt = $plugin->format()->datetime($from);
             $this->addError(sprintf(__('The date is too near, the minimum allowed is:', 'salon-booking-system') . '<br /><strong>%s</strong>', $txt));
         } elseif (!$hb->isValidTo($date)) {
             $txt = $plugin->format()->datetime($to);

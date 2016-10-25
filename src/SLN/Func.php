@@ -78,8 +78,8 @@ class SLN_Func
         } elseif ($filter == 'date') {
             if (is_array($val)) {
                 $val = $val['year'] . '-' . $val['month'] . '-' . $val['day'];
-            } elseif (strpos($val, ' ') !== false) {
-                $val = SLN_TimeFunc::evalPickedDate($val);
+//            } elseif (strpos($val, ' ') !== false) {
+//                $val = SLN_TimeFunc::evalPickedDate($val);
             } else {
                 $val = SLN_TimeFunc::evalPickedDate($val);
             }
