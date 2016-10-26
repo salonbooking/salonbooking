@@ -27,7 +27,7 @@ $payLeftTime      = $plugin->getBookingBuilder()->getLastBooking()->getTimeStrin
         <?php if ($paymentMethod && $payOffsetEnabled) : ?>
             <p><?php echo sprintf(
                     __(
-                        'You have <strong>%s</strong> to complete your payment before this reservation being canceled',
+                        'You have <strong>%s</strong> to complete your payment before this reservation is canceled',
                         'salon-booking-system'
                     ),
                     $payLeftTime
@@ -35,7 +35,7 @@ $payLeftTime      = $plugin->getBookingBuilder()->getLastBooking()->getTimeStrin
         <?php endif ?>
         <p><?php echo sprintf(
                 __(
-                    'If you need to change your reservation please call the <strong>%s</strong> or send an e-mail to <strong>%s</strong>',
+                    'If you need to change your reservation please call <strong>%s</strong> or send an e-mail to <strong>%s</strong>',
                     'salon-booking-system'
                 ),
                 $genPhone,
