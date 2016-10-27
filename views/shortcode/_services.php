@@ -34,14 +34,14 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         <?php if ($group['term'] !== false): ?>
             <div class="row sln-panel">
             <a class="col-xs-12 sln-panel-heading collapsed" role="button"
-               data-toggle="collapse" href="#collapse<?php echo $group['term']->slug ?>"
-               aria-expanded="false" aria-controls="collapse<?php echo $group['term']->slug ?>">
+               data-toggle="collapse" href="#collapse<?php echo $group['term']->id ?>"
+               aria-expanded="false" aria-controls="collapse<?php echo $group['term']->id ?>">
                 <h2 class="sln-btn sln-btn--nobkg sln-btn--noheight sln-btn--icon sln-btn--icon--left sln-btn--fullwidth">
                     <?php echo $group['term']->name ?></h2>
             </a>
-            <div id="collapse<?php echo $group['term']->slug ?>"
+            <div id="collapse<?php echo $group['term']->id ?>"
             class="col-xs-12 sln-panel-content panel-collapse collapse" role="tabpanel"
-            aria-labelledby="collapse<?php echo $group['term']->slug ?>Heading"
+            aria-labelledby="collapse<?php echo $group['term']->id ?>Heading"
             aria-expanded="false" style="height: 0px;">
         <?php endif ?>
         <?php foreach ($group['services'] as $service) {
