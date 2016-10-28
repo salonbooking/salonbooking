@@ -157,8 +157,8 @@ function sln_adminDate($) {
     function bindIntervals(intervals) {
         items = intervals;
         func();
-        putOptions($('#sln_date'), intervals.suggestedDate);
-        putOptions($('#sln_time'), intervals.suggestedTime);
+        putOptions($('#_sln_booking_date'), intervals.suggestedDate);
+        putOptions($('#_sln_booking_time'), intervals.suggestedTime);
     }
 
     function putOptions(selectElem, value) {
