@@ -7,11 +7,18 @@ class SLN_Action_Ajax_ResendNotification extends SLN_Action_Ajax_Abstract
        if(!current_user_can( 'manage_salon' )) throw new Exception('not allowed');
         $booking = new SLN_Wrapper_Booking($_POST['post_id']);
         if(isset($_POST['emailto'])){
-            $to = $_POST['emailto'];
-            SLN_Plugin::getInstance()->sendMail(
-                'mail/summary',
-                compact('booking','to')
-            );
+            $p = $this->plugin;
+
+            $args                    = compact('booking');
+            $args['to']              = $_POST['emailto'];
+            $args['updated']         = true;
+            $args['updated_message'] = $_POST['message'];
+            $p->sendMail('mail/summary', $args);
+
+            // send email only if we must notify attendants
+            if( $p->getSettings()->get('attendant_email') )
+                $p->sendMail('mail/summary_admin', $args);
+
             return array('success' => __('E-mail sent'));
         }else{
             return array('error' => __('Please specify an email'));
