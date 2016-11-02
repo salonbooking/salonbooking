@@ -190,7 +190,7 @@ function sln_adminDate($) {
         return false;
     });
     $('#resend-payment-submit').click(function(){
-        var data = "post_id="+$('#post_ID').val()+"&emailto="+$('#resend-payment').val()+"&action=salon&method=ResendPayment&security=" + salon.ajax_nonce;
+        var data = "post_id="+$('#post_ID').val()+"&emailto="+$('#resend-payment').val()+"&action=salon&method=ResendPaymentNotification&security=" + salon.ajax_nonce;
         var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ';
         $('#resend-payment-message').html(validatingMessage);
         $.ajax({
