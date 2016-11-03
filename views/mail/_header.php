@@ -19,7 +19,7 @@
     <td height="105" align="center" valign="middle" bgcolor="#f2f2f2" style="border-bottom:2px solid #fff;"><table width="191" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
         <td width="55" align="left" valign="top">
-            <a href="#"><img src="<?php echo (($logo = $plugin->getSettings()->get('gen_logo')) ? wp_get_attachment_image_url($logo) : SLN_PLUGIN_URL.'/img/summary.png'); ?>" width="40" height="41" alt="img1" border="0" align="left"></a>
+            <a href="#"><img src="<?php echo (($logo = $plugin->getSettings()->get('gen_logo')) ? wp_get_attachment_image_url($logo, 'sln_gen_logo') : SLN_PLUGIN_URL.'/img/summary.png'); ?>" <?php echo (!$logo ? 'width="40"  height="41"' : '') ?> alt="img1" border="0" align="left"></a>
         </td>
           <?php if(isset($booking)): ?>
             <td align="left" valign="top"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">

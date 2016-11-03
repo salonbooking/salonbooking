@@ -270,7 +270,12 @@ class SLN_Admin_Settings
 
         if (isset($_FILES['gen_logo']) && !empty($_FILES['gen_logo']['size'])) {
             $_FILES['gen_logo']['name'] = 'gen_logo.png';
-            $attId                      = media_handle_upload('gen_logo', 0);
+
+            $imageSize = 'sln_gen_logo';
+            if (!has_image_size($imageSize)) {
+                add_image_size($imageSize, 160, 70);
+            }
+            $attId     = media_handle_upload('gen_logo', 0);
 
             if (!is_wp_error($attId)) {
 	            $submitted['gen_logo'] = $attId;

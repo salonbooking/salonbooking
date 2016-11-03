@@ -56,7 +56,7 @@
                 <div id="logo" class="preview-logo">
                     <div class="row">
                         <div class="col-xs-offset-5 col-xs-2 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
-                            <img src="<?php echo wp_get_attachment_image_url($this->getOpt('gen_logo')); ?>">
+                            <img src="<?php echo wp_get_attachment_image_url($this->getOpt('gen_logo'), 'sln_gen_logo'); ?>">
                         </div>
                     </div>
                     <button type="button" class="btn btn-link" data-action="delete-logo" data-target-remove="logo"
