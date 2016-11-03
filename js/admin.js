@@ -570,6 +570,20 @@ jQuery(function ($) {
         $( "tbody" ).disableSelection( );
     }
 
+    $('[data-action=select-logo]').click(function() {
+        $('#'+$(this).attr('data-target')).click();
+    });
+
+    $("[data-action=select-file-logo]").change(function(){
+        $(this).closest('form').find('input:first').click();
+    });
+
+    $('[data-action=delete-logo]').click(function() {
+        $('#'+$(this).attr('data-target-reset')).val('');
+        $('#'+$(this).attr('data-target-show')).removeClass('hide');
+        $('#'+$(this).attr('data-target-remove')).remove();
+    });
+
     $('#salon_settings_pay_method').change(function(){
         $('.payment-mode-data').hide();
         $('#payment-mode-'+$(this).val()).show();

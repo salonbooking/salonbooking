@@ -530,6 +530,27 @@
 		margin-bottom: rem(80px);
     	}
 }
+	.sln-logo-box {
+		.preview-logo {
+			text-align: center;
+			background-color: #c7dff3;
+			border: 2px dashed #afafaf;
+			img {
+				width: 100%; margin-top: 5%; margin-bottom: 5%;
+			}
+		}
+		.select-logo {
+			text-align: center;
+			cursor: pointer;
+			background-color: #c7dff3;
+			border: 2px dashed #afafaf;
+			.dashicons {
+				width: 100px;
+				height: 100px;
+				font-size: 100px;
+			}
+		}
+	}
 
 }
 

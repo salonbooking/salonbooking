@@ -45,12 +45,35 @@
                             'rows' => 5,
                             'placeholder' => 'write your address'
                         )
-                    )
+                    ),
+                    'help' => __('Provide the full address of your Salon','salon-booking-system')
                 )
             ); ?>
         </div>
-        <div class="col-sm-4 form-group sln-box-maininfo align-top">
-            <p class="sln-input-help"><?php _('Provide the full address of your Salon','salon-booking-system') ?></p>
+        <div class="col-sm-4 form-group sln-input--simple sln-logo-box">
+            <label for="gen_logo"><?php _e('Upload your logo','salon-booking-system') ?></label>
+            <?php if ($this->getOpt('gen_logo')): ?>
+                <div id="logo" class="preview-logo">
+                    <div class="row">
+                        <div class="col-xs-offset-5 col-xs-2 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
+                            <img src="<?php echo wp_get_attachment_image_url($this->getOpt('gen_logo')); ?>">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-link" data-action="delete-logo" data-target-remove="logo"
+                            data-target-reset="salon_settings_gen_logo" data-target-show="select_logo"><?php _e('remove this image', 'salon-booking-system'); ?></button>
+                </div>
+            <?php endif ?>
+
+            <div id="select_logo" class="select-logo <?php echo $this->getOpt('gen_logo') ? 'hide' : '' ?>" data-action="select-logo" data-target="gen_logo">
+                <span class="dashicons dashicons-upload"></span>
+            </div>
+
+            <div class="hide">
+                <input type="file" name="gen_logo" id="gen_logo" data-action="select-file-logo" accept="image/png">
+                <input type="hidden" name="salon_settings[gen_logo]" id="salon_settings_gen_logo" value="<?php echo $this->getOpt('gen_logo'); ?>">
+            </div>
+
+            <p class="help-block"><?php _e('Use a transparent png file','salon-booking-system') ?></p>
         </div>
     </div>
     <!--

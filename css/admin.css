@@ -1537,6 +1537,23 @@ p.sln-box-info .sln-box-info-content h5 {
 @media only screen and (min-width: 768px) {
   #sln-salon--admin .sln-moremargin--bottom, .sln-calendar--wrapper .sln-moremargin--bottom {
     margin-bottom: 3.33333rem; } }
+#sln-salon--admin .sln-logo-box .preview-logo, .sln-calendar--wrapper .sln-logo-box .preview-logo {
+  text-align: center;
+  background-color: #c7dff3;
+  border: 2px dashed #afafaf; }
+#sln-salon--admin .sln-logo-box .preview-logo img, .sln-calendar--wrapper .sln-logo-box .preview-logo img {
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%; }
+#sln-salon--admin .sln-logo-box .select-logo, .sln-calendar--wrapper .sln-logo-box .select-logo {
+  text-align: center;
+  cursor: pointer;
+  background-color: #c7dff3;
+  border: 2px dashed #afafaf; }
+#sln-salon--admin .sln-logo-box .select-logo .dashicons, .sln-calendar--wrapper .sln-logo-box .select-logo .dashicons {
+  width: 100px;
+  height: 100px;
+  font-size: 100px; }
 
 .sln-colorpicker .sln-colorpicker--subwrapper {
   border: 0.16667rem solid #c7dff3; }
