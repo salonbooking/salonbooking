@@ -15,7 +15,6 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 		parent::__construct($args);
 
 		add_filter('manage_users_custom_column', array($this, 'manage_users_custom_column'), 10, 3);
-		add_filter('users_list_table_query_args', array($this, 'users_list_table_query_args'));
 	}
 
 	public function get_columns() {
@@ -24,13 +23,21 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 			'ID'             => __('Customer ID', 'salon-booking-system'),
 			'first_name'     => __('First Name', 'salon-booking-system'),
 			'last_name'      => __('Last Name', 'salon-booking-system'),
-			'email'          => __('E-mail', 'salon-booking-system'),
+			'user_email'     => __('E-mail', 'salon-booking-system'),
 			'_sln_phone'     => __('Telephone', 'salon-booking-system'),
 			'total_bookings' => __('Total Reservations', 'salon-booking-system'),
 			'total_amount'   => __('Customer Value', 'salon-booking-system'),
 		);
 
 		return $columns;
+	}
+
+	protected function get_sortable_columns() {
+		$c = array(
+			'user_email' => 'user_email',
+		);
+
+		return $c;
 	}
 
 	public function manage_users_custom_column($empty, $column_name, $user_id) {
@@ -58,10 +65,75 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 		return $html;
 	}
 
-	public function users_list_table_query_args($args) {
-		$args['role'] = SLN_Plugin::USER_ROLE_CUSTOMER;
+	public function prepare_items() {
+		global $role, $usersearch, $wpdb;
 
-		return $args;
+		$args = array();
+
+		$role   = '%'.SLN_Plugin::USER_ROLE_CUSTOMER.'%';
+		$args[] = $role;
+
+		$join   = '';
+		$where  = '';
+
+		$usersearch = !empty($_REQUEST['s']) ? '%'.wp_unslash(trim($_REQUEST['s'])).'%' : '';
+		if (!empty($usersearch)) {
+			$join = "INNER JOIN {$wpdb->prefix}usermeta AS usermeta2 ON ( users.ID = usermeta2.user_id )
+						INNER JOIN {$wpdb->prefix}usermeta AS usermeta3 ON ( users.ID = usermeta3.user_id )";
+
+			$where = "AND
+				    (
+				        usermeta2.meta_key = 'first_name' AND usermeta2.meta_value LIKE %s
+				        OR
+				        usermeta3.meta_key = 'last_name' AND usermeta3.meta_value LIKE %s
+				        OR
+				        users.user_email LIKE %s
+				    )";
+
+			$args[] = $usersearch;
+			$args[] = $usersearch;
+			$args[] = $usersearch;
+		}
+
+		$orderby = !empty($_REQUEST['orderby']) ? $_REQUEST['orderby'] : 'ID';
+		$order   = !empty($_REQUEST['order']) ? $_REQUEST['order'] : 'ASC';
+
+		$per_page       = ($this->is_site_users) ? 'site_users_network_per_page' : 'users_per_page';
+		$users_per_page = $this->get_items_per_page($per_page);
+		$paged  = $this->get_pagenum();
+		$limit  = $users_per_page;
+		$offset = ($paged-1) * $users_per_page;
+
+		$args[] = $offset;
+		$args[] = $limit;
+
+		$query  = $wpdb->prepare(
+				"SELECT DISTINCT ID
+
+FROM {$wpdb->prefix}users AS users
+INNER JOIN {$wpdb->prefix}usermeta AS usermeta1 ON ( users.ID = usermeta1.user_id )
+$join
+
+WHERE
+    ( usermeta1.meta_key = 'wp_capabilities' AND usermeta1.meta_value LIKE %s )
+    $where
+ORDER BY ".$wpdb->_real_escape($orderby)." ".$wpdb->_real_escape($order)." LIMIT %d, %d",
+				$args
+		);
+		$users = $wpdb->get_results($query);
+
+		$items = array();
+
+		foreach($users as $user) {
+			$items[$user->ID] = get_user_by('ID', $user->ID);
+		}
+
+		$this->items = $items;
+
+		$this->set_pagination_args( array(
+			'total_items' => count($this->items),
+			'per_page'    => $users_per_page,
+		) );
 	}
 
 	protected function row_actions($actions, $always_visible = false) {
@@ -79,6 +151,12 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 	}
 
 	protected function extra_tablenav($which) {
-		echo '';
+		if ($which === 'top') {
+			?>
+			<div class="alignleft actions">
+				<?php $this->search_box(__('Search customers', 'salon-booking-system'), 'customer'); ?>
+			</div>
+			<?php
+		}
 	}
 }
