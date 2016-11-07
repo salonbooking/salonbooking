@@ -8,6 +8,10 @@ SLN_Helper_AvailabilityItem
     private $times = array();
     private $timesTxt = array();
 
+    private $fromDate;
+    private $toDate;
+
+
     function __construct($data, $offset = 0)
     {
         $this->data = $data;
@@ -33,6 +37,8 @@ SLN_Helper_AvailabilityItem
                     $data['to'][1],
                 );
             }
+            $this->fromDate = isset($data['from_date']) ? $data['from_date'].' 00:00:00' : null;
+            $this->toDate   = isset($data['to_date']) ? $data['to_date'].' 23:59:59' : null;
         }
         if (empty($this->times)) {
             $this->times[] = array(strtotime('00:00'), strtotime('23:59'));
@@ -45,6 +51,16 @@ SLN_Helper_AvailabilityItem
         if ($date instanceof DateTime) {
             $date = $date->format('Y-m-d');
         }
+
+        $timestampDate = strtotime($date);
+        if (
+            ($this->fromDate && $timestampDate < $this->fromDate)
+            || ($this->toDate && $timestampDate > $this->toDate)
+        ) {
+            return false;
+        }
+
+
         $dayOfTheWeek = date("w", strtotime($date)) + 1;
 
         return isset($this->data['days'][$dayOfTheWeek]) ? true : false;

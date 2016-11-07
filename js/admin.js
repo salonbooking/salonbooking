@@ -426,6 +426,10 @@ jQuery(function ($) {
         count++;
         bindRemove();
         customSliderRange($, $('.slider-range'))
+        initDatepickers($);
+        initTimepickers($);
+        $('[data-unhide]').change();
+
     });
 
     $('button[data-collection="addnewholiday"]').click(function (e) {
@@ -775,4 +779,11 @@ jQuery(function ($) {
         }
         });
     }
+});
+
+jQuery(function ($) {
+    $('body').on('change', '[data-unhide]', function () {
+        $($(this).data('unhide')).toggle($(this).is(':checked') ? false : true);
+    });
+    $('[data-unhide]').change();
 });

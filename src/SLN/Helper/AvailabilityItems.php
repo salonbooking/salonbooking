@@ -119,4 +119,24 @@ class SLN_Helper_AvailabilityItems
     }
 
 
+    public static function processSubmission($data = null)
+    {
+        if ( ! $data) {
+            return $data;
+        }
+
+        foreach ($data as &$item) {
+            if (isset($item['always']) && $item['always'] == 1) {
+                $item['always'] = true;
+                $item['from_date'] = null;
+                $item['to_date']   = null;
+            } else {
+                $item['always'] = false;
+                $item['from_date'] = SLN_TimeFunc::evalPickedDate($item['from_date']);
+                $item['to_date']   = SLN_TimeFunc::evalPickedDate($item['to_date']);
+            }
+        }
+
+        return $data;
+    }
 }

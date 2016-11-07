@@ -359,13 +359,10 @@ class SLN_Admin_Settings
     {
         $submitted = $_POST['salon_settings'];
         $tmp = array();
-        if (isset($submitted['availabilities']) && $submitted['availabilities']) {
-            foreach ($submitted['availabilities'] as $row) {
-                $tmp[] = $row;
-            }
-        }
-        $submitted['availabilities'] = $tmp;
-        if($submitted['holidays'])
+        if(isset($submitted['availabilities']))
+            $submitted['availabilities'] = SLN_Helper_AvailabilityItems::processSubmission($submitted['availabilities']);
+
+        if(isset($submitted['holidays']))
             $submitted['holidays'] = SLN_Helper_HolidayItems::processSubmission($submitted['holidays']);
         $this->bindSettings(self::$fieldsTabBooking, $submitted);
         $this->settings->save();
