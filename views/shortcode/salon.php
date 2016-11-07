@@ -55,3 +55,4 @@ $class = SLN_Enum_ShortcodeStyle::getClass($style);
 </div>
 */ ?>
 <div id="sln-notifications"></div>
+</div>
