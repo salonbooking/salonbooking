@@ -15,10 +15,6 @@ class SLN_Action_Ajax_ResendNotification extends SLN_Action_Ajax_Abstract
             $args['updated_message'] = $_POST['message'];
             $p->sendMail('mail/summary', $args);
 
-            // send email only if we must notify attendants
-            if( $p->getSettings()->get('attendant_email') )
-                $p->sendMail('mail/summary_admin', $args);
-
             return array('success' => __('E-mail sent'));
         }else{
             return array('error' => __('Please specify an email'));

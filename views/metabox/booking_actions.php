@@ -12,17 +12,17 @@
 </div>
 <br/>
 <div class="row">
-	<div class="col-xs-9"><input type="text" id="resend-notification" class="sln-input sln-input--text" value="<?php echo $booking->getEmail(); ?>"/></div>
-	<div class=""><button class="button" id="resend-notification-submit"
-	                               value="submit"><?php echo __('Send', 'salon-booking-system') ?></button></div>
+	<div class="col-xs-8"><input type="text" id="resend-notification" class="sln-input sln-input--text" value="<?php echo $booking->getEmail(); ?>"/></div>
+	<div class="col-xs-4"><div class="row"><button class="button" id="resend-notification-submit"
+	                               value="submit"><?php echo __('Send', 'salon-booking-system') ?></button></div></div>
 </div>
 <br/>
 <span id="resend-notification-message"></span>
 <h3><?php _e('Re-send payment link', 'salon-booking-system') ?></h3>
 <div class="row">
-	<div class="col-xs-9"><input type="text" id="resend-payment" class="sln-input sln-input--text" value="<?php echo $booking->getEmail(); ?>"/></div>
-	<div class=""><button class="button" id="resend-payment-submit"
-	                      value="submit"><?php echo __('Send', 'salon-booking-system') ?></button></div>
+	<div class="col-xs-8"><input type="text" id="resend-payment" class="sln-input sln-input--text" value="<?php echo $booking->getEmail(); ?>"/></div>
+	<div class="col-xs-4"><div class="row"><button class="button" id="resend-payment-submit"
+	                      value="submit"><?php echo __('Send', 'salon-booking-system') ?></button></div></div>
 </div>
 <br/>
 <span id="resend-payment-message"></span>
