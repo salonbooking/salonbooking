@@ -47,6 +47,7 @@ class SLN_Admin_Settings
         'gen_email',
         'gen_phone',
         'gen_address',
+        'gen_logo',
         'gen_timetable',
         'ajax_enabled',
         'attendant_enabled',
@@ -262,6 +263,24 @@ class SLN_Admin_Settings
     public function processTabGeneral()
     {
         $submitted = $_POST['salon_settings'];
+
+        if (empty($submitted['gen_logo']) && $this->getOpt('gen_logo')) {
+			wp_delete_attachment($this->getOpt('gen_logo'), true);
+        }
+
+        if (isset($_FILES['gen_logo']) && !empty($_FILES['gen_logo']['size'])) {
+            $_FILES['gen_logo']['name'] = 'gen_logo.png';
+
+            $imageSize = 'sln_gen_logo';
+            if (!has_image_size($imageSize)) {
+                add_image_size($imageSize, 160, 70);
+            }
+            $attId     = media_handle_upload('gen_logo', 0);
+
+            if (!is_wp_error($attId)) {
+	            $submitted['gen_logo'] = $attId;
+            }
+        }
         $submitted['email_subject'] = !empty($submitted['email_subject']) ?
             $submitted['email_subject'] :
             'Your booking reminder for [DATE] at [TIME] at [SALON NAME]';
@@ -446,7 +465,7 @@ class SLN_Admin_Settings
 
             <?php settings_errors(); ?>
             <?php $this->showTabsBar(); ?>
-            <form method="post" action="<?php admin_url('admin.php?page='.self::PAGE); ?>">
+            <form method="post" action="<?php admin_url('admin.php?page='.self::PAGE); ?>" enctype="multipart/form-data">
                 <?php
                 $this->showTab($current);
                 wp_nonce_field(self::PAGE.$current);
@@ -509,7 +528,7 @@ class SLN_Admin_Settings
         }
         $dir = wp_upload_dir();
         $dir = $dir['basedir'];
-        file_put_contents($dir.'/sln-colors.css', $css); 
+        file_put_contents($dir.'/sln-colors.css', $css);
     }
 
     public function processTabGcalendar()
