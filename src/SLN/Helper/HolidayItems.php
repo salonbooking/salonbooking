@@ -4,13 +4,13 @@ class SLN_Helper_HolidayItems
 {
     private $items = array();
 
-    public function __construct($holidays)
+    public function __construct($holidays, $weekDayRules = null)
     {
         if (empty($holidays)) {
             return;
         }
         foreach ($holidays as $item) {
-            $this->items[] = new SLN_Helper_HolidayItem($item);
+            $this->items[] = new SLN_Helper_HolidayItem($item, $weekDayRules);
         }
     }
 
