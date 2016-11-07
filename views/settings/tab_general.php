@@ -54,10 +54,8 @@
             <label for="gen_logo"><?php _e('Upload your logo','salon-booking-system') ?></label>
             <?php if ($this->getOpt('gen_logo')): ?>
                 <div id="logo" class="preview-logo">
-                    <div class="row">
-                        <div class="col-xs-offset-5 col-xs-2 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
-                            <img src="<?php echo wp_get_attachment_image_url($this->getOpt('gen_logo'), 'sln_gen_logo'); ?>">
-                        </div>
+                    <div class="preview-logo-img">
+                        <img src="<?php echo wp_get_attachment_image_url($this->getOpt('gen_logo'), 'sln_gen_logo'); ?>">
                     </div>
                     <button type="button" class="btn btn-link" data-action="delete-logo" data-target-remove="logo"
                             data-target-reset="salon_settings_gen_logo" data-target-show="select_logo"><?php _e('remove this image', 'salon-booking-system'); ?></button>
