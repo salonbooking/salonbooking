@@ -73,4 +73,11 @@ abstract class SLN_Wrapper_Abstract
             return $this->object->post_title;
         }
     }
+
+    public function getPostDate()
+    {
+        if ($this->object) {
+            return $this->object->post_date;
+        }
+    }
 }

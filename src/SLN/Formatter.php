@@ -9,12 +9,14 @@ class SLN_Formatter
         $this->plugin = $plugin;
     }
 
-    public function money($val, $showFree = true, $useDefaultSep = true, $removeDecimals = false)
+    public function money($val, $showFree = true, $useDefaultSep = true, $removeDecimals = false, $htmlEntityDecode = false)
     {
         $s = $this->plugin->getSettings();
         $isLeft = $s->get('pay_currency_pos') == 'left';
         $rightSymbol = $isLeft ? '' : $s->getCurrencySymbol();
+        $rightSymbol = $htmlEntityDecode ? html_entity_decode($rightSymbol) : $rightSymbol;
         $leftSymbol = $isLeft ? $s->getCurrencySymbol() : '';
+        $leftSymbol = $htmlEntityDecode ? html_entity_decode($leftSymbol) : $leftSymbol;
         
         if ($showFree && $val <= 0) {
             $money = __('free','salon-booking-system');
