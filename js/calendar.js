@@ -463,6 +463,13 @@ if(!String.prototype.formatNum) {
 		data.by_hour = [];
 		data.after_time = [];
 		data.before_time = [];
+		data.events.sort(function(a, b) {
+			if (a.start === b.start && a.end < b.end) {
+				return 1;
+			}
+
+			return -1;
+		});
 		$.each(data.events, function(k, e) {
 			e.start = e.start + (new Date).getTimezoneOffset()*60*1000;
 			e.end = e.end + (new Date).getTimezoneOffset()*60*1000;
@@ -530,7 +537,7 @@ if(!String.prototype.formatNum) {
 					added = true;
 
 					var step = 5*2/60; // 2 rows = 1 hour
-					var offset_max = parseFloat((e.lines + step).toFixed(4));
+					var offset_max = parseFloat((e.lines).toFixed(4));
 					for(var offset = 0; parseFloat(offset.toFixed(4)) < offset_max; offset+=step) {
 						var _row_rounded = parseFloat((row + offset).toFixed(4));
 						var _col 		 = col;
