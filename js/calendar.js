@@ -471,8 +471,8 @@ if(!String.prototype.formatNum) {
 			return -1;
 		});
 		$.each(data.events, function(k, e) {
-			e.start = e.start + (new Date).getTimezoneOffset()*60*1000;
-			e.end = e.end + (new Date).getTimezoneOffset()*60*1000;
+			e.start = e.start + (new Date(e.start)).getTimezoneOffset()*60*1000;
+			e.end = e.end + (new Date(e.end)).getTimezoneOffset()*60*1000;
 			var s = new Date(parseInt(e.start));
 			var f = new Date(parseInt(e.end));
 			e.start_hour = s.getHours().toString().formatNum(2) + ':' + s.getMinutes().toString().formatNum(2);
