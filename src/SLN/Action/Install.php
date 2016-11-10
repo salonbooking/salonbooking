@@ -38,6 +38,9 @@ class SLN_Action_Install
         new SLN_UserRole_SalonCustomer(SLN_Plugin::getInstance(), SLN_Plugin::USER_ROLE_CUSTOMER, __('Salon customer', 'salon-booking-system'));
     }
 
+    public static function isInstalled() {
+        return (bool) get_option(SLN_Settings::KEY);
+    }
 
     private static function checkPost($title, $post_type)
     {

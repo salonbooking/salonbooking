@@ -18,6 +18,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
             add_action('restrict_manage_posts', array($this, 'restrict_manage_posts'), 10, 2);
             add_filter('parse_query', array($this, 'parse_query'));
+            add_filter('post_row_actions', array($this, 'post_row_actions'), 10, 2);
         }
         $this->registerPostStatus();
     }
@@ -30,6 +31,13 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
 //
 //        return $data;
 //    }
+
+    public function post_row_actions($actions, $post) {
+        if ($post->post_type === SLN_Plugin::POST_TYPE_BOOKING) {
+            unset($actions['inline hide-if-no-js']);
+        }
+        return $actions;
+    }
 
     public function manage_columns($columns)
     {

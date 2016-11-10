@@ -19,7 +19,9 @@ class SLN_Action_Init
     {
         $p = $this->plugin;
         add_action('init', array($this, 'hook_action_init'));
-        register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
+        if (!SLN_Action_Install::isInstalled()) {
+            register_activation_hook(SLN_PLUGIN_BASENAME, array('SLN_Action_Install', 'execute'));
+        }
         $this->plugin->addRepository(
             new SLN_Repository_BookingRepository(
                 $this->plugin,
