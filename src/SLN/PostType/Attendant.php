@@ -13,6 +13,7 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
             add_filter('manage_edit-'.$this->getPostType().'_sortable_columns', array($this, 'custom_columns_sort'));
             add_action('admin_head-post-new.php', array($this, 'posttype_admin_css'));
             add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
+            add_filter('post_row_actions', array($this, 'post_row_actions'), 10, 2);
         }
     }
 
@@ -21,6 +22,13 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
             'title' => 'title',
         );
         return $custom;
+    }
+
+    public function post_row_actions($actions, $post) {
+        if ($post->post_type === SLN_Plugin::POST_TYPE_ATTENDANT) {
+            unset($actions['inline hide-if-no-js']);
+        }
+        return $actions;
     }
 
     public function manage_columns($columns)

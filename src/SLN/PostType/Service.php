@@ -17,6 +17,7 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
             add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
             add_action('admin_enqueue_scripts', array($this, 'load_scripts'));
             add_action('wp_ajax_sln_service', array($this, 'ajax'));
+            add_filter('post_row_actions', array($this, 'post_row_actions'), 10, 2);
         }
     }
 
@@ -94,6 +95,13 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
         }
 
         update_option(SLN_Plugin::CATEGORY_ORDER, $params['positions']);
+    }
+
+    public function post_row_actions($actions, $post) {
+        if ($post->post_type === SLN_Plugin::POST_TYPE_SERVICE) {
+            unset($actions['inline hide-if-no-js']);
+        }
+        return $actions;
     }
 
     public function manage_columns($columns)
