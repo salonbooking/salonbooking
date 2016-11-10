@@ -12,10 +12,20 @@ class SLN_Admin_Tools {
 		$this->plugin   = $plugin;
 		$this->settings	= $plugin->getSettings();
 
-		if ( isset( $_POST ) && $_POST )
-			$this->save_settings( $_POST );
-
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+	}
+
+	public function admin_init() {
+		if ( isset( $_POST ) && $_POST ) {
+			$data = $_POST;
+			if (isset($data['sln-tools-import'])) {
+				$this->save_settings( $data );
+			}
+			elseif (isset($data['sln-tools-export'])) {
+				$this->export($data);
+			}
+		}
 	}
 
 	public function admin_menu() {
@@ -53,6 +63,104 @@ class SLN_Admin_Tools {
 			'isFree'            => defined('SLN_Plugin::F1'),
 		)
 		);
+	}
+
+	public function export($data) {
+		$format = $this->plugin->format();
+
+		$from = $data['export']['from'];
+		$from = SLN_Func::filter($from, 'date').' 00:00:00';
+
+		$to = $data['export']['to'];
+		$to = SLN_Func::filter($to, 'date').' 23:59:59';
+
+		$criteria['@wp_query'] = array(
+			'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
+			'nopaging'   => true,
+			'meta_query' => array(
+				array(
+					'key'     => '_sln_booking_date',
+					'value'   => array($from, $to),
+					'compare' => 'BETWEEN',
+				)
+			),
+		);
+		$criteria['@query'] = true;
+
+		/** @var SLN_Repository_BookingRepository $repo */
+		$repo     = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_BOOKING);
+		$bookings = $repo->get($criteria);
+
+		usort($bookings, array($this, 'sortAscByStartsAt'));
+
+		$tmpfname = tempnam("/tmp", "sln-export-");
+
+		$fh = fopen($tmpfname, "w");
+		fputcsv($fh, array(__('Reservations', 'salon-booking-system'), __('from', 'salon-booking-system'), __('to', 'salon-booking-system')));
+		fputcsv($fh, array('', $format->date($data['export']['from']), $format->date($data['export']['to'])));
+		fputcsv($fh, array(''));
+		fputcsv($fh, array(
+				__('ID', 'salon-booking-system'),
+				__('DATE/TIME', 'salon-booking-system'),
+				__('CREATED', 'salon-booking-system'),
+				__('CUSTOMER NAME', 'salon-booking-system'),
+				__('CUSTOMER EMAIL', 'salon-booking-system'),
+				__('CUSTOMER PHONE', 'salon-booking-system'),
+				__('SERVICES', 'salon-booking-system'),
+				__('ASSISTANTS', 'salon-booking-system'),
+				__('TOTAL PRICE', 'salon-booking-system'),
+				__('STATUS', 'salon-booking-system'),
+		));
+
+		foreach($bookings as $booking) {
+			$services   = $booking->getServices();
+			$servicesAr = array();
+			foreach($services as $service) {
+				$servicesAr[] = $service->getName();
+			}
+
+			$total = $format->money($booking->getAmount(), true, false, true, true);
+			if (SLN_Enum_BookingStatus::PAID == $booking->getStatus() && $deposit = $booking->getDeposit()) {
+				$total .= ' (' . $format->money($deposit, true, false, true, true) . ' ' .
+				          __('already paid as deposit','salon-booking-system') . ')';
+			}
+
+			fputcsv($fh, array(
+				$booking->getId(),
+				$format->datetime($booking->getStartsAt()),
+				$format->datetime($booking->getPostDate()),
+				$booking->getDisplayName(),
+				$booking->getEmail(),
+				$booking->getPhone(),
+				implode(', ', $servicesAr),
+				$booking->getAttendantsString(),
+				$total,
+				SLN_Enum_BookingStatus::getLabel($booking->getStatus()),
+			));
+		}
+		fclose($fh);
+
+		header("Pragma: public");
+		header("Expires: 0");
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+		header("Cache-Control: private", false);
+		header("Content-Type: application/octet-stream");
+		header("Content-Disposition: attachment; filename=\"export.csv\";" );
+		header("Content-Transfer-Encoding: binary");
+		echo file_get_contents($tmpfname);
+
+		unlink($tmpfname);
+		exit;
+	}
+
+	/**
+	 * @@param SLN_Wrapper_Booking $a
+	 * @param SLN_Wrapper_Booking $b
+	 *
+	 * @return int
+	 */
+	private function sortAscByStartsAt($a, $b) {
+		return (strtotime($a->getStartsAt()->format('Y-m-d H:i:s')) > strtotime($b->getStartsAt()->format('Y-m-d H:i:s')) ? 1 : -1 );
 	}
 
 	public function save_settings( $data ) {

@@ -75,6 +75,16 @@ SLN_Helper_AvailabilityItem
         return false;
     }
 
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    public function getOffset()
+    {
+        return $this->offset;
+    }
+
     public function __toString()
     {
         $days = SLN_Func::getDays();

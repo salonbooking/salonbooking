@@ -1543,6 +1543,27 @@ p.sln-box-info .sln-box-info-content h5 {
   resize: none; }
 #sln-salon--admin #sln_booking-actions .sln-input--text, .sln-calendar--wrapper #sln_booking-actions .sln-input--text {
   width: 100%; }
+#sln-salon--admin .sln-logo-box .preview-logo, .sln-calendar--wrapper .sln-logo-box .preview-logo {
+  padding: 0.45833rem 0.66667rem;
+  height: 8rem;
+  text-align: center;
+  background-color: #c7dff3;
+  border: 2px dashed #afafaf; }
+  #sln-salon--admin .sln-logo-box .preview-logo .preview-logo-img, .sln-calendar--wrapper .sln-logo-box .preview-logo .preview-logo-img {
+    text-align: center;
+    height: 70px; }
+#sln-salon--admin .sln-logo-box .select-logo, .sln-calendar--wrapper .sln-logo-box .select-logo {
+  padding: 0.45833rem 0.66667rem;
+  height: 8rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: #c7dff3;
+  border: 2px dashed #afafaf; }
+  #sln-salon--admin .sln-logo-box .select-logo .dashicons, .sln-calendar--wrapper .sln-logo-box .select-logo .dashicons {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    line-height: 2.5em; }
 
 .sln-colorpicker .sln-colorpicker--subwrapper {
   border: 0.16667rem solid #c7dff3; }

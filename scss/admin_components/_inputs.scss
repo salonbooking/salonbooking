@@ -530,6 +530,33 @@
 		margin-bottom: rem(80px);
     	}
 }
+	.sln-logo-box {
+		.preview-logo {
+			padding: 0.45833rem 0.66667rem;
+			height: 8rem;
+			text-align: center;
+			background-color: #c7dff3;
+			border: 2px dashed #afafaf;
+			.preview-logo-img {
+				text-align: center;
+				height: 70px;
+			}
+		}
+		.select-logo {
+			padding: 0.45833rem 0.66667rem;
+			height: 8rem;
+			text-align: center;
+			cursor: pointer;
+			background-color: #c7dff3;
+			border: 2px dashed #afafaf;
+			.dashicons {
+				width: 40px;
+				height: 40px;
+				font-size: 40px;
+				line-height: 2.5em;
+			}
+		}
+	}
 
 	#sln_booking-actions {
 		.sln-input--textarea {

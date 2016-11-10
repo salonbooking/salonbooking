@@ -16,6 +16,9 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             add_filter('display_post_states', array($this, 'bulkPostStates'));
             add_action('admin_head-post-new.php', array($this, 'posttype_admin_css'));
             add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
+            add_action('restrict_manage_posts', array($this, 'restrict_manage_posts'), 10, 2);
+            add_filter('parse_query', array($this, 'parse_query'));
+            add_filter('post_row_actions', array($this, 'post_row_actions'), 10, 2);
         }
         $this->registerPostStatus();
     }
@@ -28,6 +31,13 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
 //
 //        return $data;
 //    }
+
+    public function post_row_actions($actions, $post) {
+        if ($post->post_type === SLN_Plugin::POST_TYPE_BOOKING) {
+            unset($actions['inline hide-if-no-js']);
+        }
+        return $actions;
+    }
 
     public function manage_columns($columns)
     {
@@ -297,4 +307,91 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             $this->getPlugin()->loadView('metabox/_booking_head');
         }
     }
+
+    /**
+     * @param WP_Query $query
+     */
+    public function parse_query($query) {
+        global $pagenow;
+
+        if (isset($_GET['post_type']) && $_GET['post_type'] === $this->getPostType() && is_admin() && $pagenow=='edit.php' && $query->get('post_type') === $this->getPostType()) {
+            $meta_queries = array();
+            if (isset($_GET['attendant']) && !empty($_GET['attendant'])) {
+                $meta_queries[] = array(
+                    'key'     => '_sln_booking_services',
+                    'value'   => "\"attendant\";i:{$_GET['attendant']};",
+                    'compare' => 'LIKE',
+                );
+            }
+
+            if (isset($_GET['username']) && !empty($_GET['username'])) {
+                $username_parts = explode('|', $_GET['username']);
+                $meta_queries[] = array(
+                    'key'   => '_sln_booking_firstname',
+                    'value' => $username_parts[0],
+                );
+                $meta_queries[] = array(
+                    'key'   => '_sln_booking_lastname',
+                    'value' => $username_parts[1],
+                );
+            }
+
+            if (!empty($meta_queries)) {
+                $meta_queries['relation'] = 'AND';
+
+                $meta_query = $query->get('meta_query');
+
+                $meta_query = array_merge(!empty($meta_query) ? $meta_query : array(), $meta_queries);
+                $query->set('meta_query', $meta_query);
+            }
+        }
+    }
+
+    public function restrict_manage_posts($post_type, $which) {
+        global $wpdb;
+        if ($post_type === $this->getPostType() && $which === 'top') {
+            $statuses = SLN_Enum_BookingStatus::toArray();
+
+            $rows  = $wpdb->get_results("SELECT post_id, meta_key, meta_value FROM {$wpdb->prefix}postmeta WHERE meta_key='_sln_booking_firstname' OR meta_key='_sln_booking_lastname'");
+
+            $users = array();
+            foreach($rows as $row) {
+                $users[$row->post_id][$row->meta_key] = $row->meta_value;
+            }
+
+            $users_name = array();
+            foreach($users as $user) {
+                $users_name[$user['_sln_booking_firstname'].'|'.$user['_sln_booking_lastname']] = $user['_sln_booking_firstname'].' '.$user['_sln_booking_lastname'];
+            }
+
+            $repo       = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
+            $attendants = $repo->getAll();
+            ?>
+            <?php $current = isset($_GET['post_status']) ? $_GET['post_status'] : ''; ?>
+            <select name="post_status" id="filter-by-post_status">
+                <option value=""><?php _e('All statuses', 'salon-booking-system') ?></option>
+                <?php foreach($statuses as $k => $v): ?>
+                    <option value="<?php echo $k; ?>" <?php echo ($current === $k ? 'selected' : ''); ?>><?php echo $v; ?></option>
+                <?php endforeach ?>
+            </select>
+
+            <?php $current = isset($_GET['username']) ? $_GET['username'] : ''; ?>
+            <select name="username" id="filter-by-username">
+                <option value=""><?php _e('All users name', 'salon-booking-system') ?></option>
+                <?php foreach($users_name as $k => $v): ?>
+                    <option value="<?php echo $k; ?>" <?php echo ($current === $k ? 'selected' : ''); ?>><?php echo $v; ?></option>
+                <?php endforeach ?>
+            </select>
+
+            <?php $current = isset($_GET['attendant']) ? (int) $_GET['attendant'] : ''; ?>
+            <select name="attendant" id="filter-by-attendant">
+                <option value=""><?php _e('All attendants', 'salon-booking-system') ?></option>
+                <?php foreach($attendants as $v): ?>
+                    <option value="<?php echo $v->getId(); ?>" <?php echo ($current === $v->getId() ? 'selected' : ''); ?>><?php echo $v->getTitle(); ?></option>
+                <?php endforeach ?>
+            </select>
+            <?php
+        }
+    }
+
 }
