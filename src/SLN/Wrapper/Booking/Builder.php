@@ -323,8 +323,7 @@ class SLN_Wrapper_Booking_Builder
             SLN_Enum_BookingStatus::PENDING
             : ($settings->get('pay_enabled') ?
                 SLN_Enum_BookingStatus::PENDING
-                : ($settings->isHidePrices() ? SLN_Enum_BookingStatus::CONFIRMED
-                    : SLN_Enum_BookingStatus::PAY_LATER));
+                : SLN_Enum_BookingStatus::CONFIRMED);
     }
 
     public function getEndsAt()
