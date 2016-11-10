@@ -40,7 +40,7 @@ class SLN_Helper_Availability
         $count = $interval->getCountDays();
         $ret = array();
         $avItems = $this->getItems();
-        $hItems = $this->getHolidaysItems();
+        $hItems  = $this->getHolidaysItemsWithWeekDayRules($avItems->getWeekDayRules());
         while ($count > 0) {
             $date = $from->format('Y-m-d');
             $count--;
@@ -534,6 +534,18 @@ class SLN_Helper_Availability
         }
 
         return $this->holidayItems;
+    }
+
+    /**
+     * @return SLN_Helper_HolidayItems
+     */
+    public function getHolidaysItemsWithWeekDayRules($weekDayRules)
+    {
+        if (!isset($this->holidayItemsWithWeekDayRules)) {
+            $this->holidayItemsWithWeekDayRules = new SLN_Helper_HolidayItems($this->settings->get('holidays'), $weekDayRules);
+        }
+
+        return $this->holidayItemsWithWeekDayRules;
     }
 
     public function isValidDate($date)
