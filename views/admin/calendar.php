@@ -69,8 +69,39 @@ jQuery(function($){
 <!-- row sln-calendar-wrapper // END -->
 </div>
 <div class="row">
-    <div class="col-md-6 pull-right">
-     <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new"><?php _e('Add new booking', 'salon-booking-system') ?></a>
+    <div class="col-xs-12 col-md-9">
+        <form action="<?php echo admin_url('admin.php?page=' . SLN_Admin_Tools::PAGE)?>" method="post">
+            <h2><?php _e('Export reservations into a CSV file', 'salon-booking-system') ?></h2>
+            <div class="row">
+                <?php
+                $f         = $plugin->getSettings()->get('date_format');
+                $weekStart = $plugin->getSettings()->get('week_start');
+                $jsFormat  = SLN_Enum_DateFormat::getJsFormat($f);
+                ?>
+                <div class="form-group col-xs-12 col-md-3 sln_datepicker">
+                    <label for="<?php echo SLN_Form::makeID("export[from]") ?>"><?php _e('from', 'salon-booking-system') ?></label>
+                    <input type="text" class="form-control sln-input" id="<?php echo SLN_Form::makeID("export[from]") ?>" name="export[from]"
+                           required="required" data-format="<?php echo $jsFormat?>" data-weekstart="<?php echo $weekStart ?>"
+                           data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"
+                    />
+                </div>
+                <div class="form-group col-xs-12 col-md-3 sln_datepicker">
+                    <label for="<?php echo SLN_Form::makeID("export[to]") ?>"><?php _e('to', 'salon-booking-system') ?></label>
+                    <input type="text" class="form-control sln-input" id="<?php echo SLN_Form::makeID("export[to]") ?>" name="export[to]"
+                           required="required" data-format="<?php echo $jsFormat?>" data-weekstart="<?php echo $weekStart ?>"
+                           data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"
+                    />
+                </div>
+                <div class="form-group col-xs-12 col-md-3">
+                    <button type="submit" id="action" name="sln-tools-export" value="export"
+                            class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--file sln-booking-add pull-left">
+                        <?php _e('Export', 'salon-booking-system') ?></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-12 col-md-3 pull-right">
+     <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--booking sln-booking-add" id="calendar-add-new"><?php _e('Add new booking', 'salon-booking-system') ?></a>
     </div>
 </div>
 <div class="row">

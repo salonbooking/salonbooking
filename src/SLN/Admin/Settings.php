@@ -68,6 +68,7 @@ class SLN_Admin_Settings
         'email_remind',
         'email_remind_interval',
         'email_subject',
+        'booking_update_message',
         'follow_up_email',
         'follow_up_sms',
         'follow_up_interval',
@@ -284,6 +285,9 @@ class SLN_Admin_Settings
         $submitted['email_subject'] = !empty($submitted['email_subject']) ?
             $submitted['email_subject'] :
             'Your booking reminder for [DATE] at [TIME] at [SALON NAME]';
+        $submitted['booking_update_message'] = !empty($submitted['booking_update_message']) ?
+	        $submitted['booking_update_message'] :
+	        'Hi [NAME],\r\ntake note of the details of your reservation at [SALON NAME]';
         $submitted['follow_up_message'] = !empty($submitted['follow_up_message']) ?
 	        $submitted['follow_up_message'] :
 	        'Hi [NAME],\r\nIt\'s been a while since your last visit, would you like to book a new appointment with us?\r\n\r\nWe look forward to seeing you again.';

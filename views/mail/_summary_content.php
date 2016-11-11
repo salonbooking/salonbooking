@@ -39,54 +39,78 @@ if(!isset($forAdmin)) {
 
 	<?php if($forAdmin): ?>
 
-     <a  style="text-decoration:none;" href="<?php echo admin_url() ?>/post.php?post=<?php echo $booking->getId() ?>&action=edit">
-         <?php echo __('Click here to approve ', 'salon-booking-system') ?>
-         <?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?>
-         <?php echo __('booking request.', 'salon-booking-system') ?>
-     </a>
+         <a  style="text-decoration:none;" href="<?php echo admin_url() ?>/post.php?post=<?php echo $booking->getId() ?>&action=edit">
+             <?php echo __('Click here to approve ', 'salon-booking-system') ?>
+             <?php echo esc_attr($booking->getFirstname()) . ' ' . esc_attr($booking->getLastname()); ?>
+             <?php echo __('booking request.', 'salon-booking-system') ?>
+         </a>
 
- 	
-                     
 	<?php else: ?>
 
-<?php echo __('Your booking is pending, please await our confirmation.','salon-booking-system') ?></p>
+        <p><?php echo __('Your booking is pending, please await our confirmation.','salon-booking-system') ?></p>
 
 	<?php endif ?>
 
-<?php else: ?> 
+<?php elseif(isset($updated) && $updated): ?>
+
+    <?php
+    if($forAdmin) {
+        $updated_message = __('Reservation at [SALON NAME] has been modified', 'salon-booking-system');
+    }
+    else{
+        $updated_message = isset($updated_message) && !empty($updated_message) ? $updated_message : $plugin->getSettings()->get('booking_update_message');
+    }
+
+    $updated_message = str_replace(
+        array('[NAME]', '[SALON NAME]'),
+        array(
+            ($customer = $booking->getCustomer()) ? $customer->getName() : '',
+            $plugin->getSettings()->get('gen_name') ? $plugin->getSettings()->get('gen_name') : get_bloginfo('name'),
+        ),
+        $updated_message
+    );
+    ?>
+
+    <p><?php echo $updated_message ?></p>
+
+    <b style="color:#666666;">
+    <?php echo $plugin->getSettings()->get('gen_name') ?
+                $plugin->getSettings()->get('gen_name') : get_bloginfo('name') ?>.</b>
+    <br>
+
+<?php else: ?>
 
 	<?php if($forAdmin): ?>
 
-	<?php echo __('This is an e-mail notification of a new booking', 'salon-booking-system') ?>
-	
+	    <?php echo __('This is an e-mail notification of a new booking', 'salon-booking-system') ?>
+	    <p><?php _e('Please take note of the following booking details.', 'salon-booking-system') ?></p>
+
 	<?php else: ?>
 
 	    <?php if(isset($remind) && $remind): ?>
 
-	    <?php echo __('Remind your booking at', 'salon-booking-system') ?>
+            <?php echo __('Remind your booking at', 'salon-booking-system') ?>
 
-        <b style="color:#666666;">
-        <?php echo $plugin->getSettings()->get('gen_name') ?
-                    $plugin->getSettings()->get('gen_name') : get_bloginfo('name') ?>.</b>
-        <br>
+            <b style="color:#666666;">
+            <?php echo $plugin->getSettings()->get('gen_name') ?
+                        $plugin->getSettings()->get('gen_name') : get_bloginfo('name') ?>.</b>
+            <br>
+            <p><?php _e('Please take note of the following booking details.', 'salon-booking-system') ?></p>
 
-	    <?php else: ?>
+        <?php else: ?>
 
-<?php echo __('This is an e-mail confirmation of your booking at', 'salon-booking-system') ?>
+            <?php echo __('This is an e-mail confirmation of your booking at', 'salon-booking-system') ?>
 
-<b style="color:#666666;">
-                        <?php echo $plugin->getSettings()->get('gen_name') ?
-                            $plugin->getSettings()->get('gen_name') : get_bloginfo('name') ?>.</b><br></p>
+            <b style="color:#666666;">
+            <?php echo $plugin->getSettings()->get('gen_name') ?
+                        $plugin->getSettings()->get('gen_name') : get_bloginfo('name') ?>.</b><br></p>
+            <p><?php _e('Please take note of the following booking details.', 'salon-booking-system') ?></p>
+
+        <?php endif ?>
+
+    <?php endif ?>
 
 <?php endif ?>
-<?php endif ?>
-
-<?php endif ?>
-
-
-
-
-                    <p><?php _e('Please take note of the following booking details.', 'salon-booking-system') ?></p>
                 </td>
             </tr>
             <tr>

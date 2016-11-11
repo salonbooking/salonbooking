@@ -172,7 +172,7 @@ function sln_adminDate($) {
     initDatepickers($);
     initTimepickers($);
     $('#resend-notification-submit').click(function(){
-        var data = "post_id="+$('#post_ID').val()+"&emailto="+$('#resend-notification').val()+"&action=salon&method=ResendNotification&security=" + salon.ajax_nonce;
+        var data = "post_id="+$('#post_ID').val()+"&emailto="+$('#resend-notification').val()+"&message="+$('#resend-notification-text').val()+"&action=salon&method=ResendNotification&security=" + salon.ajax_nonce;
         var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ';
         $('#resend-notification-message').html(validatingMessage);
         $.ajax({
@@ -185,6 +185,24 @@ function sln_adminDate($) {
                     $('#resend-notification-message').html('<div class="alert alert-success">'+data.success+'</div>');
                 else if(data.error)
                     $('#resend-notification-message').html('<div class="alert alert-danger">'+data.error+'</div>');
+            }
+        });
+        return false;
+    });
+    $('#resend-payment-submit').click(function(){
+        var data = "post_id="+$('#post_ID').val()+"&emailto="+$('#resend-payment').val()+"&action=salon&method=ResendPaymentNotification&security=" + salon.ajax_nonce;
+        var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ';
+        $('#resend-payment-message').html(validatingMessage);
+        $.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if(data.success)
+                    $('#resend-payment-message').html('<div class="alert alert-success">'+data.success+'</div>');
+                else if(data.error)
+                    $('#resend-payment-message').html('<div class="alert alert-danger">'+data.error+'</div>');
             }
         });
         return false;

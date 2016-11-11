@@ -419,10 +419,10 @@ if(!String.prototype.formatNum) {
 			case 'month':
 				break;
 			case 'week':
-				this._calculate_hour_minutes(data);
+				this._calculate_hour_minutes_weekly(data);
 				break;
 			case 'day':
-				this._calculate_hour_minutes(data);
+				this._calculate_hour_minutes_daily(data);
 				break;
 		}
 
@@ -433,7 +433,134 @@ if(!String.prototype.formatNum) {
 		this._update();
 	};
 
-	Calendar.prototype._calculate_hour_minutes = function(data) {
+	Calendar.prototype._calculate_hour_minutes_daily = function(data) {
+		var $self = this;
+		var time_split = parseInt(this.options.time_split);
+		var time_split_count = 60 / time_split;
+		var time_split_hour = Math.min(time_split_count, 1);
+
+		if(((time_split_count >= 1) && (time_split_count % 1 != 0)) || ((time_split_count < 1) && (1440 / time_split % 1 != 0))) {
+			$.error(this.locale.error_timedevide);
+		}
+
+		var time_start = this.options.time_start.split(":");
+		var time_end = this.options.time_end.split(":");
+
+		data.hours = (parseInt(time_end[0]) - parseInt(time_start[0])) * time_split_hour;
+		var lines = data.hours * time_split_count - parseInt(time_start[1]) / time_split;
+		var ms_per_line = (60000 * time_split);
+
+		var start = new Date(this.options.position.start.getTime());
+		start.setHours(time_start[0]);
+		start.setMinutes(time_start[1]);
+		var end = new Date(this.options.position.start.getTime());
+		end.setHours(time_end[0]);
+		end.setMinutes(time_end[1]);
+
+		var grid = {};
+
+		data.all_day = [];
+		data.by_hour = [];
+		data.after_time = [];
+		data.before_time = [];
+		data.events.sort(function(a, b) {
+			if (a.start === b.start && a.end < b.end) {
+				return 1;
+			}
+
+			return -1;
+		});
+		$.each(data.events, function(k, e) {
+			e.start = e.start + (new Date(e.start)).getTimezoneOffset()*60*1000;
+			e.end = e.end + (new Date(e.end)).getTimezoneOffset()*60*1000;
+			var s = new Date(parseInt(e.start));
+			var f = new Date(parseInt(e.end));
+			e.start_hour = s.getHours().toString().formatNum(2) + ':' + s.getMinutes().toString().formatNum(2);
+			e.end_hour = f.getHours().toString().formatNum(2) + ':' + f.getMinutes().toString().formatNum(2);
+
+			if(e.start < start.getTime()) {
+				warn(1);
+				e.start_hour = s.getDate() + ' ' + $self.locale['ms' + s.getMonth()] + ' ' + e.start_hour;
+			}
+
+			if(e.end > end.getTime()) {
+				warn(1);
+				e.end_hour = f.getDate() + ' ' + $self.locale['ms' + f.getMonth()] + ' ' + e.end_hour;
+			}
+
+			if(e.start < start.getTime() && e.end > end.getTime()) {
+				data.all_day.push(e);
+				return;
+			}
+
+			if(e.end < start.getTime()) {
+				data.before_time.push(e);
+				return;
+			}
+
+			if(e.start > end.getTime()) {
+				data.after_time.push(e);
+				return;
+			}
+
+			var event_start = start.getTime() - e.start;
+
+			if(event_start >= 0) {
+				e.top = 0;
+			} else {
+				e.top = Math.abs(event_start) / ms_per_line;
+			}
+
+			var lines_left = Math.abs(lines - e.top);
+			var lines_in_event = (e.end - e.start) / ms_per_line;
+			if(event_start >= 0) {
+				lines_in_event = (e.end - start.getTime()) / ms_per_line;
+			}
+
+
+			e.lines = lines_in_event;
+			if(lines_in_event > lines_left) {
+				e.lines = lines_left;
+			}
+
+			var added = false;
+			var col = 0;
+			while(!added) {
+				var row = e.top;
+				var row_rounded = parseFloat(row.toFixed(4));
+				if (grid[row_rounded] == undefined) {
+					grid[row_rounded] = {};
+				}
+
+				if (grid[row_rounded][col] == undefined) {
+					e.left = col;
+					added = true;
+
+					var step = 5*2/60; // 2 rows = 1 hour
+					var offset_max = parseFloat((e.lines).toFixed(4));
+					for(var offset = 0; parseFloat(offset.toFixed(4)) < offset_max; offset+=step) {
+						var _row_rounded = parseFloat((row + offset).toFixed(4));
+						var _col 		 = col;
+
+						if (grid[_row_rounded] == undefined) {
+							grid[_row_rounded] = {};
+						}
+
+						grid[_row_rounded][_col] = e.id;
+					}
+				}
+				else {
+					col++;
+				}
+			}
+
+			data.by_hour.push(e);
+		});
+
+		console.log(grid);
+	};
+
+	Calendar.prototype._calculate_hour_minutes_weekly = function(data) {
 		var $self = this;
 		var time_split = parseInt(this.options.time_split);
 		var time_split_count = 60 / time_split;

@@ -33,6 +33,7 @@ return array(
             )
         ),
         'email_subject'    => 'Your booking reminder for [DATE] at [TIME] at [SALON NAME]',
+        'booking_update_message' => 'Hi [NAME],\r\ntake note of the details of your reservation at [SALON NAME]',
         'follow_up_message' => 'Hi [NAME],\r\nIt\'s been a while since your last visit, would you like to book a new appointment with us?\r\n\r\nWe look forward to seeing you again.',
         'pay_currency'     => 'USD',
         'pay_currency_pos' => 'right',
