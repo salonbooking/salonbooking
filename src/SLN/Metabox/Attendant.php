@@ -117,25 +117,18 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
         if (!$this->getPlugin()->getSettings()->get('google_calendar_enabled')) {
             unset($this->fields['google_calendar']);
         }
-        if(isset($_POST['_sln_attendant_holidays']))
-            $_POST['_sln_attendant_holidays'] = SLN_Helper_HolidayItems::processSubmission($_POST['_sln_attendant_holidays']);
-        if(isset($_POST['_sln_attendant_services'])) {
-            foreach($_POST['_sln_attendant_services'] as $k => $v){
-                $_POST['_sln_attendant_services'][$k] = str_replace('sln_attendant_services_','', $v);
+        $k = '_sln_attendant_availabilities';
+        if(isset($_POST[$k]))
+            $_POST[$k] = SLN_Helper_AvailabilityItems::processSubmission($_POST[$k]); 
+        $k = '_sln_attendant_holidays';
+        if(isset($_POST[$k]))
+            $_POST[$k] = SLN_Helper_HolidayItems::processSubmission($_POST[$k]);
+        $k = '_sln_attendant_services';
+        if(isset($_POST[$k])) {
+            foreach($_POST[$k] as $kk => $vv){
+                $_POST[$k][$kk] = str_replace($k.'_','', $vv);
             }
         }
         parent::save_post($post_id, $post);
-    }
-
-    public function processHolidays($data = null)
-    {
-        if(!$data) return $data;
-        foreach ($data as &$holidayData) {
-            $holidayData['from_date'] = SLN_TimeFunc::evalPickedDate($holidayData['from_date']);
-            $holidayData['to_date'] = SLN_TimeFunc::evalPickedDate($holidayData['to_date']);
-            $holidayData['from_time'] = SLN_TimeFunc::evalPickedTime($holidayData['from_time']);
-            $holidayData['to_time'] = SLN_TimeFunc::evalPickedTime($holidayData['to_time']);
-        }
-        return $data;
     }
 }
