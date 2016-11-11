@@ -37,8 +37,8 @@ SLN_Helper_AvailabilityItem
                     $data['to'][1],
                 );
             }
-            $this->fromDate = isset($data['from_date']) ? $data['from_date'].' 00:00:00' : null;
-            $this->toDate   = isset($data['to_date']) ? $data['to_date'].' 23:59:59' : null;
+            $this->fromDate = isset($data['from_date']) ? strtotime($data['from_date'].' 00:00:00') : null;
+            $this->toDate   = isset($data['to_date']) ? strtotime($data['to_date'].' 23:59:59') : null;
         }
         if (empty($this->times)) {
             $this->times[] = array(strtotime('00:00'), strtotime('23:59'));
