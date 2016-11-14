@@ -39,7 +39,15 @@ class SLN_Action_InitScripts
                 'all'
             );
         }
-
+        if (!$this->plugin->getSettings()->get('no_bootstrap_js')) {
+            wp_enqueue_script(
+                'salon-bootstrap',
+                SLN_PLUGIN_URL.'/js/bootstrap.min.js',
+                array('jquery'),
+                self::ASSETS_VERSION,
+                true
+            );
+        }
         //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
         //       wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.css', array(), SLN_VERSION, 'all');
         $lang = strtolower(substr(get_locale(), 0, 2));
@@ -76,13 +84,6 @@ class SLN_Action_InitScripts
             'all'
         );
         // COLOR PICKER // END
-        wp_enqueue_script(
-            'salon-bootstrap',
-            SLN_PLUGIN_URL.'/js/bootstrap.min.js',
-            array('jquery'),
-            self::ASSETS_VERSION,
-            true
-        );
         wp_enqueue_script(
             'salon-my-account',
             SLN_PLUGIN_URL.'/js/salon-my-account.js',
