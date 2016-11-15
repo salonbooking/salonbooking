@@ -80,6 +80,7 @@ class SLN_Admin_Settings
         'time_format',
         'week_start',
         'no_bootstrap',
+        'no_bootstrap_js',
     );
 
     private static $fieldsTabCheckout = array(
