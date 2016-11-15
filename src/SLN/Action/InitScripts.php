@@ -19,6 +19,7 @@ class SLN_Action_InitScripts
 
     public function hook_enqueue_scripts()
     {
+        $this->enqueueTwitterBootstrap(!$this->isAdmin);
         $this->preloadScripts();
 
         if (!$this->isAdmin) {
@@ -30,26 +31,6 @@ class SLN_Action_InitScripts
 
     private function preloadScripts()
     {
-        if (!$this->plugin->getSettings()->get('no_bootstrap')) {
-            wp_enqueue_style(
-                'salon-bootstrap',
-                SLN_PLUGIN_URL.'/css/sln-bootstrap.css',
-                array(),
-                self::ASSETS_VERSION,
-                'all'
-            );
-        }
-        if (!$this->plugin->getSettings()->get('no_bootstrap_js')) {
-            wp_enqueue_script(
-                'salon-bootstrap',
-                SLN_PLUGIN_URL.'/js/bootstrap.min.js',
-                array('jquery'),
-                self::ASSETS_VERSION,
-                true
-            );
-        }
-        //        wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.min.css', array(), SLN_VERSION, 'all');
-        //       wp_enqueue_style('bootstrap', SLN_PLUGIN_URL . '/css/bootstrap.css', array(), SLN_VERSION, 'all');
         $lang = strtolower(substr(get_locale(), 0, 2));
         wp_enqueue_script(
             'smalot-datepicker',
@@ -165,5 +146,27 @@ class SLN_Action_InitScripts
             self::ASSETS_VERSION,
             true
         );
+    }
+
+    protected function enqueueTwitterBootstrap($force = true){
+        $s = $this->plugin->getSettings();
+        if ($force || !$s->get('no_bootstrap')) {
+            wp_enqueue_style(
+                'salon-bootstrap',
+                SLN_PLUGIN_URL.'/css/sln-bootstrap.css',
+                array(),
+                self::ASSETS_VERSION,
+                'all'
+            );
+        }
+        if ($force || !$s->get('no_bootstrap_js')) {
+            wp_enqueue_script(
+                'salon-bootstrap',
+                SLN_PLUGIN_URL.'/js/bootstrap.min.js',
+                array('jquery'),
+                self::ASSETS_VERSION,
+                true
+            );
+        }
     }
 }
