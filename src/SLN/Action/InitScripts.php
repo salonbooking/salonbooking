@@ -8,7 +8,7 @@ class SLN_Action_InitScripts
 
     public function __construct(SLN_Plugin $plugin, $isAdmin)
     {
-        $this->plugin = $plugin;
+        $this->plugin  = $plugin;
         $this->isAdmin = $isAdmin;
 
         if ($isAdmin) {
@@ -19,10 +19,10 @@ class SLN_Action_InitScripts
 
     public function hook_enqueue_scripts()
     {
-        $this->enqueueTwitterBootstrap(!$this->isAdmin);
+        $this->enqueueTwitterBootstrap($this->isAdmin);
         $this->preloadScripts();
 
-        if (!$this->isAdmin) {
+        if ( ! $this->isAdmin) {
             $this->preloadFrontendScripts();
         } else {
             $this->preloadAdminScripts();
@@ -32,38 +32,9 @@ class SLN_Action_InitScripts
     private function preloadScripts()
     {
         $lang = strtolower(substr(get_locale(), 0, 2));
-        wp_enqueue_script(
-            'smalot-datepicker',
-            SLN_PLUGIN_URL.'/js/bootstrap-datetimepicker.js',
-            array('jquery'),
-            '20140711',
-            true
-        );
-        if ($lang != 'en') {
-            wp_enqueue_script(
-                'smalot-datepicker-lang',
-                SLN_PLUGIN_URL.'/js/datepicker_language/bootstrap-datetimepicker.'.$lang.'.js',
-                array('jquery'),
-                '2016-02-16',
-                true
-            );
-        }
+        $this->enqueueDateTimePicker($lang);
         wp_enqueue_script('salon', SLN_PLUGIN_URL.'/js/salon.js', array('jquery'), self::ASSETS_VERSION, true);
-        // COLOR PICKER
-        wp_enqueue_script(
-            'salon-colorpicker-js',
-            SLN_PLUGIN_URL.'/js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js',
-            array('jquery'),
-            self::ASSETS_VERSION,
-            true
-        );
-        wp_enqueue_style(
-            'salon-colorpicker-css',
-            SLN_PLUGIN_URL.'/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css',
-            array(),
-            self::ASSETS_VERSION,
-            'all'
-        );
+        $this->enqueueColorPicker();
         // COLOR PICKER // END
         wp_enqueue_script(
             'salon-my-account',
@@ -83,16 +54,18 @@ class SLN_Action_InitScripts
             'salon',
             'salon',
             array(
-                'ajax_url' => admin_url('admin-ajax.php').'?lang='.(defined(
+                'ajax_url'                  => admin_url('admin-ajax.php').'?lang='.(defined(
                         'ICL_LANGUAGE_CODE'
                     ) ? 'ICL_LANGUAGE_CODE' : $lang),
-                'ajax_nonce' => wp_create_nonce('ajax_post_validation'),
-                'loading' => SLN_PLUGIN_URL.'/img/preloader.gif',
-                'txt_validating' => __('checking availability', 'salon-booking-system'),
-                'images_folder' => SLN_PLUGIN_URL.'/img',
+                'ajax_nonce'                => wp_create_nonce('ajax_post_validation'),
+                'loading'                   => SLN_PLUGIN_URL.'/img/preloader.gif',
+                'txt_validating'            => __('checking availability', 'salon-booking-system'),
+                'images_folder'             => SLN_PLUGIN_URL.'/img',
                 'confirm_cancellation_text' => __('Do you really want to cancel?', 'salon-booking-system'),
-                'time_format' => SLN_Enum_TimeFormat::getJSFormat($this->plugin->getSettings()->get('time_format')),
-                'has_stockholm_transition' => $this->hasStockholmTransition() ? 'yes' : 'no'
+                'time_format'               => SLN_Enum_TimeFormat::getJSFormat(
+                    $this->plugin->getSettings()->get('time_format')
+                ),
+                'has_stockholm_transition'  => $this->hasStockholmTransition() ? 'yes' : 'no',
             )
         );
     }
@@ -100,7 +73,8 @@ class SLN_Action_InitScripts
     private function hasStockholmTransition()
     {
         global $qode_options;
-        return $qode_options && $qode_options['page_transitions'] > 0; 
+
+        return $qode_options && $qode_options['page_transitions'] > 0;
     }
 
     private function preloadAdminScripts()
@@ -121,14 +95,15 @@ class SLN_Action_InitScripts
     private function preloadFrontendScripts()
     {
         wp_enqueue_style('salon', SLN_PLUGIN_URL.'/css/salon.css', array(), self::ASSETS_VERSION, 'all');
-        if($this->plugin->getSettings()->get('style_colors_enabled')){
+        if ($this->plugin->getSettings()->get('style_colors_enabled')) {
             $dir = wp_upload_dir();
             $dir = $dir['baseurl'];
             wp_enqueue_style('sln-custom', $dir.'/sln-colors.css', array(), self::ASSETS_VERSION, 'all');
         }
     }
-    
-    public static function enqueueCustomSliderRange(){
+
+    public static function enqueueCustomSliderRange()
+    {
         wp_enqueue_script(
             'salon-customSliderRange',
             SLN_PLUGIN_URL.'/js/customSliderRange.js',
@@ -138,7 +113,8 @@ class SLN_Action_InitScripts
         );
     }
 
-    public static function enqueueCustomBookingUser(){
+    public static function enqueueCustomBookingUser()
+    {
         wp_enqueue_script(
             'salon-customBookingUser',
             SLN_PLUGIN_URL.'/js/customBookingUser.js',
@@ -148,9 +124,10 @@ class SLN_Action_InitScripts
         );
     }
 
-    protected function enqueueTwitterBootstrap($force = true){
+    protected function enqueueTwitterBootstrap($force = true)
+    {
         $s = $this->plugin->getSettings();
-        if ($force || !$s->get('no_bootstrap')) {
+        if ($force || ! $s->get('no_bootstrap')) {
             wp_enqueue_style(
                 'salon-bootstrap',
                 SLN_PLUGIN_URL.'/css/sln-bootstrap.css',
@@ -159,7 +136,7 @@ class SLN_Action_InitScripts
                 'all'
             );
         }
-        if ($force || !$s->get('no_bootstrap_js')) {
+        if ($force || ! $s->get('no_bootstrap_js')) {
             wp_enqueue_script(
                 'salon-bootstrap',
                 SLN_PLUGIN_URL.'/js/bootstrap.min.js',
@@ -168,5 +145,43 @@ class SLN_Action_InitScripts
                 true
             );
         }
+    }
+
+    protected function enqueueDateTimePicker($lang)
+    {
+        wp_enqueue_script(
+            'smalot-datepicker',
+            SLN_PLUGIN_URL.'/js/bootstrap-datetimepicker.js',
+            array('jquery'),
+            '20140711',
+            true
+        );
+        if ($lang != 'en') {
+            wp_enqueue_script(
+                'smalot-datepicker-lang',
+                SLN_PLUGIN_URL.'/js/datepicker_language/bootstrap-datetimepicker.'.$lang.'.js',
+                array('jquery'),
+                '2016-02-16',
+                true
+            );
+        }
+    }
+
+    protected function enqueueColorPicker(){
+        // COLOR PICKER
+        wp_enqueue_script(
+            'salon-colorpicker-js',
+            SLN_PLUGIN_URL.'/js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js',
+            array('jquery'),
+            self::ASSETS_VERSION,
+            true
+        );
+        wp_enqueue_style(
+            'salon-colorpicker-css',
+            SLN_PLUGIN_URL.'/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css',
+            array(),
+            self::ASSETS_VERSION,
+            'all'
+        );
     }
 }
