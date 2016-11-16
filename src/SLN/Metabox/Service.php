@@ -65,4 +65,13 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
             'exec_order' => 'int',
         );
     }
+
+
+    public function save_post($post_id, $post)
+    {
+        $k = '_sln_service_availabilities';
+        if(isset($_POST[$k]))
+            $_POST[$k] = SLN_Helper_AvailabilityItems::processSubmission($_POST[$k]);
+        parent::save_post($post_id, $post);
+    }
 }
