@@ -7,6 +7,7 @@ class SLN_Admin_Calendar extends SLN_Admin_AbstractPage
 
     public function admin_menu()
     {
+
         add_menu_page(
             __('Salon', 'salon-booking-system'),
             __('Salon', 'salon-booking-system'),
@@ -15,6 +16,7 @@ class SLN_Admin_Calendar extends SLN_Admin_AbstractPage
             array($this, 'show'),
             SLN_PLUGIN_URL.'/img/admin_icon.png'
         );
+
         $this->classicAdminMenu(
             __('Salon Calendar', 'salon-booking-system'),
             __('Calendar', 'salon-booking-system')
@@ -65,7 +67,7 @@ class SLN_Admin_Calendar extends SLN_Admin_AbstractPage
         );
         wp_enqueue_script(
             'salon-calendar-app',
-            SLN_PLUGIN_URL.'/js/customCalendar.js',
+            SLN_PLUGIN_URL.'/js/admin/customCalendar.js',
             array('jquery'),
             $av,
             true
