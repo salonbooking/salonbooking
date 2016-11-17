@@ -76,6 +76,7 @@ class SLN_Action_InitScripts
 
     private static function preloadFrontendScripts()
     {
+        self::enqueueDateTimePicker();
         wp_enqueue_style('salon', SLN_PLUGIN_URL.'/css/salon.css', array(), self::ASSETS_VERSION, 'all');
         if (SLN_Plugin::getInstance()->getSettings()->get('style_colors_enabled')) {
             $dir = wp_upload_dir();
