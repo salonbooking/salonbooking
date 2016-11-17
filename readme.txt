@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.6.1
-Stable tag: 3.7
+Stable tag: 3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,8 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Email notification to selected assistant
 * Email reminder for the customers
 * Email followup 
+* Email notification custom logo
+* Custom email message to the customers
 
 * SMS notification on new reservation
 * SMS notification to selected assistant
@@ -62,6 +64,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Three bookings methods BASIC / ADVANCED / HIGH END
 * Booking time range ( from a minimum of .. to a maximum of  in advance )
 * Multiple weekly timetable rules
+* Time range validty option for the weekly booking rules 
 * Multiple holidays rules
 * Offset between reservation 
 * Change booking form steps order ( Date&time - Services - Assistants - Checkout - Payment or reverse )
@@ -136,7 +139,16 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Private customers reservations management page [salon_booking_my_account]
 * Assistants bookings calendar  [salon_booking_calendar]
 
+**Back-end bookings calendar**
+* Montly view
+* Weekly view
+* Daily view
+* Export reservations to a CSV file 
 
+**Themes & Plugin compatibility issues*
+
+* Disable Bootstrap Javascript
+* Disable Bootstrap CSS
 
 More information at [Salon booking](http://salon.wpchef.it/).
 
@@ -211,7 +223,7 @@ Yes, go to "Settings > Style > Color combination" options
 
 = What is the limit of the free version? =
 
-You can accept up to 30 reservations. No time limits.
+You can accept up to 100 reservations. No time limits.
 
 = What happen when plugin free version reach its booking limit? =
 
@@ -240,7 +252,19 @@ http://salon.wordpresschef.it
 9. screenshot-9.gif Front-end > Booking My Account > Submit review
 
 
+
 == Changelog ==
+
+14.11.2016
+
+* Fixed bug with cyrillic alphabet 
+* Holidays rule issues fixed
+* Improved customer search
+* Improved bookings search with new filters
+* Fixed html markup bug into front-end booking form
+* Selective js and css loading of bootstrap files into the back-end
+* Dummy content load once fixed
+
 
 21.10.2016
 

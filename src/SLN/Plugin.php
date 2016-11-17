@@ -10,8 +10,8 @@ class SLN_Plugin
     const USER_ROLE_CUSTOMER = 'sln_customer';
     const TEXT_DOMAIN = 'salon-booking-system';
     const F = 'slnc';
-    const F1 = 30;
-    const F2 = 20;
+    const F1 = 100;
+    const F2 = 60;
     const DEBUG_ENABLED = 0;
     const CATEGORY_ORDER = 'sln_service_category_order';
 

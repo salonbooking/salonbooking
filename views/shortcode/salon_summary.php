@@ -29,7 +29,7 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             <p class="sln-text--dark"><?php _e('Dear', 'salon-booking-system') ?>
                 <strong><?php echo esc_attr($bb->get('firstname')).' '.esc_attr($bb->get('lastname')); ?></strong>
                 <br/>
-                <?php _e('Here the details of your booking:', 'salon-booking-system') ?>
+                <?php _e('Here are the details of your booking:', 'salon-booking-system') ?>
             </p>
         </div>
     </div>

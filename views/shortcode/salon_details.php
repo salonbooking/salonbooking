@@ -161,10 +161,12 @@ $values = array(
                         <div class="input-group sln-input-group">
                             <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                             <?php endif ?>
-                        <?php 
+                        <?php
                             if(strpos($field, 'password') === 0){
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'password'));
-                            }else{
+                            } else if(strpos($field, 'email') === 0){
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                           } else {
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' =>  ($field != 'address')));
                             }
                         ?>
@@ -203,10 +205,13 @@ $values = array(
                         <div class="input-group sln-input-group">
                             <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                             <?php endif ?>
-                        <?php 
+
+                        <?php
                             if(strpos($field, 'password') === 0){
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'password'));
-                            }else{
+                            } else if(strpos($field, 'email') === 0){
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                           } else {
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' =>  ($field != 'address')));
                             }
                         ?>
@@ -243,10 +248,12 @@ $values = array(
                         <div class="input-group sln-input-group">
                             <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                             <?php endif ?>
-                        <?php 
+                        <?php
                             if(strpos($field, 'password') === 0){
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'password'));
-                            }else{
+                            } else if(strpos($field, 'email') === 0){
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                           } else {
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' =>  ($field != 'address')));
                             }
                         ?>
@@ -300,7 +307,13 @@ $values = array(
                         <div class="input-group sln-input-group">
                             <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                         <?php endif ?>
-                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address'))) ?>
+                        <?php
+                           if(strpos($field, 'email') === 0){
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                           } else{
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address')));
+                           }
+                        ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
                                 </div>
                             <?php endif ?>
@@ -334,7 +347,13 @@ $values = array(
                         <div class="input-group sln-input-group">
                             <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                         <?php endif ?>
-                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address'))) ?>
+                        <?php
+                           if(strpos($field, 'email') === 0){
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                           } else{
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address')));
+                           }
+                        ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
                                 </div>
                             <?php endif ?>
@@ -366,7 +385,13 @@ $values = array(
                         <div class="input-group sln-input-group">
                             <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                         <?php endif ?>
-                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address'))) ?>
+                        <?php
+                           if(strpos($field, 'email') === 0){
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                           } else{
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address')));
+                           }
+                        ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
                                 </div>
                             <?php endif ?>
@@ -396,7 +421,13 @@ $values = array(
                         <div class="input-group sln-input-group">
                             <span class="input-group-addon sln-input--addon"><?php echo $prefix?></span>
                         <?php endif ?>
-                        <?php SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address'))) ?>
+                        <?php
+                           if(strpos($field, 'email') === 0){
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                           } else{
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => ($field != 'address')));
+                           }
+                        ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
                                 </div>
                             <?php endif ?>
