@@ -202,6 +202,13 @@ class SLN_Action_InitScripts
     public static function enqueueAdmin(){
         self::preloadScripts();
         self::enqueueDateTimePicker();
+        wp_enqueue_script(
+            'salon-customSelect2',
+            SLN_PLUGIN_URL.'/js/admin/customDateTime.js',
+            array('jquery'),
+            self::ASSETS_VERSION,
+            true
+        );
         wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL.'/js/admin.js', array('jquery'), self::ASSETS_VERSION, true);
         wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL.'/css/admin.css', array(), SLN_VERSION, 'all');
     }
