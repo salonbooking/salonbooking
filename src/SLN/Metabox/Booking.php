@@ -7,6 +7,22 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
     /** @var string */
     private $prevStatus;
 
+    protected $fields = array(
+            'amount' => 'float',
+            'deposit' => 'float',
+            'firstname' => '',
+            'lastname' => '',
+            'email' => '',
+            'phone' => '',
+            'address' => '',
+            'date' => 'date',
+            'time' => 'time',
+            'services' => 'nofilter',
+            'note' => '',
+            'admin_note' => '',
+            '_sln_calendar_event_id' => '',
+        );
+
     public function add_meta_boxes()
     {
         $pt = $this->getPostType();
@@ -64,21 +80,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
 
     protected function getFieldList()
     {
-        return array(
-            'amount' => 'float',
-            'deposit' => 'float',
-            'firstname' => '',
-            'lastname' => '',
-            'email' => '',
-            'phone' => '',
-            'address' => '',
-            'date' => 'date',
-            'time' => 'time',
-            'services' => 'nofilter',
-            'note' => '',
-            'admin_note' => '',
-            '_sln_calendar_event_id' => '',
-        );
+        return apply_filters('sln.metabox.booking.getFieldList',$this->fields);
     }
 
     private $disabledSavePost = false;
@@ -110,7 +112,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         $s = $booking->getStatus();
         $new = $_POST['_sln_booking_status'];
         if (strpos($new, 'sln-b-') !== 0) {
-            $new = 'sln-b-pendingpayment';
+            $new = SLN_ENUM_BookingStatus::PENDING_PAYMENT;
         }
         $postnew = array(
             'ID' => $post_id,

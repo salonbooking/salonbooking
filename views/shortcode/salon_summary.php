@@ -33,14 +33,5 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
             </p>
         </div>
     </div>
-    <?php
-    if ($size == '900') {
-        include '_salon_summary_900.php';
-    } elseif ($size == '600') {
-        include '_salon_summary_600.php';
-    } elseif ($size == '400') {
-        include '_salon_summary_400.php';
-    } else {
-        throw new Exception('size not managed');
-    } ?>
+    <?php include '_salon_summary_'.$size.'.php'; ?>
 </form>

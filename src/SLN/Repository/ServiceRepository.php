@@ -17,21 +17,23 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
             $criteria['@wp_query'] = array(
                 'meta_query' => array(
                     'relation' => 'OR',
-                     array(
-                        'key' => self::SERVICE_ORDER,
+                    array(
+                        'key'     => self::SERVICE_ORDER,
                         'compare' => 'EXISTS',
                     ),
                     array(
-                        'key' => self::SERVICE_ORDER,
+                        'key'     => self::SERVICE_ORDER,
                         'compare' => 'NOT EXISTS',
                     ),
                 ),
-                'orderby' => self::SERVICE_ORDER,
-                'order' => 'ASC',
+                'orderby'    => self::SERVICE_ORDER,
+                'order'      => 'ASC',
             );
-            $criteria['@query'] = true;
             unset($criteria['@sort']);
         }
+
+        $criteria = apply_filters('sln.repository.service.processCriteria', $criteria);
+
         return parent::processCriteria($criteria);
     }
 
@@ -40,7 +42,7 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
      */
     public function getAll()
     {
-        if (!isset($this->services)) {
+        if ( ! isset($this->services)) {
             $this->services = $this->get(array('@sort' => true));
         }
 
@@ -69,7 +71,7 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
     {
         $ret = array();
         foreach ($this->getAll() as $s) {
-            if (!$s->isSecondary()) {
+            if ( ! $s->isSecondary()) {
                 $ret[] = $s;
             }
         }
@@ -85,12 +87,13 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
     /**
      * @return SLN_DateTime
      */
-    public function getMinPrimaryServiceDuration() {
-        $min = false;
+    public function getMinPrimaryServiceDuration()
+    {
+        $min      = false;
         $services = self::getAllPrimary();
-        foreach ( $services as $service ) {
+        foreach ($services as $service) {
             $duration = $service->getTotalDuration();
-            if (!$min) {
+            if ( ! $min) {
                 $min = $duration;
             } elseif ($min > $duration) {
                 $min = $duration;
@@ -102,6 +105,7 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
 
     /**
      * @param SLN_Wrapper_Service[] $services
+     *
      * @return SLN_Wrapper_Service[]
      */
     public function sortByExec($services)
@@ -113,6 +117,7 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
 
     /**
      * @param SLN_Wrapper_Service[] $services
+     *
      * @return SLN_Wrapper_Service[]
      */
     public function sortByExecAndTitleDESC($services)
@@ -124,16 +129,16 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
 
     public static function serviceExecAndTitleDescCmp($a, $b)
     {
-        if (!$b) {
+        if ( ! $b) {
             return $a;
         }
-        if (!$a) {
+        if ( ! $a) {
             return $b;
         }
-        if (!$a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
+        if ( ! $a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
             $a = SLN_Plugin::getInstance()->createService($a);
         }
-        if (!$b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
+        if ( ! $b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
             $b = SLN_Plugin::getInstance()->createService($b);
         }
         $aExecOrder = $a->getExecOrder();
@@ -155,16 +160,16 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
 
     public static function serviceExecCmp($a, $b)
     {
-        if (!$b) {
+        if ( ! $b) {
             return $a;
         }
-        if (!$a) {
+        if ( ! $a) {
             return $b;
         }
-        if (!$a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
+        if ( ! $a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
             $a = SLN_Plugin::getInstance()->createService($a);
         }
-        if (!$b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
+        if ( ! $b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
             $b = SLN_Plugin::getInstance()->createService($b);
         }
 
@@ -181,16 +186,16 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
 
     public static function serviceCmp($a, $b)
     {
-        if (!$b) {
+        if ( ! $b) {
             return $a;
         }
-        if (!$a) {
+        if ( ! $a) {
             return $b;
         }
-        if (!$a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
+        if ( ! $a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
             $a = SLN_Plugin::getInstance()->createService($a);
         }
-        if (!$b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
+        if ( ! $b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
             $b = SLN_Plugin::getInstance()->createService($b);
         }
         $aExecOrder = $a->getExecOrder();
@@ -213,18 +218,18 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
     public static function groupServicesByCategory($services)
     {
         global $wpdb;
-        $ret = array(0 => array('term' => false, 'services' => array()));
-        $order = get_option(SLN_Plugin::CATEGORY_ORDER, '""');
-        $sql = "SELECT * FROM {$wpdb->term_taxonomy} tt, {$wpdb->terms} t WHERE tt.term_id = t.term_id AND tt.taxonomy = '" . SLN_Plugin::TAXONOMY_SERVICE_CATEGORY . "' ORDER BY FIELD(t.term_id, $order)";
+        $ret        = array(0 => array('term' => false, 'services' => array()));
+        $order      = get_option(SLN_Plugin::CATEGORY_ORDER, '""');
+        $sql        = "SELECT * FROM {$wpdb->term_taxonomy} tt, {$wpdb->terms} t WHERE tt.term_id = t.term_id AND tt.taxonomy = '".SLN_Plugin::TAXONOMY_SERVICE_CATEGORY."' ORDER BY FIELD(t.term_id, $order)";
         $categories = $wpdb->get_results($sql);
         foreach ($categories as $cat) {
             foreach ($services as $s) {
                 $post_terms = get_the_terms($s->getId(), SLN_Plugin::TAXONOMY_SERVICE_CATEGORY);
-                
-                if (!empty($post_terms)) {
+
+                if ( ! empty($post_terms)) {
                     foreach ($post_terms as $post_term) {
                         if ($post_term->term_id == $cat->term_id) {
-                            $ret[$post_term->term_id]['term'] = $post_term;
+                            $ret[$post_term->term_id]['term']       = $post_term;
                             $ret[$post_term->term_id]['services'][] = $s;
                         }
                     }
@@ -239,6 +244,7 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
         if (empty($ret['0']['services'])) {
             unset($ret['0']);
         }
+
         return $ret;
     }
 }

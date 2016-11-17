@@ -1,3 +1,6 @@
+<?php
+$addAjax = apply_filters('sln.template.calendar.ajaxUrl','');
+?>
 <script type="text/javascript">
     var salon;
     var calendar_translations = {
@@ -7,7 +10,7 @@
 jQuery(function($){
     initSalonCalendar(
         $,
-        salon.ajax_url+"&action=salon&method=calendar&security="+salon.ajax_nonce,
+        salon.ajax_url+"&action=salon&method=calendar&security="+salon.ajax_nonce+'<?php echo $addAjax ?>',
 //        '<?php echo SLN_PLUGIN_URL ?>/js/events.json.php',
         '<?php echo $today->format('Y-m-d') ?>',
         '<?php echo SLN_PLUGIN_URL ?>/views/js/calendar/'
@@ -43,6 +46,7 @@ jQuery(function($){
         <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="year">
         <button class="" data-calendar-view="year"><?php _e('Year', 'salon-booking-system')?></button>
         </div>
+        <?php do_action('sln.template.calendar.navtabwrapper') ?>
     </div>
 </div>
 

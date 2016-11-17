@@ -63,6 +63,10 @@ class SLN_Shortcode_Salon
      */
     private function getStepObject($step)
     {
+        $obj = apply_filters('sln.shortcode_salon.getStepObject', null, $this, $step);
+        if($obj)
+            return $obj;
+
         $class = __CLASS__.'_'.ucwords($step).'Step';
         $class_alt = __CLASS__.'_'.ucwords($step).'AltStep';
 
@@ -73,11 +77,11 @@ class SLN_Shortcode_Salon
             $obj = new $class($this->plugin, $this, $step);
         }
 
-        if ($obj instanceof SLN_Shortcode_Salon_Step) {
-            return $obj;
-        } else {
-            throw new Exception('bad object '.$class);
-        }
+//        if ($obj instanceof SLN_Shortcode_Salon_Step) {
+//            return $obj;
+//        } else {
+//            throw new Exception('bad object '.$class);
+//        }
     }
 
     protected function render($content)
@@ -208,7 +212,8 @@ class SLN_Shortcode_Salon
         if (!$this->needSms()) {
             unset($ret[array_search('sms', $ret)]);
         }
-        return $ret;
+
+        return apply_filters('sln.shortcode_salon.initSteps', $ret);
     }
 
     public function getStyleShortcode()

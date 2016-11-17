@@ -27,12 +27,7 @@ class SLN_Service_Messages
         }
         $p = $this->plugin;
         if ($status == SLN_Enum_BookingStatus::CONFIRMED) {
-            if ($this->plugin->getSettings()->get('confirmation')) {
-                $p->sendMail('mail/status_confirmed', compact('booking'));
-            } else {
-                $this->sendSummaryMail($booking);
-            }
-            $this->sendSmsBooking($booking);
+            $this->sendBookingConfirmed($booking);
         } elseif ($status == SLN_Enum_BookingStatus::CANCELED) {
             $p->sendMail('mail/status_canceled', compact('booking'));
         } elseif ($status == SLN_Enum_BookingStatus::PENDING_PAYMENT) {
@@ -43,11 +38,21 @@ class SLN_Service_Messages
         }
     }
 
+    private function sendBookingConfirmed(SLN_Wrapper_Booking $booking)
+    {
+        if ($this->plugin->getSettings()->get('confirmation')) {
+            $this->plugin->sendMail('mail/status_confirmed', compact('booking'));
+        } else {
+            $this->sendSummaryMail($booking);
+        }
+        $this->sendSmsBooking($booking);
+    }
+
     public function sendSmsBooking($booking)
     {
-        $p = $this->plugin;
+        $p   = $this->plugin;
         $sms = $p->sms();
-        $s = $p->getSettings();
+        $s   = $p->getSettings();
         if ($s->get('sms_new')) {
             $phone = $s->get('sms_new_number');
             if ($phone) {
@@ -64,6 +69,8 @@ class SLN_Service_Messages
                 $sms->send($phone, $p->loadView('sms/summary', compact('booking')));
             }
         }
+
+        do_action('sln.messages.booking_sms',$booking);
     }
 
 
@@ -72,5 +79,6 @@ class SLN_Service_Messages
         $p = $this->plugin;
         $p->sendMail('mail/summary', compact('booking'));
         $p->sendMail('mail/summary_admin', compact('booking'));
+        do_action('sln.messages.booking_summary_mail',$booking);
     }
 }

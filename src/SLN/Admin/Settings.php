@@ -123,12 +123,13 @@ class SLN_Admin_Settings
     {
         $this->plugin = $plugin;
         $this->settings = $plugin->getSettings();
+//        add_action(get_plugin_page_hook(self::PAGE,'admin.php'), array($this, 'enqueueAssets'), 0);
         add_action('admin_menu', array($this, 'admin_menu'));
     }
 
     public function admin_menu()
     {
-        $this->settings_page = add_submenu_page(
+        $pagename = add_submenu_page(
             'salon',
             __('Salon Settings', 'salon-booking-system'),
             __('Settings', 'salon-booking-system'),
@@ -136,6 +137,7 @@ class SLN_Admin_Settings
             self::PAGE,
             array($this, 'show')
         );
+        add_action('load-'.$pagename, array($this, 'enqueueAssets'), 0);
     }
 
     function row_input_checkbox($key, $label, $settings = array())
@@ -589,6 +591,21 @@ class SLN_Admin_Settings
         ) : array();
 
         return $ret;
+    }
+
+
+    public function enqueueAssets()
+    {
+        SLN_Action_InitScripts::enqueueTwitterBootstrap(true);
+        SLN_Action_InitScripts::enqueueSelect2();
+        SLN_Action_InitScripts::enqueueAdmin();
+        wp_enqueue_script(
+            'salon-customSettings',
+            SLN_PLUGIN_URL.'/js/customSettings.js',
+            array('jquery'),
+            SLN_Action_InitScripts::ASSETS_VERSION,
+            true
+        );
     }
 
 }

@@ -18,7 +18,7 @@ if (!is_array($holidays)) {
     <div class="col-xs-12">
         <h2 class="sln-box-title"><?php echo $label ?> <span class="block"><?php echo $block ?></span></h2>
     </div>
-    <div id="sln-booking-holiday-rules-wrapper">
+    <div class="sln-booking-holiday-rules-wrapper">
         <?php $n = 0;
         foreach ($holidays as $k => $row): $n++; ?>
             <?php echo $plugin->loadView(

@@ -17,8 +17,6 @@ class SLN_Plugin
 
     private static $instance;
     private $settings;
-    private $formatter;
-    private $availabilityHelper;
     private $repositories;
     private $phpServices = array();
 
@@ -138,11 +136,23 @@ class SLN_Plugin
      */
     public function format()
     {
-        if (!isset($this->formatter)) {
-            $this->formatter = new SLN_Formatter($this);
+        if (!isset($this->phpServices['formatter'])) {
+            $this->phpServices['formatter'] = new SLN_Formatter($this);
         }
 
-        return $this->formatter;
+        return $this->phpServices['formatter'];
+    }
+
+    /**
+     * @return SLN_Service_Templating
+     */
+    public function templating()
+    {
+        if ( ! isset($this->phpServices['templating'])) {
+            $obj = new SLN_Service_Templating($this);
+            $obj->addPath(SLN_PLUGIN_DIR.'/views/%s.php', 10);
+            $this->phpServices['templating'] = $obj;
+         }
     }
 
     /**
@@ -214,6 +224,12 @@ class SLN_Plugin
         }
     }
 
+    /**
+     * @param $post
+     *
+     * @return SLN_Wrapper_Abstract
+     * @throws Exception
+     */
     public function createFromPost($post)
     {
         if (!is_object($post)) {
@@ -235,7 +251,7 @@ class SLN_Plugin
 
     /**
      * @param $binding
-     * @return AbstractRepository
+     * @return SLN_Repository_AbstractRepository
      * @throws \Exception
      */
     public function getRepository($binding)

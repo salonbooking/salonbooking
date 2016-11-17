@@ -42,18 +42,24 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
 
     public function get($criteria = array())
     {
-        $args = $this->processCriteria($criteria);
-        $query = new WP_Query($args);
-        $posts = $query->get_posts();
-        wp_reset_query();
-        wp_reset_postdata();
-
         $ret = array();
-        foreach ($posts as $post) {
+        $args = $this->processCriteria($criteria);
+        foreach ($this->getPosts($args) as $post) {
             $ret[] = $this->create($post);
         }
 
         return $ret;
+    }
+
+
+    protected function getPosts($args)
+    {
+        global $post_type;
+        $tmp = $post_type;
+        $post_type = $args['post_type'];
+        $posts = get_posts($args);
+        $post_type = $tmp;
+        return $posts;
     }
 
     public function getOne($criteria)

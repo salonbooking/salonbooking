@@ -20,14 +20,5 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
 
 ?>
 <div id="salon-step-thankyou" class="row sln-thankyou">
-<?php
-if ($size == '900') {
-    include '_salon_thankyou_900.php';
-} elseif ($size == '600') {
-    include '_salon_thankyou_600.php';
-} elseif ($size == '400') {
-    include '_salon_thankyou_400.php';
-} else {
-    throw new Exception('size not managed');
-} ?>
+<?php '_salon_thankyou_'.$size.'.php'; ?>
 </div>

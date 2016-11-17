@@ -36,7 +36,7 @@ if (is_admin())
 spl_autoload_register('sln_autoload');
 load_plugin_textdomain(SLN_Plugin::TEXT_DOMAIN, false, dirname(SLN_PLUGIN_BASENAME).'/languages');
 $sln_plugin = SLN_Plugin::getInstance();
-
+do_action('sln.init', $sln_plugin);
 //TODO[feature-gcalendar]: move this require in the right place
 require_once SLN_PLUGIN_DIR . "/src/SLN/Third/GoogleScope.php";
 $sln_googlescope = new SLN_GoogleScope();

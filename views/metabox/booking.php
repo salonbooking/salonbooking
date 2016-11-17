@@ -18,6 +18,7 @@ SLN_Action_InitScripts::enqueueCustomBookingUser()
 
 <div class="sln-bootstrap">
     <?php
+    do_action('sln.template.booking.metabox',$booking);
     $intervals = $plugin->getIntervals($booking->getDate());
     $date = $intervals->getSuggestedDate();
     ?>

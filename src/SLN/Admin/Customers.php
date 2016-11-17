@@ -1,32 +1,20 @@
 <?php
 
-class SLN_Admin_Customers {
+class SLN_Admin_Customers extends SLN_Admin_AbstractPage {
 
 	const PAGE = 'salon-customers';
+    const PRIORITY = 2;
 
-	protected $plugin;
-	protected $settings;
-	public $settings_page = '';
-	public function __construct(SLN_Plugin $plugin) {
-		$this->plugin   = $plugin;
-		$this->settings = $plugin->getSettings();
-		add_action('admin_menu', array($this, 'admin_menu'), 10);
-
-	}
-
-	public function admin_menu() {
-		$this->settings_page = add_submenu_page(
-			'salon',
-			__('Salon Customers', 'salon-booking-system'),
-			__('Customers', 'salon-booking-system'),
-			apply_filters('salonviews/settings/capability', 'manage_salon'),
-			'salon-customers',
-			array($this, 'show')
-		);
-		if (!isset($_REQUEST['id'])) {
-			add_filter('manage_' . get_plugin_page_hookname( 'salon-customers', 'salon' ) . '_columns', array($this, 'users_columns'));
-		}
-	}
+    public function admin_menu()
+    {
+        $this->classicAdminMenu(__('Salon Customers', 'salon-booking-system'), __('Customers', 'salon-booking-system'));
+        if ( ! isset($_REQUEST['id'])) {
+            add_filter(
+                'manage_'.get_plugin_page_hookname('salon-customers', 'salon').'_columns',
+                array($this, 'users_columns')
+            );
+        }
+    }
 
 	public function show() {
 		if (isset($_REQUEST['id'])) {

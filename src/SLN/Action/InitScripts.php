@@ -2,7 +2,7 @@
 
 class SLN_Action_InitScripts
 {
-    const ASSETS_VERSION = '20160404';
+    const ASSETS_VERSION = '20161116';
     private $isAdmin;
     private $plugin;
 
@@ -19,10 +19,10 @@ class SLN_Action_InitScripts
 
     public function hook_enqueue_scripts()
     {
-        $this->enqueueTwitterBootstrap($this->isAdmin);
         $this->preloadScripts();
 
         if ( ! $this->isAdmin) {
+            $this->enqueueTwitterBootstrap(false);
             $this->preloadFrontendScripts();
         } else {
             $this->preloadAdminScripts();
@@ -79,17 +79,11 @@ class SLN_Action_InitScripts
 
     private function preloadAdminScripts()
     {
-        wp_enqueue_script('jqueryUi', SLN_PLUGIN_URL.'/js/select2.min.js', array('jquery'), true);
-        wp_enqueue_script(
-            'salon-admin-select2',
-            SLN_PLUGIN_URL.'/js/jquery-ui.min.js',
-            array('jquery'),
-            true
-        );
-        wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL.'/js/admin.js', array('jquery'), self::ASSETS_VERSION, true);
-        wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL.'/css/admin.css', array(), SLN_VERSION, 'all');
-        wp_enqueue_style('salon-admin-select2-css', SLN_PLUGIN_URL.'/css/select2.min.css', array(), SLN_VERSION, 'all');
+        /*
+        self::enqueueSelect2();
+        self::enqueueAdmin();
         SLN_Admin_Reports_GoogleGraph::enqueue_scripts();
+        */
     }
 
     private function preloadFrontendScripts()
@@ -111,6 +105,15 @@ class SLN_Action_InitScripts
             self::ASSETS_VERSION,
             true
         );
+        //100% we need this too
+        wp_enqueue_script(
+            'salon-customRulesCollections',
+            SLN_PLUGIN_URL.'/js/customRulesCollections.js',
+            array('jquery'),
+            self::ASSETS_VERSION,
+            true
+        );
+
     }
 
     public static function enqueueCustomBookingUser()
@@ -124,9 +127,9 @@ class SLN_Action_InitScripts
         );
     }
 
-    protected function enqueueTwitterBootstrap($force = true)
+    public static function enqueueTwitterBootstrap($force = true)
     {
-        $s = $this->plugin->getSettings();
+        $s = SLN_Plugin::getInstance()->getSettings();
         if ($force || ! $s->get('no_bootstrap')) {
             wp_enqueue_style(
                 'salon-bootstrap',
@@ -147,7 +150,7 @@ class SLN_Action_InitScripts
         }
     }
 
-    protected function enqueueDateTimePicker($lang)
+    public static function enqueueDateTimePicker($lang)
     {
         wp_enqueue_script(
             'smalot-datepicker',
@@ -167,7 +170,7 @@ class SLN_Action_InitScripts
         }
     }
 
-    protected function enqueueColorPicker(){
+    public static function enqueueColorPicker(){
         // COLOR PICKER
         wp_enqueue_script(
             'salon-colorpicker-js',
@@ -183,5 +186,28 @@ class SLN_Action_InitScripts
             self::ASSETS_VERSION,
             'all'
         );
+    }
+
+    public static function enqueueSelect2(){
+        wp_enqueue_script('jqueryUi', SLN_PLUGIN_URL.'/js/select2.min.js', array('jquery'), true);
+        wp_enqueue_script(
+            'salon-admin-select2',
+            SLN_PLUGIN_URL.'/js/jquery-ui.min.js',
+            array('jquery'),
+            true
+        );
+        wp_enqueue_style('salon-admin-select2-css', SLN_PLUGIN_URL.'/css/select2.min.css', array(), SLN_VERSION, 'all');
+        wp_enqueue_script(
+            'salon-customSelect2',
+            SLN_PLUGIN_URL.'/js/customSelect2.js',
+            array('jquery'),
+            self::ASSETS_VERSION,
+            true
+        );
+    }
+
+    public static function enqueueAdmin(){
+        wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL.'/js/admin.js', array('jquery'), self::ASSETS_VERSION, true);
+        wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL.'/css/admin.css', array(), SLN_VERSION, 'all');
     }
 }

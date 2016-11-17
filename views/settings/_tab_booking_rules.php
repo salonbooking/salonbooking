@@ -20,7 +20,7 @@ SLN_Action_InitScripts::enqueueCustomSliderRange();
         <h2 class="sln-box-title"><?php echo $label ?>
             <span class="block"><?php echo $block ?></span></h2>
     </div>
-    <div id="sln-booking-rules-wrapper">
+    <div class="sln-booking-rules-wrapper">
         <?php foreach ($availabilities as $k => $row): $n++; ?>
             <?php echo $plugin->loadView(
                 'settings/_availability_row',

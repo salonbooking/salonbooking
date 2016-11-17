@@ -2,11 +2,22 @@
 
 class SLN_Metabox_Service extends SLN_Metabox_Abstract
 {
+    protected $fields = array(
+        'availabilities' => '',
+        'price'          => 'float',
+        'duration'       => 'time',
+        'secondary'      => 'bool',
+        'attendants'     => 'bool',
+        'unit'           => 'int',
+        'break_duration' => 'time',
+        'exec_order'     => 'int',
+    );
+
     public function add_meta_boxes()
     {
         $postType = $this->getPostType();
         add_meta_box(
-            $postType . '-details',
+            $postType.'-details',
             __('Service details', 'salon-booking-system'),
             array($this, 'details_meta_box'),
             $postType,
@@ -31,9 +42,10 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
             <?php _e('Service Description', 'salon-booking-system') ?>
         </label>
         <textarea rows="1" cols="40" name="excerpt"
-                  id="excerpt"><?php echo $post->post_excerpt; // textarea_escaped ?></textarea>
+                  id="excerpt"><?php echo $post->post_excerpt; // textarea_escaped
+            ?></textarea>
         <p><?php _e('A very short description of this service. It is optional', 'salon-booking-system'); ?></p>
-    <?php
+        <?php
     }
 
 
@@ -46,23 +58,26 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
                 'settings' => $this->getPlugin()->getSettings(),
                 'service'  => $this->getPlugin()->createService($object),
                 'postType' => $this->getPostType(),
-                'helper'   => new SLN_Metabox_Helper()
+                'helper'   => new SLN_Metabox_Helper(),
             )
         );
-        do_action($this->getPostType() . '_details_meta_box', $object, $box);
+        do_action($this->getPostType().'_details_meta_box', $object, $box);
     }
 
     protected function getFieldList()
     {
-        return array(
-            'availabilities' => '',
-            'price'      => 'float',
-            'duration'   => 'time',
-            'secondary'  => 'bool',
-            'attendants' => 'bool',
-            'unit'       => 'int',
-            'break_duration'   => 'time',
-            'exec_order' => 'int',
+        return apply_filters('sln.metabox.service.getFieldList', $this->fields);
+    }
+
+    protected function enqueueAssets()
+    {
+        parent::enqueueAssets();
+        wp_enqueue_script(
+            'salon-customMetaService',
+            SLN_PLUGIN_URL.'/js/customMetaService.js',
+            array('jquery'),
+            SLN_Action_InitScripts::ASSETS_VERSION,
+            true
         );
     }
 }

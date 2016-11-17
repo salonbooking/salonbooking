@@ -58,3 +58,4 @@ $helper->showNonce($postType);
     )
 ); ?>
 <div class="sln-clear"></div>
+<?php do_action('sln.template.service.metabox',$service); ?>

@@ -4,6 +4,8 @@ class SLN_Settings
 {
     const KEY = 'salon_settings';
     private $settings;
+    private $availabilityItems;
+    private $holidayItems;
 
     public function __construct()
     {
@@ -253,4 +255,29 @@ class SLN_Settings
     {
         return ',';
     }
+
+    /**
+     * @return SLN_Helper_AvailabilityItems
+     */
+    public function getAvailabilityItems()
+    {
+        if ( ! isset($this->availabilityItems)) {
+            $this->availabilityItems = new SLN_Helper_AvailabilityItems($this->get('availabilities'));
+        }
+
+        return apply_filters('sln.settings.availability_items', $this->availabilityItems);
+    }
+
+    /**
+     * @return SLN_Helper_HolidayItems
+     */
+    public function getHolidayItems()
+    {
+        if ( ! isset($this->holidayItems)) {
+            $this->holidayItems = new SLN_Helper_HolidayItems($this->get('holidays'));
+        }
+
+        return apply_filters('sln.settings.availability_holiday_items', $this->holidayItems);
+    }
+
 }

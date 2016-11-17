@@ -46,41 +46,15 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
 
     public function gcalendar_meta_box($object)
     {
-        try {
-            $_calendar_list = $GLOBALS['sln_googlescope']->get_calendar_list('writer');
-        } catch (Exception $e) {
-            _e('Calendar is not configured', 'salon-booking-system');
-            return;
-        }
-        if (empty($_calendar_list)) {
-            _e('Calendar is not configured', 'salon-booking-system');
-            return;
-        }
-
         $attendant = $this->getPlugin()->createAttendant($object);
-        $attendantGCalendar = $attendant->getGoogleCalendar();
-        ?>
-            <label class="screen-reader-text" for="excerpt">
-                <?php _e('Assistant Google Calendar', 'salon-booking-system') ?>
-            </label>
-            <div class="col-xs-12 col-sm-12 form-group sln-select sln-select--info-label">
-                <label for="_sln_attendant_google_calendar"><?php _e('Calendars', 'salon-booking-system') ?></label>
-                <select id="_sln_attendant_google_calendar" name="_sln_attendant_google_calendar">
-                    <?php
-                    foreach ($_calendar_list as $k => $value) {
-                        $lbl = $value['label'];
-                        $sel = ($value['id'] == $attendantGCalendar) ? "selected" : "";
-                        echo "<option value='$k' $sel>$lbl</option>";
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class="clearfix"></div>
-        <?php
+        echo $this->getPlugin()->loadView('metabox/attendant_gcalendar', compact('attendant'));
+
     }
 
     public function post_excerpt_meta_box($post)
     {
+        echo $this->getPlugin()->loadView('metabox/attendant_description', compact('post'));
+
         ?>
         <label class="screen-reader-text" for="excerpt">
             <?php _e('Assistant Description', 'salon-booking-system') ?>
@@ -109,7 +83,7 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
 
     protected function getFieldList()
     {
-        return $this->fields;
+        return apply_filters('sln.metabox.attendant.getFieldList',$this->fields);
     }
 
     public function save_post($post_id, $post)
