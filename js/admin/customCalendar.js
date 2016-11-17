@@ -65,7 +65,7 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
             }
         }
     };
-
+    initDatepickers($);
     // CALENDAR
     //$('.cal-month-day.cal-day-inmonth [data-toggle="tooltip"]').click(function(e) {
     $(document).on("click", ".cal-month-day.cal-day-inmonth span", function (e) {

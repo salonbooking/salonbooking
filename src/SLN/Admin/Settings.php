@@ -123,7 +123,6 @@ class SLN_Admin_Settings
     {
         $this->plugin = $plugin;
         $this->settings = $plugin->getSettings();
-//        add_action(get_plugin_page_hook(self::PAGE,'admin.php'), array($this, 'enqueueAssets'), 0);
         add_action('admin_menu', array($this, 'admin_menu'),12);
     }
 
