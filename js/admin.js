@@ -28,7 +28,6 @@ jQuery(function ($) {
         event.preventDefault();
     });
      $('.sln-box-info-content:after').click(function(event) {
-        alert('ciccio');
         event.preventDefault();
     });
 

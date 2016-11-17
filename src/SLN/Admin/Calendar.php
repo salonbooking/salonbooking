@@ -37,13 +37,15 @@ class SLN_Admin_Calendar extends SLN_Admin_AbstractPage
         parent::enqueueAssets();
         $locale = str_replace('_', '-', get_locale());
         $av = SLN_Action_InitScripts::ASSETS_VERSION;
-        wp_enqueue_script(
-            'salon-calendar-language',
-            sprintf(SLN_PLUGIN_URL.'/js/calendar_language/%s.js', $locale),
-            array('jquery'),
-            $av,
-            true
-        );
+        if($locale != 'en-US') {
+            wp_enqueue_script(
+                'salon-calendar-language',
+                sprintf(SLN_PLUGIN_URL.'/js/calendar_language/%s.js', $locale),
+                array('jquery'),
+                $av,
+                true
+            );
+        }
         wp_enqueue_script(
             'salon-bootstrap',
             SLN_PLUGIN_URL.'/js/bootstrap.min.js',

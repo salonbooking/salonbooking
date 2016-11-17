@@ -43,8 +43,7 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
     public function get($criteria = array())
     {
         $ret = array();
-        $args = $this->processCriteria($criteria);
-        foreach ($this->getPosts($args) as $post) {
+        foreach ($this->getPosts($criteria) as $post) {
             $ret[] = $this->create($post);
         }
 
@@ -52,12 +51,16 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
     }
 
 
-    protected function getPosts($args)
+    protected function getPosts($criteria)
     {
+        $args = $this->processCriteria($criteria);
         global $post_type;
         $tmp = $post_type;
         $post_type = $args['post_type'];
-        $posts = get_posts($args);
+        $query = new WP_Query();
+        $posts = $query->query($args);
+        wp_reset_query();
+        wp_reset_postdata();
         $post_type = $tmp;
         return $posts;
     }
@@ -79,7 +82,7 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
         } else {
             $ret['nopaging'] = true;
         }
-        if (isset($criteria['@query'])) {
+        if (isset($criteria['@wp_query'])) {
             $ret = array_merge($ret, $criteria['@wp_query']);
         }
         if (isset($criteria['post_status'])) {
@@ -88,7 +91,6 @@ abstract class SLN_Repository_AbstractWrapperRepository extends SLN_Repository_A
         if (isset($criteria['date_query'])) {
             $ret['date_query'] = $criteria['date_query'];
         }
-
         return $ret;
     }
 

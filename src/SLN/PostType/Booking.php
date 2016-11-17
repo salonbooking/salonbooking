@@ -347,7 +347,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
         }
     }
 
-    public function restrict_manage_posts($post_type, $which) {
+    public function restrict_manage_posts($post_type, $which = null) {
         global $wpdb;
         if ($post_type === $this->getPostType() && $which === 'top') {
             $statuses = SLN_Enum_BookingStatus::toArray();
