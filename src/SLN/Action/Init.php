@@ -68,11 +68,12 @@ class SLN_Action_Init
         new SLN_Metabox_Attendant($p, SLN_Plugin::POST_TYPE_ATTENDANT);
         new SLN_Metabox_Booking($p, SLN_Plugin::POST_TYPE_BOOKING);
         new SLN_Metabox_BookingActions($p, SLN_Plugin::POST_TYPE_BOOKING);
+
+        new SLN_Admin_Calendar($p);
         new SLN_Admin_Tools($p);
         new SLN_Admin_Customers($p);
         new SLN_Admin_Reports($p);
         new SLN_Admin_Settings($p);
-        new SLN_Admin_Calendar($p);
 
         add_action('admin_init', array($this, 'hook_admin_init'));
         add_action('admin_notices', array($this, 'hook_admin_notices'));

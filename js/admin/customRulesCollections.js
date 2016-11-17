@@ -5,6 +5,12 @@ jQuery(function () {
     jQuery('.sln-booking-holiday-rules').each(function () {
         initBookingHolidayRules(jQuery(this));
     });
+
+
+    jQuery('body').on('change', '[data-unhide]', function () {
+        jQuery(jQuery(this).data('unhide')).toggle(jQuery(this).is(':checked') ? false : true);
+    });
+    jQuery('[data-unhide]').change();
 });
 
 function bindRemoveFunction() {
@@ -31,7 +37,11 @@ function initBookingRules(elem) {
         wrapper.append('<div class="sln-booking-rule">' + html.replace(/__new__/g, count) + '</div>');
         count++;
         bindRemove();
+
+        initDatepickers(jQuery);
+        initTimepickers(jQuery)
         customSliderRange(jQuery, jQuery('.slider-range'))
+        jQuery('[data-unhide]').change();
     });
     bindRemove();
 }
@@ -54,3 +64,4 @@ function initBookingHolidayRules(elem) {
     });
     bindRemove();
 }
+

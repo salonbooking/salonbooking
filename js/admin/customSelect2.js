@@ -1,4 +1,4 @@
-jQuery(function () {
+jQuery(function ($  ) {
 
     $('.sln-select-wrapper select').select2({
         tags: "true",

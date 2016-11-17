@@ -232,5 +232,19 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
     {
         $_SESSION['_sln_booking_user_errors'][] = $message;
     }
+
+
+    protected function enqueueAssets()
+    {
+        parent::enqueueAssets();
+        wp_enqueue_script(
+            'salon-customMetaService',
+            SLN_PLUGIN_URL.'/js/admin/customBookingUser.js',
+            array('jquery'),
+            SLN_Action_InitScripts::ASSETS_VERSION,
+            true
+        );
+    }
+
 }
 

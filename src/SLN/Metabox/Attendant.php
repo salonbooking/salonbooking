@@ -105,4 +105,11 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
         }
         parent::save_post($post_id, $post);
     }
+
+
+    protected function enqueueAssets()
+    {
+        parent::enqueueAssets();
+        SLN_Action_InitScripts::enqueueCustomSliderRange();
+    }
 }

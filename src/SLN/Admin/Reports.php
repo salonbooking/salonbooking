@@ -4,7 +4,7 @@ class SLN_Admin_Reports extends SLN_Admin_AbstractPage
 {
 
     const PAGE = 'salon-reports';
-
+    const PRIORITY = 11;
 
     public function admin_menu()
     {
@@ -23,5 +23,11 @@ class SLN_Admin_Reports extends SLN_Admin_AbstractPage
                 'plugin' => $this->plugin,
             )
         );
+    }
+
+    public function enqueueAssets()
+    {
+        parent::enqueueAssets();
+        SLN_Admin_Reports_GoogleGraph::enqueue_scripts();
     }
 }

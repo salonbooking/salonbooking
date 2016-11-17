@@ -19,23 +19,38 @@ class SLN_Action_InitScripts
 
     public function hook_enqueue_scripts()
     {
-        $this->preloadScripts();
-
         if ( ! $this->isAdmin) {
-            $this->enqueueTwitterBootstrap(false);
+            self::preloadScripts();
+            self::enqueueTwitterBootstrap(false);
             $this->preloadFrontendScripts();
-        } else {
-            $this->preloadAdminScripts();
         }
     }
 
-    private function preloadScripts()
+    private static function preloadScripts()
     {
-        $lang = strtolower(substr(get_locale(), 0, 2));
-        $this->enqueueDateTimePicker($lang);
         wp_enqueue_script('salon', SLN_PLUGIN_URL.'/js/salon.js', array('jquery'), self::ASSETS_VERSION, true);
-        $this->enqueueColorPicker();
-        // COLOR PICKER // END
+        $lang = strtolower(substr(get_locale(), 0, 2));
+        wp_localize_script(
+            'salon',
+            'salon',
+            array(
+                'ajax_url'                  => admin_url('admin-ajax.php').'?lang='.(defined(
+                        'ICL_LANGUAGE_CODE'
+                    ) ? 'ICL_LANGUAGE_CODE' : $lang),
+                'ajax_nonce'                => wp_create_nonce('ajax_post_validation'),
+                'loading'                   => SLN_PLUGIN_URL.'/img/preloader.gif',
+                'txt_validating'            => __('checking availability', 'salon-booking-system'),
+                'images_folder'             => SLN_PLUGIN_URL.'/img',
+                'confirm_cancellation_text' => __('Do you really want to cancel?', 'salon-booking-system'),
+                'time_format'               => SLN_Enum_TimeFormat::getJSFormat(
+                    SLN_Plugin::getInstance()->getSettings()->get('time_format')
+                ),
+                'has_stockholm_transition'  => self::hasStockholmTransition() ? 'yes' : 'no',
+            )
+        );
+    }
+
+    private static function enqueueSalonMyAccount(){
         wp_enqueue_script(
             'salon-my-account',
             SLN_PLUGIN_URL.'/js/salon-my-account.js',
@@ -50,57 +65,31 @@ class SLN_Action_InitScripts
             self::ASSETS_VERSION,
             true
         );
-        wp_localize_script(
-            'salon',
-            'salon',
-            array(
-                'ajax_url'                  => admin_url('admin-ajax.php').'?lang='.(defined(
-                        'ICL_LANGUAGE_CODE'
-                    ) ? 'ICL_LANGUAGE_CODE' : $lang),
-                'ajax_nonce'                => wp_create_nonce('ajax_post_validation'),
-                'loading'                   => SLN_PLUGIN_URL.'/img/preloader.gif',
-                'txt_validating'            => __('checking availability', 'salon-booking-system'),
-                'images_folder'             => SLN_PLUGIN_URL.'/img',
-                'confirm_cancellation_text' => __('Do you really want to cancel?', 'salon-booking-system'),
-                'time_format'               => SLN_Enum_TimeFormat::getJSFormat(
-                    $this->plugin->getSettings()->get('time_format')
-                ),
-                'has_stockholm_transition'  => $this->hasStockholmTransition() ? 'yes' : 'no',
-            )
-        );
     }
 
-    private function hasStockholmTransition()
+    private static function hasStockholmTransition()
     {
         global $qode_options;
 
         return $qode_options && $qode_options['page_transitions'] > 0;
     }
 
-    private function preloadAdminScripts()
-    {
-        /*
-        self::enqueueSelect2();
-        self::enqueueAdmin();
-        SLN_Admin_Reports_GoogleGraph::enqueue_scripts();
-        */
-    }
-
-    private function preloadFrontendScripts()
+    private static function preloadFrontendScripts()
     {
         wp_enqueue_style('salon', SLN_PLUGIN_URL.'/css/salon.css', array(), self::ASSETS_VERSION, 'all');
-        if ($this->plugin->getSettings()->get('style_colors_enabled')) {
+        if (SLN_Plugin::getInstance()->getSettings()->get('style_colors_enabled')) {
             $dir = wp_upload_dir();
             $dir = $dir['baseurl'];
             wp_enqueue_style('sln-custom', $dir.'/sln-colors.css', array(), self::ASSETS_VERSION, 'all');
         }
+        self::enqueueSalonMyAccount();
     }
 
     public static function enqueueCustomSliderRange()
     {
         wp_enqueue_script(
             'salon-customSliderRange',
-            SLN_PLUGIN_URL.'/js/customSliderRange.js',
+            SLN_PLUGIN_URL.'/js/admin/customSliderRange.js',
             array('jquery'),
             self::ASSETS_VERSION,
             true
@@ -108,7 +97,7 @@ class SLN_Action_InitScripts
         //100% we need this too
         wp_enqueue_script(
             'salon-customRulesCollections',
-            SLN_PLUGIN_URL.'/js/customRulesCollections.js',
+            SLN_PLUGIN_URL.'/js/admin/customRulesCollections.js',
             array('jquery'),
             self::ASSETS_VERSION,
             true
@@ -120,7 +109,7 @@ class SLN_Action_InitScripts
     {
         wp_enqueue_script(
             'salon-customBookingUser',
-            SLN_PLUGIN_URL.'/js/customBookingUser.js',
+            SLN_PLUGIN_URL.'/js/admin/customBookingUser.js',
             array('jquery'),
             self::ASSETS_VERSION,
             true
@@ -150,8 +139,10 @@ class SLN_Action_InitScripts
         }
     }
 
-    public static function enqueueDateTimePicker($lang)
+    public static function enqueueDateTimePicker()
     {
+        $lang = strtolower(substr(get_locale(), 0, 2));
+
         wp_enqueue_script(
             'smalot-datepicker',
             SLN_PLUGIN_URL.'/js/bootstrap-datetimepicker.js',
@@ -186,6 +177,7 @@ class SLN_Action_InitScripts
             self::ASSETS_VERSION,
             'all'
         );
+
     }
 
     public static function enqueueSelect2(){
@@ -199,7 +191,7 @@ class SLN_Action_InitScripts
         wp_enqueue_style('salon-admin-select2-css', SLN_PLUGIN_URL.'/css/select2.min.css', array(), SLN_VERSION, 'all');
         wp_enqueue_script(
             'salon-customSelect2',
-            SLN_PLUGIN_URL.'/js/customSelect2.js',
+            SLN_PLUGIN_URL.'/js/admin/customSelect2.js',
             array('jquery'),
             self::ASSETS_VERSION,
             true
@@ -207,6 +199,8 @@ class SLN_Action_InitScripts
     }
 
     public static function enqueueAdmin(){
+        self::preloadScripts();
+        self::enqueueDateTimePicker();
         wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL.'/js/admin.js', array('jquery'), self::ASSETS_VERSION, true);
         wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL.'/css/admin.css', array(), SLN_VERSION, 'all');
     }

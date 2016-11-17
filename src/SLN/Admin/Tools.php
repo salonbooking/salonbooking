@@ -4,7 +4,7 @@ class SLN_Admin_Tools extends SLN_Admin_AbstractPage
 {
 
     const PAGE = 'salon-tools';
-    const PRIORITY = 2;
+    const PRIORITY = 13;
 
     public function __construct(SLN_Plugin $plugin)
     {

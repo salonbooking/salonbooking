@@ -3,7 +3,7 @@
 class SLN_Admin_Calendar extends SLN_Admin_AbstractPage
 {
     const PAGE = 'salon';
-    const PRIORITY = 1;
+    const PRIORITY = 0;
 
     public function admin_menu()
     {

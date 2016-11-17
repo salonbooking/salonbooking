@@ -3,7 +3,7 @@
 class SLN_Admin_Customers extends SLN_Admin_AbstractPage {
 
 	const PAGE = 'salon-customers';
-    const PRIORITY = 2;
+    const PRIORITY = 10;
 
     public function admin_menu()
     {

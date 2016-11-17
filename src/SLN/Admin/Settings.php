@@ -124,7 +124,7 @@ class SLN_Admin_Settings
         $this->plugin = $plugin;
         $this->settings = $plugin->getSettings();
 //        add_action(get_plugin_page_hook(self::PAGE,'admin.php'), array($this, 'enqueueAssets'), 0);
-        add_action('admin_menu', array($this, 'admin_menu'));
+        add_action('admin_menu', array($this, 'admin_menu'),12);
     }
 
     public function admin_menu()
@@ -137,7 +137,7 @@ class SLN_Admin_Settings
             self::PAGE,
             array($this, 'show')
         );
-        add_action('load-'.$pagename, array($this, 'enqueueAssets'), 0);
+        add_action('load-'.$pagename, array($this, 'enqueueAssets'));
     }
 
     function row_input_checkbox($key, $label, $settings = array())
@@ -598,11 +598,22 @@ class SLN_Admin_Settings
         SLN_Action_InitScripts::enqueueAdmin();
         wp_enqueue_script(
             'salon-customSettings',
-            SLN_PLUGIN_URL.'/js/customSettings.js',
+            SLN_PLUGIN_URL.'/js/admin/customSettings.js',
             array('jquery'),
             SLN_Action_InitScripts::ASSETS_VERSION,
             true
         );
+
+        if (isset($_GET['tab']) && $_GET['tab'] == 'style') {
+            SLN_Action_InitScripts::enqueueColorPicker();
+            wp_enqueue_script(
+                'salon-customColors',
+                SLN_PLUGIN_URL.'/js/admin/customColors.js',
+                array('jquery'),
+                SLN_Action_InitScripts::ASSETS_VERSION,
+                true
+            );
+        }
     }
 
 }

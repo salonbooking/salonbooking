@@ -3,7 +3,7 @@
 abstract class SLN_Admin_AbstractPage
 {
     const PAGE = '';
-    const PRIORITY = 123;
+    const PRIORITY = 10;
     protected $plugin;
     protected $settings;
 
@@ -12,7 +12,7 @@ abstract class SLN_Admin_AbstractPage
     {
         $this->plugin   = $plugin;
         $this->settings = $plugin->getSettings();
-        add_action('admin_menu', array($this, 'admin_menu'), self::PRIORITY, 0);
+        add_action('admin_menu', array($this, 'admin_menu'), static::PRIORITY, 0);
     }
 
 
