@@ -55,7 +55,7 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
         $bb = $this->getPlugin()->getBookingBuilder();
         if (!$bb->get('email') && is_user_logged_in()) {
             global $current_user;
-            get_currentuserinfo();
+            wp_get_current_user();
             $values = array(
                 'firstname' => $current_user->user_firstname,
                 'lastname'  => $current_user->user_lastname,

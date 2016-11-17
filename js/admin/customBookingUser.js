@@ -327,10 +327,10 @@ function sln_checkServices($) {
 
 function sln_manageCheckServices($){
 
-    if (typeof servicesData !== 'undefined') {
+    if (typeof servicesData == 'string') {
         servicesData = $.parseJSON(servicesData);
     }
-    if (typeof attendantsData !== 'undefined') {
+    if (typeof attendantsData == 'string') {
         attendantsData = $.parseJSON(attendantsData);
     }
     $('#_sln_booking_service_select').change(function() {

@@ -9,7 +9,7 @@ $bb = $plugin->getBookingBuilder();
 $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
 global $current_user;
-get_currentuserinfo();
+wp_get_current_user();
 $values = array(
     'firstname' => $current_user->user_firstname,
     'lastname'  => $current_user->user_lastname,
