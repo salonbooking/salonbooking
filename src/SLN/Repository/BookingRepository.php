@@ -23,7 +23,7 @@ class SLN_Repository_BookingRepository extends SLN_Repository_AbstractWrapperRep
                 );
             unset($criteria['day']);
         } else {
-            if ($criteria['day@min']) {
+            if (isset($criteria['day@min'])) {
                 $criteria['@wp_query']['meta_query'][] =
                     array(
                         'key'     => '_sln_booking_date',
@@ -33,7 +33,7 @@ class SLN_Repository_BookingRepository extends SLN_Repository_AbstractWrapperRep
 
                 unset($criteria['day@min']);
             }
-            if ($criteria['day@max']) {
+            if (isset($criteria['day@max'])) {
                 $criteria['@wp_query']['meta_query'][] =
                     array(
                         'key'     => '_sln_booking_date',

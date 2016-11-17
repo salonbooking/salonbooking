@@ -76,6 +76,7 @@ class SLN_Shortcode_Salon
         else {
             $obj = new $class($this->plugin, $this, $step);
         }
+        return $obj;
 
 //        if ($obj instanceof SLN_Shortcode_Salon_Step) {
 //            return $obj;
