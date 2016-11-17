@@ -20,5 +20,5 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
 
 ?>
 <div id="salon-step-thankyou" class="row sln-thankyou">
-<?php '_salon_thankyou_'.$size.'.php'; ?>
+<?php include '_salon_thankyou_'.$size.'.php'; ?>
 </div>
