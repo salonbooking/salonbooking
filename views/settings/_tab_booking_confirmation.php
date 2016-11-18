@@ -9,7 +9,7 @@
         <?php $helper->row_input_checkbox(
             'confirmation',
             __('Booking confirmation', 'salon-booking-system'),
-            array('help' => __(''))
+            array('help' => '')
         ); ?>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 sln-box-maininfo  align-top">
