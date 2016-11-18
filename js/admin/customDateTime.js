@@ -1,6 +1,6 @@
 function initDatepickers($) {
     $('.sln_datepicker input').each(function () {
-        if ($(this).hasClass('started')) {
+        if ($(this).hasClass('started') || $(this).attr('id').indexOf('__new__') > 0) {
             return;
         } else {
             $(this)
