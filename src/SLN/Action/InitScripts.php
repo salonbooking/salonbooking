@@ -203,7 +203,7 @@ class SLN_Action_InitScripts
         self::preloadScripts();
         self::enqueueDateTimePicker();
         wp_enqueue_script(
-            'salon-customSelect2',
+            'salon-customDateTime',
             SLN_PLUGIN_URL.'/js/admin/customDateTime.js',
             array('jquery'),
             self::ASSETS_VERSION,

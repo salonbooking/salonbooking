@@ -60,3 +60,8 @@ function initTimepickers($) {
         }
     });
 }
+
+jQuery(function($){
+    initDatepickers($);
+    initTimepickers($);
+});
