@@ -1,0 +1,29 @@
+<wpml-config>
+  <custom-types>
+     <custom-type translate="1">sln_service</custom-type>
+     <custom-type translate="1">sln_attendant</custom-type>
+     <custom-type translate="0">sln_booking</custom-type>
+  </custom-types>
+  <taxonomies>
+   <taxonomy translate="1">sln_service_category</taxonomy>
+  </taxonomies>
+  <admin-texts>
+   <key name="salon_settings">
+    <key name="custom_texts">
+      <key name="When do you want to come?"/>
+      <key name="What do you need?"/>
+      <key name="Something more?"/>
+      <key name="Booking summary"/>
+      <key name="Booking Confirmation"/>
+      <key name="Checkout"/>
+      <key name="Date and time booked"/>
+      <key name="Assistants"/>
+      <key name="Services booked"/>
+      <key name="Do you have any message for us?"/>
+    </key>
+    <key name="gen_timetable"/>
+    <key name="follow_up_message"/>
+  </key>
+  </admin-texts>
+
+</wpml-config>
