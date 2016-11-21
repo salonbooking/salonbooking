@@ -378,14 +378,14 @@ THIS BOX MUST BE HIDDEN IF NOT IN USE
     </div>
     <div class="col-sm-8 col-md-6">
     <div class="sln-box sln-box--main sln-box--main--small">
-    <h2 class="sln-box-title"><?php _e('Bootstrap CSS','salon-booking-system') ?></h2>
+    <h2 class="sln-box-title"><?php _e('Disabel bootstrap assets','salon-booking-system') ?></h2>
     <div class="row">
             <div class="col-md-6 form-group  sln-checkbox">
-                <?php $this->row_input_checkbox('no_bootstrap', __('Disable Bootstrap CSS on front-end', 'salon-booking-system')); ?>
+                <?php $this->row_input_checkbox('no_bootstrap', __('CSS on front-end', 'salon-booking-system')); ?>
                 <p class="sln-input-help"><?php _e('Use it in case of conflicts with your theme','salon-booking-system') ?></p>
             </div>
             <div class="col-md-6 form-group  sln-checkbox">
-                <?php $this->row_input_checkbox('no_bootstrap_js', __('Disable Bootstrap JS on front-end', 'salon-booking-system')); ?>
+                <?php $this->row_input_checkbox('no_bootstrap_js', __('JS on front-end', 'salon-booking-system')); ?>
                 <p class="sln-input-help"><?php _e('Use it in case of conflicts with your theme','salon-booking-system') ?></p>
             </div>
         </div>
