@@ -181,8 +181,9 @@ function sln_adminDate($) {
                     $('#sln-notifications').html('').append(alertBox);
                 } else {
                     $('#sln-notifications').html('').append('<div class="alert alert-success">' + $('#sln-notifications').data('valid-message') + '</div>');
+
                 }
-                bindIntervals(data.intervals);
+                //bindIntervals(data.intervals);
                 sln_checkServices($);
             }
         });
@@ -205,50 +206,28 @@ function sln_adminDate($) {
     validate($('#_sln_booking_date'));
     initDatepickers($);
     initTimepickers($);
-    $('#resend-notification-submit').click(function () {
-        var data = "post_id=" + $('#post_ID').val() + "&emailto=" + $('#resend-notification').val() + "&message=" + $('#resend-notification-text').val() + "&action=salon&method=ResendNotification&security=" + salon.ajax_nonce;
-        var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ';
-        $('#resend-notification-message').html(validatingMessage);
-        $.ajax({
-            url: salon.ajax_url,
-            data: data,
-            method: 'POST',
-            dataType: 'json',
-            success: function (data) {
-                if (data.success)
-                    $('#resend-notification-message').html('<div class="alert alert-success">' + data.success + '</div>');
-                else if (data.error)
-                    $('#resend-notification-message').html('<div class="alert alert-danger">' + data.error + '</div>');
-            }
-        });
-        return false;
-    });
-    $('#resend-payment-submit').click(function () {
-        var data = "post_id=" + $('#post_ID').val() + "&emailto=" + $('#resend-payment').val() + "&action=salon&method=ResendPaymentNotification&security=" + salon.ajax_nonce;
-        var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ';
-        $('#resend-payment-message').html(validatingMessage);
-        $.ajax({
-            url: salon.ajax_url,
-            data: data,
-            method: 'POST',
-            dataType: 'json',
-            success: function (data) {
-                if (data.success)
-                    $('#resend-payment-message').html('<div class="alert alert-success">' + data.success + '</div>');
-                else if (data.error)
-                    $('#resend-payment-message').html('<div class="alert alert-danger">' + data.error + '</div>');
-            }
-        });
-        return false;
-    });
+    sln_initResendNotification();
+    sln_initResendPaymentSubmit();
 }
 
 function sln_manageAddNewService($) {
+    function getNewBookingServiceLineString(serviceId, attendantId) {
+        var line = lineItem;
+        line = line.replace(/__service_id__/g, serviceId);
+        line = line.replace(/__attendant_id__/g, attendantId);
+        line = line.replace(/__service_title__/g, servicesData[serviceId].title);
+        line = line.replace(/__attendant_name__/g, attendantsData[attendantId]);
+        line = line.replace(/__service_price__/g, servicesData[serviceId].price);
+        line = line.replace(/__service_duration__/g, servicesData[serviceId].duration);
+        line = line.replace(/__service_break_duration__/g, servicesData[serviceId].break_duration);
+        return line;
+    }
+
     $('button[data-collection="addnewserviceline"]').click(function () {
         var serviceVal = $('#_sln_booking_service_select').val();
         var attendantVal = $('#_sln_booking_attendant_select').val();
         if (((attendantVal == undefined || attendantVal == '') && $('#_sln_booking_attendant_select option').size() > 1) ||
-            $('[name=_sln_booking\\[services\\]\\[\\]] option[value=' + serviceVal + ']:selected').size()
+            $('[name="_sln_booking[services][]"] option[value="' + serviceVal + '"]:selected').size()
         ) {
             return false;
         }
@@ -282,10 +261,10 @@ function sln_manageAddNewService($) {
         if ($('#salon-step-date').data('isnew'))
             calculateTotal();
 
-        createSelect2();
-        createSelect2NoSearch();
-        bindRemoveBookingsServices();
-        bindChangeAttendantSelects();
+        sln_createSelect2();
+        sln_createSelect2NoSearch();
+        sln_bindRemoveBookingsServices();
+        sln_bindChangeAttendantSelects();
         sln_checkServices($);
         return false;
     });
@@ -305,27 +284,33 @@ function sln_checkServices($) {
                 $.each(data.errors, function () {
                     alertBox.append('<p>').html(this);
                 });
-            }
-            else {
+            } else {
                 $('#sln_booking_services').find('.alert').remove();
-                $.each(data.services, function (index, value) {
-                    var serviceItem = $('#_sln_booking_attendants_' + index);
-                    if (value.status == -1) {
-                        $.each(value.errors, function (index, value) {
-                            var alertBox = $('<div class="row col-xs-12 col-sm-12 col-md-12"><div class="' + ($('#salon-step-date').attr('data-m_attendant_enabled') ? 'col-md-offset-2 col-md-6' : 'col-md-8') + '"><p class="alert alert-danger">' + value + '</p></div></div>');
-                            serviceItem.parent().parent().next().after(alertBox);
-                        });
-                    }
-                    serviceItem.parent().parent().find('label.time:first').html(value.startsAt);
-                    serviceItem.parent().parent().find('label.time:last').html(value.endsAt);
-                });
+                sln_processServices(data.services);
             }
         }
     });
 }
 
+function sln_processServices(services) {
+    $.each(services, function (index, value) {
+        var serviceItem = $('#_sln_booking_attendants_' + index);
+        if (value.status == -1) {
+            $.each(value.errors, function (index, value) {
+                var alertBox = $('<div class="row col-xs-12 col-sm-12 col-md-12"><div class="'
+                    + ($('#salon-step-date').attr('data-m_attendant_enabled') ?
+                        'col-md-offset-2 col-md-6'
+                        : 'col-md-8')
+                    + '"><p class="alert alert-danger">' + value + '</p></div></div>');
+                serviceItem.parent().parent().next().after(alertBox);
+            });
+        }
+        serviceItem.parent().parent().find('label.time:first').html(value.startsAt);
+        serviceItem.parent().parent().find('label.time:last').html(value.endsAt);
+    });
+}
 
-function sln_manageCheckServices($){
+function sln_manageCheckServices($) {
 
     if (typeof servicesData == 'string') {
         servicesData = $.parseJSON(servicesData);
@@ -333,52 +318,88 @@ function sln_manageCheckServices($){
     if (typeof attendantsData == 'string') {
         attendantsData = $.parseJSON(attendantsData);
     }
-    $('#_sln_booking_service_select').change(function() {
+    $('#_sln_booking_service_select').change(function () {
         var html = '';
         if (servicesData[$(this).val()] != undefined) {
-            $.each(servicesData[$(this).val()].attendants, function( index, value ) {
-                html += '<option value="'+ value +'">' + attendantsData[value] + '</option>';
+            $.each(servicesData[$(this).val()].attendants, function (index, value) {
+                html += '<option value="' + value + '">' + attendantsData[value] + '</option>';
             });
         }
         $('#_sln_booking_attendant_select option:not(:first)').remove();
         $('#_sln_booking_attendant_select').append(html).change();
     }).change();
 
+    sln_bindRemoveBookingsServices();
+    sln_bindChangeAttendantSelects();
+}
 
 
-    function bindRemoveBookingsServicesFunction() {
-        if($('#salon-step-date').data('isnew'))
+function sln_bindRemoveBookingsServices() {
+    function sln_bindRemoveBookingsServicesFunction() {
+        if (jQuery('#salon-step-date').data('isnew'))
             calculateTotal();
-        if ($('#_sln_booking_service_select').size()) {
-            sln_checkServices($);
+        if (jQuery('#_sln_booking_service_select').size()) {
+            sln_checkServices(jQuery);
         }
         return false;
     }
 
-    function bindRemoveBookingsServices() {
-        bindRemove();
-        $('button[data-collection="remove"]').unbind('click', bindRemoveBookingsServicesFunction).on('click', bindRemoveBookingsServicesFunction);
-    }
+    bindRemove();
+    jQuery('button[data-collection="remove"]')
+        .unbind('click', sln_bindRemoveBookingsServicesFunction)
+        .on('click', sln_bindRemoveBookingsServicesFunction);
+}
 
+function sln_bindChangeAttendantSelects() {
     function bindChangeAttendantSelectsFunction() {
-        sln_checkServices($);
-    }
-    function bindChangeAttendantSelects() {
-        $('select[data-attendant]').unbind('change', bindChangeAttendantSelectsFunction).on('change', bindChangeAttendantSelectsFunction);
+        sln_checkServices(jQuery);
     }
 
-    function getNewBookingServiceLineString(serviceId, attendantId) {
-        var line = lineItem;
-        line = line.replace(/__service_id__/g, serviceId);
-        line = line.replace(/__attendant_id__/g, attendantId);
-        line = line.replace(/__service_title__/g, servicesData[serviceId].title);
-        line = line.replace(/__attendant_name__/g, attendantsData[attendantId]);
-        line = line.replace(/__service_price__/g, servicesData[serviceId].price);
-        line = line.replace(/__service_duration__/g, servicesData[serviceId].duration);
-        line = line.replace(/__service_break_duration__/g, servicesData[serviceId].break_duration);
-        return line;
-    }
+    jQuery('select[data-attendant]')
+        .unbind('change', bindChangeAttendantSelectsFunction)
+        .on('change', bindChangeAttendantSelectsFunction);
+}
 
-    bindRemoveBookingsServices();
-    bindChangeAttendantSelects();
+function sln_initResendNotification(){
+    var $ = jQuery;
+    $('#resend-notification-submit').click(function () {
+        var data = "post_id=" + $('#post_ID').val() + "&emailto=" + $('#resend-notification').val() + "&message=" + $('#resend-notification-text').val() + "&action=salon&method=ResendNotification&security=" + salon.ajax_nonce;
+        var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ';
+        $('#resend-notification-message').html(validatingMessage);
+        $.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (data.success)
+                    $('#resend-notification-message').html('<div class="alert alert-success">' + data.success + '</div>');
+                else if (data.error)
+                    $('#resend-notification-message').html('<div class="alert alert-danger">' + data.error + '</div>');
+            }
+        });
+        return false;
+    });
+}
+
+function sln_initResendPaymentSubmit(){
+    var $ = jQuery;
+    $('#resend-payment-submit').click(function () {
+        var data = "post_id=" + $('#post_ID').val() + "&emailto=" + $('#resend-payment').val() + "&action=salon&method=ResendPaymentNotification&security=" + salon.ajax_nonce;
+        var validatingMessage = '<img src="' + salon.loading + '" alt="loading .." width="16" height="16" /> ';
+        $('#resend-payment-message').html(validatingMessage);
+        $.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (data.success)
+                    $('#resend-payment-message').html('<div class="alert alert-success">' + data.success + '</div>');
+                else if (data.error)
+                    $('#resend-payment-message').html('<div class="alert alert-danger">' + data.error + '</div>');
+            }
+        });
+        return false;
+    });
 }

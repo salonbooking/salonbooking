@@ -238,7 +238,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
     {
         parent::enqueueAssets();
         wp_enqueue_script(
-            'salon-customMetaService',
+            'salon-customBookingUser',
             SLN_PLUGIN_URL.'/js/admin/customBookingUser.js',
             array('jquery'),
             SLN_Action_InitScripts::ASSETS_VERSION,
