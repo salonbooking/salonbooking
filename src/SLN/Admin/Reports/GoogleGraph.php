@@ -182,6 +182,7 @@ class SLN_Admin_Reports_GoogleGraph {
 		ob_start();
 		?>
 		<script type="text/javascript">
+                    jQuery(function(){
 			google.charts.load('current', {'packages':['bar']});
 			google.charts.setOnLoadCallback(drawStuff);
 
@@ -211,7 +212,7 @@ class SLN_Admin_Reports_GoogleGraph {
 				var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
 				chart.draw(data, options);
 			};
-
+                    });
 		</script>
 		<div id="dual_x_div" style="width: 900px; height: 500px"></div>
 		<?php
