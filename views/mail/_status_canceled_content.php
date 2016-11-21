@@ -20,7 +20,7 @@
 </p>
 
 <p>
-                        <?php echo __('the folowing booking at ' . $plugin->getSettings()->get('gen_name') . ' has been canceled', 'salon-booking-system') ?>.</p>
+                        <?php echo sprintf(__('the folowing booking at %s as been canceled', 'salon-booking-system'),$plugin->getSettings()->get('gen_name')) ?>.</p>
                 </td>
             </tr>
             <tr>
