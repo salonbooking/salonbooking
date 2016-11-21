@@ -59,15 +59,6 @@ class SLN_Shortcode_SalonMyAccount_Details
 		}
 
 // FULL MY ACCOUNT PAGE
-		$args=array(
-				'name'           => 'booking',
-				'post_type'      => 'page',
-				'post_status'    => 'publish',
-				'posts_per_page' => 1,
-		);
-		$query = new WP_Query($args);
-		$post  = $query->get_queried_object();
-		wp_reset_query();
 
 		$historyItems = $this->prepareBookings($accountBookings->getBookings(get_current_user_id(), 'history'));
 		$historyEnds  = count($historyItems) <= $this->perPage;
@@ -92,7 +83,7 @@ class SLN_Shortcode_SalonMyAccount_Details
 					'hide_prices' => $this->plugin->getSettings()->get('hide_prices'),
 					'attendant_enabled' => $this->plugin->getSettings()->get('attendant_enabled'),
 					'pay_enabled' => $this->plugin->getSettings()->get('pay_enabled'),
-					'booking_url' => get_post_permalink($post->ID),
+					'booking_url' => get_post_permalink( $this->plugin->getSettings()->get('pay') ),
 				)
 		);
 	}
