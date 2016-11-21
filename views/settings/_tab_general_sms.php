@@ -48,7 +48,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group sln-input--simple">
-                        <?php $helper->row_input_text('sms_prefix', __('Number Prefix', 'salon-booking-system')); ?>
+                        <?php $helper->row_input_text('sms_prefix', __('Country code', 'salon-booking-system')); ?>
                     </div>
                     <div class="col-sm-6 form-group sln-input--simple">
                         <?php $helper->row_input_text('sms_from', __('Sender\'s number', 'salon-booking-system')); ?>
