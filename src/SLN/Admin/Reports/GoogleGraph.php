@@ -89,7 +89,7 @@ class SLN_Admin_Reports_GoogleGraph {
 		ob_start();
 		?>
 		<script type="text/javascript">
-
+                    jQuery(function(){
 			google.charts.load('current', {'packages':['line', 'corechart']});
 			google.charts.setOnLoadCallback(drawChart);
 
@@ -126,7 +126,7 @@ class SLN_Admin_Reports_GoogleGraph {
 				var materialChart = new google.charts.Line(document.getElementById('chart_div'));
 				materialChart.draw(data, materialOptions);
 			}
-
+                    });
 		</script>
 		<div id="chart_div" style="width: 900px; height: 500px"></div>
 		<?php

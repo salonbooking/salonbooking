@@ -27,7 +27,7 @@ class SLN_Admin_Reports extends SLN_Admin_AbstractPage
 
     public function enqueueAssets()
     {
-        parent::enqueueAssets();
         SLN_Admin_Reports_GoogleGraph::enqueue_scripts();
+        parent::enqueueAssets();
     }
 }
