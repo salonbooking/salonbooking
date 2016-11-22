@@ -13,6 +13,20 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
         'exec_order'     => 'int',
     );
 
+    protected function init()
+    {
+        add_action('admin_print_styles-edit.php', array($this, 'admin_print_styles'));
+        add_action('admin_enqueue_scripts', array($this, 'admin_print_styles_tag'));
+    }
+
+    public function admin_print_styles_tag()
+    {
+        global $taxnow, $pagenow;
+        if($pagenow == 'edit-tags.php' && $taxnow == SLN_Plugin::TAXONOMY_SERVICE_CATEGORY) {
+            $this->enqueueAssets();
+        }
+    }
+
     public function add_meta_boxes()
     {
         $postType = $this->getPostType();
