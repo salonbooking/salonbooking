@@ -12,9 +12,6 @@ class SLN_Shortcode_Salon_SummaryStep extends SLN_Shortcode_Salon_Step
             if ($this->getPlugin()->getSettings()->get('confirmation')) {
                 $this->getPlugin()->messages()->sendSummaryMail($bb->getLastBooking());
             }
-            elseif ($this->getPlugin()->getSettings()->get('pay_offset_enabled')) {
-                $this->getPlugin()->messages()->sendByStatus($bb->getLastBooking(), SLN_Enum_BookingStatus::PENDING_PAYMENT);
-            }
         }
 
         return true;

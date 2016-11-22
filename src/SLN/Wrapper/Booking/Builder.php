@@ -322,7 +322,7 @@ class SLN_Wrapper_Booking_Builder
         return $settings->get('confirmation') ?
             SLN_Enum_BookingStatus::PENDING
             : ($settings->get('pay_enabled') ?
-                SLN_Enum_BookingStatus::PENDING
+                SLN_Enum_BookingStatus::PENDING_PAYMENT
                 : SLN_Enum_BookingStatus::CONFIRMED);
     }
 
