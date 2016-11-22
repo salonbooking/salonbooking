@@ -228,6 +228,13 @@ abstract class SLN_Admin_Reports_AbstractReport {
 
 	}
 
+	/**
+	 * @return array
+	 */
+	protected function getBookingStatuses() {
+		return array_keys(SLN_Enum_BookingStatus::toArray());
+	}
+
 	protected function getDataByDate($day = null, $month_num = null, $year = null, $hour = null) {
 
 		$year = $year ? $year : '';
@@ -236,6 +243,7 @@ abstract class SLN_Admin_Reports_AbstractReport {
 
 		$args = array(
 				'post_type'      => SLN_Plugin::POST_TYPE_BOOKING,
+				'post_status'    => $this->getBookingStatuses(),
 				'nopaging'       => true,
 				'meta_query' => array(
 						array(
