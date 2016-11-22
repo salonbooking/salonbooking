@@ -236,6 +236,7 @@ abstract class SLN_Admin_Reports_AbstractReport {
 
 		$args = array(
 				'post_type'      => SLN_Plugin::POST_TYPE_BOOKING,
+				'post_status'    => array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED),
 				'nopaging'       => true,
 				'meta_query' => array(
 						array(
