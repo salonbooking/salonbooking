@@ -4,6 +4,14 @@ class SLN_Admin_Reports_RevenuesByAssistantsReport extends SLN_Admin_Reports_Abs
 
 	protected $type = 'bar';
 
+	protected function getBookingStatuses() {
+		return array(
+			SLN_Enum_BookingStatus::PAID,
+			SLN_Enum_BookingStatus::PAY_LATER,
+			SLN_Enum_BookingStatus::CONFIRMED,
+		);
+	}
+
 	protected function processBookings($day = null, $month_num = null, $year = null, $hour = null) {
 
 		$ret = array();
