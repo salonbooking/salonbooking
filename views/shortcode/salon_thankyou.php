@@ -6,6 +6,7 @@
  * @var SLN_Shortcode_Salon_ThankyouStep $step
  */
 $confirmation = $plugin->getSettings()->get('confirmation');
+$pendingPayment = $plugin->getSettings()->get('pay_offset_enabled') && in_array($plugin->getBookingBuilder()->getLastBooking()->getStatus(), array(SLN_Enum_BookingStatus::PENDING, SLN_Enum_BookingStatus::PENDING_PAYMENT));
 $payLater = $plugin->getSettings()->get('pay_cash');
 $currentStep = $step->getShortcode()->getCurrentStep();
 $ajaxData = "sln_step_page=$currentStep&submit_$currentStep=1";
