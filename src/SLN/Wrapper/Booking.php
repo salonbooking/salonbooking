@@ -357,8 +357,8 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
         if (in_array($this->getStatus(), array(SLN_Enum_BookingStatus::PENDING, SLN_Enum_BookingStatus::PENDING_PAYMENT)) && $plugin->getSettings()->get('pay_offset_enabled')) {
             $payOffset      = $plugin->getSettings()->get('pay_offset');
-            $checkTimestamp = strtotime("+$payOffset minutes", strtotime($this->object->post_date));
-            $leftSeconds    = $checkTimestamp - current_time('timestamp');
+            $checkTimestamp = strtotime($this->object->post_date, current_time('timestamp', 1));
+            $leftSeconds    = $checkTimestamp + $payOffset*MINUTE_IN_SECONDS - current_time('timestamp', 1);
             $leftMinutes    = $leftSeconds > 0 ? $leftSeconds/60 : 0;
 
             $left = sprintf(__("%d hours and %d minutes", 'salon-booking-system'), (int) $leftMinutes/60, (int) $leftMinutes%60);
