@@ -55,17 +55,19 @@ class SLN_Admin_Reports_RevenuesReport extends SLN_Admin_Reports_AbstractReport 
 			$count    = 0;
 			/** @var SLN_Wrapper_Booking $booking */
 			foreach($bookings as $booking) {
-				$ret['footer']['earnings']['all'] += $booking->getAmount();
 				if (in_array($booking->getStatus(), array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PENDING_PAYMENT, SLN_Enum_BookingStatus::CANCELED))) {
 					$ret['footer']['bookings'][$booking->getStatus()]++;
 					$ret['footer']['earnings'][$booking->getStatus()] += $booking->getAmount();
 				}
 
-				$earnings += $booking->getAmount();
-				$count ++;
+				if (in_array($booking->getStatus(), array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::CONFIRMED))) {
+					$earnings += $booking->getAmount();
+					$count ++;
+				}
 			}
 
-			$ret['footer']['bookings']['all'] += count($bookings);
+			$ret['footer']['earnings']['all'] += $earnings;
+			$ret['footer']['bookings']['all'] += $count;
 
 			$ret['data'][$k] = array($k, $earnings, $count);
 		}
