@@ -56,7 +56,7 @@
 						endif;
 					?>
 
-					<?php if (in_array($item['status_code'], array(SLN_Enum_BookingStatus::PENDING, SLN_Enum_BookingStatus::PENDING_PAYMENT)) && $data['pay_enabled']): ?>
+					<?php if (in_array($item['status_code'], array(SLN_Enum_BookingStatus::PENDING_PAYMENT)) && $data['pay_enabled']): ?>
 						<?php
 						$booking = SLN_Plugin::getInstance()->createBooking($item['id']); ?>
 						<div class="col-xs-10 col-sm-6 col-md-12">
