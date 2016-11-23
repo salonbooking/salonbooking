@@ -585,7 +585,7 @@
 		@include sqared_bg();
 		i {
 			display: block;
-			width: 100%;
+			width: 100% !important;
 			height: auto;
 			padding: 10px;
 			background-color: #ccc;

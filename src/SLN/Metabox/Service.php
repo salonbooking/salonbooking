@@ -15,6 +15,7 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
 
     protected function init()
     {
+        parent::init();
         add_action('admin_print_styles-edit.php', array($this, 'admin_print_styles'));
         add_action('admin_enqueue_scripts', array($this, 'admin_print_styles_tag'));
     }
