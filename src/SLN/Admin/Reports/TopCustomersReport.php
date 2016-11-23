@@ -5,6 +5,14 @@ class SLN_Admin_Reports_TopCustomersReport extends SLN_Admin_Reports_AbstractRep
 	protected $type = 'bar';
 	public $countOfCustomers = 20;
 
+	protected function getBookingStatuses() {
+		return array(
+			SLN_Enum_BookingStatus::PAID,
+			SLN_Enum_BookingStatus::PAY_LATER,
+			SLN_Enum_BookingStatus::CONFIRMED,
+		);
+	}
+
 	protected function processBookings($day = null, $month_num = null, $year = null, $hour = null) {
 
 		$ret = array();
@@ -48,7 +56,7 @@ class SLN_Admin_Reports_TopCustomersReport extends SLN_Admin_Reports_AbstractRep
 						$ret['data'][$user_id] = array($customer->getName(), 0.0, 0);
 					}
 
-					$ret['data'][$user_id][1] = $booking->getAmount();
+					$ret['data'][$user_id][1] += $booking->getAmount();
 					$ret['data'][$user_id][2] ++;
 				}
 			}
