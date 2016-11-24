@@ -122,6 +122,7 @@ function customBookingUser($) {
 
 function calculateTotal() {
     var tot = 0;
+    var $ = jQuery;
     $('[name=_sln_booking\\[services\\]\\[\\]]').each(function () {
         tot = (parseFloat(tot) + parseFloat($(this).data('price'))).toFixed(2);
     });
@@ -293,6 +294,7 @@ function sln_checkServices($) {
 }
 
 function sln_processServices(services) {
+    if(!services) return;
     $.each(services, function (index, value) {
         var serviceItem = $('#_sln_booking_attendants_' + index);
         if (value.status == -1) {
