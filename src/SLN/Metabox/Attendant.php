@@ -88,10 +88,10 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
         $k = '_sln_attendant_holidays';
         if(isset($_POST[$k]))
             $_POST[$k] = SLN_Helper_HolidayItems::processSubmission($_POST[$k]);
-        $k = '_sln_attendant_services';
-        if(isset($_POST[$k])) {
-            foreach($_POST[$k] as $kk => $vv){
-                $_POST[$k][$kk] = str_replace($k.'_','', $vv);
+        $k = 'sln_attendant_services';
+        if(isset($_POST['_'.$k])) {
+            foreach($_POST['_'.$k] as $kk => $vv){
+                $_POST['_'.$k][$kk] = str_replace($k.'_','', $vv);
             }
         }
         parent::save_post($post_id, $post);
