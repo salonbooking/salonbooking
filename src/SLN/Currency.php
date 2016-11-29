@@ -33,6 +33,7 @@ class SLN_Currency
         'CHF' => array('name' => 'Swiss Franc', 'symbol' => 'CHF', 'ASCII' => ''),
         'ZAR' => array('name' => 'South African rand', 'symbol' => 'R', 'ASCII' => '&#x52;'),
         'KRW' => array('name' => 'South Korea Won', 'symbol' => '￦', 'ASCII' => '&#8361;'),
+        'KWD' => array('name' => 'Kuwaiti dinar', 'symbol' => 'KD', 'ASCII' => ''),
         'TWD' => array('name' => 'Taiwan New Dollar', 'symbol' => 'NT$', 'ASCII' => 'NT&#36;'),
         'TRY' => array('name' => 'Turkish Lira', 'symbol' => 'TL', 'ASCII' => '&#8378;'),
         'THB' => array('name' => 'Thai Baht', 'symbol' => '฿', 'ASCII' => '&#3647;'),
