@@ -86,7 +86,7 @@
 							<?php else: ?>
 								<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth disabled">
 									<button data-toggle="tooltip" data-placement="top" style="cursor: not-allowed;"
-									        title="<?php _e('Sorry, you cannot cancel this booking online. Please call ' . $data['gen_phone'], 'salon-booking-system'); ?>">
+									        title="<?php echo sprintf(__('Sorry, you cannot cancel this booking online. Please call %s', 'salon-booking-system'),$data['gen_phone']); ?>">
 										<?php _e('Cancel booking','salon-booking-system');?>
 									</button>
 								</div>
