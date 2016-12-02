@@ -52,6 +52,7 @@ class SLN_Helper_HolidayItems
     public static function processSubmission($data = null)
     {
         if(!$data) return $data;
+        $data = array_values($data);
         foreach ($data as &$holidayData) {
             $holidayData['from_date'] = SLN_TimeFunc::evalPickedDate($holidayData['from_date']);
             $holidayData['to_date'] = SLN_TimeFunc::evalPickedDate($holidayData['to_date']);
