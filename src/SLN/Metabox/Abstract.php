@@ -29,6 +29,8 @@ abstract class SLN_Metabox_Abstract
         global $post;
         if ($post->post_type == $this->getPostType()) {
             $this->enqueueAssets();
+            add_filter( 'wpseo_use_page_analysis', '__return_false' );
+            remove_meta_box('wpseo_meta', $this->getPostType(), 'normal');
         }
     }
 

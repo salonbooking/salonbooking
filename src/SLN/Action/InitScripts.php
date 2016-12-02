@@ -13,6 +13,7 @@ class SLN_Action_InitScripts
 
         if ($isAdmin) {
             add_action('admin_enqueue_scripts', array($this, 'hook_enqueue_scripts'));
+            add_action('wp_print_scripts', array($this, 'hook_admin_print_scripts'));
         }
         add_action('wp_enqueue_scripts', array($this, 'hook_enqueue_scripts'), 99999);
     }
@@ -182,6 +183,7 @@ class SLN_Action_InitScripts
     }
 
     public static function enqueueSelect2(){
+
         wp_enqueue_script('jqueryUi', SLN_PLUGIN_URL.'/js/select2.min.js', array('jquery'), true);
         wp_enqueue_script(
             'salon-admin-select2',
@@ -211,5 +213,19 @@ class SLN_Action_InitScripts
         );
         wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL.'/js/admin.js', array('jquery'), self::ASSETS_VERSION, true);
         wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL.'/css/admin.css', array(), SLN_VERSION, 'all');
+    }
+    public function hook_admin_print_scripts(){
+
+        if(is_plugin_active('wordpress-seo/wp-seo.php') && SLN_Func::isSalonPage()){
+        //if(isdefined('WPSEO_VERSION') && SLN_Func::isSalonPage()) {
+            self::dequeueYoast();
+        }
+    }
+    public static function dequeueYoast()
+    {
+        $scripts = array('yoast-seo-admin-script', 'yoast-seo-admin-media','yoast-seo-bulk-editor','yoast-seo-dismissible','yoast-seo-admin-global-script','yoast-seo-metabox','yoast-seo-featured-image','yoast-seo-admin-gsc','yoast-seo-post-scraper','yoast-seo-term-scraper','yoast-seo-replacevar-plugin','yoast-seo-shortcode-plugin','yoast-seo-recalculate','yoast-seo-primary-category','yoast-seo-select2','yoast-seo-select2-translations','yoast-seo-configuration-wizard');
+        foreach($scripts as $s) {
+            wp_dequeue_script($s);
+        }
     }
 }

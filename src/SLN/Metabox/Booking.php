@@ -65,6 +65,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
 
     public function details_meta_box($object, $box)
     {
+
         echo $this->getPlugin()->loadView(
             'metabox/booking',
             array(

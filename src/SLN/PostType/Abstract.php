@@ -10,6 +10,12 @@ abstract class SLN_PostType_Abstract
         $this->plugin   = $plugin;
         $this->postType = $postType;
         $this->init();
+        if(is_admin()){
+            global $pagenow;
+            if($pagenow == 'edit.php' && isset($_GET['post_type']) && $_GET['post_type'] == $this->getPostType()) {
+                add_filter( 'wpseo_use_page_analysis', '__return_false' );
+            }
+        }
         add_filter('post_updated_messages', array($this, 'updated_messages'));
         add_filter('enter_title_here', array($this, 'enter_title_here'), 10, 2);
     }

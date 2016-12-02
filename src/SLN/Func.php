@@ -307,4 +307,21 @@ class SLN_Func
         }
     }
 
+    public static function isSalonPage()
+    {
+        global $pagenow, $post;
+        $types = array(SLN_Plugin::POST_TYPE_SERVICE, SLN_Plugin::POST_TYPE_ATTENDANT, SLN_Plugin::POST_TYPE_BOOKING);
+        $pt = null; 
+        if($pagenow == 'post.php' && $post)
+            $pt = $post->post_type;
+        elseif($pagenow == 'edit.php')
+            $pt = $_GET['post_type'];
+        if($pt){
+            return strpos($pt, 'sln_') === 0;
+        }
+        if($pagenow == 'admin.php'){
+            return isset($_GET['page']) && strpos($_GET['page'], 'salon') === 0;
+        }
+        return false;
+    }
 }
