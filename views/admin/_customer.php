@@ -3,7 +3,7 @@
 		<?php /** @var SLN_Wrapper_Customer $customer */ ?>
 		<?php _e($customer->isEmpty() ? 'New Customer' : 'Edit Customer', 'salon-booking-system') ?>
 		<?php /** @var string $new_link */ ?>
-		<a href="<?php echo $new_link; ?>" class="page-title-action"><?php echo esc_html_x('Add Customer', 'salon-booking-system'); ?></a>
+		<a href="<?php echo $new_link; ?>" class="page-title-action"><?php _e('Add Customer', 'salon-booking-system'); ?></a>
 	</h1>
 	<br>
 

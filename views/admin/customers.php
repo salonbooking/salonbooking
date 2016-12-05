@@ -1,7 +1,7 @@
 <div class="wrap sln-bootstrap" id="sln-salon--admin">
 	<h1><?php _e('Customers', 'salon-booking-system') ?>
 		<?php /** @var string $new_link */ ?>
-	<a href="<?php echo $new_link; ?>" class="page-title-action"><?php echo esc_html_x('Add Customer', 'salon-booking-system'); ?></a>
+	<a href="<?php echo $new_link; ?>" class="page-title-action"><?php _e('Add Customer', 'salon-booking-system'); ?></a>
 	</h1>
 
 <form method="get">
