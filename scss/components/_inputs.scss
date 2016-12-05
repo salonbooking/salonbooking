@@ -65,8 +65,13 @@
 	@extend %sln-input-label--big;
 	input {
 		position: absolute;
-		margin-left: -9999px;
-		visibility: hidden;
+		//margin-left: -9999px;
+		//visibility: hidden;
+    	width: 1.6em;
+    	z-index: 2;
+    	background: red;
+    	height: 1.6em;
+    	opacity: 0;
 	}
 	input + label {
 		margin: .2em 0;

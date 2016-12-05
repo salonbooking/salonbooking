@@ -1231,8 +1231,11 @@ ul.sln-list--dashed li,
 
 .sln-checkbox input {
   position: absolute;
-  margin-left: -9999px;
-  visibility: hidden; }
+  width: 1.6em;
+  z-index: 2;
+  background: red;
+  height: 1.6em;
+  opacity: 0; }
 
 .sln-checkbox input + label {
   margin: .2em 0;
