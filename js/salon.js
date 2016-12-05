@@ -308,7 +308,7 @@ function sln_serviceTotal($) {
 
 function initDatepickers($) {
     $('.sln_datepicker input').each(function () {
-      $(this).attr('readonly','readonly');
+        $(this).attr('readonly','readonly');
         if ($(this).hasClass('started')) {
             return;
         } else {
@@ -336,6 +336,10 @@ function initDatepickers($) {
                 .on('changeYear', function () {
                     $('body').trigger('sln_date');
                 })
+                .on('hide', function () {
+                    if($(this).is(':focus'));
+                        $(this).blur();
+               })
             ;
         }
     });
@@ -370,7 +374,11 @@ function initTimepickers($) {
                 .on('place', function () {
                     $('body').trigger('sln_date');
                 })
-
+                .on('hide', function () {
+                    if($(this).is(':focus'));
+                        $(this).blur();
+                })
+ 
                .data('datetimepicker').picker;
             picker.addClass('timepicker');
         }
