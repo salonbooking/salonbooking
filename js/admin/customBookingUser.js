@@ -287,13 +287,13 @@ function sln_checkServices($) {
                 });
             } else {
                 $('#sln_booking_services').find('.alert').remove();
-                sln_processServices(data.services);
+                sln_processServices($, data.services);
             }
         }
     });
 }
 
-function sln_processServices(services) {
+function sln_processServices($, services) {
     if(!services) return;
     $.each(services, function (index, value) {
         var serviceItem = $('#_sln_booking_attendants_' + index);
