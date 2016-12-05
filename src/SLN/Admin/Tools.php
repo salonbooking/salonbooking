@@ -183,7 +183,8 @@ class SLN_Admin_Tools extends SLN_Admin_AbstractPage
             return;
         }
 
-        $import_data = json_decode($data['tools-import'], 1);
+        $import_data = str_replace(array('\\"', '\\\\"', '\\\'', '\\\\/', '\\\\r', '\\\\n'), array('"', '\"', '\'', '\/', '\r', '\n'), $data['tools-import']);
+        $import_data = json_decode($import_data, 1);
         if (is_array($import_data)) {
             update_option(SLN_Settings::KEY, $import_data);
             $this->settings->load();
