@@ -115,7 +115,7 @@ INNER JOIN {$wpdb->prefix}usermeta AS usermeta1 ON ( users.ID = usermeta1.user_i
 $join
 
 WHERE
-    ( usermeta1.meta_key = 'wp_capabilities' AND usermeta1.meta_value LIKE %s )
+    ( usermeta1.meta_key = '{$wpdb->prefix}capabilities' AND usermeta1.meta_value LIKE %s )
     $where
 ORDER BY ".$wpdb->_real_escape($orderby)." ".$wpdb->_real_escape($order)." LIMIT %d, %d",
 				$args
