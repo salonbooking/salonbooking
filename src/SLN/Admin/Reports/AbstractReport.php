@@ -481,7 +481,7 @@ abstract class SLN_Admin_Reports_AbstractReport {
 
 					<select id="sln-graphs-date-options" name="range">
 						<?php foreach ($date_options as $key => $option) : ?>
-							<option value="<?php echo esc_attr($key); ?>"<?php selected($key, $dates['range']); ?>><?php echo esc_html($option); ?></option>
+							<option value="<?php echo esc_attr($key); ?>"<?php selected($key, $dates['range']); ?>><?php _e($option); ?></option>
 						<?php endforeach; ?>
 					</select>
 
