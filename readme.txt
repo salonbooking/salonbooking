@@ -263,7 +263,7 @@ http://salon.wordpresschef.it
 * Fixed bug on sending reminder to Canceled reservations
 * Fixed bug on not translate text strings
 * Fixed bug on mobile selection of services on checkbox
-* Fixed bug on wrong representation of unavailable time slot from back-end
+
 
 21.11.2016
 
