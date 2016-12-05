@@ -9,21 +9,40 @@
   </taxonomies>
   <admin-texts>
    <key name="salon_settings">
-    <key name="custom_texts">
-      <key name="When do you want to come?"/>
-      <key name="What do you need?"/>
-      <key name="Something more?"/>
-      <key name="Booking summary"/>
-      <key name="Booking Confirmation"/>
-      <key name="Checkout"/>
-      <key name="Date and time booked"/>
-      <key name="Assistants"/>
-      <key name="Services booked"/>
-      <key name="Do you have any message for us?"/>
+      <key name="date_format"/>
+      <key name="time_format"/>
+      <key name="hours_before_from"/>
+      <key name="hours_before_to"/>
+      <key name="interval"/>
+      <key name="availability_mode"/>
+      <key name="disabled_message"/>
+      <key name="gen_phone"/>
+      <key name="gen_address"/>
+      <key name="gen_timetable"/>
+      <key name="ajax_enabled"/>
+      <key name="booking"/>
+      <key name="thankyou"/>
+      <key name="availabilities"/>
+      <key name="email_subject"/>
+      <key name="pay_currency"/>
+      <key name="pay_currency_pos"/>
+      <key name="pay_paypal_email"/>
+      <key name="pay_paypal_test"/>
+      <key name="parallels_hour"/>
+      <key name="sln_db_version"/>
+      <key name="bookingmyaccount"/>
+      <key name="pay_method"/>
+      <key name="pay_cash"/>
+      <key name="pay_offset_enabled"/>
+      <key name="pay_offset"/>
+      <key name="pay_enabled"/>
+      <key name="pay"/>
+      <key name="minutes_between_reservation"/>
+      <key name="hours_before_cancellation"/>
+      <key name="attendant_enabled"/>
+      <key name="sms_provider"/>
+      <key name="sms_remind_interval"/>
+      <key name="email_remind_interval"/>
     </key>
-    <key name="gen_timetable"/>
-    <key name="follow_up_message"/>
-  </key>
   </admin-texts>
-
 </wpml-config>
