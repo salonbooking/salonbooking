@@ -17,8 +17,8 @@
 	                               value="submit"><?php echo __('Send', 'salon-booking-system') ?></button></div></div>
 </div>
 <br/>
-<?php if($settings->get('pay_enabled') && $settings->get('pay')): ?>
 	<span id="resend-notification-message"></span>
+<?php if($settings->get('pay_enabled') && $settings->get('pay')): ?>
 	<h3><?php _e('Re-send payment link', 'salon-booking-system') ?></h3>
 	<div class="row">
 		<div class="col-xs-8"><input type="text" id="resend-payment" class="sln-input sln-input--text" value="<?php echo $booking->getEmail(); ?>"/></div>
