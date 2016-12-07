@@ -261,7 +261,7 @@ http://salon.wordpresschef.it
 * Fixed bug for disappeared customers list
 * Fixed bug on holidays rules when more than 27
 * Fixed bug on sending reminder to Canceled reservations
-* Fixed bug on not translate text strings
+* Fixed bug on YOAST conflict
 * Fixed bug on mobile selection of services on checkbox
 
 

@@ -5247,7 +5247,8 @@ p.sln-box-info {
 .salon_page_salon-settings.wp-core-ui .sln-tab .button-primary {
   margin: 0 0 0 -1em; }
 
-.ui-sortable {
+.ui-sortable .type-sln_service.ui-sortable-handle,
+.taxonomy-sln_service_category .ui-sortable .ui-sortable-handle {
   cursor: move; }
 
 .sln-nav-tab-wrapper.nav-tab-wrapper,
