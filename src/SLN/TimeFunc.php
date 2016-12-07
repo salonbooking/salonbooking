@@ -27,12 +27,9 @@ class SLN_TimeFunc
         if ($f == SLN_Enum_DateFormat::_DEFAULT) {
             if(!strpos($date, ' ')) throw new Exception('bad date format');
             $date = explode(' ', $date);
-            foreach (SLN_Func::getMonths() as $k => $v) {
-                if ($date[1] == $v) {// || SLN_Func::removeAccents($date[1]) == SLN_Func::removeAccents($v)) {
-                    $ret = $date[2] . '-' . ($k < 10 ? '0' . $k : $k) . '-' . $date[0];
-                    return $ret;
-                }
-            }
+            $k = self::guessMonthNum($date[1]);
+            $ret = $date[2] . '-' . ($k < 10 ? '0' . $k : $k) . '-' . $date[0];
+            return $ret;
         } elseif ($f == SLN_Enum_DateFormat::_SHORT) {
             $date = explode('/', $date);
             if (count($date) == 3)
@@ -49,6 +46,32 @@ class SLN_TimeFunc
             return date('Y-m-d', strtotime($date));
         }
         throw new Exception('wrong date ' . $initial . ' format: ' . $f);
+    }
+
+    public static function guessMonthNum($monthName)
+    {
+        $months = SLN_Func::getMonths();
+        foreach ($months as $k => $v) {
+            if ($monthName == $v) {
+                return $k;
+            }
+        }
+        foreach ($months as $k => $v) {
+            if(SLN_Func::removeAccents($monthName) == SLN_Func::removeAccents($v)) {
+            }
+        }
+        foreach ($months as $k => $v) {
+            if (substr($monthName,0,3) == substr($v,0,3)) {
+                return $k;
+            }
+        }
+        foreach ($months as $k => $v) {
+            if (substr(SLN_Func::removeAccents($monthName),0,3) == substr(SLN_Func::removeAccents($v),0,3)) {
+                return $k;
+            }
+        }
+
+        throw new \Exception(sprintf('month %s not found in months %s', $monthName, implode(', ', $months)));
     }
 
     public static function evalPickedTime($val){
