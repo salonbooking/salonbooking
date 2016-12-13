@@ -314,7 +314,7 @@ class SLN_Func
         $pt = null; 
         if($pagenow == 'post.php' && $post)
             $pt = $post->post_type;
-        elseif($pagenow == 'edit.php')
+        elseif($pagenow == 'edit.php' || $pagenow == 'post-new.php')
             $pt = $_GET['post_type'];
         if($pt){
             return strpos($pt, 'sln_') === 0;
