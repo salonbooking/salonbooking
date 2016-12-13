@@ -31,6 +31,26 @@ class SLN_Enum_CheckoutFields
         return isset(self::$settingsLabels[$key]) ? self::$settingsLabels[$key] : '';
     }
 
+    public static function isHidden($key) {
+        $checkoutFieldsSettings = (array)SLN_Plugin::getInstance()->getSettings()->get('checkout_fields');
+
+        if (isset($checkoutFieldsSettings[$key]['hide']) && $checkoutFieldsSettings[$key]['hide']) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function isRequired($key) {
+        $checkoutFieldsSettings = (array)SLN_Plugin::getInstance()->getSettings()->get('checkout_fields');
+
+        if (isset($checkoutFieldsSettings[$key]['require']) && $checkoutFieldsSettings[$key]['require']) {
+            return true;
+        }
+
+        return false;
+    }
+
     public static function init()
     {
         self::$fields = array(
@@ -50,5 +70,4 @@ class SLN_Enum_CheckoutFields
         );
     }
 }
-
 SLN_Enum_CheckoutFields::init();

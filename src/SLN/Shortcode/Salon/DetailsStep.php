@@ -12,12 +12,24 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
             }
 
             $values = array(
-                'firstname' => $current_user->user_firstname,
-                'lastname'  => $current_user->user_lastname,
+                'firstname' => '',
+                'lastname'  => '',
                 'email'     => $current_user->user_email,
-                'phone'     => get_user_meta($current_user->ID, '_sln_phone', true),
-                'address'     => get_user_meta($current_user->ID, '_sln_address', true)
+                'phone'     => '',
+                'address'   => '',
             );
+            if (!SLN_Enum_CheckoutFields::isHidden('firstname')) {
+                $values['firstname'] = $current_user->user_firstname;
+            }
+            if (!SLN_Enum_CheckoutFields::isHidden('lastname')) {
+                $values['lastname'] = $current_user->user_lastname;
+            }
+            if (!SLN_Enum_CheckoutFields::isHidden('phone')) {
+                $values['phone'] = get_user_meta($current_user->ID, '_sln_phone', true);
+            }
+            if (!SLN_Enum_CheckoutFields::isHidden('address')) {
+                $values['address'] = get_user_meta($current_user->ID, '_sln_address', true);
+            }
             $this->bindValues($values);
             $this->validate($values);
             if ($this->getErrors()) {
@@ -75,21 +87,22 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
     }
 
     private function validate($values){
-        if (empty($values['firstname'])) {
+        if (SLN_Enum_CheckoutFields::isRequired('firstname') && empty($values['firstname'])) {
             $this->addError(__('First name can\'t be empty', 'salon-booking-system'));
         }
-        if (empty($values['lastname'])) {
+        if (SLN_Enum_CheckoutFields::isRequired('lastname') && empty($values['lastname'])) {
             $this->addError(__('Last name can\'t be empty', 'salon-booking-system'));
         }
+        if (SLN_Enum_CheckoutFields::isRequired('phone') && empty($values['phone'])) {
+            $this->addError(__('Mobile phone can\'t be empty', 'salon-booking-system'));
+        }
+        if (SLN_Enum_CheckoutFields::isRequired('address') && empty($values['address'])) {
+            $this->addError(__('Address can\'t be empty', 'salon-booking-system'));
+        }
+
         if (empty($values['email'])) {
             $this->addError(__('e-mail can\'t be empty', 'salon-booking-system'));
         }
-        if (empty($values['phone'])) {
-            $this->addError(__('Mobile phone can\'t be empty', 'salon-booking-system'));
-        }
-#       if (empty($values['address'])) {
-#           $this->addError(__('Address can\'t be empty', 'salon-booking-system'));
-#       } 
         if (!filter_var($values['email'], FILTER_VALIDATE_EMAIL)) {
             $this->addError(__('e-mail is not valid', 'salon-booking-system'));
         }
