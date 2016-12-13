@@ -50,5 +50,58 @@ $plugin = SLN_Plugin::getInstance();
 			</div>
 		</div>
 		</div>
+		<div class="col-xs-12 col-sm-6 col-md-8">
+			<div class="sln-box sln-box--main sln-box--main--small">
+				<h2 class="sln-box-title"><?php _e('Checkout form fields', 'salon-booking-system'); ?>
+					<span class="block"><?php _e('Use this option to control the form fields to checkout', 'salon-booking-system') ?></span>
+				</h2>
+				<div class="row">
+					<div class="col-xs-6 col-md-8"></div>
+					<div class="col-xs-3 col-md-2"><?php _e('Hide', 'salon-booking-system') ?></div>
+					<div class="col-xs-3 col-md-2"><?php _e('Required', 'salon-booking-system') ?></div>
+				</div>
+				<?php $checkoutFields = (array) $this->settings->get('checkout_fields'); ?>
+				<?php foreach(SLN_Enum_CheckoutFields::toArray() as $field => $title): ?>
+					<?php $settings = ($field === 'email' ? array('attrs' => array('disabled' => 'disabled')) : array()); ?>
+					<div class="row">
+						<div class="col-xs-6 col-md-8"><?php echo SLN_Enum_CheckoutFields::getSettingLabel($field); ?></div>
+						<div class="col-xs-3 col-md-2 form-group">
+							<div class="sln-checkbox">
+								<?php SLN_Form::fieldCheckbox(
+										"salon_settings[checkout_fields][{$field}][hide]",
+										isset($checkoutFields[$field]['hide']) ? $checkoutFields[$field]['hide'] : false,
+										$settings
+								); ?>
+								<label for="salon_settings_checkout_fields_<?php echo $field ?>_hide"></label>
+							</div>
+							<?php if ($field === 'email') {
+								SLN_Form::fieldText(
+										"salon_settings[checkout_fields][{$field}][hide]",
+										false,
+										array('type' => 'hidden')
+								);
+							} ?>
+						</div>
+						<div class="col-xs-3 col-md-2 form-group">
+							<div class="sln-checkbox">
+								<?php SLN_Form::fieldCheckbox(
+										"salon_settings[checkout_fields][{$field}][require]",
+										($field === 'email' ? true : (isset($checkoutFields[$field]['require']) ? $checkoutFields[$field]['require'] : false)),
+										$settings
+								); ?>
+								<label for="salon_settings_checkout_fields_<?php echo $field ?>_require"></label>
+							</div>
+							<?php if ($field === 'email') {
+								SLN_Form::fieldText(
+										"salon_settings[checkout_fields][{$field}][require]",
+										true,
+										array('type' => 'hidden')
+								);
+							} ?>
+						</div>
+					</div>
+				<?php endforeach ?>
+			</div>
+		</div>
 	</div>
 </div>
