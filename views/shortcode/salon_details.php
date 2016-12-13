@@ -8,6 +8,7 @@
 $bb = $plugin->getBookingBuilder();
 $style = $step->getShortcode()->getStyleShortcode();
 $size = SLN_Enum_ShortcodeStyle::getSize($style);
+$checkoutFieldsSettings = (array)$plugin->getSettings()->get('checkout_fields');
 global $current_user;
 wp_get_current_user();
 $values = array(
@@ -146,15 +147,9 @@ $values = array(
     <div class="row">
     <div class="col-md-8">
         <div class="row">
-            <?php foreach (array(
-                               'firstname' => __('First name', 'salon-booking-system'),
-                               'lastname'  => __('Last name', 'salon-booking-system'),
-                               'email'     => __('e-mail', 'salon-booking-system'),
-                               'phone'     => __('Mobile phone', 'salon-booking-system'),
-                               'address'     => __('Address', 'salon-booking-system'),
-                               'password'  => __('Password', 'salon-booking-system'),
-                               'password_confirm' => __('Confirm your password', 'salon-booking-system')
-                           ) as $field => $label):  ?>
+            <?php foreach (SLN_Enum_CheckoutFields::toArrayFull() as $field => $label):  ?>
+                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) continue; ?>
+                <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
                 <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
@@ -167,7 +162,7 @@ $values = array(
                             } else if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
                            } else {
-                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' =>  ($field != 'address')));
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => (isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['require']) ? true : false)));
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>
@@ -190,15 +185,9 @@ $values = array(
     // IF SIZE 900 // END
     } else if ($size == '600') { ?>
     <div class="row">
-            <?php foreach (array(
-                               'firstname' => __('First name', 'salon-booking-system'),
-                               'lastname'  => __('Last name', 'salon-booking-system'),
-                               'email'     => __('e-mail', 'salon-booking-system'),
-                               'phone'     => __('Mobile phone', 'salon-booking-system'),
-                               'address'     => __('Address', 'salon-booking-system'),
-                               'password'  => __('Password', 'salon-booking-system'),
-                               'password_confirm' => __('Confirm your password', 'salon-booking-system')
-                           ) as $field => $label):  ?>
+            <?php foreach (SLN_Enum_CheckoutFields::toArrayFull() as $field => $label):  ?>
+                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) continue; ?>
+                <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
                 <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
@@ -212,7 +201,7 @@ $values = array(
                             } else if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
                            } else {
-                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' =>  ($field != 'address')));
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => (isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['require']) ? true : false)));
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>
@@ -233,15 +222,9 @@ $values = array(
     // IF SIZE 600 // END
     } else if ($size == '400') { ?>
     <div class="row">
-            <?php foreach (array(
-                               'firstname' => __('First name', 'salon-booking-system'),
-                               'lastname'  => __('Last name', 'salon-booking-system'),
-                               'email'     => __('e-mail', 'salon-booking-system'),
-                               'phone'     => __('Mobile phone', 'salon-booking-system'),
-                               'address'     => __('Address', 'salon-booking-system'),
-                               'password'  => __('Password', 'salon-booking-system'),
-                               'password_confirm' => __('Confirm your password', 'salon-booking-system')
-                           ) as $field => $label):  ?>
+            <?php foreach (SLN_Enum_CheckoutFields::toArrayFull() as $field => $label):  ?>
+                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) continue; ?>
+                <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
                 <div class="col-xs-12 <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
@@ -254,7 +237,7 @@ $values = array(
                             } else if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
                            } else {
-                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' =>  ($field != 'address')));
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => (isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['require']) ? true : false)));
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>
