@@ -148,7 +148,14 @@ $values = array(
     <div class="col-md-8">
         <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArrayFull() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) continue; ?>
+                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                    SLN_Form::fieldText(
+                        "sln[{$field}]",
+                        '',
+                        array('type' => 'hidden')
+                    );
+                    continue;
+                }; ?>
                 <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
                 <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
@@ -186,7 +193,14 @@ $values = array(
     } else if ($size == '600') { ?>
     <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArrayFull() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) continue; ?>
+                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                    SLN_Form::fieldText(
+                        "sln[{$field}]",
+                        '',
+                        array('type' => 'hidden')
+                    );
+                    continue;
+                }; ?>
                 <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
                 <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
@@ -223,7 +237,14 @@ $values = array(
     } else if ($size == '400') { ?>
     <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArrayFull() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) continue; ?>
+                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                    SLN_Form::fieldText(
+                        "sln[{$field}]",
+                        '',
+                        array('type' => 'hidden')
+                    );
+                    continue;
+                }; ?>
                 <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
                 <div class="col-xs-12 <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
@@ -278,7 +299,14 @@ $values = array(
     <div class="col-md-8">
         <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArray() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) continue; ?>
+                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                    SLN_Form::fieldText(
+                        "sln[{$field}]",
+                        '',
+                        array('type' => 'hidden')
+                    );
+                    continue;
+                }; ?>
                 <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
@@ -313,7 +341,14 @@ $values = array(
     } else if ($size == '600') { ?>
     <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArray() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) continue; ?>
+                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                    SLN_Form::fieldText(
+                        "sln[{$field}]",
+                        '',
+                        array('type' => 'hidden')
+                    );
+                    continue;
+                }; ?>
                 <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
@@ -346,7 +381,14 @@ $values = array(
     } else if ($size == '400') { ?>
     <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArray() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) continue; ?>
+                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                    SLN_Form::fieldText(
+                        "sln[{$field}]",
+                        '',
+                        array('type' => 'hidden')
+                    );
+                    continue;
+                }; ?>
                 <div class="col-xs-12 <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
@@ -377,7 +419,14 @@ $values = array(
     <div class="col-md-8">
         <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArray() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) continue; ?>
+                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                    SLN_Form::fieldText(
+                        "sln[{$field}]",
+                        '',
+                        array('type' => 'hidden')
+                    );
+                    continue;
+                }; ?>
                 <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
