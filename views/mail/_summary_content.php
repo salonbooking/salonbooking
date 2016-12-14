@@ -131,28 +131,29 @@ if(!isset($forAdmin)) {
             <tr>
                 <td height="25" align="left" valign="top">&nbsp;</td>
             </tr>
-      <tr>
-        <td align="center" valign="top"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
-          <tbody><tr>
-              <?php
-              if($forAdmin) {
-                  $title = __('Customer address', 'salon-booking-system');
-                  $text = $booking->getAddress();
-              }
-              else {
-                  $title = __('Our address', 'salon-booking-system');
-                  $text = $plugin->getSettings()->get('gen_address');
-              }
-              ?>
-            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo $title ?></td>
-            <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $text ?></td>
-          </tr>
-        </tbody></table></td>
-      </tr>
-
-<tr>
-    <td height="25" align="left" valign="top">&nbsp;</td>
-</tr>
+            <?php
+            if(!$forAdmin || !SLN_Enum_CheckoutFields::isHidden('address')) {
+                if (!$forAdmin) {
+                    $title = __('Our address', 'salon-booking-system');
+                    $text = $plugin->getSettings()->get('gen_address');
+                }
+                else {
+                    $title = __('Customer address', 'salon-booking-system');
+                    $text = $booking->getAddress();
+                }
+                ?>
+                <tr>
+                    <td align="center" valign="top"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tbody><tr>
+                            <td width="242" align="left" valign="middle" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo $title ?></td>
+                            <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $text ?></td>
+                        </tr>
+                        </tbody></table></td>
+                </tr>
+                <tr>
+                    <td height="25" align="left" valign="top">&nbsp;</td>
+                </tr>
+            <?php } ?>
 
 <tr>
         <td align="center" valign="top" bgcolor="#ffffff"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -160,9 +161,12 @@ if(!isset($forAdmin)) {
               <?php
               if($forAdmin) {
                   $title = __('Customer contacts', 'salon-booking-system');
-                  $text = $booking->getDisplayName();
+                  $firstnameHidden = SLN_Enum_CheckoutFields::isHidden('firstname');
+                  $lastnameHidden  = SLN_Enum_CheckoutFields::isHidden('lastname');
+                  $text = (!$firstnameHidden && !$lastnameHidden ?
+                      $booking->getDisplayName() : (!$firstnameHidden ? $booking->getFirstname() : (!$lastnameHidden ? $booking->getLastname() : '')));
                   $m = $booking->getEmail();
-                  $phone = $booking->getPhone();
+                  $phone = (!SLN_Enum_CheckoutFields::isHidden('phone') ? $booking->getPhone() : '');
               }
               else {
                   $title = __('Contacts', 'salon-booking-system');

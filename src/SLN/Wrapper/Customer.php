@@ -53,7 +53,17 @@ class SLN_Wrapper_Customer {
 
 	public function getName() {
 		if (!$this->isEmpty()) {
-			return $this->get('first_name') . ' ' . $this->get('last_name');
+			$name      = array();
+			$firstname = $this->get('first_name');
+			$lastname  = $this->get('last_name');
+			if (!empty($firstname)) {
+				$name[] = $firstname;
+			}
+			if (!empty($lastname)) {
+				$name[] = $lastname;
+			}
+
+			return implode(' ', $name);
 		}
 	}
 
