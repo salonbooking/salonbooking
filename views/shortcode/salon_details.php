@@ -148,7 +148,7 @@ $values = array(
     <div class="col-md-8">
         <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArrayFull() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                <?php if(SLN_Enum_CheckoutFields::isHidden($field)) {
                     SLN_Form::fieldText(
                         "sln[{$field}]",
                         '',
@@ -169,7 +169,7 @@ $values = array(
                             } else if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
                            } else {
-                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => (isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['require']) ? true : false)));
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>
@@ -193,7 +193,7 @@ $values = array(
     } else if ($size == '600') { ?>
     <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArrayFull() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                <?php if(SLN_Enum_CheckoutFields::isHidden($field)) {
                     SLN_Form::fieldText(
                         "sln[{$field}]",
                         '',
@@ -215,7 +215,7 @@ $values = array(
                             } else if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
                            } else {
-                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => (isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['require']) ? true : false)));
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>
@@ -237,7 +237,7 @@ $values = array(
     } else if ($size == '400') { ?>
     <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArrayFull() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                <?php if(SLN_Enum_CheckoutFields::isHidden($field)) {
                     SLN_Form::fieldText(
                         "sln[{$field}]",
                         '',
@@ -258,7 +258,7 @@ $values = array(
                             } else if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
                            } else {
-                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => (isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['require']) ? true : false)));
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>
@@ -299,7 +299,7 @@ $values = array(
     <div class="col-md-8">
         <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArray() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                <?php if(SLN_Enum_CheckoutFields::isHidden($field)) {
                     SLN_Form::fieldText(
                         "sln[{$field}]",
                         '',
@@ -317,7 +317,7 @@ $values = array(
                            if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
                            } else{
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => (isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['require']) ? true : false)));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                            }
                         ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
@@ -341,7 +341,7 @@ $values = array(
     } else if ($size == '600') { ?>
     <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArray() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                <?php if(SLN_Enum_CheckoutFields::isHidden($field)) {
                     SLN_Form::fieldText(
                         "sln[{$field}]",
                         '',
@@ -359,7 +359,7 @@ $values = array(
                            if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
                            } else{
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => (isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['require']) ? true : false)));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                            }
                         ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
@@ -381,7 +381,7 @@ $values = array(
     } else if ($size == '400') { ?>
     <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArray() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                <?php if(SLN_Enum_CheckoutFields::isHidden($field)) {
                     SLN_Form::fieldText(
                         "sln[{$field}]",
                         '',
@@ -399,7 +399,7 @@ $values = array(
                            if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
                            } else{
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => (isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['require']) ? true : false)));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                            }
                         ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
@@ -419,7 +419,7 @@ $values = array(
     <div class="col-md-8">
         <div class="row">
             <?php foreach (SLN_Enum_CheckoutFields::toArray() as $field => $label):  ?>
-                <?php if(isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['hide'])) {
+                <?php if(SLN_Enum_CheckoutFields::isHidden($field)) {
                     SLN_Form::fieldText(
                         "sln[{$field}]",
                         '',
@@ -437,7 +437,7 @@ $values = array(
                            if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
                            } else{
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => (isset($checkoutFieldsSettings[$field]) && !empty($checkoutFieldsSettings[$field]['require']) ? true : false)));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                            }
                         ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
