@@ -37,9 +37,14 @@ class SLN_Action_FollowUp
         $followup = $p->getSettings()->get('follow_up_'.$type);
         if ($followup) {
             $p->addLog($type.' follow up execution');
-            foreach ($this->getCustomers() as $customer) {
-                $this->send($customer);
-                $p->addLog($type.' follow up sent to '.$customer->getId());
+            if (self::SMS === $type && SLN_Enum_CheckoutFields::isHiddenOrNotRequired('phone')) {
+                $p->addLog($type.' phone field is hidden or not required');
+            }
+            else {
+                foreach ($this->getCustomers() as $customer) {
+                    $this->send($customer);
+                    $p->addLog($type.' follow up sent to '.$customer->getId());
+                }
             }
             $p->addLog($type.' follow up execution ended');
         }

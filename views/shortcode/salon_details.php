@@ -167,7 +167,7 @@ $values = array(
                             if(strpos($field, 'password') === 0){
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'password'));
                             } else if(strpos($field, 'email') === 0){
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else {
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                             }
@@ -213,7 +213,7 @@ $values = array(
                             if(strpos($field, 'password') === 0){
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'password'));
                             } else if(strpos($field, 'email') === 0){
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else {
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                             }
@@ -256,7 +256,7 @@ $values = array(
                             if(strpos($field, 'password') === 0){
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'password'));
                             } else if(strpos($field, 'email') === 0){
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else {
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                             }
@@ -315,7 +315,7 @@ $values = array(
                         <?php endif ?>
                         <?php
                            if(strpos($field, 'email') === 0){
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else{
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                            }
@@ -357,7 +357,7 @@ $values = array(
                         <?php endif ?>
                         <?php
                            if(strpos($field, 'email') === 0){
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else{
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                            }
@@ -397,7 +397,7 @@ $values = array(
                         <?php endif ?>
                         <?php
                            if(strpos($field, 'email') === 0){
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else{
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                            }
@@ -435,7 +435,7 @@ $values = array(
                         <?php endif ?>
                         <?php
                            if(strpos($field, 'email') === 0){
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => true, 'type' => 'email'));
+                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else{
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
                            }

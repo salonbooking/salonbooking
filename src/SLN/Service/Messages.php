@@ -58,9 +58,11 @@ class SLN_Service_Messages
             if ($phone) {
                 $sms->send($phone, $p->loadView('sms/summary', compact('booking')));
             }
-            $phone = $booking->getPhone();
-            if ($phone) {
-                $sms->send($phone, $p->loadView('sms/summary', compact('booking')));
+            if (SLN_Enum_CheckoutFields::isRequiredNotHidden('phone')) {
+                $phone = $booking->getPhone();
+                if ($phone) {
+                    $sms->send($phone, $p->loadView('sms/summary', compact('booking')));
+                }
             }
         }
         if ($s->get('sms_new_attendant') && $booking->getAttendant()) {

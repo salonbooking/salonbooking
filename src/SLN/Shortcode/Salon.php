@@ -162,6 +162,7 @@ class SLN_Shortcode_Salon
         return (
             $this->plugin->getSettings()->get('sms_enabled')
             && !is_user_logged_in()
+            && SLN_Enum_CheckoutFields::isRequiredNotHidden('phone')
         ) ? true : false;
     }
 

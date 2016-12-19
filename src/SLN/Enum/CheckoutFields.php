@@ -63,6 +63,14 @@ class SLN_Enum_CheckoutFields
         return false;
     }
 
+    public static function isRequiredNotHidden($key, $checkoutFields = null) {
+        return self::isRequired($key, $checkoutFields) && !self::isHidden($key, $checkoutFields);
+    }
+
+    public static function isHiddenOrNotRequired($key, $checkoutFields = null) {
+        return !self::isRequiredNotHidden($key, $checkoutFields);
+    }
+
     public static function isRequiredByDefault($key) {
         return in_array($key, self::$requiredByDefault);
     }
