@@ -140,5 +140,6 @@
 #sln-salon .sln-invalid,
 #sln-salon .sln-input .sln-invalid {
   @extend %bd-color--problem;
+  @include placeholder-color($sln-color--problem);
 }
 // VALIDATION // END

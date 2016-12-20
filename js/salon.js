@@ -34,7 +34,7 @@ function sln_init($) {
             if (form[0].checkValidity()) {
                 sln_loadStep($, form.serialize() + '&' + $(this).data('salon-data'));
             }else{
-                $('#sln-salon input:invalid').addClass('sln-invalid');
+                $('#sln-salon input:invalid').addClass('sln-invalid').attr('placeholder', salon.checkout_field_placeholder);
             }
             return false;
         });

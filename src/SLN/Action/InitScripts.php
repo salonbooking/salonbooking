@@ -47,6 +47,7 @@ class SLN_Action_InitScripts
                     SLN_Plugin::getInstance()->getSettings()->get('time_format')
                 ),
                 'has_stockholm_transition'  => self::hasStockholmTransition() ? 'yes' : 'no',
+                'checkout_field_placeholder' => __('fill this field', 'salon-booking-system'),
             )
         );
     }

@@ -670,6 +670,21 @@ ul.sln-list--dashed li,
   margin: 0 15px 2em 15px;
   padding-top: 1em; }
 
+#sln-salon .sln-invalid::-webkit-input-placeholder,
+#sln-salon .sln-input .sln-invalid::-webkit-input-placeholder {
+  color: #D22221; }
+#sln-salon .sln-invalid:-moz-placeholder,
+#sln-salon .sln-input .sln-invalid:-moz-placeholder {
+  /* Firefox 18- */
+  color: #D22221; }
+#sln-salon .sln-invalid::-moz-placeholder,
+#sln-salon .sln-input .sln-invalid::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #D22221; }
+#sln-salon .sln-invalid:-ms-input-placeholder,
+#sln-salon .sln-input .sln-invalid:-ms-input-placeholder {
+  color: #D22221; }
+
 /*!
  * Datetimepicker for Bootstrap
  *
