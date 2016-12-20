@@ -7,6 +7,8 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
         'price'          => 'float',
         'duration'       => 'time',
         'secondary'      => 'bool',
+        'secondary_display_mode'   => '',
+        'secondary_parent_service' => '',
         'attendants'     => 'bool',
         'unit'           => 'int',
         'break_duration' => 'time',

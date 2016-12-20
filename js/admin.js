@@ -38,4 +38,25 @@ jQuery(function ($) {
         }
         });
     }
+    $('[data-action=change-service-type]').change(function() {
+        var $this   = $(this);
+        var $target = $($this.attr('data-target'));
+        if($this.is(':checked')) {
+            $target.removeClass('hide');
+        }
+        else {
+            $target.addClass('hide');
+        }
+    });
+
+    $('[data-action=change-secondary-service-mode]').change(function() {
+        var $this   = $(this);
+        var $target = $($this.attr('data-target'));
+        if($this.val() === 'service') {
+            $target.removeClass('hide');
+        }
+        else {
+            $target.addClass('hide');
+        }
+    });
 });
