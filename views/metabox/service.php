@@ -34,12 +34,12 @@ $helper->showNonce($postType);
                     'service'  => __('is child of selected service', 'salon-booking-system'),
                 ),
                 $service->getMeta('secondary_display_mode'),
-                array('attrs' => array('data-action' => 'change-secondary-service-mode', 'data-target' => '#secondary_parent_service')),
+                array('attrs' => array('data-action' => 'change-secondary-service-mode', 'data-target' => '#secondary_parent_services')),
                 true
             ); ?>
         </div>
-        <div id="secondary_parent_service" class="col-sm-6 col-md-3 form-group sln-select <?php echo ($service->getMeta('secondary_display_mode') === 'service' ? '' : 'hide'); ?>">
-            <label><?php _e('Select parent service', 'salon-booking-system'); ?></label>
+        <div id="secondary_parent_services" class="col-sm-6 col-md-3 form-group sln-select <?php echo ($service->getMeta('secondary_display_mode') === 'service' ? '' : 'hide'); ?>">
+            <label><?php _e('Select parent services', 'salon-booking-system'); ?></label>
             <?php
             /** @var SLN_Wrapper_Service[] $services */
             $services = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE)->getAllPrimary();
@@ -50,10 +50,10 @@ $helper->showNonce($postType);
                 }
             }
             SLN_Form::fieldSelect(
-                $helper->getFieldName($postType, 'secondary_parent_service'),
+                $helper->getFieldName($postType, 'secondary_parent_services[]'),
                 $items,
-                $service->getMeta('secondary_parent_service'),
-                array(),
+                (array)$service->getMeta('secondary_parent_services'),
+                array('attrs' => array('multiple' => true, 'placeholder' => __('select one or more services', 'salon-booking-system'))),
                 true
             ); ?>
         </div>

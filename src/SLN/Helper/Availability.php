@@ -299,7 +299,7 @@ class SLN_Helper_Availability
             foreach($bookingServices->getItems() as $bookingService) {
                 if ($bookingService->getService()->getId() !== $service->getId() && !$bookingService->getService()->isSecondary()) {
                     if ($service->getMeta('secondary_display_mode') === 'service') {
-                        if($service->getMeta('secondary_parent_service') == $bookingService->getService()->getId()) {
+                        if(in_array($bookingService->getService()->getId(), (array)$service->getMeta('secondary_parent_services'))) {
                             return array();
                         }
                     }
