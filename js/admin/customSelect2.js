@@ -10,14 +10,15 @@ jQuery(function ($  ) {
     }).focus(function () {
         $(this).select2('open');
     });
-    $('.sln-select select').select2({
-        containerCssClass: 'sln-select-rendered',
+    $('.sln-select select').each(function() {
+        $(this).select2({
+        containerCssClass: 'sln-select-rendered ' + ($(this).attr('data-containerCssClass') ? $(this).attr('data-containerCssClass') : ''),
         dropdownCssClass: 'sln-select-dropdown',
         theme: "sln",
         width: '100%'
     }).focus(function () {
         $(this).select2('open');
-    });
+    })});
 
     sln_createSelect2();
     sln_createSelect2NoSearch();

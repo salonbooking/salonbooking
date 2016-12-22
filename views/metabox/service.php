@@ -53,7 +53,7 @@ $helper->showNonce($postType);
                 $helper->getFieldName($postType, 'secondary_parent_services[]'),
                 $items,
                 (array)$service->getMeta('secondary_parent_services'),
-                array('attrs' => array('multiple' => true, 'placeholder' => __('select one or more services', 'salon-booking-system'))),
+                array('attrs' => array('multiple' => true, 'placeholder' => __('select one or more services', 'salon-booking-system'), 'data-containerCssClass' => 'sln-select-wrapper-no-search')),
                 true
             ); ?>
         </div>
