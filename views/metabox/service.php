@@ -38,7 +38,7 @@ $helper->showNonce($postType);
                 true
             ); ?>
         </div>
-        <div id="secondary_parent_services" class="col-sm-6 col-md-3 form-group sln-select <?php echo ($service->getMeta('secondary_display_mode') === 'service' ? '' : 'hide'); ?>">
+        <div id="secondary_parent_services" class="col-sm-6 col-md-6 form-group sln-select <?php echo ($service->getMeta('secondary_display_mode') === 'service' ? '' : 'hide'); ?>">
             <label><?php _e('Select parent services', 'salon-booking-system'); ?></label>
             <?php
             /** @var SLN_Wrapper_Service[] $services */
