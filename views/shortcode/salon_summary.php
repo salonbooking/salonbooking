@@ -26,9 +26,29 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
     ?>
     <div class="row">
         <div class="col-md-8">
-            <p class="sln-text--dark"><?php _e('Dear', 'salon-booking-system') ?>
-                <strong><?php echo esc_attr($bb->get('firstname')).' '.esc_attr($bb->get('lastname')); ?></strong>
-                <br/>
+            <p class="sln-text--dark">
+                <?php
+                $name = array();
+                if (!SLN_Enum_CheckoutFields::isHidden('firstname')) {
+                    $firstname = esc_attr($bb->get('firstname'));
+                    if (!empty($firstname)) {
+                        $name[] = $firstname;
+                    }
+                }
+                if (!SLN_Enum_CheckoutFields::isHidden('lastname')) {
+                    $lastname = esc_attr($bb->get('lastname'));
+                    if (!empty($lastname)) {
+                        $name[] = $lastname;
+                    }
+                }
+                $name = implode(' ', $name);
+
+                if (!empty($name)) {
+                    _e('Dear', 'salon-booking-system');
+                ?>
+                    <strong><?php echo $name; ?></strong>
+                    <br/>
+                <?php } ?>
                 <?php _e('Here are the details of your booking:', 'salon-booking-system') ?>
             </p>
         </div>

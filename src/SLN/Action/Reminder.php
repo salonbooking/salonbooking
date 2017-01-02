@@ -37,10 +37,15 @@ class SLN_Action_Reminder
         $remind = $p->getSettings()->get($type.'_remind');
         if ($remind) {
             $p->addLog($type.' reminder execution');
-            foreach ($this->getBookings() as $booking) {
-                $this->send($booking);
-                $p->addLog($type.' reminder sent to '.$booking->getId());
-                $booking->setMeta($type.'_remind', true);
+            if (self::SMS === $type && SLN_Enum_CheckoutFields::isHiddenOrNotRequired('phone')) {
+                $p->addLog($type.' phone field is hidden or not required');
+            }
+            else {
+                foreach ($this->getBookings() as $booking) {
+                    $this->send($booking);
+                    $p->addLog($type.' reminder sent to '.$booking->getId());
+                    $booking->setMeta($type.'_remind', true);
+                }
             }
             $p->addLog($type.' reminder execution ended');
         }
