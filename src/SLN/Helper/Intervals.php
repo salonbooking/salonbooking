@@ -21,8 +21,6 @@ class SLN_Helper_Intervals
 
     public function setDatetime(DateTime $date)
     {
-
-
         $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
         $times             = $ah->getTimes($date);
@@ -45,10 +43,14 @@ class SLN_Helper_Intervals
         $suggestedTime = $date->format('H:i');
         $i             = SLN_Plugin::getInstance()->getSettings()->getInterval();
         $timeout = 0;
-        while ($timeout < 86400 && !isset($times[$suggestedTime]) && $date <= $to ) {
-            $date->modify("+$i minutes");
+        if(!isset($times[$suggestedTime])){
+            $date->setTime(0,0);
             $suggestedTime = $date->format('H:i');
-            $timeout++;
+            while ($timeout < 86400 && !isset($times[$suggestedTime]) && $date <= $to ) {
+                $date->modify("+$i minutes");
+                $suggestedTime = $date->format('H:i');
+                $timeout++;
+            }
         }
         $this->suggestedDate = $date;
         $this->bindDates($ah->getDays());
@@ -71,7 +73,6 @@ class SLN_Helper_Intervals
 
     private function bindDates($dates)
     {
-
         $this->years  = array();
         $this->months = array();
         $this->days   = array();
@@ -103,8 +104,6 @@ class SLN_Helper_Intervals
         ksort($this->years);
         ksort($this->months);
         ksort($this->days);
-
-
     }
 
     public function toArray()

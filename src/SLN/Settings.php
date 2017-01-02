@@ -96,12 +96,12 @@ class SLN_Settings
 
     public function isPaypalTest()
     {
-        return $this->settings['pay_paypal_test'] ? true : false;
+        return $this->get('pay_paypal_test') ? true : false;
     }
 
     public function getPaypalEmail()
     {
-        return $this->settings['pay_paypal_email'];
+        return $this->get('pay_paypal_email');
     }
 
     public function getThankyouPageId()
