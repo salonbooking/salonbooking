@@ -111,6 +111,7 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
             'title' => $columns['title'],
             'service_duration' => __('Duration', 'salon-booking-system'),
             'service_price' => __('Price', 'salon-booking-system'),
+            'secondary' => __('Secondary', 'salon-booking-system'),
             'taxonomy-sln_service_category' => $columns['taxonomy-sln_service_category'],
             'sln_days_off' => __('Availability', 'salon-booking-system'),
         );
@@ -134,6 +135,9 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
                 break;
             case 'service_price' :
                 echo $this->getPlugin()->format()->money($obj->getPrice());
+                break;
+            case 'secondary' :
+                echo ($obj->isSecondary() ? __('YES', 'salon-booking-system') : '');
                 break;
             case 'sln_days_off' :
                 echo implode('<br/>',$obj->getAvailabilityItems()->toArray());
