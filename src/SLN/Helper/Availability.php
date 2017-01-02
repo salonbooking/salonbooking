@@ -293,6 +293,39 @@ class SLN_Helper_Availability
         }
     }
 
+    public function validateServiceFromOrder(SLN_Wrapper_Service $service, SLN_Wrapper_Booking_Services $bookingServices)
+    {
+        if($service->isSecondary()) {
+            foreach($bookingServices->getItems() as $bookingService) {
+                if ($bookingService->getService()->getId() !== $service->getId() && !$bookingService->getService()->isSecondary()) {
+                    if ($service->getMeta('secondary_display_mode') === 'service') {
+                        if(in_array($bookingService->getService()->getId(), (array)$service->getMeta('secondary_parent_services'))) {
+                            return array();
+                        }
+                    }
+                    else {
+                        $serviceCategories = wp_get_post_terms($service->getId(), 'sln_service_category', array( "fields" => "ids" ) );
+                        $serviceCategory   = reset($serviceCategories);
+
+	                    $bServiceCategories = wp_get_post_terms($bookingService->getService()->getId(), 'sln_service_category', array( "fields" => "ids" ) );
+	                    if(in_array($serviceCategory, $bServiceCategories)) {
+		                    return array();
+	                    }
+                    }
+                }
+            }
+
+	        if ($service->getMeta('secondary_display_mode') === 'service') {
+		        return SLN_Helper_Availability_ErrorHelper::doSecondaryServiceNotAvailableWOParentService($service);
+	        }
+	        else {
+		        return SLN_Helper_Availability_ErrorHelper::doSecondaryServiceNotAvailableWOSameCategoryPrimaryService($service);
+	        }
+        }
+
+	    return array();
+    }
+
     /**
      * @param array $servicesIds
      *
@@ -317,6 +350,17 @@ class SLN_Helper_Availability
             }
         }
 
+        $bookingServices = SLN_Wrapper_Booking_Services::build(array_fill_keys($validated, 0), $date);
+        $validated       = array();
+        foreach ($bookingServices->getItems() as $bookingService) {
+            $serviceErrors = $this->validateServiceFromOrder($bookingService->getService(), $bookingServices);
+            if (empty($serviceErrors)) {
+                $validated[] = $bookingService->getService()->getId();
+            } else {
+                break;
+            }
+        }
+
         return $validated;
     }
 
@@ -326,7 +370,7 @@ class SLN_Helper_Availability
      *
      * @return array
      */
-    public function checkEachOfNewServicesForExistOrder($order, $newServices)
+    public function checkEachOfNewServicesForExistOrder($order, $newServices, $altMode = false)
     {
         $ret = array();
         $date = $this->date;
@@ -351,31 +395,38 @@ class SLN_Helper_Availability
                 foreach ($bookingServices->getItems() as $bookingService) {
                     $serviceErrors = array();
                     $errorMsg = '';
-                    if ($bookingServices->isLast($bookingService) && $bookingOffsetEnabled) {
-                        $offsetStart = $bookingService->getEndsAt();
-                        $offsetEnd = clone $offsetStart;
-                        $offsetEnd->modify('+'.$bookingOffset.' minutes');
-                        $serviceErrors = $this->validateTimePeriod($interval, $offsetStart, $offsetEnd);
-                    }
-                    if (empty($serviceErrors)) {
-                        $serviceErrors = $this->validateService(
-                            $bookingService->getService(),
-                            $bookingService->getStartsAt(),
-                            null,
-                            $bookingService->getBreakStartsAt(),
-                            $bookingService->getBreakEndsAt()
-                        );
-                    }
-                    if (empty($serviceErrors) && $this->attendantsEnabled && !$isMultipleAttSelection && $bookingService->getService()->isAttendantsEnabled()) {
-                        $availAtts = $this->getAvailableAttendantForService($availAtts, $bookingService);
-                        if (empty($availAtts)) {
-                            $errorMsg = __(
-                                'An assistant for selected services can\'t perform this service',
-                                'salon-booking-system'
-                            );
-                            $serviceErrors = array($errorMsg);
-                        }
-                    }
+
+	                $serviceErrors = $this->validateServiceFromOrder($bookingService->getService(), $bookingServices);
+
+	                if (!$altMode) {
+		                if (empty($serviceErrors) && $bookingServices->isLast($bookingService) && $bookingOffsetEnabled) {
+			                $offsetStart = $bookingService->getEndsAt();
+			                $offsetEnd = clone $offsetStart;
+			                $offsetEnd->modify('+'.$bookingOffset.' minutes');
+			                $serviceErrors = $this->validateTimePeriod($interval, $offsetStart, $offsetEnd);
+		                }
+
+		                if (empty($serviceErrors)) {
+			                $serviceErrors = $this->validateService(
+					                $bookingService->getService(),
+					                $bookingService->getStartsAt(),
+					                null,
+					                $bookingService->getBreakStartsAt(),
+					                $bookingService->getBreakEndsAt()
+			                );
+		                }
+
+		                if (empty($serviceErrors) && $this->attendantsEnabled && !$isMultipleAttSelection && $bookingService->getService()->isAttendantsEnabled()) {
+			                $availAtts = $this->getAvailableAttendantForService($availAtts, $bookingService);
+			                if (empty($availAtts)) {
+				                $errorMsg = __(
+						                'An assistant for selected services can\'t perform this service',
+						                'salon-booking-system'
+				                );
+				                $serviceErrors = array($errorMsg);
+			                }
+		                }
+	                }
 
                     if (!empty($serviceErrors)) {
                         $ret[$service->getId()] = $this->processServiceErrors(

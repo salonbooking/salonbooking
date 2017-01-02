@@ -5626,6 +5626,8 @@ body.salone_page_salon-tools #wpwrap {
     border: 2px solid rgba(12, 110, 182, 0.5);
     padding: .2%;
     border-radius: 0; }
+  .select2-container.select2-container--sln .sln-select-wrapper-no-search .select2-search {
+    display: none; }
   .select2-container.select2-container--sln .sln-select-dropdown--boxedoptions {
     width: 400px !important; }
     .select2-container.select2-container--sln .sln-select-dropdown--boxedoptions .select2-results__options {

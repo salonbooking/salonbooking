@@ -13,6 +13,28 @@ class SLN_Helper_Availability_ErrorHelper
         );
     }
 
+    public static function doSecondaryServiceNotAvailableWOParentService(SLN_Wrapper_Service $service)
+    {
+        SLN_Plugin::addLog(
+            __CLASS__.sprintf(' - service %s not available w/o parent service', $service)
+        );
+
+        return array(
+            __('This service is unavailable w/o parent service', 'salon-booking-system')
+        );
+    }
+
+    public static function doSecondaryServiceNotAvailableWOSameCategoryPrimaryService(SLN_Wrapper_Service $service)
+    {
+        SLN_Plugin::addLog(
+            __CLASS__.sprintf(' - service %s not available w/o primary service in the same category', $service)
+        );
+
+        return array(
+            __('This service is unavailable w/o primary service in the same category', 'salon-booking-system')
+        );
+    }
+
     public static function doServiceNotAvailableOnDate(SLN_Wrapper_Service $service, DateTime $time)
     {
         SLN_Plugin::addLog(

@@ -74,6 +74,9 @@
 		border-radius: 0;
 		@extend %font-big;
 	}
+	.sln-select-wrapper-no-search .select2-search {
+		display: none;
+	}
 	.sln-select-dropdown--boxedoptions {
 		width: 400px !important;
 	    	.select2-results__options {

@@ -52,7 +52,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
 
     protected function initSecondaryServices($services)
     {
-        $this->innerInitServices($services, $this->bb->getPrimaryServices(), $this->getSecondaryServices());
+        return $this->innerInitServices($services, $this->bb->getPrimaryServices(), $this->getSecondaryServices());
     }
 
 
@@ -144,11 +144,14 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
             if ($servicesCount && $bookingServices->getPosInQueue($bookingService) > $servicesCount) {
                 $serviceErrors[] = sprintf(__('You can select up to %d items', 'salon-booking-system'), $servicesCount);
             } else {
-                if ($bookingServices->isLast($bookingService) && $bookingOffsetEnabled) {
+                $serviceErrors = $this->ah->validateServiceFromOrder($bookingService->getService(), $bookingServices);
+
+                if (empty($serviceErrors) && $bookingServices->isLast($bookingService) && $bookingOffsetEnabled) {
                     $offsetStart   = $bookingService->getEndsAt();
                     $offsetEnd     = $bookingService->getEndsAt()->modify('+'.$bookingOffset.' minutes');
                     $serviceErrors = $this->ah->validateTimePeriod($interval, $offsetStart, $offsetEnd);
                 }
+
                 if (empty($serviceErrors)) {
                     $serviceErrors = $this->ah->validateService(
                         $bookingService->getService(),

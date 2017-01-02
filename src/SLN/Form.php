@@ -151,7 +151,7 @@ class SLN_Form
             <?php
             foreach ($items as $key => $label) {
                 $key      = $map ? $key : $label;
-                $selected = $key == $value ? 'selected="selected"' : '';
+                $selected = (is_array($value) ? in_array($key, $value) : $key == $value) ? 'selected="selected"' : '';
                 ?>
                 <option value="<?php echo esc_attr($key) ?>" <?php echo $selected ?>><?php echo $label ?></option>
             <?php
