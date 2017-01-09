@@ -80,4 +80,11 @@ abstract class SLN_Wrapper_Abstract
             return $this->object->post_date;
         }
     }
+
+    public function getExcerpt()
+    {
+        if ($this->object) {
+            return $this->object->post_excerpt;
+        }
+    }
 }

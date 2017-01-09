@@ -1,6 +1,6 @@
 <?php
 
-class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
+class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract implements SLN_Wrapper_AttendantInterface
 {
     const _CLASS = 'SLN_Wrapper_Attendant';
     private $availabilityItems;
@@ -89,7 +89,7 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract
         return $ret;
     }
 
-    public function hasService(SLN_Wrapper_Service $service)
+    public function hasService(SLN_Wrapper_ServiceInterface $service)
     {
         return in_array($service->getId(), $this->getServicesIds());
     }

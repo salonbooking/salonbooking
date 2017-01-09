@@ -50,6 +50,7 @@ foreach ($bookingServices->getItems() as $bookingService) :
         if ($errors) {
             $settings['attrs']['disabled'] = 'disabled';
         }
+        $tplErrors = $plugin->templating()->loadView('shortcode/_errors_area', compact('errors', 'size'));
         if ($size == '900') {
             include '_m_attendants_item_900.php';
         } elseif ($size == '600') {

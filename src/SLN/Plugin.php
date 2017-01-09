@@ -100,12 +100,7 @@ class SLN_Plugin
 
     public function loadView($view, $data = array())
     {
-        ob_start();
-        extract($data);
-        $plugin = $this;
-        include $this->getViewFile($view);
-
-        return ob_get_clean();
+        return $this->templating()->loadView($view, $data);
     }
 
     public function sendMail($view, $data)
@@ -152,7 +147,9 @@ class SLN_Plugin
             $obj = new SLN_Service_Templating($this);
             $obj->addPath(SLN_PLUGIN_DIR.'/views/%s.php', 10);
             $this->phpServices['templating'] = $obj;
-         }
+        }
+        
+        return $this->phpServices['templating'];
     }
 
     /**

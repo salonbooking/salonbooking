@@ -115,14 +115,14 @@ class SLN_Wrapper_Booking_Builder
         return $this;
     }
 
-    public function setAttendant(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service)
+    public function setAttendant(SLN_Wrapper_AttendantInterface $attendant, SLN_Wrapper_ServiceInterface $service)
     {
         if ($this->hasService($service)) {
             $this->data['services'][$service->getId()] = $attendant->getId();
         }
     }
 
-    public function hasAttendant(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service = null)
+    public function hasAttendant(SLN_Wrapper_AttendantInterface $attendant, SLN_Wrapper_ServiceInterface $service = null)
     {
         if (!isset($this->data['services'])) {
             return false;
@@ -142,7 +142,7 @@ class SLN_Wrapper_Booking_Builder
     }
 
 
-    public function hasService(SLN_Wrapper_Service $service)
+    public function hasService(SLN_Wrapper_ServiceInterface $service)
     {
         return in_array($service->getId(), array_keys($this->data['services']));
     }
@@ -153,7 +153,7 @@ class SLN_Wrapper_Booking_Builder
     }
 
     /**
-     * @return SLN_Wrapper_Attendant|false
+     * @return SLN_Wrapper_AttendantInterface|false
      */
     public function getAttendant()
     {
@@ -163,7 +163,7 @@ class SLN_Wrapper_Booking_Builder
     }
 
     /**
-     * @return SLN_Wrapper_Attendant[]
+     * @return SLN_Wrapper_AttendantInterface[]
      */
     public function getAttendants()
     {
@@ -182,7 +182,7 @@ class SLN_Wrapper_Booking_Builder
         $this->data['services'] = $data;
     }
 
-    public function addService(SLN_Wrapper_Service $service)
+    public function addService(SLN_Wrapper_ServiceInterface $service)
     {
         if ((!isset($this->data['services'])) || (!in_array($service->getId(), array_keys($this->data['services'])))) {
             $this->data['services'][$service->getId()] = 0;
@@ -190,14 +190,14 @@ class SLN_Wrapper_Booking_Builder
         }
     }
 
-    public function removeService(SLN_Wrapper_Service $service)
+    public function removeService(SLN_Wrapper_ServiceInterface $service)
     {
         if (isset($this->data['services'])) {
             unset($this->data['services'][$service->getId()]);
         }
     }
 
-    public function clearService(SLN_Wrapper_Service $service)
+    public function clearService(SLN_Wrapper_ServiceInterface $service)
     {
         if (isset($this->data['services'][$service->getId()])) {
             $this->data['services'][$service->getId()] = 0;
@@ -228,7 +228,7 @@ class SLN_Wrapper_Booking_Builder
      * @param bool $primary
      * @param bool $secondary
      *
-     * @return SLN_Wrapper_Service[]
+     * @return SLN_Wrapper_ServiceInterface[]
      */
     public function getServices($primary = true, $secondary = true)
     {

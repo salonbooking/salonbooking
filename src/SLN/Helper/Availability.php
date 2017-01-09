@@ -129,7 +129,7 @@ class SLN_Helper_Availability
         return $this->getDayBookings()->getMinutesIntervals();
     }
 
-    public function validateAttendantService(SLN_Wrapper_Attendant $attendant, SLN_Wrapper_Service $service)
+    public function validateAttendantService(SLN_Wrapper_AttendantInterface $attendant, SLN_Wrapper_ServiceInterface $service)
     {
         if (!$attendant->hasAllServices()) {
             if (!$attendant->hasService($service)) {
@@ -140,13 +140,13 @@ class SLN_Helper_Availability
         }
     }
 
-    public function validateAttendantServices(SLN_Wrapper_Attendant $attendant, array $services)
+    public function validateAttendantServices(SLN_Wrapper_AttendantInterface $attendant, array $services)
     {
         if ($attendant->hasAllServices()) {
             return;
         }
 
-        /** @var SLN_Wrapper_Service $service */
+        /** @var SLN_Wrapper_ServiceInterface $service */
         foreach ($services as $service) {
             if (!$attendant->hasService($service)) {
                 return array(
@@ -157,7 +157,7 @@ class SLN_Helper_Availability
     }
 
     public function validateAttendant(
-        SLN_Wrapper_Attendant $attendant,
+        SLN_Wrapper_AttendantInterface $attendant,
         DateTime $date = null,
         DateTime $duration = null,
         DateTime $breakStartsAt = null,
@@ -192,7 +192,7 @@ class SLN_Helper_Availability
         }
     }
 
-    private function validateAttendantOnTime(SLN_Wrapper_Attendant $attendant, DateTime $time)
+    private function validateAttendantOnTime(SLN_Wrapper_AttendantInterface $attendant, DateTime $time)
     {
         SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
         $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
@@ -209,7 +209,7 @@ class SLN_Helper_Availability
         }
     }
 
-    public function validateService(SLN_Wrapper_Service $service, DateTime $date = null, DateTime $duration = null, DateTime $breakStartsAt = null, DateTime $breakEndsAt = null)
+    public function validateService(SLN_Wrapper_ServiceInterface $service, DateTime $date = null, DateTime $duration = null, DateTime $breakStartsAt = null, DateTime $breakEndsAt = null)
     {
         $date = empty($date) ? $this->date : $date;
         $duration = empty($duration) ? $service->getTotalDuration() : $duration;
@@ -241,7 +241,7 @@ class SLN_Helper_Availability
         }
     }
 
-    private function validateServiceOnTime(SLN_Wrapper_Service $service, DateTime $time)
+    private function validateServiceOnTime(SLN_Wrapper_ServiceInterface $service, DateTime $time)
     {
         SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
         $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
@@ -273,7 +273,7 @@ class SLN_Helper_Availability
         }
     }
 
-    private function validateServiceAttendantsOnTime(SLN_Wrapper_Service $service, DateTime $time)
+    private function validateServiceAttendantsOnTime(SLN_Wrapper_ServiceInterface $service, DateTime $time)
     {
         if (!$this->attendantsEnabled) {
             return;
@@ -293,7 +293,7 @@ class SLN_Helper_Availability
         }
     }
 
-    public function validateServiceFromOrder(SLN_Wrapper_Service $service, SLN_Wrapper_Booking_Services $bookingServices)
+    public function validateServiceFromOrder(SLN_Wrapper_ServiceInterface $service, SLN_Wrapper_Booking_Services $bookingServices)
     {
         if($service->isSecondary()) {
             foreach($bookingServices->getItems() as $bookingService) {
@@ -366,7 +366,7 @@ class SLN_Helper_Availability
 
     /**
      * @param array $order
-     * @param SLN_Wrapper_Service[] $newServices
+     * @param SLN_Wrapper_ServiceInterface[] $newServices
      *
      * @return array
      */
@@ -451,7 +451,7 @@ class SLN_Helper_Availability
     private function processServiceErrors(
         SLN_Wrapper_Booking_Services $bookingServices,
         SLN_Wrapper_Booking_Service $bookingService,
-        SLN_Wrapper_Service $service,
+        SLN_Wrapper_ServiceInterface $service,
         $serviceErrors
     ) {
         if ($bookingService->getService()->getId() == $service->getId()) {
@@ -504,7 +504,7 @@ class SLN_Helper_Availability
     }
 
     public function getAvailableAttsIdsForServiceOnTime(
-        SLN_Wrapper_Service $service,
+        SLN_Wrapper_ServiceInterface $service,
         DateTime $date = null,
         DateTime $duration = null,
         DateTime $breakStartsAt = null,

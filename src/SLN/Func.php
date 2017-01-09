@@ -324,4 +324,25 @@ class SLN_Func
         }
         return false;
     }
+
+
+    public static function savePosts($posts){
+        $ids  = array();
+        foreach ($posts as $label => $post) {
+            if (!self::checkPost($post['post']['post_title'], $post['post']['post_type'])) {
+                $id = wp_insert_post($post['post']);
+                if (isset($post['meta'])) {
+                    foreach ($post['meta'] as $k => $v) {
+                        add_post_meta($id, $k, $v);
+                    }
+                }
+                $ids[$label] = $id;
+            }
+        }
+    }
+
+    private static function checkPost($title, $post_type)
+    {
+        return get_page_by_title($title, null, $post_type) ? true : false;
+    }
 }

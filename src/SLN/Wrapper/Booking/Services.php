@@ -84,6 +84,7 @@ final class SLN_Wrapper_Booking_Services {
 			$break    = null;
 
 			$service = SLN_Plugin::getInstance()->createService($sId);
+                        $service = apply_filters('sln.booking_services.buildService', $service);
 
 			if (is_array($item)) {
 				if (isset($item['attendant'])) {

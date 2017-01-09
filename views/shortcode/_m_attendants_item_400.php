@@ -1,3 +1,7 @@
+<?php
+$thumb  = has_post_thumbnail($attendant->getId()) ? get_the_post_thumbnail($attendant->getId(), 'thumbnail') : '';
+$elemId = SLN_Form::makeID('sln[attendant]['.$service->getId().']['.$attendant->getId().']');
+?>
 <div class="row sln-attendant">
     <div class="col-xs-2 col-sm-2 sln-radiobox sln-steps-check sln-attendant-check <?php echo $bb->hasAttendant(
         $attendant
@@ -15,14 +19,10 @@
     <div class="col-xs-10 col-sm-10">
         <div class="row sln-steps-info sln-attendant-info">
             <div class="col-sm-4 col-xs-6 sln-steps-thumb sln-attendant-thumb">
-                <?php
-                if (has_post_thumbnail($attendant->getId())) {
-                    echo get_the_post_thumbnail($attendant->getId(), 'thumbnail');
-                }
-                ?>
+                <?php echo $thumb?>
             </div>
             <div class="col-sm-7 col-xs-6">
-                <label for="<?php echo SLN_Form::makeID('sln[attendant]['. $service->getId() .']['.$attendant->getId().']') ?>">
+                <label for="<?php echo $elemId ?>">
                     <h3 class="sln-steps-name sln-attendant-name"><?php echo $attendant->getName(); ?></h3>
                 </label>
                 <!-- .sln-attendant-info // END -->
@@ -31,24 +31,10 @@
     </div>
     <div class="clearfix"></div>
     <div class="col-md-12 sln-steps-description sln-attendant-description">
-        <label for="<?php echo SLN_Form::makeID('sln[attendant]['. $service->getId() .']['.$attendant->getId().']') ?>">
+        <label for="<?php echo $elemId ?>">
             <p><?php echo $attendant->getContent() ?></p>
         </label>
     </div>
-    <div class="clearfix"></div>
-
-    <div>
-        <div class="col-xs-offset-2 col-lg-offset-1">
-            <span class="errors-area">
-            <?php if ($errors) : ?>
-                <div class="alert alert-danger alert-no-spacing">
-                    <?php foreach ($errors as $error): ?>
-                        <p><?php echo $error ?></p>
-                    <?php endforeach ?>
-                </div>
-            <?php endif ?>
-            </span>
-        </div>
-    </div>
-    <div class="clearfix"></div>
+    <?php echo $tplErrors ?>
 </div>
+

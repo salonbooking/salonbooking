@@ -1,6 +1,6 @@
 <?php
 
-class SLN_Wrapper_Service extends SLN_Wrapper_Abstract
+class SLN_Wrapper_Service extends SLN_Wrapper_Abstract implements SLN_Wrapper_ServiceInterface
 {
     const _CLASS = 'SLN_Wrapper_Service';
 

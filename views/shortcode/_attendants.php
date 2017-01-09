@@ -61,6 +61,7 @@ foreach($services as $k => $service) {
         if ($errors) {
             $settings['attrs']['disabled'] = 'disabled';
         }
+        $tplErrors = $plugin->templating()->loadView('shortcode/_errors_area', compact('errors', 'size'));
         if ($size == '900') {
             include '_attendants_item_900.php';
         } elseif ($size == '600') {

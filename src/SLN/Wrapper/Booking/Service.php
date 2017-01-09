@@ -26,6 +26,8 @@ final class SLN_Wrapper_Booking_Service
             'price' => $data['price'],
             'exec_order' => $data['exec_order'],
         );
+
+        $this->data['service'] = apply_filters('sln.booking_services.buildService', $this->data['service']);
     }
 
     /**
