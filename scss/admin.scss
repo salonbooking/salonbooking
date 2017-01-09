@@ -554,6 +554,24 @@ body.salone_page_salon-tools {
     }
 
     // CUSTOMER STATISTICS END
+
+    // REPORTS STATISTICS START
+    .text-center {
+        text-align: center;
+    }
+    .report-statistics .row {
+        padding: 10px 0px;
+    }
+    .report-statistics .row:not(:last-child) {
+        border-bottom: 0.1rem solid black;
+    }
+    .report-statistics .row:nth-child(2) {
+        font-size: larger;
+    }
+    .report-statistics .row:nth-child(3) {
+        font-weight: bold;
+    }
+    // REPORTS STATISTICS END
 }
 @import 'sln-select2';
 

@@ -86,33 +86,36 @@ class SLN_Admin_Reports_RevenuesReport extends SLN_Admin_Reports_AbstractReport 
 	}
 
 	protected function printFooter() {
-		?>
-		<p class="sln_graph_totals">
-			<?php
-			echo sprintf(
-					__('Total reservations and earnings for the selected period: <strong>%s | %s</strong>', 'salon-booking-system'),
-					$this->data['footer']['bookings']['all'],
-					$this->plugin->format()->money($this->data['footer']['earnings']['all'], false)
-			);
-			?>
-		</p>
-
-
-		<?php
 		$statuses = array(SLN_Enum_BookingStatus::PAID,SLN_Enum_BookingStatus::PAY_LATER,SLN_Enum_BookingStatus::PENDING_PAYMENT,SLN_Enum_BookingStatus::CANCELED);
-		foreach($statuses as $status) : ?>
-			<p class="sln_graph_notes">
-				<?php
-				echo sprintf(
-						__("Total '%s' reservations for the selected period: <strong>%s | %s</strong>", 'salon-booking-system'),
-						SLN_Enum_BookingStatus::getLabel($status),
-						$this->data['footer']['bookings'][$status],
-						$this->plugin->format()->money($this->data['footer']['earnings'][$status], false)
-				);
-				?>
-			</p>
-		<?php endforeach; ?>
-<?php
+		?>
+		<h4><?php _e('Reservations in the selected time range', 'salon-booking-system'); ?></h4>
+		<div class="col-xs-12 col-sm-6 col-md-4 form-group report-statistics">
+			<div class="row">
+				<div class="col-md-2 text-center"><?php _e('Total', 'salon-booking-system'); ?></div>
+				<?php foreach($statuses as $status) : ?>
+					<div class="col-md-<?php echo ($status === SLN_Enum_BookingStatus::PAY_LATER || $status === SLN_Enum_BookingStatus::PENDING_PAYMENT ? 3 : 2); ?> text-center">
+						<?php echo SLN_Enum_BookingStatus::getLabel($status); ?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<div class="row">
+				<div class="col-md-2 text-center"><?php echo $this->data['footer']['bookings']['all']; ?></div>
+				<?php foreach($statuses as $status) : ?>
+					<div class="col-md-<?php echo ($status === SLN_Enum_BookingStatus::PAY_LATER || $status === SLN_Enum_BookingStatus::PENDING_PAYMENT ? 3 : 2); ?> text-center">
+						<?php echo $this->data['footer']['bookings'][$status]; ?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<div class="row">
+				<div class="col-md-2 text-center"><?php echo $this->plugin->format()->money($this->data['footer']['earnings']['all'], false); ?></div>
+				<?php foreach($statuses as $status) : ?>
+					<div class="col-md-<?php echo ($status === SLN_Enum_BookingStatus::PAY_LATER || $status === SLN_Enum_BookingStatus::PENDING_PAYMENT ? 3 : 2); ?> text-center">
+						<?php echo $this->plugin->format()->money($this->data['footer']['earnings'][$status], false); ?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<?php
 	}
 
 }
