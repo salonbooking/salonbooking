@@ -1,6 +1,6 @@
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
-	<li class="col-xs-12 col-sm-4 col-md-4"><a><?php echo sprintf(__('Welcome back %s!','salon-booking-system'), $data['user_name']); ?></a></li>
+	<li class="col-xs-12 col-sm-4 col-md-4"><div><?php echo sprintf(__('Welcome back %s!','salon-booking-system'), $data['user_name']); ?></div></li>
 	<li class="col-xs-12 col-sm-4 col-md-4 active" role="presentation"><a href="#new" aria-controls="new" role="tab" data-toggle="tab"><?php _e('Next appointments', 'salon-booking-system') ?></a></li>
 	<li class="col-xs-12 col-sm-4 col-md-4" role="presentation"><a href="#old" aria-controls="old" role="tab" data-toggle="tab"><?php _e('Reservations history', 'salon-booking-system') ?></a></li>
 </ul>

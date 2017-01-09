@@ -56,19 +56,22 @@ $cl_ok: #5bc24c;
       li {
         padding: 0 !important;
       }
-      li:not(:nth-child(1)).active a {
+      li.active a {
         background-color: #f4f4f4 !important;
       }
-      li:not(:nth-child(1)):not(.active) a {
+      li:not(.active) a {
         background-color: #d6d6d6 !important;
       }
-      li a {
+      li a, li div {
         border-radius: 0px;
         padding: 20px 15px;
         font-weight: normal;
         color: #555555 !important;
       }
-      li:nth-child(1) a {
+      li div {
+        margin-right: 2px;
+        line-height: 1.42857143;
+        border: 1px solid transparent;
         padding: 10px 15px;
         font-size: x-large;
       }
