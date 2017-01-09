@@ -26,16 +26,10 @@
 			<p class="hint"><?php _e('You don\'t have upcoming reservations, do you want to re-schedule your last appointment with us?', 'salon-booking-system'); ?></p>
 			<?php
 			if (!empty($data['history']['items'])) {
-				$lastOneInHistory = false;
-				foreach($data['history']['items'] as $item) {
-					if (in_array($item['status_code'], array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED))) {
-						$lastOneInHistory = $item;
-						break;
-					}
-				}
+				$historySuccesfulItems = $data['history_successful']['items'];
 
 				$data['table_data'] = array(
-					'items' => ($lastOneInHistory ? array($lastOneInHistory) : array()),
+					'items' => $historySuccesfulItems,
 					'mode'  => 'new',
 				);
 
