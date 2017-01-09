@@ -239,6 +239,53 @@ THIS BOX MUST BE HIDDEN IF NOT IN USE
 </div>
 
 <div class="sln-box sln-box--main">
+    <h2 class="sln-box-title"><?php _e('Email weekly report','salon-booking-system') ?></h2>
+    <div class="sln-box--sub row">
+        <div class="col-xs-12">
+            <h2 class="sln-box-title"><?php _e('Enable email weekly report','salon-booking-system') ?></h2>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-sm-3 col-md-3 form-group sln-checkbox">
+                    <?php $this->row_input_checkbox('email_weekly_report', __('Enable', 'salon-booking-system')); ?>
+                </div>
+                <div class="col-sm-5 col-md-5 form-group sln-select  sln-select--info-label">
+                    <label for="salon_settings_email_weekly_report_day"><?php _e('Day of week','salon-booking-system') ?></label>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <?php $field = "salon_settings[email_weekly_report_day]"; ?>
+                            <?php SLN_Form::fieldSelect(
+                                $field,
+                                SLN_Enum_DaysOfWeek::toArray(),
+                                $this->getOpt('email_weekly_report_day'),
+                                array(),
+                                true
+                            ) ?>
+                            <p class="sln-input-help"><?php _e('Data will be collected from a last Monday to the selected day/time','salon-booking-system') ?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4 form-group sln-select  sln-select--info-label">
+                    <label for="salon_settings_email_weekly_report_time"><?php _e('Time','salon-booking-system') ?></label>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <?php $field = "salon_settings[email_weekly_report_time]"; ?>
+                            <?php SLN_Form::fieldSelect(
+                                $field,
+                                SLN_Func::getMinutesIntervals(60),
+                                $this->getOpt('email_weekly_report_time'),
+                                array(),
+                                true
+                            ); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sln-box sln-box--main">
     <h2 class="sln-box-title"><?php _e('Automatic follow-up','salon-booking-system') ?></h2>
     <div class="sln-box--sub row">
         <div class="col-xs-12">
