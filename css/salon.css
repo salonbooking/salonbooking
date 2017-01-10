@@ -1923,19 +1923,22 @@ ul.sln-list--dashed li,
 #sln-salon-my-account .nav li {
   padding: 0 !important; }
 
-#sln-salon-my-account .nav li:not(:nth-child(1)).active a {
+#sln-salon-my-account .nav li.active a {
   background-color: #f4f4f4 !important; }
 
-#sln-salon-my-account .nav li:not(:nth-child(1)):not(.active) a {
+#sln-salon-my-account .nav li:not(.active) a {
   background-color: #d6d6d6 !important; }
 
-#sln-salon-my-account .nav li a {
+#sln-salon-my-account .nav li a, #sln-salon-my-account .nav li div {
   border-radius: 0px;
   padding: 20px 15px;
   font-weight: normal;
   color: #555555 !important; }
 
-#sln-salon-my-account .nav li:nth-child(1) a {
+#sln-salon-my-account .nav li div {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
   padding: 10px 15px;
   font-size: x-large; }
 

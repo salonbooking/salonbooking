@@ -61,6 +61,15 @@ class SLN_Shortcode_SalonMyAccount_Details
 // FULL MY ACCOUNT PAGE
 
 		$historyItems = $this->prepareBookings($accountBookings->getBookings(get_current_user_id(), 'history'));
+
+		$historySuccesfulItems = array();
+		foreach($historyItems as $item) {
+			if (in_array($item['status_code'], array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED))) {
+				$historySuccesfulItems[] = $item;
+				break;
+			}
+		}
+
 		$historyEnds  = count($historyItems) <= $this->perPage;
 		$historyItems = array_slice($historyItems, 0, $this->perPage);
 
@@ -68,6 +77,9 @@ class SLN_Shortcode_SalonMyAccount_Details
 				array(
 					'new' => array(
 						'items' => $this->prepareBookings($accountBookings->getBookings(get_current_user_id(), 'new'))
+					),
+					'history_successful' => array(
+						'items' => $historySuccesfulItems
 					),
 					'history' => array(
 						'page'  => 1,
