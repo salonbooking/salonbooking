@@ -48,11 +48,13 @@ class SLN_Action_Init
             array(SLN_Plugin::POST_TYPE_SERVICE)
         );
 
+        add_filter('cron_schedules', array($this, 'cron_schedules'));
         add_action('sln_sms_reminder', 'sln_sms_reminder');
         add_action('sln_email_reminder', 'sln_email_reminder');
         add_action('sln_sms_followup', 'sln_sms_followup');
         add_action('sln_email_followup', 'sln_email_followup');
         add_action('sln_cancel_bookings', 'sln_cancel_bookings');
+        add_action('sln_email_weekly_report', 'sln_email_weekly_report');
 
         add_action('template_redirect', array($this, 'template_redirect'));
 
@@ -176,5 +178,14 @@ class SLN_Action_Init
                 }
             }
         }
+    }
+
+    public function cron_schedules($schedules) {
+        $schedules['weekly'] = array(
+            'interval' => 60 * 60 * 24 * 7,
+            'display' => __('Weekly', 'salon-booking-system')
+        );
+
+        return $schedules;
     }
 }
