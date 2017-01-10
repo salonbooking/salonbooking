@@ -34,20 +34,17 @@ class SLN_Action_WeeklyReport
 
         $type = $this->mode;
         $p = $this->plugin;
-        $send = $p->getSettings()->get($type.'_weekly_report');
-        if ($send) {
-            $p->addLog($type.' weekly report execution');
-            $phone = $p->getSettings()->get('gen_phone');
-            if (self::SMS === $type && empty($phone)) {
-                $p->addLog($type.' salon phone field is empty');
-            }
-            else {
-                $data = $this->getData();
-                $this->send($data);
-                $p->addLog($type.' weekly report sent');
-            }
-            $p->addLog($type.' weekly report execution ended');
+        $p->addLog($type.' weekly report execution');
+        $phone = $p->getSettings()->get('gen_phone');
+        if (self::SMS === $type && empty($phone)) {
+            $p->addLog($type.' salon phone field is empty');
         }
+        else {
+            $data = $this->getData();
+            $this->send($data);
+            $p->addLog($type.' weekly report sent');
+        }
+        $p->addLog($type.' weekly report execution ended');
 
         SLN_TimeFunc::endRealTimezone();
     }

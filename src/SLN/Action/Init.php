@@ -48,13 +48,7 @@ class SLN_Action_Init
             array(SLN_Plugin::POST_TYPE_SERVICE)
         );
 
-        add_filter('cron_schedules', array($this, 'cron_schedules'));
-        add_action('sln_sms_reminder', 'sln_sms_reminder');
-        add_action('sln_email_reminder', 'sln_email_reminder');
-        add_action('sln_sms_followup', 'sln_sms_followup');
-        add_action('sln_email_followup', 'sln_email_followup');
-        add_action('sln_cancel_bookings', 'sln_cancel_bookings');
-        add_action('sln_email_weekly_report', 'sln_email_weekly_report');
+        $this->initSchedules();
 
         add_action('template_redirect', array($this, 'template_redirect'));
 
@@ -94,6 +88,35 @@ class SLN_Action_Init
         add_action('wp_ajax_salon', $callback);
         add_action('wp_ajax_nopriv_salon', $callback);
         add_action('wp_ajax_saloncalendar', $callback);
+    }
+
+    private function initSchedules() {
+        add_filter('cron_schedules', array($this, 'cron_schedules'));
+
+        if (!wp_get_schedule('sln_email_weekly_report')) {
+            SLN_TimeFunc::startRealTimezone();
+            if (((int)current_time('w')) === (SLN_Enum_DaysOfWeek::MONDAY) &&
+                SLN_Func::getMinutesFromDuration(current_time('H:i')) < 8*60) {
+
+                $time  = current_time('timestamp');
+                $time -= $time % (24*60*60);
+            }
+            else {
+                $time  = strtotime("next Monday");
+            }
+
+            $time += 8 * 60 * 60; // Monday 8:00
+            wp_schedule_event($time, 'weekly', 'sln_email_weekly_report');
+            unset($time);
+            SLN_TimeFunc::endRealTimezone();
+        }
+
+        add_action('sln_sms_reminder', 'sln_sms_reminder');
+        add_action('sln_email_reminder', 'sln_email_reminder');
+        add_action('sln_sms_followup', 'sln_sms_followup');
+        add_action('sln_email_followup', 'sln_email_followup');
+        add_action('sln_cancel_bookings', 'sln_cancel_bookings');
+        add_action('sln_email_weekly_report', 'sln_email_weekly_report');
     }
 
     public function hook_action_init()
