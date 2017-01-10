@@ -88,8 +88,8 @@ class SLN_Admin_Reports_RevenuesReport extends SLN_Admin_Reports_AbstractReport 
 	protected function printFooter() {
 		$statuses = array(SLN_Enum_BookingStatus::PAID,SLN_Enum_BookingStatus::PAY_LATER,SLN_Enum_BookingStatus::PENDING_PAYMENT,SLN_Enum_BookingStatus::CANCELED);
 		?>
-		<h4><?php _e('Reservations in the selected time range', 'salon-booking-system'); ?></h4>
-		<div class="col-xs-12 col-sm-6 col-md-4 form-group report-statistics">
+		<div class="col-xs-12 col-sm-6 col-md-4 report-statistics">
+			<h4><?php _e('Reservations in the selected time range', 'salon-booking-system'); ?></h4>
 			<div class="row">
 				<div class="col-md-2 text-center"><?php _e('Total', 'salon-booking-system'); ?></div>
 				<?php foreach($statuses as $status) : ?>
