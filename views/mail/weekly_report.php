@@ -6,12 +6,12 @@
  */
 
 $data['to']      = $plugin->getSettings()->getSalonEmail();
-$data['subject'] = __('Weekly Report', 'salon-booking-system');
+$data['subject'] = __('Salon Booking weekly report', 'salon-booking-system');
 
 include dirname(__FILE__).'/_header.php';
 ?>
 
-	<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
+	<tr style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #888;">
 		<td height="55" valign="middle" bgcolor="#f2f2f2">
 			<p style="margin-left: 49px; margin-right: 49px;">
 				<?php
@@ -26,18 +26,18 @@ include dirname(__FILE__).'/_header.php';
 		</td>
 	</tr>
 
-	<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
+	<tr style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #888;">
 		<td height="70" valign="middle" bgcolor="#f2f2f2">
 			<p style="margin-left: 49px; margin-right: 49px;">
 				<?php
 				$msg = sprintf(
 					__('You received a total of <strong>%s online reservations ( %s )</strong>, <strong>%s of them have been paid online ( %s )</strong> and <strong>%s have been paid later ( %s )</strong>.', 'salon-booking-system'),
 					$stats['total']['count'],
-					$plugin->format()->moneyFormatted($stats['total']['amount']),
+					$plugin->format()->money($stats['total']['amount'], false, false, true),
 					$stats['paid']['count'],
-					$plugin->format()->moneyFormatted($stats['paid']['amount']),
+					$plugin->format()->money($stats['paid']['amount'], false, false, true),
 					$stats['pay_later']['count'],
-					$plugin->format()->moneyFormatted($stats['pay_later']['amount'])
+					$plugin->format()->money($stats['pay_later']['amount'], false, false, true)
 				);
 				$msg = nl2br($msg);
 				echo $msg;
@@ -46,7 +46,7 @@ include dirname(__FILE__).'/_header.php';
 		</td>
 	</tr>
 
-	<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
+	<tr style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #888;">
 		<td height="50" valign="middle" bgcolor="#f2f2f2">
 			<p style="margin-left: 49px; margin-right: 49px;">
 				<?php
@@ -61,33 +61,35 @@ include dirname(__FILE__).'/_header.php';
 		</td>
 	</tr>
 
-	<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
-		<td height="105" valign="middle" bgcolor="#f2f2f2">
-			<p style="margin-left: 49px; margin-right: 49px;">
-				<?php
-				$msg = sprintf(
-					__("The <strong>most booked services</strong> have been:\n", 'salon-booking-system')
-				);
+	<?php if (!empty($stats['services'])) : ?>
+		<tr style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #888;">
+			<td height="105" valign="middle" bgcolor="#f2f2f2">
+				<p style="margin-left: 49px; margin-right: 49px;">
+					<?php
+					$msg = sprintf(
+						__("The <strong>most booked services</strong> have been:\n", 'salon-booking-system')
+					);
 
-				$i = 1;
-				foreach($stats['services'] as $sID => $count) {
-					$msg .= "\n{$i}. " . $plugin->createService($sID)->getName() . " ( {$count} )";
+					$i = 1;
+					foreach($stats['services'] as $sID => $count) {
+						$msg .= "\n{$i}. " . $plugin->createService($sID)->getName() . " ( {$count} )";
 
-					$i ++;
-					if ($i > 5) {
-						break;
+						$i ++;
+						if ($i > 5) {
+							break;
+						}
 					}
-				}
 
-				$msg = nl2br($msg);
-				echo $msg;
-				?>
-			</p>
-		</td>
-	</tr>
+					$msg = nl2br($msg);
+					echo $msg;
+					?>
+				</p>
+			</td>
+		</tr>
+	<?php endif; ?>
 
 	<?php if (!empty($stats['attendants'])) : ?>
-		<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
+		<tr style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #888;">
 			<td height="105" valign="middle" bgcolor="#f2f2f2">
 				<p style="margin-left: 49px; margin-right: 49px;">
 					<?php
@@ -118,7 +120,7 @@ include dirname(__FILE__).'/_header.php';
 	if ($count) {
 		$weekday = key($stats['weekdays']);
 		?>
-		<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
+		<tr style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #888;">
 			<td height="70" valign="middle" bgcolor="#f2f2f2">
 				<p style="margin-left: 49px; margin-right: 49px;">
 					<?php
@@ -137,7 +139,7 @@ include dirname(__FILE__).'/_header.php';
 	}
 	?>
 
-	<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
+	<tr style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #888;">
 		<td height="50" valign="middle" bgcolor="#f2f2f2">
 			<p style="margin-left: 49px; margin-right: 49px;">
 				<?php
@@ -157,7 +159,7 @@ include dirname(__FILE__).'/_header.php';
 	if ($amount) {
 		$customerID = key($stats['customers']);
 		?>
-		<tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
+		<tr style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #888;">
 			<td height="70" valign="middle" bgcolor="#f2f2f2">
 				<p style="margin-left: 49px; margin-right: 49px;">
 					<?php
@@ -165,7 +167,7 @@ include dirname(__FILE__).'/_header.php';
 					$msg = sprintf(
 						__('Your customer <strong>%s</strong> has been the most valuable one <strong>spending %s</strong> of your services.', 'salon-booking-system'),
 						$customer->getName(),
-						$plugin->format()->moneyFormatted($amount)
+						$plugin->format()->money($amount, false, false, true)
 					);
 					$msg = nl2br($msg);
 					echo $msg;
