@@ -39,6 +39,7 @@ class SLN_Currency
         'TWD' => array('name' => 'Taiwan New Dollar', 'symbol' => 'NT$', 'ASCII' => 'NT&#36;'),
         'TRY' => array('name' => 'Turkish Lira', 'symbol' => 'TL', 'ASCII' => '&#8378;'),
         'THB' => array('name' => 'Thai Baht', 'symbol' => '฿', 'ASCII' => '&#3647;'),
+        'TND' => array('name' => 'Tunisinian dinar', 'symbol' => 'DT', 'ASCII' => ''),
         'USD' => array('name' => 'U.S. Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
         'LKR' => array('name' => 'Sri Lankan Rupee', 'symbol' => '₹', 'ASCII' => '&#8377;'),
         'RUB' => array('name' => 'Russian Ruble', 'symbol' => '₽', 'ASCII' => '&#8381;'),
