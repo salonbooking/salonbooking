@@ -5563,6 +5563,19 @@ body.salone_page_salon-tools #wpwrap {
     #sln-salon--admin .statistics_block .statistics_row span, .sln-calendar--wrapper .statistics_block .statistics_row span {
       font-size: larger;
       font-weight: bold; }
+#sln-salon--admin .text-center, .sln-calendar--wrapper .text-center {
+  text-align: center; }
+#sln-salon--admin .report-statistics, .sln-calendar--wrapper .report-statistics {
+  padding: 0 30px 20px 30px;
+  width: 720px; }
+#sln-salon--admin .report-statistics .row, .sln-calendar--wrapper .report-statistics .row {
+  padding: 10px 0px; }
+#sln-salon--admin .report-statistics .row:not(:last-child), .sln-calendar--wrapper .report-statistics .row:not(:last-child) {
+  border-bottom: 0.1rem solid black; }
+#sln-salon--admin .report-statistics .row:nth-child(3), .sln-calendar--wrapper .report-statistics .row:nth-child(3) {
+  font-size: larger; }
+#sln-salon--admin .report-statistics .row:nth-child(4), .sln-calendar--wrapper .report-statistics .row:nth-child(4) {
+  font-weight: bold; }
 
 .select2-container.select2-container--sln {
   /* BIG SELECT // END */ }
