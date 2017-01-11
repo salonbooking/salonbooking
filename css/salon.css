@@ -673,14 +673,17 @@ ul.sln-list--dashed li,
 #sln-salon .sln-invalid::-webkit-input-placeholder,
 #sln-salon .sln-input .sln-invalid::-webkit-input-placeholder {
   color: #D22221; }
+
 #sln-salon .sln-invalid:-moz-placeholder,
 #sln-salon .sln-input .sln-invalid:-moz-placeholder {
   /* Firefox 18- */
   color: #D22221; }
+
 #sln-salon .sln-invalid::-moz-placeholder,
 #sln-salon .sln-input .sln-invalid::-moz-placeholder {
   /* Firefox 19+ */
   color: #D22221; }
+
 #sln-salon .sln-invalid:-ms-input-placeholder,
 #sln-salon .sln-input .sln-invalid:-ms-input-placeholder {
   color: #D22221; }
@@ -2335,11 +2338,20 @@ ul.sln-list--dashed li,
       border-style: solid;
       padding: 1.2em; } }
   #sln-salon.sln-salon--l {
-    max-width: 900px; }
+    width: 100%; }
+    @media only screen and (min-width: 992px) {
+      #sln-salon.sln-salon--l {
+        max-width: 900px; } }
   #sln-salon.sln-salon--m {
-    max-width: 600px; }
+    width: 100%; }
+    @media only screen and (min-width: 992px) {
+      #sln-salon.sln-salon--m {
+        max-width: 600px; } }
   #sln-salon.sln-salon--s {
-    max-width: 400px; }
+    width: 100%; }
+    @media only screen and (min-width: 992px) {
+      #sln-salon.sln-salon--s {
+        max-width: 400px; } }
   #sln-salon h1, #sln-salon h2, #sln-salon h3, #sln-salon h4, #sln-salon h5, #sln-salon h6 {
     margin-top: 0;
     margin-bottom: 0; }

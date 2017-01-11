@@ -24,9 +24,24 @@
 	@extend %bgc-color--main;
 	@extend %text-color--contrast;
 	// SIZES
-	&.sln-salon--l {max-width: 900px;}
-	&.sln-salon--m {max-width: 600px;}
-	&.sln-salon--s {max-width: 400px;}
+	&.sln-salon--l {
+		width: 100%;
+		@include bp(desktop) {
+			max-width: 900px;
+		}
+	}
+	&.sln-salon--m {
+		width: 100%;
+		@include bp(desktop) {
+			max-width: 600px;
+		}
+	}
+	&.sln-salon--s {
+		width: 100%;
+		@include bp(desktop) {
+			max-width: 400px;
+		}
+	}
 	h1, h2, h3, h4, h5, h6 {
 		margin-top: 0;
 		margin-bottom: 0;

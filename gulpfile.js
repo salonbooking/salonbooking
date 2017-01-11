@@ -108,7 +108,7 @@ gulp.task( 'watch', function() {
   livereload.listen();
   //gulp.watch( './less/salon.less', [ 'less' ] );
   //gulp.watch( './less/admin.less', [ 'adm' ] );adminsass
-  gulp.watch( './scss/**/*.scss', [ 'adminsass' ] );
+  gulp.watch( './scss/**/*.scss', [ 'sass' ] );
   gulp.watch( './scss/**/*.scss', [ 'colors' ] );
   //gulp.watch( './css/admin.css' ).on( 'change', function( file ) {
   //  livereload.changed( file );
