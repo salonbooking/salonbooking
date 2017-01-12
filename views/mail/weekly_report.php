@@ -15,7 +15,7 @@ include dirname(__FILE__).'/_header.php';
 		<td height="55" valign="middle" bgcolor="#f2f2f2">
 			<p style="margin-left: 49px; margin-right: 49px;">
 				<?php
-				$user = wp_get_current_user();
+				$user = get_user_by('ID', 1);
 				$name = $user->first_name . ' ' . $user->last_name;
 
 				$msg = sprintf(__("Dear %s,\nthese is a summary of what happened on your salon last week:", 'salon-booking-system'), $name);
