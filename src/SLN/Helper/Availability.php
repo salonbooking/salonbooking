@@ -80,15 +80,6 @@ class SLN_Helper_Availability
         return $ret;
     }
 
-    private function minutes(DateTime $date)
-    {
-        $interval = $this->settings->getInterval();
-        $i = $date->format('i');
-        $ret = (intval($i / $interval) + 1) * $interval;
-
-        return $ret;
-    }
-
     public function setDate(DateTime $date, SLN_Wrapper_Booking $booking = null)
     {
         if (empty($this->date) || $this->date->format('Ymd') != $date->format('Ymd')) {

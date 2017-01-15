@@ -145,6 +145,9 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             $m->setDisabled(false);
             $m->sendByStatus($booking, $booking->getStatus());
         }
+        $this->getPlugin()
+            ->getBookingCache()
+            ->processBooking($booking, false);
     }
 
     private function addCustomerRole($booking)

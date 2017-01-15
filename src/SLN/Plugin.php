@@ -148,7 +148,7 @@ class SLN_Plugin
             $obj->addPath(SLN_PLUGIN_DIR.'/views/%s.php', 10);
             $this->phpServices['templating'] = $obj;
         }
-        
+
         return $this->phpServices['templating'];
     }
 
@@ -162,6 +162,18 @@ class SLN_Plugin
         }
 
         return $this->phpServices['availabilityHelper'];
+    }
+
+    /**
+     * @return SLN_Wrapper_Booking_Cache
+     */
+    public function getBookingCache()
+    {
+        if (!isset($this->phpServices['bookingCache'])) {
+            $this->phpServices['bookingCache'] = new SLN_Wrapper_Booking_Cache($this);
+        }
+
+        return $this->phpServices['bookingCache'];
     }
 
     /**

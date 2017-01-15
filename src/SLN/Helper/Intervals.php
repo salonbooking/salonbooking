@@ -12,11 +12,11 @@ class SLN_Helper_Intervals
     protected $months;
     protected $days;
     protected $dates;
+    protected $fullDays;
 
     public function __construct(SLN_Helper_Availability $availabilityHelper)
     {
         $this->availabilityHelper = $availabilityHelper;
-        
     }
 
     public function setDatetime(DateTime $date)
@@ -24,12 +24,17 @@ class SLN_Helper_Intervals
         $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
         $times             = $ah->getTimes($date);
-        $interval = $ah->getHoursBeforeHelper();
-        $to = $interval->getToDate();
-        $clone = clone $date;
+        $interval          = $ah->getHoursBeforeHelper();
+        $to                = $interval->getToDate();
+        $clone             = clone $date;
+        $this->fullDays    = SLN_Plugin::getInstance()->getBookingCache()->getFullDays();
         while (empty($times) && $date <= $to) {
             $date->modify('+1 days');
-            $times = $ah->getTimes($date);
+            if (!in_array($date->format('Y-m-d'), $this->fullDays)) {
+                $times = $ah->getTimes($date);
+            } else {
+                $times = array();
+            }
         }
         if (empty($times)) {
             $date = $clone;
@@ -115,10 +120,11 @@ class SLN_Helper_Intervals
             'days'           => $this->getDays(),
             'times'          => $this->getTimes(),
             'dates'          => $this->getDates(),
+            'fullDays'       => $this->getFullDays(),
             'suggestedDay'   => $this->suggestedDate->format('d'),
             'suggestedMonth' => $this->suggestedDate->format('m'),
             'suggestedYear'  => $this->suggestedDate->format('Y'),
-            'suggestedDate' =>  $f->date($this->suggestedDate),
+            'suggestedDate'  => $f->date($this->suggestedDate),
             'suggestedTime'  => $f->time($this->suggestedDate),
         );
     }
@@ -172,5 +178,9 @@ class SLN_Helper_Intervals
     }
     public function getDates(){
         return $this->dates;
+    }
+
+    public function getFullDays(){
+        return $this->fullDays;
     }
 }

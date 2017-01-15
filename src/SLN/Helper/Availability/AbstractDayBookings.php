@@ -14,6 +14,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
      * @return array
      */
     abstract protected function buildTimeslots();
+
     /**
      * @return DateTime
      */
@@ -32,34 +33,40 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
 
     private function buildBookings()
     {
-        $args = array(
-            'post_type'  => SLN_Plugin::POST_TYPE_BOOKING,
-            'nopaging'   => true,
-            'meta_query' => array(
-                array(
-                    'key'     => '_sln_booking_date',
-                    'value'   => $this->date->format('Y-m-d'),
-                    'compare' => '=',
-                )
-            )
-        );
-        $query = new WP_Query($args);
-        $ret = array();
-        $noTimeStatuses = SLN_Enum_BookingStatus::$noTimeStatuses;
-        foreach ($query->get_posts() as $p) {
-            /** @var WP_Post $p */
-            if (empty($this->currentBooking) || $p->ID != $this->currentBooking->getId()) {
-                $tmp = SLN_Plugin::getInstance()->createBooking($p);
-                if(!$tmp->hasStatus($noTimeStatuses))
-                    $ret[] = $tmp;
-            }
-        }
-        wp_reset_query();
-        wp_reset_postdata();
+        /** @var SLN_Repository_BookingRepository $repo */
+        $repo = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_BOOKING);
+        $ret = $repo->getForAvailability($this->date, $this->currentBooking);
+//        $args = array(
+//            'post_type' => SLN_Plugin::POST_TYPE_BOOKING,
+//            'nopaging' => true,
+//            'meta_query' => array(
+//                array(
+//                    'key' => '_sln_booking_date',
+//                    'value' => $this->date->format('Y-m-d'),
+//                    'compare' => '=',
+//                ),
+//            ),
+//        );
+//        $query = new WP_Query($args);
+//        $ret = array();
+//        $noTimeStatuses = SLN_Enum_BookingStatus::$noTimeStatuses;
+//        foreach ($query->get_posts() as $p) {
+//            /** @var WP_Post $p */
+//            if (empty($this->currentBooking) || $p->ID != $this->currentBooking->getId()) {
+//                $tmp = SLN_Plugin::getInstance()->createBooking($p);
+//                if (!$tmp->hasStatus($noTimeStatuses)) {
+//                    $ret[] = $tmp;
+//                }
+//            }
+//        }
+//        wp_reset_query();
+//        wp_reset_postdata();
 
         SLN_Plugin::addLog(__CLASS__.' - buildBookings('.$this->date->format('Y-m-d').')');
-        foreach($ret as $b)
+        foreach ($ret as $b) {
             SLN_Plugin::addLog(' - '.$b->getId());
+        }
+
         return $ret;
     }
 
@@ -86,19 +93,22 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
         $time = $now->format('H:i');
         $ret = array();
         $bookings = $this->timeslots[$time]['booking'];
-        foreach($bookings as $bId) {
+        foreach ($bookings as $bId) {
             $ret[] = new SLN_Wrapper_Booking($bId);
         }
 
-        if(!empty($ret)){
+        if (!empty($ret)) {
             SLN_Plugin::addLog(__CLASS__.' - checking hour('.$hour.')');
             SLN_Plugin::addLog(__CLASS__.' - found('.count($ret).')');
-            foreach($ret as $b){
-                SLN_Plugin::addLog(' - ' . $b->getId(). ' => '.$b->getStartsAt()->format('H:i').' - '.$b->getEndsAt()->format('H:i'));
+            foreach ($ret as $b) {
+                SLN_Plugin::addLog(
+                    ' - '.$b->getId().' => '.$b->getStartsAt()->format('H:i').' - '.$b->getEndsAt()->format('H:i')
+                );
             }
-        }else{
+        } else {
             SLN_Plugin::addLog(__CLASS__.' - checking hour('.$hour.') EMPTY');
         }
+
         return $ret;
     }
 
@@ -125,6 +135,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
         $time = $now->format('H:i');
         $ret = $this->timeslots[$time]['service'];
         SLN_Plugin::addLog(print_r($ret, true));
+
         return $ret;
     }
 
@@ -136,7 +147,8 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
         return $this->date;
     }
 
-    public function setTime($hour, $minutes) {
+    public function setTime($hour, $minutes)
+    {
         $this->getDate()->setTime($hour, $minutes);
     }
 
@@ -148,7 +160,13 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
         return $this->bookings;
     }
 
-    public function getMinutesIntervals(){
+    public function getMinutesIntervals()
+    {
         return $this->minutesIntervals;
+    }
+
+    public function getTimeslots()
+    {
+        return $this->timeslots;
     }
 }

@@ -54,16 +54,7 @@ class SLN_Helper_HoursBefore
 
 
     }
-/*
-    private function minutes(DateTime $date)
-    {
-        $interval = $this->settings->getInterval();
-        $i        = $date->format('i');
-        $ret      = (intval($i / $interval) + 1) * $interval;
 
-        return $ret;
-    }
-*/
     public function getFromDate()
     {
         return $this->fromDate;
@@ -116,27 +107,6 @@ class SLN_Helper_HoursBefore
 
         return $ret;
     }
-
-/*
-    public function getHoursBeforeDateTime()
-    {
-        $ret     = $this->getHoursBefore();
-        $ret->from = $now     = new DateTime();
-        $minutes = $this->minutes($now);
-        $now->setTime($now->format('H'), $minutes);
-        $ret->to = $now2 = clone $now;
-        if ($ret->from) {
-            $now->modify($ret->from);
-        } else {
-            $now->modify('+30 minutes');
-        }
-        if ($ret->to) {
-            $now2->modify($ret->to);
-        }
-
-        return $ret;
-    }
-*/
 
     public function getCountDays()
     {

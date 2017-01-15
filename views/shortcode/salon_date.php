@@ -32,7 +32,7 @@ if ($plugin->getSettings()->isDisabled()) {
         $hb = $plugin->getAvailabilityHelper()->getHoursBeforeHelper()->getToDate();
         ?>
         <div class="sln-alert sln-alert--problem">
-            <p><?php echo __('No more slots available until', 'salon-booking-system') ?><?php echo $plugin->format(
+            <p><?php echo __('No more slots available until', 'salon-booking-system') ?> <?php echo $plugin->format(
                 )->datetime($hb) ?></p>
         </div>
     <?php else: ?>

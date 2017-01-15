@@ -313,6 +313,7 @@ class SLN_Wrapper_Booking_Builder
                 );
             }
         }
+        $this->plugin->getBookingCache()->processBooking($this->getLastBooking(), true);
     }
 
     private function getCreateStatus()

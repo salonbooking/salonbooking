@@ -145,6 +145,11 @@ function sln_adminDate($) {
             $.each(items.dates, function (key, value) {
                 $('.day[data-ymd="' + value + '"]').removeClass('red');
             });
+            $('.day[data-ymd]').removeClass('full');
+            $.each(items.fullDays, function (key, value) {
+                console.log(value);
+                $('.day[data-ymd="' + value + '"]').addClass('red full');
+            });
 
             $.each(items.times, function (key, value) {
                 $('.hour[data-ymd="' + value + '"]').removeClass('red');

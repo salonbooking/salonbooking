@@ -124,7 +124,7 @@ class SLN_Admin_Settings
     {
         $this->plugin = $plugin;
         $this->settings = $plugin->getSettings();
-        add_action('admin_menu', array($this, 'admin_menu'),12);
+        add_action('admin_menu', array($this, 'admin_menu'), 12);
     }
 
     public function admin_menu()
@@ -269,7 +269,7 @@ class SLN_Admin_Settings
         $submitted = $_POST['salon_settings'];
 
         if (empty($submitted['gen_logo']) && $this->getOpt('gen_logo')) {
-			wp_delete_attachment($this->getOpt('gen_logo'), true);
+            wp_delete_attachment($this->getOpt('gen_logo'), true);
         }
 
         if (isset($_FILES['gen_logo']) && !empty($_FILES['gen_logo']['size'])) {
@@ -279,21 +279,21 @@ class SLN_Admin_Settings
             if (!has_image_size($imageSize)) {
                 add_image_size($imageSize, 160, 70);
             }
-            $attId     = media_handle_upload('gen_logo', 0);
+            $attId = media_handle_upload('gen_logo', 0);
 
             if (!is_wp_error($attId)) {
-	            $submitted['gen_logo'] = $attId;
+                $submitted['gen_logo'] = $attId;
             }
         }
         $submitted['email_subject'] = !empty($submitted['email_subject']) ?
             $submitted['email_subject'] :
             'Your booking reminder for [DATE] at [TIME] at [SALON NAME]';
         $submitted['booking_update_message'] = !empty($submitted['booking_update_message']) ?
-	        $submitted['booking_update_message'] :
-	        'Hi [NAME],\r\ntake note of the details of your reservation at [SALON NAME]';
+            $submitted['booking_update_message'] :
+            'Hi [NAME],\r\ntake note of the details of your reservation at [SALON NAME]';
         $submitted['follow_up_message'] = !empty($submitted['follow_up_message']) ?
-	        $submitted['follow_up_message'] :
-	        'Hi [NAME],\r\nIt\'s been a while since your last visit, would you like to book a new appointment with us?\r\n\r\nWe look forward to seeing you again.';
+            $submitted['follow_up_message'] :
+            'Hi [NAME],\r\nIt\'s been a while since your last visit, would you like to book a new appointment with us?\r\n\r\nWe look forward to seeing you again.';
         $submitted['follow_up_message'] = substr($submitted['follow_up_message'], 0, 150);
         foreach (self::$fieldsTabGeneral as $k) {
             $val = isset($submitted[$k]) ? $submitted[$k] : '';
@@ -302,27 +302,25 @@ class SLN_Admin_Settings
         wp_clear_scheduled_hook('sln_sms_reminder');
         if (isset($submitted['sms_remind']) && $submitted['sms_remind']) {
             wp_schedule_event(time(), 'hourly', 'sln_sms_reminder');
-            wp_schedule_event(time()+1800, 'hourly', 'sln_sms_reminder');
+            wp_schedule_event(time() + 1800, 'hourly', 'sln_sms_reminder');
         }
         wp_clear_scheduled_hook('sln_email_reminder');
         if (isset($submitted['email_remind']) && $submitted['email_remind']) {
             wp_schedule_event(time(), 'hourly', 'sln_email_reminder');
-            wp_schedule_event(time()+1800, 'hourly', 'sln_email_reminder');
+            wp_schedule_event(time() + 1800, 'hourly', 'sln_email_reminder');
         }
         if (isset($submitted['follow_up_sms']) && $submitted['follow_up_sms']) {
             if (!wp_get_schedule('sln_sms_followup')) {
                 wp_schedule_event(time(), 'daily', 'sln_sms_followup');
             }
-        }
-        else {
+        } else {
             wp_clear_scheduled_hook('sln_sms_followup');
         }
         if (isset($submitted['follow_up_email']) && $submitted['follow_up_email']) {
             if (!wp_get_schedule('sln_email_followup')) {
                 wp_schedule_event(time(), 'daily', 'sln_email_followup');
             }
-        }
-        else {
+        } else {
             wp_clear_scheduled_hook('sln_email_followup');
         }
         $this->settings->save();
@@ -366,19 +364,23 @@ class SLN_Admin_Settings
     {
         $submitted = $_POST['salon_settings'];
         $tmp = array();
-        if(isset($submitted['availabilities']))
-            $submitted['availabilities'] = SLN_Helper_AvailabilityItems::processSubmission($submitted['availabilities']);
+        if (isset($submitted['availabilities'])) {
+            $submitted['availabilities'] = SLN_Helper_AvailabilityItems::processSubmission(
+                $submitted['availabilities']
+            );
+        }
 
-        if(isset($submitted['holidays']))
+        if (isset($submitted['holidays'])) {
             $submitted['holidays'] = SLN_Helper_HolidayItems::processSubmission($submitted['holidays']);
+        }
         $this->bindSettings(self::$fieldsTabBooking, $submitted);
         $this->settings->save();
-
+        $this->plugin->getBookingCache()->refreshAll();
         if ($this->settings->getAvailabilityMode() != 'highend') {
-			$repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
-	        foreach ($repo->getAll() as $service) {
-				$service->setMeta('break_duration', SLN_Func::convertToHoursMins(0));
-	        }
+            $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+            foreach ($repo->getAll() as $service) {
+                $service->setMeta('break_duration', SLN_Func::convertToHoursMins(0));
+            }
         }
 
         $this->showAlert(
@@ -390,8 +392,8 @@ class SLN_Admin_Settings
 
     public function processTabCheckout()
     {
-		$submitted = isset($_POST['salon_settings']) ? $_POST['salon_settings'] : array();
-		$this->bindSettings(self::$fieldsTabCheckout, $submitted);
+        $submitted = isset($_POST['salon_settings']) ? $_POST['salon_settings'] : array();
+        $this->bindSettings(self::$fieldsTabCheckout, $submitted);
         $this->settings->save();
         $this->showAlert(
             'success',
@@ -402,7 +404,7 @@ class SLN_Admin_Settings
 
     public function processTabPayments()
     {
-		$fields = self::$fieldsTabPayment;
+        $fields = self::$fieldsTabPayment;
         foreach (SLN_Enum_PaymentMethodProvider::toArray() as $k => $v) {
             $fields = array_merge(
                 $fields,
@@ -418,7 +420,7 @@ class SLN_Admin_Settings
         wp_clear_scheduled_hook('sln_cancel_bookings');
         if (isset($submitted['pay_offset_enabled']) && $submitted['pay_offset_enabled']) {
             wp_schedule_event(time(), 'hourly', 'sln_cancel_bookings');
-            wp_schedule_event(time()+1800, 'hourly', 'sln_cancel_bookings');
+            wp_schedule_event(time() + 1800, 'hourly', 'sln_cancel_bookings');
         }
 
         $this->settings->save();
@@ -469,7 +471,8 @@ class SLN_Admin_Settings
 
             <?php settings_errors(); ?>
             <?php $this->showTabsBar(); ?>
-            <form method="post" action="<?php admin_url('admin.php?page='.self::PAGE); ?>" enctype="multipart/form-data">
+            <form method="post" action="<?php admin_url('admin.php?page='.self::PAGE); ?>"
+                  enctype="multipart/form-data">
                 <?php
                 $this->showTab($current);
                 wp_nonce_field(self::PAGE.$current);
@@ -510,10 +513,10 @@ class SLN_Admin_Settings
     public function processTabStyle()
     {
         $submitted = $_POST['salon_settings'];
-        $this->bindSettings(self::$fieldsTabStyle,$submitted);
+        $this->bindSettings(self::$fieldsTabStyle, $submitted);
 
         $this->settings->save();
-        if($this->settings->get('style_colors_enabled')) {
+        if ($this->settings->get('style_colors_enabled')) {
             $this->saveCustomCss();
         }
         $this->showAlert(
@@ -522,13 +525,16 @@ class SLN_Admin_Settings
             __('Update completed with success', 'salon-booking-system')
         );
     }
-    private function saveCustomCss(){
+
+    private function saveCustomCss()
+    {
         $css = file_get_contents(SLN_PLUGIN_DIR.'/css/sln-colors--custom.css');
         $colors = $this->settings->get('style_colors');
 
-        if($colors)
-        foreach($colors as $k => $v){
-            $css = str_replace("{color-$k}", $v, $css);
+        if ($colors) {
+            foreach ($colors as $k => $v) {
+                $css = str_replace("{color-$k}", $v, $css);
+            }
         }
         $dir = wp_upload_dir();
         $dir = $dir['basedir'];

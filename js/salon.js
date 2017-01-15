@@ -16,7 +16,6 @@ if (jQuery.widget !== undefined && jQuery.ui.tooltip !== undefined) {
 jQuery(function ($) {
     sln_init($);
     if(salon.has_stockholm_transition == 'yes'){
-        console.log('works');
         $('body').on("click",'a[target!="_blank"]:not(.no_ajax):not(.no_link)', function(){setTimeout(function(){sln_init(jQuery);}, 2000)});
     }
 });
@@ -142,22 +141,26 @@ function sln_stepDate($) {
     var items = $('#salon-step-date').data('intervals');
     var doingFunc = false;
     var func = function () {
-        if(doingFunc) return;
-        setTimeout(function(){
-           doingFunc = true;
-        $('[data-ymd]').addClass('disabled');
-        $.each(items.dates, function(key, value) {
-           //console.log(value);
-           $('.day[data-ymd="'+value+'"]').removeClass('disabled');
-        });
+        if (doingFunc) return;
+        setTimeout(function () {
+            doingFunc = true;
+            $('[data-ymd]').addClass('disabled');
+            $.each(items.dates, function (key, value) {
+                $('.day[data-ymd="' + value + '"]').removeClass('disabled');
+            });
+            $('.day[data-ymd]').removeClass('full');
+            $.each(items.fullDays, function (key, value) {
+                console.log(value);
+                $('.day[data-ymd="' + value + '"]').addClass('disabled full');
+            });
 
-        $.each(items.times, function(key, value) {
-           $('.hour[data-ymd="'+value+'"]').removeClass('disabled');
-           $('.minute[data-ymd="'+value+'"]').removeClass('disabled');
-           $('.hour[data-ymd="'+value.split(':')[0]+':00"]').removeClass('disabled');
-        });
+            $.each(items.times, function (key, value) {
+                $('.hour[data-ymd="' + value + '"]').removeClass('disabled');
+                $('.minute[data-ymd="' + value + '"]').removeClass('disabled');
+                $('.hour[data-ymd="' + value.split(':')[0] + ':00"]').removeClass('disabled');
+            });
             doingFunc = false;
-       },200);
+        }, 200);
         return true;
     }
     func();
