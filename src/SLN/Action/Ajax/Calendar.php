@@ -9,12 +9,20 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
     {
         $this->from = new SLN_DateTime(date("c", $_GET['from'] / 1000));
         $this->to   = new SLN_DateTime(date("c", $_GET['to'] / 1000));
+        $events = $this->getResults();
         $ret        = array(
             'success' => 1,
-            'result'  => $this->getResults(),
+            'result'  => array(
+                'events' => $events,
+                'stats' => $this->getStats($events)
+            )
         );
 
         return $ret;
+    }
+
+    private function getStats($events){
+        return array();
     }
 
     private function getResults()

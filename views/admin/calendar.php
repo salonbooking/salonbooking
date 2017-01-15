@@ -17,6 +17,66 @@ jQuery(function($){
     );
 });
 </script>
+<style>
+.day-calbar{
+    display: block;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    height: 5px;
+    width: 100%;
+    background-color: #dfdfdf;
+}
+.day-calbar .busy{
+    display: block;
+    background-color: red;
+    height: 5px;
+    float: left;
+}
+.day-calbar .free{
+    display: block;
+    height: 5px;
+    float: left;
+    background-color: green;
+}
+.week-calbar{
+    display: block;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    height: 5px;
+    width: 100%;
+    background-color: #dfdfdf;
+}
+.week-calbar .busy{
+    display: block;
+    background-color: red;
+    height: 5px;
+    float: left;
+}
+.week-calbar .free{
+    display: block;
+    height: 5px;
+    float: left;
+    background-color: green;
+}
+.month-calbar{
+    display: block;
+    height: 5px;
+    width: 100%;
+    background-color: #dfdfdf;
+}
+.month-calbar .busy{
+    display: block;
+    background-color: red;
+    height: 5px;
+    float: left;
+}
+.month-calbar .free{
+    display: block;
+    height: 5px;
+    float: left;
+    background-color: green;
+}
+</style>
 <div class="wrap sln-bootstrap">
     <h1><?php _e('Calendar','salon-booking-system')?> - <span class="current-view--title"></span></h1>
 </div>

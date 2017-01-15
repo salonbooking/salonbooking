@@ -47,7 +47,6 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
             }
             var list = $('#eventlist');
             list.html('');
-
             $.each(events, function (key, val) {
                 $(document.createElement('li'))
                     .html(val.event_html)
@@ -58,6 +57,10 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
             $('.current-view--title').text(this.getTitle());
             $('.btn-group button').removeClass('active');
             $('button[data-calendar-view="' + view + '"]').addClass('active');
+            $.each(sln_stats,function(key,val){
+                $('.calbar[data-day="'+key+'"]').attr('data-original-title', val);
+console.log([key,val]);
+            });
         },
         classes: {
             months: {

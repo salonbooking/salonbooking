@@ -1,6 +1,10 @@
 <div class="cal-month-day <%= cls %>">
+        <a class="calbar month-calbar" href="#" data-toggle="tooltip" title="test" data-day="<%= data_day %>">
+            <span class="busy" style="width: 30%"></span>
+            <span class="free" style="width: 20%"></span>
+        </a>
 	<span class="pull-right" data-cal-date="<%= data_day %>" data-cal-view="day" data-toggle="tooltip" title="<%= cal._trans('Go to daily view') %>"><%= day %></span>
-	<% if (events.length > 0) { %>
+	<% if (events.length  > 0) { %>
 		<div class="events-list" data-cal-start="<%= start %>" data-cal-end="<%= end %>">
 			<% _.each(events, function(event) { %>
 				<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>"

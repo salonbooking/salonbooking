@@ -6,7 +6,7 @@
  * User: Sergey Romanov <serg4172@mail.ru>
  */
 "use strict";
-
+var sln_stats = [];
 Date.prototype.getWeek = function() {
 	var onejan = new Date(this.getFullYear(), 0, 1);
 	return Math.ceil((((this.getTime() - onejan.getTime()) / 86400000) + onejan.getDay() + 1) / 7);
@@ -1014,7 +1014,8 @@ if(!String.prototype.formatNum) {
 								$.error(json.error);
 							}
 							if(json.result) {
-								events = json.result;
+								events = json.result.events;
+                                                                sln_stats = json.result.stats;
 							}
 						});
 						return events;
