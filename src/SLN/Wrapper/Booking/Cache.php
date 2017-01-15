@@ -79,7 +79,7 @@ class SLN_Wrapper_Booking_Cache
             $data['status'] = 'free';
         }
 
-        foreach ($ah->getDayBookings($day)->getTimeslots() as $k => $v) {
+        foreach ($ah->setDate($day)->getDayBookings()->getTimeslots() as $k => $v) {
             if ($v['booking'] || $v['service'] || $v['attendant']) {
                 $data['busy_slots'][$k] = $v;
             }
