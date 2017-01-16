@@ -58,7 +58,6 @@ class SLN_Wrapper_Booking_Cache
             $clone->modify('+1 days');
         }
         $this->save();
-
         return $this;
     }
 
@@ -66,6 +65,7 @@ class SLN_Wrapper_Booking_Cache
     {
         $ah = $this->ah;
         $data = array();
+        $ah->setDate($day);
         $data['free_slots'] = array_values($ah->getTimes($day));
         if (!$data['free_slots']) {
             if (!$ah->getItems()->isValidDate($day)) {
@@ -79,7 +79,7 @@ class SLN_Wrapper_Booking_Cache
             $data['status'] = 'free';
         }
 
-        foreach ($ah->getDayBookings($day)->getTimeslots() as $k => $v) {
+        foreach ($ah->getDayBookings()->getTimeslots() as $k => $v) {
             if ($v['booking'] || $v['service'] || $v['attendant']) {
                 $data['busy_slots'][$k] = $v;
             }

@@ -82,7 +82,7 @@ class SLN_Helper_Availability
 
     public function setDate(DateTime $date, SLN_Wrapper_Booking $booking = null)
     {
-        if (empty($this->date) || $this->date->format('Ymd') != $date->format('Ymd')) {
+        if (empty($this->date) || ($this->date->format('Ymd') != $date->format('Ymd'))) {
             $obj = SLN_Enum_AvailabilityModeProvider::getService(
                 $this->settings->getAvailabilityMode(),
                 $date,
