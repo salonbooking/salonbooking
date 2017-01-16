@@ -58,7 +58,6 @@ class SLN_Wrapper_Booking_Cache
             $clone->modify('+1 days');
         }
         $this->save();
-var_dump($this->settings);die();
         return $this;
     }
 
