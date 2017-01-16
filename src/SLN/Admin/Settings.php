@@ -248,7 +248,7 @@ class SLN_Admin_Settings
 
     public function processTabHomepage()
     {
-        if ($_POST['reset-settings'] == 'reset') {
+        if (isset($_POST['reset-settings']) && $_POST['reset-settings'] == 'reset') {
             $this->settings->clear();
             SLN_Action_Install::execute(true);
             $this->showAlert(
