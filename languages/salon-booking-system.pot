@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Salon Booking 3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-13 16:52+0100\n"
+"POT-Creation-Date: 2017-01-17 16:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Wordpress Chef <contact@wordpresschef.it>\n"
@@ -27,6 +27,34 @@ msgstr ""
 #: views/settings/tab_general.php:167 views/settings/tab_general.php:221
 #: views/settings/tab_general.php:316
 msgid "-"
+msgstr ""
+
+#: src/SLN/Action/Ajax/Calendar.php:35
+msgid "Booking Rule"
+msgstr ""
+
+#: src/SLN/Action/Ajax/Calendar.php:37
+msgid "Holiday Rule"
+msgstr ""
+
+#: src/SLN/Action/Ajax/Calendar.php:72
+msgid "bookings"
+msgstr ""
+
+#: src/SLN/Action/Ajax/Calendar.php:73
+msgid "revenue"
+msgstr ""
+
+#: src/SLN/Action/Ajax/Calendar.php:74
+msgid "hrs"
+msgstr ""
+
+#: src/SLN/Action/Ajax/Calendar.php:75
+msgid "mns"
+msgstr ""
+
+#: src/SLN/Action/Ajax/Calendar.php:76
+msgid "available left"
 msgstr ""
 
 #: src/SLN/Action/Ajax/CancelBooking.php:31
@@ -72,7 +100,7 @@ msgid ""
 msgstr ""
 
 #: src/SLN/Action/Ajax/CheckServices.php:145
-#: src/SLN/Helper/Availability.php:389
+#: src/SLN/Helper/Availability.php:380
 #, php-format
 msgid "You can select up to %d items"
 msgstr ""
@@ -101,6 +129,10 @@ msgstr ""
 
 #: src/SLN/Action/Ajax/SetCustomText.php:19
 msgid "You don't have permissions"
+msgstr ""
+
+#: src/SLN/Action/Init.php:209
+msgid "Weekly"
 msgstr ""
 
 #: src/SLN/Action/InitComments.php:31
@@ -142,7 +174,7 @@ msgstr ""
 msgid "Salon Calendar"
 msgstr ""
 
-#: src/SLN/Admin/Calendar.php:22 views/admin/calendar.php:21
+#: src/SLN/Admin/Calendar.php:22 views/admin/calendar.php:70
 msgid "Calendar"
 msgstr ""
 
@@ -238,7 +270,7 @@ msgstr ""
 msgid "Reports"
 msgstr ""
 
-#: src/SLN/Admin/Reports/AbstractReport.php:455 views/admin/calendar.php:61
+#: src/SLN/Admin/Reports/AbstractReport.php:455 views/admin/calendar.php:110
 msgid "Today"
 msgstr ""
 
@@ -345,7 +377,7 @@ msgstr ""
 msgid "No customers bookings"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:134 src/SLN/Admin/Settings.php:454
+#: src/SLN/Admin/Settings.php:134 src/SLN/Admin/Settings.php:456
 msgid "Salon Settings"
 msgstr ""
 
@@ -361,45 +393,45 @@ msgstr ""
 msgid "Reset completed with success"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:331
+#: src/SLN/Admin/Settings.php:329
 msgid "general settings are updated"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:332 src/SLN/Admin/Settings.php:387
-#: src/SLN/Admin/Settings.php:399 src/SLN/Admin/Settings.php:428
-#: src/SLN/Admin/Settings.php:522 src/SLN/Admin/Settings.php:563
+#: src/SLN/Admin/Settings.php:330 src/SLN/Admin/Settings.php:389
+#: src/SLN/Admin/Settings.php:401 src/SLN/Admin/Settings.php:430
+#: src/SLN/Admin/Settings.php:525 src/SLN/Admin/Settings.php:569
 msgid "Update completed with success"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:351
+#: src/SLN/Admin/Settings.php:349
 msgid "Test sms sent with success"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:386
+#: src/SLN/Admin/Settings.php:388
 msgid "booking settings are updated"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:398
+#: src/SLN/Admin/Settings.php:400
 msgid "checkout settings are updated"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:427
+#: src/SLN/Admin/Settings.php:429
 msgid "payments settings are updated"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:445
+#: src/SLN/Admin/Settings.php:447
 msgid "try again"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:446
+#: src/SLN/Admin/Settings.php:448
 msgid "Page verification failed"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:521
+#: src/SLN/Admin/Settings.php:524
 msgid "style settings are updated"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:562
+#: src/SLN/Admin/Settings.php:568
 msgid "Google Calendar settings are updated"
 msgstr ""
 
@@ -415,11 +447,11 @@ msgstr ""
 msgid "Reservations"
 msgstr ""
 
-#: src/SLN/Admin/Tools.php:101 views/admin/calendar.php:86
+#: src/SLN/Admin/Tools.php:101 views/admin/calendar.php:135
 msgid "from"
 msgstr ""
 
-#: src/SLN/Admin/Tools.php:102 views/admin/calendar.php:93
+#: src/SLN/Admin/Tools.php:102 views/admin/calendar.php:142
 msgid "to"
 msgstr ""
 
@@ -667,23 +699,23 @@ msgstr ""
 msgid "years"
 msgstr ""
 
-#: src/SLN/Helper/Availability.php:137
+#: src/SLN/Helper/Availability.php:128
 msgid "This assistant is not available for the selected service"
 msgstr ""
 
-#: src/SLN/Helper/Availability.php:153
+#: src/SLN/Helper/Availability.php:144
 msgid "This assistant is not available for any of the selected services"
 msgstr ""
 
-#: src/SLN/Helper/Availability.php:423
+#: src/SLN/Helper/Availability.php:414
 msgid "An assistant for selected services can't perform this service"
 msgstr ""
 
-#: src/SLN/Helper/Availability.php:462
+#: src/SLN/Helper/Availability.php:453
 msgid "You already selected service at"
 msgstr ""
 
-#: src/SLN/Helper/Availability.php:544
+#: src/SLN/Helper/Availability.php:535
 #: src/SLN/Helper/Availability/ErrorHelper.php:12
 msgid "Limit of parallels bookings at "
 msgstr ""
@@ -749,23 +781,23 @@ msgstr ""
 msgid "Booking details"
 msgstr ""
 
-#: src/SLN/Metabox/Booking.php:209 src/SLN/Shortcode/Salon/DetailsStep.php:94
+#: src/SLN/Metabox/Booking.php:212 src/SLN/Shortcode/Salon/DetailsStep.php:94
 msgid "First name can't be empty"
 msgstr ""
 
-#: src/SLN/Metabox/Booking.php:212 src/SLN/Shortcode/Salon/DetailsStep.php:97
+#: src/SLN/Metabox/Booking.php:215 src/SLN/Shortcode/Salon/DetailsStep.php:97
 msgid "Last name can't be empty"
 msgstr ""
 
-#: src/SLN/Metabox/Booking.php:216 src/SLN/Shortcode/Salon/DetailsStep.php:107
+#: src/SLN/Metabox/Booking.php:219 src/SLN/Shortcode/Salon/DetailsStep.php:107
 msgid "e-mail can't be empty"
 msgstr ""
 
-#: src/SLN/Metabox/Booking.php:219 src/SLN/Shortcode/Salon/DetailsStep.php:100
+#: src/SLN/Metabox/Booking.php:222 src/SLN/Shortcode/Salon/DetailsStep.php:100
 msgid "Mobile phone can't be empty"
 msgstr ""
 
-#: src/SLN/Metabox/Booking.php:228 src/SLN/Shortcode/Salon/DetailsStep.php:110
+#: src/SLN/Metabox/Booking.php:231 src/SLN/Shortcode/Salon/DetailsStep.php:110
 msgid "e-mail is not valid"
 msgstr ""
 
@@ -1369,47 +1401,47 @@ msgstr ""
 msgid "Go to daily view"
 msgstr ""
 
-#: views/admin/calendar.php:36 views/admin/calendar.php:108
+#: views/admin/calendar.php:85 views/admin/calendar.php:157
 msgid "Add new booking"
 msgstr ""
 
-#: views/admin/calendar.php:38
+#: views/admin/calendar.php:87
 msgid "Day"
 msgstr ""
 
-#: views/admin/calendar.php:41
+#: views/admin/calendar.php:90
 msgid "Week"
 msgstr ""
 
-#: views/admin/calendar.php:44
+#: views/admin/calendar.php:93
 msgid "Month"
 msgstr ""
 
-#: views/admin/calendar.php:47
+#: views/admin/calendar.php:96
 msgid "Year"
 msgstr ""
 
-#: views/admin/calendar.php:58
+#: views/admin/calendar.php:107
 msgid "Previous"
 msgstr ""
 
-#: views/admin/calendar.php:64
+#: views/admin/calendar.php:113
 msgid "Next"
 msgstr ""
 
-#: views/admin/calendar.php:78
+#: views/admin/calendar.php:127
 msgid "Export reservations into a CSV file"
 msgstr ""
 
-#: views/admin/calendar.php:102
+#: views/admin/calendar.php:151
 msgid "Export"
 msgstr ""
 
-#: views/admin/calendar.php:113
+#: views/admin/calendar.php:162
 msgid "Bookings status legend"
 msgstr ""
 
-#: views/admin/calendar.php:116
+#: views/admin/calendar.php:165
 msgid "or"
 msgstr ""
 
@@ -1619,6 +1651,57 @@ msgstr ""
 
 #: views/mail/summary_admin.php:38
 msgid "New booking for "
+msgstr ""
+
+#: views/mail/weekly_report.php:9
+msgid "Salon Booking weekly report"
+msgstr ""
+
+#: views/mail/weekly_report.php:21
+#, php-format
+msgid ""
+"Dear %s,\n"
+"these is a summary of what happened on your salon last week:"
+msgstr ""
+
+#: views/mail/weekly_report.php:34
+#, php-format
+msgid ""
+"You received a total of <strong>%s online reservations ( %s )</strong>, "
+"<strong>%s of them have been paid online ( %s )</strong> and <strong>%s have "
+"been paid later ( %s )</strong>."
+msgstr ""
+
+#: views/mail/weekly_report.php:54
+#, php-format
+msgid "<strong>%s reservations has been canceled</strong> from your customers."
+msgstr ""
+
+#: views/mail/weekly_report.php:70
+msgid "The <strong>most booked services</strong> have been:\n"
+msgstr ""
+
+#: views/mail/weekly_report.php:97
+msgid "The <strong>most booked assistants</strong> have been:\n"
+msgstr ""
+
+#: views/mail/weekly_report.php:128
+#, php-format
+msgid ""
+"The most booked day of the week has been <strong>%s</strong> when you "
+"received <strong>%s reservations</strong>."
+msgstr ""
+
+#: views/mail/weekly_report.php:147
+#, php-format
+msgid "This week you've got <strong>%s new online customers</strong>."
+msgstr ""
+
+#: views/mail/weekly_report.php:168
+#, php-format
+msgid ""
+"Your customer <strong>%s</strong> has been the most valuable one "
+"<strong>spending %s</strong> of your services."
 msgstr ""
 
 #: views/metabox/_booking_services.php:24
