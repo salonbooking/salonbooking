@@ -83,15 +83,16 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * PayPal
 * Stripe
 * Custom payment methods supported
-* official add-on for "Mollie", "Square" and "Worldpay"
+* official add-on for "Mollie", "Square", "Worldpay", "Paystack" and "RedSys"
 
 **Salon checkout options**
 
 * Enable guest checkout
 * Force guest checkout
 * Limit the number of services bookable at the same time
+* Control form fields
 
-**Google Calendar synchronisation** 
+**One-way Google Calendar synchronisation** 
 
 * Synchronise reservations on salon administrator's Google Calendar account
 
@@ -119,6 +120,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Multiple weekly timetable rules
 * No assistant required option
 * Service break
+* Condizional "Secondary services"
 
 **Customers archive**
 
@@ -132,6 +134,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Stats on reservations and revenues by services
 * Stats on reservations and revenues by assistant
 * Stats on reservations and revenues by customers
+* Email weekly report
 
 **Frontend pages**
 
@@ -184,7 +187,7 @@ The plugin supports php 5.3 and above version.
  
 = Is it possible to accept online payments? =
 
-Yes. At the moment you can accept payments from PayPal and Stripe. Furthermore we provide some guidelines for custom payment gateways support.
+Yes. At the moment you can accept payments from PayPal and Stripe. You can buy some of our official add-ons for others payments gateway.
 
 Do you need a custom payment gateway? Please contact us.
 
@@ -254,6 +257,18 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+17.02.2016
+
+* Untraslatable text strings
+* Problem with date picker - date selection automatic reset
+* Higlited fully booked dates
+* Improved fields validation
+* Fixed some bugs Booking My Account page
+* Minor restyling of reports stats
+* Fixed new conflicts bugs with Yoast plugin
+* Improved back-end calendar - representation of dayli availability, total reservations and total revenues per day
+
 
 13.12.2016
 
