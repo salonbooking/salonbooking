@@ -18,25 +18,18 @@ jQuery(function($){
 });
 </script>
 <style>
-.day-calbar{
-    display: block;
-    margin-top: -5px;
-    margin-bottom: 5px;
-    height: 5px;
-    width: 100%;
-    background-color: #dfdfdf;
-}
+.day-calbar,
 .week-calbar{
     display: block;
-    margin-top: -5px;
-    margin-bottom: 5px;
-    height: 5px;
+    margin-top: -8px;
+    margin-bottom: 8px;
+    height: 8px;
     width: 100%;
     background-color: #dfdfdf;
 }
 .month-calbar{
     display: block;
-    height: 5px;
+    height: 8px;
     width: 100%;
     background-color: #dfdfdf;
 }
