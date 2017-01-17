@@ -6,6 +6,8 @@ class SLN_Currency
         'AUD' => array('name' => 'Australian Dollar', 'symbol' => 'A$', 'ASCII' => 'A&#36;'),
         'UAH' => array('name' => 'Ukrainian Hryvnia', 'symbol' => '₴', 'ASCII' => '&#8372;'),
         'BRL' => array('name' => 'Brazilian Real', 'symbol' => 'R$', 'ASCII' => 'B&#36;'),
+        'BAN' => array('name' => 'Bosnia and Herzegovina
+convertible mark', 'symbol' => 'KM', 'ASCII' => ''),
         'CAD' => array('name' => 'Canadian Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
         'CZK' => array('name' => 'Czech Koruna', 'symbol' => 'Kč', 'ASCII' => ''),
         'DKK' => array('name' => 'Danish Krone', 'symbol' => 'Kr', 'ASCII' => ''),
