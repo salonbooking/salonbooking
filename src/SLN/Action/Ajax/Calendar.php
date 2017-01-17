@@ -43,8 +43,8 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
                         if (!$b->hasStatus(
                             array(
                                 SLN_Enum_BookingStatus::CANCELED,
-                                SLN_Enum_BookingStatus::PENDING,
-                                SLN_Enum_BookingStatus::PENDING_PAYMENT,
+//                                SLN_Enum_BookingStatus::PENDING,
+//                                SLN_Enum_BookingStatus::PENDING_PAYMENT,
                             )
                         )
                         ) {
