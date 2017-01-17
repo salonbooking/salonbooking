@@ -52,11 +52,32 @@
 <?php endif; ?>
 
 <tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
-    <td height="60" align="middle" valign="middle" bgcolor="#f2f2f2">
+    <td height="40" align="middle" valign="middle" bgcolor="#f2f2f2">
         <hr style="border: solid 1px #fff; margin: 0 16px;">
         <p style="margin-left: 49px; margin-right: 49px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#666666;"></p>
     </td>
 </tr>
+
+<?php if ((!isset($customer) || empty($customer)) && !isset($booking)): ?>
+    <tr style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #888;">
+        <td height="30" valign="top" bgcolor="#f2f2f2">
+            <div style="margin-left: 49px; margin-right: 49px; font-size: 12px;">
+                <?php
+                $footer = array();
+                $salonName = $plugin->getSettings()->getSalonName();
+                if (!empty($salonName)) {
+                    $footer[] = $salonName;
+                }
+                $salonAddress = $plugin->getSettings()->get('gen_address');
+                if (!empty($salonAddress)) {
+                    $footer[] = $salonAddress;
+                }
+                echo implode(', ', $footer);
+                ?>
+            </div>
+        </td>
+    </tr>
+<?php endif; ?>
 
 </table>
 </body>

@@ -22,8 +22,8 @@
         <td <?php echo ($logo ? 'width="259.5" align="center"' : 'width="55" align="left"'); ?> valign="top">
             <a href="#"><img src="<?php echo ($logo ? wp_get_attachment_image_url($logo, 'sln_gen_logo') : SLN_PLUGIN_URL.'/img/summary.png'); ?>" <?php echo ($logo ? '' : 'width="40"  height="41"') ?> alt="img1" border="0"></a>
         </td>
+        <td align="left" valign="top"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
           <?php if(isset($booking)): ?>
-            <td align="left" valign="top"><table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
               <tr>
                 <td height="20" align="left" valign="bottom" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#cccccc; font-weight:bold;"><?php _e('Booking ID','salon-booking-system') ?> <b style="color:#666666;"><?php echo $booking->getId() ?></b></td>
               </tr>
@@ -32,8 +32,15 @@
                                             $booking->getStatus()
                                         ) ?></b></td>
               </tr>
-            </table></td>
+          <?php else: ?>
+              <tr>
+                  <td height="20" align="left" valign="bottom" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#cccccc; font-weight:bold;"><b style="color:#666666;"></b></td>
+              </tr>
+              <tr>
+                  <td height="25" align="left" valign="bottom" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#cccccc; font-weight:bold;"><b style="color:#666666;"><?php echo $plugin->getSettings()->getSalonName(); ?></b></td>
+              </tr>
           <?php endif ?>
+        </table></td>
       </tr>
     </table></td>
 </tr>

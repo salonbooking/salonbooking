@@ -327,3 +327,9 @@ function sln_cancel_bookings()
     $obj = new SLN_Action_CancelBookings(SLN_Plugin::getInstance());
     $obj->execute();
 }
+
+function sln_email_weekly_report()
+{
+    $obj = new SLN_Action_WeeklyReport(SLN_Plugin::getInstance());
+    $obj->executeEmail();
+}
