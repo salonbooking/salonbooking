@@ -8,10 +8,8 @@
 	<div class="cal-row-fluid cal-row-head">
 		<% _.each(months, function(name) { %>
 			<div class="cal-cell1 <%= cal._getDayClass('week', start) %>" data-toggle="tooltip" title="<%= cal._getHolidayName(start) %>">
-        <a href="#" class="calbar week-calbar" data-toggle="tooltip" title="test" data-day="<%= start.getFullYear() %>-<%= start.getMonthFormatted() %>-<%= start.getDateFormatted() %>">
-            <span class="busy" style="width: 30%"></span>
-            <span class="free" style="width: 20%"></span>
-        </a>
+        <a href="#" class="calbar week-calbar" data-toggle="tooltip" data-html="true"
+		   data-day="<%= start.getFullYear() %>-<%= start.getMonthFormatted() %>-<%= start.getDateFormatted() %>"></a>
 <%= name %><br>
 				<small><span data-cal-date="<%= start.getFullYear() %>-<%= start.getMonthFormatted() %>-<%= start.getDateFormatted() %>" data-cal-view="day"><%= start.getDate() %> <%= cal.locale['ms' + start.getMonth()] %></span></small>
 			</div>

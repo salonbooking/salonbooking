@@ -1,7 +1,6 @@
-<a class="calbar day-calbar" data-toggle="tooltip" title="test" href="#" data-day="<%= start.getFullYear() %>-<%= start.getMonthFormatted() %>-<%= start.getDateFormatted() %>" data-stats="<%= stats %>">
-     <span class="busy" style="width: 30%"></span>
-     <span class="free" style="width: 20%"></span>
-</a>
+<a class="calbar day-calbar" data-toggle="tooltip" href="#"
+   data-day="<%= start.getFullYear() %>-<%= start.getMonthFormatted() %>-<%= start.getDateFormatted() %>"
+   data-html="true"></a>
 <div id="cal-day-box">
 	<div class="row-fluid clearfix cal-row-head">
 		<div class="span1 col-xs-1 cal-cell"><%= cal.locale.time %></div>

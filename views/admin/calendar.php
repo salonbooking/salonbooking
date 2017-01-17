@@ -26,18 +26,6 @@ jQuery(function($){
     width: 100%;
     background-color: #dfdfdf;
 }
-.day-calbar .busy{
-    display: block;
-    background-color: red;
-    height: 5px;
-    float: left;
-}
-.day-calbar .free{
-    display: block;
-    height: 5px;
-    float: left;
-    background-color: green;
-}
 .week-calbar{
     display: block;
     margin-top: -5px;
@@ -46,35 +34,43 @@ jQuery(function($){
     width: 100%;
     background-color: #dfdfdf;
 }
-.week-calbar .busy{
-    display: block;
-    background-color: red;
-    height: 5px;
-    float: left;
-}
-.week-calbar .free{
-    display: block;
-    height: 5px;
-    float: left;
-    background-color: green;
-}
 .month-calbar{
     display: block;
     height: 5px;
     width: 100%;
     background-color: #dfdfdf;
 }
-.month-calbar .busy{
+.calbar .busy{
     display: block;
     background-color: red;
     height: 5px;
     float: left;
 }
-.month-calbar .free{
+.calbar .free{
     display: block;
     height: 5px;
     float: left;
     background-color: green;
+}
+.calbar-tooltip{
+    background-color: #c7dff3;
+    display: inline-block;
+    width: 340px;
+    height: 50px;
+    padding: 5px;
+    margin: -20px 0 -10px -80px;
+}
+.calbar-tooltip span{
+    float: left;
+    display: block;
+    width: 33%;
+    color: #666;
+}
+.calbar-tooltip strong{
+    font-size: 16px;
+    color: #0C6EB6;
+    display: block;
+    clear: both;
 }
 </style>
 <div class="wrap sln-bootstrap">

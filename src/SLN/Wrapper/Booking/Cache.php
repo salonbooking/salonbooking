@@ -126,4 +126,11 @@ class SLN_Wrapper_Booking_Cache
         $this->processDate($booking->getDate());
         $this->save();
     }
+
+    public function getDay(DateTime $day){
+        if(!isset($this->settings[$day->format('Y-m-d')])){
+            return;
+        }
+        return $this->settings[$day->format('Y-m-d')];
+    }
 }

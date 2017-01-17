@@ -57,9 +57,17 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
             $('.current-view--title').text(this.getTitle());
             $('.btn-group button').removeClass('active');
             $('button[data-calendar-view="' + view + '"]').addClass('active');
-            $.each(sln_stats,function(key,val){
-                $('.calbar[data-day="'+key+'"]').attr('data-original-title', val);
-console.log([key,val]);
+            $.each(sln_stats, function (key, val) {
+                var calbar = $('.calbar[data-day="' + key + '"]');
+                var append = '';
+                if (val.busy > 0) {
+                    append += '<span class="busy" style="width: ' + val.busy + '%"></span>';
+                }
+                if (val.free > 0) {
+                    append += '<span class="free" style="width: ' + val.free + '%"></span>';
+                }
+                calbar.attr('data-original-title', val.text).html(append);
+
             });
         },
         classes: {
