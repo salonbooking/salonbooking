@@ -114,8 +114,6 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
 
         $bookingServices = SLN_Wrapper_Booking_Services::build($services, $date);
 
-        $interval               = min(SLN_Enum_Interval::toArray());
-
         $firstSelectedAttendant = null;
 
 
@@ -126,7 +124,7 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
             if ($bookingServices->isLast($bookingService) && $bookingOffsetEnabled) {
                 $offsetStart   = $bookingService->getEndsAt();
                 $offsetEnd     = $bookingService->getEndsAt()->modify('+'.$bookingOffset.' minutes');
-                $serviceErrors = $ah->validateTimePeriod($interval, $offsetStart, $offsetEnd);
+                $serviceErrors = $ah->validateTimePeriod($offsetStart, $offsetEnd);
             }
             if (empty($serviceErrors)) {
                 $serviceErrors = $ah->validateService($bookingService->getService(), $bookingService->getStartsAt(), $bookingService->getTotalDuration(), $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());

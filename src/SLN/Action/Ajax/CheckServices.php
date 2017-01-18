@@ -134,7 +134,6 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
         $bookingOffsetEnabled   = $settings->get('reservation_interval_enabled');
         $bookingOffset          = $settings->get('minutes_between_reservation');
         $isMultipleAttSelection = $settings->get('m_attendant_enabled');
-        $interval               = min(SLN_Enum_Interval::toArray());
 
         $firstSelectedAttendant = null;
         foreach ($bookingServices->getItems() as $bookingService) {
@@ -149,7 +148,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 if (empty($serviceErrors) && $bookingServices->isLast($bookingService) && $bookingOffsetEnabled) {
                     $offsetStart   = $bookingService->getEndsAt();
                     $offsetEnd     = $bookingService->getEndsAt()->modify('+'.$bookingOffset.' minutes');
-                    $serviceErrors = $this->ah->validateTimePeriod($interval, $offsetStart, $offsetEnd);
+                    $serviceErrors = $this->ah->validateTimePeriod($offsetStart, $offsetEnd);
                 }
 
                 if (empty($serviceErrors)) {

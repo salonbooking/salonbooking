@@ -370,7 +370,7 @@ class SLN_Helper_Availability
         $bookingOffsetEnabled = $s->get('reservation_interval_enabled');
         $bookingOffset = $s->get('minutes_between_reservation');
         $isMultipleAttSelection = $s->get('m_attendant_enabled');
-        $interval = min(SLN_Enum_Interval::toArray());
+        $interval = $this->settings->getInterval();
         $servicesCount = $this->settings->get('services_count');
 
         foreach ($newServices as $service) {
@@ -394,7 +394,7 @@ class SLN_Helper_Availability
 			                $offsetStart = $bookingService->getEndsAt();
 			                $offsetEnd = clone $offsetStart;
 			                $offsetEnd->modify('+'.$bookingOffset.' minutes');
-			                $serviceErrors = $this->validateTimePeriod($interval, $offsetStart, $offsetEnd);
+			                $serviceErrors = $this->validateTimePeriod($offsetStart, $offsetEnd);
 		                }
 
 		                if (empty($serviceErrors)) {
@@ -510,7 +510,6 @@ class SLN_Helper_Availability
         $endAt->modify('+'.SLN_Func::getMinutesFromDuration($duration).'minutes');
 
         $attendants = $service->getAttendants();
-        $interval = min(SLN_Enum_Interval::toArray());
         $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $startAt, $endAt);
         foreach ($times as $time) {
             foreach ($attendants as $k => $attendant) {
@@ -526,7 +525,7 @@ class SLN_Helper_Availability
         return $ret;
     }
 
-    public function validateTimePeriod($interval, $start, $end)
+    public function validateTimePeriod($start, $end)
     {
         $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $start, $end);
         foreach ($times as $time) {

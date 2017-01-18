@@ -7,6 +7,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
     protected $bookings;
     protected $timeslots;
     protected $date;
+    protected $interval;
     protected $minutesIntervals;
     protected $ignoreServiceBreaks = true;
 
@@ -23,7 +24,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
 
     public function __construct(DateTime $date, SLN_Wrapper_Booking $booking = null)
     {
-        $interval = min(SLN_Enum_Interval::toArray());
+        $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
         $this->minutesIntervals = SLN_Func::getMinutesIntervals($interval);
         $this->date = $date;
         $this->currentBooking = $booking;
