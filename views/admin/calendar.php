@@ -36,12 +36,12 @@ jQuery(function($){
 .calbar .busy{
     display: block;
     background-color: red;
-    height: 5px;
+    height: 8px;
     float: left;
 }
 .calbar .free{
     display: block;
-    height: 5px;
+    height: 8px;
     float: left;
     background-color: green;
 }
