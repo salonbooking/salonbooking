@@ -287,31 +287,34 @@ class SLN_Helper_Availability
     public function validateServiceFromOrder(SLN_Wrapper_ServiceInterface $service, SLN_Wrapper_Booking_Services $bookingServices)
     {
         if($service->isSecondary()) {
-            foreach($bookingServices->getItems() as $bookingService) {
-                if ($bookingService->getService()->getId() !== $service->getId() && !$bookingService->getService()->isSecondary()) {
-                    if ($service->getMeta('secondary_display_mode') === 'service') {
-                        if(in_array($bookingService->getService()->getId(), (array)$service->getMeta('secondary_parent_services'))) {
-                            return array();
+            $serviceDisplayMode = $service->getMeta('secondary_display_mode');
+            if ($serviceDisplayMode !== 'always') {
+                foreach($bookingServices->getItems() as $bookingService) {
+                    if ($bookingService->getService()->getId() !== $service->getId() && !$bookingService->getService()->isSecondary()) {
+                        if ($serviceDisplayMode === 'service') {
+                            if(in_array($bookingService->getService()->getId(), (array)$service->getMeta('secondary_parent_services'))) {
+                                return array();
+                            }
+                        }
+                        elseif ($serviceDisplayMode === 'category') {
+                            $serviceCategories = wp_get_post_terms($service->getId(), 'sln_service_category', array( "fields" => "ids" ) );
+                            $serviceCategory   = reset($serviceCategories);
+
+                            $bServiceCategories = wp_get_post_terms($bookingService->getService()->getId(), 'sln_service_category', array( "fields" => "ids" ) );
+                            if(in_array($serviceCategory, $bServiceCategories)) {
+                                return array();
+                            }
                         }
                     }
-                    else {
-                        $serviceCategories = wp_get_post_terms($service->getId(), 'sln_service_category', array( "fields" => "ids" ) );
-                        $serviceCategory   = reset($serviceCategories);
+                }
 
-	                    $bServiceCategories = wp_get_post_terms($bookingService->getService()->getId(), 'sln_service_category', array( "fields" => "ids" ) );
-	                    if(in_array($serviceCategory, $bServiceCategories)) {
-		                    return array();
-	                    }
-                    }
+                if ($serviceDisplayMode === 'service') {
+                    return SLN_Helper_Availability_ErrorHelper::doSecondaryServiceNotAvailableWOParentService($service);
+                }
+                elseif ($serviceDisplayMode === 'category') {
+                    return SLN_Helper_Availability_ErrorHelper::doSecondaryServiceNotAvailableWOSameCategoryPrimaryService($service);
                 }
             }
-
-	        if ($service->getMeta('secondary_display_mode') === 'service') {
-		        return SLN_Helper_Availability_ErrorHelper::doSecondaryServiceNotAvailableWOParentService($service);
-	        }
-	        else {
-		        return SLN_Helper_Availability_ErrorHelper::doSecondaryServiceNotAvailableWOSameCategoryPrimaryService($service);
-	        }
         }
 
 	    return array();
