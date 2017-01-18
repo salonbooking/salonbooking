@@ -30,6 +30,7 @@ $helper->showNonce($postType);
             <?php SLN_Form::fieldSelect(
                 $helper->getFieldName($postType, 'secondary_display_mode'),
                 array(
+                    'always'   => __('always', 'salon-booking-system'),
                     'category' => __('belong to the same category', 'salon-booking-system'),
                     'service'  => __('is child of selected service', 'salon-booking-system'),
                 ),
