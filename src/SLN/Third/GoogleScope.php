@@ -780,7 +780,7 @@ function synch_a_booking($post_id, $post, $sync = false) {
     //$event->setRecurrence(array('RRULE:FREQ = WEEKLY; UNTIL = 20121231'));
     switch ($post->post_type) { // Do different things based on the post type
         case "sln_booking":
-            $booking = new SLN_Wrapper_Booking($post);
+            $booking = new SLN_Wrapper_Booking($post_id);
 
             sln_my_wp_log($post);
             sln_my_wp_log($booking);
