@@ -189,7 +189,7 @@ function sln_adminDate($) {
                     $('#sln-notifications').html('').append('<div class="alert alert-success">' + $('#sln-notifications').data('valid-message') + '</div>');
 
                 }
-                //bindIntervals(data.intervals);
+                bindIntervals(data.intervals);
                 sln_checkServices($);
             }
         });
