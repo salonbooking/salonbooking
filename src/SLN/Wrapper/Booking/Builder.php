@@ -284,16 +284,15 @@ class SLN_Wrapper_Booking_Builder
                 'post_title' => $name.' - '.$datetime,
             )
         );
-        $deposit = $settings->get('pay_deposit');
-        $this->data['amount'] = $this->getTotal();
-        if ($deposit > 0) {
-            $this->data['deposit'] = ($this->data['amount'] / 100) * $deposit;
-        }
+
+        do_action('sln.booking_builder.create', $this);
+
         foreach ($this->data as $k => $v) {
             update_post_meta($id, '_'.SLN_Plugin::POST_TYPE_BOOKING.'_'.$k, $v);
         }
         $this->clear($id);
         $this->getLastBooking()->evalBookingServices();
+        $this->getLastBooking()->evalTotal();
         $this->getLastBooking()->evalDuration();
         $this->getLastBooking()->setStatus($status);
 

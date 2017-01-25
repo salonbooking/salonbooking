@@ -25,6 +25,21 @@ final class SLN_Wrapper_Booking_Services {
 	}
 
 	/**
+	 * @return int
+	 */
+	public function getCount() {
+		return count($this->getItems());
+	}
+
+	/**
+	 * @return null|SLN_Wrapper_Booking_Service
+	 */
+	public function getFirstItem() {
+		$items = $this->getItems();
+		return empty($items) ? null : reset($items);
+	}
+
+	/**
 	 * @param int $serviceId
 	 *
 	 * @return false|SLN_Wrapper_Booking_Service
@@ -84,7 +99,7 @@ final class SLN_Wrapper_Booking_Services {
 			$break    = null;
 
 			$service = SLN_Plugin::getInstance()->createService($sId);
-                        $service = apply_filters('sln.booking_services.buildService', $service);
+            $service = apply_filters('sln.booking_services.buildService', $service);
 
 			if (is_array($item)) {
 				if (isset($item['attendant'])) {

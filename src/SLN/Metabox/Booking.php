@@ -106,6 +106,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         /** @var SLN_Wrapper_Booking $booking */
         $booking = $this->getPlugin()->createFromPost($post_id);
         $booking->evalBookingServices();
+        $booking->evalTotal();
         $booking->evalDuration();
         $this->disabledSavePost = true;
         $booking->setStatus($booking->getStatus());

@@ -58,7 +58,7 @@ abstract class SLN_Shortcode_Salon_Step
 
     abstract protected function dispatchForm();
 
-    protected function addError($err)
+    public function addError($err)
     {
         $this->errors[] = $err;
     }
@@ -66,6 +66,10 @@ abstract class SLN_Shortcode_Salon_Step
     public function getErrors()
     {
         return $this->errors;
+    }
+
+    public function hasErrors() {
+        return !empty($this->errors);
     }
 
 }

@@ -152,12 +152,17 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     {
         $t = 0;
         SLN_Plugin::addLog(__CLASS__.' eval total of'.$this->getId());
-        foreach ($this->getServices() as $s) {
-            $d = $s->getPrice();
+        foreach ($this->getBookingServices()->getItems() as $bookingService) {
+            $d = $bookingService->getPrice();
             $t += $d;
-            SLN_Plugin::addLog(' - service '.$s.' +'.$d);
+            SLN_Plugin::addLog(' - service '.$bookingService->getService().' +'.$d);
         }
         $this->setMeta('amount', $t);
+
+        $deposit = SLN_Plugin::getInstance()->getSettings()->get('pay_deposit');
+        if ($deposit > 0) {
+            $this->setMeta('deposit', ($t / 100) * $deposit);
+        }
 
         return $t;
     }

@@ -54,4 +54,5 @@ $size = SLN_Enum_ShortcodeStyle::getSize($style);
         </div>
     </div>
     <?php include '_salon_summary_'.$size.'.php'; ?>
+    <?php include '_errors.php'; ?>
 </form>
