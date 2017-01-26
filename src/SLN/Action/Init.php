@@ -75,9 +75,6 @@ class SLN_Action_Init
         add_action('admin_notices', array($this, 'hook_admin_notices'));
         $this->initAjax();
         new SLN_Action_InitComments($p);
-        if ($this->isSalonPluginPage()) {
-            add_filter('script_loader_src', array($this, 'hook_script_loader_src'), 10, 2);
-        }
     }
 
     private function initFrontend()
@@ -159,12 +156,6 @@ class SLN_Action_Init
         }
     }
 
-    public function hook_script_loader_src($src, $handle) {
-        if (!preg_match('/\/select2\./', $src) || preg_match('/salon/', $src)) {
-            return $src;
-        }
-    }
-
     public function initPolylangSupport()
     {
         add_filter('pll_get_post_types', array($this, 'hook_pll_get_post_types'));
@@ -219,43 +210,5 @@ class SLN_Action_Init
         );
 
         return $schedules;
-    }
-
-    public function isSalonPluginPage() {
-        $ret = (
-            isset($_REQUEST['page']) &&
-            in_array(
-                $_REQUEST['page'],
-                array(
-                    SLN_Admin_Calendar::PAGE,
-                    SLN_Admin_Tools::PAGE,
-                    SLN_Admin_Customers::PAGE,
-                    SLN_Admin_Reports::PAGE,
-                    SLN_Admin_Settings::PAGE
-                )
-            ) ||
-            isset($_REQUEST['post_type']) &&
-            in_array(
-                $_REQUEST['post_type'],
-                array(
-                    SLN_Plugin::POST_TYPE_BOOKING,
-                    SLN_Plugin::POST_TYPE_ATTENDANT,
-                    SLN_Plugin::POST_TYPE_SERVICE,
-                )
-            ) ||
-            !empty($_REQUEST['post']) &&
-            in_array(
-                get_post_type($_REQUEST['post']),
-                array(
-                    SLN_Plugin::POST_TYPE_BOOKING,
-                    SLN_Plugin::POST_TYPE_ATTENDANT,
-                    SLN_Plugin::POST_TYPE_SERVICE,
-                )
-            )
-        );
-
-        $ret = apply_filters('sln.action.init.isSalonPluginPage', $ret);
-
-        return $ret;
     }
 }

@@ -310,6 +310,8 @@ class SLN_Func
     public static function isSalonPage()
     {
         global $pagenow, $post;
+        $ret = false;
+
         $types = array(SLN_Plugin::POST_TYPE_SERVICE, SLN_Plugin::POST_TYPE_ATTENDANT, SLN_Plugin::POST_TYPE_BOOKING);
         $pt = null; 
         if($pagenow == 'post.php' && $post)
@@ -317,12 +319,15 @@ class SLN_Func
         elseif($pagenow == 'edit.php' || $pagenow == 'post-new.php')
             $pt = $_GET['post_type'];
         if($pt){
-            return strpos($pt, 'sln_') === 0;
+            $ret = strpos($pt, 'sln_') === 0;
         }
         if($pagenow == 'admin.php'){
-            return isset($_GET['page']) && strpos($_GET['page'], 'salon') === 0;
+            $ret = isset($_GET['page']) && strpos($_GET['page'], 'salon') === 0;
         }
-        return false;
+
+        $ret = apply_filters('sln.func.isSalonPage', $ret);
+
+        return $ret;
     }
 
 
