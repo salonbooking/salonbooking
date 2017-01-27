@@ -5563,17 +5563,23 @@ body.salone_page_salon-tools #wpwrap {
     #sln-salon--admin .statistics_block .statistics_row span, .sln-calendar--wrapper .statistics_block .statistics_row span {
       font-size: larger;
       font-weight: bold; }
+
 #sln-salon--admin .text-center, .sln-calendar--wrapper .text-center {
   text-align: center; }
+
 #sln-salon--admin .report-statistics, .sln-calendar--wrapper .report-statistics {
   padding: 0 30px 20px 30px;
   width: 720px; }
+
 #sln-salon--admin .report-statistics .row, .sln-calendar--wrapper .report-statistics .row {
   padding: 10px 0px; }
+
 #sln-salon--admin .report-statistics .row:not(:last-child), .sln-calendar--wrapper .report-statistics .row:not(:last-child) {
   border-bottom: 0.1rem solid black; }
+
 #sln-salon--admin .report-statistics .row:nth-child(3), .sln-calendar--wrapper .report-statistics .row:nth-child(3) {
   font-size: larger; }
+
 #sln-salon--admin .report-statistics .row:nth-child(4), .sln-calendar--wrapper .report-statistics .row:nth-child(4) {
   font-weight: bold; }
 
@@ -6153,6 +6159,53 @@ body.salone_page_salon-tools #wpwrap {
           padding: 0 0.5rem;
           font-size: 0.75rem;
           line-height: 1.875rem; }
+
+.sln-calendar--wrapper.sln-calendar--wrapper--loading {
+  position: relative; }
+  .sln-calendar--wrapper.sln-calendar--wrapper--loading:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #c5cfd4;
+    z-index: 999999; }
+  .sln-calendar--wrapper.sln-calendar--wrapper--loading:after {
+    display: block;
+    content: '';
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 60px;
+    left: calc(50% - 30px);
+    border-radius: 50%;
+    border: 10px solid #4c7186;
+    border-right-color: transparent;
+    z-index: 999999;
+    -webkit-animation: wait 2s infinite linear;
+    animation: wait 2s infinite linear; }
+
+@-webkit-keyframes wait {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes wait {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
 
 .select2-container.sln-select .select2-choice, .select2-container.sln-select .select2-choices,
 .select2-container-multi.sln-select-- .select2-choice,

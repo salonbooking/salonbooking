@@ -724,6 +724,63 @@ body.salone_page_salon-tools {
     }
     @import 'admin_components/admin_calendar';
 }
+.sln-calendar--wrapper.sln-calendar--wrapper--loading {
+    position: relative;
+    * {
+        //opacity: 0;
+    }
+    &:before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $cl_main--light--border;
+        z-index: 999999;
+    }
+    &:after {
+        display: block;
+        content: '';
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top: 60px;
+        left: calc(50% - 30px);
+        border-radius: 50%;
+        border: 10px solid $cl_main--medium;
+        border-right-color: transparent;
+        z-index: 999999;
+        -webkit-animation: wait 2s infinite linear;
+        animation: wait 2s infinite linear;
+    }
+}
+@-webkit-keyframes wait {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wait {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 // CALENDAR // EN
 // /// SETTINGS END
 

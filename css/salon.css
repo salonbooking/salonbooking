@@ -2746,12 +2746,10 @@ ul.sln-list--dashed,
 .alert > ul {
   padding-bottom: 0; }
 
-
 td.day.disabled.full {
-    background: #ff0000;
-    color: white;
-}
+  background: #ff0000;
+  color: white; }
+
 td.day.disabled.full:hover {
-    background: #FF6666;
-    color: white;
-}
+  background: #FF6666;
+  color: white; }

@@ -59,4 +59,12 @@ jQuery(function ($) {
             $target.addClass('hide');
         }
     });
+    //$( document ).ajaxComplete(function( event, request, settings ) {
+    //  alert('test al');
+    //});
+    $(window).bind("load", function() {
+        if ( $( ".sln-calendar--wrapper" ).length ) {
+            $('.sln-calendar--wrapper').removeClass('sln-calendar--wrapper--loading');
+        }
+    });
 });
