@@ -314,8 +314,14 @@ class SLN_Func
 
         $types = array(SLN_Plugin::POST_TYPE_SERVICE, SLN_Plugin::POST_TYPE_ATTENDANT, SLN_Plugin::POST_TYPE_BOOKING);
         $pt = null; 
-        if($pagenow == 'post.php' && $post)
-            $pt = $post->post_type;
+        if($pagenow == 'post.php') {
+            if ($post) {
+                $pt = $post->post_type;
+            }
+            elseif ($_REQUEST['post']) {
+                $pt = get_post_type($_REQUEST['post']);
+            }
+        }
         elseif($pagenow == 'edit.php' || $pagenow == 'post-new.php')
             $pt = $_GET['post_type'];
         if($pt){
