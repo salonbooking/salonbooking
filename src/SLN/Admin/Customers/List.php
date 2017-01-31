@@ -107,8 +107,7 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 		$args[] = $offset;
 		$args[] = $limit;
 
-		$query  = $wpdb->prepare(
-				"SELECT DISTINCT ID
+		$sqlSelect = "SELECT DISTINCT ID
 
 FROM {$wpdb->prefix}users AS users
 INNER JOIN {$wpdb->prefix}usermeta AS usermeta1 ON ( users.ID = usermeta1.user_id )
@@ -117,11 +116,13 @@ $join
 WHERE
     ( usermeta1.meta_key = '{$wpdb->prefix}capabilities' AND usermeta1.meta_value LIKE %s )
     $where
-ORDER BY ".$wpdb->_real_escape($orderby)." ".$wpdb->_real_escape($order)." LIMIT %d, %d",
+ORDER BY ".$wpdb->_real_escape($orderby)." ".$wpdb->_real_escape($order)." LIMIT %d, %d";
+
+		$querySelect = $wpdb->prepare(
+				$sqlSelect,
 				$args
 		);
-		$users = $wpdb->get_results($query);
-
+		$users = $wpdb->get_results($querySelect);
 		$items = array();
 
 		foreach($users as $user) {
@@ -130,8 +131,14 @@ ORDER BY ".$wpdb->_real_escape($orderby)." ".$wpdb->_real_escape($order)." LIMIT
 
 		$this->items = $items;
 
+		$sqlCount = str_replace(array('DISTINCT ID', 'LIMIT %d, %d'), array('COUNT(DISTINCT ID)', ''), $sqlSelect);
+		$queryCount = $wpdb->prepare(
+				$sqlCount,
+				$args
+		);
+
 		$this->set_pagination_args( array(
-			'total_items' => count($this->items),
+			'total_items' => $wpdb->get_var($queryCount),
 			'per_page'    => $users_per_page,
 		) );
 	}
