@@ -27,6 +27,12 @@ function sln_init($) {
     if ($('#salon-step-date').length) {
         sln_stepDate($);
     } else {
+        if ($('#salon-step-details').length) {
+            $('a.tec-link').click(function (e) {
+                e.preventDefault();
+                window.location.href = $(this).attr('href') + '&redirect_to=' + encodeURI(window.location.href)
+            });
+        }
         $('[data-salon-toggle="next"]').click(function (e) {
             var form = $(this).closest('form');
             $('#sln-salon input.sln-invalid').removeClass('sln-invalid');
@@ -381,7 +387,7 @@ function initTimepickers($) {
                     if($(this).is(':focus'));
                         $(this).blur();
                 })
- 
+
                .data('datetimepicker').picker;
             picker.addClass('timepicker');
         }

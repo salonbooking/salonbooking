@@ -17,23 +17,32 @@ $values = array(
     'email'     => $current_user->user_email,
     'phone'     => get_user_meta($current_user->ID, '_sln_phone', true)
 );
+
+ob_start();
+?>
+<label for="login_name"><?php _e('E-mail') ?></label>
+<input name="login_name" type="text" class="sln-input sln-input--text"/>
+<span class="help-block"><a href="<?php echo wp_lostpassword_url() ?>" class="tec-link"><?php _e('Forgot password?', 'salon-booking-system') ?></a></span>
+<?php
+$fieldEmail = ob_get_clean();
+
+ob_start();
+?>
+<label for="login_password"><?php _e('Password') ?></label>
+<input name="login_password" type="password" class="sln-input sln-input--text"/>
+<?php
+$fieldPassword = ob_get_clean();
+
 ?>
 <?php if (!is_user_logged_in()): ?>
     <?php if (!$plugin->getSettings()->get('enabled_force_guest_checkout')): ?>
-    <form method="post" action="<?php echo $formAction ?>" role="form">
+    <form method="post" action="<?php echo $formAction ?>" role="form" id="salon-step-details">
         <h2 class="salon-step-title"><?php _e('Returning customer?', 'salon-booking-system') ?> <?php _e('Please, log-in.', 'salon-booking-system') ?> </h2>
     <?php
     if ($size == '900') { ?>
         <div class="row">
-            <div class="col-sm-6 col-md-4 sln-input sln-input--simple">
-                <label for="login_name"><?php _e('E-mail') ?></label>
-                <input name="login_name" type="text" class="sln-input sln-input--text"/>
-                <span class="help-block"><a href=" <?php echo wp_lostpassword_url($formAction) ?>" class="tec-link"><?php _e('Forgot password?', 'salon-booking-system') ?></a></span>
-            </div>
-            <div class="col-sm-6 col-md-4 sln-input sln-input--simple">
-                <label for="login_password"><?php _e('Password') ?></label>
-                <input name="login_password" type="password" class="sln-input sln-input--text"/>
-            </div>
+            <div class="col-sm-6 col-md-4 sln-input sln-input--simple"><?=$fieldEmail?></div>
+            <div class="col-sm-6 col-md-4 sln-input sln-input--simple"><?=$fieldPassword?></div>
             <div class="col-sm-6 col-md-4 pull-right sln-input sln-input--simple">
                 <label for="login_name">&nbsp;</label>
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
@@ -50,15 +59,8 @@ $values = array(
     // IF SIZE 900 // END
     } else if ($size == '600') { ?>
         <div class="row">
-            <div class="col-sm-6 col-md-6 sln-input sln-input--simple">
-                <label for="login_name"><?php _e('E-mail') ?></label>
-                <input name="login_name" type="text" class="sln-input sln-input--text"/>
-                <span class="help-block"><a href=" <?php echo wp_lostpassword_url($formAction) ?>" class="tec-link"><?php _e('Forgot password?', 'salon-booking-system') ?></a></span>
-            </div>
-            <div class="col-sm-6 col-md-6 sln-input sln-input--simple">
-                <label for="login_password"><?php _e('Password') ?></label>
-                <input name="login_password" type="password" class="sln-input sln-input--text"/>
-            </div>
+            <div class="col-sm-6 col-md-6 sln-input sln-input--simple"><?=$fieldEmail?></div>
+            <div class="col-sm-6 col-md-6 sln-input sln-input--simple"><?=$fieldPassword?></div>
         </div>
         <div class="row">
             <div class="col-sm-6 col-md-6"></div>
@@ -77,15 +79,8 @@ $values = array(
     // IF SIZE 600 // END
     } else if ($size == '400') { ?>
         <div class="row">
-            <div class="col-xs-12 sln-input sln-input--simple">
-                <label for="login_name"><?php _e('E-mail') ?></label>
-                <input name="login_name" type="text" class="sln-input sln-input--text"/>
-                <span class="help-block"><a href=" <?php echo wp_lostpassword_url($formAction) ?>" class="tec-link"><?php _e('Forgot password?', 'salon-booking-system') ?></a></span>
-            </div>
-            <div class="col-xs-12 sln-input sln-input--simple">
-                <label for="login_password"><?php _e('Password') ?></label>
-                <input name="login_password" type="password" class="sln-input sln-input--text"/>
-            </div>
+            <div class="col-xs-12 sln-input sln-input--simple"><?=$fieldEmail?></div>
+            <div class="col-xs-12 sln-input sln-input--simple"><?=$fieldPassword?></div>
             <div class="col-xs-12 sln-input sln-input--simple">
                 <label for="login_name">&nbsp;</label>
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
