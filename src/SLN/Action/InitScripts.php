@@ -16,6 +16,7 @@ class SLN_Action_InitScripts
             add_action('wp_print_scripts', array($this, 'hook_admin_print_scripts'));
             if (SLN_Func::isSalonPage()) {
                 add_filter('script_loader_src', array($this, 'hook_script_loader_src'), 10, 2);
+                add_filter('style_loader_src', array($this, 'hook_script_loader_src'), 10, 2);
             }
         }
         add_action('wp_enqueue_scripts', array($this, 'hook_enqueue_scripts'), 99999);
@@ -227,7 +228,7 @@ class SLN_Action_InitScripts
     }
 
     public function hook_script_loader_src($src, $handle) {
-        if (!preg_match('/\/select2\./', $src) || preg_match('/scope=sln/', $src)) {
+        if (!preg_match('/\/woocommerce\//', $src) && !preg_match('/\/select2\./', $src) || preg_match('/scope=sln/', $src)) {
             return $src;
         }
     }
