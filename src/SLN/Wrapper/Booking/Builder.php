@@ -268,7 +268,9 @@ class SLN_Wrapper_Booking_Builder
             $ret = $ret + SLN_Func::filter($s->getPrice(), 'float');
         }
 
-        return $ret;
+        $ret = apply_filters('sln.booking_builder.getTotal', $ret, $this);
+
+        return SLN_Func::filter($ret, 'float');
     }
 
     public function create()
