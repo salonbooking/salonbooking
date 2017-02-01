@@ -12,7 +12,7 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
         if (is_wp_error($errors)) {
             $this->addError($errors->get_error_message());
         }
-        wp_new_user_notification($errors); //, $values['password']);
+        wp_new_user_notification($errors, null, 'both'); //, $values['password']);
         if (!$this->dispatchAuth($values['email'], $values['password'])) {
             $this->bindValues($values);
             return false;

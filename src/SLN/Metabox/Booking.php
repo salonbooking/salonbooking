@@ -198,7 +198,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             add_user_meta($errors, '_sln_phone', $data['_sln_booking_phone']);
             add_user_meta($errors, '_sln_address', $data['_sln_booking_address']);
 
-            wp_new_user_notification($errors); //, $values['password']);
+            wp_new_user_notification($errors, null, 'both'); //, $values['password']);
         } else {
             $this->addError($errors->get_error_message());
         }
