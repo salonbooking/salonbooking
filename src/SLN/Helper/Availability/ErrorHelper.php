@@ -13,7 +13,7 @@ class SLN_Helper_Availability_ErrorHelper
         );
     }
 
-    public static function doSecondaryServiceNotAvailableWOParentService(SLN_Wrapper_Service $service)
+    public static function doSecondaryServiceNotAvailableWOParentService(SLN_Wrapper_ServiceInterface $service)
     {
         SLN_Plugin::addLog(
             __CLASS__.sprintf(' - service %s not available w/o parent service', $service)
@@ -24,7 +24,7 @@ class SLN_Helper_Availability_ErrorHelper
         );
     }
 
-    public static function doSecondaryServiceNotAvailableWOSameCategoryPrimaryService(SLN_Wrapper_Service $service)
+    public static function doSecondaryServiceNotAvailableWOSameCategoryPrimaryService(SLN_Wrapper_ServiceInterface $service)
     {
         SLN_Plugin::addLog(
             __CLASS__.sprintf(' - service %s not available w/o primary service in the same category', $service)
@@ -35,7 +35,7 @@ class SLN_Helper_Availability_ErrorHelper
         );
     }
 
-    public static function doServiceNotAvailableOnDate(SLN_Wrapper_Service $service, DateTime $time)
+    public static function doServiceNotAvailableOnDate(SLN_Wrapper_ServiceInterface $service, DateTime $time)
     {
         SLN_Plugin::addLog(
             __CLASS__.sprintf(' - service %s by date(%s) not available', $service, $time->format('Ymd H:i'))
@@ -47,7 +47,7 @@ class SLN_Helper_Availability_ErrorHelper
         );
     }
 
-    public static function doServiceNotEnoughTime(SLN_Wrapper_Service $service, DateTime $time)
+    public static function doServiceNotEnoughTime(SLN_Wrapper_ServiceInterface $service, DateTime $time)
     {
         SLN_Plugin::addLog(
             __CLASS__.sprintf(' - not enough time for service %s by date(%s)', $service, $time->format('Ymd H:i'))
@@ -58,7 +58,7 @@ class SLN_Helper_Availability_ErrorHelper
         );
     }
 
-    public static function doServiceFull(SLN_Wrapper_Service $service, DateTime $time)
+    public static function doServiceFull(SLN_Wrapper_ServiceInterface $service, DateTime $time)
     {
         SLN_Plugin::addLog(
             __CLASS__.sprintf(' - service %s by date(%s) busy', $service, $time->format('Ymd H:i'))
@@ -69,7 +69,7 @@ class SLN_Helper_Availability_ErrorHelper
         );
     }
 
-    public static function doServiceAllAttendantsBusy(SLN_Wrapper_Service $service, DateTime $time)
+    public static function doServiceAllAttendantsBusy(SLN_Wrapper_ServiceInterface $service, DateTime $time)
     {
         SLN_Plugin::addLog(
             __CLASS__.sprintf(
@@ -84,7 +84,7 @@ class SLN_Helper_Availability_ErrorHelper
         );
     }
 
-    public static function doAttendantNotAvailable(SLN_Wrapper_Attendant $attendant, DateTime $time)
+    public static function doAttendantNotAvailable(SLN_Wrapper_AttendantInterface $attendant, DateTime $time)
     {
         SLN_Plugin::addLog(
             __CLASS__.sprintf(' - attendant %s by date(%s) not available', $attendant, $time->format('Ymd H:i'))
@@ -94,7 +94,7 @@ class SLN_Helper_Availability_ErrorHelper
             __('This attendant is unavailable ', 'salon-booking-system').$attendant->getNotAvailableString(),
         );
     }
-    public static function doAttendantBusy(SLN_Wrapper_Attendant $attendant, DateTime $time)
+    public static function doAttendantBusy(SLN_Wrapper_AttendantInterface $attendant, DateTime $time)
     {
         SLN_Plugin::addLog(
             __CLASS__.sprintf(' - attendant %s by date(%s) busy', $attendant, $time->format('Ymd H:i'))

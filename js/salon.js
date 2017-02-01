@@ -30,7 +30,11 @@ function sln_init($) {
         if ($('#salon-step-details').length) {
             $('a.tec-link').click(function (e) {
                 e.preventDefault();
-                window.location.href = $(this).attr('href') + '&redirect_to=' + encodeURI(window.location.href)
+                var href = $(this).attr('href');
+                var locHref = window.location.href;
+                var hrefGlue = (href.indexOf('?') == -1) ? '?' : '&' ;
+                var locHrefGlue = (locHref.indexOf('?') == -1) ? '?' : '&';
+                window.location.href = href + hrefGlue +'redirect_to=' + encodeURI(locHref + locHrefGlue +'sln_step_page=details');
             });
         }
         $('[data-salon-toggle="next"]').click(function (e) {
