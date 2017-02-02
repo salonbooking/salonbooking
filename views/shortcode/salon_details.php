@@ -41,8 +41,8 @@ $fieldPassword = ob_get_clean();
     <?php
     if ($size == '900') { ?>
         <div class="row">
-            <div class="col-sm-6 col-md-4 sln-input sln-input--simple"><?=$fieldEmail?></div>
-            <div class="col-sm-6 col-md-4 sln-input sln-input--simple"><?=$fieldPassword?></div>
+            <div class="col-sm-6 col-md-4 sln-input sln-input--simple"><?php echo $fieldEmail?></div>
+            <div class="col-sm-6 col-md-4 sln-input sln-input--simple"><?php echo $fieldPassword?></div>
             <div class="col-sm-6 col-md-4 pull-right sln-input sln-input--simple">
                 <label for="login_name">&nbsp;</label>
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
@@ -59,8 +59,8 @@ $fieldPassword = ob_get_clean();
     // IF SIZE 900 // END
     } else if ($size == '600') { ?>
         <div class="row">
-            <div class="col-sm-6 col-md-6 sln-input sln-input--simple"><?=$fieldEmail?></div>
-            <div class="col-sm-6 col-md-6 sln-input sln-input--simple"><?=$fieldPassword?></div>
+            <div class="col-sm-6 col-md-6 sln-input sln-input--simple"><?php echo $fieldEmail?></div>
+            <div class="col-sm-6 col-md-6 sln-input sln-input--simple"><?php echo $fieldPassword?></div>
         </div>
         <div class="row">
             <div class="col-sm-6 col-md-6"></div>
@@ -79,8 +79,8 @@ $fieldPassword = ob_get_clean();
     // IF SIZE 600 // END
     } else if ($size == '400') { ?>
         <div class="row">
-            <div class="col-xs-12 sln-input sln-input--simple"><?=$fieldEmail?></div>
-            <div class="col-xs-12 sln-input sln-input--simple"><?=$fieldPassword?></div>
+            <div class="col-xs-12 sln-input sln-input--simple"><?php echo $fieldEmail?></div>
+            <div class="col-xs-12 sln-input sln-input--simple"><?php echo $fieldPassword?></div>
             <div class="col-xs-12 sln-input sln-input--simple">
                 <label for="login_name">&nbsp;</label>
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
