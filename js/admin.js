@@ -64,6 +64,7 @@ jQuery(function ($) {
     //});
     $(window).bind("load", function() {
         if ( $( ".sln-calendar--wrapper" ).length ) {
+            $('.sln-calendar--wrapper--sub').css('opacity', '1');
             $('.sln-calendar--wrapper').removeClass('sln-calendar--wrapper--loading');
         }
     });

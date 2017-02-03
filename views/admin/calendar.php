@@ -71,6 +71,7 @@ jQuery(function($){
 </div>
 <div class="clearfix"></div>
 <div class="container-fluid sln-calendar--wrapper sln-calendar--wrapper--loading">
+<div class="sln-calendar--wrapper--sub" style="opacity: 0;">
     <!--<div class="row">
         <div class="col-md-11">
             <div class="page-header pull-left">
@@ -168,5 +169,6 @@ jQuery(function($){
 </ul>
 <div class="clearfix"></div>
         </div>
+</div>
 </div>
 </div>
