@@ -44,7 +44,9 @@ class SLN_Shortcode_Salon
     private function dispatchStep($curr)
     {
         $found = false;
-        foreach ($this->getSteps() as $step) {
+
+        $steps = $this->maybeReverseSteps($this->getSteps());
+        foreach ($steps as $step) {
             if ($curr == $step || $found) {
                 $found = true;
                 $this->currentStep = $step;
@@ -216,6 +218,15 @@ class SLN_Shortcode_Salon
         }
 
         return apply_filters('sln.shortcode_salon.initSteps', $ret);
+    }
+
+    protected function maybeReverseSteps($steps) {
+        if (!(isset($_GET['submit_'.$this->getCurrentStep()]) && $_GET['submit_'.$this->getCurrentStep()] === 'next' ||
+            isset($_POST['submit_'.$this->getCurrentStep()]) && $_POST['submit_'.$this->getCurrentStep()] === 'next')) {
+            $steps = array_reverse($steps);
+        }
+
+        return $steps;
     }
 
     public function getStyleShortcode()

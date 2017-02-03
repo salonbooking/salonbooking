@@ -27,8 +27,21 @@ class SLN_Shortcode_Salon_SecondaryStep extends SLN_Shortcode_Salon_Step
         if (!isset($this->services)) {
             if (!isset($this->services)) {
                 /** @var SLN_Repository_ServiceRepository $repo */
-                $repo = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
-                $this->services = $repo->sortByExecAndTitleDESC($repo->getAllSecondary());
+                $repo     = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+                $services = $repo->getAllSecondary();
+
+                $bb = $this->getPlugin()->getBookingBuilder();
+                $ah = $this->getPlugin()->getAvailabilityHelper();
+                $ah->setDate($bb->getDateTime());
+                $bookingServices = $bb->getBookingServices();
+                foreach($services as $k => $service) {
+                    $errs = $ah->validateServiceFromOrder($service, $bookingServices);
+                    if (!empty($errs)) {
+                        unset($services[$k]);
+                    }
+                }
+
+                $this->services = $repo->sortByExecAndTitleDESC($services);
             }
         }
 
@@ -44,6 +57,12 @@ class SLN_Shortcode_Salon_SecondaryStep extends SLN_Shortcode_Salon_Step
     {
         $tmp = $this->getServices();
 
-        return (!empty($tmp)) && parent::isValid();
+        if (!empty($tmp)) {
+            return parent::isValid();
+        }
+        else {
+            parent::isValid();
+            return true;
+        }
     }
 }
