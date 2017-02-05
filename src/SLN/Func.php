@@ -318,7 +318,7 @@ class SLN_Func
             if ($post) {
                 $pt = $post->post_type;
             }
-            elseif ($_REQUEST['post']) {
+            elseif (isset($_REQUEST['post'])) {
                 $pt = get_post_type($_REQUEST['post']);
             }
         }

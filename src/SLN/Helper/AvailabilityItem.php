@@ -17,7 +17,7 @@ SLN_Helper_AvailabilityItem
         $this->data = $data;
         if ($data) {
             if ($data['from'][0] != '00:00') {
-                $this->times[] = array(
+                $this->times[]    = array(
                     strtotime($data['from'][0]),
                     strtotime($data['to'][0]),
                 );
@@ -28,7 +28,7 @@ SLN_Helper_AvailabilityItem
 
             }
             if ($data['from'][1] != '00:00') {
-                $this->times[] = array(
+                $this->times[]    = array(
                     strtotime($data['from'][1]),
                     strtotime($data['to'][1]),
                 );
@@ -52,15 +52,24 @@ SLN_Helper_AvailabilityItem
             $date = $date->format('Y-m-d');
         }
 
+        return $this->isValidDayOfPeriod($date) && $this->isValidDayOfWeek($date);
+    }
+
+    private function isValidDayOfPeriod($date)
+    {
         $timestampDate = strtotime($date);
         if (
             ($this->fromDate && $timestampDate < $this->fromDate)
             || ($this->toDate && $timestampDate > $this->toDate)
         ) {
             return false;
+        } else {
+            return true;
         }
+    }
 
-
+    private function isValidDayOfWeek($date)
+    {
         $dayOfTheWeek = date("w", strtotime($date)) + 1;
 
         return isset($this->data['days'][$dayOfTheWeek]) ? true : false;
@@ -68,11 +77,7 @@ SLN_Helper_AvailabilityItem
 
     public function isValidTime($date, $time)
     {
-        if (!$this->isValidDate($date)) {
-            return false;
-        }
-
-        return $this->checkTime($time);
+        return $this->isValidDate($date) && $this->checkTime($time);
     }
 
     private function checkTime($time)
@@ -101,20 +106,29 @@ SLN_Helper_AvailabilityItem
         return $this->offset;
     }
 
+    public function setOffset($offset)
+    {
+        return $this->offset = $offset;
+    }
+
     public function __toString()
     {
         $days = SLN_Func::getDays();
-        $ret = array();
+        $ret  = array();
         if (isset($this->data['days'])) {
             foreach ($this->data['days'] as $d => $v) {
                 $ret[] = $days[$d];
             }
         }
         $allDays = empty($ret);
-        $ret = implode('-', $ret);
-        $format = SLN_Plugin::getInstance()->format();
+        $ret     = implode('-', $ret);
+        $format  = SLN_Plugin::getInstance()->format();
         foreach ($this->timesTxt as $t) {
-            $ret .= sprintf(' %s/%s', $format->time(new DateTime('1970-01-01 '.$t[0])), $format->time(new DateTime('1970-01-01 '.$t[1])));
+            $ret .= sprintf(
+                ' %s/%s',
+                $format->time(new DateTime('1970-01-01 '.$t[0])),
+                $format->time(new DateTime('1970-01-01 '.$t[1]))
+            );
         }
         if (empty($ret)) {
             $ret = __('Always', 'salon-booking-system');

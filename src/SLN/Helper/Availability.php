@@ -11,6 +11,10 @@ class SLN_Helper_Availability
     /** @var  SLN_Helper_HoursBefore */
     private $hoursBefore;
     private $attendantsEnabled;
+    private $items;
+    private $itemsWithoutServiceOffset;
+    private $holidayItemsWithWeekDayRules;
+    private $holidayItems;
 
     public function __construct(SLN_Plugin $plugin)
     {
@@ -547,14 +551,29 @@ class SLN_Helper_Availability
     public function getItems()
     {
         if (!isset($this->items)) {
-            $duration = SLN_Plugin::getInstance()->getRepository(
-                SLN_Plugin::POST_TYPE_SERVICE
-            )->getMinPrimaryServiceDuration();
-            $offset = SLN_Func::getMinutesFromDuration($duration) * 60;
-            $this->items = new SLN_Helper_AvailabilityItems($this->settings->get('availabilities'), $offset);
+            $this->items = $this->settings->getNewAvailabilityItems();
+            $this->items->setOffset($this->getOffset());
         }
 
         return $this->items;
+    }
+
+    private function getOffset()
+    {
+        $duration = SLN_Plugin::getInstance()->getRepository(
+            SLN_Plugin::POST_TYPE_SERVICE
+        )->getMinPrimaryServiceDuration();
+
+        return SLN_Func::getMinutesFromDuration($duration) * 60;
+    }
+
+    public function resetItems()
+    {
+        $this->hoursBefore                  = null;
+        $this->items                        = null;
+        $this->itemsWithoutServiceOffset    = null;
+        $this->holidayItems                 = null;
+        $this->holidayItemsWithWeekDayRules = null;
     }
 
     /**
@@ -563,7 +582,7 @@ class SLN_Helper_Availability
     public function getItemsWithoutServiceOffset()
     {
         if (!isset($this->itemsWithoutServiceOffset)) {
-            $this->itemsWithoutServiceOffset = new SLN_Helper_AvailabilityItems($this->settings->get('availabilities'));
+            $this->itemsWithoutServiceOffset = $this->settings->getAvailabilityItems();
         }
 
         return $this->itemsWithoutServiceOffset;
@@ -574,10 +593,9 @@ class SLN_Helper_Availability
      */
     public function getHolidaysItems()
     {
-        if (!isset($this->holidayItems)) {
-            $this->holidayItems = new SLN_Helper_HolidayItems($this->settings->get('holidays'));
+        if(!isset($this->holidayItems)){
+            $this->holidayItems = $this->settings->getHolidayItems();
         }
-
         return $this->holidayItems;
     }
 
@@ -587,7 +605,8 @@ class SLN_Helper_Availability
     public function getHolidaysItemsWithWeekDayRules($weekDayRules)
     {
         if (!isset($this->holidayItemsWithWeekDayRules)) {
-            $this->holidayItemsWithWeekDayRules = new SLN_Helper_HolidayItems($this->settings->get('holidays'), $weekDayRules);
+            $this->holidayItemsWithWeekDayRules = $this->settings->getNewHolidayItems();
+            $this->holidayItemsWithWeekDayRules->setWeekDayRules($weekDayRules);
         }
 
         return $this->holidayItemsWithWeekDayRules;

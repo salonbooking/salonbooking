@@ -34,7 +34,8 @@ class SLN_Settings
         }
     }
 
-    public function all(){
+    public function all()
+    {
         return $this->settings;
     }
 
@@ -108,7 +109,7 @@ class SLN_Settings
     {
         return $this->get('thankyou');
     }
-    
+
     public function getBookingmyaccountPageId()
     {
         return $this->get('bookingmyaccount');
@@ -132,12 +133,12 @@ class SLN_Settings
 
     public function getDateFormat()
     {
-        return $this->get('date_format') ? $this->get('date_format') : SLN_Enum_DateFormat::_DEFAULT; 
+        return $this->get('date_format') ? $this->get('date_format') : SLN_Enum_DateFormat::_DEFAULT;
     }
 
     public function getTimeFormat()
     {
-        return $this->get('time_format') ? $this->get('time_format') : SLN_Enum_TimeFormat::_DEFAULT; 
+        return $this->get('time_format') ? $this->get('time_format') : SLN_Enum_TimeFormat::_DEFAULT;
     }
 
     public function getSalonName()
@@ -214,7 +215,8 @@ class SLN_Settings
     }
 
 
-    public function getCustomText($key) {
+    public function getCustomText($key)
+    {
         $custom_texts = $this->get('custom_texts');
         if (isset($custom_texts[$key]) && !empty($custom_texts[$key])) {
             return $custom_texts[$key];
@@ -223,14 +225,15 @@ class SLN_Settings
         return $key;
     }
 
-    public function setCustomText($key, $value) {
-        $custom_texts = $this->get('custom_texts');
+    public function setCustomText($key, $value)
+    {
+        $custom_texts       = $this->get('custom_texts');
         $custom_texts[$key] = $value;
         $this->set('custom_texts', $custom_texts);
 
         return true;
     }
-    
+
     public function isFormStepsAltOrder()
     {
         return $this->get('form_steps_alt_order') ? true : false;
@@ -238,7 +241,9 @@ class SLN_Settings
 
     public function getDecimalSeparator()
     {
-        return !is_null($this->get('pay_decimal_separator')) ? $this->get('pay_decimal_separator') : $this->getDecimalSeparatorDefault();
+        return !is_null($this->get('pay_decimal_separator')) ? $this->get(
+            'pay_decimal_separator'
+        ) : $this->getDecimalSeparatorDefault();
     }
 
     public function getDecimalSeparatorDefault()
@@ -248,7 +253,9 @@ class SLN_Settings
 
     public function getThousandSeparator()
     {
-        return !is_null($this->get('pay_thousand_separator')) ? $this->get('pay_thousand_separator') : $this->getThousandSeparatorDefault();
+        return !is_null($this->get('pay_thousand_separator')) ? $this->get(
+            'pay_thousand_separator'
+        ) : $this->getThousandSeparatorDefault();
     }
 
     public function getThousandSeparatorDefault()
@@ -261,7 +268,7 @@ class SLN_Settings
      */
     public function getAvailabilityItems()
     {
-        if ( ! isset($this->availabilityItems)) {
+        if (!isset($this->availabilityItems)) {
             $this->availabilityItems = new SLN_Helper_AvailabilityItems($this->get('availabilities'));
         }
 
@@ -269,15 +276,34 @@ class SLN_Settings
     }
 
     /**
+     * @return SLN_Helper_AvailabilityItems
+     */
+    public function getNewAvailabilityItems()
+    {
+        $ret = new SLN_Helper_AvailabilityItems($this->get('availabilities'));
+
+        return apply_filters('sln.settings.availability_items', $ret);
+    }
+
+    /**
      * @return SLN_Helper_HolidayItems
      */
     public function getHolidayItems()
     {
-        if ( ! isset($this->holidayItems)) {
+        if (!isset($this->holidayItems)) {
             $this->holidayItems = new SLN_Helper_HolidayItems($this->get('holidays'));
         }
 
         return apply_filters('sln.settings.availability_holiday_items', $this->holidayItems);
     }
 
+    /**
+     * @return SLN_Helper_HolidayItems
+     */
+    public function getNewHolidayItems()
+    {
+        $ret = new SLN_Helper_HolidayItems($this->get('holidays'));
+
+        return apply_filters('sln.settings.availability_holiday_items', $ret);
+    }
 }

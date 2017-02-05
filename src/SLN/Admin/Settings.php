@@ -363,7 +363,6 @@ class SLN_Admin_Settings
     public function processTabBooking()
     {
         $submitted = $_POST['salon_settings'];
-        $tmp = array();
         if (isset($submitted['availabilities'])) {
             $submitted['availabilities'] = SLN_Helper_AvailabilityItems::processSubmission(
                 $submitted['availabilities']

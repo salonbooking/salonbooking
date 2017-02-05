@@ -2,6 +2,7 @@
 
 class SLN_Helper_HolidayItems
 {
+    /** @var SLN_Helper_HolidayItem[] */
     private $items = array();
 
     public function __construct($holidays, $weekDayRules = null)
@@ -51,14 +52,27 @@ class SLN_Helper_HolidayItems
 
     public static function processSubmission($data = null)
     {
-        if(!$data) return $data;
+        if (!$data) {
+            return $data;
+        }
         $data = array_values($data);
         foreach ($data as &$holidayData) {
             $holidayData['from_date'] = SLN_TimeFunc::evalPickedDate($holidayData['from_date']);
-            $holidayData['to_date'] = SLN_TimeFunc::evalPickedDate($holidayData['to_date']);
+            $holidayData['to_date']   = SLN_TimeFunc::evalPickedDate($holidayData['to_date']);
             $holidayData['from_time'] = SLN_TimeFunc::evalPickedTime($holidayData['from_time']);
-            $holidayData['to_time'] = SLN_TimeFunc::evalPickedTime($holidayData['to_time']);
+            $holidayData['to_time']   = SLN_TimeFunc::evalPickedTime($holidayData['to_time']);
         }
+
         return $data;
+    }
+
+    /**
+     * @param null $weekDayRules
+     */
+    public function setWeekDayRules($weekDayRules)
+    {
+        foreach ($this->items as $i) {
+            $i->setWeekDayRules($weekDayRules);
+        }
     }
 }
