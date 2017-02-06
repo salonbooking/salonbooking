@@ -63,6 +63,7 @@
             </div>
             <div class="col-sm-12 col-md-12"><hr></div>
         </div>
+        <?php do_action('sln.template.summary.before_total_amount', $bb, $size); ?>
     </div>
     <div class="col-md-12 sln-total">
         <hr>
@@ -75,6 +76,7 @@
             </div>
         <?php }; ?>
     </div>
+    <?php do_action('sln.template.summary.after_total_amount', $bb, $size); ?>
     <div class="col-md-12 sln-input sln-input--simple">
         <?php
         $args = array(

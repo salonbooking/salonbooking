@@ -147,6 +147,14 @@
   }
 }
 
+.sln-alert--success,
+#sln-salon .alert-success {
+  @extend %bgc-color--transparent;
+  &:after {
+    content: "\f058";
+    @extend %text-color--ok;
+  }
+}
 .sln-alert--problem,
 #sln-salon .alert-danger {
   @extend %bgc-color--transparent;

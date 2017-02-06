@@ -436,7 +436,8 @@ th {
 
 #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--borderonly, #sln-salon .sln-panel .sln-panel-heading.collapsed .sln-btn--nobkg, .sln-btn--nobkg,
 .sln-bootstrap .sln-btn--nobkg, .sln-btn--borderonly,
-.sln-bootstrap .sln-btn--borderonly, .sln-alert--problem,
+.sln-bootstrap .sln-btn--borderonly, .sln-alert--success,
+#sln-salon .alert-success, .sln-alert--problem,
 #sln-salon .alert-danger, .sln-steps-description hr, #sln-salon .sln-attendant-list--multiple .sln-steps-name.sln-service-name, .sln-attendant hr, .sln-summary-row hr, #sln-salon .sln-thankyou--okbox hr, .sln-total hr {
   background-color: transparent; }
 
@@ -1806,6 +1807,10 @@ ul.sln-list--dashed li,
   text-align: left; }
   .sln-alert.sln-alert-medium:after {
     left: .6em; }
+
+.sln-alert--success:after,
+#sln-salon .alert-success:after {
+  content: "\f058"; }
 
 .sln-alert--problem:after,
 #sln-salon .alert-danger:after {
