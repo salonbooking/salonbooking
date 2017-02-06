@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.7.1
-Stable tag: 3.9.2
+Stable tag: 3.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -257,6 +257,17 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+10.02.2017
+
+* Fixed incompatibility with YITH Wish list and YITH Zoom magnifier
+* Fixed wrong representation of free slots on back-end
+* Fixed Google Calendar sync issues
+* Fixed 0 error on password recovery
+* Added pagination to Customers section
+* Fixed bug on conditional secondary services
+* Fixed missing new customer email notification
+
 
 25.01.2017
 
