@@ -5,6 +5,12 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
     protected $date;
     protected $time;
     protected $errors = array();
+    protected $duration;
+
+    public function setDuration(SLN_Time $duration){
+        $this->duration = $duration;
+        return $this;
+    }
 
     public function execute()
     {
@@ -30,7 +36,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
     }
 
     public function getIntervalsArray() {
-        return $this->plugin->getIntervals($this->getDateTime())->toArray();
+        return $this->plugin->getIntervals($this->getDateTime(), $this->duration)->toArray();
     }
 
     public function checkDateTime()

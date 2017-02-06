@@ -57,9 +57,21 @@ class SLN_Helper_Availability
         return $ret;
     }
 
-    public function getTimes($date)
+    public function getCachedTimes(DateTime $date, SLN_Time $duration = null)
     {
+        $fullDays = SLN_Plugin::getInstance()->getBookingCache()->getFullDays();
+        if ($fullDays && in_array($date->format('Y-m-d'), $fullDays)) {
+            return array();
+        }
+        $ret = $this->getTimes($date);
+        if($duration){
+            $ret = SLN_TimeFunc::filterTimesArrayByDuration($ret, $duration);
+        }
+        return $ret;
+    }
 
+    public function getTimes(DateTime $date)
+    {
         $ret = array();
         $avItems = $this->getItems();
         $hItems = $this->getHolidaysItems();
@@ -232,7 +244,6 @@ class SLN_Helper_Availability
                     return $ret;
                 }
             }
-
         }
     }
 

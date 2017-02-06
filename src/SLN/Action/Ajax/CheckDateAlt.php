@@ -12,15 +12,14 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
 
         $bb = $plugin->getBookingBuilder();
         $bservices = $bb->getAttendantsIds();
-
+        $this->setDuration(new SLN_Time($bb->getDuration()));
         $intervalsArray = parent::getIntervalsArray();
-
         foreach($intervalsArray['dates'] as $k => $v) {
             $free = false;
             $tmpDate = new SLN_DateTime($v);
 
             $ah->setDate($tmpDate);
-            $times = $ah->getTimes($tmpDate);
+            $times = $ah->getCachedTimes($tmpDate, $this->duration);
 
             foreach ($times as $time) {
                 $tmpDateTime = new SLN_DateTime("$v $time");
@@ -53,7 +52,7 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
         $intervalsArray['suggestedDay']   = $tmpDate->format('d');
 
         $ah->setDate($tmpDate);
-        $intervalsArray['times'] = $ah->getTimes($tmpDate);
+        $intervalsArray['times'] = $ah->getCachedTimes($tmpDate, $this->duration);
 
         foreach ($intervalsArray['times'] as $k => $t) {
             $tmpDateTime = new SLN_DateTime("$suggestedDate $t");
@@ -160,5 +159,4 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
 
         return $errors;
     }
-
 }

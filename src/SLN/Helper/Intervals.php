@@ -19,29 +19,24 @@ class SLN_Helper_Intervals
         $this->availabilityHelper = $availabilityHelper;
     }
 
-    public function setDatetime(DateTime $date)
+    public function setDatetime(DateTime $date, $duration = null)
     {
         $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
-        $times             = $ah->getTimes($date);
+        $times             = $ah->getCachedTimes($date, $duration);
         $interval          = $ah->getHoursBeforeHelper();
         $to                = $interval->getToDate();
         $clone             = clone $date;
-        $this->fullDays    = SLN_Plugin::getInstance()->getBookingCache()->getFullDays();
         while (empty($times) && $date <= $to) {
             $date->modify('+1 days');
-            if (!in_array($date->format('Y-m-d'), $this->fullDays)) {
-                $times = $ah->getTimes($date);
-            } else {
-                $times = array();
-            }
+            $times = $ah->getCachedTimes($date, $duration);
         }
         if (empty($times)) {
             $date = $clone;
             $from = $interval->getFromDate();
             while (empty($times) && $date >= $from) {
                 $date->modify('-1 days');
-                $times = $ah->getTimes($date);
+                $times = $ah->getCachedTimes($date, $duration);
             }
         }
         $this->times   = $times;
@@ -181,6 +176,6 @@ class SLN_Helper_Intervals
     }
 
     public function getFullDays(){
-        return $this->fullDays;
+        return SLN_Plugin::getInstance()->getBookingCache()->getFullDays();
     }
 }

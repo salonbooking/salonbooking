@@ -180,10 +180,10 @@ class SLN_Plugin
      * @param Datetime $datetime
      * @return \SLN_Helper_Intervals
      */
-    public function getIntervals(DateTime $datetime)
+    public function getIntervals(DateTime $datetime, $duration = null)
     {
         $obj = new SLN_Helper_Intervals($this->getAvailabilityHelper());
-        $obj->setDatetime($datetime);
+        $obj->setDatetime($datetime, $duration);
 
         return $obj;
     }

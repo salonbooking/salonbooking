@@ -18,7 +18,6 @@ if ($plugin->getSettings()->isDisabled()) {
     $bb = $plugin->getBookingBuilder();
     $intervals = $plugin->getIntervals($bb->getDateTime());
     $date = $intervals->getSuggestedDate();
-    $intervalsArray = $intervals->toArray();
 
     if ($plugin->getSettings()->isFormStepsAltOrder()) {
         $obj = new SLN_Action_Ajax_CheckDateAlt($plugin);
@@ -26,6 +25,8 @@ if ($plugin->getSettings()->isDisabled()) {
         $intervalsArray = $obj->getIntervalsArray();
         $date = new SLN_DateTime($intervalsArray['suggestedYear'].'-'.$intervalsArray['suggestedMonth'].'-'.$intervalsArray['suggestedDay'].' '.$intervalsArray['suggestedTime']);
         $errors = $obj->checkDateTimeServicesAndAttendants($bb->getAttendantsIds(), $date);
+    } else {
+        $intervalsArray = $intervals->toArray();
     }
 
     if (!$plugin->getSettings()->isFormStepsAltOrder() && !$intervalsArray['times']):
