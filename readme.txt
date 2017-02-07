@@ -258,7 +258,7 @@ http://salon.wordpresschef.it
 
 == Changelog ==
 
-10.02.2017
+07.02.2017
 
 * Fixed incompatibility with YITH Wish list and YITH Zoom magnifier
 * Fixed wrong representation of free slots on back-end
@@ -267,6 +267,7 @@ http://salon.wordpresschef.it
 * Added pagination to Customers section
 * Fixed bug on conditional secondary services
 * Fixed missing new customer email notification
+* Fixed error on booking system with "change order" active
 
 
 25.01.2017
