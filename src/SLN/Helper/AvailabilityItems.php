@@ -5,6 +5,7 @@ class SLN_Helper_AvailabilityItems
     /** @var SLN_Helper_AvailabilityItem[] */
     private $items;
     private $weekDayRules;
+    private $offset;
 
     public function __construct($availabilities, $offset = 0)
     {
@@ -161,8 +162,13 @@ class SLN_Helper_AvailabilityItems
 
     public function setOffset($offset)
     {
+        $this->offset = $offset;
         foreach ($this->items as $i) {
             $i->setOffset($offset);
         }
+    }
+    public function getOffset()
+    {
+        return $this->offset;
     }
 }

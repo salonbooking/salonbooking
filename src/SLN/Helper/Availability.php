@@ -65,6 +65,7 @@ class SLN_Helper_Availability
         }
         $ret = $this->getTimes($date);
         if($duration){
+            $duration = SLN_Time::increment($duration, -1 * $this->items->getOffset()/60);
             $ret = SLN_TimeFunc::filterTimesArrayByDuration($ret, $duration);
         }
         return $ret;
