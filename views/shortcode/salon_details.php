@@ -48,7 +48,7 @@ $fieldPassword = ob_get_clean();
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
                 <button type="submit" data-salon-data="<?php echo "sln_step_page=".$step->getShortcode()->getCurrentStep()."&$submitName=next" ?>" data-salon-toggle="next" name="<?php echo $submitName ?>"
                             value="next">
-                        Login <i class="glyphicon glyphicon-user"></i></button>
+                        <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@ $fieldPassword = ob_get_clean();
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
                 <button type="submit" data-salon-data="<?php echo "sln_step_page=".$step->getShortcode()->getCurrentStep()."&$submitName=next" ?>" data-salon-toggle="next" name="<?php echo $submitName ?>"
                             value="next">
-                        Login <i class="glyphicon glyphicon-user"></i></button>
+                        <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@ $fieldPassword = ob_get_clean();
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
                 <button type="submit" data-salon-data="<?php echo "sln_step_page=".$step->getShortcode()->getCurrentStep()."&$submitName=next" ?>" data-salon-toggle="next" name="<?php echo $submitName ?>"
                             value="next">
-                        Login <i class="glyphicon glyphicon-user"></i></button>
+                        <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
                 </div>
             </div>
         </div>
