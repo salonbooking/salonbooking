@@ -5,7 +5,7 @@ jQuery(function ($) {
     if ($('#sln_booking-details').length) {
         sln_adminDate($);
     }
-    $('#calculate-total').click(calculateTotal);
+    $('#calculate-total').click(sln_calculateTotal);
 
     customBookingUser($);
     sln_manageAddNewService($);
@@ -120,7 +120,7 @@ function customBookingUser($) {
     });
 }
 
-function calculateTotal() {
+function sln_calculateTotal() {
     var tot = 0;
     var $ = jQuery;
     $('[name=_sln_booking\\[services\\]\\[\\]]').each(function () {
@@ -128,8 +128,27 @@ function calculateTotal() {
     });
     $('#_sln_booking_amount').val(tot);
     if ($('#salon-step-date').data('deposit') > 0)
-        $('#_sln_booking_deposit').val(((tot / 100).toFixed(2) * $('#salon-step-date').data('deposit')).toFixed(2))
+        $('#_sln_booking_deposit').val(((tot / 100).toFixed(2) * $('#salon-step-date').data('deposit')).toFixed(2));
+    sln_calculateTotalDuration();
     return false;
+}
+
+function sln_calculateTotalDuration() {
+    var $ = jQuery
+    var duration = 0;
+    $('[name=_sln_booking\\[services\\]\\[\\]]').each(function () {
+        duration += parseInt($(this).data('duration'));
+    });
+    var i = duration % 60;
+    var h = (duration - i)/60;
+    if(i < 10) {
+        i = '0'+i;
+    }
+    if(h < 10) {
+        h = '0'+h;
+    }
+
+    $('#sln-duration').val(h+':'+i);
 }
 
 function sln_adminDate($) {
@@ -265,7 +284,7 @@ function sln_manageAddNewService($) {
         $('#_sln_booking_attendants_' + serviceVal).html(selectHtml).change();
 
         if ($('#salon-step-date').data('isnew'))
-            calculateTotal();
+            sln_calculateTotal();
 
         sln_createSelect2();
         sln_createSelect2NoSearch();
@@ -344,7 +363,7 @@ function sln_manageCheckServices($) {
 function sln_bindRemoveBookingsServices() {
     function sln_bindRemoveBookingsServicesFunction() {
         if (jQuery('#salon-step-date').data('isnew'))
-            calculateTotal();
+            sln_calculateTotal();
         if (jQuery('#_sln_booking_service_select').size()) {
             sln_checkServices(jQuery);
         }

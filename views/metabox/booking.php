@@ -172,7 +172,7 @@ SLN_Action_InitScripts::enqueueCustomBookingUser()
         <div class="col-md-3 col-sm-4">
             <div class="form-group sln_meta_field sln-select">
                 <label><?php _e('Duration', 'salon-booking-system'); ?></label>
-                <input type="text" value="<?php echo $booking->getDuration()->format('H:i') ?>" class="form-control" readonly="readonly"/>
+                <input type="text" id="sln-duration" value="<?php echo $booking->getDuration()->format('H:i') ?>" class="form-control" readonly="readonly"/>
             </div>
         </div>
         <div class="col-md-3 col-sm-4 sln-input--simple">
