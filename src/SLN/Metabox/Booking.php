@@ -209,22 +209,22 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
 
     private function validate($values)
     {
-        if (empty($values['_sln_booking_firstname'])) {
+        if (SLN_Enum_CheckoutFields::isRequired('firstname') && empty($values['_sln_booking_firstname'])) {
             $this->addError(__('First name can\'t be empty', 'salon-booking-system'));
         }
-        if (empty($values['_sln_booking_lastname'])) {
+        if (SLN_Enum_CheckoutFields::isRequired('lastname') && empty($values['_sln_booking_lastname'])) {
             $this->addError(__('Last name can\'t be empty', 'salon-booking-system'));
         }
         if (isset($_POST['_sln_booking_createuser']) && $_POST['_sln_booking_createuser']) {
-            if (empty($values['_sln_booking_email'])) {
+            if (SLN_Enum_CheckoutFields::isRequired('email') && empty($values['_sln_booking_email'])) {
                 $this->addError(__('e-mail can\'t be empty', 'salon-booking-system'));
             }
-            if (empty($values['_sln_booking_phone'])) {
+            if (SLN_Enum_CheckoutFields::isRequired('phone') && empty($values['_sln_booking_phone'])) {
                 $this->addError(__('Mobile phone can\'t be empty', 'salon-booking-system'));
             }
         }
 
-        if (!empty($values['_sln_booking_email']) && !filter_var(
+        if (SLN_Enum_CheckoutFields::isRequired('email') && !empty($values['_sln_booking_email']) && !filter_var(
                 $values['_sln_booking_email'],
                 FILTER_VALIDATE_EMAIL
             )

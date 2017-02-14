@@ -326,14 +326,18 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
 
             if (isset($_GET['username']) && !empty($_GET['username'])) {
                 $username_parts = explode('|', $_GET['username']);
-                $meta_queries[] = array(
-                    'key'   => '_sln_booking_firstname',
-                    'value' => $username_parts[0],
-                );
-                $meta_queries[] = array(
-                    'key'   => '_sln_booking_lastname',
-                    'value' => $username_parts[1],
-                );
+                if (!empty($username_parts[0])) {
+                    $meta_queries[] = array(
+                        'key'   => '_sln_booking_firstname',
+                        'value' => $username_parts[0],
+                    );
+                }
+                if (!empty($username_parts[1])) {
+                    $meta_queries[] = array(
+                        'key'   => '_sln_booking_lastname',
+                        'value' => $username_parts[1],
+                    );
+                }
             }
 
             if (!empty($meta_queries)) {
@@ -361,6 +365,12 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
 
             $users_name = array();
             foreach($users as $user) {
+                if (!isset($user['_sln_booking_firstname'])) {
+                    $user['_sln_booking_firstname'] = '';
+                }
+                if (!isset($user['_sln_booking_lastname'])) {
+                    $user['_sln_booking_lastname'] = '';
+                }
                 $users_name[$user['_sln_booking_firstname'].'|'.$user['_sln_booking_lastname']] = $user['_sln_booking_firstname'].' '.$user['_sln_booking_lastname'];
             }
 
