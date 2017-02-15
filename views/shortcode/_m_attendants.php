@@ -9,66 +9,44 @@
 
 $ah = $plugin->getAvailabilityHelper();
 $ah->setDate($plugin->getBookingBuilder()->getDateTime());
-
-$bookingServices = SLN_Wrapper_Booking_Services::build($bb->getAttendantsIds(), $bb->getDateTime());
+$bookingServices   = SLN_Wrapper_Booking_Services::build($bb->getAttendantsIds(), $bb->getDateTime());
 
 foreach ($bookingServices->getItems() as $bookingService) :
     $service = $bookingService->getService();
     $hasAttendants = false;
-?>
-<div class="sln-attendant-list sln-attendant-list--multiple">
-    <div class="row">
-        <div class="col-md-12">
-            <h3 class="sln-steps-name sln-service-name"><?php echo $service->getName() ?></h3>
+    ?>
+    <div class="sln-attendant-list sln-attendant-list--multiple">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="sln-steps-name sln-service-name"><?php echo $service->getName() ?></h3>
+            </div>
         </div>
+        <?php if (!$service->isAttendantsEnabled()) : ?>
+            <div class="row sln-attendant">
+                <?php SLN_Form::fieldText('sln[attendants]['.$service->getId().']', 0, array('type' => 'hidden')) ?>
+                <p><?php echo __(
+                        'The choice of assistant is not provided for this service',
+                        'salon-booking-system'
+                    ) ?></p>
+            </div>
+            <?php continue; endif; ?>
+        <?php foreach ($attendants as $attendant) : ?>
+            <?php
+            if ($attendant->hasServices(array($service))) {
+                continue;
+            }
+            $errors = SLN_Shortcode_Salon_AttendantHelper::validateItem(array($bookingService), $ah, $attendant);
+            echo SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors, $attendant);
+            ?>
+            <?php $hasAttendants = true ?>
+        <?php endforeach ?>
+        <?php if (!$hasAttendants) : ?>
+            <div class="alert alert-warning">
+                <p><?php echo __(
+                        'No assistants available for the selected time/slot - please choose another one',
+                        'salon-booking-system'
+                    ) ?></p>
+            </div>
+        <?php endif ?>
     </div>
-    <?php if (!$service->isAttendantsEnabled()) : ?>
-        <div class="row sln-attendant">
-            <?php SLN_Form::fieldText('sln[attendants]['. $service->getId() .']', 0, array('type' => 'hidden')) ?>
-            <p><?php echo __('The choice of assistant is not provided for this service', 'salon-booking-system') ?></p>
-        </div>
-    <?php continue; endif; ?>
-    <?php foreach ($attendants as $attendant) : ?>
-        <?php
-        
-        if ($plugin->getSettings()->isFormStepsAltOrder()) {
-            $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);
-            if (!empty($validateAttServiceErrors)) {
-                continue;
-            }
-            $errors = false;
-        } else {
-            $validateAttServiceErrors = $ah->validateAttendantService($attendant, $service);
-            if (!empty($validateAttServiceErrors)) {
-                continue;
-            }
-
-            $errors = $ah->validateAttendant($attendant, $bookingService->getStartsAt(), $bookingService->getTotalDuration(), $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
-        }
-        
-        $settings = array();
-        if ($errors) {
-            $settings['attrs']['disabled'] = 'disabled';
-        }
-        $tplErrors = $plugin->templating()->loadView('shortcode/_errors_area', compact('errors', 'size'));
-        if ($size == '900') {
-            include '_m_attendants_item_900.php';
-        } elseif ($size == '600') {
-            include '_m_attendants_item_600.php';
-        } elseif ($size == '400') {
-            include '_m_attendants_item_400.php';
-        } else {
-            throw new Exception('size not supported');
-        }
-        ?>
-        
-        <div class="clearfix"></div>
-        <?php $hasAttendants = true ?>
-    <?php endforeach ?>
-    <?php if(!$hasAttendants) : ?>
-        <div class="alert alert-warning">
-            <p><?php echo __('No assistants available for the selected time/slot - please choose another one', 'salon-booking-system') ?></p>
-        </div>
-    <?php endif ?> 
-</div>
 <?php endforeach ?>

@@ -148,22 +148,6 @@ class SLN_Helper_Availability
         }
     }
 
-    public function validateAttendantServices(SLN_Wrapper_AttendantInterface $attendant, array $services)
-    {
-        if ($attendant->hasAllServices()) {
-            return;
-        }
-
-        /** @var SLN_Wrapper_ServiceInterface $service */
-        foreach ($services as $service) {
-            if (!$attendant->hasService($service)) {
-                return array(
-                    __('This assistant is not available for any of the selected services', 'salon-booking-system'),
-                );
-            }
-        }
-    }
-
     public function validateAttendant(
         SLN_Wrapper_AttendantInterface $attendant,
         DateTime $date = null,

@@ -12,6 +12,7 @@ interface SLN_Wrapper_AttendantInterface
     function getServicesIds();
     function getServices();
     function hasService(SLN_Wrapper_ServiceInterface $service);
+    function hasServices($services);
     function hasAllServices();
     function getGoogleCalendar();
     function getName();

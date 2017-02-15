@@ -1,18 +1,7 @@
-<?php
-$thumb  = has_post_thumbnail($attendant->getId()) ? get_the_post_thumbnail($attendant->getId(), 'thumbnail') : '';
-$elemId = SLN_Form::makeID('sln[attendant]['.$attendant->getId().']');
-?>
 <div class="row sln-attendant">
-    <div class="col-xs-2 col-sm-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo $bb->hasAttendant(
-        $attendant
-    ) ? 'is-checked' : '' ?>">
-        <?php SLN_Form::fieldRadioboxForGroup(
-            'sln[attendant]',
-            'sln[attendant]',
-            $attendant->getId(),
-            $bb->hasAttendant($attendant),
-            $settings
-        ) ?>
+    <div
+        class="col-xs-2 col-sm-1 sln-radiobox sln-steps-check sln-attendant-check <?php echo $isChecked ? 'is-checked' : '' ?>">
+        <?php SLN_Form::fieldRadioboxForGroup($field, $field, $attendant->getId(), $isChecked, $settings) ?>
     </div>
     <div class="col-xs-4 col-sm-3 col-md-3 sln-steps-thumb sln-attendant-thumb">
         <?php echo $thumb ?>
@@ -40,3 +29,4 @@ $elemId = SLN_Form::makeID('sln[attendant]['.$attendant->getId().']');
     </div>
     <?php echo $tplErrors ?>
 </div>
+<div class="clearfix"></div>

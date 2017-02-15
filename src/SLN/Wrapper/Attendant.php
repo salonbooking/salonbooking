@@ -94,6 +94,20 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract implements SLN_Wrapper_
         return in_array($service->getId(), $this->getServicesIds());
     }
 
+    public function hasServices($services)
+    {
+        if ($this->hasAllServices()) {
+            return true;
+        }
+
+        /** @var SLN_Wrapper_ServiceInterface $service */
+        foreach ($services as $service) {
+            if (!$this->hasService($service)) {
+                return false;
+            }
+        }
+    }
+
     public function hasAllServices()
     {
         //an assistant without services is an assistant available for all services

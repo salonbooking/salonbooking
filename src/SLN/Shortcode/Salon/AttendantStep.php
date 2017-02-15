@@ -6,15 +6,15 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
     protected function dispatchForm()
     {
 
-        $values = isset($_POST['sln']) ? $_POST['sln'] : array();
+        $values                 = isset($_POST['sln']) ? $_POST['sln'] : array();
         $isMultipleAttSelection = $this->getPlugin()->getSettings()->isMultipleAttendantsEnabled();
-        $bb = $this->getPlugin()->getBookingBuilder();
-        $ah = $this->getPlugin()->getAvailabilityHelper();
+        $bb                     = $this->getPlugin()->getBookingBuilder();
+        $ah                     = $this->getPlugin()->getAvailabilityHelper();
         $ah->setDate($bb->getDateTime());
         $bb->removeAttendants();
 
         $bservices = $bb->getAttendantsIds();
-        $date = $bb->getDateTime();
+        $date      = $bb->getDateTime();
 
         if ($isMultipleAttSelection) {
             $ids = isset($values['attendants']) ? $values['attendants'] : array();
@@ -45,7 +45,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
         $ah->setDate($date);
         $bookingServices = SLN_Wrapper_Booking_Services::build($services, $date);
 
-        $availAtts = null;
+        $availAtts               = null;
         $availAttsForEachService = array();
 
         foreach ($bookingServices->getItems() as $bookingService) {
@@ -53,7 +53,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
             if (!$service->isAttendantsEnabled()) {
                 continue;
             }
-            $tmp = $ah->getAvailableAttsIdsForBookingService($bookingService);
+            $tmp                                        = $ah->getAvailableAttsIdsForBookingService($bookingService);
             $availAttsForEachService[$service->getId()] = $tmp;
             if (empty($tmp)) {
                 $this->addError(
@@ -65,7 +65,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
                 return false;
             } elseif (!empty($selected[$service->getId()])) {
-                $attendantId = $selected[$service->getId()];
+                $attendantId  = $selected[$service->getId()];
                 $hasAttendant = in_array($attendantId, $availAttsForEachService[$service->getId()]);
                 if (!$hasAttendant) {
                     $attendant = $this->getPlugin()->createAttendant($attendantId);
@@ -106,6 +106,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
             $ret[$service->getId()] = $attId;
         }
+
         return $ret;
     }
 
@@ -136,12 +137,10 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
             if (count($availAtts)) {
                 $index = mt_rand(0, count($availAtts) - 1);
                 $attId = $availAtts[$index];
-            }
-            else {
+            } else {
                 $attId = 0;
             }
-        }
-        else {
+        } else {
             $attId = $selected;
         }
 
@@ -156,6 +155,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
 
             $ret[$service->getId()] = $attId;
         }
+
         return $ret;
     }
 
@@ -167,13 +167,13 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
     {
         if (!isset($this->attendants)) {
             /** @var SLN_Repository_AttendantRepository $repo */
-            $repo = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
+            $repo                  = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
             $criteria['@wp_query'] = array(
                 'orderby' => 'title',
                 'order'   => 'DESC',
             );
-            $criteria['@query'] = true;
-            $this->attendants = $repo->getAll($criteria);
+            $criteria['@query']    = true;
+            $this->attendants      = $repo->getAll($criteria);
         }
 
         return $this->attendants;
