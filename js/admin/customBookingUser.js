@@ -23,13 +23,17 @@ function sln_validateBooking($) {
         $('.sln-invalid').removeClass('sln-invalid');
         $('.sln-error').remove();
         var hasErrors = false;
-        $.each([
-            '#_sln_booking_firstname',
-            '#_sln_booking_lastname',
-            '#_sln_booking_email',
-            '#_sln_booking_phone',
-            '#_sln_booking_service_select',
-        ], function (k, val) {
+
+        var toValidate = [
+            '#_sln_booking_service_select'
+        ];
+
+        var fields = $('#salon-step-date').attr('data-required_user_fields').split(',');
+        $.each(fields, function(k, val) {
+            toValidate.push('#_sln_booking_' + val);
+        });
+
+        $.each(toValidate, function (k, val) {
             if (val == '#_sln_booking_phone' && !$('[name=_sln_booking_createuser]').is(':checked')) {
                 return;
             } else if (val == '#_sln_booking_email') {
