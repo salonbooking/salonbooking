@@ -26,6 +26,7 @@ foreach ($services as $k => $service) {
 
 ?>
 <div class="sln-attendant-list">
+    <?php echo SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors); ?>
     <?php foreach ($attendants as $attendant) {
         if (!$attendant->hasServices($services)) {
             continue;

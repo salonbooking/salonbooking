@@ -63,7 +63,7 @@ final class SLN_Wrapper_Booking_Service
     }
 
     /**
-     * @return SLN_Wrapper_Service
+     * @return SLN_Wrapper_ServiceInterface
      */
     public function getService()
     {
@@ -71,7 +71,7 @@ final class SLN_Wrapper_Booking_Service
     }
 
     /**
-     * @return SLN_Wrapper_Attendant|bool
+     * @return SLN_Wrapper_AttendantInterface|bool
      */
     public function getAttendant()
     {

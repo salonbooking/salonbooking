@@ -121,10 +121,8 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
             if (!$bookingService->getService()->isAttendantsEnabled()) {
                 continue;
             }
-            if (is_null($availAtts)) {
-                $availAtts = $ah->getAvailableAttsIdsForBookingService($bookingService);
-            }
-            $availAtts = array_intersect($availAtts, $ah->getAvailableAttsIdsForBookingService($bookingService));
+            $availAtts = $ah->getAvailableAttendantForService($availAtts, $bookingService);
+
             if (empty($availAtts)) {
                 $this->addError(
                     __('No one of the attendants isn\'t available for selected services', 'salon-booking-system')
@@ -133,6 +131,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
                 return false;
             }
         }
+
         if (!$selected) {
             if (count($availAtts)) {
                 $index = mt_rand(0, count($availAtts) - 1);

@@ -38,12 +38,18 @@ class SLN_Shortcode_Salon_AttendantHelper
     public static function renderItem(
         $size,
         $errors,
-        SLN_Wrapper_AttendantInterface $attendant,
+        SLN_Wrapper_AttendantInterface $attendant = null,
         SLN_Wrapper_Service $service = null
     ) {
         $plugin = SLN_Plugin::getInstance();
         $t      = $plugin->templating();
         $view   = 'shortcode/_attendants_item_'.intval($size);
+
+        if (!$attendant) {
+            $attendant = new SLN_Wrapper_Attendant(
+                (object)array('ID' => '', 'post_title' => 'Choose an assistant for me')
+            );
+        }
 
         if (isset($service)) {
             $elemId = SLN_Form::makeID('sln[attendant]['.$service->getId().']['.$attendant->getId().']');

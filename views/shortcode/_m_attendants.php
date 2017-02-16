@@ -30,6 +30,8 @@ foreach ($bookingServices->getItems() as $bookingService) :
                     ) ?></p>
             </div>
             <?php continue; endif; ?>
+
+        <?php echo SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors, null, $service); ?>
         <?php foreach ($attendants as $attendant) : ?>
             <?php
             if ($attendant->hasServices(array($service))) {

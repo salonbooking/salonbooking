@@ -461,27 +461,13 @@ class SLN_Helper_Availability
         return array($error);
     }
 
-    private function getAvailableAttendantForService($availAtts = null, SLN_Wrapper_Booking_Service $bookingService)
+    public function getAvailableAttendantForService($availAtts = null, SLN_Wrapper_Booking_Service $bookingService)
     {
+        $intersect = $this->getAvailableAttsIdsForBookingService($bookingService);
         if (is_null($availAtts)) {
-            $availAtts = $this->getAvailableAttsIdsForServiceOnTime(
-                $bookingService->getService(),
-                $bookingService->getStartsAt(),
-                $bookingService->getTotalDuration(),
-                $bookingService->getBreakStartsAt(),
-                $bookingService->getBreakEndsAt()
-            );
+            $availAtts = $intersect;
         }
-        $availAtts = array_intersect(
-            $availAtts,
-            $this->getAvailableAttsIdsForServiceOnTime(
-                $bookingService->getService(),
-                $bookingService->getStartsAt(),
-                $bookingService->getTotalDuration(),
-                $bookingService->getBreakStartsAt(),
-                $bookingService->getBreakEndsAt()
-            )
-        );
+        $availAtts = array_intersect($availAtts, $intersect);
 
         return $availAtts;
     }
