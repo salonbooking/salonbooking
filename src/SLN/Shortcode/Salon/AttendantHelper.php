@@ -47,7 +47,7 @@ class SLN_Shortcode_Salon_AttendantHelper
 
         if (!$attendant) {
             $attendant = new SLN_Wrapper_Attendant(
-                (object)array('ID' => '', 'post_title' => 'Choose an assistant for me')
+                (object)array('ID' => '', 'post_title' => __('Choose an assistant for me','salon-booking-system'))
             );
         }
 
