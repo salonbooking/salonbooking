@@ -5,7 +5,17 @@
  * @var SLN_Wrapper_Booking $booking
  */
 $helper->showNonce($postType);
-SLN_Action_InitScripts::enqueueCustomBookingUser()
+SLN_Action_InitScripts::enqueueCustomBookingUser();
+
+$checkoutFields = SLN_Enum_CheckoutFields::toArray();
+foreach($checkoutFields as $field => $name ) {
+    if (!SLN_Enum_CheckoutFields::isRequired($field)) {
+	    unset($checkoutFields[$field]);
+    }
+	else {
+		$checkoutFields[$field] = $field;
+	}
+}
 ?>
 <?php if(isset($_SESSION['_sln_booking_user_errors'])): ?>
     <div class="error">
@@ -26,7 +36,8 @@ SLN_Action_InitScripts::enqueueCustomBookingUser()
       data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>"
       data-isnew="<?php echo $booking->isNew() ? 1 : 0 ?>"
       data-deposit="<?php echo $settings->get('pay_deposit') ?>"
-      data-m_attendant_enabled="<?php echo $settings->get('m_attendant_enabled') ?>">
+      data-m_attendant_enabled="<?php echo $settings->get('m_attendant_enabled') ?>"
+      data-required_user_fields="<?php echo implode(',', $checkoutFields) ?>">
     <div class="row form-inline">
         <div class="col-md-3 col-sm-6">
             <div class="form-group sln-input--simple">
@@ -61,7 +72,7 @@ SLN_Action_InitScripts::enqueueCustomBookingUser()
                 ); ?>
             </div>
         </div>
-       
+
     </div>
 
  <div class="row form-inline">
