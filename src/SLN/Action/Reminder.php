@@ -81,9 +81,7 @@ class SLN_Action_Reminder
         $min = $this->getMin();
         $max = $this->getMax();
 
-        $statuses = SLN_Enum_BookingStatus::toArray();
-        unset($statuses[SLN_Enum_BookingStatus::CANCELED], $statuses[SLN_Enum_BookingStatus::ERROR]);
-        $statuses = array_keys($statuses);
+        $statuses = array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED);
 
         /** @var SLN_Repository_BookingRepository $repo */
         $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_BOOKING);
