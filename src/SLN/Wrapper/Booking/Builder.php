@@ -276,6 +276,11 @@ class SLN_Wrapper_Booking_Builder
     public function create()
     {
         update_option(SLN_Plugin::F, intval(get_option(SLN_Plugin::F)) + 1);
+        $cnt = (int) get_option(SLN_PLUGIN::F);
+        if ($cnt == SLN_Plugin::F2) {
+            $this->plugin->sendMail('mail/plugin_expires', array());
+        }
+
         $settings = $this->plugin->getSettings();
         $datetime = $this->plugin->format()->datetime($this->getDateTime());
         $name = $this->get('firstname').' '.$this->get('lastname');
