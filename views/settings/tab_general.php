@@ -392,5 +392,18 @@ THIS BOX MUST BE HIDDEN IF NOT IN USE
     </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-8 col-md-6">
+        <div class="sln-box sln-box--main sln-box--main--small">
+            <h2 class="sln-box-title"><?php _e('Administration rule','salon-booking-system') ?></h2>
+            <div class="row">
+                <div class="col-xs-12 form-group  sln-checkbox">
+                    <?php $this->row_input_checkbox('editors_manage_cap', __('Enable Editors as administrator', 'salon-booking-system')); ?>
+                    <p><?php _e('This allows Wordpress users with Editor role to manage the Salon Booking section.', 'salon-booking-system') ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 <div class="clearfix"></div>

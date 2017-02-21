@@ -50,6 +50,7 @@ class SLN_Admin_Settings
         'gen_logo',
         'gen_timetable',
         'ajax_enabled',
+        'editors_manage_cap',
         'attendant_enabled',
         'm_attendant_enabled',
         'attendant_email',
@@ -323,6 +324,14 @@ class SLN_Admin_Settings
         } else {
             wp_clear_scheduled_hook('sln_email_followup');
         }
+
+		if (isset($submitted['editors_manage_cap']) && $submitted['editors_manage_cap']) {
+			SLN_UserRole_SalonStaff::addCapabilitiesForRole('editor');
+		}
+		else {
+			SLN_UserRole_SalonStaff::removeCapabilitiesFoRole('editor');
+		}
+
         $this->settings->save();
         $this->showAlert(
             'success',

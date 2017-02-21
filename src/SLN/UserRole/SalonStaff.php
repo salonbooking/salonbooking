@@ -45,4 +45,40 @@ class SLN_UserRole_SalonStaff
     {
         return $this->plugin;
     }
+
+    public static function addCapabilitiesForRole($role) {
+        self::changeCapabilitiesForRole($role, true);
+    }
+
+    public static function removeCapabilitiesFoRole($role) {
+        self::changeCapabilitiesForRole($role, false);
+    }
+
+    private static function changeCapabilitiesForRole($role, $canManage) {
+        $roleObj = get_role($role);
+        if ($canManage) {
+            $roleObj->add_cap('manage_salon');
+            $roleObj->add_cap('manage_options');
+        } else {
+            $roleObj->remove_cap('manage_salon');
+            $roleObj->remove_cap('manage_options');
+        }
+
+        foreach (array(
+            SLN_Plugin::POST_TYPE_ATTENDANT,
+            SLN_Plugin::POST_TYPE_SERVICE,
+            SLN_Plugin::POST_TYPE_BOOKING,
+        ) as $k) {
+            foreach (get_post_type_object($k)->cap as $v) {
+                if ($canManage) {
+                    $roleObj->add_cap($v);
+                }
+                else {
+                    if ($v !== 'read') {
+                        $roleObj->remove_cap($v);
+                    }
+                }
+            }
+        }
+    }
 }
