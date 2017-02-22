@@ -29,7 +29,7 @@ In case of any doubts don\'t hesitate sending us an email to <strong>support@wpc
 
 Have a nice day!<br /><br />
 
-The Salon Booking staff
+The Salon Booking staff<br />
 salon.wordpresschef.it
 ', 'salon-booking-system'), $name);
 				$msg = nl2br($msg);
