@@ -2,8 +2,8 @@
 Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
-Tested up to: 4.7.1
-Stable tag: 3.9.3
+Tested up to: 4.7.2
+Stable tag: 3.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 
 * set you favourite date and time format
 * set when your week starts
+* WordPress Editors as Salon Administrator
 
 **Salon booking rules**
 
@@ -83,7 +84,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * PayPal
 * Stripe
 * Custom payment methods supported
-* official add-on for "Mollie", "Square", "Worldpay", "Paystack" and "RedSys"
+* official add-on for "Mollie", "Square", "Worldpay", "Paystack", "RedSys" and "Paytrail"
 
 **Salon checkout options**
 
@@ -91,6 +92,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Force guest checkout
 * Limit the number of services bookable at the same time
 * Control form fields
+* Log-in with Facebook account
 
 **One-way Google Calendar synchronisation** 
 
@@ -120,7 +122,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Multiple weekly timetable rules
 * No assistant required option
 * Service break
-* Condizional "Secondary services"
+* Conditional "Secondary services"
 
 **Customers archive**
 
@@ -256,7 +258,16 @@ http://salon.wordpresschef.it
 
 
 
+
 == Changelog ==
+
+28.02.2017
+
+* Fixed bug on booking status
+* Fixed bug on thousand separators
+* Required checkout form fields options on back-end
+* Added "Choose an assistant for me" default option on front-end
+
 
 07.02.2017
 
