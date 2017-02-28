@@ -102,7 +102,12 @@ $fieldPassword = ob_get_clean();
     }  ?>
     </form>
     <?php endif; ?>
-    <form method="post" action="<?php echo $formAction ?>" role="form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" scope="public_profile,email" onlogin="FBlogin();"></div>
+        </div>
+    </div>
+    <form method="post" action="<?php echo $formAction ?>" role="form" id="salon-step-details-new">
         <div class="row">
             <div>
             <?php if($plugin->getSettings()->get('enabled_force_guest_checkout')): ?>
