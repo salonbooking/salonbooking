@@ -19,6 +19,21 @@ $plugin = SLN_Plugin::getInstance();
 			</div>
 		</div>
 	</div>
+	<div class="sln-box sln-box--main">
+		<h2 class="sln-box-title"><?php _e('Facebook login','salon-booking-system') ?></h2>
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 form-group">
+				<div class="sln-checkbox">
+					<?php $this->row_input_checkbox('enabled_fb_login', __('Enable Facebook login', 'salon-booking-system')); ?>
+					<p class="sln-input-help"><?php _e('', 'salon-booking-system') ?></p>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 form-group sln-input--simple">
+				<?php $this->row_input_text('fb_app_id', __('Facebook application ID', 'salon-booking-system')); ?>
+				<p class="sln-input-help"><?php _e('', 'salon-booking-system') ?></p>
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-4">
 			<div class="sln-box sln-box--main sln-box--main--small">

@@ -50,6 +50,7 @@ $fieldPassword = ob_get_clean();
                             value="next">
                         <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
                 </div>
+                <button type="button" class="btn btn-link" data-salon-toggle="fb_login"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></button>
             </div>
         </div>
         <div class="row">
@@ -70,6 +71,7 @@ $fieldPassword = ob_get_clean();
                             value="next">
                         <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
                 </div>
+                <button type="button" class="btn btn-link" data-salon-toggle="fb_login"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></button>
             </div>
         </div>
         <div class="row">
@@ -88,6 +90,7 @@ $fieldPassword = ob_get_clean();
                             value="next">
                         <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
                 </div>
+                <button type="button" class="btn btn-link" data-salon-toggle="fb_login"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></button>
             </div>
         </div>
         <div class="row">
@@ -102,7 +105,7 @@ $fieldPassword = ob_get_clean();
     }  ?>
     </form>
     <?php endif; ?>
-    <form method="post" action="<?php echo $formAction ?>" role="form">
+    <form method="post" action="<?php echo $formAction ?>" role="form" id="salon-step-details-new">
         <div class="row">
             <div>
             <?php if($plugin->getSettings()->get('enabled_force_guest_checkout')): ?>

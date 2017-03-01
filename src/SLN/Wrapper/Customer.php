@@ -352,6 +352,14 @@ class SLN_Wrapper_Customer {
 		return $userid;
 	}
 
+	public static function getCustomerIdByFacebookID($fbID) {
+		global $wpdb;
+
+		$userid = $wpdb->get_var("SELECT user_id FROM {$wpdb->usermeta} WHERE meta_key='_sln_fb_id' AND meta_value='{$fbID}' ");
+
+		return $userid;
+	}
+
 	public static function isCustomer($object) {
 		if (!is_object($object)) {
 			$object = get_user_by('id', $object);
