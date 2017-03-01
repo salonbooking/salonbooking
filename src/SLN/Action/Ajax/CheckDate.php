@@ -32,6 +32,11 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
         }
         $ret['intervals'] = $this->getIntervalsArray();
 
+        if ($ret['intervals']['suggestedDate'] !== $this->date || $ret['intervals']['suggestedTime'] !== $this->time) {
+            unset($ret['errors']);
+            $ret['success'] = 1;
+        }
+
         return $ret;
     }
 
