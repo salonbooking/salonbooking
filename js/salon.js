@@ -48,6 +48,14 @@ function sln_init($) {
                             version    : 'v2.8'
                         });
                         FB.AppEvents.logPageView();
+
+                        jQuery('[data-salon-toggle=fb_login]').click(function() {
+                            FB.login(function() {
+                                FBlogin();
+                            }, {scope: 'email'});
+
+                            return false;
+                        });
                     };
 
                     (function(d, s, id){
@@ -668,10 +676,14 @@ function FBlogin() {
     if (auth) {
         FB.api('/me?fields=id,email,name', function(response)
         {
-            response.email = response.email !== undefined ? response.email : '';
-            response.id = response.id !== undefined ? response.id : '';
-            response.name = response.name !== undefined ? response.name : '';
-            var data = "fbEmail=" + response.email + "&fbID=" + response.id + "&fbName=" + response.name + "&action=salon&method=FacebookLogin&security=" + salon.ajax_nonce;
+            var email = response.email !== undefined ? response.email : '';
+            var id = response.id !== undefined ? response.id : '';
+            var name = response.name !== undefined ? response.name : '';
+            var tmp = name.split(' ');
+            var lastname = tmp.pop();
+            var firstname = tmp.join(' ');
+
+            var data = "fbEmail=" + email + "&fbID=" + id + "&fbFirstName=" + firstname + "&fbLastName=" + lastname + "&action=salon&method=FacebookLogin&security=" + salon.ajax_nonce;
             jQuery.ajax({
                 url: salon.ajax_url,
                 data: data,

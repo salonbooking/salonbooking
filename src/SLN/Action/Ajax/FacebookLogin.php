@@ -4,7 +4,8 @@ class SLN_Action_Ajax_FacebookLogin extends SLN_Action_Ajax_Abstract
 {
 	protected $fbID;
 	protected $fbEmail;
-	protected $fbName;
+	protected $fbFirstName;
+	protected $fbLastName;
 	protected $errors = array();
 
 	public function execute()
@@ -13,8 +14,11 @@ class SLN_Action_Ajax_FacebookLogin extends SLN_Action_Ajax_Abstract
 			if(isset($_POST['fbEmail'])){
 				$this->fbEmail = $_POST['fbEmail'];
 			}
-			if(isset($_POST['fbName'])){
-				$this->fbName = $_POST['fbName'];
+			if(isset($_POST['fbFirstName'])){
+				$this->fbFirstName = $_POST['fbFirstName'];
+			}
+			if(isset($_POST['fbLastName'])){
+				$this->fbLastName = $_POST['fbLastName'];
 			}
 			if(isset($_POST['fbID'])){
 				$this->fbID = $_POST['fbID'];
@@ -45,15 +49,15 @@ class SLN_Action_Ajax_FacebookLogin extends SLN_Action_Ajax_Abstract
 				wp_update_user(
 					array(
 						'ID'           => $userID,
-						'display_name' => $this->fbName,
-						'nickname'     => $this->fbName,
-						'first_name'   => $this->fbName,
-						'last_name'    => '',
+						'display_name' => $this->fbFirstName . ' ' . $this->fbLastName,
+						'nickname'     => $this->fbFirstName . ' ' . $this->fbLastName,
+						'first_name'   => $this->fbFirstName,
+						'last_name'    => $this->fbLastName,
 						'role'         => SLN_Plugin::USER_ROLE_CUSTOMER,
 					)
 				);
 				add_user_meta($userID, '_sln_fb_id', $this->fbID);
-				add_user_meta($userID, '_sln_address', '');
+				add_user_meta($userID, '_sln_phone', '');
 				add_user_meta($userID, '_sln_address', '');
 
 				wp_new_user_notification($errors, null, 'both');
