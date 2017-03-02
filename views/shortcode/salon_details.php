@@ -50,7 +50,7 @@ $fieldPassword = ob_get_clean();
                             value="next">
                         <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
                 </div>
-                <button type="button" class="btn btn-link" data-salon-toggle="fb_login"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></button>
+                <button type="button" class="btn btn-link" data-salon-toggle="fb_login" data-salon-target="step"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></button>
             </div>
         </div>
         <div class="row">
@@ -71,7 +71,7 @@ $fieldPassword = ob_get_clean();
                             value="next">
                         <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
                 </div>
-                <button type="button" class="btn btn-link" data-salon-toggle="fb_login"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></button>
+                <button type="button" class="btn btn-link" data-salon-toggle="fb_login" data-salon-target="step"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></button>
             </div>
         </div>
         <div class="row">
@@ -90,7 +90,7 @@ $fieldPassword = ob_get_clean();
                             value="next">
                         <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
                 </div>
-                <button type="button" class="btn btn-link" data-salon-toggle="fb_login"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></button>
+                <button type="button" class="btn btn-link" data-salon-toggle="fb_login" data-salon-target="step"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></button>
             </div>
         </div>
         <div class="row">

@@ -32,10 +32,20 @@ class SLN_Shortcode_SalonMyAccount
     public function execute()
     {
         if (!is_user_logged_in()) {
-            return wp_login_form();
+            add_filter('login_form_bottom', array($this, 'hook_login_form_bottom'), 10, 2);
+            $content = wp_login_form(array('echo' => false));
+            remove_filter('login_form_bottom', array($this, 'hook_login_form_bottom'), 10);
+
+            return $content;
         }
 
         return $this->render();
+    }
+
+    public function hook_login_form_bottom($content, $args) {
+        $content .= '<div><a href="#" data-salon-toggle="fb_login" data-salon-target="page">' . __('log-in with Facebook', 'salon-booking-system') . '</a></div>';
+
+        return $content;
     }
 
     protected function render($data = array())

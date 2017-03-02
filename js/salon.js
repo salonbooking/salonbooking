@@ -38,38 +38,7 @@ function sln_init($) {
             });
         }
         if ($('#salon-step-details-new').length) {
-            if (salon.fb_app_id !== undefined) {
-                if (window.fbAsyncInit === undefined) {
-                    window.fbAsyncInit = function() {
-                        FB.init({
-                            appId      : salon.fb_app_id,
-                            cookie     : true,
-                            xfbml      : true,
-                            version    : 'v2.8'
-                        });
-                        FB.AppEvents.logPageView();
-
-                        jQuery('[data-salon-toggle=fb_login]').click(function() {
-                            FB.login(function() {
-                                FBlogin();
-                            }, {scope: 'email'});
-
-                            return false;
-                        });
-                    };
-
-                    (function(d, s, id){
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id)) {return;}
-                        js = d.createElement(s); js.id = id;
-                        js.src = "//connect.facebook.net/en_US/sdk.js";
-                        fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));
-                }
-                else {
-                    window.fbAsyncInit();
-                }
-            }
+            facebookInit();
         }
         $('[data-salon-toggle="next"]').click(function (e) {
             var form = $(this).closest('form');
@@ -671,7 +640,53 @@ setTimeout(function(){
 }, 500);
 }(jQuery);
 
-function FBlogin() {
+function facebookInit() {
+    if (salon.fb_app_id !== undefined) {
+        if (window.fbAsyncInit === undefined) {
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : salon.fb_app_id,
+                    cookie     : true,
+                    xfbml      : true,
+                    version    : 'v2.8'
+                });
+                FB.AppEvents.logPageView();
+
+                jQuery('[data-salon-toggle=fb_login]').unbind('click').click(function() {
+                    var callback;
+                    if (jQuery(this).attr('data-salon-target') === 'step') {
+                        callback = facebookRefreshStepCallback;
+                    }
+                    else {
+                        callback = facebookRefreshPageCallback;
+                    }
+
+                    FB.login(function() {
+                        facebookLogin(callback);
+                    }, {scope: 'email'});
+
+                    return false;
+                });
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        }
+        else {
+            window.fbAsyncInit();
+        }
+    }
+    else {
+        jQuery('[data-salon-toggle=fb_login]').remove();
+    }
+}
+
+function facebookLogin(callback) {
     var auth = FB.getAuthResponse();
     if (auth) {
         FB.api('/me?fields=id,email,name', function(response)
@@ -689,21 +704,33 @@ function FBlogin() {
                 data: data,
                 method: 'POST',
                 dataType: 'json',
-                success: function (data) {
-                    if (data.success) {
-                        var params = 'sln_step_page=details';
-                        sln_loadStep(jQuery, params);
-                    }
-                    else {
-                        var alertBox = jQuery('<div class="sln-alert sln-alert--problem"></div>');
-                        jQuery(data.errors).each(function () {
-                            alertBox.append('<p>').html(this);
-                        });
-                        jQuery('#sln-notifications').html('').append(alertBox);
-                    }
-                },
+                success: callback,
                 error: function(data){alert('error'); console.log(data);}
             });
         });
+    }
+}
+
+function facebookRefreshStepCallback(response) {
+    if (response.success) {
+        var params = 'sln_step_page=details';
+        sln_loadStep(jQuery, params);
+    }
+    else {
+        var alertBox = jQuery('<div class="sln-alert sln-alert--problem"></div>');
+        jQuery(response.errors).each(function () {
+            alertBox.append('<p>').html(this);
+        });
+        jQuery('#sln-notifications').html('').append(alertBox);
+    }
+}
+
+function facebookRefreshPageCallback(response) {
+    if (response.success) {
+        location.reload();
+    }
+    else {
+        alert('error');
+        console.log(response);
     }
 }
