@@ -25,12 +25,12 @@ $plugin = SLN_Plugin::getInstance();
 			<div class="col-xs-12 col-sm-6 col-md-4 form-group">
 				<div class="sln-checkbox">
 					<?php $this->row_input_checkbox('enabled_fb_login', __('Enable Facebook login', 'salon-booking-system')); ?>
-					<p class="sln-input-help"><?php _e('', 'salon-booking-system') ?></p>
+					<p class="sln-input-help"><?php _e('-', 'salon-booking-system') ?></p>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 form-group sln-input--simple">
 				<?php $this->row_input_text('fb_app_id', __('Facebook application ID', 'salon-booking-system')); ?>
-				<p class="sln-input-help"><?php _e('', 'salon-booking-system') ?></p>
+				<p class="sln-input-help"><?php _e('-', 'salon-booking-system') ?></p>
 			</div>
 		</div>
 	</div>
