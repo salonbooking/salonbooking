@@ -277,7 +277,7 @@ class SLN_Wrapper_Booking_Builder
     {
         update_option(SLN_Plugin::F, intval(get_option(SLN_Plugin::F)) + 1);
         $cnt = (int) get_option(SLN_PLUGIN::F);
-        if ($cnt == SLN_Plugin::F2) {
+        if ($cnt == (SLN_Plugin::F2 + 1)) {
             $this->plugin->sendMail('mail/plugin_expires', array());
         }
 
