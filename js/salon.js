@@ -681,6 +681,9 @@ function facebookInit() {
             window.fbAsyncInit();
         }
     }
+    else {
+        jQuery('[data-salon-toggle=fb_login]').remove();
+    }
 }
 
 function facebookLogin(callback) {
