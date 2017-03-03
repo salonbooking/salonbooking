@@ -126,7 +126,8 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract implements SLN_Wrapper_
 
     public function getContent()
     {
-        return $this->object->post_excerpt;
+        if(isset($this->object->post_excerpt))
+            return $this->object->post_excerpt;
     }
 
     public function __toString()

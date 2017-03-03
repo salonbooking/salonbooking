@@ -68,6 +68,7 @@ class SLN_Plugin
     public function createBooking($booking)
     {
         if (is_string($booking) && strpos($booking, '-') !== false) {
+            $booking = str_replace('?sln_step_page=thankyou', '',$booking);
             $secureId = $booking;
             $booking = intval($booking);
         }
