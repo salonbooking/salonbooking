@@ -267,6 +267,7 @@ http://salon.wordpresschef.it
 * Fixed bug on thousand separators
 * Required checkout form fields options on back-end
 * Added "Choose an assistant for me" default option on front-end
+* Fixed fatal error on thank you page after payment on PayPal
 
 
 07.02.2017
