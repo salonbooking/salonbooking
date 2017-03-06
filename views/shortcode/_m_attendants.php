@@ -9,11 +9,22 @@
 
 $ah = $plugin->getAvailabilityHelper();
 $ah->setDate($plugin->getBookingBuilder()->getDateTime());
-$bookingServices   = SLN_Wrapper_Booking_Services::build($bb->getAttendantsIds(), $bb->getDateTime());
+$bookingServices = SLN_Wrapper_Booking_Services::build($bb->getAttendantsIds(), $bb->getDateTime());
 
 foreach ($bookingServices->getItems() as $bookingService) :
     $service = $bookingService->getService();
-    $hasAttendants = false;
+    if ($service->isAttendantsEnabled()) {
+        $tmp = '';
+        foreach ($attendants as $attendant) {
+            if ($attendant->hasServices(array($service))) {
+                $errors = SLN_Shortcode_Salon_AttendantHelper::validateItem(array($bookingService), $ah, $attendant);
+                $tmp .= SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors, $attendant);
+            }
+        }
+        if ($tmp) {
+            $tmp = SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors, null, $service).$tmp;
+        }
+    }
     ?>
     <div class="sln-attendant-list sln-attendant-list--multiple">
         <div class="row">
@@ -21,7 +32,18 @@ foreach ($bookingServices->getItems() as $bookingService) :
                 <h3 class="sln-steps-name sln-service-name"><?php echo $service->getName() ?></h3>
             </div>
         </div>
-        <?php if (!$service->isAttendantsEnabled()) : ?>
+        <?php if ($service->isAttendantsEnabled()) : ?>
+            <?php if ($tmp) : ?>
+                <?php echo $tmp ?>
+            <?php else: ?>
+                <div class="alert alert-warning">
+                    <p><?php echo __(
+                            'No assistants available for the selected time/slot - please choose another one',
+                            'salon-booking-system'
+                        ) ?></p>
+                </div>
+            <?php endif ?>
+        <?php else: ?>
             <div class="row sln-attendant">
                 <?php SLN_Form::fieldText('sln[attendants]['.$service->getId().']', 0, array('type' => 'hidden')) ?>
                 <p><?php echo __(
@@ -29,26 +51,7 @@ foreach ($bookingServices->getItems() as $bookingService) :
                         'salon-booking-system'
                     ) ?></p>
             </div>
-            <?php continue; endif; ?>
-
-        <?php echo SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors, null, $service); ?>
-        <?php foreach ($attendants as $attendant) : ?>
-            <?php
-            if ($attendant->hasServices(array($service))) {
-                continue;
-            }
-            $errors = SLN_Shortcode_Salon_AttendantHelper::validateItem(array($bookingService), $ah, $attendant);
-            echo SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors, $attendant);
-            ?>
-            <?php $hasAttendants = true ?>
-        <?php endforeach ?>
-        <?php if (!$hasAttendants) : ?>
-            <div class="alert alert-warning">
-                <p><?php echo __(
-                        'No assistants available for the selected time/slot - please choose another one',
-                        'salon-booking-system'
-                    ) ?></p>
-            </div>
         <?php endif ?>
     </div>
 <?php endforeach ?>
+

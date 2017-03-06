@@ -23,19 +23,23 @@ foreach ($services as $k => $service) {
         unset($services[$k]);
     }
 }
+$tmp = '';
+foreach ($attendants as $attendant) {
+    if ($attendant->hasServices($services)) {
+        $errors = SLN_Shortcode_Salon_AttendantHelper::validateItem($bookingServices->getItems(), $ah, $attendant);
+        $tmp .= SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors, $attendant);
+        $hasAttendants = true;
+    }
+}
+if ($tmp) {
+    $tmp = SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors).$tmp;
+}
 
 ?>
 <div class="sln-attendant-list">
-    <?php echo SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors); ?>
-    <?php foreach ($attendants as $attendant) {
-        if (!$attendant->hasServices($services)) {
-            continue;
-        }
-        $errors = SLN_Shortcode_Salon_AttendantHelper::validateItem($bookingServices->getItems(), $ah, $attendant);
-        echo SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors, $attendant);
-        $hasAttendants = true;
-    } ?>
-    <?php if (!$hasAttendants) : ?>
+    <?php if ($tmp) : ?>
+        <?php echo $tmp ?>
+    <?php else: ?>
         <div class="alert alert-warning">
             <p><?php echo __(
                     'No assistants available for the selected time/slot - please choose another one',
@@ -44,3 +48,4 @@ foreach ($services as $k => $service) {
         </div>
     <?php endif ?>
 </div>
+

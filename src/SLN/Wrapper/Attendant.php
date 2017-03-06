@@ -99,13 +99,13 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract implements SLN_Wrapper_
         if ($this->hasAllServices()) {
             return true;
         }
-
         /** @var SLN_Wrapper_ServiceInterface $service */
         foreach ($services as $service) {
             if (!$this->hasService($service)) {
                 return false;
             }
         }
+        return true;
     }
 
     public function hasAllServices()

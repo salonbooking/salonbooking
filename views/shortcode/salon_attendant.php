@@ -11,6 +11,7 @@ $attendants             = $step->getAttendants();
 $style                  = $step->getShortcode()->getStyleShortcode();
 $size                   = SLN_Enum_ShortcodeStyle::getSize($style);
 $isMultipleAttSelection = $plugin->getSettings()->isMultipleAttendantsEnabled();
+$includeName = $isMultipleAttSelection ? '_m_attendants.php' : '_attendants.php';
 ?>
 <?php include '_errors.php'; ?>
 <form id="salon-step-attendant" method="post" action="<?php echo $formAction ?>" role="form">
@@ -31,14 +32,14 @@ $isMultipleAttSelection = $plugin->getSettings()->isMultipleAttendantsEnabled();
     ?>
     <?php if ($size == '900'): ?>
         <div class="row sln-box--main sln-attendants-wrapper">
-            <div class="col-md-8"><?php include "_attendants.php"; ?></div>
+            <div class="col-md-8"><?php include $includeName; ?></div>
             <div class="col-md-4 sln-box--formactions">
                 <div class="col-md-12"><?php include "_form_actions.php" ?></div>
             </div>
         </div>
     <?php else: ?>
         <div class="row sln-box--main sln-attendants-wrapper">
-            <div class="col-md-12"><?php include "_attendants.php"; ?></div>
+            <div class="col-md-12"><?php include $includeName; ?></div>
         </div>
         <div class="row sln-box--main sln-box--formactions">
             <div class="col-md-12"><?php include "_form_actions.php" ?></div>
