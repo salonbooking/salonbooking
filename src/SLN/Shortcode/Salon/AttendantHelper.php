@@ -52,7 +52,7 @@ class SLN_Shortcode_Salon_AttendantHelper
         }
 
         if (isset($service)) {
-            $elemId = SLN_Form::makeID('sln[attendant]['.$service->getId().']['.$attendant->getId().']');
+            $elemId = SLN_Form::makeID('sln[attendants]['.$service->getId().']['.$attendant->getId().']');
             $field  = 'sln[attendants]['.$service->getId().']';
         } else {
             $elemId = SLN_Form::makeID('sln[attendant]['.$attendant->getId().']');

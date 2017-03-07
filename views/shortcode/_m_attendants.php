@@ -18,7 +18,7 @@ foreach ($bookingServices->getItems() as $bookingService) :
         foreach ($attendants as $attendant) {
             if ($attendant->hasServices(array($service))) {
                 $errors = SLN_Shortcode_Salon_AttendantHelper::validateItem(array($bookingService), $ah, $attendant);
-                $tmp .= SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors, $attendant);
+                $tmp .= SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors, $attendant, $service);
             }
         }
         if ($tmp) {

@@ -7,6 +7,7 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
             return parent::getIntervalsArray();
         }
 
+        $fullDays = array();
         $plugin = $this->plugin;
         $ah   = $plugin->getAvailabilityHelper();
 
@@ -33,6 +34,7 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
 
             if (!$free) {
                 unset($intervalsArray['dates'][$k]);
+                $fullDays[] = $v;
             }
         }
 
@@ -67,7 +69,7 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
             $tmpTime = new SLN_DateTime(reset($intervalsArray['times']));
             $intervalsArray['suggestedTime'] = $plugin->format()->time($tmpTime);
         }
-
+        $intervalsArray['fullDays'] = array_merge($intervalsArray['fullDays'], $fullDays);
         return $intervalsArray;
     }
 
