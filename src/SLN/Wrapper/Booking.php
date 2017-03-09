@@ -28,11 +28,11 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
         return $ret;
     }
 
-    function getToPayAmount()
+    function getToPayAmount($format = true)
     {
         $ret = $this->getDeposit() > 0 ? $this->getDeposit() : $this->getAmount();
 
-        return number_format($ret, 2);
+        return $format ? number_format($ret, 2) : $ret;
     }
 
     function getFirstname()

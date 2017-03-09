@@ -18,7 +18,7 @@ class SLN_PaymentMethod_Stripe extends SLN_PaymentMethod_Paypal//Abstract
         $success = '';
         try {
             $charge = \Stripe\Charge::create(array(
-                "amount" => intval($booking->getToPayAmount()*100),
+                "amount" => intval($booking->getToPayAmount(false)*100),
                 "currency" => $this->plugin->getSettings()->getCurrency(),
                 "card" => $token
             ));
