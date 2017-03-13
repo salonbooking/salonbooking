@@ -43,6 +43,75 @@
 			</div>
 		</div>
 	</form>
+
+	<form method="post" action="<?php echo admin_url('admin.php?page=' . SLN_Admin_Tools::PAGE)?>">
+		<div class="sln-tab" id="sln-tab-import-data">
+			<div class="sln-box sln-box--main">
+				<div class="row">
+					<div class="col-xs-6 col-sm-5">
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<h2 class="sln-box-title"><?php _e('Import customers','salon-booking-system') ?></h2>
+								<h6 class="sln-fake-label"><?php _e('Import customers from other platforms using a csv file that respect our csv sample file structure','salon-booking-system')?></h6>
+							</div>
+							<div class="col-sm-12 form-group sln-input--simple sln-logo-box">
+								<div id="import-customers-drag" class="preview-logo">
+									<div><?php _e('drag your csv file here to import customers', 'salon-booking-system') ?></div>
+								</div>
+							</div>
+							<div class="col-sm-12 form-group">
+								<div class="pull-right">
+									<input type="submit" class="sln-btn sln-btn--main sln-btn--big" value="Import" name="sln-tools-import-customers" id="submit-import-customers">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-xs-offset-0 col-sm-5 col-sm-offset-2">
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<h2 class="sln-box-title"><?php _e('Import services','salon-booking-system') ?></h2>
+								<h6 class="sln-fake-label"><?php _e('Import services from other platforms using a csv file that respect our csv sample file structure','salon-booking-system')?></h6>
+							</div>
+							<div class="col-sm-12 form-group sln-input--simple sln-logo-box">
+								<div id="import-services-drag" class="preview-logo">
+									<div><?php _e('drag your csv file here to import services', 'salon-booking-system') ?></div>
+								</div>
+							</div>
+							<div class="col-sm-12 form-group">
+								<div class="pull-right">
+									<input type="submit" class="sln-btn sln-btn--main sln-btn--big" value="Import" name="sln-tools-import-services" id="submit-import-services">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-6 col-sm-5">
+						<div class="row">
+							<div class="col-sm-12 form-group">
+								<h2 class="sln-box-title"><?php _e('Import assistants','salon-booking-system') ?></h2>
+								<h6 class="sln-fake-label"><?php _e('Import assistants from other platforms using a csv file that respect our csv sample file structure','salon-booking-system')?></h6>
+							</div>
+							<div class="col-sm-12 form-group sln-input--simple sln-logo-box">
+								<div id="import-assistants-drag" class="preview-logo">
+									<div><?php _e('drag your csv file here to import assistants', 'salon-booking-system') ?></div>
+								</div>
+							</div>
+							<div class="col-sm-12 form-group">
+								<div class="pull-right">
+									<input type="submit" class="sln-btn sln-btn--main sln-btn--big" value="Import" name="sln-tools-import-assistants" id="submit-import-assistants">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</form>
+
 </div>
 
 <script>
