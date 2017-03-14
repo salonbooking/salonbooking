@@ -38,6 +38,8 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
             foreach ($repo->getStandardCriteria() as $k => $v) {
                 $query->set($k, $v);
             }
+
+            $repo->setPostsOrderByFilter();
         }
     }
 

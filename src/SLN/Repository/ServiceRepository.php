@@ -103,6 +103,22 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
         return ($min ? $min : new SLN_DateTime('1970-01-01 00:00'));
     }
 
+    public function setPostsOrderByFilter() {
+        add_filter('posts_orderby', array($this, 'postsOrderby'), 10, 2);
+    }
+
+	/**
+     * @param string $orderby
+     * @param WP_Query $query
+     *
+     * @return string
+     */
+    public function postsOrderby($orderby, $query) {
+        remove_filter('posts_orderby', array($this, 'postsOrderby'), 10);
+
+        return str_replace("wp_postmeta.meta_value", "CAST(wp_postmeta.meta_value AS DECIMAL)", $orderby);
+    }
+
     /**
      * @param SLN_Wrapper_Service[] $services
      *
