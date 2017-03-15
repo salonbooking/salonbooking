@@ -50,16 +50,15 @@ class SLN_Time
     }
 
 
-    public static function increment(SLN_Time $time, $minutes = null)
+    public static function increment(SLN_Time $time, $interval = null)
     {
-        if($minutes instanceof SLN_Time) {
-            $minutes = $minutes->toMinutes();
+        if($interval instanceof SLN_Time) {
+            $interval = $interval->toMinutes();
         } elseif (!$minutes) {
-            $minutes = SLN_Plugin::getInstance()->getSettings()->getInterval();
+            $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
         }
-        $c = new DateTime('1970-01-01 '.$time->time);
-        $c->modify('+'.$minutes.' minutes');
-
-        return new SLN_Time($c->format('H:i'));
+        $m = $time->toMinutes() + $interval;
+        $h = floor($c/60);
+        return new SLN_Time($h.':'.($h % 60));
     }
 }
