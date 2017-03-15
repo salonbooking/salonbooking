@@ -5,6 +5,7 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract implements SLN_Wrapper_Se
     const _CLASS = 'SLN_Wrapper_Service';
 
     private $availabilityItems;
+    private $attendants;
     
     public function getPostType()
     {
@@ -97,14 +98,17 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract implements SLN_Wrapper_Se
      */
     public function getAttendants()
     {
-        if ($this->isAttendantsEnabled()) {
-            /** @var SLN_Repository_AttendantRepository $repo */
-            $repo = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
+        if(!isset($this->attendants)) {
+            if ($this->isAttendantsEnabled()) {
+                /** @var SLN_Repository_AttendantRepository $repo */
+                $repo = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
 
-            return $repo->findByService($this);
+                $this->attendants = $repo->findByService($this);
+            } else {
+                $this->attendants = array();
+            }
         }
-
-        return array();
+        return $this->attendants;
     }
 
     public function isAttendantsEnabled() {
