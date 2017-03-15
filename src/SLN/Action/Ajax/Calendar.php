@@ -75,7 +75,7 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
                     .($freeM > 0 ? "{$freeM}".__('mns', 'salon-booking-system') : '').'</strong>'
                     .__('available left', 'salon-booking-system').'</span></div>';
                 if ($free || $busy) {
-                    $tmp['free'] = ($free / ($free + $busy)) * 100;
+                    $tmp['free'] = intval(($free / ($free + $busy)) * 100);
                     $tmp['busy'] = 100 - $tmp['free'];
                 }
             }
