@@ -56,12 +56,25 @@
 							</div>
 							<div class="col-sm-12 form-group sln-input--simple sln-logo-box">
 								<div id="import-customers-drag" class="preview-logo">
-									<div><?php _e('drag your csv file here to import customers', 'salon-booking-system') ?></div>
+									<div class="info">
+										<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+										<span class="text"><?php _e('drag your csv file here to import customers', 'salon-booking-system') ?></span>
+									</div>
+									<div class="alert alert-success hide" role="alert"><?php _e('Well done! Your import has been successfully completed.', 'salon-booking-system') ?></div>
+									<div class="alert alert-danger hide" role="alert"><?php _e('Error! Something is gone wrong.', 'salon-booking-system') ?></div>
+
+									<div class="progress hide">
+										<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+										     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-sm-12 form-group">
 								<div class="pull-right">
-									<input type="submit" class="sln-btn sln-btn--main sln-btn--big" value="Import" name="sln-tools-import-customers" id="submit-import-customers">
+									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-customers-drag">
+										<?php _e('Import', 'salon-booking-system') ?>
+									</button>
 								</div>
 							</div>
 						</div>
@@ -75,12 +88,25 @@
 							</div>
 							<div class="col-sm-12 form-group sln-input--simple sln-logo-box">
 								<div id="import-services-drag" class="preview-logo">
-									<div><?php _e('drag your csv file here to import services', 'salon-booking-system') ?></div>
+									<div class="info">
+										<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+										<span class="text"><?php _e('drag your csv file here to import services', 'salon-booking-system') ?></span>
+									</div>
+									<div class="alert alert-success hide" role="alert"><?php _e('Well done! Your import has been successfully completed.', 'salon-booking-system') ?></div>
+									<div class="alert alert-danger hide" role="alert"><?php _e('Error! Something is gone wrong.', 'salon-booking-system') ?></div>
+
+									<div class="progress hide">
+										<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+										     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-sm-12 form-group">
 								<div class="pull-right">
-									<input type="submit" class="sln-btn sln-btn--main sln-btn--big" value="Import" name="sln-tools-import-services" id="submit-import-services">
+									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-services-drag">
+										<?php _e('Import', 'salon-booking-system') ?>
+									</button>
 								</div>
 							</div>
 						</div>
@@ -96,12 +122,25 @@
 							</div>
 							<div class="col-sm-12 form-group sln-input--simple sln-logo-box">
 								<div id="import-assistants-drag" class="preview-logo">
-									<div><?php _e('drag your csv file here to import assistants', 'salon-booking-system') ?></div>
+									<div class="info">
+										<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+										<span class="text"><?php _e('drag your csv file here to import assistants', 'salon-booking-system') ?></span>
+									</div>
+									<div class="alert alert-success hide" role="alert"><?php _e('Well done! Your import has been successfully completed.', 'salon-booking-system') ?></div>
+									<div class="alert alert-danger hide" role="alert"><?php _e('Error! Something is gone wrong.', 'salon-booking-system') ?></div>
+
+									<div class="progress hide">
+										<div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar"
+										     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-sm-12 form-group">
 								<div class="pull-right">
-									<input type="submit" class="sln-btn sln-btn--main sln-btn--big" value="Import" name="sln-tools-import-assistants" id="submit-import-assistants">
+									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-assistants-drag">
+										<?php _e('Import', 'salon-booking-system') ?>
+									</button>
 								</div>
 							</div>
 						</div>

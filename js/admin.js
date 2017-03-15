@@ -68,4 +68,153 @@ jQuery(function ($) {
             $('.sln-calendar--wrapper').removeClass('sln-calendar--wrapper--loading');
         }
     });
+
+    initImporter($('#import-customers-drag'), 'Customers');
+    initImporter($('#import-services-drag'), 'Services');
+    initImporter($('#import-assistants-drag'), 'Assistants');
 });
+
+function initImporter($item, mode) {
+    var $importArea = $item;
+
+    $importArea[0].ondragover = function() {
+        $importArea.addClass('hover');
+        return false;
+    };
+
+    $importArea[0].ondragleave = function() {
+        $importArea.removeClass('hover');
+        return false;
+    };
+
+    $importArea[0].ondrop = function(event) {
+        event.preventDefault();
+        $importArea.removeClass('hover').addClass('drop');
+
+        var file = event.dataTransfer.files[0];
+
+        $importArea.file = file;
+
+        $importArea.find('.text').html(file.name);
+        importShowInfo();
+    };
+
+    jQuery('[data-action=sln_import][data-target=' + $importArea.attr('id') + ']').click(function() {
+        if (!$importArea.file) {
+            return false;
+        }
+        $importArea.find('.progress-bar').attr('aria-valuenow', 0).css('width', '0%');
+        importShowPB();
+
+        var data = new FormData();
+
+        data.append('action', 'salon');
+        data.append('method', 'import'+mode);
+        data.append('step', 'start');
+        data.append('file', $importArea.file);
+
+        jQuery.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: data,
+            cache: false,
+            dataType: 'json',
+            processData: false, //(Don't process the files)
+            contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    console.log(response);
+                    importProgressPB(response.data.total, response.data.left);
+                }
+                else {
+                    importShowError();
+                }
+            },
+            error: function() {
+                importShowError();
+            }
+        });
+
+        $importArea.file = false;
+
+        return false;
+    });
+
+    function importProgressPB(total, left) {
+        total = parseInt(total);
+        left = parseInt(left);
+
+        var value = ((total - left) / total) * 100;
+        $importArea.find('.progress-bar').attr('aria-valuenow', value).css('width', value+'%');
+
+        if (left != 0) {
+            jQuery.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'salon',
+                    method: 'import'+mode,
+                    step: 'process',
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        console.log(response);
+                        importProgressPB(response.data.total, response.data.left);
+                    }
+                    else {
+                        importShowError();
+                    }
+                },
+                error: function() {
+                    importShowError();
+                }
+            });
+        }
+        else {
+            jQuery.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'salon',
+                    method: 'import'+mode,
+                    step: 'finish',
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        importShowSuccess();
+                    }
+                    else {
+                        importShowError();
+                    }
+                },
+                error: function() {
+                    importShowError();
+                }
+            });
+        }
+    }
+
+    function importShowPB() {
+        $importArea.find('.alert').addClass('hide');
+        $importArea.find('.progress').removeClass('hide');
+    }
+
+    function importShowInfo() {
+        $importArea.find('.alert, .progress').addClass('hide');
+        $importArea.find('.info').removeClass('hide');
+    }
+
+    function importShowSuccess() {
+        $importArea.find('.info, .alert, .progress').addClass('hide');
+        $importArea.find('.alert-success').removeClass('hide');
+    }
+
+    function importShowError() {
+        $importArea.find('.info, .alert, .progress').addClass('hide');
+        $importArea.find('.alert-danger').removeClass('hide');
+    }
+}
