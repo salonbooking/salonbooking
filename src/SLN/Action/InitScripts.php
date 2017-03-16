@@ -24,6 +24,7 @@ class SLN_Action_InitScripts
 
     public function hook_enqueue_scripts()
     {
+        wp_enqueue_style('bootstrap-3', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), false, false);
         if ( ! $this->isAdmin) {
             self::preloadScripts();
             self::enqueueTwitterBootstrap(false);

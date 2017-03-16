@@ -69,9 +69,15 @@ jQuery(function ($) {
         }
     });
 
-    initImporter($('#import-customers-drag'), 'Customers');
-    initImporter($('#import-services-drag'), 'Services');
-    initImporter($('#import-assistants-drag'), 'Assistants');
+    if ($('#import-customers-drag').size() > 0) {
+        initImporter($('#import-customers-drag'), 'Customers');
+    }
+    if ($('#import-services-drag').size() > 0) {
+        initImporter($('#import-services-drag'), 'Services');
+    }
+    if ($('#import-assistants-drag').size() > 0) {
+        initImporter($('#import-assistants-drag'), 'Assistants');
+    }
 });
 
 function initImporter($item, mode) {

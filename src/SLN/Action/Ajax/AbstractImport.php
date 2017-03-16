@@ -51,6 +51,7 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
         }
         fclose($fh);
 
+        //TODO: order the collection by is_secondary attribute
         $import = array(
             'total' => count($items),
             'items' => $items,
