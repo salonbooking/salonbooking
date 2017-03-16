@@ -54,11 +54,11 @@ class SLN_Time
     {
         if($interval instanceof SLN_Time) {
             $interval = $interval->toMinutes();
-        } elseif (!$minutes) {
+        } elseif (!$interval) {
             $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
         }
         $m = $time->toMinutes() + $interval;
-        $h = floor($c/60);
+        $h = floor($m/60);
         return new SLN_Time($h.':'.($h % 60));
     }
 }
