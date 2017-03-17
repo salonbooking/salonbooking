@@ -170,7 +170,7 @@ foreach($checkoutFields as $field => $name ) {
         <div class="clearfix"></div>
         <div class="col-md-6 col-sm-12">
         <div class="sln-checkbox">
-            <input type="checkbox" id="_sln_booking_createuser" name="_sln_booking_createuser" <?php if($booking->isNew()){ ?>checked="checked"<?php } ?>/>
+            <input type="checkbox" id="_sln_booking_createuser" name="_sln_booking_createuser"/>
             <label for="_sln_booking_createuser"><?php _e('Create a new user') ?></label>
         </div>
         </div>
