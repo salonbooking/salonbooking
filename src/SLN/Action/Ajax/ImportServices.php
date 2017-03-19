@@ -3,16 +3,16 @@
 class SLN_Action_Ajax_ImportServices extends SLN_Action_Ajax_AbstractImport
 {
     protected $fields = array(
-//        'external_id',
+        'external_id',
         'name',
-//        'category_name',
+        'category_name',
         'price',
         'unit_per_hour',
         'duration',
         'break',
         'is_secondary',
         'secondary_mode',
-//        'secondary_parents',
+        'secondary_parents',
         'execution_order',
         'no_assistant',
         'description',
@@ -34,13 +34,14 @@ class SLN_Action_Ajax_ImportServices extends SLN_Action_Ajax_AbstractImport
      *
      * @param SLN_Plugin $plugin
      */
-    public function __construct($plugin) {
+    public function __construct($plugin)
+    {
         parent::__construct($plugin);
 
         $this->type = $plugin::POST_TYPE_SERVICE;
     }
 
-    protected function process_row($data)
+    protected function processRow($data)
     {
         $args = array(
             'post_title'   => $data['name'],
@@ -62,15 +63,41 @@ class SLN_Action_Ajax_ImportServices extends SLN_Action_Ajax_AbstractImport
         update_post_meta($postID, '_sln_service_secondary', $data['is_secondary']);
         update_post_meta($postID, '_sln_service_secondary_display_mode', $data['secondary_mode']);
         update_post_meta($postID, '_sln_service_attendants', $data['no_assistant']);
+        update_post_meta($postID, '_sln_service_external_id', $data['external_id']);
 
-//        TODO: set external id
-//        update_post_meta($postID, '', $data['']);
+	    $secondaryParents = array();
+	    $parents = explode('|', $data['secondary_parents']);
+	    if (!empty($parents)) {
+		    $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+		    foreach ($parents as $externalID) {
+			    $result = $repo->get(array(
+				    '@wp_query' => array(
+					    'meta_query' => array(
+						    array(
+							    'key'   => '_sln_service_external_id',
+							    'value' => $externalID
+						    ),
+					    )
+				    )
+			    ));
 
-//        TODO: add secondary parent services
-//        update_post_meta($postID, '_sln_service_secondary_parent_services', $data['secondary_parents']);
+			    /** @var SLN_Wrapper_Service $service */
+			    $service = reset($result);
+			    if ($service && !$service->isSecondary()) {
+				    $secondaryParents[] = $service->getId();
+			    }
+		    }
+	    }
+        update_post_meta($postID, '_sln_service_secondary_parent_services', $secondaryParents);
 
-//        TODO: set category
-//        $serviceCategories = wp_get_post_terms($service->getId(), 'sln_service_category', array( "fields" => "ids" ) );
+	    if (!empty($data['category_name'])) {
+		    $category = $data['category_name'];
+
+		    $result = wp_create_term($category, 'sln_service_category');
+		    if (is_array($result)) {
+			    wp_set_post_terms($postID, $category, 'sln_service_category');
+		    }
+	    }
 
         $days = array(
             1 => (int) $data['availability_rule_sunday'],
@@ -101,5 +128,22 @@ class SLN_Action_Ajax_ImportServices extends SLN_Action_Ajax_AbstractImport
         return true;
     }
 
+	protected function prepareRows($rows)
+	{
+		usort($rows, array($this, 'sortBySecondary'));
+		return $rows;
+	}
 
+	protected function sortBySecondary($a, $b)
+	{
+		if (!$a['is_secondary'] && $b['is_secondary']) {
+			return -1;
+		}
+		elseif ($a['is_secondary'] && !$b['is_secondary']) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
 }

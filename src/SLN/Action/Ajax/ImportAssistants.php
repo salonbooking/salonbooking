@@ -6,7 +6,7 @@ class SLN_Action_Ajax_ImportAssistants extends SLN_Action_Ajax_AbstractImport
         'name',
         'email',
         'phone',
-//        'services',
+        'services',
         'description',
         'availability_rule_monday',
         'availability_rule_tuesday',
@@ -27,13 +27,14 @@ class SLN_Action_Ajax_ImportAssistants extends SLN_Action_Ajax_AbstractImport
      *
      * @param SLN_Plugin $plugin
      */
-    public function __construct($plugin) {
+    public function __construct($plugin)
+    {
         parent::__construct($plugin);
 
         $this->type = $plugin::POST_TYPE_ATTENDANT;
     }
 
-    protected function process_row($data)
+    protected function processRow($data)
     {
         $args = array(
             'post_title'   => $data['name'],
@@ -50,8 +51,31 @@ class SLN_Action_Ajax_ImportAssistants extends SLN_Action_Ajax_AbstractImport
 
         update_post_meta($postID, '_sln_attendant_email', $data['email']);
         update_post_meta($postID, '_sln_attendant_phone', $data['phone']);
-//        TODO: add services
-//        update_post_meta($postID, '_sln_attendant_services', $data['personal_note']);
+
+	    $services  = array();
+	    $externals = explode('|', $data['services']);
+	    if (!empty($externals)) {
+		    $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+		    foreach ($externals as $externalID) {
+			    $result = $repo->get(array(
+				    '@wp_query' => array(
+					    'meta_query' => array(
+						    array(
+							    'key'   => '_sln_service_external_id',
+							    'value' => $externalID
+						    ),
+					    )
+				    )
+			    ));
+
+			    /** @var SLN_Wrapper_Service $service */
+			    $service = reset($result);
+			    if ($service && $service->isAttendantsEnabled()) {
+				    $services[] = $service->getId();
+			    }
+		    }
+	    }
+	    update_post_meta($postID, '_sln_attendant_services', $services);
 
         $days = array(
             1 => (int) $data['availability_rule_sunday'],

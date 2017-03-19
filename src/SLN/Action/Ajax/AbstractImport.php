@@ -10,8 +10,8 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
     {
         $data = array();
 
-        $step = isset($_POST['step']) ? $_POST['step'] : '';
-        $method = "step_{$step}";
+        $step   = ucfirst(isset($_POST['step']) ? $_POST['step'] : '');
+        $method = "step{$step}";
 
         if (method_exists($this, $method)) {
             $data = $this->$method();
@@ -29,7 +29,7 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
         return $ret;
     }
 
-    protected function step_start()
+    protected function stepStart()
     {
         if (!isset($_FILES['file'])) {
             $this->addError(__('File not found', 'salon-booking-system'));
@@ -51,7 +51,8 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
         }
         fclose($fh);
 
-        //TODO: order the collection by is_secondary attribute
+	    $items  = array_filter($items);
+	    $items  = $this->prepareRows($items);
         $import = array(
             'total' => count($items),
             'items' => $items,
@@ -65,14 +66,14 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
         );
     }
 
-    protected function step_finish()
+    protected function stepFinish()
     {
         delete_transient($this->getTransientKey());
 
         return true;
     }
 
-    protected function step_process()
+    protected function stepProcess()
     {
         $import = get_transient($this->getTransientKey());
 
@@ -82,8 +83,8 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
         }
 
 
-        $item = array_shift($import['items']);
-        $imported = $this->process_row($item);
+        $item     = array_shift($import['items']);
+        $imported = $this->processRow($item);
 
         if ($imported === true) {
             set_transient($this->getTransientKey(), $import, 60 * 60 * 24);
@@ -103,9 +104,15 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
      *
      * @return bool|string
      */
-    abstract protected function process_row($data);
+    abstract protected function processRow($data);
 
-    protected function getTransientKey() {
+	protected function prepareRows($rows)
+	{
+		return $rows;
+	}
+
+    protected function getTransientKey()
+    {
         return "sln_import_{$this->type}_data";
     }
 

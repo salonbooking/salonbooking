@@ -16,13 +16,14 @@ class SLN_Action_Ajax_ImportCustomers extends SLN_Action_Ajax_AbstractImport
      *
      * @param SLN_Plugin $plugin
      */
-    public function __construct($plugin) {
+    public function __construct($plugin)
+    {
         parent::__construct($plugin);
 
         $this->type = $plugin::USER_ROLE_CUSTOMER;
     }
 
-    protected function process_row($data)
+    protected function processRow($data)
     {
         $errors = wp_create_user($data['email'], wp_generate_password( 8, false ), $data['email']);
         if (is_wp_error($errors)) {
@@ -45,10 +46,9 @@ class SLN_Action_Ajax_ImportCustomers extends SLN_Action_Ajax_AbstractImport
         add_user_meta($errors, '_sln_address', $data['address']);
         add_user_meta($errors, '_sln_personal_note', $data['personal_note']);
 
-        //TODO: send the email
+	    wp_send_new_user_notifications($errors, 'user');
 
         return true;
     }
-
 
 }
