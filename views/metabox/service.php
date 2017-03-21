@@ -81,7 +81,7 @@ $helper->showNonce($postType);
 <div class="row">
     <div class="col-sm-6 col-md-3 form-group sln-select">
         <label><?php _e('Service break', 'salon-booking-system'); ?></label>
-        <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'break_duration'), $service->getBreakDuration(), array('maxItems' => (int) SLN_Func::getMinutesFromDuration('03:00')/SLN_Plugin::getInstance()->getSettings()->getInterval() + 1)); ?>
+        <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'break_duration'), $service->getBreakDuration(), array('maxItems' => (int) SLN_Func::getMinutesFromDuration(SLN_Constants::BREAK_DURATION_MAX)/SLN_Plugin::getInstance()->getSettings()->getInterval() + 1)); ?>
     </div>
     <div class="col-sm-6 col-md-6 form-group sln-box-maininfo align-top">
         <p class="sln-input-help"><?php _e('If you set a break this service duration will be splitted up into two equals parts. That means that the during its break other reservations will be available.','salon-booking-system'); ?></p>
