@@ -39,9 +39,27 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
                 $query->set($k, $v);
             }
 
-            $repo->setPostsOrderByFilter();
+            $this->setPostsOrderByFilter();
         }
     }
+
+	public function setPostsOrderByFilter() {
+		add_filter('posts_orderby', array($this, 'postsOrderby'), 10, 2);
+	}
+
+	/**
+	 * @param string $orderby
+	 * @param WP_Query $query
+	 *
+	 * @return string
+	 */
+	public function postsOrderby($orderby, $query) {
+		remove_filter('posts_orderby', array($this, 'postsOrderby'), 10);
+
+		return str_replace("wp_postmeta.meta_value", "CAST(wp_postmeta.meta_value AS DECIMAL)", $orderby);
+	}
+
+
 
     public function load_scripts()
     {
