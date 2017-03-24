@@ -20,6 +20,7 @@ abstract class SLN_Admin_AbstractPage
     {
         SLN_Action_InitScripts::enqueueTwitterBootstrap(true);
         SLN_Action_InitScripts::enqueueAdmin();
+        SLN_Action_InitScripts::enqueueSelect2();
     }
 
     public function admin_menu()

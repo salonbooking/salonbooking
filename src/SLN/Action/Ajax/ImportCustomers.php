@@ -11,6 +11,11 @@ class SLN_Action_Ajax_ImportCustomers extends SLN_Action_Ajax_AbstractImport
         'personal_note',
     );
 
+    protected $required = array(
+        'first_name',
+        'email',
+    );
+
     /**
      * SLN_Action_Ajax_ImportCustomers constructor.
      *

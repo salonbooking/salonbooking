@@ -80,6 +80,7 @@ jQuery(function ($) {
     }
 });
 
+var importRows;
 function initImporter($item, mode) {
     var $importArea = $item;
 
@@ -102,7 +103,7 @@ function initImporter($item, mode) {
         $importArea.file = file;
 
         $importArea.find('.text').html(file.name);
-        importShowInfo();
+        importShowFileInfo();
     };
 
     jQuery('[data-action=sln_import][data-target=' + $importArea.attr('id') + ']').click(function() {
@@ -110,7 +111,7 @@ function initImporter($item, mode) {
             return false;
         }
         $importArea.find('.progress-bar').attr('aria-valuenow', 0).css('width', '0%');
-        importShowPB();
+        importShowInfo();
 
         var data = new FormData();
 
@@ -130,7 +131,47 @@ function initImporter($item, mode) {
             success: function(response) {
                 if (response.success) {
                     console.log(response);
-                    importProgressPB(response.data.total, response.data.left);
+                    importRows = response.data.rows;
+
+                    var $modal = jQuery('#import-matching-modal');
+                    $modal.find('table tbody').html(response.data.matching);
+                    $modal.modal({
+                        keyboard: false,
+                        backdrop: true,
+                    });
+                    sln_createSelect2Full(jQuery);
+                    validImportMatching();
+                    $modal.find('[data-action=sln_import_matching_select]').change(changeImportMatching);
+
+                    jQuery('[data-action=sln_import_matching]').unbind('click').click(function() {
+                        $modal.modal('hide');
+                        importShowPB();
+
+                        jQuery.ajax({
+                            url: ajaxurl,
+                            type: 'POST',
+                            data: {
+                                action: 'salon',
+                                method: 'import'+mode,
+                                step: 'matching',
+                                form: $modal.closest('form').serialize(),
+                            },
+                            cache: false,
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.success) {
+                                    console.log(response);
+                                    importProgressPB(response.data.total, response.data.left);
+                                }
+                                else {
+                                    importShowError();
+                                }
+                            },
+                            error: function() {
+                                importShowError();
+                            }
+                        });
+                    });
                 }
                 else {
                     importShowError();
@@ -209,7 +250,13 @@ function initImporter($item, mode) {
         $importArea.find('.progress').removeClass('hide');
     }
 
+    function importShowFileInfo() {
+        $importArea.find('.alert, .progress').addClass('hide');
+        $importArea.find('.info').removeClass('hide');
+    }
+
     function importShowInfo() {
+        $importArea.find('.text').html($importArea.find('.text').attr('placeholder'));
         $importArea.find('.alert, .progress').addClass('hide');
         $importArea.find('.info').removeClass('hide');
     }
@@ -222,5 +269,47 @@ function initImporter($item, mode) {
     function importShowError() {
         $importArea.find('.info, .alert, .progress').addClass('hide');
         $importArea.find('.alert-danger').removeClass('hide');
+    }
+}
+
+function changeImportMatching() {
+    var $select = jQuery(this);
+    var field   = $select.val();
+    var col     = $select.attr('data-col');
+
+    $select.closest('table').find('tr.import_matching').each(function(index, v) {
+        var $cell = jQuery(this).find('td[data-col=' + col + ']');
+
+        var text;
+        if (importRows[index] !== undefined && importRows[index][field] !== undefined) {
+            text = importRows[index][field];
+        }
+        else {
+            text = $cell.attr('placeholder');
+        }
+
+        $cell.html(text);
+    });
+
+    validImportMatching();
+}
+
+function validImportMatching() {
+    var $modal = jQuery('#import-matching-modal');
+
+    var valid = true;
+    $modal.find('select').each(function() {
+        if (jQuery(this).prop('required') && jQuery(this).val() == '') {
+            valid = false;
+        }
+    });
+
+    if (valid) {
+        $modal.find('.alert').addClass('hide');
+        $modal.find('[data-action=sln_import_matching]').prop('disabled', false);
+    }
+    else {
+        $modal.find('.alert').removeClass('hide');
+        $modal.find('[data-action=sln_import_matching]').prop('disabled', 'disabled');
     }
 }

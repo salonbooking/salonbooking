@@ -74,6 +74,11 @@
     clear: both;
 }
 
+.sln-overflow-x {
+    display: block;
+    overflow-x: auto;
+}
+
 //
 .sln-tab {
     #sln-availabilities .items .item {

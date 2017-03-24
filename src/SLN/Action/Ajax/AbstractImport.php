@@ -3,8 +3,9 @@
 abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
 {
     protected $type;
-    protected $fields = array();
-    protected $errors = array();
+    protected $fields   = array();
+    protected $required = array();
+    protected $errors   = array();
 
     public function execute()
     {
@@ -43,9 +44,7 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
         while($row = fgetcsv($fh)) {
             $item = array();
             foreach($row as $i => $v) {
-                if (array_search($headers[$i], $this->fields) !== false) {
-                    $item[$headers[$i]] = $v;
-                }
+                $item[$headers[$i]] = $v;
             }
             $items[] = $item;
         }
@@ -57,6 +56,32 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
             'total' => count($items),
             'items' => $items,
         );
+
+        set_transient($this->getTransientKey(), $import, 60 * 60 * 24);
+
+        $args = compact('headers');
+        $args['rows']     = array_slice($items, 0, 5, true);
+        $args['columns']  = $this->fields;
+        $args['required'] = $this->required;
+
+        $matching = $this->plugin->loadView('admin/_tools_import_matching', $args);
+
+        return array(
+            'total'    => $import['total'],
+            'left'     => $import['total'],
+            'matching' => $matching,
+            'rows'     => $args['rows'],
+            'columns'  => $args['columns'],
+            'headers'  => $args['headers'],
+        );
+    }
+
+    protected function stepMatching()
+    {
+        $import = get_transient($this->getTransientKey());
+
+        parse_str($_POST['form'], $form);
+        $import['mapping'] = $form['import_matching'];
 
         set_transient($this->getTransientKey(), $import, 60 * 60 * 24);
 
@@ -82,8 +107,13 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
             return false;
         }
 
-
-        $item     = array_shift($import['items']);
+        $mapping = $import['mapping'];
+        $item    = array_shift($import['items']);
+        foreach($this->fields as $field) {
+            if (isset($mapping[$field]) && !empty($mapping[$field])) {
+                $item[$field] = $item[$mapping[$field]];
+            }
+        }
         $imported = $this->processRow($item);
 
         if ($imported === true) {

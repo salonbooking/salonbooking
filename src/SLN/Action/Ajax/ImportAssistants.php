@@ -22,6 +22,10 @@ class SLN_Action_Ajax_ImportAssistants extends SLN_Action_Ajax_AbstractImport
         'image_url',
     );
 
+    protected $required = array(
+        'name',
+    );
+
     /**
      * SLN_Action_Ajax_ImportAssistants constructor.
      *

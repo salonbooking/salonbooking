@@ -58,7 +58,8 @@
 								<div id="import-customers-drag" class="preview-logo">
 									<div class="info">
 										<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
-										<span class="text"><?php _e('drag your csv file here to import customers', 'salon-booking-system') ?></span>
+										<span class="text" placeholder="<?php _e('drag your csv file here to import customers', 'salon-booking-system') ?>">
+											<?php _e('drag your csv file here to import customers', 'salon-booking-system') ?></span>
 									</div>
 									<div class="alert alert-success hide" role="alert"><?php _e('Well done! Your import has been successfully completed.', 'salon-booking-system') ?></div>
 									<div class="alert alert-danger hide" role="alert"><?php _e('Error! Something is gone wrong.', 'salon-booking-system') ?></div>
@@ -90,7 +91,8 @@
 								<div id="import-services-drag" class="preview-logo">
 									<div class="info">
 										<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
-										<span class="text"><?php _e('drag your csv file here to import services', 'salon-booking-system') ?></span>
+										<span class="text" placeholder="<?php _e('drag your csv file here to import services', 'salon-booking-system') ?>">
+											<?php _e('drag your csv file here to import services', 'salon-booking-system') ?></span>
 									</div>
 									<div class="alert alert-success hide" role="alert"><?php _e('Well done! Your import has been successfully completed.', 'salon-booking-system') ?></div>
 									<div class="alert alert-danger hide" role="alert"><?php _e('Error! Something is gone wrong.', 'salon-booking-system') ?></div>
@@ -124,7 +126,8 @@
 								<div id="import-assistants-drag" class="preview-logo">
 									<div class="info">
 										<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
-										<span class="text"><?php _e('drag your csv file here to import assistants', 'salon-booking-system') ?></span>
+										<span class="text" placeholder="<?php _e('drag your csv file here to import assistants', 'salon-booking-system') ?>">
+											<?php _e('drag your csv file here to import assistants', 'salon-booking-system') ?></span>
 									</div>
 									<div class="alert alert-success hide" role="alert"><?php _e('Well done! Your import has been successfully completed.', 'salon-booking-system') ?></div>
 									<div class="alert alert-danger hide" role="alert"><?php _e('Error! Something is gone wrong.', 'salon-booking-system') ?></div>
@@ -146,8 +149,38 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
+
+			<div id="import-matching-modal" class="modal" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+<!--						<div class="modal-header"></div>-->
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-12 form-group">
+									<h2 class="sln-box-title"><?php _e('You need to match your CSV file data with Salon Booking database','salon-booking-system') ?></h2>
+									<h6 class="sln-fake-label"><?php _e('Select for each column the corresponding one inside your file.','salon-booking-system')?></h6>
+								</div>
+								<div class="col-md-12">
+									<table class="table table-bordered table-condensed sln-overflow-x"><tbody></tbody></table>
+								</div>
+								<div class="col-md-12">
+									<div class="pull-left">
+										<div class="alert alert-danger hide"><?php _e('Please provide all requested columns', 'salon-booking-system') ?></div>
+									</div>
+									<div class="pull-right">
+										<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import_matching">
+											<?php _e('Import', 'salon-booking-system') ?>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+<!--						<div class="modal-footer"></div>-->
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</form>
 

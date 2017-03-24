@@ -29,6 +29,12 @@ class SLN_Action_Ajax_ImportServices extends SLN_Action_Ajax_AbstractImport
         'availability_rule_2_to',
     );
 
+	protected $required = array(
+		'name',
+		'price',
+		'duration',
+	);
+
     /**
      * SLN_Action_Ajax_ImportServices constructor.
      *
@@ -63,7 +69,9 @@ class SLN_Action_Ajax_ImportServices extends SLN_Action_Ajax_AbstractImport
         update_post_meta($postID, '_sln_service_secondary', $data['is_secondary']);
         update_post_meta($postID, '_sln_service_secondary_display_mode', $data['secondary_mode']);
         update_post_meta($postID, '_sln_service_attendants', $data['no_assistant']);
-        update_post_meta($postID, '_sln_service_external_id', $data['external_id']);
+	    if (!empty($data['external_id'])) {
+		    update_post_meta($postID, '_sln_service_external_id', $data['external_id']);
+	    }
 
 	    $secondaryParents = array();
 	    $parents = explode('|', $data['secondary_parents']);
