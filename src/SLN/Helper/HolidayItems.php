@@ -23,6 +23,22 @@ class SLN_Helper_HolidayItems
         return $this->items;
     }
 
+
+    public function isValidDatetimeDuration(DateTime $date, DateTime $duration)
+    {
+        $minutes = SLN_Func::getMinutesFromDuration($duration);
+        $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
+        $steps = $minutes / $interval;
+        do {
+            if(!$this->isValidDateTime($date)) {
+                return false;
+            }
+            $date = clone $date;
+            $date->modify('+'.$interval.' minutes');
+            $steps --;
+        }while($steps >= 1);
+        return true;
+    }
     public function isValidDatetime(DateTime $date)
     {
         return $this->isValidTime($date->format('Y-m-d H:i'));

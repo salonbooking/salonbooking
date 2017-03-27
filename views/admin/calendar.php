@@ -21,11 +21,13 @@ jQuery(function($){
 .day-calbar,
 .week-calbar{
     display: block;
-    margin-top: -8px;
     margin-bottom: 8px;
     height: 8px;
     width: 100%;
     background-color: #dfdfdf;
+}
+.week-calbar{
+    margin-top: -8px;
 }
 .month-calbar{
     display: block;
