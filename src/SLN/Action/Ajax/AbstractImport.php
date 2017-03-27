@@ -36,8 +36,19 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
             $this->addError(__('File not found', 'salon-booking-system'));
             return false;
         }
+        $filename = tempnam('/tmp', 'sln_import');
+        if (!$filename) {
+            $this->addError(__('Cannot create tmp file', 'salon-booking-system'));
+            return false;
+        }
+        $moved = move_uploaded_file($_FILES['file']['tmp_name'], $filename);
+        if (!$moved) {
+            $this->addError(__('Cannot write to tmp file', 'salon-booking-system'));
+            return false;
+        }
+        set_transient($this->getTransientKey(), $filename, 60 * 60 * 24);
 
-        $fh = fopen($_FILES['file']['tmp_name'], 'r');
+        $fh = fopen($filename, 'r');
         $headers = fgetcsv($fh); // headers
 
         $items = array();
@@ -57,7 +68,7 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
             'items' => $items,
         );
 
-        set_transient($this->getTransientKey(), $import, 60 * 60 * 24);
+        file_put_contents($filename, json_encode($import));
 
         $args = compact('headers');
         $args['rows']     = array_slice($items, 0, 5, true);
@@ -78,12 +89,21 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
 
     protected function stepMatching()
     {
-        $import = get_transient($this->getTransientKey());
+        $filename = get_transient($this->getTransientKey());
+        if (!$filename) {
+            $this->addError(__('Filename not found', 'salon-booking-system'));
+            return false;
+        }
+        $import = json_decode(file_get_contents($filename), true);
+        if (empty($import)) {
+            $this->addError(__('Import data not found', 'salon-booking-system'));
+            return false;
+        }
 
         parse_str($_POST['form'], $form);
         $import['mapping'] = $form['import_matching'];
 
-        set_transient($this->getTransientKey(), $import, 60 * 60 * 24);
+        file_put_contents($filename, json_encode($import));
 
         return array(
             'total' => $import['total'],
@@ -93,6 +113,10 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
 
     protected function stepFinish()
     {
+        $filename = get_transient($this->getTransientKey());
+        if ($filename && file_exists($filename)) {
+            unlink($filename);
+        }
         delete_transient($this->getTransientKey());
 
         return true;
@@ -100,7 +124,12 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
 
     protected function stepProcess()
     {
-        $import = get_transient($this->getTransientKey());
+        $filename = get_transient($this->getTransientKey());
+        if (!$filename) {
+            $this->addError(__('Filename not found', 'salon-booking-system'));
+            return false;
+        }
+        $import = json_decode(file_get_contents($filename), true);
 
         if (empty($import) || empty($import['items'])) {
             $this->addError(__('Data not found', 'salon-booking-system'));
@@ -117,7 +146,7 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
         $imported = $this->processRow($item);
 
         if ($imported === true) {
-            set_transient($this->getTransientKey(), $import, 60 * 60 * 24);
+            file_put_contents($filename, json_encode($import));
             return array(
                 'total' => $import['total'],
                 'left'  => count($import['items']),
