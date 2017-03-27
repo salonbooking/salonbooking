@@ -74,7 +74,8 @@
 							</div>
 							<div class="col-sm-12 form-group">
 								<div class="pull-right">
-									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-customers-drag">
+									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-customers-drag"
+									        data-loading-text="<span class='glyphicon glyphicon-repeat sln-import-loader' aria-hidden='true'></span> <?php _e('loading', 'salon-booking-system') ?>">
 										<?php _e('Import', 'salon-booking-system') ?>
 									</button>
 								</div>
@@ -107,7 +108,8 @@
 							</div>
 							<div class="col-sm-12 form-group">
 								<div class="pull-right">
-									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-services-drag">
+									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-services-drag"
+									        data-loading-text="<span class='glyphicon glyphicon-repeat sln-import-loader' aria-hidden='true'></span> <?php _e('loading', 'salon-booking-system') ?>">
 										<?php _e('Import', 'salon-booking-system') ?>
 									</button>
 								</div>
@@ -142,7 +144,8 @@
 							</div>
 							<div class="col-sm-12 form-group">
 								<div class="pull-right">
-									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-assistants-drag">
+									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-assistants-drag"
+									        data-loading-text="<span class='glyphicon glyphicon-repeat sln-import-loader' aria-hidden='true'></span> <?php _e('loading', 'salon-booking-system') ?>">
 										<?php _e('Import', 'salon-booking-system') ?>
 									</button>
 								</div>
@@ -174,7 +177,8 @@
 											</div>
 										</div>
 										<div class="col-md-4">
-											<button type="button" class="sln-btn sln-btn--main sln-btn--big pull-right" data-action="sln_import_matching">
+											<button type="button" class="sln-btn sln-btn--main sln-btn--big pull-right" data-action="sln_import_matching"
+											        data-loading-text="<span class='glyphicon glyphicon-repeat sln-import-loader' aria-hidden='true'></span> <?php _e('loading', 'salon-booking-system') ?>">
 												<?php _e('Import', 'salon-booking-system') ?>
 											</button>
 										</div>

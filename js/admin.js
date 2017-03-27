@@ -111,7 +111,10 @@ function initImporter($item, mode) {
     };
 
     jQuery('[data-action=sln_import][data-target=' + $importArea.attr('id') + ']').click(function() {
+        var $importBtn = jQuery(this);
+        $importBtn.button('loading');
         if (!$importArea.file) {
+            $importBtn.button('reset');
             return false;
         }
         $importArea.find('.progress-bar').attr('aria-valuenow', 0).css('width', '0%');
@@ -133,11 +136,16 @@ function initImporter($item, mode) {
             processData: false, //(Don't process the files)
             contentType: false,
             success: function(response) {
+                $importBtn.button('reset');
                 if (response.success) {
                     console.log(response);
                     importRows = response.data.rows;
 
                     var $modal = jQuery('#import-matching-modal');
+
+                    var $modalBtn = $modal.find('[data-action=sln_import_matching]');
+                    $modalBtn.button('reset');
+
                     $modal.find('table tbody').html(response.data.matching);
                     $modal.modal({
                         keyboard: false,
@@ -148,8 +156,10 @@ function initImporter($item, mode) {
                     $modal.find('[data-action=sln_import_matching_select]').change(changeImportMatching);
 
                     jQuery('[data-action=sln_import_matching]').unbind('click').click(function() {
-                        $modal.modal('hide');
-                        importShowPB();
+                        if (!validImportMatching()) {
+                            return false;
+                        }
+                        $modalBtn.button('loading');
 
                         jQuery.ajax({
                             url: ajaxurl,
@@ -163,8 +173,10 @@ function initImporter($item, mode) {
                             cache: false,
                             dataType: 'json',
                             success: function(response) {
+                                console.log(response);
+                                $modal.modal('hide');
                                 if (response.success) {
-                                    console.log(response);
+                                    importShowPB();
                                     importProgressPB(response.data.total, response.data.left);
                                 }
                                 else {
@@ -172,6 +184,7 @@ function initImporter($item, mode) {
                                 }
                             },
                             error: function() {
+                                $modal.modal('hide');
                                 importShowError();
                             }
                         });
@@ -182,6 +195,7 @@ function initImporter($item, mode) {
                 }
             },
             error: function() {
+                $importBtn.button('reset');
                 importShowError();
             }
         });
@@ -314,4 +328,6 @@ function validImportMatching() {
         $modal.find('.alert').removeClass('hide');
         $modal.find('[data-action=sln_import_matching]').prop('disabled', 'disabled');
     }
+
+    return valid;
 }

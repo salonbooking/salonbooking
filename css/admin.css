@@ -884,6 +884,9 @@ p.sln-box-info .sln-box-info-content h5 {
 .glyphicon-flag:before {
   content: "\e034"; }
 
+.glyphicon-repeat:before {
+  content: "\e030"; }
+
 /* algolplus start */
 .glyphicon-trash:before {
   content: "\e020"; }
@@ -5198,6 +5201,24 @@ p.sln-box-info {
 .sln-import-table th:first-child {
   border-left: 1px solid #205069 !important; }
 
+.sln-import-loader {
+  -webkit-animation: glyphicon-spin-r 1s infinite linear;
+  animation: glyphicon-spin-r 1s infinite linear; }
+
+@-webkit-keyframes glyphicon-spin-r {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+@keyframes glyphicon-spin-r {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
 .sln-tab #sln-availabilities .items .item {
   padding: 1.4em;
   margin: 1em 0; }
