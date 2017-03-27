@@ -74,9 +74,21 @@
     clear: both;
 }
 
-.sln-overflow-x {
+.sln-import-table {
     display: block;
     overflow-x: auto;
+    td {
+        border-top: 1px solid #205069 !important;
+        border-left: 1px solid #205069 !important;
+        border-right: 1px solid #205069 !important;
+        border-bottom: none !important;
+    }
+    th {
+        border-top: none !important;
+        border-left: 1px solid #205069 !important;
+        border-right: 1px solid #205069 !important;
+        border-bottom: none !important;
+    }
 }
 
 //

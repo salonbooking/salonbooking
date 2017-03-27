@@ -162,16 +162,18 @@
 									<h6 class="sln-fake-label"><?php _e('Select for each column the corresponding one inside your file.','salon-booking-system')?></h6>
 								</div>
 								<div class="col-md-12">
-									<table class="table table-bordered table-condensed sln-overflow-x"><tbody></tbody></table>
+									<table class="table sln-import-table" cellspacing="0"><tbody></tbody></table>
 								</div>
 								<div class="col-md-12">
-									<div class="pull-left">
-										<div class="alert alert-danger hide"><?php _e('Please provide all requested columns', 'salon-booking-system') ?></div>
-									</div>
-									<div class="pull-right">
-										<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import_matching">
-											<?php _e('Import', 'salon-booking-system') ?>
-										</button>
+									<div class="row">
+										<div class="col-md-8">
+											<div class="alert alert-danger hide"><?php _e('Please provide all requested columns', 'salon-booking-system') ?></div>
+										</div>
+										<div class="col-md-4">
+											<button type="button" class="sln-btn sln-btn--main sln-btn--big pull-right" data-action="sln_import_matching">
+												<?php _e('Import', 'salon-booking-system') ?>
+											</button>
+										</div>
 									</div>
 								</div>
 							</div>

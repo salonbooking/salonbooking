@@ -5173,9 +5173,19 @@ p.sln-box-info {
   width: 100%;
   clear: both; }
 
-.sln-overflow-x {
+.sln-import-table {
   display: block;
   overflow-x: auto; }
+.sln-import-table td {
+  border-top: 1px solid #205069 !important;
+  border-left: 1px solid #205069 !important;
+  border-right: 1px solid #205069 !important;
+  border-bottom: none !important; }
+.sln-import-table th {
+  border-top: none !important;
+  border-left: 1px solid #205069 !important;
+  border-right: 1px solid #205069 !important;
+  border-bottom: none !important; }
 
 .sln-tab #sln-availabilities .items .item {
   padding: 1.4em;

@@ -71,7 +71,7 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
         file_put_contents($filename, json_encode($import));
 
         $args = compact('headers');
-        $args['rows']     = array_slice($items, 0, 5, true);
+        $args['rows']     = array_slice($items, 0, 4, true);
         $args['columns']  = $this->fields;
         $args['required'] = $this->required;
 
