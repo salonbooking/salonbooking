@@ -278,17 +278,15 @@ function changeImportMatching() {
     var col     = $select.attr('data-col');
 
     $select.closest('table').find('tr.import_matching').each(function(index, v) {
-        var $cell = jQuery(this).find('td[data-col=' + col + ']');
+        var $cell = jQuery(this).find('td[data-col=' + col + '] span');
 
         var text;
         if (importRows[index] !== undefined && importRows[index][field] !== undefined) {
-            text = importRows[index][field];
+            $cell.addClass('pull-left').removeClass('half-opacity').html(importRows[index][field]);
         }
         else {
-            text = $cell.attr('placeholder');
+            $cell.removeClass('pull-left').addClass('half-opacity').html($cell.closest('td').attr('placeholder'));
         }
-
-        $cell.html(text);
     });
 
     validImportMatching();

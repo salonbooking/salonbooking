@@ -35,7 +35,7 @@ foreach($headers as $header) {
 <?php foreach($rows as $row): ?>
 	<tr class="import_matching">
 		<?php foreach($columns as $i => $col): ?>
-			<td data-col="<?php echo $i; ?>" placeholder="<?php _e('Preview', 'salon-booking-system'); ?>"><?php echo isset($row[$col]) ? $row[$col] : (__('Preview', 'salon-booking-system')); ?></td>
+			<td data-col="<?php echo $i; ?>" placeholder="<?php _e('Preview', 'salon-booking-system'); ?>"><span class="<?php echo isset($row[$col]) ? 'pull-left' : 'half-opacity'; ?>"><?php echo isset($row[$col]) ? $row[$col] : (__('Preview', 'salon-booking-system')); ?></span></td>
 		<?php endforeach; ?>
 	</tr>
 <?php endforeach; ?>

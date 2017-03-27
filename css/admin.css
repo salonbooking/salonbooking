@@ -5178,14 +5178,25 @@ p.sln-box-info {
   overflow-x: auto; }
 .sln-import-table td {
   border-top: 1px solid #205069 !important;
-  border-left: 1px solid #205069 !important;
+  border-left: none;
   border-right: 1px solid #205069 !important;
-  border-bottom: none !important; }
+  border-bottom: none !important;
+  text-align: center; }
+.sln-import-table td .half-opacity {
+  opacity: 0.5 !important; }
+.sln-import-table td .sln-select {
+  text-align: left !important;
+  width: 200px !important; }
+.sln-import-table td:first-child {
+  border-left: 1px solid #205069 !important; }
 .sln-import-table th {
   border-top: none !important;
-  border-left: 1px solid #205069 !important;
+  border-left: none;
   border-right: 1px solid #205069 !important;
-  border-bottom: none !important; }
+  border-bottom: none !important;
+  text-align: center !important; }
+.sln-import-table th:first-child {
+  border-left: 1px solid #205069 !important; }
 
 .sln-tab #sln-availabilities .items .item {
   padding: 1.4em;

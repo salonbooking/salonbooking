@@ -142,6 +142,9 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
             if (isset($mapping[$field]) && !empty($mapping[$field])) {
                 $item[$field] = $item[$mapping[$field]];
             }
+            else {
+                $item[$field] = '';
+            }
         }
         $imported = $this->processRow($item);
 

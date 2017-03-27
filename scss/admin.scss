@@ -79,15 +79,30 @@
     overflow-x: auto;
     td {
         border-top: 1px solid #205069 !important;
-        border-left: 1px solid #205069 !important;
+        border-left: none;
         border-right: 1px solid #205069 !important;
         border-bottom: none !important;
+        text-align: center;
+        .half-opacity {
+            opacity: 0.5 !important;
+        }
+        .sln-select {
+            text-align: left !important;
+            width: 200px !important;
+        }
+        &:first-child {
+            border-left: 1px solid #205069 !important;
+        }
     }
     th {
         border-top: none !important;
-        border-left: 1px solid #205069 !important;
+        border-left: none;
         border-right: 1px solid #205069 !important;
         border-bottom: none !important;
+        text-align: center !important;
+        &:first-child {
+            border-left: 1px solid #205069 !important;
+        }
     }
 }
 

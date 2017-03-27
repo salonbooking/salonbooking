@@ -167,7 +167,10 @@
 								<div class="col-md-12">
 									<div class="row">
 										<div class="col-md-8">
-											<div class="alert alert-danger hide"><?php _e('Please provide all requested columns', 'salon-booking-system') ?></div>
+											<div class="alert alert-danger hide">
+												<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+												<?php _e('Please provide all requested columns', 'salon-booking-system') ?>
+											</div>
 										</div>
 										<div class="col-md-4">
 											<button type="button" class="sln-btn sln-btn--main sln-btn--big pull-right" data-action="sln_import_matching">
