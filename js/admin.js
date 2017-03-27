@@ -63,6 +63,10 @@ jQuery(function ($) {
     //  alert('test al');
     //});
     $(window).bind("load", function() {
+        if ( $("#sln-salon--admin.sln-calendar--wrapper--loading").length ) {
+            $('.sln-calendar--wrapper--sub').css('opacity', '1');
+            $('.sln-calendar--wrapper').removeClass('sln-calendar--wrapper--loading sln-calendar--wrapper');
+        }
         if ( $( ".sln-calendar--wrapper" ).length ) {
             $('.sln-calendar--wrapper--sub').css('opacity', '1');
             $('.sln-calendar--wrapper').removeClass('sln-calendar--wrapper--loading');

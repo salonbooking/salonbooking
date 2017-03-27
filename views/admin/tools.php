@@ -2,7 +2,8 @@
 	<h1><?php _e( 'Tools', 'salon-booking-system' ) ?></h1>
 </div>
 <div class="clearfix"></div>
-<div id="sln-salon--admin" class="container-fluid wpcontent">
+<div id="sln-salon--admin" class="container-fluid wpcontent sln-calendar--wrapper sln-calendar--wrapper--loading">
+<div class="sln-calendar--wrapper--sub" style="opacity: 0;">
 	<?php if (!empty($versionToRollback)): ?>
             <?php echo $plugin->loadView('admin/_tools_rollback', compact('versionToRollback', 'currentVersion', 'isFree')) ?>
 	<?php endif ?>
@@ -189,6 +190,7 @@
 		</div>
 	</form>
 
+</div>
 </div>
 
 <script>
