@@ -96,4 +96,23 @@ $helper->showNonce($postType);
     )
 ); ?>
 <div class="sln-clear"></div>
+<?php if($plugin->getSettings()->isFormStepsAltOrder()): ?>
+<?php $directLink = add_query_arg(
+    array(
+        'sln_step_page' => 'services',
+        'submit_services' => 1,
+        'sln' => array('services' => array($service->getId() => $service->getId())),
+    ),
+    get_permalink(SLN_Plugin::getInstance()->getSettings()->get('pay'))
+);
+?>
+<div class="row">
+    <div class="col-sm-12 form-group sln-select">
+        <h2 class="sln-box-title"><?php echo __('Direct link', 'salon-booking-system') ?></h2>
+<p><a href="<?php echo $directLink?>"><?php echo $directLink?></a></p>
+        <p class="sln-input-help"><?php _e('Use this link to move the user directly to the booking page with the service already selected.','salon-booking-system'); ?></p>
+    </div>
+</div>
+<div class="sln-clear"></div>
+<?php endif ?>
 <?php do_action('sln.template.service.metabox',$service); ?>
