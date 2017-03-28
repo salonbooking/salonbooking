@@ -5179,6 +5179,9 @@ p.sln-box-info {
   width: 100%;
   clear: both; }
 
+#import-matching-modal .modal-dialog {
+  width: 70% !important; }
+
 .sln-import-table {
   display: block;
   overflow-x: auto; }

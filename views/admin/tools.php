@@ -174,7 +174,7 @@
 			</div>
 
 			<div id="import-matching-modal" class="modal" role="dialog">
-				<div class="modal-dialog modal-lg">
+				<div class="modal-dialog">
 					<div class="modal-content">
 <!--						<div class="modal-header"></div>-->
 						<div class="modal-body">
