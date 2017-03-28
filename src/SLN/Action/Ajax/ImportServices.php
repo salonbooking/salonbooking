@@ -57,7 +57,7 @@ class SLN_Action_Ajax_ImportServices extends SLN_Action_Ajax_AbstractImport
 
         $errors = wp_insert_post($args, true);
         if (is_wp_error($errors)) {
-            return $errors->get_error_message();
+            return true;
         }
         $postID = $errors;
 

@@ -49,7 +49,7 @@ class SLN_Action_Ajax_ImportAssistants extends SLN_Action_Ajax_AbstractImport
 
         $errors = wp_insert_post($args, true);
         if (is_wp_error($errors)) {
-            return $errors->get_error_message();
+            return true;
         }
         $postID = $errors;
 
@@ -130,7 +130,7 @@ class SLN_Action_Ajax_ImportAssistants extends SLN_Action_Ajax_AbstractImport
             );
             $attachID = wp_insert_attachment($attachment, $uploadfile, $postID, true);
             if (is_wp_error($attachID)) {
-                return $attachID->get_error_message();
+                return true;
             }
 
             $imagenew     = get_post($attachID);

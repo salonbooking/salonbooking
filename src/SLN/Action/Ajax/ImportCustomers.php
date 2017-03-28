@@ -35,7 +35,7 @@ class SLN_Action_Ajax_ImportCustomers extends SLN_Action_Ajax_AbstractImport
         }
         $errors = wp_create_user($data['email'], wp_generate_password( 8, false ), $data['email']);
         if (is_wp_error($errors)) {
-            return $errors->get_error_message();
+            return true;
         }
 
         $errors = wp_update_user(
@@ -47,7 +47,7 @@ class SLN_Action_Ajax_ImportCustomers extends SLN_Action_Ajax_AbstractImport
             )
         );
         if (is_wp_error($errors)) {
-            return $errors->get_error_message();
+            return true;
         }
 
         add_user_meta($errors, '_sln_phone', $data['phone']);
