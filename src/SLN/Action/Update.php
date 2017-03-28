@@ -10,7 +10,6 @@ class SLN_Action_Update
     );
 
     private static $dbRollbacks = array(
-        '3.0'  => 'sln-rollback-to-2.3.2.php',
     );
 
     /** @var  SLN_Plugin */
