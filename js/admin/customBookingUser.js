@@ -324,7 +324,7 @@ function sln_checkServices($) {
 function sln_processServices($, services) {
     if(!services) return;
     $.each(services, function (index, value) {
-        var serviceItem = $('#_sln_booking_attendants_' + index);
+        var serviceItem = $('#_sln_booking_service_' + index);
         if (value.status == -1) {
             $.each(value.errors, function (index, value) {
                 var alertBox = $('<div class="row col-xs-12 col-sm-12 col-md-12"><div class="'
