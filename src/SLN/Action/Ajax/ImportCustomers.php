@@ -30,6 +30,9 @@ class SLN_Action_Ajax_ImportCustomers extends SLN_Action_Ajax_AbstractImport
 
     protected function processRow($data)
     {
+        if (empty($data['email'])) {
+            return true;
+        }
         $errors = wp_create_user($data['email'], wp_generate_password( 8, false ), $data['email']);
         if (is_wp_error($errors)) {
             return $errors->get_error_message();

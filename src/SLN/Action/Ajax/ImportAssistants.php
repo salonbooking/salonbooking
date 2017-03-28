@@ -81,31 +81,33 @@ class SLN_Action_Ajax_ImportAssistants extends SLN_Action_Ajax_AbstractImport
 	    }
 	    update_post_meta($postID, '_sln_attendant_services', $services);
 
-        $days = array(
-            1 => (int) $data['availability_rule_sunday'],
-            2 => (int) $data['availability_rule_monday'],
-            3 => (int) $data['availability_rule_tuesday'],
-            4 => (int) $data['availability_rule_wednesday'],
-            5 => (int) $data['availability_rule_thursday'],
-            6 => (int) $data['availability_rule_friday'],
-            7 => (int) $data['availability_rule_saturday'],
-        );
+        if (!empty($data['availability_rule_1_from']) || !empty($data['availability_rule_2_from']) || !empty($data['availability_rule_1_to']) || !empty($data['availability_rule_2_to'])) {
+            $days = array(
+                1 => (int) $data['availability_rule_sunday'],
+                2 => (int) $data['availability_rule_monday'],
+                3 => (int) $data['availability_rule_tuesday'],
+                4 => (int) $data['availability_rule_wednesday'],
+                5 => (int) $data['availability_rule_thursday'],
+                6 => (int) $data['availability_rule_friday'],
+                7 => (int) $data['availability_rule_saturday'],
+            );
 
-        $availabilities = array(
-            'days'      => array_filter($days),
-            'from'      => array(
-                $data['availability_rule_1_from'],
-                $data['availability_rule_2_from'],
-            ),
-            'to'        => array(
-                $data['availability_rule_1_to'],
-                $data['availability_rule_2_to'],
-            ),
-            'always'    => 1,
-            'from_date' => '',
-            'to_date'   => '',
-        );
-        update_post_meta($postID, '_sln_attendant_availabilities', array($availabilities));
+            $availabilities = array(
+                'days'      => array_filter($days),
+                'from'      => array(
+                    $data['availability_rule_1_from'],
+                    $data['availability_rule_2_from'],
+                ),
+                'to'        => array(
+                    $data['availability_rule_1_to'],
+                    $data['availability_rule_2_to'],
+                ),
+                'always'    => 1,
+                'from_date' => '',
+                'to_date'   => '',
+            );
+            update_post_meta($postID, '_sln_attendant_availabilities', array($availabilities));
+        }
 
         if (!empty($data['image_url'])) {
             $filename = basename($data['image_url']);
