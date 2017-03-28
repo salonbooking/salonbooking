@@ -57,6 +57,7 @@
 							</div>
 							<div class="col-sm-12 form-group sln-input--simple sln-logo-box">
 								<div id="import-customers-drag" class="preview-logo">
+									<br><br>
 									<div class="info">
 										<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
 										<span class="text" placeholder="<?php _e('drag your csv file here to import customers', 'salon-booking-system') ?>">
@@ -73,11 +74,16 @@
 								</div>
 							</div>
 							<div class="col-sm-12 form-group">
-								<div class="pull-right">
-									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-customers-drag"
-									        data-loading-text="<span class='glyphicon glyphicon-repeat sln-import-loader' aria-hidden='true'></span> <?php _e('loading', 'salon-booking-system') ?>">
-										<?php _e('Import', 'salon-booking-system') ?>
-									</button>
+								<div class="row">
+									<div class="col-sm-6">
+										<a href="<?php echo SLN_PLUGIN_URL . '/csv-import-samples/Salon import sample customers.csv'; ?>"><?php _e('download a csv sample file', 'salon-booking-system') ?></a>
+									</div>
+									<div class="col-sm-6">
+										<button type="button" class="sln-btn sln-btn--main sln-btn--big pull-right" data-action="sln_import" data-target="import-customers-drag"
+										        data-loading-text="<span class='glyphicon glyphicon-repeat sln-import-loader' aria-hidden='true'></span> <?php _e('loading', 'salon-booking-system') ?>">
+											<?php _e('Import', 'salon-booking-system') ?>
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -91,6 +97,7 @@
 							</div>
 							<div class="col-sm-12 form-group sln-input--simple sln-logo-box">
 								<div id="import-services-drag" class="preview-logo">
+									<br><br>
 									<div class="info">
 										<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
 										<span class="text" placeholder="<?php _e('drag your csv file here to import services', 'salon-booking-system') ?>">
@@ -107,11 +114,16 @@
 								</div>
 							</div>
 							<div class="col-sm-12 form-group">
-								<div class="pull-right">
-									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-services-drag"
-									        data-loading-text="<span class='glyphicon glyphicon-repeat sln-import-loader' aria-hidden='true'></span> <?php _e('loading', 'salon-booking-system') ?>">
-										<?php _e('Import', 'salon-booking-system') ?>
-									</button>
+								<div class="row">
+									<div class="col-sm-6">
+										<a href="<?php echo SLN_PLUGIN_URL . '/csv-import-samples/Salon import sample services.csv'; ?>"><?php _e('download a csv sample file', 'salon-booking-system') ?></a>
+									</div>
+									<div class="col-sm-6">
+										<button type="button" class="sln-btn sln-btn--main sln-btn--big pull-right" data-action="sln_import" data-target="import-services-drag"
+										        data-loading-text="<span class='glyphicon glyphicon-repeat sln-import-loader' aria-hidden='true'></span> <?php _e('loading', 'salon-booking-system') ?>">
+											<?php _e('Import', 'salon-booking-system') ?>
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -127,6 +139,7 @@
 							</div>
 							<div class="col-sm-12 form-group sln-input--simple sln-logo-box">
 								<div id="import-assistants-drag" class="preview-logo">
+									<br><br>
 									<div class="info">
 										<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
 										<span class="text" placeholder="<?php _e('drag your csv file here to import assistants', 'salon-booking-system') ?>">
@@ -143,11 +156,16 @@
 								</div>
 							</div>
 							<div class="col-sm-12 form-group">
-								<div class="pull-right">
-									<button type="button" class="sln-btn sln-btn--main sln-btn--big" data-action="sln_import" data-target="import-assistants-drag"
-									        data-loading-text="<span class='glyphicon glyphicon-repeat sln-import-loader' aria-hidden='true'></span> <?php _e('loading', 'salon-booking-system') ?>">
-										<?php _e('Import', 'salon-booking-system') ?>
-									</button>
+								<div class="row">
+									<div class="col-sm-6">
+										<a href="<?php echo SLN_PLUGIN_URL . '/csv-import-samples/Salon import sample assistants.csv'; ?>"><?php _e('download a csv sample file', 'salon-booking-system') ?></a>
+									</div>
+									<div class="col-sm-6">
+										<button type="button" class="sln-btn sln-btn--main sln-btn--big pull-right" data-action="sln_import" data-target="import-assistants-drag"
+										        data-loading-text="<span class='glyphicon glyphicon-repeat sln-import-loader' aria-hidden='true'></span> <?php _e('loading', 'salon-booking-system') ?>">
+											<?php _e('Import', 'salon-booking-system') ?>
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>

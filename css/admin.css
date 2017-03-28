@@ -884,6 +884,9 @@ p.sln-box-info .sln-box-info-content h5 {
 .glyphicon-flag:before {
   content: "\e034"; }
 
+.glyphicon-upload:before {
+  content: "\e027"; }
+
 .glyphicon-repeat:before {
   content: "\e030"; }
 

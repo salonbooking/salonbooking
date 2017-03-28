@@ -264,7 +264,7 @@ function initImporter($item, mode) {
     }
 
     function importShowPB() {
-        $importArea.find('.alert').addClass('hide');
+        $importArea.find('.info, .alert').addClass('hide');
         $importArea.find('.progress').removeClass('hide');
     }
 

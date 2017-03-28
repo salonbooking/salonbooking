@@ -1,0 +1,2 @@
+name,email,phone,services,description,availability_rule_monday,availability_rule_tuesday,availability_rule_wednesday,availability_rule_thursday,availability_rule_friday,availability_rule_saturday,availability_rule_sunday,availability_rule_1_from,availability_rule_1_to,availability_rule_2_from,availability_rule_2_to,image_url
+adriano,qwe@gmail.com,7965215,4875ad|5981qw,desc,1,1,1,1,1,0,0,09:00,12:00,12:30,17:00,"https://s.w.org/style/images/wp-header-logo.png"
