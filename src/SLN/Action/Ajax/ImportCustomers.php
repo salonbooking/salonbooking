@@ -6,7 +6,7 @@ class SLN_Action_Ajax_ImportCustomers extends SLN_Action_Ajax_AbstractImport
         'first_name',
         'last_name',
         'email',
-        'phone',
+        'mobile_phone',
         'address',
         'personal_note',
     );
@@ -50,7 +50,7 @@ class SLN_Action_Ajax_ImportCustomers extends SLN_Action_Ajax_AbstractImport
             return true;
         }
 
-        add_user_meta($errors, '_sln_phone', $data['phone']);
+        add_user_meta($errors, '_sln_phone', $data['mobile_phone']);
         add_user_meta($errors, '_sln_address', $data['address']);
         add_user_meta($errors, '_sln_personal_note', $data['personal_note']);
 
