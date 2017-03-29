@@ -74,8 +74,31 @@
     clear: both;
 }
 
-#import-matching-modal .modal-dialog {
-    width: 70% !important;
+// Modal background
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+    // Fade for backdrop
+    &.fade {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    &.in {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+    }
+}
+
+#import-matching-modal {
+    left: 160px !important;
+    .modal-dialog {
+        width: 70% !important;
+    }
 }
 
 .sln-import-table {

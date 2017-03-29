@@ -5179,6 +5179,23 @@ p.sln-box-info {
   width: 100%;
   clear: both; }
 
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000; }
+.modal-backdrop.fade {
+  opacity: 0;
+  filter: alpha(opacity=0); }
+.modal-backdrop.in {
+  opacity: 0.5;
+  filter: alpha(opacity=50); }
+
+#import-matching-modal {
+  left: 160px !important; }
 #import-matching-modal .modal-dialog {
   width: 70% !important; }
 

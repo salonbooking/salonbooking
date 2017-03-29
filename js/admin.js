@@ -147,6 +147,7 @@ function initImporter($item, mode) {
                     $modalBtn.button('reset');
 
                     $modal.find('table tbody').html(response.data.matching);
+                    jQuery('#wpwrap').css('z-index', 'auto');
                     $modal.modal({
                         keyboard: false,
                         backdrop: true,
