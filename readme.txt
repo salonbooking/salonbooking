@@ -275,6 +275,9 @@ http://salon.wordpresschef.it
 * Bug on booking system - reservations that overrides closing time - fixed
 * Fixed bug on thousand separator on Stripe
 * Changed the “Services break” intervals options
+* Added an alert on parallel reservations on back-end
+* Removed rollback to 2.3 
+* Added untraslateble text strings
 
 07.03.2017
 
