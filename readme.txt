@@ -121,8 +121,9 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Category grouping
 * Multiple weekly timetable rules
 * No assistant required option
-* Service break
+* Service break ( now you can select up to 3 hours divided in multiples of your average session duration )
 * Conditional "Secondary services"
+* Direct booking link
 
 **Customers archive**
 
@@ -137,6 +138,10 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Stats on reservations and revenues by assistant
 * Stats on reservations and revenues by customers
 * Email weekly report
+
+**Tools**
+
+* Importing system from other platform (Users, Services and Assistants)
 
 **Frontend pages**
 
@@ -260,6 +265,16 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+31.03.2017
+
+* Fixed status bar back-end calendar daily view
+* “Create new user” option now is disabled by default
+* Bug on services custom order on back-end fixed
+* Bug on assistant selection on front-end fixed
+* Bug on booking system - reservations that overrides closing time - fixed
+* Fixed bug on thousand separator on Stripe
+* Changed the “Services break” intervals options
 
 07.03.2017
 
