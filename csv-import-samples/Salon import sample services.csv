@@ -1,0 +1,2 @@
+external_id,name,category_name,price,unit_per_hour,duration,break,is_secondary,secondary_mode,secondary_parents,execution_order,no_assistant,description,availability_rule_monday,availability_rule_tuesday,availability_rule_wednesday,availability_rule_thursday,availability_rule_friday,availability_rule_saturday,availability_rule_sunday,availability_rule_1_from,availability_rule_1_to,availability_rule_2_from,availability_rule_2_to
+4875ad,manicure,Category1,99.99,3,01:15,00:00,1,always OR category OR service,5981qw|5982qw,2,1,desc,1,0,1,0,1,0,0,09:00,12:00,12:30,17:00

@@ -18,6 +18,7 @@ abstract class SLN_Admin_AbstractPage
 
     public function enqueueAssets()
     {
+        SLN_Action_InitScripts::enqueueSelect2();
         SLN_Action_InitScripts::enqueueTwitterBootstrap(true);
         SLN_Action_InitScripts::enqueueAdmin();
     }

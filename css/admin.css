@@ -884,6 +884,12 @@ p.sln-box-info .sln-box-info-content h5 {
 .glyphicon-flag:before {
   content: "\e034"; }
 
+.glyphicon-upload:before {
+  content: "\e027"; }
+
+.glyphicon-repeat:before {
+  content: "\e030"; }
+
 /* algolplus start */
 .glyphicon-trash:before {
   content: "\e020"; }
@@ -5173,6 +5179,69 @@ p.sln-box-info {
   width: 100%;
   clear: both; }
 
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000; }
+.modal-backdrop.fade {
+  opacity: 0;
+  filter: alpha(opacity=0); }
+.modal-backdrop.in {
+  opacity: 0.5;
+  filter: alpha(opacity=50); }
+
+#import-matching-modal {
+  left: 160px !important; }
+#import-matching-modal .modal-dialog {
+  width: 70% !important; }
+
+.sln-import-table {
+  display: block;
+  overflow-x: auto; }
+.sln-import-table td {
+  border-top: 1px solid #205069 !important;
+  border-left: none;
+  border-right: 1px solid #205069 !important;
+  border-bottom: none !important;
+  text-align: center; }
+.sln-import-table td .half-opacity {
+  opacity: 0.5 !important; }
+.sln-import-table td .sln-select {
+  text-align: left !important;
+  width: 200px !important; }
+.sln-import-table td:first-child {
+  border-left: 1px solid #205069 !important; }
+.sln-import-table th {
+  border-top: none !important;
+  border-left: none;
+  border-right: 1px solid #205069 !important;
+  border-bottom: none !important;
+  text-align: center !important; }
+.sln-import-table th:first-child {
+  border-left: 1px solid #205069 !important; }
+
+.sln-import-loader {
+  -webkit-animation: glyphicon-spin-r 1s infinite linear;
+  animation: glyphicon-spin-r 1s infinite linear; }
+
+@-webkit-keyframes glyphicon-spin-r {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+@keyframes glyphicon-spin-r {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
 .sln-tab #sln-availabilities .items .item {
   padding: 1.4em;
   margin: 1em 0; }
