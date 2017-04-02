@@ -31,10 +31,12 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
             $ret = array('success' => 1);
         }
         $ret['intervals'] = $this->getIntervalsArray();
-
+        $isFromAdmin = isset($_POST['_sln_booking_date']);
+        if(!$isFromAdmin){
         if ($ret['intervals']['suggestedDate'] !== $this->date || $ret['intervals']['suggestedTime'] !== $this->time) {
             unset($ret['errors']);
             $ret['success'] = 1;
+        }
         }
 
         return $ret;
