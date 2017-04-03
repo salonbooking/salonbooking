@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Salon Booking 3.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-02 11:40+0100\n"
+"POT-Creation-Date: 2017-04-03 10:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Salon Booking <support@wordpresschef.it>\n"
@@ -28,6 +28,35 @@ msgstr ""
 #: views/settings/tab_general.php:167 views/settings/tab_general.php:221
 #: views/settings/tab_general.php:316
 msgid "-"
+msgstr ""
+
+#: src/SLN/Action/Ajax/AbstractImport.php:21
+msgid "Method not found"
+msgstr ""
+
+#: src/SLN/Action/Ajax/AbstractImport.php:36
+msgid "File not found"
+msgstr ""
+
+#: src/SLN/Action/Ajax/AbstractImport.php:41
+msgid "Cannot create tmp file"
+msgstr ""
+
+#: src/SLN/Action/Ajax/AbstractImport.php:46
+msgid "Cannot write to tmp file"
+msgstr ""
+
+#: src/SLN/Action/Ajax/AbstractImport.php:94
+#: src/SLN/Action/Ajax/AbstractImport.php:129
+msgid "Filename not found"
+msgstr ""
+
+#: src/SLN/Action/Ajax/AbstractImport.php:99
+msgid "Import data not found"
+msgstr ""
+
+#: src/SLN/Action/Ajax/AbstractImport.php:135
+msgid "Data not found"
 msgstr ""
 
 #: src/SLN/Action/Ajax/Calendar.php:35
@@ -71,29 +100,29 @@ msgstr ""
 msgid "Out of time"
 msgstr ""
 
-#: src/SLN/Action/Ajax/CheckDate.php:59
+#: src/SLN/Action/Ajax/CheckDate.php:61
 msgid "The date is too near, the minimum allowed is:"
 msgstr ""
 
-#: src/SLN/Action/Ajax/CheckDate.php:62
+#: src/SLN/Action/Ajax/CheckDate.php:64
 msgid "The date is too far, the maximum allowed is:"
 msgstr ""
 
-#: src/SLN/Action/Ajax/CheckDate.php:65
+#: src/SLN/Action/Ajax/CheckDate.php:67
 msgid "We are unavailable at:"
 msgstr ""
 
-#: src/SLN/Action/Ajax/CheckDate.php:71
+#: src/SLN/Action/Ajax/CheckDate.php:73
 msgid "There are no time slots available today - Please select a different day"
 msgstr ""
 
-#: src/SLN/Action/Ajax/CheckDate.php:78
+#: src/SLN/Action/Ajax/CheckDate.php:80
 msgid ""
 "There are no time slots available for this period - Please select a  "
 "different hour"
 msgstr ""
 
-#: src/SLN/Action/Ajax/CheckDateAlt.php:145
+#: src/SLN/Action/Ajax/CheckDateAlt.php:147
 #: src/SLN/Action/Ajax/CheckServices.php:174
 msgid ""
 "Multiple attendants selection is disabled. You must select one attendant for "
@@ -101,7 +130,7 @@ msgid ""
 msgstr ""
 
 #: src/SLN/Action/Ajax/CheckServices.php:144
-#: src/SLN/Helper/Availability.php:383
+#: src/SLN/Helper/Availability.php:384
 #, php-format
 msgid "You can select up to %d items"
 msgstr ""
@@ -167,7 +196,7 @@ msgstr ""
 
 #: src/SLN/Admin/Calendar.php:12 src/SLN/Admin/Calendar.php:13
 #: src/SLN/PostType/Attendant.php:150 src/SLN/PostType/Booking.php:189
-#: src/SLN/PostType/Service.php:214
+#: src/SLN/PostType/Service.php:234
 msgid "Salon"
 msgstr ""
 
@@ -175,7 +204,7 @@ msgstr ""
 msgid "Salon Calendar"
 msgstr ""
 
-#: src/SLN/Admin/Calendar.php:22 views/admin/calendar.php:70
+#: src/SLN/Admin/Calendar.php:22 views/admin/calendar.php:72
 msgid "Calendar"
 msgstr ""
 
@@ -270,7 +299,7 @@ msgstr ""
 msgid "Reports"
 msgstr ""
 
-#: src/SLN/Admin/Reports/AbstractReport.php:455 views/admin/calendar.php:111
+#: src/SLN/Admin/Reports/AbstractReport.php:455 views/admin/calendar.php:113
 msgid "Today"
 msgstr ""
 
@@ -447,11 +476,11 @@ msgstr ""
 msgid "Reservations"
 msgstr ""
 
-#: src/SLN/Admin/Tools.php:101 views/admin/calendar.php:136
+#: src/SLN/Admin/Tools.php:101 views/admin/calendar.php:138
 msgid "from"
 msgstr ""
 
-#: src/SLN/Admin/Tools.php:102 views/admin/calendar.php:143
+#: src/SLN/Admin/Tools.php:102 views/admin/calendar.php:145
 msgid "to"
 msgstr ""
 
@@ -702,15 +731,15 @@ msgstr ""
 msgid "This assistant is not available for the selected service"
 msgstr ""
 
-#: src/SLN/Helper/Availability.php:417
+#: src/SLN/Helper/Availability.php:418
 msgid "An assistant for selected services can't perform this service"
 msgstr ""
 
-#: src/SLN/Helper/Availability.php:456
+#: src/SLN/Helper/Availability.php:457
 msgid "You already selected service at"
 msgstr ""
 
-#: src/SLN/Helper/Availability.php:523
+#: src/SLN/Helper/Availability.php:524
 #: src/SLN/Helper/Availability/ErrorHelper.php:12
 msgid "Limit of parallels bookings at "
 msgstr ""
@@ -836,7 +865,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: src/SLN/PostType/Attendant.php:44 src/SLN/PostType/Service.php:116
+#: src/SLN/PostType/Attendant.php:44 src/SLN/PostType/Service.php:136
 msgid "Availability"
 msgstr ""
 
@@ -875,7 +904,7 @@ msgid "Assistant scheduled for: <strong>%1$s</strong>. "
 msgstr ""
 
 #: src/SLN/PostType/Attendant.php:122 src/SLN/PostType/Booking.php:155
-#: src/SLN/PostType/Service.php:186
+#: src/SLN/PostType/Service.php:206
 msgid "M j, Y @ G:i"
 msgstr ""
 
@@ -1038,62 +1067,62 @@ msgstr ""
 msgid "All attendants"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:112 views/metabox/booking.php:185
+#: src/SLN/PostType/Service.php:132 views/metabox/booking.php:185
 #: views/metabox/service.php:16 views/shortcode/_services_item_400.php:35
 #: views/shortcode/_services_item_600.php:40
 #: views/shortcode/_services_item_900.php:32
 msgid "Duration"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:113 views/metabox/service.php:8
+#: src/SLN/PostType/Service.php:133 views/metabox/service.php:8
 #: views/shortcode/salon_my_account/_salon_my_account_details_table.php:11
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:13
 msgid "Price"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:114 views/metabox/service.php:24
+#: src/SLN/PostType/Service.php:134 views/metabox/service.php:24
 msgid "Secondary"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:140
+#: src/SLN/PostType/Service.php:160
 msgid "YES"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:152
+#: src/SLN/PostType/Service.php:172
 msgid "Enter service name"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:165 src/SLN/PostType/Service.php:169
+#: src/SLN/PostType/Service.php:185 src/SLN/PostType/Service.php:189
 msgid "Service updated."
 msgstr ""
 
-#: src/SLN/PostType/Service.php:171
+#: src/SLN/PostType/Service.php:191
 #, php-format
 msgid "Service restored to revision from %s"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:175
+#: src/SLN/PostType/Service.php:195
 msgid "Service published."
 msgstr ""
 
-#: src/SLN/PostType/Service.php:177
+#: src/SLN/PostType/Service.php:197
 msgid "Service saved."
 msgstr ""
 
-#: src/SLN/PostType/Service.php:179
+#: src/SLN/PostType/Service.php:199
 msgid "Service submitted."
 msgstr ""
 
-#: src/SLN/PostType/Service.php:183
+#: src/SLN/PostType/Service.php:203
 #, php-format
 msgid "Service scheduled for: <strong>%1$s</strong>. "
 msgstr ""
 
-#: src/SLN/PostType/Service.php:189
+#: src/SLN/PostType/Service.php:209
 msgid "Service draft updated."
 msgstr ""
 
-#: src/SLN/PostType/Service.php:212 src/SLN/PostType/Service.php:216
+#: src/SLN/PostType/Service.php:232 src/SLN/PostType/Service.php:236
 #: views/mail/_summary_details.php:69 views/metabox/_booking_services.php:26
 #: views/metabox/attendant.php:18
 #: views/shortcode/salon_my_account/_salon_my_account_details_table.php:6
@@ -1101,48 +1130,48 @@ msgstr ""
 msgid "Services"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:213 views/mail/_summary_details.php:48
+#: src/SLN/PostType/Service.php:233 views/mail/_summary_details.php:48
 #: views/metabox/_booking_services.php:110
 msgid "Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:215
+#: src/SLN/PostType/Service.php:235
 msgid "Salon Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:217
+#: src/SLN/PostType/Service.php:237
 msgid "Add Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:218
+#: src/SLN/PostType/Service.php:238
 msgid "Add New Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:219
+#: src/SLN/PostType/Service.php:239
 msgid "Edit Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:220
+#: src/SLN/PostType/Service.php:240
 msgid "New Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:221
+#: src/SLN/PostType/Service.php:241
 msgid "View Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:222
+#: src/SLN/PostType/Service.php:242
 msgid "Search Services"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:223
+#: src/SLN/PostType/Service.php:243
 msgid "No services found"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:224
+#: src/SLN/PostType/Service.php:244
 msgid "No services found in trash"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:225
+#: src/SLN/PostType/Service.php:245
 msgid "Services Archive"
 msgstr ""
 
@@ -1191,7 +1220,7 @@ msgstr ""
 msgid "Address can't be empty"
 msgstr ""
 
-#: src/SLN/Shortcode/Salon/ServicesStep.php:20
+#: src/SLN/Shortcode/Salon/ServicesStep.php:22
 msgid "You must choose at least one service"
 msgstr ""
 
@@ -1365,6 +1394,14 @@ msgstr ""
 msgid "Booking history"
 msgstr ""
 
+#: views/admin/_tools_import_matching.php:10
+msgid "Select a column"
+msgstr ""
+
+#: views/admin/_tools_import_matching.php:38
+msgid "Preview"
+msgstr ""
+
 #: views/admin/_tools_rollback.php:10
 #, php-format
 msgid "Rollback to %s version"
@@ -1405,72 +1442,148 @@ msgstr ""
 msgid "Go to daily view"
 msgstr ""
 
-#: views/admin/calendar.php:86 views/admin/calendar.php:158
+#: views/admin/calendar.php:88 views/admin/calendar.php:160
 msgid "Add new booking"
 msgstr ""
 
-#: views/admin/calendar.php:88
+#: views/admin/calendar.php:90
 msgid "Day"
 msgstr ""
 
-#: views/admin/calendar.php:91
+#: views/admin/calendar.php:93
 msgid "Week"
 msgstr ""
 
-#: views/admin/calendar.php:94
+#: views/admin/calendar.php:96
 msgid "Month"
 msgstr ""
 
-#: views/admin/calendar.php:97
+#: views/admin/calendar.php:99
 msgid "Year"
 msgstr ""
 
-#: views/admin/calendar.php:108
+#: views/admin/calendar.php:110
 msgid "Previous"
 msgstr ""
 
-#: views/admin/calendar.php:114
+#: views/admin/calendar.php:116
 msgid "Next"
 msgstr ""
 
-#: views/admin/calendar.php:128
+#: views/admin/calendar.php:130
 msgid "Export reservations into a CSV file"
 msgstr ""
 
-#: views/admin/calendar.php:152
+#: views/admin/calendar.php:154
 msgid "Export"
 msgstr ""
 
-#: views/admin/calendar.php:163
+#: views/admin/calendar.php:165
 msgid "Bookings status legend"
 msgstr ""
 
-#: views/admin/calendar.php:166
+#: views/admin/calendar.php:168
 msgid "or"
 msgstr ""
 
-#: views/admin/tools.php:12
+#: views/admin/tools.php:13
 msgid "Settings debug"
 msgstr ""
 
-#: views/admin/tools.php:15
+#: views/admin/tools.php:16
 msgid ""
 "Copy and paste into a text file the informations of this field and provide "
 "them to Salon Booking support."
 msgstr ""
 
-#: views/admin/tools.php:19 views/admin/tools.php:35
+#: views/admin/tools.php:20 views/admin/tools.php:36
 msgid "Just click inside the textarea and copy (Ctrl+C)"
 msgstr ""
 
-#: views/admin/tools.php:28
+#: views/admin/tools.php:29
 msgid "Settings import"
 msgstr ""
 
-#: views/admin/tools.php:31
+#: views/admin/tools.php:32
 msgid ""
 "Copy and paste into this field settings of the plugin to import settings "
 "into the current wordpress install."
+msgstr ""
+
+#: views/admin/tools.php:55
+msgid "Import customers"
+msgstr ""
+
+#: views/admin/tools.php:56
+msgid ""
+"Import customers from other platforms using a csv file that respect our csv "
+"sample file structure"
+msgstr ""
+
+#: views/admin/tools.php:63 views/admin/tools.php:64
+msgid "drag your csv file here to import customers"
+msgstr ""
+
+#: views/admin/tools.php:66 views/admin/tools.php:106 views/admin/tools.php:148
+msgid "Well done! Your import has been successfully completed."
+msgstr ""
+
+#: views/admin/tools.php:67 views/admin/tools.php:107 views/admin/tools.php:149
+msgid "Error! Something is gone wrong."
+msgstr ""
+
+#: views/admin/tools.php:79 views/admin/tools.php:119 views/admin/tools.php:161
+msgid "download a csv sample file"
+msgstr ""
+
+#: views/admin/tools.php:83 views/admin/tools.php:123 views/admin/tools.php:165
+#: views/admin/tools.php:199
+msgid "loading"
+msgstr ""
+
+#: views/admin/tools.php:84 views/admin/tools.php:124 views/admin/tools.php:166
+#: views/admin/tools.php:200
+msgid "Import"
+msgstr ""
+
+#: views/admin/tools.php:95
+msgid "Import services"
+msgstr ""
+
+#: views/admin/tools.php:96
+msgid ""
+"Import services from other platforms using a csv file that respect our csv "
+"sample file structure"
+msgstr ""
+
+#: views/admin/tools.php:103 views/admin/tools.php:104
+msgid "drag your csv file here to import services"
+msgstr ""
+
+#: views/admin/tools.php:137
+msgid "Import assistants"
+msgstr ""
+
+#: views/admin/tools.php:138
+msgid ""
+"Import assistants from other platforms using a csv file that respect our csv "
+"sample file structure"
+msgstr ""
+
+#: views/admin/tools.php:145 views/admin/tools.php:146
+msgid "drag your csv file here to import assistants"
+msgstr ""
+
+#: views/admin/tools.php:183
+msgid "You need to match your CSV file data with Salon Booking database"
+msgstr ""
+
+#: views/admin/tools.php:184
+msgid "Select for each column the corresponding one inside your file."
+msgstr ""
+
+#: views/admin/tools.php:194
+msgid "Please provide all requested columns"
 msgstr ""
 
 #: views/admin_notices.php:2
@@ -1928,6 +2041,16 @@ msgid ""
 "If you set a break this service duration will be splitted up into two equals "
 "parts. That means that the during its break other reservations will be "
 "available."
+msgstr ""
+
+#: views/metabox/service.php:111
+msgid "Direct link"
+msgstr ""
+
+#: views/metabox/service.php:113
+msgid ""
+"Use this link to move the user directly to the booking page with the service "
+"already selected."
 msgstr ""
 
 #: views/notice/html_notice_update.php:3
@@ -2970,7 +3093,7 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#: views/shortcode/_attendants.php:41 views/shortcode/_m_attendants.php:48
+#: views/shortcode/_attendants.php:45 views/shortcode/_m_attendants.php:41
 msgid ""
 "No assistants available for the selected time/slot - please choose another "
 "one"
@@ -2984,7 +3107,7 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: views/shortcode/_m_attendants.php:28
+#: views/shortcode/_m_attendants.php:50
 msgid "The choice of assistant is not provided for this service"
 msgstr ""
 
@@ -3125,11 +3248,11 @@ msgstr ""
 msgid "Book an appointment"
 msgstr ""
 
-#: views/shortcode/salon_attendant.php:19
+#: views/shortcode/salon_attendant.php:20
 msgid "Select your assistants"
 msgstr ""
 
-#: views/shortcode/salon_attendant.php:21
+#: views/shortcode/salon_attendant.php:22
 msgid "Select your assistant"
 msgstr ""
 
