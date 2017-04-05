@@ -359,4 +359,10 @@ class SLN_Func
     {
         return get_page_by_title($title, null, $post_type) ? true : false;
     }
+
+    public static function zerofill($mStretch, $iLength = 2)
+    {
+        $sPrintfString = '%0' . (int)$iLength . 's';
+        return sprintf($sPrintfString, $mStretch);
+    }
 }

@@ -59,6 +59,33 @@ class SLN_Time
         }
         $m = $time->toMinutes() + $interval;
         $h = floor($m/60);
-        return new SLN_Time($h.':'.($h % 60));
+        return new SLN_Time(SLN_Func::zerofill($h).':'.SLN_Func::zerofill($m % 60));
     }
+
+    public static function filterTimesArrayByDuration($times, SLN_Time $duration)
+    {
+        foreach ($times as $k => $t) {
+            $t = $t instanceof SLN_Time ? $t : new SLN_Time($t);
+            if (!self::checkTimeDuration($times, $t, $duration)) {
+                unset($times[$k]);
+            }
+        }
+
+        return $times;
+    }
+
+    public static function checkTimeDuration($times, SLN_Time $time, SLN_Time $duration)
+    {
+        $end = SLN_Time::increment($time, $duration);
+        $initial = clone $time;
+        while ($initial->isLte($time) && $time->isLte($end)) {
+            if (!isset($times[(string)$time])) {
+                return false;
+            }
+            $time = SLN_Time::increment($time);
+        }
+
+        return true;
+    }
+
 }

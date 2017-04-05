@@ -80,7 +80,7 @@ class SLN_Settings
 
     public function getInterval()
     {
-        return isset($this->settings['interval']) ? $this->settings['interval'] : 15;
+        return isset($this->settings['interval']) ? $this->settings['interval'] : SLN_Constants::DEFAULT_INTERVAL;
     }
 
     public function getNoticesDisabled()

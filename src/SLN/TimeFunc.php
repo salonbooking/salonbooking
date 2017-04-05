@@ -87,29 +87,4 @@ class SLN_TimeFunc
 
         return date('H:i', strtotime('1970-01-01 ' . $val)); 
     }
-
-    public static function filterTimesArrayByDuration($times, SLN_Time $duration)
-    {
-        foreach ($times as $k => $t) {
-            $t = $t instanceof SLN_Time ? $t : new SLN_Time($t);
-            if (!self::checkTimeDuration($times, $t, $duration)) {
-                unset($times[$k]);
-            }
-        }
-
-        return $times;
-    }
-
-    public static function checkTimeDuration($times, SLN_Time $time, SLN_Time $duration)
-    {
-        $end = SLN_Time::increment($time, $duration);
-        while ($time->isLte($end)) {
-            if (!isset($times[(string)$time])) {
-                return false;
-            }
-            $time = SLN_Time::increment($time);
-        }
-
-        return true;
-    }
 }
