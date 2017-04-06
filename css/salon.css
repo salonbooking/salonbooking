@@ -358,7 +358,8 @@ th {
 .datetimepicker.sln-datetimepicker table tr td span.year.active:not(.disabled):hover, .datetimepicker.sln-datetimepicker .switch:hover, .datetimepicker.sln-datetimepicker .prev:hover, .datetimepicker.sln-datetimepicker .next:hover, .datetimepicker.sln-datetimepicker .today:hover {
   color: #fff; }
 
-.sln-text--ok {
+.sln-text--ok, .sln-alert--success:after,
+#sln-salon .alert-success:after {
   color: #5bc24c; }
 
 .datetimepicker.sln-datetimepicker .sln-datetimepicker-close, .sln-alert--problem:after,

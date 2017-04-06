@@ -26,7 +26,8 @@
 #sln-salon--admin, .sln-calendar--wrapper {
 
 }
-    @import 'admin_components/inputs';
+@import 'admin_components/inputs';
+@import 'admin_components/progressbar';
 @import 'admin_components/buttons';
 @import 'admin_components/boxes';
 @import 'admin_components/panels';
@@ -1052,5 +1053,3 @@ $input-fsize: 16px;
 #wpwrap {
     @extend %zi-zero;
 }
-
-

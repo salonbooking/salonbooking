@@ -1833,6 +1833,84 @@ p.sln-box-info .sln-box-info-content h5 {
   padding: 0; }
 
 /* TIME RANGE // END */
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0; }
+  to {
+    background-position: 0 0; } }
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0; }
+  to {
+    background-position: 0 0; } }
+
+.progress {
+  overflow: hidden;
+  height: 20px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); }
+
+.progress-bar {
+  float: left;
+  width: 0%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  background-color: #076b9d;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-transition: width 0.6s ease;
+  -moz-transition: width 0.6s ease;
+  -o-transition: width 0.6s ease;
+  transition: width 0.6s ease; }
+
+.progress-striped .progress-bar,
+.progress-bar-striped {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 40px 40px; }
+
+.progress.active .progress-bar,
+.progress-bar.active {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+  -o-animation: progress-bar-stripes 2s linear infinite;
+  animation: progress-bar-stripes 2s linear infinite; }
+
+.progress-bar-success {
+  background-color: #5cb85c; }
+  .progress-striped .progress-bar-success {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
+
+.progress-bar-info {
+  background-color: #5bc0de; }
+  .progress-striped .progress-bar-info {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
+
+.progress-bar-warning {
+  background-color: #f0ad4e; }
+  .progress-striped .progress-bar-warning {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
+
+.progress-bar-danger {
+  background-color: #d9534f; }
+  .progress-striped .progress-bar-danger {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
+
 .sln-btn, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
 h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sln-admin-nav a,
 #sln-salon--admin .col-md-12.sln-admin-nav a,
@@ -5187,42 +5265,42 @@ p.sln-box-info {
   left: 0;
   z-index: 1040;
   background-color: #000; }
-.modal-backdrop.fade {
-  opacity: 0;
-  filter: alpha(opacity=0); }
-.modal-backdrop.in {
-  opacity: 0.5;
-  filter: alpha(opacity=50); }
+  .modal-backdrop.fade {
+    opacity: 0;
+    filter: alpha(opacity=0); }
+  .modal-backdrop.in {
+    opacity: 0.5;
+    filter: alpha(opacity=50); }
 
 #import-matching-modal {
   left: 160px !important; }
-#import-matching-modal .modal-dialog {
-  width: 70% !important; }
+  #import-matching-modal .modal-dialog {
+    width: 70% !important; }
 
 .sln-import-table {
   display: block;
   overflow-x: auto; }
-.sln-import-table td {
-  border-top: 1px solid #205069 !important;
-  border-left: none;
-  border-right: 1px solid #205069 !important;
-  border-bottom: none !important;
-  text-align: center; }
-.sln-import-table td .half-opacity {
-  opacity: 0.5 !important; }
-.sln-import-table td .sln-select {
-  text-align: left !important;
-  width: 200px !important; }
-.sln-import-table td:first-child {
-  border-left: 1px solid #205069 !important; }
-.sln-import-table th {
-  border-top: none !important;
-  border-left: none;
-  border-right: 1px solid #205069 !important;
-  border-bottom: none !important;
-  text-align: center !important; }
-.sln-import-table th:first-child {
-  border-left: 1px solid #205069 !important; }
+  .sln-import-table td {
+    border-top: 1px solid #205069 !important;
+    border-left: none;
+    border-right: 1px solid #205069 !important;
+    border-bottom: none !important;
+    text-align: center; }
+    .sln-import-table td .half-opacity {
+      opacity: 0.5 !important; }
+    .sln-import-table td .sln-select {
+      text-align: left !important;
+      width: 200px !important; }
+    .sln-import-table td:first-child {
+      border-left: 1px solid #205069 !important; }
+  .sln-import-table th {
+    border-top: none !important;
+    border-left: none;
+    border-right: 1px solid #205069 !important;
+    border-bottom: none !important;
+    text-align: center !important; }
+    .sln-import-table th:first-child {
+      border-left: 1px solid #205069 !important; }
 
 .sln-import-loader {
   -webkit-animation: glyphicon-spin-r 1s infinite linear;
@@ -5235,6 +5313,7 @@ p.sln-box-info {
   100% {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg); } }
+
 @keyframes glyphicon-spin-r {
   0% {
     -webkit-transform: rotate(0deg);
@@ -5242,6 +5321,7 @@ p.sln-box-info {
   100% {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg); } }
+
 .sln-tab #sln-availabilities .items .item {
   padding: 1.4em;
   margin: 1em 0; }
