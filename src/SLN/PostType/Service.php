@@ -54,9 +54,10 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
 	 * @return string
 	 */
 	public function postsOrderby($orderby, $query) {
+        global $wpdb;
 		remove_filter('posts_orderby', array($this, 'postsOrderby'), 10);
 
-		return str_replace("wp_postmeta.meta_value", "CAST(wp_postmeta.meta_value AS DECIMAL)", $orderby);
+		return str_replace("{$wpdb->postmeta}.meta_value", "CAST({$wpdb->postmeta}.meta_value AS DECIMAL)", $orderby);
 	}
 
 
