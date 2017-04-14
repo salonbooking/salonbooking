@@ -118,7 +118,7 @@ final class SLN_Wrapper_Booking_Services {
 				$atId = intval($item);
 			}
 
-			if (empty($price)) {
+			if (is_null($price)) {
 				$price = $service->getPrice();
 			}
 
