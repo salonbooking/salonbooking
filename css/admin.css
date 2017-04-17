@@ -6308,6 +6308,19 @@ body.salone_page_salon-tools #wpwrap {
           padding: 0 0.5rem;
           font-size: 0.75rem;
           line-height: 1.875rem; }
+    .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view .cal-day-pagination .btn,
+    .sln-calendar--wrapper .sln-calendar-view .cal-day-pagination .btn {
+      margin: 0 3px !important;
+      padding: 0 !important;
+      width: 18px;
+      height: 18px;
+      border-radius: 50% !important; }
+      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view .cal-day-pagination .btn.active,
+      .sln-calendar--wrapper .sln-calendar-view .cal-day-pagination .btn.active {
+        background-color: #5bc24c; }
+    .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view .cal-day-hour-part:hover,
+    .sln-calendar--wrapper .sln-calendar-view .cal-day-hour-part:hover {
+      background-color: rgba(122, 158, 208, 0.76); }
 
 .sln-calendar--wrapper.sln-calendar--wrapper--loading {
   position: relative; }

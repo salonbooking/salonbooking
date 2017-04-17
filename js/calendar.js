@@ -435,6 +435,9 @@ if(!String.prototype.formatNum) {
 
 	Calendar.prototype._calculate_hour_minutes_daily = function(data) {
 		var $self = this;
+
+		data.events = $self.applyAdvancedFilters(data.events);
+
 		var time_split = parseInt(this.options.time_split);
 		var time_split_count = 60 / time_split;
 		var time_split_hour = Math.min(time_split_count, 1);
@@ -457,7 +460,10 @@ if(!String.prototype.formatNum) {
 		end.setHours(time_end[0]);
 		end.setMinutes(time_end[1]);
 
-		var grid = {};
+		var grid 	 	 = {};
+		var by_page  	 = {};
+		var max_page 	 = 0;
+		var current_page = !isNaN(parseInt($self.options._page)) ? parseInt($self.options._page) : 0;
 
 		data.all_day = [];
 		data.by_hour = [];
@@ -471,39 +477,39 @@ if(!String.prototype.formatNum) {
 			return -1;
 		});
 		$.each(data.events, function(k, e) {
-			e.start = e.start + (new Date(e.start)).getTimezoneOffset()*60*1000;
-			e.end = e.end + (new Date(e.end)).getTimezoneOffset()*60*1000;
-			var s = new Date(parseInt(e.start));
-			var f = new Date(parseInt(e.end));
+			e._start = e.start + (new Date(e.start)).getTimezoneOffset()*60*1000;
+			e._end = e.end + (new Date(e.end)).getTimezoneOffset()*60*1000;
+			var s = new Date(parseInt(e._start));
+			var f = new Date(parseInt(e._end));
 			e.start_hour = s.getHours().toString().formatNum(2) + ':' + s.getMinutes().toString().formatNum(2);
 			e.end_hour = f.getHours().toString().formatNum(2) + ':' + f.getMinutes().toString().formatNum(2);
 
-			if(e.start < start.getTime()) {
+			if(e._start < start.getTime()) {
 				warn(1);
 				e.start_hour = s.getDate() + ' ' + $self.locale['ms' + s.getMonth()] + ' ' + e.start_hour;
 			}
 
-			if(e.end > end.getTime()) {
+			if(e._end > end.getTime()) {
 				warn(1);
 				e.end_hour = f.getDate() + ' ' + $self.locale['ms' + f.getMonth()] + ' ' + e.end_hour;
 			}
 
-			if(e.start < start.getTime() && e.end > end.getTime()) {
+			if(e._start < start.getTime() && e._end > end.getTime()) {
 				data.all_day.push(e);
 				return;
 			}
 
-			if(e.end < start.getTime()) {
+			if(e._end < start.getTime()) {
 				data.before_time.push(e);
 				return;
 			}
 
-			if(e.start > end.getTime()) {
+			if(e._start > end.getTime()) {
 				data.after_time.push(e);
 				return;
 			}
 
-			var event_start = start.getTime() - e.start;
+			var event_start = start.getTime() - e._start;
 
 			if(event_start >= 0) {
 				e.top = 0;
@@ -512,9 +518,9 @@ if(!String.prototype.formatNum) {
 			}
 
 			var lines_left = Math.abs(lines - e.top);
-			var lines_in_event = (e.end - e.start) / ms_per_line;
+			var lines_in_event = (e._end - e._start) / ms_per_line;
 			if(event_start >= 0) {
-				lines_in_event = (e.end - start.getTime()) / ms_per_line;
+				lines_in_event = (e._end - start.getTime()) / ms_per_line;
 			}
 
 
@@ -554,8 +560,25 @@ if(!String.prototype.formatNum) {
 				}
 			}
 
-			data.by_hour.push(e);
+			e.page = Math.floor(e.left / $self.options.on_page);
+			e.left = e.left % $self.options.on_page;
+			if (e.page > max_page) {
+				max_page = e.page;
+			}
+
+			if (by_page[e.page] === undefined) {
+				by_page[e.page] = [];
+			}
+			by_page[e.page].push(e);
 		});
+
+		if (current_page > max_page) {
+			current_page = max_page;
+		}
+		$self.options._page 	= current_page;
+		$self.options._max_page = max_page;
+
+		data.by_hour = by_page[current_page];
 
 		console.log(grid);
 	};
@@ -1082,6 +1105,9 @@ if(!String.prototype.formatNum) {
 		});
 
 		this['_update_' + this.options.view]();
+		if (this.options.view !== 'day') {
+			$('.cal-day-filter').addClass('hide');
+		}
 
 		this._update_modal();
 
@@ -1169,6 +1195,22 @@ if(!String.prototype.formatNum) {
 
 	Calendar.prototype._update_day = function() {
 		$('#cal-day-panel').height($('#cal-day-panel-hour').height());
+
+		var self = this;
+
+		var pagination = '';
+
+		var page = this.options._page;
+		var max  = this.options._max_page;
+		for(var i = 0; i <= max; i++) {
+			pagination += this.options.cal_day_pagination.replace(/%class/, (i === page ? 'active' : '')).replace(/%page/, i);
+		}
+		$('.cal-day-pagination').html(pagination);
+		$('.cal-day-filter').removeClass('hide');
+		$('.cal-day-pagination').find('.btn').click(function() {
+			self.options._page = $(this).data('page');
+			self._render();
+		});
 	};
 
 	Calendar.prototype._update_week = function() {
@@ -1268,6 +1310,38 @@ if(!String.prototype.formatNum) {
 		return events;
 	};
 
+	Calendar.prototype.applyAdvancedFilters = function(events) {
+		var _events = [];
+
+		var _customer = parseInt(this.options._customer);
+		var _services = Array.isArray(this.options._services) ? this.options._services : [];
+
+		if (_customer || _services.length) {
+			$.each(events, function() {
+				var add = true;
+				if (_customer && _customer !== this.customer_id) {
+					add = false;
+				}
+				if (add && _services.length) {
+					var intersect = this.services.filter(function(n) {
+						return _services.indexOf(n) !== -1;
+					});
+					if (!intersect.length) {
+						add =false;
+					}
+				}
+
+				if (add) {
+					_events.push(this);
+				}
+			});
+		}
+		else {
+			_events = events;
+		}
+
+		return _events;
+	};
 
 
 

@@ -1,3 +1,7 @@
+jQuery(function($){
+    initSalonCalendarUserSelect2($);
+});
+
 function calendar_getHourFunc() {
     return function (hour, part) {
         var time_start = this.options.time_start.split(":");
@@ -74,7 +78,10 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
             months: {
                 general: 'label'
             }
-        }
+        },
+        cal_day_pagination: '<button type="button" class="btn %class" data-page="%page"></button>',
+        on_page: 12,
+        _page: 0,
     };
     initDatepickers($);
     // CALENDAR
@@ -98,6 +105,24 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
             calendar.view($this.data('calendar-view'));
         });
     });
+
+    $('#sln-calendar-user-field').change(function() {
+        calendar.options._customer = parseInt($(this).val());
+        calendar._render();
+    });
+    $('#sln-calendar-services-field').change(function() {
+        var _events = $(this).val();
+        if (Array.isArray(_events)) {
+            _events = _events.map(parseInt);
+        }
+        else {
+            _events = [];
+        }
+
+        calendar.options._services = _events;
+        calendar._render();
+    });
+
     calendar.setLanguage($('html').attr('lang'));
     calendar.view();
 
@@ -123,4 +148,36 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
      //e.stopPropagation();
      });
      */
+}
+
+function initSalonCalendarUserSelect2($) {
+    $('#sln-calendar-user-field').select2({
+        allowClear: true,
+        containerCssClass: 'sln-select-rendered',
+        dropdownCssClass: 'sln-select-dropdown',
+        theme: "sln",
+        width: '100%',
+        placeholder: $('#sln-calendar-user-field').data('placeholder'),
+        language: {
+            noResults: function () {
+                return $('#sln-calendar-user-field').data('nomatches');
+            }
+        },
+        ajax: {
+            url: salon.ajax_url + '&action=salon&method=SearchUser&security=' + salon.ajax_nonce,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    s: params.term
+                };
+            },
+            minimumInputLength: 3,
+            processResults: function (data, page) {
+                return {
+                    results: data.result
+                };
+            },
+        }
+    });
 }

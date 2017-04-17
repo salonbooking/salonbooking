@@ -103,12 +103,19 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
             ->get($this->getCriteria());
     }
 
+	/**
+     * @param SLN_Wrapper_Booking $booking
+     *
+     * @return array|mixed
+     */
     private function wrapBooking($booking)
     {
         $ret = array(
             "id" => $booking->getId(),
             "title" => $this->getTitle($booking),
-            "customer" => $booking->getDisplayName(),
+            "customer" => $booking->getFirstname(),
+            "customer_id" => (int) $booking->getUserId(),
+            "services" => $booking->getServicesIds(),
             "url" => get_edit_post_link($booking->getId()),
             "class" => "event-".SLN_Enum_BookingStatus::getColor($booking->getStatus()),
             "start" => $booking->getStartsAt('UTC')->format('U') * 1000,

@@ -100,22 +100,56 @@ jQuery(function($){
         </div>
         <?php do_action('sln.template.calendar.navtabwrapper') ?>
     </div>
+    <div class="col-xs-12 col-md-6 sln-box-title current-view--title"></div>
 </div>
 
 <div class="row sln-calendar-view sln-box">
-<h2 class="col-xs-12 col-md-6 sln-box-title current-view--title"></h2>
+    <div class="col-xs-12 col-md-6">
+        <div class="row cal-day-filter">
+            <div class="col-md-6 sln-select form-group">
+                <select id="sln-calendar-user-field"
+                        data-nomatches="<?php _e('no users found','salon-booking-system')?>"
+                        data-placeholder="<?php _e('digit a customer name')?>"
+                        class="form-control">
+                </select>
+            </div>
+            <div class="col-md-6 sln-select form-group">
+                <?php
+                /** @var SLN_Wrapper_Service[] $services */
+                $services = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE)->getAll();
+                $items    = array();
+                foreach($services as $s) {
+                    $items[$s->getId()] = $s->getName();
+                }
+                SLN_Form::fieldSelect(
+                    'sln-calendar-services-field',
+                    $items,
+                    array(),
+                    array('attrs' => array('multiple' => true, 'placeholder' => __('filter by service', 'salon-booking-system'))),
+                    true
+                ); ?>
+            </div>
+        </div>
+    </div>
     <div class="col-xs-12 col-md-6 form-inline">
-            <div class="sln-calendar-viewnav btn-group">
-    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-btn--icon--left sln-icon--arrow--left" data-calendar-view="day">
-        <button class="f-row" data-calendar-nav="prev"><?php _e('Previous', 'salon-booking-system') ?></button>
-    </div>
-    <div class="sln-btn sln-btn--light sln-btn--medium" data-calendar-view="day">
-        <button class="f-row" data-calendar-nav="today"><?php _e('Today', 'salon-booking-system')?></button>
-    </div>
-    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-icon--arrow--right" data-calendar-view="day">
-        <button class="f-row f-row--end" data-calendar-nav="next"><?php _e('Next', 'salon-booking-system') ?></button>
-    </div>
-    </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="cal-day-filter cal-day-pagination"></div>
+            </div>
+            <div class="col-md-8">
+                <div class="sln-calendar-viewnav btn-group">
+                    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-btn--icon--left sln-icon--arrow--left" data-calendar-view="day">
+                        <button class="f-row" data-calendar-nav="prev"><?php _e('Previous', 'salon-booking-system') ?></button>
+                    </div>
+                    <div class="sln-btn sln-btn--light sln-btn--medium" data-calendar-view="day">
+                        <button class="f-row" data-calendar-nav="today"><?php _e('Today', 'salon-booking-system')?></button>
+                    </div>
+                    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-icon--arrow--right" data-calendar-view="day">
+                        <button class="f-row f-row--end" data-calendar-nav="next"><?php _e('Next', 'salon-booking-system') ?></button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
         <div class="clearfix"></div>
