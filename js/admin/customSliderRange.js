@@ -23,7 +23,7 @@ function customSliderRange($, $elements) {
             range: true,
             min: 0,
             max: 1440,
-            step: 15,
+            step: 5,
             values: [totaleMinutiFrom, totaleMinutiTo],
             //values: [540, 1020],
             slide: function (e, ui) {
