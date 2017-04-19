@@ -465,7 +465,9 @@ if(!String.prototype.formatNum) {
 		var by_page  	 = {};
 		var max_page 	 = 0;
 		var current_page = !isNaN(parseInt($self.options._page)) ? parseInt($self.options._page) : 0;
+		var on_page 	 = parseInt($self.options.on_page);
 
+		data.borders = on_page + 1;
 		data.headers = [];
 		data.all_day = [];
 		data.by_hour = [];
@@ -538,8 +540,8 @@ if(!String.prototype.formatNum) {
 						obj.lines = lines_left;
 					}
 
-					obj.page = Math.floor(obj.left / $self.options.on_page);
-					obj.left = obj.left % $self.options.on_page;
+					obj.page = Math.floor(obj.left / on_page);
+					obj.left = obj.left % on_page;
 					if (obj.page > max_page) {
 						max_page = obj.page;
 					}
@@ -558,7 +560,7 @@ if(!String.prototype.formatNum) {
 			$self.options._page 	= current_page;
 			$self.options._max_page = max_page;
 
-			assistants = assistants.slice(current_page * $self.options.on_page, (current_page+1) * $self.options.on_page);
+			assistants = assistants.slice(current_page * on_page, (current_page+1) * on_page);
 			$.each(assistants, function(pos, att_id) {
 				data.headers.push(sln_assistants[att_id]);
 			})
@@ -652,8 +654,8 @@ if(!String.prototype.formatNum) {
 					}
 				}
 
-				e.page = Math.floor(e.left / $self.options.on_page);
-				e.left = e.left % $self.options.on_page;
+				e.page = Math.floor(e.left / on_page);
+				e.left = e.left % on_page;
 				if (e.page > max_page) {
 					max_page = e.page;
 				}

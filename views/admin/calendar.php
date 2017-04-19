@@ -67,16 +67,28 @@ jQuery(function($){
     display: block;
     clear: both;
 }
+#cal-day-box .day-event-panel-border{
+    z-index: 610;
+    position: absolute;
+    height: inherit;
+    width: 1px;
+    background-color: #d4d4d4;
+    top: -10px;
+    left: 80px;
+}
 #cal-day-box .day-event{
     width: 7.4% !important;
     max-width: 7.4% !important;
     left: 80px;
 }
+#cal-day-box .cal-day-assistants{
+    padding: 5px 0 5px 5px;
+}
 #cal-day-box .cal-day-assistant{
     display: inline-block;
     text-align: center;
-    width: 7.25% !important;
-    max-width: 7.25% !important;
+    width: 7.95% !important;
+    max-width: 7.95% !important;
 }
 </style>
 <div class="wrap sln-bootstrap">
