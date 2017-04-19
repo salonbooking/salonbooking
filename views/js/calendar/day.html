@@ -3,8 +3,14 @@
    data-html="true"></a>
 <div id="cal-day-box">
 	<div class="row-fluid clearfix cal-row-head">
-		<div class="span1 col-xs-1 cal-cell"><%= cal.locale.time %></div>
-		<div class="span11 col-xs-11 cal-cell"><%= cal.locale.events %></div>
+		<% if(headers.length) {%>
+			<% _.each(headers, function(event, pos){ %>
+				<div class="cal-day-assistant" style="margin-left: <%= pos ? '0' : '80px' %>;"><%= event %></div>
+			<% }); %>
+		<% }else {%>
+			<div class="span1 col-xs-1 cal-cell"><%= cal.locale.time %></div>
+			<div class="span11 col-xs-11 cal-cell"><%= cal.locale.events %></div>
+		<% }; %>
 	</div>
 	<% if(all_day.length) {%>
 		<div class="row-fluid clearfix cal-day-hour">
@@ -37,7 +43,7 @@
 	<% }; %>
 	<div id="cal-day-panel" class="clearfix">
 		<% _.each(by_hour, function(event){ %>
-			<div class="day-event day-highlight dh-<%= event.class %>" style="left: <%= (event.left + 1) * 82 %>px; top: <%= (event.top * 30) %>px; height: <%= (event.lines * 30) %>px" data-toggle="tooltip" data-html="true" title="<%= event.title %>">
+			<div class="day-event day-highlight dh-<%= event.class %>" style="margin-left: <%= event.left * 7.6 %>%; top: <%= (event.top * 30) %>px; height: <%= (event.lines * 30) %>px" data-toggle="tooltip" data-html="true" title="<%= event.title %>">
 <!--				<span class="cal-hours"><%= event.start_hour %> - <%= event.end_hour %></span>-->
 				<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>"
 				   data-event-class="<%= event['class'] %>" class="event-item">

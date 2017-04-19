@@ -6,16 +6,20 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
     private $to;
     /** @var  SLN_Wrapper_Booking[] */
     private $bookings;
+    /** @var  SLN_Wrapper_Attendant[] */
+    private $assistants;
 
     public function execute()
     {
         $this->from = new SLN_DateTime(date("c", $_GET['from'] / 1000));
         $this->to = new SLN_DateTime(date("c", $_GET['to'] / 1000));
         $this->buildBookings();
+        $this->buildAssistants();
         $ret = array(
             'success' => 1,
             'result' => array(
                 'events' => $this->getResults(),
+                'assistants' => $this->getAssistants(),
                 'stats' => $this->getStats(),
             ),
         );
@@ -86,6 +90,23 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
         return $ret;
     }
 
+    private function getAssistants()
+    {
+        $ret = array();
+        foreach ($this->assistants as $att) {
+            $ret[$att->getId()] = $att->getName();
+        }
+
+        return $ret;
+    }
+
+    private function buildAssistants()
+    {
+        $this->assistants = $this->plugin
+            ->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT)
+            ->getAll();
+    }
+
     private function getResults()
     {
         $ret = array();
@@ -116,6 +137,7 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
             "customer" => $booking->getFirstname(),
             "customer_id" => (int) $booking->getUserId(),
             "services" => $booking->getServicesIds(),
+            "items" => $booking->getBookingServices()->toArrayRecursive(),
             "url" => get_edit_post_link($booking->getId()),
             "class" => "event-".SLN_Enum_BookingStatus::getColor($booking->getStatus()),
             "start" => $booking->getStartsAt('UTC')->format('U') * 1000,

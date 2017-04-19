@@ -109,6 +109,7 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
     $('#sln-calendar-user-field').change(function() {
         calendar.options._customer = parseInt($(this).val());
         calendar._render();
+        calendar.options.onAfterViewLoad.call(calendar, calendar.options.view);
     });
     $('#sln-calendar-services-field').change(function() {
         var _events = $(this).val();
@@ -121,6 +122,13 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
 
         calendar.options._services = _events;
         calendar._render();
+        calendar.options.onAfterViewLoad.call(calendar, calendar.options.view);
+    });
+
+    $('#sln-calendar-assistants-mode-switch').change(function() {
+        calendar.options._assistants_mode = $(this).is(':checked');
+        calendar._render();
+        calendar.options.onAfterViewLoad.call(calendar, calendar.options.view);
     });
 
     calendar.setLanguage($('html').attr('lang'));

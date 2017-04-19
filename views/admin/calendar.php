@@ -67,6 +67,17 @@ jQuery(function($){
     display: block;
     clear: both;
 }
+#cal-day-box .day-event{
+    width: 7.4% !important;
+    max-width: 7.4% !important;
+    left: 80px;
+}
+#cal-day-box .cal-day-assistant{
+    display: inline-block;
+    text-align: center;
+    width: 7.25% !important;
+    max-width: 7.25% !important;
+}
 </style>
 <div class="wrap sln-bootstrap">
     <h1><?php _e('Calendar','salon-booking-system')?> - <span class="current-view--title"></span></h1>
@@ -100,7 +111,20 @@ jQuery(function($){
         </div>
         <?php do_action('sln.template.calendar.navtabwrapper') ?>
     </div>
+</div>
+<div class="row">
     <div class="col-xs-12 col-md-6 sln-box-title current-view--title"></div>
+    <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-switch cal-day-filter">
+        <div class="pull-right">
+            <span class="sln-fake-label"><?php _e('Assistants view', 'salon-booking-system') ?></span>
+            <?php SLN_Form::fieldCheckbox(
+                "sln-calendar-assistants-mode-switch",
+                false
+            )
+            ?>
+            <label for="sln-calendar-assistants-mode-switch" class="sln-switch-btn" data-on="On" data-off="Off"></label>
+        </div>
+    </div>
 </div>
 
 <div class="row sln-calendar-view sln-box">
