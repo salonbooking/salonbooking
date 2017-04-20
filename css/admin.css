@@ -6530,6 +6530,9 @@ body.salone_page_salon-tools #wpwrap {
 .select2-container--default .select2-selection--multiple:hover:before {
   color: #999; }
 
+.sln-select.sln-select2-selection__search-primary .select2-selection__arrow:before {
+  content: '\f002' !important; }
+
 @media only screen and (min-width: 992px) {
   .vertical-tabs li {
     display: block;

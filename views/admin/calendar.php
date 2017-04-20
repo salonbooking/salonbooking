@@ -146,14 +146,14 @@ jQuery(function($){
 <div class="row sln-calendar-view sln-box">
     <div class="col-xs-12 col-md-6">
         <div class="row cal-day-filter">
-            <div class="col-md-6 sln-select form-group">
+            <div class="col-md-6 sln-select sln-select2-selection__search-primary form-group">
                 <select id="sln-calendar-user-field"
                         data-nomatches="<?php _e('no users found','salon-booking-system')?>"
                         data-placeholder="<?php _e('digit a customer name')?>"
                         class="form-control">
                 </select>
             </div>
-            <div class="col-md-6 sln-select form-group">
+            <div class="col-md-6 sln-select sln-select--multiple form-group">
                 <?php
                 /** @var SLN_Wrapper_Service[] $services */
                 $services = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE)->getAll();
