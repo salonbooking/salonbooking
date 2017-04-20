@@ -79,16 +79,20 @@ jQuery(function($){
 #cal-day-box .day-event{
     width: 7.4% !important;
     max-width: 7.4% !important;
-    left: 80px;
+    left: 82px;
 }
 #cal-day-box .cal-day-assistants{
-    padding: 5px 0 5px 5px;
+    margin: 0 0 0 80px;
+    width: 91.2%;
 }
 #cal-day-box .cal-day-assistant{
     display: inline-block;
     text-align: center;
-    width: 7.95% !important;
-    max-width: 7.95% !important;
+    width: 8.4% !important;
+    margin-right: -4px;
+}
+#cal-day-box .day-highlight{
+    border-left: none !important;
 }
 </style>
 <div class="wrap sln-bootstrap">
