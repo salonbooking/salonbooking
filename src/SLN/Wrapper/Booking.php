@@ -107,8 +107,8 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
     function evalBookingServices()
     {
         $data = $this->getServicesMeta();
-        $bookingServices = SLN_Wrapper_Booking_Services::build($data, $this->getStartsAt());
-        $ret = $bookingServices->toArrayRecursive();
+        $this->bookingServices = SLN_Wrapper_Booking_Services::build($data, $this->getStartsAt());
+        $ret = $this->bookingServices->toArrayRecursive();
         $this->setMeta('services', $ret);
         $this->setMeta('services_processed', 1);
     }
@@ -399,7 +399,9 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
      */
     public function setStatus($status)
     {
-        $ret = parent::setStatus($status);
+        $oldStatus = $this->getStatus();
+        $ret       = parent::setStatus($status);
+        do_action('sln.booking.setStatus', $this, $oldStatus, $this->getStatus());
 
         $this->evalCustomerDetails();
 

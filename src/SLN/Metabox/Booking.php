@@ -136,6 +136,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
         }
         if (!empty($postnew)) {
             $this->disabledSavePost = true;
+            $booking->setStatus($new);
             wp_update_post($postnew);
             $this->disabledSavePost = false;
         }

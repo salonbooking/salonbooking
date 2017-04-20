@@ -190,13 +190,13 @@ foreach($checkoutFields as $field => $name ) {
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'amount'),
-                __('Amount', 'salon-booking-system').' ('.$settings->getCurrencySymbol().')',
+                apply_filters('sln.template.metabox.booking.total_amount_label', __('Amount', 'salon-booking-system').' ('.$settings->getCurrencySymbol().')', $booking),
                 $booking->getAmount()
             );
             ?>
             <button class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--settings" id="calculate-total"><?php _e('Calculate total', 'salon-booking-system') ?></button>
         </div>
-        <div class="col-md-3 col-sm-4 sln-input--simple">
+        <div class="col-md-2 col-sm-4 sln-input--simple">
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'deposit'),
@@ -206,7 +206,7 @@ foreach($checkoutFields as $field => $name ) {
             ?>
         </div>
 
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-2 col-sm-4">
             <div class="form-group sln-input--simple">
                 <label for="">Transaction</label>
 
@@ -216,6 +216,8 @@ foreach($checkoutFields as $field => $name ) {
                     ) ?></p>
             </div>
         </div>
+
+        <?php do_action('sln.template.metabox.booking.total_amount_row', $booking); ?>
     </div>
     <div class="sln-separator"></div>
     <div class="row">
