@@ -35,6 +35,10 @@ function calendarGetTimeFormat() {
 function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
 
     var options = {
+		time_start:         '00:00',
+		time_end:           '24:00',
+		time_split:         '30',
+	
         events_source: ajaxUrl,
         view: 'month',
         tmpl_path: templatesUrl,
