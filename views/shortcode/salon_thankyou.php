@@ -16,8 +16,8 @@ $paymentMethod = ((!$confirmation) && $plugin->getSettings()->get('pay_enabled')
 SLN_Enum_PaymentMethodProvider::getService($plugin->getSettings()->getPaymentMethod(), $plugin)
 : false;
 
-if ($plugin->getBookingBuilder()->getLastBooking()->getAmount() == 0) {
-	$confirmation = $pendingPayment = $payLater = $paymentMethod = false;
+if (!$confirmation && $plugin->getBookingBuilder()->getLastBooking()->getAmount() == 0) {
+	$pendingPayment = $payLater = $paymentMethod = false;
 }
 
 $style = $step->getShortcode()->getStyleShortcode();
