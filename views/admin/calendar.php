@@ -165,7 +165,7 @@ jQuery(function($){
                     'sln-calendar-services-field',
                     $items,
                     array(),
-                    array('attrs' => array('multiple' => true, 'placeholder' => __('filter by service', 'salon-booking-system'))),
+                    array('attrs' => array('multiple' => true, 'data-placeholder' => __('filter by service', 'salon-booking-system'))),
                     true
                 ); ?>
             </div>

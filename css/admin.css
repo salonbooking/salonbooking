@@ -5840,15 +5840,17 @@ body.salone_page_salon-tools #wpwrap {
     margin: 0;
     padding: 0.41667rem 0.41667rem 0.20833rem 0.41667rem; }
   .select2-container.select2-container--sln .select2-selection--multiple .select2-search__field::-webkit-input-placeholder {
-    color: #0C6EB6; }
+    color: #4c7186; }
   .select2-container.select2-container--sln .select2-selection--multiple .select2-search__field:-moz-placeholder {
     /* Firefox 18- */
-    color: #0C6EB6; }
+    color: #4c7186; }
   .select2-container.select2-container--sln .select2-selection--multiple .select2-search__field::-moz-placeholder {
     /* Firefox 19+ */
-    color: #0C6EB6; }
+    color: #4c7186; }
   .select2-container.select2-container--sln .select2-selection--multiple .select2-search__field:-ms-input-placeholder {
-    color: #0C6EB6; }
+    color: #4c7186; }
+  .select2-container.select2-container--sln .select2-selection--multiple .select2-search__field:not([placeholder=""]) {
+    min-width: 170px !important; }
   .select2-container.select2-container--sln .select2-selection--multiple .select2-search--inline .select2-search__field {
     margin-top: 0;
     line-height: 1.875rem;
