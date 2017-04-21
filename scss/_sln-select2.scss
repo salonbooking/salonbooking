@@ -28,6 +28,9 @@
 	.select2-selection--single .select2-selection__rendered {
 	    color: $cl_main;
 	    line-height: rem(60px);
+		.select2-selection__placeholder {
+			color: $cl_main--medium;
+		}
 	}
 	.select2-selection--single .select2-selection__rendered {
 	    display: block;

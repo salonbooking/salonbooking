@@ -5759,6 +5759,8 @@ body.salone_page_salon-tools #wpwrap {
   .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
     color: #003553;
     line-height: 2.5rem; }
+    .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered .select2-selection__placeholder {
+      color: #4c7186; }
   .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
     display: block;
     padding-left: 1em;
