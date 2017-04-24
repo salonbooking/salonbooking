@@ -1039,6 +1039,11 @@ $input-fsize: 16px;
         &:before {color: #999;}
     }
 }
+.sln-select.sln-select2-selection__search-primary .select2-selection__arrow {
+    &:before {
+        content: '\f002' !important;
+    }
+}
 // /// SELECT2 OVERRIDES END
 .vertical-tabs {
     @extend %font-medium;

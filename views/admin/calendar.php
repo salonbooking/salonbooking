@@ -67,6 +67,33 @@ jQuery(function($){
     display: block;
     clear: both;
 }
+#cal-day-box .day-event-panel-border{
+    z-index: 610;
+    position: absolute;
+    height: inherit;
+    width: 1px;
+    background-color: #d4d4d4;
+    top: -10px;
+    left: 80px;
+}
+#cal-day-box .day-event{
+    width: 7.4% !important;
+    max-width: 7.4% !important;
+    left: 82px;
+}
+#cal-day-box .cal-day-assistants{
+    margin: 0 0 0 80px;
+    width: 91.2%;
+}
+#cal-day-box .cal-day-assistant{
+    display: inline-block;
+    text-align: center;
+    width: 8.4% !important;
+    margin-right: -4px;
+}
+#cal-day-box .day-highlight{
+    border-left: none !important;
+}
 </style>
 <div class="wrap sln-bootstrap">
     <h1><?php _e('Calendar','salon-booking-system')?> - <span class="current-view--title"></span></h1>
@@ -101,21 +128,68 @@ jQuery(function($){
         <?php do_action('sln.template.calendar.navtabwrapper') ?>
     </div>
 </div>
+<div class="row">
+    <div class="col-xs-12 col-md-6 sln-box-title current-view--title"></div>
+    <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-switch cal-day-filter">
+        <div class="pull-right">
+            <span class="sln-fake-label"><?php _e('Assistants view', 'salon-booking-system') ?></span>
+            <?php SLN_Form::fieldCheckbox(
+                "sln-calendar-assistants-mode-switch",
+                false
+            )
+            ?>
+            <label for="sln-calendar-assistants-mode-switch" class="sln-switch-btn" data-on="On" data-off="Off"></label>
+        </div>
+    </div>
+</div>
 
 <div class="row sln-calendar-view sln-box">
-<h2 class="col-xs-12 col-md-6 sln-box-title current-view--title"></h2>
+    <div class="col-xs-12 col-md-6">
+        <div class="row cal-day-filter">
+            <div class="col-md-6 sln-select sln-select2-selection__search-primary form-group">
+                <select id="sln-calendar-user-field"
+                        data-nomatches="<?php _e('no users found','salon-booking-system')?>"
+                        data-placeholder="<?php _e('digit a customer name')?>"
+                        class="form-control">
+                </select>
+            </div>
+            <div class="col-md-6 sln-select sln-select--multiple form-group">
+                <?php
+                /** @var SLN_Wrapper_Service[] $services */
+                $services = SLN_Plugin::getInstance()->getRepository(SLN_Plugin::POST_TYPE_SERVICE)->getAll();
+                $items    = array();
+                foreach($services as $s) {
+                    $items[$s->getId()] = $s->getName();
+                }
+                SLN_Form::fieldSelect(
+                    'sln-calendar-services-field',
+                    $items,
+                    array(),
+                    array('attrs' => array('multiple' => true, 'data-placeholder' => __('filter by service', 'salon-booking-system'))),
+                    true
+                ); ?>
+            </div>
+        </div>
+    </div>
     <div class="col-xs-12 col-md-6 form-inline">
-            <div class="sln-calendar-viewnav btn-group">
-    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-btn--icon--left sln-icon--arrow--left" data-calendar-view="day">
-        <button class="f-row" data-calendar-nav="prev"><?php _e('Previous', 'salon-booking-system') ?></button>
-    </div>
-    <div class="sln-btn sln-btn--light sln-btn--medium" data-calendar-view="day">
-        <button class="f-row" data-calendar-nav="today"><?php _e('Today', 'salon-booking-system')?></button>
-    </div>
-    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-icon--arrow--right" data-calendar-view="day">
-        <button class="f-row f-row--end" data-calendar-nav="next"><?php _e('Next', 'salon-booking-system') ?></button>
-    </div>
-    </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="cal-day-filter cal-day-pagination"></div>
+            </div>
+            <div class="col-md-8">
+                <div class="sln-calendar-viewnav btn-group">
+                    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-btn--icon--left sln-icon--arrow--left" data-calendar-view="day">
+                        <button class="f-row" data-calendar-nav="prev"><?php _e('Previous', 'salon-booking-system') ?></button>
+                    </div>
+                    <div class="sln-btn sln-btn--light sln-btn--medium" data-calendar-view="day">
+                        <button class="f-row" data-calendar-nav="today"><?php _e('Today', 'salon-booking-system')?></button>
+                    </div>
+                    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-icon--arrow--right" data-calendar-view="day">
+                        <button class="f-row f-row--end" data-calendar-nav="next"><?php _e('Next', 'salon-booking-system') ?></button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
         <div class="clearfix"></div>

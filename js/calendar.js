@@ -7,6 +7,7 @@
  */
 "use strict";
 var sln_stats = [];
+var sln_assistants = {};
 Date.prototype.getWeek = function() {
 	var onejan = new Date(this.getFullYear(), 0, 1);
 	return Math.ceil((((this.getTime() - onejan.getTime()) / 86400000) + onejan.getDay() + 1) / 7);
@@ -435,6 +436,9 @@ if(!String.prototype.formatNum) {
 
 	Calendar.prototype._calculate_hour_minutes_daily = function(data) {
 		var $self = this;
+
+		data.events = $self.applyAdvancedFilters(data.events);
+
 		var time_split = parseInt(this.options.time_split);
 		var time_split_count = 60 / time_split;
 		var time_split_hour = Math.min(time_split_count, 1);
@@ -457,8 +461,14 @@ if(!String.prototype.formatNum) {
 		end.setHours(time_end[0]);
 		end.setMinutes(time_end[1]);
 
-		var grid = {};
+		var grid 	 	 = {};
+		var by_page  	 = {};
+		var max_page 	 = 0;
+		var current_page = !isNaN(parseInt($self.options._page)) ? parseInt($self.options._page) : 0;
+		var on_page 	 = parseInt($self.options.on_page);
 
+		data.borders = on_page + 1;
+		data.headers = [];
 		data.all_day = [];
 		data.by_hour = [];
 		data.after_time = [];
@@ -470,94 +480,202 @@ if(!String.prototype.formatNum) {
 
 			return -1;
 		});
-		$.each(data.events, function(k, e) {
-			e.start = e.start + (new Date(e.start)).getTimezoneOffset()*60*1000;
-			e.end = e.end + (new Date(e.end)).getTimezoneOffset()*60*1000;
-			var s = new Date(parseInt(e.start));
-			var f = new Date(parseInt(e.end));
-			e.start_hour = s.getHours().toString().formatNum(2) + ':' + s.getMinutes().toString().formatNum(2);
-			e.end_hour = f.getHours().toString().formatNum(2) + ':' + f.getMinutes().toString().formatNum(2);
 
-			if(e.start < start.getTime()) {
-				warn(1);
-				e.start_hour = s.getDate() + ' ' + $self.locale['ms' + s.getMonth()] + ' ' + e.start_hour;
+		if ($self.options._assistants_mode) {
+			var assistants = [];
+			$.each(data.events, function(k, e) {
+				var service_start = e.start + (new Date(e.start)).getTimezoneOffset()*60*1000;
+				var service_end   = service_start;
+				$.each(e.items, function(j, item) {
+					service_start = service_end;
+					var duration  = item.duration.split(':');
+					service_end   = service_start + (parseInt(duration[0])*60*60 + parseInt(duration[1])*60)*1000;
+
+					if (!item.attendant) {
+						return;
+					}
+
+					var objs = $self.applyAdvancedFilters([{
+						id: 	  	 e.id,
+						title: 	  	 e.title,
+						customer: 	 e.customer,
+						customer_id: e.customer_id,
+						services: 	 [item.service],
+						class: 	  	 e.class,
+						url: 	  	 e.url,
+						_start:   	 service_start,
+						_end:   	 service_end,
+					}]); // create event and apply filters
+					if (!objs.length) {
+						return;
+					}
+					var obj = objs[0];
+
+					if(obj._start < start.getTime() || obj._end > end.getTime()) {
+						return;
+					}
+
+					var att_id = item.attendant;
+					if ($.inArray(att_id, assistants) === -1) {
+						assistants.push(att_id);
+					}
+					obj.left = $.inArray(att_id, assistants);
+
+					var event_start = start.getTime() - obj._start;
+
+					if(event_start >= 0) {
+						obj.top = 0;
+					} else {
+						obj.top = Math.abs(event_start) / ms_per_line;
+					}
+
+					var lines_left = Math.abs(lines - obj.top);
+					var lines_in_event = (obj._end - obj._start) / ms_per_line;
+					if(event_start >= 0) {
+						lines_in_event = (obj._end - start.getTime()) / ms_per_line;
+					}
+
+					obj.lines = lines_in_event;
+					if(lines_in_event > lines_left) {
+						obj.lines = lines_left;
+					}
+
+					obj.page = Math.floor(obj.left / on_page);
+					obj.left = obj.left % on_page;
+					if (obj.page > max_page) {
+						max_page = obj.page;
+					}
+
+					if (by_page[obj.page] === undefined) {
+						by_page[obj.page] = [];
+					}
+					by_page[obj.page].push(obj);
+
+				});
+			});
+
+			if (current_page > max_page) {
+				current_page = max_page;
 			}
+			$self.options._page 	= current_page;
+			$self.options._max_page = max_page;
 
-			if(e.end > end.getTime()) {
-				warn(1);
-				e.end_hour = f.getDate() + ' ' + $self.locale['ms' + f.getMonth()] + ' ' + e.end_hour;
-			}
+			assistants = assistants.slice(current_page * on_page, (current_page+1) * on_page);
+			$.each(assistants, function(pos, att_id) {
+				data.headers.push(sln_assistants[att_id]);
+			})
 
-			if(e.start < start.getTime() && e.end > end.getTime()) {
-				data.all_day.push(e);
-				return;
-			}
+			data.by_hour = /*$self.applyAdvancedFilters*/(by_page[current_page]);
+			console.log(data.by_hour);
+			console.log(assistants);
+		}
+		else {
+			$.each(data.events, function(k, e) {
+				e._start = e.start + (new Date(e.start)).getTimezoneOffset()*60*1000;
+				e._end = e.end + (new Date(e.end)).getTimezoneOffset()*60*1000;
+				var s = new Date(parseInt(e._start));
+				var f = new Date(parseInt(e._end));
+				e.start_hour = s.getHours().toString().formatNum(2) + ':' + s.getMinutes().toString().formatNum(2);
+				e.end_hour = f.getHours().toString().formatNum(2) + ':' + f.getMinutes().toString().formatNum(2);
 
-			if(e.end < start.getTime()) {
-				data.before_time.push(e);
-				return;
-			}
-
-			if(e.start > end.getTime()) {
-				data.after_time.push(e);
-				return;
-			}
-
-			var event_start = start.getTime() - e.start;
-
-			if(event_start >= 0) {
-				e.top = 0;
-			} else {
-				e.top = Math.abs(event_start) / ms_per_line;
-			}
-
-			var lines_left = Math.abs(lines - e.top);
-			var lines_in_event = (e.end - e.start) / ms_per_line;
-			if(event_start >= 0) {
-				lines_in_event = (e.end - start.getTime()) / ms_per_line;
-			}
-
-
-			e.lines = lines_in_event;
-			if(lines_in_event > lines_left) {
-				e.lines = lines_left;
-			}
-
-			var added = false;
-			var col = 0;
-			while(!added) {
-				var row = e.top;
-				var row_rounded = parseFloat(row.toFixed(4));
-				if (grid[row_rounded] == undefined) {
-					grid[row_rounded] = {};
+				if(e._start < start.getTime()) {
+					warn(1);
+					e.start_hour = s.getDate() + ' ' + $self.locale['ms' + s.getMonth()] + ' ' + e.start_hour;
 				}
 
-				if (grid[row_rounded][col] == undefined) {
-					e.left = col;
-					added = true;
+				if(e._end > end.getTime()) {
+					warn(1);
+					e.end_hour = f.getDate() + ' ' + $self.locale['ms' + f.getMonth()] + ' ' + e.end_hour;
+				}
 
-					var step = 5*2/60; // 2 rows = 1 hour
-					var offset_max = parseFloat((e.lines).toFixed(4));
-					for(var offset = 0; parseFloat(offset.toFixed(4)) < offset_max; offset+=step) {
-						var _row_rounded = parseFloat((row + offset).toFixed(4));
-						var _col 		 = col;
+				if(e._start < start.getTime() && e._end > end.getTime()) {
+					data.all_day.push(e);
+					return;
+				}
 
-						if (grid[_row_rounded] == undefined) {
-							grid[_row_rounded] = {};
+				if(e._end < start.getTime()) {
+					data.before_time.push(e);
+					return;
+				}
+
+				if(e._start > end.getTime()) {
+					data.after_time.push(e);
+					return;
+				}
+
+				var event_start = start.getTime() - e._start;
+
+				if(event_start >= 0) {
+					e.top = 0;
+				} else {
+					e.top = Math.abs(event_start) / ms_per_line;
+				}
+
+				var lines_left = Math.abs(lines - e.top);
+				var lines_in_event = (e._end - e._start) / ms_per_line;
+				if(event_start >= 0) {
+					lines_in_event = (e._end - start.getTime()) / ms_per_line;
+				}
+
+
+				e.lines = lines_in_event;
+				if(lines_in_event > lines_left) {
+					e.lines = lines_left;
+				}
+
+				var added = false;
+				var col = 0;
+				while(!added) {
+					var row = e.top;
+					var row_rounded = parseFloat(row.toFixed(4));
+					if (grid[row_rounded] == undefined) {
+						grid[row_rounded] = {};
+					}
+
+					if (grid[row_rounded][col] == undefined) {
+						e.left = col;
+						added = true;
+
+						var step = 5*2/60; // 2 rows = 1 hour
+						var offset_max = parseFloat((e.lines).toFixed(4));
+						for(var offset = 0; parseFloat(offset.toFixed(4)) < offset_max; offset+=step) {
+							var _row_rounded = parseFloat((row + offset).toFixed(4));
+							var _col 		 = col;
+
+							if (grid[_row_rounded] == undefined) {
+								grid[_row_rounded] = {};
+							}
+
+							grid[_row_rounded][_col] = e.id;
 						}
-
-						grid[_row_rounded][_col] = e.id;
+					}
+					else {
+						col++;
 					}
 				}
-				else {
-					col++;
+
+				e.page = Math.floor(e.left / on_page);
+				e.left = e.left % on_page;
+				if (e.page > max_page) {
+					max_page = e.page;
 				}
+
+				if (by_page[e.page] === undefined) {
+					by_page[e.page] = [];
+				}
+				by_page[e.page].push(e);
+			});
+
+			if (current_page > max_page) {
+				current_page = max_page;
 			}
+			$self.options._page 	= current_page;
+			$self.options._max_page = max_page;
 
-			data.by_hour.push(e);
-		});
+			data.by_hour = by_page[current_page];
 
-		console.log(grid);
+			console.log(grid);
+		}
 	};
 
 	Calendar.prototype._calculate_hour_minutes_weekly = function(data) {
@@ -1015,7 +1133,8 @@ if(!String.prototype.formatNum) {
 							}
 							if(json.result) {
 								events = json.result.events;
-                                                                sln_stats = json.result.stats;
+								sln_stats = json.result.stats;
+								sln_assistants = json.result.assistants;
 							}
 						});
 						return events;
@@ -1082,6 +1201,9 @@ if(!String.prototype.formatNum) {
 		});
 
 		this['_update_' + this.options.view]();
+		if (this.options.view !== 'day') {
+			$('.cal-day-filter').addClass('hide');
+		}
 
 		this._update_modal();
 
@@ -1169,6 +1291,22 @@ if(!String.prototype.formatNum) {
 
 	Calendar.prototype._update_day = function() {
 		$('#cal-day-panel').height($('#cal-day-panel-hour').height());
+
+		var self = this;
+
+		var pagination = '';
+
+		var page = this.options._page;
+		var max  = this.options._max_page;
+		for(var i = 0; i <= max; i++) {
+			pagination += this.options.cal_day_pagination.replace(/%class/, (i === page ? 'active' : '')).replace(/%page/, i);
+		}
+		$('.cal-day-pagination').html(pagination);
+		$('.cal-day-filter').removeClass('hide');
+		$('.cal-day-pagination').find('.btn').click(function() {
+			self.options._page = $(this).data('page');
+			self._render();
+		});
 	};
 
 	Calendar.prototype._update_week = function() {
@@ -1268,6 +1406,38 @@ if(!String.prototype.formatNum) {
 		return events;
 	};
 
+	Calendar.prototype.applyAdvancedFilters = function(events) {
+		var _events = [];
+
+		var _customer = parseInt(this.options._customer);
+		var _services = Array.isArray(this.options._services) ? this.options._services : [];
+
+		if (_customer || _services.length) {
+			$.each(events, function() {
+				var add = true;
+				if (_customer && _customer !== this.customer_id) {
+					add = false;
+				}
+				if (add && _services.length) {
+					var intersect = this.services.filter(function(n) {
+						return _services.indexOf(n) !== -1;
+					});
+					if (!intersect.length) {
+						add =false;
+					}
+				}
+
+				if (add) {
+					_events.push(this);
+				}
+			});
+		}
+		else {
+			_events = events;
+		}
+
+		return _events;
+	};
 
 
 

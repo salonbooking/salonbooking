@@ -5759,6 +5759,8 @@ body.salone_page_salon-tools #wpwrap {
   .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
     color: #003553;
     line-height: 2.5rem; }
+    .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered .select2-selection__placeholder {
+      color: #4c7186; }
   .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
     display: block;
     padding-left: 1em;
@@ -5838,15 +5840,17 @@ body.salone_page_salon-tools #wpwrap {
     margin: 0;
     padding: 0.41667rem 0.41667rem 0.20833rem 0.41667rem; }
   .select2-container.select2-container--sln .select2-selection--multiple .select2-search__field::-webkit-input-placeholder {
-    color: #0C6EB6; }
+    color: #4c7186; }
   .select2-container.select2-container--sln .select2-selection--multiple .select2-search__field:-moz-placeholder {
     /* Firefox 18- */
-    color: #0C6EB6; }
+    color: #4c7186; }
   .select2-container.select2-container--sln .select2-selection--multiple .select2-search__field::-moz-placeholder {
     /* Firefox 19+ */
-    color: #0C6EB6; }
+    color: #4c7186; }
   .select2-container.select2-container--sln .select2-selection--multiple .select2-search__field:-ms-input-placeholder {
-    color: #0C6EB6; }
+    color: #4c7186; }
+  .select2-container.select2-container--sln .select2-selection--multiple .select2-search__field:not([placeholder=""]) {
+    min-width: 170px !important; }
   .select2-container.select2-container--sln .select2-selection--multiple .select2-search--inline .select2-search__field {
     margin-top: 0;
     line-height: 1.875rem;
@@ -6308,6 +6312,19 @@ body.salone_page_salon-tools #wpwrap {
           padding: 0 0.5rem;
           font-size: 0.75rem;
           line-height: 1.875rem; }
+    .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view .cal-day-pagination .btn,
+    .sln-calendar--wrapper .sln-calendar-view .cal-day-pagination .btn {
+      margin: 0 3px !important;
+      padding: 0 !important;
+      width: 18px;
+      height: 18px;
+      border-radius: 50% !important; }
+      .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view .cal-day-pagination .btn.active,
+      .sln-calendar--wrapper .sln-calendar-view .cal-day-pagination .btn.active {
+        background-color: #5bc24c; }
+    .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view .cal-day-hour-part:hover,
+    .sln-calendar--wrapper .sln-calendar-view .cal-day-hour-part:hover {
+      background-color: rgba(122, 158, 208, 0.76); }
 
 .sln-calendar--wrapper.sln-calendar--wrapper--loading {
   position: relative; }
@@ -6516,6 +6533,9 @@ body.salone_page_salon-tools #wpwrap {
 
 .select2-container--default .select2-selection--multiple:hover:before {
   color: #999; }
+
+.sln-select.sln-select2-selection__search-primary .select2-selection__arrow:before {
+  content: '\f002' !important; }
 
 @media only screen and (min-width: 992px) {
   .vertical-tabs li {

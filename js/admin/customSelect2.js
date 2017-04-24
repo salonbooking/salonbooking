@@ -18,7 +18,10 @@ function sln_createSelect2Full($) {
             containerCssClass: 'sln-select-rendered ' + ($(this).attr('data-containerCssClass') ? $(this).attr('data-containerCssClass') : ''),
             dropdownCssClass: 'sln-select-dropdown',
             theme: "sln",
-            width: '100%'
+            width: '100%',
+            placeholder: function(){
+                $(this).data('placeholder');
+            }
         }).focus(function () {
             $(this).select2('open');
         })

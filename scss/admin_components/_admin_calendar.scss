@@ -71,5 +71,21 @@
 			}
 		}
 	}
+	.cal-day-pagination {
+		.btn {
+			margin: 0 3px !important;
+			padding: 0 !important;
+			width: 18px;
+			height: 18px;
+			border-radius: 50% !important;
+
+			&.active {
+				background-color: $cl_ok;
+			}
+		}
+	}
+	.cal-day-hour-part:hover {
+		background-color: rgba(122, 158, 208, 0.76);
+	}
 // .sln-calendar-view // END
 }
