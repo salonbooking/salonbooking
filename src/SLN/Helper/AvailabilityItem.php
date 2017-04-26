@@ -139,4 +139,8 @@ SLN_Helper_AvailabilityItem
 
         return $ret;
     }
+
+    public function getTimes(){
+        return $this->times;
+    }
 }

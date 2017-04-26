@@ -187,4 +187,15 @@ class SLN_Helper_AvailabilityItems
     {
         return $this->offset;
     }
+
+    public function getTimeMinMax()
+    {
+        $times = array_reduce($this->items, function($carry, $item){
+            $t = $item->getTimes();
+            return array_merge($carry, $t[0], $t[1]);
+        }, array());
+        $ret = array(date('H:i', min($times)), date('H:i', max($times)));
+        if($ret[1] == '00:00') $ret[1] = '24:00';
+        return $ret;
+    }
 }
