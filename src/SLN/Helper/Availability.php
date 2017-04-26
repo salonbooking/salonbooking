@@ -79,7 +79,6 @@ class SLN_Helper_Availability
         $hb = $this->getHoursBeforeHelper();
         $from = $hb->getFromDate();
         $to = $hb->getToDate();
-
         foreach (SLN_Func::getMinutesIntervals() as $time) {
             $d = new SLN_DateTime($date->format('Y-m-d').' '.$time);
             if (
@@ -87,7 +86,7 @@ class SLN_Helper_Availability
                 && $hItems->isValidDatetime($d)
                 && $this->isValidDate($d)
                 && $this->isValidTime($d)
-                && $d > $from && $d < $to
+                && $d >= $from && $d <= $to
             ) {
                 $ret[$time] = $time;
             }
