@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.7.2
-Stable tag: 3.11.1
+Stable tag: 3.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,12 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 
 **LIST OF MAIN FEATURES**
 
+** Back-end calendar**
+
+* Montly view
+* Weekly view
+* Daily view ( NEW IMPROVED VERSION )
+* Bookings export 
 
 **Salon general settings**
 
@@ -265,6 +271,17 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+27.04.2017
+
+* Fixed bug on booking system
+* Fixed back-end calendar daily view hours representation
+* Fixed assistants and services booking rules time intervals
+* Improved back-end calendar daily view
+* If total import is 0 no payment pending email notification
+* Services disappeared after updates bug fixed
+* SSL check
+
 
 10.04.2017
 
