@@ -238,8 +238,9 @@ class SLN_Helper_Availability
 
         $avItems = $this->getItemsWithoutServiceOffset();
         $hItems  = $this->getHolidaysItems();
-        $duration = $service->getDuration();
-        if (!$avItems->isValidDatetimeDuration($time, $duration) || !$hItems->isValidDatetime($time, $duration)) {
+#        $duration = $service->getDuration();
+#        if (!$avItems->isValidDatetimeDuration($time, $duration) || !$hItems->isValidDatetime($time, $duration)) {
+        if (!$avItems->isValidDatetime($time) || !$hItems->isValidDatetime($time)) {
             return SLN_Helper_Availability_ErrorHelper::doServiceNotEnoughTime($service, $time);
         }
 
