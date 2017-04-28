@@ -81,7 +81,7 @@ class SLN_Action_Reminder
         $min = $this->getMin();
         $max = $this->getMax();
 
-        $statuses = array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED);
+        $statuses = array(SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED, SLN_Enum_BookingStatus::PAY_LATER);
 
         /** @var SLN_Repository_BookingRepository $repo */
         $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_BOOKING);
