@@ -155,11 +155,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Private customers reservations management page [salon_booking_my_account]
 * Assistants bookings calendar  [salon_booking_calendar]
 
-**Back-end bookings calendar**
-* Montly view
-* Weekly view
-* Daily view
-* Export reservations to a CSV file 
+
 
 **Themes & Plugin compatibility issues*
 
