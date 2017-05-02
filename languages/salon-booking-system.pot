@@ -6,16 +6,16 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Salon Booking 3.10\n"
+"Project-Id-Version: Salon Booking 3.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-03 10:20+0200\n"
+"POT-Creation-Date: 2017-04-29 14:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Salon Booking <support@wordpresschef.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -59,31 +59,31 @@ msgstr ""
 msgid "Data not found"
 msgstr ""
 
-#: src/SLN/Action/Ajax/Calendar.php:35
+#: src/SLN/Action/Ajax/Calendar.php:39
 msgid "Booking Rule"
 msgstr ""
 
-#: src/SLN/Action/Ajax/Calendar.php:37
+#: src/SLN/Action/Ajax/Calendar.php:41
 msgid "Holiday Rule"
 msgstr ""
 
-#: src/SLN/Action/Ajax/Calendar.php:72
+#: src/SLN/Action/Ajax/Calendar.php:76
 msgid "bookings"
 msgstr ""
 
-#: src/SLN/Action/Ajax/Calendar.php:73
+#: src/SLN/Action/Ajax/Calendar.php:77
 msgid "revenue"
 msgstr ""
 
-#: src/SLN/Action/Ajax/Calendar.php:74
+#: src/SLN/Action/Ajax/Calendar.php:78
 msgid "hrs"
 msgstr ""
 
-#: src/SLN/Action/Ajax/Calendar.php:75
+#: src/SLN/Action/Ajax/Calendar.php:79
 msgid "mns"
 msgstr ""
 
-#: src/SLN/Action/Ajax/Calendar.php:76
+#: src/SLN/Action/Ajax/Calendar.php:80
 msgid "available left"
 msgstr ""
 
@@ -196,7 +196,7 @@ msgstr ""
 
 #: src/SLN/Admin/Calendar.php:12 src/SLN/Admin/Calendar.php:13
 #: src/SLN/PostType/Attendant.php:150 src/SLN/PostType/Booking.php:189
-#: src/SLN/PostType/Service.php:234
+#: src/SLN/PostType/Service.php:235
 msgid "Salon"
 msgstr ""
 
@@ -204,7 +204,7 @@ msgstr ""
 msgid "Salon Calendar"
 msgstr ""
 
-#: src/SLN/Admin/Calendar.php:22 views/admin/calendar.php:72
+#: src/SLN/Admin/Calendar.php:22 views/admin/calendar.php:102
 msgid "Calendar"
 msgstr ""
 
@@ -299,7 +299,7 @@ msgstr ""
 msgid "Reports"
 msgstr ""
 
-#: src/SLN/Admin/Reports/AbstractReport.php:455 views/admin/calendar.php:113
+#: src/SLN/Admin/Reports/AbstractReport.php:455 views/admin/calendar.php:188
 msgid "Today"
 msgstr ""
 
@@ -476,11 +476,11 @@ msgstr ""
 msgid "Reservations"
 msgstr ""
 
-#: src/SLN/Admin/Tools.php:101 views/admin/calendar.php:138
+#: src/SLN/Admin/Tools.php:101 views/admin/calendar.php:215
 msgid "from"
 msgstr ""
 
-#: src/SLN/Admin/Tools.php:102 views/admin/calendar.php:145
+#: src/SLN/Admin/Tools.php:102 views/admin/calendar.php:222
 msgid "to"
 msgstr ""
 
@@ -700,7 +700,7 @@ msgid "day"
 msgstr ""
 
 #: src/SLN/Func.php:164 src/SLN/Func.php:165 src/SLN/Func.php:166
-#: src/SLN/Wrapper/Booking.php:453 views/settings/tab_general.php:263
+#: src/SLN/Wrapper/Booking.php:455 views/settings/tab_general.php:263
 #: views/settings/tab_general.php:264 views/settings/tab_general.php:265
 #: views/settings/tab_general.php:266
 msgid "days"
@@ -727,7 +727,7 @@ msgstr ""
 msgid "years"
 msgstr ""
 
-#: src/SLN/Helper/Availability.php:145
+#: src/SLN/Helper/Availability.php:144
 msgid "This assistant is not available for the selected service"
 msgstr ""
 
@@ -805,23 +805,23 @@ msgstr ""
 msgid "Booking details"
 msgstr ""
 
-#: src/SLN/Metabox/Booking.php:213 src/SLN/Shortcode/Salon/DetailsStep.php:94
+#: src/SLN/Metabox/Booking.php:214 src/SLN/Shortcode/Salon/DetailsStep.php:94
 msgid "First name can't be empty"
 msgstr ""
 
-#: src/SLN/Metabox/Booking.php:216 src/SLN/Shortcode/Salon/DetailsStep.php:97
+#: src/SLN/Metabox/Booking.php:217 src/SLN/Shortcode/Salon/DetailsStep.php:97
 msgid "Last name can't be empty"
 msgstr ""
 
-#: src/SLN/Metabox/Booking.php:220 src/SLN/Shortcode/Salon/DetailsStep.php:107
+#: src/SLN/Metabox/Booking.php:221 src/SLN/Shortcode/Salon/DetailsStep.php:107
 msgid "e-mail can't be empty"
 msgstr ""
 
-#: src/SLN/Metabox/Booking.php:223 src/SLN/Shortcode/Salon/DetailsStep.php:100
+#: src/SLN/Metabox/Booking.php:224 src/SLN/Shortcode/Salon/DetailsStep.php:100
 msgid "Mobile phone can't be empty"
 msgstr ""
 
-#: src/SLN/Metabox/Booking.php:232 src/SLN/Shortcode/Salon/DetailsStep.php:110
+#: src/SLN/Metabox/Booking.php:233 src/SLN/Shortcode/Salon/DetailsStep.php:110
 msgid "e-mail is not valid"
 msgstr ""
 
@@ -865,7 +865,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: src/SLN/PostType/Attendant.php:44 src/SLN/PostType/Service.php:136
+#: src/SLN/PostType/Attendant.php:44 src/SLN/PostType/Service.php:137
 msgid "Availability"
 msgstr ""
 
@@ -904,7 +904,7 @@ msgid "Assistant scheduled for: <strong>%1$s</strong>. "
 msgstr ""
 
 #: src/SLN/PostType/Attendant.php:122 src/SLN/PostType/Booking.php:155
-#: src/SLN/PostType/Service.php:206
+#: src/SLN/PostType/Service.php:207
 msgid "M j, Y @ G:i"
 msgstr ""
 
@@ -1067,62 +1067,62 @@ msgstr ""
 msgid "All attendants"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:132 views/metabox/booking.php:185
+#: src/SLN/PostType/Service.php:133 views/metabox/booking.php:185
 #: views/metabox/service.php:16 views/shortcode/_services_item_400.php:35
 #: views/shortcode/_services_item_600.php:40
 #: views/shortcode/_services_item_900.php:32
 msgid "Duration"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:133 views/metabox/service.php:8
+#: src/SLN/PostType/Service.php:134 views/metabox/service.php:8
 #: views/shortcode/salon_my_account/_salon_my_account_details_table.php:11
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:13
 msgid "Price"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:134 views/metabox/service.php:24
+#: src/SLN/PostType/Service.php:135 views/metabox/service.php:24
 msgid "Secondary"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:160
+#: src/SLN/PostType/Service.php:161
 msgid "YES"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:172
+#: src/SLN/PostType/Service.php:173
 msgid "Enter service name"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:185 src/SLN/PostType/Service.php:189
+#: src/SLN/PostType/Service.php:186 src/SLN/PostType/Service.php:190
 msgid "Service updated."
 msgstr ""
 
-#: src/SLN/PostType/Service.php:191
+#: src/SLN/PostType/Service.php:192
 #, php-format
 msgid "Service restored to revision from %s"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:195
+#: src/SLN/PostType/Service.php:196
 msgid "Service published."
 msgstr ""
 
-#: src/SLN/PostType/Service.php:197
+#: src/SLN/PostType/Service.php:198
 msgid "Service saved."
 msgstr ""
 
-#: src/SLN/PostType/Service.php:199
+#: src/SLN/PostType/Service.php:200
 msgid "Service submitted."
 msgstr ""
 
-#: src/SLN/PostType/Service.php:203
+#: src/SLN/PostType/Service.php:204
 #, php-format
 msgid "Service scheduled for: <strong>%1$s</strong>. "
 msgstr ""
 
-#: src/SLN/PostType/Service.php:209
+#: src/SLN/PostType/Service.php:210
 msgid "Service draft updated."
 msgstr ""
 
-#: src/SLN/PostType/Service.php:232 src/SLN/PostType/Service.php:236
+#: src/SLN/PostType/Service.php:233 src/SLN/PostType/Service.php:237
 #: views/mail/_summary_details.php:69 views/metabox/_booking_services.php:26
 #: views/metabox/attendant.php:18
 #: views/shortcode/salon_my_account/_salon_my_account_details_table.php:6
@@ -1130,48 +1130,48 @@ msgstr ""
 msgid "Services"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:233 views/mail/_summary_details.php:48
+#: src/SLN/PostType/Service.php:234 views/mail/_summary_details.php:48
 #: views/metabox/_booking_services.php:110
 msgid "Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:235
+#: src/SLN/PostType/Service.php:236
 msgid "Salon Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:237
+#: src/SLN/PostType/Service.php:238
 msgid "Add Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:238
+#: src/SLN/PostType/Service.php:239
 msgid "Add New Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:239
+#: src/SLN/PostType/Service.php:240
 msgid "Edit Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:240
+#: src/SLN/PostType/Service.php:241
 msgid "New Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:241
+#: src/SLN/PostType/Service.php:242
 msgid "View Service"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:242
+#: src/SLN/PostType/Service.php:243
 msgid "Search Services"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:243
+#: src/SLN/PostType/Service.php:244
 msgid "No services found"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:244
+#: src/SLN/PostType/Service.php:245
 msgid "No services found in trash"
 msgstr ""
 
-#: src/SLN/PostType/Service.php:245
+#: src/SLN/PostType/Service.php:246
 msgid "Services Archive"
 msgstr ""
 
@@ -1321,11 +1321,11 @@ msgstr ""
 msgid "%d hours and %d minutes"
 msgstr ""
 
-#: src/SLN/Wrapper/Booking.php:452
+#: src/SLN/Wrapper/Booking.php:454
 msgid " hours"
 msgstr ""
 
-#: src/SLN/Wrapper/Booking.php:453
+#: src/SLN/Wrapper/Booking.php:455
 msgid "1 day"
 msgstr ""
 
@@ -1438,51 +1438,67 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-#: views/admin/calendar.php:7
+#: views/admin/calendar.php:10
 msgid "Go to daily view"
 msgstr ""
 
-#: views/admin/calendar.php:88 views/admin/calendar.php:160
+#: views/admin/calendar.php:118 views/admin/calendar.php:237
 msgid "Add new booking"
 msgstr ""
 
-#: views/admin/calendar.php:90
+#: views/admin/calendar.php:120
 msgid "Day"
 msgstr ""
 
-#: views/admin/calendar.php:93
+#: views/admin/calendar.php:123
 msgid "Week"
 msgstr ""
 
-#: views/admin/calendar.php:96
+#: views/admin/calendar.php:126
 msgid "Month"
 msgstr ""
 
-#: views/admin/calendar.php:99
+#: views/admin/calendar.php:129
 msgid "Year"
 msgstr ""
 
-#: views/admin/calendar.php:110
+#: views/admin/calendar.php:138
+msgid "Assistants view"
+msgstr ""
+
+#: views/admin/calendar.php:154 views/metabox/booking.php:115
+msgid "no users found"
+msgstr ""
+
+#: views/admin/calendar.php:155
+msgid "digit a customer name"
+msgstr ""
+
+#: views/admin/calendar.php:171
+msgid "filter by service"
+msgstr ""
+
+#: views/admin/calendar.php:185
 msgid "Previous"
 msgstr ""
 
-#: views/admin/calendar.php:116
+#: views/admin/calendar.php:191
 msgid "Next"
 msgstr ""
 
-#: views/admin/calendar.php:130
+#: views/admin/calendar.php:207
 msgid "Export reservations into a CSV file"
 msgstr ""
 
-#: views/admin/calendar.php:154
+#: views/admin/calendar.php:231
 msgid "Export"
 msgstr ""
 
-#: views/admin/calendar.php:165
+#: views/admin/calendar.php:242
 msgid "Bookings status legend"
 msgstr ""
 
-#: views/admin/calendar.php:168
+#: views/admin/calendar.php:245
 msgid "or"
 msgstr ""
 
@@ -1919,10 +1935,6 @@ msgstr ""
 msgid "Search for existing users"
 msgstr ""
 
-#: views/metabox/booking.php:115
-msgid "no users found"
-msgstr ""
-
 #: views/metabox/booking.php:116
 msgid "Start typing the name or email"
 msgstr ""
@@ -1955,11 +1967,11 @@ msgstr ""
 msgid "n.a."
 msgstr ""
 
-#: views/metabox/booking.php:224
+#: views/metabox/booking.php:226
 msgid "Personal message"
 msgstr ""
 
-#: views/metabox/booking.php:235
+#: views/metabox/booking.php:237
 msgid "Administration notes"
 msgstr ""
 
