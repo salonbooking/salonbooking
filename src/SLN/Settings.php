@@ -166,7 +166,7 @@ class SLN_Settings
     {
         $ret = $this->get('hours_before_from');
 
-        return $ret ? $ret : '+30 minutes';
+        return $ret ? $ret : SLN_Constants::HOURS_BEFORE_ALWAYS;
     }
 
     public function getHoursBeforeTo()
