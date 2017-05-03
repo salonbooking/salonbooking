@@ -18,7 +18,7 @@
         </div>
         <div class="col-sm-4 form-group sln-input sln-input--simple">
         <?php
-            $this->row_input_text(
+            $this->row_input_email(
                 'gen_email',
                 __('Salon contact e-mail', 'salon-booking-system'),
                 array(

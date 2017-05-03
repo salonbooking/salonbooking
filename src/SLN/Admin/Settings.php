@@ -187,6 +187,15 @@ class SLN_Admin_Settings
         <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
     }
 
+    function row_input_email($key, $label, $settings = array())
+    {
+        ?>
+        <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
+        <?php echo SLN_Form::fieldEmail("salon_settings[$key]", $this->getOpt($key)) ?>
+        <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
+    }
+
+
     function row_checkbox_text($key, $label, $settings = array())
     {
         ?>
@@ -270,6 +279,12 @@ class SLN_Admin_Settings
     public function processTabGeneral()
     {
         $submitted = $_POST['salon_settings'];
+
+        if (!empty($submitted['gen_email']) && !filter_var($submitted['gen_email'], FILTER_VALIDATE_EMAIL)) {
+            $this->showAlert('error', __('Invalid Email in Salon contact e-mail field', 'salon-booking-system'));
+            return;
+        }
+
 
         if (empty($submitted['gen_logo']) && $this->getOpt('gen_logo')) {
             wp_delete_attachment($this->getOpt('gen_logo'), true);

@@ -230,6 +230,12 @@ class SLN_Form
     <?php
     }
 
+    static public function fieldEmail($name, $value = false, $settings = array())
+    {
+        $settings['type'] = 'email';
+        return self::fieldText($name, $value, $settings);
+    }
+
    static public function fieldText($name, $value = false, $settings = array())
     {
         if (!isset($settings['required'])) {
