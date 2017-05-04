@@ -84,9 +84,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
             $mergeIds
         ); // merge primary services from form & secondary services from booking builder
         $this->ah->setDate($this->bb->getDateTime());
-
         $validated = $this->ah->returnValidatedServices($services);
-
         $validatedPrimary = array_intersect($this->getPrimaryServicesIds(), $validated);
 
         $this->bb->removeServices();

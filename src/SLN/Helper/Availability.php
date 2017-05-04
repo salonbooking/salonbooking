@@ -219,28 +219,34 @@ class SLN_Helper_Availability
         $startAt = clone $date;
         $endAt = clone $date;
         $endAt->modify('+'.SLN_Func::getMinutesFromDuration($duration).'minutes');
-
         $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $startAt, $endAt);
+        if($ret = $this->validateServiceOnTime($service, $times[0], true)){
+            return $ret;
+        }
         foreach ($times as $time) {
             $bTime = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
             if ($noBreak || ($bTime < $breakStartsAt || $bTime >= $breakEndsAt)) {
-                if ($ret = $this->validateServiceOnTime($service, $time)) {
+                if ($ret = $this->validateServiceOnTime($service, $time, false)) {
                     return $ret;
                 }
             }
         }
     }
 
-    private function validateServiceOnTime(SLN_Wrapper_ServiceInterface $service, DateTime $time)
+    private function validateServiceOnTime(SLN_Wrapper_ServiceInterface $service, DateTime $time, $checkDuration = true)
     {
         SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
         $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
 
         $avItems = $this->getItemsWithoutServiceOffset();
         $hItems  = $this->getHolidaysItems();
-#        $duration = $service->getDuration();
-#        if (!$avItems->isValidDatetimeDuration($time, $duration) || !$hItems->isValidDatetime($time, $duration)) {
-        if (!$avItems->isValidDatetime($time) || !$hItems->isValidDatetime($time)) {
+        if($checkDuration) {
+            $duration = $service->getDuration();
+            $check = (!$avItems->isValidDatetimeDuration($time, $duration) || !$hItems->isValidDatetimeDuration($time, $duration)); 
+        } else {
+            $check = (!$avItems->isValidDatetime($time) || !$hItems->isValidDatetime($time));
+        }
+        if ($check) {
             return SLN_Helper_Availability_ErrorHelper::doServiceNotEnoughTime($service, $time);
         }
 
