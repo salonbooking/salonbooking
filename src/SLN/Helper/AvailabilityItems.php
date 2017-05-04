@@ -116,6 +116,8 @@ class SLN_Helper_AvailabilityItems
         $minutes = SLN_Func::getMinutesFromDuration($duration);
         $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
         $steps = $minutes / $interval; 
+        $endDate = clone $date;
+        $endDate->modify('+'.$minutes.' minutes');
         do {
             if(!$this->isValidDateTime($date)) {
                 return false;
@@ -124,6 +126,10 @@ class SLN_Helper_AvailabilityItems
             $date->modify('+'.$interval.' minutes');
             $steps --;
         }while($steps >= 1);
+
+        if(!$this->isValidDateTime($endDate)) {
+            return false;
+        }
         return true;
     }
 
