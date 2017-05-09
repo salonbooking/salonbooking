@@ -32,7 +32,7 @@ class SLN_PaymentMethod_Paypal extends SLN_PaymentMethod_Abstract
                     $_SERVER['REQUEST_URI'] = str_replace($servername, '', $_SERVER['HTTP_REFERER']).'?sln_step_page=thankyou&submit_thankyou=1&mode=paypal';
             }
             $ppl = new SLN_Payment_Paypal($this->plugin);
-            $url = $ppl->getUrl($booking->getId(), $booking->getToPayAmount(), $booking->getTitle());
+            $url = $ppl->getUrl($booking->getId(), $booking->getToPayAmount(false), $booking->getTitle());
             $shortcode->redirect($url);
         } else {
             throw new Exception('payment method mode not managed');
@@ -44,7 +44,7 @@ class SLN_PaymentMethod_Paypal extends SLN_PaymentMethod_Abstract
         $ppl = new SLN_Payment_Paypal($this->plugin);
         update_post_meta($booking->getId(), '_sln_paypal_ipn_' . uniqid(), $_POST);
         ob_end_clean();
-        if ($ppl->reverseCheckIpn() && $ppl->isCompleted($booking->getToPayAmount())) {
+        if ($ppl->reverseCheckIpn() && $ppl->isCompleted($booking->getToPayAmount(false))) {
             $booking->markPaid($ppl->getTransactionId());
             echo('ipn success');
         } else {
