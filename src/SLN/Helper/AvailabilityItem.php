@@ -41,7 +41,7 @@ SLN_Helper_AvailabilityItem
             $this->toDate   = isset($data['to_date']) ? strtotime($data['to_date'].' 23:59:59') : null;
         }
         if (empty($this->times)) {
-            $this->times[] = array(strtotime('00:00'), strtotime('23:59'));
+            $this->times[] = array(strtotime('00:00'), strtotime('24:00'));
         }
         $this->offset = $offset;
     }
@@ -85,6 +85,9 @@ SLN_Helper_AvailabilityItem
         if ($time instanceof DateTime) {
             $time = $time->format('H:i');
         }
+        $time2 = null;
+        //#SBP-470
+        if($time == '00:00') $time2 = '24:00';
         $time = strtotime($time);
         foreach ($this->times as $t) {
             $temp = $t[1] - $this->offset;
@@ -92,8 +95,9 @@ SLN_Helper_AvailabilityItem
                 return true;
             }
         }
-
-        return false;
+        //#SBP-470
+        if($time2) return $this->checkTime($time2);
+        else return false;
     }
 
     public function getData()
