@@ -1362,7 +1362,8 @@
 				throw new Error("Invalid format type.");
 			}
 		},
-		nonpunctuation:   /[^ -\/:-@\[-`{-~\t\n\rTZ]+/g,
+		nonpunctuation:   /[^ -\/:-@\[-`{-~\t\n\r]+/g,
+		//nonpunctuation:   /[^ -\/:-@\[-`{-~\t\n\rTZ]+/g,
 		parseFormat:      function (format, type) {
 			// IE treats \0 as a string end in inputs (truncating the value),
 			// so it's a bad format delimiter, anyway
@@ -1490,9 +1491,9 @@
 								filtered = $(dates[language].monthsShort).filter(function () {
 									var m = this.slice(0, parts[i].length),
 										p = parts[i].slice(0, m.length);
-									return m.toLowerCase() == p.toLowerCase();
+									return m.slice(0,3).toLowerCase() == p.slice(0,3).toLowerCase();
 								});
-								val = $.inArray(filtered[0], dates[language].monthsShort) + 1;
+								val = $.inArray(filtered[0] ? filtered[0].slice(0,3) : null, dates[language].monthsShort) + 1;
 								break;
 							case 'p':
 							case 'P':
