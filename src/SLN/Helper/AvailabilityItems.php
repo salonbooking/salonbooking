@@ -135,7 +135,13 @@ class SLN_Helper_AvailabilityItems
 
     public function isValidDatetime(DateTime $date)
     {
-        return $this->isValidTime($date->format('Y-m-d'), $date->format('H:i'));
+        $time = $date->format('H:i');
+        $day = $date->format('Y-m-d');
+        if($time == '00:00'){ 
+            return $this->isValidTime($day, $time) || $this->isValidTime(date('Y-m-d', strtotime($day.' -1 day')), '24:00');
+        }else{
+            return $this->isValidTime($day, $time);
+        }
     }
 
     public function isValidDate($day)
