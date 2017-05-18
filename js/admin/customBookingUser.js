@@ -10,7 +10,32 @@ jQuery(function ($) {
     customBookingUser($);
     sln_manageAddNewService($);
     sln_manageCheckServices($);
+    if (sln_isShowOnlyBookingElements($)) {
+        sln_showOnlyBookingElements($);
+    }
 });
+
+function sln_isShowOnlyBookingElements($) {
+    return $('#salon-step-date').data('mode') === 'sln_editor';
+}
+
+function sln_showOnlyBookingElements($) {
+    $('.wp-toolbar').css('padding-top', '0');
+    $('#adminmenuback').hide();
+    $('#adminmenuwrap').hide();
+    $('#wpcontent').css('margin-left', '0');
+    $('#wpadminbar').hide();
+    $('#wpbody-content').css('padding-bottom', '0');
+    $('#screen-meta').hide();
+    $('#screen-meta-links').hide();
+    $('.wrap').css('margin-top', '0');
+    $('#post').prevAll().hide();
+    $('#poststuff').css('padding-top', '0');
+    $('#post-body-content').css('margin-bottom', '0');
+    $('#postbox-container-1').hide();
+    $('#post-body').css('width', '100%');
+    $('#wpfooter').hide();
+}
 
 function sln_validateEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;

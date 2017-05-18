@@ -173,6 +173,8 @@ if(!String.prototype.formatNum) {
 
 		no_events_in_day: 'No events in this day.',
 
+		add_event: 'Add',
+
 		title_year:  '{0}',
 		title_month: '{0} {1}',
 		title_week:  'week {0} of {1}',
@@ -1307,7 +1309,62 @@ if(!String.prototype.formatNum) {
 			self.options._page = $(this).data('page');
 			self._render();
 		});
+
+		self._update_day_prepare_sln_booking_editor();
 	};
+
+	Calendar.prototype._update_day_prepare_sln_booking_editor = function() {
+        var calendar = this;
+
+        var bookingId;
+        var bookingDate;
+        var bookingTime;
+
+        $('.day-highlight').unbind('click').click(function() {
+            bookingDate = bookingTime = undefined;
+            bookingId   = $(this).find('.event-item').data('event-id');
+            show_booking_editor();
+        });
+
+        $('[data-action=add-event-by-date]').unbind('click').click(function() {
+            bookingDate = $(this).data('event-date');
+            bookingTime = $(this).data('event-time');
+            bookingId   = undefined;
+            show_booking_editor();
+        });
+
+        function show_booking_editor() {
+            $('#wpwrap').css('z-index', 'auto');
+            $('#booking-editor-modal')
+                .unbind('show.bs.modal').on('show.bs.modal', onShowModal)
+                .unbind('hide.bs.modal').on('hide.bs.modal', onHideModal)
+                .modal();
+        }
+
+        function onShowModal() {
+            var $editor     = $('.booking-editor');
+            var srcTemplate = (bookingId === undefined) ? 'src-template-new-booking' : 'src-template-edit-booking';
+            var editorLink  = $editor.data(srcTemplate).replace('%id', bookingId).replace('%date', bookingDate).replace('%time', bookingTime);
+            $editor.attr('src', editorLink);
+
+            $('[data-action=save-edited-booking]').unbind('click').click(onClickSaveEditedBooking);
+        }
+
+        function onHideModal() {
+            $('.booking-editor').attr('src', '');
+            $('.booking-editor').unbind('load');
+            calendar.view();
+        }
+
+        function onClickSaveEditedBooking() {
+            $('.booking-editor').load(onLoadAfterSubmit);
+            $('.booking-editor').contents().find('#save-post').click();
+        }
+
+        function onLoadAfterSubmit() {
+            $('#booking-editor-modal').modal('hide');
+        }
+    };
 
 	Calendar.prototype._update_week = function() {
 	};

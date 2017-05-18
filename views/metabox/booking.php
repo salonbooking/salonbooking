@@ -3,6 +3,9 @@
  * @var SLN_Metabox_Helper $helper
  * @var SLN_Plugin $plugin
  * @var SLN_Wrapper_Booking $booking
+ * @var string $mode
+ * @var SLN_DateTime|null $date
+ * @var SLN_DateTime|null $time
  */
 $helper->showNonce($postType);
 SLN_Action_InitScripts::enqueueCustomBookingUser();
@@ -29,14 +32,18 @@ foreach($checkoutFields as $field => $name ) {
 <div class="sln-bootstrap">
     <?php
     do_action('sln.template.booking.metabox',$booking);
-    $intervals = $plugin->getIntervals($booking->getDate());
-    $date = $intervals->getSuggestedDate();
+
+    $selectedDate = !empty($date) ? $date : $booking->getDate();
+    $selectedTime = !empty($time) ? $time : $booking->getTime();
+
+    $intervals = $plugin->getIntervals($selectedDate);
     ?>
 <span id="salon-step-date"
       data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>"
       data-isnew="<?php echo $booking->isNew() ? 1 : 0 ?>"
       data-deposit="<?php echo $settings->get('pay_deposit') ?>"
       data-m_attendant_enabled="<?php echo $settings->get('m_attendant_enabled') ?>"
+      data-mode="<?php echo $mode ?>"
       data-required_user_fields="<?php echo implode(',', $checkoutFields) ?>">
     <div class="row form-inline">
         <div class="col-md-3 col-sm-6">
@@ -45,7 +52,7 @@ foreach($checkoutFields as $field => $name ) {
                         'Select a day',
                         'salon-booking-system'
                     ) ?></label>
-                <?php SLN_Form::fieldJSDate($helper->getFieldName($postType, 'date'), $booking->getDate()) ?>
+                <?php SLN_Form::fieldJSDate($helper->getFieldName($postType, 'date'), $selectedDate) ?>
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
@@ -56,7 +63,7 @@ foreach($checkoutFields as $field => $name ) {
                     ) ?></label>
                 <?php SLN_Form::fieldJSTime(
                     $helper->getFieldName($postType, 'time'),
-                    $booking->getTime(),
+                    $selectedTime,
                     array('interval' => $plugin->getSettings()->get('interval'))
                 ) ?>
             </div>
