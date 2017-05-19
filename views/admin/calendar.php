@@ -217,7 +217,7 @@ jQuery(function($){
 <!-- row sln-calendar-wrapper // END -->
 </div>
 
-<div id="booking-editor-modal" class="modal fade">
+<div id="sln-booking-editor-modal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -228,10 +228,12 @@ jQuery(function($){
                 <div class="clearfix"></div>
             </div>
             <div class="modal-body">
-                <div id="booking-editor-container">
-                    <iframe class="booking-editor" width="100%" height="600px" frameborder="0"
-                            data-src-template-edit-booking="<?php echo admin_url('/post.php?post=%id&action=edit&mode=sln_editor') ?>"
-                            data-src-template-new-booking="<?php echo admin_url('/post-new.php?post_type=sln_booking&date=%date&time=%time&mode=sln_editor') ?>"></iframe>
+                <div class="sln-booking-editor--wrapper">
+                    <div class="sln-booking-editor--wrapper--sub" style="opacity: 0">
+                        <iframe class="booking-editor" width="100%" height="600px" frameborder="0"
+                                data-src-template-edit-booking="<?php echo admin_url('/post.php?post=%id&action=edit&mode=sln_editor') ?>"
+                                data-src-template-new-booking="<?php echo admin_url('/post-new.php?post_type=sln_booking&date=%date&time=%time&mode=sln_editor') ?>"></iframe>
+                    </div>
                 </div>
             </div>
         </div>

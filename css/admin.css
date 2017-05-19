@@ -6326,9 +6326,11 @@ body.salone_page_salon-tools #wpwrap {
     .sln-calendar--wrapper .sln-calendar-view .cal-day-hour-part:hover {
       background-color: rgba(122, 158, 208, 0.76); }
 
-.sln-calendar--wrapper.sln-calendar--wrapper--loading {
+.sln-calendar--wrapper.sln-calendar--wrapper--loading,
+.sln-booking-editor--wrapper.sln-booking-editor--wrapper--loading {
   position: relative; }
-  .sln-calendar--wrapper.sln-calendar--wrapper--loading:before {
+  .sln-calendar--wrapper.sln-calendar--wrapper--loading:before,
+  .sln-booking-editor--wrapper.sln-booking-editor--wrapper--loading:before {
     display: block;
     content: '';
     position: absolute;
@@ -6338,7 +6340,8 @@ body.salone_page_salon-tools #wpwrap {
     left: 0;
     background-color: #c5cfd4;
     z-index: 999999; }
-  .sln-calendar--wrapper.sln-calendar--wrapper--loading:after {
+  .sln-calendar--wrapper.sln-calendar--wrapper--loading:after,
+  .sln-booking-editor--wrapper.sln-booking-editor--wrapper--loading:after {
     display: block;
     content: '';
     width: 60px;

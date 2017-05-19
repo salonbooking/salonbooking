@@ -809,7 +809,8 @@ body.salone_page_salon-tools {
     }
     @import 'admin_components/admin_calendar';
 }
-.sln-calendar--wrapper.sln-calendar--wrapper--loading {
+.sln-calendar--wrapper.sln-calendar--wrapper--loading,
+.sln-booking-editor--wrapper.sln-booking-editor--wrapper--loading {
     position: relative;
     * {
         //opacity: 0;

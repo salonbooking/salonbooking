@@ -1335,14 +1335,19 @@ if(!String.prototype.formatNum) {
 
         function show_booking_editor() {
             $('#wpwrap').css('z-index', 'auto');
-            $('#booking-editor-modal')
+            $('#sln-booking-editor-modal')
                 .unbind('show.bs.modal').on('show.bs.modal', onShowModal)
                 .unbind('hide.bs.modal').on('hide.bs.modal', onHideModal)
                 .modal();
         }
 
         function onShowModal() {
-            var $editor     = $('.booking-editor');
+            launchLoadingSpinner();
+
+            var $editor = $('.booking-editor');
+            $editor.unbind('load.dismiss_spinner').bind('load.dismiss_spinner', onLoadDismissSpinner);
+            $editor.unbind('load.hide_modal');
+
             var srcTemplate = (bookingId === undefined) ? 'src-template-new-booking' : 'src-template-edit-booking';
             var editorLink  = $editor.data(srcTemplate).replace('%id', bookingId).replace('%date', bookingDate).replace('%time', bookingTime);
             $editor.attr('src', editorLink);
@@ -1351,18 +1356,41 @@ if(!String.prototype.formatNum) {
         }
 
         function onHideModal() {
-            $('.booking-editor').attr('src', '');
             $('.booking-editor').unbind('load');
+            $('.booking-editor').attr('src', '');
             calendar.view();
         }
 
         function onClickSaveEditedBooking() {
-            $('.booking-editor').load(onLoadAfterSubmit);
-            $('.booking-editor').contents().find('#save-post').click();
+            launchLoadingSpinner();
+
+            var $editor = $('.booking-editor');
+            $editor.unbind('load.hide_modal').bind('load.hide_modal', onLoadAfterSubmit);
+            $editor.unbind('load.dismiss_spinner').bind('load.dismiss_spinner', onLoadDismissSpinner);
+            $editor.contents().find('#save-post').click();
+        }
+
+        function onLoadDismissSpinner() {
+            cancelLoadingSpinner();
         }
 
         function onLoadAfterSubmit() {
-            $('#booking-editor-modal').modal('hide');
+            $('#sln-booking-editor-modal').modal('hide');
+        }
+        
+        function launchLoadingSpinner() {
+            var $modal = $('#sln-booking-editor-modal');
+            if ($modal.find('.sln-booking-editor--wrapper').length) {
+                $modal.find('.sln-booking-editor--wrapper--sub').css('opacity', '0');
+                $modal.find('.sln-booking-editor--wrapper').addClass('sln-booking-editor--wrapper--loading');
+            }
+        }
+        function cancelLoadingSpinner() {
+            var $modal = $('#sln-booking-editor-modal');
+            if ($modal.find('.sln-booking-editor--wrapper').length) {
+                $modal.find('.sln-booking-editor--wrapper--sub').css('opacity', '1');
+                $modal.find('.sln-booking-editor--wrapper').removeClass('sln-booking-editor--wrapper--loading');
+            }
         }
     };
 
