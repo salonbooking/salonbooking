@@ -1,6 +1,6 @@
 jQuery(function ($) {
     if ($('#_sln_booking_firstname').length) {
-        sln_validateBooking($);
+        sln_prepareToValidatingBooking($);
     }
     if ($('#sln_booking-details').length) {
         sln_adminDate($);
@@ -42,47 +42,50 @@ function sln_validateEmail(email) {
     return re.test(email);
 }
 
-function sln_validateBooking($) {
+function sln_prepareToValidatingBooking($) {
     var form = $('#_sln_booking_firstname').closest('form');
-    $(form).submit(function () {
-        $('.sln-invalid').removeClass('sln-invalid');
-        $('.sln-error').remove();
-        var hasErrors = false;
+    $(form).submit(sln_validateBooking);
+}
 
-        var toValidate = [
-            '#_sln_booking_service_select'
-        ];
+function sln_validateBooking() {
+    var $ = jQuery;
+    $('.sln-invalid').removeClass('sln-invalid');
+    $('.sln-error').remove();
+    var hasErrors = false;
 
-        var fields = $('#salon-step-date').attr('data-required_user_fields').split(',');
-        $.each(fields, function(k, val) {
-            toValidate.push('#_sln_booking_' + val);
-        });
+    var toValidate = [
+        '#_sln_booking_service_select'
+    ];
 
-        $.each(toValidate, function (k, val) {
-            if (val == '#_sln_booking_phone' && !$('[name=_sln_booking_createuser]').is(':checked')) {
+    var fields = $('#salon-step-date').attr('data-required_user_fields').split(',');
+    $.each(fields, function(k, val) {
+        toValidate.push('#_sln_booking_' + val);
+    });
+
+    $.each(toValidate, function (k, val) {
+        if (val == '#_sln_booking_phone' && !$('[name=_sln_booking_createuser]').is(':checked')) {
+            return;
+        } else if (val == '#_sln_booking_email') {
+            if (!$('[name=_sln_booking_createuser]').is(':checked') && !$(val).val()) {
                 return;
-            } else if (val == '#_sln_booking_email') {
-                if (!$('[name=_sln_booking_createuser]').is(':checked') && !$(val).val()) {
-                    return;
-                } else if (!sln_validateEmail($(val).val())) {
-                    $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is not a valid email</div>');
-                    if (!hasErrors) $(val).focus();
-                    hasErrors = true;
-                }
-            } else if (val == '#_sln_booking_service_select') {
-                if (!$('[name=_sln_booking\\[services\\]\\[\\]]').size()) {
-                    $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is required</div>');
-                    if (!hasErrors) $(val).focus();
-                    hasErrors = true;
-                }
-            } else if (!$(val).val()) {
+            } else if (!sln_validateEmail($(val).val())) {
+                $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is not a valid email</div>');
+                if (!hasErrors) $(val).focus();
+                hasErrors = true;
+            }
+        } else if (val == '#_sln_booking_service_select') {
+            if (!$('[name=_sln_booking\\[services\\]\\[\\]]').size()) {
                 $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is required</div>');
                 if (!hasErrors) $(val).focus();
                 hasErrors = true;
             }
-        });
-        return !hasErrors;
+        } else if (!$(val).val()) {
+            $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is required</div>');
+            if (!hasErrors) $(val).focus();
+            hasErrors = true;
+        }
     });
+    return !hasErrors;
 }
 
 function customBookingUser($) {

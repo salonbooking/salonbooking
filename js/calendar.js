@@ -1362,12 +1362,13 @@ if(!String.prototype.formatNum) {
         }
 
         function onClickSaveEditedBooking() {
-            launchLoadingSpinner();
-
             var $editor = $('.booking-editor');
             $editor.unbind('load.hide_modal').bind('load.hide_modal', onLoadAfterSubmit);
             $editor.unbind('load.dismiss_spinner').bind('load.dismiss_spinner', onLoadDismissSpinner);
-            $editor.contents().find('#save-post').click();
+            if(window.frames[0].sln_validateBooking()) {
+                launchLoadingSpinner();
+                $editor.contents().find('#save-post').click();
+            }
         }
 
         function onLoadDismissSpinner() {
