@@ -52,7 +52,7 @@ foreach($checkoutFields as $field => $name ) {
                         'Select a day',
                         'salon-booking-system'
                     ) ?></label>
-                <?php SLN_Form::fieldJSDate($helper->getFieldName($postType, 'date'), $selectedDate) ?>
+                <?php SLN_Form::fieldJSDate($helper->getFieldName($postType, 'date'), $selectedDate, array('popup-class' => ($mode === 'sln_editor' ? 'off-sm-md-support' : ''))) ?>
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
@@ -64,7 +64,8 @@ foreach($checkoutFields as $field => $name ) {
                 <?php SLN_Form::fieldJSTime(
                     $helper->getFieldName($postType, 'time'),
                     $selectedTime,
-                    array('interval' => $plugin->getSettings()->get('interval'))
+                    array('interval' => $plugin->getSettings()->get('interval'),
+                          'popup-class' => ($mode === 'sln_editor' ? 'off-sm-md-support' : ''))
                 ) ?>
             </div>
         </div>
