@@ -173,7 +173,7 @@ if(!String.prototype.formatNum) {
 
 		no_events_in_day: 'No events in this day.',
 
-		add_event: 'Add',
+		add_event: 'Add reservation',
 
 		title_year:  '{0}',
 		title_month: '{0} {1}',

@@ -104,9 +104,15 @@ jQuery(function($){
 
 .cal-day-hour-part [data-action=add-event-by-date] {
     width: 5%;
+    min-width: 5% !important;
+    padding: 0 0.3rem;
     height: 28px;
-    float: right;
     display: none;
+}
+@media only screen and (min-width: 1200px) {
+    .cal-day-hour-part [data-action=add-event-by-date] {
+        width: 7%;
+    }
 }
 
 .cal-day-hour-part:hover [data-action=add-event-by-date] {
