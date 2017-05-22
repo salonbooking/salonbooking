@@ -36,7 +36,8 @@ foreach($checkoutFields as $field => $name ) {
     $selectedDate = !empty($date) ? $date : $booking->getDate();
     $selectedTime = !empty($time) ? $time : $booking->getTime();
 
-    $intervals = $plugin->getIntervals($selectedDate);
+    $intervalDate = clone $selectedDate;
+    $intervals    = $plugin->getIntervals($intervalDate);
     ?>
 <span id="salon-step-date"
       data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>"
