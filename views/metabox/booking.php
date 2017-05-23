@@ -2,6 +2,7 @@
 /**
  * @var SLN_Metabox_Helper $helper
  * @var SLN_Plugin $plugin
+ * @var SLN_Settings $settings
  * @var SLN_Wrapper_Booking $booking
  */
 $helper->showNonce($postType);
@@ -35,7 +36,8 @@ foreach($checkoutFields as $field => $name ) {
 <span id="salon-step-date"
       data-intervals="<?php echo esc_attr(json_encode($intervals->toArray())); ?>"
       data-isnew="<?php echo $booking->isNew() ? 1 : 0 ?>"
-      data-deposit="<?php echo $settings->get('pay_deposit') ?>"
+      data-deposit_amount="<?php echo $settings->getPaymentDepositAmount() ?>"
+      data-deposit_is_fixed="<?php echo (int) $settings->isPaymentDepositFixedAmount() ?>"
       data-m_attendant_enabled="<?php echo $settings->get('m_attendant_enabled') ?>"
       data-required_user_fields="<?php echo implode(',', $checkoutFields) ?>">
     <div class="row form-inline">
@@ -200,7 +202,7 @@ foreach($checkoutFields as $field => $name ) {
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'deposit'),
-                __('Deposit', 'salon-booking-system').' '.$settings->get('pay_deposit').'% ('.$settings->getCurrencySymbol().')',
+                __('Deposit', 'salon-booking-system').' '.SLN_Enum_PaymentDepositType::getLabel($settings->getPaymentDepositValue()).' ('.$settings->getCurrencySymbol().')',
                 $booking->getDeposit()
             );
             ?>
