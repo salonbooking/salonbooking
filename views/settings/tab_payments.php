@@ -59,54 +59,25 @@
     </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6">
-    <div class="sln-box sln-box--main sln-box--main--small">
-    <h2 class="sln-box-title"><?php _e('Pay a deposit','salon-booking-system');?></h2>
-    <div class="row">
-            <div class="col-xs-12 form-group sln-select  sln-select--info-label">
-            <label for="salon_settings_pay_deposit"><?php _e('Pay a deposit of ','salon-booking-system') ?></label>
+        <div class="sln-box sln-box--main sln-box--main--small">
+            <h2 class="sln-box-title"><?php _e('Pay a deposit','salon-booking-system');?></h2>
             <div class="row">
-            <div class="col-xs-8">
-            <?php echo SLN_Form::fieldSelect(
-                        'salon_settings[pay_deposit]',
-                        array(
-                            '0' => "entire amount (disabled)",
-                            '10' => "10%",
-                            '20' => "20%",
-                            '30' => "30%",
-                            '40' => "40%",
-                            '50' => "50%",
-                            '60' => "60%",
-                            '70' => "70%",
-                            '80' => "80%",
-                            '90' => "90%",
-                        ),
-                        $this->settings->get('pay_deposit'),
-                        array(
-
-'help' => __('Require users the to pay only a %% of the total amount.','salon-booking-system'),
-                            ),
-                        true
-                    ) ?>
-            </div>
-            <div class="col-xs-4 sln-label--big">
-            <label for="salon_settings_pay_deposit"><?php _e('of the total','salon-booking-system');?></label>
-            </div>
+                <div class="col-xs-12 col-sm-5 col-md-5 form-group sln-input--simple">
+					<?php $this->row_input_text('pay_deposit_fixed_amount', __('Fixed amount', 'salon-booking-system'), array('attrs' => array('data-relate-to' => SLN_Enum_PaymentDepositType::FIXED))); ?>
+                    <p class="sln-input-help"><?php _e('specify the amount without currency symbol','salon-booking-system');?></p>
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-7 form-group sln-select  sln-select--info-label">
+                    <label for="salon_settings_pay_deposit"><?php _e('Percentage ','salon-booking-system') ?></label>
+					<?php SLN_Form::fieldSelect(
+						'salon_settings[pay_deposit]',
+						SLN_Enum_PaymentDepositType::toArray(),
+						$this->settings->get('pay_deposit'),
+						array(),
+						true
+					) ?>
+                </div>
             </div>
         </div>
-        </div>
-                <!--
-        THIS BOX MUST BE HIDDEN IF NOT IN USE
-        <div class="sln-box-info">
-       <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--info">info</button></div>
-       <div class="sln-box-info-content row">
-       <div class="col-xs-12">
-       <h5><?php _e('In the future we\'ll provide more detailed information about this specific option.','salon-booking-system');?></h5>
-        </div>
-        </div>
-        <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
-    </div>
-        -->
-    </div>
     </div>
 </div>
 <div class="row">

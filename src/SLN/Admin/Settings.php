@@ -107,6 +107,7 @@ class SLN_Admin_Settings
         'pay_offset',
         'pay_enabled',
         'pay_deposit',
+        'pay_deposit_fixed_amount',
     );
 
     private static $fieldsTabStyle = array(
@@ -183,7 +184,7 @@ class SLN_Admin_Settings
     {
         ?>
         <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
-        <?php echo SLN_Form::fieldText("salon_settings[$key]", $this->getOpt($key)) ?>
+        <?php SLN_Form::fieldText("salon_settings[$key]", $this->getOpt($key), $settings) ?>
         <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
     }
 
