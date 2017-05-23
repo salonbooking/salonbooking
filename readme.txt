@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.7.2
-Stable tag: 3.12.1
+Stable tag: 3.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Weekly view
 * Daily view ( NEW IMPROVED VERSION )
 * Bookings export 
+* Adding reservation from daily view
 
 **Salon general settings**
 
@@ -83,7 +84,7 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 
 * Enable online payments
 * Pay later option
-* Enable % deposit
+* Percentage or fixed amount deposit
 * Automatic cancellation option for unpaid reservations
 * Hide prices
 * Decimals and thousand separators option
@@ -268,7 +269,14 @@ http://salon.wordpresschef.it
 
 == Changelog ==
 
-04.05.2017
+23.05.2017
+
+* Now you can add reservation from back-end calendar daily view
+* Added fixed amount deposit option
+* Optimized the performance of the booking form process more quick
+* Fixed booking system algorithm 
+* Fixed bug on prices that use thousands
+* Fixed bug on Date/Time picker on Finnish language
 
 * Fixed booking that overrides salon closing time
 
