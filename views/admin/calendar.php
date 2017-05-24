@@ -136,7 +136,6 @@ jQuery(function($){
 
 <div class="row">
     <div class="col-md-12 btn-group nav-tab-wrapper sln-nav-tab-wrapper">
-        <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--booking sln-booking-add hidden-xs" id="calendar-add-new"><?php _e('Add new booking', 'salon-booking-system') ?></a>
         <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="day">
         <button class="" data-calendar-view="day"><?php _e('Day', 'salon-booking-system')?></button>
         </div>
@@ -278,9 +277,7 @@ jQuery(function($){
             </div>
         </form>
     </div>
-    <div class="col-xs-12 col-md-3 pull-right">
-     <a href="<?php echo get_admin_url()?>edit.php?post_type=sln_booking" class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--booking sln-booking-add" id="calendar-add-new"><?php _e('Add new booking', 'salon-booking-system') ?></a>
-    </div>
+    <div class="col-xs-12 col-md-3 pull-right"></div>
 </div>
 <div class="row">
 <div class="col-md-11">
