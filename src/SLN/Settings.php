@@ -188,6 +188,26 @@ class SLN_Settings
         return isset($this->settings['pay_method']) ? $this->settings['pay_method'] : 'paypal';
     }
 
+	public function getPaymentDepositAmount()
+	{
+		return $this->isPaymentDepositFixedAmount() ? $this->getPaymentDepositFixedValue() : $this->getPaymentDepositValue();
+	}
+
+	public function isPaymentDepositFixedAmount()
+	{
+    	return ($this->getPaymentDepositValue() === SLN_Enum_PaymentDepositType::FIXED);
+	}
+
+	public function getPaymentDepositValue()
+	{
+		return isset($this->settings['pay_deposit']) ? $this->settings['pay_deposit'] : SLN_Enum_PaymentDepositType::_DEFAULT;
+	}
+
+	public function getPaymentDepositFixedValue()
+	{
+		return isset($this->settings['pay_deposit_fixed_amount']) ? $this->settings['pay_deposit_fixed_amount'] : 0;
+	}
+
     public function getStyleShortcode()
     {
         return isset($this->settings['style_shortcode']) ? $this->settings['style_shortcode'] : SLN_Enum_ShortcodeStyle::_DEFAULT;

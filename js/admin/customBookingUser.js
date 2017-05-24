@@ -159,8 +159,17 @@ function sln_calculateTotal() {
         tot = (parseFloat(tot) + parseFloat($(this).data('price'))).toFixed(2);
     });
     $('#_sln_booking_amount').val(tot);
-    if ($('#salon-step-date').data('deposit') > 0)
-        $('#_sln_booking_deposit').val(((tot / 100).toFixed(2) * $('#salon-step-date').data('deposit')).toFixed(2));
+
+    var bookingDeposit = 0;
+    var depositAmount  = $('#salon-step-date').data('deposit_amount');
+    var isDepositFixed = $('#salon-step-date').data('deposit_is_fixed');
+    if (isDepositFixed) {
+        bookingDeposit = Math.min(tot, depositAmount);
+    }
+    else {
+        bookingDeposit = (tot / 100) * depositAmount;
+    }
+    $('#_sln_booking_deposit').val(bookingDeposit.toFixed(2));
     sln_calculateTotalDuration();
     return false;
 }

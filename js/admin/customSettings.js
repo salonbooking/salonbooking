@@ -48,6 +48,12 @@ function sln_settingsPayment($) {
             $('#payment-mode-' + $(this).data('method')).show().addClass('sln-box--fadein');
         }
     });
+
+    $('#salon_settings_pay_deposit').change(function(){
+        var current  = $(this).val();
+        var expected = $('#salon_settings_pay_deposit_fixed_amount').data('relate-to');
+        $('#salon_settings_pay_deposit_fixed_amount').attr('disabled', current === expected ? false : 'disabled');
+    }).change();
 }
 
 function sln_settingsCheckout($) {

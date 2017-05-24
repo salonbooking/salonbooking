@@ -150,21 +150,28 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
 
     function evalTotal()
     {
-        $t = 0;
+	    $settings = SLN_Plugin::getInstance()->getSettings();
+
+        $amount = 0;
         SLN_Plugin::addLog(__CLASS__.' eval total of'.$this->getId());
         foreach ($this->getBookingServices()->getItems() as $bookingService) {
-            $d = $bookingService->getPrice();
-            $t += $d;
-            SLN_Plugin::addLog(' - service '.$bookingService->getService().' +'.$d);
+            $price   = $bookingService->getPrice();
+            $amount += $price;
+            SLN_Plugin::addLog(' - service '.$bookingService->getService().' +'.$price);
         }
-        $this->setMeta('amount', $t);
+        $this->setMeta('amount', $amount);
 
-        $deposit = SLN_Plugin::getInstance()->getSettings()->get('pay_deposit');
-        if ($deposit > 0) {
-            $this->setMeta('deposit', ($t / 100) * $deposit);
+        $depositAmount = $settings->getPaymentDepositAmount();
+        if ($settings->isPaymentDepositFixedAmount()) {
+        	$deposit = min($amount, $depositAmount);
+        }
+        else {
+	        $deposit = ($amount / 100) * $depositAmount;
         }
 
-        return $t;
+	    $this->setMeta('deposit', $deposit);
+
+        return $amount;
     }
 
 
