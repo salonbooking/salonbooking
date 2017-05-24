@@ -943,7 +943,7 @@ p.sln-box-info .sln-box-info-content h5 {
     line-height: 60px; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .datetimepicker.sln-datetimepicker {
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) {
     left: 0 !important;
     width: 100%;
     max-width: 100%;
@@ -1043,9 +1043,9 @@ p.sln-box-info .sln-box-info-content h5 {
     padding: 0; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .datetimepicker.sln-datetimepicker table tr td.day,
-  .datetimepicker.sln-datetimepicker table tr td span.hour,
-  .datetimepicker.sln-datetimepicker table tr td span.minute {
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td.day,
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td span.hour,
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td span.minute {
     background: #eee;
     font-size: 1.4em;
     border: 2px solid #fff;
@@ -1059,7 +1059,7 @@ p.sln-box-info .sln-box-info-content h5 {
     line-height: 60px; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .datetimepicker.sln-datetimepicker table tr td.day {
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td.day {
     width: 60px !important;
     height: 60px;
     line-height: 60px; } }
@@ -1073,8 +1073,8 @@ p.sln-box-info .sln-box-info-content h5 {
     margin: 0; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .datetimepicker.sln-datetimepicker table tr td span.hour,
-  .datetimepicker.sln-datetimepicker table tr td span.minute {
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td span.hour,
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td span.minute {
     width: 25% !important;
     height: 60px;
     line-height: 60px;
@@ -6326,9 +6326,11 @@ body.salone_page_salon-tools #wpwrap {
     .sln-calendar--wrapper .sln-calendar-view .cal-day-hour-part:hover {
       background-color: rgba(122, 158, 208, 0.76); }
 
-.sln-calendar--wrapper.sln-calendar--wrapper--loading {
+.sln-calendar--wrapper.sln-calendar--wrapper--loading,
+.sln-booking-editor--wrapper.sln-booking-editor--wrapper--loading {
   position: relative; }
-  .sln-calendar--wrapper.sln-calendar--wrapper--loading:before {
+  .sln-calendar--wrapper.sln-calendar--wrapper--loading:before,
+  .sln-booking-editor--wrapper.sln-booking-editor--wrapper--loading:before {
     display: block;
     content: '';
     position: absolute;
@@ -6338,7 +6340,8 @@ body.salone_page_salon-tools #wpwrap {
     left: 0;
     background-color: #c5cfd4;
     z-index: 999999; }
-  .sln-calendar--wrapper.sln-calendar--wrapper--loading:after {
+  .sln-calendar--wrapper.sln-calendar--wrapper--loading:after,
+  .sln-booking-editor--wrapper.sln-booking-editor--wrapper--loading:after {
     display: block;
     content: '';
     width: 60px;

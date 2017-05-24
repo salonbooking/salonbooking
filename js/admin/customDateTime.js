@@ -5,7 +5,7 @@ function initDatepickers($) {
             if ($($this).hasClass('started') || $($this).attr('id').indexOf('__new__') > 0) {
                 return;
             } else {
-                $($this)
+                var picker = $($this)
                     .addClass('started')
                     .datetimepicker({
                         format: $($this).data('format'),
@@ -28,7 +28,10 @@ function initDatepickers($) {
                     })
                     .on('changeYear', function () {
                         $('body').trigger('sln_date');
-                    });
+                    })
+                    .data('datetimepicker').picker;
+
+                picker.addClass($($this).data('popup-class'));
             }
         });
     });
@@ -60,7 +63,7 @@ function initTimepickers($) {
                     })
 
                     .data('datetimepicker').picker;
-                picker.addClass('timepicker');
+                picker.addClass('timepicker').addClass($($this).data('popup-class'));
             }
         });
     });

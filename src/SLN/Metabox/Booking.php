@@ -74,6 +74,9 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
                 'booking' => $this->getPlugin()->createBooking($object),
                 'postType' => $this->getPostType(),
                 'helper' => new SLN_Metabox_Helper(),
+                'mode' => isset($_GET['mode']) ? $_GET['mode'] : '',
+                'date' => isset($_GET['date']) ? new SLN_DateTime($_GET['date']) : null,
+                'time' => isset($_GET['time']) ? new SLN_DateTime($_GET['time']) : null,
             )
         );
         do_action($this->getPostType().'_details_meta_box', $object, $box);

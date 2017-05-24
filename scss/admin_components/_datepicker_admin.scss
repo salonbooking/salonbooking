@@ -675,7 +675,7 @@
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .datetimepicker.sln-datetimepicker {
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) {
     left: 0 !important;
     width: 100%;
     max-width: 100%;
@@ -777,9 +777,9 @@
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .datetimepicker.sln-datetimepicker table tr td.day,
-  .datetimepicker.sln-datetimepicker table tr td span.hour,
-  .datetimepicker.sln-datetimepicker table tr td span.minute {
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td.day,
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td span.hour,
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td span.minute {
     background: #eee;
     font-size: 1.4em;
     border: 2px solid #fff;
@@ -795,7 +795,7 @@
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .datetimepicker.sln-datetimepicker table tr td.day {
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td.day {
     width: 60px !important;
     height: 60px;
     line-height: 60px;
@@ -811,8 +811,8 @@
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .datetimepicker.sln-datetimepicker table tr td span.hour,
-  .datetimepicker.sln-datetimepicker table tr td span.minute {
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td span.hour,
+  .datetimepicker.sln-datetimepicker:not(.off-sm-md-support) table tr td span.minute {
     width: 25% !important;
     height: 60px;
     line-height: 60px;

@@ -268,7 +268,7 @@ class SLN_Func
             $duration = $duration->format('H:i');
         }
 
-        if (is_string($duration)) {
+        if (is_string($duration) && !empty($duration)) {
             $tmp = explode(':', $duration);
             return ($tmp[0] * 60) + $tmp[1];
         } else {

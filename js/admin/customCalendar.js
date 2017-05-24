@@ -84,7 +84,7 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
             }
         },
         cal_day_pagination: '<button type="button" class="btn %class" data-page="%page"></button>',
-        on_page: 12,
+        on_page: 11,
         _page: 0,
     };
     initDatepickers($);

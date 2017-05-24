@@ -96,6 +96,27 @@ jQuery(function($){
 }
 #cal-day-box .day-highlight{
     border-left: none !important;
+    cursor: pointer;
+}
+#cal-day-box .day-highlight:hover{
+    text-decoration: underline;
+}
+
+.cal-day-hour-part [data-action=add-event-by-date] {
+    width: 5%;
+    min-width: 5% !important;
+    padding: 0 0.3rem;
+    height: 28px;
+    display: none;
+}
+@media only screen and (min-width: 1200px) {
+    .cal-day-hour-part [data-action=add-event-by-date] {
+        width: 7%;
+    }
+}
+
+.cal-day-hour-part:hover [data-action=add-event-by-date] {
+    display: block;
 }
 </style>
 <div class="wrap sln-bootstrap">
@@ -201,6 +222,30 @@ jQuery(function($){
 
 <!-- row sln-calendar-wrapper // END -->
 </div>
+
+<div id="sln-booking-editor-modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pull-right">
+                    <button type="button" class="sln-btn sln-btn--ok sln-btn--big" aria-hidden="true" data-action="save-edited-booking"><?php _e('Save', 'salon-booking-system') ?></button>
+                    <button type="button" class="sln-btn sln-btn--light sln-btn--big" data-dismiss="modal" aria-hidden="true"><?php _e('Close', 'salon-booking-system') ?></button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal-body">
+                <div class="sln-booking-editor--wrapper">
+                    <div class="sln-booking-editor--wrapper--sub" style="opacity: 0">
+                        <iframe class="booking-editor" width="100%" height="600px" frameborder="0"
+                                data-src-template-edit-booking="<?php echo admin_url('/post.php?post=%id&action=edit&mode=sln_editor') ?>"
+                                data-src-template-new-booking="<?php echo admin_url('/post-new.php?post_type=sln_booking&date=%date&time=%time&mode=sln_editor') ?>"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-xs-12 col-md-9">
         <form action="<?php echo admin_url('admin.php?page=' . SLN_Admin_Tools::PAGE)?>" method="post">
