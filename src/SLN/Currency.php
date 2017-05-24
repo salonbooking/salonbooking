@@ -7,8 +7,8 @@ class SLN_Currency
         'ARS' => array('name' => 'Argentine Peso', 'symbol' => '$', 'ASCII' => 'A&#36;'),
         'UAH' => array('name' => 'Ukrainian Hryvnia', 'symbol' => '₴', 'ASCII' => '&#8372;'),
         'BRL' => array('name' => 'Brazilian Real', 'symbol' => 'R$', 'ASCII' => '&#x0024;'),
-        'BAN' => array('name' => 'Bosnia and Herzegovina
-convertible mark', 'symbol' => 'KM', 'ASCII' => ''),
+        'BGN' => array('name' => 'Bulgarian Lev', 'symbol' => 'лв', 'ASCII' => ''),
+        'BAN' => array('name' => 'Bosnia and Herzegovina convertible mark', 'symbol' => 'KM', 'ASCII' => ''),
         'CAD' => array('name' => 'Canadian Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
         'CZK' => array('name' => 'Czech Koruna', 'symbol' => 'Kč', 'ASCII' => ''),
         'HRK' => array('name' => 'Croatian kuna', 'symbol' => 'kn', 'ASCII' => ''),
