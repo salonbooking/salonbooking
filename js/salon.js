@@ -635,7 +635,7 @@ function reattachEvents(){
     });
 }
 setTimeout(function(){
-  $('.datetimepicker.sln-datetimepicker div').append('<em class="sln-datetimepicker-close">Close</em>');
+  $('.datetimepicker.sln-datetimepicker div').append('<em class="sln-datetimepicker-close">'+salon.txt_close+'</em>');
   reattachEvents();
 }, 500);
 }(jQuery);
