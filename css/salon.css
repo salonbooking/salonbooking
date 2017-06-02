@@ -2337,7 +2337,8 @@ ul.sln-list--dashed li,
 #sln-salon {
   position: relative;
   margin-top: 2em;
-  margin-bottom: 2em; }
+  margin-bottom: 2em;
+  padding: 1em; }
   @media only screen and (min-width: 768px) {
     #sln-salon {
       border-width: 1px;
