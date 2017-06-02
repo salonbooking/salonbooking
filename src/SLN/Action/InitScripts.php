@@ -230,7 +230,7 @@ class SLN_Action_InitScripts
     }
     public function hook_admin_print_scripts(){
 
-        if(is_plugin_active('wordpress-seo/wp-seo.php') && SLN_Func::isSalonPage()){
+        if(is_plugin_active('wordpress-seo/wp-seo.php') || is_plugin_active('wordpress-seo-premium/wp-seo-premium.php') && SLN_Func::isSalonPage()){
         //if(isdefined('WPSEO_VERSION') && SLN_Func::isSalonPage()) {
             self::dequeueYoast();
         }
@@ -244,7 +244,8 @@ class SLN_Action_InitScripts
 
     public static function dequeueYoast()
     {
-        $scripts = array('yoast-seo-admin-script', 'yoast-seo-admin-media','yoast-seo-bulk-editor','yoast-seo-dismissible','yoast-seo-admin-global-script','yoast-seo-metabox','yoast-seo-featured-image','yoast-seo-admin-gsc','yoast-seo-post-scraper','yoast-seo-term-scraper','yoast-seo-replacevar-plugin','yoast-seo-shortcode-plugin','yoast-seo-recalculate','yoast-seo-primary-category','yoast-seo-select2','yoast-seo-select2-translations','yoast-seo-configuration-wizard');
+        $scripts = array(
+'yoast-social-preview', 'wp-seo-premium-redirect-notifications', 'wp-seo-premium-custom-fields-plugin', 'yoast-seo-premium-metabox', 'yoast-seo-admin-script', 'yoast-seo-admin-media','yoast-seo-bulk-editor','yoast-seo-dismissible','yoast-seo-admin-global-script','yoast-seo-metabox','yoast-seo-featured-image','yoast-seo-admin-gsc','yoast-seo-post-scraper','yoast-seo-term-scraper','yoast-seo-replacevar-plugin','yoast-seo-shortcode-plugin','yoast-seo-recalculate','yoast-seo-primary-category','yoast-seo-select2','yoast-seo-select2-translations','yoast-seo-configuration-wizard');
         foreach($scripts as $s) {
             wp_dequeue_script($s);
         }
