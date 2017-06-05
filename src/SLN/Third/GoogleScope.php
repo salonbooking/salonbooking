@@ -663,7 +663,7 @@ class SLN_GoogleScope {
         if ($cancel)
             $event->setColorId("11");
         else
-            $event->setColorId("8");
+            $event->setColorId("6");
 
         $attendee1 = new Google_Service_Calendar_EventAttendee();
         $attendee1->setEmail($this->google_client_calendar); //change this

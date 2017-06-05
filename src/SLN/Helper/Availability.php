@@ -521,6 +521,91 @@ class SLN_Helper_Availability
         return $ret;
     }
 
+    public function addAttendantForServices(SLN_Wrapper_Booking_Services $bookingServices)
+    {
+        if ($this->settings->isMultipleAttendantsEnabled()) {
+            $this->addMultipleAttendantForServices($bookingServices);
+        } else {
+            $this->addSingleAttendantForServices($bookingServices);
+        }
+    }
+
+    private function addMultipleAttendantForServices(SLN_Wrapper_Booking_Services $bookingServices)
+    {
+        foreach ($bookingServices->getItems() as $bookingService) {
+            $service = $bookingService->getService();
+            if (!$service->isAttendantsEnabled()) {
+                continue;
+            }
+
+            $availAttsForEachService[$service->getId()]
+                = $availAttsForCurrentService = $this->getAvailableAttsIdsForBookingService($bookingService);
+            if (empty($availAttsForCurrentService)) {
+                throw new SLN_Exception(
+                    sprintf(
+                        __('No one of the attendants isn\'t available for %s service', 'salon-booking-system'),
+                        $service->getName()
+                    )
+                );
+            }
+
+            if (is_object($bookingService->getAttendant())) {
+                $selectedAttId = $bookingService->getAttendant()->getId();
+                if (!in_array($selectedAttId, $availAttsForCurrentService)) {
+                    throw new SLN_Exception(
+                        sprintf(
+                            __('Attendant %s isn\'t available for %s service', 'salon-booking-system'),
+                            $bookingService->getAttendant()->getName(),
+                            $service->getName()
+                        )
+                    );
+                }
+            } else {
+                SLN_Plugin::getInstance();
+                $selectedAttId = $availAttsForCurrentService[array_rand($availAttsForCurrentService)];
+                $attendant     = SLN_Plugin::getInstance()->createAttendant($selectedAttId);
+                $bookingService->setAttendant($attendant);
+            }
+        }
+    }
+
+    private function addSingleAttendantForServices(SLN_Wrapper_Booking_Services $bookingServices)
+    {
+        $availAttsForAllServices = null;
+        foreach ($bookingServices->getItems() as $bookingService) {
+            $service = $bookingService->getService();
+            if (!$service->isAttendantsEnabled()) {
+                continue;
+            }
+
+            $availAttsForAllServices = $this->getAvailableAttendantForService(
+                $availAttsForAllServices,
+                $bookingService
+            );
+            if (is_object($bookingService->getAttendant())) {
+                $availAttsForAllServices = array_intersect(
+                    $availAttsForAllServices,
+                    array($bookingService->getAttendant()->getId())
+                );
+            }
+
+            if (empty($availAttsForAllServices)) {
+                throw new SLN_Exception(
+                    __('No one of the attendants isn\'t available for selected services', 'salon-booking-system')
+                );
+            }
+        }
+
+        $selectedAttId = $availAttsForAllServices[array_rand($availAttsForAllServices)];
+        $attendant     = SLN_Plugin::getInstance()->createAttendant($selectedAttId);
+        foreach ($bookingServices->getItems() as $bookingService) {
+            $service = $bookingService->getService();
+            if ($service->isAttendantsEnabled()) {
+                $bookingService->setAttendant($attendant);
+            }
+        }
+    }
+
     public function validateTimePeriod($start, $end)
     {
         $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $start, $end);

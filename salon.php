@@ -43,6 +43,7 @@ $sln_googlescope = new SLN_GoogleScope();
 $GLOBALS['sln_googlescope'] = $sln_googlescope;
 $sln_googlescope->set_settings_by_plugin(SLN_Plugin::getInstance());
 $sln_googlescope->wp_init();
+SLN_Third_GoogleCalendarImport::launch($GLOBALS['sln_googlescope']);
 
 ob_start();
 
