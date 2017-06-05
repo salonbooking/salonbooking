@@ -91,17 +91,18 @@ final class SLN_Wrapper_Booking_Services {
 		$startsAt = clone $startsAt;
 		uksort($data, array('SLN_Repository_ServiceRepository', 'serviceCmp'));
 		$services = array();
-		foreach($data as $sId => $item) {
+		foreach($data as $i => $item) {
 
+            $sId      = null;
 			$atId     = null;
 			$price    = null;
 			$duration = null;
 			$break    = null;
 
-			$service = SLN_Plugin::getInstance()->createService($sId);
-            $service = apply_filters('sln.booking_services.buildService', $service);
-
 			if (is_array($item)) {
+                if (isset($item['service'])) {
+                    $sId = intval($item['service']);
+                }
 				if (isset($item['attendant'])) {
 					$atId = intval($item['attendant']);
 				}
@@ -115,8 +116,12 @@ final class SLN_Wrapper_Booking_Services {
 					$break = $item['break_duration'];
 				}
 			} else {
+                $sId  = intval($i);
 				$atId = intval($item);
 			}
+
+            $service = SLN_Plugin::getInstance()->createService($sId);
+            $service = apply_filters('sln.booking_services.buildService', $service);
 
 			if (is_null($price)) {
 				$price = $service->getPrice();
