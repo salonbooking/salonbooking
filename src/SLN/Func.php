@@ -324,9 +324,10 @@ class SLN_Func
             elseif (isset($_REQUEST['post_ID'])) {
                 $pt = get_post_type($_REQUEST['post_ID']);
             }
+        } elseif($pagenow == 'edit.php' || $pagenow == 'post-new.php') {
+            $pt = isset($_GET['post_type']) ? $_GET['post_type'] : null;
         }
-        elseif($pagenow == 'edit.php' || $pagenow == 'post-new.php')
-            $pt = $_GET['post_type'];
+
         if($pt){
             $ret = strpos($pt, 'sln_') === 0;
         }
