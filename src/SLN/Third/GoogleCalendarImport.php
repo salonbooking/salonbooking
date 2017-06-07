@@ -8,14 +8,14 @@ class SLN_Third_GoogleCalendarImport
 
     private static $googleClientCalendarSyncToken = 'salon_google_client_calendar_sync_token';
 
-    private static $this;
+    private static $instance;
     /** @var SLN_GoogleScope */
     private $gScope;
 
     public static function launch($gScope)
     {
-        if (empty(self::$this)) {
-            self::$this = new self($gScope);
+        if (empty(self::$instance)) {
+            self::$instance = new self($gScope);
         }
     }
 
