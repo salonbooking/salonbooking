@@ -75,7 +75,7 @@
         <?php }; ?>
     </div>
     <?php do_action('sln.template.summary.after_total_amount', $bb, $size); ?>
-    <div class="col-md-12 sln-input sln-input--simple">
+    <div class="col-xs-12 col-sm-12 col-md-12 sln-input sln-input--simple">
         <?php
         $label = __('Do you have any message for us?', 'salon-booking-system');
         $args = array(
@@ -93,7 +93,7 @@
             array('attrs' => array('placeholder' => __('Leave a message', 'salon-booking-system')))
         ); ?>
     </div>
-    <div class="col-md-12">
+    <div class="col-xs-12 col-sm-12 col-md-12">
         <p><strong><?php _e('Terms & conditions','salon-booking-system')?></strong></p>
 
         <p><?php echo $plugin->getSettings()->get('gen_timetable')
