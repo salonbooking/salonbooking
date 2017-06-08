@@ -267,7 +267,6 @@ class SLN_Third_GoogleCalendarImport
     /**
      * @param Google_Service_Calendar_Event $gEvent
      * @return array
-     * @throws ParseError
      */
     private function getBookingDetailsFromGoogleCalendarEvent($gEvent)
     {
@@ -287,16 +286,16 @@ class SLN_Third_GoogleCalendarImport
             );
 
             if (empty($bookingDetails['user_id'])) {
-                throw new ParseError();
+                throw new ErrorException();
             }
 
             foreach ($bookingDetails['services'] as $i => $name) {
                 $bookingDetails['services'][$i] = $this->getServiceIdByName($name);
                 if (empty($bookingDetails['services'][$i])) {
-                    throw new ParseError();
+                    throw new ErrorException();
                 }
             }
-        } catch (ParseError $e) {
+        } catch (ErrorException $e) {
         }
 
         return $bookingDetails;
@@ -317,7 +316,7 @@ class SLN_Third_GoogleCalendarImport
         $items = explode(',', $text, 6);
 
         if (count($items) < 3 || !strtotime($items[0])) {
-            throw new ParseError();
+            throw new ErrorException();
         }
 
         $details['time']     = date('H:i', strtotime($items[0]));
