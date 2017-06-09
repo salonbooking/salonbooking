@@ -270,14 +270,17 @@ class SLN_Third_GoogleCalendarImport
      */
     private function getBookingDetailsFromGoogleCalendarEvent($gEvent)
     {
-        $bookingDetails         = array();
-        $bookingDetails['id']   = $this->getBookingIdFromEventId($gEvent->getId());
-        $bookingDetails['date'] = date('Y-m-d', strtotime($gEvent->getStart()->getDateTime()));
+        $bookingDetails       = array();
+        $bookingDetails['id'] = $this->getBookingIdFromEventId($gEvent->getId());
+
+        $eventDate              = $gEvent->getStart()->getDateTime() !== null ?
+            $gEvent->getStart()->getDateTime() : $gEvent->getStart()->getDate();
+        $bookingDetails['date'] = date('Y-m-d', strtotime($eventDate));
 
         try {
             $bookingDetails = array_merge(
                 $bookingDetails,
-                $this->parseGoogleCalendarEventDescription($gEvent->getDescription())
+                $this->parseGoogleCalendarEventDescription($gEvent->getSummary())
             );
 
             $bookingDetails['user_id'] = $this->getCustomerIdByName(
