@@ -10,6 +10,7 @@ class SLN_Currency
         'BGN' => array('name' => 'Bulgarian Lev', 'symbol' => 'лв', 'ASCII' => ''),
         'BAN' => array('name' => 'Bosnia and Herzegovina convertible mark', 'symbol' => 'KM', 'ASCII' => ''),
         'CAD' => array('name' => 'Canadian Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
+        'CLP' => array('name' => 'Chilean peso', 'symbol' => '$', 'ASCII' => '&#36;'),
         'CZK' => array('name' => 'Czech Koruna', 'symbol' => 'Kč', 'ASCII' => ''),
         'HRK' => array('name' => 'Croatian kuna', 'symbol' => 'kn', 'ASCII' => ''),
         'DKK' => array('name' => 'Danish Krone', 'symbol' => 'Kr', 'ASCII' => ''),
