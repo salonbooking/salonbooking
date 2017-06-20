@@ -86,9 +86,17 @@ class SLN_Third_GoogleCalendarImport
      */
     private function importBookingFromGoogleCalendarEvent($gEvent)
     {
-        $bookingDetails = $this->getBookingDetailsFromGoogleCalendarEvent($gEvent);
-        print_r($bookingDetails);
-        echo '<br>';
+        try {
+            $bookingDetails = $this->getBookingDetailsFromGoogleCalendarEvent($gEvent);
+            print_r($bookingDetails);
+            echo '<br>';
+        } catch (ErrorException $e) {
+            $bookingDetails = array();
+        }
+
+        if (empty($bookingDetails)) {
+            return;
+        }
 
         if (empty($bookingDetails['id'])) {
             $this->importNewBookingFromGoogleCalendarEvent($gEvent, $bookingDetails);
@@ -273,32 +281,34 @@ class SLN_Third_GoogleCalendarImport
         $bookingDetails       = array();
         $bookingDetails['id'] = $this->getBookingIdFromEventId($gEvent->getId());
 
+        $start = $gEvent->getStart();
+        if (empty($start)) {
+            throw new ErrorException();
+        }
+
         $eventDate              = $gEvent->getStart()->getDateTime() !== null ?
             $gEvent->getStart()->getDateTime() : $gEvent->getStart()->getDate();
         $bookingDetails['date'] = date('Y-m-d', strtotime($eventDate));
 
-        try {
-            $bookingDetails = array_merge(
-                $bookingDetails,
-                $this->parseGoogleCalendarEventDescription($gEvent->getSummary())
-            );
+        $bookingDetails = array_merge(
+            $bookingDetails,
+            $this->parseGoogleCalendarEventDescription($gEvent->getSummary())
+        );
 
-            $bookingDetails['user_id'] = $this->getCustomerIdByName(
-                $bookingDetails['first_name'],
-                $bookingDetails['last_name']
-            );
+        $bookingDetails['user_id'] = $this->getCustomerIdByName(
+            $bookingDetails['first_name'],
+            $bookingDetails['last_name']
+        );
 
-            if (empty($bookingDetails['user_id'])) {
+        if (empty($bookingDetails['user_id'])) {
+            throw new ErrorException();
+        }
+
+        foreach ($bookingDetails['services'] as $i => $name) {
+            $bookingDetails['services'][$i] = $this->getServiceIdByName($name);
+            if (empty($bookingDetails['services'][$i])) {
                 throw new ErrorException();
             }
-
-            foreach ($bookingDetails['services'] as $i => $name) {
-                $bookingDetails['services'][$i] = $this->getServiceIdByName($name);
-                if (empty($bookingDetails['services'][$i])) {
-                    throw new ErrorException();
-                }
-            }
-        } catch (ErrorException $e) {
         }
 
         return $bookingDetails;
