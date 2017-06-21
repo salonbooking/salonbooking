@@ -39,6 +39,7 @@ class SLN_Third_GoogleCalendarImport
         $gScope = $this->gScope;
 
         $syncToken = self::getSyncToken();
+        $this->printMsg(sprintf("Current token '%s'", $syncToken));
 
         $params = array();
         if (!empty($syncToken)) {
@@ -58,16 +59,16 @@ class SLN_Third_GoogleCalendarImport
             $gCalendarEvents->setNextPageToken($nextPageToken);
 
             $gEvents = $gCalendarEvents->getItems();
+            $this->printMsg(sprintf("Need to process %s events", count($gEvents)));
+
             $this->importBookingsFromGoogleCalendarEvents($gEvents);
 
-            var_dump(count($gEvents));
-//        var_dump(($gEvents));
             $nextPageToken = $gCalendarEvents->getNextPageToken();
-            var_dump($nextPageToken);
+            $this->printMsg(sprintf("Next page token '%s'", $nextPageToken));
         } while ($nextPageToken);
 
         $nextSyncToken = $gCalendarEvents->getNextSyncToken();
-        var_dump($nextSyncToken);
+        $this->printMsg(sprintf("Next sync token '%s'", $syncToken));
 
         self::updateSyncToken($nextSyncToken);
     }
@@ -79,7 +80,9 @@ class SLN_Third_GoogleCalendarImport
         }
 
         foreach ($gEvents as $gEvent) {
+            $this->printMsg(str_repeat('*', 100));
             $this->importBookingFromGoogleCalendarEvent($gEvent);
+            $this->printMsg(str_repeat('*', 100));
         }
     }
 
@@ -88,11 +91,16 @@ class SLN_Third_GoogleCalendarImport
      */
     private function importBookingFromGoogleCalendarEvent($gEvent)
     {
-        if (!$this->getBookingIdFromEventId($gEvent->getId())) {
+        $this->printMsg(sprintf("Start processing event '%s' with title '%s'", $gEvent->getId(), $gEvent->getSummary()));
+
+        $bookingId = $this->getBookingIdFromEventId($gEvent->getId());
+        if (!$bookingId) {
             try {
                 $bookingDetails = $this->getBookingDetailsFromGoogleCalendarEvent($gEvent);
-                print_r($bookingDetails);
-                echo '<br>';
+
+                $this->printMsg("Event parsed details:");
+                $this->printMsg(print_r($bookingDetails, true));
+                $this->printMsg("Start creating booking");
 
                 $this->importNewBookingFromGoogleCalendarEvent($gEvent, $bookingDetails);
 
@@ -104,9 +112,15 @@ class SLN_Third_GoogleCalendarImport
             } catch (Exception $e) {
                 if ($e->getCode() !== self::$exceptionCodeForEmptyCalendarEvent) {
                     $this->makeGoogleCalendarEventSyncUnSuccessful($gEvent, $e->getMessage());
+                    $this->printMsg(sprintf("Error '%s'", $e->getMessage()));
                 }
             }
         }
+        else {
+            $this->printMsg(sprintf("Booking for this event already exist '%s'", $bookingId));
+        }
+
+        $this->printMsg(sprintf("End processing event '%s'", $gEvent->getId()));
     }
 
     /**
@@ -146,8 +160,9 @@ class SLN_Third_GoogleCalendarImport
         $postId  = wp_insert_post($postArr);
 
         if ($postId instanceof WP_Error) {
-            throw new ErrorException();
+            throw new ErrorException($postId->get_error_message());
         }
+        $this->printMsg(sprintf("Booking successfully created '%s'", $postId));
 
         $booking = SLN_Plugin::getInstance()->createBooking($postId);
         $booking->getBookingServices();
@@ -281,7 +296,7 @@ class SLN_Third_GoogleCalendarImport
 
         $start = $gEvent->getStart();
         if (empty($start)) {
-            throw new ErrorException('', self::$exceptionCodeForEmptyCalendarEvent);
+            throw new ErrorException('Event start time is null', self::$exceptionCodeForEmptyCalendarEvent);
         }
 
         $eventDate              = $gEvent->getStart()->getDateTime() !== null ?
@@ -299,13 +314,18 @@ class SLN_Third_GoogleCalendarImport
         );
 
         if (empty($bookingDetails['user_id'])) {
-            throw new ErrorException();
+            throw new ErrorException(
+                sprintf(
+                    "Invalid username '%s'",
+                    trim($bookingDetails['first_name'].' '.$bookingDetails['last_name'])
+                )
+            );
         }
 
         foreach ($bookingDetails['services'] as $i => $name) {
             $bookingDetails['services'][$i] = $this->getServiceIdByName($name);
             if (empty($bookingDetails['services'][$i])) {
-                throw new ErrorException();
+                throw new ErrorException(sprintf("Invalid service name '%s'", $name));
             }
         }
 
@@ -337,7 +357,7 @@ class SLN_Third_GoogleCalendarImport
         $items = array_map('trim', $items);
 
         if (count($items) < 3 || !strtotime($items[0])) {
-            throw new ErrorException();
+            throw new ErrorException("Invalid string. 'Time, first_name last_name, service name' not found");
         }
 
         $details['time']     = date('H:i', strtotime($items[0]));
@@ -470,6 +490,10 @@ class SLN_Third_GoogleCalendarImport
             $gEvent->getId(),
             $gEvent
         );
+    }
+
+    private function printMsg($text) {
+        echo "{$text}<br/>";
     }
 
     private static function updateSyncToken($syncToken)
