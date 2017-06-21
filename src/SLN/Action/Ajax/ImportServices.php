@@ -50,8 +50,8 @@ class SLN_Action_Ajax_ImportServices extends SLN_Action_Ajax_AbstractImport
     protected function processRow($data)
     {
         $args = array(
-            'post_title'   => $data['name'],
-            'post_excerpt' => $data['description'],
+            'post_title'   => (string)$data['name'],
+            'post_excerpt' => (string)$data['description'],
             'post_type'    => SLN_Plugin::POST_TYPE_SERVICE,
         );
 
