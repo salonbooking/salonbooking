@@ -41,8 +41,8 @@ class SLN_Action_Ajax_ImportCustomers extends SLN_Action_Ajax_AbstractImport
         $errors = wp_update_user(
             array(
                 'ID'         => $errors,
-                'first_name' => $data['first_name'],
-                'last_name'  => $data['last_name'],
+                'first_name' => (string)$data['first_name'],
+                'last_name'  => (string)$data['last_name'],
                 'role'       => SLN_Plugin::USER_ROLE_CUSTOMER,
             )
         );

@@ -68,10 +68,10 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
             'items' => $items,
         );
 
-        file_put_contents($filename, json_encode($import));
+        file_put_contents($filename, $this->jsonEncodePartialOnError($import));
 
-        $args = compact('headers');
-        $args['rows']     = array_slice($items, 0, 4, true);
+        $args             = compact('headers');
+        $args['rows']     = $this->getItemsForPreview($items);
         $args['columns']  = $this->fields;
         $args['required'] = $this->required;
 
@@ -103,7 +103,7 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
         parse_str($_POST['form'], $form);
         $import['mapping'] = $form['import_matching'];
 
-        file_put_contents($filename, json_encode($import));
+        file_put_contents($filename, $this->jsonEncodePartialOnError($import));
 
         return array(
             'total' => $import['total'],
@@ -149,7 +149,7 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
         $imported = $this->processRow($item);
 
         if ($imported === true) {
-            file_put_contents($filename, json_encode($import));
+            file_put_contents($filename, $this->jsonEncodePartialOnError($import));
             return array(
                 'total' => $import['total'],
                 'left'  => count($import['items']),
@@ -172,6 +172,22 @@ abstract class SLN_Action_Ajax_AbstractImport extends SLN_Action_Ajax_Abstract
 	{
 		return $rows;
 	}
+
+    protected function getItemsForPreview($items)
+    {
+        $items = array_slice($items, 0, 4, true);
+
+        $items = json_decode($this->jsonEncodePartialOnError($items), true);
+
+        return $items;
+    }
+
+    protected function jsonEncodePartialOnError($data)
+    {
+        $json = json_encode($data, defined('JSON_PARTIAL_OUTPUT_ON_ERROR') ? JSON_PARTIAL_OUTPUT_ON_ERROR : 0);
+
+        return $json;
+    }
 
     protected function getTransientKey()
     {
