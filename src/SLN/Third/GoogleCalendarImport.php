@@ -294,14 +294,16 @@ class SLN_Third_GoogleCalendarImport
     {
         $bookingDetails = array();
 
-        $start = $gEvent->getStart();
-        if (empty($start)) {
-            throw new ErrorException('Event start time is null', self::$exceptionCodeForEmptyCalendarEvent);
+        if (null == $gEvent->getStart()) {
+            throw new ErrorException('Event start datetime is null', self::$exceptionCodeForEmptyCalendarEvent);
         }
 
-        $eventDate              = $gEvent->getStart()->getDateTime() !== null ?
-            $gEvent->getStart()->getDateTime() : $gEvent->getStart()->getDate();
-        $bookingDetails['date'] = date('Y-m-d', strtotime($eventDate));
+        $eventDateTime = $gEvent->getStart()->getDateTime();
+        if (empty($eventDateTime)) {
+            throw new ErrorException('Event start time is null');
+        }
+        $bookingDetails['date'] = date('Y-m-d', strtotime($eventDateTime));
+        $bookingDetails['time'] = date('H:i', strtotime($eventDateTime));
 
         $bookingDetails = array_merge(
             $bookingDetails,
@@ -334,10 +336,7 @@ class SLN_Third_GoogleCalendarImport
 
     private function parseGoogleCalendarEventDescription($text)
     {
-        $text = trim($text);
-
         $details = array(
-            'time'       => '',
             'first_name' => '',
             'last_name'  => '',
             'services'   => array(),
@@ -346,27 +345,19 @@ class SLN_Third_GoogleCalendarImport
             'note'       => '',
         );
 
-        $partsWithoutSpaces = explode(' ', $text, 2);
-        $partsWithoutCommas = explode(',', $text, 2);
-
-        if (strlen($partsWithoutSpaces[0]) < strlen($partsWithoutCommas[0])) {
-            $items = array_merge(array($partsWithoutSpaces[0]), explode(',', $partsWithoutSpaces[1], 5));
-        } else {
-            $items = array_merge(array($partsWithoutCommas[0]), explode(',', $partsWithoutCommas[1], 5));
-        }
+        $items = explode(',', trim($text), 5);
         $items = array_map('trim', $items);
 
-        if (count($items) < 3 || !strtotime($items[0])) {
-            throw new ErrorException("Invalid string. 'Time, first_name last_name, service name' not found");
+        if (count($items) < 2) {
+            throw new ErrorException("Invalid string. 'First_name last_name, service name' not found");
         }
 
-        $details['time']     = date('H:i', strtotime($items[0]));
-        $details['services'] = array_filter(array_map('trim', explode('+', $items[2])));
-        $details['email']    = isset($items[3]) ? $items[3] : '';
-        $details['phone']    = isset($items[4]) ? $items[4] : '';
-        $details['note']     = isset($items[5]) ? $items[5] : '';
+        $details['services'] = array_filter(array_map('trim', explode('+', $items[1])));
+        $details['email']    = isset($items[2]) ? $items[2] : '';
+        $details['phone']    = isset($items[3]) ? $items[3] : '';
+        $details['note']     = isset($items[4]) ? $items[4] : '';
 
-        $details = array_merge($details, $this->parseCustomerName(trim($items[1])));
+        $details = array_merge($details, $this->parseCustomerName(trim($items[0])));
 
         return $details;
     }
