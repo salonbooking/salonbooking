@@ -302,8 +302,13 @@ class SLN_Third_GoogleCalendarImport
         if (empty($eventDateTime)) {
             throw new ErrorException('Event start time is null');
         }
-        $bookingDetails['date'] = date('Y-m-d', strtotime($eventDateTime));
-        $bookingDetails['time'] = date('H:i', strtotime($eventDateTime));
+        $eventDateTimeString = date('Y-m-d H:i', strtotime($eventDateTime));
+        $localDateTime       = new DateTime($eventDateTimeString);
+        $localTimezone       = SLN_DateTime::getWpTimezoneString();
+        $localDateTime->setTimezone(new DateTimeZone($localTimezone));
+
+        $bookingDetails['date'] = $localDateTime->format('Y-m-d');
+        $bookingDetails['time'] = $localDateTime->format('H:i');
 
         $bookingDetails = array_merge(
             $bookingDetails,
