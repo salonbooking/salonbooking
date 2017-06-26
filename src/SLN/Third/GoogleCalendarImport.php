@@ -177,13 +177,7 @@ class SLN_Third_GoogleCalendarImport
         $ah   = SLN_Plugin::getInstance()->getAvailabilityHelper();
         $date = new SLN_DateTime($bookingDetails['date'].' '.$bookingDetails['time']);
 
-        if (!empty($bookingDetails['id'])) {
-            $booking = SLN_Plugin::getInstance()->createBooking($bookingDetails['id']);
-            $ah->setDate($date, $booking);
-
-        } else {
-            $ah->setDate($date);
-        }
+        $ah->setDate($date);
 
         $bookingServices = SLN_Wrapper_Booking_Services::build(
             array_fill_keys(
