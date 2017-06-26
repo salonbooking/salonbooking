@@ -174,9 +174,10 @@ class SLN_Third_GoogleCalendarImport
 
     private function prepareAndValidateBookingServices($bookingDetails)
     {
-        $ah   = SLN_Plugin::getInstance()->getAvailabilityHelper();
         $date = new SLN_DateTime($bookingDetails['date'].' '.$bookingDetails['time']);
+        $this->validateBookingStartTime($date);
 
+        $ah = SLN_Plugin::getInstance()->getAvailabilityHelper();
         $ah->setDate($date);
 
         $bookingServices = SLN_Wrapper_Booking_Services::build(
@@ -191,6 +192,16 @@ class SLN_Third_GoogleCalendarImport
         $this->validateBookingServices($ah, $bookingServices);
 
         return $bookingServices;
+    }
+
+    private function validateBookingStartTime($date) {
+        $interval    = SLN_Plugin::getInstance()->getSettings()->getInterval();
+        $startInMins = (int) SLN_Func::getMinutesFromDuration($date);
+        if ($startInMins % $interval) {
+            throw new ErrorException(sprintf("Event start time is not multiple of %s minutes", $interval));
+        }
+
+        return true;
     }
 
     /**
