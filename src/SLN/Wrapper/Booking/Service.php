@@ -31,6 +31,13 @@ final class SLN_Wrapper_Booking_Service
     }
 
     /**
+     * @param SLN_Wrapper_AttendantInterface|false $attendant
+     */
+    public function setAttendant($attendant = false) {
+        $this->data['attendant'] = $attendant;
+    }
+
+    /**
      * @return SLN_DateTime
      */
     public function getDuration()
@@ -71,7 +78,7 @@ final class SLN_Wrapper_Booking_Service
     }
 
     /**
-     * @return SLN_Wrapper_AttendantInterface|bool
+     * @return SLN_Wrapper_AttendantInterface|false
      */
     public function getAttendant()
     {
