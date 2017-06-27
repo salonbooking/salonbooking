@@ -6,7 +6,7 @@
     data-name="Stripe.com"
 */?>
     data-description="Booking #<?php echo $booking->getId() ?>"
-    data-amount="<?php echo intval($booking->getToPayAmount(false) * 100) ?>"
+    data-amount="<?php echo intval($booking->getToPayAmount(false) * (SLN_PaymentMethod_Stripe::isZeroDecimal($plugin->getSettings()->getCurrency()) ? 1 : 100)) ?>"
     data-label="<?php $deposit = $plugin->getBookingBuilder()->getLastBooking()->getDeposit(); ?>
             <?php if($deposit > 0): ?>
                 <?php echo sprintf(__('Pay %s as a deposit with %s', 'salon-booking-system'), $plugin->format()->moneyFormatted($deposit), $paymentMethod->getMethodLabel()) ?>

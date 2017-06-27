@@ -2,6 +2,13 @@
 
 class SLN_PaymentMethod_Stripe extends SLN_PaymentMethod_Paypal//Abstract
 {
+    private static $zeroDecimal = array(
+        'JPY','VND','XOF','VUV','GNF','KRV','DJF','RWF','KMF','CLP','XPF','XAF','BIF','MGA'
+    );
+
+    public static function isZeroDecimal($currency){
+        return in_array($currency, self::$zeroDecimal);
+    }
 
     public function getFields(){
         return array(
@@ -16,10 +23,11 @@ class SLN_PaymentMethod_Stripe extends SLN_PaymentMethod_Paypal//Abstract
         \Stripe\Stripe::setApiKey($this->plugin->getSettings()->get('pay_stripe_apiKey'));
         $error = '';
         $success = '';
+        $currency = $this->plugin->getSettings()->getCurrency();
         try {
             $charge = \Stripe\Charge::create(array(
-                "amount" => intval($booking->getToPayAmount(false)*100),
-                "currency" => $this->plugin->getSettings()->getCurrency(),
+                "amount" => intval($booking->getToPayAmount(false)*(self::isZeroDecimal($currency) ? 1 : 100)),
+                "currency" => $currency,
                 "card" => $token
             ));
 
