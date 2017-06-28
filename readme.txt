@@ -32,7 +32,7 @@ Salon booking is provided with a intuitive back-end bookings calendar where admi
 
 Take a look at this video:
 
-https://www.youtube.com/watch?v=YdZ_-WPBOlc
+https://www.youtube.com/watch?v=2fb9JzouBsk&feature=youtu.be
 
 
 **LIST OF MAIN FEATURES**
