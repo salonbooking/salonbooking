@@ -1,6 +1,6 @@
 <div class="sln-tab" id="sln-tab-general">
 <div class="sln-box sln-box--main">
-    <h2 class="sln-box-title"><?php _e('Salon\'s informations','salon-booking-system'); ?></h2>
+    <h2 class="sln-box-title"><?php _e('Salon information','salon-booking-system'); ?></h2>
     <div class="row">
         <div class="col-sm-4 form-group sln-input--simple">
             <?php
