@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.8
-Stable tag: 3.13.1
+Stable tag: 3.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,10 +101,10 @@ https://www.youtube.com/watch?v=YdZ_-WPBOlc
 * Control form fields
 * Log-in with Facebook account
 
-**One Way Google Calendar synchronisation** 
+**Two ways Google Calendar synchronisation** 
 
 * Synchronise reservations on salon administrator's Google Calendar account
-
+* Salon admin can add reservations from his Google Calendar account
 
 **Front-end booking form styling**
 
@@ -269,6 +269,11 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+28.06.2017
+
+* Fixed bug with Yen currency on Stripe
+
 
 20.06.2017
 
