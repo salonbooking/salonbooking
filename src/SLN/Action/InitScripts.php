@@ -231,7 +231,10 @@ class SLN_Action_InitScripts
     }
     public function hook_admin_print_scripts(){
 
-        if(is_plugin_active('wordpress-seo/wp-seo.php') || is_plugin_active('wordpress-seo-premium/wp-seo-premium.php') && SLN_Func::isSalonPage()){
+        if(
+            (is_plugin_active('wordpress-seo/wp-seo.php') || is_plugin_active('wordpress-seo-premium/wp-seo-premium.php'))
+            && SLN_Func::isSalonPage()
+        ) {
         //if(isdefined('WPSEO_VERSION') && SLN_Func::isSalonPage()) {
             self::dequeueYoast();
         }
