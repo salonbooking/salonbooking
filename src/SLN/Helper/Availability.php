@@ -15,6 +15,7 @@ class SLN_Helper_Availability
     private $itemsWithoutServiceOffset;
     private $holidayItemsWithWeekDayRules;
     private $holidayItems;
+    private $offset;
 
     public function __construct(SLN_Plugin $plugin)
     {
@@ -65,7 +66,7 @@ class SLN_Helper_Availability
         }
         $ret = $this->getTimes($date);
         if($duration){
-            $duration = SLN_Time::increment($duration, -1 * $this->items->getOffset()/60);
+            $duration = SLN_Time::increment($duration, -1 * $this->getOffset());
             $ret = SLN_Time::filterTimesArrayByDuration($ret, $duration);
         }
         return $ret;
@@ -253,11 +254,9 @@ class SLN_Helper_Availability
         if (!$this->isValidOnlyTime($time)) {
             return SLN_Helper_Availability_ErrorHelper::doLimitParallelBookings($time);
         }
-
-        if ($service->isNotAvailableOnDate($time)) {
+        if ($checkDuration && $service->isNotAvailableOnDate($time)) {
             return SLN_Helper_Availability_ErrorHelper::doServiceNotAvailableOnDate($service, $time);
         }
-
         if ($ret = $this->validateServiceAttendantsOnTime($service, $time)) {
             return $ret;
         }
@@ -634,11 +633,13 @@ class SLN_Helper_Availability
 
     private function getOffset()
     {
-        $duration = SLN_Plugin::getInstance()->getRepository(
-            SLN_Plugin::POST_TYPE_SERVICE
-        )->getMinPrimaryServiceDuration();
-
-        return SLN_Func::getMinutesFromDuration($duration) * 60;
+        if(!$this->offset){
+            $duration = SLN_Plugin::getInstance()->getRepository(
+                SLN_Plugin::POST_TYPE_SERVICE
+            )->getMinPrimaryServiceDuration();
+            $this->offset = SLN_Func::getMinutesFromDuration($duration);
+        }
+        return $this->offset;
     }
 
     public function resetItems()

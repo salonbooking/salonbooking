@@ -20,7 +20,7 @@ class SLN_Helper_TimeInterval
 
     public function containsInterval(SLN_Helper_TimeInterval $time)
     {
-        return $this->containsTime($time->getFrom()) && $this->containsTime($this->getTo());
+        return $this->from->isLte($time->getFrom()) && $this->to->isGte($time->getTo());
     }
 
     /**

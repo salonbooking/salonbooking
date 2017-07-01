@@ -7,7 +7,11 @@ class SLN_Helper_AvailabilityItemNull extends SLN_Helper_AvailabilityItem
         return true;
     }
 
-    public function isValidTime($date, $time)
+    public function isValidTime(SLN_Time $time)
+    {
+        return true;
+    }
+    public function isValidTimeDuration(SLN_Helper_TimeInterval $interval)
     {
         return true;
     }

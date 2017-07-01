@@ -1,7 +1,6 @@
 <?php
 
-class
-SLN_Helper_AvailabilityItem
+class SLN_Helper_AvailabilityItem
 {
     private $data;
     /** @var SLN_Helper_TimeInterval[] */

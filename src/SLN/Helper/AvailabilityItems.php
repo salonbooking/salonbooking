@@ -22,6 +22,7 @@ class SLN_Helper_AvailabilityItems
         if (empty($this->items)) {
             $this->items = array(new SLN_Helper_AvailabilityItemNull(array()));
         }
+        $this->offset = $offset;
     }
 
     /**
@@ -80,11 +81,11 @@ class SLN_Helper_AvailabilityItems
                     foreach ($this->items as $item) {
                         /** @var SLN_Helper_AvailabilityItem $item */
                         $data   = $item->getData();
-                        $offset = $item->getOffset();
+                        $offset = $this->getOffset();
                         if (isset($data['days'][$i + 1]) && !empty($data['days'][$i + 1])) {
                             $weekDayRule = array('from' => $data['from'], 'to' => $data['to']);
                             foreach ($weekDayRule['to'] as &$time) {
-                                $time = date('H:i', strtotime($time) - $offset);
+                                $time = date('H:i', strtotime($time) - $offset*60);
                             }
 
                             $weekDayRules['from'] = (isset($weekDayRules['from']) ? array_merge(
@@ -128,51 +129,25 @@ class SLN_Helper_AvailabilityItems
     {
         $time = SLN_Time::create($date->format('H:i'));
         $day  = $date->format('Y-m-d');
+        $duration = SLN_Time::create($duration);
+        $ret = $this->isValidTimeDuration($day, $time, $duration);
         if ($time->toString() == '00:00') {
-            return
-                $this->isValidTimeDuration($day, $time, $duration)
-                || $this->isValidTimeDuration(
-                    date('Y-m-d', strtotime($day.' -1 day')),
-                    SLN_Time::create('24:00'),
-                    $duration
-                );
-        } else {
-            return $this->isValidTime($day, $time);
+            $yester = date('Y-m-d', strtotime($day.' -1 day'));
+            $ret = $ret || $this->isValidTimeDuration($yester, SLN_Time::create('24:00'), $duration);
         }
-//        $minutes = SLN_Func::getMinutesFromDuration($duration);
-//        $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
-//        $steps = $minutes / $interval;
-//        $endDate = clone $date;
-//        $endDate->modify('+'.$minutes.' minutes');
-//        do {
-//            if(!$this->isValidDateTime($date)) {
-//                return false;
-//            }
-//            $date = clone $date;
-//            $date->modify('+'.$interval.' minutes');
-//            $steps --;
-//        }while($steps >= 1);
-//
-//        if(!$this->isValidDateTime($endDate)) {
-//            return false;
-//        }
-        return true;
+        return $ret;
     }
 
     public function isValidDatetime(DateTime $date)
     {
         $time = SLN_Time::create($date->format('H:i'));
         $day  = $date->format('Y-m-d');
+        $ret = $this->isValidTime($day, $time);
         if ($time->toString() == '00:00') {
-            return
-                $this->isValidTime($day, $time)
-                || $this->isValidTime(
-                    date('Y-m-d', strtotime($day.' -1 day')),
-                    SLN_Time::create('24:00')
-                );
-        } else {
-            return $this->isValidTime($day, $time);
+            $yester = date('Y-m-d', strtotime($day.' -1 day'));
+            $ret = $ret || $this->isValidTime($yester, SLN_Time::create('24:00'));
         }
+        return $ret;
     }
 
     public function isValidDate($day)
@@ -188,12 +163,13 @@ class SLN_Helper_AvailabilityItems
 
     private function isValidTime($date, SLN_Time $time)
     {
-        $offset = $this->getOffset() == 0 ? null : $time->add($this->getOffset());
+        if($this->getOffset()) {
+            return $this->isValidTimeDuration($date, $time, SLN_Time::create($this->getOffset()));
+        }
         foreach ($this->toArray() as $av) {
             if (
                 $av->isValidDate($date)
                 && $av->isValidTime($time)
-                && ($offset === null || $av->isValidTime($offset))
             ) {
                 return true;
             }
@@ -208,12 +184,11 @@ class SLN_Helper_AvailabilityItems
      * @param $duration
      * @return bool
      */
-    private function isValidTimeDuration($date, SLN_Time $time, $duration)
+    private function isValidTimeDuration($date, SLN_Time $time, SLN_Time $duration)
     {
-        $interval = new SLN_Helper_TimeInterval($time, $time->add($duration)->add($this->offset));
-
+        $interval = new SLN_Helper_TimeInterval($time, $time->add($duration));
         foreach ($this->toArray() as $av) {
-            if ($av->isValidDate($date) && $av->isValidTimeDuration($date, $interval)) {
+            if ($av->isValidDate($date) && $av->isValidTimeDuration($interval)) {
                 return true;
             }
         }

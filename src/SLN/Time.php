@@ -6,7 +6,12 @@ class SLN_Time
 
     public function __construct($str)
     {
-        $this->time = SLN_TimeFunc::evalPickedTime($str);
+        if(is_int($str)){
+            $h = floor($str / 60);
+            $this->time = SLN_Func::zerofill($h).':'.SLN_Func::zerofill($str % 60);
+        }else{
+            $this->time = SLN_TimeFunc::evalPickedTime($str);
+        }
     }
 
     public function __toString()
@@ -108,6 +113,8 @@ class SLN_Time
             $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
         } elseif ($interval instanceof SLN_Time) {
             $interval = $interval->toMinutes();
+        } elseif ($interval instanceof \DateTime) {
+            $interval = SLN_Time::create($interval)->toMinutes(); 
         }
 
         return (int)$interval;
