@@ -43,23 +43,74 @@ class SLN_Time
     {
         return str_replace(':', '', $this->time);
     }
+
     public function toMinutes()
     {
         $x = explode(':', $this->time);
-        return ($x[0]*60)+$x[1];
+
+        return ($x[0] * 60) + $x[1];
+    }
+
+    public function toString()
+    {
+        return $this->__toString();
+    }
+
+    public function toDateTime()
+    {
+        return new \DateTime('1970-01-01 '.$this->toString());
+    }
+
+    /**
+     * @param int|SLN_Time|null $interval
+     * @return SLN_Time
+     */
+    public function add($interval)
+    {
+        return self::increment($this, $interval, false);
+    }
+
+    /**
+     * @param int|SLN_Time|null $interval
+     * @return SLN_Time
+     */
+    public function sub($interval)
+    {
+        return self::increment($this, $interval, true);
     }
 
 
-    public static function increment(SLN_Time $time, $interval = null)
+    /**
+     * @param SLN_Time          $time
+     * @param int|SLN_Time|null $interval
+     * @param bool              $negative
+     * @return SLN_Time
+     */
+    public static function increment(SLN_Time $time, $interval = null, $negative = false)
     {
-        if($interval instanceof SLN_Time) {
-            $interval = $interval->toMinutes();
-        } elseif (!$interval) {
-            $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
+        $interval = self::bindInterval($interval);
+        if ($interval == 0) {
+            return $time;
         }
-        $m = $time->toMinutes() + $interval;
-        $h = floor($m/60);
+        $m = $negative ? ($time->toMinutes() - $interval) : ($time->toMinutes() + $interval);
+        $h = floor($m / 60);
+
         return new SLN_Time(SLN_Func::zerofill($h).':'.SLN_Func::zerofill($m % 60));
+    }
+
+    /**
+     * @param int|SLN_Time|null $interval
+     * @return int
+     */
+    private static function bindInterval($interval = null)
+    {
+        if ($interval === null) {
+            $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
+        } elseif ($interval instanceof SLN_Time) {
+            $interval = $interval->toMinutes();
+        }
+
+        return (int)$interval;
     }
 
     public static function filterTimesArrayByDuration($times, SLN_Time $duration)
@@ -76,7 +127,7 @@ class SLN_Time
 
     public static function checkTimeDuration($times, SLN_Time $time, SLN_Time $duration)
     {
-        $end = SLN_Time::increment($time, $duration);
+        $end     = SLN_Time::increment($time, $duration);
         $initial = clone $time;
         while ($initial->isLte($time) && $time->isLte($end)) {
             if (!isset($times[(string)$time])) {
@@ -88,4 +139,10 @@ class SLN_Time
         return true;
     }
 
+    public static function create($time){
+        if($time instanceof SLN_Time)
+            return $time;
+        else
+            return new SLN_Time($time);
+    }
 }

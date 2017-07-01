@@ -7,11 +7,16 @@ class SLN_Helper_AvailabilityItems
     private $weekDayRules;
     private $offset;
 
+    /**
+     * SLN_Helper_AvailabilityItems constructor.
+     * @param     $availabilities
+     * @param int $offset
+     */
     public function __construct($availabilities, $offset = 0)
     {
         if ($availabilities) {
             foreach ($availabilities as $item) {
-                $this->items[] = new SLN_Helper_AvailabilityItem($item, $offset);
+                $this->items[] = new SLN_Helper_AvailabilityItem($item);
             }
         }
         if (empty($this->items)) {
@@ -62,6 +67,9 @@ class SLN_Helper_AvailabilityItems
         return $ranges;
     }
 
+    /**
+     * @return array
+     */
     public function getWeekDayRules()
     {
         if (is_null($this->weekDayRules)) {
@@ -111,35 +119,58 @@ class SLN_Helper_AvailabilityItems
         return $this->items;
     }
 
+    /**
+     * @param DateTime $date
+     * @param DateTime $duration
+     * @return bool
+     */
     public function isValidDatetimeDuration(DateTime $date, DateTime $duration)
     {
-        $minutes = SLN_Func::getMinutesFromDuration($duration);
-        $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
-        $steps = $minutes / $interval; 
-        $endDate = clone $date;
-        $endDate->modify('+'.$minutes.' minutes');
-        do {
-            if(!$this->isValidDateTime($date)) {
-                return false;
-            }
-            $date = clone $date;
-            $date->modify('+'.$interval.' minutes');
-            $steps --;
-        }while($steps >= 1);
-
-        if(!$this->isValidDateTime($endDate)) {
-            return false;
+        $time = SLN_Time::create($date->format('H:i'));
+        $day  = $date->format('Y-m-d');
+        if ($time->toString() == '00:00') {
+            return
+                $this->isValidTimeDuration($day, $time, $duration)
+                || $this->isValidTimeDuration(
+                    date('Y-m-d', strtotime($day.' -1 day')),
+                    SLN_Time::create('24:00'),
+                    $duration
+                );
+        } else {
+            return $this->isValidTime($day, $time);
         }
+//        $minutes = SLN_Func::getMinutesFromDuration($duration);
+//        $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
+//        $steps = $minutes / $interval;
+//        $endDate = clone $date;
+//        $endDate->modify('+'.$minutes.' minutes');
+//        do {
+//            if(!$this->isValidDateTime($date)) {
+//                return false;
+//            }
+//            $date = clone $date;
+//            $date->modify('+'.$interval.' minutes');
+//            $steps --;
+//        }while($steps >= 1);
+//
+//        if(!$this->isValidDateTime($endDate)) {
+//            return false;
+//        }
         return true;
     }
 
     public function isValidDatetime(DateTime $date)
     {
-        $time = $date->format('H:i');
-        $day = $date->format('Y-m-d');
-        if($time == '00:00'){ 
-            return $this->isValidTime($day, $time) || $this->isValidTime(date('Y-m-d', strtotime($day.' -1 day')), '24:00');
-        }else{
+        $time = SLN_Time::create($date->format('H:i'));
+        $day  = $date->format('Y-m-d');
+        if ($time->toString() == '00:00') {
+            return
+                $this->isValidTime($day, $time)
+                || $this->isValidTime(
+                    date('Y-m-d', strtotime($day.' -1 day')),
+                    SLN_Time::create('24:00')
+                );
+        } else {
             return $this->isValidTime($day, $time);
         }
     }
@@ -155,10 +186,15 @@ class SLN_Helper_AvailabilityItems
         return false;
     }
 
-    public function isValidTime($date, $time)
+    private function isValidTime($date, SLN_Time $time)
     {
+        $offset = $this->getOffset() == 0 ? null : $time->add($this->getOffset());
         foreach ($this->toArray() as $av) {
-            if ($av->isValidTime($date, $time)) {
+            if (
+                $av->isValidDate($date)
+                && $av->isValidTime($time)
+                && ($offset === null || $av->isValidTime($offset))
+            ) {
                 return true;
             }
         }
@@ -166,7 +202,29 @@ class SLN_Helper_AvailabilityItems
         return false;
     }
 
+    /**
+     * @param $date
+     * @param $time
+     * @param $duration
+     * @return bool
+     */
+    private function isValidTimeDuration($date, SLN_Time $time, $duration)
+    {
+        $interval = new SLN_Helper_TimeInterval($time, $time->add($duration)->add($this->offset));
 
+        foreach ($this->toArray() as $av) {
+            if ($av->isValidDate($date) && $av->isValidTimeDuration($date, $interval)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param null $data
+     * @return null
+     */
     public static function processSubmission($data = null)
     {
         if (!$data) {
@@ -188,26 +246,44 @@ class SLN_Helper_AvailabilityItems
         return $data;
     }
 
+    /**
+     * @param int $offset
+     */
     public function setOffset($offset)
     {
         $this->offset = $offset;
-        foreach ($this->items as $i) {
-            $i->setOffset($offset);
-        }
     }
+
+    /**
+     * @return int
+     */
     public function getOffset()
     {
         return $this->offset;
     }
 
+    /**
+     * @return array
+     */
     public function getTimeMinMax()
     {
-        $times = array_reduce($this->items, function($carry, $item){
-            $t = $item->getTimes();
-            return array_merge($carry, $t[0], $t[1]);
-        }, array());
-        $ret = array(date('H:i', min($times)), date('H:i', max($times)));
-        if($ret[1] == '00:00') $ret[1] = '24:00';
+        $times = array_reduce(
+            $this->items,
+            function ($carry, SLN_Helper_AvailabilityItem $item) {
+                foreach ($item->getTimes() as $t) {
+                    $carry[] = $t->getFrom();
+                    $carry[] = $t->getTo();
+                }
+
+                return $carry;
+            },
+            array()
+        );
+        $ret   = array(date('H:i', min($times)), date('H:i', max($times)));
+        if ($ret[1] == '00:00') {
+            $ret[1] = '24:00';
+        }
+
         return $ret;
     }
 }
