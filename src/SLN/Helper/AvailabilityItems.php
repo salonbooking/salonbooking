@@ -246,8 +246,8 @@ class SLN_Helper_AvailabilityItems
             $this->items,
             function ($carry, SLN_Helper_AvailabilityItem $item) {
                 foreach ($item->getTimes() as $t) {
-                    $carry[] = $t->getFrom();
-                    $carry[] = $t->getTo();
+                    $carry[] = strtotime('1970-01-01'. $t->getFrom());
+                    $carry[] = strtotime('1970-01-01'. $t->getTo());
                 }
 
                 return $carry;
@@ -258,7 +258,6 @@ class SLN_Helper_AvailabilityItems
         if ($ret[1] == '00:00') {
             $ret[1] = '24:00';
         }
-
         return $ret;
     }
 }
