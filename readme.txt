@@ -275,6 +275,7 @@ http://salon.wordpresschef.it
 
 * Fixed bug with booking system
 * Fixed services "Auto draft" bug
+* Fixed Yoast Free conflict
 
 
 28.06.2017
