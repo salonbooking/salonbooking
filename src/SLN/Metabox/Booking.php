@@ -179,6 +179,7 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
 
             $attendant = isset($data['attendants']) ? $data['attendants'][$serviceId] : (isset($data['attendant']) ? $data['attendant'] : null);
             $services[$serviceId] = array(
+                'service' => $serviceId,
                 'attendant' => $attendant,
                 'price' => $data['price'][$serviceId],
                 'duration' => $duration,
