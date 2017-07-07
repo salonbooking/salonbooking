@@ -187,8 +187,17 @@ class SLN_Helper_AvailabilityItems
     private function isValidTimeDuration($date, SLN_Time $time, SLN_Time $duration)
     {
         $interval = new SLN_Helper_TimeInterval($time, $time->add($duration));
+        return $this->isValidTimeInterval($date, $interval);
+    }
+
+    private function isValidTimeInterval($date, SLN_Helper_TimeInterval $interval){
+        if($interval->isOvernight()) {
+            $tomorrow = date('Y-m-d', strtotime($day.' +1 day'));
+            return $this->isValidTimeInterval($date, new SLN_Helper_TimeInterval($interval->getFrom(), new \SLN_Time('23:59'))) 
+                   && $this->isValidTimeInterval($tomorrow, new SLN_Helper_TimeInterval(new \SLN_Time('00:00'), $interval->getTo()));
+        }
         foreach ($this->toArray() as $av) {
-            if ($av->isValidDate($date) && $av->isValidTimeDuration($interval)) {
+            if ($av->isValidDate($date) && $av->isValidTimeInterval($interval)) {
                 return true;
             }
         }

@@ -13,6 +13,11 @@ class SLN_Helper_TimeInterval
         $this->to   = $to;
     }
 
+    public function isOvernight()
+    {
+        return $this->to->isLte($this->from);
+    }
+
     public function containsTime(SLN_Time $time)
     {
         return $this->from->isLte($time) && $this->to->isGte($time);
@@ -20,7 +25,8 @@ class SLN_Helper_TimeInterval
 
     public function containsInterval(SLN_Helper_TimeInterval $time)
     {
-        return $this->from->isLte($time->getFrom()) && $this->to->isGte($time->getTo());
+        if($time->isOvernight() && !$this->isOvernight()) return $this->to->isLte($time->getFrom()) && $this->from->isGte($time->getTo());
+        else return $this->from->isLte($time->getFrom()) && $this->to->isGte($time->getTo());
     }
 
     /**

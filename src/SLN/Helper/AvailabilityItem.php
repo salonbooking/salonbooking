@@ -91,7 +91,7 @@ class SLN_Helper_AvailabilityItem
      * @param SLN_Helper_TimeInterval $interval
      * @return bool
      */
-    public function isValidTimeDuration(SLN_Helper_TimeInterval $interval)
+    public function isValidTimeInterval(SLN_Helper_TimeInterval $interval)
     {
         foreach ($this->times as $t) {
             if ($t->containsInterval($interval)) {
