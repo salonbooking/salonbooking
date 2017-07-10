@@ -719,6 +719,7 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
 
     public function get_event($booking) {
         require_once SLN_PLUGIN_DIR . "/src/SLN/Enum/BookingStatus.php";
+        $plugin = SLN_Plugin::getInstance();
 
         $desc = "";
         //Name and Phone
@@ -729,8 +730,8 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
         foreach ($booking->getBookingServices()->getItems() as $bookingService) {
             $desc .= "\n";
             $desc .= $bookingService->getService()->getName() . ': ' .
-                     $bookingService->getStartsAt()->format('H:i') . ' ➝ ' .
-                     $bookingService->getEndsAt()->format('H:i');
+                     $plugin->format()->time($bookingService->getStartsAt()) . ' ➝ ' .
+                     $plugin->format()->time($bookingService->getEndsAt());
             if($bookingService->getAttendant()){
                 $desc .= ' - ' . $bookingService->getAttendant()->getName();
             }
@@ -740,7 +741,7 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
         $desc .= "\n\n" . __('Booking status', 'salon-booking-system') . ": " . SLN_Enum_BookingStatus::getLabel($booking->getStatus());
         $desc .= "\n\n" . __('Booking URL', 'salon-booking-system') . ": " . get_edit_post_link($booking->getId());
 
-        $title = $booking->getDisplayName() . " - " . $booking->getStartsAt()->format('d/m/Y h:iA');
+        $title = $booking->getDisplayName() . " - " . $plugin->format()->datetime($booking->getStartsAt());
         sln_my_wp_log($title);
 
         $event = new Google_Service_Calendar_Event();
