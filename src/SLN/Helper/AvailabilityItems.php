@@ -192,7 +192,7 @@ class SLN_Helper_AvailabilityItems
 
     private function isValidTimeInterval($date, SLN_Helper_TimeInterval $interval){
         if($interval->isOvernight()) {
-            $tomorrow = date('Y-m-d', strtotime($day.' +1 day'));
+            $tomorrow = date('Y-m-d', strtotime($date.' +1 day'));
             return $this->isValidTimeInterval($date, new SLN_Helper_TimeInterval($interval->getFrom(), new \SLN_Time('23:59'))) 
                    && $this->isValidTimeInterval($tomorrow, new SLN_Helper_TimeInterval(new \SLN_Time('00:00'), $interval->getTo()));
         }
