@@ -3,10 +3,12 @@
 class SLN_Third_GoogleCalendarImport
 {
     const SUCCESS_COLOR_ID = '10';
-    const WARNING_COLOR_ID = '5';
+    const WARNING_COLOR_ID = '6';
     const ERROR_COLOR_ID = '11';
 
-    private static $exceptionCodeForEmptyCalendarEvent = 322;
+    const EXCEPTION_CODE_FOR_EMPTY_CALENDAR_EVENT       = 1001;
+    const EXCEPTION_CODE_FOR_INVALID_CALENDAR_EVENT     = 1002;
+    const EXCEPTION_CODE_FOR_CONFLICTING_CALENDAR_EVENT = 1003;
 
     private static $googleClientCalendarSyncToken = 'salon_google_client_calendar_sync_token';
 
@@ -80,6 +82,7 @@ class SLN_Third_GoogleCalendarImport
         }
 
         foreach ($gEvents as $gEvent) {
+            $this->eventError = '';
             $this->printMsg(str_repeat('*', 100));
             $this->importBookingFromGoogleCalendarEvent($gEvent);
             $this->printMsg(str_repeat('*', 100));
@@ -108,11 +111,20 @@ class SLN_Third_GoogleCalendarImport
                     $this->gScope->google_client_calendar,
                     $gEvent->getId()
                 );
-                $this->makeGoogleCalendarEventSyncSuccessful($gEvent);
+
+                if (empty($this->eventError)) {
+                    $this->makeGoogleCalendarEventSyncSuccessful($gEvent);
+                } else {
+                    $this->makeGoogleCalendarEventSyncWarning($gEvent, $this->eventError);
+                }
             } catch (Exception $e) {
-                if ($e->getCode() !== self::$exceptionCodeForEmptyCalendarEvent) {
-                    $this->makeGoogleCalendarEventSyncUnSuccessful($gEvent, $e->getMessage());
-                    $this->printMsg(sprintf("Error '%s'", $e->getMessage()));
+                switch ($e->getCode()) {
+                    case self::EXCEPTION_CODE_FOR_INVALID_CALENDAR_EVENT:
+                        $this->makeGoogleCalendarEventSyncWrong($gEvent, $e->getMessage());
+                        $this->printMsg(sprintf("ERROR: %s", $e->getMessage()));
+                        break;
+                    case self::EXCEPTION_CODE_FOR_EMPTY_CALENDAR_EVENT:
+                        break;
                 }
             }
         }
@@ -160,9 +172,9 @@ class SLN_Third_GoogleCalendarImport
         $postId  = wp_insert_post($postArr);
 
         if ($postId instanceof WP_Error) {
-            throw new ErrorException($postId->get_error_message());
+            throw new ErrorException($postId->get_error_message(), self::EXCEPTION_CODE_FOR_INVALID_CALENDAR_EVENT);
         }
-        $this->printMsg(sprintf("Booking successfully created '%s'", $postId));
+        $this->printMsg(sprintf("Booking created '%s'", $postId));
 
         $booking = SLN_Plugin::getInstance()->createBooking($postId);
         $booking->getBookingServices();
@@ -187,9 +199,15 @@ class SLN_Third_GoogleCalendarImport
             ),
             $date
         );
-        $ah->addAttendantForServices($bookingServices);
 
-        $this->validateBookingServices($ah, $bookingServices);
+        try {
+            $ah->addAttendantForServices($bookingServices);
+
+            $this->validateBookingServices($ah, $bookingServices);
+        } catch (Exception $e) {
+            $this->eventError = $e->getMessage();
+            $this->printMsg(sprintf("WARNING: %s", $this->eventError));
+        }
 
         return $bookingServices;
     }
@@ -198,7 +216,7 @@ class SLN_Third_GoogleCalendarImport
         $interval    = SLN_Plugin::getInstance()->getSettings()->getInterval();
         $startInMins = (int) SLN_Func::getMinutesFromDuration($date);
         if ($startInMins % $interval) {
-            throw new ErrorException(sprintf("Event start time is not multiple of %s minutes", $interval));
+            throw new ErrorException(sprintf("Event start time is not multiple of %s minutes", $interval), self::EXCEPTION_CODE_FOR_INVALID_CALENDAR_EVENT);
         }
 
         return true;
@@ -300,12 +318,12 @@ class SLN_Third_GoogleCalendarImport
         $bookingDetails = array();
 
         if (null == $gEvent->getStart()) {
-            throw new ErrorException('Event start datetime is null', self::$exceptionCodeForEmptyCalendarEvent);
+            throw new ErrorException('Event start datetime is null', self::EXCEPTION_CODE_FOR_EMPTY_CALENDAR_EVENT);
         }
 
         $eventDateTime = $gEvent->getStart()->getDateTime();
         if (empty($eventDateTime)) {
-            throw new ErrorException('Event start time is null');
+            throw new ErrorException('Event start time is null', self::EXCEPTION_CODE_FOR_INVALID_CALENDAR_EVENT);
         }
         $eventDateTimeString = date('Y-m-d H:i', strtotime($eventDateTime));
         $localDateTime       = new DateTime($eventDateTimeString);
@@ -330,14 +348,15 @@ class SLN_Third_GoogleCalendarImport
                 sprintf(
                     "Invalid username '%s'",
                     trim($bookingDetails['first_name'].' '.$bookingDetails['last_name'])
-                )
+                ),
+                self::EXCEPTION_CODE_FOR_INVALID_CALENDAR_EVENT
             );
         }
 
         foreach ($bookingDetails['services'] as $i => $name) {
             $bookingDetails['services'][$i] = $this->getServiceIdByName($name);
             if (empty($bookingDetails['services'][$i])) {
-                throw new ErrorException(sprintf("Invalid service name '%s'", $name));
+                throw new ErrorException(sprintf("Invalid service name '%s'", $name), self::EXCEPTION_CODE_FOR_INVALID_CALENDAR_EVENT);
             }
         }
 
@@ -359,7 +378,7 @@ class SLN_Third_GoogleCalendarImport
         $items = array_map('trim', $items);
 
         if (count($items) < 2) {
-            throw new ErrorException("Invalid string. 'First_name last_name, service name' not found");
+            throw new ErrorException("Invalid string. 'First_name last_name, service name' not found", self::EXCEPTION_CODE_FOR_INVALID_CALENDAR_EVENT);
         }
 
         $details['services'] = array_filter(array_map('trim', explode('+', $items[1])));
@@ -479,10 +498,29 @@ class SLN_Third_GoogleCalendarImport
      * @param Google_Service_Calendar_Event $gEvent
      * @param string|null $error
      */
-    private function makeGoogleCalendarEventSyncUnSuccessful($gEvent, $error = null)
+    private function makeGoogleCalendarEventSyncWrong($gEvent, $error = null)
     {
         $gEvent->setColorId(self::ERROR_COLOR_ID);
         if (!empty($error)) {
+            $gEvent->setDescription("ERROR: {$error}");
+        }
+
+        $updated = $this->gScope->get_google_service()->events->update(
+            $this->gScope->google_client_calendar,
+            $gEvent->getId(),
+            $gEvent
+        );
+    }
+
+    /**
+     * @param Google_Service_Calendar_Event $gEvent
+     * @param string|null $error
+     */
+    private function makeGoogleCalendarEventSyncWarning($gEvent, $error = null)
+    {
+        $gEvent->setColorId(self::WARNING_COLOR_ID);
+        if (!empty($error)) {
+            $error = $gEvent->getDescription()."\n\nWARNING: {$error}";
             $gEvent->setDescription($error);
         }
 
