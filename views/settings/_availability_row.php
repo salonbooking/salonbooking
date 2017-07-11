@@ -15,7 +15,7 @@ $dateFrom      = new SLN_DateTime(isset($row['from_date']) ? $row['from_date'] :
 $dateTo        = new SLN_DateTime(isset($row['to_date']) ? $row['to_date'] : null);
 $row['always'] = isset($row['always']) ? ($row['always'] ? true : false) : true;
 ?>
-<div class="col-xs-12 sln-booking-rule">
+<div class="col-xs-12 sln-booking-rule" data-n="<?php echo $rulenumber ?>">
     <h2 class="sln-box-title"><?php _e('Rule', 'salon-booking-system'); ?> <strong><?php echo $rulenumber; ?></strong>
     </h2>
     <h6 class="sln-fake-label"><?php _e('Available days checked and green.', 'salon-booking-system'); ?></h6>

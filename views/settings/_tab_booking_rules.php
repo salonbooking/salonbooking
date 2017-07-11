@@ -12,7 +12,6 @@ $block = __(
 if (!is_array($availabilities)) {
     $availabilities = array();
 }
-$n = 0;
 SLN_Action_InitScripts::enqueueCustomSliderRange();
 ?>
 <div class="sln-box--sub sln-booking-rules row">
@@ -21,11 +20,12 @@ SLN_Action_InitScripts::enqueueCustomSliderRange();
             <span class="block"><?php echo $block ?></span></h2>
     </div>
     <div class="sln-booking-rules-wrapper">
-        <?php foreach ($availabilities as $k => $row): $n++; ?>
+	<?php $n = 0; ?>
+        <?php foreach ($availabilities as $row): $n++; ?>
             <?php echo $plugin->loadView(
                 'settings/_availability_row',
                 array(
-                    'prefix' => $base."[$k]",
+                    'prefix' => $base."[$n]",
                     'row' => $row,
                     'rulenumber' => $n,
                 )
@@ -44,6 +44,8 @@ SLN_Action_InitScripts::enqueueCustomSliderRange();
         <?php echo $plugin->loadView(
             'settings/_availability_row',
             array(
+                'row' => '__new__',
+                'rulenumber' => '__new__',
                 'prefix' => $base."[__new__]",
             )
         ); ?>

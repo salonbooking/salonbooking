@@ -33,9 +33,9 @@ function initBookingRules(elem) {
 
 
     jQuery('button[data-collection="addnew"]').click(function (e) {
-        e.preventDefault();
-        wrapper.append('<div class="sln-booking-rule">' + html.replace(/__new__/g, count) + '</div>');
         count++;
+        e.preventDefault();
+        wrapper.append(html.replace(/__new__/g, count));
         bindRemove();
 
         initDatepickers(jQuery);
