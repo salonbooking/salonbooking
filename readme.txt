@@ -274,6 +274,7 @@ http://salon.wordpresschef.it
 
 * Fixed bug on booking system
 * Fixed bug on reservations date format on Google Calendar
+* Fixed bug on booking rules after the 5th rule
 
 
 04.07.2017
