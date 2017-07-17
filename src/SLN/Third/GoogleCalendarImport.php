@@ -100,6 +100,11 @@ class SLN_Third_GoogleCalendarImport
         if (!$bookingId) {
             try {
                 $bookingDetails = $this->getBookingDetailsFromGoogleCalendarEvent($gEvent);
+                if (empty($bookingDetails['user_id'])) {
+                    $this->printMsg("Start creating new user");
+                    $bookingDetails['user_id'] = $this->createCustomer($bookingDetails);
+                    $this->printMsg("User created");
+                }
 
                 $this->printMsg("Event parsed details:");
                 $this->printMsg(print_r($bookingDetails, true));
@@ -343,7 +348,7 @@ class SLN_Third_GoogleCalendarImport
             $bookingDetails['last_name']
         );
 
-        if (empty($bookingDetails['user_id'])) {
+        if (empty($bookingDetails['user_id']) && empty($bookingDetails['email'])) {
             throw new ErrorException(
                 sprintf(
                     "Invalid username '%s'",
@@ -434,6 +439,41 @@ class SLN_Third_GoogleCalendarImport
         $user  = reset($users);
 
         return $user->ID;
+    }
+
+    private function createCustomer($values) {
+        if (email_exists($values['email'])) {
+            throw new ErrorException(
+                sprintf(
+                    "E-mail '%s' exists",
+                    $values['email']
+                ),
+                self::EXCEPTION_CODE_FOR_INVALID_CALENDAR_EVENT
+            );
+        }
+
+        if (empty($values['password'])) {
+            $values['password'] = wp_generate_password();
+        }
+
+        $user_id = wp_create_user($values['email'], $values['password'], $values['email']);
+
+        if (is_wp_error($user_id)) {
+            throw new ErrorException(
+                $user_id->get_error_message(),
+                self::EXCEPTION_CODE_FOR_INVALID_CALENDAR_EVENT
+            );
+        }
+
+        wp_update_user(
+            array('ID' => $user_id, 'first_name' => $values['first_name'], 'last_name' => $values['last_name'], 'role' => SLN_Plugin::USER_ROLE_CUSTOMER)
+        );
+        add_user_meta($user_id, '_sln_phone', $values['phone']);
+        add_user_meta($user_id, '_sln_address', isset($values['address']) ? $values['address'] : '');
+
+        wp_new_user_notification($user_id, null, 'both');
+
+        return $user_id;
     }
 
     private function getBookingIdFromEventId($gEventId)
