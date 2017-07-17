@@ -739,7 +739,7 @@ class SLN_GoogleCalendarEventFactory extends Google_Service_Calendar_Event {
         $notes = $booking->getNote();
         $desc .= "\n\n" . __('Booking notes', 'salon-booking-system') . ":\n" . (empty($notes) ? __("None", 'salon-booking-system') : $notes);
         $desc .= "\n\n" . __('Booking status', 'salon-booking-system') . ": " . SLN_Enum_BookingStatus::getLabel($booking->getStatus());
-        $desc .= "\n\n" . __('Booking URL', 'salon-booking-system') . ": " . get_edit_post_link($booking->getId());
+        $desc .= "\n\n" . __('Booking URL', 'salon-booking-system') . ": " . get_edit_post_link($booking->getId(), null);
 
         $title = $booking->getDisplayName() . " - " . $plugin->format()->datetime($booking->getStartsAt());
         sln_my_wp_log($title);
