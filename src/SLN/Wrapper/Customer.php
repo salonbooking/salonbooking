@@ -334,12 +334,20 @@ class SLN_Wrapper_Customer {
 		$this->setMeta('next_booking_time', $date);
 	}
 
-	public function generateHash() {
+	public function getHash() {
+	    $hash = $this->getMeta('hash');
+	    if (empty($hash)) {
+            $hash = $this->generateHash();
+            $this->setMeta('hash', $hash);
+        }
+
+        return $hash;
+    }
+
+	private function generateHash() {
 		do {
 			$hash = substr(md5($this->getId().':'.current_time('timestamp')), 0, 8);
 		} while(self::getCustomerIdByHash($hash));
-
-		$this->setMeta('hash', $hash);
 
 		return $hash;
 	}

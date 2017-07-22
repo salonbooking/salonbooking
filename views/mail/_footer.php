@@ -17,7 +17,7 @@
 
                         <td align="right" valign="top">
                             <p style="padding-left: 20px;">
-                                <a href="<?php echo home_url().'/'.$customer->generateHash(); ?>"style="
+                                <a href="<?php echo home_url().'/'.$customer->getHash(); ?>"style="
                                                 text-transform: uppercase;
                                                 display: inline-block;
                                                 padding: 10px 20px;
