@@ -59,7 +59,7 @@ class SLN_Wrapper_Booking_AbstractCache
         return $this;
     }
 
-    protected function processDate(DateTime $day)
+    public function processDate(DateTime $day)
     {
         $ah   = $this->ah;
         $data = array();

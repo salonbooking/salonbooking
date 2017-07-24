@@ -1120,7 +1120,7 @@ if(!String.prototype.formatNum) {
 				if(source.length) {
 					loader = function() {
 						var events = [];
-						var params = {from: self.options.position.start.getTime(), to: self.options.position.end.getTime()};
+						var params = {from: self.options.position.start.getTime(), to: self.options.position.end.getTime(), offset: self.options.position.start.getTimezoneOffset()};
 						if(browser_timezone.length) {
 							params.browser_timezone = browser_timezone;
 						}

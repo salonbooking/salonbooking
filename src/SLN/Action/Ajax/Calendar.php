@@ -11,8 +11,10 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
 
     public function execute()
     {
-        $this->from = new SLN_DateTime(date("c", $_GET['from'] / 1000));
-        $this->to = new SLN_DateTime(date("c", $_GET['to'] / 1000));
+        $off = get_option('gmt_offset') * 3600;
+        $offset = $off + $_GET['offset'] * 60;
+        $this->from = new SLN_DateTime(date("c", $_GET['from'] / 1000 - $offset));
+        $this->to = new SLN_DateTime(date("c", $_GET['to'] / 1000 - $offset));
         $this->buildBookings();
         $this->buildAssistants();
         $ret = array(
@@ -33,8 +35,11 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
         $clone = clone $this->from;
         $ret = array();
         while ($clone <= $this->to) {
+            $dd = clone $clone;
+            $dd->modify('+1 hour');
             $tmp = array('text' => '', 'busy' => 0, 'free' => 0);
-            $cache = $bc->getDay($clone);
+            $bc->processDate($dd);
+            $cache = $bc->getDay($dd);
             if ($cache && $cache['status'] == 'booking_rules') {
                 $tmp['text'] = __('Booking Rule', 'salon-booking-system');
             } elseif ($cache && $cache['status'] == 'holiday_rules') {
