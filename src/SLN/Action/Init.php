@@ -172,12 +172,10 @@ class SLN_Action_Init
     }
 
     public function template_redirect() {
-        global $wp_query;
+        $customerHash = isset($_GET['sln_customer_login']) ? $_GET['sln_customer_login'] : '';
 
-        $name = $wp_query->get('name');
-
-        if (!empty($name)) {
-            $userid = SLN_Wrapper_Customer::getCustomerIdByHash($name);
+        if (!empty($customerHash)) {
+            $userid = SLN_Wrapper_Customer::getCustomerIdByHash($customerHash);
             if ($userid) {
                 $user = get_user_by('id', (int) $userid);
                 if ($user) {
