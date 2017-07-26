@@ -183,7 +183,6 @@ class SLN_Action_Init
                 if ($user) {
                     $customer = new SLN_Wrapper_Customer($user);
                     if (!$customer->isEmpty()) {
-                        $customer->deleteMeta('hash');
                         wp_set_auth_cookie($user->ID, false);
                         do_action('wp_login', $user->user_login, $user);
 
