@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.8
-Stable tag: 3.14.2
+Stable tag: 3.14.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -269,6 +269,16 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+26.07.2017
+
+* Improvements of Google Calendar synch - now add new customers on reservation from G.C.
+* Fixed bug on booking system
+* Added URL of reservation inside Google Calendar event description
+* Fixed bug on adding new customer with an existing email address
+* Fixed date format consistent into GC event
+* Removed auto-login URL expiration
+* Improved booking rule "Always valid" option login
 
 10.07.2017
 
