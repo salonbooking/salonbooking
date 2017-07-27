@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var WP_Error|null $error
+ */
+?>
 <div class="wrap sln-bootstrap" id="sln-salon--admin">
 	<h1>
 		<?php /** @var SLN_Wrapper_Customer $customer */ ?>
@@ -7,7 +12,13 @@
 	</h1>
 	<br>
 
-	
+	<?php if(is_wp_error($error)): ?>
+        <div class="error">
+            <?php foreach ($error->get_error_messages() as $message): ?>
+                <p><?php echo $message ?></p>
+            <?php endforeach; ?>
+        </div>
+	<?php endif; ?>
 	<form method="post">
 	<div class="sln-tab">
 		

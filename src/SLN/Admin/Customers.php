@@ -35,35 +35,45 @@ class SLN_Admin_Customers extends SLN_Admin_AbstractPage {
 		}
 
 		if (isset($_POST['save'])) {
-			if (empty($_POST['id'])) {
-				$user_id = wp_create_user($_POST['sln_customer']['user_email'], wp_generate_password(), $_POST['sln_customer']['user_email']);
-			}
-			else {
-				$user_id = $_POST['id'];
-			}
-
-			$_POST['sln_customer']['ID'] = $user_id;
-			$_POST['sln_customer']['role'] = SLN_Plugin::USER_ROLE_CUSTOMER;
-			wp_update_user($_POST['sln_customer']);
-
-			foreach ($_POST['sln_customer_meta'] as $k => $value) {
-				update_user_meta($user_id, $k, $value);
-			}
-
-			wp_redirect(self::get_edit_customer_link($user_id));
-			exit;
+            $error = $this->save_customer($user_id);
 		}
 
 		$customer = new SLN_Wrapper_Customer(new WP_User($user_id));
 
-		echo $this->plugin->loadView(
-				'admin/_customer',
-				array(
-						'customer' => $customer,
-						'new_link' => self::get_edit_customer_link(0),
-				)
-		);
+        echo $this->plugin->loadView(
+            'admin/_customer',
+            array(
+                'customer' => $customer,
+                'new_link' => self::get_edit_customer_link(0),
+                'error'   => isset($error) ? $error : null,
+            )
+        );
 	}
+
+	private function save_customer($user_id) {
+        if (empty($_POST['id'])) {
+            if (email_exists($_POST['sln_customer']['user_email'])) {
+                $error = new WP_Error();
+                $error->add('email_exists', __('<strong>ERROR</strong>: This email is already registered, please choose another one.', 'salon-booking-system'));
+                return $error;
+            }
+            $user_id = wp_create_user($_POST['sln_customer']['user_email'], wp_generate_password(), $_POST['sln_customer']['user_email']);
+        }
+        else {
+            $user_id = $_POST['id'];
+        }
+
+        $_POST['sln_customer']['ID'] = $user_id;
+        $_POST['sln_customer']['role'] = SLN_Plugin::USER_ROLE_CUSTOMER;
+        wp_update_user($_POST['sln_customer']);
+
+        foreach ($_POST['sln_customer_meta'] as $k => $value) {
+            update_user_meta($user_id, $k, $value);
+        }
+
+        wp_redirect(self::get_edit_customer_link($user_id));
+        exit;
+    }
 
 	public function show_customers() {
 		if (empty($_REQUEST)) {
