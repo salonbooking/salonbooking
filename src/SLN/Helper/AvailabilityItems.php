@@ -29,7 +29,6 @@ class SLN_Helper_AvailabilityItems
         if ($date instanceof DateTime) {
             $date = $date->format('Y-m-d');
         }
-
         if(!isset($this->subset[$date])) {
             $this->subset[$date] = $this->processDateSubset($date);
         }
@@ -41,7 +40,7 @@ class SLN_Helper_AvailabilityItems
         // case 1 "valid rules with interval"
         $ret = array();
         foreach($this->items as $item) {
-            if(!$item->isAlwaysOn() && $item->isValidDayOfPeriod($item)) {
+            if((!$item->isAlwaysOn()) && $item->isValidDayOfPeriod($date)) {
                 $ret[] = $item;
             }
         } 

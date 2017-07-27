@@ -58,7 +58,7 @@ class SLN_Helper_AvailabilityItem
      */
     public function isValidDayOfPeriod($date)
     {
-        $timestampDate = strtotime($date);
+        $timestampDate = strtotime($date.' 00:00:01');
         return !(
             ($this->fromDate && $timestampDate < $this->fromDate)
             || ($this->toDate && $timestampDate > $this->toDate)
