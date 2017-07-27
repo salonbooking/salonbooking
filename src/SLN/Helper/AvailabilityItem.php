@@ -47,11 +47,16 @@ class SLN_Helper_AvailabilityItem
         return $this->isValidDayOfPeriod($date) && $this->isValidDayOfWeek($date);
     }
 
+    public function isAlwaysOn()
+    {
+        return empty($this->fromDate) && empty($this->toDate);
+    }
+
     /**
      * @param $date
      * @return bool
      */
-    private function isValidDayOfPeriod($date)
+    public function isValidDayOfPeriod($date)
     {
         $timestampDate = strtotime($date);
         return !(

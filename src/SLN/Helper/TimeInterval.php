@@ -11,6 +11,7 @@ class SLN_Helper_TimeInterval
     {
         $this->from = $from;
         $this->to   = $to;
+        if($this->to == '00:00') $this->to = new SLN_Time('23:59');
     }
 
     public function isOvernight()

@@ -25,6 +25,43 @@ class SLN_Helper_AvailabilityItems
         $this->offset = $offset;
     }
 
+    public function getDateSubset($date) {
+        if ($date instanceof DateTime) {
+            $date = $date->format('Y-m-d');
+        }
+
+        if(!isset($this->subset[$date])) {
+            $this->subset[$date] = $this->processDateSubset($date);
+        }
+
+        return $this->subset[$date];
+    }
+
+    private function processDateSubset($date){
+        // case 1 "valid rules with interval"
+        $ret = array();
+        foreach($this->items as $item) {
+            if(!$item->isAlwaysOn() && $item->isValidDayOfPeriod($item)) {
+                $ret[] = $item;
+            }
+        } 
+        if(!$ret) {
+            // case 2 "rules always on"
+            foreach($this->items as $item) {
+                if($item->isAlwaysOn()) {
+                    $ret[] = $item;
+                }
+            }
+        }
+        if(!$ret) {
+            // case 3 fake item always on
+            $ret[] = new SLN_Helper_AvailabilityItemNull(array());
+        }
+
+        return $ret;
+    }
+
+
     /**
      * @param array $ranges Array with keys 'from' & 'to'
      * @return array
@@ -152,7 +189,8 @@ class SLN_Helper_AvailabilityItems
 
     public function isValidDate($day)
     {
-        foreach ($this->toArray() as $av) {
+        $items = $this->getDateSubset($date);
+        foreach ($items as $av) {
             if ($av->isValidDate($day)) {
                 return true;
             }
@@ -166,7 +204,8 @@ class SLN_Helper_AvailabilityItems
         if($this->getOffset()) {
             return $this->isValidTimeDuration($date, $time, SLN_Time::create($this->getOffset()));
         }
-        foreach ($this->toArray() as $av) {
+        $items = $this->getDateSubset($date);
+        foreach ($items as $av) {
             if (
                 $av->isValidDate($date)
                 && $av->isValidTime($time)
@@ -196,7 +235,8 @@ class SLN_Helper_AvailabilityItems
             return $this->isValidTimeInterval($date, new SLN_Helper_TimeInterval($interval->getFrom(), new \SLN_Time('23:59'))) 
                    && $this->isValidTimeInterval($tomorrow, new SLN_Helper_TimeInterval(new \SLN_Time('00:00'), $interval->getTo()));
         }
-        foreach ($this->toArray() as $av) {
+        $items = $this->getDateSubset($date);
+        foreach ($items as $av) {
             if ($av->isValidDate($date) && $av->isValidTimeInterval($interval)) {
                 return true;
             }
