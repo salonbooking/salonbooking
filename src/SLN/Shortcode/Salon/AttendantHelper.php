@@ -37,7 +37,7 @@ class SLN_Shortcode_Salon_AttendantHelper
 
     public static function renderItem(
         $size,
-        $errors,
+        $errors = null,
         SLN_Wrapper_AttendantInterface $attendant = null,
         SLN_Wrapper_Service $service = null
     ) {

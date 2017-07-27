@@ -32,7 +32,7 @@ foreach ($attendants as $attendant) {
     }
 }
 if ($tmp) {
-    $tmp = SLN_Shortcode_Salon_AttendantHelper::renderItem($size, $errors).$tmp;
+    $tmp = SLN_Shortcode_Salon_AttendantHelper::renderItem($size).$tmp;
 }
 
 ?>
