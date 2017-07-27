@@ -33,7 +33,17 @@ class SLN_Third_GoogleCalendarImport
 
         if (defined('DOING_CRON') && $_GET['action'] === 'sln_sync_from_google_calendar') {
             add_action('wp_loaded', array($this, 'syncFull'));
+            add_filter('user_has_cap', array($this, 'userHasCapCallback'), 10, 4);
         }
+    }
+
+    public function userHasCapCallback($allcaps, $caps, $args, $user)
+    {
+        if (in_array('edit_others_sln_bookings', $caps)) {
+            $allcaps['edit_others_sln_bookings'] = true;
+        }
+
+        return $allcaps;
     }
 
     public function syncFull()
