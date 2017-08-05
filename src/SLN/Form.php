@@ -46,7 +46,7 @@ class SLN_Form
         <div class="sln_datepicker"><input type="text" name="<?php echo $name ?>" id="<?php echo self::makeID($name) ?>" 
             required="required" data-format="<?php echo $jsFormat?>" data-weekstart="<?php echo $weekStart ?>" class="sln-input"
             value="<?php echo SLN_plugin::getInstance()->format()->date($value) ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"
-            data-popup-class="<?php echo ($settings['popup-class'] ? $settings['popup-class'] : '') ?>"/></div>
+            data-popup-class="<?php echo (isset($settings['popup-class']) ? $settings['popup-class'] : '') ?>"/></div>
         </span><?php
     }
 
@@ -72,7 +72,7 @@ class SLN_Form
             data-meridian="<?php echo strpos($phpFormat,'a') !== false ? 'true' : 'false' ?>"
             required="required" data-format="<?php echo $jsFormat ?>" class="sln-input"
             value="<?php echo SLN_plugin::getInstance()->format()->time($value) ?>" data-interval="<?php echo $interval ?>" data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"
-            data-popup-class="<?php echo ($settings['popup-class'] ? $settings['popup-class'] : '') ?>"/></div>
+            data-popup-class="<?php echo (isset($settings['popup-class']) ? $settings['popup-class'] : '') ?>"/></div>
         </span><?php
     }
 

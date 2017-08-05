@@ -1,5 +1,7 @@
 <?php
 
+use Salon\Util\Date;
+
 class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
 {
     private $from;
@@ -37,6 +39,7 @@ class SLN_Action_Ajax_Calendar extends SLN_Action_Ajax_Abstract
         while ($clone <= $this->to) {
             $dd = clone $clone;
             $dd->modify('+1 hour');
+            $dd = new Date($dd);
             $tmp = array('text' => '', 'busy' => 0, 'free' => 0);
             $bc->processDate($dd);
             $cache = $bc->getDay($dd);

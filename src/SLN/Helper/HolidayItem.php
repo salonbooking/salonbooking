@@ -1,5 +1,7 @@
 <?php
 
+use Salon\Util\Date;
+
 class SLN_Helper_HolidayItem
 {
     private $data;
@@ -18,9 +20,11 @@ class SLN_Helper_HolidayItem
 
     public function isValidDate($date)
     {
-        if ($date instanceof DateTime) {
-            $date = $date->format('Y-m-d');
-        }
+	    if ( $date instanceof DateTime ) {
+		    $date = $date->format( 'Y-m-d' );
+	    } elseif ( $date instanceof Date ) {
+		    $date = $date->toString();
+	    }
 
         $timestampDate = strtotime($date);
         $min           = strtotime($this->data['from_date']);

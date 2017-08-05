@@ -1,91 +1,90 @@
 <?php
 
+use Salon\Util\Date;
+use Salon\Util\DateInterval;
+use Salon\Util\Time;
+use Salon\Util\TimeInterval;
+
 class SLN_Helper_AvailabilityItem
 {
     private $data;
-    /** @var SLN_Helper_TimeInterval[] */
+    /** @var TimeInterval[] */
     private $times = array();
+	/** @var DateInterval */
+    private $period;
 
-    private $fromDate;
-    private $toDate;
 
-
-    function __construct($data)
-    {
-        $this->data = $data;
-        if ($data) {
-            for($i = 0; $i <= 1; $i++) {
-                if ($data['from'][$i] != '00:00') {
-                    if($data['to'][$i] == '24:00') $data['to'][$i] = '23:59';
-                    $this->times[] = new SLN_Helper_TimeInterval(
-                        new SLN_Time($data['from'][$i]),
-                        new SLN_Time($data['to'][$i])
-                    );
-                }
-            }
-            $this->fromDate = isset($data['from_date']) ? strtotime($data['from_date'].' 00:00:00') : null;
-            $this->toDate   = isset($data['to_date']) ? strtotime($data['to_date'].' 23:59:59') : null;
-        }
-        if (empty($this->times)) {
-            $this->times[] = new SLN_Helper_TimeInterval(
-                new SLN_Time('00:00'),
-                new SLN_Time('23:59')
-            );
-        }
-    }
+	function __construct( $data ) {
+		$this->data = $data;
+		if ( $data ) {
+			for ( $i = 0; $i <= 1; $i ++ ) {
+				if ( $data['from'][ $i ] != '00:00' ) {
+					if ( $data['to'][ $i ] == '24:00' ) {
+						$data['to'][ $i ] = '23:59';
+					}
+					$this->times[] = new TimeInterval(
+						new Time( $data['from'][ $i ] ),
+						new Time( $data['to'][ $i ] )
+					);
+				}
+			}
+			$from         = isset( $data['from_date'] ) ? new Date( $data['from_date'] ) : null;
+			$to           = isset( $data['to_date'] ) ? new Date( $data['to_date'] ) : null;
+			$this->period = new DateInterval( $from, $to );
+		}else{
+			$this->period = new DateInterval();
+		}
+		if ( empty( $this->times ) ) {
+			$this->times[] = new TimeInterval(
+				new Time( '00:00' ),
+				new Time( '23:59' )
+			);
+		}
+	}
 
     /**
      * @param $date
      * @return bool
      */
-    public function isValidDate($date)
+    public function isValidDate(Date $date)
     {
-        if ($date instanceof DateTime) {
-            $date = $date->format('Y-m-d');
-        }
-
         return $this->isValidDayOfPeriod($date) && $this->isValidDayOfWeek($date);
     }
 
     public function isAlwaysOn()
     {
-        return empty($this->fromDate) && empty($this->toDate);
+        return $this->period->isAlways();
     }
 
     /**
      * @param $date
      * @return bool
      */
-    public function isValidDayOfPeriod($date)
+    public function isValidDayOfPeriod(Date $date)
     {
-        $timestampDate = strtotime($date.' 00:00:01');
-        return !(
-            ($this->fromDate && $timestampDate < $this->fromDate)
-            || ($this->toDate && $timestampDate > $this->toDate)
-        );
+    	return $this->period->containsDate($date);
     }
 
     /**
      * @param $date
      * @return bool
      */
-    private function isValidDayOfWeek($date)
+    private function isValidDayOfWeek(Date $date)
     {
-        $dayOfTheWeek = date("w", strtotime($date)) + 1;
-
-        return isset($this->data['days'][$dayOfTheWeek]) ? true : false;
+    	//when no day is selected then all days are valid
+	    return empty($this->data['days']) || isset( $this->data['days'][ $date->getWeekday() + 1 ] );
     }
 
     /**
-     * @param SLN_Time $time
+     * @param Time $time
      * @return bool
      */
-    public function isValidTime(SLN_Time $time)
+    public function isValidTime(Time $time)
     {
         //#SBP-470
-        $time2 = $time->toString() == '00:00' ? null : new SLN_Time('24:00');
+        $time2 = $time->isMidnight() ? new Time('23:59') : null;
         foreach ($this->times as $t) {
-            if ($t->containsTime($time)) {
+        	if ($t->containsTime($time)) {
                 return true;
             }
         }
@@ -94,10 +93,10 @@ class SLN_Helper_AvailabilityItem
     }
 
     /**
-     * @param SLN_Helper_TimeInterval $interval
+     * @param TimeInterval $interval
      * @return bool
      */
-    public function isValidTimeInterval(SLN_Helper_TimeInterval $interval)
+    public function isValidTimeInterval(TimeInterval $interval)
     {
         foreach ($this->times as $t) {
             if ($t->containsInterval($interval)) {
@@ -113,7 +112,7 @@ class SLN_Helper_AvailabilityItem
     }
 
     /**
-     * @return array|string|void
+     * @return string
      */
     public function __toString()
     {
@@ -127,13 +126,15 @@ class SLN_Helper_AvailabilityItem
         $allDays = empty($ret);
         $ret     = implode('-', $ret);
         $format  = SLN_Plugin::getInstance()->format();
-        foreach ($this->times as $t) {
-            $ret .= sprintf(
-                ' %s/%s',
-                $format->time(new DateTime('1970-01-01 '.$t->getFrom()->toString())),
-                $format->time(new DateTime('1970-01-01 '.$t->getTo()->toString()))
-            );
-        }
+	    foreach ( $this->times as $t ) {
+		    if ( ! ( $t->isAlways() || $t->isNever() ) ) {
+			    $ret .= sprintf(
+				    ' %s/%s',
+				    $format->time( $t->getFrom() ),
+				    $format->time( $t->getTo() )
+			    );
+		    }
+	    }
         if (empty($ret)) {
             $ret = __('Always', 'salon-booking-system');
         }
@@ -145,7 +146,7 @@ class SLN_Helper_AvailabilityItem
     }
 
     /**
-     * @return SLN_Helper_TimeInterval[]
+     * @return TimeInterval[]
      */
     public function getTimes(){
         return $this->times;

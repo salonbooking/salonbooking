@@ -1,5 +1,8 @@
 <?php
 
+use Salon\Util\Date;
+use Salon\Util\Time;
+
 class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
 {
     protected $date;
@@ -7,7 +10,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
     protected $errors = array();
     protected $duration;
 
-    public function setDuration(SLN_Time $duration){
+    public function setDuration(Time $duration){
         $this->duration = $duration;
         return $this;
     }
@@ -67,7 +70,7 @@ class SLN_Action_Ajax_CheckDate extends SLN_Action_Ajax_Abstract
             $this->addError(sprintf(__('We are unavailable at:', 'salon-booking-system') . '<br /><strong>%s</strong>', $txt));
         } else {
             $ah->setDate($date);
-            if (!$ah->isValidDate($date)) {
+            if (!$ah->isValidDate( Date::create($date))) {
                 $this->addError(
                     __(
                         'There are no time slots available today - Please select a different day',

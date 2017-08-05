@@ -345,7 +345,6 @@ class SLN_Wrapper_Booking_Builder
     {
         $i = $this->getServicesDurationMinutes();
         $str = SLN_Func::convertToHoursMins($i);
-
         return $str;
     }
 

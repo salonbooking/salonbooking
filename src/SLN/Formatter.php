@@ -60,13 +60,15 @@ class SLN_Formatter
 
     public function time($val)
     {
-        $f = $this->plugin->getSettings()->getTimeFormat();
-        $phpFormat = SLN_Enum_TimeFormat::getPhpFormat($f);
-        if ($val instanceof DateTime) {
-            $val = $val->format('Y-m-d H:i');
-        }
+	    $f         = $this->plugin->getSettings()->getTimeFormat();
+	    $phpFormat = SLN_Enum_TimeFormat::getPhpFormat( $f );
+	    if ( $val instanceof DateTime ) {
+		    $val = $val->format( 'Y-m-d H:i' );
+	    } elseif ( $val instanceof \Salon\Util\Time ) {
+		    $val = $val->toDateTime()->format( 'Y-m-d H:i' );
+	    }
 
-        return date_i18n($phpFormat, strtotime($val));
+	    return date_i18n( $phpFormat, strtotime( $val ) );
     }
 
     public function phone($val){

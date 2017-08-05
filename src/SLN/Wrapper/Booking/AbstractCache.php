@@ -1,5 +1,7 @@
 <?php
 
+use Salon\Util\Date;
+
 class SLN_Wrapper_Booking_AbstractCache
 {
     const KEY = 'salon_cache';
@@ -47,24 +49,24 @@ class SLN_Wrapper_Booking_AbstractCache
         $this->settings = array();
         $ah             = $this->plugin->getAvailabilityHelper();
         $hb             = $ah->getHoursBeforeHelper();
-        $from           = $hb->getFromDate();
-        $to             = $hb->getToDate();
-        $clone          = clone $from;
-        while ($clone <= $to) {
-            $this->processDate($clone);
-            $clone->modify('+1 days');
+        $from           = Date::create($hb->getFromDate());
+        $to             = Date::create($hb->getToDate());
+        while ($from->isLte($to)) {
+            $this->processDate($from);
+            $from = $from->getNextDate();
         }
         $this->save();
 
         return $this;
     }
 
-    public function processDate(DateTime $day)
+    public function processDate(Date $day)
     {
         $ah   = $this->ah;
         $data = array();
-        $ah->setDate($day);
+        $ah->setDate($day->getDateTime());
         $data['free_slots'] = array_values($ah->getTimes($day));
+        $day = new Date($day);
         if (!$data['free_slots']) {
             if (!$ah->getItems()->isValidDate($day)) {
                 $data['status'] = 'booking_rules';
@@ -82,7 +84,7 @@ class SLN_Wrapper_Booking_AbstractCache
                 $data['busy_slots'][$k] = $v;
             }
         }
-        $this->settings[$day->format('Y-m-d')] = $data;
+        $this->settings[$day->toString()] = $data;
 
         return $data;
     }
@@ -115,21 +117,22 @@ class SLN_Wrapper_Booking_AbstractCache
                         }
                     }
                     if ($dayHasBooking && $booking->getDate()->format('Y-m-d') != $day) {
-                        $this->processDate(new DateTime($day));
+                        $this->processDate(Date::create($day));
                     }
                 }
             }
         }
-        $this->processDate($booking->getDate());
+        $this->processDate(Date::create($booking->getDate()));
         $this->save();
     }
 
-    public function getDay(DateTime $day)
+    public function getDay(Date $day)
     {
-        if (!isset($this->settings[$day->format('Y-m-d')])) {
+    	$k = $day->toString();
+        if (!isset($this->settings[$k])) {
             $ret = null;
         } else {
-            $ret = $this->settings[$day->format('Y-m-d')];
+            $ret = $this->settings[$k];
         }
         return $ret;
     }

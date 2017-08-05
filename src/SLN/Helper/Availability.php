@@ -1,5 +1,8 @@
 <?php
 
+use Salon\Util\Date;
+use Salon\Util\Time;
+
 class SLN_Helper_Availability
 {
     const MAX_DAYS = 365;
@@ -16,6 +19,7 @@ class SLN_Helper_Availability
     private $holidayItemsWithWeekDayRules;
     private $holidayItems;
     private $offset;
+    protected $initialDate;
 
     public function __construct(SLN_Plugin $plugin)
     {
@@ -41,38 +45,37 @@ class SLN_Helper_Availability
     public function getDays()
     {
         $interval = $this->getHoursBeforeHelper();
-        $from = clone $interval->getFromDate();
+        $from = Date::create($interval->getFromDate());
         $count = $interval->getCountDays();
         $ret = array();
         $avItems = $this->getItems();
         $hItems  = $this->getHolidaysItemsWithWeekDayRules($avItems->getWeekDayRules());
         while ($count > 0) {
-            $date = $from->format('Y-m-d');
             $count--;
-            if ($avItems->isValidDate($date) && $hItems->isValidDate($date) && $this->isValidDate($from)) {
-                $ret[] = $date;
+            if ($avItems->isValidDate($from) && $hItems->isValidDate($from) && $this->isValidDate($from)) {
+                $ret[] = $from->toString();
             }
-            $from->modify('+1 days');
+            $from = $from->getNextDate();
         }
 
         return $ret;
     }
 
-    public function getCachedTimes(DateTime $date, SLN_Time $duration = null)
+    public function getCachedTimes(Date $date, Time $duration = null)
     {
-        $fullDays = SLN_Plugin::getInstance()->getBookingCache()->getFullDays();
-        if ($fullDays && in_array($date->format('Y-m-d'), $fullDays)) {
+        $bc = SLN_Plugin::getInstance()->getBookingCache();
+        if ($bc->hasFullDay($date)) {
             return array();
         }
         $ret = $this->getTimes($date);
         if($duration){
-            $duration = SLN_Time::increment($duration, -1 * $this->getOffset());
-            $ret = SLN_Time::filterTimesArrayByDuration($ret, $duration);
+            $duration = Time::increment($duration, -1 * $this->getOffset());
+            $ret = Time::filterTimesArrayByDuration($ret, $duration);
         }
         return $ret;
     }
 
-    public function getTimes(DateTime $date)
+    public function getTimes(Date $date)
     {
         $ret = array();
         $avItems = $this->getItems();
@@ -81,11 +84,11 @@ class SLN_Helper_Availability
         $from = $hb->getFromDate();
         $to = $hb->getToDate();
         foreach (SLN_Func::getMinutesIntervals() as $time) {
-            $d = new SLN_DateTime($date->format('Y-m-d').' '.$time);
+        	$d = new SLN_DateTime($date->toString().' '.$time);
             if (
                 $avItems->isValidDatetime($d)
                 && $hItems->isValidDatetime($d)
-                && $this->isValidDate($d)
+                && $this->isValidDate($date)
                 && $this->isValidTime($d)
                 && $d >= $from && $d <= $to
             ) {
@@ -97,7 +100,7 @@ class SLN_Helper_Availability
         return $ret;
     }
 
-    public function setDate(DateTime $date, SLN_Wrapper_Booking $booking = null)
+    public function  setDate(DateTime $date, SLN_Wrapper_Booking $booking = null)
     {
         if (empty($this->date) || ($this->date->format('Ymd') != $date->format('Ymd'))) {
             $obj = SLN_Enum_AvailabilityModeProvider::getService(
@@ -184,7 +187,7 @@ class SLN_Helper_Availability
         }
     }
 
-    private function validateAttendantOnTime(SLN_Wrapper_AttendantInterface $attendant, DateTime $time)
+    private function validateAttendantOnTime(SLN_Wrapper_AttendantInterface $attendant, SLN_DateTime $time)
     {
         SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
         $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
@@ -234,7 +237,7 @@ class SLN_Helper_Availability
         }
     }
 
-    private function validateServiceOnTime(SLN_Wrapper_ServiceInterface $service, DateTime $time, $checkDuration = true)
+    private function validateServiceOnTime(SLN_Wrapper_ServiceInterface $service, SLN_DateTime $time, $checkDuration = true)
     {
         SLN_Plugin::addLog(__CLASS__.sprintf(' checking time %s', $time->format('Ymd H:i')));
         $time = $this->getDayBookings()->getTime($time->format('H'), $time->format('i'));
@@ -687,9 +690,9 @@ class SLN_Helper_Availability
         return $this->holidayItemsWithWeekDayRules;
     }
 
-    public function isValidDate($date)
+    public function isValidDate(Date $date)
     {
-        $this->setDate($date);
+        $this->setDate($date->getDateTime());
         $countDay = $this->settings->get('parallels_day');
 
         return !($countDay && $this->getBookingsDayCount() >= $countDay);
@@ -697,7 +700,7 @@ class SLN_Helper_Availability
 
     public function isValidTime($date)
     {
-        if (!$this->isValidDate($date)) {
+        if (!$this->isValidDate(Date::create($date))) {
             return false;
         }
 

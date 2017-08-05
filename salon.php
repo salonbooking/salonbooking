@@ -20,8 +20,13 @@ function sln_autoload($className) {
     if (strpos($className, 'SLN_') === 0) {
         $filename = SLN_PLUGIN_DIR . "/src/" . str_replace("_", "/", $className) . '.php';
         if (file_exists($filename)) {
-            include_once($filename);
+            require_once($filename);
         }
+    }elseif(strpos($className, 'Salon')=== 0) {
+	    $filename = SLN_PLUGIN_DIR . "/src/" . str_replace("\\", "/", $className) . '.php';
+	    if (file_exists($filename)) {
+		    require_once($filename);
+	    }
     }
 }
 

@@ -2,6 +2,7 @@
 
 class SLN_Action_Ajax_ImportAssistants extends SLN_Action_Ajax_AbstractImport
 {
+
     protected $fields = array(
         'name',
         'email',
@@ -35,7 +36,7 @@ class SLN_Action_Ajax_ImportAssistants extends SLN_Action_Ajax_AbstractImport
     {
         parent::__construct($plugin);
 
-        $this->type = $plugin::POST_TYPE_ATTENDANT;
+        $this->type = SLN_Plugin::POST_TYPE_ATTENDANT;
     }
 
     protected function processRow($data)

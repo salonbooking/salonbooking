@@ -1,5 +1,7 @@
 <?php
 
+use Salon\Util\Date;
+
 class SLN_Wrapper_Booking_Cache extends SLN_Wrapper_Booking_AbstractCache
 {
     public function __construct(SLN_Plugin $plugin)
@@ -16,7 +18,7 @@ class SLN_Wrapper_Booking_Cache extends SLN_Wrapper_Booking_AbstractCache
         return parent::processBooking($booking, $isNew);
     }
 
-    public function getDay(DateTime $day)
+    public function getDay(Date $day)
     {
         $ret = parent::getDay($day);
 
@@ -28,6 +30,11 @@ class SLN_Wrapper_Booking_Cache extends SLN_Wrapper_Booking_AbstractCache
         $ret = parent::getFullDays();
 
         return apply_filters('sln.booking_cache.getFullDays', $ret);
+    }
+
+    public function hasFullDay(Date $date){
+    	$fullDays = $this->getFullDays();
+	    return $fullDays && in_array($date->toString(), $fullDays);
     }
 
     public function refreshAll()

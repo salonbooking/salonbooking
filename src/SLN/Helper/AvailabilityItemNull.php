@@ -1,18 +1,22 @@
 <?php
 
+use Salon\Util\Date;
+use Salon\Util\Time;
+use Salon\Util\TimeInterval;
+
 class SLN_Helper_AvailabilityItemNull extends SLN_Helper_AvailabilityItem
 {
-    public function isValidDate($date)
+    public function isValidDate( Date $date)
     {
         return true;
     }
 
-    public function isValidTime(SLN_Time $time)
+    public function isValidTime( Time $time)
     {
         return true;
     }
 
-    public function isValidTimeInterval(SLN_Helper_TimeInterval $interval)
+    public function isValidTimeInterval( TimeInterval $interval)
     {
         return true;
     }

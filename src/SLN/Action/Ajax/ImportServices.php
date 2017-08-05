@@ -44,7 +44,7 @@ class SLN_Action_Ajax_ImportServices extends SLN_Action_Ajax_AbstractImport
     {
         parent::__construct($plugin);
 
-        $this->type = $plugin::POST_TYPE_SERVICE;
+        $this->type = SLN_Plugin::POST_TYPE_SERVICE;
     }
 
     protected function processRow($data)

@@ -11,7 +11,7 @@ $ah = $plugin->getAvailabilityHelper();
 $ah->setDate($plugin->getBookingBuilder()->getDateTime());
 $bookingServices = SLN_Wrapper_Booking_Services::build($bb->getAttendantsIds(), $bb->getDateTime());
 
-$duration      = new SLN_DateTime('1970-01-01 '.$bb->getDuration());
+//$duration      = new SLN_DateTime('1970-01-01 '.$bb->getDuration());
 $hasAttendants = false;
 $style         = $step->getShortcode()->getStyleShortcode();
 $size          = SLN_Enum_ShortcodeStyle::getSize($style);

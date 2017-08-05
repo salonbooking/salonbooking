@@ -1,5 +1,7 @@
 <?php
 
+use Salon\Util\Date;
+
 class SLN_Helper_Intervals
 {
     /** @var  SLN_Helper_Availability */
@@ -23,20 +25,20 @@ class SLN_Helper_Intervals
     {
         $this->initialDate = $this->bindInitialDate($date);
         $ah                = $this->availabilityHelper;
-        $times             = $ah->getCachedTimes($date, $duration);
+        $times             = $ah->getCachedTimes(Date::create($date), $duration);
         $interval          = $ah->getHoursBeforeHelper();
         $to                = $interval->getToDate();
         $clone             = clone $date;
         while (empty($times) && $date <= $to) {
             $date->modify('+1 days');
-            $times = $ah->getCachedTimes($date, $duration);
+            $times = $ah->getCachedTimes( Date::create($date), $duration);
         }
         if (empty($times)) {
             $date = $clone;
             $from = $interval->getFromDate();
             while (empty($times) && $date >= $from) {
                 $date->modify('-1 days');
-                $times = $ah->getCachedTimes($date, $duration);
+                $times = $ah->getCachedTimes(Date::create($date), $duration);
             }
         }
         $this->times   = $times;
