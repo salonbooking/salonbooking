@@ -122,8 +122,8 @@ class SLN_Helper_AvailabilityItem
                 $ret[] = $days[$d];
             }
         }
-        $allDays = empty($ret);
-        $ret     = implode('-', $ret);
+        $allDays = count($ret) == 7;
+        $ret     = $allDays ? null : implode('-', $ret);
         $format  = SLN_Plugin::getInstance()->format();
 	    foreach ( $this->times as $t ) {
 		    if ( ! ( $t->isAlways() || $t->isNever() ) ) {
