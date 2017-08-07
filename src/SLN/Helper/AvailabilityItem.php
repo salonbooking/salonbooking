@@ -71,8 +71,7 @@ class SLN_Helper_AvailabilityItem
      */
     private function isValidDayOfWeek(Date $date)
     {
-    	//when no day is selected then all days are valid
-	    return empty($this->data['days']) || isset( $this->data['days'][ $date->getWeekday() + 1 ] );
+        return isset($this->data['days']) && isset( $this->data['days'][ $date->getWeekday() + 1 ] );
     }
 
     /**
