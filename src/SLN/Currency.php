@@ -4,6 +4,7 @@ class SLN_Currency
 {
     private static $currencies = array(
         'AUD' => array('name' => 'Australian Dollar', 'symbol' => 'A$', 'ASCII' => 'A&#36;'),
+        'AED' => array('name' => 'United Arab Emirates dirham', 'symbol' => 'د.إ', 'ASCII' => ''),
         'ARS' => array('name' => 'Argentine Peso', 'symbol' => '$', 'ASCII' => 'A&#36;'),
         'UAH' => array('name' => 'Ukrainian Hryvnia', 'symbol' => '₴', 'ASCII' => '&#8372;'),
         'BRL' => array('name' => 'Brazilian Real', 'symbol' => 'R$', 'ASCII' => '&#x0024;'),
