@@ -1,4 +1,4 @@
-<div class="row sln-service">
+<div class="row sln-service sln-service--<?php echo $service->getId(); ?>">
     <div class="col-md-12">
         <div class="row sln-steps-info sln-service-info">
             <div class="col-xs-2 col-sm-1 sln-checkbox sln-steps-check sln-service-check">

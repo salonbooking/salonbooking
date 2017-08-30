@@ -1,4 +1,4 @@
-<div class="row sln-service">
+<div class="row sln-service sln-service--<?php echo $service->getId(); ?>">
     <div class="col-xs-2 col-sm-1 sln-checkbox sln-steps-check sln-service-check <?php echo  $bb->hasService($service) ? 'is-checked' : '' ?>">
         <?php SLN_Form::fieldCheckbox('sln[services]['.$service->getId().']', $bb->hasService($service), $settings) ?>
         <label for="<?php echo SLN_Form::makeID('sln[services][' . $service->getId() . ']') ?>"></label>
