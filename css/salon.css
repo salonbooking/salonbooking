@@ -2106,6 +2106,9 @@ ul.sln-list--dashed li,
   font-size: 11px;
   color: #e8d826; }
 
+#sln-salon-my-account .feedback {
+  text-align: center; }
+
 #sln-salon-my-account .sln-my-account-message {
   display: block;
   border: solid 1px #ddd;

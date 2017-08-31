@@ -24,6 +24,7 @@
 					<?php if(in_array($item['status_code'], array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED))): ?>
 						<input type="hidden" name="sln-rating" value="<?php echo $item['rating']; ?>">
 						<div class="rating" id="<?php echo $item['id']; ?>" style="display: none;"></div>
+                        <div class="feedback"><?php echo $item['feedback'] ?></div>
 					<?php endif; ?>
 				<?php endif; ?>
 			</div>
