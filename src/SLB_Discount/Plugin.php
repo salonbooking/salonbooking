@@ -64,7 +64,7 @@ class SLB_Discount_Plugin {
 	public function hook_init() {
 		$plugin = $this->getSlnPlugin();
 		$plugin->addRepository(
-			new SLB_Discount_DiscountRepository(
+			new SLB_Discount_Repository_DiscountRepository(
 				$plugin,
 				new SLB_Discount_PostType_Discount($plugin, self::POST_TYPE_DISCOUNT)
 			)

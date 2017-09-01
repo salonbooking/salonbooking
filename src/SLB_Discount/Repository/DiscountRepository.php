@@ -1,6 +1,6 @@
 <?php
 
-class SLB_Discount_DiscountRepository extends SLN_Repository_AbstractWrapperRepository
+class SLB_Discount_Repository_DiscountRepository extends SLN_Repository_AbstractWrapperRepository
 {
     private $discounts;
 

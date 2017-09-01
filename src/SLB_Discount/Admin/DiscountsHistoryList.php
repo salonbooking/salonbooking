@@ -4,7 +4,7 @@ if (!class_exists('WP_Posts_List_Table')) {
 	_get_list_table('WP_Posts_List_Table');
 }
 
-class SLB_Discount_Admin_Discounts_HistoryList extends WP_Posts_List_Table {
+class SLB_Discount_Admin_DiscountsHistoryList extends WP_Posts_List_Table {
 
 	protected function get_bulk_actions() {
 		return array();

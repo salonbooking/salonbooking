@@ -21,8 +21,8 @@
         get_current_screen()->id = 'edit-sln_booking';
         get_current_screen()->post_type = SLN_Plugin::POST_TYPE_BOOKING;
 
-        /** @var SLB_Discount_Admin_Discounts_HistoryList $wp_list_table */
-        $wp_list_table = new SLB_Discount_Admin_Discounts_HistoryList();
+        /** @var SLB_Discount_Admin_DiscountsHistoryList $wp_list_table */
+        $wp_list_table = new SLB_Discount_Admin_DiscountsHistoryList();
 
         $wp_list_table->prepare_items();
 

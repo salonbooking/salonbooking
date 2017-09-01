@@ -37,8 +37,8 @@ function sln_autoload($className) {
     );
     foreach($discountAppPrefixes as $prefix) {
         if (strpos($className, $prefix) === 0) {
-            $className = str_replace(array("__", "_"), array("/", "-"), strtolower(substr($className, strlen($prefix))));
-            $filename = SLN_PLUGIN_DIR . "/src/SLB_Discount/{$className}.php";
+            $classWithoutPrefix = str_replace("_", "/", substr($className, strlen($prefix)));
+            $filename           = SLN_PLUGIN_DIR . "/src/SLB_Discount/{$classWithoutPrefix}.php";
             if (file_exists($filename)) {
                 require_once($filename);
                 return;
