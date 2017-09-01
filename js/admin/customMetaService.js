@@ -6,6 +6,9 @@ jQuery(function ($) {
     if (url.indexOf("taxonomy=sln_service_category") > -1) {
         initServiceCategoryManagement($);
     }
+    if (url.indexOf("post_type=sln_attendant") > -1) {
+        initAttendantManagement($);
+    }
     sln_dataAttendant($);
 });
 
@@ -77,6 +80,45 @@ function initServiceCategoryManagement($) {
                     data: {
                         action: 'sln_service',
                         method: 'save_cat_position',
+                        data: 'positions=' + pos,
+                    }
+                }).done(function (msg) {
+                    console.log(msg);
+                });
+            }
+        }
+    });
+    $("tbody").disableSelection();
+}
+
+function initAttendantManagement($) {
+    $("tbody").sortable({
+        start: function (event, ui) {
+            $(ui.item).data("startindex", ui.item.index());
+        },
+        stop: function (event, ui) {
+            var $item = ui.item;
+            var startIndex = $item.data("startindex") + 1;
+            var newIndex = $item.index() + 1;
+            if (newIndex != startIndex) {
+                var i = 1,
+                    pos = [];
+                $('tr').map(function () {
+                    var post = $(this)[0].id;
+                    if (post.indexOf("post-") > -1) {
+                        post = post.split('post-')[1];
+                        pos.push(post + '_' + i);
+                        i++;
+                    }
+
+                });
+                jQuery.ajax({
+                    type: "POST",
+                    url: ajaxurl,
+                    dataType: "json",
+                    data: {
+                        action: 'sln_attendant',
+                        method: 'save_position',
                         data: 'positions=' + pos,
                     }
                 }).done(function (msg) {

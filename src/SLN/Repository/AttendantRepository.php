@@ -2,6 +2,8 @@
 
 class SLN_Repository_AttendantRepository extends SLN_Repository_AbstractWrapperRepository
 {
+    const ATTENDANT_ORDER = '_sln_attendant_order';
+
     private $attendants;
 
     public function getWrapperClass()
@@ -48,15 +50,15 @@ class SLN_Repository_AttendantRepository extends SLN_Repository_AbstractWrapperR
                 'meta_query' => array(
                     'relation' => 'OR',
                     array(
-                        'key'     => self::SERVICE_ORDER,
+                        'key'     => self::ATTENDANT_ORDER,
                         'compare' => 'EXISTS',
                     ),
                     array(
-                        'key'     => self::SERVICE_ORDER,
+                        'key'     => self::ATTENDANT_ORDER,
                         'compare' => 'NOT EXISTS',
                     ),
                 ),
-                'orderby'    => self::SERVICE_ORDER,
+                'orderby'    => self::ATTENDANT_ORDER,
                 'order'      => 'ASC',
             );
             unset($criteria['@sort']);
@@ -65,5 +67,48 @@ class SLN_Repository_AttendantRepository extends SLN_Repository_AbstractWrapperR
         $criteria = apply_filters('sln.repository.attendant.processCriteria', $criteria);
 
         return parent::processCriteria($criteria);
+    }
+
+    public function getStandardCriteria()
+    {
+        return $this->processCriteria(array('@sort' => true));
+    }
+
+    /**
+     * @param SLN_Wrapper_Attendant[] $attendants
+     *
+     * @return SLN_Wrapper_Attendant[]
+     */
+    public function sortByPos($attendants)
+    {
+        usort($attendants, array($this, 'attendantPosCmp'));
+
+        return $attendants;
+    }
+
+    public static function attendantPosCmp($a, $b)
+    {
+        if ( ! $b) {
+            return $a;
+        }
+        if ( ! $a) {
+            return $b;
+        }
+        if ( ! $a instanceof SLN_Wrapper_Attendant) {
+            $a = SLN_Plugin::getInstance()->createAttendant($a);
+        }
+        if ( ! $b instanceof SLN_Wrapper_Attendant) {
+            $b = SLN_Plugin::getInstance()->createAttendant($b);
+        }
+
+        /** @var SLN_Wrapper_Attendant $a */
+        /** @var SLN_Wrapper_Attendant $b */
+        $aOrder = $a->getPosOrder();
+        $bOrder = $b->getPosOrder();
+        if ($aOrder > $bOrder) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }

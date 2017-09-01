@@ -33,6 +33,13 @@ class SLN_Wrapper_Attendant extends SLN_Wrapper_Abstract implements SLN_Wrapper_
         return $this->getMeta('phone');
     }
 
+    function getPosOrder()
+    {
+        $ret = $this->getMeta('order');
+        $ret     = empty($ret) ? 0 : $ret;
+
+        return $ret;
+    }
 
     function isNotAvailableOnDate(SLN_DateTime $date)
     {

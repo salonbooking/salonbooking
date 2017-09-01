@@ -90,13 +90,7 @@ class SLN_Metabox_Service extends SLN_Metabox_Abstract
     {
         parent::enqueueAssets();
         SLN_Action_InitScripts::enqueueCustomSliderRange();
-        wp_enqueue_script(
-            'salon-customMetaService',
-            SLN_PLUGIN_URL.'/js/admin/customMetaService.js',
-            array('jquery'),
-            SLN_Action_InitScripts::ASSETS_VERSION,
-            true
-        );
+        SLN_Action_InitScripts::enqueueCustomMetaService();
     }
 
 
