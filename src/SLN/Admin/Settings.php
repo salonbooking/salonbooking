@@ -90,6 +90,7 @@ class SLN_Admin_Settings
         'enabled_fb_login',
         'fb_app_id',
         'services_count',
+        'disable_discount_system',
         'checkout_fields',
     );
 

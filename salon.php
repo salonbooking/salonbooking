@@ -21,12 +21,29 @@ function sln_autoload($className) {
         $filename = SLN_PLUGIN_DIR . "/src/" . str_replace("_", "/", $className) . '.php';
         if (file_exists($filename)) {
             require_once($filename);
+            return;
         }
     }elseif(strpos($className, 'Salon')=== 0) {
 	    $filename = SLN_PLUGIN_DIR . "/src/" . str_replace("\\", "/", $className) . '.php';
 	    if (file_exists($filename)) {
 		    require_once($filename);
+            return;
 	    }
+    }
+
+    $discountAppPrefixes = array(
+        'SLB_Discount_',
+        'SLN_',
+    );
+    foreach($discountAppPrefixes as $prefix) {
+        if (strpos($className, $prefix) === 0) {
+            $className = str_replace(array("__", "_"), array("/", "-"), strtolower(substr($className, strlen($prefix))));
+            $filename = SLN_PLUGIN_DIR . "/src/SLB_Discount/{$className}.php";
+            if (file_exists($filename)) {
+                require_once($filename);
+                return;
+            }
+        }
     }
 }
 

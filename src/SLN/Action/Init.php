@@ -54,6 +54,11 @@ class SLN_Action_Init
 
         new SLN_Action_InitScripts($this->plugin, is_admin());
         $this->initPolylangSupport();
+
+        $enableDiscountSystem = ! $p->getSettings()->get('disable_discount_system');
+        if ($enableDiscountSystem) {
+            SLB_Discount_Plugin::getInstance();
+        }
     }
 
 
