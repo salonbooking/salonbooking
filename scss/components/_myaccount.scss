@@ -245,17 +245,20 @@ $cl_ok: #5bc24c;
       font-size:        14px;
       white-space:      nowrap;
     }
-
     .rating img {
       vertical-align: text-bottom;
     }
-
     .rating i {
       vertical-align: auto;
       vertical-align: initial;
       font-size: 11px;
       color: #e8d826;
     }
+
+    .feedback {
+      text-align: center;
+    }
+
     .sln-my-account-message {
       display: block;
       border: solid 1px $bg-contrast-high;

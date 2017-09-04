@@ -110,7 +110,11 @@ class SLN_Shortcode_SalonMyAccount_Details
 		return $result;
 	}
 
-	private function prepareBooking($booking) {
+    /**
+     * @param SLN_Wrapper_Booking $booking
+     * @return array
+     */
+    private function prepareBooking($booking) {
         $format = $this->plugin->format();
         $serviceNames = array();
         foreach($booking->getServices() as $s){
@@ -122,17 +126,24 @@ class SLN_Shortcode_SalonMyAccount_Details
 	        $total .= ' (' . $format->moneyFormatted($deposit) . ' ' .
 	                  __('already paid as deposit','salon-booking-system') . ')';
         }
+
+        $bId = $booking->getId();
+
+        $comments = get_comments("post_id={$bId}&type=sln_review");
+        $comment  = isset($comments[0]) ? $comments[0] : null;
+
 		return array(
-			'id' => $booking->getId(),
-			'date' => $format->date($booking->getStartsAt()),
-			'time' => $format->time($booking->getStartsAt()),
-			'timestamp' => strtotime($booking->getStartsAt()),
-			'services' => implode("<br>", $serviceNames),
-			'assistant' => $booking->getAttendantsString(),
-			'total' => $total,
-			'status' => SLN_Enum_BookingStatus::getLabel($booking->getStatus()),
-			'status_code' => $booking->getStatus(),
-			'rating' => $booking->getRating(),
+            'id'          => $bId,
+            'date'        => $format->date($booking->getStartsAt()),
+            'time'        => $format->time($booking->getStartsAt()),
+            'timestamp'   => strtotime($booking->getStartsAt()),
+            'services'    => implode("<br>", $serviceNames),
+            'assistant'   => $booking->getAttendantsString(),
+            'total'       => $total,
+            'status'      => SLN_Enum_BookingStatus::getLabel($booking->getStatus()),
+            'status_code' => $booking->getStatus(),
+            'rating'      => $booking->getRating(),
+            'feedback'    => !empty($comment) ? $comment->comment_content : '',
 		);
 	}
 
