@@ -69,8 +69,8 @@ $plugin = SLN_Plugin::getInstance();
                 <div class="row">
                     <div class="col-xs-12 form-group">
                         <div class="sln-checkbox">
-                            <?php $this->row_input_checkbox('disable_discount_system', __('Disable Advanced Discount System', 'salon-booking-system')); ?>
-                            <p class="sln-input-help"><?php _e('Check this box if you want to disable the Discount section', 'salon-booking-system') ?></p>
+                            <?php $this->row_input_checkbox('enable_discount_system', __('Enable', 'salon-booking-system')); ?>
+                            <p class="sln-input-help"><?php _e('Check this box if you want to enable the Discount section', 'salon-booking-system') ?></p>
                         </div>
                     </div>
                 </div>
