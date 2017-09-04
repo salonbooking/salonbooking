@@ -8,11 +8,15 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
         parent::init();
 
         if (is_admin()) {
+            add_action('pre_get_posts', array($this, 'admin_posts_sort'));
+            add_action('wp_insert_post', array($this, 'wp_insert_post'));
             add_action('manage_'.$this->getPostType().'_posts_custom_column', array($this, 'manage_column'), 10, 2);
             add_filter('manage_'.$this->getPostType().'_posts_columns', array($this, 'manage_columns'));
             add_filter('manage_edit-'.$this->getPostType().'_sortable_columns', array($this, 'custom_columns_sort'));
             add_action('admin_head-post-new.php', array($this, 'posttype_admin_css'));
             add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
+            add_action('admin_enqueue_scripts', array($this, 'load_scripts'));
+            add_action('wp_ajax_sln_attendant', array($this, 'ajax'));
             add_filter('post_row_actions', array($this, 'post_row_actions'), 10, 2);
         }
     }
@@ -22,6 +26,85 @@ class SLN_PostType_Attendant extends SLN_PostType_Abstract
             'title' => 'title',
         );
         return $custom;
+    }
+
+    /**
+     * @param WP_Query $query
+     */
+    function admin_posts_sort($query)
+    {
+        global $pagenow, $post_type;
+
+        if (is_admin() && 'edit.php' == $pagenow && $post_type == $this->getPostType() && $query->get('orderby') !== 'title') {
+            /** @var SLN_Repository_AttendantRepository $repo */
+            $repo = $this->getPlugin()->getRepository($this->getPostType());
+            foreach ($repo->getStandardCriteria() as $k => $v) {
+                $query->set($k, $v);
+            }
+
+            $this->setPostsOrderByFilter();
+        }
+    }
+
+    public function setPostsOrderByFilter() {
+        add_filter('posts_orderby', array($this, 'postsOrderby'), 10, 2);
+    }
+
+    /**
+     * @param string $orderby
+     * @param WP_Query $query
+     *
+     * @return string
+     */
+    public function postsOrderby($orderby, $query) {
+        global $wpdb;
+        remove_filter('posts_orderby', array($this, 'postsOrderby'), 10);
+
+        return str_replace("{$wpdb->postmeta}.meta_value", "CAST({$wpdb->postmeta}.meta_value AS DECIMAL)", $orderby);
+    }
+
+    public function load_scripts()
+    {
+        wp_enqueue_script('jquery-ui-core');
+        wp_enqueue_script('jquery-ui-sortable');
+    }
+
+    public function wp_insert_post($post_id, $wp_error = false)
+    {
+        global $post_type;
+
+        if ($post_type == $this->getPostType()) {
+            if (!get_post_meta($post_id, '_sln_attendant_order', true)) {
+                $count_pages = wp_count_posts($this->getPostType());
+                $pos = $count_pages->publish + 1;
+                add_post_meta($post_id, '_sln_attendant_order', $pos, true);
+            }
+        }
+    }
+
+    public function ajax()
+    {
+        if (isset($_POST['method'])) {
+            $method = 'ajax_'.$_POST['method'];
+            if (method_exists($this, $method)) {
+                $this->$method();
+            }
+        }
+        die();
+    }
+
+    public function ajax_save_position()
+    {
+        parse_str($_POST['data'], $params);
+
+        if (!isset($params['positions'])) {
+            return;
+        }
+
+        foreach (explode(',', $params['positions']) as $item) {
+            list($post_id, $pos) = explode('_', $item);
+            update_post_meta($post_id, '_sln_attendant_order', $pos);
+        }
     }
 
     public function post_row_actions($actions, $post) {

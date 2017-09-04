@@ -11,6 +11,12 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
         'google_calendar' => 'nofilter',
     );
 
+    protected function init()
+    {
+        parent::init();
+        add_action('admin_print_styles-edit.php', array($this, 'admin_print_styles'));
+    }
+
     public function add_meta_boxes()
     {
         $postType = $this->getPostType();
@@ -102,5 +108,6 @@ class SLN_Metabox_Attendant extends SLN_Metabox_Abstract
     {
         parent::enqueueAssets();
         SLN_Action_InitScripts::enqueueCustomSliderRange();
+        SLN_Action_InitScripts::enqueueCustomMetaService();
     }
 }

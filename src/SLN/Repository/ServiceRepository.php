@@ -166,10 +166,10 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
         if ( ! $a) {
             return $b;
         }
-        if ( ! $a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
+        if ( ! $a instanceof SLN_Wrapper_Service) {
             $a = SLN_Plugin::getInstance()->createService($a);
         }
-        if ( ! $b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
+        if ( ! $b instanceof SLN_Wrapper_Service) {
             $b = SLN_Plugin::getInstance()->createService($b);
         }
 
@@ -192,12 +192,15 @@ class SLN_Repository_ServiceRepository extends SLN_Repository_AbstractWrapperRep
         if ( ! $a) {
             return $b;
         }
-        if ( ! $a instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $a */ {
+        if ( ! $a instanceof SLN_Wrapper_Service)  {
             $a = SLN_Plugin::getInstance()->createService($a);
         }
-        if ( ! $b instanceof SLN_Wrapper_Service) /** @var SLN_Wrapper_Service $b */ {
+        if ( ! $b instanceof SLN_Wrapper_Service)  {
             $b = SLN_Plugin::getInstance()->createService($b);
         }
+
+        /** @var SLN_Wrapper_Service $a */
+        /** @var SLN_Wrapper_Service $b */
         $aExecOrder = $a->getExecOrder();
         $bExecOrder = $b->getExecOrder();
         if ($aExecOrder != $bExecOrder) {

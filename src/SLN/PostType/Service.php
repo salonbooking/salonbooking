@@ -28,6 +28,9 @@ class SLN_PostType_Service extends SLN_PostType_Abstract
         return $custom;
     }
 
+    /**
+     * @param WP_Query $query
+     */
     function admin_posts_sort($query)
     {
         global $pagenow, $post_type;

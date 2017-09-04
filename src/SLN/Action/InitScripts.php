@@ -122,6 +122,17 @@ class SLN_Action_InitScripts
 
     }
 
+    public static function enqueueCustomMetaService()
+    {
+        wp_enqueue_script(
+            'salon-customMetaService',
+            SLN_PLUGIN_URL.'/js/admin/customMetaService.js',
+            array('jquery'),
+            SLN_Action_InitScripts::ASSETS_VERSION,
+            true
+        );
+    }
+
     public static function enqueueCustomBookingUser()
     {
         wp_enqueue_script(
