@@ -123,6 +123,8 @@ function sln_init($) {
             $('#sln_password_confirm').attr('disabled', false).parent().css('display', 'block');
         }
     }).change();
+
+    salonBookingCalendarInit();
 }
 function sln_loadStep($, data) {
     var loadingMessage = '<div class="sln-loader-wrapper"><div class="sln-loader">Loading...</div></div>';
@@ -733,4 +735,40 @@ function facebookRefreshPageCallback(response) {
         alert('error');
         console.log(response);
     }
+}
+
+function salonBookingCalendarInit() {
+    if (jQuery('.sln-salon-booking-calendar-wrap').size() === 0) {
+        return;
+    }
+    salonBookingCalendarInitTooltip();
+
+    setInterval(function() {
+        var data = '';
+        data    += "&action=salon&method=salonCalendar&security=" + salon.ajax_nonce;
+
+        jQuery.ajax({
+            url: salon.ajax_url,
+            data: data,
+            method: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                if (data.success) {
+                    jQuery('.sln-salon-booking-calendar-wrap').html(data.content);
+                    salonBookingCalendarInitTooltip();
+                }
+                else if (data.redirect) {
+                    window.location.href = data.redirect;
+                }
+                else if (data.errors) {
+                    // TODO: display errors
+                }
+            },
+            error: function(data){alert('error'); console.log(data);}
+        });
+    }, 10*1000);
+}
+
+function salonBookingCalendarInitTooltip() {
+    jQuery('[data-toggle="tooltip"]').tooltip();
 }
