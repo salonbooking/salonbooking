@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.8
-Stable tag: 3.14.4
+Stable tag: 3.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,7 @@ https://www.youtube.com/watch?v=2fb9JzouBsk&feature=youtu.be
 * Limit the number of services bookable at the same time
 * Control form fields
 * Log-in with Facebook account
+* Enable Advanced Discount System
 
 **Two ways Google Calendar synchronisation** 
 
@@ -132,6 +133,13 @@ https://www.youtube.com/watch?v=2fb9JzouBsk&feature=youtu.be
 * Service break ( now you can select up to 3 hours divided in multiples of your average session duration )
 * Conditional "Secondary services"
 * Direct booking link
+
+**Advanced Discount System**
+
+* Create unlimited coupon codes
+* Create unlimited discounts based on multiple criteria
+
+for more details on this section visit: http://salon.wordpresschef.it/downloads/advanced-discount-system-for-salon-booking/
 
 **Customers archive**
 
@@ -269,6 +277,14 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+04.09.2017
+
+* Advanced Discount System bundled into Salon Booking 
+* Drag&Drop to sort assistants order
+* Automatic refresh of "Assistants calendar" when new reservations has come
+* Display comment reviews inside "Reservations history" tab on "Booking my account" page
+
 
 26.07.2017
 
