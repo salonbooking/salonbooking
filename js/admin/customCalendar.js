@@ -15,6 +15,19 @@ function calendar_getHourFunc() {
     }
 }
 
+function calendar_getTimeFunc() {
+    return function (part) {
+        var time_start = this.options.time_start.split(":");
+        var time_split = parseInt(this.options.time_split);
+        var h = "" + ( parseInt(time_start[0]) );
+        var m = "" + ( parseInt(time_start[1]) + time_split * part );
+        var d = new Date();
+        d.setHours(h)
+        d.setMinutes(m);
+        return moment(d).format(calendarGetTimeFormat());
+    }
+}
+
 function calendar_getTransFunc() {
     return function (label) {
         return calendar_translations[label];
@@ -41,7 +54,7 @@ function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
     var options = {
 		time_start:         $('#calendar').data('timestart'),
 		time_end:           $('#calendar').data('timeend'),
-		time_split:         '30',
+		time_split:         $('#calendar').data('timesplit'),
 	
         events_source: ajaxUrl,
         view: 'month',
