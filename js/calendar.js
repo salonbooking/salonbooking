@@ -441,7 +441,6 @@ if(!String.prototype.formatNum) {
 		data.events = $self.applyAdvancedFilters(data.events);
 
 		var time_split = parseInt(this.options.time_split);
-		var time_split_count = 60 / time_split;
 
 		if(time_split <= 0) {
 			$.error(this.locale.error_timedevide);
@@ -450,7 +449,11 @@ if(!String.prototype.formatNum) {
 		var time_start = this.options.time_start.split(":");
 		var time_end = this.options.time_end.split(":");
 		var ms_per_line = (60000 * time_split);
-		var lines = parseInt( (parseInt(time_end[0]) - parseInt(time_start[0])) * time_split_count );
+
+		var time_diff = (parseInt(time_end[0])*60 + parseInt(time_end[1]))
+						 - (parseInt(time_start[0])*60 + parseInt(time_start[1]));
+
+		var lines = parseInt( time_diff / time_split );
 		
 
 		var start = new Date(this.options.position.start.getTime());
