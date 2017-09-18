@@ -57,26 +57,13 @@
 		<% }); %>
 
 		<div id="cal-day-panel-hour">
-			<!--<% for(i = 0; i < hours; i++){ %>
-				<div class="cal-day-hour">
-					<% for(l = 0; l < cal._hour_min(i); l++){ %>
-						<div class="row-fluid cal-day-hour-part">
-							<div class="span1 col-xs-1"><b><%= cal._hour(i, l) %></b></div>
-							<div class="span11 col-xs-11"></div>
-							<button type="button" class="sln-btn sln-btn--main sln-btn--medium pull-right"
-                                    data-action="add-event-by-date" data-event-date="<%= start.getFullYear() + '-' + start.getMonthFormatted() + '-' + start.getDateFormatted() %>"
-                                    data-event-time="<%= cal._hour(i, l) %>"><%= cal.locale.add_event %></button>
-						</div>
-				<% }; %>
-				</div>
-			<% }; %>-->
 			<% for(i = 0; i < lines; i++){ %>
 				<div class="row-fluid cal-day-hour-part">
 					<div class="span1 col-xs-1"><b><%= cal._time(i) %></b></div>
 					<div class="span11 col-xs-11"></div>
 					<button type="button" class="sln-btn sln-btn--main sln-btn--medium pull-right"
 							data-action="add-event-by-date" data-event-date="<%= start.getFullYear() + '-' + start.getMonthFormatted() + '-' + start.getDateFormatted() %>"
-							data-event-time="<%= cal._hour(i, l) %>"><%= cal.locale.add_event %></button>
+							data-event-time="<%= cal._time(i) %>"><%= cal.locale.add_event %></button>
 				</div>
 			<% }; %>
 		</div>
