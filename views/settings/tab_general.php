@@ -208,8 +208,8 @@ THIS BOX MUST BE HIDDEN IF NOT IN USE
                     <p class="sln-input-help"><?php _e('You can use [DATE], [TIME], [SALON NAME]','salon-booking-system') ?></p>
                 </div>
             </div>
-        </div>
-    </div>
+        
+    
 <!--
 THIS BOX MUST BE HIDDEN IF NOT IN USE
 <div class="sln-box-info">
@@ -226,14 +226,15 @@ THIS BOX MUST BE HIDDEN IF NOT IN USE
     </div>
 </div>
 -->
-    <div class="row">
-        <div class="col-xs-12">
+
             <div class="row">
                 <div class="col-sm-8 form-group sln-input--simple">
-                    <?php $this->row_input_textarea('booking_update_message', __('Default custom message on booking update', 'salon-booking-system')); ?>
+                    <?php $this->row_input_textarea('booking_update_message', __('Customize the booking reminder message', 'salon-booking-system')); ?>
                     <p class="sln-input-help"><?php _e('You can use [NAME], [SALON NAME]','salon-booking-system') ?></p>
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>
