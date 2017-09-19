@@ -41,11 +41,15 @@ jQuery(function ($) {
     $('[data-action=change-service-type]').change(function() {
         var $this   = $(this);
         var $target = $($this.attr('data-target'));
+        var $exclusive = $('#exclusive_service');
         if($this.is(':checked')) {
             $target.removeClass('hide');
+            $exclusive.addClass('hide');
+            $('#_sln_service_exclusive').val(0);
         }
         else {
             $target.addClass('hide');
+            $exclusive.removeClass('hide');
         }
     });
 

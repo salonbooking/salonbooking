@@ -67,6 +67,14 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract implements SLN_Wrapper_Se
         return $ret;
     }
 
+    function isExclusive()
+    {
+        $ret = $this->getMeta('exclusive');
+        $ret = empty($ret) ? false : ($ret ? true : false);
+
+        return $ret;
+    }
+
     function getPosOrder()
     {
         $ret = $this->getMeta('order');

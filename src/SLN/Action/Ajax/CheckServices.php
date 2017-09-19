@@ -22,7 +22,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
         $this->bindDate($_POST);
 
         $ret = array();
-
+        
         $services = isset($_POST['sln']['services']) ? $_POST['sln']['services'] : array();
         if (isset($_POST['part'])) {
             $part = $_POST['part'];
@@ -119,6 +119,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
         $data = array();
         foreach ($services as $sId) {
             $data[$sId] = array(
+                'service'        => $sId,
                 'attendant'      => $bookingData['attendants'][$sId],
                 'price'          => $bookingData['price'][$sId],
                 'duration'       => SLN_Func::convertToHoursMins($bookingData['duration'][$sId]),
@@ -190,6 +191,10 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                         );
                     }
                 }
+            }
+
+            if($bookingService->getService()->isExclusive() && count($bookingServices->getItems()) > 1) {
+                $serviceErrors[] = __('This service is exclusive. Please remove other services.', 'salon-booking-system');
             }
 
             $errors = array();

@@ -448,6 +448,25 @@ class SLN_Helper_Availability
             }
         }
 
+        $exclusiveServiceId = false;
+        foreach ($newServices as $service) {
+            if (in_array($service->getId(), $order)) {
+                if($service->isExclusive()) {
+                    $exclusiveServiceId = $service->getId();
+                    break;
+                }
+            }
+        }
+        foreach ($newServices as $service) {
+            if($exclusiveServiceId && $exclusiveServiceId != $service->getId()) {
+                $errorMsg = __(
+                    'This service is not available with exclusive service.',
+                    'salon-booking-system'
+                );
+                $ret[$service->getId()] = array($errorMsg);
+            }
+        }
+
         return $ret;
     }
 
