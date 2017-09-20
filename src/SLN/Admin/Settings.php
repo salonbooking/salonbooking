@@ -74,6 +74,7 @@ class SLN_Admin_Settings
         'follow_up_sms',
         'follow_up_interval',
         'follow_up_message',
+        'feedback_reminder',
         'soc_facebook',
         'soc_twitter',
         'soc_google',
@@ -344,6 +345,17 @@ class SLN_Admin_Settings
             wp_clear_scheduled_hook('sln_email_followup');
         }
 
+        if (isset($submitted['feedback_reminder']) && $submitted['feedback_reminder']) {
+            if (!wp_get_schedule('sln_email_feedback')) {
+                wp_schedule_event(time(), 'daily', 'sln_email_feedback');
+            }
+            error_log('start sln_email_feedback'); 
+            do_action('sln_email_feedback');
+        } else {
+            wp_clear_scheduled_hook('sln_email_feedback');
+        }
+
+        
 		if (isset($submitted['editors_manage_cap']) && $submitted['editors_manage_cap']) {
 			SLN_UserRole_SalonStaff::addCapabilitiesForRole('editor');
 		}

@@ -115,7 +115,7 @@ class SLN_Plugin
                 return 'text/html';
             }
         }
-
+echo $content; die();
         add_filter('wp_mail_content_type', 'sln_html_content_type');
         $headers = 'From: '.$this->getSettings()->getSalonName().' <'.$this->getSettings()->getSalonEmail().'>'."\r\n";
         if(empty($settings['to'])){
@@ -321,6 +321,12 @@ function sln_email_followup()
 {
     $obj = new SLN_Action_FollowUp(SLN_Plugin::getInstance());
     $obj->executeEmail();
+}
+
+function sln_email_feedback()
+{
+    $obj = new SLN_Action_Feedback(SLN_Plugin::getInstance());
+    $obj->execute();
 }
 
 function sln_cancel_bookings()

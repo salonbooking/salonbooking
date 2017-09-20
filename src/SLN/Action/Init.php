@@ -120,6 +120,7 @@ class SLN_Action_Init
         add_action('sln_email_reminder', 'sln_email_reminder');
         add_action('sln_sms_followup', 'sln_sms_followup');
         add_action('sln_email_followup', 'sln_email_followup');
+        add_action('sln_email_feedback', 'sln_email_feedback');
         add_action('sln_cancel_bookings', 'sln_cancel_bookings');
         add_action('sln_email_weekly_report', 'sln_email_weekly_report');
     }
@@ -178,7 +179,7 @@ class SLN_Action_Init
 
     public function template_redirect() {
         $customerHash = isset($_GET['sln_customer_login']) ? $_GET['sln_customer_login'] : '';
-
+        $feedback_id = isset($_GET['feedback_id']) ? $_GET['feedback_id'] : '';
         if (!empty($customerHash)) {
             $userid = SLN_Wrapper_Customer::getCustomerIdByHash($customerHash);
             if ($userid) {
@@ -193,10 +194,12 @@ class SLN_Action_Init
                         $id = $this->plugin->getSettings()->getBookingmyaccountPageId();
                         if ($id) {
                             $url = get_permalink($id);
+                            if(!empty($feedback_id)) {
+                                $url .= '#'. $feedback_id;
+                            }
                         }else{
                             $url = home_url();
                         }
-
                         wp_redirect($url);
                         exit;
                     }

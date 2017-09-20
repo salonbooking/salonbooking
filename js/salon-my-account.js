@@ -46,6 +46,11 @@ var slnMyAccount = {
                     jQuery('#sln-salon-my-account-content').html(data.content);
                     slnMyAccount.createRatings(true, 'circle');
                     jQuery("[data-toggle='tooltip']").tooltip();
+                    if(window.location.hash) {
+                        var feedback_id = window.location.hash.substring(1)
+                        slnMyAccount.showRateForm(feedback_id);
+                    }
+                    
                 }
             },
             error: function(data){alert('error'); console.log(data);}
