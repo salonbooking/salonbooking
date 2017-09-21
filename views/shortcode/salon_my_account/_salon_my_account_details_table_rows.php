@@ -2,6 +2,9 @@
 	<tr
 		<?php echo isset($data['table_data']['page']) ? 'data-page="'.$data['table_data']['page'].'"' : ''; ?>
 		<?php echo isset($data['table_data']['end']) ? 'data-end="'.$data['table_data']['end'].'"' : ''; ?>
+		<?php echo in_array($item['status_code'], array(SLN_Enum_BookingStatus::PAY_LATER, SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED))
+					 && empty($item['rating']) ? 'data-show-rate-form="1"' : ''; ?>
+		<?php echo 'data-item-id="'.$item['id'].'"'; ?>
 	>
 		<td data-th="<?php _e('ID','salon-booking-system');?>"><?php echo $item['id'] ?></td>
 		<td data-th="<?php _e('When','salon-booking-system');?>"><div><?php echo $item['date'] ?></div><div><?php echo $item['time'] ?></div></td>

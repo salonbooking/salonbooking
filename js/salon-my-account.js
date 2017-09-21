@@ -125,6 +125,10 @@ var slnMyAccount = {
     },
 
     showRateForm: function (id) {
+        if(jQuery('#sln-salon-my-account-history-content .table tr[data-item-id="' + id + '"]').data('show-rate-form') == undefined) {
+            return false;
+        }
+
         this.createRaty(jQuery("#ratingModal .rating"));
         jQuery("#ratingModal textarea").attr('id', id);
         jQuery("#ratingModal textarea").val('');
