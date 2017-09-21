@@ -38,6 +38,9 @@ class SLN_Shortcode_SalonMyAccount
 
             return $content;
         }
+        
+        $feedback_id = isset( $_GET[ 'feedback_id' ] ) ? intval( $_GET[ 'feedback_id' ] ) : false;
+        wp_add_inline_script( 'salon-my-account', 'slnMyAccount.feedback_id = ' . json_encode( $feedback_id ) . ';' );
 
         return $this->render();
     }

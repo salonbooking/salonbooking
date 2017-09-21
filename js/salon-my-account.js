@@ -35,7 +35,8 @@ var slnMyAccount = {
             data: {
                 action: 'salon',
                 method: 'myAccountDetails',
-                option: option
+                option: option,
+                feedback_id: slnMyAccount.feedback_id
             },
             method: 'POST',
             dataType: 'json',
@@ -46,9 +47,9 @@ var slnMyAccount = {
                     jQuery('#sln-salon-my-account-content').html(data.content);
                     slnMyAccount.createRatings(true, 'circle');
                     jQuery("[data-toggle='tooltip']").tooltip();
-                    if(window.location.hash) {
-                        var feedback_id = window.location.hash.substring(1)
-                        slnMyAccount.showRateForm(feedback_id);
+
+                    if( slnMyAccount.feedback_id ) {
+                        slnMyAccount.showRateForm( slnMyAccount.feedback_id  );
                     }
                     
                 }
@@ -125,10 +126,6 @@ var slnMyAccount = {
     },
 
     showRateForm: function (id) {
-        if(jQuery('#sln-salon-my-account-history-content .table tr[data-item-id="' + id + '"]').data('show-rate-form') == undefined) {
-            return false;
-        }
-
         this.createRaty(jQuery("#ratingModal .rating"));
         jQuery("#ratingModal textarea").attr('id', id);
         jQuery("#ratingModal textarea").val('');

@@ -195,7 +195,7 @@ class SLN_Action_Init
                         if ($id) {
                             $url = get_permalink($id);
                             if(!empty($feedback_id)) {
-                                $url .= '#'. $feedback_id;
+                                $url .= '?feedback_id='. $feedback_id;
                             }
                         }else{
                             $url = home_url();
