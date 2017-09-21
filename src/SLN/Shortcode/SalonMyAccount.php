@@ -45,11 +45,6 @@ class SLN_Shortcode_SalonMyAccount
             $feedback_id = intval( $_GET[ 'feedback_id' ] );
             $url = remove_query_arg( 'feedback_id' );
             
-            if( empty( $feedback_id ) ) {
-                wp_redirect( $url );
-                exit();
-            }
-
             $booking = new SLN_Wrapper_Booking( $feedback_id );
             if( $booking->getUserId() != get_current_user_id() || $booking->getRating() ) {
                 wp_redirect( $url );
