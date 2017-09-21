@@ -115,7 +115,7 @@ class SLN_Plugin
                 return 'text/html';
             }
         }
-echo $content; die();
+
         add_filter('wp_mail_content_type', 'sln_html_content_type');
         $headers = 'From: '.$this->getSettings()->getSalonName().' <'.$this->getSettings()->getSalonEmail().'>'."\r\n";
         if(empty($settings['to'])){

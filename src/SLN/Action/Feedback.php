@@ -19,9 +19,10 @@ class SLN_Action_Feedback
         $feedback_reminder = $p->getSettings()->get( 'feedback_reminder' );
         if ($feedback_reminder) {
             $p->addLog( 'feedback reminder execution' );
-            foreach ( $this->getCustomers() as $customer ) {
-                $this->send( $customer );
-                $p->addLog( 'feedback reminder sent to ' . $customer->getId() );
+            foreach ( $this->getBookings() as $booking ) {
+                $this->send( $booking );
+                $p->addLog( 'feedback reminder sent to ' . $booking->getId() );
+                $booking->setMeta('feedback', true);
             }
 
             $p->addLog( 'feedback reminder execution ended' );
@@ -30,27 +31,37 @@ class SLN_Action_Feedback
         SLN_TimeFunc::endRealTimezone();
     }
 
-    private function getCustomers() {
-        $ret         = array();
+    /**
+     * @return SLN_Wrapper_Booking[]
+     * @throws Exception
+     */
+    private function getBookings() {
+        $current_day = new DateTime( '- 1 day' );
 
-        $interval    = $this->interval;
-        $currentTime = current_time('Y-m-d');
+        $statuses = array( SLN_Enum_BookingStatus::PAID, SLN_Enum_BookingStatus::CONFIRMED, SLN_Enum_BookingStatus::PAY_LATER );
 
-        $user_query  = new WP_User_Query(array('role' => SLN_Plugin::USER_ROLE_CUSTOMER));
+        /** @var SLN_Repository_BookingRepository $repo */
+        $repo = $this->plugin->getRepository( SLN_Plugin::POST_TYPE_BOOKING );
+        $tmp = $repo->get(
+            array(
+                'post_status' => $statuses,
+                'day'         => $current_day,
+                'time@max'        => $current_day,
+            )
+        );
+        $ret = array();
+        foreach ( $tmp as $booking ) {
+            $done = $booking->getMeta('feedback');
 
-        foreach ( $user_query->get_results() as $user ) {
-            $customer = new SLN_Wrapper_Customer($user);
-
-            if ($customer->getLastBookingTime() && date('Y-m-d', strtotime($interval, strtotime($customer->getLastBookingTime()))) === $currentTime) {
-                $ret[] = $customer;
+            if ( !$done && SLN_Wrapper_Customer::isCustomer( $booking->getUserId() ) ) {
+                $ret[] = $booking;
             }
         }
-//echo '<pre>'; print_r($ret); die();
         return $ret;
     }
 
-    private function send( $customer ) {
+    private function send( $booking ) {
         $p = $this->plugin;
-        $p->sendMail('mail/feedback', compact('customer'));
+        $p->sendMail('mail/feedback', compact('booking'));
     }
 }
