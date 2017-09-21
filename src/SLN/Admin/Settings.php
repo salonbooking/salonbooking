@@ -349,8 +349,6 @@ class SLN_Admin_Settings
             if (!wp_get_schedule('sln_email_feedback')) {
                 wp_schedule_event(time(), 'daily', 'sln_email_feedback');
             }
-            error_log('start sln_email_feedback'); 
-            do_action('sln_email_feedback');
         } else {
             wp_clear_scheduled_hook('sln_email_feedback');
         }
