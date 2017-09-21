@@ -36,7 +36,6 @@ var slnMyAccount = {
                 action: 'salon',
                 method: 'myAccountDetails',
                 option: option,
-                feedback_id: slnMyAccount.feedback_id
             },
             method: 'POST',
             dataType: 'json',
@@ -167,6 +166,8 @@ var slnMyAccount = {
                         slnMyAccount.loadContent();
                         jQuery(this).dequeue();
                     });
+
+                    slnMyAccount.feedback_id = false;
                 }
             },
             error: function(data){alert('error'); console.log(data);}
