@@ -320,6 +320,15 @@ THIS BOX MUST BE HIDDEN IF NOT IN USE
     </div>
 </div>
 
+<div class="sln-box sln-box--main">
+    <h2 class="sln-box-title"><?php _e('Automatic feedback reminder','salon-booking-system') ?></h2>
+    <div class="row">
+        <div class="col-xs-12 form-group  sln-checkbox">
+            <?php $this->row_input_checkbox('feedback_reminder', __('Enable feedback submission request', 'salon-booking-system')); ?>
+            <p><?php _e('If enabled an email will be sent automatically to the customer one day after the last visit to the salon.', 'salon-booking-system') ?></p>
+        </div>
+    </div>
+</div>
 
 <div class="sln-box sln-box--main">
     <h2 class="sln-box-title"><?php _e('Date and Time settings','salon-booking-system') ?></h2>

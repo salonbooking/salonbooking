@@ -38,6 +38,20 @@ class SLN_Shortcode_SalonMyAccount
 
             return $content;
         }
+        
+        $feedback_id = false;
+
+        if( isset( $_GET[ 'feedback_id' ] ) ) {
+            $feedback_id = intval( $_GET[ 'feedback_id' ] );
+            $url = remove_query_arg( 'feedback_id' );
+            
+            $booking = new SLN_Wrapper_Booking( $feedback_id );
+            if( $booking->getUserId() != get_current_user_id() || $booking->getRating() ) {
+                wp_redirect( $url );
+                exit();
+            }
+        }
+        wp_add_inline_script( 'salon-my-account', 'slnMyAccount.feedback_id = ' . json_encode( $feedback_id ) . ';' );
 
         return $this->render();
     }

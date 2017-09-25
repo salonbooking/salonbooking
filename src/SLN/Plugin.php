@@ -323,6 +323,12 @@ function sln_email_followup()
     $obj->executeEmail();
 }
 
+function sln_email_feedback()
+{
+    $obj = new SLN_Action_Feedback(SLN_Plugin::getInstance());
+    $obj->execute();
+}
+
 function sln_cancel_bookings()
 {
     $obj = new SLN_Action_CancelBookings(SLN_Plugin::getInstance());

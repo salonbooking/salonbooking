@@ -35,7 +35,7 @@ var slnMyAccount = {
             data: {
                 action: 'salon',
                 method: 'myAccountDetails',
-                option: option
+                option: option,
             },
             method: 'POST',
             dataType: 'json',
@@ -46,6 +46,11 @@ var slnMyAccount = {
                     jQuery('#sln-salon-my-account-content').html(data.content);
                     slnMyAccount.createRatings(true, 'circle');
                     jQuery("[data-toggle='tooltip']").tooltip();
+
+                    if( slnMyAccount.feedback_id ) {
+                        slnMyAccount.showRateForm( slnMyAccount.feedback_id  );
+                    }
+                    
                 }
             },
             error: function(data){alert('error'); console.log(data);}
@@ -161,6 +166,8 @@ var slnMyAccount = {
                         slnMyAccount.loadContent();
                         jQuery(this).dequeue();
                     });
+
+                    slnMyAccount.feedback_id = false;
                 }
             },
             error: function(data){alert('error'); console.log(data);}

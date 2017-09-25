@@ -14,6 +14,16 @@ class SLN_Repository_BookingRepository extends SLN_Repository_AbstractWrapperRep
 
     protected function processCriteria($criteria)
     {
+        if (isset($criteria['time@max'])) {
+            $criteria['@wp_query']['meta_query'][] =
+                array(
+                    'key'     => '_sln_booking_time',
+                    'value'   => $criteria['time@max']->format('H:i'),
+                    'compare' => '<=',
+                );
+            unset($criteria['time@max']);
+        }
+
         if (isset($criteria['day'])) {
             $criteria['@wp_query']['meta_query'][] =
                 array(
@@ -43,7 +53,7 @@ class SLN_Repository_BookingRepository extends SLN_Repository_AbstractWrapperRep
                 unset($criteria['day@max']);
             }
         }
-
+        
         $criteria = apply_filters('sln.repository.booking.processCriteria', $criteria);
 
         return parent::processCriteria($criteria);
