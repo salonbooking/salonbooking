@@ -6,6 +6,7 @@ interface SLN_Wrapper_ServiceInterface
     function getUnitPerHour();
     function getDuration();
     function isSecondary();
+    function isExclusive();
     function getPosOrder();
     function getExecOrder();
     function getAttendantsIds();

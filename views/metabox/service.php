@@ -24,6 +24,12 @@ $helper->showNonce($postType);
         <label for="_sln_service_secondary"><?php _e('Secondary', 'salon-booking-system'); ?></label>
         <p><?php _e('Select this if you want this service considered as secondary level service','salon-booking-system'); ?></p>
     </div>
+    <div id="exclusive_service" class="col-sm-6 col-md-3 form-group sln-checkbox <?php echo ($service->isSecondary() ? 'hide' : ''); ?>">
+        <?php SLN_Form::fieldCheckbox($helper->getFieldName($postType, 'exclusive'), $service->isExclusive() ) ?>
+        <label for="_sln_service_exclusive"><?php _e('Exclusive service', 'salon-booking-system'); ?></label>
+        <p><?php _e('If enabled, when a customer choose this service no other services can be booked during the same reservation','salon-booking-system'); ?></p>
+    </div>
+    
     <div id="secondary_details" class="<?php echo ($service->isSecondary() ? '' : 'hide'); ?>">
         <div class="col-sm-6 col-md-3 form-group sln-select">
             <label><?php _e('Display if', 'salon-booking-system'); ?></label>
