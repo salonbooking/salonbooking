@@ -72,7 +72,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
 
     protected function innerInitServices($services, $merge, $newServices)
     {
-
+        
         $ret      = array();
         $mergeIds = array();
         foreach($merge as $s){
@@ -108,6 +108,14 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
             }
         }
 
+        $servicesExclusiveErrors = $this->ah->checkExclusiveServices( $validated, array_merge( $merge, $newServices ) );
+        foreach ($servicesExclusiveErrors as $sId => $error) {
+            if (empty($error)) {
+                $ret[$sId] = array('status' => self::STATUS_UNCHECKED, 'error' => '');
+            } else {
+                $ret[$sId] = array('status' => self::STATUS_ERROR, 'error' => $error[0]);
+            }
+        }
         return $ret;
     }
 

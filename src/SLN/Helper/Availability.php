@@ -448,8 +448,13 @@ class SLN_Helper_Availability
             }
         }
 
+        return $ret;
+    }
+
+    public function checkExclusiveServices($order, $services) {
+        $ret = array();
         $exclusiveServiceId = false;
-        foreach ($newServices as $service) {
+        foreach ($services as $service) {
             if (in_array($service->getId(), $order)) {
                 if($service->isExclusive()) {
                     $exclusiveServiceId = $service->getId();
@@ -457,7 +462,7 @@ class SLN_Helper_Availability
                 }
             }
         }
-        foreach ($newServices as $service) {
+        foreach ($services as $service) {
             if($exclusiveServiceId && $exclusiveServiceId != $service->getId()) {
                 $errorMsg = __(
                     'This service is not available with exclusive service.',
@@ -466,7 +471,6 @@ class SLN_Helper_Availability
                 $ret[$service->getId()] = array($errorMsg);
             }
         }
-
         return $ret;
     }
 
