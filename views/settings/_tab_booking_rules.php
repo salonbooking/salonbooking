@@ -44,7 +44,7 @@ SLN_Action_InitScripts::enqueueCustomSliderRange();
         <?php echo $plugin->loadView(
             'settings/_availability_row',
             array(
-                'row' => '__new__',
+                'row' => array(),
                 'rulenumber' => '__new__',
                 'prefix' => $base."[__new__]",
             )
