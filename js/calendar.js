@@ -1356,6 +1356,7 @@ if(!String.prototype.formatNum) {
             $editor.attr('src', editorLink);
 
             $('[data-action=save-edited-booking]').unbind('click').click(onClickSaveEditedBooking);
+			$('[data-action=delete-edited-booking]').unbind('click').click(onClickDeleteEditedBooking);
         }
 
         function onHideModal() {
@@ -1373,6 +1374,18 @@ if(!String.prototype.formatNum) {
                 $editor.contents().find('#save-post').click();
             }
         }
+
+		function onClickDeleteEditedBooking() {
+			var $editor = $('.booking-editor');
+            $editor.unbind('load.hide_modal').bind('load.hide_modal', onLoadAfterSubmit);
+            $editor.unbind('load.dismiss_spinner').bind('load.dismiss_spinner', onLoadDismissSpinner);
+            if(window.frames[0].sln_validateBooking()) {
+                launchLoadingSpinner();
+				var href = $editor.contents().find('.submitdelete').attr('href');
+				$.get( href );
+				$('#sln-booking-editor-modal').modal('hide');
+             }
+		}
 
         function onLoadDismissSpinner() {
             cancelLoadingSpinner();
