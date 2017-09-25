@@ -2,7 +2,7 @@
 $addAjax = apply_filters('sln.template.calendar.ajaxUrl','');
 $ai = $plugin->getSettings()->getAvailabilityItems();
 list($timestart, $timeend) = $ai->getTimeMinMax();
-
+$timesplit = $plugin->getSettings()->getInterval();
 ?>
 <script type="text/javascript">
     var salon;
@@ -216,7 +216,7 @@ jQuery(function($){
     </div>
 
         <div class="clearfix"></div>
-        <div id="calendar" data-timestart="<?php echo $timestart ?>" data-timeend="<?php echo $timeend ?>"></div>
+        <div id="calendar" data-timestart="<?php echo $timestart ?>" data-timeend="<?php echo $timeend ?>" data-timesplit="<?php echo $timesplit ?>"></div>
     <div class="clearfix"></div>
 
 <!-- row sln-calendar-wrapper // END -->

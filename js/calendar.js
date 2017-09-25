@@ -431,30 +431,30 @@ if(!String.prototype.formatNum) {
 
 		data.start = new Date(this.options.position.start.getTime());
 		data.lang = this.locale;
-
 		this.context.append(this.options.templates[this.options.view](data));
 		this._update();
 	};
 
 	Calendar.prototype._calculate_hour_minutes_daily = function(data) {
 		var $self = this;
-
+		
 		data.events = $self.applyAdvancedFilters(data.events);
 
 		var time_split = parseInt(this.options.time_split);
-		var time_split_count = 60 / time_split;
-		var time_split_hour = Math.min(time_split_count, 1);
 
-		if(((time_split_count >= 1) && (time_split_count % 1 != 0)) || ((time_split_count < 1) && (1440 / time_split % 1 != 0))) {
+		if(time_split <= 0) {
 			$.error(this.locale.error_timedevide);
 		}
 
 		var time_start = this.options.time_start.split(":");
 		var time_end = this.options.time_end.split(":");
-
-		data.hours = (parseInt(time_end[0]) - parseInt(time_start[0])) * time_split_hour;
-		var lines = data.hours * time_split_count - parseInt(time_start[1]) / time_split;
 		var ms_per_line = (60000 * time_split);
+
+		var time_diff = (parseInt(time_end[0])*60 + parseInt(time_end[1]))
+						 - (parseInt(time_start[0])*60 + parseInt(time_start[1]));
+
+		var lines = parseInt( time_diff / time_split );
+		
 
 		var start = new Date(this.options.position.start.getTime());
 		start.setHours(time_start[0]);
@@ -469,6 +469,7 @@ if(!String.prototype.formatNum) {
 		var current_page = !isNaN(parseInt($self.options._page)) ? parseInt($self.options._page) : 0;
 		var on_page 	 = parseInt($self.options.on_page);
 
+		data.lines = lines;
 		data.borders = on_page + 1;
 		data.headers = [];
 		data.all_day = [];
@@ -686,7 +687,7 @@ if(!String.prototype.formatNum) {
 		var time_split_count = 60 / time_split;
 		var time_split_hour = Math.min(time_split_count, 1);
 
-		if(((time_split_count >= 1) && (time_split_count % 1 != 0)) || ((time_split_count < 1) && (1440 / time_split % 1 != 0))) {
+		if(time_split <= 0) {
 			$.error(this.locale.error_timedevide);
 		}
 
@@ -777,6 +778,7 @@ if(!String.prototype.formatNum) {
         /** BEGIN SLN CUSTOMIZATIONS */
 	Calendar.prototype._hour = calendar_getHourFunc();
 	Calendar.prototype._trans = calendar_getTransFunc();
+	Calendar.prototype._time = calendar_getTimeFunc();
       
 /*
 	Calendar.prototype._hour = function(hour, part) {
@@ -1329,6 +1331,7 @@ if(!String.prototype.formatNum) {
         $('[data-action=add-event-by-date]').unbind('click').click(function() {
             bookingDate = $(this).data('event-date');
             bookingTime = $(this).data('event-time');
+			console.log('bookingDate='+bookingDate+' bookingTime='+bookingTime);
             bookingId   = undefined;
             show_booking_editor();
         });
