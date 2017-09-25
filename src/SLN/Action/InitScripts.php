@@ -39,7 +39,7 @@ class SLN_Action_InitScripts
         $params = array(
             'ajax_url'                  => admin_url('admin-ajax.php').'?lang='.(defined(
                     'ICL_LANGUAGE_CODE'
-                ) ? 'ICL_LANGUAGE_CODE' : $lang),
+                ) ? ICL_LANGUAGE_CODE : $lang),
             'ajax_nonce'                => wp_create_nonce('ajax_post_validation'),
             'loading'                   => SLN_PLUGIN_URL.'/img/preloader.gif',
             'txt_validating'            => __('checking availability', 'salon-booking-system'),
