@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.8
-Stable tag: 3.15
+Stable tag: 3.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,7 +50,8 @@ https://www.youtube.com/watch?v=2fb9JzouBsk&feature=youtu.be
 * Email notifications on new reservation
 * Email notification to selected assistant
 * Email reminder for the customers
-* Email followup 
+* Email followup
+* Email review notification
 * Email notification custom logo
 * Custom email message to the customers
 
@@ -133,6 +134,7 @@ https://www.youtube.com/watch?v=2fb9JzouBsk&feature=youtu.be
 * Service break ( now you can select up to 3 hours divided in multiples of your average session duration )
 * Conditional "Secondary services"
 * Direct booking link
+* Exclusive service
 
 **Advanced Discount System**
 
@@ -277,6 +279,15 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+26.09.2017
+
+* Fixed missing alert on Assistant unavailability when adding reservations from back-end
+* Added "DELETE" button on "New reservations from back-end calendar"
+* Fixed bug with Swedish language
+* Fixed "Invalid license" issue
+* Added a new option to send out an email to the client after one day from the last appointment asking for a review submission
+* Fixed bug with php 5.3 version
 
 04.09.2017
 
