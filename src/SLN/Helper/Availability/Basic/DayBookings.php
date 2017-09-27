@@ -8,6 +8,8 @@ class SLN_Helper_Availability_Basic_DayBookings extends SLN_Helper_Availability_
      */
     public function getTime($hour = null, $minutes = null) {
         $now = clone $this->getDate();
+        $now->setTime($hour, $minutes ? $minutes : 0);
+
         return $now;
     }
 

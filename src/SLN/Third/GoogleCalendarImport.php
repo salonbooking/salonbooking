@@ -272,13 +272,7 @@ class SLN_Third_GoogleCalendarImport
                     }
                 }
 
-                $serviceErrors = $ah->validateService(
-                    $bookingService->getService(),
-                    $bookingService->getStartsAt(),
-                    $bookingService->getTotalDuration(),
-                    $bookingService->getBreakStartsAt(),
-                    $bookingService->getBreakEndsAt()
-                );
+                $serviceErrors = $ah->validateBookingService($bookingService);
                 if (!empty($serviceErrors)) {
                     throw new SLN_Exception(reset($serviceErrors));
                 }
@@ -308,13 +302,7 @@ class SLN_Third_GoogleCalendarImport
                         throw new SLN_Exception(reset($attendantErrors));
                     }
 
-                    $attendantErrors = $ah->validateAttendant(
-                        $bookingService->getAttendant(),
-                        $bookingService->getStartsAt(),
-                        $bookingService->getTotalDuration(),
-                        $bookingService->getBreakStartsAt(),
-                        $bookingService->getBreakEndsAt()
-                    );
+                    $attendantErrors = $ah->validateBookingAttendant($bookingService);
                     if (!empty($attendantErrors)) {
                         throw new SLN_Exception(reset($attendantErrors));
                     }

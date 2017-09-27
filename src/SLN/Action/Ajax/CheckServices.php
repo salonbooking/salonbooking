@@ -159,13 +159,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                 }
 
                 if (empty($serviceErrors)) {
-                    $serviceErrors = $this->ah->validateService(
-                        $bookingService->getService(),
-                        $bookingService->getStartsAt(),
-                        $bookingService->getTotalDuration(),
-                        $bookingService->getBreakStartsAt(),
-                        $bookingService->getBreakEndsAt()
-                    );
+                    $serviceErrors = $this->ah->validateBookingService($bookingService);
                 }
 
                 if ( ! $isMultipleAttSelection) {
@@ -190,13 +184,7 @@ class SLN_Action_Ajax_CheckServices extends SLN_Action_Ajax_Abstract
                         $bookingService->getService()
                     );
                     if (empty($attendantErrors)) {
-                        $attendantErrors = $this->ah->validateAttendant(
-                            $bookingService->getAttendant(),
-                            $bookingService->getStartsAt(),
-                            $bookingService->getTotalDuration(),
-                            $bookingService->getBreakStartsAt(),
-                            $bookingService->getBreakEndsAt()
-                        );
+                        $attendantErrors = $this->ah->validateBookingAttendant($bookingService);
                     }
                 }
             }

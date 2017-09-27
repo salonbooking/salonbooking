@@ -204,6 +204,28 @@ class SLN_Helper_Availability
         }
     }
 
+    public function validateBookingService(SLN_Wrapper_Booking_Service $bookingService)
+    {
+        return $this->validateService(
+            $bookingService->getService(),
+            $bookingService->getStartsAt(),
+            $bookingService->getTotalDuration(),
+            $bookingService->getBreakStartsAt(),
+            $bookingService->getBreakEndsAt()
+        );
+    }
+
+    public function validateBookingAttendant(SLN_Wrapper_Booking_Service $bookingService){
+        return $this->validateAttendant(
+            $bookingService->getAttendant(),
+            $bookingService->getStartsAt(),
+            $bookingService->getTotalDuration(),
+            $bookingService->getBreakStartsAt(),
+            $bookingService->getBreakEndsAt()
+        );
+    }
+
+
     public function validateService(SLN_Wrapper_ServiceInterface $service, DateTime $date = null, DateTime $duration = null, DateTime $breakStartsAt = null, DateTime $breakEndsAt = null)
     {
         $date = empty($date) ? $this->date : $date;
@@ -223,6 +245,7 @@ class SLN_Helper_Availability
         $startAt = clone $date;
         $endAt = clone $date;
         $endAt->modify('+'.SLN_Func::getMinutesFromDuration($duration).'minutes');
+
         $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $startAt, $endAt);
         if($ret = $this->validateServiceOnTime($service, $times[0], true)){
             return $ret;
@@ -345,7 +368,13 @@ class SLN_Helper_Availability
             if($servicesCount && count($validated) >= $servicesCount) {
                 break;
             }
-            $serviceErrors = $this->validateService($bookingService->getService(), $bookingService->getStartsAt(), null, $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
+            $serviceErrors = $this->validateService(
+                $bookingService->getService(),
+                $bookingService->getStartsAt(),
+                null,
+                $bookingService->getBreakStartsAt(),
+                $bookingService->getBreakEndsAt()
+            );
             if (empty($serviceErrors)) {
                 $validated[] = $bookingService->getService()->getId();
             } else {

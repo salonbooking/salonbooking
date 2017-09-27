@@ -331,7 +331,7 @@ class SLN_Settings
     {
         return defined('ICL_LANGUAGE_CODE')
             ? ICL_LANGUAGE_CODE
-            : (method_exists('pll_current_language')
+            : (function_exists('pll_current_language')
                 ? pll_current_language()
                 : strtolower(substr(get_locale(), 0, 2))
             );

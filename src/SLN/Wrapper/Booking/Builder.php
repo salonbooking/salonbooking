@@ -372,4 +372,25 @@ class SLN_Wrapper_Booking_Builder
             $this->getDateTime()
         );
     }
+
+    public function isValid()
+    {
+        $ah = SLN_Plugin::getInstance()->getAvailabilityHelper();
+        if ( ! $ah->isValidTime($this->getDateTime())) {
+            return false;
+        }
+        if ($this->data['services']) {
+            $bookingServices = SLN_Wrapper_Booking_Services::build($this->data['services'], $this->getDateTime());
+            foreach ($bookingServices->getItems() as $bookingService) {
+                if ($res = $ah->validateBookingService($bookingService)) {
+                    return false;
+                }
+                if ($bookingService->getAttendant() && $res = $ah->validateBookingAttendant($bookingService)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }

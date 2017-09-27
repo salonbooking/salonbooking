@@ -131,7 +131,7 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
                 $serviceErrors = $ah->validateTimePeriod($offsetStart, $offsetEnd);
             }
             if (empty($serviceErrors)) {
-                $serviceErrors = $ah->validateService($bookingService->getService(), $bookingService->getStartsAt(), $bookingService->getTotalDuration(), $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
+                $serviceErrors = $ah->validateBookingService($bookingService);
             }
             if (!empty($serviceErrors)) {
                 $errors[] = $serviceErrors[0];
@@ -151,9 +151,12 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
                 }
             }
             if (empty($attendantErrors)) {
-                $attendantErrors = $ah->validateAttendantService($bookingService->getAttendant(), $bookingService->getService());
+                $attendantErrors = $ah->validateAttendantService(
+                    $bookingService->getAttendant(),
+                    $bookingService->getService()
+                );
                 if (empty($attendantErrors)) {
-                    $attendantErrors = $ah->validateAttendant($bookingService->getAttendant(), $bookingService->getStartsAt(), $bookingService->getTotalDuration(), $bookingService->getBreakStartsAt(), $bookingService->getBreakEndsAt());
+                    $attendantErrors = $ah->validateBookingAttendant($bookingService);
                 }
             }
 

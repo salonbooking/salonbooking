@@ -1177,7 +1177,7 @@ msgstr "Cognome"
 #: views/shortcode/salon_details.php:295 views/shortcode/salon_details.php:329
 #: views/shortcode/salon_details.php:361 views/shortcode/salon_details.php:391
 msgid "Address"
-msgstr "Indrizzo"
+msgstr "Indirizzo"
 
 #: views/metabox/booking.php:148 views/metabox/booking.php:162
 msgid "Create a new user"
