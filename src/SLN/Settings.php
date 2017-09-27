@@ -326,4 +326,14 @@ class SLN_Settings
 
         return apply_filters('sln.settings.availability_holiday_items', $ret);
     }
+
+    public function getLocale()
+    {
+        return defined('ICL_LANGUAGE_CODE')
+            ? ICL_LANGUAGE_CODE
+            : (method_exists('pll_current_language')
+                ? pll_current_language()
+                : strtolower(substr(get_locale(), 0, 2))
+            );
+    }
 }

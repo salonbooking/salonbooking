@@ -34,19 +34,18 @@ class SLN_Action_InitScripts
     private static function preloadScripts()
     {
         wp_enqueue_script('salon', SLN_PLUGIN_URL.'/js/salon.js', array('jquery'), self::ASSETS_VERSION, true);
-        $lang = strtolower(substr(get_locale(), 0, 2));
+        $s = SLN_Plugin::getInstance()->getSettings();
+        $lang = $s->getLocale();
 
         $params = array(
-            'ajax_url'                  => admin_url('admin-ajax.php').'?lang='.(defined(
-                    'ICL_LANGUAGE_CODE'
-                ) ? ICL_LANGUAGE_CODE : $lang),
+            'ajax_url'                  => admin_url('admin-ajax.php').'?lang='.$lang,
             'ajax_nonce'                => wp_create_nonce('ajax_post_validation'),
             'loading'                   => SLN_PLUGIN_URL.'/img/preloader.gif',
             'txt_validating'            => __('checking availability', 'salon-booking-system'),
             'images_folder'             => SLN_PLUGIN_URL.'/img',
             'confirm_cancellation_text' => __('Do you really want to cancel?', 'salon-booking-system'),
             'time_format'               => SLN_Enum_TimeFormat::getJSFormat(
-                SLN_Plugin::getInstance()->getSettings()->get('time_format')
+                $s->get('time_format')
             ),
             'has_stockholm_transition'  => self::hasStockholmTransition() ? 'yes' : 'no',
             'checkout_field_placeholder' => __('fill this field', 'salon-booking-system'),
@@ -169,7 +168,7 @@ class SLN_Action_InitScripts
 
     public static function enqueueDateTimePicker()
     {
-        $lang = strtolower(substr(get_locale(), 0, 2));
+        $lang = SLN_Plugin::getInstance()->getSettings()->getLocale();
 
         wp_enqueue_script(
             'smalot-datepicker',
