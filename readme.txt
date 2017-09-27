@@ -288,6 +288,7 @@ http://salon.wordpresschef.it
 * Fixed "Invalid license" issue
 * Added a new option to send out an email to the client after one day from the last appointment asking for a review submission
 * Fixed bug with php 5.3 version
+* Added Polylang support
 
 04.09.2017
 
