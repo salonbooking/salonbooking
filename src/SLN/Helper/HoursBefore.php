@@ -2,8 +2,6 @@
 
 class SLN_Helper_HoursBefore
 {
-    const ALWAYS = '+10 years';
-
     private $settings;
     private $from;
     private $to;
@@ -41,13 +39,9 @@ class SLN_Helper_HoursBefore
         $this->toDate = $now2 = clone $now;
         if ($this->from) {
             $now->modify($this->from);
-        } else {
-            $now->modify('+30 minutes');
         }
         if ($this->to) {
             $now2->modify($this->to);
-        } else {
-            $this->toDate = new DateTime(self::ALWAYS);
         }
         $str = $this->getHoursBeforeString();
         SLN_Plugin::addLog(__CLASS__.'Initialized with'.print_r($str,true));

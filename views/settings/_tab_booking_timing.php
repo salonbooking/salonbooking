@@ -2,8 +2,8 @@
 /**
  * @var $plugin SLN_Plugin
  */
-$from = $plugin->getSettings()->get('hours_before_from');
-$to = $plugin->getSettings()->get('hours_before_to');
+$from = $plugin->getSettings()->getHoursBeforeFrom();
+$to = $plugin->getSettings()->getHoursBeforeTo();
 ?>
 <h2 class="sln-box-title"><?php _e('Online bookings timing','salon-booking-system');?> </h2>
 <div class="sln-box--sub row">
