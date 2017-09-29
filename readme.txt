@@ -282,6 +282,7 @@ http://salon.wordpresschef.it
 
 26.09.2017
 
+* Added a second availabilty control at the end of booking process to avoid double bookings
 * Fixed missing alert on Assistant unavailability when adding reservations from back-end
 * Added "DELETE" button on "New reservations from back-end calendar"
 * Fixed bug with Swedish language
@@ -289,6 +290,7 @@ http://salon.wordpresschef.it
 * Added a new option to send out an email to the client after one day from the last appointment asking for a review submission
 * Fixed bug with php 5.3 version
 * Added Polylang support
+* Removed "Always" option from the "Booking time range"
 
 04.09.2017
 
