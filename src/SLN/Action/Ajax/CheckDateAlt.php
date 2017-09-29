@@ -5,6 +5,35 @@ use Salon\Util\Time;
 
 class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
 {
+	/**
+	 * @param array        $services
+	 * @param SLN_DateTime $datetime
+	 *
+	 * @return bool
+	 */
+	private function checkDayServicesAndAttendants($services, $datetime) {
+		$bookingServices = SLN_Wrapper_Booking_Services::build($services, $datetime);
+		$date            = Date::create($datetime->format('Y-m-d'));
+		foreach ($bookingServices->getItems() as $bookingService) {
+			/** @var SLN_Helper_AvailabilityItems $avServiceItems */
+			$avServiceItems = $bookingService->getService()->getAvailabilityItems();
+			if(!$avServiceItems->isValidDate($date)) {
+				return false;
+			}
+
+			$attendant = $bookingService->getAttendant();
+			if (!empty($attendant)) {
+				/** @var SLN_Helper_AvailabilityItems $avAttendantItems */
+				$avAttendantItems = $attendant->getAvailabilityItems();
+				if(!$avAttendantItems->isValidDate($date)) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
     public function getIntervalsArray() {
         if ($this->isAdmin()) {
             return parent::getIntervalsArray();
@@ -19,23 +48,23 @@ class SLN_Action_Ajax_CheckDateAlt extends SLN_Action_Ajax_CheckDate
         $this->setDuration(new Time($bb->getDuration()));
         $intervalsArray = parent::getIntervalsArray();
         foreach($intervalsArray['dates'] as $k => $v) {
-            $free = false;
-            $tmpDate = new SLN_DateTime($v);
+            $available = false;
+            $tmpDate   = new SLN_DateTime($v);
 
-            $ah->setDate($tmpDate);
-            $times = $ah->getCachedTimes( Date::create($tmpDate), $this->duration);
-
-            foreach ($times as $time) {
-                $tmpDateTime = new SLN_DateTime("$v $time");
-                $ah->setDate($tmpDateTime);
-                $errors = $this->checkDateTimeServicesAndAttendants($bservices, $tmpDateTime);
-                if (empty($errors)) {
-                    $free = true;
-                    break;
-                }
+            if ($this->checkDayServicesAndAttendants($bservices, $tmpDate)) {
+	            $ah->setDate($tmpDate);
+	            $times = $ah->getCachedTimes(Date::create($tmpDate), $this->duration);
+	            foreach ($times as $time) {
+		            $tmpDateTime = new SLN_DateTime("$v $time");
+		            $errors = $this->checkDateTimeServicesAndAttendants($bservices, $tmpDateTime);
+		            if (empty($errors)) {
+			            $available = true;
+			            break;
+		            }
+	            }
             }
 
-            if (!$free) {
+            if (!$available) {
                 unset($intervalsArray['dates'][$k]);
                 $fullDays[] = $v;
             }
