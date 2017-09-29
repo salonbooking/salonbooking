@@ -166,14 +166,14 @@ class SLN_Settings
     {
         $ret = $this->get('hours_before_from');
 
-        return $ret ? $ret : SLN_Constants::HOURS_BEFORE_ALWAYS;
+        return $ret ? $ret : SLN_Constants::HOURS_BEFORE_FROM_ALWAYS;
     }
 
     public function getHoursBeforeTo()
     {
         $ret = $this->get('hours_before_to');
 
-        return $ret ? $ret : '';
+        return $ret ? $ret : SLN_Constants::HOURS_BEFORE_TO_ALWAYS;
     }
 
     public function getAvailabilityMode()

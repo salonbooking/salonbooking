@@ -152,7 +152,6 @@ class SLN_Func
     public static function getIntervalItems()
     {
         return array(
-            '' => __('Always', 'salon-booking-system'),
             '+30 minutes' => __('half hour', 'salon-booking-system'),
             '+1 hour' => '1 ' . __('hour', 'salon-booking-system'),
             '+2 hours' => '2 ' . __('hours', 'salon-booking-system'),
