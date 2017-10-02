@@ -22,7 +22,7 @@
 		<?php SLN_Form::fieldText(
 			'sln[discount]',
 			'',
-			array('attrs' => array('placeholder' => __('digit your coupon code', 'salon-booking-system')))
+			array('attrs' => array('placeholder' => __('key in your coupon code', 'salon-booking-system')))
 		); ?>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6">
