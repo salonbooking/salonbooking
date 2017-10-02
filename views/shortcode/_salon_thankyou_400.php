@@ -25,7 +25,7 @@
     <?php else: ?>
         <div class="row sln-thankyou--okbox <?php if($confirmation): ?> sln-bkg--attention<?php else : ?> sln-bkg--ok<?php endif ?>">
             <div class="col-md-12">
-                <h1 class="sln-icon-wrapper"><?php echo $confirmation ? __('Your booking is pending', 'salon-booking-system') : ($pendingPayment ? __('PLEASE COMPLETE THE PAYMENT', 'salon-booking-system') : __('Your booking is completed', 'salon-booking-system')) ?>
+                <h1 class="sln-icon-wrapper"><?php echo $confirmation ? __('Your booking is pending', 'salon-booking-system') : ($pendingPayment ? __('PLEASE COMPLETE PAYMENT', 'salon-booking-system') : __('Your booking is completed', 'salon-booking-system')) ?>
                     <?php if($confirmation): ?>
                         <i class="sln-icon sln-icon--time"></i>
                     <?php else : ?>
