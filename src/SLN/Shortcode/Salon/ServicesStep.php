@@ -36,6 +36,7 @@ class SLN_Shortcode_Salon_ServicesStep extends SLN_Shortcode_Salon_Step
             /** @var SLN_Repository_ServiceRepository $repo */
             $repo = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
             $this->services = $repo->sortByExecAndTitleDESC($repo->getAllPrimary());
+            $this->services = apply_filters('sln.shortcode.salon.ServicesStep.getServices', $this->services);
         }
 
         return $this->services;

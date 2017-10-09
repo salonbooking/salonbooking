@@ -24,25 +24,24 @@ class SLN_Shortcode_Salon_SecondaryStep extends SLN_Shortcode_Salon_Step
      */
     public function getServices()
     {
-        if (!isset($this->services)) {
-            if (!isset($this->services)) {
-                /** @var SLN_Repository_ServiceRepository $repo */
-                $repo     = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
-                $services = $repo->getAllSecondary();
+        if ( ! isset($this->services)) {
+            /** @var SLN_Repository_ServiceRepository $repo */
+            $repo     = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+            $services = $repo->getAllSecondary();
 
-                $bb = $this->getPlugin()->getBookingBuilder();
-                $ah = $this->getPlugin()->getAvailabilityHelper();
-                $ah->setDate($bb->getDateTime());
-                $bookingServices = $bb->getBookingServices();
-                foreach($services as $k => $service) {
-                    $errs = $ah->validateServiceFromOrder($service, $bookingServices);
-                    if (!empty($errs)) {
-                        unset($services[$k]);
-                    }
+            $bb = $this->getPlugin()->getBookingBuilder();
+            $ah = $this->getPlugin()->getAvailabilityHelper();
+            $ah->setDate($bb->getDateTime());
+            $bookingServices = $bb->getBookingServices();
+            foreach ($services as $k => $service) {
+                $errs = $ah->validateServiceFromOrder($service, $bookingServices);
+                if ( ! empty($errs)) {
+                    unset($services[$k]);
                 }
-
-                $this->services = $repo->sortByExecAndTitleDESC($services);
             }
+
+            $this->services = $repo->sortByExecAndTitleDESC($services);
+            $this->services = apply_filters('sln.shortcode.salon.SecondaryStep.getServices', $this->services);
         }
 
         return $this->services;

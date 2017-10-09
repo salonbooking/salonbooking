@@ -12,9 +12,6 @@ interface SLN_Wrapper_ServiceInterface
     function getAttendantsIds();
     function getAttendants();
     function isAttendantsEnabled();
-    function getNotAvailableOn($key);
-    function getNotAvailableFrom();
-    function getNotAvailableTo();
     function isNotAvailableOnDate(SLN_DateTime $date);
     function getNotAvailableString();
     function getName();

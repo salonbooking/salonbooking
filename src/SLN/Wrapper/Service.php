@@ -126,29 +126,6 @@ class SLN_Wrapper_Service extends SLN_Wrapper_Abstract implements SLN_Wrapper_Se
         return $ret;
     }
 
-    function getNotAvailableOn($key)
-    {
-        $post_id = $this->getId();
-        $ret = apply_filters(
-            'sln_service_notav_'.$key,
-            get_post_meta($post_id, '_sln_service_notav_'.$key, true)
-        );
-        $ret = empty($ret) ? false : ($ret ? true : false);
-
-        return $ret;
-    }
-
-
-    function getNotAvailableFrom()
-    {
-        return $this->getNotAvailableTime('from');
-    }
-
-    function getNotAvailableTo()
-    {
-        return $this->getNotAvailableTime('to');
-    }
-
     function isNotAvailableOnDate(SLN_DateTime $date)
     {
         $ret = !$this->getAvailabilityItems()->isValidDatetimeDuration($date, $this->getDuration());

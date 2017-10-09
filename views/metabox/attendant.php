@@ -48,4 +48,4 @@ $services = $sRepo->getAll();
 ); ?>
 
 <div class="sln-clear"></div>
-<?php do_action('sln.template.attendant.metabox',$service); ?>
+<?php do_action('sln.template.attendant.metabox',$attendant); ?>

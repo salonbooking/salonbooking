@@ -187,6 +187,7 @@ abstract class SLN_Admin_Reports_AbstractReport {
 
 ?>
 	<form id="sln-graphs-filter" method="get">
+        <?php do_action('sln.template.report.filters'); ?>
 	<select name="view">
 		<?php foreach(self::getReportViews() as $k => $v): ?>
 			<option value="<?php echo $k ?>" <?php echo selected($k, $this->attr['view'], false) ?>><?php echo $v ?></option>
@@ -268,6 +269,7 @@ abstract class SLN_Admin_Reports_AbstractReport {
 
 
 		$bookings = array();
+        $args = apply_filters('sln.action.report.criteria', $args);
 
 		$posts = new WP_Query($args);
 		foreach($posts->get_posts() as $p) {

@@ -248,7 +248,7 @@ class SLN_Wrapper_Booking_Builder
             }
         }
 
-        return $ret;
+        return apply_filters('sln.booking_builder.getServices',$ret);
     }
 
     public function getPrimaryServices()

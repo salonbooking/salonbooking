@@ -226,10 +226,17 @@ if (!isset($row)) {
     $row = array();
 }
 $interval = SLN_Plugin::getInstance()->getSettings()->get('interval');
-$dateFrom = new SLN_DateTime(isset($row['from_date']) ? $row['from_date'] : null);
-$dateTo = new SLN_DateTime(isset($row['to_date']) ? $row['to_date'] : null);
-$timeFrom = new SLN_DateTime(isset($row['from_time']) ? $row['from_time'] : null);
-$timeTo = new SLN_DateTime(isset($row['to_time']) ? $row['to_time'] : null);
+try {
+    $dateFrom = new SLN_DateTime(isset($row['from_date']) ? $row['from_date'] : null);
+    $dateTo   = new SLN_DateTime(isset($row['to_date']) ? $row['to_date'] : null);
+    $timeFrom = new SLN_DateTime(isset($row['from_time']) ? $row['from_time'] : null);
+    $timeTo   = new SLN_DateTime(isset($row['to_time']) ? $row['to_time'] : null);
+}catch(\Exception $e){
+    $dateFrom = new SLN_DateTime();
+    $dateTo   = new SLN_DateTime();
+    $timeFrom = new SLN_DateTime();
+    $timeTo   = new SLN_DateTime();
+}
 ?>
 <div class="col-xs-12 sln-booking-rule">
     <h2 class="sln-box-title"><?php _e('Rule', 'salon-booking-system'); ?>
