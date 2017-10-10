@@ -654,17 +654,9 @@ function facebookInit() {
                 });
                 FB.AppEvents.logPageView();
 
-                jQuery('[data-salon-toggle=fb_login]').unbind('click').click(function() {
-                    var callback;
-                    if (jQuery(this).attr('data-salon-target') === 'step') {
-                        callback = facebookRefreshStepCallback;
-                    }
-                    else {
-                        callback = facebookRefreshPageCallback;
-                    }
-
+                jQuery('[data-salon-click=fb_login]').unbind('click').click(function() {
                     FB.login(function() {
-                        facebookLogin(callback);
+                        facebookLogin();
                     }, {scope: 'email'});
 
                     return false;
@@ -684,11 +676,11 @@ function facebookInit() {
         }
     }
     else {
-        jQuery('[data-salon-toggle=fb_login]').remove();
+        jQuery('[data-salon-click=fb_login]').remove();
     }
 }
 
-function facebookLogin(callback) {
+function facebookLogin() {
     var auth = FB.getAuthResponse();
     if (auth) {
         FB.api('/me?fields=id,email,name', function(response)
@@ -700,40 +692,13 @@ function facebookLogin(callback) {
             var lastname = tmp.pop();
             var firstname = tmp.join(' ');
 
-            var data = "fbEmail=" + email + "&fbID=" + id + "&fbFirstName=" + firstname + "&fbLastName=" + lastname + "&action=salon&method=FacebookLogin&security=" + salon.ajax_nonce;
-            jQuery.ajax({
-                url: salon.ajax_url,
-                data: data,
-                method: 'POST',
-                dataType: 'json',
-                success: callback,
-                error: function(data){alert('error'); console.log(data);}
-            });
+            var $form = jQuery('#salon-step-details');
+            $form.append('<input type="hidden" name="fb_id" value="' + id + '" />');
+            $form.append('<input type="hidden" name="fb_email" value="' + email + '" />');
+            $form.append('<input type="hidden" name="fb_firstname" value="' + firstname + '" />');
+            $form.append('<input type="hidden" name="fb_lastname" value="' + lastname + '" />');
+            $form.find('[name=submit_details]').click();
         });
-    }
-}
-
-function facebookRefreshStepCallback(response) {
-    if (response.success) {
-        var params = 'sln_step_page=details';
-        sln_loadStep(jQuery, params);
-    }
-    else {
-        var alertBox = jQuery('<div class="sln-alert sln-alert--problem"></div>');
-        jQuery(response.errors).each(function () {
-            alertBox.append('<p>').html(this);
-        });
-        jQuery('#sln-notifications').html('').append(alertBox);
-    }
-}
-
-function facebookRefreshPageCallback(response) {
-    if (response.success) {
-        location.reload();
-    }
-    else {
-        alert('error');
-        console.log(response);
     }
 }
 

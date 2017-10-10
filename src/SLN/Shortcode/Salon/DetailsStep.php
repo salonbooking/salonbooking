@@ -5,7 +5,13 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
     protected function dispatchForm()
     {
         global $current_user;
-        if (isset($_POST['login_name'])) {
+	    if (isset($_POST['fb_id'])) {
+			$values = $this->parseFBValues($_POST);
+		    $this->dispatchAuthFB($values);
+		    if ($this->hasErrors()) {
+			    return false;
+		    }
+	    } elseif (isset($_POST['login_name'])) {
             $ret = $this->dispatchAuth($_POST['login_name'], $_POST['login_password']);
             if (!$ret) {
                 return false;
@@ -87,6 +93,59 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
         $this->bindValues($values);
 
         return true;
+    }
+
+    private function parseFBValues($params) {
+    	return array(
+		    'fb_id'     => isset($params['fb_id']) ? $params['fb_id'] : '',
+		    'firstname' => isset($params['fb_firstname']) ? $params['fb_firstname'] : '',
+		    'lastname'  => isset($params['fb_lastname']) ? $params['fb_lastname'] : '',
+		    'email'     => isset($params['fb_email']) ? $params['fb_email'] : '',
+		    'phone'     => '',
+		    'address'   => '',
+	    );
+    }
+    
+    private function dispatchAuthFB($values) {
+	    $fbID        = $values['fb_id'];
+	    $fbEmail     = $values['email'];
+	    $fbFirstName = $values['firstname'];
+	    $fbLastName  = $values['lastname'];
+
+	    $userID = (int) SLN_Wrapper_Customer::getCustomerIdByFacebookID($fbID);
+	    
+	    if (empty($userID)) {
+		    //create user
+		    $errors = wp_create_user("fb_{$fbID}", wp_generate_password(), $fbEmail);
+		    if (!is_wp_error($errors)) {
+			    $userID = $errors;
+			    wp_update_user(
+				    array(
+					    'ID'           => $userID,
+					    'display_name' => $fbFirstName . ' ' . $fbLastName,
+					    'nickname'     => $fbFirstName . ' ' . $fbLastName,
+					    'first_name'   => $fbFirstName,
+					    'last_name'    => $fbLastName,
+					    'role'         => SLN_Plugin::USER_ROLE_CUSTOMER,
+				    )
+			    );
+			    add_user_meta($userID, '_sln_fb_id', $fbID);
+			    add_user_meta($userID, '_sln_phone', '');
+			    add_user_meta($userID, '_sln_address', '');
+
+			    wp_new_user_notification($errors, null, 'both');
+		    } else {
+			    $this->addError($errors->get_error_message());
+			    return false;
+		    }
+	    }
+
+	    if (!$this->getErrors() && !empty($userID)) {
+		    wp_set_auth_cookie($userID);
+		    wp_set_current_user($userID);
+	    }
+
+	    return true;
     }
 
     private function validate($values){

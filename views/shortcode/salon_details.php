@@ -18,6 +18,9 @@ $values = array(
     'phone'     => get_user_meta($current_user->ID, '_sln_phone', true)
 );
 
+$current     = $step->getShortcode()->getCurrentStep();
+$ajaxEnabled = $plugin->getSettings()->isAjaxEnabled();
+
 ob_start();
 ?>
 <label for="login_name"><?php _e('E-mail') ?></label>
@@ -46,11 +49,21 @@ $fieldPassword = ob_get_clean();
             <div class="col-sm-6 col-md-4 pull-right sln-input sln-input--simple">
                 <label for="login_name">&nbsp;</label>
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
-                <button type="submit" data-salon-data="<?php echo "sln_step_page=".$step->getShortcode()->getCurrentStep()."&$submitName=next" ?>" data-salon-toggle="next" name="<?php echo $submitName ?>"
-                            value="next">
-                        <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
+                    <button type="submit"
+		                <?php if ($ajaxEnabled): ?>
+                            data-salon-data="<?php echo "sln_step_page={$current}&{$submitName}=next" ?>" data-salon-toggle="next"
+		                <?php endif ?>
+                            name="<?php echo $submitName ?>" value="next">
+		                <?php echo __('Login', 'salon-booking-system') ?> <i class="glyphicon glyphicon-user"></i>
+                    </button>
                 </div>
-                <span class="help-block"><a href="#" class="tec-link" data-salon-toggle="fb_login" data-salon-target="step"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></a></span>
+                <span class="help-block">
+                    <a href="#" class="tec-link"
+		                <?php if ($ajaxEnabled): ?>
+                            data-salon-data="<?php echo "sln_step_page={$current}&{$submitName}=next" ?>" data-salon-toggle="ajax"
+		                <?php endif ?>
+                       data-salon-click="fb_login"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></a>
+                </span>
             </div>
         </div>
         <div class="row">
@@ -67,11 +80,21 @@ $fieldPassword = ob_get_clean();
             <div class="col-sm-6 col-md-6"></div>
             <div class="col-sm-6 col-md-6 sln-input sln-input--simple">
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
-                <button type="submit" data-salon-data="<?php echo "sln_step_page=".$step->getShortcode()->getCurrentStep()."&$submitName=next" ?>" data-salon-toggle="next" name="<?php echo $submitName ?>"
-                            value="next">
-                        <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
+                <button type="submit"
+	                <?php if ($ajaxEnabled): ?>
+                        data-salon-data="<?php echo "sln_step_page={$current}&{$submitName}=next" ?>" data-salon-toggle="next"
+	                <?php endif ?>
+                        name="<?php echo $submitName ?>" value="next">
+                    <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i>
+                </button>
                 </div>
-                <span class="help-block"><a href="#" class="tec-link" data-salon-toggle="fb_login" data-salon-target="step"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></a></span>
+                <span class="help-block">
+                    <a href="#" class="tec-link"
+	                    <?php if ($ajaxEnabled): ?>
+                            data-salon-data="<?php echo "sln_step_page={$current}&{$submitName}=next" ?>" data-salon-toggle="ajax"
+	                    <?php endif ?>
+                       data-salon-click="fb_login"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></a>
+                </span>
             </div>
         </div>
         <div class="row">
@@ -86,11 +109,21 @@ $fieldPassword = ob_get_clean();
             <div class="col-xs-12 sln-input sln-input--simple">
                 <label for="login_name">&nbsp;</label>
                 <div class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth">
-                <button type="submit" data-salon-data="<?php echo "sln_step_page=".$step->getShortcode()->getCurrentStep()."&$submitName=next" ?>" data-salon-toggle="next" name="<?php echo $submitName ?>"
-                            value="next">
-                        <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i></button>
+                <button type="submit"
+	                <?php if ($ajaxEnabled): ?>
+                        data-salon-data="<?php echo "sln_step_page={$current}&{$submitName}=next" ?>" data-salon-toggle="next"
+	                <?php endif ?>
+                        name="<?php echo $submitName ?>" value="next">
+                    <?php echo __('Login','salon-booking-system')?> <i class="glyphicon glyphicon-user"></i>
+                </button>
                 </div>
-                <span class="help-block"><a href="#" class="tec-link" data-salon-toggle="fb_login" data-salon-target="step"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></a></span>
+                <span class="help-block">
+                    <a href="#" class="tec-link"
+	                    <?php if ($ajaxEnabled): ?>
+                            data-salon-data="<?php echo "sln_step_page={$current}&{$submitName}=next" ?>" data-salon-toggle="ajax"
+	                    <?php endif ?>
+                       data-salon-click="fb_login"><?php _e('log-in with Facebook', 'salon-booking-system'); ?></a>
+                </span>
             </div>
         </div>
         <div class="row">
