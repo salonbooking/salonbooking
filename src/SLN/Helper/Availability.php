@@ -72,6 +72,10 @@ class SLN_Helper_Availability
             $duration = Time::increment($duration, -1 * $this->getOffset());
             $ret = Time::filterTimesArrayByDuration($ret, $duration);
         }
+        if(empty($ret)){
+            $bc->processDate($date);
+            $bc->save();
+        }
         return $ret;
     }
 

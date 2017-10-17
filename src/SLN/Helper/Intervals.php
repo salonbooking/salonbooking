@@ -14,7 +14,7 @@ class SLN_Helper_Intervals
     protected $months;
     protected $days;
     protected $dates;
-    protected $fullDays;
+    protected $fullDays = [];
 
     public function __construct(SLN_Helper_Availability $availabilityHelper)
     {
@@ -30,6 +30,7 @@ class SLN_Helper_Intervals
         $to                = $interval->getToDate();
         $clone             = clone $date;
         while (empty($times) && $date <= $to) {
+            $this->fullDays[] = $date->format('Y-m-d');
             $date->modify('+1 days');
             $times = $ah->getCachedTimes( Date::create($date), $duration);
         }
@@ -37,6 +38,7 @@ class SLN_Helper_Intervals
             $date = $clone;
             $from = $interval->getFromDate();
             while (empty($times) && $date >= $from) {
+                $this->fullDays[] = $date->format('Y-m-d');
                 $date->modify('-1 days');
                 $times = $ah->getCachedTimes(Date::create($date), $duration);
             }
@@ -178,6 +180,6 @@ class SLN_Helper_Intervals
     }
 
     public function getFullDays(){
-        return SLN_Plugin::getInstance()->getBookingCache()->getFullDays();
+        return array_merge(array_unique($this->fullDays), SLN_Plugin::getInstance()->getBookingCache()->getFullDays());
     }
 }
