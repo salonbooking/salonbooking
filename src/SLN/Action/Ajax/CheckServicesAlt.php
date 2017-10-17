@@ -2,14 +2,14 @@
 
 class SLN_Action_Ajax_CheckServicesAlt extends SLN_Action_Ajax_CheckServices
 {
-    protected function innerInitServices($services, $merged, $newServices)
+    protected function innerInitServices($services, $merge, $newServices)
     {
         $ret      = array();
         $builder  = $this->bb;
         $this->ah->setDate($this->bb->getDateTime());
 
         $mergeIds = array();
-        foreach($merged as $s){
+        foreach($merge as $s){
             $mergeIds[] = $s->getId();
         }
         $services      = array_merge(array_keys($services), $mergeIds);
@@ -48,6 +48,15 @@ class SLN_Action_Ajax_CheckServicesAlt extends SLN_Action_Ajax_CheckServices
                 $ret[$sId] = array('status' => self::STATUS_ERROR, 'error' => $error[0]);
             }
         }
+
+	    $servicesExclusiveErrors = $this->ah->checkExclusiveServices( $services, array_merge( $merge, $newServices ) );
+	    foreach ($servicesExclusiveErrors as $sId => $error) {
+		    if (empty($error)) {
+			    $ret[$sId] = array('status' => self::STATUS_UNCHECKED, 'error' => '');
+		    } else {
+			    $ret[$sId] = array('status' => self::STATUS_ERROR, 'error' => $error[0]);
+		    }
+	    }
 
         return $ret;
     }
