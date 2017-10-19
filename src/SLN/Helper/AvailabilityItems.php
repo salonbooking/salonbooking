@@ -175,7 +175,6 @@ class SLN_Helper_AvailabilityItems {
 			$yester = $day->getPrevDate();
 			$ret    = $ret || $this->isValidTimeDuration( $yester, Time::create( '24:00' ), $duration );
 		}
-//var_dump([$day, $time, $duration, $ret]);
 		return $ret;
 	}
 
