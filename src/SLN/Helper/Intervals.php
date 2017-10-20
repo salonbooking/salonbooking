@@ -14,7 +14,7 @@ class SLN_Helper_Intervals
     protected $months;
     protected $days;
     protected $dates;
-    protected $fullDays = [];
+    protected $fullDays = array();
 
     public function __construct(SLN_Helper_Availability $availabilityHelper)
     {
