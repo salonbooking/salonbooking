@@ -95,8 +95,9 @@ class SLN_Wrapper_Booking_AbstractCache
             $this->refreshAll();
         }
         $ret = array();
+        $now = date("Y-m-d");
         foreach ($this->settings as $day => $v) {
-            if ($v['status'] == 'full') {
+            if ($v['status'] == 'full' && $now <= $day) {
                 $ret[] = $day;
             }
         }
