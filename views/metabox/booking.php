@@ -49,7 +49,7 @@ foreach($checkoutFields as $field => $name ) {
       data-mode="<?php echo $mode ?>"
       data-required_user_fields="<?php echo implode(',', $checkoutFields) ?>">
     <div class="row form-inline">
-        <div class="col-md-3 col-sm-6">
+        <div class="col-xs-12 col-sm-4 col-md-3">
             <div class="form-group sln-input--simple">
                 <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'date')) ?>"><?php _e(
                         'Select a day',
@@ -58,7 +58,7 @@ foreach($checkoutFields as $field => $name ) {
                 <?php SLN_Form::fieldJSDate($helper->getFieldName($postType, 'date'), $selectedDate, array('popup-class' => ($mode === 'sln_editor' ? 'off-sm-md-support' : ''))) ?>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6">
+        <div class="col-xs-12 col-sm-4 col-md-3">
             <div class="form-group sln-input--simple">
                 <label for="<?php echo SLN_Form::makeID($helper->getFieldName($postType, 'time')) ?>"><?php _e(
                         'Select an hour',
@@ -72,7 +72,7 @@ foreach($checkoutFields as $field => $name ) {
                 ) ?>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6">
+        <div class="col-xs-12 col-sm-4 col-md-3">
             <div class="form-group sln_meta_field sln-select">
                 <label><?php _e('Status', 'salon-booking-system'); ?></label>
                 <?php SLN_Form::fieldSelect(
