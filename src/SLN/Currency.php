@@ -40,6 +40,7 @@ class SLN_Currency
         'QAR'=>array('name' => 'Qatari Riyal', 'symbol'=>'﷼', 'unicode-hex'=>'fdfc'),
         'GBP' => array('name' => 'Pound Sterling', 'symbol' => '£', 'ASCII' => '&#163;'),
         'GHS' => array('name' => 'Ghanaian Cedi', 'symbol' => 'GH₵', 'ASCII' => '&#x20b5;'),
+        'GTQ' => array('name' => 'Guatemalan Quetzal', 'symbol' => 'Q', 'ASCII' => ''),
         'ILS' => array('name' => 'Israeli New Shekel', 'symbol' => '₪', 'ASCII' => '&#8362;'),
         'SGD' => array('name' => 'Singapore Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
         'SRD' => array('name' => 'Surinamese dollar', 'symbol' => '$', 'ASCII' => ''),
