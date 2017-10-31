@@ -35,7 +35,7 @@ class Time
     }
 
     private static function parseStr($str){
-//        if($str == '23:59') return 24*60;
+        if($str == '23:59') return 24*60;
         if ( ! strpos($str, ':')) {
             throw new \Exception('bad time value'.$str);
         }

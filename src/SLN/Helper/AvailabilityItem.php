@@ -19,9 +19,9 @@ class SLN_Helper_AvailabilityItem
 		if ( $data ) {
 			for ( $i = 0; $i <= 1; $i ++ ) {
 				if ( $data['from'][ $i ] != '00:00' ) {
-					if ( $data['to'][ $i ] == '24:00' ) {
-						$data['to'][ $i ] = '23:59';
-					}
+//					if ( $data['to'][ $i ] == '24:00' ) {
+//						$data['to'][ $i ] = '23:59';
+//					}
 					$this->times[] = new TimeInterval(
 						new Time( $data['from'][ $i ] ),
 						new Time( $data['to'][ $i ] )
@@ -37,7 +37,7 @@ class SLN_Helper_AvailabilityItem
 		if ( empty( $this->times ) ) {
 			$this->times[] = new TimeInterval(
 				new Time( '00:00' ),
-				new Time( '23:59' )
+				new Time( '24:00' )
 			);
 		}
 	}
