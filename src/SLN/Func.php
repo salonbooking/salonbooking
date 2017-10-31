@@ -279,7 +279,7 @@ class SLN_Func
     {
         settype($time, 'integer');
         if ($time < 1) {
-            return;
+            return '00:00';
         }
         $hours = floor($time / 60);
         $minutes = ($time % 60);
