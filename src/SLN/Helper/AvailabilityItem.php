@@ -81,14 +81,15 @@ class SLN_Helper_AvailabilityItem
     public function isValidTime(Time $time)
     {
         //#SBP-470
-        $time2 = $time->isMidnight() ? new Time('23:59') : null;
+//        $time2 = $time->isMidnight() ? new Time('23:59') : null;
         foreach ($this->times as $t) {
-        	if ($t->containsTime($time)) {
+            if ($t->containsTime($time)) {
                 return true;
             }
         }
+        return false;
         //#SBP-470
-        return $time2 ? $this->isValidTime($time2) : false;
+//        return $time2 ? $this->isValidTime($time2) : false;
     }
 
     /**
