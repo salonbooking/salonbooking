@@ -37,7 +37,7 @@ function sln_init($) {
                 window.location.href = href + hrefGlue +'redirect_to=' + encodeURI(locHref + locHrefGlue +'sln_step_page=details');
             });
         }
-        if ($('#salon-step-details-new').length) {
+        if ($('[data-salon-click="fb_login"]').length) {
             facebookInit();
         }
         $('[data-salon-toggle="next"]').click(function (e) {
