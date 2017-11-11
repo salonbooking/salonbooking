@@ -6,13 +6,30 @@ var gulp  = require('gulp'),
     path = require('path'),
     livereload = require( 'gulp-livereload' ),
     sass = require('gulp-sass'),
-    minifyCss = require('gulp-minify-css');//
+    minifyCss = require('gulp-minify-css'),
+    runSequence = require('run-sequence'),
+    // TRANSIFEX CREDENTIALS SHOULD GO IN A ENV FILE
+    transifex = require('gulp-transifex').createClient({       
+        user: "contact@wordpresschef.it",
+        password: "salon2017!",
+        project: "salon-booking-system",
+        local_path: 'languages'    
+    }),
+    gettext = require('gulp-gettext')
+    wpPot = require("gulp-wp-pot");//
     //sourcemaps = require('gulp-sourcemaps');
 
 var sassOptions = {
   errLogToConsole: true,
   outputStyle: 'expanded'
 };
+
+var langOptions={
+  languageDir:'./languages/',
+  languageDomain:'salon-booking-system',
+  bugReport:'', //'WPChef <your_email@email.com>'
+  team:'',//'WPChef <your_email@email.com>'
+}
 
 //gulp.task('sass', function () {
 //  gulp.src('./scss/**/*.scss')
@@ -127,3 +144,35 @@ gulp.task( 'watch', function() {
 gulp.task( 'default', [ 'sass', 'adminsass', 'watch', 'boot', 'sbs' ], function() {
 
 } );
+
+gulp.task('generate-pot', function () {
+    return gulp.src('./**/*.php')
+        .pipe(wpPot( {
+             domain        : langOptions.languageDomain,             
+             package       : langOptions.languageDomain,
+             bugReport     : langOptions.bugReport,             
+             team          : langOptions.team
+        }))
+        .pipe(gulp.dest(langOptions.languageDir+langOptions.languageDomain+'.pot'));
+});
+
+gulp.task('transifex-up', function(){
+    return gulp.src(langOptions.languageDir+'*.pot')
+        .pipe(transifex.pushResource())
+});
+
+gulp.task('transifex-down', function(){
+    return gulp.src(langOptions.languageDir+'*.pot')
+        .pipe(transifex.pullResource())
+});
+
+gulp.task('potomo', function(){
+    return gulp.src(langOptions.languageDir+'*.po')
+        .pipe(gettext())
+        .pipe(gulp.dest(langOptions.languageDir));
+});
+
+gulp.task('transifex', function(callback) {
+  runSequence('generate-pot','transifex-up','transifex-down','potomo',
+              callback);
+});
