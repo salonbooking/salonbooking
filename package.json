@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "dotenv": "^4.0.0",
     "gulp": "^3.9.1",
     "gulp-gettext": "^0.3.0",
     "gulp-less": "^3.3.2",
@@ -11,5 +12,5 @@
     "gulp-watch": "^4.3.11",
     "gulp-wp-pot": "^2.0.6",
     "run-sequence": "^2.2.0"
-  }  
+  }
 }

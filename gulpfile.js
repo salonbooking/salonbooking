@@ -1,3 +1,4 @@
+require('dotenv').config();
 // grab our gulp packages
 var gulp  = require('gulp'),
     gutil = require('gulp-util'),
@@ -8,13 +9,6 @@ var gulp  = require('gulp'),
     sass = require('gulp-sass'),
     minifyCss = require('gulp-minify-css'),
     runSequence = require('run-sequence'),
-    // TRANSIFEX CREDENTIALS SHOULD GO IN A ENV FILE
-    transifex = require('gulp-transifex').createClient({       
-        user: "contact@wordpresschef.it",
-        password: "salon2017!",
-        project: "salon-booking-system",
-        local_path: 'languages'    
-    }),
     gettext = require('gulp-gettext')
     wpPot = require("gulp-wp-pot");//
     //sourcemaps = require('gulp-sourcemaps');
@@ -27,9 +21,16 @@ var sassOptions = {
 var langOptions={
   languageDir:'./languages/',
   languageDomain:'salon-booking-system',
-  bugReport:'', //'WPChef <your_email@email.com>'
-  team:'',//'WPChef <your_email@email.com>'
-}
+  bugReport:process.env.POT_BUG_REPORT ? process.env.POT_BUG_REPORT : '', 
+  team:process.env.POT_TEAM ? process.env.POT_TEAM : '',
+};
+
+var transifex = require('gulp-transifex').createClient({       
+  user: process.env.TRANSIFEX_USER,
+  password: process.env.TRANSIFEX_PASSWORD,
+  project: langOptions.languageDomain,
+  local_path: langOptions.languageDir    
+});
 
 //gulp.task('sass', function () {
 //  gulp.src('./scss/**/*.scss')
