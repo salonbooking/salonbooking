@@ -37,7 +37,7 @@ function sln_init($) {
                 window.location.href = href + hrefGlue +'redirect_to=' + encodeURI(locHref + locHrefGlue +'sln_step_page=details');
             });
         }
-        if ($('#salon-step-details-new').length) {
+        if ($('[data-salon-click="fb_login"]').length) {
             facebookInit();
         }
         $('[data-salon-toggle="next"]').click(function (e) {
@@ -661,19 +661,15 @@ function facebookInit() {
 
                     return false;
                 });
-            };
-
-            (function(d, s, id){
+            };            
+        }
+        (function(d, s, id){
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) {return;}
                 js = d.createElement(s); js.id = id;
                 js.src = "//connect.facebook.net/en_US/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        }
-        else {
-            window.fbAsyncInit();
-        }
+        }(document, 'script', 'facebook-jssdk'));
     }
     else {
         jQuery('[data-salon-click=fb_login]').remove();

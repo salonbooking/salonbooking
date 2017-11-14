@@ -57,7 +57,7 @@ class SLN_Shortcode_SalonMyAccount
     }
 
     public function hook_login_form_bottom($content, $args) {
-        $content .= '<div><a href="#" data-salon-toggle="fb_login" data-salon-target="page">' . __('log-in with Facebook', 'salon-booking-system') . '</a></div>';
+        $content .= '<div><a href="#" data-salon-click="fb_login" data-salon-target="page">' . __('log-in with Facebook', 'salon-booking-system') . '</a></div>';
 
         return $content;
     }
