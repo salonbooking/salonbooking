@@ -359,7 +359,7 @@ class SLN_Wrapper_Booking extends SLN_Wrapper_Abstract
                 'submit_thankyou' => 1,
                 'sln_booking_id' => $this->getUniqueId(),
             ),
-            get_permalink(SLN_Plugin::getInstance()->getSettings()->get('pay'))
+            get_permalink(SLN_Plugin::getInstance()->getSettings()->getPayPageId() )
         );
     }
 

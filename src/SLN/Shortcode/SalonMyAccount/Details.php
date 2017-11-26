@@ -95,7 +95,7 @@ class SLN_Shortcode_SalonMyAccount_Details
 					'hide_prices' => $this->plugin->getSettings()->get('hide_prices'),
 					'attendant_enabled' => $this->plugin->getSettings()->get('attendant_enabled'),
 					'pay_enabled' => $this->plugin->getSettings()->get('pay_enabled'),
-					'booking_url' => get_post_permalink( $this->plugin->getSettings()->get('pay') ),
+					'booking_url' => get_post_permalink( $this->plugin->getSettings()->getPayPageId() ),
 				)
 		);
 	}

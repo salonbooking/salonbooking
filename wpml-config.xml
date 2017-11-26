@@ -20,8 +20,6 @@
       <key name="gen_address"/>
       <key name="gen_timetable"/>
       <key name="ajax_enabled"/>
-      <key name="booking"/>
-      <key name="thankyou"/>
       <key name="availabilities"/>
       <key name="email_subject"/>
       <key name="pay_currency"/>
@@ -36,7 +34,6 @@
       <key name="pay_offset_enabled"/>
       <key name="pay_offset"/>
       <key name="pay_enabled"/>
-      <key name="pay"/>
       <key name="minutes_between_reservation"/>
       <key name="hours_before_cancellation"/>
       <key name="attendant_enabled"/>

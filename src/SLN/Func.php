@@ -365,4 +365,9 @@ class SLN_Func
         $sPrintfString = '%0' . (int)$iLength . 's';
         return sprintf($sPrintfString, $mStretch);
     }
+
+    public static function get_translated_page_id($page_id, $lang = NULL)
+    {
+        return isset($page_id) ? apply_filters( 'wpml_object_id', $page_id , 'page', true, $lang ) : NULL;
+    }
 }
