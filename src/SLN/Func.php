@@ -39,6 +39,7 @@ class SLN_Func
     {
         $timestamp = strtotime("1970-01-01");
         $ret = array();
+        if( setlocale(LC_TIME,0) !== get_locale() ){ setlocale(LC_TIME, get_locale()); }
         for ($i = 1; $i <= 12; $i++) {
             $ret[$i] = date_i18n('M', $timestamp);
             $timestamp = strtotime('+1 month', $timestamp);
