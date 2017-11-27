@@ -39,6 +39,7 @@ class SLN_Func
     {
         $timestamp = strtotime("1970-01-01");
         $ret = array();
+        if( setlocale(LC_TIME,0) !== get_locale() ){ setlocale(LC_TIME, get_locale()); }
         for ($i = 1; $i <= 12; $i++) {
             $ret[$i] = date_i18n('M', $timestamp);
             $timestamp = strtotime('+1 month', $timestamp);
@@ -364,5 +365,10 @@ class SLN_Func
     {
         $sPrintfString = '%0' . (int)$iLength . 's';
         return sprintf($sPrintfString, $mStretch);
+    }
+
+    public static function get_translated_page_id($page_id, $lang = NULL)
+    {
+        return isset($page_id) ? apply_filters( 'wpml_object_id', $page_id , 'page', true, $lang ) : NULL;
     }
 }

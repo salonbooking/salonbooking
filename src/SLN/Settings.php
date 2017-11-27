@@ -107,14 +107,18 @@ class SLN_Settings
 
     public function getThankyouPageId()
     {
-        return $this->get('thankyou');
+        return SLN_Func::get_translated_page_id($this->get('thankyou'));
     }
 
     public function getBookingmyaccountPageId()
     {
-        return $this->get('bookingmyaccount');
+        return SLN_Func::get_translated_page_id($this->get('bookingmyaccount'));
     }
 
+    public function getPayPageId()
+    {
+        return SLN_Func::get_translated_page_id($this->get('pay'));
+    }
 
     public function isDisabled()
     {

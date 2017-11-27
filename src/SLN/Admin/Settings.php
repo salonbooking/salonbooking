@@ -227,7 +227,7 @@ class SLN_Admin_Settings
         wp_dropdown_pages(
             array(
                 'name' => 'salon_settings['.$key.']',
-                'selected' => $this->getOpt($key) ? $this->getOpt($key) : null,
+                'selected' => $this->getOpt($key) ? $this->settings->{'get'.ucfirst($key).'PageId'}() : null,
                 'show_option_none' => 'Nessuna',
             )
         );
