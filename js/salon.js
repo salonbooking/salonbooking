@@ -38,7 +38,23 @@ function sln_init($) {
             });
         }
         if ($('[data-salon-click="fb_login"]').length) {
-            facebookInit();
+            if (window.fbAsyncInit === undefined) {     
+                if (salon.fb_app_id !== undefined) {                
+                    facebookInit();
+                }
+                else {
+                    jQuery('[data-salon-click=fb_login]').remove();
+                }
+            }
+            else {
+                jQuery('[data-salon-click=fb_login]').unbind('click').click(function() {
+                    FB.login(function() {
+                        facebookLogin();
+                    }, {scope: 'email'});
+
+                    return false;
+                });                
+            }
         }
         $('[data-salon-toggle="next"]').click(function (e) {
             var form = $(this).closest('form');
@@ -643,37 +659,31 @@ setTimeout(function(){
 }(jQuery);
 
 function facebookInit() {
-    if (salon.fb_app_id !== undefined) {
-        if (window.fbAsyncInit === undefined) {
-            window.fbAsyncInit = function() {
-                FB.init({
-                    appId      : salon.fb_app_id,
-                    cookie     : true,
-                    xfbml      : true,
-                    version    : 'v2.8'
-                });
-                FB.AppEvents.logPageView();
+    window.fbAsyncInit = function() {
+            FB.init({
+                appId      : salon.fb_app_id,
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v2.8'
+            });
+            FB.AppEvents.logPageView();
 
-                jQuery('[data-salon-click=fb_login]').unbind('click').click(function() {
-                    FB.login(function() {
-                        facebookLogin();
-                    }, {scope: 'email'});
+            jQuery('[data-salon-click=fb_login]').unbind('click').click(function() {
+                FB.login(function() {
+                    facebookLogin();
+                }, {scope: 'email'});
 
-                    return false;
-                });
-            };            
-        }
-        (function(d, s, id){
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    }
-    else {
-        jQuery('[data-salon-click=fb_login]').remove();
-    }
+                return false;
+            });
+    };            
+    
+    (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));    
 }
 
 function facebookLogin() {
@@ -689,11 +699,34 @@ function facebookLogin() {
             var firstname = tmp.join(' ');
 
             var $form = jQuery('#salon-step-details');
-            $form.append('<input type="hidden" name="fb_id" value="' + id + '" />');
-            $form.append('<input type="hidden" name="fb_email" value="' + email + '" />');
-            $form.append('<input type="hidden" name="fb_firstname" value="' + firstname + '" />');
-            $form.append('<input type="hidden" name="fb_lastname" value="' + lastname + '" />');
-            $form.find('[name=submit_details]').click();
+            if($form.length){
+                $form.append('<input type="hidden" name="fb_id" value="' + id + '" />');
+                $form.append('<input type="hidden" name="fb_email" value="' + email + '" />');
+                $form.append('<input type="hidden" name="fb_firstname" value="' + firstname + '" />');
+                $form.append('<input type="hidden" name="fb_lastname" value="' + lastname + '" />');
+                $form.find('[name=submit_details]').click();
+            }else{
+                var data = "fbEmail=" + email + "&fbID=" + id + "&fbFirstName=" + firstname + "&fbLastName=" + lastname + "&action=salon&method=FacebookLogin&security=" + salon.ajax_nonce;
+                jQuery.ajax({
+                    url: salon.ajax_url,
+                    data: data,
+                    method: 'POST',
+                    dataType: 'json',
+                    success: facebookRefreshPageCallback,
+                    error: function(data){alert('error'); console.log(data);}
+                });
+                function facebookRefreshPageCallback(response) {
+                    if (response.success) {
+                        location.reload();
+                    }
+                    else {
+                        alert('error');
+                        console.log(response);
+                    }
+                }
+
+                
+            }
         });
     }
 }
