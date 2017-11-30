@@ -201,5 +201,4 @@ function addClassIfNarrow(element, narrowClass) {
 jQuery(document).ready(function() {
     slnMyAccount.init();
     addClassIfNarrow(jQuery('#sln-salon-my-account'), 'mobile-version');
-    facebookInit();
 });
