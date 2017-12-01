@@ -340,4 +340,10 @@ class SLN_Settings
                 : strtolower(substr(get_locale(), 0, 2))
             );
     }
+
+    public function getDateLocale()
+    {
+        if( setlocale(LC_TIME,0) !== get_locale() ){ setlocale(LC_TIME, get_locale()); }
+        return strtolower(substr(get_locale(LC_TIME), 0, 2));
+    }
 }
