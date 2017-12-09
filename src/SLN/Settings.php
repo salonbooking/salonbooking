@@ -343,7 +343,13 @@ class SLN_Settings
 
     public function getDateLocale()
     {
-        if( setlocale(LC_TIME,0) !== get_locale() ){ setlocale(LC_TIME, get_locale()); }
+        $locale = defined('ICL_LANGUAGE_CODE')
+            ? ICL_LANGUAGE_CODE
+            : (function_exists('pll_current_language')
+                ? pll_current_language()
+                : get_locale()
+            );
+        if( setlocale(LC_TIME,0) !== $locale  ){ setlocale(LC_TIME, $locale ); }
         return strtolower(substr(get_locale(LC_TIME), 0, 2));
     }
 }
