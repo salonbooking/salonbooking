@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Salon Booking Wordpress Plugin - Free Version\n"
 "POT-Creation-Date: 2017-11-02 14:18+0100\n"
 "PO-Revision-Date: 2017-11-02 14:18+0100\n"
-"Last-Translator: Markus Wermelinger <wekzym@gmail.com>, 2017\n"
+"Last-Translator: Ludo Joosen <ludo@antwerpenalacarte.be>, 2017\n"
 "Language-Team: German (Germany) (https://www.transifex.com/wp-translations/teams/8416/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,56 +32,56 @@ msgstr "-"
 
 #: src/SLB_Discount/Action/Ajax/ApplyDiscountCode.php:46
 msgid "Coupon is not valid"
-msgstr ""
+msgstr "Gutschein ist nicht gültig"
 
 #: src/SLB_Discount/Action/Ajax/ApplyDiscountCode.php:57
 msgid "Coupon was applied"
-msgstr ""
+msgstr "Gutschein angewendet"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:23
 msgid "Customer"
-msgstr ""
+msgstr "Kunde"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:24
 msgid "Booking date"
-msgstr ""
+msgstr "Buchungsdatum"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:25
 msgid "Booking amount"
-msgstr ""
+msgstr "Buchungswert"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:26
 msgid "Booking discount"
-msgstr ""
+msgstr "Buchungsermäßigung"
 
 #: src/SLB_Discount/Enum/DiscountType.php:27
 msgid "Coupon code"
-msgstr ""
+msgstr "Gutschein Code"
 
 #: src/SLB_Discount/Enum/DiscountType.php:28
 msgid "Automatic discount"
-msgstr ""
+msgstr "Automatisierte Ermäßigung"
 
 #: src/SLB_Discount/Metabox/Discount.php:29
 msgid "Discount details"
-msgstr ""
+msgstr "Ermäßigungsdetails"
 
 #: src/SLB_Discount/Metabox/Discount.php:39
 msgid "&nbsp"
-msgstr ""
+msgstr "&nbsp"
 
 #: src/SLB_Discount/Metabox/Discount.php:50
 msgid "Discount usage history"
-msgstr ""
+msgstr "Ermäßigungsnutzungstatistik"
 
 #: src/SLB_Discount/Plugin.php:217
 msgid "Discounted price"
-msgstr ""
+msgstr "Ermäßigter Preis"
 
 #: src/SLB_Discount/PostType/Discount.php:58
 #: views/discount/metabox/_discount_details.php:20
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: src/SLB_Discount/PostType/Discount.php:59
 #: views/discount/metabox/_discount_details.php:16
@@ -91,59 +91,59 @@ msgstr "Betrag"
 
 #: src/SLB_Discount/PostType/Discount.php:60
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: src/SLB_Discount/PostType/Discount.php:61
 msgid "Discount usages"
-msgstr ""
+msgstr "Genutze Ermäßigungen"
 
 #: src/SLB_Discount/PostType/Discount.php:82
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: src/SLB_Discount/PostType/Discount.php:85
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #: src/SLB_Discount/PostType/Discount.php:99
 msgid "Enter discount name"
-msgstr ""
+msgstr "Gib der Ermäßigung einen Namen"
 
 #: src/SLB_Discount/PostType/Discount.php:110
 #: src/SLB_Discount/PostType/Discount.php:114
 msgid "Discount updated."
-msgstr ""
+msgstr "Ermäßigungen aktualisiert"
 
 #: src/SLB_Discount/PostType/Discount.php:116
 #, php-format
 msgid "Discount restored to revision from %s"
-msgstr ""
+msgstr "Ermäßigung zurückgesetzt zur Prüfung für %s"
 
 #: src/SLB_Discount/PostType/Discount.php:120
 msgid "Discount published."
-msgstr ""
+msgstr "Ermäßigung veröffentlicht."
 
 #: src/SLB_Discount/PostType/Discount.php:122
 msgid "Discount saved."
-msgstr ""
+msgstr "Ermäßigung gespeichert."
 
 #: src/SLB_Discount/PostType/Discount.php:124
 msgid "Discount submitted."
-msgstr ""
+msgstr "Ermäßigung übermittelt."
 
 #: src/SLB_Discount/PostType/Discount.php:128
 msgid "Discount draft updated."
-msgstr ""
+msgstr "Ermäßigungsentwurf aktualisiert."
 
 #: src/SLB_Discount/PostType/Discount.php:151
 #: src/SLB_Discount/PostType/Discount.php:155
 msgid "Discounts"
-msgstr ""
+msgstr "Ermäßigungen"
 
 #: src/SLB_Discount/PostType/Discount.php:152
 #: views/discount/shortcode/_salon_summary_before_total_amount.php:12
 msgid "Discount"
-msgstr ""
+msgstr "Ermäßigung"
 
 #: src/SLB_Discount/PostType/Discount.php:153 src/SLN/Admin/Calendar.php:12
 #: src/SLN/Admin/Calendar.php:13 src/SLN/PostType/Attendant.php:233
@@ -153,70 +153,71 @@ msgstr "Salon"
 
 #: src/SLB_Discount/PostType/Discount.php:154
 msgid "Salon Discount"
-msgstr ""
+msgstr "Salon Ermäßigung"
 
 #: src/SLB_Discount/PostType/Discount.php:156
 msgid "Add Discount"
-msgstr ""
+msgstr "Füge Ermäßigungen hinzu"
 
 #: src/SLB_Discount/PostType/Discount.php:157
 msgid "Add New Discount"
-msgstr ""
+msgstr "Füge neue Ermäßigungen hinzu"
 
 #: src/SLB_Discount/PostType/Discount.php:158
 msgid "Edit Discount"
-msgstr ""
+msgstr "Bearbeite Ermäßigungen"
 
 #: src/SLB_Discount/PostType/Discount.php:159
 msgid "New Discount"
-msgstr ""
+msgstr "Neue Ermäßigung"
 
 #: src/SLB_Discount/PostType/Discount.php:160
 msgid "View Discount"
-msgstr ""
+msgstr "Betrachte Ermäßigungen"
 
 #: src/SLB_Discount/PostType/Discount.php:161
 msgid "Search Discounts"
-msgstr ""
+msgstr "Durchsuche Ermäßigungen"
 
 #: src/SLB_Discount/PostType/Discount.php:162
 msgid "No discounts found"
-msgstr ""
+msgstr "Kein Rabbat gefunden"
 
 #: src/SLB_Discount/PostType/Discount.php:163
 msgid "No discounts found in trash"
-msgstr ""
+msgstr "Keine Ermäßgigungen im Papierkorb gefunden"
 
 #: src/SLB_Discount/PostType/Discount.php:164
 msgid "Discounts Archive"
-msgstr ""
+msgstr "Rabbatarchiv"
 
 #: src/SLB_Discount/Wrapper/Discount.php:415
 #: src/SLB_Discount/Wrapper/Discount.php:481
 msgid "Coupon expired"
-msgstr ""
+msgstr "Gutschein abgelaufen"
 
 #: src/SLB_Discount/Wrapper/Discount.php:418
 msgid "This coupon was applied maximum number of times"
-msgstr ""
+msgstr "Der Gutschein ist abgelaufen."
 
 #: src/SLB_Discount/Wrapper/Discount.php:432
 msgid "You applied this coupon maximum number of times"
-msgstr ""
+msgstr "Die maximale Anwendbarkeit der Gutscheins ist erreicht"
 
 #: src/SLB_Discount/Wrapper/Discount.php:457
 msgid "This coupon is not valid for selected services"
-msgstr ""
+msgstr "Der Gutschein ist für die gewählten Leistungen nicht gültig"
 
 #: src/SLB_Discount/Wrapper/Discount.php:487
 #, php-format
 msgid "This coupon is not valid on %s"
-msgstr ""
+msgstr "Der Gutschein ist nicht gültig für %s"
 
 #: src/SLB_Discount/Wrapper/Discount.php:501
 #: src/SLB_Discount/Wrapper/Discount.php:513
 msgid "Make more bookings to be able to use this coupon"
 msgstr ""
+"Um den Gutschein zu nutzen, musst du weitere Buchungen abgeschlossen haben"
 
 #: src/SLN/Action/Ajax/AbstractImport.php:21
 msgid "Method not found"
@@ -269,7 +270,7 @@ msgstr "Std"
 
 #: src/SLN/Action/Ajax/Calendar.php:87
 msgid "mns"
-msgstr "Mins"
+msgstr "Min"
 
 #: src/SLN/Action/Ajax/Calendar.php:88
 msgid "available left"
@@ -338,6 +339,8 @@ msgstr "Sie können bis zu %d Elemente auswählen"
 #: src/SLN/Action/Ajax/CheckServices.php:193
 msgid "This service is exclusive. Please remove other services."
 msgstr ""
+"Dieses Angebot ist nur ausgewählte Kunden verfügbar. Bitte entferne andere "
+"Angebote."
 
 #: src/SLN/Action/Ajax/ResendNotification.php:18
 #: src/SLN/Action/Ajax/ResendPaymentNotification.php:16
@@ -387,7 +390,7 @@ msgstr "dieses Feld ausfüllen"
 
 #: src/SLN/Action/InitScripts.php:52 views/admin/calendar.php:232
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: src/SLN/Action/Install.php:26
 #: src/SLN/Action/Updates/sln-update-for-3.0.php:92
@@ -423,6 +426,8 @@ msgid ""
 "<strong>ERROR</strong>: This email is already registered, please choose "
 "another one."
 msgstr ""
+"<strong>FEHLER</strong>Diese E-Mail Adresse ist bereits registriert. Bitte "
+"wähle eine andere."
 
 #: src/SLN/Admin/Customers/BookingsList.php:27 src/SLN/PostType/Booking.php:46
 #: views/mail/_header.php:28
@@ -635,7 +640,7 @@ msgstr "Reset erfolgreich durchgeführt"
 
 #: src/SLN/Admin/Settings.php:287
 msgid "Invalid Email in Salon contact e-mail field"
-msgstr ""
+msgstr "Ungültige E-Mail Adresse im Kontaktfeld."
 
 #: src/SLN/Admin/Settings.php:367
 msgid "general settings are updated"
@@ -673,7 +678,7 @@ msgstr "Die Prüfung der Seite ist leider gescheitert."
 
 #: src/SLN/Admin/Settings.php:517
 msgid "Update Settings"
-msgstr ""
+msgstr "Update Einstellungen"
 
 #: src/SLN/Admin/Settings.php:561
 msgid "style settings are updated"
@@ -866,11 +871,11 @@ msgstr "Samstag"
 
 #: src/SLN/Enum/PaymentDepositType.php:22
 msgid "entire amount (disabled)"
-msgstr ""
+msgstr "Gesamtbetrag (deaktiviert)"
 
 #: src/SLN/Enum/PaymentDepositType.php:23
 msgid "fixed"
-msgstr ""
+msgstr "fest"
 
 #: src/SLN/Enum/ShortcodeStyle.php:65
 msgid "Use this if your column is at least 400px width"
@@ -1493,12 +1498,12 @@ msgstr "Facebook Login"
 #: src/SLN/TaxonomyType/ServiceCategory.php:10
 msgctxt "taxonomy general name"
 msgid "Service Categories"
-msgstr ""
+msgstr "Dienstkategorien"
 
 #: src/SLN/TaxonomyType/ServiceCategory.php:11
 msgctxt "taxonomy singular name"
 msgid "Service Category"
-msgstr ""
+msgstr "Dienstkategorie"
 
 #: src/SLN/TaxonomyType/ServiceCategory.php:12
 msgid "Search Service Category"
@@ -1750,11 +1755,11 @@ msgstr "Vor"
 
 #: views/admin/calendar.php:230
 msgid "Save"
-msgstr ""
+msgstr "speichern"
 
 #: views/admin/calendar.php:231
 msgid "Delete"
-msgstr ""
+msgstr "löschen"
 
 #: views/admin/calendar.php:252
 msgid "Export reservations into a CSV file"
@@ -1918,15 +1923,17 @@ msgstr "Diesen Hinweis ausblenden"
 
 #: views/discount/metabox/_booking_total_amount_row.php:14
 msgid "Discount applied"
-msgstr ""
+msgstr "Ermäßigungen angewendet"
 
 #: views/discount/metabox/_discount_advanced.php:14
 msgid "This is a"
 msgstr ""
+"Das ist ein\n"
+"Das ist eine"
 
 #: views/discount/metabox/_discount_advanced.php:43
 msgid "Code to be used"
-msgstr ""
+msgstr "zu verwendender Code"
 
 #: views/discount/metabox/_discount_advanced.php:48
 msgid "Copy this code and give it to your customers"
@@ -1934,7 +1941,7 @@ msgstr ""
 
 #: views/discount/metabox/_discount_advanced.php:56
 msgid "Automatic discount settings"
-msgstr ""
+msgstr "Einstellungen für automatisierten Ermäßigungen"
 
 #: views/discount/metabox/_discount_advanced.php:57
 msgid "Automatically apply when the rules are met"
@@ -1958,31 +1965,32 @@ msgstr ""
 
 #: views/discount/metabox/_discount_advanced.php:93
 msgid "Remove rule"
-msgstr ""
+msgstr "Entferne Regel"
 
 #: views/discount/metabox/_discount_advanced.php:101
 msgid "Number of reservations"
-msgstr ""
+msgstr "Anzahl der Reservierungen"
 
 #: views/discount/metabox/_discount_advanced.php:108
 msgid "Amount of reservations"
-msgstr ""
+msgstr "Betrag der Reservierungen"
 
 #: views/discount/metabox/_discount_advanced.php:142
 msgid "Select one or more days of the week where the discount is valid"
 msgstr ""
+"Wähle einen oder mehrere Tage aus, an denen die Ermäßigung gültig sein soll"
 
 #: views/discount/metabox/_discount_advanced.php:150
 msgid "Add new rule"
-msgstr ""
+msgstr "Füge eine neue Regel hinzu"
 
 #: views/discount/metabox/_discount_details.php:25
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: views/discount/metabox/_discount_details.php:31
 msgid "Type the amount of this discount"
-msgstr ""
+msgstr "Gib den Wert der Ermäßigung ein"
 
 #: views/discount/metabox/_discount_details.php:34
 msgid "Maximum uses limit"
@@ -1995,7 +2003,7 @@ msgstr ""
 
 #: views/discount/metabox/_discount_details.php:42
 msgid "Valid from"
-msgstr ""
+msgstr "Gültig von"
 
 #: views/discount/metabox/_discount_details.php:60
 msgid "Per single user limit"
@@ -2003,7 +2011,7 @@ msgstr ""
 
 #: views/discount/metabox/_discount_details.php:68
 msgid "Limit this discount to the following services"
-msgstr ""
+msgstr "Beschränke die Ermäßigung auf folgende Leistungen"
 
 #: views/discount/metabox/_discount_details.php:83
 msgid "Leave it blank if you want to be applied to all services"
@@ -2016,11 +2024,11 @@ msgstr ""
 
 #: views/discount/shortcode/_salon_summary_after_total_amount.php:12
 msgid "Do you have any discount code?"
-msgstr ""
+msgstr "Hast du einen Ermäßigungscode?"
 
 #: views/discount/shortcode/_salon_summary_after_total_amount.php:25
 msgid "key in your coupon code"
-msgstr ""
+msgstr "Geben Sie Ihren Gutscheincode ein"
 
 #: views/discount/shortcode/_salon_summary_after_total_amount.php:31
 msgid "Apply"
@@ -3133,15 +3141,16 @@ msgstr ""
 
 #: views/settings/tab_checkout.php:68
 msgid "Advanced Discount System"
-msgstr ""
+msgstr "Erweitertes Ermäßigungssystem"
 
 #: views/settings/tab_checkout.php:72
 msgid "Enable"
-msgstr ""
+msgstr "Aktiviere"
 
 #: views/settings/tab_checkout.php:73
 msgid "Check this box if you want to enable the Discount section"
 msgstr ""
+"Markiere diese Box, wenn du den Ermäßigungsbereich aktivieren möchtest"
 
 #: views/settings/tab_checkout.php:81
 msgid "Checkout form fields"
@@ -3305,7 +3314,7 @@ msgstr ""
 
 #: views/settings/tab_general.php:3
 msgid "Salon information"
-msgstr ""
+msgstr "Salon Information"
 
 #: views/settings/tab_general.php:9
 msgid "Your salon name"
@@ -3623,7 +3632,7 @@ msgstr "Bitte leisten sie eine Anzahlung"
 
 #: views/settings/tab_payments.php:66
 msgid "Fixed amount"
-msgstr ""
+msgstr "Fester Wert"
 
 #: views/settings/tab_payments.php:67
 msgid "specify the amount without currency symbol"
@@ -3631,7 +3640,7 @@ msgstr ""
 
 #: views/settings/tab_payments.php:70
 msgid "Percentage "
-msgstr ""
+msgstr "Prozent"
 
 #: views/settings/tab_payments.php:86
 msgid "Prices visibility"
@@ -3856,7 +3865,7 @@ msgstr "Ihre Buchung wird bearbeitet"
 #: views/shortcode/_salon_thankyou_600.php:28
 #: views/shortcode/_salon_thankyou_900.php:28
 msgid "PLEASE COMPLETE PAYMENT"
-msgstr ""
+msgstr "Bitte vevollständige deine Zahlung"
 
 #: views/shortcode/_salon_thankyou_400.php:28
 #: views/shortcode/_salon_thankyou_600.php:28
@@ -3927,7 +3936,7 @@ msgstr "Preis"
 
 #: views/shortcode/_unavailable.php:4
 msgid "SORRY! This slot is no more available"
-msgstr ""
+msgstr "Tut uns leid! Dieser Zeitraum ist nicht mehr verfügbar"
 
 #: views/shortcode/_unavailable.php:6
 msgid "Please start over your reservation"

@@ -32,19 +32,19 @@ msgstr "-"
 
 #: src/SLB_Discount/Action/Ajax/ApplyDiscountCode.php:46
 msgid "Coupon is not valid"
-msgstr ""
+msgstr "Kupon er ikke gyldig"
 
 #: src/SLB_Discount/Action/Ajax/ApplyDiscountCode.php:57
 msgid "Coupon was applied"
-msgstr ""
+msgstr "Kupon er tilføjet"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:23
 msgid "Customer"
-msgstr ""
+msgstr "Kunder"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:24
 msgid "Booking date"
-msgstr ""
+msgstr "Booking dato"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:25
 msgid "Booking amount"

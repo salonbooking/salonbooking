@@ -2971,7 +2971,7 @@ msgstr ""
 
 #: views/settings/tab_checkout.php:72
 msgid "Enable"
-msgstr ""
+msgstr "Aktivizoje"
 
 #: views/settings/tab_checkout.php:73
 msgid "Check this box if you want to enable the Discount section"
