@@ -394,7 +394,7 @@ msgstr "Cliente del salón"
 
 #: src/SLN/Action/Sms/Plivo.php:22
 msgid "Plivo: Please check your settings"
-msgstr ""
+msgstr "Plivo: Por favor revisa tu configuración"
 
 #: src/SLN/Admin/Calendar.php:21
 msgid "Salon Calendar"
@@ -1033,7 +1033,7 @@ msgstr "Este asistente está lleno en %s"
 
 #: src/SLN/Helper/AvailabilityItem.php:139
 msgid "Always"
-msgstr ""
+msgstr "Siempre"
 
 #: src/SLN/Helper/AvailabilityItem.php:142
 msgid "All days"
@@ -1721,105 +1721,111 @@ msgstr "Vista de asistentes"
 
 #: views/admin/calendar.php:174 views/metabox/booking.php:126
 msgid "no users found"
-msgstr ""
+msgstr "No se encontraron usuarios"
 
 #: views/admin/calendar.php:175
 msgid "digit a customer name"
-msgstr ""
+msgstr "digite un nombre de cliente"
 
 #: views/admin/calendar.php:191
 msgid "filter by service"
-msgstr ""
+msgstr "filtrar por servicio"
 
 #: views/admin/calendar.php:205
 msgid "Previous"
-msgstr ""
+msgstr "Anterior"
 
 #: views/admin/calendar.php:211
 msgid "Next"
-msgstr ""
+msgstr "Siguente"
 
 #: views/admin/calendar.php:230
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: views/admin/calendar.php:231
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: views/admin/calendar.php:252
 msgid "Export reservations into a CSV file"
-msgstr ""
+msgstr "Exportar reservas en un archivo CSV"
 
 #: views/admin/calendar.php:276
 msgid "Export"
-msgstr ""
+msgstr "Exportar"
 
 #: views/admin/calendar.php:285
 msgid "Bookings status legend"
-msgstr ""
+msgstr "Leyenda de estado de reservas"
 
 #: views/admin/calendar.php:288
 msgid "or"
-msgstr ""
+msgstr "o"
 
 #: views/admin/tools.php:13
 msgid "Settings debug"
-msgstr ""
+msgstr "Depuración de configuración"
 
 #: views/admin/tools.php:16
 msgid ""
 "Copy and paste into a text file the informations of this field and provide "
 "them to Salon Booking support."
 msgstr ""
+"Copie y pegue en un archivo de texto las informaciones de este campo y "
+"bríndelas al soporte de Salon Booking."
 
 #: views/admin/tools.php:20 views/admin/tools.php:36
 msgid "Just click inside the textarea and copy (Ctrl+C)"
-msgstr ""
+msgstr "Simplemente haga clic dentro del área de texto y copie (Ctrl+C)"
 
 #: views/admin/tools.php:29
 msgid "Settings import"
-msgstr ""
+msgstr "Importación de configuraciones"
 
 #: views/admin/tools.php:32
 msgid ""
 "Copy and paste into this field settings of the plugin to import settings "
 "into the current wordpress install."
 msgstr ""
+"Copie y pegue en este campo la configuración del complemento para importar "
+"configuraciones en la instalación actual de WordPress."
 
 #: views/admin/tools.php:55
 msgid "Import customers"
-msgstr ""
+msgstr "Importar clientes"
 
 #: views/admin/tools.php:56
 msgid ""
 "Import customers from other platforms using a csv file that respect our csv "
 "sample file structure"
 msgstr ""
+"Importar clientes desde otras plataformas usando un archivo csv que respete "
+"nuestra estructura de archivo de muestra csv"
 
 #: views/admin/tools.php:63 views/admin/tools.php:64
 msgid "drag your csv file here to import customers"
-msgstr ""
+msgstr "arrastre su archivo csv aquí para importar clientes"
 
 #: views/admin/tools.php:66 views/admin/tools.php:106
 #: views/admin/tools.php:148
 msgid "Well done! Your import has been successfully completed."
-msgstr ""
+msgstr "¡Bien hecho! Su importación ha sido completada exitosamente."
 
 #: views/admin/tools.php:67 views/admin/tools.php:107
 #: views/admin/tools.php:149
 msgid "Error! Something is gone wrong."
-msgstr ""
+msgstr "¡Error! Algo salió mal"
 
 #: views/admin/tools.php:79 views/admin/tools.php:119
 #: views/admin/tools.php:161
 msgid "download a csv sample file"
-msgstr ""
+msgstr "descargar un archivo de muestra csv"
 
 #: views/admin/tools.php:83 views/admin/tools.php:123
 #: views/admin/tools.php:165 views/admin/tools.php:199
 msgid "loading"
-msgstr ""
+msgstr "cargando"
 
 #: views/admin/tools.php:84 views/admin/tools.php:124
 #: views/admin/tools.php:166 views/admin/tools.php:200
@@ -1828,47 +1834,53 @@ msgstr "Importar"
 
 #: views/admin/tools.php:95
 msgid "Import services"
-msgstr ""
+msgstr "Importar servicios"
 
 #: views/admin/tools.php:96
 msgid ""
 "Import services from other platforms using a csv file that respect our csv "
 "sample file structure"
 msgstr ""
+"Importe servicios desde otras plataformas usando un archivo csv que respete "
+"nuestra estructura de archivo de muestra csv"
 
 #: views/admin/tools.php:103 views/admin/tools.php:104
 msgid "drag your csv file here to import services"
-msgstr ""
+msgstr "arrastre su archivo csv aquí para importar servicios"
 
 #: views/admin/tools.php:137
 msgid "Import assistants"
-msgstr ""
+msgstr "Importar asistentes"
 
 #: views/admin/tools.php:138
 msgid ""
 "Import assistants from other platforms using a csv file that respect our csv"
 " sample file structure"
 msgstr ""
+"Importar asistentes de otras plataformas usando un archivo csv que respete "
+"nuestra estructura de archivo de muestra csv"
 
 #: views/admin/tools.php:145 views/admin/tools.php:146
 msgid "drag your csv file here to import assistants"
-msgstr ""
+msgstr "arrastre su archivo csv aquí para importar asistentes"
 
 #: views/admin/tools.php:183
 msgid "You need to match your CSV file data with Salon Booking database"
 msgstr ""
+"Necesita hacer coincidir los datos de su archivo CSV con la base de datos de"
+" Salon Booking"
 
 #: views/admin/tools.php:184
 msgid "Select for each column the corresponding one inside your file."
-msgstr ""
+msgstr "Seleccione para cada columna el correspondiente dentro de su archivo."
 
 #: views/admin/tools.php:194
 msgid "Please provide all requested columns"
-msgstr ""
+msgstr "Proporcione todas las columnas solicitadas"
 
 #: views/admin_notices.php:2
 msgid "<strong>Congratulation!</strong> Salon Booking is now active."
-msgstr ""
+msgstr "<strong>¡Felicidades!</strong> Salon Booking ahora está activo."
 
 #: views/admin_notices.php:4
 msgid ""
@@ -1879,274 +1891,283 @@ msgid ""
 "href=\"/wp-admin/admin.php?page=salon-settings\"><strong>\"Salon > "
 "Settings\"</strong></a>section to setup your Salon Booking System</p>"
 msgstr ""
+"<p>Se ha creado una nueva sección  <strong>\"Salón\"</strong> en la barra "
+"lateral izquierda<br/>. Se han creado tres páginas nuevas: \"Reservar\", "
+"\"Reservar mi cuenta\" y \"Página de agradecimiento\" <br/> También hemos "
+"agregado algunos \"servicios\" y \"reservas\" para  propósito de "
+"demostración. Siéntase libre de borrarlos<br/> Vaya a la sección <a href"
+"=\"/wp-admin/admin.php?page=salon-settings\"><strong> \"Salon > "
+"Configuración\" </strong></a> para configurar su Salon Booking System</p>"
 
 #: views/admin_notices.php:9
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "Descartar este aviso"
 
 #: views/discount/metabox/_booking_total_amount_row.php:14
 msgid "Discount applied"
-msgstr ""
+msgstr "Descuento aplicado"
 
 #: views/discount/metabox/_discount_advanced.php:14
 msgid "This is a"
-msgstr ""
+msgstr "Esto es un"
 
 #: views/discount/metabox/_discount_advanced.php:43
 msgid "Code to be used"
-msgstr ""
+msgstr "Código para ser utilizado"
 
 #: views/discount/metabox/_discount_advanced.php:48
 msgid "Copy this code and give it to your customers"
-msgstr ""
+msgstr "Copia este código y entrégalo a tus clientes"
 
 #: views/discount/metabox/_discount_advanced.php:56
 msgid "Automatic discount settings"
-msgstr ""
+msgstr "Configuración automática de descuento"
 
 #: views/discount/metabox/_discount_advanced.php:57
 msgid "Automatically apply when the rules are met"
-msgstr ""
+msgstr "Aplicar automáticamente cuando se cumplen las reglas"
 
 #: views/discount/metabox/_discount_advanced.php:76
 msgid "Reservations collected by a single customer"
-msgstr ""
+msgstr "Reservas hechas por un solo cliente"
 
 #: views/discount/metabox/_discount_advanced.php:77
 msgid "Reservations amount collected by a single customer"
-msgstr ""
+msgstr "Monto de las reservas recaudado por un solo cliente"
 
 #: views/discount/metabox/_discount_advanced.php:78
 msgid "On these specific date period"
-msgstr ""
+msgstr "En este período de fecha específico"
 
 #: views/discount/metabox/_discount_advanced.php:79
 msgid "On these specific days of the week"
-msgstr ""
+msgstr "En estos días específicos de la semana"
 
 #: views/discount/metabox/_discount_advanced.php:93
 msgid "Remove rule"
-msgstr ""
+msgstr "Eliminar regla"
 
 #: views/discount/metabox/_discount_advanced.php:101
 msgid "Number of reservations"
-msgstr ""
+msgstr "Numero de reservas"
 
 #: views/discount/metabox/_discount_advanced.php:108
 msgid "Amount of reservations"
-msgstr ""
+msgstr "Cantidad de reservas"
 
 #: views/discount/metabox/_discount_advanced.php:142
 msgid "Select one or more days of the week where the discount is valid"
-msgstr ""
+msgstr "Seleccione uno o más días de la semana donde el descuento es válido"
 
 #: views/discount/metabox/_discount_advanced.php:150
 msgid "Add new rule"
-msgstr ""
+msgstr "Agregar nueva regla"
 
 #: views/discount/metabox/_discount_details.php:25
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: views/discount/metabox/_discount_details.php:31
 msgid "Type the amount of this discount"
-msgstr ""
+msgstr "Escriba el monto de este descuento"
 
 #: views/discount/metabox/_discount_details.php:34
 msgid "Maximum uses limit"
-msgstr ""
+msgstr "Límite máximo de usos"
 
 #: views/discount/metabox/_discount_details.php:36
 #: views/discount/metabox/_discount_details.php:62
 msgid "Leave it blank for an unlimited times of usage"
-msgstr ""
+msgstr "Dejar en blanco para uso ilimitado"
 
 #: views/discount/metabox/_discount_details.php:42
 msgid "Valid from"
-msgstr ""
+msgstr "Válido desde"
 
 #: views/discount/metabox/_discount_details.php:60
 msgid "Per single user limit"
-msgstr ""
+msgstr "límite de usuario único"
 
 #: views/discount/metabox/_discount_details.php:68
 msgid "Limit this discount to the following services"
-msgstr ""
+msgstr "Limite este descuento a los siguientes servicios"
 
 #: views/discount/metabox/_discount_details.php:83
 msgid "Leave it blank if you want to be applied to all services"
-msgstr ""
+msgstr "Déjelo en blanco si desea aplicarlo a todos los servicios"
 
 #: views/discount/metabox/_discount_history.php:13
 #, php-format
 msgid "Total usage ( %d )"
-msgstr ""
+msgstr "Uso total ( %d )"
 
 #: views/discount/shortcode/_salon_summary_after_total_amount.php:12
 msgid "Do you have any discount code?"
-msgstr ""
+msgstr "¿Tienes algún código de descuento?"
 
 #: views/discount/shortcode/_salon_summary_after_total_amount.php:25
 msgid "key in your coupon code"
-msgstr ""
+msgstr "clave en su código de cupón"
 
 #: views/discount/shortcode/_salon_summary_after_total_amount.php:31
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: views/mail/_footer.php:13
 msgid "Manage your reservations accessing your personal page"
-msgstr ""
+msgstr "Administra tus reservas accediendo a tu página personal"
 
 #: views/mail/_footer.php:43
 msgid "Manage Bookings"
-msgstr ""
+msgstr "Administrar reservaciones"
 
 #: views/mail/_status_canceled_content.php:19
 #: views/mail/payment_confirmed.php:10 views/shortcode/salon_summary.php:50
 msgid "Dear"
-msgstr ""
+msgstr "Apreciable"
 
 #: views/mail/_status_canceled_content.php:23
 #, php-format
 msgid "the following booking at %s has been canceled"
-msgstr ""
+msgstr "la siguiente reserva en %s ha sido cancelada"
 
 #: views/mail/_status_canceled_content.php:40
 #: views/mail/_summary_content.php:137 views/mail/feedback.php:91
 #: views/mail/follow_up.php:34
 msgid "Our address"
-msgstr ""
+msgstr "Nuestra dirección"
 
 #: views/mail/_status_canceled_content.php:53
 #: views/mail/_summary_content.php:172 views/mail/feedback.php:108
 #: views/mail/follow_up.php:51
 msgid "Contacts"
-msgstr ""
+msgstr "Contactos"
 
 #: views/mail/_status_canceled_content.php:87
 #: views/mail/_summary_content.php:214
 msgid "Important notes"
-msgstr ""
+msgstr "Notas importantes"
 
 #: views/mail/_summary_content.php:43
 msgid "Click here to approve "
-msgstr ""
+msgstr "Haga clic aquí para aprobar"
 
 #: views/mail/_summary_content.php:45
 msgid "booking request."
-msgstr ""
+msgstr "solicitud de reserva."
 
 #: views/mail/_summary_content.php:50
 msgid "Your booking is pending, please await our confirmation."
-msgstr ""
+msgstr "Tu reserva está pendiente, por favor espere nuestra confirmación."
 
 #: views/mail/_summary_content.php:58
 msgid "Reservation at [SALON NAME] has been modified"
-msgstr ""
+msgstr "La reserva en [SALON NAME] ha sido modificada"
 
 #: views/mail/_summary_content.php:85
 msgid "This is an e-mail notification of a new booking"
-msgstr ""
+msgstr "Esta es una notificación por correo electrónico de una nueva reserva"
 
 #: views/mail/_summary_content.php:86 views/mail/_summary_content.php:98
 #: views/mail/_summary_content.php:107
 msgid "Please take note of the following booking details."
-msgstr ""
+msgstr "Por favor, tome nota de los siguientes detalles de reserva."
 
 #: views/mail/_summary_content.php:92
 msgid "Remind your booking at"
-msgstr ""
+msgstr "Recuerda tu reservación en"
 
 #: views/mail/_summary_content.php:102
 msgid "This is an e-mail confirmation of your booking at"
-msgstr ""
+msgstr "Esta es una confirmación por correo electrónico de tu reservación en"
 
 #: views/mail/_summary_content.php:141
 msgid "Customer address"
-msgstr ""
+msgstr "Dirección del cliente"
 
 #: views/mail/_summary_content.php:163
 msgid "Customer contacts"
-msgstr ""
+msgstr "Formas de contacto del cliente"
 
 #: views/mail/_summary_content.php:236
 msgid "Customer message:"
-msgstr ""
+msgstr "Mensaje del cliente:"
 
 #: views/mail/_summary_content.php:238
 msgid "Please confirm or reject this booking from administration"
-msgstr ""
+msgstr "Confirma o rechaza esta reserva desde la administración"
 
 #: views/mail/_summary_content.php:241
 msgid "View this booking into administration."
-msgstr ""
+msgstr "Ver esta reserva en administración."
 
 #: views/mail/_summary_details.php:17
 #: views/shortcode/salon_booking_calendar/calendar_content.php:10
 #: views/shortcode/salon_booking_calendar/calendar_content.php:19
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
 #: views/mail/_summary_details.php:23
 msgid "Time"
-msgstr ""
+msgstr "Hora"
 
 #: views/mail/_summary_details.php:92
 #: views/shortcode/_salon_summary_400.php:71
 #: views/shortcode/_salon_summary_600.php:72
 #: views/shortcode/_salon_summary_900.php:80
 msgid "Total amount"
-msgstr ""
+msgstr "Costo total"
 
 #: views/mail/_summary_pendingpayment.php:9
 msgid "To confirm your booking click on the button and complete the payment"
 msgstr ""
+"Para confirmar tu reserva, haz clic en el botón para completar el pago"
 
 #: views/mail/booking_rated.php:10
 msgid "Booking was rated"
-msgstr ""
+msgstr "La reservación fue calificada"
 
 #: views/mail/booking_rated.php:17
 msgid "Dear Administrator,"
-msgstr ""
+msgstr "Querido Administrador"
 
 #: views/mail/booking_rated.php:20
 msgid "your customers"
-msgstr ""
+msgstr "Nuerstos clientes"
 
 #: views/mail/booking_rated.php:23
 msgid "has submitted a new review on his last visit at"
-msgstr ""
+msgstr "haz enviado una nueva reseña en su última visita a"
 
 #: views/mail/booking_rated.php:69
 msgid "READ THE FULL REVIEW"
-msgstr ""
+msgstr "LEE LA RESEÑA COMPLETA"
 
 #: views/mail/feedback.php:45
 msgid "Click on this button to send us your feedback"
-msgstr ""
+msgstr "Haz clic en este botón para enviarnos tus comentarios"
 
 #: views/mail/feedback.php:75
 msgid "Submit a review"
-msgstr ""
+msgstr "Enviar comentarios"
 
 #: views/mail/follow_up.php:91
 msgid "Important notes,"
-msgstr ""
+msgstr "Notas importantes,"
 
 #: views/mail/payment_confirmed.php:7
 #, php-format
 msgid "Payment for booking #%s has been confirmed"
-msgstr ""
+msgstr "El pago de la reserva # %s ha sido confirmado"
 
 #: views/mail/payment_confirmed.php:13
 msgid "We received the payment for your booking."
-msgstr ""
+msgstr "Recibimos el pago de tu reservación."
 
 #: views/mail/plugin_expires.php:7
 msgid "Salon Booking plugin is about to expire buy now a license"
 msgstr ""
+"El plugin Salon Booking está a punto de caducar compra ahora una licencia"
 
 #: views/mail/plugin_expires.php:19
 #, php-format
@@ -2162,38 +2183,49 @@ msgid ""
 "<strong>support@wpchef.it</strong><br /><br />Have a nice day!<br /><br "
 "/>The Salon Booking staff<br /><br />salon.wordpresschef.it"
 msgstr ""
+"Hola %s, el complemento <br /><br /><strong>Salon Booking</strong> está a "
+"punto de caducar, ¿estás satisfecho con sus características? <br /><br />Si "
+"es así, ¿estás planeando <strong><a href=\"http://salon.wordpresschef.it"
+"/salon-booking-plugin-pricing/\"> comprar una licencia PRO</a></strong> para"
+" seguir usándola? <br /><br /><br />Si es así, haz clic <strong><a "
+"href=\"http://salon.wordpresschef.it/invite-friends-get-30-discount-first-"
+"purchase/\">aquí</a></strong> para obtener un <strong>30%% de "
+"descuento</strong> especial en tu primera compra.<br /><br />En caso de "
+"dudas, no dude en enviarnos un correo electrónico a "
+"<strong>support@wpchef.it</strong><br /><br /> ¡Que tenga un buen día! <br "
+"/><br />El Salon Booking staff<br /><br />salon.wordpresschef.it"
 
 #: views/mail/status_canceled.php:16
 msgid "Booking Canceled"
-msgstr ""
+msgstr "Reservación cancelada"
 
 #: views/mail/status_confirmed.php:17
 msgid "Booking confirmed"
-msgstr ""
+msgstr "Reservación confirmada"
 
 #: views/mail/status_pending_payment.php:10
 msgid "Pending payment on booking"
-msgstr ""
+msgstr "Pago pendiente en la reservación"
 
 #: views/mail/summary.php:31
 msgid "Your reservation at [SALON NAME] has been modified"
-msgstr ""
+msgstr "Tu reservación en [SALON NAME] ha sido modificada"
 
 #: views/mail/summary.php:35
 msgid "New booking "
-msgstr ""
+msgstr "Nueva reservación"
 
 #: views/mail/summary_admin.php:27
 msgid "Reservation has been modified "
-msgstr ""
+msgstr "La reservación ha sido modificada"
 
 #: views/mail/summary_admin.php:38
 msgid "New booking for "
-msgstr ""
+msgstr "Nueva reservación para"
 
 #: views/mail/weekly_report.php:9
 msgid "Salon Booking weekly report"
-msgstr ""
+msgstr "Informe semanal de Salon Booking"
 
 #: views/mail/weekly_report.php:21
 #, php-format
@@ -2201,6 +2233,8 @@ msgid ""
 "Dear %s,\n"
 "these is a summary of what happened on your salon last week:"
 msgstr ""
+"Estimado %s,\n"
+"este es un resumen de lo que sucedió en tu salón la semana pasada:"
 
 #: views/mail/weekly_report.php:34
 #, php-format
@@ -2209,20 +2243,23 @@ msgid ""
 "<strong>%s of them have been paid online ( %s )</strong> and <strong>%s have"
 " been paid later ( %s )</strong>."
 msgstr ""
+"Recibió un total de <strong>%s de reservaciones en línea ( %s ) </strong>, "
+"<strong>%s de ellas se pagaron en línea ( %s ) </strong> y <strong>%s se "
+"pagaron más tarde ( %s ) </strong>."
 
 #: views/mail/weekly_report.php:54
 #, php-format
 msgid ""
 "<strong>%s reservations has been canceled</strong> from your customers."
-msgstr ""
+msgstr "<strong>%s han sido cancelados</strong> por sus clientes."
 
 #: views/mail/weekly_report.php:70
 msgid "The <strong>most booked services</strong> have been:\n"
-msgstr ""
+msgstr "Los <strong>servicios más reservados</strong> han sido:\n"
 
 #: views/mail/weekly_report.php:97
 msgid "The <strong>most booked assistants</strong> have been:\n"
-msgstr ""
+msgstr "Los <strong>asistentes más reservados</strong> han sido: \n"
 
 #: views/mail/weekly_report.php:128
 #, php-format
@@ -2230,11 +2267,14 @@ msgid ""
 "The most booked day of the week has been <strong>%s</strong> when you "
 "received <strong>%s reservations</strong>."
 msgstr ""
+"El día más reservado de la semana ha sido del <strong>%s</strong> cuando "
+"recibió <strong>%s de reservaciones</strong>."
 
 #: views/mail/weekly_report.php:147
 #, php-format
 msgid "This week you've got <strong>%s new online customers</strong>."
 msgstr ""
+"Esta semana tienes un <strong>%s de nuevos clientes en línea</strong>."
 
 #: views/mail/weekly_report.php:168
 #, php-format
@@ -2242,205 +2282,216 @@ msgid ""
 "Your customer <strong>%s</strong> has been the most valuable one "
 "<strong>spending %s</strong> of your services."
 msgstr ""
+"Tu cliente <strong>%s</strong> ha sido el más valioso <strong>gastando "
+"%s</strong> en tus servicios."
 
 #: views/metabox/_booking_services.php:24
 msgid "Services & Attendants"
-msgstr ""
+msgstr "Asistentes y Servicios"
 
 #: views/metabox/_booking_services.php:96
 #: views/metabox/_booking_services.php:196
 #: views/settings/_availability_row.php:73 views/settings/_holiday_row.php:255
 msgid "Remove"
-msgstr ""
+msgstr "Eliminar"
 
 #: views/metabox/_booking_services.php:107
 msgid "Start at"
-msgstr ""
+msgstr "Empieza en"
 
 #: views/metabox/_booking_services.php:108
 msgid "End at"
-msgstr ""
+msgstr "Termina en"
 
 #: views/metabox/_booking_services.php:210
 msgid "Select a service"
-msgstr ""
+msgstr "Selecciona un servicio"
 
 #: views/metabox/_booking_services.php:239
 msgid "Select an assistant"
-msgstr ""
+msgstr "Selecciona un asistente"
 
 #: views/metabox/_booking_services.php:256
 msgid "Add service"
-msgstr ""
+msgstr "Agregar servicio"
 
 #: views/metabox/attendant.php:19
 msgid "Select or search one or more services"
-msgstr ""
+msgstr "Selecciona o busca uno o más servicios"
 
 #: views/metabox/attendant_description.php:7
 msgid "Assistant Description"
-msgstr ""
+msgstr "Descripción del asistente"
 
 #: views/metabox/attendant_description.php:11
 msgid "A very short description of this assistant. It is optional"
-msgstr ""
+msgstr "Una descripción muy breve de este servicio. Es opcional"
 
 #: views/metabox/attendant_gcalendar.php:8
 #: views/metabox/attendant_gcalendar.php:13
 msgid "Calendar is not configured"
-msgstr ""
+msgstr "El calendario no está configurado"
 
 #: views/metabox/attendant_gcalendar.php:23
 #: views/settings/tab_gcalendar.php:66
 msgid "Calendars"
-msgstr ""
+msgstr "Calendarios"
 
 #: views/metabox/booking.php:55
 msgid "Select a day"
-msgstr ""
+msgstr "Selecciona un día"
 
 #: views/metabox/booking.php:64
 msgid "Select an hour"
-msgstr ""
+msgstr "Selecciona una hora"
 
 #: views/metabox/booking.php:91
 msgid "OK! the date and time slot you selected is available"
 msgstr ""
+"¡DE ACUERDO! el intervalo de fecha y hora que seleccionaste está disponible"
 
 #: views/metabox/booking.php:103
 msgid "This booking waits for confirmation!"
-msgstr ""
+msgstr "¡Esta reservación espera confirmación!"
 
 #: views/metabox/booking.php:109
 msgid "Accept"
-msgstr ""
+msgstr "Aceptar"
 
 #: views/metabox/booking.php:114
 msgid "Refuse"
-msgstr ""
+msgstr "Rechazar"
 
 #: views/metabox/booking.php:124
 msgid "Search for existing users"
-msgstr ""
+msgstr "Buscar usuarios existentes"
 
 #: views/metabox/booking.php:127
 msgid "Start typing the name or email"
-msgstr ""
+msgstr "Comience a escribir el nombre o el correo electrónico"
 
 #: views/metabox/booking.php:141
 msgid "Firstname"
-msgstr ""
+msgstr "Nombres"
 
 #: views/metabox/booking.php:150
 msgid "Lastname"
-msgstr ""
+msgstr "Apellidos"
 
 #: views/metabox/booking.php:185
 msgid "Create a new user"
-msgstr ""
+msgstr "Crear un nuevo usuario"
 
 #: views/metabox/booking.php:208
 msgid "Calculate total"
-msgstr ""
+msgstr "Calcular total"
 
 #: views/metabox/booking.php:214
 msgid "Deposit"
-msgstr ""
+msgstr "Depósito"
 
 #: views/metabox/booking.php:225
 msgid "n.a."
-msgstr ""
+msgstr "n.d."
 
 #: views/metabox/booking.php:237
 msgid "Personal message"
-msgstr ""
+msgstr "Mensaje personal"
 
 #: views/metabox/booking.php:248
 msgid "Administration notes"
-msgstr ""
+msgstr "Notas de administración"
 
 #: views/metabox/booking_actions.php:6
 msgid "Re-send email notification to "
-msgstr ""
+msgstr "Volver a enviar la notificación por correo electrónico a"
 
 #: views/metabox/booking_actions.php:9
 msgid "Type a message for your customer"
-msgstr ""
+msgstr "Escriba un mensaje para su cliente"
 
 #: views/metabox/booking_actions.php:17 views/metabox/booking_actions.php:26
 msgid "Send"
-msgstr ""
+msgstr "Enviar"
 
 #: views/metabox/booking_actions.php:22
 msgid "Re-send payment link"
-msgstr ""
+msgstr "Volver a enviar el enlace de pago"
 
 #: views/metabox/service.php:12
 msgid "Unit per hour"
-msgstr ""
+msgstr "Unidad por hora"
 
 #: views/metabox/service.php:25
 msgid ""
 "Select this if you want this service considered as secondary level service"
 msgstr ""
+"Seleccione esto si desea que este servicio se considere como servicio de "
+"nivel secundario"
 
 #: views/metabox/service.php:29
 msgid "Exclusive service"
-msgstr ""
+msgstr "Servicio exclusivo"
 
 #: views/metabox/service.php:30
 msgid ""
 "If enabled, when a customer choose this service no other services can be "
 "booked during the same reservation"
 msgstr ""
+"Si está habilitado, cuando un cliente elige este servicio, no se pueden "
+"reservar otros servicios durante la misma reserva."
 
 #: views/metabox/service.php:35
 msgid "Display if"
-msgstr ""
+msgstr "Mostrar si"
 
 #: views/metabox/service.php:39
 msgid "always"
-msgstr ""
+msgstr "siempre"
 
 #: views/metabox/service.php:40
 msgid "belong to the same category"
-msgstr ""
+msgstr "pertenece a la misma categoría"
 
 #: views/metabox/service.php:41
 msgid "is child of selected service"
-msgstr ""
+msgstr "es hijo del servicio seleccionado"
 
 #: views/metabox/service.php:49
 msgid "Select parent services"
-msgstr ""
+msgstr "Seleccionar servicios para padres"
 
 #: views/metabox/service.php:63
 msgid "select one or more services"
-msgstr ""
+msgstr "seleccione uno o más servicios"
 
 #: views/metabox/service.php:72
 msgid "Execution Order"
-msgstr ""
+msgstr "Orden de ejecución"
 
 #: views/metabox/service.php:76
 msgid ""
 "Use a number to give this service an order of execution compared to the "
 "other services."
 msgstr ""
+"Use un número para darle a este servicio un orden de ejecución en "
+"comparación con los otros servicios."
 
 #: views/metabox/service.php:77
 msgid ""
 "Consider that this option will affect the availability of your staff members"
 " that you have associated with this service."
 msgstr ""
+"Considere que esta opción afectará la disponibilidad de los miembros de su "
+"personal que haya asociado con este servicio."
 
 #: views/metabox/service.php:81 views/metabox/service.php:82
 msgid "No assistant required"
-msgstr ""
+msgstr "No se requiere asistente"
 
 #: views/metabox/service.php:89
 msgid "Service break"
-msgstr ""
+msgstr "Pausa del servicio"
 
 #: views/metabox/service.php:93
 msgid ""
@@ -2448,146 +2499,162 @@ msgid ""
 " parts. That means that the during its break other reservations will be "
 "available."
 msgstr ""
+"Si establece un descanso, la duración de este servicio se dividirá en dos "
+"partes iguales. Eso significa que durante su descanso otras reservas estarán"
+" disponibles."
 
 #: views/metabox/service.php:117
 msgid "Direct link"
-msgstr ""
+msgstr "Enlace directo"
 
 #: views/metabox/service.php:119
 msgid ""
 "Use this link to move the user directly to the booking page with the service"
 " already selected."
 msgstr ""
+"Use este enlace para llevar al usuario directamente a la página de reserva "
+"con el servicio ya seleccionado."
 
 #: views/notice/html_notice_update.php:3
 msgid "Salon Data Update Required"
-msgstr ""
+msgstr "Se requiere actualización de datos del salón"
 
 #: views/notice/html_notice_update.php:4
 msgid ""
 "A database update is required for this version. Please make a back-up of "
 "your database before proceed."
 msgstr ""
+"Se requiere una actualización de la base de datos para esta versión. Haga "
+"una copia de seguridad de su base de datos antes de continuar."
 
 #: views/notice/html_notice_update.php:9
 msgid "Run the updater"
-msgstr ""
+msgstr "Ejecutar el actualizador"
 
 #: views/payment_method/paypal/pay.php:5
 #: views/payment_method/stripe/pay.php:12
 #, php-format
 msgid "Pay %s as a deposit with %s"
-msgstr ""
+msgstr "Pagar %s como  depósito con %s"
 
 #: views/payment_method/paypal/pay.php:7
 #: views/payment_method/stripe/pay.php:14
 #, php-format
 msgid "Pay with %s"
-msgstr ""
+msgstr "Pagar con %s"
 
 #: views/payment_method/paypal/settings.php:2
 msgid "Paypal account informations"
-msgstr ""
+msgstr "Información de la cuenta de Paypal"
 
 #: views/payment_method/paypal/settings.php:4
 msgid "Your PayPal account e-mail"
-msgstr ""
+msgstr "Su cuenta de correo electrónico de PayPal"
 
 #: views/payment_method/paypal/settings.php:5
 msgid "Enter your PayPal e-mail address"
-msgstr ""
+msgstr "Ingrese su dirección de correo electrónico de PayPal"
 
 #: views/payment_method/paypal/settings.php:8
 msgid "Enable PayPal sandbox"
-msgstr ""
+msgstr "Habilitar PayPal sandbox"
 
 #: views/payment_method/paypal/settings.php:9
 msgid ""
 "Check this option to test PayPal payments using your PayPal Sandbox account."
 msgstr ""
+"Seleccione esta opción para probar los pagos de PayPal utilizando su cuenta "
+"de Sandbox de PayPal."
 
 #: views/payment_method/paypal/settings.php:12
 msgid ""
 "Check this option to test PayPal payments\n"
 "using your PayPal Sandbox account."
 msgstr ""
+"Marque esta opción para probar los pagos de PayPal\n"
+"usando su cuenta de PayPal Sandbox."
 
 #: views/payment_method/stripe/settings.php:2
 msgid "Stripe account informations"
-msgstr ""
+msgstr "Información de la cuenta de Stripe"
 
 #: views/payment_method/stripe/settings.php:4
 msgid "Secret key"
-msgstr ""
+msgstr "Llave secreta"
 
 #: views/payment_method/stripe/settings.php:8
 msgid "Publishable key"
-msgstr ""
+msgstr "Clave pública"
 
 #: views/payment_method/stripe/settings.php:9
 msgid "Enter your Stripe publishable api key"
-msgstr ""
+msgstr "Ingrese su clave de API pública de Stripe"
 
 #: views/payment_method/stripe/settings.php:12
 msgid "To use this payment method you need an account with Stripe."
-msgstr ""
+msgstr "Para usar este método de pago, necesita una cuenta con Stripe."
 
 #: views/settings/_availability_row.php:4
 msgid ""
 "This rule represents your open and close days, your open and close shift. "
 "Set carefully as it will affect your reservation system."
 msgstr ""
+"Esta regla representa sus días de apertura y cierre, su turno de apertura y "
+"cierre. Establezcala con cuidado, ya que afectará su sistema de reserva."
 
 #: views/settings/_availability_row.php:19 views/settings/_holiday_row.php:242
 msgid "Rule"
-msgstr ""
+msgstr "Regla"
 
 #: views/settings/_availability_row.php:21
 msgid "Available days checked and green."
-msgstr ""
+msgstr "Los días disponibles están marcados y verde."
 
 #: views/settings/_availability_row.php:36
 msgid "First shift"
-msgstr ""
+msgstr "Primer turno"
 
 #: views/settings/_availability_row.php:53
 msgid "Second shift"
-msgstr ""
+msgstr "Segundo turno"
 
 #: views/settings/_availability_row.php:90
 msgid "Apply from"
-msgstr ""
+msgstr "Aplicar desde"
 
 #: views/settings/_availability_row.php:94
 msgid "Until"
-msgstr ""
+msgstr "Hasta"
 
 #: views/settings/_holiday_row.php:246
 msgid "Start on"
-msgstr ""
+msgstr "Comienza en"
 
 #: views/settings/_holiday_row.php:250
 msgid "End on"
-msgstr ""
+msgstr "Finalizará el"
 
 #: views/settings/_holiday_row.php:261 views/settings/_holiday_row.php:269
 #: views/sms/remind.php:11 views/sms/summary.php:10
 msgid "at"
-msgstr ""
+msgstr "a"
 
 #: views/settings/_tab_booking_availability.php:7
 msgid "Availability mode"
-msgstr ""
+msgstr "Modo de disponibilidad"
 
 #: views/settings/_tab_booking_availability.php:7
 msgid "Select your favourite booking system mode."
-msgstr ""
+msgstr "Seleccione su modo de sistema de reserva favorito."
 
 #: views/settings/_tab_booking_availability.php:22
 msgid ""
 "You need to choose which kind of booking algorithm want to use for your "
 "salon. Click over \"i\" icon to get more information about this option."
 msgstr ""
+"Debe elegir qué tipo de algoritmo de reserva desea utilizar para su salón. "
+"Haga clic sobre el ícono \"i\" para obtener más información sobre esta "
+"opción."
 
 #: views/settings/_tab_booking_availability.php:29
 msgid ""
@@ -2606,29 +2673,45 @@ msgid ""
 "little bit strict in some cases. <br /><br />We suggest you to test it first"
 " on a development website."
 msgstr ""
+"<strong>El BASICO</strong> establece una duración fija para cada reserva y "
+"no le importa el número y la duración de los servicios reservados. <br "
+"/>Puede establecer una duración fija utilizando la opción \"Duración "
+"promedio de la sesión\" .<br /><br /><strong> El modo AVANZAD</strong> es "
+"más complejo y completo, ya que cuenta la duración de cada servicio "
+"reservado para cada reserva individual. <br />Sugieremos usar este. <br "
+"/><br /><strong>THE HIGH END</strong> le permite controlar la disponibilidad"
+" de una sola asistencia asignada a un servicio específico en un momento "
+"específico. <br /><br />Pero necesita establecer primero para cada servicio "
+"el \"orden de ejecución\". <br /><br /> Una vez hecho esto, el sistema puede"
+" saber a qué hora se ha reservado un asistente y durante cuánto tiempo "
+"estará ocupado con un servicio específico. <br /><br /> Este método es muy "
+"preciso, pero podría ser un poco estricto en algunos casos. <br /><br />Te "
+"sugerimos que primero lo pruebes en un sitio web de desarrollo."
 
 #: views/settings/_tab_booking_cancellation.php:9
 msgid "User booking cancellation"
-msgstr ""
+msgstr "Cancelación de reservación del usuario"
 
 #: views/settings/_tab_booking_cancellation.php:14
 msgid "Booking cancellation"
-msgstr ""
+msgstr "Cancelación de reserva"
 
 #: views/settings/_tab_booking_cancellation.php:15
 msgid ""
 "Select this option if you want your users able to cancel a booking from the "
 "front-end."
 msgstr ""
+"Seleccione esta opción si desea que sus usuarios puedan cancelar una reserva"
+" desde el front-end."
 
 #: views/settings/_tab_booking_cancellation.php:19
 msgid "Time in advance"
-msgstr ""
+msgstr "Tiempo por adelantado"
 
 #: views/settings/_tab_booking_cancellation.php:35
 msgid ""
 "How many hours before the appointment the cancellation is still allowed"
-msgstr ""
+msgstr "¿Cuántas horas antes de la cita aún se permite la cancelación?"
 
 #: views/settings/_tab_booking_cancellation.php:38
 msgid ""
@@ -2636,102 +2719,115 @@ msgid ""
 "the list of their upcoming reservations and eventually Cancel them. An email"
 " notification will be sent to you and to the customers."
 msgstr ""
+"Los usuarios que iniciaron sesión en la página MY ACCOUNT BOOKING podrán ver"
+" la lista de sus próximas reservas y, finalmente, cancelarlas. Se le enviará"
+" una notificación por correo electrónico a usted y a los clientes."
 
 #: views/settings/_tab_booking_confirmation.php:6
 msgid "Booking manual confirmation"
-msgstr ""
+msgstr "Confirmación manual de reservación"
 
 #: views/settings/_tab_booking_confirmation.php:11
 msgid "Booking confirmation"
-msgstr ""
+msgstr "Confirmación de reservación"
 
 #: views/settings/_tab_booking_confirmation.php:16
 msgid "Select this option to manually confirm each booking."
-msgstr ""
+msgstr "Seleccione esta opción para confirmar manualmente cada reservación."
 
 #: views/settings/_tab_booking_confirmation.php:21
 msgid "Booking page"
-msgstr ""
+msgstr "Página de reservación"
 
 #: views/settings/_tab_booking_confirmation.php:22
 msgid "Select a page with the booking form."
-msgstr ""
+msgstr "Seleccione una página con el formulario de reserva."
 
 #: views/settings/_tab_booking_confirmation.php:26
 msgid "Thank you page"
-msgstr ""
+msgstr "Página de agradecimiento"
 
 #: views/settings/_tab_booking_confirmation.php:28
 msgid "Select a page where to redirect your users after booking completition."
 msgstr ""
+"Seleccione una página donde redirigir a sus usuarios después de completar la"
+" reserva."
 
 #: views/settings/_tab_booking_confirmation.php:33
 msgid "Booking My Account"
-msgstr ""
+msgstr "Mi cuenta"
 
 #: views/settings/_tab_booking_confirmation.php:35
 msgid "Select a page where your users view their bookings."
-msgstr ""
+msgstr "Seleccione una página donde sus usuarios vean sus reservas."
 
 #: views/settings/_tab_booking_form_steps_alt_order.php:9
 msgid "Change booking form steps order"
-msgstr ""
+msgstr "Cambiar orden de pasos de formulario de reserva"
 
 #: views/settings/_tab_booking_form_steps_alt_order.php:14
 msgid "Change order"
-msgstr ""
+msgstr "Cambiar el orden"
 
 #: views/settings/_tab_booking_form_steps_alt_order.php:19
 msgid ""
 "Selecting this option the booking process will follow this order: A - "
 "Services B - Assistants C - Date/Time"
 msgstr ""
+"Al seleccionar esta opción, el proceso de reserva seguirá este orden: A - "
+"Servicios, B - Asistentes, C - Fecha / Hora"
 
 #: views/settings/_tab_booking_holiday_rules.php:8
 msgid "Holidays days"
-msgstr ""
+msgstr "Días feriados"
 
 #: views/settings/_tab_booking_holiday_rules.php:10
 msgid ""
 "Set one or more rules for your holidays.<br /> Users will not be able to "
 "make reservation during these periods"
 msgstr ""
+"Establezca una o más reglas para sus vacaciones.<br /> Los usuarios no "
+"podrán hacer reservas durante estos períodos"
 
 #: views/settings/_tab_booking_holiday_rules.php:37
 #: views/settings/_tab_booking_rules.php:38
 msgid "Add new"
-msgstr ""
+msgstr "Añadir nuevo"
 
 #: views/settings/_tab_booking_offset.php:10
 msgid "Offset between reservations"
-msgstr ""
+msgstr "Compensación entre reservas"
 
 #: views/settings/_tab_booking_offset.php:15
 msgid "Enable offset"
-msgstr ""
+msgstr "Habilitar compensación"
 
 #: views/settings/_tab_booking_offset.php:16
 msgid ""
 "Select this option to add an OFF interval between two sequencial "
 "reservations"
 msgstr ""
+"Seleccione esta opción para agregar un intervalo de desactivación entre dos "
+"reservas secuenciales"
 
 #: views/settings/_tab_booking_offset.php:20
 msgid "Offset duration"
-msgstr ""
+msgstr "Duración de compensación"
 
 #: views/settings/_tab_booking_offset.php:54
 msgid "How many minutes lasts this Offset?"
-msgstr ""
+msgstr "¿Cuántos minutos dura esta compensación?"
 
 #: views/settings/_tab_booking_offset.php:57
 msgid ""
 "Note that during the Offset interval new reservations will not be available."
 msgstr ""
+"Tenga en cuenta que durante el intervalo de compensación, las nuevas "
+"reservas no estarán disponibles."
 
 #: views/settings/_tab_booking_rules.php:7
 msgid "On-line booking available days"
-msgstr ""
+msgstr "Días disponibles para la reserva en linea"
 
 #: views/settings/_tab_booking_rules.php:9
 msgid ""
@@ -2739,50 +2835,58 @@ msgid ""
 "time range. <br />Leave blank if you want bookings available everydays at "
 "every hour"
 msgstr ""
+"Cree una o más reglas para limitar la reserva en línea a días específicos y "
+"rango de tiempo. <br /> Deja en blanco si quieres reservas disponibles todos"
+" los días a cada hora"
 
 #: views/settings/_tab_booking_status.php:9
 msgid ""
 "Pause online booking service <span class=\"block\">If ON the online booking "
 "form will be disabled and your users will see a message.</span>"
 msgstr ""
+"Pause el servicio de reserva en línea <span class=\"block\">Si está "
+"Encendido el formulario de reserva en línea se desactivará y sus usuarios "
+"verán un mensaje.</span>"
 
 #: views/settings/_tab_booking_status.php:12
 msgid "Online Booking status"
-msgstr ""
+msgstr "Estado de reserva en línea"
 
 #: views/settings/_tab_booking_status.php:26
 msgid "Message on disabled booking"
-msgstr ""
+msgstr "Mensaje de reserva desactivada"
 
 #: views/settings/_tab_booking_status.php:36
 msgid "Booking is not available at the moment, please contact us at "
-msgstr ""
+msgstr "La reserva no está disponible en este momento, contáctenos en"
 
 #: views/settings/_tab_booking_timing.php:8
 msgid "Online bookings timing"
-msgstr ""
+msgstr "Tiempos de reservas en línea"
 
 #: views/settings/_tab_booking_timing.php:10
 msgid ""
 "Booking time range <span>Define the time range in wich customers may book an"
 " appointment</span><"
 msgstr ""
+"Rango de tiempo de reserva <span>Defina el intervalo de tiempo en el que los"
+" clientes pueden reservar una cita</span> <"
 
 #: views/settings/_tab_booking_timing.php:12
 msgid "Range starts"
-msgstr ""
+msgstr "El rango comienza en"
 
 #: views/settings/_tab_booking_timing.php:24
 msgid "Minimum"
-msgstr ""
+msgstr "Mínimo"
 
 #: views/settings/_tab_booking_timing.php:28
 msgid "Range ends"
-msgstr ""
+msgstr "El rango termina en"
 
 #: views/settings/_tab_booking_timing.php:40
 msgid "Maximum"
-msgstr ""
+msgstr "Máximo"
 
 #: views/settings/_tab_booking_timing.php:44
 msgid ""
@@ -2790,50 +2894,58 @@ msgid ""
 "days before the appointment date and from a maximum of one month before the "
 "appointment date use this range options to set your desired rule."
 msgstr ""
+"Si quiere, por ejemplo, que su cliente pueda hacer una reserva hasta dos "
+"días antes de la fecha de la cita y desde un máximo de un mes antes de la "
+"fecha de la cita, use estas opciones de rango para establecer la regla "
+"deseada."
 
 #: views/settings/_tab_general_sms.php:7
 msgid "SMS services"
-msgstr ""
+msgstr "Servicios de SMS"
 
 #: views/settings/_tab_general_sms.php:11
 msgid ""
 "SMS Verification service <span>Ask users to verify their identity with an "
 "SMS verification code</span>"
 msgstr ""
+"Servicio de verificación de SMS <span> Solicite a los usuarios que "
+"verifiquen su identidad con un código de verificación de SMS</span>"
 
 #: views/settings/_tab_general_sms.php:16
 msgid "Enable SMS verification"
-msgstr ""
+msgstr "Habilitar verificación de SMS"
 
 #: views/settings/_tab_general_sms.php:18
 msgid ""
 "Avoid spam asking your users to verify their identity with an SMS "
 "verification code during the first registration."
 msgstr ""
+"Evite el correo no deseado solicitando a los usuarios que verifiquen su "
+"identidad con un código de verificación de SMS durante el primer registro."
 
 #: views/settings/_tab_general_sms.php:29
 msgid "Select your service provider"
-msgstr ""
+msgstr "Seleccione su proveedor de servicios"
 
 #: views/settings/_tab_general_sms.php:43
 msgid "Account ID"
-msgstr ""
+msgstr "ID de la cuenta"
 
 #: views/settings/_tab_general_sms.php:46
 msgid "Auth Token"
-msgstr ""
+msgstr "Token de autenticación"
 
 #: views/settings/_tab_general_sms.php:51
 msgid "Country code"
-msgstr ""
+msgstr "Código de país"
 
 #: views/settings/_tab_general_sms.php:54
 msgid "Sender's number"
-msgstr ""
+msgstr "Número del remitente"
 
 #: views/settings/_tab_general_sms.php:61
 msgid "Trunk trailing 0 prefix"
-msgstr ""
+msgstr "Trunk trailing 0 prefix"
 
 #: views/settings/_tab_general_sms.php:68
 msgid ""
@@ -2841,58 +2953,63 @@ msgid ""
 "providers. <br /><br />Please read carefully their documentation about how "
 "to properly set the options."
 msgstr ""
+"Para usar todas las funciones de SMS, necesita una cuenta activa con los "
+"proveedores de Plivo o Twilio. <br /><br /> Lea detenidamente su "
+"documentación sobre cómo configurar correctamente las opciones."
 
 #: views/settings/_tab_general_sms.php:79
 msgid "SMS Notifications service"
-msgstr ""
+msgstr "Servicio de notificaciones por SMS"
 
 #: views/settings/_tab_general_sms.php:86
 msgid "Send SMS notification on new bookings"
-msgstr ""
+msgstr "Enviar notificaciones por SMS sobre nuevas reservas"
 
 #: views/settings/_tab_general_sms.php:88
 msgid "SMS will be sent to your customer and a staff member"
-msgstr ""
+msgstr "El SMS será enviado a su cliente y un miembro del personal"
 
 #: views/settings/_tab_general_sms.php:93
 msgid "Staff member notification number"
-msgstr ""
+msgstr "Número de notificación del miembro del personal"
 
 #: views/settings/_tab_general_sms.php:103
 msgid "Remind the appointment to the client with an SMS"
-msgstr ""
+msgstr "Recordar la cita al cliente con un SMS"
 
 #: views/settings/_tab_general_sms.php:108
 msgid "SMS Timing"
-msgstr ""
+msgstr "Tiempo de SMS"
 
 #: views/settings/_tab_general_sms.php:125 views/settings/tab_general.php:201
 msgid "Before the appointment"
-msgstr ""
+msgstr "Antes de la cita"
 
 #: views/settings/_tab_general_sms.php:137
 msgid "Send an SMS to selected attendant on new bookings"
-msgstr ""
+msgstr "Enviar un SMS al asistente seleccionado en nuevas reservas"
 
 #: views/settings/_tab_general_sms.php:139
 msgid "Remember to set the mobile number of your staff members"
 msgstr ""
+"Recuerde establecer el número de teléfono móvil de los miembros de su "
+"personal"
 
 #: views/settings/_tab_general_sms.php:147
 msgid "SMS Test console"
-msgstr ""
+msgstr "Consola de prueba SMS"
 
 #: views/settings/_tab_general_sms.php:148
 msgid "fill the fields and update settings"
-msgstr ""
+msgstr "llenar los campos y actualizar la configuración"
 
 #: views/settings/_tab_general_sms.php:153
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 #: views/settings/_tab_general_sms.php:156
 msgid "Message"
-msgstr ""
+msgstr "Mensaje"
 
 #: views/settings/_tab_general_sms.php:160
 msgid ""
@@ -2900,102 +3017,113 @@ msgid ""
 " without the country code, write a text message and click \"Update "
 "settings\" to send an SMS."
 msgstr ""
+"Use esta consola solo para probar sus servicios de SMS. Rellene el número de"
+" destino sin el código de país, escriba un mensaje de texto y haga clic en "
+"\"Actualizar configuración\" para enviar un mensaje de texto."
 
 #: views/settings/tab_booking.php:11
 msgid "Customers per session"
-msgstr ""
+msgstr "Clientes por sesión"
 
 #: views/settings/tab_booking.php:13
 msgid "How many people you can attend during a single time/session?"
-msgstr ""
+msgstr "¿Cuántas personas puede asistir durante una sola sesión / tiempo?"
 
 #: views/settings/tab_booking.php:31 views/settings/tab_booking.php:66
 msgid ""
 "Set these options carefully because it will affect the number of bookings "
 "you can accept for the same <strong>time/session</strong>."
 msgstr ""
+"Establezca estas opciones con cuidado porque afectarán la cantidad de "
+"reservas que puede aceptar por el mismo <strong>tiempo / sesión</strong>."
 
 #: views/settings/tab_booking.php:42
 msgid "Session average duration"
-msgstr ""
+msgstr "Duración promedio de la sesión"
 
 #: views/settings/tab_booking.php:44
 msgid "Define your time-session average duration"
-msgstr ""
+msgstr "Defina la duración promedio de su sesión"
 
 #: views/settings/tab_booking.php:61
 msgid "Minutes per session"
-msgstr ""
+msgstr "Minutos por sesión"
 
 #: views/settings/tab_checkout.php:6
 msgid "Checkout options"
-msgstr ""
+msgstr "Opciones de pago"
 
 #: views/settings/tab_checkout.php:10
 msgid "Enable guest checkout"
-msgstr ""
+msgstr "Habilitar el pago de invitado"
 
 #: views/settings/tab_checkout.php:11
 msgid ""
 "If enabled users can checkout as a guest and no account will be created for "
 "them."
 msgstr ""
+"Si está habilitado, los usuarios pueden realizar el pago como invitado y no "
+"se creará ninguna cuenta para ellos."
 
 #: views/settings/tab_checkout.php:16
 msgid "Enable force guest checkout"
-msgstr ""
+msgstr "Habilitar el pago forzado de invitados"
 
 #: views/settings/tab_checkout.php:17
 msgid ""
 "If enabled all users will checkout as a guest and no account will be created"
 " for them."
 msgstr ""
+"Si está habilitado, todos los usuarios realizarán la compra como invitado y "
+"no se creará ninguna cuenta para ellos."
 
 #: views/settings/tab_checkout.php:23
 msgid "Facebook login"
-msgstr ""
+msgstr "Iniciar sesión con Fecabook"
 
 #: views/settings/tab_checkout.php:27
 msgid "Enable Facebook login"
-msgstr ""
+msgstr "Habilitar el inicio de sesión con Facebook"
 
 #: views/settings/tab_checkout.php:32
 msgid "Facebook application ID"
-msgstr ""
+msgstr "Facebook application ID"
 
 #: views/settings/tab_checkout.php:40
 msgid "Services selection limit"
-msgstr ""
+msgstr "Límite de selección de servicios"
 
 #: views/settings/tab_checkout.php:43
 msgid "Services to be booked simultaneously"
-msgstr ""
+msgstr "Servicios que se reservarán simultáneamente"
 
 #: views/settings/tab_checkout.php:63
 msgid ""
 "Set this option if you want to limit the number of services bookable during "
 "a single reservation."
 msgstr ""
+"Establezca esta opción si desea limitar el número de servicios que se pueden"
+" reservar durante una única reserva."
 
 #: views/settings/tab_checkout.php:68
 msgid "Advanced Discount System"
-msgstr ""
+msgstr "Sistema de descuentos avanzado"
 
 #: views/settings/tab_checkout.php:72
 msgid "Enable"
-msgstr ""
+msgstr "Habilitado"
 
 #: views/settings/tab_checkout.php:73
 msgid "Check this box if you want to enable the Discount section"
-msgstr ""
+msgstr "Marque esta casilla si desea habilitar la sección de descuento"
 
 #: views/settings/tab_checkout.php:81
 msgid "Checkout form fields"
-msgstr ""
+msgstr "Campos del formulario de pago"
 
 #: views/settings/tab_checkout.php:82
 msgid "Use this option to control the form fields to checkout"
-msgstr ""
+msgstr "Use esta opción para controlar los campos del formulario para pagar"
 
 #: views/settings/tab_checkout.php:86
 msgid "Hide"
@@ -3013,6 +3141,8 @@ msgstr "Soporte "
 msgid ""
 "Before to contact us for support please consider to look at these resources:"
 msgstr ""
+"Antes de ponerse en contacto con nosotros para obtener asistencia, considere"
+" consultar estos recursos:"
 
 #: views/settings/tab_documentation.php:11
 msgid ""
@@ -3022,20 +3152,28 @@ msgid ""
 "the problem on <a href=\"https://wordpress.org/support/plugin/salon-booking-"
 "system\" target=\"blank\">worpdress.org</a> official forum. "
 msgstr ""
+"Si necesita más ayuda o informa un error, siga estas instrucciones: <br "
+"/><br /> - Los usuarios de PRO envían un correo electrónico a "
+"<strong>support@wpchef.it</strong>, <br /><br /> - Los usuarios GRATUITOS "
+"pueden publicar el problema en el foro oficial de <a "
+"href=\"https://wordpress.org/support/plugin/salon-booking-system\" "
+"target=\"blank\">worpdress.org</a>."
 
 #: views/settings/tab_documentation.php:15
 msgid "Rate us!"
-msgstr ""
+msgstr "¡Califícanos!"
 
 #: views/settings/tab_documentation.php:19
 msgid ""
 "Are you satisfied by our <strong>Salon Booking plugin</strong>? <br "
 "/>Consider to leave a 5 stars rating on wordpress.org"
 msgstr ""
+"¿Está satisfecho con nuestro <strong>Salon Booking plugin</strong>? <br "
+"/>Considera dejar una calificación de 5 estrellas en wordpress.org"
 
 #: views/settings/tab_gcalendar.php:3
 msgid "Google Calendar"
-msgstr ""
+msgstr "Calendario de Google"
 
 #: views/settings/tab_gcalendar.php:17
 msgid ""
@@ -3043,18 +3181,21 @@ msgid ""
 "Developers Console. Click on \"i\" icon to get more information on this "
 "feature."
 msgstr ""
+"Para utilizar esta función, debe generar un ID de cliente de OAuth en Google"
+" Developers Console. Haga clic en el icono \"i\" para obtener más "
+"información sobre esta función."
 
 #: views/settings/tab_gcalendar.php:22
 msgid "Google Client ID"
-msgstr ""
+msgstr "ID de cliente de Google"
 
 #: views/settings/tab_gcalendar.php:25
 msgid "Google Client Secret"
-msgstr ""
+msgstr "Google Client Secret"
 
 #: views/settings/tab_gcalendar.php:28
 msgid "Redirect URI"
-msgstr ""
+msgstr "Redirect URI"
 
 #: views/settings/tab_gcalendar.php:44
 msgid ""
@@ -3081,41 +3222,68 @@ msgid ""
 " from all the reservations using the \"Delete all Google Calendar Events\" "
 "button."
 msgstr ""
+"Siga estas instrucciones para configurar su función de Calendario de Google."
+" <br /><br />Utilice este video tutorial: "
+"https://screencast.com/t/X5UqZLUb<br /><br />1) Vaya a la Consola de "
+"Desarrolladores de Google<br />https: //console.developers.google.com<br "
+"/><br />2) Haga clic en Usar API de Google<br /><br />3) Haga clic en el "
+"enlace Credenciales en la barra lateral izquierda<br /><br />4) haga clic en"
+" Nueva credencial> OAuth ID<br /><br />5) Seleccione la aplicación web y "
+"haga clic en \"Crear\" <br /><br />6) Establezca un nombre para su "
+"aplicación (su nombre de sitio web) <br /><br />7) Pegue la URL de su sitio "
+"web<br /><br />8) Copie el URI de redireccionamiento desde la configuración "
+"de Reservas de salón> Campo de Google Calendar y pegue dentro del campo URI "
+"de redirección autorizada y haga clic en \"Crear\". <br /><br />9) Copie y "
+"pegue su ID de cliente dentro de la configuración de Reservas de salón> "
+"Google Calendar> Campo secreto de cliente de Google y haga lo mismo con el "
+"campo Secreto de cliente. Luego haga clic en \"Actualizar configuración\". "
+"<br /><br />10) Habilite Google Calendar y haga clic en Configuración de "
+"actualización: se le redirigirá a una página de autorización de Google donde"
+" debe hacer clic en el botón \"Permitir\". Luego, se te redireccionará "
+"automáticamente a la página Salon Booking> Google Calendar. <br /><br />11) "
+"Seleccione qué Google Calendar desea usar para publicar todas las nuevas "
+"reservas.<br /><br />Utilice el botón \"Sincronizar reserva\" para rellenar "
+"su Calendario de Google seleccionado con todas las reservas actuales. <br "
+"/><br />En caso de necesidad, puede restablecer su Calendario de Google "
+"desde todas las reservas usando el botón \"Eliminar todos los eventos del "
+"Calendario de Google\"."
 
 #: views/settings/tab_gcalendar.php:50
 msgid "Your Google calendars"
-msgstr ""
+msgstr "Tus calendarios de Google"
 
 #: views/settings/tab_gcalendar.php:71
 msgid "Synchronize Bookings"
-msgstr ""
+msgstr "Sincronizar reservaciones"
 
 #: views/settings/tab_gcalendar.php:77
 msgid "Delete all Google Calendar Events"
-msgstr ""
+msgstr "Eliminar todos los eventos del Calendario de Google "
 
 #: views/settings/tab_gcalendar.php:81 views/settings/tab_gcalendar.php:88
 #: views/settings/tab_gcalendar.php:94
 msgid "Get authorization"
-msgstr ""
+msgstr "Obtener autorización"
 
 #: views/settings/tab_gcalendar.php:85
 msgid "Google API Error: "
-msgstr ""
+msgstr "Error de la API de Google:"
 
 #: views/settings/tab_gcalendar.php:91
 msgid ""
 "To get the list of your Google Calendar you need to log-in with Google "
 "OAuth. At the moment you are not logged-in."
 msgstr ""
+"Para obtener la lista de su Google Calendar, debe iniciar sesión con Google "
+"OAuth. Por el momento no has iniciado sesión."
 
 #: views/settings/tab_general.php:3
 msgid "Salon information"
-msgstr ""
+msgstr "Información del salón"
 
 #: views/settings/tab_general.php:9
 msgid "Your salon name"
-msgstr ""
+msgstr "El nombre de tu salón"
 
 #: views/settings/tab_general.php:12
 #, php-format
@@ -3123,10 +3291,12 @@ msgid ""
 "Leaving this field empty will cause the default site name "
 "<strong>(%s)</strong> to be used"
 msgstr ""
+"Si deja este campo vacío, se usará el nombre del sitio "
+"predeterminado<strong> ( %s )</strong>"
 
 #: views/settings/tab_general.php:23
 msgid "Salon contact e-mail"
-msgstr ""
+msgstr "Correo electrónico de contacto del salón"
 
 #: views/settings/tab_general.php:26
 #, php-format
@@ -3134,526 +3304,565 @@ msgid ""
 "Leaving this field empty will cause the default site email  "
 "<strong>(%s)</strong> to be used"
 msgstr ""
+"Si deja este campo vacío, se usará el correo electrónico predeterminado del "
+"sitio <strong>(%s)</strong>."
 
 #: views/settings/tab_general.php:34
 msgid "Salon telephone number"
-msgstr ""
+msgstr "Número de teléfono del salón"
 
 #: views/settings/tab_general.php:41
 msgid "Salon address"
-msgstr ""
+msgstr "Dirección del salón"
 
 #: views/settings/tab_general.php:49
 msgid "Provide the full address of your Salon"
-msgstr ""
+msgstr "Proporcione la dirección completa de su salón"
 
 #: views/settings/tab_general.php:54
 msgid "Upload your logo"
-msgstr ""
+msgstr "Cargue su logotipo"
 
 #: views/settings/tab_general.php:61
 msgid "remove this image"
-msgstr ""
+msgstr "eliminar esta imagen"
 
 #: views/settings/tab_general.php:74
 msgid "Use a transparent png file"
-msgstr ""
+msgstr "Use un archivo png transparente"
 
 #: views/settings/tab_general.php:101
 msgid ""
 "Use this field to provide your customers important infos about terms and "
 "conditions of their reservation."
 msgstr ""
+"Utilice este campo para proporcionar a sus clientes información importante "
+"sobre los términos y condiciones de su reserva."
 
 #: views/settings/tab_general.php:131
 msgid "Assistant selection"
-msgstr ""
+msgstr "Selección del asistente"
 
 #: views/settings/tab_general.php:135
 msgid "Enable assistant selection"
-msgstr ""
+msgstr "Habilitar selección de asistente"
 
 #: views/settings/tab_general.php:140
 msgid "Let your customers choose their favourite staff member."
-msgstr ""
+msgstr "Deje que sus clientes elijan a su miembro favorito del personal."
 
 #: views/settings/tab_general.php:147
 msgid "Enable multiple assistants selection"
-msgstr ""
+msgstr "Habilitar la selección de múltiples asistentes"
 
 #: views/settings/tab_general.php:148
 msgid ""
 "Users can select more than one assistants for their booked services. Please "
 "set with care the \"execution order\" inside your services section."
 msgstr ""
+"Los usuarios pueden seleccionar más de un asistente para sus servicios "
+"reservados. Establezca con cuidado la \"orden de ejecución\" dentro de su "
+"sección de servicios."
 
 #: views/settings/tab_general.php:153
 msgid "Enable assistant email on new bookings"
 msgstr ""
+"Habilitar el envío por correo electrónico al asistente en nuevas reservas"
 
 #: views/settings/tab_general.php:154
 msgid "Assistants will receive an e-mail when selected for a new booking."
 msgstr ""
+"Los asistentes recibirán un correo electrónico cuando se seleccionen para "
+"una nueva reserva."
 
 #: views/settings/tab_general.php:163
 msgid "Manage staff"
-msgstr ""
+msgstr "Administrar personal"
 
 #: views/settings/tab_general.php:164
 msgid "If you need to add or manage your staff members."
-msgstr ""
+msgstr "Si necesita agregar o administrar a los miembros de su personal."
 
 #: views/settings/tab_general.php:176
 msgid "Email services"
-msgstr ""
+msgstr "Servicios de correo electrónico"
 
 #: views/settings/tab_general.php:179
 msgid "Email Notifications service"
-msgstr ""
+msgstr "Servicio de notificaciones por correo electrónico"
 
 #: views/settings/tab_general.php:184
 msgid "Remind the appointment to the client with an Email"
-msgstr ""
+msgstr "Recordar la cita al cliente con un correo electrónico"
 
 #: views/settings/tab_general.php:187
 msgid "Email Timing"
-msgstr ""
+msgstr "Tiempo del Correo"
 
 #: views/settings/tab_general.php:207
 msgid "Email Subject"
-msgstr ""
+msgstr "Asunto del correo"
 
 #: views/settings/tab_general.php:208
 msgid "You can use [DATE], [TIME], [SALON NAME]"
-msgstr ""
+msgstr "Puede usar  [DATE], [TIME], [SALON NAME]"
 
 #: views/settings/tab_general.php:232
 msgid "Customize the booking reminder message"
-msgstr ""
+msgstr "Personaliza el mensaje de recordatorio de reservación"
 
 #: views/settings/tab_general.php:233
 msgid "You can use [NAME], [SALON NAME]"
-msgstr ""
+msgstr "Puedes usar [NAME], [SALON NAME]"
 
 #: views/settings/tab_general.php:243
 msgid "Automatic follow-up"
-msgstr ""
+msgstr "Seguimiento automático"
 
 #: views/settings/tab_general.php:246
 msgid "Enable reservation follow-up"
-msgstr ""
+msgstr "Habilitar seguimiento de reservaciones"
 
 #: views/settings/tab_general.php:251
 msgid "by Email"
-msgstr ""
+msgstr "Por correo electrónico"
 
 #: views/settings/tab_general.php:254
 msgid "by SMS"
-msgstr ""
+msgstr "Por SMS"
 
 #: views/settings/tab_general.php:257
 msgid "Timing"
-msgstr ""
+msgstr "Lapso de tiempo"
 
 #: views/settings/tab_general.php:272
 msgid "Customer habit"
-msgstr ""
+msgstr "Hábito del cliente"
 
 #: views/settings/tab_general.php:280
 msgid ""
 "We'll send a message two days before the <strong>next estimated "
 "booking</strong>"
 msgstr ""
+"Le enviaremos un mensaje dos días antes de la <strong>siguiente reserva "
+"estimada</strong>"
 
 #: views/settings/tab_general.php:286
 msgid "After the last appointment"
-msgstr ""
+msgstr "Después de la última cita"
 
 #: views/settings/tab_general.php:295
 msgid "Custom message (max 150 characters)"
-msgstr ""
+msgstr "Mensaje personalizado (máximo 150 caracteres)"
 
 #: views/settings/tab_general.php:308
 msgid "You can use this dynamic tags: [NAME], [SALON NAME]"
-msgstr ""
+msgstr "Puede usar estas etiquetas dinámicas: [NAME], [SALON NAME]"
 
 #: views/settings/tab_general.php:325
 msgid "Automatic feedback reminder"
-msgstr ""
+msgstr "Recordatorio automático de retroalimentación"
 
 #: views/settings/tab_general.php:328
 msgid "Enable feedback submission request"
-msgstr ""
+msgstr "Habilitar solicitud de envío de comentarios"
 
 #: views/settings/tab_general.php:329
 msgid ""
 "If enabled an email will be sent automatically to the customer one day after"
 " the last visit to the salon."
 msgstr ""
+"Si se habilita, un correo electrónico se enviará automáticamente al cliente "
+"un día después de la última visita al salón."
 
 #: views/settings/tab_general.php:335
 msgid "Date and Time settings"
-msgstr ""
+msgstr "Configuraciones de fecha y hora"
 
 #: views/settings/tab_general.php:338
 msgid "Date Format"
-msgstr ""
+msgstr "Formato de fecha"
 
 #: views/settings/tab_general.php:349
 msgid "Time Format"
-msgstr ""
+msgstr "Formato de tiempo"
 
 #: views/settings/tab_general.php:360
 msgid ""
 "Select your favourite date and time format. Do you need another format? Send"
 " an email to support@wpchef.it"
 msgstr ""
+"Seleccione su formato de fecha y hora favorito. ¿Necesitas otro formato? "
+"Envíe un correo electrónico a support@wpchef.it"
 
 #: views/settings/tab_general.php:365
 msgid "Start week on"
-msgstr ""
+msgstr "La semana Comienza en"
 
 #: views/settings/tab_general.php:380
 msgid "Ajax steps <span>This allows loading steps via ajax</span>"
-msgstr ""
+msgstr "pasos Ajax <span>Esto permite cargar pasos a través de ajax</span>"
 
 #: views/settings/tab_general.php:383
 msgid "Enable ajax steps"
-msgstr ""
+msgstr "Habilitar los pasos ajax"
 
 #: views/settings/tab_general.php:384
 msgid ""
 "This allows loading steps via ajax for a more smooth booking form "
 "transition."
 msgstr ""
+"Esto permite cargar pasos a través de ajax para una transición de formulario"
+" de reserva más fluida."
 
 #: views/settings/tab_general.php:391
 msgid "Disable bootstrap assets"
-msgstr ""
+msgstr "Deshabilitar los recursos de bootstrap"
 
 #: views/settings/tab_general.php:394
 msgid "CSS on front-end"
-msgstr ""
+msgstr "CSS on front-end"
 
 #: views/settings/tab_general.php:395 views/settings/tab_general.php:399
 msgid "Use it in case of conflicts with your theme"
-msgstr ""
+msgstr "Úselo en caso de conflicto con su tema"
 
 #: views/settings/tab_general.php:398
 msgid "JS on front-end"
-msgstr ""
+msgstr "JS on front-end"
 
 #: views/settings/tab_general.php:408
 msgid "Administration rule"
-msgstr ""
+msgstr "Regla de administración"
 
 #: views/settings/tab_general.php:411
 msgid "Enable Editors as administrator"
-msgstr ""
+msgstr "Habilitar editores como administrador"
 
 #: views/settings/tab_general.php:412
 msgid ""
 "This allows Wordpress users with Editor role to manage the Salon Booking "
 "section."
 msgstr ""
+"Esto permite a los usuarios de Wordpress con el rol de Editor administrar la"
+" sección de Reserva de Salones."
 
 #: views/settings/tab_homepage.php:9
 msgid "Reset settings"
-msgstr ""
+msgstr "Reiniciar ajustes"
 
 #: views/settings/tab_homepage.php:12
 msgid ""
 "Use this option to restore all the original settings. All your actual "
 "settings will be lost. <br />This operation can't be undone."
 msgstr ""
+"Use esta opción para restaurar todas las configuraciones originales. Toda su"
+" configuración real se perderá. <br />Esta operación no se puede deshacer."
 
 #: views/settings/tab_payments.php:3
 msgid ""
 "Online payment<span>Allow users to pay in advance using one of the available"
 " payments methods.</span>"
 msgstr ""
+"Pago en línea<span> Permita que los usuarios paguen por adelantado "
+"utilizando uno de los métodos de pago disponibles.</span>"
 
 #: views/settings/tab_payments.php:10
 msgid "Allow users to pay in advance using PayPal."
-msgstr ""
+msgstr "Permita que los usuarios paguen por adelantado usando PayPal."
 
 #: views/settings/tab_payments.php:17
 msgid "If enabled you need to setup one of the available payments methods."
 msgstr ""
+"Si está habilitado, debe configurar uno de los métodos de pago disponibles."
 
 #: views/settings/tab_payments.php:24 views/settings/tab_payments.php:53
 msgid ""
 "In the future we'll provide more detailed information about this specific "
 "option."
 msgstr ""
+"En el futuro, proporcionaremos información más detallada sobre esta opción "
+"específica."
 
 #: views/settings/tab_payments.php:40 views/settings/tab_payments.php:211
 msgid "Give users the option to pay once they are at your salon."
 msgstr ""
+"Ofrezca a los usuarios la opción de pagar una vez que estén en su salón."
 
 #: views/settings/tab_payments.php:63
 msgid "Pay a deposit"
-msgstr ""
+msgstr "Pagar un depósito"
 
 #: views/settings/tab_payments.php:66
 msgid "Fixed amount"
-msgstr ""
+msgstr "Cantidad fija"
 
 #: views/settings/tab_payments.php:67
 msgid "specify the amount without currency symbol"
-msgstr ""
+msgstr "especifica la cantidad sin símbolo de moneda"
 
 #: views/settings/tab_payments.php:70
 msgid "Percentage "
-msgstr ""
+msgstr "Porcentaje"
 
 #: views/settings/tab_payments.php:86
 msgid "Prices visibility"
-msgstr ""
+msgstr "Visibilidad de precios"
 
 #: views/settings/tab_payments.php:89
 msgid "Hide Prices"
-msgstr ""
+msgstr "Ocultar precios"
 
 #: views/settings/tab_payments.php:92
 msgid ""
 "Select this Option if you want to hide all prices from the front "
 "end.<br/>Note: Online Payment will be disabled."
 msgstr ""
+"Seleccione esta opción si desea ocultar todos los precios. <br/> Nota: El "
+"pago en línea se desactivará."
 
 #: views/settings/tab_payments.php:101
 msgid "Unpaid reservations"
-msgstr ""
+msgstr "Reservaciones sin pagar"
 
 #: views/settings/tab_payments.php:106
 msgid "Enable cancellation"
-msgstr ""
+msgstr "Habilitar cancelación"
 
 #: views/settings/tab_payments.php:107
 msgid ""
 "Select this option if you want to automatically cancel unpaid reservations."
 msgstr ""
+"Seleccione esta opción si desea cancelar automáticamente las reservas sin "
+"pagar."
 
 #: views/settings/tab_payments.php:111
 msgid "Delete unpaid reservations after"
-msgstr ""
+msgstr "Eliminar reservas sin pagar después"
 
 #: views/settings/tab_payments.php:126
 msgid "Set the time range to complete the online payment."
-msgstr ""
+msgstr "Establezca el rango de tiempo para completar el pago en línea."
 
 #: views/settings/tab_payments.php:134
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 #: views/settings/tab_payments.php:137 views/settings/tab_payments.php:218
 msgid "Set your currency"
-msgstr ""
+msgstr "Configura tu moneda"
 
 #: views/settings/tab_payments.php:144 views/settings/tab_payments.php:225
 msgid "Set your currency position"
-msgstr ""
+msgstr "Selecciona la posición del símbolo"
 
 #: views/settings/tab_payments.php:147 views/settings/tab_payments.php:228
 msgid "on left side"
-msgstr ""
+msgstr "en el lado izquierdo"
 
 #: views/settings/tab_payments.php:147 views/settings/tab_payments.php:228
 msgid "on right side"
-msgstr ""
+msgstr "en el lado derecho"
 
 #: views/settings/tab_payments.php:154 views/settings/tab_payments.php:165
 msgid ""
 "If you want a new currency to be added please send us an email to "
 "support@wpchef.it"
 msgstr ""
+"Si desea agregar una nueva moneda, envíenos un correo electrónico a "
+"support@wpchef.it"
 
 #: views/settings/tab_payments.php:158
 msgid "Decimal separator"
-msgstr ""
+msgstr "Separador de decimales"
 
 #: views/settings/tab_payments.php:161
 msgid "Thousand separator"
-msgstr ""
+msgstr "Separador de miles"
 
 #: views/settings/tab_payments.php:175
 msgid "Payment methods"
-msgstr ""
+msgstr "Métodos de pago"
 
 #: views/settings/tab_payments.php:189
 msgid ""
 "If you want to integrate a new custom payment gateway please refere to "
 "<strong>custom_payment_gateway.txt</strong> file inside our plugin folder."
 msgstr ""
+"Si desea integrar una nueva plataforma de pago personalizada, consulte el "
+"archivo <strong>custom_payment_gateway.txt</strong>dentro de nuestra carpeta"
+" de complementos."
 
 #: views/settings/tab_payments.php:206
 msgid "Enable online payments"
-msgstr ""
+msgstr "Habilitar pagos en línea"
 
 #: views/settings/tab_payments.php:207
 msgid "Allow users to pay in advance."
-msgstr ""
+msgstr "Permita que los usuarios paguen por adelantado."
 
 #: views/settings/tab_payments.php:210
 msgid "Enable \"Pay later\" option"
-msgstr ""
+msgstr "Habilite la opción \"Pagar después\""
 
 #: views/settings/tab_payments.php:238
 msgid "Payment method"
-msgstr ""
+msgstr "Método de pago"
 
 #: views/settings/tab_payments.php:257
 msgid "Pay a deposit of "
-msgstr ""
+msgstr "Pague un depósito de"
 
 #: views/settings/tab_style.php:12
 msgid "Select your favorite booking form layout"
-msgstr ""
+msgstr "Seleccione su diseño de formulario de reserva favorito"
 
 #: views/settings/tab_style.php:13 views/settings/tab_style.php:37
 msgid "Choose the one that best fits your page"
-msgstr ""
+msgstr "Elija el que mejor se adapte a su página"
 
 #: views/settings/tab_style.php:36
 msgid "Custom colors"
-msgstr ""
+msgstr "Colores personalizados"
 
 #: views/settings/tab_style.php:44
 msgid "customize colors of the salon shortcode."
-msgstr ""
+msgstr "personalizar los colores del código corto del salón."
 
 #: views/settings/tab_style.php:69
 msgid "Background color"
-msgstr ""
+msgstr "Color de fondo"
 
 #: views/settings/tab_style.php:76
 msgid "Main color"
-msgstr ""
+msgstr "Color principal"
 
 #: views/settings/tab_style.php:83
 msgid "Text color"
-msgstr ""
+msgstr "Color de texto"
 
 #: views/shortcode/_attendants.php:45 views/shortcode/_m_attendants.php:41
 msgid ""
 "No assistants available for the selected time/slot - please choose another "
 "one"
 msgstr ""
+"No hay asistentes disponibles para el horario / intervalo seleccionado - por"
+" favor elije otro"
 
 #: views/shortcode/_form_actions.php:10
 msgid "Next step"
-msgstr ""
+msgstr "Próximo paso"
 
 #: views/shortcode/_form_actions.php:47 views/shortcode/_unavailable.php:27
 msgid "Back"
-msgstr ""
+msgstr "Atrás"
 
 #: views/shortcode/_m_attendants.php:50
 msgid "The choice of assistant is not provided for this service"
-msgstr ""
+msgstr "La elección del asistente no se proporciona para este servicio"
 
 #: views/shortcode/_salon_date_pickers.php:12
 msgid "select a day"
-msgstr ""
+msgstr "Selecciona un día"
 
 #: views/shortcode/_salon_date_pickers.php:19
 msgid "select an hour"
-msgstr ""
+msgstr "Selecciona una hora"
 
 #: views/shortcode/_salon_summary_400.php:7
 #: views/shortcode/_salon_summary_600.php:7
 #: views/shortcode/_salon_summary_900.php:14
 msgid "Date and time booked"
-msgstr ""
+msgstr "Fecha y hora reservadas"
 
 #: views/shortcode/_salon_summary_400.php:44
 #: views/shortcode/_salon_summary_600.php:44
 #: views/shortcode/_salon_summary_900.php:51
 msgid "Services booked"
-msgstr ""
+msgstr "Servicios reservados"
 
 #: views/shortcode/_salon_summary_400.php:80
 #: views/shortcode/_salon_summary_400.php:82
 #: views/shortcode/_salon_summary_600.php:83
 #: views/shortcode/_salon_summary_900.php:92
 msgid "Do you have any message for us?"
-msgstr ""
+msgstr "¿Tienes algún mensaje para nosotros?"
 
 #: views/shortcode/_salon_summary_400.php:93
 #: views/shortcode/_salon_summary_600.php:94
 #: views/shortcode/_salon_summary_900.php:103
 msgid "Leave a message"
-msgstr ""
+msgstr "Deja un mensaje"
 
 #: views/shortcode/_salon_summary_400.php:97
 #: views/shortcode/_salon_summary_600.php:98
 #: views/shortcode/_salon_summary_900.php:109
 msgid "Terms & conditions"
-msgstr ""
+msgstr "Términos y condiciones"
 
 #: views/shortcode/_salon_summary_400.php:109
 #: views/shortcode/_salon_summary_600.php:110
 #: views/shortcode/_salon_summary_900.php:120
 msgid "Finalise"
-msgstr ""
+msgstr "Finalizar"
 
 #: views/shortcode/_salon_thankyou_400.php:7
 #: views/shortcode/_salon_thankyou_600.php:7
 #: views/shortcode/_salon_thankyou_900.php:7
 msgid "Booking Confirmation"
-msgstr ""
+msgstr "Confirmación de reservación"
 
 #: views/shortcode/_salon_thankyou_400.php:22
 #: views/shortcode/_salon_thankyou_600.php:22
 #: views/shortcode/_salon_thankyou_900.php:22
 msgid "The payment is failed, please try again."
-msgstr ""
+msgstr "El pago ha fallado, intente de nuevo."
 
 #: views/shortcode/_salon_thankyou_400.php:28
 #: views/shortcode/_salon_thankyou_600.php:28
 #: views/shortcode/_salon_thankyou_900.php:28
 msgid "Your booking is pending"
-msgstr ""
+msgstr "Tu reservación está pendiente"
 
 #: views/shortcode/_salon_thankyou_400.php:28
 #: views/shortcode/_salon_thankyou_600.php:28
 #: views/shortcode/_salon_thankyou_900.php:28
 msgid "PLEASE COMPLETE PAYMENT"
-msgstr ""
+msgstr "POR FAVOR COMPLETE EL PAGO"
 
 #: views/shortcode/_salon_thankyou_400.php:28
 #: views/shortcode/_salon_thankyou_600.php:28
 #: views/shortcode/_salon_thankyou_900.php:28
 msgid "Your booking is completed"
-msgstr ""
+msgstr "Su reservación ha sido completada"
 
 #: views/shortcode/_salon_thankyou_400.php:38
 #: views/shortcode/_salon_thankyou_600.php:38
 #: views/shortcode/_salon_thankyou_900.php:38
 msgid "Booking number"
-msgstr ""
+msgstr "Número de reservación"
 
 #: views/shortcode/_salon_thankyou_400.php:63
 #: views/shortcode/_salon_thankyou_600.php:63
 #: views/shortcode/_salon_thankyou_900.php:59
 msgid "I'll pay later"
-msgstr ""
+msgstr "Pagaré más tarde"
 
 #: views/shortcode/_salon_thankyou_400.php:67
 #: views/shortcode/_salon_thankyou_600.php:67
 #: views/shortcode/_salon_thankyou_900.php:63
 msgid "Or"
-msgstr ""
+msgstr "O"
 
 #: views/shortcode/_salon_thankyou_400.php:77
 #: views/shortcode/_salon_thankyou_600.php:78
 #: views/shortcode/_salon_thankyou_900.php:71
 msgid "Complete"
-msgstr ""
+msgstr "Completar"
 
 #: views/shortcode/_salon_thankyou_alert.php:15
 msgid "You will receive a confirmation of your booking by email."
-msgstr ""
+msgstr "Recibirás una confirmación de tu reserva por correo electrónico."
 
 #: views/shortcode/_salon_thankyou_alert.php:20
 #, php-format
@@ -3661,6 +3870,8 @@ msgid ""
 "If you don't receive any news from us or you need to change your reservation"
 " please call the %s or send an e-mail to %s"
 msgstr ""
+"Si no recibes alguna noticia de nosotros o necesitas cambiar tu reservación,"
+" por favor llama %s o envía un correo electrónico a %s"
 
 #: views/shortcode/_salon_thankyou_alert.php:30
 #, php-format
@@ -3668,6 +3879,8 @@ msgid ""
 "You have <strong>%s</strong> to complete your payment before this "
 "reservation is canceled"
 msgstr ""
+"Tienes <strong>%s</strong> para completar tu pago antes de que se cancele "
+"esta reserva"
 
 #: views/shortcode/_salon_thankyou_alert.php:38
 #, php-format
@@ -3675,60 +3888,62 @@ msgid ""
 "If you need to change your reservation please call <strong>%s</strong> or "
 "send an e-mail to <strong>%s</strong>"
 msgstr ""
+"Si necesitas cambiar tu reserva, llama al <strong>%s</strong> o envía un "
+"correo electrónico al <strong>%s</strong>"
 
 #: views/shortcode/_services.php:84 views/shortcode/_services.php:95
 #: views/shortcode/_services.php:106
 msgid "Subtotal"
-msgstr ""
+msgstr "Subtotal"
 
 #: views/shortcode/_unavailable.php:4
 msgid "SORRY! This slot is no more available"
-msgstr ""
+msgstr "¡LO SIENTO! Esta fecha y hora ya está ocupada"
 
 #: views/shortcode/_unavailable.php:6
 msgid "Please start over your reservation"
-msgstr ""
+msgstr "Por favor, comience de nuevo su reserva"
 
 #: views/shortcode/salon.php:22
 msgid "Your free version is expired - upgrade to PRO"
-msgstr ""
+msgstr "Su versión gratuita ha caducado: actualice a PRO"
 
 #: views/shortcode/salon.php:25 views/trial/shortcode.php:3
 msgid "Book an appointment"
-msgstr ""
+msgstr "Hacer una reservación"
 
 #: views/shortcode/salon_attendant.php:20
 msgid "Select your assistants"
-msgstr ""
+msgstr "Selecciona tus asistentes"
 
 #: views/shortcode/salon_attendant.php:22
 msgid "Select your assistant"
-msgstr ""
+msgstr "Selecciona a tu asistente"
 
 #: views/shortcode/salon_date.php:11 views/shortcode/salon_services.php:12
 #: views/trial/shortcode.php:16
 msgid "On-line booking is disabled"
-msgstr ""
+msgstr "La reserva en línea está deshabilitada"
 
 #: views/shortcode/salon_date.php:36
 msgid "No more slots available until"
-msgstr ""
+msgstr "No más espacios disponibles hasta"
 
 #: views/shortcode/salon_date.php:44
 msgid "When do you want to come?"
-msgstr ""
+msgstr "¿Cuando quieres venir?"
 
 #: views/shortcode/salon_details.php:28
 msgid "Forgot password?"
-msgstr ""
+msgstr "¿Se te olvidó tu contraseña?"
 
 #: views/shortcode/salon_details.php:43
 msgid "Returning customer?"
-msgstr ""
+msgstr "¿Soy Cliente?"
 
 #: views/shortcode/salon_details.php:43
 msgid "Please, log-in."
-msgstr ""
+msgstr "Por favor Iniciar sesión."
 
 #: views/shortcode/salon_details.php:57 views/shortcode/salon_details.php:88
 #: views/shortcode/salon_details.php:117
@@ -3737,49 +3952,49 @@ msgstr "Iniciar sesión"
 
 #: views/shortcode/salon_details.php:145
 msgid "Please fill out the form to checkout"
-msgstr ""
+msgstr "Por favor complete el formulario para pagar"
 
 #: views/shortcode/salon_details.php:169
 msgid "checkout as a guest"
-msgstr ""
+msgstr "pagar como invitado"
 
 #: views/shortcode/salon_details.php:169
 msgid "no account will be created"
-msgstr ""
+msgstr "no se creará una cuenta"
 
 #: views/shortcode/salon_details.php:172
 msgid "Checkout as a guest"
-msgstr ""
+msgstr "Pagar como invitado"
 
 #: views/shortcode/salon_details.php:172
 msgid "An account will be automatically created"
-msgstr ""
+msgstr "Se creará automáticamente tu cuenta"
 
 #: views/shortcode/salon_details.php:319
 msgid "Checkout"
-msgstr ""
+msgstr "Pagar"
 
 #: views/shortcode/salon_my_account/_salon_my_account_details_table.php:5
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:7
 msgid "When"
-msgstr ""
+msgstr "¿Cuándo?"
 
 #: views/shortcode/salon_my_account/_salon_my_account_details_table.php:14
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:32
 msgid "Action"
-msgstr ""
+msgstr "Acción"
 
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:41
 msgid "Leave a feedback"
-msgstr ""
+msgstr "Deja un comentario"
 
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:53
 msgid "Book now"
-msgstr ""
+msgstr "Reservar ahora"
 
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:66
 msgid "Pay Now"
-msgstr ""
+msgstr "Pagar ahora"
 
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:74
 #, php-format
@@ -3787,155 +4002,168 @@ msgid ""
 "You have <strong>%s</strong> to complete your payment before this "
 "reservation being canceled"
 msgstr ""
+"Tienes <strong>%s</strong> para completar tu pago antes de que se cancele "
+"esta reservación"
 
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:85
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:92
 msgid "Cancel booking"
-msgstr ""
+msgstr "Cancelar reservación"
 
 #: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:91
 #, php-format
 msgid "Sorry, you cannot cancel this booking online. Please call %s"
 msgstr ""
+"Lo sentimos, no se pudo cancelar esta reserva en línea. Por favor llama al "
+"%s"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:3
 #, php-format
 msgid "Welcome back %s!"
-msgstr ""
+msgstr "!Qué gusto verte otra vez %s!"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:4
 msgid "Next appointments"
-msgstr ""
+msgstr "Próximas citas"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:5
 msgid "Reservations history"
-msgstr ""
+msgstr "Historial de reservaciones"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:12
 msgid "The booking has been cancelled"
-msgstr ""
+msgstr "La reservación ha sido cancelada"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:16
 msgid ""
 "Here you have your next reservations with us, pay attention to the 'pending'"
 " reservations"
 msgstr ""
+"Aquí tienes sus próximas reservaciones con nosotros, presta atención a las "
+"reservaciones 'pendientes'"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:26
 msgid ""
 "You don't have upcoming reservations, do you want to re-schedule your last "
 "appointment with us?"
 msgstr ""
+"No tiene próximas reservaciones, ¿deseas volver a programar tu última cita "
+"con nosotros?"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:45
 #: views/shortcode/salon_my_account/salon_my_account_details.php:75
 msgid "MAKE A NEW RESERVATION"
-msgstr ""
+msgstr "HAZ UNA NUEVA RESERVA"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:52
 msgid ""
 "Here you have your past reservations, you can submit a review or re-schedule"
 " an appointment"
 msgstr ""
+"Aquí tienes tus reservasciones anteriores, puedes enviar una opinión o "
+"volver a programar una cita"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:70
 msgid "No bookings"
-msgstr ""
+msgstr "Sin reservaciones"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:92
 #: views/sms/remind.php:7
 msgid "Hi"
-msgstr ""
+msgstr "Hola"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:93
 msgid "How was your expirience with us this time? (required)"
-msgstr ""
+msgstr "¿Cómo fue tu experiencia con nosotros esta vez? (necesario)"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:94
 msgid ""
 "please, drop us some lines to understand if your expirience has been  in "
 "line  with your expectrations"
 msgstr ""
+"por favor, envíanos algunas líneas para saber si tu experiencia ha estado en"
+" línea con tus expectativas"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:97
 msgid "Rate our service (required)"
-msgstr ""
+msgstr "Califica nuestro servicio (requerido)"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:100
 msgid "Send your review"
-msgstr ""
+msgstr "Envía tu opinión"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:101
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:105
 msgid "Thank you for your review. It will help us improving our services."
 msgstr ""
+"Gracias por tus comentario. Nos ayudarán a mejorar nuestros servicios."
 
 #: views/shortcode/salon_my_account/salon_my_account_details.php:106
 msgid "We hope to see you again at"
-msgstr ""
+msgstr "Esperamos verte de nuevo en"
 
 #: views/shortcode/salon_secondary.php:17
 msgid "Something more?"
-msgstr ""
+msgstr "¿Algo más?"
 
 #: views/shortcode/salon_services.php:26
 msgid "What do you need?"
-msgstr ""
+msgstr "¿Qué necesitas?"
 
 #: views/shortcode/salon_sms.php:18
 msgid "SMS sent successfully."
-msgstr ""
+msgstr "SMS enviado satisfactoriamente."
 
 #: views/shortcode/salon_sms.php:21
 msgid "SMS Verification"
-msgstr ""
+msgstr "Verificación de SMS"
 
 #: views/shortcode/salon_sms.php:23
 msgid "We have sent an SMS text on your mobile phone."
-msgstr ""
+msgstr "Hemos enviado un mensaje de texto a tu teléfono móvil."
 
 #: views/shortcode/salon_sms.php:28
 msgid "Your telephone number is verified"
-msgstr ""
+msgstr "Tu número de teléfono ha sido verificado"
 
 #: views/shortcode/salon_sms.php:36
 msgid "digit your verification code"
-msgstr ""
+msgstr "Introduce el código de verificación"
 
 #: views/shortcode/salon_sms.php:47
 msgid "I didn't received the code, please send it again"
-msgstr ""
+msgstr "No recibí el código, por favor envíelo de nuevo"
 
 #: views/shortcode/salon_summary.php:22
 msgid "Booking summary"
-msgstr ""
+msgstr "Resumen de la reservación"
 
 #: views/shortcode/salon_summary.php:55
 msgid "Here are the details of your booking:"
-msgstr ""
+msgstr "Aquí están los detalles de tu reservación:"
 
 #: views/sms/remind.php:9
 msgid "don't forget your reservation at"
-msgstr ""
+msgstr "no olvides tu reservación en"
 
 #: views/sms/remind.php:10 views/sms/summary.php:8
 msgid "on"
-msgstr ""
+msgstr "en"
 
 #: views/sms/remind.php:12
 msgid "| Booking ID "
-msgstr ""
+msgstr "| ID de reservación"
 
 #: views/sms/summary.php:8
 msgid "has booked at"
-msgstr ""
+msgstr "haz reservado en"
 
 #: views/sms/summary.php:11
 msgid "BOOKING ID"
-msgstr ""
+msgstr "ID DE RESERVACIÓN"
 
 #: views/sms/verify.php:14
 msgid ""
@@ -3948,6 +4176,14 @@ msgid ""
 "{phone} \n"
 "{email}"
 msgstr ""
+"Hola, \n"
+"este es tu código de verificación en {salon}: \n"
+"{code} \n"
+"Muchas gracias. \n"
+"{salon} \n"
+"{address} \n"
+"{phone} \n"
+"{email}"
 
 #: views/trial/admin_end.php:2
 msgid ""
@@ -3955,6 +4191,9 @@ msgid ""
 "booking-plugin-pricing/\" target=\"blank\">Please upgrade Salon Booking to a"
 " PRO version</a>."
 msgstr ""
+"Su versión gratuita ha expirado. <a href=\"http://salon.wordpresschef.it"
+"/salon-booking-plugin-pricing/\" target=\"blank\">Actualice Salon Booking a "
+"una versión PRO</a>."
 
 #: views/trial/admin_end.php:4 views/trial/admin_near.php:4
 #, php-format
@@ -3963,6 +4202,9 @@ msgid ""
 "/invite-friends-get-30-discount-first-purchase/\" target=\"blank\">INVITE "
 "YOUR FRIENDS!</a></strong></p>"
 msgstr ""
+"<strong>¿Quieres un 30% de descuento? <a "
+"href=\"http://salon.wordpresschef.it/invite-friends-get-30-discount-first-"
+"purchase/\" target=\"blank\"> ¡INVITA A TUS AMIGOS! </a></strong></p>"
 
 #: views/trial/admin_near.php:2
 msgid ""
@@ -3971,22 +4213,27 @@ msgid ""
 "pricing/\" target=\"blank\">Please upgrade Salon Booking to a PRO "
 "version</a>."
 msgstr ""
+"Llegará al límite de reservas para la versión gratuita de Salon Booking. <a "
+"href=\"http://salon.wordpresschef.it/salon-booking-plugin-pricing/\" "
+"target=\"blank\"> Actualice Salon Booking a una versión PRO</a>."
 
 #. Plugin Name of the plugin/theme
 msgid "Salon Booking Wordpress Plugin - Free Version"
-msgstr ""
+msgstr "Salon Booking Wordpress Plugin - Versión gratuita"
 
 #. Plugin URI of the plugin/theme
 #. Author URI of the plugin/theme
 msgid "http://salon.wpchef.it/"
-msgstr ""
+msgstr "http://salon.wpchef.it/"
 
 #. Description of the plugin/theme
 msgid ""
 "Let your customers book you services through your website. Perfect for "
 "hairdressing salons, barber shops and beauty centers."
 msgstr ""
+"Deje que sus clientes le reserven servicios a través de su sitio web. "
+"Perfecto para peluquerías, peluquerías y centros de belleza."
 
 #. Author of the plugin/theme
 msgid "Wordpress Chef / Plugins"
-msgstr ""
+msgstr "Wordpress Chef / Plugins"

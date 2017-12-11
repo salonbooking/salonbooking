@@ -665,7 +665,7 @@ msgstr ""
 
 #: src/SLN/Admin/Settings.php:517
 msgid "Update Settings"
-msgstr ""
+msgstr "Update Settings"
 
 #: src/SLN/Admin/Settings.php:561
 msgid "style settings are updated"

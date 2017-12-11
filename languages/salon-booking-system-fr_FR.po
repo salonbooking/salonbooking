@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Salon Booking Wordpress Plugin - Free Version\n"
 "POT-Creation-Date: 2017-11-02 14:18+0100\n"
 "PO-Revision-Date: 2017-11-02 14:18+0100\n"
-"Last-Translator: vincent druelle <contact@verydigital.fr>, 2016\n"
+"Last-Translator: Benjamin FORNAGE <benjamin.fornage@uni.lu>, 2017\n"
 "Language-Team: French (France) (https://www.transifex.com/wp-translations/teams/8416/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,27 +44,27 @@ msgstr "Client"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:24
 msgid "Booking date"
-msgstr ""
+msgstr "Date de réservation"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:25
 msgid "Booking amount"
-msgstr ""
+msgstr "Montant de la réservation"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:26
 msgid "Booking discount"
-msgstr ""
+msgstr "Remise de la réservation"
 
 #: src/SLB_Discount/Enum/DiscountType.php:27
 msgid "Coupon code"
-msgstr ""
+msgstr "Code promo"
 
 #: src/SLB_Discount/Enum/DiscountType.php:28
 msgid "Automatic discount"
-msgstr ""
+msgstr "Remise automatique"
 
 #: src/SLB_Discount/Metabox/Discount.php:29
 msgid "Discount details"
-msgstr ""
+msgstr "Détails de la remise"
 
 #: src/SLB_Discount/Metabox/Discount.php:39
 msgid "&nbsp"
@@ -72,16 +72,16 @@ msgstr "&nbsp"
 
 #: src/SLB_Discount/Metabox/Discount.php:50
 msgid "Discount usage history"
-msgstr ""
+msgstr "Historique d'utilisation des remises"
 
 #: src/SLB_Discount/Plugin.php:217
 msgid "Discounted price"
-msgstr ""
+msgstr "Prix remisé"
 
 #: src/SLB_Discount/PostType/Discount.php:58
 #: views/discount/metabox/_discount_details.php:20
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: src/SLB_Discount/PostType/Discount.php:59
 #: views/discount/metabox/_discount_details.php:16
@@ -91,11 +91,11 @@ msgstr "Montant"
 
 #: src/SLB_Discount/PostType/Discount.php:60
 msgid "Active"
-msgstr ""
+msgstr "Activé"
 
 #: src/SLB_Discount/PostType/Discount.php:61
 msgid "Discount usages"
-msgstr ""
+msgstr "Utilisation des remises"
 
 #: src/SLB_Discount/PostType/Discount.php:82
 msgid "Yes"
@@ -107,43 +107,43 @@ msgstr "Non"
 
 #: src/SLB_Discount/PostType/Discount.php:99
 msgid "Enter discount name"
-msgstr ""
+msgstr "Entrer le nom de la remise"
 
 #: src/SLB_Discount/PostType/Discount.php:110
 #: src/SLB_Discount/PostType/Discount.php:114
 msgid "Discount updated."
-msgstr ""
+msgstr "Remise mise à jour."
 
 #: src/SLB_Discount/PostType/Discount.php:116
 #, php-format
 msgid "Discount restored to revision from %s"
-msgstr ""
+msgstr "Remise rétablie à %s"
 
 #: src/SLB_Discount/PostType/Discount.php:120
 msgid "Discount published."
-msgstr ""
+msgstr "Remise publiée."
 
 #: src/SLB_Discount/PostType/Discount.php:122
 msgid "Discount saved."
-msgstr ""
+msgstr "Remise enregistrée."
 
 #: src/SLB_Discount/PostType/Discount.php:124
 msgid "Discount submitted."
-msgstr ""
+msgstr "Remise envoyée."
 
 #: src/SLB_Discount/PostType/Discount.php:128
 msgid "Discount draft updated."
-msgstr ""
+msgstr "Brouillon de la remise mis à jour."
 
 #: src/SLB_Discount/PostType/Discount.php:151
 #: src/SLB_Discount/PostType/Discount.php:155
 msgid "Discounts"
-msgstr ""
+msgstr "Remises"
 
 #: src/SLB_Discount/PostType/Discount.php:152
 #: views/discount/shortcode/_salon_summary_before_total_amount.php:12
 msgid "Discount"
-msgstr ""
+msgstr "Remise"
 
 #: src/SLB_Discount/PostType/Discount.php:153 src/SLN/Admin/Calendar.php:12
 #: src/SLN/Admin/Calendar.php:13 src/SLN/PostType/Attendant.php:233
@@ -153,70 +153,70 @@ msgstr "Salon"
 
 #: src/SLB_Discount/PostType/Discount.php:154
 msgid "Salon Discount"
-msgstr ""
+msgstr "Remise du salon"
 
 #: src/SLB_Discount/PostType/Discount.php:156
 msgid "Add Discount"
-msgstr ""
+msgstr "Ajouter une remise"
 
 #: src/SLB_Discount/PostType/Discount.php:157
 msgid "Add New Discount"
-msgstr ""
+msgstr "Ajouter une nouvelle remise"
 
 #: src/SLB_Discount/PostType/Discount.php:158
 msgid "Edit Discount"
-msgstr ""
+msgstr "Editer une remise"
 
 #: src/SLB_Discount/PostType/Discount.php:159
 msgid "New Discount"
-msgstr ""
+msgstr "Nouvelle remise"
 
 #: src/SLB_Discount/PostType/Discount.php:160
 msgid "View Discount"
-msgstr ""
+msgstr "Voir la remise"
 
 #: src/SLB_Discount/PostType/Discount.php:161
 msgid "Search Discounts"
-msgstr ""
+msgstr "Rechercher des remises"
 
 #: src/SLB_Discount/PostType/Discount.php:162
 msgid "No discounts found"
-msgstr ""
+msgstr "Aucune remise trouvée"
 
 #: src/SLB_Discount/PostType/Discount.php:163
 msgid "No discounts found in trash"
-msgstr ""
+msgstr "Aucune remise trouvée dans la corbeille"
 
 #: src/SLB_Discount/PostType/Discount.php:164
 msgid "Discounts Archive"
-msgstr ""
+msgstr "Historique des remises"
 
 #: src/SLB_Discount/Wrapper/Discount.php:415
 #: src/SLB_Discount/Wrapper/Discount.php:481
 msgid "Coupon expired"
-msgstr ""
+msgstr "Code promo expiré"
 
 #: src/SLB_Discount/Wrapper/Discount.php:418
 msgid "This coupon was applied maximum number of times"
-msgstr ""
+msgstr "Ce code promo a atteint le nombre d’utilisation maximum"
 
 #: src/SLB_Discount/Wrapper/Discount.php:432
 msgid "You applied this coupon maximum number of times"
-msgstr ""
+msgstr "Vous avez atteint le nombre d’utilisation maximum de ce code promo"
 
 #: src/SLB_Discount/Wrapper/Discount.php:457
 msgid "This coupon is not valid for selected services"
-msgstr ""
+msgstr "Ce code promo n’est pas valable pour les prestations sélectionnées"
 
 #: src/SLB_Discount/Wrapper/Discount.php:487
 #, php-format
 msgid "This coupon is not valid on %s"
-msgstr ""
+msgstr "Ce code promo n’est pas valable sur %s"
 
 #: src/SLB_Discount/Wrapper/Discount.php:501
 #: src/SLB_Discount/Wrapper/Discount.php:513
 msgid "Make more bookings to be able to use this coupon"
-msgstr ""
+msgstr "Faites plus de réservations pour pouvoir utiliser ce code promo"
 
 #: src/SLN/Action/Ajax/AbstractImport.php:21
 msgid "Method not found"
@@ -336,6 +336,8 @@ msgstr "Vous pouvez sélectionner jusqu’à %d éléments"
 #: src/SLN/Action/Ajax/CheckServices.php:193
 msgid "This service is exclusive. Please remove other services."
 msgstr ""
+"Ce service doit être réservé seul. Veuillez enlever les autres afin de "
+"pouvoir le sélectionner."
 
 #: src/SLN/Action/Ajax/ResendNotification.php:18
 #: src/SLN/Action/Ajax/ResendPaymentNotification.php:16
@@ -385,7 +387,7 @@ msgstr "remplissez ce champ"
 
 #: src/SLN/Action/InitScripts.php:52 views/admin/calendar.php:232
 msgid "Close"
-msgstr ""
+msgstr "Fermé"
 
 #: src/SLN/Action/Install.php:26
 #: src/SLN/Action/Updates/sln-update-for-3.0.php:92
@@ -421,6 +423,8 @@ msgid ""
 "<strong>ERROR</strong>: This email is already registered, please choose "
 "another one."
 msgstr ""
+"<strong>ERREUR</strong> : Cet e-mail existe déjà dans notre base. Veuillez "
+"en choisir un autre."
 
 #: src/SLN/Admin/Customers/BookingsList.php:27 src/SLN/PostType/Booking.php:46
 #: views/mail/_header.php:28
@@ -633,7 +637,7 @@ msgstr "La réinitialisation a bien été effectuée"
 
 #: src/SLN/Admin/Settings.php:287
 msgid "Invalid Email in Salon contact e-mail field"
-msgstr ""
+msgstr "E-mail non valide dans le champ de contact par e-mail"
 
 #: src/SLN/Admin/Settings.php:367
 msgid "general settings are updated"
@@ -671,7 +675,7 @@ msgstr "La vérification de la page a échouée."
 
 #: src/SLN/Admin/Settings.php:517
 msgid "Update Settings"
-msgstr ""
+msgstr "Mettre à jour les réglages"
 
 #: src/SLN/Admin/Settings.php:561
 msgid "style settings are updated"
@@ -864,11 +868,11 @@ msgstr "samedi"
 
 #: src/SLN/Enum/PaymentDepositType.php:22
 msgid "entire amount (disabled)"
-msgstr ""
+msgstr "montant total (désativé)"
 
 #: src/SLN/Enum/PaymentDepositType.php:23
 msgid "fixed"
-msgstr ""
+msgstr "fixe"
 
 #: src/SLN/Enum/ShortcodeStyle.php:65
 msgid "Use this if your column is at least 400px width"
@@ -960,7 +964,7 @@ msgstr ""
 
 #: src/SLN/Helper/Availability.php:501
 msgid "This service is not available with exclusive service."
-msgstr ""
+msgstr "Cette prestation n'est pas disponible en service exclusif."
 
 #: src/SLN/Helper/Availability.php:521
 msgid "You already selected service at"
@@ -1489,12 +1493,12 @@ msgstr "Se connecter avec Facebook"
 #: src/SLN/TaxonomyType/ServiceCategory.php:10
 msgctxt "taxonomy general name"
 msgid "Service Categories"
-msgstr ""
+msgstr "Catégories de prestation"
 
 #: src/SLN/TaxonomyType/ServiceCategory.php:11
 msgctxt "taxonomy singular name"
 msgid "Service Category"
-msgstr ""
+msgstr "Catégorie de prestation"
 
 #: src/SLN/TaxonomyType/ServiceCategory.php:12
 msgid "Search Service Category"
@@ -1745,11 +1749,11 @@ msgstr "Suivant"
 
 #: views/admin/calendar.php:230
 msgid "Save"
-msgstr ""
+msgstr "Enregistrer"
 
 #: views/admin/calendar.php:231
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: views/admin/calendar.php:252
 msgid "Export reservations into a CSV file"
@@ -1910,63 +1914,63 @@ msgstr "Rejeter cette notification"
 
 #: views/discount/metabox/_booking_total_amount_row.php:14
 msgid "Discount applied"
-msgstr ""
+msgstr "Remise appliquée"
 
 #: views/discount/metabox/_discount_advanced.php:14
 msgid "This is a"
-msgstr ""
+msgstr "C'est "
 
 #: views/discount/metabox/_discount_advanced.php:43
 msgid "Code to be used"
-msgstr ""
+msgstr "Code à utiliser"
 
 #: views/discount/metabox/_discount_advanced.php:48
 msgid "Copy this code and give it to your customers"
-msgstr ""
+msgstr "Copiez ce code et communiquez le à vos clients"
 
 #: views/discount/metabox/_discount_advanced.php:56
 msgid "Automatic discount settings"
-msgstr ""
+msgstr "Réglages de la remise automatique"
 
 #: views/discount/metabox/_discount_advanced.php:57
 msgid "Automatically apply when the rules are met"
-msgstr ""
+msgstr "Appliquer automatiquement quand les règles sont vérifiées"
 
 #: views/discount/metabox/_discount_advanced.php:76
 msgid "Reservations collected by a single customer"
-msgstr ""
+msgstr "Réservations faites par un client unique"
 
 #: views/discount/metabox/_discount_advanced.php:77
 msgid "Reservations amount collected by a single customer"
-msgstr ""
+msgstr "Montant cumulé de réservations faite par un client unique"
 
 #: views/discount/metabox/_discount_advanced.php:78
 msgid "On these specific date period"
-msgstr ""
+msgstr "dans cette intervalle de date"
 
 #: views/discount/metabox/_discount_advanced.php:79
 msgid "On these specific days of the week"
-msgstr ""
+msgstr "uniquement ces jours de la semaine"
 
 #: views/discount/metabox/_discount_advanced.php:93
 msgid "Remove rule"
-msgstr ""
+msgstr "Supprimer la règle"
 
 #: views/discount/metabox/_discount_advanced.php:101
 msgid "Number of reservations"
-msgstr ""
+msgstr "Nombre de réservations"
 
 #: views/discount/metabox/_discount_advanced.php:108
 msgid "Amount of reservations"
-msgstr ""
+msgstr "Montant des réservations"
 
 #: views/discount/metabox/_discount_advanced.php:142
 msgid "Select one or more days of the week where the discount is valid"
-msgstr ""
+msgstr "Sélectionnez un ou plusieurs jours où la remise est valide"
 
 #: views/discount/metabox/_discount_advanced.php:150
 msgid "Add new rule"
-msgstr ""
+msgstr "Ajouter une nouvelle règle"
 
 #: views/discount/metabox/_discount_details.php:25
 msgid "%"
@@ -1974,45 +1978,45 @@ msgstr "%"
 
 #: views/discount/metabox/_discount_details.php:31
 msgid "Type the amount of this discount"
-msgstr ""
+msgstr "Indiquer le montant de la remise"
 
 #: views/discount/metabox/_discount_details.php:34
 msgid "Maximum uses limit"
-msgstr ""
+msgstr "Nombre maximum d'utilisation"
 
 #: views/discount/metabox/_discount_details.php:36
 #: views/discount/metabox/_discount_details.php:62
 msgid "Leave it blank for an unlimited times of usage"
-msgstr ""
+msgstr "Laisser vide pour un nombre illimité d'utilisation"
 
 #: views/discount/metabox/_discount_details.php:42
 msgid "Valid from"
-msgstr ""
+msgstr "Valide du"
 
 #: views/discount/metabox/_discount_details.php:60
 msgid "Per single user limit"
-msgstr ""
+msgstr "Par utilisateur unique"
 
 #: views/discount/metabox/_discount_details.php:68
 msgid "Limit this discount to the following services"
-msgstr ""
+msgstr "Limiter cette remise aux prestations suivantes"
 
 #: views/discount/metabox/_discount_details.php:83
 msgid "Leave it blank if you want to be applied to all services"
-msgstr ""
+msgstr "Laisser vide si vous voulez appliquer à toutes les prestations"
 
 #: views/discount/metabox/_discount_history.php:13
 #, php-format
 msgid "Total usage ( %d )"
-msgstr ""
+msgstr "Total des utilisations (%d)"
 
 #: views/discount/shortcode/_salon_summary_after_total_amount.php:12
 msgid "Do you have any discount code?"
-msgstr ""
+msgstr "Avez vous un code de remise ?"
 
 #: views/discount/shortcode/_salon_summary_after_total_amount.php:25
 msgid "key in your coupon code"
-msgstr ""
+msgstr "clé dans votre code promo"
 
 #: views/discount/shortcode/_salon_summary_after_total_amount.php:31
 msgid "Apply"
@@ -2034,7 +2038,7 @@ msgstr "Cher"
 #: views/mail/_status_canceled_content.php:23
 #, php-format
 msgid "the following booking at %s has been canceled"
-msgstr ""
+msgstr "La réservation suivante le %s à été annulée"
 
 #: views/mail/_status_canceled_content.php:40
 #: views/mail/_summary_content.php:137 views/mail/feedback.php:91
@@ -2153,11 +2157,11 @@ msgstr "LIRE LE COMMENTAIRE EN ENTIER"
 
 #: views/mail/feedback.php:45
 msgid "Click on this button to send us your feedback"
-msgstr ""
+msgstr "Cliquez sur ce bouton pour nous envoyer vos commentaires"
 
 #: views/mail/feedback.php:75
 msgid "Submit a review"
-msgstr ""
+msgstr "Envoyer un avis"
 
 #: views/mail/follow_up.php:91
 msgid "Important notes,"
@@ -2441,13 +2445,15 @@ msgstr ""
 
 #: views/metabox/service.php:29
 msgid "Exclusive service"
-msgstr ""
+msgstr "Prestation exclusive"
 
 #: views/metabox/service.php:30
 msgid ""
 "If enabled, when a customer choose this service no other services can be "
 "booked during the same reservation"
 msgstr ""
+"Si activé, quand un client choisi cette prestation, aucune autre prestation "
+"peut être réservée en même temps"
 
 #: views/metabox/service.php:35
 msgid "Display if"
@@ -2588,11 +2594,11 @@ msgstr "Information du compte Stripe"
 
 #: views/payment_method/stripe/settings.php:4
 msgid "Secret key"
-msgstr ""
+msgstr "Clé secrète"
 
 #: views/payment_method/stripe/settings.php:8
 msgid "Publishable key"
-msgstr ""
+msgstr "Clé publique"
 
 #: views/payment_method/stripe/settings.php:9
 msgid "Enter your Stripe publishable api key"
@@ -3122,15 +3128,15 @@ msgstr ""
 
 #: views/settings/tab_checkout.php:68
 msgid "Advanced Discount System"
-msgstr ""
+msgstr "Système de remise avancé"
 
 #: views/settings/tab_checkout.php:72
 msgid "Enable"
-msgstr ""
+msgstr "Activer"
 
 #: views/settings/tab_checkout.php:73
 msgid "Check this box if you want to enable the Discount section"
-msgstr ""
+msgstr "Cocher cette case si vous voulez activer la section Remise"
 
 #: views/settings/tab_checkout.php:81
 msgid "Checkout form fields"
@@ -3294,7 +3300,7 @@ msgstr ""
 
 #: views/settings/tab_general.php:3
 msgid "Salon information"
-msgstr ""
+msgstr "Informations du salon"
 
 #: views/settings/tab_general.php:9
 msgid "Your salon name"
@@ -3423,7 +3429,7 @@ msgstr "Vous pouvez utiliser [DATE], [TIME], [SALON NAME]"
 
 #: views/settings/tab_general.php:232
 msgid "Customize the booking reminder message"
-msgstr ""
+msgstr "Personnaliser le message de rappel de réservation"
 
 #: views/settings/tab_general.php:233
 msgid "You can use [NAME], [SALON NAME]"
@@ -3476,17 +3482,19 @@ msgstr ""
 
 #: views/settings/tab_general.php:325
 msgid "Automatic feedback reminder"
-msgstr ""
+msgstr "Rappel d'avis automatique"
 
 #: views/settings/tab_general.php:328
 msgid "Enable feedback submission request"
-msgstr ""
+msgstr "Activer la demande d'avis"
 
 #: views/settings/tab_general.php:329
 msgid ""
 "If enabled an email will be sent automatically to the customer one day after"
 " the last visit to the salon."
 msgstr ""
+"Si activé, un email sera envoyé automatiquement au client, un jour après sa "
+"dernière visite au salon."
 
 #: views/settings/tab_general.php:335
 msgid "Date and Time settings"
@@ -3610,15 +3618,15 @@ msgstr "Payer un acompte"
 
 #: views/settings/tab_payments.php:66
 msgid "Fixed amount"
-msgstr ""
+msgstr "Montant fixe"
 
 #: views/settings/tab_payments.php:67
 msgid "specify the amount without currency symbol"
-msgstr ""
+msgstr "spécifier le montant sans symbole monétaire"
 
 #: views/settings/tab_payments.php:70
 msgid "Percentage "
-msgstr ""
+msgstr "Pourcentage"
 
 #: views/settings/tab_payments.php:86
 msgid "Prices visibility"
@@ -3844,7 +3852,7 @@ msgstr "Votre réservation est en attente"
 #: views/shortcode/_salon_thankyou_600.php:28
 #: views/shortcode/_salon_thankyou_900.php:28
 msgid "PLEASE COMPLETE PAYMENT"
-msgstr ""
+msgstr "VEUILLEZ TERMINER LE PAIEMENT"
 
 #: views/shortcode/_salon_thankyou_400.php:28
 #: views/shortcode/_salon_thankyou_600.php:28
@@ -3914,11 +3922,11 @@ msgstr "Sous-total"
 
 #: views/shortcode/_unavailable.php:4
 msgid "SORRY! This slot is no more available"
-msgstr ""
+msgstr "Désolé, ce créneau n'est plus disponible"
 
 #: views/shortcode/_unavailable.php:6
 msgid "Please start over your reservation"
-msgstr ""
+msgstr "Merci de recommencer votre réservation"
 
 #: views/shortcode/salon.php:22
 msgid "Your free version is expired - upgrade to PRO"
@@ -4235,7 +4243,7 @@ msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Salon Booking Wordpress Plugin - Free Version"
-msgstr ""
+msgstr "Salon Booking Wordpress Plugin - Free Version"
 
 #. Plugin URI of the plugin/theme
 #. Author URI of the plugin/theme
@@ -4247,6 +4255,8 @@ msgid ""
 "Let your customers book you services through your website. Perfect for "
 "hairdressing salons, barber shops and beauty centers."
 msgstr ""
+"Laisser vos clients prendre RDV via votre site Web. Parfait pour les salons "
+"de coiffure, barbiers, et centres de beauté."
 
 #. Author of the plugin/theme
 msgid "Wordpress Chef / Plugins"

@@ -9,7 +9,7 @@ var gulp  = require('gulp'),
     sass = require('gulp-sass'),
     minifyCss = require('gulp-minify-css'),
     runSequence = require('run-sequence'),
-    gettext = require('gulp-gettext')
+    gettext = require('gulp-potomo')
     wpPot = require("gulp-wp-pot");//
     //sourcemaps = require('gulp-sourcemaps');
 

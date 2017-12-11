@@ -17,6 +17,46 @@ msgstr ""
 msgid "-"
 msgstr ""
 
+#: js/Func.php:142, js/Func.php:157, src/SLN/Func.php:142, src/SLN/Func.php:157
+msgid "hour"
+msgstr ""
+
+#: js/Func.php:143, js/Func.php:144, js/Func.php:145, js/Func.php:146, js/Func.php:147, js/Func.php:148, js/Func.php:149, js/Func.php:158, js/Func.php:159, js/Func.php:160, js/Func.php:161, js/Func.php:162, src/SLN/Func.php:143, src/SLN/Func.php:144, src/SLN/Func.php:145, src/SLN/Func.php:146, src/SLN/Func.php:147, src/SLN/Func.php:148, src/SLN/Func.php:149, src/SLN/Func.php:158, src/SLN/Func.php:159, src/SLN/Func.php:160, src/SLN/Func.php:161, src/SLN/Func.php:162
+msgid "hours"
+msgstr ""
+
+#: js/Func.php:156, src/SLN/Func.php:156
+msgid "half hour"
+msgstr ""
+
+#: js/Func.php:163, src/SLN/Func.php:163, views/settings/tab_general.php:263
+msgid "day"
+msgstr ""
+
+#: js/Func.php:164, js/Func.php:165, js/Func.php:166, src/SLN/Func.php:164, src/SLN/Func.php:165, src/SLN/Func.php:166, views/settings/tab_general.php:264, views/settings/tab_general.php:265, views/settings/tab_general.php:266, views/settings/tab_general.php:267, src/SLN/Wrapper/Booking.php:462
+msgid "days"
+msgstr ""
+
+#: js/Func.php:167, src/SLN/Func.php:167, views/settings/tab_general.php:268
+msgid "week"
+msgstr ""
+
+#: js/Func.php:168, js/Func.php:169, src/SLN/Func.php:168, src/SLN/Func.php:169, views/settings/tab_general.php:269, views/settings/tab_general.php:270
+msgid "weeks"
+msgstr ""
+
+#: js/Func.php:170, src/SLN/Func.php:170, views/settings/tab_general.php:271
+msgid "month"
+msgstr ""
+
+#: js/Func.php:171, js/Func.php:172, js/Func.php:173, src/SLN/Func.php:171, src/SLN/Func.php:172, src/SLN/Func.php:173
+msgid "months"
+msgstr ""
+
+#: js/Func.php:174, js/Func.php:175, src/SLN/Func.php:174, src/SLN/Func.php:175
+msgid "years"
+msgstr ""
+
 #: views/admin_notices.php:2
 msgid "<strong>Congratulation!</strong> Salon Booking is now active."
 msgstr ""
@@ -35,46 +75,6 @@ msgstr ""
 
 #: src/SLN/Formatter.php:22
 msgid "free"
-msgstr ""
-
-#: src/SLN/Func.php:141, src/SLN/Func.php:156
-msgid "hour"
-msgstr ""
-
-#: src/SLN/Func.php:142, src/SLN/Func.php:143, src/SLN/Func.php:144, src/SLN/Func.php:145, src/SLN/Func.php:146, src/SLN/Func.php:147, src/SLN/Func.php:148, src/SLN/Func.php:157, src/SLN/Func.php:158, src/SLN/Func.php:159, src/SLN/Func.php:160, src/SLN/Func.php:161
-msgid "hours"
-msgstr ""
-
-#: src/SLN/Func.php:155
-msgid "half hour"
-msgstr ""
-
-#: src/SLN/Func.php:162, views/settings/tab_general.php:263
-msgid "day"
-msgstr ""
-
-#: src/SLN/Func.php:163, src/SLN/Func.php:164, src/SLN/Func.php:165, views/settings/tab_general.php:264, views/settings/tab_general.php:265, views/settings/tab_general.php:266, views/settings/tab_general.php:267, src/SLN/Wrapper/Booking.php:462
-msgid "days"
-msgstr ""
-
-#: src/SLN/Func.php:166, views/settings/tab_general.php:268
-msgid "week"
-msgstr ""
-
-#: src/SLN/Func.php:167, src/SLN/Func.php:168, views/settings/tab_general.php:269, views/settings/tab_general.php:270
-msgid "weeks"
-msgstr ""
-
-#: src/SLN/Func.php:169, views/settings/tab_general.php:271
-msgid "month"
-msgstr ""
-
-#: src/SLN/Func.php:170, src/SLN/Func.php:171, src/SLN/Func.php:172
-msgid "months"
-msgstr ""
-
-#: src/SLN/Func.php:173, src/SLN/Func.php:174
-msgid "years"
 msgstr ""
 
 #: views/admin/calendar.php:10
@@ -1955,7 +1955,7 @@ msgid "Your free version is expired. <a href=\"http://salon.wordpresschef.it/sal
 msgstr ""
 
 #: views/trial/admin_end.php:4, views/trial/admin_near.php:4
-msgid "<strong>Do you want a 30% discount? <a href=\"http://salon.wordpresschef.it/invite-friends-get-30-discount-first-purchase/\" target=\"blank\">INVITE YOUR FRIENDS!</a></strong></p>"
+msgid "<strong>Do you want a 30% discount ? <a href=\"http://salon.wordpresschef.it/invite-friends-get-30-discount-first-purchase/\" target=\"blank\">INVITE YOUR FRIENDS!</a></strong></p>"
 msgstr ""
 
 #: views/trial/admin_near.php:2
