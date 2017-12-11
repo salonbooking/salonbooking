@@ -168,8 +168,8 @@ class SLN_Action_InitScripts
 
     public static function enqueueDateTimePicker()
     {
-        $lang = SLN_Plugin::getInstance()->getSettings()->getLocale();
-
+        $date_lang = SLN_Plugin::getInstance()->getSettings()->getDateLocale();
+        
         wp_enqueue_script(
             'smalot-datepicker',
             SLN_PLUGIN_URL.'/js/bootstrap-datetimepicker.js',
@@ -177,11 +177,11 @@ class SLN_Action_InitScripts
             '20140711',
             true
         );
-        if ($lang != 'en') {
+        if ($date_lang != 'en') {
             wp_enqueue_script(
                 'smalot-datepicker-lang',
-                SLN_PLUGIN_URL.'/js/datepicker_language/bootstrap-datetimepicker.'.$lang.'.js',
-                array('jquery'),
+                SLN_PLUGIN_URL.'/js/datepicker_language/bootstrap-datetimepicker.'.$date_lang.'.js',
+                array('jquery','smalot-datepicker'),
                 '2016-02-16',
                 true
             );
