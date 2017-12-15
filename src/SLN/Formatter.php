@@ -54,14 +54,17 @@ class SLN_Formatter
         }
 
         $f = $this->plugin->getSettings()->getDateFormat();
-        $phpFormat = SLN_Enum_DateFormat::getPhpFormat($f);
-        return ucwords(date_i18n($phpFormat, strtotime($val)));
+        $phpFormat = SLN_Enum_DateFormat::getIntlDatePhpFormat($f);        
+        $format = new IntlDateFormatter(substr(get_locale(), 0,2), IntlDateFormatter::NONE, 
+              IntlDateFormatter::NONE, NULL, NULL, $phpFormat);
+        
+        return ucwords(datefmt_format($format, strtotime($val)));
     }
 
     public function time($val)
     {
 	    $f         = $this->plugin->getSettings()->getTimeFormat();
-	    $phpFormat = SLN_Enum_TimeFormat::getPhpFormat( $f );
+	    $phpFormat = SLN_Enum_TimeFormat::getPhpFormat( $f );        
 	    if ( $val instanceof DateTime ) {
 		    $val = $val->format( 'Y-m-d H:i' );
 	    } elseif ( $val instanceof \Salon\Util\Time ) {

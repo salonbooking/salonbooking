@@ -37,6 +37,10 @@ class SLN_Enum_DateFormat
     {
         return isset(self::$phpFormats[$key]) ? self::$phpFormats[$key] : self::$phpFormats[self::_DEFAULT];
     }
+    public static function getIntlDatePhpFormat($key){
+        return str_replace(array("d","m","M","Y"),array("dd","LL","LLL","y",),self::getPhpFormat($key));
+    }
+
     public static function getJsFormat($key)
     {
         return isset(self::$jsFormats[$key]) ? self::$jsFormats[$key] : self::$jsFormats[self::_DEFAULT];
