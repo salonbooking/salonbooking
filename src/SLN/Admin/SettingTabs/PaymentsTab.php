@@ -18,5 +18,19 @@ class SLN_Admin_SettingTabs_PaymentsTab extends SLN_Admin_SettingTabs_AbstractTa
         'pay_deposit_fixed_amount',
     );
 
+	private function validate(){
+
+		if (isset($submitted['hide_prices'])) {
+            $this->settings->set('pay_enabled', '');
+        }
+	}
+
+	private function postProcess(){
+		wp_clear_scheduled_hook('sln_cancel_bookings');
+        if (isset($submitted['pay_offset_enabled']) && $submitted['pay_offset_enabled']) {
+            wp_schedule_event(time(), 'hourly', 'sln_cancel_bookings');
+            wp_schedule_event(time() + 1800, 'hourly', 'sln_cancel_bookings');
+        }
+	}
 }
  ?>

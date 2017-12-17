@@ -2,6 +2,10 @@
 abstract class SLN_Admin_SettingTabs_AbstractTab
 {
 	protected $settings;
+
+	private function validate(){}
+
+	private function postProcess(){}
     function getOpt($key)
     {
         return $this->settings->get($key);

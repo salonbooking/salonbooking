@@ -24,5 +24,27 @@ class SLN_Admin_SettingTabs_BookingTab extends SLN_Admin_SettingTabs_AbstractTab
         'form_steps_alt_order',
     );
 
+	private function validate(){
+
+		if (isset($submitted['availabilities'])) {
+            $submitted['availabilities'] = SLN_Helper_AvailabilityItems::processSubmission(
+                $submitted['availabilities']
+            );
+        }
+
+        if (isset($submitted['holidays'])) {
+            $submitted['holidays'] = SLN_Helper_HolidayItems::processSubmission($submitted['holidays']);
+        }
+	}
+
+	private function postProcess(){
+		$this->plugin->getBookingCache()->refreshAll();
+        if ($this->settings->getAvailabilityMode() != 'highend') {
+            $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+            foreach ($repo->getAll() as $service) {
+                $service->setMeta('break_duration', SLN_Func::convertToHoursMins(0));
+            }
+        }
+	}
 }
  ?>
