@@ -6,8 +6,6 @@ class SLN_Admin_Settings
     const PAGE = 'salon-settings';
 
     protected $plugin;    
-    protected $settings;
-    public $settings_page = '';
     private $tabs = array(
         'homepage' => 'Home',
         'general' => 'General',
@@ -22,7 +20,6 @@ class SLN_Admin_Settings
     public function __construct(SLN_Plugin $plugin)
     {
         $this->plugin = $plugin;
-        $this->settings = $plugin->getSettings();
         $this->tabs = apply_filters('sln.settings.tabs', $this->tabs, $plugin);
         add_action('admin_menu', array($this, 'admin_menu'), 12);
         $this->addTabHooks();
@@ -39,11 +36,6 @@ class SLN_Admin_Settings
             array($this, 'show')
         );
         add_action('load-'.$pagename, array($this, 'enqueueAssets'));
-    }
-
-    public function showTabGeneral()
-    {
-        include SLN_PLUGIN_URL.'/views/settings/general.php';
     }
 
     public function show()
@@ -113,13 +105,6 @@ class SLN_Admin_Settings
         }
         echo '</h2>';
     }
-
-        $params = array();
-        foreach (self::$fieldsTabGCalendar as $k) {
-            $v = $this->settings->get($k);
-            $k = str_replace('google_', '', $k);
-            $params[$k] = $v;
-        }
 
 
     function getCurrentTab()
