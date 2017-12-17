@@ -5,7 +5,7 @@ class SLN_Admin_Settings
 
     const PAGE = 'salon-settings';
 
-    protected $plugin;
+    protected $plugin;    
     protected $settings;
     public $settings_page = '';
     private $tabs = array(
@@ -72,21 +72,18 @@ class SLN_Admin_Settings
     public function show()
     {
         $current = $this->getCurrentTab();
-        if ($_POST) {
-            $method = "processTab".ucwords($current);
-            if (!method_exists($this, $method)) {
-                throw new Exception('method not found '.$method);
-            }
-            if (empty($_POST[self::PAGE.$current]) || !wp_verify_nonce($_POST[self::PAGE.$current])) {
-                $this->$method();
-            } else {
-                $this->showAlert(
-                    'error',
-                    __('try again', 'salon-booking-system'),
-                    __('Page verification failed', 'salon-booking-system')
-                );
-            }
+        if(!in_array($current,array_keys($this->tabs))){
+          throw new Exception('Tab with slug '.$current.' not registered');   
         }
+        $class_name = 'SLN_Admin_SettingTabs_'.ucfirst($current).'Tab';
+        if (!class_exists ( $class_name )) 
+        {
+                throw new Exception('Class '.$class_name.' is not existent');
+        }
+        if(!is_subclass_of( $class_name, 'SLN_Admin_SettingTabs_AbstractTab')){
+            throw new Exception('Class '.$class_name.' not implement SLN_Admin_SettingTabs_AbstractTab');   
+        }
+        $tab = new $class_name($current, $this->tabs[$current],$this->plugin);
         ?>
         <div id="sln-salon--admin" class="wrap sln-bootstrap sln-salon--settings">
             <?php screen_icon(); ?>
@@ -112,7 +109,7 @@ class SLN_Admin_Settings
             <form method="post" action="<?php admin_url('admin.php?page='.self::PAGE); ?>"
                   enctype="multipart/form-data">
                 <?php
-                $this->showTab($current);
+                $tab->show();
                 wp_nonce_field(self::PAGE.$current);
                 if ($current != 'homepage') {
                     submit_button(esc_attr__('Update Settings', 'salon-booking-system'), 'primary');
@@ -134,18 +131,6 @@ class SLN_Admin_Settings
             echo "<a class='nav-tab$class' href='?page=$page&tab=$tab'>$name</a>";
         }
         echo '</h2>';
-    }
-
-    private function showAlert($type, $txt, $title = null)
-    {
-        ?>
-        <div id="sln-setting-<?php echo $type ?>" class="updated settings-<?php echo $type ?>">
-            <?php if (!empty($title)) { ?>
-                <p><strong><?php echo $title ?></strong></p>
-            <?php } ?>
-            <p><?php echo $txt ?></p>
-        </div>
-        <?php
     }
 
         $params = array();
@@ -185,6 +170,6 @@ class SLN_Admin_Settings
                 true
             );
         }
-    }
+    }    
 
 }

@@ -1,11 +1,48 @@
 <?php 	
 abstract class SLN_Admin_SettingTabs_AbstractTab
 {
+	const PAGE = 'salon-settings';
+
+	protected $plugin;
 	protected $settings;
+	protected $slug;
+	protected $label;
+	
+	function __construct($slug,$label,$plugin){
+				
+		$this->plugin = $plugin;
+		$this->settings = $plugin->getSettings();
+		$this->slug = $slug;
+		$this->label = $label;
+		if ($_POST) {
+            if (empty($_POST[self::PAGE.$this->slug]) || !wp_verify_nonce($_POST[self::PAGE.$this->slug])) {
+                $this->process();
+            } else {
+                $this->showAlert(
+                    'error',
+                    __('try again', 'salon-booking-system'),
+                    __('Page verification failed', 'salon-booking-system')
+                );
+            }
+        }
+	}
 
 	private function validate(){}
 
 	private function postProcess(){}
+
+    private function showAlert($type, $txt, $title = null)
+    {
+        ?>
+        <div id="sln-setting-<?php echo $type ?>" class="updated settings-<?php echo $type ?>">
+            <?php if (!empty($title)) { ?>
+                <p><strong><?php echo $title ?></strong></p>
+            <?php } ?>
+            <p><?php echo $txt ?></p>
+        </div>
+        <?php
+    }
+
     function getOpt($key)
     {
         return $this->settings->get($key);
