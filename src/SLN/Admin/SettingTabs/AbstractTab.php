@@ -7,6 +7,8 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
 	protected $settings;
 	protected $slug;
 	protected $label;
+	protected $submitted;
+
 	
 	function __construct($slug,$label,$plugin){
 				
@@ -27,9 +29,49 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
         }
 	}
 
+	public function show(){
+
+		include $this->plugin->getViewFile('admin/utilities/settings-sidebar');
+        include $this->plugin->getViewFile('settings/tab_'.$this->slug);        
+	}
+
+	public function process(){
+				
+		$this->getSubmittedFields();
+		$this->validate();		
+        $this->saveSettings();
+        $this->postProcess();
+        $this->showAlert(
+            'success',
+            __(''.$this->label.' settings are updated', 'salon-booking-system'),
+            __('Update completed with success', 'salon-booking-system')
+        );
+	}
+
 	private function validate(){}
 
 	private function postProcess(){}
+
+	private function getSubmittedFields(){
+		
+        $posted = $_POST['salon_settings'];
+		$submitted = array();
+		foreach ($this->fields as $k) {
+			if(isset($posted[$k])) $submitted[$k] = $posted[$k];
+        }
+        $this->submitted = $posted;
+	}
+
+	private function saveSettings()
+    {
+    	$submitted = $this->submitted;
+        foreach ($this->fields as $k) {
+            $data = isset($submitted[$k]) ? $submitted[$k] : '';
+            if(is_string($data))$data = stripcslashes($data);
+            $this->settings->set($k, $data);
+        }
+        $this->settings->save();
+    }
 
     private function showAlert($type, $txt, $title = null)
     {
