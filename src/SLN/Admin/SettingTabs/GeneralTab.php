@@ -1,6 +1,48 @@
 <?php 	
 class SLN_Admin_SettingTabs_GeneralTab extends SLN_Admin_SettingTabs_AbstractTab
 {
+	protected $fields = array(
+        'gen_name',
+        'gen_email',
+        'gen_phone',
+        'gen_address',
+        'gen_logo',
+        'gen_timetable',
+        'ajax_enabled',
+        'editors_manage_cap',
+        'attendant_enabled',
+        'm_attendant_enabled',
+        'attendant_email',
+        'sms_enabled',
+        'sms_account',
+        'sms_password',
+        'sms_prefix',
+        'sms_provider',
+        'sms_from',
+        'sms_new',
+        'sms_new_number',
+        'sms_new_attendant',
+        'sms_remind',
+        'sms_remind_interval',
+        'sms_trunk_prefix',
+        'email_remind',
+        'email_remind_interval',
+        'email_subject',
+        'booking_update_message',
+        'follow_up_email',
+        'follow_up_sms',
+        'follow_up_interval',
+        'follow_up_message',
+        'feedback_reminder',
+        'soc_facebook',
+        'soc_twitter',
+        'soc_google',
+        'date_format',
+        'time_format',
+        'week_start',
+        'no_bootstrap',
+        'no_bootstrap_js',
+    );
 
 }
  ?>
