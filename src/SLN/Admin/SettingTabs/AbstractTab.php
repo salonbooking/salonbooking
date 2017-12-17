@@ -16,6 +16,7 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
 		$this->settings = $plugin->getSettings();
 		$this->slug = $slug;
 		$this->label = $label;
+		$this->fields = apply_filters('sln.settings.'.$slug.'.fields',$this->fields, $this);
 		if ($_POST) {
             if (empty($_POST[self::PAGE.$this->slug]) || !wp_verify_nonce($_POST[self::PAGE.$this->slug])) {
                 $this->process();
@@ -33,6 +34,7 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
 
 		include $this->plugin->getViewFile('admin/utilities/settings-sidebar');
         include $this->plugin->getViewFile('settings/tab_'.$this->slug);        
+        do_action('sln.view.settings.'.$this->slug.'.additional_fields');
 	}
 
 	public function process(){

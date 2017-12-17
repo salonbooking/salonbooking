@@ -23,7 +23,9 @@ class SLN_Admin_Settings
     {
         $this->plugin = $plugin;
         $this->settings = $plugin->getSettings();
+        $this->tabs = apply_filters('sln.settings.tabs', $this->tabs, $plugin);
         add_action('admin_menu', array($this, 'admin_menu'), 12);
+        $this->addTabHooks();
     }
 
     public function admin_menu()
@@ -55,18 +57,6 @@ class SLN_Admin_Settings
     public function showTabGeneral()
     {
         include SLN_PLUGIN_URL.'/views/settings/general.php';
-    }
-
-    public function processTabPayments()
-    {
-        $fields = self::$fieldsTabPayment;
-        foreach (SLN_Enum_PaymentMethodProvider::toArray() as $k => $v) {
-            $fields = array_merge(
-                $fields,
-                SLN_Enum_PaymentMethodProvider::getService($k, $this->plugin)->getFields()
-            );
-        }
-
     }
 
     public function show()
@@ -121,6 +111,10 @@ class SLN_Admin_Settings
         <?php
     }
 
+    private function addTabHooks(){
+        add_filter('sln.settings.payments.fields',array($this,'initGateways'));
+    }
+
     private function showTabsBar()
     {
         echo '<h2 class="sln-nav-tab-wrapper nav-tab-wrapper">';
@@ -172,4 +166,15 @@ class SLN_Admin_Settings
         }
     }    
 
+    public function initGateways($fields)
+    {
+        foreach (SLN_Enum_PaymentMethodProvider::toArray() as $k => $v) {
+            $fields = array_merge(
+                $fields,
+                SLN_Enum_PaymentMethodProvider::getService($k, $this->plugin)->getFields()
+            );
+        }
+        return $fields;
+    }
+    
 }
