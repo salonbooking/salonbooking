@@ -5,6 +5,7 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
 
 	protected $plugin;
 	protected $settings;
+	protected $fields;		
 	protected $slug;
 	protected $label;
 	protected $submitted;

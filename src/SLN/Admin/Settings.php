@@ -41,19 +41,6 @@ class SLN_Admin_Settings
         add_action('load-'.$pagename, array($this, 'enqueueAssets'));
     }
 
-    public function processTabHomepage()
-    {
-        if (isset($_POST['reset-settings']) && $_POST['reset-settings'] == 'reset') {
-            $this->settings->clear();
-            SLN_Action_Install::execute(true);
-            $this->showAlert(
-                'success',
-                __('remember to customize your settings', 'salon-booking-system'),
-                __('Reset completed with success', 'salon-booking-system')
-            );
-        }
-    }
-
     public function showTabGeneral()
     {
         include SLN_PLUGIN_URL.'/views/settings/general.php';
