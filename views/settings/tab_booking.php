@@ -1,7 +1,7 @@
 <?php
 $plugin = SLN_Plugin::getInstance();
 ?>
-<div class="sln-tab" id="sln-tab-booking">
+
     <div class="sln-box sln-box--main">
         <?php echo $plugin->loadView('settings/_tab_booking_availability'); ?>
     </div>
@@ -113,4 +113,3 @@ $plugin = SLN_Plugin::getInstance();
         <?php echo $plugin->loadView('settings/_tab_booking_status'); ?>
     </div>
 
-</div>

@@ -1,7 +1,7 @@
 <?php
 $plugin = SLN_Plugin::getInstance();
 ?>
-<div class="sln-tab" id="sln-tab-checkout">
+
 	<div class="sln-box sln-box--main">
 		<h2 class="sln-box-title"><?php _e('Checkout options','salon-booking-system') ?></h2>
 		<div class="row">
@@ -130,4 +130,3 @@ $plugin = SLN_Plugin::getInstance();
 			</div>
 		</div>
 	</div>
-</div>

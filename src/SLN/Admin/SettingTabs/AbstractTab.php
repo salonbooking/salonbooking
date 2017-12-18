@@ -31,11 +31,13 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
         }
 	}
 
-	public function show(){
-
+	public function show(){        
 		include $this->plugin->getViewFile('admin/utilities/settings-sidebar');
+        echo '<div class="sln-tab" id="sln-tab-'.$this->slug.'">';
         include $this->plugin->getViewFile('settings/tab_'.$this->slug);        
         do_action('sln.view.settings.'.$this->slug.'.additional_fields');
+        echo '</div>
+        <div class="clearfix"></div>';
 	}
 
 	public function process(){

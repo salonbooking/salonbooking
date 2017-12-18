@@ -1,4 +1,4 @@
-<div class="sln-tab" id="sln-tab-general">
+
 <div class="sln-box sln-box--main">
     <h2 class="sln-box-title"><?php _e('Salon information','salon-booking-system'); ?></h2>
     <div class="row">
@@ -415,5 +415,5 @@ THIS BOX MUST BE HIDDEN IF NOT IN USE
         </div>
     </div>
 </div>
-</div>
-<div class="clearfix"></div>
+
+

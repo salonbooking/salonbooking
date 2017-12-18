@@ -1,4 +1,4 @@
-<div class="sln-tab" id="sln-tab-google-calendar">
+
 <div class="sln-box sln-box--main">
     <h2 class="sln-box-title"><?php _e('Google Calendar','salon-booking-system');?></h2>
     <div class="row">
@@ -97,5 +97,3 @@
     </div>
     <div class="clearfix"></div>
 </div>
-</div>
-    <div class="clearfix"></div>
