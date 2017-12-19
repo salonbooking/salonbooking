@@ -35,7 +35,7 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
 		include $this->plugin->getViewFile('admin/utilities/settings-sidebar');
         echo '<div class="sln-tab" id="sln-tab-'.$this->slug.'">';
         include $this->plugin->getViewFile('settings/tab_'.$this->slug);        
-        do_action('sln.view.settings.'.$this->slug.'.additional_fields');
+        do_action('sln.view.settings.'.$this->slug.'.additional_fields',$this);
         echo '</div>
         <div class="clearfix"></div>';
 	}
@@ -43,9 +43,11 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
 	public function process(){
 				
 		$this->getSubmittedFields();
-		$this->validate();		
+		$this->validate();        
+        do_action( 'sln.settings.'.$this->slug.'.validate', $this );
         $this->saveSettings();
-        $this->postProcess();
+        $this->postProcess();        
+        do_action( 'sln.settings.'.$this->slug.'.post_process', $this );
         $this->showAlert(
             'success',
             __(''.$this->label.' settings are updated', 'salon-booking-system'),
