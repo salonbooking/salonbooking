@@ -76,7 +76,7 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
         $posted = $_POST['salon_settings'];
 		$submitted = array();
 		foreach ($this->fields as $k) {
-			if(isset($posted[$k])) $submitted[$k] = $posted[$k];
+			if(isset($posted[$k]) || array_key_exists($k,$posted)) $submitted[$k] = $posted[$k];
         }
         $this->submitted = $posted;
 	}
@@ -111,22 +111,24 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
 
 
     function row_input_checkbox($key, $label, $settings = array())
-    {
-        SLN_Form::fieldCheckbox(
-            "salon_settings[{$key}]",
+    {?>
+         <input type='hidden' value='0' name='salon_settings[<?php echo $key; ?>]'>
+        <?php SLN_Form::fieldCheckbox(
+            "salon_settings[$key]",
             $this->getOpt($key),
             $settings
         )
         ?>
-        <label for="salon_settings_<?php echo $key ?>"><?php echo $label ?></label>
+        <label for="salon_settings[<?php echo $key ?>]"><?php echo $label ?></label>
         <?php if (isset($settings['help'])) { ?><p class="help-block"><?php echo $settings['help'] ?></p><?php }
     }
 
     function row_input_checkbox_switch($key, $label, $settings = array())
     { ?>
         <h6 class="sln-fake-label"><?php echo $label ?></h6>
+        <input type='hidden' value='0' name='salon_settings[<?php echo $key; ?>]'>
         <?php SLN_Form::fieldCheckbox(
-        "salon_settings[{$key}]",
+        "salon_settings[$key]",
         $this->getOpt($key),
         $settings
             )
@@ -134,7 +136,7 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
         <label for="salon_settings_<?php echo $key ?>" class="sln-switch-btn" data-on="On" data-off="Off"></label>
         <?php
         if (isset($settings['help'])) { ?>
-            <label class="sln-switch-text" for="salon_settings_<?php echo $key ?>"
+            <label class="sln-switch-text" for="salon_settings[<?php echo $key ?>]"
                    data-on="<?php echo $settings['bigLabelOn'] ?>"
                    data-off="<?php echo $settings['bigLabelOff'] ?>"></label>
         <?php }
