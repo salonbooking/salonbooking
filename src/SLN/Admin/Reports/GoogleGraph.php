@@ -83,7 +83,7 @@ class SLN_Admin_Reports_GoogleGraph {
 
 		$data_js = array();
 		foreach ( $data['data'] as $item ) {
-			$data_js[] = "['{$item[0]}',  {$item[1]},  {$item[2]}],";
+			$data_js[] = "['".addslashes ($item[0])."',  '".addslashes ($item[1])."',  '".addslashes ($item[2])."'],";
 		}
 
 		ob_start();
@@ -176,7 +176,7 @@ class SLN_Admin_Reports_GoogleGraph {
 		$data_js = array();
 		$data_js[] = '[' . implode(',', $labels_js) . '],';
 		foreach ( $data['data'] as $item ) {
-			$data_js[] = "['{$item[0]}',  {$item[1]},  {$item[2]}],";
+			$data_js[] =  "['".addslashes ($item[0])."',  '".addslashes ($item[1])."',  '".addslashes ($item[2])."'],";
 		}
 
 		ob_start();
