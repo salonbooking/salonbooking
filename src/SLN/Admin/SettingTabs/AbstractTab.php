@@ -84,8 +84,8 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
 	private function saveSettings()
     {
     	$submitted = $this->submitted;
-        foreach ($this->fields as $k) {
-            $data = isset($submitted[$k]) ? $submitted[$k] : '';
+        foreach ($submitted as $k => $data ) {
+            
             if(is_string($data))$data = stripcslashes($data);
             $this->settings->set($k, $data);
         }
