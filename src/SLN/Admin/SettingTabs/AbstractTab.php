@@ -31,6 +31,18 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
         }
 	}
 
+    public function getFields(){
+        return $this->fields;
+    }
+
+    public function getSlug(){
+        return $this->slug;
+    }
+
+    public function getLabel(){
+        return $this->label;
+    }    
+    
 	public function show(){        
 		include $this->plugin->getViewFile('admin/utilities/settings-sidebar');
         echo '<div class="sln-tab" id="sln-tab-'.$this->slug.'">';
