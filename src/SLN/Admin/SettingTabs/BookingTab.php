@@ -26,14 +26,14 @@ class SLN_Admin_SettingTabs_BookingTab extends SLN_Admin_SettingTabs_AbstractTab
 
 	protected function validate(){
 
-		if (isset($submitted['availabilities'])) {
-            $submitted['availabilities'] = SLN_Helper_AvailabilityItems::processSubmission(
-                $submitted['availabilities']
+		if (isset($this->submitted['availabilities'])) {
+            $this->submitted['availabilities'] = SLN_Helper_AvailabilityItems::processSubmission(
+                $this->submitted['availabilities']
             );
         }
 
-        if (isset($submitted['holidays'])) {
-            $submitted['holidays'] = SLN_Helper_HolidayItems::processSubmission($submitted['holidays']);
+        if (isset($this->submitted['holidays'])) {
+            $this->submitted['holidays'] = SLN_Helper_HolidayItems::processSubmission($this->submitted['holidays']);
         }
 	}
 
