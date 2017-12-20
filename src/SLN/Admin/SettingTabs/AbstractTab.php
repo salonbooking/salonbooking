@@ -56,10 +56,10 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
 				
 		$this->getSubmittedFields();
 		$this->validate();        
-        do_action( 'sln.settings.'.$this->slug.'.validate', $this );
+        apply_filters( 'sln.settings.'.$this->slug.'.validate',$this->submitted, $this );
         $this->saveSettings();
         $this->postProcess();        
-        do_action( 'sln.settings.'.$this->slug.'.post_process', $this );
+        apply_filters( 'sln.settings.'.$this->slug.'.post_process',$this->submitted, $this );
         $this->showAlert(
             'success',
             __(''.$this->label.' settings are updated', 'salon-booking-system'),
