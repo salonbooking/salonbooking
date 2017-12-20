@@ -7,14 +7,14 @@ class SLN_Admin_SettingTabs_StyleTab extends SLN_Admin_SettingTabs_AbstractTab
         'style_colors',
     );
 
-	private function postProcess(){
+	protected function postProcess(){
 		$this->settings->save();
         if ($this->settings->get('style_colors_enabled')) {
             $this->saveCustomCss();
         }
 	}
 
-    private function saveCustomCss()
+    protected function saveCustomCss()
     {
         $css = file_get_contents(SLN_PLUGIN_DIR.'/css/sln-colors--custom.css');
         $colors = $this->settings->get('style_colors');

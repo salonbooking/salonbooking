@@ -44,7 +44,7 @@ class SLN_Admin_SettingTabs_GeneralTab extends SLN_Admin_SettingTabs_AbstractTab
         'no_bootstrap_js',
     );
 
-	private function validate(){
+	protected function validate(){
 
 		if (!empty($submitted['gen_email']) && !filter_var($submitted['gen_email'], FILTER_VALIDATE_EMAIL)) {
             $this->showAlert('error', __('Invalid Email in Salon contact e-mail field', 'salon-booking-system'));
@@ -82,7 +82,7 @@ class SLN_Admin_SettingTabs_GeneralTab extends SLN_Admin_SettingTabs_AbstractTab
         $submitted['follow_up_message'] = substr($submitted['follow_up_message'], 0, 150);
 	}
 
-	private function postProcess(){
+	protected function postProcess(){
 		wp_clear_scheduled_hook('sln_sms_reminder');
         if (isset($submitted['sms_remind']) && $submitted['sms_remind']) {
             wp_schedule_event(time(), 'hourly', 'sln_sms_reminder');
@@ -131,7 +131,7 @@ class SLN_Admin_SettingTabs_GeneralTab extends SLN_Admin_SettingTabs_AbstractTab
         }
 	}
 
-    private function sendTestSms($number, $message)
+    protected function sendTestSms($number, $message)
     {
         $sms = $this->plugin->sms();
         $sms->send($number, $message);

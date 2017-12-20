@@ -9,7 +9,7 @@ class SLN_Admin_SettingTabs_GcalendarTab extends SLN_Admin_SettingTabs_AbstractT
         'google_client_calendar',
     );
 
-	private function validate(){
+	protected function validate(){
 		
         if ($this->needsGCalendarRevokeToken()) {
             header("Location: ".admin_url('admin.php?page=salon-settings&tab=gcalendar&revoketoken=1'));
@@ -20,7 +20,7 @@ class SLN_Admin_SettingTabs_GcalendarTab extends SLN_Admin_SettingTabs_AbstractT
         }
 	}
 	
-	private function needsGCalendarRevokeToken()
+	protected function needsGCalendarRevokeToken()
     {
         
         $s = $this->submitted;

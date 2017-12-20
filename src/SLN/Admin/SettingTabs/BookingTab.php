@@ -24,7 +24,7 @@ class SLN_Admin_SettingTabs_BookingTab extends SLN_Admin_SettingTabs_AbstractTab
         'form_steps_alt_order',
     );
 
-	private function validate(){
+	protected function validate(){
 
 		if (isset($submitted['availabilities'])) {
             $submitted['availabilities'] = SLN_Helper_AvailabilityItems::processSubmission(
@@ -37,7 +37,7 @@ class SLN_Admin_SettingTabs_BookingTab extends SLN_Admin_SettingTabs_AbstractTab
         }
 	}
 
-	private function postProcess(){
+	protected function postProcess(){
 		$this->plugin->getBookingCache()->refreshAll();
         if ($this->settings->getAvailabilityMode() != 'highend') {
             $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);

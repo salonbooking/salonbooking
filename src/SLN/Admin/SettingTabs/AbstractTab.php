@@ -67,11 +67,11 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
         );
 	}
 
-	private function validate(){}
+	protected function validate(){}
 
-	private function postProcess(){}
+	protected function postProcess(){}
 
-	private function getSubmittedFields(){
+	protected function getSubmittedFields(){
 		
         $posted = $_POST['salon_settings'];
 		$submitted = array();
@@ -92,7 +92,7 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
         $this->settings->save();
     }
 
-    private function showAlert($type, $txt, $title = null)
+    protected function showAlert($type, $txt, $title = null)
     {
         ?>
         <div id="sln-setting-<?php echo $type ?>" class="updated settings-<?php echo $type ?>">
