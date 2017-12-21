@@ -28,8 +28,8 @@ class SLN_PaymentMethod_Paypal extends SLN_PaymentMethod_Abstract
             }
         } elseif ($_GET['mode'] == 'paypal') {
             if ($shortcode->isAjax()) {
-                    $servername = "http://".$_SERVER["SERVER_NAME"];
-                    $_SERVER['REQUEST_URI'] = str_replace($servername, '', $_SERVER['HTTP_REFERER']).'?sln_step_page=thankyou&submit_thankyou=1&mode=paypal';
+                    $bookUrl = str_replace(site_url(), '',get_permalink($this->plugin->getSettings()->get('pay')));
+                    $_SERVER['REQUEST_URI'] = $bookUrl.'?sln_step_page=thankyou&submit_thankyou=1&mode=paypal';
             }
             $ppl = new SLN_Payment_Paypal($this->plugin);
             $url = $ppl->getUrl($booking->getId(), $booking->getToPayAmount(false), $booking->getTitle());
