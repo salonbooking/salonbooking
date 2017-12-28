@@ -6357,6 +6357,11 @@ body.salone_page_salon-tools #wpwrap {
     -webkit-animation: wait 2s infinite linear;
     animation: wait 2s infinite linear; }
 
+#sln-booking-editor-modal {
+  z-index: 9990; }
+  #sln-booking-editor-modal .modal-header > a, #sln-booking-editor-modal .modal-header > button {
+    margin-bottom: 0.5rem; }
+
 @-webkit-keyframes wait {
   0% {
     -moz-transform: rotate(0deg);

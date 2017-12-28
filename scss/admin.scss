@@ -843,6 +843,16 @@ body.salone_page_salon-tools {
         animation: wait 2s infinite linear;
     }
 }
+
+#sln-booking-editor-modal{
+    z-index: 9990;
+   .modal-header{
+        >a,>button{
+           margin-bottom: 0.5rem; 
+        }
+   }
+}
+
 @-webkit-keyframes wait {
   0% {
     -moz-transform: rotate(0deg);
