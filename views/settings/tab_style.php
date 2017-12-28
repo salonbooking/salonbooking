@@ -6,7 +6,6 @@ $enum = new SLN_Enum_ShortcodeStyle();
 $curr = $this->settings->getStyleShortcode();
 $colors = $this->settings->get('style_colors') ? $this->settings->get('style_colors') : array();
 ?>
-<div class="sln-tab" id="sln-tab-style">
     <div class="sln-box sln-box--main">
         <h2 class="sln-box-title">
             <?php _e('Select your favorite booking form layout', 'salon-booking-system'); ?>
@@ -95,5 +94,4 @@ $colors = $this->settings->get('style_colors') ? $this->settings->get('style_col
             </div>
         </div>
     </div>
-</div>
-<div class="clearfix"></div>
+

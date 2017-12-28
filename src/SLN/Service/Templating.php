@@ -23,8 +23,9 @@ class SLN_Service_Templating
         ob_start();
         extract($data);
         $plugin = $this->plugin;
+        do_action( 'sln.view.'.$view.'.before_template', $data, $this );
         include $this->getViewFile($view);
-
+        do_action( 'sln.view.'.$view.'.after_template', $data, $this );
         return ob_get_clean();
     }
 

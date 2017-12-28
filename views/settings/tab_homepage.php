@@ -1,4 +1,4 @@
-<div class="sln-tab" id="sln-tab-general">
+
    <div class="sln-box sln-box--main">
     <h2 class="sln-box-title">Reset Settings</h2>
     <div class="row">
@@ -23,4 +23,4 @@
         <div class="sln-box-info-trigger"><button class="sln-btn sln-btn--main sln-btn--small sln-btn--icon sln-icon--close">info</button></div>
     </div>
 </div>
-</div>
+
