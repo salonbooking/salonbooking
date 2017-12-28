@@ -1353,6 +1353,9 @@ if(!String.prototype.formatNum) {
 
             var srcTemplate = (bookingId === undefined) ? 'src-template-new-booking' : 'src-template-edit-booking';
             var editorLink  = $editor.data(srcTemplate).replace('%id', bookingId).replace('%date', bookingDate).replace('%time', bookingTime);
+            $editor.ready(function(){            	
+            	$(document).trigger( "sln.iframeEditor.ready", [ bookingId,bookingDate,srcTemplate,editorLink ] );
+            })
             $editor.attr('src', editorLink);
 
             $('[data-action=save-edited-booking]').unbind('click').click(onClickSaveEditedBooking);
