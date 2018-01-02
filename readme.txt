@@ -285,7 +285,7 @@ http://salon.wordpresschef.it
 * Settings refactoring
 * Fixed booking editing modal window bug on tablet
 * Fixed bug on Revenue by service report
-* 
+* Fixed bug on https websites on PayPal
 
 
 11.12.2017
