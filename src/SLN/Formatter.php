@@ -55,10 +55,14 @@ class SLN_Formatter
 
         $f = $this->plugin->getSettings()->getDateFormat();
         $phpFormat = SLN_Enum_DateFormat::getIntlDatePhpFormat($f);        
-        $format = new IntlDateFormatter(substr(get_locale(), 0,2), IntlDateFormatter::NONE, 
-              IntlDateFormatter::NONE, NULL, NULL, $phpFormat);
-        
-        return ucwords(datefmt_format($format, strtotime($val)));
+        if(class_exists('IntlDateFormatter')){
+            $format = new IntlDateFormatter(substr(get_locale(), 0,2), IntlDateFormatter::NONE, 
+                  IntlDateFormatter::NONE, NULL, NULL, $phpFormat);
+            
+            return ucwords(datefmt_format($format, strtotime($val)));
+        }else{
+            return ucwords(date_i18n($phpFormat, strtotime($val)));    
+        }            
     }
 
     public function time($val)
