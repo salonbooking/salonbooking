@@ -25,7 +25,8 @@ class SLN_Admin_SettingTabs_BookingTab extends SLN_Admin_SettingTabs_AbstractTab
     );
 
 	protected function validate(){
-
+            if(!isset($this->submitted['disabled']))
+                $this->submitted['disabled'] = 0;
 		if (isset($this->submitted['availabilities'])) {
             $this->submitted['availabilities'] = SLN_Helper_AvailabilityItems::processSubmission(
                 $this->submitted['availabilities']

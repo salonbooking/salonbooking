@@ -251,7 +251,7 @@ class SLN_Helper_Availability
         $endAt->modify('+'.SLN_Func::getMinutesFromDuration($duration).'minutes');
 
         $times = SLN_Func::filterTimes($this->getMinutesIntervals(), $startAt, $endAt);
-        if($ret = $this->validateServiceOnTime($service, $times[0], true)){
+        if($times && $ret = $this->validateServiceOnTime($service, $times[0], true)){
             return $ret;
         }
         foreach ($times as $time) {
