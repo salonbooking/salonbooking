@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Salon Booking Wordpress Plugin - Free Version\n"
 "POT-Creation-Date: 2017-11-02 14:18+0100\n"
 "PO-Revision-Date: 2017-11-02 14:18+0100\n"
-"Last-Translator: Vito <info@webapp-solutions.co.uk>, 2017\n"
+"Last-Translator: Vitaliy <info@webapp-solutions.co.uk>, 2017\n"
 "Language-Team: Lithuanian (Lithuania) (https://www.transifex.com/wp-translations/teams/8416/lt_LT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,15 +40,15 @@ msgstr ""
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:23
 msgid "Customer"
-msgstr ""
+msgstr "Klientas"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:24
 msgid "Booking date"
-msgstr ""
+msgstr "Registracijos data"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:25
 msgid "Booking amount"
-msgstr ""
+msgstr "Registracijos suma"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:26
 msgid "Booking discount"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: src/SLB_Discount/Metabox/Discount.php:39
 msgid "&nbsp"
-msgstr ""
+msgstr "• "
 
 #: src/SLB_Discount/Metabox/Discount.php:50
 msgid "Discount usage history"
@@ -99,20 +99,20 @@ msgstr ""
 
 #: src/SLB_Discount/PostType/Discount.php:82
 msgid "Yes"
-msgstr ""
+msgstr "Taip"
 
 #: src/SLB_Discount/PostType/Discount.php:85
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: src/SLB_Discount/PostType/Discount.php:99
 msgid "Enter discount name"
-msgstr ""
+msgstr "Įveskite nuolaidos pavadinimą"
 
 #: src/SLB_Discount/PostType/Discount.php:110
 #: src/SLB_Discount/PostType/Discount.php:114
 msgid "Discount updated."
-msgstr ""
+msgstr "Nuolaida atnaujinta "
 
 #: src/SLB_Discount/PostType/Discount.php:116
 #, php-format
@@ -125,7 +125,7 @@ msgstr ""
 
 #: src/SLB_Discount/PostType/Discount.php:122
 msgid "Discount saved."
-msgstr ""
+msgstr "Nuolaida išsaugota "
 
 #: src/SLB_Discount/PostType/Discount.php:124
 msgid "Discount submitted."
@@ -149,7 +149,7 @@ msgstr ""
 #: src/SLN/Admin/Calendar.php:13 src/SLN/PostType/Attendant.php:233
 #: src/SLN/PostType/Booking.php:189 src/SLN/PostType/Service.php:238
 msgid "Salon"
-msgstr ""
+msgstr "Salonas"
 
 #: src/SLB_Discount/PostType/Discount.php:154
 msgid "Salon Discount"
@@ -334,7 +334,7 @@ msgstr ""
 #: src/SLN/Action/Ajax/ResendNotification.php:18
 #: src/SLN/Action/Ajax/ResendPaymentNotification.php:16
 msgid "E-mail sent"
-msgstr ""
+msgstr "el laiškas išsiųstas"
 
 #: src/SLN/Action/Ajax/ResendNotification.php:20
 #: src/SLN/Action/Ajax/ResendPaymentNotification.php:18
@@ -379,7 +379,7 @@ msgstr ""
 
 #: src/SLN/Action/InitScripts.php:52 views/admin/calendar.php:232
 msgid "Close"
-msgstr ""
+msgstr "Uždaryti"
 
 #: src/SLN/Action/Install.php:26
 #: src/SLN/Action/Updates/sln-update-for-3.0.php:92
@@ -472,7 +472,7 @@ msgstr "El. paštas"
 #: src/SLN/Admin/Customers/List.php:27 src/SLN/Enum/CheckoutFields.php:92
 #: src/SLN/PostType/Attendant.php:126
 msgid "Telephone"
-msgstr ""
+msgstr "Telefonas"
 
 #: src/SLN/Admin/Customers/List.php:28
 msgid "Total Reservations"
@@ -591,7 +591,7 @@ msgstr ""
 #: src/SLN/Admin/Reports/TopCustomersReport.php:34
 #: src/SLN/PostType/Booking.php:187 src/SLN/PostType/Booking.php:191
 msgid "Bookings"
-msgstr ""
+msgstr "Registracijos"
 
 #: src/SLN/Admin/Reports/RevenuesReport.php:19
 msgid "Earnings"
@@ -809,7 +809,7 @@ msgstr "Pavardė"
 
 #: src/SLN/Enum/CheckoutFields.php:83
 msgid "e-mail"
-msgstr ""
+msgstr "El. paštas"
 
 #: src/SLN/Enum/CheckoutFields.php:84
 msgid "Mobile phone"

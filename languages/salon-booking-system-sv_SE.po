@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Salon Booking Wordpress Plugin - Free Version\n"
 "POT-Creation-Date: 2017-11-02 14:18+0100\n"
 "PO-Revision-Date: 2017-11-02 14:18+0100\n"
-"Last-Translator: Jon Karlsson <jensandersson112@hotmail.com>, 2017\n"
+"Last-Translator: Peter Bohman <petboh@hotmail.com>, 2017\n"
 "Language-Team: Swedish (Sweden) (https://www.transifex.com/wp-translations/teams/8416/sv_SE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,56 +32,56 @@ msgstr "-"
 
 #: src/SLB_Discount/Action/Ajax/ApplyDiscountCode.php:46
 msgid "Coupon is not valid"
-msgstr ""
+msgstr "Kupongen är inte giltig"
 
 #: src/SLB_Discount/Action/Ajax/ApplyDiscountCode.php:57
 msgid "Coupon was applied"
-msgstr ""
+msgstr "Kupongen användes"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:23
 msgid "Customer"
-msgstr ""
+msgstr "Kund"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:24
 msgid "Booking date"
-msgstr ""
+msgstr "Bokningsdatum"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:25
 msgid "Booking amount"
-msgstr ""
+msgstr "Bokningsbelopp"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:26
 msgid "Booking discount"
-msgstr ""
+msgstr "Bokningsrabatt"
 
 #: src/SLB_Discount/Enum/DiscountType.php:27
 msgid "Coupon code"
-msgstr ""
+msgstr "Kupongskod"
 
 #: src/SLB_Discount/Enum/DiscountType.php:28
 msgid "Automatic discount"
-msgstr ""
+msgstr "Automatisk rabatt"
 
 #: src/SLB_Discount/Metabox/Discount.php:29
 msgid "Discount details"
-msgstr ""
+msgstr "Rabatt detaljer"
 
 #: src/SLB_Discount/Metabox/Discount.php:39
 msgid "&nbsp"
-msgstr ""
+msgstr "&nbsp"
 
 #: src/SLB_Discount/Metabox/Discount.php:50
 msgid "Discount usage history"
-msgstr ""
+msgstr "Rabatt användnings historik"
 
 #: src/SLB_Discount/Plugin.php:217
 msgid "Discounted price"
-msgstr ""
+msgstr "Rabatterat pris"
 
 #: src/SLB_Discount/PostType/Discount.php:58
 #: views/discount/metabox/_discount_details.php:20
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: src/SLB_Discount/PostType/Discount.php:59
 #: views/discount/metabox/_discount_details.php:16
@@ -91,59 +91,59 @@ msgstr "Summa"
 
 #: src/SLB_Discount/PostType/Discount.php:60
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: src/SLB_Discount/PostType/Discount.php:61
 msgid "Discount usages"
-msgstr ""
+msgstr "Rabatt användningar"
 
 #: src/SLB_Discount/PostType/Discount.php:82
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: src/SLB_Discount/PostType/Discount.php:85
 msgid "No"
-msgstr ""
+msgstr "Nej"
 
 #: src/SLB_Discount/PostType/Discount.php:99
 msgid "Enter discount name"
-msgstr ""
+msgstr "Ange rabattnamn"
 
 #: src/SLB_Discount/PostType/Discount.php:110
 #: src/SLB_Discount/PostType/Discount.php:114
 msgid "Discount updated."
-msgstr ""
+msgstr "Rabatt uppdaterad"
 
 #: src/SLB_Discount/PostType/Discount.php:116
 #, php-format
 msgid "Discount restored to revision from %s"
-msgstr ""
+msgstr "Rabatt återställd till revision från %s"
 
 #: src/SLB_Discount/PostType/Discount.php:120
 msgid "Discount published."
-msgstr ""
+msgstr "Rabatt publicerad"
 
 #: src/SLB_Discount/PostType/Discount.php:122
 msgid "Discount saved."
-msgstr ""
+msgstr "Rabatt sparad"
 
 #: src/SLB_Discount/PostType/Discount.php:124
 msgid "Discount submitted."
-msgstr ""
+msgstr "Rabatt inlagd"
 
 #: src/SLB_Discount/PostType/Discount.php:128
 msgid "Discount draft updated."
-msgstr ""
+msgstr "Rabattutkast uppdaterat"
 
 #: src/SLB_Discount/PostType/Discount.php:151
 #: src/SLB_Discount/PostType/Discount.php:155
 msgid "Discounts"
-msgstr ""
+msgstr "Rabatter"
 
 #: src/SLB_Discount/PostType/Discount.php:152
 #: views/discount/shortcode/_salon_summary_before_total_amount.php:12
 msgid "Discount"
-msgstr ""
+msgstr "Rabatt"
 
 #: src/SLB_Discount/PostType/Discount.php:153 src/SLN/Admin/Calendar.php:12
 #: src/SLN/Admin/Calendar.php:13 src/SLN/PostType/Attendant.php:233
@@ -153,70 +153,70 @@ msgstr "Salong"
 
 #: src/SLB_Discount/PostType/Discount.php:154
 msgid "Salon Discount"
-msgstr ""
+msgstr "Salongrabatt"
 
 #: src/SLB_Discount/PostType/Discount.php:156
 msgid "Add Discount"
-msgstr ""
+msgstr "Lägg till rabatt"
 
 #: src/SLB_Discount/PostType/Discount.php:157
 msgid "Add New Discount"
-msgstr ""
+msgstr "Lägg till ny rabatt"
 
 #: src/SLB_Discount/PostType/Discount.php:158
 msgid "Edit Discount"
-msgstr ""
+msgstr "Redigera rabatt"
 
 #: src/SLB_Discount/PostType/Discount.php:159
 msgid "New Discount"
-msgstr ""
+msgstr "Ny rabatt"
 
 #: src/SLB_Discount/PostType/Discount.php:160
 msgid "View Discount"
-msgstr ""
+msgstr "Visa rabatt"
 
 #: src/SLB_Discount/PostType/Discount.php:161
 msgid "Search Discounts"
-msgstr ""
+msgstr "Sök rabatter"
 
 #: src/SLB_Discount/PostType/Discount.php:162
 msgid "No discounts found"
-msgstr ""
+msgstr "Inga rabatter hittades"
 
 #: src/SLB_Discount/PostType/Discount.php:163
 msgid "No discounts found in trash"
-msgstr ""
+msgstr "Inga rabatter hittades i papperskorgen"
 
 #: src/SLB_Discount/PostType/Discount.php:164
 msgid "Discounts Archive"
-msgstr ""
+msgstr "Rabatter Arkiv"
 
 #: src/SLB_Discount/Wrapper/Discount.php:415
 #: src/SLB_Discount/Wrapper/Discount.php:481
 msgid "Coupon expired"
-msgstr ""
+msgstr "Kupong utgått"
 
 #: src/SLB_Discount/Wrapper/Discount.php:418
 msgid "This coupon was applied maximum number of times"
-msgstr ""
+msgstr "Denna kupong har används maximalt antal gånger"
 
 #: src/SLB_Discount/Wrapper/Discount.php:432
 msgid "You applied this coupon maximum number of times"
-msgstr ""
+msgstr "Du har användt denna kupong maximalt antal gånger"
 
 #: src/SLB_Discount/Wrapper/Discount.php:457
 msgid "This coupon is not valid for selected services"
-msgstr ""
+msgstr "Denna kupong är inte giltig för valda tjänster"
 
 #: src/SLB_Discount/Wrapper/Discount.php:487
 #, php-format
 msgid "This coupon is not valid on %s"
-msgstr ""
+msgstr "Denna kupong är inte giltig på %s"
 
 #: src/SLB_Discount/Wrapper/Discount.php:501
 #: src/SLB_Discount/Wrapper/Discount.php:513
 msgid "Make more bookings to be able to use this coupon"
-msgstr ""
+msgstr "Gör fler bokningar för att kunna använda denna kupong"
 
 #: src/SLN/Action/Ajax/AbstractImport.php:21
 msgid "Method not found"
@@ -330,7 +330,7 @@ msgstr "Du kan välja upp till %d objekt"
 
 #: src/SLN/Action/Ajax/CheckServices.php:193
 msgid "This service is exclusive. Please remove other services."
-msgstr ""
+msgstr "Denna tjänst är exklusiv. Ta bort andra tjänster."
 
 #: src/SLN/Action/Ajax/ResendNotification.php:18
 #: src/SLN/Action/Ajax/ResendPaymentNotification.php:16
@@ -380,7 +380,7 @@ msgstr "Fyll i det här fältet"
 
 #: src/SLN/Action/InitScripts.php:52 views/admin/calendar.php:232
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: src/SLN/Action/Install.php:26
 #: src/SLN/Action/Updates/sln-update-for-3.0.php:92
@@ -416,6 +416,8 @@ msgid ""
 "<strong>ERROR</strong>: This email is already registered, please choose "
 "another one."
 msgstr ""
+"<strong>ERROR</strong>: Den här e-postadressen är redan registrerat, välj en"
+" annat."
 
 #: src/SLN/Admin/Customers/BookingsList.php:27 src/SLN/PostType/Booking.php:46
 #: views/mail/_header.php:28
@@ -628,7 +630,7 @@ msgstr "Lyckad återställning genomförd"
 
 #: src/SLN/Admin/Settings.php:287
 msgid "Invalid Email in Salon contact e-mail field"
-msgstr ""
+msgstr "Ogiltig e-postadress i Salon-kontakt e-postfältet"
 
 #: src/SLN/Admin/Settings.php:367
 msgid "general settings are updated"
@@ -666,7 +668,7 @@ msgstr "Verifiering av sidan misslyckades"
 
 #: src/SLN/Admin/Settings.php:517
 msgid "Update Settings"
-msgstr ""
+msgstr "Uppdatera inställningarna"
 
 #: src/SLN/Admin/Settings.php:561
 msgid "style settings are updated"
@@ -859,11 +861,11 @@ msgstr "lördag"
 
 #: src/SLN/Enum/PaymentDepositType.php:22
 msgid "entire amount (disabled)"
-msgstr ""
+msgstr "hela beloppet (inaktiverat)"
 
 #: src/SLN/Enum/PaymentDepositType.php:23
 msgid "fixed"
-msgstr ""
+msgstr "fast"
 
 #: src/SLN/Enum/ShortcodeStyle.php:65
 msgid "Use this if your column is at least 400px width"
@@ -954,7 +956,7 @@ msgstr "Medarbetaren för vald tjänster kan inte utföra just denna tjänst"
 
 #: src/SLN/Helper/Availability.php:501
 msgid "This service is not available with exclusive service."
-msgstr ""
+msgstr "Denna tjänst är inte tillgänglig med exklusiv tjänst."
 
 #: src/SLN/Helper/Availability.php:521
 msgid "You already selected service at"
@@ -1736,11 +1738,11 @@ msgstr "Nästa"
 
 #: views/admin/calendar.php:230
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
 #: views/admin/calendar.php:231
 msgid "Delete"
-msgstr ""
+msgstr "Radera"
 
 #: views/admin/calendar.php:252
 msgid "Export reservations into a CSV file"
@@ -1902,7 +1904,7 @@ msgstr ""
 
 #: views/discount/metabox/_discount_advanced.php:14
 msgid "This is a"
-msgstr ""
+msgstr "Detta är en"
 
 #: views/discount/metabox/_discount_advanced.php:43
 msgid "Code to be used"
@@ -1958,7 +1960,7 @@ msgstr ""
 
 #: views/discount/metabox/_discount_details.php:25
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: views/discount/metabox/_discount_details.php:31
 msgid "Type the amount of this discount"

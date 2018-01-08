@@ -72,7 +72,7 @@ msgstr "&nbsp"
 
 #: src/SLB_Discount/Metabox/Discount.php:50
 msgid "Discount usage history"
-msgstr "Historique d'utilisation des remises"
+msgstr "Historique d’utilisation des remises"
 
 #: src/SLB_Discount/Plugin.php:217
 msgid "Discounted price"
@@ -165,7 +165,7 @@ msgstr "Ajouter une nouvelle remise"
 
 #: src/SLB_Discount/PostType/Discount.php:158
 msgid "Edit Discount"
-msgstr "Editer une remise"
+msgstr "Modifier la remise"
 
 #: src/SLB_Discount/PostType/Discount.php:159
 msgid "New Discount"
@@ -189,7 +189,7 @@ msgstr "Aucune remise trouvée dans la corbeille"
 
 #: src/SLB_Discount/PostType/Discount.php:164
 msgid "Discounts Archive"
-msgstr "Historique des remises"
+msgstr "Archive des remises"
 
 #: src/SLB_Discount/Wrapper/Discount.php:415
 #: src/SLB_Discount/Wrapper/Discount.php:481
@@ -1313,8 +1313,8 @@ msgstr "Archive de réservation"
 #, php-format
 msgid " <span class=\"count\">(%s)</span>"
 msgid_plural " <span class=\"count\">(%s)</span>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " <span class=\"count\">(%s)</span>"
+msgstr[1] " <span class=\"count\">(%s)</span>"
 
 #: src/SLN/PostType/Booking.php:260
 msgid "Add booking"

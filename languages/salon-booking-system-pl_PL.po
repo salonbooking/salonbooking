@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Salon Booking Wordpress Plugin - Free Version\n"
 "POT-Creation-Date: 2017-11-02 14:18+0100\n"
 "PO-Revision-Date: 2017-11-02 14:18+0100\n"
-"Last-Translator: Dimitri Grassi <contact@wordpresschef.it>, 2016\n"
+"Last-Translator: Piotr Olejarczyk <stlickin@gmail.com>, 2017\n"
 "Language-Team: Polish (Poland) (https://www.transifex.com/wp-translations/teams/8416/pl_PL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +40,7 @@ msgstr ""
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:23
 msgid "Customer"
-msgstr ""
+msgstr "Klient"
 
 #: src/SLB_Discount/Admin/DiscountsHistoryList.php:24
 msgid "Booking date"
@@ -81,7 +81,7 @@ msgstr ""
 #: src/SLB_Discount/PostType/Discount.php:58
 #: views/discount/metabox/_discount_details.php:20
 msgid "Type"
-msgstr ""
+msgstr "Rodzaj"
 
 #: src/SLB_Discount/PostType/Discount.php:59
 #: views/discount/metabox/_discount_details.php:16
@@ -91,7 +91,7 @@ msgstr "Ilość"
 
 #: src/SLB_Discount/PostType/Discount.php:60
 msgid "Active"
-msgstr ""
+msgstr "Aktywna"
 
 #: src/SLB_Discount/PostType/Discount.php:61
 msgid "Discount usages"
@@ -138,12 +138,12 @@ msgstr ""
 #: src/SLB_Discount/PostType/Discount.php:151
 #: src/SLB_Discount/PostType/Discount.php:155
 msgid "Discounts"
-msgstr ""
+msgstr "Zniżki"
 
 #: src/SLB_Discount/PostType/Discount.php:152
 #: views/discount/shortcode/_salon_summary_before_total_amount.php:12
 msgid "Discount"
-msgstr ""
+msgstr "Upust"
 
 #: src/SLB_Discount/PostType/Discount.php:153 src/SLN/Admin/Calendar.php:12
 #: src/SLN/Admin/Calendar.php:13 src/SLN/PostType/Attendant.php:233
@@ -165,11 +165,11 @@ msgstr ""
 
 #: src/SLB_Discount/PostType/Discount.php:158
 msgid "Edit Discount"
-msgstr ""
+msgstr "Edytuj kupon"
 
 #: src/SLB_Discount/PostType/Discount.php:159
 msgid "New Discount"
-msgstr ""
+msgstr "Nowa zniżka"
 
 #: src/SLB_Discount/PostType/Discount.php:160
 msgid "View Discount"
@@ -177,15 +177,15 @@ msgstr ""
 
 #: src/SLB_Discount/PostType/Discount.php:161
 msgid "Search Discounts"
-msgstr ""
+msgstr "Szukaj zniżek"
 
 #: src/SLB_Discount/PostType/Discount.php:162
 msgid "No discounts found"
-msgstr ""
+msgstr "Nie znaleziono zniżek"
 
 #: src/SLB_Discount/PostType/Discount.php:163
 msgid "No discounts found in trash"
-msgstr ""
+msgstr "Nie znaleziono zniżek w koszu"
 
 #: src/SLB_Discount/PostType/Discount.php:164
 msgid "Discounts Archive"
@@ -2006,7 +2006,7 @@ msgstr ""
 
 #: views/discount/shortcode/_salon_summary_after_total_amount.php:31
 msgid "Apply"
-msgstr ""
+msgstr "Zastosuj"
 
 #: views/mail/_footer.php:13
 msgid "Manage your reservations accessing your personal page"

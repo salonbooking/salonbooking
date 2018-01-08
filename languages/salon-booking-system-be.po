@@ -615,7 +615,7 @@ msgstr ""
 
 #: src/SLN/Admin/Settings.php:141
 msgid "Settings"
-msgstr ""
+msgstr "Налады"
 
 #: src/SLN/Admin/Settings.php:271
 msgid "remember to customize your settings"

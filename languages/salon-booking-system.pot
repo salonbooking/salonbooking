@@ -1,4 +1,4 @@
-# Copyright (C) 2017 salon-booking-system
+# Copyright (C) 2018 salon-booking-system
 # This file is distributed under the same license as the salon-booking-system package.
 msgid ""
 msgstr ""
@@ -15,46 +15,6 @@ msgstr ""
 
 #: salon.php:51, views/settings/tab_checkout.php:28, views/settings/tab_checkout.php:33, views/settings/tab_gcalendar.php:37, views/settings/tab_general.php:85, views/settings/tab_general.php:114, views/settings/tab_general.php:167, views/settings/tab_general.php:221, views/settings/tab_general.php:317, views/settings/_tab_general_sms.php:174
 msgid "-"
-msgstr ""
-
-#: js/Func.php:142, js/Func.php:157, src/SLN/Func.php:142, src/SLN/Func.php:157
-msgid "hour"
-msgstr ""
-
-#: js/Func.php:143, js/Func.php:144, js/Func.php:145, js/Func.php:146, js/Func.php:147, js/Func.php:148, js/Func.php:149, js/Func.php:158, js/Func.php:159, js/Func.php:160, js/Func.php:161, js/Func.php:162, src/SLN/Func.php:143, src/SLN/Func.php:144, src/SLN/Func.php:145, src/SLN/Func.php:146, src/SLN/Func.php:147, src/SLN/Func.php:148, src/SLN/Func.php:149, src/SLN/Func.php:158, src/SLN/Func.php:159, src/SLN/Func.php:160, src/SLN/Func.php:161, src/SLN/Func.php:162
-msgid "hours"
-msgstr ""
-
-#: js/Func.php:156, src/SLN/Func.php:156
-msgid "half hour"
-msgstr ""
-
-#: js/Func.php:163, src/SLN/Func.php:163, views/settings/tab_general.php:263
-msgid "day"
-msgstr ""
-
-#: js/Func.php:164, js/Func.php:165, js/Func.php:166, src/SLN/Func.php:164, src/SLN/Func.php:165, src/SLN/Func.php:166, views/settings/tab_general.php:264, views/settings/tab_general.php:265, views/settings/tab_general.php:266, views/settings/tab_general.php:267, src/SLN/Wrapper/Booking.php:462
-msgid "days"
-msgstr ""
-
-#: js/Func.php:167, src/SLN/Func.php:167, views/settings/tab_general.php:268
-msgid "week"
-msgstr ""
-
-#: js/Func.php:168, js/Func.php:169, src/SLN/Func.php:168, src/SLN/Func.php:169, views/settings/tab_general.php:269, views/settings/tab_general.php:270
-msgid "weeks"
-msgstr ""
-
-#: js/Func.php:170, src/SLN/Func.php:170, views/settings/tab_general.php:271
-msgid "month"
-msgstr ""
-
-#: js/Func.php:171, js/Func.php:172, js/Func.php:173, src/SLN/Func.php:171, src/SLN/Func.php:172, src/SLN/Func.php:173
-msgid "months"
-msgstr ""
-
-#: js/Func.php:174, js/Func.php:175, src/SLN/Func.php:174, src/SLN/Func.php:175
-msgid "years"
 msgstr ""
 
 #: views/admin_notices.php:2
@@ -75,6 +35,46 @@ msgstr ""
 
 #: src/SLN/Formatter.php:22
 msgid "free"
+msgstr ""
+
+#: src/SLN/Func.php:151, src/SLN/Func.php:166
+msgid "hour"
+msgstr ""
+
+#: src/SLN/Func.php:152, src/SLN/Func.php:153, src/SLN/Func.php:154, src/SLN/Func.php:155, src/SLN/Func.php:156, src/SLN/Func.php:157, src/SLN/Func.php:158, src/SLN/Func.php:167, src/SLN/Func.php:168, src/SLN/Func.php:169, src/SLN/Func.php:170, src/SLN/Func.php:171
+msgid "hours"
+msgstr ""
+
+#: src/SLN/Func.php:165
+msgid "half hour"
+msgstr ""
+
+#: src/SLN/Func.php:172, views/settings/tab_general.php:263
+msgid "day"
+msgstr ""
+
+#: src/SLN/Func.php:173, src/SLN/Func.php:174, src/SLN/Func.php:175, views/settings/tab_general.php:264, views/settings/tab_general.php:265, views/settings/tab_general.php:266, views/settings/tab_general.php:267, src/SLN/Wrapper/Booking.php:462
+msgid "days"
+msgstr ""
+
+#: src/SLN/Func.php:176, views/settings/tab_general.php:268
+msgid "week"
+msgstr ""
+
+#: src/SLN/Func.php:177, src/SLN/Func.php:178, views/settings/tab_general.php:269, views/settings/tab_general.php:270
+msgid "weeks"
+msgstr ""
+
+#: src/SLN/Func.php:179, views/settings/tab_general.php:271
+msgid "month"
+msgstr ""
+
+#: src/SLN/Func.php:180, src/SLN/Func.php:181, src/SLN/Func.php:182
+msgid "months"
+msgstr ""
+
+#: src/SLN/Func.php:183, src/SLN/Func.php:184
+msgid "years"
 msgstr ""
 
 #: views/admin/calendar.php:10
@@ -265,7 +265,7 @@ msgstr ""
 msgid "Please provide all requested columns"
 msgstr ""
 
-#: views/admin/_customer.php:9, views/admin/_customer.php:26, src/SLN/PostType/Booking.php:259
+#: views/admin/_customer.php:9, views/admin/_customer.php:26, src/SLN/PostType/Booking.php:259, src/SLN/Admin/SettingTabs/AbstractTab.php:65
 msgstr ""
 
 #: views/admin/_customer.php:32
@@ -1242,7 +1242,7 @@ msgstr ""
 msgid "Pay later"
 msgstr ""
 
-#: views/settings/tab_payments.php:40, views/settings/tab_payments.php:211
+#: views/settings/tab_payments.php:40, views/settings/tab_payments.php:212
 msgid "Give users the option to pay once they are at your salon."
 msgstr ""
 
@@ -1298,11 +1298,11 @@ msgstr ""
 msgid "Currency"
 msgstr ""
 
-#: views/settings/tab_payments.php:137, views/settings/tab_payments.php:218
+#: views/settings/tab_payments.php:137, views/settings/tab_payments.php:219
 msgid "Set your currency"
 msgstr ""
 
-#: views/settings/tab_payments.php:144, views/settings/tab_payments.php:225
+#: views/settings/tab_payments.php:144, views/settings/tab_payments.php:226
 msgid "Set your currency position"
 msgstr ""
 
@@ -1326,51 +1326,51 @@ msgstr ""
 msgid "If you want to integrate a new custom payment gateway please refere to <strong>custom_payment_gateway.txt</strong> file inside our plugin folder."
 msgstr ""
 
-#: views/settings/tab_payments.php:206
+#: views/settings/tab_payments.php:207
 msgid "Enable online payments"
 msgstr ""
 
-#: views/settings/tab_payments.php:207
+#: views/settings/tab_payments.php:208
 msgid "Allow users to pay in advance."
 msgstr ""
 
-#: views/settings/tab_payments.php:210
+#: views/settings/tab_payments.php:211
 msgid "Enable \"Pay later\" option"
 msgstr ""
 
-#: views/settings/tab_payments.php:238
+#: views/settings/tab_payments.php:239
 msgid "Payment method"
 msgstr ""
 
-#: views/settings/tab_payments.php:257
+#: views/settings/tab_payments.php:258
 msgid "Pay a deposit of "
 msgstr ""
 
-#: views/settings/tab_style.php:12
+#: views/settings/tab_style.php:11
 msgid "Select your favorite booking form layout"
 msgstr ""
 
-#: views/settings/tab_style.php:13, views/settings/tab_style.php:37
+#: views/settings/tab_style.php:12, views/settings/tab_style.php:36
 msgid "Choose the one that best fits your page"
 msgstr ""
 
-#: views/settings/tab_style.php:36
+#: views/settings/tab_style.php:35
 msgid "Custom colors"
 msgstr ""
 
-#: views/settings/tab_style.php:44
+#: views/settings/tab_style.php:43
 msgid "customize colors of the salon shortcode."
 msgstr ""
 
-#: views/settings/tab_style.php:69
+#: views/settings/tab_style.php:68
 msgid "Background color"
 msgstr ""
 
-#: views/settings/tab_style.php:76
+#: views/settings/tab_style.php:75
 msgid "Main color"
 msgstr ""
 
-#: views/settings/tab_style.php:83
+#: views/settings/tab_style.php:82
 msgid "Text color"
 msgstr ""
 
@@ -2166,68 +2166,16 @@ msgstr ""
 msgid "Salon Reports"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:140, src/SLN/Admin/Settings.php:493
+#: src/SLN/Admin/Settings.php:32, src/SLN/Admin/Settings.php:60
 msgid "Salon Settings"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:141
+#: src/SLN/Admin/Settings.php:33
 msgid "Settings"
 msgstr ""
 
-#: src/SLN/Admin/Settings.php:271
-msgid "remember to customize your settings"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:272
-msgid "Reset completed with success"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:287
-msgid "Invalid Email in Salon contact e-mail field"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:367
-msgid "general settings are updated"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:368, src/SLN/Admin/Settings.php:426, src/SLN/Admin/Settings.php:438, src/SLN/Admin/Settings.php:467, src/SLN/Admin/Settings.php:562, src/SLN/Admin/Settings.php:606
-msgid "Update completed with success"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:387
-msgid "Test sms sent with success"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:425
-msgid "booking settings are updated"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:437
-msgid "checkout settings are updated"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:466
-msgid "payments settings are updated"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:484
-msgid "try again"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:485
-msgid "Page verification failed"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:517
+#: src/SLN/Admin/Settings.php:84
 msgid "Update Settings"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:561
-msgid "style settings are updated"
-msgstr ""
-
-#: src/SLN/Admin/Settings.php:605
-msgid "Google Calendar settings are updated"
 msgstr ""
 
 #: src/SLN/Admin/Tools.php:29
@@ -3032,7 +2980,7 @@ msgstr ""
 
 #: views/payment_method/paypal/settings.php:12
 msgid ""
-"Check this option to test PayPal payments\n"
+"Check this option to test PayPal payments\n"
 "using your PayPal Sandbox account."
 msgstr ""
 
@@ -3374,6 +3322,34 @@ msgstr ""
 
 #: src/SLN/Admin/Reports/TopCustomersReport.php:70
 msgid "No customers bookings"
+msgstr ""
+
+#: src/SLN/Admin/SettingTabs/AbstractTab.php:27
+msgid "try again"
+msgstr ""
+
+#: src/SLN/Admin/SettingTabs/AbstractTab.php:28
+msgid "Page verification failed"
+msgstr ""
+
+#: src/SLN/Admin/SettingTabs/AbstractTab.php:66
+msgid "Update completed with success"
+msgstr ""
+
+#: src/SLN/Admin/SettingTabs/GeneralTab.php:50
+msgid "Invalid Email in Salon contact e-mail field"
+msgstr ""
+
+#: src/SLN/Admin/SettingTabs/GeneralTab.php:143
+msgid "Test sms sent with success"
+msgstr ""
+
+#: src/SLN/Admin/SettingTabs/HomepageTab.php:8
+msgid "remember to customize your settings"
+msgstr ""
+
+#: src/SLN/Admin/SettingTabs/HomepageTab.php:9
+msgid "Reset completed with success"
 msgstr ""
 
 #: src/SLN/Helper/Availability/ErrorHelper.php:23
