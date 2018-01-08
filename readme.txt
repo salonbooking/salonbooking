@@ -285,6 +285,7 @@ http://salon.wordpresschef.it
 * Fixed bug on datepicker - weird date
 * Fixed bug on "Pause online booking form" switch option
 * Fixed php error
+* Fixed booking modal window from back-end calendar on tablet
 
 02.01.2018
 
