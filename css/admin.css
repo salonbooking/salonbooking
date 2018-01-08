@@ -6550,3 +6550,19 @@ body.salone_page_salon-tools #wpwrap {
   .vertical-tabs li {
     display: block;
     width: 100%; } }
+
+#sln-booking-editor-modal {
+  margin-top: 60px; }
+
+.sln-booking-editor--wrapper--sub {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+  height: 400px; }
+
+@media only screen and (min-width: 768px) {
+  .sln-booking-editor--wrapper--sub {
+    height: 600px; } }
+
+@media only screen and (min-width: 992px) {
+  #sln-booking-editor-modal {
+    margin-top: 15px; } }
