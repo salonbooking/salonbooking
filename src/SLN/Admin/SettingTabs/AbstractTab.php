@@ -78,7 +78,7 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
 		foreach ($this->fields as $k) {
 			if(isset($posted[$k]) || array_key_exists($k,$posted)) $submitted[$k] = $posted[$k];
         }
-        $this->submitted = $posted;
+        $this->submitted = $submitted;
 	}
 
 	private function saveSettings()
