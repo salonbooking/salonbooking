@@ -42,6 +42,8 @@ class SLN_Admin_SettingTabs_GeneralTab extends SLN_Admin_SettingTabs_AbstractTab
         'week_start',
         'no_bootstrap',
         'no_bootstrap_js',
+        'sms_test_number',
+        'sms_test_message',
     );
 
 	protected function validate(){
@@ -80,6 +82,14 @@ class SLN_Admin_SettingTabs_GeneralTab extends SLN_Admin_SettingTabs_AbstractTab
             $this->submitted['follow_up_message'] :
             'Hi [NAME],\r\nIt\'s been a while since your last visit, would you like to book a new appointment with us?\r\n\r\nWe look forward to seeing you again.';
         $this->submitted['follow_up_message'] = substr($this->submitted['follow_up_message'], 0, 150);
+        if ($this->submitted['sms_test_number'] && $this->submitted['sms_test_message']) {
+            $this->sendTestSms(
+                $this->submitted['sms_test_number'],
+                $this->submitted['sms_test_message']
+            );
+        }
+        $this->submitted['sms_test_number'] = '';
+        $this->submitted['sms_test_message'] = '';
 	}
 
 	protected function postProcess(){
@@ -123,12 +133,7 @@ class SLN_Admin_SettingTabs_GeneralTab extends SLN_Admin_SettingTabs_AbstractTab
         else {
             SLN_UserRole_SalonStaff::removeCapabilitiesFoRole('editor');
         }
-        if ($this->submitted['sms_test_number'] && $this->submitted['sms_test_message']) {
-            $this->sendTestSms(
-                $this->submitted['sms_test_number'],
-                $this->submitted['sms_test_message']
-            );
-        }
+        
 	}
 
     protected function sendTestSms($number, $message)
