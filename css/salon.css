@@ -690,6 +690,20 @@ ul.sln-list--dashed li,
 #sln-salon .sln-input .sln-invalid:-ms-input-placeholder {
   color: #D22221; }
 
+#sln-salon .sln-invalid[type="checkbox"] {
+  width: auto;
+  vertical-align: middle; }
+  #sln-salon .sln-invalid[type="checkbox"]:after {
+    content: attr(placeholder);
+    font-size: 1rem;
+    display: inline-block;
+    margin-left: 21px;
+    color: red;
+    line-height: 1;
+    vertical-align: top;
+    margin-top: -2px;
+    min-width: 95px; }
+
 /*!
  * Datetimepicker for Bootstrap
  *

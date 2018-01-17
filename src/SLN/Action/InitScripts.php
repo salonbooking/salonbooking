@@ -2,7 +2,7 @@
 
 class SLN_Action_InitScripts
 {
-    const ASSETS_VERSION = '20161116';
+    const ASSETS_VERSION = '20180117';
     private $isAdmin;
     private $plugin;
 
