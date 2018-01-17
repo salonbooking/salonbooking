@@ -9,6 +9,12 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
         );
         add_user_meta($errors, '_sln_phone', $values['phone']);
         add_user_meta($errors, '_sln_address', $values['address']);
+        $additional_fields = array_keys( SLN_Enum_CheckoutFields::toArray('additional'));
+        foreach($additional_fields as $k){
+            if(isset($values[$k])){
+               update_user_meta($errors, '_sln_'.$k, $values[$k]);
+            }
+        }
         if (is_wp_error($errors)) {
             $this->addError($errors->get_error_message());
         }
@@ -63,6 +69,12 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
                 'phone'     => get_user_meta($current_user->ID, '_sln_phone', true),
                 'address'     => get_user_meta($current_user->ID, '_sln_address', true)
             );
+            $additional_fields = array_keys( SLN_Enum_CheckoutFields::toArray('additional'));
+            if($additional_fields){
+                foreach ($additional_fields as $field ) {
+                    $values[$field] = get_user_meta($current_user->ID, '_sln_'.$field, true);
+                }
+            }
             $this->bindValues($values);
         }
 
@@ -72,16 +84,11 @@ abstract class SLN_Shortcode_Salon_AbstractUserStep extends SLN_Shortcode_Salon_
     protected function bindValues($values)
     {
         $bb     = $this->getPlugin()->getBookingBuilder();
-        $fields = array(
-            'firstname'       => '',
-            'lastname'        => '',
-            'email'           => '',
-            'phone'           => '',
-            'address'         => '',
-            'no_user_account' => '',
-        );
-        foreach ($fields as $field => $filter) {
+        $fields = array_keys(SLN_Enum_CheckoutFields::toArray());
+        $fields['no_user_account'] = '';
+        foreach ($fields as $field ) {
             $data = isset($values[$field]) ? $values[$field] : '';
+            $filter = '';
             $bb->set($field, SLN_Func::filter($data, $filter));
         }
 

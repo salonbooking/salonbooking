@@ -79,7 +79,7 @@ $fieldPassword = ob_get_clean();
         </div>
         </form>
     <?php endif; ?>
-        <?php endif; ?>
+<?php endif; ?>
 
     <form method="post" action="<?php echo $formAction ?>" role="form">
         <?php
@@ -118,7 +118,25 @@ $fieldPassword = ob_get_clean();
                             }else if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else{
-                               SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
+                               if(isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field])){
+                                $additional_opts = array( 
+                                    'sln[' . $field . ']', $bb->get($field), 
+                                    array('required' => SLN_Enum_CheckoutFields::isRequired($field)) 
+                                );
+                                $method_name = 'field'.ucfirst(SLN_Enum_CheckoutFields::$additional_fields_types[$field]);
+                                if(SLN_Enum_CheckoutFields::$additional_fields_types[$field] === 'checkbox') $additional_opts[count($additional_opts)-1]['attrs'] = array("style"=>"width:auto;");
+                                
+                                if(SLN_Enum_CheckoutFields::$additional_fields_types[$field] === 'select') $additional_opts = array_merge(array_slice($additional_opts, 0, 1), array(SLN_Enum_CheckoutFields::$fields_select_options[$field]), array_slice($additional_opts, 1));
+                                    /*if(SLN_Enum_CheckoutFields::$additional_fields_types[$field] === 'hidden') { $callback = apply_filters('sln.checkout.additional_fields.hidden.'.$field.'.callback',$bb->get($field));
+                                        if($callback) $additional_opts[1] = call_user_func($callback);
+                                    }*/
+                                
+                                call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
+                                
+                               }else{
+                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field))); 
+                               }
+                               
                            }
                         ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>

@@ -37,7 +37,7 @@ if(!isset($forAdmin)) {
                 
 <?php if ($plugin->getSettings()->get('confirmation') && $booking->hasStatus(SLN_Enum_BookingStatus::PENDING) ) : ?>
 
-	<?php if($forAdmin): ?>
+  <?php if($forAdmin): ?>
 
          <a  style="text-decoration:none;" href="<?php echo admin_url() ?>/post.php?post=<?php echo $booking->getId() ?>&action=edit">
              <?php echo __('Click here to approve ', 'salon-booking-system') ?>
@@ -45,11 +45,11 @@ if(!isset($forAdmin)) {
              <?php echo __('booking request.', 'salon-booking-system') ?>
          </a>
 
-	<?php else: ?>
+  <?php else: ?>
 
         <p><?php echo __('Your booking is pending, please await our confirmation.','salon-booking-system') ?></p>
 
-	<?php endif ?>
+  <?php endif ?>
 
 <?php elseif(isset($updated) && $updated): ?>
 
@@ -80,14 +80,14 @@ if(!isset($forAdmin)) {
 
 <?php else: ?>
 
-	<?php if($forAdmin): ?>
+  <?php if($forAdmin): ?>
 
-	    <?php echo __('This is an e-mail notification of a new booking', 'salon-booking-system') ?>
-	    <p><?php _e('Please take note of the following booking details.', 'salon-booking-system') ?></p>
+      <?php echo __('This is an e-mail notification of a new booking', 'salon-booking-system') ?>
+      <p><?php _e('Please take note of the following booking details.', 'salon-booking-system') ?></p>
 
-	<?php else: ?>
+  <?php else: ?>
 
-	    <?php if(isset($remind) && $remind): ?>
+      <?php if(isset($remind) && $remind): ?>
 
             <?php echo __('Remind your booking at', 'salon-booking-system') ?>
 
@@ -202,6 +202,39 @@ if(!isset($forAdmin)) {
         </tbody></table>
     </td>
 </tr>
+
+              <?php 
+                $additional_fields = SLN_Enum_CheckoutFields::toArray('additional');
+                if($additional_fields){
+                 ?>
+                  <tr>
+                    <td height="22">&nbsp;</td>
+                  </tr>
+                  <tr>
+        <td align="center" valign="top" bgcolor="#ffffff"><table width="460" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+                <td height="27">&nbsp;</td>
+              </tr>
+                 <?php 
+                 foreach ($additional_fields as $field => $label) {
+                  $value = $booking->getMeta($field);
+                  if(!$forAdmin && (SLN_Enum_CheckoutFields::isHidden($field) || empty($value) )) continue;
+                  ?>
+                  <tr>
+                    <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#cc3333; font-weight:normal;"><?php echo $label ?></td>
+                    <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; font-weight:normal;"><?php echo $value ?></td>
+                  </tr>
+                  <tr>
+                    <td height="22">&nbsp;</td>
+                  </tr>
+                  <?php
+
+                 }
+                 ?>
+                 </tbody></table></td></tr>
+              <?php } ?> 
+            
 <tr>
     <td height="40" align="left" valign="top">&nbsp;</td>
 </tr>

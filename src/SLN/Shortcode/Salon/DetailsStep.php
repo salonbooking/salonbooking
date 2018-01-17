@@ -39,6 +39,13 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
             if (!SLN_Enum_CheckoutFields::isHidden('address')) {
                 $values['address'] = get_user_meta($current_user->ID, '_sln_address', true);
             }
+            $additional_fields = array_keys( SLN_Enum_CheckoutFields::toArray('additional'));
+            if($additional_fields){
+                foreach ($additional_fields as $field ) {
+                    if (!SLN_Enum_CheckoutFields::isHidden($field))
+                    $values[$field] = get_user_meta($current_user->ID, '_sln_'.$field, true);
+                }
+            }
             $this->bindValues($values);
             $this->validate($values);
             if ($this->getErrors()) {
@@ -83,7 +90,8 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
                 wp_update_user(
                     array('ID' => $current_user->ID, 'first_name' => $values['firstname'], 'last_name' => $values['lastname'])
                 );
-                foreach(array('phone', 'address') as $k){
+                $user_meta_fields = array_merge(array('phone', 'address'), array_keys( SLN_Enum_CheckoutFields::toArray('additional')));
+                foreach($user_meta_fields as $k){
                     if(isset($values[$k])){
                        update_user_meta($current_user->ID, '_sln_'.$k, $values[$k]);
                     }
@@ -132,7 +140,10 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
 			    add_user_meta($userID, '_sln_fb_id', $fbID);
 			    add_user_meta($userID, '_sln_phone', '');
 			    add_user_meta($userID, '_sln_address', '');
-
+                $additional_fields = array_keys( SLN_Enum_CheckoutFields::toArray('additional'));
+                foreach($additional_fields as $k){
+                    add_user_meta($userID, '_sln_'.$k, '');
+                }
 			    wp_new_user_notification($errors, null, 'both');
 		    } else {
 			    $this->addError($errors->get_error_message());
@@ -167,6 +178,12 @@ class SLN_Shortcode_Salon_DetailsStep extends SLN_Shortcode_Salon_AbstractUserSt
             }
             if (!filter_var($values['email'], FILTER_VALIDATE_EMAIL)) {
                 $this->addError(__('e-mail is not valid', 'salon-booking-system'));
+            }
+        }
+        $fields = SLN_Enum_CheckoutFields::toArray('additional');
+        foreach ($fields as $field => $label) {
+            if (SLN_Enum_CheckoutFields::isRequired($field) && empty($values[$field])){
+                $this->addError(__($label.' can\'t be empty', 'salon-booking-system'));
             }
         }
     }

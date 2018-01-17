@@ -11,15 +11,7 @@
 $helper->showNonce($postType);
 SLN_Action_InitScripts::enqueueCustomBookingUser();
 
-$checkoutFields = SLN_Enum_CheckoutFields::toArray();
-foreach($checkoutFields as $field => $name ) {
-    if (!SLN_Enum_CheckoutFields::isRequired($field)) {
-	    unset($checkoutFields[$field]);
-    }
-	else {
-		$checkoutFields[$field] = $field;
-	}
-}
+$checkoutFields = SLN_Enum_CheckoutFields::getRequiredFields();
 ?>
 <?php if(isset($_SESSION['_sln_booking_user_errors'])): ?>
     <div class="error">
@@ -178,6 +170,37 @@ foreach($checkoutFields as $field => $name ) {
             );
             ?>
         </div>
+        <?php 
+        $additional_fields = SLN_Enum_CheckoutFields::toArray('additional');
+        if($additional_fields){
+             foreach ($additional_fields as $field => $label) {
+              $value = $booking->getMeta($field) ;
+              
+              ?>
+                <div class="col-sm-12 sln-input--simple">
+                    <div class="form-group sln_meta_field">
+                        <label for="<?php echo $field ?>"><?php echo $label ?></label>
+                        <?php 
+                            if(isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field])){
+                                $additional_opts = array( 
+                                    $helper->getFieldName($postType, $field), $value, 
+                                    array('required' => SLN_Enum_CheckoutFields::isRequired($field)) 
+                                );
+                                if(SLN_Enum_CheckoutFields::$additional_fields_types[$field] === 'checkbox'){
+                                    
+
+                                    $additional_opts[count($additional_opts)-1]['attrs'] = array("style"=>"width:auto;");
+                                }
+                                if(SLN_Enum_CheckoutFields::$additional_fields_types[$field] === 'select') $additional_opts = array_merge(array_slice($additional_opts, 0, 1), array(SLN_Enum_CheckoutFields::$fields_select_options[$field]), array_slice($additional_opts, 1));
+                                call_user_func_array(array('SLN_Form','field'.ucfirst(SLN_Enum_CheckoutFields::$additional_fields_types[$field])), $additional_opts );
+                                
+                            }
+                        ?>
+                    </div>
+                </div>
+              <?php 
+             }
+        } ?> 
         <div class="clearfix"></div>
         <div class="col-md-6 col-sm-12">
         <div class="sln-checkbox">
