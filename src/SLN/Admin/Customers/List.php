@@ -29,7 +29,7 @@ class SLN_Admin_Customers_List extends WP_Users_List_Table {
 			'total_amount'   => __('Customer Value', 'salon-booking-system'),
 		);
 
-		return $columns;
+        return apply_filters('sln.admin_customers_list.columns', $columns);
 	}
 
 	protected function get_sortable_columns() {

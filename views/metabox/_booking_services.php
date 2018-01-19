@@ -9,10 +9,13 @@ $isMultipleAttendants = $isAttendants && ($isMultipleAttendants || (count($booki
 /** @var SLN_Repository_ServiceRepository $sRepo */
 $sRepo =  $plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
 $allServices = $sRepo->getAll();
+$allServices = $sRepo->sortByExecAndTitleDESC($allServices);
+$allServices = apply_filters('sln.shortcode.salon.ServicesStep.getServices', $allServices);
+
 /** @var SLN_Repository_AttendantRepository $sRepo */
 $sRepo =  $plugin->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
 $allAttendants = $sRepo->getAll();
-    
+$allAttendants = apply_filters('sln.shortcode.salon.AttendantStep.getAttendants', $allAttendants);
 $attendantsData = array();
 foreach ($allAttendants as $attendant) {
     $attendantsData[ $attendant->getId()] = $attendant->getName();

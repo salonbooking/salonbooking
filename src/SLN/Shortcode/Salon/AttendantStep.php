@@ -168,7 +168,7 @@ class SLN_Shortcode_Salon_AttendantStep extends SLN_Shortcode_Salon_Step
             /** @var SLN_Repository_AttendantRepository $repo */
             $repo             = $this->getPlugin()->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
             $this->attendants = $repo->sortByPos($repo->getAll());
-//            $this->attendants = apply_filters('sln.shortcode.salon.AttendantStep.getAttendants', $this->attendants);
+            $this->attendants = apply_filters('sln.shortcode.salon.AttendantStep.getAttendants', $this->attendants);
         }
 
         return $this->attendants;
