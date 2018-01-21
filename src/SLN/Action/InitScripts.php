@@ -92,6 +92,7 @@ class SLN_Action_InitScripts
     private static function preloadFrontendScripts()
     {
         self::enqueueDateTimePicker();
+        if(in_array('select',SLN_Enum_CheckoutFields::$additional_fields_types,true) ) self::enqueueSelect2();
         wp_enqueue_style('salon', SLN_PLUGIN_URL.'/css/salon.css', array(), self::ASSETS_VERSION, 'all');
         if (SLN_Plugin::getInstance()->getSettings()->get('style_colors_enabled')) {
             $dir = wp_upload_dir();
