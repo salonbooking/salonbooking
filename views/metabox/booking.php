@@ -175,9 +175,9 @@ $checkoutFields = SLN_Enum_CheckoutFields::getRequiredFields();
         if($additional_fields){
              foreach ($additional_fields as $field => $label) {
               $value = $booking->getMeta($field) ;
-              
+              $method_name= 'field'.ucfirst(SLN_Enum_CheckoutFields::$additional_fields_types[$field]);
               ?>
-                <div class="col-sm-12 sln-input--simple">
+                <div class="col-sm-12 sln-input--simple <?php echo isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? 'sln-'.SLN_Enum_CheckoutFields::$additional_fields_types[$field] : '' ?>">
                     <div class="form-group sln_meta_field">
                         <label for="<?php echo $field ?>"><?php echo $label ?></label>
                         <?php 
@@ -189,10 +189,11 @@ $checkoutFields = SLN_Enum_CheckoutFields::getRequiredFields();
                                 if(SLN_Enum_CheckoutFields::$additional_fields_types[$field] === 'checkbox'){
                                     
 
-                                    $additional_opts[count($additional_opts)-1]['attrs'] = array("style"=>"width:auto;");
+                                   $additional_opts = array_merge(array_slice($additional_opts, 0, 2), array(''), array_slice($additional_opts, 2));
+                                    $method_name = $method_name .'Button';
                                 }
                                 if(SLN_Enum_CheckoutFields::$additional_fields_types[$field] === 'select') $additional_opts = array_merge(array_slice($additional_opts, 0, 1), array(SLN_Enum_CheckoutFields::$fields_select_options[$field]), array_slice($additional_opts, 1));
-                                call_user_func_array(array('SLN_Form','field'.ucfirst(SLN_Enum_CheckoutFields::$additional_fields_types[$field])), $additional_opts );
+                                call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
                                 
                             }
                         ?>

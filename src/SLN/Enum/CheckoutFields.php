@@ -8,8 +8,8 @@ class SLN_Enum_CheckoutFields
     private static $fields;
     private static $additional_fields = array();
     private static $requiredByDefault;
-    public static $additional_fields_types;
-    public static $fields_select_options;
+    public static $additional_fields_types = array();
+    public static $fields_select_options = array();
     //public static $additional_hidden_fields_callback;
 
     public static function toArray($context = 'all')
