@@ -58,11 +58,11 @@ function sln_init($) {
         }
         $('[data-salon-toggle="next"]').click(function (e) {
             var form = $(this).closest('form');
-            $('#sln-salon input.sln-invalid').removeClass('sln-invalid');
+            $('#sln-salon input.sln-invalid,#sln-salon textarea.sln-invalid,#sln-salon select.sln-invalid').removeClass('sln-invalid');
             if (form[0].checkValidity()) {
                 sln_loadStep($, form.serialize() + '&' + $(this).data('salon-data'));
             }else{
-                $('#sln-salon input:invalid').addClass('sln-invalid').attr('placeholder', salon.checkout_field_placeholder);
+                $('#sln-salon input:invalid,#sln-salon textarea:invalid,#sln-salon select:invalid').addClass('sln-invalid').attr('placeholder', salon.checkout_field_placeholder);
             }
             return false;
         });
@@ -139,7 +139,7 @@ function sln_init($) {
             $('#sln_password_confirm').attr('disabled', false).parent().css('display', 'block');
         }
     }).change();
-
+    sln_createSelect2Full($);
     salonBookingCalendarInit();
 }
 function sln_loadStep($, data) {

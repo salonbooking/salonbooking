@@ -227,6 +227,12 @@ class SLN_Metabox_Booking extends SLN_Metabox_Abstract
             if (SLN_Enum_CheckoutFields::isRequired('phone') && empty($values['_sln_booking_phone'])) {
                 $this->addError(__('Mobile phone can\'t be empty', 'salon-booking-system'));
             }
+            $fields = SLN_Enum_CheckoutFields::toArray('additional');
+            foreach ($fields as $field => $label) {
+                if (SLN_Enum_CheckoutFields::isRequired($field) && empty($values['_sln_booking_'.$field])){
+                    $this->addError(__($label.' can\'t be empty', 'salon-booking-system'));
+                }
+            }
         }
 
         if (SLN_Enum_CheckoutFields::isRequired('email') && !empty($values['_sln_booking_email']) && !filter_var(

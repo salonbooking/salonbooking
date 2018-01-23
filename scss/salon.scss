@@ -10,6 +10,7 @@
 @import 'components/alert-messages';
 @import 'components/stepper';
 @import 'components/myaccount';
+
 #sln-salon {
 	position: relative;
 	margin-top: 2em;
@@ -556,3 +557,7 @@ td.day.disabled.full:hover {
     background: #FF6666;
     color: white;
 }
+
+@import '_admin_config';
+@import '_typo-admin';
+@import 'sln-select2';
