@@ -37,21 +37,12 @@ class SLN_Func
 
     public static function getMonths()
     {
-        $ret = array(); 
-        if(class_exists('IntlDateFormatter')){
-            $format = new IntlDateFormatter(substr(get_locale(), 0,2), IntlDateFormatter::NONE, 
-              IntlDateFormatter::NONE, NULL, NULL, "LLL");
-
-            for ($i = 1; $i <= 12; $i++) {
-                $ret[$i] =  ucwords(datefmt_format($format, mktime(0, 0, 0, $i)));
-            }
-        }else{
-            $timestamp = strtotime("1970-01-01");
-            if( setlocale(LC_TIME,0) !== get_locale() ){ setlocale(LC_TIME, get_locale()); }
-            for ($i = 1; $i <= 12; $i++) {
-                $ret[$i] = date_i18n('M', $timestamp);
-                $timestamp = strtotime('+1 month', $timestamp);
-            }
+        $timestamp = strtotime("1970-01-01");
+        $ret = array();
+        if( setlocale(LC_TIME,0) !== get_locale() ){ setlocale(LC_TIME, get_locale()); }
+        for ($i = 1; $i <= 12; $i++) {
+            $ret[$i] = date_i18n('M', $timestamp);
+            $timestamp = strtotime('+1 month', $timestamp);
         }
         return $ret;
     }
