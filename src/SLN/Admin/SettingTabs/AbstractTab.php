@@ -76,7 +76,7 @@ abstract class SLN_Admin_SettingTabs_AbstractTab
         $posted = $_POST['salon_settings'];
 		$submitted = array();
 		foreach ($this->fields as $k) {
-			if(isset($posted[$k]) || array_key_exists($k,$posted)) $submitted[$k] = $posted[$k];
+			$submitted[$k] = isset($posted[$k]) ? $posted[$k] : null;
         }
         $this->submitted = $submitted;
 	}
