@@ -154,7 +154,13 @@ $fieldPassword = ob_get_clean();
                             <?php endif ?>
                 </div>
             <?php endforeach ?>
-            <div class="<?php echo ( $size == 400 ? 'col-xs-12' : ( $size == 600 ? 'col-md-12' : 'col-md-4 ' )) ?> sln-box--formactions"><label for="login_name">&nbsp;</label><?php include "_form_actions.php" ?></div>
+            <?php   if ($size === 600){ ?>
+            <div class="row sln-box--formactions">
+            <?php   } ?>
+            <div class="<?php echo ( $size == 400 ? 'col-xs-12 sln-box--formactions' : ( $size == 600 ? 'col-md-12' : 'col-md-4 sln-input sln-input--action  sln-box--main sln-box--formactions' )) ?> "><label for="login_name">&nbsp;</label><?php include "_form_actions.php" ?></div>
+            <?php   if ($size === 600){ ?>
+            </div>
+            <?php   } ?>
         </div>
         <div class="row">
             <div class="col-xs-12"><?php include '_errors.php'; ?></div>
