@@ -139,7 +139,9 @@ function sln_init($) {
             $('#sln_password_confirm').attr('disabled', false).parent().css('display', 'block');
         }
     }).change();
-    sln_createSelect2Full($);
+    if (typeof sln_createSelect2Full !== 'undefined') {
+        sln_createSelect2Full($);
+    }
     salonBookingCalendarInit();
 }
 function sln_loadStep($, data) {
