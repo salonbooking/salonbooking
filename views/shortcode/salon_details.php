@@ -186,9 +186,11 @@ $fieldPassword = ob_get_clean();
                         array('type' => 'hidden')
                     );
                     continue;
-                }; ?>
+                }; 
+                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false;
+            ?>
                 <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
-                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
+                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -200,7 +202,25 @@ $fieldPassword = ob_get_clean();
                             } else if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else {
+                            if($type){
+                                $additional_opts = array( 
+                                    'sln[' . $field . ']', $bb->get($field), 
+                                    array('required' => SLN_Enum_CheckoutFields::isRequired($field)) 
+                                );
+                                $method_name = 'field'.ucfirst($type);
+                                if($type === 'checkbox') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 2), array(''), array_slice($additional_opts, 2));
+                                    $method_name = $method_name .'Button';                                    
+                                }
+                                
+                                if($type === 'select') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 1), array(SLN_Enum_CheckoutFields::$fields_select_options[$field]), array_slice($additional_opts, 1));
+                                    
+                                }
+call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
+}else{
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
+                                }
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>
@@ -231,9 +251,11 @@ $fieldPassword = ob_get_clean();
                         array('type' => 'hidden')
                     );
                     continue;
-                }; ?>
+                };
+                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false;
+                 ?>
                 <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
-                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
+                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -246,7 +268,25 @@ $fieldPassword = ob_get_clean();
                             } else if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else {
+                            if($type){
+                                $additional_opts = array( 
+                                    'sln[' . $field . ']', $bb->get($field), 
+                                    array('required' => SLN_Enum_CheckoutFields::isRequired($field)) 
+                                );
+                                $method_name = 'field'.ucfirst($type);
+                                if($type === 'checkbox') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 2), array(''), array_slice($additional_opts, 2));
+                                    $method_name = $method_name .'Button';                                    
+                                }
+                                
+                                if($type === 'select') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 1), array(SLN_Enum_CheckoutFields::$fields_select_options[$field]), array_slice($additional_opts, 1));
+                                    
+                                }
+call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
+}else{
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
+                                }
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>
@@ -275,9 +315,10 @@ $fieldPassword = ob_get_clean();
                         array('type' => 'hidden')
                     );
                     continue;
-                }; ?>
+                };
+                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; ?>
                 <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
-                <div class="col-xs-12 <?php echo 'field-'.$field ?> sln-input sln-input--simple">
+                <div class="col-xs-12 <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -289,7 +330,25 @@ $fieldPassword = ob_get_clean();
                             } else if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else {
+                            if($type){
+                                $additional_opts = array( 
+                                    'sln[' . $field . ']', $bb->get($field), 
+                                    array('required' => SLN_Enum_CheckoutFields::isRequired($field)) 
+                                );
+                                $method_name = 'field'.ucfirst($type);
+                                if($type === 'checkbox') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 2), array(''), array_slice($additional_opts, 2));
+                                    $method_name = $method_name .'Button';                                    
+                                }
+                                
+                                if($type === 'select') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 1), array(SLN_Enum_CheckoutFields::$fields_select_options[$field]), array_slice($additional_opts, 1));
+                                    
+                                }
+call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
+}else{
                                 SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
+                                }
                             }
                         ?>
                         <?php if(($field == 'phone') && isset($prefix)):?>
@@ -337,8 +396,9 @@ $fieldPassword = ob_get_clean();
                         array('type' => 'hidden')
                     );
                     continue;
-                }; ?>
-                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
+                };
+                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; ?>
+                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -348,7 +408,25 @@ $fieldPassword = ob_get_clean();
                            if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else{
+                            if($type){
+                                $additional_opts = array( 
+                                    'sln[' . $field . ']', $bb->get($field), 
+                                    array('required' => SLN_Enum_CheckoutFields::isRequired($field)) 
+                                );
+                                $method_name = 'field'.ucfirst($type);
+                                if($type === 'checkbox') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 2), array(''), array_slice($additional_opts, 2));
+                                    $method_name = $method_name .'Button';                                    
+                                }
+                                
+                                if($type === 'select') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 1), array(SLN_Enum_CheckoutFields::$fields_select_options[$field]), array_slice($additional_opts, 1));
+                                    
+                                }
+call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
+}else{
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
+                            }
                            }
                         ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
@@ -379,8 +457,9 @@ $fieldPassword = ob_get_clean();
                         array('type' => 'hidden')
                     );
                     continue;
-                }; ?>
-                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
+                };
+                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; ?>
+                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -390,7 +469,25 @@ $fieldPassword = ob_get_clean();
                            if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else{
+                            if($type){
+                                $additional_opts = array( 
+                                    'sln[' . $field . ']', $bb->get($field), 
+                                    array('required' => SLN_Enum_CheckoutFields::isRequired($field)) 
+                                );
+                                $method_name = 'field'.ucfirst($type);
+                                if($type === 'checkbox') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 2), array(''), array_slice($additional_opts, 2));
+                                    $method_name = $method_name .'Button';                                    
+                                }
+                                
+                                if($type === 'select') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 1), array(SLN_Enum_CheckoutFields::$fields_select_options[$field]), array_slice($additional_opts, 1));
+                                    
+                                }
+call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
+}else{
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
+                            }
                            }
                         ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
@@ -419,8 +516,9 @@ $fieldPassword = ob_get_clean();
                         array('type' => 'hidden')
                     );
                     continue;
-                }; ?>
-                <div class="col-xs-12 <?php echo 'field-'.$field ?> sln-input sln-input--simple">
+                };
+                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; ?>
+                <div class="col-xs-12 <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -430,7 +528,25 @@ $fieldPassword = ob_get_clean();
                            if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else{
+                            if($type){
+                                $additional_opts = array( 
+                                    'sln[' . $field . ']', $bb->get($field), 
+                                    array('required' => SLN_Enum_CheckoutFields::isRequired($field)) 
+                                );
+                                $method_name = 'field'.ucfirst($type);
+                                if($type === 'checkbox') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 2), array(''), array_slice($additional_opts, 2));
+                                    $method_name = $method_name .'Button';                                    
+                                }
+                                
+                                if($type === 'select') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 1), array(SLN_Enum_CheckoutFields::$fields_select_options[$field]), array_slice($additional_opts, 1));
+                                    
+                                }
+call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
+}else{
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
+                            }
                            }
                         ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
@@ -457,8 +573,9 @@ $fieldPassword = ob_get_clean();
                         array('type' => 'hidden')
                     );
                     continue;
-                }; ?>
-                <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> sln-input sln-input--simple">
+                };
+                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; ?>
+                <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -468,7 +585,25 @@ $fieldPassword = ob_get_clean();
                            if(strpos($field, 'email') === 0){
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field), 'type' => 'email'));
                            } else{
+                            if($type){
+                                $additional_opts = array( 
+                                    'sln[' . $field . ']', $bb->get($field), 
+                                    array('required' => SLN_Enum_CheckoutFields::isRequired($field)) 
+                                );
+                                $method_name = 'field'.ucfirst($type);
+                                if($type === 'checkbox') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 2), array(''), array_slice($additional_opts, 2));
+                                    $method_name = $method_name .'Button';                                    
+                                }
+                                
+                                if($type === 'select') {
+                                    $additional_opts = array_merge(array_slice($additional_opts, 0, 1), array(SLN_Enum_CheckoutFields::$fields_select_options[$field]), array_slice($additional_opts, 1));
+                                    
+                                }
+call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
+}else{
                                SLN_Form::fieldText('sln[' . $field . ']', $bb->get($field), array('required' => SLN_Enum_CheckoutFields::isRequired($field)));
+                            }
                            }
                         ?>
                             <?php if(($field == 'phone') && isset($prefix)):?>
