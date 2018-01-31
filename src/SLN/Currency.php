@@ -26,6 +26,7 @@ class SLN_Currency
         'JPY' => array('name' => 'Japanese Yen', 'symbol' => '¥', 'ASCII' => '&#165;'),
         'JMD' => array('name' => 'Jamaican Dollar', 'symbol' => 'J$', 'ASCII' => ''),
         'KES' => array('name' => 'Kenyan Shilling', 'symbol' => 'KSh', 'ASCII' => ''),
+        'KZT' => array('name' => 'Kazakhstani tenge', 'symbol' => '₸', 'ASCII' => ''),
         'MXN' => array('name' => 'Mexican Peso', 'symbol' => '$', 'ASCII' => '&#36;'),
         'MUR' => array('name' => 'Mauritian Rupee', 'symbol' => '₨', 'ASCII' => ''),
         'MYR' => array('name' => 'Malaysian Ringgit', 'symbol' => 'RM', 'ASCII' => ''),
