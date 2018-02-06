@@ -244,6 +244,11 @@ class SLN_Action_InitScripts
         );
         wp_enqueue_style('salon-admin-css', SLN_PLUGIN_URL.'/css/admin.css', array(), SLN_VERSION, 'all');
         wp_enqueue_script('salon-admin-js', SLN_PLUGIN_URL.'/js/admin.js', array('jquery'), self::ASSETS_VERSION, true);
+        wp_localize_script( 'salon-admin-js', 'salon_admin', array(
+            'i18n_mon_decimal_error'            => sprintf( __( 'Please enter in monetary decimal (%s) format without thousand separators and currency symbols.', 'salon-booking-system' ), SLN_Plugin::getInstance()->getSettings()->get('pay_decimal_separator') ),
+            'mon_decimal_point'                 => SLN_Plugin::getInstance()->getSettings()->get('pay_decimal_separator'),
+
+        ) );
     }
     public function hook_admin_print_scripts(){
 

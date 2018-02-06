@@ -86,6 +86,47 @@ jQuery(function ($) {
     if ($('#import-assistants-drag').size() > 0) {
         initImporter($('#import-assistants-drag'), 'Assistants');
     }
+
+    $('#_sln_service_price')
+    .on( 'sln_add_error_tip', function( e, element, error_type ) {
+            var offset = element.position();
+
+            if ( element.parent().find( '.sln_error_tip' ).length === 0 ) {
+                element.after( '<div class="sln_error_tip ' + error_type + '">' + salon_admin[error_type] + '</div>' );
+                element.parent().find( '.sln_error_tip' )
+                    .css( 'left', offset.left + element.width() - ( element.width() / 2 ) - ( $( '.sln_error_tip' ).width() / 2 ) )
+                    .css( 'top', offset.top + element.height() )
+                    .fadeIn( '100' );
+            }
+        })
+    .on( 'sln_remove_error_tip', function( e, element, error_type ) {
+        element.parent().find( '.sln_error_tip.' + error_type ).fadeOut( '100', function() { $( this ).remove(); } );
+    })    
+    .on( 'blur', function() {
+        $( '.sln_error_tip' ).fadeOut( '100', function() { $( this ).remove(); } );
+    })
+    .on( 'change', function() {
+            var regex = new RegExp( '[^\-0-9\%\\' + salon_admin.mon_decimal_point + ']+', 'gi' );
+            var value    = $( this ).val();
+            var newvalue = value.replace( regex, '' );
+
+            if ( value !== newvalue ) {
+                $( this ).val( newvalue );
+            }
+    })  
+    .on( 'keyup', function() {
+            var regex, error;            
+            regex = new RegExp( '[^\-0-9\%\\' + salon_admin.mon_decimal_point + ']+', 'gi' );
+            error = 'i18n_mon_decimal_error';            
+            var value    = $( this ).val();
+            var newvalue = value.replace( regex, '' );
+
+            if ( value !== newvalue ) {
+                $( '#_sln_service_price' ).triggerHandler( 'sln_add_error_tip', [ $( this ), error ] );
+            } else {
+                $( '#_sln_service_price' ).triggerHandler( 'sln_remove_error_tip', [ $( this ), error ] );
+            }
+    })
 });
 
 var importRows;
