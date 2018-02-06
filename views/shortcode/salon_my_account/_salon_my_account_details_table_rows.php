@@ -79,7 +79,8 @@
 					<?php endif; ?>
 					<?php if ($data['cancellation_enabled']): ?>
 						<div class="col-xs-10 col-sm-6 col-md-12">
-							<?php if ($item['timestamp']-current_time('timestamp') > $data['seconds_before_cancellation']): ?>
+							<?php 							
+							if ($item['timestamp']-current_time('timestamp',1) > $data['seconds_before_cancellation']): ?>
 								<div class="sln-btn sln-btn--emphasis sln-btn--medium sln-btn--fullwidth danger">
 									<button onclick="slnMyAccount.cancelBooking(<?php echo $item['id']; ?>);">
 										<?php _e('Cancel booking','salon-booking-system');?>
