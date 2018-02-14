@@ -72,7 +72,6 @@ function sln_init($) {
         sln_loadStep($, $(this).data('salon-data'));
         return false;
     });
-
     // CHECKBOXES
     $('#sln-salon input:checkbox').each(function () {
         $(this).change(function () {

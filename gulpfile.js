@@ -66,6 +66,7 @@ gulp.task('adminsass', function () {
     .pipe(gulp.dest('./css'))
     .pipe( livereload() );
 });
+/*
 gulp.task('less', function () {
   return gulp.src('less/salon.less')
     .pipe(less({
@@ -74,7 +75,7 @@ gulp.task('less', function () {
     .pipe(gulp.dest('css'))
     .pipe( livereload() );
 });
-
+*/
 gulp.task('admindtepicker', function () {
   return gulp.src('less/datepicker_admin.less')
     .pipe(less({

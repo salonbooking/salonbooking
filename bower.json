@@ -6,5 +6,10 @@
     "bootstrap-calendar": "0.2.4",
     "smalot-bootstrap-datetimepicker": "2.3.0",
     "fontawesome": "~4.4.0"
+  },
+  "resolutions": {
+    "bootstrap": "3.2.*",
+    "bootstrap-calendar": "0.2.4",
+    "jquery": ">= 1.9.0"
   }
 }
