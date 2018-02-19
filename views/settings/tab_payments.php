@@ -112,6 +112,8 @@
                 <?php echo SLN_Form::fieldSelect(
                     'salon_settings[pay_offset]',
                     array(
+                        
+                        '3' => '3m',
                         '60'   => '1h',
                         '120'  => '2h',
                         '360'  => '6h',
