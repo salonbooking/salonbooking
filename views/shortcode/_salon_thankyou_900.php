@@ -52,7 +52,7 @@
     <div class="sln-form-actions sln-payment-actions row">
         <?php if($paymentMethod && $payLater): ?>
             <div class="col-sm-10 col-md-8 pull-right">
-                <a  href="<?php echo $laterUrl ?>" class="sln-btn sln-btn--emphasis sln-btn--big sln-btn--fullwidth"
+                <a  href="<?php echo $laterUrl ?>" class="sln-btn sln-btn--emphasis sln-btn--noheight sln-btn--fullwidth"
                     <?php if($ajaxEnabled): ?>
                         data-salon-data="<?php echo $ajaxData.'&mode=later' ?>" data-salon-toggle="direct"
                     <?php endif ?>>
