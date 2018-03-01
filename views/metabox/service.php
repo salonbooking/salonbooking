@@ -4,34 +4,35 @@ $helper->showNonce($postType);
 
 <div class="row sln-service-price-time">
 <!-- default settings -->
-    <div class="col-sm-6 col-md-3 form-group sln-input--simple">
+    <div class="col-sm-4 col-md-4 col-lg-4 form-group sln-input--simple">
             <label><?php echo __('Price', 'salon-booking-system') . ' (' . $settings->getCurrencySymbol() . ')' ?></label>
             <?php SLN_Form::fieldText($helper->getFieldName($postType, 'price'), $service->getPrice()); ?>
     </div>
-    <div class="col-sm-6 col-md-3 form-group sln-select">
+    <div class="col-sm-4 col-md-4 col-lg-4 form-group sln-select">
             <label><?php _e('Unit per hour', 'salon-booking-system'); ?></label>
             <?php SLN_Form::fieldNumeric($helper->getFieldName($postType, 'unit'), $service->getUnitPerHour()); ?>
     </div>
-    <div class="col-sm-6 col-md-3 form-group sln-select">
+    <div class="col-sm-4 col-md-4 col-lg-4 form-group sln-select">
             <label><?php _e('Duration', 'salon-booking-system'); ?></label>
             <?php SLN_Form::fieldTime($helper->getFieldName($postType, 'duration'), $service->getDuration()); ?>
     </div>
     <div class="sln-clear"></div>
 </div>
+<div class="sln-separator"></div>
 <div class="row">
-    <div class="col-sm-6 col-md-3 form-group sln-checkbox">
+    <div class="col-sm-4 col-md-6 col-lg-4 form-group sln-checkbox">
         <?php SLN_Form::fieldCheckbox($helper->getFieldName($postType, 'secondary'), $service->isSecondary(), array('attrs' => array('data-action' => 'change-service-type', 'data-target' => '#secondary_details'))) ?>
         <label for="_sln_service_secondary"><?php _e('Secondary', 'salon-booking-system'); ?></label>
         <p><?php _e('Select this if you want this service considered as secondary level service','salon-booking-system'); ?></p>
     </div>
-    <div id="exclusive_service" class="col-sm-6 col-md-3 form-group sln-checkbox <?php echo ($service->isSecondary() ? 'hide' : ''); ?>">
+    <div id="exclusive_service" class="col-sm-4 col-md-6 col-lg-4 form-group sln-checkbox <?php echo ($service->isSecondary() ? 'hide' : ''); ?>">
         <?php SLN_Form::fieldCheckbox($helper->getFieldName($postType, 'exclusive'), $service->isExclusive() ) ?>
         <label for="_sln_service_exclusive"><?php _e('Exclusive service', 'salon-booking-system'); ?></label>
         <p><?php _e('If enabled, when a customer choose this service no other services can be booked during the same reservation','salon-booking-system'); ?></p>
     </div>
     
     <div id="secondary_details" class="<?php echo ($service->isSecondary() ? '' : 'hide'); ?>">
-        <div class="col-sm-6 col-md-3 form-group sln-select">
+        <div class="col-sm-8 col-md-6 col-lg-4 form-group sln-select">
             <label><?php _e('Display if', 'salon-booking-system'); ?></label>
             <?php SLN_Form::fieldSelect(
                 $helper->getFieldName($postType, 'secondary_display_mode'),
@@ -45,7 +46,7 @@ $helper->showNonce($postType);
                 true
             ); ?>
         </div>
-        <div id="secondary_parent_services" class="col-sm-6 col-md-6 form-group sln-select <?php echo ($service->getMeta('secondary_display_mode') === 'service' ? '' : 'hide'); ?>">
+        <div id="secondary_parent_services" class="col-sm-12 col-md-12 form-group sln-select <?php echo ($service->getMeta('secondary_display_mode') === 'service' ? '' : 'hide_'); ?>">
             <label><?php _e('Select parent services', 'salon-booking-system'); ?></label>
             <?php
             /** @var SLN_Wrapper_Service[] $services */
@@ -67,8 +68,9 @@ $helper->showNonce($postType);
     </div>
     <div class="sln-clear"></div>
 </div>
+<div class="sln-separator"></div>
 <div class="row">
-    <div class="col-sm-6 col-md-3 form-group sln-select">
+    <div class="col-sm-6 col-md-6 col-lg-4 form-group sln-select">
         <label><?php _e('Execution Order', 'salon-booking-system'); ?></label>
         <?php SLN_Form::fieldNumeric($helper->getFieldName($postType, 'exec_order'), $service->getExecOrder(), array('min' => 1, 'max' => 10, 'attrs' => array())) ?>
     </div>
@@ -76,7 +78,9 @@ $helper->showNonce($postType);
         <p class="sln-input-help"><?php _e('Use a number to give this service an order of execution compared to the other services.','salon-booking-system'); ?></p>
         <p class="sln-input-help"><?php _e('Consider that this option will affect the availability of your staff members that you have associated with this service.','salon-booking-system'); ?></p>
     </div>
-    <div class="col-sm-6 col-md-3 form-group sln-checkbox">
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-4 form-group sln-checkbox">
         <?php SLN_Form::fieldCheckbox($helper->getFieldName($postType, 'attendants'), !$service->isAttendantsEnabled()) ?>
         <label for="_sln_service_attendants"><?php _e('No assistant required', 'salon-booking-system'); ?></label>
         <p><?php _e('No assistant required','salon-booking-system'); ?></p>

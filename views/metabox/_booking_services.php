@@ -129,7 +129,9 @@ foreach ($allAttendants as $attendant) {
                 );
                ?>
 
-        <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-line">
+        <div class="col-xs-12 col-sm-12 col-md-12 sln-booking-service-line">
+            <div class="row">
+                
             <?php if ($isMultipleAttendants): ?>
                 <div class="col-xs-6 col-sm-1 col-md-1">
                     <label class="time"><?php echo $formatter->time($bookingService->getStartsAt()) ?></label>
@@ -138,7 +140,7 @@ foreach ($allAttendants as $attendant) {
                     <label class="time"><?php echo $formatter->time($bookingService->getEndsAt()) ?></label>
                 </div>
             <?php endif; ?>
-                <div class="col-xs-12 col-sm-4 col-md-4 sln-select">
+                <div class="col-xs-12 col-sm-6 col-md-6 sln-select">
                 <?php SLN_Form::fieldSelect(
                     '_sln_booking[services][]',
                     array(
@@ -199,15 +201,19 @@ foreach ($allAttendants as $attendant) {
                     <button class="sln-btn sln-btn--problem sln-btn--big sln-btn--icon sln-icon--trash" data-collection="remove"><?php echo __('Remove', 'salon-booking-system')?></button>
                 </div>
             </div>
+        
+            </div>
         </div>
         <div class="clearfix"></div>
 <?php endforeach ?>
  
-        <div class="row col-xs-12 col-sm-12 col-md-12 sln-booking-service-action">
+        <div class="col-xs-12 col-sm-12 col-md-12 sln-booking-service-action">
+            <div class="row">
+                
             <?php if ($isMultipleAttendants): ?>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-2 col-md-offset-2 sln-select">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-sm-offset-2 col-md-offset-2 sln-select">
             <?php else: ?>
-                <div class="col-xs-12 col-sm-4 col-md-4 sln-select">
+                <div class="col-xs-12 col-sm-6 col-md-12 col-lg-6 sln-select">
             <?php endif; ?>
                 <select class="sln-select" name="_sln_booking_service_select" id="_sln_booking_service_select">
                     <option value=""><?php _e('Select a service','salon-booking-system') ?></option>
@@ -265,5 +271,7 @@ foreach ($allAttendants as $attendant) {
             var attendantsData = '<?php echo addslashes(json_encode($attendantsData)); ?>';
             var lineItem = '<?php echo $lineItem; ?>';
         </script>
-    </div>
+    
+            </div>
+        </div>
 

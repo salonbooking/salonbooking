@@ -6748,10 +6748,10 @@
   background-color: transparent;
   border: 0;
 }
-#sln-salon body:not(.wp-admin) .hidden,
-#sln-salon--admin body:not(.wp-admin) .hidden,
-.sln-salon-bs-wrap body:not(.wp-admin) .hidden,
-.sln-calendar--wrapper body:not(.wp-admin) .hidden {
+#sln-salon .hidden,
+#sln-salon--admin .hidden,
+.sln-salon-bs-wrap .hidden,
+.sln-calendar--wrapper .hidden {
   display: none !important;
   visibility: hidden !important;
 }

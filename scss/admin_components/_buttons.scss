@@ -31,12 +31,18 @@
 .sln-btn--fullwidth {width: 100%;}
 .sln-btn--big, .sln-btn--big input, .sln-btn--big button {
   display: inline-block;
-  padding: 0 rem(20px);
-  height:  rem(56px);
-  min-width: rem(240px);
-  @extend %font-big;
+  padding: rem(10px) rem(24px);
+  //height:  rem(56px);
+  min-width: rem(320px);
+  @extend %font-bigger;
   line-height: rem(56px);
   @include bp(phone) {font-size: rem(18px);}
+  @include bp(desktop) {
+    padding: 0 rem(20px);
+    height:  rem(56px);
+    min-width: rem(240px);
+    font-size: rem(18px);
+  }
   &.sln-btn--block {display: block;}
 }
 .sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button {
@@ -250,8 +256,14 @@
     &.sln-btn--big {
       padding-right: rem(64px);
       &:after {
-        padding: 0 rem(12px);
+        padding: rem(12px) rem(24px);
         line-height: rem(54px);
+      }
+      @include bp(desktop) {
+        &:after {
+          padding: 0 rem(12px);
+          line-height: rem(54px);
+        }
       }
     }
     &.sln-btn--medium {

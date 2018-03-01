@@ -215,13 +215,13 @@ $checkoutFields = SLN_Enum_CheckoutFields::getRequiredFields();
     <?php echo $plugin->loadView('metabox/_booking_services', compact('booking')); ?>
    <div class="sln-separator"></div>
     <div class="row">
-        <div class="col-md-3 col-sm-4">
+        <div class="col-xs-12 col-lg-3 col-sm-6">
             <div class="form-group sln_meta_field sln-select">
                 <label><?php _e('Duration', 'salon-booking-system'); ?></label>
                 <input type="text" id="sln-duration" value="<?php echo $booking->getDuration()->format('H:i') ?>" class="form-control" readonly="readonly"/>
             </div>
         </div>
-        <div class="col-md-3 col-sm-4 sln-input--simple">
+        <div class="col-xs-12 col-lg-3 col-sm-6 sln-input--simple">
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'amount'),
@@ -229,9 +229,8 @@ $checkoutFields = SLN_Enum_CheckoutFields::getRequiredFields();
                 $booking->getAmount()
             );
             ?>
-            <button class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--settings" id="calculate-total"><?php _e('Calculate total', 'salon-booking-system') ?></button>
         </div>
-        <div class="col-md-2 col-sm-4 sln-input--simple">
+        <div class="col-xs-12 col-lg-2 col-sm-6 sln-input--simple">
             <?php
             $helper->showFieldText(
                 $helper->getFieldName($postType, 'deposit'),
@@ -241,7 +240,7 @@ $checkoutFields = SLN_Enum_CheckoutFields::getRequiredFields();
             ?>
         </div>
 
-        <div class="col-md-2 col-sm-4">
+        <div class="col-xs-12 col-lg-2 col-sm-6">
             <div class="form-group sln-input--simple">
                 <label for="">Transaction</label>
 
@@ -250,6 +249,9 @@ $checkoutFields = SLN_Enum_CheckoutFields::getRequiredFields();
                         'salon-booking-system'
                     ) ?></p>
             </div>
+        </div>
+        <div class="col-xs-12">
+            <button class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--settings" id="calculate-total"><?php _e('Calculate total', 'salon-booking-system') ?></button>
         </div>
 
         <?php do_action('sln.template.metabox.booking.total_amount_row', $booking); ?>

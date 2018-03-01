@@ -12,7 +12,6 @@
     @import 'admin_components/service-details';
 }
 */
-
 @import 'settings-mixins';
 @import 'admin_config';
 @import 'typo-admin';
@@ -348,8 +347,8 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
 
     .sln-service-price-time {
         input[type='text'] {
-            height: auto;
-            @include bp(tablet-port) {height: 34px;}
+            min-height: rem(80px);
+            @include bp(desktop) {min-height: rem(60px);}
         }
 
         .col-xs-6:nth-child(4){
@@ -620,17 +619,38 @@ body.salone_page_salon-tools {
     // CUSTOMER STATISTICS START
     .statistics_block {
         text-align: center;
-        background-color: #0088c9;
-        color: white;
+        background-color: $sln-color--main--emphasis;
+        color: $sln-color--white;
+        padding: 0 rem(15px);
+        margin: $grid-gutter-width * -1;
+        margin-top: 0;
+        .statistics_block_desc {
+            display: block;
+            border-top: 1px solid white;
+            margin: $grid-gutter-width $grid-gutter-width/3*-2 0 $grid-gutter-width/3*-2;
+            padding-top: $grid-gutter-width;
+            padding-bottom: $grid-gutter-width/3;
+        }
+        div:nth-child(1) span {
+            margin-top: 0;
+        }
         @extend %font-big;
         .statistics_row:nth-child(1) {
             border-bottom: 0.1rem solid white;
         }
+        .statistics_row:last-child {
+            padding-bottom: $grid-gutter-width;
+        }
         .statistics_row {
-            padding: 10px 0px;
-            span {
+            padding: 0px;
+            span:not(.statistics_block_desc) {
                 font-size: larger;
                 font-weight: bold;
+            }
+        }
+        @include bp(tablet) {
+            .statistics_row {
+                padding: 10px 0px;
             }
         }
     }
@@ -880,6 +900,17 @@ body.salone_page_salon-tools {
 }
 // CALENDAR // EN
 // /// SETTINGS END
+
+// TOOLS
+#sln-salon--admin .sln-tools__wrapper {
+    .sln-input--simple textarea {
+        min-height: 40vw;
+        @include bp(desktop) {
+            min-height: 20vw;
+        }
+    }
+}
+// TOOLS // END
 
 
 // /// /// /// /// /// /// /// //

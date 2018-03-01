@@ -3,7 +3,7 @@
 </div>
 <div class="clearfix"></div>
 <div id="sln-salon--admin" class="container-fluid wpcontent sln-calendar--wrapper sln-calendar--wrapper--loading">
-<div class="sln-calendar--wrapper--sub" style="opacity: 0;">
+<div class="sln-calendar--wrapper--sub sln-tools__wrapper" style="opacity: 0;">
 	<?php if (!empty($versionToRollback)): ?>
             <?php echo $plugin->loadView('admin/_tools_rollback', compact('versionToRollback', 'currentVersion', 'isFree')) ?>
 	<?php endif ?>
@@ -15,8 +15,8 @@
 					<div class="col-sm-12 form-group">
 						<h6 class="sln-fake-label"><?php _e('Copy and paste into a text file the informations of this field and provide them to Salon Booking support.','salon-booking-system')?></h6>
 					</div>
-					<div class="col-sm-8 form-group sln-input--simple">
-						<textarea rows="7" id="tools-textarea" class='tools-textarea'><?php echo $info; ?></textarea>
+					<div class="col-xs-12 form-group sln-input--simple">
+						<textarea id="tools-textarea" class='tools-textarea'><?php echo $info; ?></textarea>
 						<p class="help-block"><?php _e('Just click inside the textarea and copy (Ctrl+C)','salon-booking-system')?></p>
 					</div>
 				</div>
@@ -31,14 +31,14 @@
 					<div class="col-sm-12 form-group">
 						<h6 class="sln-fake-label"><?php _e('Copy and paste into this field settings of the plugin to import settings into the current wordpress install.','salon-booking-system')?></h6>
 					</div>
-					<div class="col-sm-8 form-group sln-input--simple">
-						<textarea rows="7" id="tools-import" name="tools-import"></textarea>
+					<div class="col-xs-12 form-group sln-input--simple">
+						<textarea id="tools-import" name="tools-import"></textarea>
 <!--						<p class="help-block"><?php _e('Just click inside the textarea and copy (Ctrl+C)','salon-booking-system')?></p>-->
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-2 form-group col-md-offset-7">
-						<input  disabled type="submit" class="btn btn-default" value="Import" name="sln-tools-import" id="submit-import">
+					<div class="col-xs-12 form-group">
+						<input  disabled type="submit" class="btn_ btn-default_ sln-btn sln-btn--main sln-btn--big" value="Import" name="sln-tools-import" id="submit-import">
 					</div>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 		<div class="sln-tab" id="sln-tab-import-data">
 			<div class="sln-box sln-box--main">
 				<div class="row">
-					<div class="col-xs-6 col-sm-5">
+					<div class="col-xs-12 col-lg-6">
 						<div class="row">
 							<div class="col-sm-12 form-group">
 								<h2 class="sln-box-title"><?php _e('Import customers','salon-booking-system') ?></h2>
@@ -89,7 +89,7 @@
 						</div>
 					</div>
 
-					<div class="col-xs-6 col-xs-offset-0 col-sm-5 col-sm-offset-2">
+					<div class="col-xs-12 col-lg-6">
 						<div class="row">
 							<div class="col-sm-12 form-group">
 								<h2 class="sln-box-title"><?php _e('Import services','salon-booking-system') ?></h2>
@@ -131,7 +131,7 @@
 				</div>
 
 				<div class="row">
-					<div class="col-xs-6 col-sm-5">
+					<div class="col-xs-12 col-lg-6">
 						<div class="row">
 							<div class="col-sm-12 form-group">
 								<h2 class="sln-box-title"><?php _e('Import assistants','salon-booking-system') ?></h2>

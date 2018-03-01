@@ -51,14 +51,14 @@
 				</div>
 
 				<div class="row">
-					<div class="col-xs-12 col-sm-6 form-group sln_meta_field sln-input--simple">
+					<div class="col-xs-12 form-group sln_meta_field sln-input--simple">
 						<label for="_sln_customer_sln_address"><?php _e('Address', 'salon-booking-system') ?></label>
 						<textarea type="text" name="sln_customer_meta[_sln_address]" id="_sln_customer_sln_address" rows="5" class="form-control"><?php echo $customer->get('_sln_address'); ?></textarea>
 					</div>
 				</div>
 				<div >
 				<div class="sln-box--sub row">
-					<div class="col-xs-12 col-sm-6  form-group sln_meta_field sln-input--simple">
+					<div class="col-xs-12  form-group sln_meta_field sln-input--simple">
 							<label for="_sln_customer_sln_personal_note"><?php _e('Personal note', 'salon-booking-system') ?></label>
 							<textarea type="text" name="sln_customer_meta[_sln_personal_note]" id="_sln_customer_sln_personal_note" class="form-control" rows="5"><?php echo $customer->get('_sln_personal_note'); ?></textarea>
 					</div>
@@ -71,7 +71,7 @@
 				<div class="col-xs-12"><h2 class="sln-box-title"><?php _e('Booking statistics', 'salon-booking-system') ?></h2></div>
 				<div class="col-xs-12">
 				<div class="statistics_block sln-table">
-			<div class="row statistics_row">
+			<div class="row statistics_row hidden-xs">
 				<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
 					<?php _e('Reservations made and value', 'salon-booking-system') ?>
 				</div>
@@ -92,7 +92,10 @@
 				</div>
 			</div>
 			<div class="row statistics_row">
-				<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+				<div class="col-xs-12 visible-xs-block">
+					<span class="statistics_block_desc"><?php _e('Reservations made and value', 'salon-booking-system') ?></span>
+				</div>
+				<div class="col-xs-12 col-md-2 col-lg-2 col-sm-2">
 					<span>
 						<?php
 						$count  = $customer->getCountOfReservations();
@@ -102,7 +105,10 @@
 						?>
 					</span>
 				</div>
-				<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+				<div class="col-xs-12 visible-xs-block">
+					<span class="statistics_block_desc"><?php _e('Reservations per month', 'salon-booking-system') ?></span>
+				</div>
+				<div class="col-xs-12 col-md-2 col-lg-2 col-sm-2">
 					<span>
 						<?php
 						$countPerMonth  = $customer->getCountOfReservations(MONTH_IN_SECONDS);
@@ -112,7 +118,10 @@
 						?>
 					</span>
 				</div>
-				<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+				<div class="col-xs-12 visible-xs-block">
+					<span class="statistics_block_desc"><?php _e('Reservations per week', 'salon-booking-system') ?></span>
+				</div>
+				<div class="col-xs-12 col-md-2 col-lg-2 col-sm-2">
 					<span>
 						<?php
 						$countPerWeek  = $customer->getCountOfReservations(WEEK_IN_SECONDS);
@@ -122,12 +131,18 @@
 						?>
 					</span>
 				</div>
-				<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+				<div class="col-xs-12 visible-xs-block">
+					<span class="statistics_block_desc"><?php _e('Services booked per single reservation', 'salon-booking-system') ?></span>
+				</div>
+				<div class="col-xs-12 col-md-2 col-lg-2 col-sm-2">
 					<span>
 						<?php echo $customer->getAverageCountOfServices(); ?>
 					</span>
 				</div>
-				<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+				<div class="col-xs-12 visible-xs-block">
+					<span class="statistics_block_desc"><?php _e('Favourite week days', 'salon-booking-system') ?></span>
+				</div>
+				<div class="col-xs-12 col-md-2 col-lg-2 col-sm-2">
 					<span>
 						<?php
 						$favDays = $customer->getFavouriteWeekDays();
@@ -146,7 +161,10 @@
 						?>
 					</span>
 				</div>
-				<div class="col-xs-2 col-md-2 col-lg-2 col-sm-2">
+				<div class="col-xs-12 visible-xs-block">
+					<span class="statistics_block_desc"><?php _e('Favourite time', 'salon-booking-system') ?></span>
+				</div>
+				<div class="col-xs-12 col-md-2 col-lg-2 col-sm-2">
 					<span>
 						<?php
 						$favTimes = $customer->getFavouriteTimes();
