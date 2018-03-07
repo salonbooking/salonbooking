@@ -686,6 +686,9 @@ body.salone_page_salon-tools {
 @import 'sln-select2';
 
 // CALENDAR
+.sln-calendar--wrapper {
+    padding: $grid-gutter-width;
+}
 .salon_page_salon-calendar .sln-calendar--wrapper,
 .sln-calendar--wrapper {
     max-width: 95%;
@@ -735,6 +738,7 @@ body.salone_page_salon-tools {
             text-align: center;
             margin-top: rem(10px);
             margin-right: rem(10px);
+            margin-left: rem(10px);
             border: 2px solid $cl_main--light;
             background-color: transparent;
             @include b-radius(50%);
@@ -743,9 +747,9 @@ body.salone_page_salon-tools {
     }
     .cal-day-today span[data-cal-date] {
         @include bp(tablet) {
-            width: rem(64px);
-            height: rem(64px);
-            line-height: rem(60px);
+            width: rem(74px);
+            height: rem(74px);
+            line-height: rem(70px);
         }
     }
     .cal-year-box span[data-cal-date] {
@@ -813,7 +817,7 @@ body.salone_page_salon-tools {
     }
     .sln-calendar-viewnav {
         margin: 0 rem(-20px) rem(20px) rem(-20px);
-        .sln-btn {
+        .sln-btn:not(.sln-btn--large) {
             min-width: 90px;
         }
     }
@@ -1117,3 +1121,28 @@ $input-fsize: 16px;
 @media only screen and (min-width: 992px) {
   #sln-booking-editor-modal {margin-top: 15px;}
 }
+#sln-salon--admin, .sln-calendar--wrapper {
+    #cal-day-box .cal-day-hour-part {
+        height: $grid-gutter-width*4;
+        .span1 {line-height: $grid-gutter-width*4;}
+    }
+    #cal-day-box .day-highlight {
+        height: $grid-gutter-width*4 !important;
+        line-height: $grid-gutter-width*4;
+    }
+    .cal-row-head {
+        padding: $grid-gutter-width/3*2 0 $grid-gutter-width*1.2 0;
+    }
+    .cal-day-hour-part [data-action=add-event-by-date] {
+        width: $grid-gutter-width*6.4;
+        min-width: 5% !important;
+        padding: 0 .3rem;
+        height: $grid-gutter-width*4;
+        margin-top: -1px;
+        margin-right: $grid-gutter-width*4.6 * -1;
+        font-size: 1em;
+        line-height: 1em;
+        font-weight: bold;
+    }
+}
+

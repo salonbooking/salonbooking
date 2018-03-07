@@ -116,7 +116,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
     #poststuff #sln_attendant-details > h2, #postexcerpt h2, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle, .select2-container.select2-container--sln .select2-selection--single, .select2-container.select2-container--sln .select2-selection--multiple {
       font-size: 1rem; } }
 
-#sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin #titlewrap-- label, #sln-salon--admin #postexcerpt .inside label, #postexcerpt #sln-salon--admin .inside label, .sln-calendar--wrapper .sln-input--simple label, .sln-calendar--wrapper .sln-select label, .sln-calendar--wrapper #titlewrap-- label, .sln-calendar--wrapper #postexcerpt .inside label, #postexcerpt .sln-calendar--wrapper .inside label, #sln-salon--admin .sln-fake-label, .sln-calendar--wrapper .sln-fake-label, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
+#sln-salon--admin .sln-input--simple label, #sln-salon--admin .sln-select label, #sln-salon--admin #titlewrap-- label, #sln-salon--admin #postexcerpt .inside label, #postexcerpt #sln-salon--admin .inside label, .sln-calendar--wrapper .sln-input--simple label, .sln-calendar--wrapper .sln-select label, .sln-calendar--wrapper #titlewrap-- label, .sln-calendar--wrapper #postexcerpt .inside label, #postexcerpt .sln-calendar--wrapper .inside label, #sln-salon--admin .sln-fake-label, .sln-calendar--wrapper .sln-fake-label, .sln-btn--large, .sln-btn--large input, .sln-btn--large button, .sln-box-maininfo p, .sln-box-title span, #poststuff #sln_shop-details > h2 span,
 #poststuff #sln_attendant-details > h2 span, #postexcerpt h2 span, #poststuff #sln_service-details > h2.hndle.ui-sortable-handle span, .sln-box-info .sln-box-info-content,
 p.sln-box-info .sln-box-info-content, .sln-box-info .sln-box-info-content h5,
 p.sln-box-info .sln-box-info-content h5, #sln-salon--admin .sln-message, .sln-calendar--wrapper .sln-message, #sln-salon--admin .statistics_block, .sln-calendar--wrapper .statistics_block, .select2-container.select2-container--sln .select2-dropdown, .select2-container.select2-container--sln .select2-search--dropdown .select2-search__field, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-view #cal-slide-content .sln-calendar-event-callto,
@@ -2132,6 +2132,7 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
 .sln-btn--big, #sln-salon--admin p.submit, .sln-calendar--wrapper p.submit, .sln-btn--big input, #sln-salon--admin p.submit input, .sln-calendar--wrapper p.submit input, .sln-btn--big button, #sln-salon--admin p.submit button, .sln-calendar--wrapper p.submit button {
   display: inline-block;
   padding: 0.41667rem 1rem;
+  height: 3.33333rem;
   min-width: 13.33333rem;
   line-height: 2.33333rem; }
   @media only screen and (max-width: 767px) {
@@ -2142,9 +2143,26 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sl
       padding: 0 0.83333rem;
       height: 2.33333rem;
       min-width: 10rem;
-      font-size: 0.75rem; } }
+      font-size: 0.75rem;
+      height: 2.33333rem; } }
   .sln-btn--big.sln-btn--block, #sln-salon--admin p.sln-btn--block.submit, .sln-calendar--wrapper p.sln-btn--block.submit, .sln-btn--big input.sln-btn--block, #sln-salon--admin p.submit input.sln-btn--block, .sln-calendar--wrapper p.submit input.sln-btn--block, .sln-btn--big button.sln-btn--block, #sln-salon--admin p.submit button.sln-btn--block, .sln-calendar--wrapper p.submit button.sln-btn--block {
     display: block; }
+
+.sln-btn--large, .sln-btn--large input, .sln-btn--large button {
+  display: inline-block;
+  min-width: 120px;
+  height: 2.75rem;
+  font-size: 0.83333rem;
+  line-height: 2.75rem;
+  padding: 0 0.625rem; }
+  .sln-btn--large.sln-btn--block, .sln-btn--large input.sln-btn--block, .sln-btn--large button.sln-btn--block {
+    display: block; }
+  @media only screen and (min-width: 992px) {
+    .sln-btn--large, .sln-btn--large input, .sln-btn--large button {
+      min-width: 90px;
+      height: 1.83333rem;
+      line-height: 1.83333rem;
+      font-size: 0.66667rem; } }
 
 .sln-btn--medium, .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab,
 h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, #sln-salon--admin .col-sm-12.sln-admin-nav a,
@@ -4310,6 +4328,20 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-tab-nav li a,
       padding: 0 0.5rem;
       font-size: 0.75rem;
       line-height: 1.66667rem; }
+  .sln-btn--icon.sln-btn--large, #sln-salon--admin p.sln-btn--large.submit, .sln-calendar--wrapper p.sln-btn--large.submit, .sln-btn--large.sln-paneltrigger.sln-btn, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--large.sln-paneltrigger.nav-tab, #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-btn--large.sln-paneltrigger,
+  #sln-salon--admin .col-md-12.sln-admin-nav a.sln-btn--large.sln-paneltrigger,
+  .sln-admin-nav a.sln-btn--large.sln-paneltrigger, .sln-tab-nav li a.sln-btn--large.sln-paneltrigger, #sln_shop-details .handlediv.button-link .sln-btn--large.toggle-indicator,
+  #sln_attendant-details .handlediv.button-link .sln-btn--large.toggle-indicator,
+  #postexcerpt .handlediv.button-link .sln-btn--large.toggle-indicator, #sln_service-details .handlediv.button-link .sln-btn--large.toggle-indicator {
+    padding-right: 6.41667rem; }
+    .sln-btn--icon.sln-btn--large:after, #sln-salon--admin p.sln-btn--large.submit:after, .sln-calendar--wrapper p.sln-btn--large.submit:after, .sln-btn--large.sln-paneltrigger.sln-btn:after, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--large.sln-paneltrigger.nav-tab:after, #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-btn--large.sln-paneltrigger:after,
+    #sln-salon--admin .col-md-12.sln-admin-nav a.sln-btn--large.sln-paneltrigger:after,
+    .sln-admin-nav a.sln-btn--large.sln-paneltrigger:after, .sln-tab-nav li a.sln-btn--large.sln-paneltrigger:after, #sln_shop-details .handlediv.button-link .sln-btn--large.toggle-indicator:after,
+    #sln_attendant-details .handlediv.button-link .sln-btn--large.toggle-indicator:after,
+    #postexcerpt .handlediv.button-link .sln-btn--large.toggle-indicator:after, #sln_service-details .handlediv.button-link .sln-btn--large.toggle-indicator:after {
+      padding: 0 0.5rem;
+      font-size: 0.75rem;
+      line-height: 2.75rem; }
   .sln-btn--icon.sln-btn--icon--left button, #sln-salon--admin p.sln-btn--icon--left.submit button, .sln-calendar--wrapper p.sln-btn--icon--left.submit button, .sln-btn--icon--left.sln-paneltrigger.sln-btn button, .sln-nav-tab-wrapper.nav-tab-wrapper .sln-btn--icon--left.sln-paneltrigger.nav-tab button, #sln-salon--admin .col-sm-12.sln-admin-nav a.sln-btn--icon--left.sln-paneltrigger button,
   #sln-salon--admin .col-md-12.sln-admin-nav a.sln-btn--icon--left.sln-paneltrigger button,
   .sln-admin-nav a.sln-btn--icon--left.sln-paneltrigger button, .sln-tab-nav li a.sln-btn--icon--left.sln-paneltrigger button, #sln_shop-details .handlediv.button-link .sln-btn--icon--left.toggle-indicator button,
@@ -4608,9 +4640,23 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-tab-nav li a,
   content: "\f053";
   line-height: 1.91667rem !important; }
 
+.sln-icon--arrow--left.sln-btn--large:after {
+  line-height: 2.75rem !important; }
+
+@media only screen and (min-width: 992px) {
+  .sln-icon--arrow--left.sln-btn--large:after {
+    line-height: 1.91667rem !important; } }
+
 .sln-icon--arrow--right:after {
   content: "\f054";
   line-height: 1.91667rem !important; }
+
+.sln-icon--arrow--right.sln-btn--large:after {
+  line-height: 2.75rem !important; }
+
+@media only screen and (min-width: 992px) {
+  .sln-icon--arrow--right.sln-btn--large:after {
+    line-height: 1.91667rem !important; } }
 
 .sln-btn--disabled {
   pointer-events: none;
@@ -5929,30 +5975,30 @@ body.salone_page_salon-tools #wpwrap {
     outline: none; }
 
 /* ADMIN */
-#sln-salon--admin {
+#sln-salon--admin, .sln-calendar--wrapper {
   /* ADMIN // END */ }
-  #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single {
+  #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single, .sln-calendar--wrapper .select2-container.select2-container--sln .select2-selection--single {
     height: 3.33333rem;
     line-height: 3.33333rem; }
-  #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
+  #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered, .sln-calendar--wrapper .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
     line-height: 3.33333rem; }
-  #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
+  #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered, .sln-calendar--wrapper .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
     padding-left: 1rem;
     padding-right: 1rem; }
-  #sln-salon--admin .select2-container.select2-container--sln .select2-selection--multiple {
+  #sln-salon--admin .select2-container.select2-container--sln .select2-selection--multiple, .sln-calendar--wrapper .select2-container.select2-container--sln .select2-selection--multiple {
     min-height: 3.33333rem; }
   @media only screen and (min-width: 992px) {
-    #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single {
+    #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single, .sln-calendar--wrapper .select2-container.select2-container--sln .select2-selection--single {
       height: 2.5rem;
       line-height: 2.5rem; }
-    #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
+    #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered, .sln-calendar--wrapper .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
       line-height: 2.5rem; }
-    #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
+    #sln-salon--admin .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered, .sln-calendar--wrapper .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
       padding-left: 1em;
       padding-right: 1em; }
-    #sln-salon--admin .select2-container.select2-container--sln .select2-selection--multiple {
+    #sln-salon--admin .select2-container.select2-container--sln .select2-selection--multiple, .sln-calendar--wrapper .select2-container.select2-container--sln .select2-selection--multiple {
       min-height: 0.83333rem; }
-      #sln-salon--admin .select2-container.select2-container--sln .select2-selection--multiple .select2-selection__rendered {
+      #sln-salon--admin .select2-container.select2-container--sln .select2-selection--multiple .select2-selection__rendered, .sln-calendar--wrapper .select2-container.select2-container--sln .select2-selection--multiple .select2-selection__rendered {
         padding: 0.375rem 0.41667rem 0.16667rem 0.41667rem; } }
 
 .select2-container--default .select2-results > .select2-results__options {
@@ -5961,6 +6007,9 @@ body.salone_page_salon-tools #wpwrap {
 
 .wp-admin.salone_page_salon-settings .select2-container.select2-container--sln .select2-selection--single .select2-selection__rendered {
   padding-right: 2em; }
+
+.sln-calendar--wrapper {
+  padding: 15px; }
 
 .salon_page_salon-calendar .sln-calendar--wrapper,
 .sln-calendar--wrapper {
@@ -6162,6 +6211,7 @@ body.salone_page_salon-tools #wpwrap {
         text-align: center;
         margin-top: 0.41667rem;
         margin-right: 0.41667rem;
+        margin-left: 0.41667rem;
         border: 2px solid #c7dff3;
         background-color: transparent;
         border-radius: 50%;
@@ -6176,9 +6226,9 @@ body.salone_page_salon-tools #wpwrap {
   @media only screen and (min-width: 768px) {
     .salon_page_salon-calendar .sln-calendar--wrapper .cal-day-today span[data-cal-date],
     .sln-calendar--wrapper .cal-day-today span[data-cal-date] {
-      width: 2.66667rem;
-      height: 2.66667rem;
-      line-height: 2.5rem; } }
+      width: 3.08333rem;
+      height: 3.08333rem;
+      line-height: 2.91667rem; } }
   @media only screen and (min-width: 768px) {
     .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box span[data-cal-date],
     .sln-calendar--wrapper .cal-year-box span[data-cal-date] {
@@ -6253,44 +6303,44 @@ body.salone_page_salon-tools #wpwrap {
   .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav,
   .sln-calendar--wrapper .sln-calendar-viewnav {
     margin: 0 -0.83333rem 0.83333rem -0.83333rem; }
-    .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .sln-btn, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .nav-tab, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin .col-sm-12.sln-admin-nav a, #sln-salon--admin .col-sm-12.sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav a, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav
-    #sln-salon--admin .col-md-12.sln-admin-nav a,
-    #sln-salon--admin .col-md-12.sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav a, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav
-    .sln-admin-nav a,
-    .sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav a, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .sln-tab-nav li a, .sln-tab-nav li .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav a, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin p.submit, #sln-salon--admin .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav p.submit, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav p.submit, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln_shop-details .handlediv.button-link .toggle-indicator, #sln_shop-details .handlediv.button-link .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav
-    #sln_attendant-details .handlediv.button-link .toggle-indicator,
-    #sln_attendant-details .handlediv.button-link .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav
-    #postexcerpt .handlediv.button-link .toggle-indicator,
-    #postexcerpt .handlediv.button-link .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator, .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln_service-details .handlediv.button-link .toggle-indicator, #sln_service-details .handlediv.button-link .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator,
-    .sln-calendar--wrapper .sln-calendar-viewnav .sln-btn,
-    .sln-calendar--wrapper .sln-calendar-viewnav .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab, .sln-nav-tab-wrapper.nav-tab-wrapper
-    .sln-calendar--wrapper .sln-calendar-viewnav .nav-tab,
-    .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin .col-sm-12.sln-admin-nav a, #sln-salon--admin .col-sm-12.sln-admin-nav
-    .sln-calendar--wrapper .sln-calendar-viewnav a,
+    .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .sln-btn:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab:not(.sln-btn--large), .sln-nav-tab-wrapper.nav-tab-wrapper .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .nav-tab:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin .col-sm-12.sln-admin-nav a:not(.sln-btn--large), #sln-salon--admin .col-sm-12.sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav a:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav
+    #sln-salon--admin .col-md-12.sln-admin-nav a:not(.sln-btn--large),
+    #sln-salon--admin .col-md-12.sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav a:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav
+    .sln-admin-nav a:not(.sln-btn--large),
+    .sln-admin-nav .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav a:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .sln-tab-nav li a:not(.sln-btn--large), .sln-tab-nav li .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav a:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin p.submit:not(.sln-btn--large), #sln-salon--admin .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav p.submit:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav p.submit:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln_shop-details .handlediv.button-link .toggle-indicator:not(.sln-btn--large), #sln_shop-details .handlediv.button-link .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav
+    #sln_attendant-details .handlediv.button-link .toggle-indicator:not(.sln-btn--large),
+    #sln_attendant-details .handlediv.button-link .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav
+    #postexcerpt .handlediv.button-link .toggle-indicator:not(.sln-btn--large),
+    #postexcerpt .handlediv.button-link .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator:not(.sln-btn--large), .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav #sln_service-details .handlediv.button-link .toggle-indicator:not(.sln-btn--large), #sln_service-details .handlediv.button-link .salon_page_salon-calendar .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator:not(.sln-btn--large),
+    .sln-calendar--wrapper .sln-calendar-viewnav .sln-btn:not(.sln-btn--large),
+    .sln-calendar--wrapper .sln-calendar-viewnav .sln-nav-tab-wrapper.nav-tab-wrapper .nav-tab:not(.sln-btn--large), .sln-nav-tab-wrapper.nav-tab-wrapper
+    .sln-calendar--wrapper .sln-calendar-viewnav .nav-tab:not(.sln-btn--large),
+    .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin .col-sm-12.sln-admin-nav a:not(.sln-btn--large), #sln-salon--admin .col-sm-12.sln-admin-nav
+    .sln-calendar--wrapper .sln-calendar-viewnav a:not(.sln-btn--large),
     .sln-calendar--wrapper .sln-calendar-viewnav
-    #sln-salon--admin .col-md-12.sln-admin-nav a,
+    #sln-salon--admin .col-md-12.sln-admin-nav a:not(.sln-btn--large),
     #sln-salon--admin .col-md-12.sln-admin-nav
-    .sln-calendar--wrapper .sln-calendar-viewnav a,
+    .sln-calendar--wrapper .sln-calendar-viewnav a:not(.sln-btn--large),
     .sln-calendar--wrapper .sln-calendar-viewnav
-    .sln-admin-nav a,
+    .sln-admin-nav a:not(.sln-btn--large),
     .sln-admin-nav
-    .sln-calendar--wrapper .sln-calendar-viewnav a,
-    .sln-calendar--wrapper .sln-calendar-viewnav .sln-tab-nav li a, .sln-tab-nav li
-    .sln-calendar--wrapper .sln-calendar-viewnav a,
-    .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin p.submit, #sln-salon--admin
-    .sln-calendar--wrapper .sln-calendar-viewnav p.submit, .sln-calendar--wrapper .sln-calendar-viewnav p.submit,
-    .sln-calendar--wrapper .sln-calendar-viewnav #sln_shop-details .handlediv.button-link .toggle-indicator, #sln_shop-details .handlediv.button-link
-    .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator,
+    .sln-calendar--wrapper .sln-calendar-viewnav a:not(.sln-btn--large),
+    .sln-calendar--wrapper .sln-calendar-viewnav .sln-tab-nav li a:not(.sln-btn--large), .sln-tab-nav li
+    .sln-calendar--wrapper .sln-calendar-viewnav a:not(.sln-btn--large),
+    .sln-calendar--wrapper .sln-calendar-viewnav #sln-salon--admin p.submit:not(.sln-btn--large), #sln-salon--admin
+    .sln-calendar--wrapper .sln-calendar-viewnav p.submit:not(.sln-btn--large), .sln-calendar--wrapper .sln-calendar-viewnav p.submit:not(.sln-btn--large),
+    .sln-calendar--wrapper .sln-calendar-viewnav #sln_shop-details .handlediv.button-link .toggle-indicator:not(.sln-btn--large), #sln_shop-details .handlediv.button-link
+    .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator:not(.sln-btn--large),
     .sln-calendar--wrapper .sln-calendar-viewnav
-    #sln_attendant-details .handlediv.button-link .toggle-indicator,
+    #sln_attendant-details .handlediv.button-link .toggle-indicator:not(.sln-btn--large),
     #sln_attendant-details .handlediv.button-link
-    .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator,
+    .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator:not(.sln-btn--large),
     .sln-calendar--wrapper .sln-calendar-viewnav
-    #postexcerpt .handlediv.button-link .toggle-indicator,
+    #postexcerpt .handlediv.button-link .toggle-indicator:not(.sln-btn--large),
     #postexcerpt .handlediv.button-link
-    .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator,
-    .sln-calendar--wrapper .sln-calendar-viewnav #sln_service-details .handlediv.button-link .toggle-indicator, #sln_service-details .handlediv.button-link
-    .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator {
+    .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator:not(.sln-btn--large),
+    .sln-calendar--wrapper .sln-calendar-viewnav #sln_service-details .handlediv.button-link .toggle-indicator:not(.sln-btn--large), #sln_service-details .handlediv.button-link
+    .sln-calendar--wrapper .sln-calendar-viewnav .toggle-indicator:not(.sln-btn--large) {
       min-width: 90px; }
   .salon_page_salon-calendar .sln-calendar--wrapper .sln-box-title.current-view--title, .salon_page_salon-calendar .sln-calendar--wrapper #poststuff #sln_shop-details > h2.current-view--title, #poststuff .salon_page_salon-calendar .sln-calendar--wrapper #sln_shop-details > h2.current-view--title, .salon_page_salon-calendar .sln-calendar--wrapper
   #poststuff #sln_attendant-details > h2.current-view--title,
@@ -6643,3 +6693,26 @@ body.salone_page_salon-tools #wpwrap {
 @media only screen and (min-width: 992px) {
   #sln-booking-editor-modal {
     margin-top: 15px; } }
+
+#sln-salon--admin #cal-day-box .cal-day-hour-part, .sln-calendar--wrapper #cal-day-box .cal-day-hour-part {
+  height: 60px; }
+  #sln-salon--admin #cal-day-box .cal-day-hour-part .span1, .sln-calendar--wrapper #cal-day-box .cal-day-hour-part .span1 {
+    line-height: 60px; }
+
+#sln-salon--admin #cal-day-box .day-highlight, .sln-calendar--wrapper #cal-day-box .day-highlight {
+  height: 60px !important;
+  line-height: 60px; }
+
+#sln-salon--admin .cal-row-head, .sln-calendar--wrapper .cal-row-head {
+  padding: 10px 0 18px 0; }
+
+#sln-salon--admin .cal-day-hour-part [data-action=add-event-by-date], .sln-calendar--wrapper .cal-day-hour-part [data-action=add-event-by-date] {
+  width: 96px;
+  min-width: 5% !important;
+  padding: 0 .3rem;
+  height: 60px;
+  margin-top: -1px;
+  margin-right: -69px;
+  font-size: 1em;
+  line-height: 1em;
+  font-weight: bold; }
