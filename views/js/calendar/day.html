@@ -10,8 +10,8 @@
 			<% }); %>
 			</div>
 		<% }else {%>
-			<div class="span1 col-xs-1 cal-cell"><%= cal.locale.time %></div>
-			<div class="span11 col-xs-11 cal-cell"><%= cal.locale.events %></div>
+			<div class="span1 col-xs-2 col-sm-1 cal-cell"><%= cal.locale.time %></div>
+			<div class="span11 col-xs-10 col-sm-11 cal-cell"><%= cal.locale.events %></div>
 		<% }; %>
 	</div>
 	<% if(all_day.length) {%>
@@ -43,29 +43,31 @@
 			</div>
 		</div>
 	<% }; %>
-	<div id="cal-day-panel" class="clearfix">
-		<% if(borders) {%>
-			<% for(var index=0; index < borders; index++){ %>
-				<div class="day-event-panel-border" style="margin-left: <%= 7.6 * index %>%;"></div>
+	<div class="cal-day-panel__wrapper clearfix">
+		<div id="cal-day-panel" class="clearfix">
+			<% if(borders) {%>
+				<% for(var index=0; index < borders; index++){ %>
+					<div class="day-event-panel-border" style="margin-left: <%= 7.6 * index %>%;"></div>
+				<% }; %>
 			<% }; %>
-		<% }; %>
-		<% _.each(by_hour, function(event){ %>
-			<div class="day-event day-highlight dh-<%= event.class %>" style="margin-left: <%= event.left * 7.6 %>%; top: <%= (event.top * 30) %>px; height: <%= (event.lines * 30) %>px" data-toggle="tooltip" data-html="true" title="<%= event.title %>">
-				<span data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>"
-                      class="event-item"><%= event.customer %></span>
-			</div>
-		<% }); %>
-
-		<div id="cal-day-panel-hour">
-			<% for(i = 0; i < lines; i++){ %>
-				<div class="row-fluid cal-day-hour-part">
-					<div class="span1 col-xs-1"><b><%= cal._time(i) %></b></div>
-					<div class="span11 col-xs-11"></div>
-					<button type="button" class="sln-btn sln-btn--main sln-btn--medium pull-right"
-							data-action="add-event-by-date" data-event-date="<%= start.getFullYear() + '-' + start.getMonthFormatted() + '-' + start.getDateFormatted() %>"
-							data-event-time="<%= cal._time(i) %>"><%= cal.locale.add_event %></button>
+			<% _.each(by_hour, function(event){ %>
+				<div class="day-event day-highlight dh-<%= event.class %>" style="margin-left: <%= event.left * 7.6 %>%; top: <%= (event.top * 30) %>px; height: <%= (event.lines * 30) %>px" data-toggle="tooltip" data-html="true" title="<%= event.title %>">
+					<span data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>"
+	                      class="event-item"><%= event.customer %></span>
 				</div>
-			<% }; %>
+			<% }); %>
+
+			<div id="cal-day-panel-hour">
+				<% for(i = 0; i < lines; i++){ %>
+					<div class="row-fluid cal-day-hour-part">
+						<div class="span1 col-xs-1"><b><%= cal._time(i) %></b></div>
+						<div class="span11 col-xs-11"></div>
+						<button type="button" class="sln-btn sln-btn--main sln-btn--medium pull-right"
+								data-action="add-event-by-date" data-event-date="<%= start.getFullYear() + '-' + start.getMonthFormatted() + '-' + start.getDateFormatted() %>"
+								data-event-time="<%= cal._time(i) %>"><%= cal.locale.add_event %></button>
+					</div>
+				<% }; %>
+			</div>
 		</div>
 	</div>
 	<% if(after_time.length) {%>

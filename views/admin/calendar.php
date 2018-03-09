@@ -167,7 +167,7 @@ jQuery(function($){
 </div>
 
 <div class="row sln-calendar-view sln-box">
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-lg-6">
         <div class="row cal-day-filter">
             <div class="col-md-6 sln-select sln-select2-selection__search-primary form-group">
                 <select id="sln-calendar-user-field"
@@ -194,12 +194,9 @@ jQuery(function($){
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-md-6 form-inline">
+    <div class="col-xs-12 col-lg-6 form-inline">
         <div class="row">
-            <div class="col-md-4">
-                <div class="cal-day-filter cal-day-pagination"></div>
-            </div>
-            <div class="col-md-8">
+            <div class="col-sm-8 col-sm-push-4">
                 <div class="sln-calendar-viewnav btn-group">
                     <div class="sln-btn sln-btn--light sln-btn--large  sln-btn--icon sln-btn--icon--left sln-icon--arrow--left" data-calendar-view="day">
                         <button class="f-row" data-calendar-nav="prev"><?php _e('Previous', 'salon-booking-system') ?></button>
@@ -212,11 +209,15 @@ jQuery(function($){
                     </div>
                 </div>
             </div>
+            <div class="col-sm-4 col-sm-pull-8">
+                <div class="cal-day-filter cal-day-pagination"></div>
+            </div>
         </div>
     </div>
 
         <div class="clearfix"></div>
         <div id="calendar" data-timestart="<?php echo $timestart ?>" data-timeend="<?php echo $timeend ?>" data-timesplit="<?php echo $timesplit ?>"></div>
+        <div class="cal-day-filter cal-day-filter--below cal-day-pagination"></div>
     <div class="clearfix"></div>
 
 <!-- row sln-calendar-wrapper // END -->

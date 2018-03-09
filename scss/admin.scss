@@ -817,8 +817,21 @@ body.salone_page_salon-tools {
     }
     .sln-calendar-viewnav {
         margin: 0 rem(-20px) rem(20px) rem(-20px);
+        @media only screen and (min-width: 1024px) and (orientation: landscape) {
+            margin-right: 0;
+        }
         .sln-btn:not(.sln-btn--large) {
             min-width: 90px;
+        }
+        @media only screen and (max-width: 767px) {
+            .sln-btn {
+                width: 100%;
+                text-align: center;
+                &.sln-btn--icon.sln-btn--icon--left button,
+                &.sln-btn--icon button {
+                    text-align: center;
+                }
+            }
         }
     }
     .sln-box-title.current-view--title {
@@ -833,6 +846,22 @@ body.salone_page_salon-tools {
         margin-top: rem(20px);
     }
     @import 'admin_components/admin_calendar';
+    .cal-day-pagination {
+        @media only screen and (max-width: 900px) {
+            margin: 0 rem(-20px) rem(20px) rem(-20px);
+        }
+    }
+    .cal-day-filter {
+        @media only screen and (max-width: 900px) {
+            .col-md-6 {
+                padding-right: 0;
+                padding-left: 0;
+            }
+        }
+        &.cal-day-filter--below {
+            margin: rem(20px) 0 0 0;
+        }
+    }
 }
 .sln-calendar--wrapper.sln-calendar--wrapper--loading,
 .sln-booking-editor--wrapper.sln-booking-editor--wrapper--loading {
@@ -1143,6 +1172,43 @@ $input-fsize: 16px;
         font-size: 1em;
         line-height: 1em;
         font-weight: bold;
+    }
+    // TABLE HORIZONTAL SCROLL ON MOBILE
+    @media only screen and (max-width: 767px) {
+        .cal-day-panel__wrapper{
+            overflow-y: auto;
+            padding-bottom: 30px;
+            #cal-day-panel {
+                min-width: 620px;
+            }
+        }
+        .cal-day-panel__wrapper, .cal-day-panel__wrapper #cal-day-panel {
+            transform:rotateX(180deg);
+            -ms-transform:rotateX(180deg);
+            -webkit-transform:rotateX(180deg);
+        }
+        ::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        ::-webkit-scrollbar:vertical {
+            width: 18px;
+        }
+
+        ::-webkit-scrollbar:horizontal {
+            height: 18px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: $cl_main--medium;
+            border-radius: 10px;
+            border: 2px solid $cl_main--light;
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius: 10px;  
+            background-color: $cl_main--light; 
+        }
     }
 }
 
