@@ -904,6 +904,10 @@ body.salone_page_salon-tools {
            margin-bottom: 0.5rem; 
         }
    }
+
+    @include bp(phone) {
+        .sln-btn--large {min-width: 105px;}
+    }
 }
 
 @-webkit-keyframes wait {
@@ -1140,9 +1144,11 @@ $input-fsize: 16px;
   margin-top: 60px;
 }
 .sln-booking-editor--wrapper--sub {
-  -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
-  height: 400px;
+    @media only screen and (max-width: 768px) {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: hidden;
+    }
+    height: 400px;
 }
 @media only screen and (min-width: 768px) {
   .sln-booking-editor--wrapper--sub {height: 600px;}
@@ -1189,10 +1195,6 @@ $input-fsize: 16px;
         }
         ::-webkit-scrollbar {
             -webkit-appearance: none;
-        }
-
-        ::-webkit-scrollbar:vertical {
-            width: 18px;
         }
 
         ::-webkit-scrollbar:horizontal {

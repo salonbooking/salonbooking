@@ -228,9 +228,9 @@ jQuery(function($){
         <div class="modal-content">
             <div class="modal-header">
                 <div class="pull-right">
-                    <button type="button" class="sln-btn sln-btn--ok sln-btn--big" aria-hidden="true" data-action="save-edited-booking"><?php _e('Save', 'salon-booking-system') ?></button>
-                    <button type="button" class="sln-btn sln-btn--problem sln-btn--big" aria-hidden="true" data-action="delete-edited-booking"><?php _e('Delete', 'salon-booking-system') ?></button>
-                    <button type="button" class="sln-btn sln-btn--light sln-btn--big" data-dismiss="modal" aria-hidden="true"><?php _e('Close', 'salon-booking-system') ?></button>
+                    <button type="button" class="sln-btn sln-btn--ok sln-btn--large" aria-hidden="true" data-action="save-edited-booking"><?php _e('Save', 'salon-booking-system') ?></button>
+                    <button type="button" class="sln-btn sln-btn--problem sln-btn--large" aria-hidden="true" data-action="delete-edited-booking"><?php _e('Delete', 'salon-booking-system') ?></button>
+                    <button type="button" class="sln-btn sln-btn--light sln-btn--large" data-dismiss="modal" aria-hidden="true"><?php _e('Close', 'salon-booking-system') ?></button>
                 </div>
                 <div class="clearfix"></div>
             </div>
