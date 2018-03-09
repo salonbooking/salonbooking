@@ -59,16 +59,12 @@ function sln_validateBooking() {
 
     var fields = $('#salon-step-date').attr('data-required_user_fields').split(',');
     $.each(fields, function(k, val) {
-        toValidate.push('#_sln_booking_' + val);
+        if(val !== '') toValidate.push('#_sln_booking_' + val);
     });
 
     $.each(toValidate, function (k, val) {
-        if (val == '#_sln_booking_phone' && !$('[name=_sln_booking_createuser]').is(':checked')) {
-            return;
-        } else if (val == '#_sln_booking_email') {
-            if (!$('[name=_sln_booking_createuser]').is(':checked') && !$(val).val()) {
-                return;
-            } else if (!sln_validateEmail($(val).val())) {
+        if (val == '#_sln_booking_email') {
+            if (!sln_validateEmail($(val).val())) {
                 $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is not a valid email</div>');
                 if (!hasErrors) $(val).focus();
                 hasErrors = true;

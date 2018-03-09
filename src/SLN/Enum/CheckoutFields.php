@@ -30,10 +30,17 @@ class SLN_Enum_CheckoutFields
     }
 
     public static function getRequiredFields(){
-        $checkoutFieldsSettings = (array)(!empty($checkoutFields) ? $checkoutFields : SLN_Plugin::getInstance()->getSettings()->get('checkout_fields'));
-        $ret = array();
-        foreach(array_keys(self::$fields) as $field  ) {
-            if (isset($checkoutFieldsSettings[$field]['require']) && $checkoutFieldsSettings[$field]['require'])   $ret[$field] = $field;
+
+        $checkoutFieldsSettings = SLN_Plugin::getInstance()->getSettings()->get('checkout_fields');
+        $checkoutFieldsSettings = !empty($checkoutFieldsSettings) ? $checkoutFieldsSettings :  false;
+        
+        if($checkoutFieldsSettings){
+            $ret = array(); 
+            foreach(array_keys(self::$fields) as $field  ) {
+                if (self::isRequiredByDefault($field) || (isset($checkoutFieldsSettings[$field]['require']) && $checkoutFieldsSettings[$field]['require']))   $ret[$field] = $field;
+            }
+        }else{
+            $ret = self::$requiredByDefault;
         }
         return $ret;
     }
@@ -49,14 +56,15 @@ class SLN_Enum_CheckoutFields
         return isset(self::$fields[$key]) ? (in_array($key,self::$requiredByDefault) ? self::$fields[$key].' '.__('(not editable)', 'salon-booking-system') : self::$fields[$key]) : '';
     }
 
-    public static function isHidden($key, $checkoutFields = null) {
+    public static function isHidden($key) {
         if (self::isRequiredByDefault($key)) {
             return false;
         }
         else {
-            $checkoutFieldsSettings = (array)(!empty($checkoutFields) ? $checkoutFields : SLN_Plugin::getInstance()->getSettings()->get('checkout_fields'));
+            $checkoutFieldsSettings = SLN_Plugin::getInstance()->getSettings()->get('checkout_fields');
+            $checkoutFieldsSettings = !empty($checkoutFieldsSettings) ? $checkoutFieldsSettings :  false;
 
-            if (isset($checkoutFieldsSettings[$key]['hide']) && $checkoutFieldsSettings[$key]['hide']) {
+            if ($checkoutFieldsSettings && isset($checkoutFieldsSettings[$key]) && isset($checkoutFieldsSettings[$key]['hide']) && $checkoutFieldsSettings[$key]['hide']) {
                 return true;
             }
         }
@@ -64,14 +72,15 @@ class SLN_Enum_CheckoutFields
         return false;
     }
 
-    public static function isRequired($key, $checkoutFields = null) {
+    public static function isRequired($key) {
         if (self::isRequiredByDefault($key)) {
             return true;
         }
         else {
-            $checkoutFieldsSettings = (array)(!empty($checkoutFields) ? $checkoutFields : SLN_Plugin::getInstance()->getSettings()->get('checkout_fields'));
+            $checkoutFieldsSettings = SLN_Plugin::getInstance()->getSettings()->get('checkout_fields');
+            $checkoutFieldsSettings = !empty($checkoutFieldsSettings) ? $checkoutFieldsSettings :  false;
 
-            if (isset($checkoutFieldsSettings[$key]['require']) && $checkoutFieldsSettings[$key]['require']) {
+            if ( $checkoutFieldsSettings && isset($checkoutFieldsSettings[$key]) && isset($checkoutFieldsSettings[$key]['require']) && $checkoutFieldsSettings[$key]['require']) {
                 return true;
             }
         }
