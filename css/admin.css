@@ -6599,3 +6599,52 @@ body.salone_page_salon-tools #wpwrap {
     top: -3px;
     left: 50%;
     margin: -1em 0 0 -3px; }
+
+.cal-day-hour-part.selected{
+  background-color: grey; 
+  user-select: none;
+    -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.cal-day-hour-part.blocked{
+  background-color: red; 
+  user-select: none;
+    -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.cal-day-hour-part.selected:hover button[data-action="add-event-by-date"],.cal-day-hour-part.blocked:hover button[data-action="add-event-by-date"]{
+  display:none !important;
+}
+.cal-day-hour-part.selected:hover{
+  background-color: grey !important;
+}
+.cal-day-hour-part.blocked:hover{
+  background-color: red !important;
+}
+.calendar-holydays-button{
+  position: absolute;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  padding: 1em;
+  color: #fff;
+  font-size: 1.2em;
+  
+  border: none;
+  font-weight: 900;
+}
+.calendar-holydays-button.onlyone{
+  transform: translate(-50%,-0);
+  padding: 2px 1em;
+}
+
+.calendar-holydays-button.create-holydays{
+  background-color: red;
+}
+
+.calendar-holydays-button.remove-holydays{
+  background-color: grey;
+}

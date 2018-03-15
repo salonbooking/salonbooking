@@ -3,13 +3,21 @@ $addAjax = apply_filters('sln.template.calendar.ajaxUrl','');
 $ai = $plugin->getSettings()->getAvailabilityItems();
 list($timestart, $timeend) = $ai->getTimeMinMax();
 $timesplit = $plugin->getSettings()->getInterval();
+$holidays = $plugin->getSettings()->get('holidays_daily')?:array();
 ?>
 <script type="text/javascript">
     var salon;
     var calendar_translations = {
         'Go to daily view': '<?php _e('Go to daily view', 'salon-booking-system') ?>'
     };
-<?php $today = new DateTime()?>
+    var daily_rules = JSON.parse('<?php echo json_encode($holidays_rules); ?>');
+    var holidays_rules_locale = {
+        'block':'<?php _e('Block','salon-booking-system'); ?>',
+        'unblock':'<?php _e('Unblock','salon-booking-system'); ?>',
+        'single':'<?php _e('this row','salon-booking-system'); ?>',
+        'multiple':'<?php _e('these rows','salon-booking-system'); ?>'
+    }
+<?php $today = new DateTime() ?>
 jQuery(function($){
     initSalonCalendar(
         $,
