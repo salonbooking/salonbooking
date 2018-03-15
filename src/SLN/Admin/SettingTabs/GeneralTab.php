@@ -40,6 +40,7 @@ class SLN_Admin_SettingTabs_GeneralTab extends SLN_Admin_SettingTabs_AbstractTab
         'date_format',
         'time_format',
         'week_start',
+        'calendar_view',
         'no_bootstrap',
         'no_bootstrap_js',
         'sms_test_number',

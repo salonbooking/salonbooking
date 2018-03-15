@@ -49,7 +49,7 @@ function calendarGetTimeFormat() {
     return salon.moment_time_format;
 }
 
-function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl) {
+function initSalonCalendar($, ajaxUrl, ajaxDay, templatesUrl,defaultView) {
 var DayCalendarHolydays = {
     "createButton":false,
     "selection":[],
@@ -202,7 +202,7 @@ var DayCalendarHolydays = {
 		time_split:         $('#calendar').data('timesplit'),
 	
         events_source: ajaxUrl,
-        view: 'month',
+        view: defaultView,
         tmpl_path: templatesUrl,
         tmpl_cache: false,
         format12: true,

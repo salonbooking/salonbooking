@@ -372,6 +372,17 @@ THIS BOX MUST BE HIDDEN IF NOT IN USE
                 true
             ) ?>
         </div>
+        <div class="col-xs-6 col-sm-6 col-md-4 form-group sln-select ">
+            <label for="salon_settings_calendar_view"><?php _e('Default Calendar View', 'salon-booking-system') ?></label>
+            <?php $field = "salon_settings[calendar_view]"; ?>
+            <?php echo SLN_Form::fieldSelect(
+                $field,
+                array('month'=>'Month','week'=>'Week','day'=>'Day'),
+                $this->getOpt('calendar_view'),
+                array(),
+                true
+            ) ?>
+        </div>
     </div>
 </div>
 <div class="row">
