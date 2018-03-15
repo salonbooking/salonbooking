@@ -13,7 +13,7 @@
     daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"],
     daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
     months: [
-      "enero",
+      "Enero",
       "Febrero",
       "Marzo",
       "Abril",
