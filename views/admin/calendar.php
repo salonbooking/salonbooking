@@ -3,7 +3,7 @@ $addAjax = apply_filters('sln.template.calendar.ajaxUrl','');
 $ai = $plugin->getSettings()->getAvailabilityItems();
 list($timestart, $timeend) = $ai->getTimeMinMax();
 $timesplit = $plugin->getSettings()->getInterval();
-$holidays = $plugin->getSettings()->get('holidays_daily')?:array();
+$holidays_rules = $plugin->getSettings()->get('holidays_daily')?:array();
 ?>
 <script type="text/javascript">
     var salon;
