@@ -7021,8 +7021,7 @@ body.salone_page_salon-tools #wpwrap {
   font-weight: 900; }
 
 .calendar-holydays-button.onlyone {
-  transform: translate(-50%, 0);
-  padding: 2px 1em; }
+  transform: translate(-50%, 0);  }
 
 .calendar-holydays-button.create-holydays {
   background-color: red; }

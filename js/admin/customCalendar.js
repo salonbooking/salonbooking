@@ -105,7 +105,7 @@ var DayCalendarHolydays = {
     },
     "clearSelection":function(){
         if(DayCalendarHolydays.selection.length){
-            if(DayCalendarHolydays.createButton)DayCalendarHolydays.createButton.remove();
+            if(DayCalendarHolydays.createButton && DayCalendarHolydays.createButton.hasClass('create-holydays'))DayCalendarHolydays.createButton.remove();
             DayCalendarHolydays.selection.forEach(function(e){ e.removeClass('selected') })
             DayCalendarHolydays.blocked = false;
         }
@@ -124,9 +124,9 @@ var DayCalendarHolydays = {
         var firstD = firstB.attr('data-event-date'),
             firstT = firstB.attr('data-event-time'),
             lastD = lastB .attr('data-event-date'),
-            final = lastEl.next().length ? lastEl.next().children('button[data-action="add-event-by-date"]') : lastB;
+            final = lastEl.next().length ? lastEl.next().children('button[data-action="add-event-by-date"]') : lastB,
             lastT =  final.attr('data-event-time');
-        var single = firstD+firstT === lastD+lastT;
+        var single = firstD+firstT === lastD+lastB.attr('data-event-time');
 
         var top = single ? firstEl.position().top : firstEl.position().top+ (((lastEl.position().top + lastEl.height() ) - firstEl.position().top)/2) ;    
         var button = $('<button class=" '+( status ? ' create-holydays ': ' remove-holydays ')+' calendar-holydays-button"></button>');
@@ -153,8 +153,7 @@ var DayCalendarHolydays = {
     "unblockPop": function(e){
         var target = $(this);
         DayCalendarHolydays.callAjax('Remove',function(data){
-            DayCalendarHolydays.rules= data.rules;
-            var selection = target.data().selection;        
+            DayCalendarHolydays.rules= data.rules;       
             var els = target.data().els;        
             Object.keys(els).forEach(function(key){ $(els[key]).removeClass("blocked") })
             target.remove()
@@ -196,11 +195,11 @@ var DayCalendarHolydays = {
         });
         rules.forEach(function(rule){
 
-            var firstEl = $('button[data-event-time="'+rule.from_time+'"]').parent(),
-            lastEl = $('button[data-event-time="'+rule.to_time+'"]').parent(),
-            els = firstEl.add(firstEl.nextUntil(lastEl)).add(lastEl);
+            var firstEl = $('button[data-event-time="'+rule.from_time+'"]').parent(),            
+            lastEl = $('button[data-event-time="'+rule.to_time+'"]').parent(),            
+            els = firstEl.add(firstEl.nextUntil(lastEl));
             els.addClass("blocked")
-            var button = DayCalendarHolydays.createPopUp(0,firstEl,lastEl,els);
+            var button = DayCalendarHolydays.createPopUp(0,firstEl,lastEl.prev(),els);
             button.off('click')
             .click(DayCalendarHolydays.unblockPop);
         })
