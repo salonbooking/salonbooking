@@ -1190,9 +1190,10 @@ if(!String.prototype.formatNum) {
 
 	Calendar.prototype._update = function() {
 		var self = this;
-
-		$('*[data-toggle="tooltip"]').tooltip({container: 'body'});
-
+		var is_touch_device = 'ontouchstart' in document.documentElement;
+		if (!is_touch_device) {
+				$('*[data-toggle="tooltip"]').tooltip({container: 'body'});
+		}
 		$('*[data-cal-date]').click(function() {
 			var view = $(this).data('cal-view');
 			self.options.day = $(this).data('cal-date');

@@ -12,7 +12,6 @@
     @import 'admin_components/service-details';
 }
 */
-
 @import 'settings-mixins';
 @import 'admin_config';
 @import 'typo-admin';
@@ -348,8 +347,8 @@ h2.sln-nav-tab-wrapper.nav-tab-wrapper {
 
     .sln-service-price-time {
         input[type='text'] {
-            height: auto;
-            @include bp(tablet-port) {height: 34px;}
+            min-height: rem(80px);
+            @include bp(desktop) {min-height: rem(60px);}
         }
 
         .col-xs-6:nth-child(4){
@@ -620,17 +619,38 @@ body.salone_page_salon-tools {
     // CUSTOMER STATISTICS START
     .statistics_block {
         text-align: center;
-        background-color: #0088c9;
-        color: white;
+        background-color: $sln-color--main--emphasis;
+        color: $sln-color--white;
+        padding: 0 rem(15px);
+        margin: $grid-gutter-width * -1;
+        margin-top: 0;
+        .statistics_block_desc {
+            display: block;
+            border-top: 1px solid white;
+            margin: $grid-gutter-width $grid-gutter-width/3*-2 0 $grid-gutter-width/3*-2;
+            padding-top: $grid-gutter-width;
+            padding-bottom: $grid-gutter-width/3;
+        }
+        div:nth-child(1) span {
+            margin-top: 0;
+        }
         @extend %font-big;
         .statistics_row:nth-child(1) {
             border-bottom: 0.1rem solid white;
         }
+        .statistics_row:last-child {
+            padding-bottom: $grid-gutter-width;
+        }
         .statistics_row {
-            padding: 10px 0px;
-            span {
+            padding: 0px;
+            span:not(.statistics_block_desc) {
                 font-size: larger;
                 font-weight: bold;
+            }
+        }
+        @include bp(tablet) {
+            .statistics_row {
+                padding: 10px 0px;
             }
         }
     }
@@ -666,6 +686,9 @@ body.salone_page_salon-tools {
 @import 'sln-select2';
 
 // CALENDAR
+.sln-calendar--wrapper {
+    padding: $grid-gutter-width;
+}
 .salon_page_salon-calendar .sln-calendar--wrapper,
 .sln-calendar--wrapper {
     max-width: 95%;
@@ -715,6 +738,7 @@ body.salone_page_salon-tools {
             text-align: center;
             margin-top: rem(10px);
             margin-right: rem(10px);
+            margin-left: rem(10px);
             border: 2px solid $cl_main--light;
             background-color: transparent;
             @include b-radius(50%);
@@ -723,9 +747,9 @@ body.salone_page_salon-tools {
     }
     .cal-day-today span[data-cal-date] {
         @include bp(tablet) {
-            width: rem(64px);
-            height: rem(64px);
-            line-height: rem(60px);
+            width: rem(74px);
+            height: rem(74px);
+            line-height: rem(70px);
         }
     }
     .cal-year-box span[data-cal-date] {
@@ -793,8 +817,21 @@ body.salone_page_salon-tools {
     }
     .sln-calendar-viewnav {
         margin: 0 rem(-20px) rem(20px) rem(-20px);
-        .sln-btn {
+        @media only screen and (min-width: 1024px) and (orientation: landscape) {
+            margin-right: 0;
+        }
+        .sln-btn:not(.sln-btn--large) {
             min-width: 90px;
+        }
+        @media only screen and (max-width: 767px) {
+            .sln-btn {
+                width: 100%;
+                text-align: center;
+                &.sln-btn--icon.sln-btn--icon--left button,
+                &.sln-btn--icon button {
+                    text-align: center;
+                }
+            }
         }
     }
     .sln-box-title.current-view--title {
@@ -809,6 +846,22 @@ body.salone_page_salon-tools {
         margin-top: rem(20px);
     }
     @import 'admin_components/admin_calendar';
+    .cal-day-pagination {
+        @media only screen and (max-width: 900px) {
+            margin: 0 rem(-20px) rem(20px) rem(-20px);
+        }
+    }
+    .cal-day-filter {
+        @media only screen and (max-width: 900px) {
+            .col-md-6 {
+                padding-right: 0;
+                padding-left: 0;
+            }
+        }
+        &.cal-day-filter--below {
+            margin: rem(20px) 0 0 0;
+        }
+    }
 }
 .sln-calendar--wrapper.sln-calendar--wrapper--loading,
 .sln-booking-editor--wrapper.sln-booking-editor--wrapper--loading {
@@ -851,6 +904,10 @@ body.salone_page_salon-tools {
            margin-bottom: 0.5rem; 
         }
    }
+
+    @include bp(phone) {
+        .sln-btn--large {min-width: 105px;}
+    }
 }
 
 @-webkit-keyframes wait {
@@ -880,6 +937,17 @@ body.salone_page_salon-tools {
 }
 // CALENDAR // EN
 // /// SETTINGS END
+
+// TOOLS
+#sln-salon--admin .sln-tools__wrapper {
+    .sln-input--simple textarea {
+        min-height: 40vw;
+        @include bp(desktop) {
+            min-height: 20vw;
+        }
+    }
+}
+// TOOLS // END
 
 
 // /// /// /// /// /// /// /// //
@@ -1076,9 +1144,11 @@ $input-fsize: 16px;
   margin-top: 60px;
 }
 .sln-booking-editor--wrapper--sub {
-  -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
-  height: 400px;
+    @media only screen and (max-width: 768px) {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: hidden;
+    }
+    height: 400px;
 }
 @media only screen and (min-width: 768px) {
   .sln-booking-editor--wrapper--sub {height: 600px;}
@@ -1086,6 +1156,7 @@ $input-fsize: 16px;
 @media only screen and (min-width: 992px) {
   #sln-booking-editor-modal {margin-top: 15px;}
 }
+
 
 .sln_error_tip {
     color: #fff;
@@ -1123,4 +1194,111 @@ $input-fsize: 16px;
         left: 50%;
         margin: -1em 0 0 -3px;
     }
+}
+
+#sln-salon--admin, .sln-calendar--wrapper {
+    #cal-day-box .cal-day-hour-part {
+        height: $grid-gutter-width*4;
+        .span1 {line-height: $grid-gutter-width*4;}
+    }
+    #cal-day-box .day-highlight {
+        height: $grid-gutter-width*4 !important;
+        line-height: $grid-gutter-width*4;
+    }
+    .cal-row-head {
+        padding: $grid-gutter-width/3*2 0 $grid-gutter-width*1.2 0;
+    }
+    .cal-day-hour-part [data-action=add-event-by-date] {
+        width: $grid-gutter-width*6.4;
+        min-width: 5% !important;
+        padding: 0 .3rem;
+        height: $grid-gutter-width*4;
+        margin-top: -1px;
+        margin-right: $grid-gutter-width*4.6 * -1;
+        font-size: 1em;
+        line-height: 1em;
+        font-weight: bold;
+    }
+    // TABLE HORIZONTAL SCROLL ON MOBILE
+    @media only screen and (max-width: 767px) {
+        .cal-day-panel__wrapper{
+            overflow-y: auto;
+            padding-bottom: 30px;
+            #cal-day-panel {
+                min-width: 620px;
+            }
+        }
+        .cal-day-panel__wrapper, .cal-day-panel__wrapper #cal-day-panel {
+            transform:rotateX(180deg);
+            -ms-transform:rotateX(180deg);
+            -webkit-transform:rotateX(180deg);
+        }
+        ::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        ::-webkit-scrollbar:horizontal {
+            height: 18px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: $cl_main--medium;
+            border-radius: 10px;
+            border: 2px solid $cl_main--light;
+        }
+
+        ::-webkit-scrollbar-track {
+            border-radius: 10px;  
+            background-color: $cl_main--light; 
+        }
+    }
+}
+
+.cal-day-hour-part.selected{
+  background-color: grey; 
+  user-select: none;
+    -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.cal-day-hour-part.blocked{
+  background-color: red; 
+  user-select: none;
+    -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.cal-day-hour-part.selected:hover button[data-action="add-event-by-date"],.cal-day-hour-part.blocked:hover button[data-action="add-event-by-date"]{
+  display:none !important;
+}
+.cal-day-hour-part.selected:hover{
+  background-color: grey !important;
+}
+.cal-day-hour-part.blocked:hover{
+  background-color: red !important;
+}
+.calendar-holydays-button{
+  position: absolute;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  padding: 1em;
+  color: #fff;
+  font-size: 1.2em;
+  
+  border: none;
+  font-weight: 900;
+}
+.calendar-holydays-button.onlyone{
+  transform: translate(-50%,-0);
+  padding: 2px 1em;
+}
+
+.calendar-holydays-button.create-holydays{
+  background-color: red;
+}
+
+.calendar-holydays-button.remove-holydays{
+  background-color: grey;
 }

@@ -31,13 +31,36 @@
 .sln-btn--fullwidth {width: 100%;}
 .sln-btn--big, .sln-btn--big input, .sln-btn--big button {
   display: inline-block;
-  padding: 0 rem(20px);
-  height:  rem(56px);
-  min-width: rem(240px);
-  @extend %font-big;
+  padding: rem(10px) rem(24px);
+  height:  rem(80px);
+  min-width: rem(320px);
+  @extend %font-bigger;
   line-height: rem(56px);
   @include bp(phone) {font-size: rem(18px);}
+  @include bp(desktop) {
+    padding: 0 rem(20px);
+    height:  rem(56px);
+    min-width: rem(240px);
+    font-size: rem(18px);
+    height:  rem(56px);
+  }
   &.sln-btn--block {display: block;}
+}
+.sln-btn--large, .sln-btn--large input, .sln-btn--large button {
+  display: inline-block;
+  min-width: 120px;
+  height: rem(66px);
+  @extend %font-big;
+  font-size: rem(20px);
+  line-height: rem(66px);
+  padding: 0 rem(15px);
+  &.sln-btn--block {display: block;}
+  @include bp(desktop) {
+    min-width: 90px;
+    height: rem(44px);
+    line-height: rem(44px);
+    font-size: rem(16px);
+  }
 }
 .sln-btn--medium, .sln-btn--medium input, .sln-btn--medium button {
   display: inline-block;
@@ -250,8 +273,14 @@
     &.sln-btn--big {
       padding-right: rem(64px);
       &:after {
-        padding: 0 rem(12px);
+        padding: rem(12px) rem(24px);
         line-height: rem(54px);
+      }
+      @include bp(desktop) {
+        &:after {
+          padding: 0 rem(12px);
+          line-height: rem(54px);
+        }
       }
     }
     &.sln-btn--medium {
@@ -260,6 +289,14 @@
         padding: 0 rem(12px);
         font-size: rem(18px);
         line-height: rem(40px);
+      }
+    }
+    &.sln-btn--large {
+      padding-right: rem(154px);
+      &:after {
+        padding: 0 rem(12px);
+        font-size: rem(18px);
+        line-height: rem(66px);
       }
     }
     &.sln-btn--icon--left {
@@ -371,11 +408,23 @@
     content: "\f053";
     line-height: rem(46px) !important;
   }
+  &.sln-btn--large {
+      &:after {line-height: rem(66px) !important;}
+  }
+  @include bp(desktop) {
+    &.sln-btn--large:after {line-height: rem(46px) !important;}
+  }
 }
 .sln-icon--arrow--right {
   &:after {
     content: "\f054";
     line-height: rem(46px) !important;
+  }
+  &.sln-btn--large {
+      &:after {line-height: rem(66px) !important;}
+  }
+  @include bp(desktop) {
+    &.sln-btn--large:after {line-height: rem(46px) !important;}
   }
 }
 

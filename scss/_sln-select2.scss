@@ -69,7 +69,7 @@
 	  }
 	}
 	.select2-dropdown {
-		width: 220px !important;
+		//width: 220px !important;
 		background-color: #fff;
 		color: $cl_main;
 	  	border: 2px solid alpha-tones($cl_main--emphasis, .5);
@@ -181,6 +181,45 @@
 	   
 	}
 	/* BIG SELECT // END */
+}
+/* ADMIN */
+#sln-salon--admin, .sln-calendar--wrapper {
+	.select2-container.select2-container--sln {
+		.select2-selection--single {
+			height: rem(80px);
+			line-height: rem(80px);
+		}
+		.select2-selection--single .select2-selection__rendered {
+		    line-height: rem(80px);
+		}
+		.select2-selection--single .select2-selection__rendered {
+		    padding-left: rem(24px);
+		    padding-right: rem(24px);
+		}
+		.select2-selection--multiple {
+			min-height: rem(80px);
+		}
+		@include bp(desktop) {
+			.select2-selection--single {
+				height: rem(60px);
+				line-height: rem(60px);
+			}
+			.select2-selection--single .select2-selection__rendered {
+			    line-height: rem(60px);
+			}
+			.select2-selection--single .select2-selection__rendered {
+			    padding-left: 1em;
+			    padding-right: 1em;
+			}
+			.select2-selection--multiple {
+				min-height: rem(20px);
+				.select2-selection__rendered {
+					padding: rem(9px) rem(10px) rem(4px) rem(10px);
+				}
+			}
+		}
+	}
+/* ADMIN // END */
 }
 .select2-container--default .select2-results>.select2-results__options {
     max-height: 200px;

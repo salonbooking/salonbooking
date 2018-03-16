@@ -1,6 +1,6 @@
 #sln-salon--admin, .sln-calendar--wrapper {
 %sln-input {
-	input, input.form-control, textarea {
+	input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]), input.form-control, textarea {
 		width: 100%;
 		border-radius: 0;
 		-webkit-box-shadow: none;
@@ -9,7 +9,8 @@
 		background-color: $cl_main--light;
 		@extend %font-bigger;
 		@extend %font-cl_main;
-		padding: rem(11px) rem(16px);
+		min-height: rem(80px);
+		padding: rem(11px) rem(24px);
 		@include placeholder-color($cl_main--medium);
 		transition: border-color 100ms, background-color 250ms;
 		&:focus {
@@ -24,10 +25,17 @@
 			-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
   			box-shadow: inset 0 1px 1px alpha-tones($cl_main--emphasis, .06), 0 0 8px alpha-tones($cl_main--emphasis, .1);
 		}
+		@include bp(desktop) {
+			min-height: rem(60px);
+			padding: rem(11px) rem(16px);
+		}
 	}
 	input {
 		//height: rem(50px);
 		//line-height: rem(50px);
+	}
+	textarea, textarea#_sln_booking_note {
+		min-height: rem(250px);
 	}
 }
 %sln-input-label {

@@ -145,16 +145,16 @@ jQuery(function($){
 
 <div class="row">
     <div class="col-md-12 btn-group nav-tab-wrapper sln-nav-tab-wrapper">
-        <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="day">
+        <div class="sln-btn sln-btn--borderonly sln-btn--large" data-calendar-view="day">
         <button class="" data-calendar-view="day"><?php _e('Day', 'salon-booking-system')?></button>
         </div>
-        <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="week">
+        <div class="sln-btn sln-btn--borderonly sln-btn--large" data-calendar-view="week">
         <button class="" data-calendar-view="week"><?php _e('Week', 'salon-booking-system')?></button>
         </div>
-        <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="month">
+        <div class="sln-btn sln-btn--borderonly sln-btn--large" data-calendar-view="month">
         <button class=" active" data-calendar-view="month"><?php _e('Month', 'salon-booking-system')?></button>
         </div>
-        <div class="sln-btn sln-btn--borderonly sln-btn--medium" data-calendar-view="year">
+        <div class="sln-btn sln-btn--borderonly sln-btn--large" data-calendar-view="year">
         <button class="" data-calendar-view="year"><?php _e('Year', 'salon-booking-system')?></button>
         </div>
         <?php do_action('sln.template.calendar.navtabwrapper') ?>
@@ -162,7 +162,7 @@ jQuery(function($){
 </div>
 <div class="row">
     <div class="col-xs-12 col-md-6 sln-box-title current-view--title"></div>
-    <div class="col-xs-12 col-sm-6 col-md-6 form-group sln-switch cal-day-filter">
+    <div class="col-xs-12 form-group sln-switch cal-day-filter">
         <div class="pull-right">
             <span class="sln-fake-label"><?php _e('Assistants view', 'salon-booking-system') ?></span>
             <?php SLN_Form::fieldCheckbox(
@@ -176,7 +176,7 @@ jQuery(function($){
 </div>
 
 <div class="row sln-calendar-view sln-box">
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-lg-6">
         <div class="row cal-day-filter">
             <div class="col-md-6 sln-select sln-select2-selection__search-primary form-group">
                 <select id="sln-calendar-user-field"
@@ -203,29 +203,30 @@ jQuery(function($){
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-md-6 form-inline">
+    <div class="col-xs-12 col-lg-6 form-inline">
         <div class="row">
-            <div class="col-md-4">
-                <div class="cal-day-filter cal-day-pagination"></div>
-            </div>
-            <div class="col-md-8">
+            <div class="col-sm-8 col-sm-push-4">
                 <div class="sln-calendar-viewnav btn-group">
-                    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-btn--icon--left sln-icon--arrow--left" data-calendar-view="day">
+                    <div class="sln-btn sln-btn--light sln-btn--large  sln-btn--icon sln-btn--icon--left sln-icon--arrow--left" data-calendar-view="day">
                         <button class="f-row" data-calendar-nav="prev"><?php _e('Previous', 'salon-booking-system') ?></button>
                     </div>
-                    <div class="sln-btn sln-btn--light sln-btn--medium" data-calendar-view="day">
+                    <div class="sln-btn sln-btn--light sln-btn--large" data-calendar-view="day">
                         <button class="f-row" data-calendar-nav="today"><?php _e('Today', 'salon-booking-system')?></button>
                     </div>
-                    <div class="sln-btn sln-btn--light sln-btn--medium  sln-btn--icon sln-icon--arrow--right" data-calendar-view="day">
+                    <div class="sln-btn sln-btn--light sln-btn--large  sln-btn--icon sln-icon--arrow--right" data-calendar-view="day">
                         <button class="f-row f-row--end" data-calendar-nav="next"><?php _e('Next', 'salon-booking-system') ?></button>
                     </div>
                 </div>
+            </div>
+            <div class="col-sm-4 col-sm-pull-8">
+                <div class="cal-day-filter cal-day-pagination"></div>
             </div>
         </div>
     </div>
 
         <div class="clearfix"></div>
         <div id="calendar" data-timestart="<?php echo $timestart ?>" data-timeend="<?php echo $timeend ?>" data-timesplit="<?php echo $timesplit ?>"></div>
+        <div class="cal-day-filter cal-day-filter--below cal-day-pagination"></div>
     <div class="clearfix"></div>
 
 <!-- row sln-calendar-wrapper // END -->
@@ -236,9 +237,9 @@ jQuery(function($){
         <div class="modal-content">
             <div class="modal-header">
                 <div class="pull-right">
-                    <button type="button" class="sln-btn sln-btn--ok sln-btn--big" aria-hidden="true" data-action="save-edited-booking"><?php _e('Save', 'salon-booking-system') ?></button>
-                    <button type="button" class="sln-btn sln-btn--problem sln-btn--big" aria-hidden="true" data-action="delete-edited-booking"><?php _e('Delete', 'salon-booking-system') ?></button>
-                    <button type="button" class="sln-btn sln-btn--light sln-btn--big" data-dismiss="modal" aria-hidden="true"><?php _e('Close', 'salon-booking-system') ?></button>
+                    <button type="button" class="sln-btn sln-btn--ok sln-btn--large" aria-hidden="true" data-action="save-edited-booking"><?php _e('Save', 'salon-booking-system') ?></button>
+                    <button type="button" class="sln-btn sln-btn--problem sln-btn--large" aria-hidden="true" data-action="delete-edited-booking"><?php _e('Delete', 'salon-booking-system') ?></button>
+                    <button type="button" class="sln-btn sln-btn--light sln-btn--large" data-dismiss="modal" aria-hidden="true"><?php _e('Close', 'salon-booking-system') ?></button>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -265,23 +266,23 @@ jQuery(function($){
                 $weekStart = $plugin->getSettings()->get('week_start');
                 $jsFormat  = SLN_Enum_DateFormat::getJsFormat($f);
                 ?>
-                <div class="form-group col-xs-12 col-md-3 sln_datepicker">
+                <div class="form-group col-xs-12 col-md-4 sln_datepicker sln-input--simple">
                     <label for="<?php echo SLN_Form::makeID("export[from]") ?>"><?php _e('from', 'salon-booking-system') ?></label>
                     <input type="text" class="form-control sln-input" id="<?php echo SLN_Form::makeID("export[from]") ?>" name="export[from]"
                            required="required" data-format="<?php echo $jsFormat?>" data-weekstart="<?php echo $weekStart ?>"
                            data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"
                     />
                 </div>
-                <div class="form-group col-xs-12 col-md-3 sln_datepicker">
+                <div class="form-group col-xs-12 col-md-4 sln_datepicker sln-input--simple">
                     <label for="<?php echo SLN_Form::makeID("export[to]") ?>"><?php _e('to', 'salon-booking-system') ?></label>
                     <input type="text" class="form-control sln-input" id="<?php echo SLN_Form::makeID("export[to]") ?>" name="export[to]"
                            required="required" data-format="<?php echo $jsFormat?>" data-weekstart="<?php echo $weekStart ?>"
                            data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"
                     />
                 </div>
-                <div class="form-group col-xs-12 col-md-3">
+                <div class="form-group col-xs-12">
                     <button type="submit" id="action" name="sln-tools-export" value="export"
-                            class="sln-btn sln-btn--main sln-btn--medium sln-btn--icon sln-icon--file sln-booking-add pull-left">
+                            class="sln-btn sln-btn--main sln-btn--big sln-btn--icon sln-icon--file">
                         <?php _e('Export', 'salon-booking-system') ?></button>
                 </div>
             </div>
