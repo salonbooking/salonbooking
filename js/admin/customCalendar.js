@@ -114,7 +114,8 @@ var DayCalendarHolydays = {
         var firstD = firstB.attr('data-event-date'),
             firstT = firstB.attr('data-event-time'),
             lastD = lastB .attr('data-event-date'),
-            lastT = lastB .attr('data-event-time');
+            final = lastEl.next().length ? lastEl.next().children('button[data-action="add-event-by-date"]') : lastB;
+            lastT =  final.attr('data-event-time');
         var single = firstD+firstT === lastD+lastT;
 
         var top = single ? firstEl.position().top : firstEl.position().top+ (((lastEl.position().top + lastEl.height() ) - firstEl.position().top)/2) ;    

@@ -315,7 +315,9 @@ class SLN_Settings
     public function getHolidayItems()
     {
         if (!isset($this->holidayItems)) {
-            $this->holidayItems = new SLN_Helper_HolidayItems($this->get('holidays'));
+            $holidays =  $this->get('holidays') ?: array();
+            $daily_holidays =  $this->get('holidays_daily') ?: array();
+            $this->holidayItems = new SLN_Helper_HolidayItems(array_merge($holidays,$daily_holidays));
         }
 
         return apply_filters('sln.settings.availability_holiday_items', $this->holidayItems);
