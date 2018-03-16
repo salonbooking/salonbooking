@@ -56,6 +56,7 @@ var DayCalendarHolydays = {
     "blocked":false,    
     "rules":false,
     "mousedown": function(e){        
+        if(!$(e.target).hasClass('cal-day-hour-part'))return;
         DayCalendarHolydays.clearSelection();        
         DayCalendarHolydays.selectEl($(this));        
         $(' .cal-day-hour-part').on('mouseover', DayCalendarHolydays.mouseover);
