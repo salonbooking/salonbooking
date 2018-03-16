@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.9.1
-Stable tag: 3.19.1
+Stable tag: 3.20
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -223,14 +223,7 @@ NOTE: Put your own translation files inside wp-content/languages/plugins
 
 Languages available:
 
-*Russian
-*Turkish
-*French
-*Italian
-*Spanish
-*Danish
-*German
-*Swedish
+https://www.transifex.com/projects/p/salon-booking-system/
 
 If you want to contribuite to plugin translation please visit:
 
@@ -280,6 +273,17 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+16.03.2018
+
+* Now you can add holidays rules from back-end calendar daily view
+* Improved back-end settings UI
+* Fixed bug with Estonian and Catalan language on date picker
+* Fixed problem with long texts on booking form buttons
+* Fixed bug with booking cancellation time
+* Fixed bug on "save" booking from back-end
+
+
 
 30.01.2018
 
