@@ -277,6 +277,7 @@ http://salon.wordpresschef.it
 16.03.2018
 
 * Now you can add holidays rules from back-end calendar daily view
+* Added a new option to setup your favourite back-end calendar view
 * Improved back-end settings UI
 * Fixed bug with Estonian and Catalan language on date picker
 * Fixed problem with long texts on booking form buttons
