@@ -204,7 +204,7 @@ jQuery(function($){
         </div>
     </div>
     <div class="col-xs-12 col-lg-6 form-inline">
-        <div class="row">
+        <div class="row">            
             <div class="col-sm-8 col-sm-push-4">
                 <div class="sln-calendar-viewnav btn-group">
                     <div class="sln-btn sln-btn--light sln-btn--large  sln-btn--icon sln-btn--icon--left sln-icon--arrow--left" data-calendar-view="day">
@@ -226,7 +226,6 @@ jQuery(function($){
 
         <div class="clearfix"></div>
         <div id="calendar" data-timestart="<?php echo $timestart ?>" data-timeend="<?php echo $timeend ?>" data-timesplit="<?php echo $timesplit ?>"></div>
-        <div class="cal-day-filter cal-day-filter--below cal-day-pagination"></div>
     <div class="clearfix"></div>
 
 <!-- row sln-calendar-wrapper // END -->
