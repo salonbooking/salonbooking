@@ -77,87 +77,103 @@ msgstr ""
 msgid "years"
 msgstr ""
 
-#: views/admin/calendar.php:10
+#: views/admin/calendar.php:11
 msgid "Go to daily view"
 msgstr ""
 
-#: views/admin/calendar.php:123, src/SLN/Admin/Calendar.php:22
+#: views/admin/calendar.php:15
+msgid "Block"
+msgstr ""
+
+#: views/admin/calendar.php:16
+msgid "Unblock"
+msgstr ""
+
+#: views/admin/calendar.php:17
+msgid "this row"
+msgstr ""
+
+#: views/admin/calendar.php:18
+msgid "these rows"
+msgstr ""
+
+#: views/admin/calendar.php:132, src/SLN/Admin/Calendar.php:22
 msgid "Calendar"
 msgstr ""
 
-#: views/admin/calendar.php:140
+#: views/admin/calendar.php:149
 msgid "Day"
 msgstr ""
 
-#: views/admin/calendar.php:143
+#: views/admin/calendar.php:152
 msgid "Week"
 msgstr ""
 
-#: views/admin/calendar.php:146
+#: views/admin/calendar.php:155
 msgid "Month"
 msgstr ""
 
-#: views/admin/calendar.php:149
+#: views/admin/calendar.php:158
 msgid "Year"
 msgstr ""
 
-#: views/admin/calendar.php:158
+#: views/admin/calendar.php:167
 msgid "Assistants view"
 msgstr ""
 
-#: views/admin/calendar.php:174, views/metabox/booking.php:118
+#: views/admin/calendar.php:183, views/metabox/booking.php:118
 msgid "no users found"
 msgstr ""
 
-#: views/admin/calendar.php:191
+#: views/admin/calendar.php:200
 msgid "filter by service"
 msgstr ""
 
-#: views/admin/calendar.php:205
+#: views/admin/calendar.php:211
 msgid "Previous"
 msgstr ""
 
-#: views/admin/calendar.php:208, src/SLN/Admin/Reports/AbstractReport.php:457
+#: views/admin/calendar.php:214, src/SLN/Admin/Reports/AbstractReport.php:457
 msgid "Today"
 msgstr ""
 
-#: views/admin/calendar.php:211
+#: views/admin/calendar.php:217
 msgid "Next"
 msgstr ""
 
-#: views/admin/calendar.php:230
+#: views/admin/calendar.php:239
 msgid "Save"
 msgstr ""
 
-#: views/admin/calendar.php:231
+#: views/admin/calendar.php:240
 msgid "Delete"
 msgstr ""
 
-#: views/admin/calendar.php:232
+#: views/admin/calendar.php:241
 msgid "Close"
 msgstr ""
 
-#: views/admin/calendar.php:252
+#: views/admin/calendar.php:261
 msgid "Export reservations into a CSV file"
 msgstr ""
 
-#: views/admin/calendar.php:260, src/SLN/Admin/Tools.php:101
+#: views/admin/calendar.php:269, src/SLN/Admin/Tools.php:101
 msgid "from"
 msgstr ""
 
-#: views/admin/calendar.php:267, src/SLN/Admin/Tools.php:102
+#: views/admin/calendar.php:276, src/SLN/Admin/Tools.php:102
 msgid "to"
 msgstr ""
 
-#: views/admin/calendar.php:276
+#: views/admin/calendar.php:285
 msgid "Export"
 msgstr ""
 
-#: views/admin/calendar.php:285
+#: views/admin/calendar.php:294
 msgid "Bookings status legend"
 msgstr ""
 
-#: views/admin/calendar.php:288
+#: views/admin/calendar.php:297
 msgid "or"
 msgstr ""
 
@@ -272,11 +288,11 @@ msgstr ""
 msgid "Customer details"
 msgstr ""
 
-#: views/admin/_customer.php:36, src/SLN/Enum/CheckoutFields.php:97
+#: views/admin/_customer.php:36, src/SLN/Enum/CheckoutFields.php:106
 msgid "First name"
 msgstr ""
 
-#: views/admin/_customer.php:40, src/SLN/Enum/CheckoutFields.php:98
+#: views/admin/_customer.php:40, src/SLN/Enum/CheckoutFields.php:107
 msgid "Last name"
 msgstr ""
 
@@ -288,7 +304,7 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-#: views/admin/_customer.php:55, views/metabox/booking.php:168, src/SLN/Enum/CheckoutFields.php:101
+#: views/admin/_customer.php:55, views/metabox/booking.php:168, src/SLN/Enum/CheckoutFields.php:110
 msgid "Address"
 msgstr ""
 
@@ -304,35 +320,35 @@ msgstr ""
 msgid "Booking statistics"
 msgstr ""
 
-#: views/admin/_customer.php:76
+#: views/admin/_customer.php:76, views/admin/_customer.php:96
 msgid "Reservations made and value"
 msgstr ""
 
-#: views/admin/_customer.php:79
+#: views/admin/_customer.php:79, views/admin/_customer.php:109
 msgid "Reservations per month"
 msgstr ""
 
-#: views/admin/_customer.php:82
+#: views/admin/_customer.php:82, views/admin/_customer.php:122
 msgid "Reservations per week"
 msgstr ""
 
-#: views/admin/_customer.php:85
+#: views/admin/_customer.php:85, views/admin/_customer.php:135
 msgid "Services booked per single reservation"
 msgstr ""
 
-#: views/admin/_customer.php:88
+#: views/admin/_customer.php:88, views/admin/_customer.php:143
 msgid "Favourite week days"
 msgstr ""
 
-#: views/admin/_customer.php:91
+#: views/admin/_customer.php:91, views/admin/_customer.php:165
 msgid "Favourite time"
 msgstr ""
 
-#: views/admin/_customer.php:142, views/admin/_customer.php:157
+#: views/admin/_customer.php:157, views/admin/_customer.php:175
 msgid "not avalable yet"
 msgstr ""
 
-#: views/admin/_customer.php:173
+#: views/admin/_customer.php:191
 msgid "Booking history"
 msgstr ""
 
@@ -670,23 +686,23 @@ msgstr ""
 msgid "Amount"
 msgstr ""
 
-#: views/metabox/booking.php:232
-msgid "Calculate total"
-msgstr ""
-
-#: views/metabox/booking.php:238
+#: views/metabox/booking.php:237
 msgid "Deposit"
 msgstr ""
 
-#: views/metabox/booking.php:248
+#: views/metabox/booking.php:247
 msgid "n.a."
 msgstr ""
 
-#: views/metabox/booking.php:261
+#: views/metabox/booking.php:254
+msgid "Calculate total"
+msgstr ""
+
+#: views/metabox/booking.php:263
 msgid "Personal message"
 msgstr ""
 
-#: views/metabox/booking.php:272
+#: views/metabox/booking.php:274
 msgid "Administration notes"
 msgstr ""
 
@@ -714,75 +730,75 @@ msgstr ""
 msgid "Unit per hour"
 msgstr ""
 
-#: views/metabox/service.php:24, src/SLN/PostType/Service.php:138
+#: views/metabox/service.php:25, src/SLN/PostType/Service.php:138
 msgid "Secondary"
 msgstr ""
 
-#: views/metabox/service.php:25
+#: views/metabox/service.php:26
 msgid "Select this if you want this service considered as secondary level service"
 msgstr ""
 
-#: views/metabox/service.php:29
+#: views/metabox/service.php:30
 msgid "Exclusive service"
 msgstr ""
 
-#: views/metabox/service.php:30
+#: views/metabox/service.php:31
 msgid "If enabled, when a customer choose this service no other services can be booked during the same reservation"
 msgstr ""
 
-#: views/metabox/service.php:35
+#: views/metabox/service.php:36
 msgid "Display if"
 msgstr ""
 
-#: views/metabox/service.php:39
+#: views/metabox/service.php:40
 msgid "always"
 msgstr ""
 
-#: views/metabox/service.php:40
+#: views/metabox/service.php:41
 msgid "belong to the same category"
 msgstr ""
 
-#: views/metabox/service.php:41
+#: views/metabox/service.php:42
 msgid "is child of selected service"
 msgstr ""
 
-#: views/metabox/service.php:49
+#: views/metabox/service.php:50
 msgid "Select parent services"
 msgstr ""
 
-#: views/metabox/service.php:63
+#: views/metabox/service.php:64
 msgid "select one or more services"
 msgstr ""
 
-#: views/metabox/service.php:72
+#: views/metabox/service.php:74
 msgid "Execution Order"
 msgstr ""
 
-#: views/metabox/service.php:76
+#: views/metabox/service.php:78
 msgid "Use a number to give this service an order of execution compared to the other services."
 msgstr ""
 
-#: views/metabox/service.php:77
+#: views/metabox/service.php:79
 msgid "Consider that this option will affect the availability of your staff members that you have associated with this service."
 msgstr ""
 
-#: views/metabox/service.php:81, views/metabox/service.php:82
+#: views/metabox/service.php:85, views/metabox/service.php:86
 msgid "No assistant required"
 msgstr ""
 
-#: views/metabox/service.php:89
+#: views/metabox/service.php:93
 msgid "Service break"
 msgstr ""
 
-#: views/metabox/service.php:93
+#: views/metabox/service.php:97
 msgid "If you set a break this service duration will be splitted up into two equals parts. That means that the during its break other reservations will be available."
 msgstr ""
 
-#: views/metabox/service.php:117
+#: views/metabox/service.php:121
 msgid "Direct link"
 msgstr ""
 
-#: views/metabox/service.php:119
+#: views/metabox/service.php:123
 msgid "Use this link to move the user directly to the booking page with the service already selected."
 msgstr ""
 
@@ -790,7 +806,7 @@ msgstr ""
 msgid "Services & Attendants"
 msgstr ""
 
-#: views/metabox/_booking_services.php:99, views/metabox/_booking_services.php:199, views/settings/_availability_row.php:73, views/settings/_holiday_row.php:255
+#: views/metabox/_booking_services.php:99, views/metabox/_booking_services.php:201, views/settings/_availability_row.php:73, views/settings/_holiday_row.php:255
 msgid "Remove"
 msgstr ""
 
@@ -802,15 +818,15 @@ msgstr ""
 msgid "End at"
 msgstr ""
 
-#: views/metabox/_booking_services.php:213
+#: views/metabox/_booking_services.php:219
 msgid "Select a service"
 msgstr ""
 
-#: views/metabox/_booking_services.php:242
+#: views/metabox/_booking_services.php:248
 msgid "Select an assistant"
 msgstr ""
 
-#: views/metabox/_booking_services.php:259
+#: views/metabox/_booking_services.php:265
 msgid "Add service"
 msgstr ""
 
@@ -1174,43 +1190,47 @@ msgstr ""
 msgid "Start week on"
 msgstr ""
 
-#: views/settings/tab_general.php:380
-msgid "Ajax steps <span>This allows loading steps via ajax</span>"
-msgstr ""
-
-#: views/settings/tab_general.php:383
-msgid "Enable ajax steps"
-msgstr ""
-
-#: views/settings/tab_general.php:384
-msgid "This allows loading steps via ajax for a more smooth booking form transition."
+#: views/settings/tab_general.php:376
+msgid "Default Calendar View"
 msgstr ""
 
 #: views/settings/tab_general.php:391
-msgid "Disable bootstrap assets"
+msgid "Ajax steps <span>This allows loading steps via ajax</span>"
 msgstr ""
 
 #: views/settings/tab_general.php:394
+msgid "Enable ajax steps"
+msgstr ""
+
+#: views/settings/tab_general.php:395
+msgid "This allows loading steps via ajax for a more smooth booking form transition."
+msgstr ""
+
+#: views/settings/tab_general.php:402
+msgid "Disable bootstrap assets"
+msgstr ""
+
+#: views/settings/tab_general.php:405
 msgid "CSS on front-end"
 msgstr ""
 
-#: views/settings/tab_general.php:395, views/settings/tab_general.php:399
+#: views/settings/tab_general.php:406, views/settings/tab_general.php:410
 msgid "Use it in case of conflicts with your theme"
 msgstr ""
 
-#: views/settings/tab_general.php:398
+#: views/settings/tab_general.php:409
 msgid "JS on front-end"
 msgstr ""
 
-#: views/settings/tab_general.php:408
+#: views/settings/tab_general.php:419
 msgid "Administration rule"
 msgstr ""
 
-#: views/settings/tab_general.php:411
+#: views/settings/tab_general.php:422
 msgid "Enable Editors as administrator"
 msgstr ""
 
-#: views/settings/tab_general.php:412
+#: views/settings/tab_general.php:423
 msgid "This allows Wordpress users with Editor role to manage the Salon Booking section."
 msgstr ""
 
@@ -1242,7 +1262,7 @@ msgstr ""
 msgid "Pay later"
 msgstr ""
 
-#: views/settings/tab_payments.php:40, views/settings/tab_payments.php:212
+#: views/settings/tab_payments.php:40, views/settings/tab_payments.php:214
 msgid "Give users the option to pay once they are at your salon."
 msgstr ""
 
@@ -1290,59 +1310,59 @@ msgstr ""
 msgid "Delete unpaid reservations after"
 msgstr ""
 
-#: views/settings/tab_payments.php:126
+#: views/settings/tab_payments.php:128
 msgid "Set the time range to complete the online payment."
 msgstr ""
 
-#: views/settings/tab_payments.php:134
+#: views/settings/tab_payments.php:136
 msgid "Currency"
 msgstr ""
 
-#: views/settings/tab_payments.php:137, views/settings/tab_payments.php:219
+#: views/settings/tab_payments.php:139, views/settings/tab_payments.php:221
 msgid "Set your currency"
 msgstr ""
 
-#: views/settings/tab_payments.php:144, views/settings/tab_payments.php:226
+#: views/settings/tab_payments.php:146, views/settings/tab_payments.php:228
 msgid "Set your currency position"
 msgstr ""
 
-#: views/settings/tab_payments.php:154, views/settings/tab_payments.php:165
+#: views/settings/tab_payments.php:156, views/settings/tab_payments.php:167
 msgid "If you want a new currency to be added please send us an email to support@wpchef.it"
 msgstr ""
 
-#: views/settings/tab_payments.php:158
+#: views/settings/tab_payments.php:160
 msgid "Decimal separator"
 msgstr ""
 
-#: views/settings/tab_payments.php:161
+#: views/settings/tab_payments.php:163
 msgid "Thousand separator"
 msgstr ""
 
-#: views/settings/tab_payments.php:175
+#: views/settings/tab_payments.php:177
 msgid "Payment methods"
 msgstr ""
 
-#: views/settings/tab_payments.php:189
+#: views/settings/tab_payments.php:191
 msgid "If you want to integrate a new custom payment gateway please refere to <strong>custom_payment_gateway.txt</strong> file inside our plugin folder."
 msgstr ""
 
-#: views/settings/tab_payments.php:207
+#: views/settings/tab_payments.php:209
 msgid "Enable online payments"
 msgstr ""
 
-#: views/settings/tab_payments.php:208
+#: views/settings/tab_payments.php:210
 msgid "Allow users to pay in advance."
 msgstr ""
 
-#: views/settings/tab_payments.php:211
+#: views/settings/tab_payments.php:213
 msgid "Enable \"Pay later\" option"
 msgstr ""
 
-#: views/settings/tab_payments.php:239
+#: views/settings/tab_payments.php:241
 msgid "Payment method"
 msgstr ""
 
-#: views/settings/tab_payments.php:258
+#: views/settings/tab_payments.php:260
 msgid "Pay a deposit of "
 msgstr ""
 
@@ -2142,6 +2162,10 @@ msgstr ""
 msgid "fill this field"
 msgstr ""
 
+#: src/SLN/Action/InitScripts.php:248
+msgid "Please enter in monetary decimal (%s) format without thousand separators and currency symbols."
+msgstr ""
+
 #: src/SLN/Action/Install.php:26, src/SLN/Action/Updates/sln-update-for-3.0.php:92
 msgid "Salon staff"
 msgstr ""
@@ -2282,15 +2306,15 @@ msgstr ""
 msgid "Confirm your password"
 msgstr ""
 
-#: src/SLN/Enum/CheckoutFields.php:49
+#: src/SLN/Enum/CheckoutFields.php:56
 msgid "(not editable)"
 msgstr ""
 
-#: src/SLN/Enum/CheckoutFields.php:99
+#: src/SLN/Enum/CheckoutFields.php:108
 msgid "e-mail"
 msgstr ""
 
-#: src/SLN/Enum/CheckoutFields.php:100
+#: src/SLN/Enum/CheckoutFields.php:109
 msgid "Mobile phone"
 msgstr ""
 
@@ -3088,11 +3112,11 @@ msgstr ""
 msgid "You have <strong>%s</strong> to complete your payment before this reservation being canceled"
 msgstr ""
 
-#: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:85, views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:92
+#: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:86, views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:93
 msgid "Cancel booking"
 msgstr ""
 
-#: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:91
+#: views/shortcode/salon_my_account/_salon_my_account_details_table_rows.php:92
 msgid "Sorry, you cannot cancel this booking online. Please call %s"
 msgstr ""
 
@@ -3130,6 +3154,10 @@ msgstr ""
 
 #: src/SLN/Action/Ajax/AbstractImport.php:135
 msgid "Data not found"
+msgstr ""
+
+#: src/SLN/Action/Ajax/AddHolydayRule.php:37, src/SLN/Action/Ajax/RemoveHolydayRule.php:41, src/SLN/Action/Ajax/SetCustomText.php:19
+msgid "You don't have permissions"
 msgstr ""
 
 #: src/SLN/Action/Ajax/Calendar.php:47
@@ -3206,10 +3234,6 @@ msgstr ""
 
 #: src/SLN/Action/Ajax/SetBookingRating.php:43
 msgid "Set rating and comment"
-msgstr ""
-
-#: src/SLN/Action/Ajax/SetCustomText.php:19
-msgid "You don't have permissions"
 msgstr ""
 
 #: src/SLN/Admin/Customers/List.php:23
@@ -3332,11 +3356,11 @@ msgstr ""
 msgid "Update completed with success"
 msgstr ""
 
-#: src/SLN/Admin/SettingTabs/GeneralTab.php:52
+#: src/SLN/Admin/SettingTabs/GeneralTab.php:53
 msgid "Invalid Email in Salon contact e-mail field"
 msgstr ""
 
-#: src/SLN/Admin/SettingTabs/GeneralTab.php:148
+#: src/SLN/Admin/SettingTabs/GeneralTab.php:149
 msgid "Test sms sent with success"
 msgstr ""
 
