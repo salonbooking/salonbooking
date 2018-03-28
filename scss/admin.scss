@@ -747,9 +747,9 @@ body.salone_page_salon-tools {
     }
     .cal-day-today span[data-cal-date] {
         @include bp(tablet) {
-            width: rem(74px);
-            height: rem(74px);
-            line-height: rem(70px);
+            width: rem(64px);
+            height: rem(64px);
+            line-height: rem(60px);
         }
     }
     .cal-year-box span[data-cal-date] {
@@ -1196,63 +1196,7 @@ $input-fsize: 16px;
     }
 }
 
-#sln-salon--admin, .sln-calendar--wrapper {
-    #cal-day-box .cal-day-hour-part {
-        height: $grid-gutter-width*4;
-        .span1 {line-height: $grid-gutter-width*4;}
-    }
-    #cal-day-box .day-highlight {
-        height: $grid-gutter-width*4 !important;
-        line-height: $grid-gutter-width*4;
-    }
-    .cal-row-head {
-        padding: $grid-gutter-width/3*2 0 $grid-gutter-width*1.2 0;
-    }
-    .cal-day-hour-part [data-action=add-event-by-date] {
-        width: $grid-gutter-width*6.4;
-        min-width: 5% !important;
-        padding: 0 .3rem;
-        height: $grid-gutter-width*4;
-        margin-top: -1px;
-        margin-right: $grid-gutter-width*4.6 * -1;
-        font-size: 1em;
-        line-height: 1em;
-        font-weight: bold;
-    }
-    // TABLE HORIZONTAL SCROLL ON MOBILE
-    @media only screen and (max-width: 767px) {
-        .cal-day-panel__wrapper{
-            overflow-y: auto;
-            padding-bottom: 30px;
-            #cal-day-panel {
-                min-width: 620px;
-            }
-        }
-        .cal-day-panel__wrapper, .cal-day-panel__wrapper #cal-day-panel {
-            transform:rotateX(180deg);
-            -ms-transform:rotateX(180deg);
-            -webkit-transform:rotateX(180deg);
-        }
-        ::-webkit-scrollbar {
-            -webkit-appearance: none;
-        }
 
-        ::-webkit-scrollbar:horizontal {
-            height: 18px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: $cl_main--medium;
-            border-radius: 10px;
-            border: 2px solid $cl_main--light;
-        }
-
-        ::-webkit-scrollbar-track {
-            border-radius: 10px;  
-            background-color: $cl_main--light; 
-        }
-    }
-}
 
 .cal-day-hour-part.selected{
   background-color: grey; 
