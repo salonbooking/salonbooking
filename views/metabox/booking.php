@@ -176,8 +176,9 @@ $checkoutFields = SLN_Enum_CheckoutFields::getRequiredFields();
              foreach ($additional_fields as $field => $label) {
               $value = $booking->getMeta($field) ;
               $method_name= 'field'.ucfirst(SLN_Enum_CheckoutFields::$additional_fields_types[$field]);
+              $width = isset(SLN_Enum_CheckoutFields::$additional_fields_widths[$field]) ? (SLN_Enum_CheckoutFields::$additional_fields_widths[$field] === 'full' ? 12 : 6) : 6; 
               ?>
-                <div class="col-sm-12 sln-input--simple <?php echo isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? 'sln-'.SLN_Enum_CheckoutFields::$additional_fields_types[$field] : '' ?>">
+                <div class="col-sm-12 col-md-<?php echo $width ?> sln-input--simple <?php echo isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? 'sln-'.SLN_Enum_CheckoutFields::$additional_fields_types[$field] : '' ?>">
                     <div class="form-group sln_meta_field">
                         <label for="<?php echo $field ?>"><?php echo $label ?></label>
                         <?php 

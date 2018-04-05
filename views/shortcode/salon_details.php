@@ -188,9 +188,10 @@ $fieldPassword = ob_get_clean();
                     continue;
                 }; 
                 $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false;
+                $width = isset(SLN_Enum_CheckoutFields::$additional_fields_widths[$field]) ? (SLN_Enum_CheckoutFields::$additional_fields_widths[$field] === 'full' ? 12 : 6) : 6;                
             ?>
                 <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
-                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
+                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : $width ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -253,9 +254,10 @@ call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
                     continue;
                 };
                 $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false;
+                $width = isset(SLN_Enum_CheckoutFields::$additional_fields_widths[$field]) ? (SLN_Enum_CheckoutFields::$additional_fields_widths[$field] === 'full' ? 12 : 6) : 6;
                  ?>
                 <?php if($field === 'password') echo '</div><div class="row">'; // close previous row & open next ?>
-                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
+                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 :  $width ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -397,8 +399,10 @@ call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
                     );
                     continue;
                 };
-                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; ?>
-                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
+                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; 
+                $width = isset(SLN_Enum_CheckoutFields::$additional_fields_widths[$field]) ? (SLN_Enum_CheckoutFields::$additional_fields_widths[$field] === 'full' ? 12 : 6) : 6; 
+                ?>
+                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : $width ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -458,8 +462,10 @@ call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
                     );
                     continue;
                 };
-                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; ?>
-                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
+                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; 
+                $width = isset(SLN_Enum_CheckoutFields::$additional_fields_widths[$field]) ? (SLN_Enum_CheckoutFields::$additional_fields_widths[$field] === 'full' ? 12 : 6) : 6;
+                ?>
+                <div class="col-sm-6 col-md-<?php echo $field == 'address' ? 12 : $width ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">
@@ -574,8 +580,9 @@ call_user_func_array(array('SLN_Form',$method_name), $additional_opts );
                     );
                     continue;
                 };
-                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; ?>
-                <div class="col-md-<?php echo $field == 'address' ? 12 : 6 ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
+                $type = isset(SLN_Enum_CheckoutFields::$additional_fields_types[$field]) ? SLN_Enum_CheckoutFields::$additional_fields_types[$field] : false; 
+               $width = isset(SLN_Enum_CheckoutFields::$additional_fields_widths[$field]) ? (SLN_Enum_CheckoutFields::$additional_fields_widths[$field] === 'full' ? 12 : 6) : 6; ?>
+                <div class="col-md-<?php echo $field == 'address' ? 12 : $width ?> <?php echo 'field-'.$field ?> <?php if($type !== 'checkbox'){ echo 'sln-input sln-input--simple'; } ?> <?php echo $type ? 'sln-'.$type  : '' ?>">
                         <label for="<?php echo SLN_Form::makeID('sln[' . $field . ']') ?>"><?php echo $label ?></label>
                         <?php if(($field == 'phone') && ($prefix = $plugin->getSettings()->get('sms_prefix'))): ?>
                         <div class="input-group sln-input-group">

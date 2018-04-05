@@ -9,6 +9,7 @@ class SLN_Enum_CheckoutFields
     private static $additional_fields = array();
     private static $requiredByDefault;
     public static $additional_fields_types = array();
+    public static $additional_fields_widths = array();    
     public static $fields_select_options = array();
     //public static $additional_hidden_fields_callback;
 
@@ -127,7 +128,8 @@ class SLN_Enum_CheckoutFields
 
         $default_field_settings = array(
             "label"     => '',
-            "type"      => 'text'
+            "type"      => 'text',
+            "width"     => "full"
         );
         $plugin = SLN_Plugin::getInstance();
         
@@ -149,6 +151,7 @@ class SLN_Enum_CheckoutFields
                 self::$additional_fields[$field] = $field_settings['label'];
                 self::$fields[$field] = $field_settings['label'];
                 self::$additional_fields_types[$field] = $field_settings['type'];
+                self::$additional_fields_widths[$field] = $field_settings['width'];
                 if($field_settings['type'] == 'select') self::$fields_select_options[$field] = isset($opts['options'])? $opts['options'] : array();   
                 //if($field_settings['type'] == 'hidden') self::$additional_hidden_fields_callback[$field] = isset($opts['callback'])? $opts['callback'] : false;     
             } 
