@@ -51,7 +51,7 @@
 				<% }; %>
 			<% }; %>
 			<% _.each(by_hour, function(event){ %>
-				<div class="day-event day-highlight dh-<%= event.class %>" style="margin-left: <%= event.left * 7.6 %>%; top: <%= (event.top * 30) %>px; height: <%= (event.lines * 30) %>px" data-toggle="tooltip" data-html="true" title="<%= event.title %>">
+				<div class="day-event day-highlight dh-<%= event.class %>" style="margin-left: <%= event.left * 7.6 %>%; top: <%= (event.top * 60) %>px; height: <%= (event.lines * 60) %>px !important" data-toggle="tooltip" data-html="true" title="<%= event.title %>">
 					<span data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>"
 	                      class="event-item"><%= event.customer %></span>
 				</div>
