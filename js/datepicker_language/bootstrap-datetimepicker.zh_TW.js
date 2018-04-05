@@ -41,7 +41,6 @@
       "十二月"
     ],
     meridiem: ["上午", "下午"],
-    today: "今天",
-    suffix: []
+    today: "今天"
   };
 })(jQuery);

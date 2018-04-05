@@ -269,14 +269,14 @@ jQuery(function($){
                     <label for="<?php echo SLN_Form::makeID("export[from]") ?>"><?php _e('from', 'salon-booking-system') ?></label>
                     <input type="text" class="form-control sln-input" id="<?php echo SLN_Form::makeID("export[from]") ?>" name="export[from]"
                            required="required" data-format="<?php echo $jsFormat?>" data-weekstart="<?php echo $weekStart ?>"
-                           data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"
+                           data-locale="<?php echo strtolower(get_locale())?>"
                     />
                 </div>
                 <div class="form-group col-xs-12 col-md-4 sln_datepicker sln-input--simple">
                     <label for="<?php echo SLN_Form::makeID("export[to]") ?>"><?php _e('to', 'salon-booking-system') ?></label>
                     <input type="text" class="form-control sln-input" id="<?php echo SLN_Form::makeID("export[to]") ?>" name="export[to]"
                            required="required" data-format="<?php echo $jsFormat?>" data-weekstart="<?php echo $weekStart ?>"
-                           data-locale="<?php echo strtolower(substr(get_locale(),0,2))?>"
+                           data-locale="<?php echo strtolower(get_locale())?>"
                     />
                 </div>
                 <div class="form-group col-xs-12">
