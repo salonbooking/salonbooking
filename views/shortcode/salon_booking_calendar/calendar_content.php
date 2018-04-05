@@ -4,7 +4,7 @@
  */
 ?>
 
-<table class="table sln-salon-booking-calendar">
+<table class="table sln-salon-booking-calendar" data-attendantsIds="<?php echo $data['attendantsIds']; ?>">
     <thead>
     <tr>
         <td><?php _e('Date','salon-booking-system'); ?></td>

@@ -24,7 +24,7 @@ class SLN_Shortcode_SalonCalendar {
 		$obj = new self(SLN_Plugin::getInstance(), $attrs);
 
 		$ret = $obj->execute();
-		SLN_TimeFunc::endRealTimezone();
+		SLN_TimeFunc::endRealTimezone(	);
 		return $ret;
 	}
 
@@ -70,9 +70,13 @@ class SLN_Shortcode_SalonCalendar {
         }
         unset($timestamp);
 
-
+        $criteria = array();
         /** @var SLN_Wrapper_Attendant[] $assistants */
-        $assistants = $plugin->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT)->get();
+        if(!empty($this->attrs['assistants'])){
+        	$criteria ['@wp_query'] = array( 'post__in' =>  explode(",", $this->attrs['assistants']));
+        	$ret['attendantsIds'] = $this->attrs['assistants'];
+        }    
+        $assistants = $plugin->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT)->get($criteria);
         $attData    = array();
         foreach($assistants as $k => $assistant) {
             $attData[$assistant->getId()] = array(
@@ -115,6 +119,7 @@ class SLN_Shortcode_SalonCalendar {
         }
 
         $ret['attendants'] = $attData;
+        
 
         return $ret;
     }

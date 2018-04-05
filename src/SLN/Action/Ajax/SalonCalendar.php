@@ -12,7 +12,9 @@ class SLN_Action_Ajax_SalonCalendar extends SLN_Action_Ajax_Abstract
         SLN_TimeFunc::startRealTimezone();
 
 		$plugin = SLN_Plugin::getInstance();
-		$obj    = new SLN_Shortcode_SalonCalendar($plugin, array());
+		$atts = array();
+		if($_REQUEST['attendantsIds'])$atts['assistants']=$_REQUEST['attendantsIds'];
+		$obj    = new SLN_Shortcode_SalonCalendar($plugin,$atts );
 
         $ret            = array();
 		$ret['content'] = $obj->getContent();

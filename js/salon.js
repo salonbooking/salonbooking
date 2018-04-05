@@ -742,7 +742,7 @@ function salonBookingCalendarInit() {
     setInterval(function() {
         var data = '';
         data    += "&action=salon&method=salonCalendar&security=" + salon.ajax_nonce;
-
+        if(jQuery('.sln-salon-booking-calendar').attr('data-attendantsIds'))data    += "&attendantsIds="+jQuery('.sln-salon-booking-calendar').attr('data-attendantsIds');
         jQuery.ajax({
             url: salon.ajax_url,
             data: data,
