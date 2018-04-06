@@ -55,7 +55,6 @@ class SLN_Admin_Settings
         $tab = new $class_name($current, $this->tabs[$current],$this->plugin);
         ?>
         <div id="sln-salon--admin" class="wrap sln-bootstrap sln-salon--settings">
-            <?php screen_icon(); ?>
             <div class="row">
                 <div class="col-xs-12"><h2><?php _e('Salon Settings', 'salon-booking-system'); ?></h2></div>
                 <div class="sln-admin-nav hidden-xs hidden-sm col-sm-12 col-md-8">

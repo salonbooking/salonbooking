@@ -132,9 +132,10 @@ ORDER BY ".$wpdb->_real_escape($orderby)." ".$wpdb->_real_escape($order)." LIMIT
 		$this->items = $items;
 
 		$sqlCount = str_replace(array('DISTINCT ID', 'LIMIT %d, %d'), array('COUNT(DISTINCT ID)', ''), $sqlSelect);
+		$args =array_slice($args, 0, -2);
 		$queryCount = $wpdb->prepare(
 				$sqlCount,
-				$args
+				count($args)===1 ?$args[0]:$args
 		);
 
 		$this->set_pagination_args( array(

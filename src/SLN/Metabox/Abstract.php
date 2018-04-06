@@ -27,6 +27,7 @@ abstract class SLN_Metabox_Abstract
     public function admin_print_styles()
     {
         global $post;
+        if(empty($post)) return;
         if ($post->post_type == $this->getPostType()) {
             $this->enqueueAssets();
             add_filter( 'wpseo_use_page_analysis', '__return_false' );

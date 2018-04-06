@@ -183,7 +183,7 @@ class SLN_Action_InitScripts
             '20140711',
             true
         );
-        if ($date_lang != 'en') {
+        if ($date_lang != 'en_US') {
             wp_enqueue_script(
                 'smalot-datepicker-lang',
                 SLN_PLUGIN_URL.'/js/datepicker_language/bootstrap-datetimepicker.'.$date_lang.'.js',
