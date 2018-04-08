@@ -55,7 +55,10 @@ class SLN_Formatter
 
         $f = $this->plugin->getSettings()->getDateFormat();
         $phpFormat = SLN_Enum_DateFormat::getPhpFormat($f);
-        return ucwords(date_i18n($phpFormat, strtotime($val)));
+        remove_filter( 'date_i18n', 'wp_maybe_decline_date' ); 
+        $formatted  = ucwords(date_i18n($phpFormat, strtotime($val)));
+        add_filter( 'date_i18n', 'wp_maybe_decline_date' ); 
+        return $formatted;
     }
 
     public function time($val)
