@@ -6984,7 +6984,7 @@ body.salone_page_salon-tools #wpwrap {
 
 #sln-salon--admin .cal-day-hour-part.active .block_date, .sln-calendar--wrapper .cal-day-hour-part.active .block_date {
   transform: translate(0);
-  background-color: #f00; }
+  background-color: #e63f24; }
 
 #sln-salon--admin #cal-day-box #cal-day-panel, .sln-calendar--wrapper #cal-day-box #cal-day-panel {
   width: 90%; }
@@ -7023,20 +7023,23 @@ body.salone_page_salon-tools #wpwrap {
   -ms-user-select: none; }
 
 .cal-day-hour-part.blocked {
-  background-color: red;
+  background-color: #ccc;
+  opacity: .35;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none; }
+  .cal-day-hour-part.blocked:hover {
+    background-color: #e63f24; }
 
 .cal-day-hour-part.selected:hover button[data-action="add-event-by-date"], .cal-day-hour-part.blocked:hover button[data-action="add-event-by-date"] {
   display: none !important; }
 
 .cal-day-hour-part.selected:hover {
-  background-color: grey !important; }
+  background-color: #ccc !important; }
 
 .cal-day-hour-part.blocked:hover {
-  background-color: red !important; }
+  background-color: #e63f24 !important; }
 
 .calendar-holydays-button {
   position: absolute;
@@ -7050,10 +7053,19 @@ body.salone_page_salon-tools #wpwrap {
   font-weight: 900; }
 
 .calendar-holydays-button.onlyone {
-  transform: translate(-50%, 0); }
+  transform: translate(-50%, 0);
+  cursor: pointer; }
+  .calendar-holydays-button.onlyone:hover, .calendar-holydays-button.onlyone:active, .calendar-holydays-button.onlyone:focus {
+    outline: 0; }
 
 .calendar-holydays-button.create-holydays {
-  background-color: red; }
+  background-color: #e63f24;
+  cursor: pointer; }
+  .calendar-holydays-button.create-holydays:hover, .calendar-holydays-button.create-holydays:active, .calendar-holydays-button.create-holydays:focus {
+    outline: 0; }
 
 .calendar-holydays-button.remove-holydays {
-  background-color: grey; }
+  background-color: #5bc24c;
+  cursor: pointer; }
+  .calendar-holydays-button.remove-holydays:hover, .calendar-holydays-button.remove-holydays:active, .calendar-holydays-button.remove-holydays:focus {
+    outline: 0; }

@@ -1243,7 +1243,7 @@ $input-fsize: 16px;
     }
     .cal-day-hour-part.active .block_date {
         transform: translate(0);
-        background-color: #f00;
+        background-color: $cl_problem--light;
         @media only screen and (max-width: 767px) {
         //    left: $grid-gutter-width*10;
         }
@@ -1298,20 +1298,24 @@ $input-fsize: 16px;
 }
 
 .cal-day-hour-part.blocked{
-  background-color: red; 
+  background-color: $cl_grey;
+  opacity: .35;
   user-select: none;
-    -moz-user-select: none;
+  -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  &:hover {
+    background-color: $cl_problem--light;
+  }
 }
 .cal-day-hour-part.selected:hover button[data-action="add-event-by-date"],.cal-day-hour-part.blocked:hover button[data-action="add-event-by-date"]{
   display:none !important;
 }
 .cal-day-hour-part.selected:hover{
-  background-color: grey !important;
+  background-color: $cl_grey !important;
 }
 .cal-day-hour-part.blocked:hover{
-  background-color: red !important;
+  background-color: $cl_problem--light !important;
 }
 .calendar-holydays-button{
   position: absolute;
@@ -1327,12 +1331,18 @@ $input-fsize: 16px;
 }
 .calendar-holydays-button.onlyone{
   transform: translate(-50%,-0);
+  cursor: pointer;
+  &:hover, &:active, &:focus {outline: 0;}
 }
 
 .calendar-holydays-button.create-holydays{
-  background-color: red;
+  background-color: $cl_problem--light;
+  cursor: pointer;
+  &:hover, &:active, &:focus {outline: 0;}
 }
 
 .calendar-holydays-button.remove-holydays{
-  background-color: grey;
+  background-color: $cl_ok;
+  cursor: pointer;
+  &:hover, &:active, &:focus {outline: 0;}
 }
