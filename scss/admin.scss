@@ -1203,26 +1203,61 @@ $input-fsize: 16px;
     }
     #cal-day-box .day-highlight {
         height: $grid-gutter-width*4 !important;
-        line-height: $grid-gutter-width*4;
+        line-height: $grid-gutter-width*2;
+        z-index: 999;
     }
     .cal-row-head {
         padding: $grid-gutter-width/3*2 0 $grid-gutter-width*1.2 0;
     }
-    .cal-day-hour-part [data-action=add-event-by-date] {
-        width: $grid-gutter-width*6.4;
-        min-width: 5% !important;
+    #cal-day-box .cal-day-hour-part.active {
+        border-bottom: 4px solid transparentize($cl_main--emphasis, .5);
+        z-index: 999;
+    }
+    .cal-day-hour-part [data-action=add-event-by-date],
+    .cal-day-hour-part.active .block_date {
+        width: auto;
+        min-width: $grid-gutter-width !important;
+        //max-width: $grid-gutter-width*10;
         padding: 0 .3rem;
         height: $grid-gutter-width*4;
-        margin-top: -1px;
-        margin-right: $grid-gutter-width*4.6 * -1;
         font-size: 1em;
         line-height: 1em;
-        font-weight: bold;
+        padding: $grid-gutter-width  $grid-gutter-width*1.4;
+        top: 0;
+        left: 102%;
+        z-index: 999;
+        transform: translate(-106%);
+        font-size: 12px;
+        @media only screen and (max-width: 767px) {
+        //    width: $grid-gutter-width*9.6;
+        //    left: 0;
+        //    z-index: 999;
+        //    transform: translate(0);
+        }
+        @include bp(desktop) {
+            left: auto;
+            left: initial;
+            right: 0;
+            transform: translate(-76%);
+        }
+    }
+    .cal-day-hour-part.active .block_date {
+        transform: translate(0);
+        background-color: #f00;
+        @media only screen and (max-width: 767px) {
+        //    left: $grid-gutter-width*10;
+        }
+
+    }
+    #cal-day-box #cal-day-panel {
+        width: 90%;
+        @include bp(desktop) {width: 100%;}
     }
     // TABLE HORIZONTAL SCROLL ON MOBILE
     @media only screen and (max-width: 767px) {
         .cal-day-panel__wrapper{
             overflow-y: auto;
+            padding-top: $grid-gutter-width*3;
             padding-bottom: 30px;
             #cal-day-panel {
                 min-width: 620px;
