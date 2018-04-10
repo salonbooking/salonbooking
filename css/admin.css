@@ -6963,16 +6963,14 @@ body.salone_page_salon-tools #wpwrap {
 .sln-calendar--wrapper .cal-day-hour-part.active .block_date {
   width: auto;
   min-width: 15px !important;
-  padding: 0 .3rem;
   height: 60px;
-  font-size: 1em;
+  font-size: 12px;
   line-height: 1em;
   padding: 15px 21px;
   top: 0;
   left: 102%;
   z-index: 999;
-  transform: translate(-106%);
-  font-size: 12px; }
+  transform: translate(-106%); }
   @media only screen and (min-width: 992px) {
     #sln-salon--admin .cal-day-hour-part [data-action=add-event-by-date],
     #sln-salon--admin .cal-day-hour-part.active .block_date, .sln-calendar--wrapper .cal-day-hour-part [data-action=add-event-by-date],
@@ -7042,18 +7040,25 @@ body.salone_page_salon-tools #wpwrap {
   background-color: #e63f24 !important; }
 
 .calendar-holydays-button {
+  width: auto;
+  min-width: 15px !important;
+  padding: 15px 21px;
+  height: 60px;
   position: absolute;
-  left: 50%;
+  right: 0;
   z-index: 9999;
-  transform: translate(-50%, -50%);
-  padding: 1em;
   color: #fff;
-  font-size: 1.2em;
-  border: none;
-  font-weight: 900; }
+  font-size: 1em;
+  line-height: 1em;
+  border: none; }
+  @media only screen and (min-width: 768px) {
+    .calendar-holydays-button {
+      right: auto;
+      right: initial;
+      left: 50%;
+      transform: translate(-50%, -50%); } }
 
 .calendar-holydays-button.onlyone {
-  transform: translate(-50%, 0);
   cursor: pointer; }
   .calendar-holydays-button.onlyone:hover, .calendar-holydays-button.onlyone:active, .calendar-holydays-button.onlyone:focus {
     outline: 0; }

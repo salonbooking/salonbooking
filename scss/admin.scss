@@ -1218,16 +1218,14 @@ $input-fsize: 16px;
         width: auto;
         min-width: $grid-gutter-width !important;
         //max-width: $grid-gutter-width*10;
-        padding: 0 .3rem;
         height: $grid-gutter-width*4;
-        font-size: 1em;
+        font-size: 12px;
         line-height: 1em;
         padding: $grid-gutter-width  $grid-gutter-width*1.4;
         top: 0;
         left: 102%;
         z-index: 999;
         transform: translate(-106%);
-        font-size: 12px;
         @media only screen and (max-width: 767px) {
         //    width: $grid-gutter-width*9.6;
         //    left: 0;
@@ -1317,20 +1315,26 @@ $input-fsize: 16px;
 .cal-day-hour-part.blocked:hover{
   background-color: $cl_problem--light !important;
 }
-.calendar-holydays-button{
-  position: absolute;
-  left: 50%;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  padding: 1em;
-  color: #fff;
-  font-size: 1.2em;
-  
-  border: none;
-  font-weight: 900;
+.calendar-holydays-button{width: auto;
+    min-width: $grid-gutter-width !important;
+    padding: $grid-gutter-width  $grid-gutter-width*1.4;
+    height: $grid-gutter-width*4;
+    position: absolute;
+    right: 0;
+    z-index: 9999;
+    color: #fff;
+    font-size: 1em;
+    line-height: 1em;
+    border: none;
+    @include bp(tablet) {
+        right: auto;
+        right: initial;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
 }
 .calendar-holydays-button.onlyone{
-  transform: translate(-50%,-0);
+  //transform: translate(-50%,-0);
   cursor: pointer;
   &:hover, &:active, &:focus {outline: 0;}
 }
