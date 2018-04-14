@@ -92,7 +92,7 @@ var DayCalendarHolydays = {
             firstEl = lastEl;
             lastEl = temp;
         }
-        firstEl.nextUntil(lastEl).each(function(){
+        firstEl.nextUntil(lastEl).add(firstEl).add(lastEl).each(function(){
             $(this).addClass('selected');
             DayCalendarHolydays.selection[parseInt($(this).index())]= $(this);
         });
