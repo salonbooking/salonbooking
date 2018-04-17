@@ -10,6 +10,7 @@ class SLN_Currency
         'BRL' => array('name' => 'Brazilian Real', 'symbol' => 'R$', 'ASCII' => '&#x0024;'),
         'BGN' => array('name' => 'Bulgarian Lev', 'symbol' => 'лв', 'ASCII' => ''),
         'BAN' => array('name' => 'Bosnia and Herzegovina convertible mark', 'symbol' => 'KM', 'ASCII' => ''),
+        'BZD' => array('name' => 'Belize dollar', 'symbol' => 'BZ$', 'ASCII' => ''),
         'CAD' => array('name' => 'Canadian Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
         'CLP' => array('name' => 'Chilean peso', 'symbol' => '$', 'ASCII' => '&#36;'),
         'CZK' => array('name' => 'Czech Koruna', 'symbol' => 'Kč', 'ASCII' => ''),
