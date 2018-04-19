@@ -17,6 +17,7 @@ class SLN_Currency
         'CHF' => array('name' => 'Swiss Franc', 'symbol' => 'CHF', 'ASCII' => ''),
         'HRK' => array('name' => 'Croatian kuna', 'symbol' => 'kn', 'ASCII' => ''),
         'DKK' => array('name' => 'Danish Krone', 'symbol' => 'Kr', 'ASCII' => ''),
+        'DOP' => array('name' => 'Dominican peso', 'symbol' => 'RD$', 'ASCII' => ''),
         'CNY' => array('name' => 'Chinese Yuan Renminbi', 'symbol'=>'¥', 'hex'=>'&#xa5;'),
         'EUR' => array('name' => 'Euro', 'symbol' => '€', 'ASCII' => '&#8364;'),
         'HKD' => array('name' => 'Hong Kong Dollar', 'symbol' => '$', 'ASCII' => '&#36;'),
