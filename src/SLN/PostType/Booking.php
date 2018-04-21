@@ -304,7 +304,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
     {
         global $post_type;
         if ($post_type == SLN_Plugin::POST_TYPE_BOOKING) {
-            $this->getPlugin()->loadView('metabox/_booking_head');
+            echo $this->getPlugin()->loadView('metabox/_booking_head');
         }
     }
 
