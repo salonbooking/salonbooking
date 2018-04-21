@@ -33,12 +33,12 @@
       "Apr",
       "Mei",
       "Jun",
-      "Jul.",
+      "Jul",
       "Aug",
       "Sep",
       "Okt",
-      "Nov.",
-      "Dec."
+      "Nov",
+      "Dec"
     ],
     meridiem: ["am", "pm"],
     today: "Vandaag",

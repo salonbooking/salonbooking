@@ -27,18 +27,18 @@
       "Desembre"
     ],
     monthsShort: [
-      "Gen.",
-      "Febr.",
+      "Gen",
+      "Febr",
       "Març",
-      "Abr.",
+      "Abr",
       "Maig",
       "Juny",
-      "Jul.",
-      "Ag.",
-      "Set.",
-      "Oct.",
-      "Nov.",
-      "Des."
+      "Jul",
+      "Ag",
+      "Set",
+      "Oct",
+      "Nov",
+      "Des"
     ],
     meridiem: ["am", "pm"],
     today: "Avui",
