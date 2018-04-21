@@ -139,6 +139,9 @@ jQuery(function($){
     transform: translate(-105%);
     z-index: 999;
 }
+.cal-day-hour-part.selected [data-action=add-event-by-date]{
+    display: none;
+}
 .cal-day-hour-part.active .block_date{
     transform: translate(5%);
 }
