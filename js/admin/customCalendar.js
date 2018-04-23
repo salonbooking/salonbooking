@@ -200,7 +200,7 @@ var DayCalendarHolydays = {
             var button = DayCalendarHolydays.createButton;
             DayCalendarHolydays.createButton = false;
             button.toggleClass('create-holydays remove-holydays')
-            .text('Unblock these rows')
+            .text(holidays_rules_locale.unblock+' '+(DayCalendarHolydays.selection.length > 1 ? holidays_rules_locale.single: holidays_rules_locale.multiple))
             .off('click')
             .click(DayCalendarHolydays.unblockPop);
         })   
