@@ -94,7 +94,7 @@ $item = '<div class="sln-datalist__item">
 	</div>
 </section>
 
-<!-- Versione stilata, va aggiunta la classse .sln-datalist--styled la div.sln-datalist -->
+<!-- Versione stilata, va aggiunta al classse .sln-datalist--styled la div.sln-datalist -->
 <section class="sln-datashortcode sln-datashortcode--assistants">
 	<h1 class="sln-datalist_title">Assistants</h1>
 	<div class="sln-datalist sln-datalist--styled">
@@ -104,7 +104,7 @@ $item = '<div class="sln-datalist__item">
 </section>
 
 <!--
-Varianti numero colonne (lavorana sia con la versione stilata che con quella base).
+Varianti numero colonne (lavorano sia con la versione stilata che con quella base).
 Le classsi da aggiungere al div.sln-datalist sono .sln-datalist--2cols, .sln-datalist--3cols o .sln-datalist--4cols
 -->
 <section class="sln-datashortcode sln-datashortcode--assistants">
