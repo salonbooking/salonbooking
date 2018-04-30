@@ -1,0 +1,121 @@
+.sln-datalist {
+	width: 100%;
+	&.sln-datalist--styled {
+		margin-top: 3rem;
+		.sln-datalist__item {
+			padding-bottom: 5rem;
+		}
+		&:not(.sln-datalist--2cols):not(.sln-datalist--3cols):not(.sln-datalist--4cols) {
+			.sln-datalist__item {
+				margin-bottom: 5rem;
+				padding-bottom: 5rem;
+				position: relative;
+				&:after {
+					display: block;
+					content: '';
+					width: 100%;
+					height: 1px;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					background-color: currentColor;
+					opacity: .25;
+				}
+			}
+		}
+		.sln-datalist__item__name {
+			margin: 0 0 1em 0;
+		}
+		.sln-datalist__item__image {
+			img {
+				max-width: 25%;
+				margin: 0;
+				border-radius: 50%;
+				border-radius: 9999px;
+				border-top-left-radius: 50%;
+				border-top-right-radius: 50%;
+				border-bottom-left-radius: 50%;
+				border-bottom-right-radius: 50%;
+			}
+		}
+		.sln-datalist__item__description {
+			margin: 2em 0;
+		}
+		.sln-datalist__item__list {
+			margin: 2em 0;
+			h5 {
+				margin-bottom: .5em;
+			}
+			ul {
+				padding: 0;
+				list-style: none;
+			}
+		}
+		.sln-datalist__item__actions {
+			a {
+				display: inline-block;
+				padding: .5em 1.25em;
+				border: 1px solid currentColor;
+				text-decoration: none;
+				text-shadow: none;
+				box-shadow: none;
+				&:hover, &:focus, &:active {
+					text-decoration: none;
+					text-shadow: none;
+				}
+			}
+		}
+	}
+	&.sln-datalist--2cols {
+		@include bp(tablet) {
+			.sln-datalist__item {
+				width: 50%;
+				float: left;
+				padding: 0 5% 5rem 0;
+				&:nth-child(odd) {clear: both;}
+			}
+			&.sln-datalist--styled {
+				.sln-datalist__item__image {
+					img {max-width: 50%;}
+				}
+			}
+		}
+	}
+	&.sln-datalist--3cols {
+		@include bp(tablet) {
+			.sln-datalist__item {
+				width: 33.3333%;
+				float: left;
+				padding: 0 5% 5rem 0;
+				&:nth-child(3n+4) {clear: both;}
+			}
+			&.sln-datalist--styled {
+				.sln-datalist__item__image {
+					img {max-width: 75%;}
+				}
+			}
+		
+		}		
+	}
+	&.sln-datalist--4cols {
+		@include bp(tablet) {
+			.sln-datalist__item {
+				width: 25%;
+				float: left;
+				padding: 0 5% 5rem 0;
+				&:nth-child(4n+5) {clear: both;}
+			}
+			&.sln-datalist--styled {
+				.sln-datalist__item__image {
+					img {max-width: 90%;}
+				}
+			}
+		}
+	}
+}
+.sln-datalist_clearfix:before, .sln-datalist_clearfix:after {
+  content: " ";
+  display: table; }
+
+.sln-datalist_clearfix:after {
+  clear: both; }
