@@ -46,7 +46,9 @@ class SLN_Repository_AttendantRepository extends SLN_Repository_AbstractWrapperR
     protected function processCriteria($criteria)
     {
         if (isset($criteria['@sort'])) {
-            $criteria['@wp_query'] = array(
+            $criteria['@wp_query'] = array_merge( 
+                isset($criteria['@wp_query']) ? $criteria['@wp_query'] : array()
+                ,array(
                 'meta_query' => array(
                     'relation' => 'OR',
                     array(
@@ -60,7 +62,7 @@ class SLN_Repository_AttendantRepository extends SLN_Repository_AbstractWrapperR
                 ),
                 'orderby'    => self::ATTENDANT_ORDER,
                 'order'      => 'ASC',
-            );
+            ));
             unset($criteria['@sort']);
         }
 

@@ -31,7 +31,22 @@ class SLN_Shortcode_SalonAssistant
 
     public function execute()
     {
-        return $this->render();
+        $attendants = false;
+        if(!empty($this->attrs['attendants'])){
+            $attendants = explode(',',$this->attrs['attendants']);
+        }
+        $repo = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_ATTENDANT);
+        
+        $criteria = $attendants ? array(
+            '@wp_query' => array('post__in' => $attendants)
+        ) : array();
+        
+        $attendants = $repo->get($criteria);
+        $data = array('attendants' => $attendants);
+        $data['styled'] = !empty($this->attrs['styled']) && $this->attrs['styled']=== 'true';
+        if(!empty($this->attrs['columns']) && intval($this->attrs['columns'])) $data['columns'] =  intval($this->attrs['columns']);
+
+        return $this->render($data);
     }
    
     protected function render($data = array())
