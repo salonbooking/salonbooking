@@ -1,6 +1,10 @@
 <?php if(isset($manageBookingsLink) && $manageBookingsLink && $plugin->getSettings()->getBookingmyaccountPageId()): ?>
     <?php $forAdmin = isset($forAdmin) ? $forAdmin : false; ?>
-    <?php if(!empty($customer) || (!$forAdmin && isset($booking) && ($customer = $booking->getCustomer()))): ?>
+    <?php 
+    $empty_customer = !empty($customer);
+    $customer =   $empty_customer ? $customer : (isset($booking) ? $booking->getCustomer(): false);
+    $email = !empty($booking) ? $booking->getEmail():false;
+    if( $email && get_user_by('email',$email) &&( $empty_customer || (!$forAdmin &&  $customer ))): ?>
         <tr style="font-family: Arial, Helvetica, sans-serif; color: #888;">
             <td height="80" valign="middle" bgcolor="#f2f2f2">
                 <hr style="border: solid 1px #fff; margin: 0 16px;">
