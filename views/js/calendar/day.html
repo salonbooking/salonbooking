@@ -51,7 +51,7 @@
 				<% }; %>
 			<% }; %>
 			<% _.each(by_hour, function(event){ %>
-				<div class="day-event day-highlight dh-<%= event.class %>" style="margin-left: <%= event.left * 7.6 %>%; top: <%= (event.top * 30) %>px; height: <%= (event.lines * 30) %>px" data-toggle="tooltip" data-html="true" title="<%= event.title %>">
+				<div class="day-event day-highlight dh-<%= event.class %>" style="margin-left: <%= event.left * 7.6 %>%; top: <%= (event.top * 60) %>px; height: <%= (event.lines * 60) %>px !important" data-toggle="tooltip" data-html="true" title="<%= event.title %>">
 					<span data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>"
 	                      class="event-item"><%= event.customer %></span>
 				</div>
@@ -62,9 +62,11 @@
 					<div class="row-fluid cal-day-hour-part">
 						<div class="span1 col-xs-1"><b><%= cal._time(i) %></b></div>
 						<div class="span11 col-xs-11"></div>
-						<button type="button" class="sln-btn sln-btn--main sln-btn--medium pull-right"
+						<button type="button" class="sln-btn sln-btn--main sln-btn--medium"
 								data-action="add-event-by-date" data-event-date="<%= start.getFullYear() + '-' + start.getMonthFormatted() + '-' + start.getDateFormatted() %>"
 								data-event-time="<%= cal._time(i) %>"><%= cal.locale.add_event %></button>
+						<button type="button" class="block_date sln-btn sln-btn--main sln-btn--medium"
+								><%= holidays_rules_locale.block %></button>
 					</div>
 				<% }; %>
 			</div>

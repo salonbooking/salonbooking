@@ -6226,9 +6226,9 @@ body.salone_page_salon-tools #wpwrap {
   @media only screen and (min-width: 768px) {
     .salon_page_salon-calendar .sln-calendar--wrapper .cal-day-today span[data-cal-date],
     .sln-calendar--wrapper .cal-day-today span[data-cal-date] {
-      width: 2.66667rem;
-      height: 2.66667rem;
-      line-height: 2.5rem; } }
+      width: 3.08333rem;
+      height: 3.08333rem;
+      line-height: 2.91667rem; } }
   @media only screen and (min-width: 768px) {
     .salon_page_salon-calendar .sln-calendar--wrapper .cal-year-box span[data-cal-date],
     .sln-calendar--wrapper .cal-year-box span[data-cal-date] {
@@ -6941,6 +6941,78 @@ body.salone_page_salon-tools #wpwrap {
     left: 50%;
     margin: -1em 0 0 -3px; }
 
+#sln-salon--admin #cal-day-box .cal-day-hour-part, .sln-calendar--wrapper #cal-day-box .cal-day-hour-part {
+  height: 60px; }
+  #sln-salon--admin #cal-day-box .cal-day-hour-part .span1, .sln-calendar--wrapper #cal-day-box .cal-day-hour-part .span1 {
+    line-height: 60px; }
+
+#sln-salon--admin #cal-day-box .day-highlight, .sln-calendar--wrapper #cal-day-box .day-highlight {
+  height: 60px !important;
+  line-height: 30px;
+  z-index: 999; }
+
+#sln-salon--admin .cal-row-head, .sln-calendar--wrapper .cal-row-head {
+  padding: 10px 0 18px 0; }
+
+#sln-salon--admin #cal-day-box .cal-day-hour-part.active, .sln-calendar--wrapper #cal-day-box .cal-day-hour-part.active {
+  border-bottom: 4px solid rgba(12, 110, 182, 0.5);
+  z-index: 999; }
+
+#sln-salon--admin .cal-day-hour-part [data-action=add-event-by-date],
+#sln-salon--admin .cal-day-hour-part.active .block_date, .sln-calendar--wrapper .cal-day-hour-part [data-action=add-event-by-date],
+.sln-calendar--wrapper .cal-day-hour-part.active .block_date {
+  width: auto;
+  min-width: 15px !important;
+  height: 60px;
+  font-size: 12px;
+  line-height: 1em;
+  padding: 15px 21px;
+  top: 0;
+  left: 102%;
+  z-index: 999;
+  transform: translate(-106%); }
+  @media only screen and (min-width: 992px) {
+    #sln-salon--admin .cal-day-hour-part [data-action=add-event-by-date],
+    #sln-salon--admin .cal-day-hour-part.active .block_date, .sln-calendar--wrapper .cal-day-hour-part [data-action=add-event-by-date],
+    .sln-calendar--wrapper .cal-day-hour-part.active .block_date {
+      left: auto;
+      left: initial;
+      right: 0;
+      transform: translate(-76%); } }
+
+#sln-salon--admin .cal-day-hour-part.active .block_date, .sln-calendar--wrapper .cal-day-hour-part.active .block_date {
+  transform: translate(0);
+  background-color: #e63f24; }
+
+#sln-salon--admin #cal-day-box #cal-day-panel, .sln-calendar--wrapper #cal-day-box #cal-day-panel {
+  width: 90%; }
+  @media only screen and (min-width: 992px) {
+    #sln-salon--admin #cal-day-box #cal-day-panel, .sln-calendar--wrapper #cal-day-box #cal-day-panel {
+      width: 100%; } }
+
+@media only screen and (max-width: 767px) {
+  #sln-salon--admin .cal-day-panel__wrapper, .sln-calendar--wrapper .cal-day-panel__wrapper {
+    overflow-y: auto;
+    padding-top: 45px;
+    padding-bottom: 30px; }
+    #sln-salon--admin .cal-day-panel__wrapper #cal-day-panel, .sln-calendar--wrapper .cal-day-panel__wrapper #cal-day-panel {
+      min-width: 620px; }
+  #sln-salon--admin .cal-day-panel__wrapper, #sln-salon--admin .cal-day-panel__wrapper #cal-day-panel, .sln-calendar--wrapper .cal-day-panel__wrapper, .sln-calendar--wrapper .cal-day-panel__wrapper #cal-day-panel {
+    transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg); }
+  #sln-salon--admin ::-webkit-scrollbar, .sln-calendar--wrapper ::-webkit-scrollbar {
+    -webkit-appearance: none; }
+  #sln-salon--admin ::-webkit-scrollbar:horizontal, .sln-calendar--wrapper ::-webkit-scrollbar:horizontal {
+    height: 18px; }
+  #sln-salon--admin ::-webkit-scrollbar-thumb, .sln-calendar--wrapper ::-webkit-scrollbar-thumb {
+    background-color: #4c7186;
+    border-radius: 10px;
+    border: 2px solid #c7dff3; }
+  #sln-salon--admin ::-webkit-scrollbar-track, .sln-calendar--wrapper ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #c7dff3; } }
+
 .cal-day-hour-part.selected {
   background-color: grey;
   user-select: none;
@@ -6949,37 +7021,56 @@ body.salone_page_salon-tools #wpwrap {
   -ms-user-select: none; }
 
 .cal-day-hour-part.blocked {
-  background-color: red;
+  background-color: #ccc;
+  opacity: .35;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none; }
+  .cal-day-hour-part.blocked:hover {
+    background-color: #e63f24; }
 
 .cal-day-hour-part.selected:hover button[data-action="add-event-by-date"], .cal-day-hour-part.blocked:hover button[data-action="add-event-by-date"] {
   display: none !important; }
 
 .cal-day-hour-part.selected:hover {
-  background-color: grey !important; }
+  background-color: #ccc !important; }
 
 .cal-day-hour-part.blocked:hover {
-  background-color: red !important; }
+  background-color: #e63f24 !important; }
 
 .calendar-holydays-button {
+  width: auto;
+  min-width: 15px !important;
+  padding: 15px 21px;
+  height: 60px;
   position: absolute;
-  left: 50%;
+  right: 0;
   z-index: 9999;
-  transform: translate(-50%, -50%);
-  padding: 1em;
   color: #fff;
-  font-size: 1.2em;
-  border: none;
-  font-weight: 900; }
+  font-size: 1em;
+  line-height: 1em;
+  border: none; }
+  @media only screen and (min-width: 768px) {
+    .calendar-holydays-button {
+      right: auto;
+      right: initial;
+      left: 50%;
+      transform: translate(-50%, -50%); } }
 
 .calendar-holydays-button.onlyone {
-  transform: translate(-50%, 0); }
+  cursor: pointer; }
+  .calendar-holydays-button.onlyone:hover, .calendar-holydays-button.onlyone:active, .calendar-holydays-button.onlyone:focus {
+    outline: 0; }
 
 .calendar-holydays-button.create-holydays {
-  background-color: red; }
+  background-color: #e63f24;
+  cursor: pointer; }
+  .calendar-holydays-button.create-holydays:hover, .calendar-holydays-button.create-holydays:active, .calendar-holydays-button.create-holydays:focus {
+    outline: 0; }
 
 .calendar-holydays-button.remove-holydays {
-  background-color: grey; }
+  background-color: #5bc24c;
+  cursor: pointer; }
+  .calendar-holydays-button.remove-holydays:hover, .calendar-holydays-button.remove-holydays:active, .calendar-holydays-button.remove-holydays:focus {
+    outline: 0; }

@@ -12,6 +12,7 @@ $cl_problem--light: #e63f24;
 $cl_warning: #f5b025;
 $cl_warning--light: #f7c65f;
 $cl_ok: #5bc24c;
+$cl_grey: #ccc;
 
 @function alpha-tones($tone, $alpha){
   @return rgba($tone, $alpha)

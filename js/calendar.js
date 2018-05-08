@@ -173,7 +173,7 @@ if(!String.prototype.formatNum) {
 
 		no_events_in_day: 'No events in this day.',
 
-		add_event: 'Add reservation',
+		add_event: 'Add book',
 
 		title_year:  '{0}',
 		title_month: '{0} {1}',
@@ -470,7 +470,8 @@ if(!String.prototype.formatNum) {
 		var on_page 	 = parseInt($self.options.on_page);
 
 		data.lines = lines;
-		data.borders = on_page + 1;
+		//data.borders = on_page + 1;
+		data.borders = on_page;
 		data.headers = [];
 		data.all_day = [];
 		data.by_hour = [];

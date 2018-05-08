@@ -13,7 +13,7 @@ $holidays_rules = $plugin->getSettings()->get('holidays_daily')?:array();
     var daily_rules = JSON.parse('<?php echo json_encode($holidays_rules); ?>');
     var holidays_rules_locale = {
         'block':'<?php _e('Block','salon-booking-system'); ?>',
-        'unblock':'<?php _e('Unblock','salon-booking-system'); ?>',
+        'unblock':'<?php _e('Unlock','salon-booking-system'); ?>',
         'single':'<?php _e('this row','salon-booking-system'); ?>',
         'multiple':'<?php _e('these rows','salon-booking-system'); ?>'
     }
@@ -88,6 +88,9 @@ jQuery(function($){
     top: -10px;
     left: 80px;
 }
+#cal-day-box #cal-day-panel-hour{
+    z-index: 997 !important;
+}
 #cal-day-box .day-event{
     width: 7.4% !important;
     max-width: 7.4% !important;
@@ -111,7 +114,7 @@ jQuery(function($){
     text-decoration: underline;
 }
 
-.cal-day-hour-part [data-action=add-event-by-date] {
+.cal-day-hour-part .block_date,.cal-day-hour-part [data-action=add-event-by-date] {
     width: 5%;
     min-width: 5% !important;
     padding: 0 0.3rem;
@@ -123,9 +126,27 @@ jQuery(function($){
         width: 7%;
     }
 }
-
-.cal-day-hour-part:hover [data-action=add-event-by-date] {
+.cal-day-hour-part{
+    position: relative;
+    z-index: 998;
+}
+.cal-day-hour-part.active .block_date,.cal-day-hour-part.active [data-action=add-event-by-date] {
     display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-105%);
+    z-index: 999;
+}
+.cal-day-hour-part.selected [data-action=add-event-by-date]{
+    display: none;
+}
+.cal-day-hour-part.active .block_date{
+    transform: translate(5%);
+}
+.sln-calendar--wrapper .sln-calendar-view .cal-day-hour-part.active {
+    background-color: rgba(122, 158, 208, 0.76);
 }
 </style>
 <div class="wrap sln-bootstrap">

@@ -55,12 +55,14 @@ var DayCalendarHolydays = {
     "selection":[],
     "blocked":false,    
     "rules":false,
+    "selecting":false,
+    "startEl":false,
     "mousedown": function(e){    
         if(!$(e.target).hasClass('cal-day-hour-part'))return;
         DayCalendarHolydays.clearSelection();        
         DayCalendarHolydays.selectEl($(this));        
-        $(' .cal-day-hour-part').on('mouseover', DayCalendarHolydays.mouseover);
-        $('body').on('mouseover', DayCalendarHolydays.bodyBlock);
+        //$(' .cal-day-hour-part').on('mouseover', DayCalendarHolydays.mouseover);
+        //$('body').on('mouseover', DayCalendarHolydays.bodyBlock);
     },
     "bodyBlock":function(e){
         var target = $(e.target);
@@ -68,21 +70,34 @@ var DayCalendarHolydays = {
         
         {
             DayCalendarHolydays.blocked = true;
-            var event = jQuery.Event('mouseup');
+            var event = jQuery.Event('click');
             event.target = $('body').find('.cal-day-hour-part:not(.blocked)')[0];
             $('body').trigger(event);
             return false;
         }
     },
     "mouseup": function(e){
-        $(' .cal-day-hour-part').off('mouseover', DayCalendarHolydays.mouseover);
-        $('body').off('mouseover', DayCalendarHolydays.bodyBlock);
+        DayCalendarHolydays.selecting=false;  
+        //$(' .cal-day-hour-part').off('mouseover', DayCalendarHolydays.mouseover);
+        //$('body').off('mouseover', DayCalendarHolydays.bodyBlock);
+
         //console.log(DayCalendarHolydays.selection);
-        var filtered = Object.keys(DayCalendarHolydays.selection)
-        .map(function(x){ return parseInt(x) }),   
-        firstEl = $(DayCalendarHolydays.selection[filtered[0]]),
-        lastEl = $(DayCalendarHolydays.selection[filtered[filtered.length-1]]);
-        var button = DayCalendarHolydays.createPopUp(1,firstEl,lastEl,$(DayCalendarHolydays.selection.filter(function(x){ return x })));
+        //var filtered = Object.keys(DayCalendarHolydays.selection)
+        //.map(function(x){ return parseInt(x) }),   
+
+        firstEl = DayCalendarHolydays.startEl,
+        lastEl = $(e);
+        if( parseInt(firstEl.index()) > parseInt(lastEl.index())  ){
+            var temp = firstEl;
+            firstEl = lastEl;
+            lastEl = temp;
+        }
+        firstEl.nextUntil(lastEl).add(firstEl).add(lastEl).each(function(){
+            $(this).addClass('selected');
+            DayCalendarHolydays.selection[parseInt($(this).index())]= $(this);
+        });
+        
+        var button = DayCalendarHolydays.createPopUp(1,firstEl,lastEl,DayCalendarHolydays.selection);
         button.click(DayCalendarHolydays.blockSelection)
         setTimeout(function(){$(' .cal-day-hour-part.selected').on('click', DayCalendarHolydays.clearSelection)},0);
         $(document).on('click', DayCalendarHolydays.clickOutside);
@@ -92,7 +107,7 @@ var DayCalendarHolydays = {
         if($(this).hasClass("blocked")) 
             {
                 DayCalendarHolydays.blocked = true;
-                var event = jQuery.Event('mouseup');
+                var event = jQuery.Event('click');
             event.target = $('body').find('.cal-day-hour-part:not(.blocked)')[0];
             $('body').trigger(event);
                 return false;
@@ -102,6 +117,25 @@ var DayCalendarHolydays = {
     "selectEl": function ($el){
         $el.addClass('selected');
         this.selection[parseInt($el.index())]= $el;
+    },
+    "click": function(e){
+        if(!$(e.target).hasClass('cal-day-hour-part'))return;
+        var attr = $(e.target).attr('data-action');
+        if($(e.target).hasClass('block_date') || typeof attr !== typeof undefined && attr !== false)return;
+        $('.cal-day-hour-part').removeClass('active')
+        if(DayCalendarHolydays.selecting){
+            DayCalendarHolydays.mouseup(e.target);
+        }else{
+            $(e.target).addClass('active');
+        }
+    },
+    "startSelection":function(e){
+         DayCalendarHolydays.clearSelection();        
+         DayCalendarHolydays.startEl = $(e.target).closest('.cal-day-hour-part');
+        DayCalendarHolydays.selectEl($(e.target).closest('.cal-day-hour-part'));    
+        DayCalendarHolydays.selecting=true;    
+        //$(' .cal-day-hour-part').on('mouseover', DayCalendarHolydays.mouseover);
+        //$('body').on('mouseover', DayCalendarHolydays.bodyBlock);
     },
     "clearSelection":function(){
         if(DayCalendarHolydays.selection.length){
@@ -166,7 +200,7 @@ var DayCalendarHolydays = {
             var button = DayCalendarHolydays.createButton;
             DayCalendarHolydays.createButton = false;
             button.toggleClass('create-holydays remove-holydays')
-            .text('Unblock these rows')
+            .text(holidays_rules_locale.unblock+' '+(DayCalendarHolydays.selection.length > 1 ? holidays_rules_locale.single: holidays_rules_locale.multiple))
             .off('click')
             .click(DayCalendarHolydays.unblockPop);
         })   
@@ -330,8 +364,10 @@ var DayCalendarHolydays = {
      });
      */
     $('body')
-    .on('mousedown',' .cal-day-hour-part:not(.blocked)',DayCalendarHolydays.mousedown)
-    .on('mouseup','.cal-day-hour-part:not(.blocked)',DayCalendarHolydays.mouseup);
+    .on('click',' .cal-day-hour-part:not(.blocked)',DayCalendarHolydays.click);
+    $('body')
+    .on('click',' .block_date',DayCalendarHolydays.startSelection);
+ 
 }
 
 function initSalonCalendarUserSelect2($) {
