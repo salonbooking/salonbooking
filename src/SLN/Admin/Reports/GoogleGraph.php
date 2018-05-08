@@ -96,10 +96,13 @@ class SLN_Admin_Reports_GoogleGraph {
 			function drawChart() {
 				var data = new google.visualization.DataTable();
 				<?php echo implode(PHP_EOL, $labels_js) ?>
-
-				data.addRows([
+				var myData = [
 				<?php echo implode(PHP_EOL, $data_js) ?>
-				]);
+				];
+				myData = myData.map(function(el,i){
+				return el.map(function(el,i){ return data.getColumnType(i) === 'number' ? Number(el) : el;})
+				});
+				data.addRows(myData);
 
 				var materialOptions = {
 					allowHtml: true,
