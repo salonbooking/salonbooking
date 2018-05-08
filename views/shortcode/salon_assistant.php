@@ -1,130 +1,56 @@
 <?php
-// Accrocco temporaneo, serve per non far diventare il file un papiello
-$item = '<div class="sln-datalist__item">
-			<h3 class="sln-datalist__item__name">Nome Cognome</h3>
-			<div class="sln-datalist__item__image">
-				<img src="http://via.placeholder.com/350x350">
-			</div>
-			<p class="sln-datalist__item__description">
-				Donec euismod lacus eu ex auctor, et fringilla libero sodales. Nullam eu mi ut eros tincidunt scelerisque. Praesent iaculis, nisi vehicula eleifend molestie, justo elit auctor risus, id vestibulum purus velit hendrerit nisl. Cras porta ultricies tortor, eget vehicula enim ultricies a. Vestibulum finibus, turpis a ullamcorper tincidunt, ante lacus auctor odio, volutpat mollis quam nibh sed risus.
-			</p>
-			<div class="sln-datalist__item__list">
-				<h5>Skills</h5>
-				<ul>
-					<li>Skill A</li>
-					<li>Skill B</li>
-					<li>Skill C</li>
-					<li>Skill D</li>
-				</ul>
-			</div>
-			<div class="sln-datalist__item__actions">
-				<a href="#nogo" class="sln-datalist__item__cta">Book now</a>
-			</div>
-		</div>';
+if(!$data['attendants']) return;
+$service_repo             = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
+$all_service = $service_repo->getAll($service_repo);
 ?>
-
-<!-- Versione di default, nuda e cruda -->
 <section class="sln-datashortcode sln-datashortcode--assistants">
-	<h1 class="sln-datalist_title">Assistants</h1>
-	<div class="sln-datalist">
+	<h1 class="sln-datalist_title"><?php _e('Assistants','salon-booking-system'); ?></h1>
+	<div class="sln-datalist <?php 
+	if(isset($data['styled'])) echo 'sln-datalist--styled '; 
+	if(isset($data['columns'])) echo 'sln-datalist--'.$data['columns'].'cols '; 	
+	?>">
+	<?php foreach ($data['attendants'] as $attendant) {
+		$thumb     = has_post_thumbnail($attendant->getId()) ?get_the_post_thumbnail(
+                $attendant->getId(),
+                'thumbnail'
+            ) : '';	
+	?>
 		<div class="sln-datalist__item">
-			<h3 class="sln-datalist__item__name">Nome Cognome</h3>
+			<?php if(!$display || $display['name']){ ?>
+			<h3 class="sln-datalist__item__name"><?php echo $attendant->getName(); ?></h3>
+			<?php } ?>
+			<?php if(!$display || $display['image']){ ?>
 			<div class="sln-datalist__item__image">
-				<img src="http://via.placeholder.com/350x350">
+				<?php echo $thumb ?>
 			</div>
+			<?php } ?>
+			<?php if(!$display || $display['description']){ ?>
 			<p class="sln-datalist__item__description">
-				Donec euismod lacus eu ex auctor, et fringilla libero sodales. Nullam eu mi ut eros tincidunt scelerisque. Praesent iaculis, nisi vehicula eleifend molestie, justo elit auctor risus, id vestibulum purus velit hendrerit nisl. Cras porta ultricies tortor, eget vehicula enim ultricies a. Vestibulum finibus, turpis a ullamcorper tincidunt, ante lacus auctor odio, volutpat mollis quam nibh sed risus.
+				<?php echo $attendant->getContent() ?>
 			</p>
+			<?php } ?>
+			<?php 
+			if(!$display || $display['skills']){
+			$services = $attendant->getServices() ?: $all_service;
+			if($services){
+			?>
 			<div class="sln-datalist__item__list">
-				<h5>Skills</h5>
+				<h5><?php _e('Skills','salon-booking-system'); ?></h5>
+
 				<ul>
-					<li>Skill A</li>
-					<li>Skill B</li>
-					<li>Skill C</li>
-					<li>Skill D</li>
+					<?php foreach ($services as $service) { 						
+						echo '<li>'.$service->getTitle().'</li>';
+					}?>					
 				</ul>
 			</div>
+			<?php }} ?>
+			<?php if(!$display || $display['action']){ ?>
 			<div class="sln-datalist__item__actions">
-				<a href="#nogo" class="sln-datalist__item__cta">Book now</a>
+				<a href="<?php 	echo get_the_permalink($this->getPlugin()->getSettings()->getThankyouPageId()); ?>" class="sln-datalist__item__cta"><?php _e('Book now','salon-booking-system'); ?></a>
 			</div>
-		</div>
-		<div class="sln-datalist__item">
-			<h3 class="sln-datalist__item__name">Nome Cognome</h3>
-			<div class="sln-datalist__item__image">
-				<img src="http://via.placeholder.com/350x350">
-			</div>
-			<p class="sln-datalist__item__description">
-				Curabitur ornare maximus enim sed sagittis. Pellentesque at justo lectus. Morbi iaculis nunc mauris, sit amet pulvinar elit eleifend sed. Maecenas risus leo, molestie non fermentum cursus, elementum nec urna. Phasellus id orci ut justo venenatis vulputate eu vel justo. Pellentesque facilisis sed metus vel pellentesque. Duis et convallis elit, eget vulputate ligula. Aliquam orci tortor, suscipit quis mauris ornare, venenatis suscipit eros. Mauris imperdiet ultricies consequat.
-			</p>
-			<div class="sln-datalist__item__list">
-				<h5>Skills</h5>
-				<ul>
-					<li>Skill A</li>
-					<li>Skill B</li>
-					<li>Skill C</li>
-					<li>Skill D</li>
-				</ul>
-			</div>
-			<div class="sln-datalist__item__actions">
-				<a href="#nogo" class="sln-datalist__item__cta">Book now</a>
-			</div>
-		</div>
-		<div class="sln-datalist__item">
-			<h3 class="sln-datalist__item__name">Nome Cognome</h3>
-			<div class="sln-datalist__item__image">
-				<img src="http://via.placeholder.com/350x350">
-			</div>
-			<p class="sln-datalist__item__description">
-				Mauris in turpis lacus. Praesent sagittis sed turpis id molestie. Aliquam ac gravida felis. Fusce faucibus sem ligula, id fermentum massa lobortis sit amet. Donec sit amet fermentum eros. Phasellus sollicitudin quis urna non condimentum. Duis diam urna, commodo non feugiat eu, iaculis sed nibh.
-			</p>
-			<div class="sln-datalist__item__list">
-				<h5>Skills</h5>
-				<ul>
-					<li>Skill A</li>
-					<li>Skill B</li>
-					<li>Skill C</li>
-					<li>Skill D</li>
-				</ul>
-			</div>
-			<div class="sln-datalist__item__actions">
-				<a href="#nogo" class="sln-datalist__item__cta">Book now</a>
-			</div>
-		</div>
-		<div class="sln-datalist_clearfix"></div>
-	</div>
-</section>
-
-<!-- Versione stilata, va aggiunta al classse .sln-datalist--styled la div.sln-datalist -->
-<section class="sln-datashortcode sln-datashortcode--assistants">
-	<h1 class="sln-datalist_title">Assistants</h1>
-	<div class="sln-datalist sln-datalist--styled">
-		<?php echo str_repeat($item, 3) ?>
-		<div class="sln-datalist_clearfix"></div>
-	</div>
-</section>
-
-<!--
-Varianti numero colonne (lavorano sia con la versione stilata che con quella base).
-Le classsi da aggiungere al div.sln-datalist sono .sln-datalist--2cols, .sln-datalist--3cols o .sln-datalist--4cols
--->
-<section class="sln-datashortcode sln-datashortcode--assistants">
-	<h1 class="sln-datalist_title">Assistants</h1>
-	<div class="sln-datalist sln-datalist--styled sln-datalist--2cols">
-		<?php echo str_repeat($item, 4) ?>
-		<div class="sln-datalist_clearfix"></div>
-	</div>
-</section>
-<section class="sln-datashortcode sln-datashortcode--assistants">
-	<h1 class="sln-datalist_title">Assistants</h1>
-	<div class="sln-datalist sln-datalist--styled sln-datalist--3cols">
-		<?php echo str_repeat($item, 5) ?>
-		<div class="sln-datalist_clearfix"></div>
-	</div>
-</section>
-<section class="sln-datashortcode sln-datashortcode--assistants">
-	<h1 class="sln-datalist_title">Assistants</h1>
-	<div class="sln-datalist sln-datalist--styled sln-datalist--4cols">
-		<?php echo str_repeat($item, 7) ?>
+			<?php } ?>
+		</div>		
+	<?php } ?>
 		<div class="sln-datalist_clearfix"></div>
 	</div>
 </section>
