@@ -18,10 +18,85 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
             add_action('admin_head-post.php', array($this, 'posttype_admin_css'));
             add_action('restrict_manage_posts', array($this, 'restrict_manage_posts'), 10, 2);
             add_filter('parse_query', array($this, 'parse_query'));
+            add_filter('pre_get_posts', array($this, 'pre_get_posts'));
             add_filter('post_row_actions', array($this, 'post_row_actions'), 10, 2);
+            add_filter( 'months_dropdown_results', array($this,'months_dropdown_results'),10,2 );
+            add_filter( 'posts_join', array($this, 'posts_join') );
+            add_filter( 'posts_where', array($this, 'posts_where') );
+            add_filter( 'posts_distinct', array($this,'posts_distinct') );
         }
         $this->registerPostStatus();
     }
+    
+    public function pre_get_posts($query){
+        global $pagenow;
+
+        if (isset($_GET['post_type']) && $_GET['post_type'] === $this->getPostType() && is_admin() && $pagenow=='edit.php' && $query->get('post_type') === $this->getPostType()) {
+            $query->set('m', null);
+
+        }
+        return $query;
+    }
+    public function posts_join ( $join ) {
+        global $pagenow, $wpdb;
+
+        // I want the filter only when performing a search on edit page of Custom Post Type named "segnalazioni".
+        if ( is_admin() && 'edit.php' === $pagenow && $this->getPostType() === $_GET['post_type'] && ! empty( $_GET['s'] ) ) {    
+            $join .= 'LEFT JOIN ' . $wpdb->postmeta . ' ON ' . $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
+        }
+        return $join;
+    }
+
+    public function posts_where( $where ) {
+        global $pagenow, $wpdb;
+
+        // I want the filter only when performing a search on edit page of Custom Post Type named "segnalazioni".
+        if ( is_admin() && 'edit.php' === $pagenow && $this->getPostType() === $_GET['post_type'] && ! empty( $_GET['s'] ) ) {
+            $where = preg_replace(
+                "/\(\s*" . $wpdb->posts . ".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
+                "(" . $wpdb->posts . ".post_title LIKE $1) OR (" . $wpdb->postmeta . ".meta_value LIKE $1)", $where );
+        }
+        return $where;
+    }
+    public function posts_distinct( $where ){
+        global $pagenow, $wpdb;
+
+        if ( is_admin() && $pagenow=='edit.php' && $_GET['post_type']==$this->getPostType() && $_GET['s'] != '') {
+        return "DISTINCT";
+
+        }
+        return $where;
+    }
+
+    public  function months_dropdown_results($months, $post_type){
+
+        if($post_type !== $this->getPostType() ) return;
+        global $wpdb;
+        $extra_checks = "AND post_status != 'auto-draft'";
+            if ( ! isset( $_GET['post_status'] ) || 'trash' !== $_GET['post_status'] ) {
+                $extra_checks .= " AND post_status != 'trash'";
+            } elseif ( isset( $_GET['post_status'] ) ) {
+                $extra_checks = $wpdb->prepare( ' AND post_status = %s', $_GET['post_status'] );
+            }
+                $months = $wpdb->get_results(
+                $wpdb->prepare(
+                    "
+                SELECT DISTINCT YEAR( meta_value ) AS year, MONTH( meta_value) AS month
+
+                FROM $wpdb->postmeta as pt
+                LEFT JOIN $wpdb->posts as p 
+                ON pt.post_id = p.ID
+                WHERE pt.meta_key = '_sln_booking_date' AND
+                post_type = %s
+                $extra_checks
+                ORDER BY meta_value DESC
+            ", $post_type
+                )
+            );
+            
+            return $months;
+    }
+
 
 //    public function insert_post_data($data, $postarr)
 //    {
@@ -316,6 +391,15 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
 
         if (isset($_GET['post_type']) && $_GET['post_type'] === $this->getPostType() && is_admin() && $pagenow=='edit.php' && $query->get('post_type') === $this->getPostType()) {
             $meta_queries = array();
+            if (isset($_GET['m']) && !empty($_GET['m'])) {
+                $y =  substr ( $_GET['m'] , 0 ,4 );
+                $m =  substr ( $_GET['m'] , 4, 2 );
+                $meta_queries[] = array(
+                    'key'     => '_sln_booking_date',
+                    'value'   => array($y."-".$m."-01",$y."-".$m."-31"),
+                    'compare' => 'BETWEEN',
+                );
+            }
             if (isset($_GET['attendant']) && !empty($_GET['attendant'])) {
                 $meta_queries[] = array(
                     'key'     => '_sln_booking_services',
