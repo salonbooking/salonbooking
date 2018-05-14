@@ -62,12 +62,14 @@ if(!isset($forAdmin)) {
     }
 
     $updated_message = str_replace(
-        array('[NAME]', '[SALON NAME]','\\\\n','\\\\n\\\\r'),
+        array('[NAME]', '[SALON NAME]','\\\\r\\\\n','\\r\\n','\\\\n','\\n'),
         array(
             ($customer = $booking->getCustomer()) ? $customer->getName() : '',
             $plugin->getSettings()->get('gen_name') ? $plugin->getSettings()->get('gen_name') : get_bloginfo('name'),
-            '<br>',
-            '<br>'
+            '<br/>',
+            '<br/>',
+            '<br/>',
+            '<br/>'
         ),
         $updated_message
     );
