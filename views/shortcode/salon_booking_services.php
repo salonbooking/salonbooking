@@ -25,7 +25,7 @@ if(!$data['services']) return;
 			<?php } ?>
 			<?php if(!$display || $display['action']){ ?>
 			<div class="sln-datalist__item__actions">
-				<a href="<?php 	echo $booking_url; ?>" class="sln-datalist__item__cta">_e('Book now','salon-booking-system');</a>
+				<a href="<?php 	echo $data['booking_url']; ?>" class="sln-datalist__item__cta"><?php _e('Book now','salon-booking-system'); ?></a>
 			</div>
 			<?php } ?>
 		</div>
