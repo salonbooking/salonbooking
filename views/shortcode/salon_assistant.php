@@ -3,8 +3,7 @@ if(!$data['attendants']) return;
 $service_repo             = $this->plugin->getRepository(SLN_Plugin::POST_TYPE_SERVICE);
 $all_service = $service_repo->getAll($service_repo);
 ?>
-<section class="sln-datashortcode sln-datashortcode--assistants">
-	<h1 class="sln-datalist_title"><?php _e('Assistants','salon-booking-system'); ?></h1>
+<section class="sln-datashortcode sln-datashortcode--assistants">	
 	<div class="sln-datalist <?php 
 	if(isset($data['styled'])) echo 'sln-datalist--styled '; 
 	if(isset($data['columns'])) echo 'sln-datalist--'.$data['columns'].'cols '; 	

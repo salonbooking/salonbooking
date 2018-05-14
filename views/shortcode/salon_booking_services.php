@@ -1,8 +1,7 @@
 <?php
 if(!$data['services']) return;
 ?>
-<section class="sln-datashortcode sln-datashortcode--services">
-	<h1 class="sln-datalist_title"><?php _e('Services','salon-booking-system'); ?></h1>
+<section class="sln-datashortcode sln-datashortcode--services">	
 	<div class="sln-datalist <?php 
 	if(isset($data['styled'])) echo 'sln-datalist--styled '; 
 	if(isset($data['columns'])) echo 'sln-datalist--'.$data['columns'].'cols '; 	
