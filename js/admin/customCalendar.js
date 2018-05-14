@@ -85,14 +85,16 @@ var DayCalendarHolydays = {
         //var filtered = Object.keys(DayCalendarHolydays.selection)
         //.map(function(x){ return parseInt(x) }),   
 
-        firstEl = DayCalendarHolydays.startEl,
+        var firstEl = DayCalendarHolydays.startEl,
         lastEl = $(e);
-        if( parseInt(firstEl.index()) > parseInt(lastEl.index())  ){
+        var firstI =firstEl.index(), lastI = lastEl.index(),selected ;
+        if( parseInt(firstI) > parseInt(lastI)  ){
             var temp = firstEl;
             firstEl = lastEl;
             lastEl = temp;
         }
-        firstEl.nextUntil(lastEl).add(firstEl).add(lastEl).each(function(){
+        selected = parseInt(firstI) === parseInt(lastI) ? lastEl : firstEl.nextUntil(lastEl).add(firstEl).add(lastEl);
+        selected.each(function(){
             $(this).addClass('selected');
             DayCalendarHolydays.selection[parseInt($(this).index())]= $(this);
         });
@@ -162,7 +164,7 @@ var DayCalendarHolydays = {
             lastT =  final.attr('data-event-time');
         var single = firstD+firstT === lastD+lastB.attr('data-event-time');
 
-        var top = single ? firstEl.position().top : firstEl.position().top+ (((lastEl.position().top + lastEl.height() ) - firstEl.position().top)/2) ;    
+        var top = single ? (firstEl.position().top + ( firstEl.height() /2)) : firstEl.position().top+ (((lastEl.position().top + lastEl.height() ) - firstEl.position().top)/2) ;    
         var button = $('<button class=" '+( status ? ' create-holydays ': ' remove-holydays ')+' calendar-holydays-button"></button>');
         button.text((status ?  holidays_rules_locale.block :  holidays_rules_locale.unblock)+' '+(single? holidays_rules_locale.single: holidays_rules_locale.multiple));
         button.css({
