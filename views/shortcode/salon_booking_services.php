@@ -11,7 +11,7 @@ if(!$data['services']) return;
 	?>
 		<div class="sln-datalist__item">
 			<?php if(!$display || $display['name']){ ?>
-			<h3 class="sln-datalist__item__name">Nome Servizio</h3>
+			<h3 class="sln-datalist__item__name"><?php echo $service->getName() ?></h3>
 			<?php } ?>
 			<?php if(!$display || $display['image']){ ?>
 			<div class="sln-datalist__item__image">
@@ -25,7 +25,7 @@ if(!$data['services']) return;
 			<?php } ?>
 			<?php if(!$display || $display['action']){ ?>
 			<div class="sln-datalist__item__actions">
-				<a href="<?php 	echo get_the_permalink($this->getPlugin()->getSettings()->getThankyouPageId()); ?>" class="sln-datalist__item__cta">Book now</a>
+				<a href="<?php 	echo $booking_url; ?>" class="sln-datalist__item__cta">_e('Book now','salon-booking-system');</a>
 			</div>
 			<?php } ?>
 		</div>

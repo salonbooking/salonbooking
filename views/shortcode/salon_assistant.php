@@ -46,7 +46,7 @@ $all_service = $service_repo->getAll($service_repo);
 			<?php }} ?>
 			<?php if(!$display || $display['action']){ ?>
 			<div class="sln-datalist__item__actions">
-				<a href="<?php 	echo get_the_permalink($this->getPlugin()->getSettings()->getThankyouPageId()); ?>" class="sln-datalist__item__cta"><?php _e('Book now','salon-booking-system'); ?></a>
+				<a href="<?php 	echo $booking_url; ?>" class="sln-datalist__item__cta"><?php _e('Book now','salon-booking-system'); ?></a>
 			</div>
 			<?php } ?>
 		</div>		

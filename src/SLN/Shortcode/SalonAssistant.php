@@ -50,7 +50,7 @@ class SLN_Shortcode_SalonAssistant
         $data['styled'] = !empty($this->attrs['styled']) && $this->attrs['styled']=== 'true';
         if(!empty($this->attrs['columns']) && intval($this->attrs['columns'])) $data['columns'] =  intval($this->attrs['columns']);
         $data['display'] = $display;
-
+        $data['booking_url'] = get_the_permalink($this->plugin->getSettings()->getPayPageId());
         return $this->render($data);
     }
    
