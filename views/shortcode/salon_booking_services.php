@@ -1,5 +1,6 @@
 <?php
 if(!$data['services']) return;
+$plugin = SLN_Plugin::getInstance();
 ?>
 <section class="sln-datashortcode sln-datashortcode--services">	
 	<div class="sln-datalist <?php 
@@ -7,6 +8,10 @@ if(!$data['services']) return;
 	if(isset($data['columns'])) echo 'sln-datalist--'.$data['columns'].'cols '; 	
 	?>">
 	<?php foreach ($data['services'] as $service) {
+		$thumb     = has_post_thumbnail($service->getId()) ?get_the_post_thumbnail(
+        	$service->getId(),
+        	'thumbnail'
+    	) : '';	
 	?>
 		<div class="sln-datalist__item">
 			<?php if(!$display || $display['name']){ ?>
@@ -22,6 +27,16 @@ if(!$data['services']) return;
 				<?php echo $service->getContent() ?>
 			</p>
 			<?php } ?>
+			<?php if(!$display || $display['duration']){ ?>
+			<p class="sln-datalist__item__duration">
+				<?php echo $service->getDuration()->format('H:i') ?>
+			</p>
+			<?php } ?>
+			<?php if(!$display || $display['price']){ ?>
+			<p class="sln-datalist__item__price">
+				<?php echo $plugin->format()->money($service->getPrice()) ?>
+			</p>
+			<?php } ?>			
 			<?php if(!$display || $display['action']){ ?>
 			<div class="sln-datalist__item__actions">
 				<a href="<?php 	echo $data['booking_url']; ?>" class="sln-datalist__item__cta"><?php _e('Book now','salon-booking-system'); ?></a>
