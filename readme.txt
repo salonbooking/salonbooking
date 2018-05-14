@@ -3,7 +3,7 @@ Contributors: Wpchef
 Tags: booking, reservations, barber shop, hair salon, beauty center, spas, scheduling, appointment, availability calendar, booking calendar, online reservation, schedule, Paypal appointment, appointment calendar, booking software, reservation plugin, booking engine, booking plugin
 Requires at least: 4.1
 Tested up to: 4.9.1
-Stable tag: 3.20.2
+Stable tag: 3.21
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,7 @@ https://www.youtube.com/watch?v=2fb9JzouBsk&feature=youtu.be
 * Daily view ( NEW IMPROVED VERSION )
 * Bookings export 
 * Adding reservation from daily view
+* Block time slots from daily view
 
 **Salon general settings**
 
@@ -75,7 +76,7 @@ https://www.youtube.com/watch?v=2fb9JzouBsk&feature=youtu.be
 * Multiple weekly timetable rules
 * Time range validty option for the weekly booking rules 
 * Multiple holidays rules
-* Offset between reservation 
+* Offset between reservations 
 * Change booking form steps order ( Date&time - Services - Assistants - Checkout - Payment or reverse )
 * Manual booking confirmation
 * Users booking cancellation
@@ -167,7 +168,8 @@ for more details on this section visit: http://salon.wordpresschef.it/downloads/
 * Booking form page [salon/]
 * Private customers reservations management page [salon_booking_my_account]
 * Assistants bookings calendar  [salon_booking_calendar]
-
+* Assistants list [salon_booking_assistant]
+* Services list [salon_booking_services]
 
 
 **Themes & Plugin compatibility issues*
@@ -175,7 +177,7 @@ for more details on this section visit: http://salon.wordpresschef.it/downloads/
 * Disable Bootstrap Javascript
 * Disable Bootstrap CSS
 
-More information at [Salon booking](http://salon.wpchef.it/).
+More information at [Salon Booking System](http://salonbookingsystem.com/).
 
 
 == Installation ==
@@ -217,9 +219,9 @@ Do you need a custom payment gateway? Please contact us.
 
 = Is it multi language ready? =
 
-The plugin can be translated in any languages  creating a .po file or using WPML plugin translating the strings.
-
-NOTE: Put your own translation files inside wp-content/languages/plugins
+YES, Salon Booking comes equipped with a lot of languages translation.
+Just set your favourite Wordpress language and Salon Booking will use that language.
+You can easyly manage the translation using a plugin like LocoTranslate.
 
 Languages available:
 
@@ -245,9 +247,9 @@ You can accept up to 100 reservations. No time limits.
 
 = What happen when plugin free version reach its booking limit? =
 
-You should buy the PRO version here:
+You could considering to buy the PRO version here:
 
-http://salon.wordpresschef.it
+http://salonbookingsystem.com
 
 == Screenshots ==
 
@@ -273,6 +275,21 @@ http://salon.wordpresschef.it
 
 
 == Changelog ==
+
+14.05.2018
+
+* Improved back-end calendar daily view UI to add a new reservation or block some timeslots
+* Added two new front-end shortcodes to list assistants [salon_booking_assistant] and services [salon_booking_services]
+* Bug fix with Romanian language
+* Bug fix with German language
+* Bug fix with Dutch language
+* Fixed back-end booking search by user name
+* Fixed bug on reports section
+* Added a parameter to limit the assistants inside this shortcode [salon_booking_calendar assistants=5 ]
+
+
+
+
 
 09.04.2018
 
