@@ -15,9 +15,10 @@ $services = $sRepo->getAll();
     </div>
 
     <div class="col-sm-12 col-md-6 form-group sln-select sln-select--multiple">
-            <label><?php echo __('Services', 'salon-booking-system') ?></label>
+            <label><?php echo __('Limit reservations to the following services', 'salon-booking-system') ?></label>
             <select class="sln-select select2-hidden-accessible" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
                     name="_sln_attendant_services[]" id="_sln_attendant_services" tabindex="-1" aria-hidden="true">
+                    <p><?php echo __('Use this option only if this assistant is able to provide specific services. If not leave it blank', 'salon-booking-system') ?></p>
                 <?php foreach ($services as $service) : ?>
                     <?php if (!$service->isAttendantsEnabled()) continue; ?>
                     <option
