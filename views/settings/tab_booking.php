@@ -41,7 +41,7 @@ $plugin = SLN_Plugin::getInstance();
             <div class="sln-box sln-box--main sln-box--main--small">
                 <h2 class="sln-box-title"><?php _e('Session average duration', 'salon-booking-system'); ?> <span
                         class="block"><?php _e(
-                            'Define your time-session average duration',
+                            'This option will affect the minimum hour fraction of the Time picker.',
                             'salon-booking-system'
                         ) ?></span></h2>
                 <div class="row">
@@ -63,7 +63,7 @@ $plugin = SLN_Plugin::getInstance();
                                     ); ?></label></div>
                             <div class="col-xs-12">
                                 <p class="help-block sln-input-help"><?php _e(
-                                        'Set these options carefully because it will affect the number of bookings you can accept for the same <strong>time/session</strong>.',
+                                        'We suggest you to set this option accordingly with the duration of your shortest service.',
                                         'salon-booking-system'
                                     ) ?></p>
                             </div>
