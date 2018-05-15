@@ -23,6 +23,6 @@ class SLN_Helper_AvailabilityItemNull extends SLN_Helper_AvailabilityItem
 
     public function __toString()
     {
-        return 'Not defined';
+        return 'Follow general timetable';
     }
 }
