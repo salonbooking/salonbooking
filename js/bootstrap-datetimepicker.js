@@ -1480,24 +1480,12 @@
 					if (isNaN(val)) {
 						switch (part) {
 							case 'MM':
-								filtered = $(dates[language].months).filter(function () {
-									var m = this.slice(0, parts[i].length),
-										p = parts[i].slice(0, m.length);
-									return m == p;
-								});
-								val = $.inArray(filtered[0], dates[language].months) + 1;
+								
+								val = $.inArray(parts[i], dates[language].months) + 1;
 								break;
 							case 'M':
-								filtered = $(dates[language].monthsShort).filter(function () {
-									var m = this.slice(0, parts[i].length),
-										p = parts[i].slice(0, m.length);
-									
-										return m.toLowerCase() == p.toLowerCase();
-	                                
-									
-									
-								});								
-								val = $.inArray(filtered[0], dates[language].monthsShort) + 1;
+
+								val = $.inArray(parts[i], dates[language].monthsShort) + 1;
 	                                                   	
 								break;
 							case 'p':
