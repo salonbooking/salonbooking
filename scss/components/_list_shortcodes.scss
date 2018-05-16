@@ -51,6 +51,11 @@
 				list-style: none;
 			}
 		}
+		.sln-datalist__item__info {
+			p {margin-bottom: 1em;}
+			p:last-child {margin-bottom: 2em;}
+			span {opacity: .85;}
+		}
 		.sln-datalist__item__actions {
 			a {
 				display: inline-block;

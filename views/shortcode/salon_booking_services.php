@@ -27,16 +27,20 @@ $plugin = SLN_Plugin::getInstance();
 				<?php echo $service->getContent() ?>
 			</p>
 			<?php } ?>
-			<?php if(!$display || $display['duration']){ ?>
-			<p class="sln-datalist__item__duration">
-				<?php echo $service->getDuration()->format('H:i') ?>
-			</p>
-			<?php } ?>
-			<?php if(!$display || $display['price']){ ?>
-			<p class="sln-datalist__item__price">
-				<?php echo $plugin->format()->money($service->getPrice()) ?>
-			</p>
-			<?php } ?>			
+			<div class="sln-datalist__item__info">
+				<?php if(!$display || $display['duration']){ ?>
+				<p class="sln-datalist__item__duration">
+					<span><?php echo __('Duration', 'salon-booking-system')?>: </span>
+					<strong><?php echo $service->getDuration()->format('H:i') ?></strong>
+				</p>
+				<?php } ?>
+				<?php if(!$display || $display['price']){ ?>
+				<p class="sln-datalist__item__price">
+					<span><?php _e('Price','salon-booking-system');?>: </span>
+					<strong><?php echo $plugin->format()->money($service->getPrice()) ?></strong>
+				</p>
+				<?php } ?>
+			</div>		
 			<?php if(!$display || $display['action']){ ?>
 			<div class="sln-datalist__item__actions">
 				<a href="<?php 	echo $data['booking_url']; ?>" class="sln-datalist__item__cta"><?php _e('Book now','salon-booking-system'); ?></a>

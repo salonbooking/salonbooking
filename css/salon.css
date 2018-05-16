@@ -2398,6 +2398,12 @@ ul.sln-list--dashed li,
       .sln-datalist.sln-datalist--styled .sln-datalist__item__list ul {
         padding: 0;
         list-style: none; }
+    .sln-datalist.sln-datalist--styled .sln-datalist__item__info p {
+      margin-bottom: 1em; }
+    .sln-datalist.sln-datalist--styled .sln-datalist__item__info p:last-child {
+      margin-bottom: 2em; }
+    .sln-datalist.sln-datalist--styled .sln-datalist__item__info span {
+      opacity: .85; }
     .sln-datalist.sln-datalist--styled .sln-datalist__item__actions a {
       display: inline-block;
       padding: .5em 1.25em;
