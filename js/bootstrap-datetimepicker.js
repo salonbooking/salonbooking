@@ -1491,17 +1491,14 @@
 								filtered = $(dates[language].monthsShort).filter(function () {
 									var m = this.slice(0, parts[i].length),
 										p = parts[i].slice(0, m.length);
-									if(language == 'fr') {
+									
 										return m.toLowerCase() == p.toLowerCase();
-	                                                   		} else {
-										return m.slice(0,3).toLowerCase() == p.slice(0,3).toLowerCase();
-									}
-								});
-								if(language == 'fr') {
-									val = $.inArray(filtered[0], dates[language].monthsShort) + 1;
-	                                                   	} else {
-									val = $.inArray(filtered[0] ? filtered[0].slice(0,3) : null, dates[language].monthsShort) + 1;
-								}
+	                                
+									
+									
+								});								
+								val = $.inArray(filtered[0], dates[language].monthsShort) + 1;
+	                                                   	
 								break;
 							case 'p':
 							case 'P':
