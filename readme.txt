@@ -285,6 +285,9 @@ http://salonbookingsystem.com
 * Bug fix with Dutch language
 * Fixed back-end booking search by user name
 * Fixed bug on reports section
+* Fixed bug with Brazilian Real
+* Fixed bug with Brazilian language
+* Fixed bug with Estonian language
 * Added a parameter to limit the assistants inside this shortcode [salon_booking_calendar assistants=5 ]
 
 
