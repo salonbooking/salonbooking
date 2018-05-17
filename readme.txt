@@ -289,7 +289,7 @@ http://salonbookingsystem.com
 * Fixed bug with Brazilian language
 * Fixed bug with Estonian language
 * Added a parameter to limit the assistants inside this shortcode [salon_booking_calendar assistants=5 ]
-
+* Fixed back-end booking modal window scroll on mobile
 
 
 
