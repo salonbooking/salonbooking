@@ -6693,7 +6693,11 @@ body.salone_page_salon-tools #wpwrap {
     margin-bottom: 0.5rem; }
   @media only screen and (max-width: 767px) {
     #sln-booking-editor-modal .sln-btn--large {
-      min-width: 105px; } }
+      min-width: 96px; } }
+  @media only screen and (max-width: 767px) {
+    #sln-booking-editor-modal .modal-header .pull-right {
+      width: 100%;
+      text-align: center; } }
 
 @-webkit-keyframes wait {
   0% {
@@ -6894,13 +6898,21 @@ body.salone_page_salon-tools #wpwrap {
   margin-top: 60px; }
 
 .sln-booking-editor--wrapper--sub {
-  height: 400px; }
-  @media only screen and (max-width: 768px) {
+  height: 360px; }
+  @media only screen and (max-width: 1024px) {
     .sln-booking-editor--wrapper--sub {
       -webkit-overflow-scrolling: touch;
-      overflow-y: hidden; } }
+      overflow-y: scroll; } }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (orientation: portrait) {
+  .sln-booking-editor--wrapper--sub {
+    height: 600px; } }
+
+@media only screen and (min-width: 768px) and (orientation: landscape) {
+  .sln-booking-editor--wrapper--sub {
+    height: 540px; } }
+
+@media only screen and (min-width: 992px) {
   .sln-booking-editor--wrapper--sub {
     height: 600px; } }
 

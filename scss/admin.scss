@@ -897,7 +897,7 @@ body.salone_page_salon-tools {
     }
 }
 
-#sln-booking-editor-modal{
+#sln-booking-editor-modal {
     z-index: 9990;
    .modal-header{
         >a,>button{
@@ -906,7 +906,13 @@ body.salone_page_salon-tools {
    }
 
     @include bp(phone) {
-        .sln-btn--large {min-width: 105px;}
+        .sln-btn--large {min-width: 96px;}
+    }
+    @media only screen and (max-width: 767px) {
+        .modal-header .pull-right {
+            width: 100%;
+            text-align: center;
+        }
     }
 }
 
@@ -1144,14 +1150,20 @@ $input-fsize: 16px;
   margin-top: 60px;
 }
 .sln-booking-editor--wrapper--sub {
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 1024px) {
         -webkit-overflow-scrolling: touch;
-        overflow-y: hidden;
+        overflow-y: scroll;
     }
-    height: 400px;
+    height: 360px;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (orientation: portrait) {
   .sln-booking-editor--wrapper--sub {height: 600px;}
+}
+@media only screen and (min-width: 768px) and (orientation: landscape) {
+  .sln-booking-editor--wrapper--sub {height: 540px;}
+}
+@include bp(desktop) {
+    .sln-booking-editor--wrapper--sub {height: 600px;}
 }
 @media only screen and (min-width: 992px) {
   #sln-booking-editor-modal {margin-top: 15px;}
