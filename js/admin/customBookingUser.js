@@ -64,11 +64,13 @@ function sln_validateBooking() {
 
     $.each(toValidate, function (k, val) {
         if (val == '#_sln_booking_email') {
+            /*
             if (!sln_validateEmail($(val).val())) {
                 $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is not a valid email</div>');
                 if (!hasErrors) $(val).focus();
                 hasErrors = true;
             }
+            */
         } else if (val == '#_sln_booking_service_select') {
             if (!$('[name=_sln_booking\\[services\\]\\[\\]]').size()) {
                 $(val).addClass('sln-invalid').parent().append('<div class="sln-error error">This field is required</div>');
