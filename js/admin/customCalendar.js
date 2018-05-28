@@ -269,14 +269,37 @@ var DayCalendarHolydays = {
             $('.current-view--title').text(this.getTitle());
             $('.btn-group button').removeClass('active');
             $('button[data-calendar-view="' + view + '"]').addClass('active');
+            function today(){
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+
+                if(dd<10) {
+                    dd = '0'+dd
+                } 
+
+                if(mm<10) {
+                    mm = '0'+mm
+                } 
+
+                today = yyyy + '-' + mm + '-' + dd ;
+                return today;
+            }
+            var today = formatted_to_date(today());
+            function formatted_to_date(fdate){
+                var parts = fdate.split("-");
+                return new Date(parts[0], parts[1] - 1, parts[2]);
+            }
             $.each(sln_stats, function (key, val) {
                 var calbar = $('.calbar[data-day="' + key + '"]');
                 var append = '';
+                var passed = formatted_to_date(key)<today;
                 if (val.busy > 0) {
-                    append += '<span class="busy" style="width: ' + val.busy + '%"></span>';
+                    append += '<span class="'+ (passed ? 'passed' :'busy')+'" style="width: ' + val.busy + '%"></span>';
                 }
                 if (val.free > 0) {
-                    append += '<span class="free" style="width: ' + val.free + '%"></span>';
+                    append += '<span class="'+ (passed ? 'passed' :'free')+'" style="width: ' + val.free + '%"></span>';
                 }
                 calbar.attr('data-original-title', val.text).html(append);
 
