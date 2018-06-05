@@ -169,12 +169,7 @@ class SLN_Action_InitScripts
 
     public static function enqueueDateTimePicker()
     {
-        $date_lang = defined('ICL_LANGUAGE_CODE')
-            ? ICL_LANGUAGE_CODE
-            : (function_exists('pll_current_language')
-                ? pll_current_language()
-                : get_locale()
-        );
+        $date_lang =  get_locale();
         
         wp_enqueue_script(
             'smalot-datepicker',
