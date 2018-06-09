@@ -3,6 +3,7 @@
 	<li class="col-xs-12 col-sm-4 col-md-4"><div><?php echo sprintf(__('Welcome back %s!','salon-booking-system'), $data['user_name']); ?></div></li>
 	<li class="col-xs-12 col-sm-4 col-md-4 active" role="presentation"><a href="#new" aria-controls="new" role="tab" data-toggle="tab"><?php _e('Next appointments', 'salon-booking-system') ?></a></li>
 	<li class="col-xs-12 col-sm-4 col-md-4" role="presentation"><a href="#old" aria-controls="old" role="tab" data-toggle="tab"><?php _e('Reservations history', 'salon-booking-system') ?></a></li>
+	<li class="col-xs-12 col-sm-4 col-md-4" role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><?php _e('Update your profile', 'salon-booking-system') ?></a></li>
 </ul>
 
 <!-- Tab panes -->
@@ -77,7 +78,9 @@
 			</div>
 		</div>
 	</div>
-
+	<div role="tabpanel" class="tab-pane sln-salon-my-account-tab-pane" id="profile">
+		<?php include '_salon_my_account_profile.php'; ?>
+	</div>
 
 	<div id="ratingModal" class="modal fade" role="dialog" tabindex="-1">
 		<div class="modal-dialog">

@@ -50,7 +50,8 @@ var slnMyAccount = {
                     if( slnMyAccount.feedback_id ) {
                         slnMyAccount.showRateForm( slnMyAccount.feedback_id  );
                     }
-                    
+                    slnMyAccount.setActiveTab();
+                    jQuery('.nav-tabs a').on('show.bs.tab', slnMyAccount.setActiveHash);
                 }
             },
             error: function(data){alert('error'); console.log(data);}
@@ -173,6 +174,16 @@ var slnMyAccount = {
             error: function(data){alert('error'); console.log(data);}
         });
         return false;
+    },
+
+    setActiveHash: function(e){
+        window.location.hash = e.target.hash;
+    },
+
+    setActiveTab: function(hash){
+        var hash = hash ? hash : window.location.hash;
+        if(hash)
+        jQuery('.nav-tabs a[href="' + hash + '"]').tab('show');
     },
 
     init: function () {
