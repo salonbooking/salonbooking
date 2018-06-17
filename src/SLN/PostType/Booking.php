@@ -61,7 +61,7 @@ class SLN_PostType_Booking extends SLN_PostType_Abstract
     public function posts_distinct( $where ){
         global $pagenow, $wpdb;
 
-        if ( is_admin() && $pagenow=='edit.php' && $_GET['post_type']==$this->getPostType() && $_GET['s'] != '') {
+        if ( is_admin() && $pagenow=='edit.php' && $_GET['post_type']==$this->getPostType() && !empty($_GET['s'])) {
         return "DISTINCT";
 
         }
