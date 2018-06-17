@@ -20,8 +20,16 @@ class SLN_Helper_Availability_Highend_DayBookings extends SLN_Helper_Availabilit
     protected function buildTimeslots()
     {
         $ret = array();
-        foreach ($this->minutesIntervals as $t) {
-            $ret[$t] = array('booking' => array(), 'service' => array(), 'attendant' => array());
+        $formattedDate = $this->getDate()->format('Y-m-d');
+        
+        foreach($this->minutesIntervals as $t) {
+            $ret[$t] = array('booking' => array(), 'service' => array(), 'attendant' => array(),'holidays' => array());
+            if($this->holidays){
+                foreach ($this->holidays as $holiday){
+                    $hData = $holiday->getData();
+                    if( !$holiday->isValidTime($formattedDate.' '.$t)) $ret[$t]['holidays'][] = $hData;
+                }
+            }
         }
 
         $settings = SLN_Plugin::getInstance()->getSettings();

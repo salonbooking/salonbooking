@@ -26,11 +26,9 @@ class SLN_Helper_HolidayItem
 		    $date = $date->toString();
 	    }
 
-        $timestampDate = strtotime($date);
-        $min           = strtotime($this->data['from_date']);
-        $max           = strtotime($this->data['to_date'].' 23:59:59');
-        if ($timestampDate < $min || $timestampDate > $max) {
-            return true;
+        
+        if ($this->isDateContained($date)) {
+            return false;
         }
 
         $ret = $this->processWeekDayRules($date);
@@ -40,6 +38,17 @@ class SLN_Helper_HolidayItem
             return ($this->isValidTime($date) || $this->isValidTime($date.' 23:59:59'));
         }
     }
+
+    public function getData(){
+        return $this->data;
+    }
+
+    public function isDateContained($date){
+        $timestampDate = strtotime($date);
+        $min           = strtotime($this->data['from_date']);
+        $max           = strtotime($this->data['to_date'].' 23:59:59');
+        return $timestampDate >= $min && $timestampDate <= $max;
+    }    
 
     private function processWeekDayRules($date)
     {
@@ -68,7 +77,7 @@ class SLN_Helper_HolidayItem
         $from = $this->data['from_date'].' '.$this->data['from_time'];
         $to   = $this->data['to_date'].' '.$this->data['to_time'];
 
-        return ($date < strtotime($from) || $date >= strtotime($to));
+        return !($date > strtotime($from) && $date < strtotime($to));
     }
 
     /**

@@ -5,6 +5,7 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
 {
     protected $currentBooking;
     protected $bookings;
+    protected $holidays;
     protected $timeslots;
     protected $date;
     protected $interval;
@@ -25,11 +26,29 @@ abstract class SLN_Helper_Availability_AbstractDayBookings
     public function __construct(DateTime $date, SLN_Wrapper_Booking $booking = null)
     {
         $interval = SLN_Plugin::getInstance()->getSettings()->getInterval();
+        $holidays = SLN_Plugin::getInstance()->getSettings()->getHolidayItems();
+        
         $this->minutesIntervals = SLN_Func::getMinutesIntervals($interval);
         $this->date = $date;
         $this->currentBooking = $booking;
         $this->bookings = $this->buildBookings();
+        $this->holidays = $this->buildHolidays($holidays);
         $this->timeslots = $this->buildTimeslots();
+    }
+
+    private function buildHolidays($holidays){
+        $ret = array();
+        foreach ($holidays->toArray() as $holiday) {
+            if ( $this->date instanceof DateTime ) {
+            $date = $this->date->format( 'Y-m-d' );
+        } elseif ( $this->date instanceof Date ) {
+            $date = $this->date->toString();
+        }
+
+            if($holiday->isDateContained($date)) $ret[] = $holiday;
+        }
+
+        return $ret;
     }
 
     private function buildBookings()

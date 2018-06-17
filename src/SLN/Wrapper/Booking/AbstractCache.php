@@ -80,7 +80,7 @@ class SLN_Wrapper_Booking_AbstractCache
         }
 
         foreach ($ah->getDayBookings()->getTimeslots() as $k => $v) {
-            if ($v['booking'] || $v['service'] || $v['attendant']) {
+            if ($v['booking'] || $v['service'] || $v['attendant'] || $v['holidays']) {
                 $data['busy_slots'][$k] = $v;
             }
         }
