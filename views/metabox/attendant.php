@@ -14,7 +14,7 @@ $services = $sRepo->getAll();
             <input type="text" name="_sln_attendant_phone" id="_sln_attendant_phone" value="<?php echo $attendant->getPhone() ?>" class="form-control">
     </div>
 
-    <div class="col-sm-12 col-md-6 form-group sln-select sln-select--multiple">
+    <div class="col-sm-12 col-md-6 form-group sln-select sln-select--multiple sln-select2-selection__search-primary">
             <label><?php echo __('Limit reservations to the following services', 'salon-booking-system') ?></label>
             <select class="sln-select select2-hidden-accessible" multiple="multiple" data-placeholder="<?php _e('Select or search one or more services')?>"
                     name="_sln_attendant_services[]" id="_sln_attendant_services" tabindex="-1" aria-hidden="true">
